@@ -51,7 +51,6 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
         self._display_name: Optional[str] = None
         # DateTime the object was last modified.
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # the associated app.
         self._targeted_mobile_apps: Optional[List[str]] = None
@@ -166,15 +165,15 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
         """
         fields = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(managed_device_mobile_app_configuration_assignment.ManagedDeviceMobileAppConfigurationAssignment)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "device_statuses": lambda n : setattr(self, 'device_statuses', n.get_collection_of_object_values(managed_device_mobile_app_configuration_device_status.ManagedDeviceMobileAppConfigurationDeviceStatus)),
-            "device_status_summary": lambda n : setattr(self, 'device_status_summary', n.get_object_value(managed_device_mobile_app_configuration_device_summary.ManagedDeviceMobileAppConfigurationDeviceSummary)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "targeted_mobile_apps": lambda n : setattr(self, 'targeted_mobile_apps', n.get_collection_of_primitive_values(str)),
-            "user_statuses": lambda n : setattr(self, 'user_statuses', n.get_collection_of_object_values(managed_device_mobile_app_configuration_user_status.ManagedDeviceMobileAppConfigurationUserStatus)),
-            "user_status_summary": lambda n : setattr(self, 'user_status_summary', n.get_object_value(managed_device_mobile_app_configuration_user_summary.ManagedDeviceMobileAppConfigurationUserSummary)),
+            "deviceStatuses": lambda n : setattr(self, 'device_statuses', n.get_collection_of_object_values(managed_device_mobile_app_configuration_device_status.ManagedDeviceMobileAppConfigurationDeviceStatus)),
+            "deviceStatusSummary": lambda n : setattr(self, 'device_status_summary', n.get_object_value(managed_device_mobile_app_configuration_device_summary.ManagedDeviceMobileAppConfigurationDeviceSummary)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "targetedMobileApps": lambda n : setattr(self, 'targeted_mobile_apps', n.get_collection_of_primitive_values(str)),
+            "userStatuses": lambda n : setattr(self, 'user_statuses', n.get_collection_of_object_values(managed_device_mobile_app_configuration_user_status.ManagedDeviceMobileAppConfigurationUserStatus)),
+            "userStatusSummary": lambda n : setattr(self, 'user_status_summary', n.get_object_value(managed_device_mobile_app_configuration_user_summary.ManagedDeviceMobileAppConfigurationUserSummary)),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()

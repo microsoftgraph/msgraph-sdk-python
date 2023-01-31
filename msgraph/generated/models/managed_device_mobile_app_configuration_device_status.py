@@ -41,9 +41,7 @@ class ManagedDeviceMobileAppConfigurationDeviceStatus(entity.Entity):
         self._device_model: Optional[str] = None
         # Last modified date time of the policy report.
         self._last_reported_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The status property
         self._status: Optional[compliance_status.ComplianceStatus] = None
         # The User Name that is being reported
         self._user_name: Optional[str] = None
@@ -102,13 +100,13 @@ class ManagedDeviceMobileAppConfigurationDeviceStatus(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "compliance_grace_period_expiration_date_time": lambda n : setattr(self, 'compliance_grace_period_expiration_date_time', n.get_datetime_value()),
-            "device_display_name": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
-            "device_model": lambda n : setattr(self, 'device_model', n.get_str_value()),
-            "last_reported_date_time": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
+            "complianceGracePeriodExpirationDateTime": lambda n : setattr(self, 'compliance_grace_period_expiration_date_time', n.get_datetime_value()),
+            "deviceDisplayName": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
+            "deviceModel": lambda n : setattr(self, 'device_model', n.get_str_value()),
+            "lastReportedDateTime": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(compliance_status.ComplianceStatus)),
-            "user_name": lambda n : setattr(self, 'user_name', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userName": lambda n : setattr(self, 'user_name', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -151,7 +149,7 @@ class ManagedDeviceMobileAppConfigurationDeviceStatus(entity.Entity):
     @property
     def status(self,) -> Optional[compliance_status.ComplianceStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[compliance_status.ComplianceStatus]
         """
         return self._status
@@ -159,7 +157,7 @@ class ManagedDeviceMobileAppConfigurationDeviceStatus(entity.Entity):
     @status.setter
     def status(self,value: Optional[compliance_status.ComplianceStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

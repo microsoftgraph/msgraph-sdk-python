@@ -66,7 +66,7 @@ class TrendingRequestBuilder():
         """
         Create new navigation property to trending for me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[trending.Trending]
         """
@@ -105,7 +105,7 @@ class TrendingRequestBuilder():
         """
         Create new navigation property to trending for me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

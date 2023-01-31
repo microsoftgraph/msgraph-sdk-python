@@ -37,7 +37,6 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         self._day_of_week: Optional[day_of_week.DayOfWeek] = None
         # Represents the month of the year when the transition from daylight saving time to standard time occurs.
         self._month: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Represents the time of day when the transition from daylight saving time to standard time occurs.
         self._time: Optional[Time] = None
@@ -96,8 +95,8 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "day_occurrence": lambda n : setattr(self, 'day_occurrence', n.get_int_value()),
-            "day_of_week": lambda n : setattr(self, 'day_of_week', n.get_enum_value(day_of_week.DayOfWeek)),
+            "dayOccurrence": lambda n : setattr(self, 'day_occurrence', n.get_int_value()),
+            "dayOfWeek": lambda n : setattr(self, 'day_of_week', n.get_enum_value(day_of_week.DayOfWeek)),
             "month": lambda n : setattr(self, 'month', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "time": lambda n : setattr(self, 'time', n.get_object_value(Time)),
@@ -125,7 +124,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -133,7 +132,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

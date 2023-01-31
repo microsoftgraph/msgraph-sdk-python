@@ -57,7 +57,6 @@ class AccessPackageAssignment(entity.Entity):
         self._assignment_policy: Optional[access_package_assignment_policy.AccessPackageAssignmentPolicy] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         self._expired_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # When the access assignment is to be in place. Read-only.
         self._schedule: Optional[entitlement_management_schedule.EntitlementManagementSchedule] = None
@@ -103,9 +102,9 @@ class AccessPackageAssignment(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_package": lambda n : setattr(self, 'access_package', n.get_object_value(access_package.AccessPackage)),
-            "assignment_policy": lambda n : setattr(self, 'assignment_policy', n.get_object_value(access_package_assignment_policy.AccessPackageAssignmentPolicy)),
-            "expired_date_time": lambda n : setattr(self, 'expired_date_time', n.get_datetime_value()),
+            "accessPackage": lambda n : setattr(self, 'access_package', n.get_object_value(access_package.AccessPackage)),
+            "assignmentPolicy": lambda n : setattr(self, 'assignment_policy', n.get_object_value(access_package_assignment_policy.AccessPackageAssignmentPolicy)),
+            "expiredDateTime": lambda n : setattr(self, 'expired_date_time', n.get_datetime_value()),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(entitlement_management_schedule.EntitlementManagementSchedule)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(access_package_assignment_state.AccessPackageAssignmentState)),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),

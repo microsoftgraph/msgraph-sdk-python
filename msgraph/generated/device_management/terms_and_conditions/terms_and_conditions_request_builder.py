@@ -66,7 +66,7 @@ class TermsAndConditionsRequestBuilder():
         """
         Create new navigation property to termsAndConditions for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[terms_and_conditions.TermsAndConditions]
         """
@@ -105,7 +105,7 @@ class TermsAndConditionsRequestBuilder():
         """
         Create new navigation property to termsAndConditions for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -105,7 +105,7 @@ class EducationRequestBuilder():
         """
         Update education
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_root.EducationRoot]
         """
@@ -157,7 +157,7 @@ class EducationRequestBuilder():
         """
         Update education
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

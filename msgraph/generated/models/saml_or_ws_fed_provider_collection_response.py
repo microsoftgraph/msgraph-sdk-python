@@ -12,7 +12,6 @@ class SamlOrWsFedProviderCollectionResponse(base_collection_pagination_count_res
         Instantiates a new SamlOrWsFedProviderCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[saml_or_ws_fed_provider.SamlOrWsFedProvider]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class SamlOrWsFedProviderCollectionResponse(base_collection_pagination_count_res
     @property
     def value(self,) -> Optional[List[saml_or_ws_fed_provider.SamlOrWsFedProvider]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[saml_or_ws_fed_provider.SamlOrWsFedProvider]]
         """
         return self._value
@@ -61,7 +60,7 @@ class SamlOrWsFedProviderCollectionResponse(base_collection_pagination_count_res
     @value.setter
     def value(self,value: Optional[List[saml_or_ws_fed_provider.SamlOrWsFedProvider]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -31,7 +31,6 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Max OS version supported
         self._os_maximum_version: Optional[str] = None
@@ -61,17 +60,17 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "os_maximum_version": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
-            "os_minimum_version": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
-            "personal_device_enrollment_blocked": lambda n : setattr(self, 'personal_device_enrollment_blocked', n.get_bool_value()),
-            "platform_blocked": lambda n : setattr(self, 'platform_blocked', n.get_bool_value()),
+            "osMaximumVersion": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
+            "osMinimumVersion": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
+            "personalDeviceEnrollmentBlocked": lambda n : setattr(self, 'personal_device_enrollment_blocked', n.get_bool_value()),
+            "platformBlocked": lambda n : setattr(self, 'platform_blocked', n.get_bool_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -79,7 +78,7 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

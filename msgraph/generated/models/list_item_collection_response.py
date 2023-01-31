@@ -12,7 +12,6 @@ class ListItemCollectionResponse(base_collection_pagination_count_response.BaseC
         Instantiates a new ListItemCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[list_item.ListItem]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ListItemCollectionResponse(base_collection_pagination_count_response.BaseC
     @property
     def value(self,) -> Optional[List[list_item.ListItem]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[list_item.ListItem]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ListItemCollectionResponse(base_collection_pagination_count_response.BaseC
     @value.setter
     def value(self,value: Optional[List[list_item.ListItem]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

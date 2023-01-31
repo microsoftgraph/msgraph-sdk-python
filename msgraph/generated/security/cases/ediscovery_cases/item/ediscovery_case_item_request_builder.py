@@ -12,14 +12,14 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 ediscovery_case = lazy_import('msgraph.generated.models.security.ediscovery_case')
-close_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.close.close_request_builder')
 custodians_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.custodians.custodians_request_builder')
 ediscovery_custodian_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.custodians.item.ediscovery_custodian_item_request_builder')
+close_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.microsoft_graph_security_close.close_request_builder')
+reopen_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.microsoft_graph_security_reopen.reopen_request_builder')
 noncustodial_data_sources_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.noncustodial_data_sources_request_builder')
 ediscovery_noncustodial_data_source_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.ediscovery_noncustodial_data_source_item_request_builder')
 operations_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.operations.operations_request_builder')
 case_operation_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.operations.item.case_operation_item_request_builder')
-reopen_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.reopen.reopen_request_builder')
 review_sets_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.review_sets.review_sets_request_builder')
 ediscovery_review_set_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.review_sets.item.ediscovery_review_set_item_request_builder')
 searches_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.searches_request_builder')
@@ -33,18 +33,25 @@ class EdiscoveryCaseItemRequestBuilder():
     Provides operations to manage the ediscoveryCases property of the microsoft.graph.security.casesRoot entity.
     """
     @property
-    def close(self) -> close_request_builder.CloseRequestBuilder:
+    def custodians(self) -> custodians_request_builder.CustodiansRequestBuilder:
+        """
+        Provides operations to manage the custodians property of the microsoft.graph.security.ediscoveryCase entity.
+        """
+        return custodians_request_builder.CustodiansRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_security_close(self) -> close_request_builder.CloseRequestBuilder:
         """
         Provides operations to call the close method.
         """
         return close_request_builder.CloseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def custodians(self) -> custodians_request_builder.CustodiansRequestBuilder:
+    def microsoft_graph_security_reopen(self) -> reopen_request_builder.ReopenRequestBuilder:
         """
-        Provides operations to manage the custodians property of the microsoft.graph.security.ediscoveryCase entity.
+        Provides operations to call the reopen method.
         """
-        return custodians_request_builder.CustodiansRequestBuilder(self.request_adapter, self.path_parameters)
+        return reopen_request_builder.ReopenRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def noncustodial_data_sources(self) -> noncustodial_data_sources_request_builder.NoncustodialDataSourcesRequestBuilder:
@@ -59,13 +66,6 @@ class EdiscoveryCaseItemRequestBuilder():
         Provides operations to manage the operations property of the microsoft.graph.security.ediscoveryCase entity.
         """
         return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def reopen(self) -> reopen_request_builder.ReopenRequestBuilder:
-        """
-        Provides operations to call the reopen method.
-        """
-        return reopen_request_builder.ReopenRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def review_sets(self) -> review_sets_request_builder.ReviewSetsRequestBuilder:
@@ -95,10 +95,11 @@ class EdiscoveryCaseItemRequestBuilder():
         """
         return tags_request_builder.TagsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, ediscovery_case_id: Optional[str] = None) -> None:
         """
         Instantiates a new EdiscoveryCaseItemRequestBuilder and sets the default values.
         Args:
+            ediscoveryCaseId: key: id of ediscoveryCase
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -110,6 +111,7 @@ class EdiscoveryCaseItemRequestBuilder():
         self.url_template: str = "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["ediscoveryCase%2Did"] = ediscoveryCaseId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -191,7 +193,7 @@ class EdiscoveryCaseItemRequestBuilder():
         """
         Update the navigation property ediscoveryCases in security
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ediscovery_case.EdiscoveryCase]
         """
@@ -285,7 +287,7 @@ class EdiscoveryCaseItemRequestBuilder():
         """
         Update the navigation property ediscoveryCases in security
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

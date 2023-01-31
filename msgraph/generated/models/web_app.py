@@ -52,8 +52,8 @@ class WebApp(mobile_app.MobileApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_url": lambda n : setattr(self, 'app_url', n.get_str_value()),
-            "use_managed_browser": lambda n : setattr(self, 'use_managed_browser', n.get_bool_value()),
+            "appUrl": lambda n : setattr(self, 'app_url', n.get_str_value()),
+            "useManagedBrowser": lambda n : setattr(self, 'use_managed_browser', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

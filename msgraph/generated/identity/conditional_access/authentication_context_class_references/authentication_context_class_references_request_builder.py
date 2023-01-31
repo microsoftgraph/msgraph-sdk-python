@@ -66,7 +66,7 @@ class AuthenticationContextClassReferencesRequestBuilder():
         """
         Create new navigation property to authenticationContextClassReferences for identity
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[authentication_context_class_reference.AuthenticationContextClassReference]
         """
@@ -105,7 +105,7 @@ class AuthenticationContextClassReferencesRequestBuilder():
         """
         Create new navigation property to authenticationContextClassReferences for identity
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

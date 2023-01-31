@@ -66,7 +66,7 @@ class DeviceEnrollmentConfigurationsRequestBuilder():
         """
         Create new navigation property to deviceEnrollmentConfigurations for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[device_enrollment_configuration.DeviceEnrollmentConfiguration]
         """
@@ -105,7 +105,7 @@ class DeviceEnrollmentConfigurationsRequestBuilder():
         """
         Create new navigation property to deviceEnrollmentConfigurations for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

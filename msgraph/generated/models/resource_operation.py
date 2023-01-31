@@ -35,7 +35,6 @@ class ResourceOperation(entity.Entity):
         self._action_name: Optional[str] = None
         # Description of the resource operation. The description is used in mouse-over text for the operation when shown in the Azure Portal.
         self._description: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Name of the Resource this operation is performed on.
         self._resource_name: Optional[str] = None
@@ -75,9 +74,9 @@ class ResourceOperation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "action_name": lambda n : setattr(self, 'action_name', n.get_str_value()),
+            "actionName": lambda n : setattr(self, 'action_name', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "resource_name": lambda n : setattr(self, 'resource_name', n.get_str_value()),
+            "resourceName": lambda n : setattr(self, 'resource_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

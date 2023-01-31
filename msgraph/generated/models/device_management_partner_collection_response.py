@@ -12,7 +12,6 @@ class DeviceManagementPartnerCollectionResponse(base_collection_pagination_count
         Instantiates a new DeviceManagementPartnerCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[device_management_partner.DeviceManagementPartner]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class DeviceManagementPartnerCollectionResponse(base_collection_pagination_count
     @property
     def value(self,) -> Optional[List[device_management_partner.DeviceManagementPartner]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[device_management_partner.DeviceManagementPartner]]
         """
         return self._value
@@ -61,7 +60,7 @@ class DeviceManagementPartnerCollectionResponse(base_collection_pagination_count
     @value.setter
     def value(self,value: Optional[List[device_management_partner.DeviceManagementPartner]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

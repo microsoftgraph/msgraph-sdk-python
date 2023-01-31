@@ -18,7 +18,6 @@ class AccessReviewHistoryDefinition(entity.Entity):
         Instantiates a new AccessReviewHistoryDefinition and sets the default values.
         """
         super().__init__()
-        # The createdBy property
         self._created_by: Optional[user_identity.UserIdentity] = None
         # Timestamp when the access review definition was created.
         self._created_date_time: Optional[datetime] = None
@@ -28,7 +27,6 @@ class AccessReviewHistoryDefinition(entity.Entity):
         self._display_name: Optional[str] = None
         # If the accessReviewHistoryDefinition is a recurring definition, instances represent each recurrence. A definition that does not recur will have exactly one instance.
         self._instances: Optional[List[access_review_history_instance.AccessReviewHistoryInstance]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # A timestamp. Reviews ending on or before this date will be included in the fetched history data. Only required if scheduleSettings is not defined.
         self._review_history_period_end_date_time: Optional[datetime] = None
@@ -44,7 +42,7 @@ class AccessReviewHistoryDefinition(entity.Entity):
     @property
     def created_by(self,) -> Optional[user_identity.UserIdentity]:
         """
-        Gets the createdBy property value. The createdBy property
+        Gets the createdBy property value. 
         Returns: Optional[user_identity.UserIdentity]
         """
         return self._created_by
@@ -52,7 +50,7 @@ class AccessReviewHistoryDefinition(entity.Entity):
     @created_by.setter
     def created_by(self,value: Optional[user_identity.UserIdentity] = None) -> None:
         """
-        Sets the createdBy property value. The createdBy property
+        Sets the createdBy property value. 
         Args:
             value: Value to set for the createdBy property.
         """
@@ -127,14 +125,14 @@ class AccessReviewHistoryDefinition(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(user_identity.UserIdentity)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(user_identity.UserIdentity)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "decisions": lambda n : setattr(self, 'decisions', n.get_collection_of_enum_values(access_review_history_decision_filter.AccessReviewHistoryDecisionFilter)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "instances": lambda n : setattr(self, 'instances', n.get_collection_of_object_values(access_review_history_instance.AccessReviewHistoryInstance)),
-            "review_history_period_end_date_time": lambda n : setattr(self, 'review_history_period_end_date_time', n.get_datetime_value()),
-            "review_history_period_start_date_time": lambda n : setattr(self, 'review_history_period_start_date_time', n.get_datetime_value()),
-            "schedule_settings": lambda n : setattr(self, 'schedule_settings', n.get_object_value(access_review_history_schedule_settings.AccessReviewHistoryScheduleSettings)),
+            "reviewHistoryPeriodEndDateTime": lambda n : setattr(self, 'review_history_period_end_date_time', n.get_datetime_value()),
+            "reviewHistoryPeriodStartDateTime": lambda n : setattr(self, 'review_history_period_start_date_time', n.get_datetime_value()),
+            "scheduleSettings": lambda n : setattr(self, 'schedule_settings', n.get_object_value(access_review_history_schedule_settings.AccessReviewHistoryScheduleSettings)),
             "scopes": lambda n : setattr(self, 'scopes', n.get_collection_of_object_values(access_review_scope.AccessReviewScope)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(access_review_history_status.AccessReviewHistoryStatus)),
         }

@@ -36,7 +36,6 @@ class AttendanceRecord(entity.Entity):
         self._email_address: Optional[str] = None
         # Identity of the user associated with this atttendance record.
         self._identity: Optional[identity.Identity] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Role of the attendee. Possible values are: None, Attendee, Presenter, and Organizer.
         self._role: Optional[str] = None
@@ -78,11 +77,11 @@ class AttendanceRecord(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "attendance_intervals": lambda n : setattr(self, 'attendance_intervals', n.get_collection_of_object_values(attendance_interval.AttendanceInterval)),
-            "email_address": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "attendanceIntervals": lambda n : setattr(self, 'attendance_intervals', n.get_collection_of_object_values(attendance_interval.AttendanceInterval)),
+            "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
             "identity": lambda n : setattr(self, 'identity', n.get_object_value(identity.Identity)),
             "role": lambda n : setattr(self, 'role', n.get_str_value()),
-            "total_attendance_in_seconds": lambda n : setattr(self, 'total_attendance_in_seconds', n.get_int_value()),
+            "totalAttendanceInSeconds": lambda n : setattr(self, 'total_attendance_in_seconds', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

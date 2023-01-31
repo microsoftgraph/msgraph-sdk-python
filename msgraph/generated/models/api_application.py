@@ -54,7 +54,6 @@ class ApiApplication(AdditionalDataHolder, Parsable):
         self._known_client_applications: Optional[List[Guid]] = None
         # The definition of the delegated permissions exposed by the web API represented by this application registration. These delegated permissions may be requested by a client application, and may be granted by users or administrators during consent. Delegated permissions are sometimes referred to as OAuth 2.0 scopes.
         self._oauth2_permission_scopes: Optional[List[permission_scope.PermissionScope]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Lists the client applications that are pre-authorized with the specified delegated permissions to access this application's APIs. Users are not required to consent to any pre-authorized application (for the permissions specified). However, any additional permissions not listed in preAuthorizedApplications (requested through incremental consent for example) will require user consent.
         self._pre_authorized_applications: Optional[List[pre_authorized_application.PreAuthorizedApplication]] = None
@@ -79,12 +78,12 @@ class ApiApplication(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "accept_mapped_claims": lambda n : setattr(self, 'accept_mapped_claims', n.get_bool_value()),
-            "known_client_applications": lambda n : setattr(self, 'known_client_applications', n.get_collection_of_primitive_values(guid)),
-            "oauth2_permission_scopes": lambda n : setattr(self, 'oauth2_permission_scopes', n.get_collection_of_object_values(permission_scope.PermissionScope)),
+            "acceptMappedClaims": lambda n : setattr(self, 'accept_mapped_claims', n.get_bool_value()),
+            "knownClientApplications": lambda n : setattr(self, 'known_client_applications', n.get_collection_of_primitive_values(guid)),
+            "oauth2PermissionScopes": lambda n : setattr(self, 'oauth2_permission_scopes', n.get_collection_of_object_values(permission_scope.PermissionScope)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "pre_authorized_applications": lambda n : setattr(self, 'pre_authorized_applications', n.get_collection_of_object_values(pre_authorized_application.PreAuthorizedApplication)),
-            "requested_access_token_version": lambda n : setattr(self, 'requested_access_token_version', n.get_int_value()),
+            "preAuthorizedApplications": lambda n : setattr(self, 'pre_authorized_applications', n.get_collection_of_object_values(pre_authorized_application.PreAuthorizedApplication)),
+            "requestedAccessTokenVersion": lambda n : setattr(self, 'requested_access_token_version', n.get_int_value()),
         }
         return fields
     
@@ -125,7 +124,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -133,7 +132,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

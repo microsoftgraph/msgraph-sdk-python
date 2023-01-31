@@ -168,7 +168,6 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         self._ios_count: Optional[int] = None
         # Number of Mac OS X device count.
         self._mac_o_s_count: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Number of unknown device count.
         self._unknown_count: Optional[int] = None
@@ -195,19 +194,19 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "android_corporate_work_profile_count": lambda n : setattr(self, 'android_corporate_work_profile_count', n.get_int_value()),
-            "android_count": lambda n : setattr(self, 'android_count', n.get_int_value()),
-            "android_dedicated_count": lambda n : setattr(self, 'android_dedicated_count', n.get_int_value()),
-            "android_device_admin_count": lambda n : setattr(self, 'android_device_admin_count', n.get_int_value()),
-            "android_fully_managed_count": lambda n : setattr(self, 'android_fully_managed_count', n.get_int_value()),
-            "android_work_profile_count": lambda n : setattr(self, 'android_work_profile_count', n.get_int_value()),
-            "config_mgr_device_count": lambda n : setattr(self, 'config_mgr_device_count', n.get_int_value()),
-            "ios_count": lambda n : setattr(self, 'ios_count', n.get_int_value()),
-            "mac_o_s_count": lambda n : setattr(self, 'mac_o_s_count', n.get_int_value()),
+            "androidCorporateWorkProfileCount": lambda n : setattr(self, 'android_corporate_work_profile_count', n.get_int_value()),
+            "androidCount": lambda n : setattr(self, 'android_count', n.get_int_value()),
+            "androidDedicatedCount": lambda n : setattr(self, 'android_dedicated_count', n.get_int_value()),
+            "androidDeviceAdminCount": lambda n : setattr(self, 'android_device_admin_count', n.get_int_value()),
+            "androidFullyManagedCount": lambda n : setattr(self, 'android_fully_managed_count', n.get_int_value()),
+            "androidWorkProfileCount": lambda n : setattr(self, 'android_work_profile_count', n.get_int_value()),
+            "configMgrDeviceCount": lambda n : setattr(self, 'config_mgr_device_count', n.get_int_value()),
+            "iosCount": lambda n : setattr(self, 'ios_count', n.get_int_value()),
+            "macOSCount": lambda n : setattr(self, 'mac_o_s_count', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "unknown_count": lambda n : setattr(self, 'unknown_count', n.get_int_value()),
-            "windows_count": lambda n : setattr(self, 'windows_count', n.get_int_value()),
-            "windows_mobile_count": lambda n : setattr(self, 'windows_mobile_count', n.get_int_value()),
+            "unknownCount": lambda n : setattr(self, 'unknown_count', n.get_int_value()),
+            "windowsCount": lambda n : setattr(self, 'windows_count', n.get_int_value()),
+            "windowsMobileCount": lambda n : setattr(self, 'windows_mobile_count', n.get_int_value()),
         }
         return fields
     
@@ -248,7 +247,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -256,7 +255,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

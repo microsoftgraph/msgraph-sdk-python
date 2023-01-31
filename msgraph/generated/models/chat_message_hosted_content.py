@@ -11,7 +11,6 @@ class ChatMessageHostedContent(teamwork_hosted_content.TeamworkHostedContent):
         Instantiates a new ChatMessageHostedContent and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

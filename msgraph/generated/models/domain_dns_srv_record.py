@@ -13,7 +13,6 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
         super().__init__()
         # Value to use when configuring the Target property of the SRV record at the DNS host.
         self._name_target: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Value to use when configuring the port property of the SRV record at the DNS host.
         self._port: Optional[int] = None
@@ -44,7 +43,7 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "name_target": lambda n : setattr(self, 'name_target', n.get_str_value()),
+            "nameTarget": lambda n : setattr(self, 'name_target', n.get_str_value()),
             "port": lambda n : setattr(self, 'port', n.get_int_value()),
             "priority": lambda n : setattr(self, 'priority', n.get_int_value()),
             "protocol": lambda n : setattr(self, 'protocol', n.get_str_value()),

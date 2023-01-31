@@ -12,7 +12,6 @@ class ManagedDeviceMobileAppConfigurationUserStatusCollectionResponse(base_colle
         Instantiates a new ManagedDeviceMobileAppConfigurationUserStatusCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[managed_device_mobile_app_configuration_user_status.ManagedDeviceMobileAppConfigurationUserStatus]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ManagedDeviceMobileAppConfigurationUserStatusCollectionResponse(base_colle
     @property
     def value(self,) -> Optional[List[managed_device_mobile_app_configuration_user_status.ManagedDeviceMobileAppConfigurationUserStatus]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[managed_device_mobile_app_configuration_user_status.ManagedDeviceMobileAppConfigurationUserStatus]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ManagedDeviceMobileAppConfigurationUserStatusCollectionResponse(base_colle
     @value.setter
     def value(self,value: Optional[List[managed_device_mobile_app_configuration_user_status.ManagedDeviceMobileAppConfigurationUserStatus]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

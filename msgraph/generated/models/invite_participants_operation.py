@@ -12,7 +12,6 @@ class InviteParticipantsOperation(comms_operation.CommsOperation):
         Instantiates a new InviteParticipantsOperation and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The participants to invite.
         self._participants: Optional[List[invitation_participant_info.InvitationParticipantInfo]] = None

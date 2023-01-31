@@ -30,7 +30,6 @@ class FreeBusyError(AdditionalDataHolder, Parsable):
 
         # Describes the error.
         self._message: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The response code from querying for the availability of the user, distribution list, or resource.
         self._response_code: Optional[str] = None
@@ -55,7 +54,7 @@ class FreeBusyError(AdditionalDataHolder, Parsable):
         fields = {
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "response_code": lambda n : setattr(self, 'response_code', n.get_str_value()),
+            "responseCode": lambda n : setattr(self, 'response_code', n.get_str_value()),
         }
         return fields
     
@@ -79,7 +78,7 @@ class FreeBusyError(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -87,7 +86,7 @@ class FreeBusyError(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

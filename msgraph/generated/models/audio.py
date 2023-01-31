@@ -137,7 +137,6 @@ class Audio(AdditionalDataHolder, Parsable):
         self._has_drm: Optional[bool] = None
         # Indicates if the file is encoded with a variable bitrate.
         self._is_variable_bitrate: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The title of the audio file.
         self._title: Optional[str] = None
@@ -252,21 +251,21 @@ class Audio(AdditionalDataHolder, Parsable):
         """
         fields = {
             "album": lambda n : setattr(self, 'album', n.get_str_value()),
-            "album_artist": lambda n : setattr(self, 'album_artist', n.get_str_value()),
+            "albumArtist": lambda n : setattr(self, 'album_artist', n.get_str_value()),
             "artist": lambda n : setattr(self, 'artist', n.get_str_value()),
             "bitrate": lambda n : setattr(self, 'bitrate', n.get_int_value()),
             "composers": lambda n : setattr(self, 'composers', n.get_str_value()),
             "copyright": lambda n : setattr(self, 'copyright', n.get_str_value()),
             "disc": lambda n : setattr(self, 'disc', n.get_int_value()),
-            "disc_count": lambda n : setattr(self, 'disc_count', n.get_int_value()),
+            "discCount": lambda n : setattr(self, 'disc_count', n.get_int_value()),
             "duration": lambda n : setattr(self, 'duration', n.get_int_value()),
             "genre": lambda n : setattr(self, 'genre', n.get_str_value()),
-            "has_drm": lambda n : setattr(self, 'has_drm', n.get_bool_value()),
-            "is_variable_bitrate": lambda n : setattr(self, 'is_variable_bitrate', n.get_bool_value()),
+            "hasDrm": lambda n : setattr(self, 'has_drm', n.get_bool_value()),
+            "isVariableBitrate": lambda n : setattr(self, 'is_variable_bitrate', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
             "track": lambda n : setattr(self, 'track', n.get_int_value()),
-            "track_count": lambda n : setattr(self, 'track_count', n.get_int_value()),
+            "trackCount": lambda n : setattr(self, 'track_count', n.get_int_value()),
             "year": lambda n : setattr(self, 'year', n.get_int_value()),
         }
         return fields
@@ -308,7 +307,7 @@ class Audio(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -316,7 +315,7 @@ class Audio(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

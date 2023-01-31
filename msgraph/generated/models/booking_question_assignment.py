@@ -30,7 +30,6 @@ class BookingQuestionAssignment(AdditionalDataHolder, Parsable):
 
         # The ID of the custom question.
         self._is_required: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Indicates whether it is mandatory to answer the custom question.
         self._question_id: Optional[str] = None
@@ -53,9 +52,9 @@ class BookingQuestionAssignment(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_required": lambda n : setattr(self, 'is_required', n.get_bool_value()),
+            "isRequired": lambda n : setattr(self, 'is_required', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "question_id": lambda n : setattr(self, 'question_id', n.get_str_value()),
+            "questionId": lambda n : setattr(self, 'question_id', n.get_str_value()),
         }
         return fields
     
@@ -79,7 +78,7 @@ class BookingQuestionAssignment(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -87,7 +86,7 @@ class BookingQuestionAssignment(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

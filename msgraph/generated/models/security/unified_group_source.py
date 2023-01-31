@@ -14,7 +14,6 @@ class UnifiedGroupSource(data_source.DataSource):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.security.unifiedGroupSource"
-        # The group property
         self._group: Optional[group.Group] = None
         # Specifies which sources are included in this group. Possible values are: mailbox, site.
         self._included_sources: Optional[source_type.SourceType] = None
@@ -38,7 +37,7 @@ class UnifiedGroupSource(data_source.DataSource):
         """
         fields = {
             "group": lambda n : setattr(self, 'group', n.get_object_value(group.Group)),
-            "included_sources": lambda n : setattr(self, 'included_sources', n.get_enum_value(source_type.SourceType)),
+            "includedSources": lambda n : setattr(self, 'included_sources', n.get_enum_value(source_type.SourceType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,7 +46,7 @@ class UnifiedGroupSource(data_source.DataSource):
     @property
     def group(self,) -> Optional[group.Group]:
         """
-        Gets the group property value. The group property
+        Gets the group property value. 
         Returns: Optional[group.Group]
         """
         return self._group
@@ -55,7 +54,7 @@ class UnifiedGroupSource(data_source.DataSource):
     @group.setter
     def group(self,value: Optional[group.Group] = None) -> None:
         """
-        Sets the group property value. The group property
+        Sets the group property value. 
         Args:
             value: Value to set for the group property.
         """

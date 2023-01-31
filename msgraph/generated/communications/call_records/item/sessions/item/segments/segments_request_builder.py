@@ -66,7 +66,7 @@ class SegmentsRequestBuilder():
         """
         Create new navigation property to segments for communications
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[segment.Segment]
         """
@@ -105,7 +105,7 @@ class SegmentsRequestBuilder():
         """
         Create new navigation property to segments for communications
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

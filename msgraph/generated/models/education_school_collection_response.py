@@ -12,7 +12,6 @@ class EducationSchoolCollectionResponse(base_collection_pagination_count_respons
         Instantiates a new EducationSchoolCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[education_school.EducationSchool]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class EducationSchoolCollectionResponse(base_collection_pagination_count_respons
     @property
     def value(self,) -> Optional[List[education_school.EducationSchool]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[education_school.EducationSchool]]
         """
         return self._value
@@ -61,7 +60,7 @@ class EducationSchoolCollectionResponse(base_collection_pagination_count_respons
     @value.setter
     def value(self,value: Optional[List[education_school.EducationSchool]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

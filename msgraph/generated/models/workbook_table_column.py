@@ -19,7 +19,6 @@ class WorkbookTableColumn(entity.Entity):
         self._index: Optional[int] = None
         # Returns the name of the table column.
         self._name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
         self._values: Optional[json.Json] = None

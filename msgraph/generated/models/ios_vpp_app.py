@@ -106,16 +106,16 @@ class IosVppApp(mobile_app.MobileApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "applicable_device_type": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(ios_device_type.IosDeviceType)),
-            "app_store_url": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
-            "bundle_id": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
-            "licensing_type": lambda n : setattr(self, 'licensing_type', n.get_object_value(vpp_licensing_type.VppLicensingType)),
-            "release_date_time": lambda n : setattr(self, 'release_date_time', n.get_datetime_value()),
-            "total_license_count": lambda n : setattr(self, 'total_license_count', n.get_int_value()),
-            "used_license_count": lambda n : setattr(self, 'used_license_count', n.get_int_value()),
-            "vpp_token_account_type": lambda n : setattr(self, 'vpp_token_account_type', n.get_enum_value(vpp_token_account_type.VppTokenAccountType)),
-            "vpp_token_apple_id": lambda n : setattr(self, 'vpp_token_apple_id', n.get_str_value()),
-            "vpp_token_organization_name": lambda n : setattr(self, 'vpp_token_organization_name', n.get_str_value()),
+            "applicableDeviceType": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(ios_device_type.IosDeviceType)),
+            "appStoreUrl": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
+            "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
+            "licensingType": lambda n : setattr(self, 'licensing_type', n.get_object_value(vpp_licensing_type.VppLicensingType)),
+            "releaseDateTime": lambda n : setattr(self, 'release_date_time', n.get_datetime_value()),
+            "totalLicenseCount": lambda n : setattr(self, 'total_license_count', n.get_int_value()),
+            "usedLicenseCount": lambda n : setattr(self, 'used_license_count', n.get_int_value()),
+            "vppTokenAccountType": lambda n : setattr(self, 'vpp_token_account_type', n.get_enum_value(vpp_token_account_type.VppTokenAccountType)),
+            "vppTokenAppleId": lambda n : setattr(self, 'vpp_token_apple_id', n.get_str_value()),
+            "vppTokenOrganizationName": lambda n : setattr(self, 'vpp_token_organization_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

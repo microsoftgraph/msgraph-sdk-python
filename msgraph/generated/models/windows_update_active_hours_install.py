@@ -70,8 +70,8 @@ class WindowsUpdateActiveHoursInstall(windows_update_install_schedule_type.Windo
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "active_hours_end": lambda n : setattr(self, 'active_hours_end', n.get_object_value(Time)),
-            "active_hours_start": lambda n : setattr(self, 'active_hours_start', n.get_object_value(Time)),
+            "activeHoursEnd": lambda n : setattr(self, 'active_hours_end', n.get_object_value(Time)),
+            "activeHoursStart": lambda n : setattr(self, 'active_hours_start', n.get_object_value(Time)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

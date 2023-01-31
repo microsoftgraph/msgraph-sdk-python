@@ -66,7 +66,7 @@ class HealthOverviewsRequestBuilder():
         """
         Create new navigation property to healthOverviews for admin
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[service_health.ServiceHealth]
         """
@@ -105,7 +105,7 @@ class HealthOverviewsRequestBuilder():
         """
         Create new navigation property to healthOverviews for admin
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

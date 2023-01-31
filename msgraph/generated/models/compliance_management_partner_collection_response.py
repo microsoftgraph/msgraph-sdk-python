@@ -12,7 +12,6 @@ class ComplianceManagementPartnerCollectionResponse(base_collection_pagination_c
         Instantiates a new ComplianceManagementPartnerCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[compliance_management_partner.ComplianceManagementPartner]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ComplianceManagementPartnerCollectionResponse(base_collection_pagination_c
     @property
     def value(self,) -> Optional[List[compliance_management_partner.ComplianceManagementPartner]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[compliance_management_partner.ComplianceManagementPartner]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ComplianceManagementPartnerCollectionResponse(base_collection_pagination_c
     @value.setter
     def value(self,value: Optional[List[compliance_management_partner.ComplianceManagementPartner]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

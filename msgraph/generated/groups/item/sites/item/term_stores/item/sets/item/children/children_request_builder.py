@@ -66,7 +66,7 @@ class ChildrenRequestBuilder():
         """
         Create a new term object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[term.Term]
         """
@@ -105,7 +105,7 @@ class ChildrenRequestBuilder():
         """
         Create a new term object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

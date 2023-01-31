@@ -66,7 +66,7 @@ class CertificateBasedAuthConfigurationRequestBuilder():
         """
         Add new entity to certificateBasedAuthConfiguration
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[certificate_based_auth_configuration.CertificateBasedAuthConfiguration]
         """
@@ -105,7 +105,7 @@ class CertificateBasedAuthConfigurationRequestBuilder():
         """
         Add new entity to certificateBasedAuthConfiguration
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

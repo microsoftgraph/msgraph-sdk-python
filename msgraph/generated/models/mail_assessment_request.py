@@ -55,9 +55,9 @@ class MailAssessmentRequest(threat_assessment_request.ThreatAssessmentRequest):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "destination_routing_reason": lambda n : setattr(self, 'destination_routing_reason', n.get_enum_value(mail_destination_routing_reason.MailDestinationRoutingReason)),
-            "message_uri": lambda n : setattr(self, 'message_uri', n.get_str_value()),
-            "recipient_email": lambda n : setattr(self, 'recipient_email', n.get_str_value()),
+            "destinationRoutingReason": lambda n : setattr(self, 'destination_routing_reason', n.get_enum_value(mail_destination_routing_reason.MailDestinationRoutingReason)),
+            "messageUri": lambda n : setattr(self, 'message_uri', n.get_str_value()),
+            "recipientEmail": lambda n : setattr(self, 'recipient_email', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

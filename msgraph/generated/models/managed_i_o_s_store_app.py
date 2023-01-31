@@ -92,10 +92,10 @@ class ManagedIOSStoreApp(managed_app.ManagedApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "applicable_device_type": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(ios_device_type.IosDeviceType)),
-            "app_store_url": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
-            "bundle_id": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
-            "minimum_supported_operating_system": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(ios_minimum_operating_system.IosMinimumOperatingSystem)),
+            "applicableDeviceType": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(ios_device_type.IosDeviceType)),
+            "appStoreUrl": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
+            "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
+            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(ios_minimum_operating_system.IosMinimumOperatingSystem)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

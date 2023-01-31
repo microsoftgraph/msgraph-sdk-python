@@ -74,7 +74,7 @@ class RefRequestBuilder():
         """
         Update the ref of navigation property rubric in education
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         if body is None:
@@ -127,7 +127,7 @@ class RefRequestBuilder():
         """
         Update the ref of navigation property rubric in education
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

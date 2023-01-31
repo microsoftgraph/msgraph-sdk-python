@@ -12,7 +12,6 @@ class MacOSGeneralDeviceConfigurationCollectionResponse(base_collection_paginati
         Instantiates a new MacOSGeneralDeviceConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[mac_o_s_general_device_configuration.MacOSGeneralDeviceConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class MacOSGeneralDeviceConfigurationCollectionResponse(base_collection_paginati
     @property
     def value(self,) -> Optional[List[mac_o_s_general_device_configuration.MacOSGeneralDeviceConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[mac_o_s_general_device_configuration.MacOSGeneralDeviceConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class MacOSGeneralDeviceConfigurationCollectionResponse(base_collection_paginati
     @value.setter
     def value(self,value: Optional[List[mac_o_s_general_device_configuration.MacOSGeneralDeviceConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

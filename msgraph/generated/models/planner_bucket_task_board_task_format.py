@@ -11,7 +11,6 @@ class PlannerBucketTaskBoardTaskFormat(entity.Entity):
         Instantiates a new plannerBucketTaskBoardTaskFormat and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Hint used to order tasks in the bucket view of the task board. For details about the supported format, see Using order hints in Planner.
         self._order_hint: Optional[str] = None
@@ -34,7 +33,7 @@ class PlannerBucketTaskBoardTaskFormat(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "order_hint": lambda n : setattr(self, 'order_hint', n.get_str_value()),
+            "orderHint": lambda n : setattr(self, 'order_hint', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

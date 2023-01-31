@@ -66,7 +66,7 @@ class HistoryItemsRequestBuilder():
         """
         Create new navigation property to historyItems for me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[activity_history_item.ActivityHistoryItem]
         """
@@ -105,7 +105,7 @@ class HistoryItemsRequestBuilder():
         """
         Create new navigation property to historyItems for me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

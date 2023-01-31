@@ -30,7 +30,6 @@ class Image(AdditionalDataHolder, Parsable):
 
         # Optional. Height of the image, in pixels. Read-only.
         self._height: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Optional. Width of the image, in pixels. Read-only.
         self._width: Optional[int] = None
@@ -79,7 +78,7 @@ class Image(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -87,7 +86,7 @@ class Image(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

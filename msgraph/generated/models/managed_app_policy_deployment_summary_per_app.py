@@ -54,7 +54,6 @@ class ManagedAppPolicyDeploymentSummaryPerApp(AdditionalDataHolder, Parsable):
         self._configuration_applied_user_count: Optional[int] = None
         # Deployment of an app.
         self._mobile_app_identifier: Optional[mobile_app_identifier.MobileAppIdentifier] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -75,8 +74,8 @@ class ManagedAppPolicyDeploymentSummaryPerApp(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "configuration_applied_user_count": lambda n : setattr(self, 'configuration_applied_user_count', n.get_int_value()),
-            "mobile_app_identifier": lambda n : setattr(self, 'mobile_app_identifier', n.get_object_value(mobile_app_identifier.MobileAppIdentifier)),
+            "configurationAppliedUserCount": lambda n : setattr(self, 'configuration_applied_user_count', n.get_int_value()),
+            "mobileAppIdentifier": lambda n : setattr(self, 'mobile_app_identifier', n.get_object_value(mobile_app_identifier.MobileAppIdentifier)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -101,7 +100,7 @@ class ManagedAppPolicyDeploymentSummaryPerApp(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -109,7 +108,7 @@ class ManagedAppPolicyDeploymentSummaryPerApp(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

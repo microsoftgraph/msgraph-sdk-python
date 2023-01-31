@@ -38,7 +38,6 @@ class CalendarPermission(entity.Entity):
         self._is_inside_organization: Optional[bool] = None
         # True if the user can be removed from the list of sharees or delegates for the specified calendar, false otherwise. The 'My organization' user determines the permissions other people within your organization have to the given calendar. You cannot remove 'My organization' as a sharee to a calendar.
         self._is_removable: Optional[bool] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Current permission level of the calendar sharee or delegate.
         self._role: Optional[calendar_role_type.CalendarRoleType] = None
@@ -78,10 +77,10 @@ class CalendarPermission(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allowed_roles": lambda n : setattr(self, 'allowed_roles', n.get_collection_of_enum_values(calendar_role_type.CalendarRoleType)),
-            "email_address": lambda n : setattr(self, 'email_address', n.get_object_value(email_address.EmailAddress)),
-            "is_inside_organization": lambda n : setattr(self, 'is_inside_organization', n.get_bool_value()),
-            "is_removable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),
+            "allowedRoles": lambda n : setattr(self, 'allowed_roles', n.get_collection_of_enum_values(calendar_role_type.CalendarRoleType)),
+            "emailAddress": lambda n : setattr(self, 'email_address', n.get_object_value(email_address.EmailAddress)),
+            "isInsideOrganization": lambda n : setattr(self, 'is_inside_organization', n.get_bool_value()),
+            "isRemovable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),
             "role": lambda n : setattr(self, 'role', n.get_enum_value(calendar_role_type.CalendarRoleType)),
         }
         super_fields = super().get_field_deserializers()

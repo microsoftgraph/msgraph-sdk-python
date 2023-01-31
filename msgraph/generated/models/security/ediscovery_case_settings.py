@@ -16,7 +16,6 @@ class EdiscoveryCaseSettings(entity.Entity):
         super().__init__()
         # The OCR (Optical Character Recognition) settings for the case.
         self._ocr: Optional[ocr_settings.OcrSettings] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The redundancy (near duplicate and email threading) detection settings for the case.
         self._redundancy_detection: Optional[redundancy_detection_settings.RedundancyDetectionSettings] = None
@@ -42,8 +41,8 @@ class EdiscoveryCaseSettings(entity.Entity):
         """
         fields = {
             "ocr": lambda n : setattr(self, 'ocr', n.get_object_value(ocr_settings.OcrSettings)),
-            "redundancy_detection": lambda n : setattr(self, 'redundancy_detection', n.get_object_value(redundancy_detection_settings.RedundancyDetectionSettings)),
-            "topic_modeling": lambda n : setattr(self, 'topic_modeling', n.get_object_value(topic_modeling_settings.TopicModelingSettings)),
+            "redundancyDetection": lambda n : setattr(self, 'redundancy_detection', n.get_object_value(redundancy_detection_settings.RedundancyDetectionSettings)),
+            "topicModeling": lambda n : setattr(self, 'topic_modeling', n.get_object_value(topic_modeling_settings.TopicModelingSettings)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

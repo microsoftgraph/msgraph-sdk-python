@@ -74,18 +74,18 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "enhanced_biometrics_state": lambda n : setattr(self, 'enhanced_biometrics_state', n.get_enum_value(enablement.Enablement)),
-            "pin_expiration_in_days": lambda n : setattr(self, 'pin_expiration_in_days', n.get_int_value()),
-            "pin_lowercase_characters_usage": lambda n : setattr(self, 'pin_lowercase_characters_usage', n.get_enum_value(windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage)),
-            "pin_maximum_length": lambda n : setattr(self, 'pin_maximum_length', n.get_int_value()),
-            "pin_minimum_length": lambda n : setattr(self, 'pin_minimum_length', n.get_int_value()),
-            "pin_previous_block_count": lambda n : setattr(self, 'pin_previous_block_count', n.get_int_value()),
-            "pin_special_characters_usage": lambda n : setattr(self, 'pin_special_characters_usage', n.get_enum_value(windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage)),
-            "pin_uppercase_characters_usage": lambda n : setattr(self, 'pin_uppercase_characters_usage', n.get_enum_value(windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage)),
-            "remote_passport_enabled": lambda n : setattr(self, 'remote_passport_enabled', n.get_bool_value()),
-            "security_device_required": lambda n : setattr(self, 'security_device_required', n.get_bool_value()),
+            "enhancedBiometricsState": lambda n : setattr(self, 'enhanced_biometrics_state', n.get_enum_value(enablement.Enablement)),
+            "pinExpirationInDays": lambda n : setattr(self, 'pin_expiration_in_days', n.get_int_value()),
+            "pinLowercaseCharactersUsage": lambda n : setattr(self, 'pin_lowercase_characters_usage', n.get_enum_value(windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage)),
+            "pinMaximumLength": lambda n : setattr(self, 'pin_maximum_length', n.get_int_value()),
+            "pinMinimumLength": lambda n : setattr(self, 'pin_minimum_length', n.get_int_value()),
+            "pinPreviousBlockCount": lambda n : setattr(self, 'pin_previous_block_count', n.get_int_value()),
+            "pinSpecialCharactersUsage": lambda n : setattr(self, 'pin_special_characters_usage', n.get_enum_value(windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage)),
+            "pinUppercaseCharactersUsage": lambda n : setattr(self, 'pin_uppercase_characters_usage', n.get_enum_value(windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage)),
+            "remotePassportEnabled": lambda n : setattr(self, 'remote_passport_enabled', n.get_bool_value()),
+            "securityDeviceRequired": lambda n : setattr(self, 'security_device_required', n.get_bool_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(enablement.Enablement)),
-            "unlock_with_biometrics_enabled": lambda n : setattr(self, 'unlock_with_biometrics_enabled', n.get_bool_value()),
+            "unlockWithBiometricsEnabled": lambda n : setattr(self, 'unlock_with_biometrics_enabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

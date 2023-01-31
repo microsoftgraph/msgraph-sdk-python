@@ -128,7 +128,6 @@ class SignIn(entity.Entity):
         self._is_interactive: Optional[bool] = None
         # Provides the city, state, and country code where the sign-in originated. Supports $filter (eq and startsWith operators only) on city, state, and countryOrRegion properties.
         self._location: Optional[sign_in_location.SignInLocation] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Name of the resource the user signed into. Supports $filter (eq operator only).
         self._resource_display_name: Optional[str] = None
@@ -224,29 +223,29 @@ class SignIn(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_display_name": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "applied_conditional_access_policies": lambda n : setattr(self, 'applied_conditional_access_policies', n.get_collection_of_object_values(applied_conditional_access_policy.AppliedConditionalAccessPolicy)),
-            "client_app_used": lambda n : setattr(self, 'client_app_used', n.get_str_value()),
-            "conditional_access_status": lambda n : setattr(self, 'conditional_access_status', n.get_enum_value(conditional_access_status.ConditionalAccessStatus)),
-            "correlation_id": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "device_detail": lambda n : setattr(self, 'device_detail', n.get_object_value(device_detail.DeviceDetail)),
-            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
-            "is_interactive": lambda n : setattr(self, 'is_interactive', n.get_bool_value()),
+            "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "appliedConditionalAccessPolicies": lambda n : setattr(self, 'applied_conditional_access_policies', n.get_collection_of_object_values(applied_conditional_access_policy.AppliedConditionalAccessPolicy)),
+            "clientAppUsed": lambda n : setattr(self, 'client_app_used', n.get_str_value()),
+            "conditionalAccessStatus": lambda n : setattr(self, 'conditional_access_status', n.get_enum_value(conditional_access_status.ConditionalAccessStatus)),
+            "correlationId": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "deviceDetail": lambda n : setattr(self, 'device_detail', n.get_object_value(device_detail.DeviceDetail)),
+            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "isInteractive": lambda n : setattr(self, 'is_interactive', n.get_bool_value()),
             "location": lambda n : setattr(self, 'location', n.get_object_value(sign_in_location.SignInLocation)),
-            "resource_display_name": lambda n : setattr(self, 'resource_display_name', n.get_str_value()),
-            "resource_id": lambda n : setattr(self, 'resource_id', n.get_str_value()),
-            "risk_detail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(risk_detail.RiskDetail)),
-            "risk_event_types": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_enum_values(risk_event_type.RiskEventType)),
-            "risk_event_types_v2": lambda n : setattr(self, 'risk_event_types_v2', n.get_collection_of_primitive_values(str)),
-            "risk_level_aggregated": lambda n : setattr(self, 'risk_level_aggregated', n.get_enum_value(risk_level.RiskLevel)),
-            "risk_level_during_sign_in": lambda n : setattr(self, 'risk_level_during_sign_in', n.get_enum_value(risk_level.RiskLevel)),
-            "risk_state": lambda n : setattr(self, 'risk_state', n.get_enum_value(risk_state.RiskState)),
+            "resourceDisplayName": lambda n : setattr(self, 'resource_display_name', n.get_str_value()),
+            "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
+            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(risk_detail.RiskDetail)),
+            "riskEventTypes": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_enum_values(risk_event_type.RiskEventType)),
+            "riskEventTypes_v2": lambda n : setattr(self, 'risk_event_types_v2', n.get_collection_of_primitive_values(str)),
+            "riskLevelAggregated": lambda n : setattr(self, 'risk_level_aggregated', n.get_enum_value(risk_level.RiskLevel)),
+            "riskLevelDuringSignIn": lambda n : setattr(self, 'risk_level_during_sign_in', n.get_enum_value(risk_level.RiskLevel)),
+            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(risk_state.RiskState)),
             "status": lambda n : setattr(self, 'status', n.get_object_value(sign_in_status.SignInStatus)),
-            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

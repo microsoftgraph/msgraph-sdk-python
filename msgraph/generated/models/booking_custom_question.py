@@ -55,7 +55,6 @@ class BookingCustomQuestion(entity.Entity):
         self._answer_options: Optional[List[str]] = None
         # The question.
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -93,9 +92,9 @@ class BookingCustomQuestion(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "answer_input_type": lambda n : setattr(self, 'answer_input_type', n.get_enum_value(answer_input_type.AnswerInputType)),
-            "answer_options": lambda n : setattr(self, 'answer_options', n.get_collection_of_primitive_values(str)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "answerInputType": lambda n : setattr(self, 'answer_input_type', n.get_enum_value(answer_input_type.AnswerInputType)),
+            "answerOptions": lambda n : setattr(self, 'answer_options', n.get_collection_of_primitive_values(str)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

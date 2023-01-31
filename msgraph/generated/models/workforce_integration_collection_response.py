@@ -12,7 +12,6 @@ class WorkforceIntegrationCollectionResponse(base_collection_pagination_count_re
         Instantiates a new WorkforceIntegrationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[workforce_integration.WorkforceIntegration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class WorkforceIntegrationCollectionResponse(base_collection_pagination_count_re
     @property
     def value(self,) -> Optional[List[workforce_integration.WorkforceIntegration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[workforce_integration.WorkforceIntegration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class WorkforceIntegrationCollectionResponse(base_collection_pagination_count_re
     @value.setter
     def value(self,value: Optional[List[workforce_integration.WorkforceIntegration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -12,7 +12,6 @@ class DeviceCompliancePolicyAssignmentCollectionResponse(base_collection_paginat
         Instantiates a new DeviceCompliancePolicyAssignmentCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[device_compliance_policy_assignment.DeviceCompliancePolicyAssignment]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class DeviceCompliancePolicyAssignmentCollectionResponse(base_collection_paginat
     @property
     def value(self,) -> Optional[List[device_compliance_policy_assignment.DeviceCompliancePolicyAssignment]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[device_compliance_policy_assignment.DeviceCompliancePolicyAssignment]]
         """
         return self._value
@@ -61,7 +60,7 @@ class DeviceCompliancePolicyAssignmentCollectionResponse(base_collection_paginat
     @value.setter
     def value(self,value: Optional[List[device_compliance_policy_assignment.DeviceCompliancePolicyAssignment]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

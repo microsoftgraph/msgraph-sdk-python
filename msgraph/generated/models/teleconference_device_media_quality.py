@@ -184,7 +184,6 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         self._media_duration: Optional[Timedelta] = None
         # The network link speed in bytes
         self._network_link_speed_in_bytes: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The total number of the outbound packets.
         self._outbound_packets: Optional[int] = None
@@ -211,28 +210,28 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "average_inbound_jitter": lambda n : setattr(self, 'average_inbound_jitter', n.get_object_value(Timedelta)),
-            "average_inbound_packet_loss_rate_in_percentage": lambda n : setattr(self, 'average_inbound_packet_loss_rate_in_percentage', n.get_float_value()),
-            "average_inbound_round_trip_delay": lambda n : setattr(self, 'average_inbound_round_trip_delay', n.get_object_value(Timedelta)),
-            "average_outbound_jitter": lambda n : setattr(self, 'average_outbound_jitter', n.get_object_value(Timedelta)),
-            "average_outbound_packet_loss_rate_in_percentage": lambda n : setattr(self, 'average_outbound_packet_loss_rate_in_percentage', n.get_float_value()),
-            "average_outbound_round_trip_delay": lambda n : setattr(self, 'average_outbound_round_trip_delay', n.get_object_value(Timedelta)),
-            "channel_index": lambda n : setattr(self, 'channel_index', n.get_int_value()),
-            "inbound_packets": lambda n : setattr(self, 'inbound_packets', n.get_int_value()),
-            "local_i_p_address": lambda n : setattr(self, 'local_i_p_address', n.get_str_value()),
-            "local_port": lambda n : setattr(self, 'local_port', n.get_int_value()),
-            "maximum_inbound_jitter": lambda n : setattr(self, 'maximum_inbound_jitter', n.get_object_value(Timedelta)),
-            "maximum_inbound_packet_loss_rate_in_percentage": lambda n : setattr(self, 'maximum_inbound_packet_loss_rate_in_percentage', n.get_float_value()),
-            "maximum_inbound_round_trip_delay": lambda n : setattr(self, 'maximum_inbound_round_trip_delay', n.get_object_value(Timedelta)),
-            "maximum_outbound_jitter": lambda n : setattr(self, 'maximum_outbound_jitter', n.get_object_value(Timedelta)),
-            "maximum_outbound_packet_loss_rate_in_percentage": lambda n : setattr(self, 'maximum_outbound_packet_loss_rate_in_percentage', n.get_float_value()),
-            "maximum_outbound_round_trip_delay": lambda n : setattr(self, 'maximum_outbound_round_trip_delay', n.get_object_value(Timedelta)),
-            "media_duration": lambda n : setattr(self, 'media_duration', n.get_object_value(Timedelta)),
-            "network_link_speed_in_bytes": lambda n : setattr(self, 'network_link_speed_in_bytes', n.get_int_value()),
+            "averageInboundJitter": lambda n : setattr(self, 'average_inbound_jitter', n.get_object_value(Timedelta)),
+            "averageInboundPacketLossRateInPercentage": lambda n : setattr(self, 'average_inbound_packet_loss_rate_in_percentage', n.get_float_value()),
+            "averageInboundRoundTripDelay": lambda n : setattr(self, 'average_inbound_round_trip_delay', n.get_object_value(Timedelta)),
+            "averageOutboundJitter": lambda n : setattr(self, 'average_outbound_jitter', n.get_object_value(Timedelta)),
+            "averageOutboundPacketLossRateInPercentage": lambda n : setattr(self, 'average_outbound_packet_loss_rate_in_percentage', n.get_float_value()),
+            "averageOutboundRoundTripDelay": lambda n : setattr(self, 'average_outbound_round_trip_delay', n.get_object_value(Timedelta)),
+            "channelIndex": lambda n : setattr(self, 'channel_index', n.get_int_value()),
+            "inboundPackets": lambda n : setattr(self, 'inbound_packets', n.get_int_value()),
+            "localIPAddress": lambda n : setattr(self, 'local_i_p_address', n.get_str_value()),
+            "localPort": lambda n : setattr(self, 'local_port', n.get_int_value()),
+            "maximumInboundJitter": lambda n : setattr(self, 'maximum_inbound_jitter', n.get_object_value(Timedelta)),
+            "maximumInboundPacketLossRateInPercentage": lambda n : setattr(self, 'maximum_inbound_packet_loss_rate_in_percentage', n.get_float_value()),
+            "maximumInboundRoundTripDelay": lambda n : setattr(self, 'maximum_inbound_round_trip_delay', n.get_object_value(Timedelta)),
+            "maximumOutboundJitter": lambda n : setattr(self, 'maximum_outbound_jitter', n.get_object_value(Timedelta)),
+            "maximumOutboundPacketLossRateInPercentage": lambda n : setattr(self, 'maximum_outbound_packet_loss_rate_in_percentage', n.get_float_value()),
+            "maximumOutboundRoundTripDelay": lambda n : setattr(self, 'maximum_outbound_round_trip_delay', n.get_object_value(Timedelta)),
+            "mediaDuration": lambda n : setattr(self, 'media_duration', n.get_object_value(Timedelta)),
+            "networkLinkSpeedInBytes": lambda n : setattr(self, 'network_link_speed_in_bytes', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "outbound_packets": lambda n : setattr(self, 'outbound_packets', n.get_int_value()),
-            "remote_i_p_address": lambda n : setattr(self, 'remote_i_p_address', n.get_str_value()),
-            "remote_port": lambda n : setattr(self, 'remote_port', n.get_int_value()),
+            "outboundPackets": lambda n : setattr(self, 'outbound_packets', n.get_int_value()),
+            "remoteIPAddress": lambda n : setattr(self, 'remote_i_p_address', n.get_str_value()),
+            "remotePort": lambda n : setattr(self, 'remote_port', n.get_int_value()),
         }
         return fields
     
@@ -426,7 +425,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -434,7 +433,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

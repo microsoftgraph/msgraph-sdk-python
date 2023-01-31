@@ -59,7 +59,6 @@ class WorkbookRangeFormat(entity.Entity):
         self._font: Optional[workbook_range_font.WorkbookRangeFont] = None
         # Represents the horizontal alignment for the specified object. The possible values are: General, Left, Center, Right, Fill, Justify, CenterAcrossSelection, Distributed.
         self._horizontal_alignment: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Returns the format protection object for a range. Read-only.
         self._protection: Optional[workbook_format_protection.WorkbookFormatProtection] = None
@@ -123,14 +122,14 @@ class WorkbookRangeFormat(entity.Entity):
         """
         fields = {
             "borders": lambda n : setattr(self, 'borders', n.get_collection_of_object_values(workbook_range_border.WorkbookRangeBorder)),
-            "column_width": lambda n : setattr(self, 'column_width', n.get_float_value()),
+            "columnWidth": lambda n : setattr(self, 'column_width', n.get_float_value()),
             "fill": lambda n : setattr(self, 'fill', n.get_object_value(workbook_range_fill.WorkbookRangeFill)),
             "font": lambda n : setattr(self, 'font', n.get_object_value(workbook_range_font.WorkbookRangeFont)),
-            "horizontal_alignment": lambda n : setattr(self, 'horizontal_alignment', n.get_str_value()),
+            "horizontalAlignment": lambda n : setattr(self, 'horizontal_alignment', n.get_str_value()),
             "protection": lambda n : setattr(self, 'protection', n.get_object_value(workbook_format_protection.WorkbookFormatProtection)),
-            "row_height": lambda n : setattr(self, 'row_height', n.get_float_value()),
-            "vertical_alignment": lambda n : setattr(self, 'vertical_alignment', n.get_str_value()),
-            "wrap_text": lambda n : setattr(self, 'wrap_text', n.get_bool_value()),
+            "rowHeight": lambda n : setattr(self, 'row_height', n.get_float_value()),
+            "verticalAlignment": lambda n : setattr(self, 'vertical_alignment', n.get_str_value()),
+            "wrapText": lambda n : setattr(self, 'wrap_text', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

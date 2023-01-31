@@ -10,18 +10,18 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-accept_recommendations_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.accept_recommendations.accept_recommendations_request_builder')
-apply_decisions_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.apply_decisions.apply_decisions_request_builder')
-batch_record_decisions_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.batch_record_decisions.batch_record_decisions_request_builder')
 contacted_reviewers_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.contacted_reviewers.contacted_reviewers_request_builder')
 access_review_reviewer_item_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.contacted_reviewers.item.access_review_reviewer_item_request_builder')
 decisions_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.decisions.decisions_request_builder')
 access_review_instance_decision_item_item_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.decisions.item.access_review_instance_decision_item_item_request_builder')
-reset_decisions_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.reset_decisions.reset_decisions_request_builder')
-send_reminder_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.send_reminder.send_reminder_request_builder')
+accept_recommendations_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.microsoft_graph_accept_recommendations.accept_recommendations_request_builder')
+apply_decisions_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.microsoft_graph_apply_decisions.apply_decisions_request_builder')
+batch_record_decisions_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.microsoft_graph_batch_record_decisions.batch_record_decisions_request_builder')
+reset_decisions_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.microsoft_graph_reset_decisions.reset_decisions_request_builder')
+send_reminder_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.microsoft_graph_send_reminder.send_reminder_request_builder')
+stop_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.microsoft_graph_stop.stop_request_builder')
 stages_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.stages.stages_request_builder')
 access_review_stage_item_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.stages.item.access_review_stage_item_request_builder')
-stop_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.stop.stop_request_builder')
 access_review_instance = lazy_import('msgraph.generated.models.access_review_instance')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -29,27 +29,6 @@ class AccessReviewInstanceItemRequestBuilder():
     """
     Provides operations to manage the instances property of the microsoft.graph.accessReviewScheduleDefinition entity.
     """
-    @property
-    def accept_recommendations(self) -> accept_recommendations_request_builder.AcceptRecommendationsRequestBuilder:
-        """
-        Provides operations to call the acceptRecommendations method.
-        """
-        return accept_recommendations_request_builder.AcceptRecommendationsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def apply_decisions(self) -> apply_decisions_request_builder.ApplyDecisionsRequestBuilder:
-        """
-        Provides operations to call the applyDecisions method.
-        """
-        return apply_decisions_request_builder.ApplyDecisionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def batch_record_decisions(self) -> batch_record_decisions_request_builder.BatchRecordDecisionsRequestBuilder:
-        """
-        Provides operations to call the batchRecordDecisions method.
-        """
-        return batch_record_decisions_request_builder.BatchRecordDecisionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @property
     def contacted_reviewers(self) -> contacted_reviewers_request_builder.ContactedReviewersRequestBuilder:
         """
@@ -65,18 +44,46 @@ class AccessReviewInstanceItemRequestBuilder():
         return decisions_request_builder.DecisionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def reset_decisions(self) -> reset_decisions_request_builder.ResetDecisionsRequestBuilder:
+    def microsoft_graph_accept_recommendations(self) -> accept_recommendations_request_builder.AcceptRecommendationsRequestBuilder:
+        """
+        Provides operations to call the acceptRecommendations method.
+        """
+        return accept_recommendations_request_builder.AcceptRecommendationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_apply_decisions(self) -> apply_decisions_request_builder.ApplyDecisionsRequestBuilder:
+        """
+        Provides operations to call the applyDecisions method.
+        """
+        return apply_decisions_request_builder.ApplyDecisionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_batch_record_decisions(self) -> batch_record_decisions_request_builder.BatchRecordDecisionsRequestBuilder:
+        """
+        Provides operations to call the batchRecordDecisions method.
+        """
+        return batch_record_decisions_request_builder.BatchRecordDecisionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_reset_decisions(self) -> reset_decisions_request_builder.ResetDecisionsRequestBuilder:
         """
         Provides operations to call the resetDecisions method.
         """
         return reset_decisions_request_builder.ResetDecisionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def send_reminder(self) -> send_reminder_request_builder.SendReminderRequestBuilder:
+    def microsoft_graph_send_reminder(self) -> send_reminder_request_builder.SendReminderRequestBuilder:
         """
         Provides operations to call the sendReminder method.
         """
         return send_reminder_request_builder.SendReminderRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_stop(self) -> stop_request_builder.StopRequestBuilder:
+        """
+        Provides operations to call the stop method.
+        """
+        return stop_request_builder.StopRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def stages(self) -> stages_request_builder.StagesRequestBuilder:
@@ -85,17 +92,11 @@ class AccessReviewInstanceItemRequestBuilder():
         """
         return stages_request_builder.StagesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    @property
-    def stop(self) -> stop_request_builder.StopRequestBuilder:
-        """
-        Provides operations to call the stop method.
-        """
-        return stop_request_builder.StopRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, access_review_instance_id: Optional[str] = None) -> None:
         """
         Instantiates a new AccessReviewInstanceItemRequestBuilder and sets the default values.
         Args:
+            accessReviewInstanceId: key: id of accessReviewInstance
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -107,6 +108,7 @@ class AccessReviewInstanceItemRequestBuilder():
         self.url_template: str = "{+baseurl}/identityGovernance/accessReviews/definitions/{accessReviewScheduleDefinition%2Did}/instances/{accessReviewInstance%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["accessReviewInstance%2Did"] = accessReviewInstanceId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -175,7 +177,7 @@ class AccessReviewInstanceItemRequestBuilder():
         """
         Update the navigation property instances in identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[access_review_instance.AccessReviewInstance]
         """
@@ -243,7 +245,7 @@ class AccessReviewInstanceItemRequestBuilder():
         """
         Update the navigation property instances in identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

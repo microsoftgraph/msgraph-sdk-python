@@ -53,7 +53,6 @@ class WorkbookChartFont(entity.Entity):
         self._italic: Optional[bool] = None
         # Font name (e.g. 'Calibri')
         self._name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Size of the font (e.g. 11)
         self._size: Optional[float] = None

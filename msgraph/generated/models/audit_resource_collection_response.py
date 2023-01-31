@@ -12,7 +12,6 @@ class AuditResourceCollectionResponse(base_collection_pagination_count_response.
         Instantiates a new AuditResourceCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[audit_resource.AuditResource]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class AuditResourceCollectionResponse(base_collection_pagination_count_response.
     @property
     def value(self,) -> Optional[List[audit_resource.AuditResource]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[audit_resource.AuditResource]]
         """
         return self._value
@@ -61,7 +60,7 @@ class AuditResourceCollectionResponse(base_collection_pagination_count_response.
     @value.setter
     def value(self,value: Optional[List[audit_resource.AuditResource]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

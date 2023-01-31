@@ -16,7 +16,6 @@ class AdminConsentRequestPolicy(entity.Entity):
         self._is_enabled: Optional[bool] = None
         # Specifies whether reviewers will receive notifications. Required.
         self._notify_reviewers: Optional[bool] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Specifies whether reviewers will receive reminder emails. Required.
         self._reminders_enabled: Optional[bool] = None
@@ -45,10 +44,10 @@ class AdminConsentRequestPolicy(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "notify_reviewers": lambda n : setattr(self, 'notify_reviewers', n.get_bool_value()),
-            "reminders_enabled": lambda n : setattr(self, 'reminders_enabled', n.get_bool_value()),
-            "request_duration_in_days": lambda n : setattr(self, 'request_duration_in_days', n.get_int_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "notifyReviewers": lambda n : setattr(self, 'notify_reviewers', n.get_bool_value()),
+            "remindersEnabled": lambda n : setattr(self, 'reminders_enabled', n.get_bool_value()),
+            "requestDurationInDays": lambda n : setattr(self, 'request_duration_in_days', n.get_int_value()),
             "reviewers": lambda n : setattr(self, 'reviewers', n.get_collection_of_object_values(access_review_reviewer_scope.AccessReviewReviewerScope)),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
         }

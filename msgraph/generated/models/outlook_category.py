@@ -33,7 +33,6 @@ class OutlookCategory(entity.Entity):
         self._color: Optional[category_color.CategoryColor] = None
         # A unique name that identifies a category in the user's mailbox. After a category is created, the name cannot be changed. Read-only.
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -72,7 +71,7 @@ class OutlookCategory(entity.Entity):
         """
         fields = {
             "color": lambda n : setattr(self, 'color', n.get_enum_value(category_color.CategoryColor)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

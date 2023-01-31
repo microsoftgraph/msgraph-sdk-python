@@ -13,7 +13,6 @@ class SiteSource(data_source.DataSource):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.security.siteSource"
-        # The site property
         self._site: Optional[site.Site] = None
     
     @staticmethod
@@ -54,7 +53,7 @@ class SiteSource(data_source.DataSource):
     @property
     def site(self,) -> Optional[site.Site]:
         """
-        Gets the site property value. The site property
+        Gets the site property value. 
         Returns: Optional[site.Site]
         """
         return self._site
@@ -62,7 +61,7 @@ class SiteSource(data_source.DataSource):
     @site.setter
     def site(self,value: Optional[site.Site] = None) -> None:
         """
-        Sets the site property value. The site property
+        Sets the site property value. 
         Args:
             value: Value to set for the site property.
         """

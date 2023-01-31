@@ -34,7 +34,6 @@ class LinkedResource(entity.Entity):
         self._display_name: Optional[str] = None
         # Id of the object that is associated with this task on the third-party/partner system.
         self._external_id: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Deep link to the linkedResource.
         self._web_url: Optional[str] = None
@@ -91,10 +90,10 @@ class LinkedResource(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "application_name": lambda n : setattr(self, 'application_name', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "applicationName": lambda n : setattr(self, 'application_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

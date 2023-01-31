@@ -66,7 +66,7 @@ class ListsRequestBuilder():
         """
         Create a new [list][] in a [site][].
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[list.List]
         """
@@ -105,7 +105,7 @@ class ListsRequestBuilder():
         """
         Create a new [list][] in a [site][].
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

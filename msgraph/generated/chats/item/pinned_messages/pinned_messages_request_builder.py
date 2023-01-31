@@ -66,7 +66,7 @@ class PinnedMessagesRequestBuilder():
         """
         Pin a chat message in the specified chat. This API cannot create a new chat; you must use the list chats method to retrieve the ID of an existing chat before you can pin a chat message.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[pinned_chat_message_info.PinnedChatMessageInfo]
         """
@@ -105,7 +105,7 @@ class PinnedMessagesRequestBuilder():
         """
         Pin a chat message in the specified chat. This API cannot create a new chat; you must use the list chats method to retrieve the ID of an existing chat before you can pin a chat message.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

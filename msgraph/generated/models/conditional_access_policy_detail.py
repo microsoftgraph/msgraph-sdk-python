@@ -28,7 +28,7 @@ class ConditionalAccessPolicyDetail(AdditionalDataHolder, Parsable):
     @property
     def conditions(self,) -> Optional[conditional_access_condition_set.ConditionalAccessConditionSet]:
         """
-        Gets the conditions property value. The conditions property
+        Gets the conditions property value. 
         Returns: Optional[conditional_access_condition_set.ConditionalAccessConditionSet]
         """
         return self._conditions
@@ -36,7 +36,7 @@ class ConditionalAccessPolicyDetail(AdditionalDataHolder, Parsable):
     @conditions.setter
     def conditions(self,value: Optional[conditional_access_condition_set.ConditionalAccessConditionSet] = None) -> None:
         """
-        Sets the conditions property value. The conditions property
+        Sets the conditions property value. 
         Args:
             value: Value to set for the conditions property.
         """
@@ -49,11 +49,9 @@ class ConditionalAccessPolicyDetail(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The conditions property
         self._conditions: Optional[conditional_access_condition_set.ConditionalAccessConditionSet] = None
         # Represents grant controls that must be fulfilled for the policy.
         self._grant_controls: Optional[conditional_access_grant_controls.ConditionalAccessGrantControls] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Represents a complex type of session controls that is enforced after sign-in.
         self._session_controls: Optional[conditional_access_session_controls.ConditionalAccessSessionControls] = None
@@ -77,9 +75,9 @@ class ConditionalAccessPolicyDetail(AdditionalDataHolder, Parsable):
         """
         fields = {
             "conditions": lambda n : setattr(self, 'conditions', n.get_object_value(conditional_access_condition_set.ConditionalAccessConditionSet)),
-            "grant_controls": lambda n : setattr(self, 'grant_controls', n.get_object_value(conditional_access_grant_controls.ConditionalAccessGrantControls)),
+            "grantControls": lambda n : setattr(self, 'grant_controls', n.get_object_value(conditional_access_grant_controls.ConditionalAccessGrantControls)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "session_controls": lambda n : setattr(self, 'session_controls', n.get_object_value(conditional_access_session_controls.ConditionalAccessSessionControls)),
+            "sessionControls": lambda n : setattr(self, 'session_controls', n.get_object_value(conditional_access_session_controls.ConditionalAccessSessionControls)),
         }
         return fields
     
@@ -103,7 +101,7 @@ class ConditionalAccessPolicyDetail(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -111,7 +109,7 @@ class ConditionalAccessPolicyDetail(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

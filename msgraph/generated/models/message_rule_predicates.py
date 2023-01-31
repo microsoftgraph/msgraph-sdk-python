@@ -125,7 +125,6 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         self._message_action_flag: Optional[message_action_flag.MessageActionFlag] = None
         # Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
         self._not_sent_to_me: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
         self._recipient_contains: Optional[List[str]] = None
@@ -183,37 +182,37 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "body_contains": lambda n : setattr(self, 'body_contains', n.get_collection_of_primitive_values(str)),
-            "body_or_subject_contains": lambda n : setattr(self, 'body_or_subject_contains', n.get_collection_of_primitive_values(str)),
+            "bodyContains": lambda n : setattr(self, 'body_contains', n.get_collection_of_primitive_values(str)),
+            "bodyOrSubjectContains": lambda n : setattr(self, 'body_or_subject_contains', n.get_collection_of_primitive_values(str)),
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_primitive_values(str)),
-            "from_addresses": lambda n : setattr(self, 'from_addresses', n.get_collection_of_object_values(recipient.Recipient)),
-            "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
-            "header_contains": lambda n : setattr(self, 'header_contains', n.get_collection_of_primitive_values(str)),
+            "fromAddresses": lambda n : setattr(self, 'from_addresses', n.get_collection_of_object_values(recipient.Recipient)),
+            "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
+            "headerContains": lambda n : setattr(self, 'header_contains', n.get_collection_of_primitive_values(str)),
             "importance": lambda n : setattr(self, 'importance', n.get_enum_value(importance.Importance)),
-            "is_approval_request": lambda n : setattr(self, 'is_approval_request', n.get_bool_value()),
-            "is_automatic_forward": lambda n : setattr(self, 'is_automatic_forward', n.get_bool_value()),
-            "is_automatic_reply": lambda n : setattr(self, 'is_automatic_reply', n.get_bool_value()),
-            "is_encrypted": lambda n : setattr(self, 'is_encrypted', n.get_bool_value()),
-            "is_meeting_request": lambda n : setattr(self, 'is_meeting_request', n.get_bool_value()),
-            "is_meeting_response": lambda n : setattr(self, 'is_meeting_response', n.get_bool_value()),
-            "is_non_delivery_report": lambda n : setattr(self, 'is_non_delivery_report', n.get_bool_value()),
-            "is_permission_controlled": lambda n : setattr(self, 'is_permission_controlled', n.get_bool_value()),
-            "is_read_receipt": lambda n : setattr(self, 'is_read_receipt', n.get_bool_value()),
-            "is_signed": lambda n : setattr(self, 'is_signed', n.get_bool_value()),
-            "is_voicemail": lambda n : setattr(self, 'is_voicemail', n.get_bool_value()),
-            "message_action_flag": lambda n : setattr(self, 'message_action_flag', n.get_enum_value(message_action_flag.MessageActionFlag)),
-            "not_sent_to_me": lambda n : setattr(self, 'not_sent_to_me', n.get_bool_value()),
+            "isApprovalRequest": lambda n : setattr(self, 'is_approval_request', n.get_bool_value()),
+            "isAutomaticForward": lambda n : setattr(self, 'is_automatic_forward', n.get_bool_value()),
+            "isAutomaticReply": lambda n : setattr(self, 'is_automatic_reply', n.get_bool_value()),
+            "isEncrypted": lambda n : setattr(self, 'is_encrypted', n.get_bool_value()),
+            "isMeetingRequest": lambda n : setattr(self, 'is_meeting_request', n.get_bool_value()),
+            "isMeetingResponse": lambda n : setattr(self, 'is_meeting_response', n.get_bool_value()),
+            "isNonDeliveryReport": lambda n : setattr(self, 'is_non_delivery_report', n.get_bool_value()),
+            "isPermissionControlled": lambda n : setattr(self, 'is_permission_controlled', n.get_bool_value()),
+            "isReadReceipt": lambda n : setattr(self, 'is_read_receipt', n.get_bool_value()),
+            "isSigned": lambda n : setattr(self, 'is_signed', n.get_bool_value()),
+            "isVoicemail": lambda n : setattr(self, 'is_voicemail', n.get_bool_value()),
+            "messageActionFlag": lambda n : setattr(self, 'message_action_flag', n.get_enum_value(message_action_flag.MessageActionFlag)),
+            "notSentToMe": lambda n : setattr(self, 'not_sent_to_me', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recipient_contains": lambda n : setattr(self, 'recipient_contains', n.get_collection_of_primitive_values(str)),
-            "sender_contains": lambda n : setattr(self, 'sender_contains', n.get_collection_of_primitive_values(str)),
+            "recipientContains": lambda n : setattr(self, 'recipient_contains', n.get_collection_of_primitive_values(str)),
+            "senderContains": lambda n : setattr(self, 'sender_contains', n.get_collection_of_primitive_values(str)),
             "sensitivity": lambda n : setattr(self, 'sensitivity', n.get_enum_value(sensitivity.Sensitivity)),
-            "sent_cc_me": lambda n : setattr(self, 'sent_cc_me', n.get_bool_value()),
-            "sent_only_to_me": lambda n : setattr(self, 'sent_only_to_me', n.get_bool_value()),
-            "sent_to_addresses": lambda n : setattr(self, 'sent_to_addresses', n.get_collection_of_object_values(recipient.Recipient)),
-            "sent_to_me": lambda n : setattr(self, 'sent_to_me', n.get_bool_value()),
-            "sent_to_or_cc_me": lambda n : setattr(self, 'sent_to_or_cc_me', n.get_bool_value()),
-            "subject_contains": lambda n : setattr(self, 'subject_contains', n.get_collection_of_primitive_values(str)),
-            "within_size_range": lambda n : setattr(self, 'within_size_range', n.get_object_value(size_range.SizeRange)),
+            "sentCcMe": lambda n : setattr(self, 'sent_cc_me', n.get_bool_value()),
+            "sentOnlyToMe": lambda n : setattr(self, 'sent_only_to_me', n.get_bool_value()),
+            "sentToAddresses": lambda n : setattr(self, 'sent_to_addresses', n.get_collection_of_object_values(recipient.Recipient)),
+            "sentToMe": lambda n : setattr(self, 'sent_to_me', n.get_bool_value()),
+            "sentToOrCcMe": lambda n : setattr(self, 'sent_to_or_cc_me', n.get_bool_value()),
+            "subjectContains": lambda n : setattr(self, 'subject_contains', n.get_collection_of_primitive_values(str)),
+            "withinSizeRange": lambda n : setattr(self, 'within_size_range', n.get_object_value(size_range.SizeRange)),
         }
         return fields
     
@@ -492,7 +491,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -500,7 +499,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

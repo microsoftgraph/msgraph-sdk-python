@@ -12,7 +12,6 @@ class EventMessageResponseCollectionResponse(base_collection_pagination_count_re
         Instantiates a new EventMessageResponseCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[event_message_response.EventMessageResponse]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class EventMessageResponseCollectionResponse(base_collection_pagination_count_re
     @property
     def value(self,) -> Optional[List[event_message_response.EventMessageResponse]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[event_message_response.EventMessageResponse]]
         """
         return self._value
@@ -61,7 +60,7 @@ class EventMessageResponseCollectionResponse(base_collection_pagination_count_re
     @value.setter
     def value(self,value: Optional[List[event_message_response.EventMessageResponse]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

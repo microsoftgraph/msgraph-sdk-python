@@ -194,18 +194,18 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "account_manager_policy": lambda n : setattr(self, 'account_manager_policy', n.get_object_value(shared_p_c_account_manager_policy.SharedPCAccountManagerPolicy)),
-            "allowed_accounts": lambda n : setattr(self, 'allowed_accounts', n.get_enum_value(shared_p_c_allowed_account_type.SharedPCAllowedAccountType)),
-            "allow_local_storage": lambda n : setattr(self, 'allow_local_storage', n.get_bool_value()),
-            "disable_account_manager": lambda n : setattr(self, 'disable_account_manager', n.get_bool_value()),
-            "disable_edu_policies": lambda n : setattr(self, 'disable_edu_policies', n.get_bool_value()),
-            "disable_power_policies": lambda n : setattr(self, 'disable_power_policies', n.get_bool_value()),
-            "disable_sign_in_on_resume": lambda n : setattr(self, 'disable_sign_in_on_resume', n.get_bool_value()),
+            "accountManagerPolicy": lambda n : setattr(self, 'account_manager_policy', n.get_object_value(shared_p_c_account_manager_policy.SharedPCAccountManagerPolicy)),
+            "allowedAccounts": lambda n : setattr(self, 'allowed_accounts', n.get_enum_value(shared_p_c_allowed_account_type.SharedPCAllowedAccountType)),
+            "allowLocalStorage": lambda n : setattr(self, 'allow_local_storage', n.get_bool_value()),
+            "disableAccountManager": lambda n : setattr(self, 'disable_account_manager', n.get_bool_value()),
+            "disableEduPolicies": lambda n : setattr(self, 'disable_edu_policies', n.get_bool_value()),
+            "disablePowerPolicies": lambda n : setattr(self, 'disable_power_policies', n.get_bool_value()),
+            "disableSignInOnResume": lambda n : setattr(self, 'disable_sign_in_on_resume', n.get_bool_value()),
             "enabled": lambda n : setattr(self, 'enabled', n.get_bool_value()),
-            "idle_time_before_sleep_in_seconds": lambda n : setattr(self, 'idle_time_before_sleep_in_seconds', n.get_int_value()),
-            "kiosk_app_display_name": lambda n : setattr(self, 'kiosk_app_display_name', n.get_str_value()),
-            "kiosk_app_user_model_id": lambda n : setattr(self, 'kiosk_app_user_model_id', n.get_str_value()),
-            "maintenance_start_time": lambda n : setattr(self, 'maintenance_start_time', n.get_object_value(Time)),
+            "idleTimeBeforeSleepInSeconds": lambda n : setattr(self, 'idle_time_before_sleep_in_seconds', n.get_int_value()),
+            "kioskAppDisplayName": lambda n : setattr(self, 'kiosk_app_display_name', n.get_str_value()),
+            "kioskAppUserModelId": lambda n : setattr(self, 'kiosk_app_user_model_id', n.get_str_value()),
+            "maintenanceStartTime": lambda n : setattr(self, 'maintenance_start_time', n.get_object_value(Time)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

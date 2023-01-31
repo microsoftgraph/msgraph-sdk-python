@@ -257,13 +257,10 @@ class Group(directory_object.DirectoryObject):
         self._membership_rule_processing_state: Optional[str] = None
         # A list of group members with license errors from this group-based license assignment. Read-only.
         self._members_with_license_errors: Optional[List[directory_object.DirectoryObject]] = None
-        # The onenote property
         self._onenote: Optional[onenote.Onenote] = None
-        # The onPremisesDomainName property
         self._on_premises_domain_name: Optional[str] = None
         # Indicates the last time at which the group was synced with the on-premises directory.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Read-only. Supports $filter (eq, ne, not, ge, le, in).
         self._on_premises_last_sync_date_time: Optional[datetime] = None
-        # The onPremisesNetBiosName property
         self._on_premises_net_bios_name: Optional[str] = None
         # Errors when using Microsoft synchronization product during provisioning. Returned by default. Supports $filter (eq, not).
         self._on_premises_provisioning_errors: Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]] = None
@@ -504,70 +501,70 @@ class Group(directory_object.DirectoryObject):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "accepted_senders": lambda n : setattr(self, 'accepted_senders', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "allow_external_senders": lambda n : setattr(self, 'allow_external_senders', n.get_bool_value()),
-            "app_role_assignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
-            "assigned_labels": lambda n : setattr(self, 'assigned_labels', n.get_collection_of_object_values(assigned_label.AssignedLabel)),
-            "assigned_licenses": lambda n : setattr(self, 'assigned_licenses', n.get_collection_of_object_values(assigned_license.AssignedLicense)),
-            "auto_subscribe_new_members": lambda n : setattr(self, 'auto_subscribe_new_members', n.get_bool_value()),
+            "acceptedSenders": lambda n : setattr(self, 'accepted_senders', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "allowExternalSenders": lambda n : setattr(self, 'allow_external_senders', n.get_bool_value()),
+            "appRoleAssignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
+            "assignedLabels": lambda n : setattr(self, 'assigned_labels', n.get_collection_of_object_values(assigned_label.AssignedLabel)),
+            "assignedLicenses": lambda n : setattr(self, 'assigned_licenses', n.get_collection_of_object_values(assigned_license.AssignedLicense)),
+            "autoSubscribeNewMembers": lambda n : setattr(self, 'auto_subscribe_new_members', n.get_bool_value()),
             "calendar": lambda n : setattr(self, 'calendar', n.get_object_value(calendar.Calendar)),
-            "calendar_view": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(event.Event)),
+            "calendarView": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(event.Event)),
             "classification": lambda n : setattr(self, 'classification', n.get_str_value()),
             "conversations": lambda n : setattr(self, 'conversations', n.get_collection_of_object_values(conversation.Conversation)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "created_on_behalf_of": lambda n : setattr(self, 'created_on_behalf_of', n.get_object_value(directory_object.DirectoryObject)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdOnBehalfOf": lambda n : setattr(self, 'created_on_behalf_of', n.get_object_value(directory_object.DirectoryObject)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "drive": lambda n : setattr(self, 'drive', n.get_object_value(drive.Drive)),
             "drives": lambda n : setattr(self, 'drives', n.get_collection_of_object_values(drive.Drive)),
             "events": lambda n : setattr(self, 'events', n.get_collection_of_object_values(event.Event)),
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
-            "group_lifecycle_policies": lambda n : setattr(self, 'group_lifecycle_policies', n.get_collection_of_object_values(group_lifecycle_policy.GroupLifecyclePolicy)),
-            "group_types": lambda n : setattr(self, 'group_types', n.get_collection_of_primitive_values(str)),
-            "has_members_with_license_errors": lambda n : setattr(self, 'has_members_with_license_errors', n.get_bool_value()),
-            "hide_from_address_lists": lambda n : setattr(self, 'hide_from_address_lists', n.get_bool_value()),
-            "hide_from_outlook_clients": lambda n : setattr(self, 'hide_from_outlook_clients', n.get_bool_value()),
-            "is_archived": lambda n : setattr(self, 'is_archived', n.get_bool_value()),
-            "is_assignable_to_role": lambda n : setattr(self, 'is_assignable_to_role', n.get_bool_value()),
-            "is_subscribed_by_mail": lambda n : setattr(self, 'is_subscribed_by_mail', n.get_bool_value()),
-            "license_processing_state": lambda n : setattr(self, 'license_processing_state', n.get_object_value(license_processing_state.LicenseProcessingState)),
+            "groupLifecyclePolicies": lambda n : setattr(self, 'group_lifecycle_policies', n.get_collection_of_object_values(group_lifecycle_policy.GroupLifecyclePolicy)),
+            "groupTypes": lambda n : setattr(self, 'group_types', n.get_collection_of_primitive_values(str)),
+            "hasMembersWithLicenseErrors": lambda n : setattr(self, 'has_members_with_license_errors', n.get_bool_value()),
+            "hideFromAddressLists": lambda n : setattr(self, 'hide_from_address_lists', n.get_bool_value()),
+            "hideFromOutlookClients": lambda n : setattr(self, 'hide_from_outlook_clients', n.get_bool_value()),
+            "isArchived": lambda n : setattr(self, 'is_archived', n.get_bool_value()),
+            "isAssignableToRole": lambda n : setattr(self, 'is_assignable_to_role', n.get_bool_value()),
+            "isSubscribedByMail": lambda n : setattr(self, 'is_subscribed_by_mail', n.get_bool_value()),
+            "licenseProcessingState": lambda n : setattr(self, 'license_processing_state', n.get_object_value(license_processing_state.LicenseProcessingState)),
             "mail": lambda n : setattr(self, 'mail', n.get_str_value()),
-            "mail_enabled": lambda n : setattr(self, 'mail_enabled', n.get_bool_value()),
-            "mail_nickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
-            "member_of": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "mailEnabled": lambda n : setattr(self, 'mail_enabled', n.get_bool_value()),
+            "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
+            "memberOf": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "membership_rule": lambda n : setattr(self, 'membership_rule', n.get_str_value()),
-            "membership_rule_processing_state": lambda n : setattr(self, 'membership_rule_processing_state', n.get_str_value()),
-            "members_with_license_errors": lambda n : setattr(self, 'members_with_license_errors', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "membershipRule": lambda n : setattr(self, 'membership_rule', n.get_str_value()),
+            "membershipRuleProcessingState": lambda n : setattr(self, 'membership_rule_processing_state', n.get_str_value()),
+            "membersWithLicenseErrors": lambda n : setattr(self, 'members_with_license_errors', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "onenote": lambda n : setattr(self, 'onenote', n.get_object_value(onenote.Onenote)),
-            "on_premises_domain_name": lambda n : setattr(self, 'on_premises_domain_name', n.get_str_value()),
-            "on_premises_last_sync_date_time": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
-            "on_premises_net_bios_name": lambda n : setattr(self, 'on_premises_net_bios_name', n.get_str_value()),
-            "on_premises_provisioning_errors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(on_premises_provisioning_error.OnPremisesProvisioningError)),
-            "on_premises_sam_account_name": lambda n : setattr(self, 'on_premises_sam_account_name', n.get_str_value()),
-            "on_premises_security_identifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
-            "on_premises_sync_enabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
+            "onPremisesDomainName": lambda n : setattr(self, 'on_premises_domain_name', n.get_str_value()),
+            "onPremisesLastSyncDateTime": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
+            "onPremisesNetBiosName": lambda n : setattr(self, 'on_premises_net_bios_name', n.get_str_value()),
+            "onPremisesProvisioningErrors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(on_premises_provisioning_error.OnPremisesProvisioningError)),
+            "onPremisesSamAccountName": lambda n : setattr(self, 'on_premises_sam_account_name', n.get_str_value()),
+            "onPremisesSecurityIdentifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
+            "onPremisesSyncEnabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
             "owners": lambda n : setattr(self, 'owners', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "permission_grants": lambda n : setattr(self, 'permission_grants', n.get_collection_of_object_values(resource_specific_permission_grant.ResourceSpecificPermissionGrant)),
+            "permissionGrants": lambda n : setattr(self, 'permission_grants', n.get_collection_of_object_values(resource_specific_permission_grant.ResourceSpecificPermissionGrant)),
             "photo": lambda n : setattr(self, 'photo', n.get_object_value(profile_photo.ProfilePhoto)),
             "photos": lambda n : setattr(self, 'photos', n.get_collection_of_object_values(profile_photo.ProfilePhoto)),
             "planner": lambda n : setattr(self, 'planner', n.get_object_value(planner_group.PlannerGroup)),
-            "preferred_data_location": lambda n : setattr(self, 'preferred_data_location', n.get_str_value()),
-            "preferred_language": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
-            "proxy_addresses": lambda n : setattr(self, 'proxy_addresses', n.get_collection_of_primitive_values(str)),
-            "rejected_senders": lambda n : setattr(self, 'rejected_senders', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "renewed_date_time": lambda n : setattr(self, 'renewed_date_time', n.get_datetime_value()),
-            "security_enabled": lambda n : setattr(self, 'security_enabled', n.get_bool_value()),
-            "security_identifier": lambda n : setattr(self, 'security_identifier', n.get_str_value()),
+            "preferredDataLocation": lambda n : setattr(self, 'preferred_data_location', n.get_str_value()),
+            "preferredLanguage": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
+            "proxyAddresses": lambda n : setattr(self, 'proxy_addresses', n.get_collection_of_primitive_values(str)),
+            "rejectedSenders": lambda n : setattr(self, 'rejected_senders', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "renewedDateTime": lambda n : setattr(self, 'renewed_date_time', n.get_datetime_value()),
+            "securityEnabled": lambda n : setattr(self, 'security_enabled', n.get_bool_value()),
+            "securityIdentifier": lambda n : setattr(self, 'security_identifier', n.get_str_value()),
             "settings": lambda n : setattr(self, 'settings', n.get_collection_of_object_values(group_setting.GroupSetting)),
             "sites": lambda n : setattr(self, 'sites', n.get_collection_of_object_values(site.Site)),
             "team": lambda n : setattr(self, 'team', n.get_object_value(team.Team)),
             "theme": lambda n : setattr(self, 'theme', n.get_str_value()),
             "threads": lambda n : setattr(self, 'threads', n.get_collection_of_object_values(conversation_thread.ConversationThread)),
-            "transitive_member_of": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "transitive_members": lambda n : setattr(self, 'transitive_members', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "unseen_count": lambda n : setattr(self, 'unseen_count', n.get_int_value()),
+            "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "transitiveMembers": lambda n : setattr(self, 'transitive_members', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "unseenCount": lambda n : setattr(self, 'unseen_count', n.get_int_value()),
             "visibility": lambda n : setattr(self, 'visibility', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -866,7 +863,7 @@ class Group(directory_object.DirectoryObject):
     @property
     def onenote(self,) -> Optional[onenote.Onenote]:
         """
-        Gets the onenote property value. The onenote property
+        Gets the onenote property value. 
         Returns: Optional[onenote.Onenote]
         """
         return self._onenote
@@ -874,7 +871,7 @@ class Group(directory_object.DirectoryObject):
     @onenote.setter
     def onenote(self,value: Optional[onenote.Onenote] = None) -> None:
         """
-        Sets the onenote property value. The onenote property
+        Sets the onenote property value. 
         Args:
             value: Value to set for the onenote property.
         """
@@ -883,7 +880,7 @@ class Group(directory_object.DirectoryObject):
     @property
     def on_premises_domain_name(self,) -> Optional[str]:
         """
-        Gets the onPremisesDomainName property value. The onPremisesDomainName property
+        Gets the onPremisesDomainName property value. 
         Returns: Optional[str]
         """
         return self._on_premises_domain_name
@@ -891,7 +888,7 @@ class Group(directory_object.DirectoryObject):
     @on_premises_domain_name.setter
     def on_premises_domain_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the onPremisesDomainName property value. The onPremisesDomainName property
+        Sets the onPremisesDomainName property value. 
         Args:
             value: Value to set for the onPremisesDomainName property.
         """
@@ -917,7 +914,7 @@ class Group(directory_object.DirectoryObject):
     @property
     def on_premises_net_bios_name(self,) -> Optional[str]:
         """
-        Gets the onPremisesNetBiosName property value. The onPremisesNetBiosName property
+        Gets the onPremisesNetBiosName property value. 
         Returns: Optional[str]
         """
         return self._on_premises_net_bios_name
@@ -925,7 +922,7 @@ class Group(directory_object.DirectoryObject):
     @on_premises_net_bios_name.setter
     def on_premises_net_bios_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the onPremisesNetBiosName property value. The onPremisesNetBiosName property
+        Sets the onPremisesNetBiosName property value. 
         Args:
             value: Value to set for the onPremisesNetBiosName property.
         """

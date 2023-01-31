@@ -61,7 +61,6 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         self._enable_targets_to_self_remove_access: Optional[bool] = None
         # If true, allows requestors to create a request to update their access.
         self._enable_targets_to_self_update_access: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The principals who can request on-behalf-of others.
         self._on_behalf_requestors: Optional[List[subject_set.SubjectSet]] = None
@@ -186,22 +185,22 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_custom_assignment_schedule": lambda n : setattr(self, 'allow_custom_assignment_schedule', n.get_bool_value()),
-            "enable_on_behalf_requestors_to_add_access": lambda n : setattr(self, 'enable_on_behalf_requestors_to_add_access', n.get_bool_value()),
-            "enable_on_behalf_requestors_to_remove_access": lambda n : setattr(self, 'enable_on_behalf_requestors_to_remove_access', n.get_bool_value()),
-            "enable_on_behalf_requestors_to_update_access": lambda n : setattr(self, 'enable_on_behalf_requestors_to_update_access', n.get_bool_value()),
-            "enable_targets_to_self_add_access": lambda n : setattr(self, 'enable_targets_to_self_add_access', n.get_bool_value()),
-            "enable_targets_to_self_remove_access": lambda n : setattr(self, 'enable_targets_to_self_remove_access', n.get_bool_value()),
-            "enable_targets_to_self_update_access": lambda n : setattr(self, 'enable_targets_to_self_update_access', n.get_bool_value()),
+            "allowCustomAssignmentSchedule": lambda n : setattr(self, 'allow_custom_assignment_schedule', n.get_bool_value()),
+            "enableOnBehalfRequestorsToAddAccess": lambda n : setattr(self, 'enable_on_behalf_requestors_to_add_access', n.get_bool_value()),
+            "enableOnBehalfRequestorsToRemoveAccess": lambda n : setattr(self, 'enable_on_behalf_requestors_to_remove_access', n.get_bool_value()),
+            "enableOnBehalfRequestorsToUpdateAccess": lambda n : setattr(self, 'enable_on_behalf_requestors_to_update_access', n.get_bool_value()),
+            "enableTargetsToSelfAddAccess": lambda n : setattr(self, 'enable_targets_to_self_add_access', n.get_bool_value()),
+            "enableTargetsToSelfRemoveAccess": lambda n : setattr(self, 'enable_targets_to_self_remove_access', n.get_bool_value()),
+            "enableTargetsToSelfUpdateAccess": lambda n : setattr(self, 'enable_targets_to_self_update_access', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "on_behalf_requestors": lambda n : setattr(self, 'on_behalf_requestors', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "onBehalfRequestors": lambda n : setattr(self, 'on_behalf_requestors', n.get_collection_of_object_values(subject_set.SubjectSet)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -209,7 +208,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

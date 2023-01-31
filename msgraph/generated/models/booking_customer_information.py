@@ -100,14 +100,14 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "customer_id": lambda n : setattr(self, 'customer_id', n.get_str_value()),
-            "custom_question_answers": lambda n : setattr(self, 'custom_question_answers', n.get_collection_of_object_values(booking_question_answer.BookingQuestionAnswer)),
-            "email_address": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "customerId": lambda n : setattr(self, 'customer_id', n.get_str_value()),
+            "customQuestionAnswers": lambda n : setattr(self, 'custom_question_answers', n.get_collection_of_object_values(booking_question_answer.BookingQuestionAnswer)),
+            "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
             "location": lambda n : setattr(self, 'location', n.get_object_value(location.Location)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
             "phone": lambda n : setattr(self, 'phone', n.get_str_value()),
-            "time_zone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
+            "timeZone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

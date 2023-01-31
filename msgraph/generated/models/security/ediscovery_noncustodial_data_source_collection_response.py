@@ -12,7 +12,6 @@ class EdiscoveryNoncustodialDataSourceCollectionResponse(base_collection_paginat
         Instantiates a new EdiscoveryNoncustodialDataSourceCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class EdiscoveryNoncustodialDataSourceCollectionResponse(base_collection_paginat
     @property
     def value(self,) -> Optional[List[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]]
         """
         return self._value
@@ -61,7 +60,7 @@ class EdiscoveryNoncustodialDataSourceCollectionResponse(base_collection_paginat
     @value.setter
     def value(self,value: Optional[List[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

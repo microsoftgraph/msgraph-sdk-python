@@ -30,7 +30,6 @@ class WorkbookRangeFill(entity.Entity):
         super().__init__()
         # HTML color code representing the color of the border line, of the form #RRGGBB (e.g. 'FFA500') or as a named HTML color (e.g. 'orange')
         self._color: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

@@ -56,7 +56,6 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         self._azure_active_directory_device_id: Optional[str] = None
         # Display Name
         self._display_name: Optional[str] = None
-        # The enrollmentState property
         self._enrollment_state: Optional[enrollment_state.EnrollmentState] = None
         # Group Tag of the Windows autopilot device.
         self._group_tag: Optional[str] = None
@@ -68,7 +67,6 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         self._manufacturer: Optional[str] = None
         # Model name of the Windows autopilot device.
         self._model: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Product Key of the Windows autopilot device.
         self._product_key: Optional[str] = None
@@ -117,7 +115,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
     @property
     def enrollment_state(self,) -> Optional[enrollment_state.EnrollmentState]:
         """
-        Gets the enrollmentState property value. The enrollmentState property
+        Gets the enrollmentState property value. 
         Returns: Optional[enrollment_state.EnrollmentState]
         """
         return self._enrollment_state
@@ -125,7 +123,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
     @enrollment_state.setter
     def enrollment_state(self,value: Optional[enrollment_state.EnrollmentState] = None) -> None:
         """
-        Sets the enrollmentState property value. The enrollmentState property
+        Sets the enrollmentState property value. 
         Args:
             value: Value to set for the enrollmentState property.
         """
@@ -137,22 +135,22 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "addressable_user_name": lambda n : setattr(self, 'addressable_user_name', n.get_str_value()),
-            "azure_active_directory_device_id": lambda n : setattr(self, 'azure_active_directory_device_id', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "enrollment_state": lambda n : setattr(self, 'enrollment_state', n.get_enum_value(enrollment_state.EnrollmentState)),
-            "group_tag": lambda n : setattr(self, 'group_tag', n.get_str_value()),
-            "last_contacted_date_time": lambda n : setattr(self, 'last_contacted_date_time', n.get_datetime_value()),
-            "managed_device_id": lambda n : setattr(self, 'managed_device_id', n.get_str_value()),
+            "addressableUserName": lambda n : setattr(self, 'addressable_user_name', n.get_str_value()),
+            "azureActiveDirectoryDeviceId": lambda n : setattr(self, 'azure_active_directory_device_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "enrollmentState": lambda n : setattr(self, 'enrollment_state', n.get_enum_value(enrollment_state.EnrollmentState)),
+            "groupTag": lambda n : setattr(self, 'group_tag', n.get_str_value()),
+            "lastContactedDateTime": lambda n : setattr(self, 'last_contacted_date_time', n.get_datetime_value()),
+            "managedDeviceId": lambda n : setattr(self, 'managed_device_id', n.get_str_value()),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
-            "product_key": lambda n : setattr(self, 'product_key', n.get_str_value()),
-            "purchase_order_identifier": lambda n : setattr(self, 'purchase_order_identifier', n.get_str_value()),
-            "resource_name": lambda n : setattr(self, 'resource_name', n.get_str_value()),
-            "serial_number": lambda n : setattr(self, 'serial_number', n.get_str_value()),
-            "sku_number": lambda n : setattr(self, 'sku_number', n.get_str_value()),
-            "system_family": lambda n : setattr(self, 'system_family', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "productKey": lambda n : setattr(self, 'product_key', n.get_str_value()),
+            "purchaseOrderIdentifier": lambda n : setattr(self, 'purchase_order_identifier', n.get_str_value()),
+            "resourceName": lambda n : setattr(self, 'resource_name', n.get_str_value()),
+            "serialNumber": lambda n : setattr(self, 'serial_number', n.get_str_value()),
+            "skuNumber": lambda n : setattr(self, 'sku_number', n.get_str_value()),
+            "systemFamily": lambda n : setattr(self, 'system_family', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

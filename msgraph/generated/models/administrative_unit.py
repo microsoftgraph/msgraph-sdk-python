@@ -97,10 +97,10 @@ class AdministrativeUnit(directory_object.DirectoryObject):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "scoped_role_members": lambda n : setattr(self, 'scoped_role_members', n.get_collection_of_object_values(scoped_role_membership.ScopedRoleMembership)),
+            "scopedRoleMembers": lambda n : setattr(self, 'scoped_role_members', n.get_collection_of_object_values(scoped_role_membership.ScopedRoleMembership)),
             "visibility": lambda n : setattr(self, 'visibility', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

@@ -30,11 +30,8 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The postAttributeCollection property
         self._post_attribute_collection: Optional[identity_api_connector.IdentityApiConnector] = None
-        # The postFederationSignup property
         self._post_federation_signup: Optional[identity_api_connector.IdentityApiConnector] = None
     
     @staticmethod
@@ -56,15 +53,15 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "post_attribute_collection": lambda n : setattr(self, 'post_attribute_collection', n.get_object_value(identity_api_connector.IdentityApiConnector)),
-            "post_federation_signup": lambda n : setattr(self, 'post_federation_signup', n.get_object_value(identity_api_connector.IdentityApiConnector)),
+            "postAttributeCollection": lambda n : setattr(self, 'post_attribute_collection', n.get_object_value(identity_api_connector.IdentityApiConnector)),
+            "postFederationSignup": lambda n : setattr(self, 'post_federation_signup', n.get_object_value(identity_api_connector.IdentityApiConnector)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -72,7 +69,7 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -81,7 +78,7 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
     @property
     def post_attribute_collection(self,) -> Optional[identity_api_connector.IdentityApiConnector]:
         """
-        Gets the postAttributeCollection property value. The postAttributeCollection property
+        Gets the postAttributeCollection property value. 
         Returns: Optional[identity_api_connector.IdentityApiConnector]
         """
         return self._post_attribute_collection
@@ -89,7 +86,7 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
     @post_attribute_collection.setter
     def post_attribute_collection(self,value: Optional[identity_api_connector.IdentityApiConnector] = None) -> None:
         """
-        Sets the postAttributeCollection property value. The postAttributeCollection property
+        Sets the postAttributeCollection property value. 
         Args:
             value: Value to set for the postAttributeCollection property.
         """
@@ -98,7 +95,7 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
     @property
     def post_federation_signup(self,) -> Optional[identity_api_connector.IdentityApiConnector]:
         """
-        Gets the postFederationSignup property value. The postFederationSignup property
+        Gets the postFederationSignup property value. 
         Returns: Optional[identity_api_connector.IdentityApiConnector]
         """
         return self._post_federation_signup
@@ -106,7 +103,7 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
     @post_federation_signup.setter
     def post_federation_signup(self,value: Optional[identity_api_connector.IdentityApiConnector] = None) -> None:
         """
-        Sets the postFederationSignup property value. The postFederationSignup property
+        Sets the postFederationSignup property value. 
         Args:
             value: Value to set for the postFederationSignup property.
         """

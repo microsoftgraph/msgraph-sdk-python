@@ -31,7 +31,6 @@ class SimulationAutomation(entity.Entity):
         self._last_run_date_time: Optional[datetime] = None
         # Date and time of the upcoming run of the attack simulation automation.
         self._next_run_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # A collection of simulation automation runs.
         self._runs: Optional[List[simulation_automation_run.SimulationAutomationRun]] = None
@@ -124,14 +123,14 @@ class SimulationAutomation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(email_identity.EmailIdentity)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(email_identity.EmailIdentity)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(email_identity.EmailIdentity)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "last_run_date_time": lambda n : setattr(self, 'last_run_date_time', n.get_datetime_value()),
-            "next_run_date_time": lambda n : setattr(self, 'next_run_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(email_identity.EmailIdentity)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "lastRunDateTime": lambda n : setattr(self, 'last_run_date_time', n.get_datetime_value()),
+            "nextRunDateTime": lambda n : setattr(self, 'next_run_date_time', n.get_datetime_value()),
             "runs": lambda n : setattr(self, 'runs', n.get_collection_of_object_values(simulation_automation_run.SimulationAutomationRun)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(simulation_automation_status.SimulationAutomationStatus)),
         }

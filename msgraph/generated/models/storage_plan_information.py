@@ -28,7 +28,6 @@ class StoragePlanInformation(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Indicates whether there are higher storage quota plans available. Read-only.
         self._upgrade_available: Optional[bool] = None
@@ -52,14 +51,14 @@ class StoragePlanInformation(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "upgrade_available": lambda n : setattr(self, 'upgrade_available', n.get_bool_value()),
+            "upgradeAvailable": lambda n : setattr(self, 'upgrade_available', n.get_bool_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -67,7 +66,7 @@ class StoragePlanInformation(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

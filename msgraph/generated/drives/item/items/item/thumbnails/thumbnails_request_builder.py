@@ -66,7 +66,7 @@ class ThumbnailsRequestBuilder():
         """
         Create new navigation property to thumbnails for drives
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[thumbnail_set.ThumbnailSet]
         """
@@ -105,7 +105,7 @@ class ThumbnailsRequestBuilder():
         """
         Create new navigation property to thumbnails for drives
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -31,7 +31,6 @@ class EducationSubmissionResource(entity.Entity):
         super().__init__()
         # Pointer to the assignment from which this resource was copied. If this is null, the student uploaded the resource.
         self._assignment_resource_url: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Resource object.
         self._resource: Optional[education_resource.EducationResource] = None
@@ -54,7 +53,7 @@ class EducationSubmissionResource(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assignment_resource_url": lambda n : setattr(self, 'assignment_resource_url', n.get_str_value()),
+            "assignmentResourceUrl": lambda n : setattr(self, 'assignment_resource_url', n.get_str_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(education_resource.EducationResource)),
         }
         super_fields = super().get_field_deserializers()

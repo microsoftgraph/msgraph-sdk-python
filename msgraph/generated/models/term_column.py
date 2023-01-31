@@ -50,13 +50,10 @@ class TermColumn(AdditionalDataHolder, Parsable):
 
         # Specifies whether the column will allow more than one value.
         self._allow_multiple_values: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The parentTerm property
         self._parent_term: Optional[term.Term] = None
         # Specifies whether to display the entire term path or only the term label.
         self._show_fully_qualified_name: Optional[bool] = None
-        # The termSet property
         self._term_set: Optional[set.Set] = None
     
     @staticmethod
@@ -77,18 +74,18 @@ class TermColumn(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_multiple_values": lambda n : setattr(self, 'allow_multiple_values', n.get_bool_value()),
+            "allowMultipleValues": lambda n : setattr(self, 'allow_multiple_values', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "parent_term": lambda n : setattr(self, 'parent_term', n.get_object_value(term.Term)),
-            "show_fully_qualified_name": lambda n : setattr(self, 'show_fully_qualified_name', n.get_bool_value()),
-            "term_set": lambda n : setattr(self, 'term_set', n.get_object_value(set.Set)),
+            "parentTerm": lambda n : setattr(self, 'parent_term', n.get_object_value(term.Term)),
+            "showFullyQualifiedName": lambda n : setattr(self, 'show_fully_qualified_name', n.get_bool_value()),
+            "termSet": lambda n : setattr(self, 'term_set', n.get_object_value(set.Set)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -96,7 +93,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -105,7 +102,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
     @property
     def parent_term(self,) -> Optional[term.Term]:
         """
-        Gets the parentTerm property value. The parentTerm property
+        Gets the parentTerm property value. 
         Returns: Optional[term.Term]
         """
         return self._parent_term
@@ -113,7 +110,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
     @parent_term.setter
     def parent_term(self,value: Optional[term.Term] = None) -> None:
         """
-        Sets the parentTerm property value. The parentTerm property
+        Sets the parentTerm property value. 
         Args:
             value: Value to set for the parentTerm property.
         """
@@ -154,7 +151,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
     @property
     def term_set(self,) -> Optional[set.Set]:
         """
-        Gets the termSet property value. The termSet property
+        Gets the termSet property value. 
         Returns: Optional[set.Set]
         """
         return self._term_set
@@ -162,7 +159,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
     @term_set.setter
     def term_set(self,value: Optional[set.Set] = None) -> None:
         """
-        Sets the termSet property value. The termSet property
+        Sets the termSet property value. 
         Args:
             value: Value to set for the termSet property.
         """

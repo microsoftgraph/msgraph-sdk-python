@@ -49,7 +49,6 @@ class DeviceEvidence(alert_evidence.AlertEvidence):
         self._logged_on_users: Optional[List[logged_on_user.LoggedOnUser]] = None
         # A unique identifier assigned to a device by Microsoft Defender for Endpoint.
         self._mde_device_id: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The status of the machine onboarding to Microsoft Defender for Endpoint.The possible values are: insufficientInfo, onboarded, canBeOnboarded, unsupported, unknownFutureValue.
         self._onboarding_status: Optional[onboarding_status.OnboardingStatus] = None
@@ -137,21 +136,21 @@ class DeviceEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "azure_ad_device_id": lambda n : setattr(self, 'azure_ad_device_id', n.get_str_value()),
-            "defender_av_status": lambda n : setattr(self, 'defender_av_status', n.get_enum_value(defender_av_status.DefenderAvStatus)),
-            "device_dns_name": lambda n : setattr(self, 'device_dns_name', n.get_str_value()),
-            "first_seen_date_time": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
-            "health_status": lambda n : setattr(self, 'health_status', n.get_enum_value(device_health_status.DeviceHealthStatus)),
-            "logged_on_users": lambda n : setattr(self, 'logged_on_users', n.get_collection_of_object_values(logged_on_user.LoggedOnUser)),
-            "mde_device_id": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
-            "onboarding_status": lambda n : setattr(self, 'onboarding_status', n.get_enum_value(onboarding_status.OnboardingStatus)),
-            "os_build": lambda n : setattr(self, 'os_build', n.get_int_value()),
-            "os_platform": lambda n : setattr(self, 'os_platform', n.get_str_value()),
-            "rbac_group_id": lambda n : setattr(self, 'rbac_group_id', n.get_int_value()),
-            "rbac_group_name": lambda n : setattr(self, 'rbac_group_name', n.get_str_value()),
-            "risk_score": lambda n : setattr(self, 'risk_score', n.get_enum_value(device_risk_score.DeviceRiskScore)),
+            "azureAdDeviceId": lambda n : setattr(self, 'azure_ad_device_id', n.get_str_value()),
+            "defenderAvStatus": lambda n : setattr(self, 'defender_av_status', n.get_enum_value(defender_av_status.DefenderAvStatus)),
+            "deviceDnsName": lambda n : setattr(self, 'device_dns_name', n.get_str_value()),
+            "firstSeenDateTime": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
+            "healthStatus": lambda n : setattr(self, 'health_status', n.get_enum_value(device_health_status.DeviceHealthStatus)),
+            "loggedOnUsers": lambda n : setattr(self, 'logged_on_users', n.get_collection_of_object_values(logged_on_user.LoggedOnUser)),
+            "mdeDeviceId": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
+            "onboardingStatus": lambda n : setattr(self, 'onboarding_status', n.get_enum_value(onboarding_status.OnboardingStatus)),
+            "osBuild": lambda n : setattr(self, 'os_build', n.get_int_value()),
+            "osPlatform": lambda n : setattr(self, 'os_platform', n.get_str_value()),
+            "rbacGroupId": lambda n : setattr(self, 'rbac_group_id', n.get_int_value()),
+            "rbacGroupName": lambda n : setattr(self, 'rbac_group_name', n.get_str_value()),
+            "riskScore": lambda n : setattr(self, 'risk_score', n.get_enum_value(device_risk_score.DeviceRiskScore)),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
-            "vm_metadata": lambda n : setattr(self, 'vm_metadata', n.get_object_value(vm_metadata.VmMetadata)),
+            "vmMetadata": lambda n : setattr(self, 'vm_metadata', n.get_object_value(vm_metadata.VmMetadata)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

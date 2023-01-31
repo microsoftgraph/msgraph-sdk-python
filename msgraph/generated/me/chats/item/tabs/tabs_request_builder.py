@@ -66,7 +66,7 @@ class TabsRequestBuilder():
         """
         Add (pin) a tab to the specified chat. The corresponding app must already be installed in the chat.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[teams_tab.TeamsTab]
         """
@@ -105,7 +105,7 @@ class TabsRequestBuilder():
         """
         Add (pin) a tab to the specified chat. The corresponding app must already be installed in the chat.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

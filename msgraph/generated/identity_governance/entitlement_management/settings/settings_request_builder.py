@@ -74,7 +74,7 @@ class SettingsRequestBuilder():
         """
         Update an existing entitlementManagementSettings object to change one or more of its properties.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[entitlement_management_settings.EntitlementManagementSettings]
         """
@@ -129,7 +129,7 @@ class SettingsRequestBuilder():
         """
         Update an existing entitlementManagementSettings object to change one or more of its properties.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

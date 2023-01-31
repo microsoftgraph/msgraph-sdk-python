@@ -12,7 +12,6 @@ class PermissionGrantConditionSetCollectionResponse(base_collection_pagination_c
         Instantiates a new PermissionGrantConditionSetCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[permission_grant_condition_set.PermissionGrantConditionSet]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class PermissionGrantConditionSetCollectionResponse(base_collection_pagination_c
     @property
     def value(self,) -> Optional[List[permission_grant_condition_set.PermissionGrantConditionSet]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[permission_grant_condition_set.PermissionGrantConditionSet]]
         """
         return self._value
@@ -61,7 +60,7 @@ class PermissionGrantConditionSetCollectionResponse(base_collection_pagination_c
     @value.setter
     def value(self,value: Optional[List[permission_grant_condition_set.PermissionGrantConditionSet]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

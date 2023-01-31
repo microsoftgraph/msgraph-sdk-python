@@ -49,7 +49,6 @@ class PhysicalOfficeAddress(AdditionalDataHolder, Parsable):
         self._city: Optional[str] = None
         # The country or region. It's a free-format string value, for example, 'United States'.
         self._country_or_region: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Office location such as building and office number for an organizational contact.
         self._office_location: Optional[str] = None
@@ -96,10 +95,10 @@ class PhysicalOfficeAddress(AdditionalDataHolder, Parsable):
         """
         fields = {
             "city": lambda n : setattr(self, 'city', n.get_str_value()),
-            "country_or_region": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
+            "countryOrRegion": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "office_location": lambda n : setattr(self, 'office_location', n.get_str_value()),
-            "postal_code": lambda n : setattr(self, 'postal_code', n.get_str_value()),
+            "officeLocation": lambda n : setattr(self, 'office_location', n.get_str_value()),
+            "postalCode": lambda n : setattr(self, 'postal_code', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
             "street": lambda n : setattr(self, 'street', n.get_str_value()),
         }
@@ -108,7 +107,7 @@ class PhysicalOfficeAddress(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -116,7 +115,7 @@ class PhysicalOfficeAddress(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

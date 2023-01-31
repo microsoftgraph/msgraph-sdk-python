@@ -237,7 +237,6 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         self._issued_date_time: Optional[datetime] = None
         # The Timestamp of the last update.
         self._last_update_date_time: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # When operatingSystemKernelDebugging is enabled, the device is used in development and testing
         self._operating_system_kernel_debugging: Optional[str] = None
@@ -369,39 +368,39 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "attestation_identity_key": lambda n : setattr(self, 'attestation_identity_key', n.get_str_value()),
-            "bit_locker_status": lambda n : setattr(self, 'bit_locker_status', n.get_str_value()),
-            "boot_app_security_version": lambda n : setattr(self, 'boot_app_security_version', n.get_str_value()),
-            "boot_debugging": lambda n : setattr(self, 'boot_debugging', n.get_str_value()),
-            "boot_manager_security_version": lambda n : setattr(self, 'boot_manager_security_version', n.get_str_value()),
-            "boot_manager_version": lambda n : setattr(self, 'boot_manager_version', n.get_str_value()),
-            "boot_revision_list_info": lambda n : setattr(self, 'boot_revision_list_info', n.get_str_value()),
-            "code_integrity": lambda n : setattr(self, 'code_integrity', n.get_str_value()),
-            "code_integrity_check_version": lambda n : setattr(self, 'code_integrity_check_version', n.get_str_value()),
-            "code_integrity_policy": lambda n : setattr(self, 'code_integrity_policy', n.get_str_value()),
-            "content_namespace_url": lambda n : setattr(self, 'content_namespace_url', n.get_str_value()),
-            "content_version": lambda n : setattr(self, 'content_version', n.get_str_value()),
-            "data_excution_policy": lambda n : setattr(self, 'data_excution_policy', n.get_str_value()),
-            "device_health_attestation_status": lambda n : setattr(self, 'device_health_attestation_status', n.get_str_value()),
-            "early_launch_anti_malware_driver_protection": lambda n : setattr(self, 'early_launch_anti_malware_driver_protection', n.get_str_value()),
-            "health_attestation_supported_status": lambda n : setattr(self, 'health_attestation_supported_status', n.get_str_value()),
-            "health_status_mismatch_info": lambda n : setattr(self, 'health_status_mismatch_info', n.get_str_value()),
-            "issued_date_time": lambda n : setattr(self, 'issued_date_time', n.get_datetime_value()),
-            "last_update_date_time": lambda n : setattr(self, 'last_update_date_time', n.get_str_value()),
+            "attestationIdentityKey": lambda n : setattr(self, 'attestation_identity_key', n.get_str_value()),
+            "bitLockerStatus": lambda n : setattr(self, 'bit_locker_status', n.get_str_value()),
+            "bootAppSecurityVersion": lambda n : setattr(self, 'boot_app_security_version', n.get_str_value()),
+            "bootDebugging": lambda n : setattr(self, 'boot_debugging', n.get_str_value()),
+            "bootManagerSecurityVersion": lambda n : setattr(self, 'boot_manager_security_version', n.get_str_value()),
+            "bootManagerVersion": lambda n : setattr(self, 'boot_manager_version', n.get_str_value()),
+            "bootRevisionListInfo": lambda n : setattr(self, 'boot_revision_list_info', n.get_str_value()),
+            "codeIntegrity": lambda n : setattr(self, 'code_integrity', n.get_str_value()),
+            "codeIntegrityCheckVersion": lambda n : setattr(self, 'code_integrity_check_version', n.get_str_value()),
+            "codeIntegrityPolicy": lambda n : setattr(self, 'code_integrity_policy', n.get_str_value()),
+            "contentNamespaceUrl": lambda n : setattr(self, 'content_namespace_url', n.get_str_value()),
+            "contentVersion": lambda n : setattr(self, 'content_version', n.get_str_value()),
+            "dataExcutionPolicy": lambda n : setattr(self, 'data_excution_policy', n.get_str_value()),
+            "deviceHealthAttestationStatus": lambda n : setattr(self, 'device_health_attestation_status', n.get_str_value()),
+            "earlyLaunchAntiMalwareDriverProtection": lambda n : setattr(self, 'early_launch_anti_malware_driver_protection', n.get_str_value()),
+            "healthAttestationSupportedStatus": lambda n : setattr(self, 'health_attestation_supported_status', n.get_str_value()),
+            "healthStatusMismatchInfo": lambda n : setattr(self, 'health_status_mismatch_info', n.get_str_value()),
+            "issuedDateTime": lambda n : setattr(self, 'issued_date_time', n.get_datetime_value()),
+            "lastUpdateDateTime": lambda n : setattr(self, 'last_update_date_time', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "operating_system_kernel_debugging": lambda n : setattr(self, 'operating_system_kernel_debugging', n.get_str_value()),
-            "operating_system_rev_list_info": lambda n : setattr(self, 'operating_system_rev_list_info', n.get_str_value()),
+            "operatingSystemKernelDebugging": lambda n : setattr(self, 'operating_system_kernel_debugging', n.get_str_value()),
+            "operatingSystemRevListInfo": lambda n : setattr(self, 'operating_system_rev_list_info', n.get_str_value()),
             "pcr0": lambda n : setattr(self, 'pcr0', n.get_str_value()),
-            "pcr_hash_algorithm": lambda n : setattr(self, 'pcr_hash_algorithm', n.get_str_value()),
-            "reset_count": lambda n : setattr(self, 'reset_count', n.get_int_value()),
-            "restart_count": lambda n : setattr(self, 'restart_count', n.get_int_value()),
-            "safe_mode": lambda n : setattr(self, 'safe_mode', n.get_str_value()),
-            "secure_boot": lambda n : setattr(self, 'secure_boot', n.get_str_value()),
-            "secure_boot_configuration_policy_finger_print": lambda n : setattr(self, 'secure_boot_configuration_policy_finger_print', n.get_str_value()),
-            "test_signing": lambda n : setattr(self, 'test_signing', n.get_str_value()),
-            "tpm_version": lambda n : setattr(self, 'tpm_version', n.get_str_value()),
-            "virtual_secure_mode": lambda n : setattr(self, 'virtual_secure_mode', n.get_str_value()),
-            "windows_p_e": lambda n : setattr(self, 'windows_p_e', n.get_str_value()),
+            "pcrHashAlgorithm": lambda n : setattr(self, 'pcr_hash_algorithm', n.get_str_value()),
+            "resetCount": lambda n : setattr(self, 'reset_count', n.get_int_value()),
+            "restartCount": lambda n : setattr(self, 'restart_count', n.get_int_value()),
+            "safeMode": lambda n : setattr(self, 'safe_mode', n.get_str_value()),
+            "secureBoot": lambda n : setattr(self, 'secure_boot', n.get_str_value()),
+            "secureBootConfigurationPolicyFingerPrint": lambda n : setattr(self, 'secure_boot_configuration_policy_finger_print', n.get_str_value()),
+            "testSigning": lambda n : setattr(self, 'test_signing', n.get_str_value()),
+            "tpmVersion": lambda n : setattr(self, 'tpm_version', n.get_str_value()),
+            "virtualSecureMode": lambda n : setattr(self, 'virtual_secure_mode', n.get_str_value()),
+            "windowsPE": lambda n : setattr(self, 'windows_p_e', n.get_str_value()),
         }
         return fields
     
@@ -476,7 +475,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -484,7 +483,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

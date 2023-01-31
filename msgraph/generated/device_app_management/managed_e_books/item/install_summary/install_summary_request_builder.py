@@ -74,7 +74,7 @@ class InstallSummaryRequestBuilder():
         """
         Update the navigation property installSummary in deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[e_book_install_summary.EBookInstallSummary]
         """
@@ -129,7 +129,7 @@ class InstallSummaryRequestBuilder():
         """
         Update the navigation property installSummary in deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

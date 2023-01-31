@@ -12,7 +12,6 @@ class WorkbookTableRowCollectionResponse(base_collection_pagination_count_respon
         Instantiates a new WorkbookTableRowCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[workbook_table_row.WorkbookTableRow]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class WorkbookTableRowCollectionResponse(base_collection_pagination_count_respon
     @property
     def value(self,) -> Optional[List[workbook_table_row.WorkbookTableRow]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[workbook_table_row.WorkbookTableRow]]
         """
         return self._value
@@ -61,7 +60,7 @@ class WorkbookTableRowCollectionResponse(base_collection_pagination_count_respon
     @value.setter
     def value(self,value: Optional[List[workbook_table_row.WorkbookTableRow]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

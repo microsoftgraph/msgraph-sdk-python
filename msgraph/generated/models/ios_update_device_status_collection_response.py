@@ -12,7 +12,6 @@ class IosUpdateDeviceStatusCollectionResponse(base_collection_pagination_count_r
         Instantiates a new IosUpdateDeviceStatusCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[ios_update_device_status.IosUpdateDeviceStatus]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class IosUpdateDeviceStatusCollectionResponse(base_collection_pagination_count_r
     @property
     def value(self,) -> Optional[List[ios_update_device_status.IosUpdateDeviceStatus]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[ios_update_device_status.IosUpdateDeviceStatus]]
         """
         return self._value
@@ -61,7 +60,7 @@ class IosUpdateDeviceStatusCollectionResponse(base_collection_pagination_count_r
     @value.setter
     def value(self,value: Optional[List[ios_update_device_status.IosUpdateDeviceStatus]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

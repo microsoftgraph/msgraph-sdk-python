@@ -20,7 +20,7 @@ class TodoTask(entity.Entity):
     @property
     def attachments(self,) -> Optional[List[attachment_base.AttachmentBase]]:
         """
-        Gets the attachments property value. The attachments property
+        Gets the attachments property value. 
         Returns: Optional[List[attachment_base.AttachmentBase]]
         """
         return self._attachments
@@ -28,7 +28,7 @@ class TodoTask(entity.Entity):
     @attachments.setter
     def attachments(self,value: Optional[List[attachment_base.AttachmentBase]] = None) -> None:
         """
-        Sets the attachments property value. The attachments property
+        Sets the attachments property value. 
         Args:
             value: Value to set for the attachments property.
         """
@@ -37,7 +37,7 @@ class TodoTask(entity.Entity):
     @property
     def attachment_sessions(self,) -> Optional[List[attachment_session.AttachmentSession]]:
         """
-        Gets the attachmentSessions property value. The attachmentSessions property
+        Gets the attachmentSessions property value. 
         Returns: Optional[List[attachment_session.AttachmentSession]]
         """
         return self._attachment_sessions
@@ -45,7 +45,7 @@ class TodoTask(entity.Entity):
     @attachment_sessions.setter
     def attachment_sessions(self,value: Optional[List[attachment_session.AttachmentSession]] = None) -> None:
         """
-        Sets the attachmentSessions property value. The attachmentSessions property
+        Sets the attachmentSessions property value. 
         Args:
             value: Value to set for the attachmentSessions property.
         """
@@ -141,9 +141,7 @@ class TodoTask(entity.Entity):
         Instantiates a new todoTask and sets the default values.
         """
         super().__init__()
-        # The attachments property
         self._attachments: Optional[List[attachment_base.AttachmentBase]] = None
-        # The attachmentSessions property
         self._attachment_sessions: Optional[List[attachment_session.AttachmentSession]] = None
         # The task body that typically contains information about the task.
         self._body: Optional[item_body.ItemBody] = None
@@ -161,9 +159,7 @@ class TodoTask(entity.Entity):
         self._due_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
         # The collection of open extensions defined for the task. Nullable.
         self._extensions: Optional[List[extension.Extension]] = None
-        # The hasAttachments property
         self._has_attachments: Optional[bool] = None
-        # The importance property
         self._importance: Optional[importance.Importance] = None
         # Set to true if an alert is set to remind the user of the task.
         self._is_reminder_on: Optional[bool] = None
@@ -171,15 +167,12 @@ class TodoTask(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # A collection of resources linked to the task.
         self._linked_resources: Optional[List[linked_resource.LinkedResource]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The recurrence pattern for the task.
         self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
         # The date and time in the specified time zone for a reminder alert of the task to occur.
         self._reminder_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The startDateTime property
         self._start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The status property
         self._status: Optional[task_status.TaskStatus] = None
         # A brief description of the task.
         self._title: Optional[str] = None
@@ -254,23 +247,23 @@ class TodoTask(entity.Entity):
         """
         fields = {
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(attachment_base.AttachmentBase)),
-            "attachment_sessions": lambda n : setattr(self, 'attachment_sessions', n.get_collection_of_object_values(attachment_session.AttachmentSession)),
+            "attachmentSessions": lambda n : setattr(self, 'attachment_sessions', n.get_collection_of_object_values(attachment_session.AttachmentSession)),
             "body": lambda n : setattr(self, 'body', n.get_object_value(item_body.ItemBody)),
-            "body_last_modified_date_time": lambda n : setattr(self, 'body_last_modified_date_time', n.get_datetime_value()),
+            "bodyLastModifiedDateTime": lambda n : setattr(self, 'body_last_modified_date_time', n.get_datetime_value()),
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_primitive_values(str)),
-            "checklist_items": lambda n : setattr(self, 'checklist_items', n.get_collection_of_object_values(checklist_item.ChecklistItem)),
-            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "due_date_time": lambda n : setattr(self, 'due_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "checklistItems": lambda n : setattr(self, 'checklist_items', n.get_collection_of_object_values(checklist_item.ChecklistItem)),
+            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "dueDateTime": lambda n : setattr(self, 'due_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
-            "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
+            "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
             "importance": lambda n : setattr(self, 'importance', n.get_enum_value(importance.Importance)),
-            "is_reminder_on": lambda n : setattr(self, 'is_reminder_on', n.get_bool_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "linked_resources": lambda n : setattr(self, 'linked_resources', n.get_collection_of_object_values(linked_resource.LinkedResource)),
+            "isReminderOn": lambda n : setattr(self, 'is_reminder_on', n.get_bool_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "linkedResources": lambda n : setattr(self, 'linked_resources', n.get_collection_of_object_values(linked_resource.LinkedResource)),
             "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(patterned_recurrence.PatternedRecurrence)),
-            "reminder_date_time": lambda n : setattr(self, 'reminder_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "reminderDateTime": lambda n : setattr(self, 'reminder_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(task_status.TaskStatus)),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
         }
@@ -281,7 +274,7 @@ class TodoTask(entity.Entity):
     @property
     def has_attachments(self,) -> Optional[bool]:
         """
-        Gets the hasAttachments property value. The hasAttachments property
+        Gets the hasAttachments property value. 
         Returns: Optional[bool]
         """
         return self._has_attachments
@@ -289,7 +282,7 @@ class TodoTask(entity.Entity):
     @has_attachments.setter
     def has_attachments(self,value: Optional[bool] = None) -> None:
         """
-        Sets the hasAttachments property value. The hasAttachments property
+        Sets the hasAttachments property value. 
         Args:
             value: Value to set for the hasAttachments property.
         """
@@ -298,7 +291,7 @@ class TodoTask(entity.Entity):
     @property
     def importance(self,) -> Optional[importance.Importance]:
         """
-        Gets the importance property value. The importance property
+        Gets the importance property value. 
         Returns: Optional[importance.Importance]
         """
         return self._importance
@@ -306,7 +299,7 @@ class TodoTask(entity.Entity):
     @importance.setter
     def importance(self,value: Optional[importance.Importance] = None) -> None:
         """
-        Sets the importance property value. The importance property
+        Sets the importance property value. 
         Args:
             value: Value to set for the importance property.
         """
@@ -430,7 +423,7 @@ class TodoTask(entity.Entity):
     @property
     def start_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
-        Gets the startDateTime property value. The startDateTime property
+        Gets the startDateTime property value. 
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._start_date_time
@@ -438,7 +431,7 @@ class TodoTask(entity.Entity):
     @start_date_time.setter
     def start_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
-        Sets the startDateTime property value. The startDateTime property
+        Sets the startDateTime property value. 
         Args:
             value: Value to set for the startDateTime property.
         """
@@ -447,7 +440,7 @@ class TodoTask(entity.Entity):
     @property
     def status(self,) -> Optional[task_status.TaskStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[task_status.TaskStatus]
         """
         return self._status
@@ -455,7 +448,7 @@ class TodoTask(entity.Entity):
     @status.setter
     def status(self,value: Optional[task_status.TaskStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

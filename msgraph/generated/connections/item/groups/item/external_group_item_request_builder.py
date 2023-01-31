@@ -26,10 +26,11 @@ class ExternalGroupItemRequestBuilder():
         """
         return members_request_builder.MembersRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, external_group_id: Optional[str] = None) -> None:
         """
         Instantiates a new ExternalGroupItemRequestBuilder and sets the default values.
         Args:
+            externalGroupId: key: id of externalGroup
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -41,6 +42,7 @@ class ExternalGroupItemRequestBuilder():
         self.url_template: str = "{+baseurl}/connections/{externalConnection%2Did}/groups/{externalGroup%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["externalGroup%2Did"] = externalGroupId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -96,7 +98,7 @@ class ExternalGroupItemRequestBuilder():
         """
         Update the navigation property groups in connections
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[external_group.ExternalGroup]
         """
@@ -151,7 +153,7 @@ class ExternalGroupItemRequestBuilder():
         """
         Update the navigation property groups in connections
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

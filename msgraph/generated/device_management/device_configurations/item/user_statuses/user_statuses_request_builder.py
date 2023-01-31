@@ -66,7 +66,7 @@ class UserStatusesRequestBuilder():
         """
         Create new navigation property to userStatuses for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[device_configuration_user_status.DeviceConfigurationUserStatus]
         """
@@ -105,7 +105,7 @@ class UserStatusesRequestBuilder():
         """
         Create new navigation property to userStatuses for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

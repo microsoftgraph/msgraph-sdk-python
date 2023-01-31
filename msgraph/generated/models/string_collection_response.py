@@ -11,7 +11,6 @@ class StringCollectionResponse(base_collection_pagination_count_response.BaseCol
         Instantiates a new StringCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[str]] = None
     
     @staticmethod
@@ -52,7 +51,7 @@ class StringCollectionResponse(base_collection_pagination_count_response.BaseCol
     @property
     def value(self,) -> Optional[List[str]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[str]]
         """
         return self._value
@@ -60,7 +59,7 @@ class StringCollectionResponse(base_collection_pagination_count_response.BaseCol
     @value.setter
     def value(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

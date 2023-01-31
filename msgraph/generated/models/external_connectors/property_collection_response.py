@@ -12,7 +12,6 @@ class PropertyCollectionResponse(base_collection_pagination_count_response.BaseC
         Instantiates a new PropertyCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[property_.Property_]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class PropertyCollectionResponse(base_collection_pagination_count_response.BaseC
     @property
     def value(self,) -> Optional[List[property_.Property_]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[property_.Property_]]
         """
         return self._value
@@ -61,7 +60,7 @@ class PropertyCollectionResponse(base_collection_pagination_count_response.BaseC
     @value.setter
     def value(self,value: Optional[List[property_.Property_]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

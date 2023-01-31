@@ -66,7 +66,7 @@ class ProvisioningRequestBuilder():
         """
         Create new navigation property to provisioning for auditLogs
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[provisioning_object_summary.ProvisioningObjectSummary]
         """
@@ -105,7 +105,7 @@ class ProvisioningRequestBuilder():
         """
         Create new navigation property to provisioning for auditLogs
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

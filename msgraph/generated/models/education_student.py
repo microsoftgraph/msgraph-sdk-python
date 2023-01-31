@@ -58,7 +58,6 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         self._grade: Optional[str] = None
         # Year the student is graduating from the school.
         self._graduation_year: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Student Number.
         self._student_number: Optional[str] = None
@@ -115,13 +114,13 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "birth_date": lambda n : setattr(self, 'birth_date', n.get_object_value(Date)),
-            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "birthDate": lambda n : setattr(self, 'birth_date', n.get_object_value(Date)),
+            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
             "gender": lambda n : setattr(self, 'gender', n.get_enum_value(education_gender.EducationGender)),
             "grade": lambda n : setattr(self, 'grade', n.get_str_value()),
-            "graduation_year": lambda n : setattr(self, 'graduation_year', n.get_str_value()),
+            "graduationYear": lambda n : setattr(self, 'graduation_year', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "student_number": lambda n : setattr(self, 'student_number', n.get_str_value()),
+            "studentNumber": lambda n : setattr(self, 'student_number', n.get_str_value()),
         }
         return fields
     
@@ -162,7 +161,7 @@ class EducationStudent(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -170,7 +169,7 @@ class EducationStudent(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

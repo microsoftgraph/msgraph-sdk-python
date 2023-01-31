@@ -53,7 +53,7 @@ class AttributeRuleMembers(subject_set.SubjectSet):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "membership_rule": lambda n : setattr(self, 'membership_rule', n.get_str_value()),
+            "membershipRule": lambda n : setattr(self, 'membership_rule', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

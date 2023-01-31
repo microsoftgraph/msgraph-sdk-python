@@ -75,7 +75,6 @@ class MobileApp(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # Notes for the app.
         self._notes: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The owner of the app.
         self._owner: Optional[str] = None
@@ -174,19 +173,19 @@ class MobileApp(entity.Entity):
         fields = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(mobile_app_assignment.MobileAppAssignment)),
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_object_values(mobile_app_category.MobileAppCategory)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "developer": lambda n : setattr(self, 'developer', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "information_url": lambda n : setattr(self, 'information_url', n.get_str_value()),
-            "is_featured": lambda n : setattr(self, 'is_featured', n.get_bool_value()),
-            "large_icon": lambda n : setattr(self, 'large_icon', n.get_object_value(mime_content.MimeContent)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "informationUrl": lambda n : setattr(self, 'information_url', n.get_str_value()),
+            "isFeatured": lambda n : setattr(self, 'is_featured', n.get_bool_value()),
+            "largeIcon": lambda n : setattr(self, 'large_icon', n.get_object_value(mime_content.MimeContent)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
             "owner": lambda n : setattr(self, 'owner', n.get_str_value()),
-            "privacy_information_url": lambda n : setattr(self, 'privacy_information_url', n.get_str_value()),
+            "privacyInformationUrl": lambda n : setattr(self, 'privacy_information_url', n.get_str_value()),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
-            "publishing_state": lambda n : setattr(self, 'publishing_state', n.get_enum_value(mobile_app_publishing_state.MobileAppPublishingState)),
+            "publishingState": lambda n : setattr(self, 'publishing_state', n.get_enum_value(mobile_app_publishing_state.MobileAppPublishingState)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

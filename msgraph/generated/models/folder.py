@@ -49,7 +49,6 @@ class Folder(AdditionalDataHolder, Parsable):
 
         # Number of children contained immediately within this container.
         self._child_count: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # A collection of properties defining the recommended view for the folder.
         self._view: Optional[folder_view.FolderView] = None
@@ -72,7 +71,7 @@ class Folder(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "child_count": lambda n : setattr(self, 'child_count', n.get_int_value()),
+            "childCount": lambda n : setattr(self, 'child_count', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "view": lambda n : setattr(self, 'view', n.get_object_value(folder_view.FolderView)),
         }
@@ -81,7 +80,7 @@ class Folder(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -89,7 +88,7 @@ class Folder(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

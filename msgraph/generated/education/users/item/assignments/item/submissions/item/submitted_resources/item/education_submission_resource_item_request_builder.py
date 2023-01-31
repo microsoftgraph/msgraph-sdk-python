@@ -17,10 +17,11 @@ class EducationSubmissionResourceItemRequestBuilder():
     """
     Provides operations to manage the submittedResources property of the microsoft.graph.educationSubmission entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, education_submission_resource_id: Optional[str] = None) -> None:
         """
         Instantiates a new EducationSubmissionResourceItemRequestBuilder and sets the default values.
         Args:
+            educationSubmissionResourceId: key: id of educationSubmissionResource
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class EducationSubmissionResourceItemRequestBuilder():
         self.url_template: str = "{+baseurl}/education/users/{educationUser%2Did}/assignments/{educationAssignment%2Did}/submissions/{educationSubmission%2Did}/submittedResources/{educationSubmissionResource%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["educationSubmissionResource%2Did"] = educationSubmissionResourceId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -74,7 +76,7 @@ class EducationSubmissionResourceItemRequestBuilder():
         """
         Update the navigation property submittedResources in education
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_submission_resource.EducationSubmissionResource]
         """
@@ -129,7 +131,7 @@ class EducationSubmissionResourceItemRequestBuilder():
         """
         Update the navigation property submittedResources in education
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

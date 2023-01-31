@@ -72,8 +72,8 @@ class EdiscoveryReviewTag(tag.Tag):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "child_selectability": lambda n : setattr(self, 'child_selectability', n.get_enum_value(child_selectability.ChildSelectability)),
-            "child_tags": lambda n : setattr(self, 'child_tags', n.get_collection_of_object_values(ediscovery_review_tag.EdiscoveryReviewTag)),
+            "childSelectability": lambda n : setattr(self, 'child_selectability', n.get_enum_value(child_selectability.ChildSelectability)),
+            "childTags": lambda n : setattr(self, 'child_tags', n.get_collection_of_object_values(ediscovery_review_tag.EdiscoveryReviewTag)),
             "parent": lambda n : setattr(self, 'parent', n.get_object_value(ediscovery_review_tag.EdiscoveryReviewTag)),
         }
         super_fields = super().get_field_deserializers()

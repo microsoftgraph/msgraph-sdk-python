@@ -12,7 +12,6 @@ class InferenceClassification(entity.Entity):
         Instantiates a new inferenceClassification and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         self._overrides: Optional[List[inference_classification_override.InferenceClassificationOverride]] = None

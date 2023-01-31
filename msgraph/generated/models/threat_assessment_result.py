@@ -17,7 +17,6 @@ class ThreatAssessmentResult(entity.Entity):
         self._created_date_time: Optional[datetime] = None
         # The result message for each threat assessment.
         self._message: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The threat assessment result type. Possible values are: checkPolicy, rescan.
         self._result_type: Optional[threat_assessment_result_type.ThreatAssessmentResultType] = None
@@ -57,9 +56,9 @@ class ThreatAssessmentResult(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
-            "result_type": lambda n : setattr(self, 'result_type', n.get_enum_value(threat_assessment_result_type.ThreatAssessmentResultType)),
+            "resultType": lambda n : setattr(self, 'result_type', n.get_enum_value(threat_assessment_result_type.ThreatAssessmentResultType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

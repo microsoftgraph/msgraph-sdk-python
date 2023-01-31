@@ -12,7 +12,6 @@ class MicrosoftAccountUserConversationMemberCollectionResponse(base_collection_p
         Instantiates a new MicrosoftAccountUserConversationMemberCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[microsoft_account_user_conversation_member.MicrosoftAccountUserConversationMember]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class MicrosoftAccountUserConversationMemberCollectionResponse(base_collection_p
     @property
     def value(self,) -> Optional[List[microsoft_account_user_conversation_member.MicrosoftAccountUserConversationMember]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[microsoft_account_user_conversation_member.MicrosoftAccountUserConversationMember]]
         """
         return self._value
@@ -61,7 +60,7 @@ class MicrosoftAccountUserConversationMemberCollectionResponse(base_collection_p
     @value.setter
     def value(self,value: Optional[List[microsoft_account_user_conversation_member.MicrosoftAccountUserConversationMember]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -39,11 +39,9 @@ class AuthenticationMethodsPolicy(entity.Entity):
         self._display_name: Optional[str] = None
         # The date and time of the last update to the policy. Read-only.
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The version of the policy in use. Read-only.
         self._policy_version: Optional[str] = None
-        # The reconfirmationInDays property
         self._reconfirmation_in_days: Optional[int] = None
         # Enforce registration at sign-in time. This property can be used to remind users to set up targeted authentication methods.
         self._registration_enforcement: Optional[registration_enforcement.RegistrationEnforcement] = None
@@ -100,13 +98,13 @@ class AuthenticationMethodsPolicy(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "authentication_method_configurations": lambda n : setattr(self, 'authentication_method_configurations', n.get_collection_of_object_values(authentication_method_configuration.AuthenticationMethodConfiguration)),
+            "authenticationMethodConfigurations": lambda n : setattr(self, 'authentication_method_configurations', n.get_collection_of_object_values(authentication_method_configuration.AuthenticationMethodConfiguration)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "policy_version": lambda n : setattr(self, 'policy_version', n.get_str_value()),
-            "reconfirmation_in_days": lambda n : setattr(self, 'reconfirmation_in_days', n.get_int_value()),
-            "registration_enforcement": lambda n : setattr(self, 'registration_enforcement', n.get_object_value(registration_enforcement.RegistrationEnforcement)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "policyVersion": lambda n : setattr(self, 'policy_version', n.get_str_value()),
+            "reconfirmationInDays": lambda n : setattr(self, 'reconfirmation_in_days', n.get_int_value()),
+            "registrationEnforcement": lambda n : setattr(self, 'registration_enforcement', n.get_object_value(registration_enforcement.RegistrationEnforcement)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -149,7 +147,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
     @property
     def reconfirmation_in_days(self,) -> Optional[int]:
         """
-        Gets the reconfirmationInDays property value. The reconfirmationInDays property
+        Gets the reconfirmationInDays property value. 
         Returns: Optional[int]
         """
         return self._reconfirmation_in_days
@@ -157,7 +155,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
     @reconfirmation_in_days.setter
     def reconfirmation_in_days(self,value: Optional[int] = None) -> None:
         """
-        Sets the reconfirmationInDays property value. The reconfirmationInDays property
+        Sets the reconfirmationInDays property value. 
         Args:
             value: Value to set for the reconfirmationInDays property.
         """

@@ -66,7 +66,7 @@ class TimeOffReasonsRequestBuilder():
         """
         Create a new timeOffReason.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[time_off_reason.TimeOffReason]
         """
@@ -105,7 +105,7 @@ class TimeOffReasonsRequestBuilder():
         """
         Create a new timeOffReason.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

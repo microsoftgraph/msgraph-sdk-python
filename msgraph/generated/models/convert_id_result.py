@@ -32,7 +32,6 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
 
         # An error object indicating the reason for the conversion failure. This value is not present if the conversion succeeded.
         self._error_details: Optional[generic_error.GenericError] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The identifier that was converted. This value is the original, un-converted identifier.
         self._source_id: Optional[str] = None
@@ -74,17 +73,17 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "error_details": lambda n : setattr(self, 'error_details', n.get_object_value(generic_error.GenericError)),
+            "errorDetails": lambda n : setattr(self, 'error_details', n.get_object_value(generic_error.GenericError)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "source_id": lambda n : setattr(self, 'source_id', n.get_str_value()),
-            "target_id": lambda n : setattr(self, 'target_id', n.get_str_value()),
+            "sourceId": lambda n : setattr(self, 'source_id', n.get_str_value()),
+            "targetId": lambda n : setattr(self, 'target_id', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -92,7 +91,7 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -66,7 +66,7 @@ class HistoryDefinitionsRequestBuilder():
         """
         Create a new accessReviewHistoryDefinition object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[access_review_history_definition.AccessReviewHistoryDefinition]
         """
@@ -105,7 +105,7 @@ class HistoryDefinitionsRequestBuilder():
         """
         Create a new accessReviewHistoryDefinition object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

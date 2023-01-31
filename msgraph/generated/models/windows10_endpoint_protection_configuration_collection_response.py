@@ -12,7 +12,6 @@ class Windows10EndpointProtectionConfigurationCollectionResponse(base_collection
         Instantiates a new Windows10EndpointProtectionConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[windows10_endpoint_protection_configuration.Windows10EndpointProtectionConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class Windows10EndpointProtectionConfigurationCollectionResponse(base_collection
     @property
     def value(self,) -> Optional[List[windows10_endpoint_protection_configuration.Windows10EndpointProtectionConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[windows10_endpoint_protection_configuration.Windows10EndpointProtectionConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class Windows10EndpointProtectionConfigurationCollectionResponse(base_collection
     @value.setter
     def value(self,value: Optional[List[windows10_endpoint_protection_configuration.Windows10EndpointProtectionConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

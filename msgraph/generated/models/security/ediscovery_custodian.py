@@ -82,12 +82,12 @@ class EdiscoveryCustodian(data_source_container.DataSourceContainer):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "acknowledged_date_time": lambda n : setattr(self, 'acknowledged_date_time', n.get_datetime_value()),
+            "acknowledgedDateTime": lambda n : setattr(self, 'acknowledged_date_time', n.get_datetime_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "last_index_operation": lambda n : setattr(self, 'last_index_operation', n.get_object_value(ediscovery_index_operation.EdiscoveryIndexOperation)),
-            "site_sources": lambda n : setattr(self, 'site_sources', n.get_collection_of_object_values(site_source.SiteSource)),
-            "unified_group_sources": lambda n : setattr(self, 'unified_group_sources', n.get_collection_of_object_values(unified_group_source.UnifiedGroupSource)),
-            "user_sources": lambda n : setattr(self, 'user_sources', n.get_collection_of_object_values(user_source.UserSource)),
+            "lastIndexOperation": lambda n : setattr(self, 'last_index_operation', n.get_object_value(ediscovery_index_operation.EdiscoveryIndexOperation)),
+            "siteSources": lambda n : setattr(self, 'site_sources', n.get_collection_of_object_values(site_source.SiteSource)),
+            "unifiedGroupSources": lambda n : setattr(self, 'unified_group_sources', n.get_collection_of_object_values(unified_group_source.UnifiedGroupSource)),
+            "userSources": lambda n : setattr(self, 'user_sources', n.get_collection_of_object_values(user_source.UserSource)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

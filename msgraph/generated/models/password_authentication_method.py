@@ -53,7 +53,7 @@ class PasswordAuthenticationMethod(authentication_method.AuthenticationMethod):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "password": lambda n : setattr(self, 'password', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

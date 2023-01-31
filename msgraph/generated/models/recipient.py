@@ -32,7 +32,6 @@ class Recipient(AdditionalDataHolder, Parsable):
 
         # The recipient's email address.
         self._email_address: Optional[email_address.EmailAddress] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -70,7 +69,7 @@ class Recipient(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "email_address": lambda n : setattr(self, 'email_address', n.get_object_value(email_address.EmailAddress)),
+            "emailAddress": lambda n : setattr(self, 'email_address', n.get_object_value(email_address.EmailAddress)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -78,7 +77,7 @@ class Recipient(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -86,7 +85,7 @@ class Recipient(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

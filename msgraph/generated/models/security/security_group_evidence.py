@@ -13,7 +13,6 @@ class SecurityGroupEvidence(alert_evidence.AlertEvidence):
         super().__init__()
         # The name of the security group.
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Unique identifier of the security group.
         self._security_group_id: Optional[str] = None
@@ -53,8 +52,8 @@ class SecurityGroupEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "security_group_id": lambda n : setattr(self, 'security_group_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "securityGroupId": lambda n : setattr(self, 'security_group_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

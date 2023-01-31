@@ -12,7 +12,6 @@ class ImportedWindowsAutopilotDeviceIdentityCollectionResponse(base_collection_p
         Instantiates a new ImportedWindowsAutopilotDeviceIdentityCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ImportedWindowsAutopilotDeviceIdentityCollectionResponse(base_collection_p
     @property
     def value(self,) -> Optional[List[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ImportedWindowsAutopilotDeviceIdentityCollectionResponse(base_collection_p
     @value.setter
     def value(self,value: Optional[List[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

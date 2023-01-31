@@ -16,9 +16,7 @@ class WorkbookComment(entity.Entity):
         self._content: Optional[str] = None
         # Indicates the type for the comment.
         self._content_type: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The replies property
         self._replies: Optional[List[workbook_comment_reply.WorkbookCommentReply]] = None
     
     @property
@@ -74,7 +72,7 @@ class WorkbookComment(entity.Entity):
         """
         fields = {
             "content": lambda n : setattr(self, 'content', n.get_str_value()),
-            "content_type": lambda n : setattr(self, 'content_type', n.get_str_value()),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
             "replies": lambda n : setattr(self, 'replies', n.get_collection_of_object_values(workbook_comment_reply.WorkbookCommentReply)),
         }
         super_fields = super().get_field_deserializers()
@@ -84,7 +82,7 @@ class WorkbookComment(entity.Entity):
     @property
     def replies(self,) -> Optional[List[workbook_comment_reply.WorkbookCommentReply]]:
         """
-        Gets the replies property value. The replies property
+        Gets the replies property value. 
         Returns: Optional[List[workbook_comment_reply.WorkbookCommentReply]]
         """
         return self._replies
@@ -92,7 +90,7 @@ class WorkbookComment(entity.Entity):
     @replies.setter
     def replies(self,value: Optional[List[workbook_comment_reply.WorkbookCommentReply]] = None) -> None:
         """
-        Sets the replies property value. The replies property
+        Sets the replies property value. 
         Args:
             value: Value to set for the replies property.
         """

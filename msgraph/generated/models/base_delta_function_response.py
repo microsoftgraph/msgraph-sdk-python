@@ -28,9 +28,7 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataDeltaLink property
         self._odata_delta_link: Optional[str] = None
-        # The OdataNextLink property
         self._odata_next_link: Optional[str] = None
     
     @staticmethod
@@ -59,7 +57,7 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, Parsable):
     @property
     def odata_delta_link(self,) -> Optional[str]:
         """
-        Gets the @odata.deltaLink property value. The OdataDeltaLink property
+        Gets the @odata.deltaLink property value. 
         Returns: Optional[str]
         """
         return self._odata_delta_link
@@ -67,7 +65,7 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, Parsable):
     @odata_delta_link.setter
     def odata_delta_link(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.deltaLink property value. The OdataDeltaLink property
+        Sets the @odata.deltaLink property value. 
         Args:
             value: Value to set for the OdataDeltaLink property.
         """
@@ -76,7 +74,7 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, Parsable):
     @property
     def odata_next_link(self,) -> Optional[str]:
         """
-        Gets the @odata.nextLink property value. The OdataNextLink property
+        Gets the @odata.nextLink property value. 
         Returns: Optional[str]
         """
         return self._odata_next_link
@@ -84,7 +82,7 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, Parsable):
     @odata_next_link.setter
     def odata_next_link(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.nextLink property value. The OdataNextLink property
+        Sets the @odata.nextLink property value. 
         Args:
             value: Value to set for the OdataNextLink property.
         """

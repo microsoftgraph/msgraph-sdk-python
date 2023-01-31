@@ -34,7 +34,7 @@ class AccessReviewInactiveUsersQueryScope(access_review_query_scope.AccessReview
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "inactive_duration": lambda n : setattr(self, 'inactive_duration', n.get_object_value(Timedelta)),
+            "inactiveDuration": lambda n : setattr(self, 'inactive_duration', n.get_object_value(Timedelta)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

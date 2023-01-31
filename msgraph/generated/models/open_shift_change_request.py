@@ -33,7 +33,7 @@ class OpenShiftChangeRequest(schedule_change_request.ScheduleChangeRequest):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "open_shift_id": lambda n : setattr(self, 'open_shift_id', n.get_str_value()),
+            "openShiftId": lambda n : setattr(self, 'open_shift_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -61,11 +61,11 @@ class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.Ap
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "asset_tag_template": lambda n : setattr(self, 'asset_tag_template', n.get_str_value()),
-            "home_screen_dock_icons": lambda n : setattr(self, 'home_screen_dock_icons', n.get_collection_of_object_values(ios_home_screen_item.IosHomeScreenItem)),
-            "home_screen_pages": lambda n : setattr(self, 'home_screen_pages', n.get_collection_of_object_values(ios_home_screen_page.IosHomeScreenPage)),
-            "lock_screen_footnote": lambda n : setattr(self, 'lock_screen_footnote', n.get_str_value()),
-            "notification_settings": lambda n : setattr(self, 'notification_settings', n.get_collection_of_object_values(ios_notification_settings.IosNotificationSettings)),
+            "assetTagTemplate": lambda n : setattr(self, 'asset_tag_template', n.get_str_value()),
+            "homeScreenDockIcons": lambda n : setattr(self, 'home_screen_dock_icons', n.get_collection_of_object_values(ios_home_screen_item.IosHomeScreenItem)),
+            "homeScreenPages": lambda n : setattr(self, 'home_screen_pages', n.get_collection_of_object_values(ios_home_screen_page.IosHomeScreenPage)),
+            "lockScreenFootnote": lambda n : setattr(self, 'lock_screen_footnote', n.get_str_value()),
+            "notificationSettings": lambda n : setattr(self, 'notification_settings', n.get_collection_of_object_values(ios_notification_settings.IosNotificationSettings)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

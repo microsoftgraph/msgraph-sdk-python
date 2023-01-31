@@ -52,9 +52,7 @@ class ClientUserAgent(user_agent.UserAgent):
         self._azure_a_d_app_id: Optional[str] = None
         # Immutable resource identifier of the Azure Communication Service associated with this endpoint based on Communication Services APIs.
         self._communication_service_id: Optional[str] = None
-        # The platform property
         self._platform: Optional[client_platform.ClientPlatform] = None
-        # The productFamily property
         self._product_family: Optional[product_family.ProductFamily] = None
     
     @staticmethod
@@ -75,10 +73,10 @@ class ClientUserAgent(user_agent.UserAgent):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "azure_a_d_app_id": lambda n : setattr(self, 'azure_a_d_app_id', n.get_str_value()),
-            "communication_service_id": lambda n : setattr(self, 'communication_service_id', n.get_str_value()),
+            "azureADAppId": lambda n : setattr(self, 'azure_a_d_app_id', n.get_str_value()),
+            "communicationServiceId": lambda n : setattr(self, 'communication_service_id', n.get_str_value()),
             "platform": lambda n : setattr(self, 'platform', n.get_enum_value(client_platform.ClientPlatform)),
-            "product_family": lambda n : setattr(self, 'product_family', n.get_enum_value(product_family.ProductFamily)),
+            "productFamily": lambda n : setattr(self, 'product_family', n.get_enum_value(product_family.ProductFamily)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -87,7 +85,7 @@ class ClientUserAgent(user_agent.UserAgent):
     @property
     def platform(self,) -> Optional[client_platform.ClientPlatform]:
         """
-        Gets the platform property value. The platform property
+        Gets the platform property value. 
         Returns: Optional[client_platform.ClientPlatform]
         """
         return self._platform
@@ -95,7 +93,7 @@ class ClientUserAgent(user_agent.UserAgent):
     @platform.setter
     def platform(self,value: Optional[client_platform.ClientPlatform] = None) -> None:
         """
-        Sets the platform property value. The platform property
+        Sets the platform property value. 
         Args:
             value: Value to set for the platform property.
         """
@@ -104,7 +102,7 @@ class ClientUserAgent(user_agent.UserAgent):
     @property
     def product_family(self,) -> Optional[product_family.ProductFamily]:
         """
-        Gets the productFamily property value. The productFamily property
+        Gets the productFamily property value. 
         Returns: Optional[product_family.ProductFamily]
         """
         return self._product_family
@@ -112,7 +110,7 @@ class ClientUserAgent(user_agent.UserAgent):
     @product_family.setter
     def product_family(self,value: Optional[product_family.ProductFamily] = None) -> None:
         """
-        Sets the productFamily property value. The productFamily property
+        Sets the productFamily property value. 
         Args:
             value: Value to set for the productFamily property.
         """

@@ -33,7 +33,7 @@ class LocationConstraintItem(location.Location):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "resolve_availability": lambda n : setattr(self, 'resolve_availability', n.get_bool_value()),
+            "resolveAvailability": lambda n : setattr(self, 'resolve_availability', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

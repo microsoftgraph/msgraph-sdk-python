@@ -12,7 +12,6 @@ class AccessReviewHistoryDefinitionCollectionResponse(base_collection_pagination
         Instantiates a new AccessReviewHistoryDefinitionCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[access_review_history_definition.AccessReviewHistoryDefinition]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class AccessReviewHistoryDefinitionCollectionResponse(base_collection_pagination
     @property
     def value(self,) -> Optional[List[access_review_history_definition.AccessReviewHistoryDefinition]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[access_review_history_definition.AccessReviewHistoryDefinition]]
         """
         return self._value
@@ -61,7 +60,7 @@ class AccessReviewHistoryDefinitionCollectionResponse(base_collection_pagination
     @value.setter
     def value(self,value: Optional[List[access_review_history_definition.AccessReviewHistoryDefinition]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

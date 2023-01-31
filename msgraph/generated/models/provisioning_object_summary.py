@@ -68,7 +68,6 @@ class ProvisioningObjectSummary(entity.Entity):
         self._job_id: Optional[str] = None
         # Details of each property that was modified in this provisioning action on this object.
         self._modified_properties: Optional[List[modified_property.ModifiedProperty]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Indicates the activity name or the operation name. Possible values are: create, update, delete, stageddelete, disable, other and unknownFutureValue. For a list of activities logged, refer to Azure AD activity list.
         self._provisioning_action: Optional[provisioning_action.ProvisioningAction] = None
@@ -141,22 +140,22 @@ class ProvisioningObjectSummary(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "activity_date_time": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
-            "change_id": lambda n : setattr(self, 'change_id', n.get_str_value()),
-            "cycle_id": lambda n : setattr(self, 'cycle_id', n.get_str_value()),
-            "duration_in_milliseconds": lambda n : setattr(self, 'duration_in_milliseconds', n.get_int_value()),
-            "initiated_by": lambda n : setattr(self, 'initiated_by', n.get_object_value(initiator.Initiator)),
-            "job_id": lambda n : setattr(self, 'job_id', n.get_str_value()),
-            "modified_properties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(modified_property.ModifiedProperty)),
-            "provisioning_action": lambda n : setattr(self, 'provisioning_action', n.get_enum_value(provisioning_action.ProvisioningAction)),
-            "provisioning_status_info": lambda n : setattr(self, 'provisioning_status_info', n.get_object_value(provisioning_status_info.ProvisioningStatusInfo)),
-            "provisioning_steps": lambda n : setattr(self, 'provisioning_steps', n.get_collection_of_object_values(provisioning_step.ProvisioningStep)),
-            "service_principal": lambda n : setattr(self, 'service_principal', n.get_object_value(provisioning_service_principal.ProvisioningServicePrincipal)),
-            "source_identity": lambda n : setattr(self, 'source_identity', n.get_object_value(provisioned_identity.ProvisionedIdentity)),
-            "source_system": lambda n : setattr(self, 'source_system', n.get_object_value(provisioning_system.ProvisioningSystem)),
-            "target_identity": lambda n : setattr(self, 'target_identity', n.get_object_value(provisioned_identity.ProvisionedIdentity)),
-            "target_system": lambda n : setattr(self, 'target_system', n.get_object_value(provisioning_system.ProvisioningSystem)),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
+            "changeId": lambda n : setattr(self, 'change_id', n.get_str_value()),
+            "cycleId": lambda n : setattr(self, 'cycle_id', n.get_str_value()),
+            "durationInMilliseconds": lambda n : setattr(self, 'duration_in_milliseconds', n.get_int_value()),
+            "initiatedBy": lambda n : setattr(self, 'initiated_by', n.get_object_value(initiator.Initiator)),
+            "jobId": lambda n : setattr(self, 'job_id', n.get_str_value()),
+            "modifiedProperties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(modified_property.ModifiedProperty)),
+            "provisioningAction": lambda n : setattr(self, 'provisioning_action', n.get_enum_value(provisioning_action.ProvisioningAction)),
+            "provisioningStatusInfo": lambda n : setattr(self, 'provisioning_status_info', n.get_object_value(provisioning_status_info.ProvisioningStatusInfo)),
+            "provisioningSteps": lambda n : setattr(self, 'provisioning_steps', n.get_collection_of_object_values(provisioning_step.ProvisioningStep)),
+            "servicePrincipal": lambda n : setattr(self, 'service_principal', n.get_object_value(provisioning_service_principal.ProvisioningServicePrincipal)),
+            "sourceIdentity": lambda n : setattr(self, 'source_identity', n.get_object_value(provisioned_identity.ProvisionedIdentity)),
+            "sourceSystem": lambda n : setattr(self, 'source_system', n.get_object_value(provisioning_system.ProvisioningSystem)),
+            "targetIdentity": lambda n : setattr(self, 'target_identity', n.get_object_value(provisioned_identity.ProvisionedIdentity)),
+            "targetSystem": lambda n : setattr(self, 'target_system', n.get_object_value(provisioning_system.ProvisioningSystem)),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -18,7 +18,6 @@ class WorkbookTableSort(entity.Entity):
         self._match_case: Optional[bool] = None
         # Represents Chinese character ordering method last used to sort the table. The possible values are: PinYin, StrokeCount. Read-only.
         self._method: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -57,7 +56,7 @@ class WorkbookTableSort(entity.Entity):
         """
         fields = {
             "fields": lambda n : setattr(self, 'fields', n.get_collection_of_object_values(workbook_sort_field.WorkbookSortField)),
-            "match_case": lambda n : setattr(self, 'match_case', n.get_bool_value()),
+            "matchCase": lambda n : setattr(self, 'match_case', n.get_bool_value()),
             "method": lambda n : setattr(self, 'method', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

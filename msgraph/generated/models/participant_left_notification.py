@@ -10,7 +10,7 @@ class ParticipantLeftNotification(entity.Entity):
     @property
     def call(self,) -> Optional[call.Call]:
         """
-        Gets the call property value. The call property
+        Gets the call property value. 
         Returns: Optional[call.Call]
         """
         return self._call
@@ -18,7 +18,7 @@ class ParticipantLeftNotification(entity.Entity):
     @call.setter
     def call(self,value: Optional[call.Call] = None) -> None:
         """
-        Sets the call property value. The call property
+        Sets the call property value. 
         Args:
             value: Value to set for the call property.
         """
@@ -29,9 +29,7 @@ class ParticipantLeftNotification(entity.Entity):
         Instantiates a new ParticipantLeftNotification and sets the default values.
         """
         super().__init__()
-        # The call property
         self._call: Optional[call.Call] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # ID of the participant under the policy who has left the meeting.
         self._participant_id: Optional[str] = None
@@ -55,7 +53,7 @@ class ParticipantLeftNotification(entity.Entity):
         """
         fields = {
             "call": lambda n : setattr(self, 'call', n.get_object_value(call.Call)),
-            "participant_id": lambda n : setattr(self, 'participant_id', n.get_str_value()),
+            "participantId": lambda n : setattr(self, 'participant_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

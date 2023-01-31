@@ -12,7 +12,6 @@ class Windows81CompliancePolicyCollectionResponse(base_collection_pagination_cou
         Instantiates a new Windows81CompliancePolicyCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[windows81_compliance_policy.Windows81CompliancePolicy]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class Windows81CompliancePolicyCollectionResponse(base_collection_pagination_cou
     @property
     def value(self,) -> Optional[List[windows81_compliance_policy.Windows81CompliancePolicy]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[windows81_compliance_policy.Windows81CompliancePolicy]]
         """
         return self._value
@@ -61,7 +60,7 @@ class Windows81CompliancePolicyCollectionResponse(base_collection_pagination_cou
     @value.setter
     def value(self,value: Optional[List[windows81_compliance_policy.Windows81CompliancePolicy]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

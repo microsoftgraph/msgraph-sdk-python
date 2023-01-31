@@ -34,7 +34,6 @@ class GroupLifecyclePolicy(entity.Entity):
         self._group_lifetime_in_days: Optional[int] = None
         # The group type for which the expiration policy applies. Possible values are All, Selected or None.
         self._managed_group_types: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -55,9 +54,9 @@ class GroupLifecyclePolicy(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "alternate_notification_emails": lambda n : setattr(self, 'alternate_notification_emails', n.get_str_value()),
-            "group_lifetime_in_days": lambda n : setattr(self, 'group_lifetime_in_days', n.get_int_value()),
-            "managed_group_types": lambda n : setattr(self, 'managed_group_types', n.get_str_value()),
+            "alternateNotificationEmails": lambda n : setattr(self, 'alternate_notification_emails', n.get_str_value()),
+            "groupLifetimeInDays": lambda n : setattr(self, 'group_lifetime_in_days', n.get_int_value()),
+            "managedGroupTypes": lambda n : setattr(self, 'managed_group_types', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

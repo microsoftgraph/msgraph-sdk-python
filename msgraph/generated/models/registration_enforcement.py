@@ -49,7 +49,6 @@ class RegistrationEnforcement(AdditionalDataHolder, Parsable):
 
         # Run campaigns to remind users to set up targeted authentication methods.
         self._authentication_methods_registration_campaign: Optional[authentication_methods_registration_campaign.AuthenticationMethodsRegistrationCampaign] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -70,7 +69,7 @@ class RegistrationEnforcement(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "authentication_methods_registration_campaign": lambda n : setattr(self, 'authentication_methods_registration_campaign', n.get_object_value(authentication_methods_registration_campaign.AuthenticationMethodsRegistrationCampaign)),
+            "authenticationMethodsRegistrationCampaign": lambda n : setattr(self, 'authentication_methods_registration_campaign', n.get_object_value(authentication_methods_registration_campaign.AuthenticationMethodsRegistrationCampaign)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -78,7 +77,7 @@ class RegistrationEnforcement(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -86,7 +85,7 @@ class RegistrationEnforcement(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

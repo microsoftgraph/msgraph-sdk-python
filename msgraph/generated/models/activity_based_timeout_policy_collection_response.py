@@ -12,7 +12,6 @@ class ActivityBasedTimeoutPolicyCollectionResponse(base_collection_pagination_co
         Instantiates a new ActivityBasedTimeoutPolicyCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[activity_based_timeout_policy.ActivityBasedTimeoutPolicy]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ActivityBasedTimeoutPolicyCollectionResponse(base_collection_pagination_co
     @property
     def value(self,) -> Optional[List[activity_based_timeout_policy.ActivityBasedTimeoutPolicy]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[activity_based_timeout_policy.ActivityBasedTimeoutPolicy]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ActivityBasedTimeoutPolicyCollectionResponse(base_collection_pagination_co
     @value.setter
     def value(self,value: Optional[List[activity_based_timeout_policy.ActivityBasedTimeoutPolicy]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

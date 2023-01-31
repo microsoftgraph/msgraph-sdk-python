@@ -53,7 +53,6 @@ class VerifiedDomain(AdditionalDataHolder, Parsable):
         self._is_initial: Optional[bool] = None
         # The domain name; for example, contoso.onmicrosoft.com.
         self._name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # For example, Managed.
         self._type: Optional[str] = None
@@ -77,8 +76,8 @@ class VerifiedDomain(AdditionalDataHolder, Parsable):
         """
         fields = {
             "capabilities": lambda n : setattr(self, 'capabilities', n.get_str_value()),
-            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
-            "is_initial": lambda n : setattr(self, 'is_initial', n.get_bool_value()),
+            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "isInitial": lambda n : setattr(self, 'is_initial', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
@@ -139,7 +138,7 @@ class VerifiedDomain(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -147,7 +146,7 @@ class VerifiedDomain(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

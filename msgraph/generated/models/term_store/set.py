@@ -42,9 +42,7 @@ class Set(entity.Entity):
         self._description: Optional[str] = None
         # Name of the set for each languageTag.
         self._localized_names: Optional[List[localized_name.LocalizedName]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The parentGroup property
         self._parent_group: Optional[group.Group] = None
         # Custom properties for the set.
         self._properties: Optional[List[key_value.KeyValue]] = None
@@ -106,10 +104,10 @@ class Set(entity.Entity):
         """
         fields = {
             "children": lambda n : setattr(self, 'children', n.get_collection_of_object_values(term.Term)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "localized_names": lambda n : setattr(self, 'localized_names', n.get_collection_of_object_values(localized_name.LocalizedName)),
-            "parent_group": lambda n : setattr(self, 'parent_group', n.get_object_value(group.Group)),
+            "localizedNames": lambda n : setattr(self, 'localized_names', n.get_collection_of_object_values(localized_name.LocalizedName)),
+            "parentGroup": lambda n : setattr(self, 'parent_group', n.get_object_value(group.Group)),
             "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(key_value.KeyValue)),
             "relations": lambda n : setattr(self, 'relations', n.get_collection_of_object_values(relation.Relation)),
             "terms": lambda n : setattr(self, 'terms', n.get_collection_of_object_values(term.Term)),
@@ -138,7 +136,7 @@ class Set(entity.Entity):
     @property
     def parent_group(self,) -> Optional[group.Group]:
         """
-        Gets the parentGroup property value. The parentGroup property
+        Gets the parentGroup property value. 
         Returns: Optional[group.Group]
         """
         return self._parent_group
@@ -146,7 +144,7 @@ class Set(entity.Entity):
     @parent_group.setter
     def parent_group(self,value: Optional[group.Group] = None) -> None:
         """
-        Sets the parentGroup property value. The parentGroup property
+        Sets the parentGroup property value. 
         Args:
             value: Value to set for the parentGroup property.
         """

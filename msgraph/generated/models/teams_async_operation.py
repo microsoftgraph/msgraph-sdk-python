@@ -40,11 +40,8 @@ class TeamsAsyncOperation(entity.Entity):
         self._error: Optional[operation_error.OperationError] = None
         # Time when the async operation was last updated.
         self._last_action_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The operationType property
         self._operation_type: Optional[teams_async_operation_type.TeamsAsyncOperationType] = None
-        # The status property
         self._status: Optional[teams_async_operation_status.TeamsAsyncOperationStatus] = None
         # The ID of the object that's created or modified as result of this async operation, typically a team.
         self._target_resource_id: Optional[str] = None
@@ -103,14 +100,14 @@ class TeamsAsyncOperation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "attempts_count": lambda n : setattr(self, 'attempts_count', n.get_int_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "attemptsCount": lambda n : setattr(self, 'attempts_count', n.get_int_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "error": lambda n : setattr(self, 'error', n.get_object_value(operation_error.OperationError)),
-            "last_action_date_time": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
-            "operation_type": lambda n : setattr(self, 'operation_type', n.get_enum_value(teams_async_operation_type.TeamsAsyncOperationType)),
+            "lastActionDateTime": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
+            "operationType": lambda n : setattr(self, 'operation_type', n.get_enum_value(teams_async_operation_type.TeamsAsyncOperationType)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(teams_async_operation_status.TeamsAsyncOperationStatus)),
-            "target_resource_id": lambda n : setattr(self, 'target_resource_id', n.get_str_value()),
-            "target_resource_location": lambda n : setattr(self, 'target_resource_location', n.get_str_value()),
+            "targetResourceId": lambda n : setattr(self, 'target_resource_id', n.get_str_value()),
+            "targetResourceLocation": lambda n : setattr(self, 'target_resource_location', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -136,7 +133,7 @@ class TeamsAsyncOperation(entity.Entity):
     @property
     def operation_type(self,) -> Optional[teams_async_operation_type.TeamsAsyncOperationType]:
         """
-        Gets the operationType property value. The operationType property
+        Gets the operationType property value. 
         Returns: Optional[teams_async_operation_type.TeamsAsyncOperationType]
         """
         return self._operation_type
@@ -144,7 +141,7 @@ class TeamsAsyncOperation(entity.Entity):
     @operation_type.setter
     def operation_type(self,value: Optional[teams_async_operation_type.TeamsAsyncOperationType] = None) -> None:
         """
-        Sets the operationType property value. The operationType property
+        Sets the operationType property value. 
         Args:
             value: Value to set for the operationType property.
         """
@@ -171,7 +168,7 @@ class TeamsAsyncOperation(entity.Entity):
     @property
     def status(self,) -> Optional[teams_async_operation_status.TeamsAsyncOperationStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[teams_async_operation_status.TeamsAsyncOperationStatus]
         """
         return self._status
@@ -179,7 +176,7 @@ class TeamsAsyncOperation(entity.Entity):
     @status.setter
     def status(self,value: Optional[teams_async_operation_status.TeamsAsyncOperationStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

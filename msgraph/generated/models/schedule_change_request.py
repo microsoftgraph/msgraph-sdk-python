@@ -12,7 +12,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
     @property
     def assigned_to(self,) -> Optional[schedule_change_request_actor.ScheduleChangeRequestActor]:
         """
-        Gets the assignedTo property value. The assignedTo property
+        Gets the assignedTo property value. 
         Returns: Optional[schedule_change_request_actor.ScheduleChangeRequestActor]
         """
         return self._assigned_to
@@ -20,7 +20,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
     @assigned_to.setter
     def assigned_to(self,value: Optional[schedule_change_request_actor.ScheduleChangeRequestActor] = None) -> None:
         """
-        Sets the assignedTo property value. The assignedTo property
+        Sets the assignedTo property value. 
         Args:
             value: Value to set for the assignedTo property.
         """
@@ -32,21 +32,13 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.scheduleChangeRequest"
-        # The assignedTo property
         self._assigned_to: Optional[schedule_change_request_actor.ScheduleChangeRequestActor] = None
-        # The managerActionDateTime property
         self._manager_action_date_time: Optional[datetime] = None
-        # The managerActionMessage property
         self._manager_action_message: Optional[str] = None
-        # The managerUserId property
         self._manager_user_id: Optional[str] = None
-        # The senderDateTime property
         self._sender_date_time: Optional[datetime] = None
-        # The senderMessage property
         self._sender_message: Optional[str] = None
-        # The senderUserId property
         self._sender_user_id: Optional[str] = None
-        # The state property
         self._state: Optional[schedule_change_state.ScheduleChangeState] = None
     
     @staticmethod
@@ -67,13 +59,13 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assigned_to": lambda n : setattr(self, 'assigned_to', n.get_enum_value(schedule_change_request_actor.ScheduleChangeRequestActor)),
-            "manager_action_date_time": lambda n : setattr(self, 'manager_action_date_time', n.get_datetime_value()),
-            "manager_action_message": lambda n : setattr(self, 'manager_action_message', n.get_str_value()),
-            "manager_user_id": lambda n : setattr(self, 'manager_user_id', n.get_str_value()),
-            "sender_date_time": lambda n : setattr(self, 'sender_date_time', n.get_datetime_value()),
-            "sender_message": lambda n : setattr(self, 'sender_message', n.get_str_value()),
-            "sender_user_id": lambda n : setattr(self, 'sender_user_id', n.get_str_value()),
+            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_enum_value(schedule_change_request_actor.ScheduleChangeRequestActor)),
+            "managerActionDateTime": lambda n : setattr(self, 'manager_action_date_time', n.get_datetime_value()),
+            "managerActionMessage": lambda n : setattr(self, 'manager_action_message', n.get_str_value()),
+            "managerUserId": lambda n : setattr(self, 'manager_user_id', n.get_str_value()),
+            "senderDateTime": lambda n : setattr(self, 'sender_date_time', n.get_datetime_value()),
+            "senderMessage": lambda n : setattr(self, 'sender_message', n.get_str_value()),
+            "senderUserId": lambda n : setattr(self, 'sender_user_id', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(schedule_change_state.ScheduleChangeState)),
         }
         super_fields = super().get_field_deserializers()
@@ -83,7 +75,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
     @property
     def manager_action_date_time(self,) -> Optional[datetime]:
         """
-        Gets the managerActionDateTime property value. The managerActionDateTime property
+        Gets the managerActionDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._manager_action_date_time
@@ -91,7 +83,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
     @manager_action_date_time.setter
     def manager_action_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the managerActionDateTime property value. The managerActionDateTime property
+        Sets the managerActionDateTime property value. 
         Args:
             value: Value to set for the managerActionDateTime property.
         """
@@ -100,7 +92,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
     @property
     def manager_action_message(self,) -> Optional[str]:
         """
-        Gets the managerActionMessage property value. The managerActionMessage property
+        Gets the managerActionMessage property value. 
         Returns: Optional[str]
         """
         return self._manager_action_message
@@ -108,7 +100,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
     @manager_action_message.setter
     def manager_action_message(self,value: Optional[str] = None) -> None:
         """
-        Sets the managerActionMessage property value. The managerActionMessage property
+        Sets the managerActionMessage property value. 
         Args:
             value: Value to set for the managerActionMessage property.
         """
@@ -117,7 +109,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
     @property
     def manager_user_id(self,) -> Optional[str]:
         """
-        Gets the managerUserId property value. The managerUserId property
+        Gets the managerUserId property value. 
         Returns: Optional[str]
         """
         return self._manager_user_id
@@ -125,7 +117,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
     @manager_user_id.setter
     def manager_user_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the managerUserId property value. The managerUserId property
+        Sets the managerUserId property value. 
         Args:
             value: Value to set for the managerUserId property.
         """
@@ -134,7 +126,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
     @property
     def sender_date_time(self,) -> Optional[datetime]:
         """
-        Gets the senderDateTime property value. The senderDateTime property
+        Gets the senderDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._sender_date_time
@@ -142,7 +134,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
     @sender_date_time.setter
     def sender_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the senderDateTime property value. The senderDateTime property
+        Sets the senderDateTime property value. 
         Args:
             value: Value to set for the senderDateTime property.
         """
@@ -151,7 +143,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
     @property
     def sender_message(self,) -> Optional[str]:
         """
-        Gets the senderMessage property value. The senderMessage property
+        Gets the senderMessage property value. 
         Returns: Optional[str]
         """
         return self._sender_message
@@ -159,7 +151,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
     @sender_message.setter
     def sender_message(self,value: Optional[str] = None) -> None:
         """
-        Sets the senderMessage property value. The senderMessage property
+        Sets the senderMessage property value. 
         Args:
             value: Value to set for the senderMessage property.
         """
@@ -168,7 +160,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
     @property
     def sender_user_id(self,) -> Optional[str]:
         """
-        Gets the senderUserId property value. The senderUserId property
+        Gets the senderUserId property value. 
         Returns: Optional[str]
         """
         return self._sender_user_id
@@ -176,7 +168,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
     @sender_user_id.setter
     def sender_user_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the senderUserId property value. The senderUserId property
+        Sets the senderUserId property value. 
         Args:
             value: Value to set for the senderUserId property.
         """
@@ -199,7 +191,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
     @property
     def state(self,) -> Optional[schedule_change_state.ScheduleChangeState]:
         """
-        Gets the state property value. The state property
+        Gets the state property value. 
         Returns: Optional[schedule_change_state.ScheduleChangeState]
         """
         return self._state
@@ -207,7 +199,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
     @state.setter
     def state(self,value: Optional[schedule_change_state.ScheduleChangeState] = None) -> None:
         """
-        Sets the state property value. The state property
+        Sets the state property value. 
         Args:
             value: Value to set for the state property.
         """

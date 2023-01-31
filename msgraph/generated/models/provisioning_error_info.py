@@ -53,7 +53,6 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         self._error_category: Optional[provisioning_status_error_category.ProvisioningStatusErrorCategory] = None
         # Unique error code if any occurred. Learn more
         self._error_code: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Summarizes the status and describes why the status happened.
         self._reason: Optional[str] = None
@@ -112,19 +111,19 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "additional_details": lambda n : setattr(self, 'additional_details', n.get_str_value()),
-            "error_category": lambda n : setattr(self, 'error_category', n.get_enum_value(provisioning_status_error_category.ProvisioningStatusErrorCategory)),
-            "error_code": lambda n : setattr(self, 'error_code', n.get_str_value()),
+            "additionalDetails": lambda n : setattr(self, 'additional_details', n.get_str_value()),
+            "errorCategory": lambda n : setattr(self, 'error_category', n.get_enum_value(provisioning_status_error_category.ProvisioningStatusErrorCategory)),
+            "errorCode": lambda n : setattr(self, 'error_code', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "reason": lambda n : setattr(self, 'reason', n.get_str_value()),
-            "recommended_action": lambda n : setattr(self, 'recommended_action', n.get_str_value()),
+            "recommendedAction": lambda n : setattr(self, 'recommended_action', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -132,7 +131,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

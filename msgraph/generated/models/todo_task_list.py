@@ -22,11 +22,9 @@ class TodoTaskList(entity.Entity):
         self._is_owner: Optional[bool] = None
         # True if the task list is shared with other users
         self._is_shared: Optional[bool] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The tasks in this task list. Read-only. Nullable.
         self._tasks: Optional[List[todo_task.TodoTask]] = None
-        # The wellknownListName property
         self._wellknown_list_name: Optional[wellknown_list_name.WellknownListName] = None
     
     @staticmethod
@@ -81,12 +79,12 @@ class TodoTaskList(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
-            "is_owner": lambda n : setattr(self, 'is_owner', n.get_bool_value()),
-            "is_shared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
+            "isOwner": lambda n : setattr(self, 'is_owner', n.get_bool_value()),
+            "isShared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
             "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(todo_task.TodoTask)),
-            "wellknown_list_name": lambda n : setattr(self, 'wellknown_list_name', n.get_enum_value(wellknown_list_name.WellknownListName)),
+            "wellknownListName": lambda n : setattr(self, 'wellknown_list_name', n.get_enum_value(wellknown_list_name.WellknownListName)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -162,7 +160,7 @@ class TodoTaskList(entity.Entity):
     @property
     def wellknown_list_name(self,) -> Optional[wellknown_list_name.WellknownListName]:
         """
-        Gets the wellknownListName property value. The wellknownListName property
+        Gets the wellknownListName property value. 
         Returns: Optional[wellknown_list_name.WellknownListName]
         """
         return self._wellknown_list_name
@@ -170,7 +168,7 @@ class TodoTaskList(entity.Entity):
     @wellknown_list_name.setter
     def wellknown_list_name(self,value: Optional[wellknown_list_name.WellknownListName] = None) -> None:
         """
-        Sets the wellknownListName property value. The wellknownListName property
+        Sets the wellknownListName property value. 
         Args:
             value: Value to set for the wellknownListName property.
         """

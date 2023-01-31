@@ -91,9 +91,9 @@ class ManagedMobileLobApp(managed_app.ManagedApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "committed_content_version": lambda n : setattr(self, 'committed_content_version', n.get_str_value()),
-            "content_versions": lambda n : setattr(self, 'content_versions', n.get_collection_of_object_values(mobile_app_content.MobileAppContent)),
-            "file_name": lambda n : setattr(self, 'file_name', n.get_str_value()),
+            "committedContentVersion": lambda n : setattr(self, 'committed_content_version', n.get_str_value()),
+            "contentVersions": lambda n : setattr(self, 'content_versions', n.get_collection_of_object_values(mobile_app_content.MobileAppContent)),
+            "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()

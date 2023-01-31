@@ -34,7 +34,6 @@ class EventMessageRequest(event_message.EventMessage):
         self.odata_type = "#microsoft.graph.eventMessageRequest"
         # True if the meeting organizer allows invitees to propose a new time when responding, false otherwise. Optional. Default is true.
         self._allow_new_time_proposals: Optional[bool] = None
-        # The meetingRequestType property
         self._meeting_request_type: Optional[meeting_request_type.MeetingRequestType] = None
         # If the meeting update changes the meeting end time, this property specifies the previous meeting end time.
         self._previous_end_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
@@ -63,12 +62,12 @@ class EventMessageRequest(event_message.EventMessage):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_new_time_proposals": lambda n : setattr(self, 'allow_new_time_proposals', n.get_bool_value()),
-            "meeting_request_type": lambda n : setattr(self, 'meeting_request_type', n.get_enum_value(meeting_request_type.MeetingRequestType)),
-            "previous_end_date_time": lambda n : setattr(self, 'previous_end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "previous_location": lambda n : setattr(self, 'previous_location', n.get_object_value(location.Location)),
-            "previous_start_date_time": lambda n : setattr(self, 'previous_start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "response_requested": lambda n : setattr(self, 'response_requested', n.get_bool_value()),
+            "allowNewTimeProposals": lambda n : setattr(self, 'allow_new_time_proposals', n.get_bool_value()),
+            "meetingRequestType": lambda n : setattr(self, 'meeting_request_type', n.get_enum_value(meeting_request_type.MeetingRequestType)),
+            "previousEndDateTime": lambda n : setattr(self, 'previous_end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "previousLocation": lambda n : setattr(self, 'previous_location', n.get_object_value(location.Location)),
+            "previousStartDateTime": lambda n : setattr(self, 'previous_start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "responseRequested": lambda n : setattr(self, 'response_requested', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -77,7 +76,7 @@ class EventMessageRequest(event_message.EventMessage):
     @property
     def meeting_request_type(self,) -> Optional[meeting_request_type.MeetingRequestType]:
         """
-        Gets the meetingRequestType property value. The meetingRequestType property
+        Gets the meetingRequestType property value. 
         Returns: Optional[meeting_request_type.MeetingRequestType]
         """
         return self._meeting_request_type
@@ -85,7 +84,7 @@ class EventMessageRequest(event_message.EventMessage):
     @meeting_request_type.setter
     def meeting_request_type(self,value: Optional[meeting_request_type.MeetingRequestType] = None) -> None:
         """
-        Sets the meetingRequestType property value. The meetingRequestType property
+        Sets the meetingRequestType property value. 
         Args:
             value: Value to set for the meetingRequestType property.
         """

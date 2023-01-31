@@ -13,7 +13,6 @@ class DomainDnsUnavailableRecord(domain_dns_record.DomainDnsRecord):
         super().__init__()
         # Provides the reason why the DomainDnsUnavailableRecord entity is returned.
         self._description: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

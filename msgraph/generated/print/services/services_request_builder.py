@@ -66,7 +66,7 @@ class ServicesRequestBuilder():
         """
         Create new navigation property to services for print
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[print_service.PrintService]
         """
@@ -105,7 +105,7 @@ class ServicesRequestBuilder():
         """
         Create new navigation property to services for print
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

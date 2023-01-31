@@ -49,7 +49,6 @@ class Presence(entity.Entity):
         self._activity: Optional[str] = None
         # The base presence information for a user. Possible values are Available, AvailableIdle,  Away, BeRightBack, Busy, BusyIdle, DoNotDisturb, Offline, PresenceUnknown
         self._availability: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

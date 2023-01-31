@@ -41,13 +41,11 @@ class DeviceComplianceSettingState(entity.Entity):
         self._device_model: Optional[str] = None
         # The Device Name that is being reported
         self._device_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The setting class name and property name.
         self._setting: Optional[str] = None
         # The Setting Name that is being reported
         self._setting_name: Optional[str] = None
-        # The state property
         self._state: Optional[compliance_status.ComplianceStatus] = None
         # The User email address that is being reported
         self._user_email: Optional[str] = None
@@ -127,17 +125,17 @@ class DeviceComplianceSettingState(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "compliance_grace_period_expiration_date_time": lambda n : setattr(self, 'compliance_grace_period_expiration_date_time', n.get_datetime_value()),
-            "device_id": lambda n : setattr(self, 'device_id', n.get_str_value()),
-            "device_model": lambda n : setattr(self, 'device_model', n.get_str_value()),
-            "device_name": lambda n : setattr(self, 'device_name', n.get_str_value()),
+            "complianceGracePeriodExpirationDateTime": lambda n : setattr(self, 'compliance_grace_period_expiration_date_time', n.get_datetime_value()),
+            "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
+            "deviceModel": lambda n : setattr(self, 'device_model', n.get_str_value()),
+            "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
             "setting": lambda n : setattr(self, 'setting', n.get_str_value()),
-            "setting_name": lambda n : setattr(self, 'setting_name', n.get_str_value()),
+            "settingName": lambda n : setattr(self, 'setting_name', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(compliance_status.ComplianceStatus)),
-            "user_email": lambda n : setattr(self, 'user_email', n.get_str_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
-            "user_name": lambda n : setattr(self, 'user_name', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userEmail": lambda n : setattr(self, 'user_email', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userName": lambda n : setattr(self, 'user_name', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -201,7 +199,7 @@ class DeviceComplianceSettingState(entity.Entity):
     @property
     def state(self,) -> Optional[compliance_status.ComplianceStatus]:
         """
-        Gets the state property value. The state property
+        Gets the state property value. 
         Returns: Optional[compliance_status.ComplianceStatus]
         """
         return self._state
@@ -209,7 +207,7 @@ class DeviceComplianceSettingState(entity.Entity):
     @state.setter
     def state(self,value: Optional[compliance_status.ComplianceStatus] = None) -> None:
         """
-        Sets the state property value. The state property
+        Sets the state property value. 
         Args:
             value: Value to set for the state property.
         """

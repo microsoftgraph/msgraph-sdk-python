@@ -80,7 +80,6 @@ class EducationSchool(education_organization.EducationOrganization):
         self._external_id: Optional[str] = None
         # ID of principal in syncing system.
         self._external_principal_id: Optional[str] = None
-        # The fax property
         self._fax: Optional[str] = None
         # Highest grade taught.
         self._highest_grade: Optional[str] = None
@@ -163,7 +162,7 @@ class EducationSchool(education_organization.EducationOrganization):
     @property
     def fax(self,) -> Optional[str]:
         """
-        Gets the fax property value. The fax property
+        Gets the fax property value. 
         Returns: Optional[str]
         """
         return self._fax
@@ -171,7 +170,7 @@ class EducationSchool(education_organization.EducationOrganization):
     @fax.setter
     def fax(self,value: Optional[str] = None) -> None:
         """
-        Sets the fax property value. The fax property
+        Sets the fax property value. 
         Args:
             value: Value to set for the fax property.
         """
@@ -184,18 +183,18 @@ class EducationSchool(education_organization.EducationOrganization):
         """
         fields = {
             "address": lambda n : setattr(self, 'address', n.get_object_value(physical_address.PhysicalAddress)),
-            "administrative_unit": lambda n : setattr(self, 'administrative_unit', n.get_object_value(administrative_unit.AdministrativeUnit)),
+            "administrativeUnit": lambda n : setattr(self, 'administrative_unit', n.get_object_value(administrative_unit.AdministrativeUnit)),
             "classes": lambda n : setattr(self, 'classes', n.get_collection_of_object_values(education_class.EducationClass)),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
-            "external_principal_id": lambda n : setattr(self, 'external_principal_id', n.get_str_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "externalPrincipalId": lambda n : setattr(self, 'external_principal_id', n.get_str_value()),
             "fax": lambda n : setattr(self, 'fax', n.get_str_value()),
-            "highest_grade": lambda n : setattr(self, 'highest_grade', n.get_str_value()),
-            "lowest_grade": lambda n : setattr(self, 'lowest_grade', n.get_str_value()),
+            "highestGrade": lambda n : setattr(self, 'highest_grade', n.get_str_value()),
+            "lowestGrade": lambda n : setattr(self, 'lowest_grade', n.get_str_value()),
             "phone": lambda n : setattr(self, 'phone', n.get_str_value()),
-            "principal_email": lambda n : setattr(self, 'principal_email', n.get_str_value()),
-            "principal_name": lambda n : setattr(self, 'principal_name', n.get_str_value()),
-            "school_number": lambda n : setattr(self, 'school_number', n.get_str_value()),
+            "principalEmail": lambda n : setattr(self, 'principal_email', n.get_str_value()),
+            "principalName": lambda n : setattr(self, 'principal_name', n.get_str_value()),
+            "schoolNumber": lambda n : setattr(self, 'school_number', n.get_str_value()),
             "users": lambda n : setattr(self, 'users', n.get_collection_of_object_values(education_user.EducationUser)),
         }
         super_fields = super().get_field_deserializers()

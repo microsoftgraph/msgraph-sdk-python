@@ -54,7 +54,6 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
         self._event_name: Optional[str] = None
         # IP address from where the simulation event was initiated by a user in an attack simulation and training campaign.
         self._ip_address: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The operating system, platform, and device details from where the simulation event was initiated by a user in an attack simulation and training campaign.
         self._os_platform_device_details: Optional[str] = None
@@ -112,11 +111,11 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
         """
         fields = {
             "browser": lambda n : setattr(self, 'browser', n.get_str_value()),
-            "event_date_time": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
-            "event_name": lambda n : setattr(self, 'event_name', n.get_str_value()),
-            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "eventDateTime": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
+            "eventName": lambda n : setattr(self, 'event_name', n.get_str_value()),
+            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "os_platform_device_details": lambda n : setattr(self, 'os_platform_device_details', n.get_str_value()),
+            "osPlatformDeviceDetails": lambda n : setattr(self, 'os_platform_device_details', n.get_str_value()),
         }
         return fields
     
@@ -140,7 +139,7 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -148,7 +147,7 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

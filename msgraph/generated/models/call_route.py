@@ -31,13 +31,9 @@ class CallRoute(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The final property
         self._final: Optional[identity_set.IdentitySet] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The original property
         self._original: Optional[identity_set.IdentitySet] = None
-        # The routingType property
         self._routing_type: Optional[routing_type.RoutingType] = None
     
     @staticmethod
@@ -55,7 +51,7 @@ class CallRoute(AdditionalDataHolder, Parsable):
     @property
     def final(self,) -> Optional[identity_set.IdentitySet]:
         """
-        Gets the final property value. The final property
+        Gets the final property value. 
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._final
@@ -63,7 +59,7 @@ class CallRoute(AdditionalDataHolder, Parsable):
     @final.setter
     def final(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
-        Sets the final property value. The final property
+        Sets the final property value. 
         Args:
             value: Value to set for the final property.
         """
@@ -78,14 +74,14 @@ class CallRoute(AdditionalDataHolder, Parsable):
             "final": lambda n : setattr(self, 'final', n.get_object_value(identity_set.IdentitySet)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "original": lambda n : setattr(self, 'original', n.get_object_value(identity_set.IdentitySet)),
-            "routing_type": lambda n : setattr(self, 'routing_type', n.get_enum_value(routing_type.RoutingType)),
+            "routingType": lambda n : setattr(self, 'routing_type', n.get_enum_value(routing_type.RoutingType)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -93,7 +89,7 @@ class CallRoute(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -102,7 +98,7 @@ class CallRoute(AdditionalDataHolder, Parsable):
     @property
     def original(self,) -> Optional[identity_set.IdentitySet]:
         """
-        Gets the original property value. The original property
+        Gets the original property value. 
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._original
@@ -110,7 +106,7 @@ class CallRoute(AdditionalDataHolder, Parsable):
     @original.setter
     def original(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
-        Sets the original property value. The original property
+        Sets the original property value. 
         Args:
             value: Value to set for the original property.
         """
@@ -119,7 +115,7 @@ class CallRoute(AdditionalDataHolder, Parsable):
     @property
     def routing_type(self,) -> Optional[routing_type.RoutingType]:
         """
-        Gets the routingType property value. The routingType property
+        Gets the routingType property value. 
         Returns: Optional[routing_type.RoutingType]
         """
         return self._routing_type
@@ -127,7 +123,7 @@ class CallRoute(AdditionalDataHolder, Parsable):
     @routing_type.setter
     def routing_type(self,value: Optional[routing_type.RoutingType] = None) -> None:
         """
-        Sets the routingType property value. The routingType property
+        Sets the routingType property value. 
         Args:
             value: Value to set for the routingType property.
         """

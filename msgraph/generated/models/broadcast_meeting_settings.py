@@ -77,7 +77,6 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
         self._is_recording_enabled: Optional[bool] = None
         # Indicates whether video on demand is enabled for this Teams live event. Default value is false.
         self._is_video_on_demand_enabled: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -98,12 +97,12 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allowed_audience": lambda n : setattr(self, 'allowed_audience', n.get_enum_value(broadcast_meeting_audience.BroadcastMeetingAudience)),
+            "allowedAudience": lambda n : setattr(self, 'allowed_audience', n.get_enum_value(broadcast_meeting_audience.BroadcastMeetingAudience)),
             "captions": lambda n : setattr(self, 'captions', n.get_object_value(broadcast_meeting_caption_settings.BroadcastMeetingCaptionSettings)),
-            "is_attendee_report_enabled": lambda n : setattr(self, 'is_attendee_report_enabled', n.get_bool_value()),
-            "is_question_and_answer_enabled": lambda n : setattr(self, 'is_question_and_answer_enabled', n.get_bool_value()),
-            "is_recording_enabled": lambda n : setattr(self, 'is_recording_enabled', n.get_bool_value()),
-            "is_video_on_demand_enabled": lambda n : setattr(self, 'is_video_on_demand_enabled', n.get_bool_value()),
+            "isAttendeeReportEnabled": lambda n : setattr(self, 'is_attendee_report_enabled', n.get_bool_value()),
+            "isQuestionAndAnswerEnabled": lambda n : setattr(self, 'is_question_and_answer_enabled', n.get_bool_value()),
+            "isRecordingEnabled": lambda n : setattr(self, 'is_recording_enabled', n.get_bool_value()),
+            "isVideoOnDemandEnabled": lambda n : setattr(self, 'is_video_on_demand_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -179,7 +178,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -187,7 +186,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

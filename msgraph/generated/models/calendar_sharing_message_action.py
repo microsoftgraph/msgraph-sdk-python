@@ -11,7 +11,7 @@ class CalendarSharingMessageAction(AdditionalDataHolder, Parsable):
     @property
     def action(self,) -> Optional[calendar_sharing_action.CalendarSharingAction]:
         """
-        Gets the action property value. The action property
+        Gets the action property value. 
         Returns: Optional[calendar_sharing_action.CalendarSharingAction]
         """
         return self._action
@@ -19,7 +19,7 @@ class CalendarSharingMessageAction(AdditionalDataHolder, Parsable):
     @action.setter
     def action(self,value: Optional[calendar_sharing_action.CalendarSharingAction] = None) -> None:
         """
-        Sets the action property value. The action property
+        Sets the action property value. 
         Args:
             value: Value to set for the action property.
         """
@@ -28,7 +28,7 @@ class CalendarSharingMessageAction(AdditionalDataHolder, Parsable):
     @property
     def action_type(self,) -> Optional[calendar_sharing_action_type.CalendarSharingActionType]:
         """
-        Gets the actionType property value. The actionType property
+        Gets the actionType property value. 
         Returns: Optional[calendar_sharing_action_type.CalendarSharingActionType]
         """
         return self._action_type
@@ -36,7 +36,7 @@ class CalendarSharingMessageAction(AdditionalDataHolder, Parsable):
     @action_type.setter
     def action_type(self,value: Optional[calendar_sharing_action_type.CalendarSharingActionType] = None) -> None:
         """
-        Sets the actionType property value. The actionType property
+        Sets the actionType property value. 
         Args:
             value: Value to set for the actionType property.
         """
@@ -66,13 +66,9 @@ class CalendarSharingMessageAction(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The action property
         self._action: Optional[calendar_sharing_action.CalendarSharingAction] = None
-        # The actionType property
         self._action_type: Optional[calendar_sharing_action_type.CalendarSharingActionType] = None
-        # The importance property
         self._importance: Optional[calendar_sharing_action_importance.CalendarSharingActionImportance] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -94,7 +90,7 @@ class CalendarSharingMessageAction(AdditionalDataHolder, Parsable):
         """
         fields = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(calendar_sharing_action.CalendarSharingAction)),
-            "action_type": lambda n : setattr(self, 'action_type', n.get_enum_value(calendar_sharing_action_type.CalendarSharingActionType)),
+            "actionType": lambda n : setattr(self, 'action_type', n.get_enum_value(calendar_sharing_action_type.CalendarSharingActionType)),
             "importance": lambda n : setattr(self, 'importance', n.get_enum_value(calendar_sharing_action_importance.CalendarSharingActionImportance)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
@@ -103,7 +99,7 @@ class CalendarSharingMessageAction(AdditionalDataHolder, Parsable):
     @property
     def importance(self,) -> Optional[calendar_sharing_action_importance.CalendarSharingActionImportance]:
         """
-        Gets the importance property value. The importance property
+        Gets the importance property value. 
         Returns: Optional[calendar_sharing_action_importance.CalendarSharingActionImportance]
         """
         return self._importance
@@ -111,7 +107,7 @@ class CalendarSharingMessageAction(AdditionalDataHolder, Parsable):
     @importance.setter
     def importance(self,value: Optional[calendar_sharing_action_importance.CalendarSharingActionImportance] = None) -> None:
         """
-        Sets the importance property value. The importance property
+        Sets the importance property value. 
         Args:
             value: Value to set for the importance property.
         """
@@ -120,7 +116,7 @@ class CalendarSharingMessageAction(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -128,7 +124,7 @@ class CalendarSharingMessageAction(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

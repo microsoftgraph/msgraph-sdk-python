@@ -11,7 +11,6 @@ class BookingCurrency(entity.Entity):
         Instantiates a new BookingCurrency and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The currency symbol. For example, the currency symbol for the US dollar and for the Australian dollar is $.
         self._symbol: Optional[str] = None

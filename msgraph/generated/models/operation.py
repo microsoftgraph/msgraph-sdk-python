@@ -17,7 +17,6 @@ class Operation(entity.Entity):
         self._created_date_time: Optional[datetime] = None
         # The time of the last action of the operation.
         self._last_action_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The current status of the operation: notStarted, running, completed, failed
         self._status: Optional[operation_status.OperationStatus] = None
@@ -57,8 +56,8 @@ class Operation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "last_action_date_time": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "lastActionDateTime": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(operation_status.OperationStatus)),
         }
         super_fields = super().get_field_deserializers()

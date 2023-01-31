@@ -15,7 +15,7 @@ class PrintJob(entity.Entity):
     @property
     def configuration(self,) -> Optional[print_job_configuration.PrintJobConfiguration]:
         """
-        Gets the configuration property value. The configuration property
+        Gets the configuration property value. 
         Returns: Optional[print_job_configuration.PrintJobConfiguration]
         """
         return self._configuration
@@ -23,7 +23,7 @@ class PrintJob(entity.Entity):
     @configuration.setter
     def configuration(self,value: Optional[print_job_configuration.PrintJobConfiguration] = None) -> None:
         """
-        Sets the configuration property value. The configuration property
+        Sets the configuration property value. 
         Args:
             value: Value to set for the configuration property.
         """
@@ -34,23 +34,18 @@ class PrintJob(entity.Entity):
         Instantiates a new printJob and sets the default values.
         """
         super().__init__()
-        # The configuration property
         self._configuration: Optional[print_job_configuration.PrintJobConfiguration] = None
-        # The createdBy property
         self._created_by: Optional[user_identity.UserIdentity] = None
         # The DateTimeOffset when the job was created. Read-only.
         self._created_date_time: Optional[datetime] = None
-        # The documents property
         self._documents: Optional[List[print_document.PrintDocument]] = None
         # If true, document can be fetched by printer.
         self._is_fetchable: Optional[bool] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Contains the source job URL, if the job has been redirected from another printer.
         self._redirected_from: Optional[str] = None
         # Contains the destination job URL, if the job has been redirected to another printer.
         self._redirected_to: Optional[str] = None
-        # The status property
         self._status: Optional[print_job_status.PrintJobStatus] = None
         # A list of printTasks that were triggered by this print job.
         self._tasks: Optional[List[print_task.PrintTask]] = None
@@ -58,7 +53,7 @@ class PrintJob(entity.Entity):
     @property
     def created_by(self,) -> Optional[user_identity.UserIdentity]:
         """
-        Gets the createdBy property value. The createdBy property
+        Gets the createdBy property value. 
         Returns: Optional[user_identity.UserIdentity]
         """
         return self._created_by
@@ -66,7 +61,7 @@ class PrintJob(entity.Entity):
     @created_by.setter
     def created_by(self,value: Optional[user_identity.UserIdentity] = None) -> None:
         """
-        Sets the createdBy property value. The createdBy property
+        Sets the createdBy property value. 
         Args:
             value: Value to set for the createdBy property.
         """
@@ -104,7 +99,7 @@ class PrintJob(entity.Entity):
     @property
     def documents(self,) -> Optional[List[print_document.PrintDocument]]:
         """
-        Gets the documents property value. The documents property
+        Gets the documents property value. 
         Returns: Optional[List[print_document.PrintDocument]]
         """
         return self._documents
@@ -112,7 +107,7 @@ class PrintJob(entity.Entity):
     @documents.setter
     def documents(self,value: Optional[List[print_document.PrintDocument]] = None) -> None:
         """
-        Sets the documents property value. The documents property
+        Sets the documents property value. 
         Args:
             value: Value to set for the documents property.
         """
@@ -125,12 +120,12 @@ class PrintJob(entity.Entity):
         """
         fields = {
             "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(print_job_configuration.PrintJobConfiguration)),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(user_identity.UserIdentity)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(user_identity.UserIdentity)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "documents": lambda n : setattr(self, 'documents', n.get_collection_of_object_values(print_document.PrintDocument)),
-            "is_fetchable": lambda n : setattr(self, 'is_fetchable', n.get_bool_value()),
-            "redirected_from": lambda n : setattr(self, 'redirected_from', n.get_str_value()),
-            "redirected_to": lambda n : setattr(self, 'redirected_to', n.get_str_value()),
+            "isFetchable": lambda n : setattr(self, 'is_fetchable', n.get_bool_value()),
+            "redirectedFrom": lambda n : setattr(self, 'redirected_from', n.get_str_value()),
+            "redirectedTo": lambda n : setattr(self, 'redirected_to', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_object_value(print_job_status.PrintJobStatus)),
             "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(print_task.PrintTask)),
         }
@@ -211,7 +206,7 @@ class PrintJob(entity.Entity):
     @property
     def status(self,) -> Optional[print_job_status.PrintJobStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[print_job_status.PrintJobStatus]
         """
         return self._status
@@ -219,7 +214,7 @@ class PrintJob(entity.Entity):
     @status.setter
     def status(self,value: Optional[print_job_status.PrintJobStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

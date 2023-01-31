@@ -14,7 +14,7 @@ todo_task_list = lazy_import('msgraph.generated.models.todo_task_list')
 todo_task_list_collection_response = lazy_import('msgraph.generated.models.todo_task_list_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.users.item.todo.lists.count.count_request_builder')
-delta_request_builder = lazy_import('msgraph.generated.users.item.todo.lists.delta.delta_request_builder')
+delta_request_builder = lazy_import('msgraph.generated.users.item.todo.lists.microsoft_graph_delta.delta_request_builder')
 
 class ListsRequestBuilder():
     """
@@ -26,6 +26,13 @@ class ListsRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_delta(self) -> delta_request_builder.DeltaRequestBuilder:
+        """
+        Provides operations to call the delta method.
+        """
+        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -44,13 +51,6 @@ class ListsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def delta(self,) -> delta_request_builder.DeltaRequestBuilder:
-        """
-        Provides operations to call the delta method.
-        Returns: delta_request_builder.DeltaRequestBuilder
-        """
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     async def get(self,request_configuration: Optional[ListsRequestBuilderGetRequestConfiguration] = None) -> Optional[todo_task_list_collection_response.TodoTaskListCollectionResponse]:
         """
@@ -74,7 +74,7 @@ class ListsRequestBuilder():
         """
         Create a new lists object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[todo_task_list.TodoTaskList]
         """
@@ -113,7 +113,7 @@ class ListsRequestBuilder():
         """
         Create a new lists object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

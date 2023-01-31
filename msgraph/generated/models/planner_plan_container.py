@@ -32,7 +32,6 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
 
         # The identifier of the resource that contains the plan. Optional.
         self._container_id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The type of the resource that contains the plan. For supported types, see the previous table. Possible values are: group, unknownFutureValue, roster. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: roster. Optional.
         self._type: Optional[planner_container_type.PlannerContainerType] = None
@@ -74,7 +73,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "container_id": lambda n : setattr(self, 'container_id', n.get_str_value()),
+            "containerId": lambda n : setattr(self, 'container_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(planner_container_type.PlannerContainerType)),
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
@@ -84,7 +83,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -92,7 +91,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

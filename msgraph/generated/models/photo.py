@@ -77,7 +77,6 @@ class Photo(AdditionalDataHolder, Parsable):
         self._focal_length: Optional[float] = None
         # The ISO value from the camera. Read-only.
         self._iso: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The orientation value from the camera. Writable on OneDrive Personal.
         self._orientation: Optional[int] = None
@@ -170,16 +169,16 @@ class Photo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "camera_make": lambda n : setattr(self, 'camera_make', n.get_str_value()),
-            "camera_model": lambda n : setattr(self, 'camera_model', n.get_str_value()),
-            "exposure_denominator": lambda n : setattr(self, 'exposure_denominator', n.get_float_value()),
-            "exposure_numerator": lambda n : setattr(self, 'exposure_numerator', n.get_float_value()),
-            "f_number": lambda n : setattr(self, 'f_number', n.get_float_value()),
-            "focal_length": lambda n : setattr(self, 'focal_length', n.get_float_value()),
+            "cameraMake": lambda n : setattr(self, 'camera_make', n.get_str_value()),
+            "cameraModel": lambda n : setattr(self, 'camera_model', n.get_str_value()),
+            "exposureDenominator": lambda n : setattr(self, 'exposure_denominator', n.get_float_value()),
+            "exposureNumerator": lambda n : setattr(self, 'exposure_numerator', n.get_float_value()),
+            "fNumber": lambda n : setattr(self, 'f_number', n.get_float_value()),
+            "focalLength": lambda n : setattr(self, 'focal_length', n.get_float_value()),
             "iso": lambda n : setattr(self, 'iso', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "orientation": lambda n : setattr(self, 'orientation', n.get_int_value()),
-            "taken_date_time": lambda n : setattr(self, 'taken_date_time', n.get_datetime_value()),
+            "takenDateTime": lambda n : setattr(self, 'taken_date_time', n.get_datetime_value()),
         }
         return fields
     
@@ -203,7 +202,7 @@ class Photo(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -211,7 +210,7 @@ class Photo(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

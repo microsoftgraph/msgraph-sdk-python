@@ -16,7 +16,6 @@ class UnifiedRoleEligibilityScheduleInstance(unified_role_schedule_instance_base
         self._end_date_time: Optional[datetime] = None
         # How the role eligibility is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleEligibilitySchedule can be managed by the caller. Supports $filter (eq, ne).
         self._member_type: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The identifier of the unifiedRoleEligibilitySchedule object from which this instance was created. Supports $filter (eq, ne).
         self._role_eligibility_schedule_id: Optional[str] = None
@@ -58,10 +57,10 @@ class UnifiedRoleEligibilityScheduleInstance(unified_role_schedule_instance_base
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "member_type": lambda n : setattr(self, 'member_type', n.get_str_value()),
-            "role_eligibility_schedule_id": lambda n : setattr(self, 'role_eligibility_schedule_id', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "memberType": lambda n : setattr(self, 'member_type', n.get_str_value()),
+            "roleEligibilityScheduleId": lambda n : setattr(self, 'role_eligibility_schedule_id', n.get_str_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

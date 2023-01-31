@@ -16,7 +16,6 @@ class AuthenticationFlowsPolicy(entity.Entity):
         self._description: Optional[str] = None
         # Inherited property. The human-readable name of the policy. Optional. Read-only.
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Contains selfServiceSignUpAuthenticationFlowConfiguration settings that convey whether self-service sign-up is enabled or disabled. Optional. Read-only.
         self._self_service_sign_up: Optional[self_service_sign_up_authentication_flow_configuration.SelfServiceSignUpAuthenticationFlowConfiguration] = None
@@ -74,8 +73,8 @@ class AuthenticationFlowsPolicy(entity.Entity):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "self_service_sign_up": lambda n : setattr(self, 'self_service_sign_up', n.get_object_value(self_service_sign_up_authentication_flow_configuration.SelfServiceSignUpAuthenticationFlowConfiguration)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "selfServiceSignUp": lambda n : setattr(self, 'self_service_sign_up', n.get_object_value(self_service_sign_up_authentication_flow_configuration.SelfServiceSignUpAuthenticationFlowConfiguration)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

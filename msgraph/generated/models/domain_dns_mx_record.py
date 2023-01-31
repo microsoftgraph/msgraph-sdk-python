@@ -13,7 +13,6 @@ class DomainDnsMxRecord(domain_dns_record.DomainDnsRecord):
         super().__init__()
         # Value used when configuring the answer/destination/value of the MX record at the DNS host.
         self._mail_exchange: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Value used when configuring the Preference/Priority property of the MX record at the DNS host.
         self._preference: Optional[int] = None
@@ -36,7 +35,7 @@ class DomainDnsMxRecord(domain_dns_record.DomainDnsRecord):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "mail_exchange": lambda n : setattr(self, 'mail_exchange', n.get_str_value()),
+            "mailExchange": lambda n : setattr(self, 'mail_exchange', n.get_str_value()),
             "preference": lambda n : setattr(self, 'preference', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()

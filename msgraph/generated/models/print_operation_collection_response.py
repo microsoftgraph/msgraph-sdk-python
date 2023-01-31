@@ -12,7 +12,6 @@ class PrintOperationCollectionResponse(base_collection_pagination_count_response
         Instantiates a new PrintOperationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[print_operation.PrintOperation]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class PrintOperationCollectionResponse(base_collection_pagination_count_response
     @property
     def value(self,) -> Optional[List[print_operation.PrintOperation]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[print_operation.PrintOperation]]
         """
         return self._value
@@ -61,7 +60,7 @@ class PrintOperationCollectionResponse(base_collection_pagination_count_response
     @value.setter
     def value(self,value: Optional[List[print_operation.PrintOperation]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

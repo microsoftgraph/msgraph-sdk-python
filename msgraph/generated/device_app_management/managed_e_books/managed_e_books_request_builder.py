@@ -66,7 +66,7 @@ class ManagedEBooksRequestBuilder():
         """
         Create new navigation property to managedEBooks for deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[managed_e_book.ManagedEBook]
         """
@@ -105,7 +105,7 @@ class ManagedEBooksRequestBuilder():
         """
         Create new navigation property to managedEBooks for deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

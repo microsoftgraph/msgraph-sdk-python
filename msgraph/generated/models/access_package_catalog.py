@@ -63,7 +63,6 @@ class AccessPackageCatalog(entity.Entity):
         self._is_externally_visible: Optional[bool] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         self._modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Has the value published if the access packages are available for management. The possible values are: unpublished, published, unknownFutureValue.
         self._state: Optional[access_package_catalog_state.AccessPackageCatalogState] = None
@@ -137,13 +136,13 @@ class AccessPackageCatalog(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_packages": lambda n : setattr(self, 'access_packages', n.get_collection_of_object_values(access_package.AccessPackage)),
-            "catalog_type": lambda n : setattr(self, 'catalog_type', n.get_enum_value(access_package_catalog_type.AccessPackageCatalogType)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "accessPackages": lambda n : setattr(self, 'access_packages', n.get_collection_of_object_values(access_package.AccessPackage)),
+            "catalogType": lambda n : setattr(self, 'catalog_type', n.get_enum_value(access_package_catalog_type.AccessPackageCatalogType)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_externally_visible": lambda n : setattr(self, 'is_externally_visible', n.get_bool_value()),
-            "modified_date_time": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isExternallyVisible": lambda n : setattr(self, 'is_externally_visible', n.get_bool_value()),
+            "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(access_package_catalog_state.AccessPackageCatalogState)),
         }
         super_fields = super().get_field_deserializers()

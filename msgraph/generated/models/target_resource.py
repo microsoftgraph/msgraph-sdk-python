@@ -39,7 +39,6 @@ class TargetResource(AdditionalDataHolder, Parsable):
         self._id: Optional[str] = None
         # Indicates name, old value and new value of each attribute that changed. Property values depend on the operation type.
         self._modified_properties: Optional[List[modified_property.ModifiedProperty]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Describes the resource type.  Example values include Application, Group, ServicePrincipal, and User.
         self._type: Optional[str] = None
@@ -81,13 +80,13 @@ class TargetResource(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "group_type": lambda n : setattr(self, 'group_type', n.get_enum_value(group_type.GroupType)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "groupType": lambda n : setattr(self, 'group_type', n.get_enum_value(group_type.GroupType)),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "modified_properties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(modified_property.ModifiedProperty)),
+            "modifiedProperties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(modified_property.ModifiedProperty)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
     
@@ -145,7 +144,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -153,7 +152,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

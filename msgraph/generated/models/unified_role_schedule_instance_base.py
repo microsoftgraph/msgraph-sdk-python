@@ -56,7 +56,6 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
         self._directory_scope: Optional[directory_object.DirectoryObject] = None
         # Identifier of the directory object representing the scope of the assignment or role eligibility. The scope of an assignment or role eligibility determines the set of resources for which the principal has been granted access. Directory scopes are shared scopes stored in the directory that are understood by multiple applications. Use / for tenant-wide scope. Use appScopeId to limit the scope to an application only.
         self._directory_scope_id: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The principal that's getting a role assignment or role eligibility through the request.
         self._principal: Optional[directory_object.DirectoryObject] = None
@@ -119,14 +118,14 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_scope": lambda n : setattr(self, 'app_scope', n.get_object_value(app_scope.AppScope)),
-            "app_scope_id": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
-            "directory_scope": lambda n : setattr(self, 'directory_scope', n.get_object_value(directory_object.DirectoryObject)),
-            "directory_scope_id": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
+            "appScope": lambda n : setattr(self, 'app_scope', n.get_object_value(app_scope.AppScope)),
+            "appScopeId": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
+            "directoryScope": lambda n : setattr(self, 'directory_scope', n.get_object_value(directory_object.DirectoryObject)),
+            "directoryScopeId": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
             "principal": lambda n : setattr(self, 'principal', n.get_object_value(directory_object.DirectoryObject)),
-            "principal_id": lambda n : setattr(self, 'principal_id', n.get_str_value()),
-            "role_definition": lambda n : setattr(self, 'role_definition', n.get_object_value(unified_role_definition.UnifiedRoleDefinition)),
-            "role_definition_id": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
+            "principalId": lambda n : setattr(self, 'principal_id', n.get_str_value()),
+            "roleDefinition": lambda n : setattr(self, 'role_definition', n.get_object_value(unified_role_definition.UnifiedRoleDefinition)),
+            "roleDefinitionId": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -32,7 +32,6 @@ class DateTimeColumn(AdditionalDataHolder, Parsable):
         self._display_as: Optional[str] = None
         # Indicates whether the value should be presented as a date only or a date and time. Must be one of dateOnly or dateTime
         self._format: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -87,7 +86,7 @@ class DateTimeColumn(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_as": lambda n : setattr(self, 'display_as', n.get_str_value()),
+            "displayAs": lambda n : setattr(self, 'display_as', n.get_str_value()),
             "format": lambda n : setattr(self, 'format', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
@@ -96,7 +95,7 @@ class DateTimeColumn(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -104,7 +103,7 @@ class DateTimeColumn(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -12,7 +12,6 @@ class AccessPackageApprovalStageCollectionResponse(base_collection_pagination_co
         Instantiates a new AccessPackageApprovalStageCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[access_package_approval_stage.AccessPackageApprovalStage]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class AccessPackageApprovalStageCollectionResponse(base_collection_pagination_co
     @property
     def value(self,) -> Optional[List[access_package_approval_stage.AccessPackageApprovalStage]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[access_package_approval_stage.AccessPackageApprovalStage]]
         """
         return self._value
@@ -61,7 +60,7 @@ class AccessPackageApprovalStageCollectionResponse(base_collection_pagination_co
     @value.setter
     def value(self,value: Optional[List[access_package_approval_stage.AccessPackageApprovalStage]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -55,9 +55,9 @@ class ManagedAndroidStoreApp(managed_app.ManagedApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_store_url": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
-            "minimum_supported_operating_system": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(android_minimum_operating_system.AndroidMinimumOperatingSystem)),
-            "package_id": lambda n : setattr(self, 'package_id', n.get_str_value()),
+            "appStoreUrl": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
+            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(android_minimum_operating_system.AndroidMinimumOperatingSystem)),
+            "packageId": lambda n : setattr(self, 'package_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

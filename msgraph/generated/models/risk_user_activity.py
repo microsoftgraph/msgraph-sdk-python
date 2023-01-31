@@ -32,7 +32,6 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
 
         # Details of the detected risk. Possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue.
         self._detail: Optional[risk_detail.RiskDetail] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The type of risk event detected.
         self._risk_event_types: Optional[List[str]] = None
@@ -74,14 +73,14 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
         fields = {
             "detail": lambda n : setattr(self, 'detail', n.get_enum_value(risk_detail.RiskDetail)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "risk_event_types": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_primitive_values(str)),
+            "riskEventTypes": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -89,7 +88,7 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

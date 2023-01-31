@@ -101,12 +101,13 @@ class TodoTaskItemRequestBuilder():
         url_tpl_params["checklistItem%2Did"] = id
         return checklist_item_item_request_builder.ChecklistItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, todo_task_id: Optional[str] = None) -> None:
         """
         Instantiates a new TodoTaskItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            todoTaskId: key: id of todoTask
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -116,6 +117,7 @@ class TodoTaskItemRequestBuilder():
         self.url_template: str = "{+baseurl}/users/{user%2Did}/todo/lists/{todoTaskList%2Did}/tasks/{todoTask%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["todoTask%2Did"] = todoTaskId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -184,7 +186,7 @@ class TodoTaskItemRequestBuilder():
         """
         Update the navigation property tasks in users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[todo_task.TodoTask]
         """
@@ -239,7 +241,7 @@ class TodoTaskItemRequestBuilder():
         """
         Update the navigation property tasks in users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

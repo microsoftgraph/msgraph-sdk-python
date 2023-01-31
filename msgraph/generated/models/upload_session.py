@@ -33,7 +33,6 @@ class UploadSession(AdditionalDataHolder, Parsable):
         self._expiration_date_time: Optional[datetime] = None
         # A collection of byte ranges that the server is missing for the file. These ranges are zero indexed and of the format 'start-end' (e.g. '0-26' to indicate the first 27 bytes of the file). When uploading files as Outlook attachments, instead of a collection of ranges, this property always indicates a single value '{start}', the location in the file where the next upload should begin.
         self._next_expected_ranges: Optional[List[str]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The URL endpoint that accepts PUT requests for byte ranges of the file.
         self._upload_url: Optional[str] = None
@@ -73,10 +72,10 @@ class UploadSession(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "next_expected_ranges": lambda n : setattr(self, 'next_expected_ranges', n.get_collection_of_primitive_values(str)),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "nextExpectedRanges": lambda n : setattr(self, 'next_expected_ranges', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "upload_url": lambda n : setattr(self, 'upload_url', n.get_str_value()),
+            "uploadUrl": lambda n : setattr(self, 'upload_url', n.get_str_value()),
         }
         return fields
     
@@ -100,7 +99,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -108,7 +107,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

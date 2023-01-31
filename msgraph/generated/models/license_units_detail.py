@@ -30,7 +30,6 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
 
         # The number of units that are enabled for the active subscription of the service SKU.
         self._enabled: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The number of units that are suspended because the subscription of the service SKU has been cancelled. The units cannot be assigned but can still be reactivated before they are deleted.
         self._suspended: Optional[int] = None
@@ -82,7 +81,7 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -90,7 +89,7 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

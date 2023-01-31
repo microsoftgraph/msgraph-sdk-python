@@ -27,7 +27,6 @@ class Invitation(entity.Entity):
         self._invite_redeem_url: Optional[str] = None
         # The URL the user should be redirected to once the invitation is redeemed. Required.
         self._invite_redirect_url: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Reset the user's redemption status and reinvite a user while retaining their user identifier, group memberships, and app assignments. This property allows you to enable a user to sign-in using a different email address from the one in the previous invitation. For more information about using this property, see Reset redemption status for a guest user.
         self._reset_redemption: Optional[bool] = None
@@ -54,15 +53,15 @@ class Invitation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "invited_user": lambda n : setattr(self, 'invited_user', n.get_object_value(user.User)),
-            "invited_user_display_name": lambda n : setattr(self, 'invited_user_display_name', n.get_str_value()),
-            "invited_user_email_address": lambda n : setattr(self, 'invited_user_email_address', n.get_str_value()),
-            "invited_user_message_info": lambda n : setattr(self, 'invited_user_message_info', n.get_object_value(invited_user_message_info.InvitedUserMessageInfo)),
-            "invited_user_type": lambda n : setattr(self, 'invited_user_type', n.get_str_value()),
-            "invite_redeem_url": lambda n : setattr(self, 'invite_redeem_url', n.get_str_value()),
-            "invite_redirect_url": lambda n : setattr(self, 'invite_redirect_url', n.get_str_value()),
-            "reset_redemption": lambda n : setattr(self, 'reset_redemption', n.get_bool_value()),
-            "send_invitation_message": lambda n : setattr(self, 'send_invitation_message', n.get_bool_value()),
+            "invitedUser": lambda n : setattr(self, 'invited_user', n.get_object_value(user.User)),
+            "invitedUserDisplayName": lambda n : setattr(self, 'invited_user_display_name', n.get_str_value()),
+            "invitedUserEmailAddress": lambda n : setattr(self, 'invited_user_email_address', n.get_str_value()),
+            "invitedUserMessageInfo": lambda n : setattr(self, 'invited_user_message_info', n.get_object_value(invited_user_message_info.InvitedUserMessageInfo)),
+            "invitedUserType": lambda n : setattr(self, 'invited_user_type', n.get_str_value()),
+            "inviteRedeemUrl": lambda n : setattr(self, 'invite_redeem_url', n.get_str_value()),
+            "inviteRedirectUrl": lambda n : setattr(self, 'invite_redirect_url', n.get_str_value()),
+            "resetRedemption": lambda n : setattr(self, 'reset_redemption', n.get_bool_value()),
+            "sendInvitationMessage": lambda n : setattr(self, 'send_invitation_message', n.get_bool_value()),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

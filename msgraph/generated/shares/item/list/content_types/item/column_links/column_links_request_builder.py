@@ -66,7 +66,7 @@ class ColumnLinksRequestBuilder():
         """
         Create new navigation property to columnLinks for shares
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[column_link.ColumnLink]
         """
@@ -105,7 +105,7 @@ class ColumnLinksRequestBuilder():
         """
         Create new navigation property to columnLinks for shares
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

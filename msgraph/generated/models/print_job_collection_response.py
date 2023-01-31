@@ -12,7 +12,6 @@ class PrintJobCollectionResponse(base_collection_pagination_count_response.BaseC
         Instantiates a new PrintJobCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[print_job.PrintJob]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class PrintJobCollectionResponse(base_collection_pagination_count_response.BaseC
     @property
     def value(self,) -> Optional[List[print_job.PrintJob]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[print_job.PrintJob]]
         """
         return self._value
@@ -61,7 +60,7 @@ class PrintJobCollectionResponse(base_collection_pagination_count_response.BaseC
     @value.setter
     def value(self,value: Optional[List[print_job.PrintJob]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

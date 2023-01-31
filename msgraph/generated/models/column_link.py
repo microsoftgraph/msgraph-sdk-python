@@ -13,7 +13,6 @@ class ColumnLink(entity.Entity):
         super().__init__()
         # The name of the column  in this content type.
         self._name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

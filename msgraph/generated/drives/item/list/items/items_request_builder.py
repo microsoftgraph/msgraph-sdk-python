@@ -66,7 +66,7 @@ class ItemsRequestBuilder():
         """
         Create a new [listItem][] in a [list][].
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[list_item.ListItem]
         """
@@ -105,7 +105,7 @@ class ItemsRequestBuilder():
         """
         Create a new [listItem][] in a [list][].
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

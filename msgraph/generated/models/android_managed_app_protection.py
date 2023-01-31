@@ -173,15 +173,15 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         """
         fields = {
             "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(managed_mobile_app.ManagedMobileApp)),
-            "custom_browser_display_name": lambda n : setattr(self, 'custom_browser_display_name', n.get_str_value()),
-            "custom_browser_package_id": lambda n : setattr(self, 'custom_browser_package_id', n.get_str_value()),
-            "deployed_app_count": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
-            "deployment_summary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary)),
-            "disable_app_encryption_if_device_encryption_is_enabled": lambda n : setattr(self, 'disable_app_encryption_if_device_encryption_is_enabled', n.get_bool_value()),
-            "encrypt_app_data": lambda n : setattr(self, 'encrypt_app_data', n.get_bool_value()),
-            "minimum_required_patch_version": lambda n : setattr(self, 'minimum_required_patch_version', n.get_str_value()),
-            "minimum_warning_patch_version": lambda n : setattr(self, 'minimum_warning_patch_version', n.get_str_value()),
-            "screen_capture_blocked": lambda n : setattr(self, 'screen_capture_blocked', n.get_bool_value()),
+            "customBrowserDisplayName": lambda n : setattr(self, 'custom_browser_display_name', n.get_str_value()),
+            "customBrowserPackageId": lambda n : setattr(self, 'custom_browser_package_id', n.get_str_value()),
+            "deployedAppCount": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
+            "deploymentSummary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary)),
+            "disableAppEncryptionIfDeviceEncryptionIsEnabled": lambda n : setattr(self, 'disable_app_encryption_if_device_encryption_is_enabled', n.get_bool_value()),
+            "encryptAppData": lambda n : setattr(self, 'encrypt_app_data', n.get_bool_value()),
+            "minimumRequiredPatchVersion": lambda n : setattr(self, 'minimum_required_patch_version', n.get_str_value()),
+            "minimumWarningPatchVersion": lambda n : setattr(self, 'minimum_warning_patch_version', n.get_str_value()),
+            "screenCaptureBlocked": lambda n : setattr(self, 'screen_capture_blocked', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

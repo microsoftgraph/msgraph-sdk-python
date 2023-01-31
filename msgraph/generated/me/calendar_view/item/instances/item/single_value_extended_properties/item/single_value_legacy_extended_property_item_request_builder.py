@@ -17,12 +17,13 @@ class SingleValueLegacyExtendedPropertyItemRequestBuilder():
     """
     Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.event entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, single_value_legacy_extended_property_id: Optional[str] = None) -> None:
         """
         Instantiates a new SingleValueLegacyExtendedPropertyItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            singleValueLegacyExtendedPropertyId: key: id of singleValueLegacyExtendedProperty
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -32,6 +33,7 @@ class SingleValueLegacyExtendedPropertyItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/calendarView/{event%2Did}/instances/{event%2Did1}/singleValueExtendedProperties/{singleValueLegacyExtendedProperty%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["singleValueLegacyExtendedProperty%2Did"] = singleValueLegacyExtendedPropertyId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -74,7 +76,7 @@ class SingleValueLegacyExtendedPropertyItemRequestBuilder():
         """
         Update the navigation property singleValueExtendedProperties in me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]
         """
@@ -129,7 +131,7 @@ class SingleValueLegacyExtendedPropertyItemRequestBuilder():
         """
         Update the navigation property singleValueExtendedProperties in me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

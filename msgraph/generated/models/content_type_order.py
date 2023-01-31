@@ -30,7 +30,6 @@ class ContentTypeOrder(AdditionalDataHolder, Parsable):
 
         # Whether this is the default Content Type
         self._default: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Specifies the position in which the Content Type appears in the selection UI.
         self._position: Optional[int] = None
@@ -79,7 +78,7 @@ class ContentTypeOrder(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -87,7 +86,7 @@ class ContentTypeOrder(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

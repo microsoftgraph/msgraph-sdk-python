@@ -131,7 +131,6 @@ class Video(AdditionalDataHolder, Parsable):
         self._frame_rate: Optional[float] = None
         # Height of the video, in pixels.
         self._height: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Width of the video, in pixels.
         self._width: Optional[int] = None
@@ -205,14 +204,14 @@ class Video(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "audio_bits_per_sample": lambda n : setattr(self, 'audio_bits_per_sample', n.get_int_value()),
-            "audio_channels": lambda n : setattr(self, 'audio_channels', n.get_int_value()),
-            "audio_format": lambda n : setattr(self, 'audio_format', n.get_str_value()),
-            "audio_samples_per_second": lambda n : setattr(self, 'audio_samples_per_second', n.get_int_value()),
+            "audioBitsPerSample": lambda n : setattr(self, 'audio_bits_per_sample', n.get_int_value()),
+            "audioChannels": lambda n : setattr(self, 'audio_channels', n.get_int_value()),
+            "audioFormat": lambda n : setattr(self, 'audio_format', n.get_str_value()),
+            "audioSamplesPerSecond": lambda n : setattr(self, 'audio_samples_per_second', n.get_int_value()),
             "bitrate": lambda n : setattr(self, 'bitrate', n.get_int_value()),
             "duration": lambda n : setattr(self, 'duration', n.get_int_value()),
-            "four_c_c": lambda n : setattr(self, 'four_c_c', n.get_str_value()),
-            "frame_rate": lambda n : setattr(self, 'frame_rate', n.get_float_value()),
+            "fourCC": lambda n : setattr(self, 'four_c_c', n.get_str_value()),
+            "frameRate": lambda n : setattr(self, 'frame_rate', n.get_float_value()),
             "height": lambda n : setattr(self, 'height', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "width": lambda n : setattr(self, 'width', n.get_int_value()),
@@ -239,7 +238,7 @@ class Video(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -247,7 +246,7 @@ class Video(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

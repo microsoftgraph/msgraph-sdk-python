@@ -66,7 +66,7 @@ class TimeOffRequestsRequestBuilder():
         """
         Create new navigation property to timeOffRequests for teams
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[time_off_request.TimeOffRequest]
         """
@@ -105,7 +105,7 @@ class TimeOffRequestsRequestBuilder():
         """
         Create new navigation property to timeOffRequests for teams
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

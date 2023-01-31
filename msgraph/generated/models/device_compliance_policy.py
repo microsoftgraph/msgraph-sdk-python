@@ -55,7 +55,6 @@ class DeviceCompliancePolicy(entity.Entity):
         self._display_name: Optional[str] = None
         # DateTime the object was last modified.
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
         self._scheduled_actions_for_rule: Optional[List[device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule]] = None
@@ -187,16 +186,16 @@ class DeviceCompliancePolicy(entity.Entity):
         """
         fields = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(device_compliance_policy_assignment.DeviceCompliancePolicyAssignment)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "device_setting_state_summaries": lambda n : setattr(self, 'device_setting_state_summaries', n.get_collection_of_object_values(setting_state_device_summary.SettingStateDeviceSummary)),
-            "device_statuses": lambda n : setattr(self, 'device_statuses', n.get_collection_of_object_values(device_compliance_device_status.DeviceComplianceDeviceStatus)),
-            "device_status_overview": lambda n : setattr(self, 'device_status_overview', n.get_object_value(device_compliance_device_overview.DeviceComplianceDeviceOverview)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "scheduled_actions_for_rule": lambda n : setattr(self, 'scheduled_actions_for_rule', n.get_collection_of_object_values(device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule)),
-            "user_statuses": lambda n : setattr(self, 'user_statuses', n.get_collection_of_object_values(device_compliance_user_status.DeviceComplianceUserStatus)),
-            "user_status_overview": lambda n : setattr(self, 'user_status_overview', n.get_object_value(device_compliance_user_overview.DeviceComplianceUserOverview)),
+            "deviceSettingStateSummaries": lambda n : setattr(self, 'device_setting_state_summaries', n.get_collection_of_object_values(setting_state_device_summary.SettingStateDeviceSummary)),
+            "deviceStatuses": lambda n : setattr(self, 'device_statuses', n.get_collection_of_object_values(device_compliance_device_status.DeviceComplianceDeviceStatus)),
+            "deviceStatusOverview": lambda n : setattr(self, 'device_status_overview', n.get_object_value(device_compliance_device_overview.DeviceComplianceDeviceOverview)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "scheduledActionsForRule": lambda n : setattr(self, 'scheduled_actions_for_rule', n.get_collection_of_object_values(device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule)),
+            "userStatuses": lambda n : setattr(self, 'user_statuses', n.get_collection_of_object_values(device_compliance_user_status.DeviceComplianceUserStatus)),
+            "userStatusOverview": lambda n : setattr(self, 'user_status_overview', n.get_object_value(device_compliance_user_overview.DeviceComplianceUserOverview)),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()

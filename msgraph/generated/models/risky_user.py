@@ -22,7 +22,6 @@ class RiskyUser(entity.Entity):
         self._is_deleted: Optional[bool] = None
         # Indicates whether a user's risky state is being processed by the backend.
         self._is_processing: Optional[bool] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Details of the detected risk. Possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue.
         self._risk_detail: Optional[risk_detail.RiskDetail] = None
@@ -56,14 +55,14 @@ class RiskyUser(entity.Entity):
         """
         fields = {
             "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(risky_user_history_item.RiskyUserHistoryItem)),
-            "is_deleted": lambda n : setattr(self, 'is_deleted', n.get_bool_value()),
-            "is_processing": lambda n : setattr(self, 'is_processing', n.get_bool_value()),
-            "risk_detail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(risk_detail.RiskDetail)),
-            "risk_last_updated_date_time": lambda n : setattr(self, 'risk_last_updated_date_time', n.get_datetime_value()),
-            "risk_level": lambda n : setattr(self, 'risk_level', n.get_enum_value(risk_level.RiskLevel)),
-            "risk_state": lambda n : setattr(self, 'risk_state', n.get_enum_value(risk_state.RiskState)),
-            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "isDeleted": lambda n : setattr(self, 'is_deleted', n.get_bool_value()),
+            "isProcessing": lambda n : setattr(self, 'is_processing', n.get_bool_value()),
+            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(risk_detail.RiskDetail)),
+            "riskLastUpdatedDateTime": lambda n : setattr(self, 'risk_last_updated_date_time', n.get_datetime_value()),
+            "riskLevel": lambda n : setattr(self, 'risk_level', n.get_enum_value(risk_level.RiskLevel)),
+            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(risk_state.RiskState)),
+            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

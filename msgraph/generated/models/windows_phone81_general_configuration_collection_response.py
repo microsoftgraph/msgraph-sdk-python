@@ -12,7 +12,6 @@ class WindowsPhone81GeneralConfigurationCollectionResponse(base_collection_pagin
         Instantiates a new WindowsPhone81GeneralConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[windows_phone81_general_configuration.WindowsPhone81GeneralConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class WindowsPhone81GeneralConfigurationCollectionResponse(base_collection_pagin
     @property
     def value(self,) -> Optional[List[windows_phone81_general_configuration.WindowsPhone81GeneralConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[windows_phone81_general_configuration.WindowsPhone81GeneralConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class WindowsPhone81GeneralConfigurationCollectionResponse(base_collection_pagin
     @value.setter
     def value(self,value: Optional[List[windows_phone81_general_configuration.WindowsPhone81GeneralConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -14,7 +14,6 @@ class MailboxEvidence(alert_evidence.AlertEvidence):
         super().__init__()
         # The name associated with the mailbox.
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The primary email address of the mailbox.
         self._primary_address: Optional[str] = None
@@ -56,9 +55,9 @@ class MailboxEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "primary_address": lambda n : setattr(self, 'primary_address', n.get_str_value()),
-            "user_account": lambda n : setattr(self, 'user_account', n.get_object_value(user_account.UserAccount)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "primaryAddress": lambda n : setattr(self, 'primary_address', n.get_str_value()),
+            "userAccount": lambda n : setattr(self, 'user_account', n.get_object_value(user_account.UserAccount)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -260,7 +260,7 @@ class PoliciesRequestBuilder():
         """
         Update policies
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[policy_root.PolicyRoot]
         """
@@ -364,7 +364,7 @@ class PoliciesRequestBuilder():
         """
         Update policies
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

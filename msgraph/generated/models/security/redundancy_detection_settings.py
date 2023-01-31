@@ -34,7 +34,6 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
         self._max_words: Optional[int] = None
         # Specifies the minimum number of words used for email threading and near duplicate detection. To learn more, see Minimum/maximum number of words.
         self._min_words: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Specifies the similarity level for documents to be put in the same near duplicate set. To learn more, see Document and email similarity threshold.
         self._similarity_threshold: Optional[int] = None
@@ -57,11 +56,11 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "max_words": lambda n : setattr(self, 'max_words', n.get_int_value()),
-            "min_words": lambda n : setattr(self, 'min_words', n.get_int_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "maxWords": lambda n : setattr(self, 'max_words', n.get_int_value()),
+            "minWords": lambda n : setattr(self, 'min_words', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "similarity_threshold": lambda n : setattr(self, 'similarity_threshold', n.get_int_value()),
+            "similarityThreshold": lambda n : setattr(self, 'similarity_threshold', n.get_int_value()),
         }
         return fields
     
@@ -119,7 +118,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -127,7 +126,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

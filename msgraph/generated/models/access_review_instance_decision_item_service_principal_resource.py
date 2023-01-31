@@ -9,7 +9,7 @@ class AccessReviewInstanceDecisionItemServicePrincipalResource(access_review_ins
     @property
     def app_id(self,) -> Optional[str]:
         """
-        Gets the appId property value. The appId property
+        Gets the appId property value. 
         Returns: Optional[str]
         """
         return self._app_id
@@ -17,7 +17,7 @@ class AccessReviewInstanceDecisionItemServicePrincipalResource(access_review_ins
     @app_id.setter
     def app_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the appId property value. The appId property
+        Sets the appId property value. 
         Args:
             value: Value to set for the appId property.
         """
@@ -29,7 +29,6 @@ class AccessReviewInstanceDecisionItemServicePrincipalResource(access_review_ins
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.accessReviewInstanceDecisionItemServicePrincipalResource"
-        # The appId property
         self._app_id: Optional[str] = None
     
     @staticmethod
@@ -50,7 +49,7 @@ class AccessReviewInstanceDecisionItemServicePrincipalResource(access_review_ins
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

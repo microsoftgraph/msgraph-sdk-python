@@ -12,7 +12,6 @@ class DirectoryAuditCollectionResponse(base_collection_pagination_count_response
         Instantiates a new DirectoryAuditCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[directory_audit.DirectoryAudit]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class DirectoryAuditCollectionResponse(base_collection_pagination_count_response
     @property
     def value(self,) -> Optional[List[directory_audit.DirectoryAudit]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[directory_audit.DirectoryAudit]]
         """
         return self._value
@@ -61,7 +60,7 @@ class DirectoryAuditCollectionResponse(base_collection_pagination_count_response
     @value.setter
     def value(self,value: Optional[List[directory_audit.DirectoryAudit]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

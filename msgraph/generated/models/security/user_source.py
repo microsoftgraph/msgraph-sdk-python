@@ -56,8 +56,8 @@ class UserSource(data_source.DataSource):
         """
         fields = {
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "included_sources": lambda n : setattr(self, 'included_sources', n.get_enum_value(source_type.SourceType)),
-            "site_web_url": lambda n : setattr(self, 'site_web_url', n.get_str_value()),
+            "includedSources": lambda n : setattr(self, 'included_sources', n.get_enum_value(source_type.SourceType)),
+            "siteWebUrl": lambda n : setattr(self, 'site_web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

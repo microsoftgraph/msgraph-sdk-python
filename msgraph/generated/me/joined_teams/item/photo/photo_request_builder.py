@@ -82,7 +82,7 @@ class PhotoRequestBuilder():
         """
         Update the navigation property photo in me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[profile_photo.ProfilePhoto]
         """
@@ -137,7 +137,7 @@ class PhotoRequestBuilder():
         """
         Update the navigation property photo in me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-available_provider_types_request_builder = lazy_import('msgraph.generated.directory.federation_configurations.available_provider_types.available_provider_types_request_builder')
 count_request_builder = lazy_import('msgraph.generated.directory.federation_configurations.count.count_request_builder')
+available_provider_types_request_builder = lazy_import('msgraph.generated.directory.federation_configurations.microsoft_graph_available_provider_types.available_provider_types_request_builder')
 identity_provider_base = lazy_import('msgraph.generated.models.identity_provider_base')
 identity_provider_base_collection_response = lazy_import('msgraph.generated.models.identity_provider_base_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -27,10 +27,10 @@ class FederationConfigurationsRequestBuilder():
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def available_provider_types(self,) -> available_provider_types_request_builder.AvailableProviderTypesRequestBuilder:
+    @property
+    def microsoft_graph_available_provider_types(self) -> available_provider_types_request_builder.AvailableProviderTypesRequestBuilder:
         """
         Provides operations to call the availableProviderTypes method.
-        Returns: available_provider_types_request_builder.AvailableProviderTypesRequestBuilder
         """
         return available_provider_types_request_builder.AvailableProviderTypesRequestBuilder(self.request_adapter, self.path_parameters)
     
@@ -74,7 +74,7 @@ class FederationConfigurationsRequestBuilder():
         """
         Create new navigation property to federationConfigurations for directory
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[identity_provider_base.IdentityProviderBase]
         """
@@ -113,7 +113,7 @@ class FederationConfigurationsRequestBuilder():
         """
         Create new navigation property to federationConfigurations for directory
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

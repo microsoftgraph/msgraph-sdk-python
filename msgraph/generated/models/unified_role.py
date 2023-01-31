@@ -28,9 +28,7 @@ class UnifiedRole(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The roleDefinitionId property
         self._role_definition_id: Optional[str] = None
     
     @staticmethod
@@ -52,14 +50,14 @@ class UnifiedRole(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "role_definition_id": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
+            "roleDefinitionId": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -67,7 +65,7 @@ class UnifiedRole(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -76,7 +74,7 @@ class UnifiedRole(AdditionalDataHolder, Parsable):
     @property
     def role_definition_id(self,) -> Optional[str]:
         """
-        Gets the roleDefinitionId property value. The roleDefinitionId property
+        Gets the roleDefinitionId property value. 
         Returns: Optional[str]
         """
         return self._role_definition_id
@@ -84,7 +82,7 @@ class UnifiedRole(AdditionalDataHolder, Parsable):
     @role_definition_id.setter
     def role_definition_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the roleDefinitionId property value. The roleDefinitionId property
+        Sets the roleDefinitionId property value. 
         Args:
             value: Value to set for the roleDefinitionId property.
         """

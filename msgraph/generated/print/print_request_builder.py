@@ -137,7 +137,7 @@ class PrintRequestBuilder():
         """
         Update print
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[print.Print]
         """
@@ -228,7 +228,7 @@ class PrintRequestBuilder():
         """
         Update print
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

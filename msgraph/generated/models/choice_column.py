@@ -68,7 +68,6 @@ class ChoiceColumn(AdditionalDataHolder, Parsable):
         self._choices: Optional[List[str]] = None
         # How the choices are to be presented in the UX. Must be one of checkBoxes, dropDownMenu, or radioButtons
         self._display_as: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -106,9 +105,9 @@ class ChoiceColumn(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_text_entry": lambda n : setattr(self, 'allow_text_entry', n.get_bool_value()),
+            "allowTextEntry": lambda n : setattr(self, 'allow_text_entry', n.get_bool_value()),
             "choices": lambda n : setattr(self, 'choices', n.get_collection_of_primitive_values(str)),
-            "display_as": lambda n : setattr(self, 'display_as', n.get_str_value()),
+            "displayAs": lambda n : setattr(self, 'display_as', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -116,7 +115,7 @@ class ChoiceColumn(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -124,7 +123,7 @@ class ChoiceColumn(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

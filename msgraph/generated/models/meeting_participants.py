@@ -26,7 +26,7 @@ class MeetingParticipants(AdditionalDataHolder, Parsable):
     @property
     def attendees(self,) -> Optional[List[meeting_participant_info.MeetingParticipantInfo]]:
         """
-        Gets the attendees property value. The attendees property
+        Gets the attendees property value. 
         Returns: Optional[List[meeting_participant_info.MeetingParticipantInfo]]
         """
         return self._attendees
@@ -34,7 +34,7 @@ class MeetingParticipants(AdditionalDataHolder, Parsable):
     @attendees.setter
     def attendees(self,value: Optional[List[meeting_participant_info.MeetingParticipantInfo]] = None) -> None:
         """
-        Sets the attendees property value. The attendees property
+        Sets the attendees property value. 
         Args:
             value: Value to set for the attendees property.
         """
@@ -47,11 +47,8 @@ class MeetingParticipants(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The attendees property
         self._attendees: Optional[List[meeting_participant_info.MeetingParticipantInfo]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The organizer property
         self._organizer: Optional[meeting_participant_info.MeetingParticipantInfo] = None
     
     @staticmethod
@@ -81,7 +78,7 @@ class MeetingParticipants(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -89,7 +86,7 @@ class MeetingParticipants(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -98,7 +95,7 @@ class MeetingParticipants(AdditionalDataHolder, Parsable):
     @property
     def organizer(self,) -> Optional[meeting_participant_info.MeetingParticipantInfo]:
         """
-        Gets the organizer property value. The organizer property
+        Gets the organizer property value. 
         Returns: Optional[meeting_participant_info.MeetingParticipantInfo]
         """
         return self._organizer
@@ -106,7 +103,7 @@ class MeetingParticipants(AdditionalDataHolder, Parsable):
     @organizer.setter
     def organizer(self,value: Optional[meeting_participant_info.MeetingParticipantInfo] = None) -> None:
         """
-        Sets the organizer property value. The organizer property
+        Sets the organizer property value. 
         Args:
             value: Value to set for the organizer property.
         """

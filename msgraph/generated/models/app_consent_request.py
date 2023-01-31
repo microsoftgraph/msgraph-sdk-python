@@ -51,7 +51,6 @@ class AppConsentRequest(entity.Entity):
         self._app_display_name: Optional[str] = None
         # The identifier of the application. Required. Supports $filter (eq only) and $orderby.
         self._app_id: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # A list of pending scopes waiting for approval. Required.
         self._pending_scopes: Optional[List[app_consent_request_scope.AppConsentRequestScope]] = None
@@ -76,10 +75,10 @@ class AppConsentRequest(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_display_name": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "pending_scopes": lambda n : setattr(self, 'pending_scopes', n.get_collection_of_object_values(app_consent_request_scope.AppConsentRequestScope)),
-            "user_consent_requests": lambda n : setattr(self, 'user_consent_requests', n.get_collection_of_object_values(user_consent_request.UserConsentRequest)),
+            "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "pendingScopes": lambda n : setattr(self, 'pending_scopes', n.get_collection_of_object_values(app_consent_request_scope.AppConsentRequestScope)),
+            "userConsentRequests": lambda n : setattr(self, 'user_consent_requests', n.get_collection_of_object_values(user_consent_request.UserConsentRequest)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

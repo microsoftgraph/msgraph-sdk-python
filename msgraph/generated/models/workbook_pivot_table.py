@@ -14,7 +14,6 @@ class WorkbookPivotTable(entity.Entity):
         super().__init__()
         # Name of the PivotTable.
         self._name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The worksheet containing the current PivotTable. Read-only.
         self._worksheet: Optional[workbook_worksheet.WorkbookWorksheet] = None

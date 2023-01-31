@@ -53,7 +53,6 @@ class WorkbookRangeFont(entity.Entity):
         self._italic: Optional[bool] = None
         # Font name (e.g. 'Calibri')
         self._name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Font size.
         self._size: Optional[float] = None

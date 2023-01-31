@@ -24,7 +24,7 @@ class ErrorDetails(AdditionalDataHolder, Parsable):
     @property
     def code(self,) -> Optional[str]:
         """
-        Gets the code property value. The code property
+        Gets the code property value. 
         Returns: Optional[str]
         """
         return self._code
@@ -32,7 +32,7 @@ class ErrorDetails(AdditionalDataHolder, Parsable):
     @code.setter
     def code(self,value: Optional[str] = None) -> None:
         """
-        Sets the code property value. The code property
+        Sets the code property value. 
         Args:
             value: Value to set for the code property.
         """
@@ -45,11 +45,8 @@ class ErrorDetails(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The code property
         self._code: Optional[str] = None
-        # The message property
         self._message: Optional[str] = None
-        # The target property
         self._target: Optional[str] = None
     
     @staticmethod
@@ -79,7 +76,7 @@ class ErrorDetails(AdditionalDataHolder, Parsable):
     @property
     def message(self,) -> Optional[str]:
         """
-        Gets the message property value. The message property
+        Gets the message property value. 
         Returns: Optional[str]
         """
         return self._message
@@ -87,7 +84,7 @@ class ErrorDetails(AdditionalDataHolder, Parsable):
     @message.setter
     def message(self,value: Optional[str] = None) -> None:
         """
-        Sets the message property value. The message property
+        Sets the message property value. 
         Args:
             value: Value to set for the message property.
         """
@@ -109,7 +106,7 @@ class ErrorDetails(AdditionalDataHolder, Parsable):
     @property
     def target(self,) -> Optional[str]:
         """
-        Gets the target property value. The target property
+        Gets the target property value. 
         Returns: Optional[str]
         """
         return self._target
@@ -117,7 +114,7 @@ class ErrorDetails(AdditionalDataHolder, Parsable):
     @target.setter
     def target(self,value: Optional[str] = None) -> None:
         """
-        Sets the target property value. The target property
+        Sets the target property value. 
         Args:
             value: Value to set for the target property.
         """

@@ -38,8 +38,8 @@ class IosCustomConfiguration(device_configuration.DeviceConfiguration):
         """
         fields = {
             "payload": lambda n : setattr(self, 'payload', n.get_bytes_value()),
-            "payload_file_name": lambda n : setattr(self, 'payload_file_name', n.get_str_value()),
-            "payload_name": lambda n : setattr(self, 'payload_name', n.get_str_value()),
+            "payloadFileName": lambda n : setattr(self, 'payload_file_name', n.get_str_value()),
+            "payloadName": lambda n : setattr(self, 'payload_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

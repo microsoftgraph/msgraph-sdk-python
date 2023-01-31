@@ -13,7 +13,6 @@ class TeamworkTagMember(entity.Entity):
         super().__init__()
         # The member's display name.
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The ID of the tenant that the tag member is a part of.
         self._tenant_id: Optional[str] = None
@@ -55,9 +54,9 @@ class TeamworkTagMember(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

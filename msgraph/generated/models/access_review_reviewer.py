@@ -16,7 +16,6 @@ class AccessReviewReviewer(entity.Entity):
         self._created_date_time: Optional[datetime] = None
         # Name of reviewer.
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # User principal name of the reviewer.
         self._user_principal_name: Optional[str] = None
@@ -73,9 +72,9 @@ class AccessReviewReviewer(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

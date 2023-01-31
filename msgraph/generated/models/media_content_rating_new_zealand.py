@@ -33,7 +33,6 @@ class MediaContentRatingNewZealand(AdditionalDataHolder, Parsable):
 
         # Movies rating labels in New Zealand
         self._movie_rating: Optional[rating_new_zealand_movies_type.RatingNewZealandMoviesType] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # TV content rating labels in New Zealand
         self._tv_rating: Optional[rating_new_zealand_television_type.RatingNewZealandTelevisionType] = None
@@ -56,9 +55,9 @@ class MediaContentRatingNewZealand(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "movie_rating": lambda n : setattr(self, 'movie_rating', n.get_enum_value(rating_new_zealand_movies_type.RatingNewZealandMoviesType)),
+            "movieRating": lambda n : setattr(self, 'movie_rating', n.get_enum_value(rating_new_zealand_movies_type.RatingNewZealandMoviesType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "tv_rating": lambda n : setattr(self, 'tv_rating', n.get_enum_value(rating_new_zealand_television_type.RatingNewZealandTelevisionType)),
+            "tvRating": lambda n : setattr(self, 'tv_rating', n.get_enum_value(rating_new_zealand_television_type.RatingNewZealandTelevisionType)),
         }
         return fields
     
@@ -82,7 +81,7 @@ class MediaContentRatingNewZealand(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -90,7 +89,7 @@ class MediaContentRatingNewZealand(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

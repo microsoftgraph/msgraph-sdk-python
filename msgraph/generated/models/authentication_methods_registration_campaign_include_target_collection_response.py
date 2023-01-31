@@ -12,7 +12,6 @@ class AuthenticationMethodsRegistrationCampaignIncludeTargetCollectionResponse(b
         Instantiates a new AuthenticationMethodsRegistrationCampaignIncludeTargetCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTargetCollectionResponse(b
     @property
     def value(self,) -> Optional[List[authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget]]
         """
         return self._value
@@ -61,7 +60,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTargetCollectionResponse(b
     @value.setter
     def value(self,value: Optional[List[authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

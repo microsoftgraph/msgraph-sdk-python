@@ -16,7 +16,6 @@ class Relation(entity.Entity):
         super().__init__()
         # The from [term] of the relation. The term from which the relationship is defined. A null value would indicate the relation is directly with the [set].
         self._from_term: Optional[term.Term] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The type of relation. Possible values are: pin, reuse.
         self._relationship: Optional[relation_type.RelationType] = None
@@ -60,10 +59,10 @@ class Relation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "from_term": lambda n : setattr(self, 'from_term', n.get_object_value(term.Term)),
+            "fromTerm": lambda n : setattr(self, 'from_term', n.get_object_value(term.Term)),
             "relationship": lambda n : setattr(self, 'relationship', n.get_enum_value(relation_type.RelationType)),
             "set": lambda n : setattr(self, 'set', n.get_object_value(set.Set)),
-            "to_term": lambda n : setattr(self, 'to_term', n.get_object_value(term.Term)),
+            "toTerm": lambda n : setattr(self, 'to_term', n.get_object_value(term.Term)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -66,7 +66,7 @@ class CustomersRequestBuilder():
         """
         Create a new bookingCustomer object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[booking_customer_base.BookingCustomerBase]
         """
@@ -105,7 +105,7 @@ class CustomersRequestBuilder():
         """
         Create a new bookingCustomer object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

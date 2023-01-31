@@ -29,7 +29,6 @@ class WorkbookChartAxis(entity.Entity):
         self._minor_gridlines: Optional[workbook_chart_gridlines.WorkbookChartGridlines] = None
         # Represents the interval between two minor tick marks. 'Can be set to a numeric value or an empty string (for automatic axis values). The returned value is always a number.
         self._minor_unit: Optional[json.Json] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Represents the axis title. Read-only.
         self._title: Optional[workbook_chart_axis_title.WorkbookChartAxisTitle] = None
@@ -70,12 +69,12 @@ class WorkbookChartAxis(entity.Entity):
         """
         fields = {
             "format": lambda n : setattr(self, 'format', n.get_object_value(workbook_chart_axis_format.WorkbookChartAxisFormat)),
-            "major_gridlines": lambda n : setattr(self, 'major_gridlines', n.get_object_value(workbook_chart_gridlines.WorkbookChartGridlines)),
-            "major_unit": lambda n : setattr(self, 'major_unit', n.get_object_value(json.Json)),
+            "majorGridlines": lambda n : setattr(self, 'major_gridlines', n.get_object_value(workbook_chart_gridlines.WorkbookChartGridlines)),
+            "majorUnit": lambda n : setattr(self, 'major_unit', n.get_object_value(json.Json)),
             "maximum": lambda n : setattr(self, 'maximum', n.get_object_value(json.Json)),
             "minimum": lambda n : setattr(self, 'minimum', n.get_object_value(json.Json)),
-            "minor_gridlines": lambda n : setattr(self, 'minor_gridlines', n.get_object_value(workbook_chart_gridlines.WorkbookChartGridlines)),
-            "minor_unit": lambda n : setattr(self, 'minor_unit', n.get_object_value(json.Json)),
+            "minorGridlines": lambda n : setattr(self, 'minor_gridlines', n.get_object_value(workbook_chart_gridlines.WorkbookChartGridlines)),
+            "minorUnit": lambda n : setattr(self, 'minor_unit', n.get_object_value(json.Json)),
             "title": lambda n : setattr(self, 'title', n.get_object_value(workbook_chart_axis_title.WorkbookChartAxisTitle)),
         }
         super_fields = super().get_field_deserializers()

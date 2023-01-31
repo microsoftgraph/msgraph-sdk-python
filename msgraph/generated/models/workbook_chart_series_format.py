@@ -17,7 +17,6 @@ class WorkbookChartSeriesFormat(entity.Entity):
         self._fill: Optional[workbook_chart_fill.WorkbookChartFill] = None
         # Represents line formatting. Read-only.
         self._line: Optional[workbook_chart_line_format.WorkbookChartLineFormat] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

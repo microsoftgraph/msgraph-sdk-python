@@ -12,7 +12,6 @@ class RubricCriterionCollectionResponse(base_collection_pagination_count_respons
         Instantiates a new RubricCriterionCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[rubric_criterion.RubricCriterion]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class RubricCriterionCollectionResponse(base_collection_pagination_count_respons
     @property
     def value(self,) -> Optional[List[rubric_criterion.RubricCriterion]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[rubric_criterion.RubricCriterion]]
         """
         return self._value
@@ -61,7 +60,7 @@ class RubricCriterionCollectionResponse(base_collection_pagination_count_respons
     @value.setter
     def value(self,value: Optional[List[rubric_criterion.RubricCriterion]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -12,7 +12,6 @@ class LicenseAssignmentStateCollectionResponse(base_collection_pagination_count_
         Instantiates a new LicenseAssignmentStateCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[license_assignment_state.LicenseAssignmentState]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class LicenseAssignmentStateCollectionResponse(base_collection_pagination_count_
     @property
     def value(self,) -> Optional[List[license_assignment_state.LicenseAssignmentState]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[license_assignment_state.LicenseAssignmentState]]
         """
         return self._value
@@ -61,7 +60,7 @@ class LicenseAssignmentStateCollectionResponse(base_collection_pagination_count_
     @value.setter
     def value(self,value: Optional[List[license_assignment_state.LicenseAssignmentState]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

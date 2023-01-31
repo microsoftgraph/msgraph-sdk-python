@@ -74,7 +74,7 @@ class DeviceCategoryRequestBuilder():
         """
         Update the navigation property deviceCategory in users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[device_category.DeviceCategory]
         """
@@ -129,7 +129,7 @@ class DeviceCategoryRequestBuilder():
         """
         Update the navigation property deviceCategory in users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

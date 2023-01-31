@@ -12,7 +12,7 @@ class DelegatedAdminRelationshipRequest(entity.Entity):
     @property
     def action(self,) -> Optional[delegated_admin_relationship_request_action.DelegatedAdminRelationshipRequestAction]:
         """
-        Gets the action property value. The action property
+        Gets the action property value. 
         Returns: Optional[delegated_admin_relationship_request_action.DelegatedAdminRelationshipRequestAction]
         """
         return self._action
@@ -20,7 +20,7 @@ class DelegatedAdminRelationshipRequest(entity.Entity):
     @action.setter
     def action(self,value: Optional[delegated_admin_relationship_request_action.DelegatedAdminRelationshipRequestAction] = None) -> None:
         """
-        Sets the action property value. The action property
+        Sets the action property value. 
         Args:
             value: Value to set for the action property.
         """
@@ -31,21 +31,16 @@ class DelegatedAdminRelationshipRequest(entity.Entity):
         Instantiates a new delegatedAdminRelationshipRequest and sets the default values.
         """
         super().__init__()
-        # The action property
         self._action: Optional[delegated_admin_relationship_request_action.DelegatedAdminRelationshipRequestAction] = None
-        # The createdDateTime property
         self._created_date_time: Optional[datetime] = None
-        # The lastModifiedDateTime property
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The status property
         self._status: Optional[delegated_admin_relationship_request_status.DelegatedAdminRelationshipRequestStatus] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
-        Gets the createdDateTime property value. The createdDateTime property
+        Gets the createdDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._created_date_time
@@ -53,7 +48,7 @@ class DelegatedAdminRelationshipRequest(entity.Entity):
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the createdDateTime property value. The createdDateTime property
+        Sets the createdDateTime property value. 
         Args:
             value: Value to set for the createdDateTime property.
         """
@@ -78,8 +73,8 @@ class DelegatedAdminRelationshipRequest(entity.Entity):
         """
         fields = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(delegated_admin_relationship_request_action.DelegatedAdminRelationshipRequestAction)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(delegated_admin_relationship_request_status.DelegatedAdminRelationshipRequestStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -89,7 +84,7 @@ class DelegatedAdminRelationshipRequest(entity.Entity):
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
-        Gets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Gets the lastModifiedDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
@@ -97,7 +92,7 @@ class DelegatedAdminRelationshipRequest(entity.Entity):
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Sets the lastModifiedDateTime property value. 
         Args:
             value: Value to set for the lastModifiedDateTime property.
         """
@@ -120,7 +115,7 @@ class DelegatedAdminRelationshipRequest(entity.Entity):
     @property
     def status(self,) -> Optional[delegated_admin_relationship_request_status.DelegatedAdminRelationshipRequestStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[delegated_admin_relationship_request_status.DelegatedAdminRelationshipRequestStatus]
         """
         return self._status
@@ -128,7 +123,7 @@ class DelegatedAdminRelationshipRequest(entity.Entity):
     @status.setter
     def status(self,value: Optional[delegated_admin_relationship_request_status.DelegatedAdminRelationshipRequestStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

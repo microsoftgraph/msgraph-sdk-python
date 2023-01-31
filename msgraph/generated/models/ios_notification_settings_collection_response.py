@@ -12,7 +12,6 @@ class IosNotificationSettingsCollectionResponse(base_collection_pagination_count
         Instantiates a new IosNotificationSettingsCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[ios_notification_settings.IosNotificationSettings]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class IosNotificationSettingsCollectionResponse(base_collection_pagination_count
     @property
     def value(self,) -> Optional[List[ios_notification_settings.IosNotificationSettings]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[ios_notification_settings.IosNotificationSettings]]
         """
         return self._value
@@ -61,7 +60,7 @@ class IosNotificationSettingsCollectionResponse(base_collection_pagination_count
     @value.setter
     def value(self,value: Optional[List[ios_notification_settings.IosNotificationSettings]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

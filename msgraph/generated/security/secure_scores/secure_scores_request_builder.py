@@ -66,7 +66,7 @@ class SecureScoresRequestBuilder():
         """
         Create new navigation property to secureScores for security
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[secure_score.SecureScore]
         """
@@ -105,7 +105,7 @@ class SecureScoresRequestBuilder():
         """
         Create new navigation property to secureScores for security
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -12,7 +12,6 @@ class PlannerGroup(entity.Entity):
         Instantiates a new plannerGroup and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Read-only. Nullable. Returns the plannerPlans owned by the group.
         self._plans: Optional[List[planner_plan.PlannerPlan]] = None

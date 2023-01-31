@@ -12,7 +12,6 @@ class UnmuteParticipantOperationCollectionResponse(base_collection_pagination_co
         Instantiates a new UnmuteParticipantOperationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[unmute_participant_operation.UnmuteParticipantOperation]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class UnmuteParticipantOperationCollectionResponse(base_collection_pagination_co
     @property
     def value(self,) -> Optional[List[unmute_participant_operation.UnmuteParticipantOperation]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[unmute_participant_operation.UnmuteParticipantOperation]]
         """
         return self._value
@@ -61,7 +60,7 @@ class UnmuteParticipantOperationCollectionResponse(base_collection_pagination_co
     @value.setter
     def value(self,value: Optional[List[unmute_participant_operation.UnmuteParticipantOperation]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

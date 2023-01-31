@@ -66,7 +66,7 @@ class ScheduledActionConfigurationsRequestBuilder():
         """
         Create new navigation property to scheduledActionConfigurations for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[device_compliance_action_item.DeviceComplianceActionItem]
         """
@@ -105,7 +105,7 @@ class ScheduledActionConfigurationsRequestBuilder():
         """
         Create new navigation property to scheduledActionConfigurations for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

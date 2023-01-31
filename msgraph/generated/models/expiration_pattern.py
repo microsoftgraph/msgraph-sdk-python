@@ -35,7 +35,6 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
         self._duration: Optional[Timedelta] = None
         # Timestamp of date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._end_date_time: Optional[datetime] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The requestor's desired expiration pattern type. The possible values are: notSpecified, noExpiration, afterDateTime, afterDuration.
         self._type: Optional[expiration_pattern_type.ExpirationPatternType] = None
@@ -93,7 +92,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
         """
         fields = {
             "duration": lambda n : setattr(self, 'duration', n.get_object_value(Timedelta)),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(expiration_pattern_type.ExpirationPatternType)),
         }
@@ -102,7 +101,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -110,7 +109,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

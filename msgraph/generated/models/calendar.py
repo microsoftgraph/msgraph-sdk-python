@@ -186,7 +186,6 @@ class Calendar(entity.Entity):
         self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
         # The calendar name.
         self._name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # If set, this represents the user who created or added the calendar. For a calendar that the user created or added, the owner property is set to the user. For a calendar shared with the user, the owner property is set to the person who shared that calendar with the user.
         self._owner: Optional[email_address.EmailAddress] = None
@@ -245,24 +244,24 @@ class Calendar(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allowed_online_meeting_providers": lambda n : setattr(self, 'allowed_online_meeting_providers', n.get_collection_of_enum_values(online_meeting_provider_type.OnlineMeetingProviderType)),
-            "calendar_permissions": lambda n : setattr(self, 'calendar_permissions', n.get_collection_of_object_values(calendar_permission.CalendarPermission)),
-            "calendar_view": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(event.Event)),
-            "can_edit": lambda n : setattr(self, 'can_edit', n.get_bool_value()),
-            "can_share": lambda n : setattr(self, 'can_share', n.get_bool_value()),
-            "can_view_private_items": lambda n : setattr(self, 'can_view_private_items', n.get_bool_value()),
-            "change_key": lambda n : setattr(self, 'change_key', n.get_str_value()),
+            "allowedOnlineMeetingProviders": lambda n : setattr(self, 'allowed_online_meeting_providers', n.get_collection_of_enum_values(online_meeting_provider_type.OnlineMeetingProviderType)),
+            "calendarPermissions": lambda n : setattr(self, 'calendar_permissions', n.get_collection_of_object_values(calendar_permission.CalendarPermission)),
+            "calendarView": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(event.Event)),
+            "canEdit": lambda n : setattr(self, 'can_edit', n.get_bool_value()),
+            "canShare": lambda n : setattr(self, 'can_share', n.get_bool_value()),
+            "canViewPrivateItems": lambda n : setattr(self, 'can_view_private_items', n.get_bool_value()),
+            "changeKey": lambda n : setattr(self, 'change_key', n.get_str_value()),
             "color": lambda n : setattr(self, 'color', n.get_enum_value(calendar_color.CalendarColor)),
-            "default_online_meeting_provider": lambda n : setattr(self, 'default_online_meeting_provider', n.get_enum_value(online_meeting_provider_type.OnlineMeetingProviderType)),
+            "defaultOnlineMeetingProvider": lambda n : setattr(self, 'default_online_meeting_provider', n.get_enum_value(online_meeting_provider_type.OnlineMeetingProviderType)),
             "events": lambda n : setattr(self, 'events', n.get_collection_of_object_values(event.Event)),
-            "hex_color": lambda n : setattr(self, 'hex_color', n.get_str_value()),
-            "is_default_calendar": lambda n : setattr(self, 'is_default_calendar', n.get_bool_value()),
-            "is_removable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),
-            "is_tallying_responses": lambda n : setattr(self, 'is_tallying_responses', n.get_bool_value()),
-            "multi_value_extended_properties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty)),
+            "hexColor": lambda n : setattr(self, 'hex_color', n.get_str_value()),
+            "isDefaultCalendar": lambda n : setattr(self, 'is_default_calendar', n.get_bool_value()),
+            "isRemovable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),
+            "isTallyingResponses": lambda n : setattr(self, 'is_tallying_responses', n.get_bool_value()),
+            "multiValueExtendedProperties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "owner": lambda n : setattr(self, 'owner', n.get_object_value(email_address.EmailAddress)),
-            "single_value_extended_properties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(single_value_legacy_extended_property.SingleValueLegacyExtendedProperty)),
+            "singleValueExtendedProperties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(single_value_legacy_extended_property.SingleValueLegacyExtendedProperty)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

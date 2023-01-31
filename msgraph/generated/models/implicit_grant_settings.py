@@ -32,7 +32,6 @@ class ImplicitGrantSettings(AdditionalDataHolder, Parsable):
         self._enable_access_token_issuance: Optional[bool] = None
         # Specifies whether this web application can request an ID token using the OAuth 2.0 implicit flow.
         self._enable_id_token_issuance: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -87,8 +86,8 @@ class ImplicitGrantSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "enable_access_token_issuance": lambda n : setattr(self, 'enable_access_token_issuance', n.get_bool_value()),
-            "enable_id_token_issuance": lambda n : setattr(self, 'enable_id_token_issuance', n.get_bool_value()),
+            "enableAccessTokenIssuance": lambda n : setattr(self, 'enable_access_token_issuance', n.get_bool_value()),
+            "enableIdTokenIssuance": lambda n : setattr(self, 'enable_id_token_issuance', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -96,7 +95,7 @@ class ImplicitGrantSettings(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -104,7 +103,7 @@ class ImplicitGrantSettings(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

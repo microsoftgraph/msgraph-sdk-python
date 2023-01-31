@@ -25,7 +25,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
     @property
     def assigned_by_group(self,) -> Optional[str]:
         """
-        Gets the assignedByGroup property value. The assignedByGroup property
+        Gets the assignedByGroup property value. 
         Returns: Optional[str]
         """
         return self._assigned_by_group
@@ -33,7 +33,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
     @assigned_by_group.setter
     def assigned_by_group(self,value: Optional[str] = None) -> None:
         """
-        Sets the assignedByGroup property value. The assignedByGroup property
+        Sets the assignedByGroup property value. 
         Args:
             value: Value to set for the assignedByGroup property.
         """
@@ -46,19 +46,12 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The assignedByGroup property
         self._assigned_by_group: Optional[str] = None
-        # The disabledPlans property
         self._disabled_plans: Optional[List[Guid]] = None
-        # The error property
         self._error: Optional[str] = None
-        # The lastUpdatedDateTime property
         self._last_updated_date_time: Optional[datetime] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The skuId property
         self._sku_id: Optional[Guid] = None
-        # The state property
         self._state: Optional[str] = None
     
     @staticmethod
@@ -76,7 +69,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
     @property
     def disabled_plans(self,) -> Optional[List[Guid]]:
         """
-        Gets the disabledPlans property value. The disabledPlans property
+        Gets the disabledPlans property value. 
         Returns: Optional[List[Guid]]
         """
         return self._disabled_plans
@@ -84,7 +77,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
     @disabled_plans.setter
     def disabled_plans(self,value: Optional[List[Guid]] = None) -> None:
         """
-        Sets the disabledPlans property value. The disabledPlans property
+        Sets the disabledPlans property value. 
         Args:
             value: Value to set for the disabledPlans property.
         """
@@ -93,7 +86,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
     @property
     def error(self,) -> Optional[str]:
         """
-        Gets the error property value. The error property
+        Gets the error property value. 
         Returns: Optional[str]
         """
         return self._error
@@ -101,7 +94,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
     @error.setter
     def error(self,value: Optional[str] = None) -> None:
         """
-        Sets the error property value. The error property
+        Sets the error property value. 
         Args:
             value: Value to set for the error property.
         """
@@ -113,12 +106,12 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assigned_by_group": lambda n : setattr(self, 'assigned_by_group', n.get_str_value()),
-            "disabled_plans": lambda n : setattr(self, 'disabled_plans', n.get_collection_of_primitive_values(guid)),
+            "assignedByGroup": lambda n : setattr(self, 'assigned_by_group', n.get_str_value()),
+            "disabledPlans": lambda n : setattr(self, 'disabled_plans', n.get_collection_of_primitive_values(guid)),
             "error": lambda n : setattr(self, 'error', n.get_str_value()),
-            "last_updated_date_time": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
+            "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "sku_id": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
+            "skuId": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
         }
         return fields
@@ -126,7 +119,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
     @property
     def last_updated_date_time(self,) -> Optional[datetime]:
         """
-        Gets the lastUpdatedDateTime property value. The lastUpdatedDateTime property
+        Gets the lastUpdatedDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._last_updated_date_time
@@ -134,7 +127,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
     @last_updated_date_time.setter
     def last_updated_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the lastUpdatedDateTime property value. The lastUpdatedDateTime property
+        Sets the lastUpdatedDateTime property value. 
         Args:
             value: Value to set for the lastUpdatedDateTime property.
         """
@@ -143,7 +136,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -151,7 +144,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -177,7 +170,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
     @property
     def sku_id(self,) -> Optional[Guid]:
         """
-        Gets the skuId property value. The skuId property
+        Gets the skuId property value. 
         Returns: Optional[Guid]
         """
         return self._sku_id
@@ -185,7 +178,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
     @sku_id.setter
     def sku_id(self,value: Optional[Guid] = None) -> None:
         """
-        Sets the skuId property value. The skuId property
+        Sets the skuId property value. 
         Args:
             value: Value to set for the skuId property.
         """
@@ -194,7 +187,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
     @property
     def state(self,) -> Optional[str]:
         """
-        Gets the state property value. The state property
+        Gets the state property value. 
         Returns: Optional[str]
         """
         return self._state
@@ -202,7 +195,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
     @state.setter
     def state(self,value: Optional[str] = None) -> None:
         """
-        Sets the state property value. The state property
+        Sets the state property value. 
         Args:
             value: Value to set for the state property.
         """

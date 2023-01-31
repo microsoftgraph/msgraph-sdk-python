@@ -21,7 +21,6 @@ class ProcessEvidence(alert_evidence.AlertEvidence):
         self._image_file: Optional[file_details.FileDetails] = None
         # A unique identifier assigned to a device by Microsoft Defender for Endpoint.
         self._mde_device_id: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Date and time when the parent of the process was created.
         self._parent_process_creation_date_time: Optional[datetime] = None
@@ -73,16 +72,16 @@ class ProcessEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "detection_status": lambda n : setattr(self, 'detection_status', n.get_enum_value(detection_status.DetectionStatus)),
-            "image_file": lambda n : setattr(self, 'image_file', n.get_object_value(file_details.FileDetails)),
-            "mde_device_id": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
-            "parent_process_creation_date_time": lambda n : setattr(self, 'parent_process_creation_date_time', n.get_datetime_value()),
-            "parent_process_id": lambda n : setattr(self, 'parent_process_id', n.get_int_value()),
-            "parent_process_image_file": lambda n : setattr(self, 'parent_process_image_file', n.get_object_value(file_details.FileDetails)),
-            "process_command_line": lambda n : setattr(self, 'process_command_line', n.get_str_value()),
-            "process_creation_date_time": lambda n : setattr(self, 'process_creation_date_time', n.get_datetime_value()),
-            "process_id": lambda n : setattr(self, 'process_id', n.get_int_value()),
-            "user_account": lambda n : setattr(self, 'user_account', n.get_object_value(user_account.UserAccount)),
+            "detectionStatus": lambda n : setattr(self, 'detection_status', n.get_enum_value(detection_status.DetectionStatus)),
+            "imageFile": lambda n : setattr(self, 'image_file', n.get_object_value(file_details.FileDetails)),
+            "mdeDeviceId": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
+            "parentProcessCreationDateTime": lambda n : setattr(self, 'parent_process_creation_date_time', n.get_datetime_value()),
+            "parentProcessId": lambda n : setattr(self, 'parent_process_id', n.get_int_value()),
+            "parentProcessImageFile": lambda n : setattr(self, 'parent_process_image_file', n.get_object_value(file_details.FileDetails)),
+            "processCommandLine": lambda n : setattr(self, 'process_command_line', n.get_str_value()),
+            "processCreationDateTime": lambda n : setattr(self, 'process_creation_date_time', n.get_datetime_value()),
+            "processId": lambda n : setattr(self, 'process_id', n.get_int_value()),
+            "userAccount": lambda n : setattr(self, 'user_account', n.get_object_value(user_account.UserAccount)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

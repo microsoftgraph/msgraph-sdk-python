@@ -102,15 +102,15 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "build_number": lambda n : setattr(self, 'build_number', n.get_str_value()),
-            "bundle_id": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
-            "child_apps": lambda n : setattr(self, 'child_apps', n.get_collection_of_object_values(mac_o_s_lob_child_app.MacOSLobChildApp)),
-            "ignore_version_detection": lambda n : setattr(self, 'ignore_version_detection', n.get_bool_value()),
-            "install_as_managed": lambda n : setattr(self, 'install_as_managed', n.get_bool_value()),
-            "md5_hash": lambda n : setattr(self, 'md5_hash', n.get_collection_of_primitive_values(str)),
-            "md5_hash_chunk_size": lambda n : setattr(self, 'md5_hash_chunk_size', n.get_int_value()),
-            "minimum_supported_operating_system": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(mac_o_s_minimum_operating_system.MacOSMinimumOperatingSystem)),
-            "version_number": lambda n : setattr(self, 'version_number', n.get_str_value()),
+            "buildNumber": lambda n : setattr(self, 'build_number', n.get_str_value()),
+            "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
+            "childApps": lambda n : setattr(self, 'child_apps', n.get_collection_of_object_values(mac_o_s_lob_child_app.MacOSLobChildApp)),
+            "ignoreVersionDetection": lambda n : setattr(self, 'ignore_version_detection', n.get_bool_value()),
+            "installAsManaged": lambda n : setattr(self, 'install_as_managed', n.get_bool_value()),
+            "md5Hash": lambda n : setattr(self, 'md5_hash', n.get_collection_of_primitive_values(str)),
+            "md5HashChunkSize": lambda n : setattr(self, 'md5_hash_chunk_size', n.get_int_value()),
+            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(mac_o_s_minimum_operating_system.MacOSMinimumOperatingSystem)),
+            "versionNumber": lambda n : setattr(self, 'version_number', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

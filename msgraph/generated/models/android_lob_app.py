@@ -40,10 +40,10 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "minimum_supported_operating_system": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(android_minimum_operating_system.AndroidMinimumOperatingSystem)),
-            "package_id": lambda n : setattr(self, 'package_id', n.get_str_value()),
-            "version_code": lambda n : setattr(self, 'version_code', n.get_str_value()),
-            "version_name": lambda n : setattr(self, 'version_name', n.get_str_value()),
+            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(android_minimum_operating_system.AndroidMinimumOperatingSystem)),
+            "packageId": lambda n : setattr(self, 'package_id', n.get_str_value()),
+            "versionCode": lambda n : setattr(self, 'version_code', n.get_str_value()),
+            "versionName": lambda n : setattr(self, 'version_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

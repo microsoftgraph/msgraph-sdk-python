@@ -26,11 +26,12 @@ class PrintServiceItemRequestBuilder():
         """
         return endpoints_request_builder.EndpointsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, print_service_id: Optional[str] = None) -> None:
         """
         Instantiates a new PrintServiceItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
+            printServiceId: key: id of printService
             requestAdapter: The request adapter to use to execute the requests.
         """
         if path_parameters is None:
@@ -41,6 +42,7 @@ class PrintServiceItemRequestBuilder():
         self.url_template: str = "{+baseurl}/print/services/{printService%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["printService%2Did"] = printServiceId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -96,7 +98,7 @@ class PrintServiceItemRequestBuilder():
         """
         Update the navigation property services in print
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[print_service.PrintService]
         """
@@ -151,7 +153,7 @@ class PrintServiceItemRequestBuilder():
         """
         Update the navigation property services in print
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

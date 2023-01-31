@@ -29,7 +29,7 @@ class ActivityHistoryItem(entity.Entity):
     @property
     def activity(self,) -> Optional[user_activity.UserActivity]:
         """
-        Gets the activity property value. The activity property
+        Gets the activity property value. 
         Returns: Optional[user_activity.UserActivity]
         """
         return self._activity
@@ -37,7 +37,7 @@ class ActivityHistoryItem(entity.Entity):
     @activity.setter
     def activity(self,value: Optional[user_activity.UserActivity] = None) -> None:
         """
-        Sets the activity property value. The activity property
+        Sets the activity property value. 
         Args:
             value: Value to set for the activity property.
         """
@@ -50,7 +50,6 @@ class ActivityHistoryItem(entity.Entity):
         super().__init__()
         # Optional. The duration of active user engagement. if not supplied, this is calculated from the startedDateTime and lastActiveDateTime.
         self._active_duration_seconds: Optional[int] = None
-        # The activity property
         self._activity: Optional[user_activity.UserActivity] = None
         # Set by the server. DateTime in UTC when the object was created on the server.
         self._created_date_time: Optional[datetime] = None
@@ -60,7 +59,6 @@ class ActivityHistoryItem(entity.Entity):
         self._last_active_date_time: Optional[datetime] = None
         # Set by the server. DateTime in UTC when the object was modified on the server.
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Required. UTC DateTime when the historyItem (activity session) was started. Required for timeline history.
         self._started_date_time: Optional[datetime] = None
@@ -121,15 +119,15 @@ class ActivityHistoryItem(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "active_duration_seconds": lambda n : setattr(self, 'active_duration_seconds', n.get_int_value()),
+            "activeDurationSeconds": lambda n : setattr(self, 'active_duration_seconds', n.get_int_value()),
             "activity": lambda n : setattr(self, 'activity', n.get_object_value(user_activity.UserActivity)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "last_active_date_time": lambda n : setattr(self, 'last_active_date_time', n.get_datetime_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "started_date_time": lambda n : setattr(self, 'started_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "lastActiveDateTime": lambda n : setattr(self, 'last_active_date_time', n.get_datetime_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "startedDateTime": lambda n : setattr(self, 'started_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(status.Status)),
-            "user_timezone": lambda n : setattr(self, 'user_timezone', n.get_str_value()),
+            "userTimezone": lambda n : setattr(self, 'user_timezone', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

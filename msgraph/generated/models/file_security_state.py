@@ -34,7 +34,6 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
         self._file_hash: Optional[file_hash.FileHash] = None
         # File name (without path).
         self._name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Full file path of the file/imageFile.
         self._path: Optional[str] = None
@@ -76,11 +75,11 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "file_hash": lambda n : setattr(self, 'file_hash', n.get_object_value(file_hash.FileHash)),
+            "fileHash": lambda n : setattr(self, 'file_hash', n.get_object_value(file_hash.FileHash)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),
-            "risk_score": lambda n : setattr(self, 'risk_score', n.get_str_value()),
+            "riskScore": lambda n : setattr(self, 'risk_score', n.get_str_value()),
         }
         return fields
     
@@ -104,7 +103,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -112,7 +111,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -30,11 +30,8 @@ class OnenotePagePreview(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The links property
         self._links: Optional[onenote_page_preview_links.OnenotePagePreviewLinks] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The previewText property
         self._preview_text: Optional[str] = None
     
     @staticmethod
@@ -57,14 +54,14 @@ class OnenotePagePreview(AdditionalDataHolder, Parsable):
         fields = {
             "links": lambda n : setattr(self, 'links', n.get_object_value(onenote_page_preview_links.OnenotePagePreviewLinks)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "preview_text": lambda n : setattr(self, 'preview_text', n.get_str_value()),
+            "previewText": lambda n : setattr(self, 'preview_text', n.get_str_value()),
         }
         return fields
     
     @property
     def links(self,) -> Optional[onenote_page_preview_links.OnenotePagePreviewLinks]:
         """
-        Gets the links property value. The links property
+        Gets the links property value. 
         Returns: Optional[onenote_page_preview_links.OnenotePagePreviewLinks]
         """
         return self._links
@@ -72,7 +69,7 @@ class OnenotePagePreview(AdditionalDataHolder, Parsable):
     @links.setter
     def links(self,value: Optional[onenote_page_preview_links.OnenotePagePreviewLinks] = None) -> None:
         """
-        Sets the links property value. The links property
+        Sets the links property value. 
         Args:
             value: Value to set for the links property.
         """
@@ -81,7 +78,7 @@ class OnenotePagePreview(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -89,7 +86,7 @@ class OnenotePagePreview(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -98,7 +95,7 @@ class OnenotePagePreview(AdditionalDataHolder, Parsable):
     @property
     def preview_text(self,) -> Optional[str]:
         """
-        Gets the previewText property value. The previewText property
+        Gets the previewText property value. 
         Returns: Optional[str]
         """
         return self._preview_text
@@ -106,7 +103,7 @@ class OnenotePagePreview(AdditionalDataHolder, Parsable):
     @preview_text.setter
     def preview_text(self,value: Optional[str] = None) -> None:
         """
-        Sets the previewText property value. The previewText property
+        Sets the previewText property value. 
         Args:
             value: Value to set for the previewText property.
         """

@@ -66,7 +66,7 @@ class RiskDetectionsRequestBuilder():
         """
         Create new navigation property to riskDetections for identityProtection
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[risk_detection.RiskDetection]
         """
@@ -105,7 +105,7 @@ class RiskDetectionsRequestBuilder():
         """
         Create new navigation property to riskDetections for identityProtection
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

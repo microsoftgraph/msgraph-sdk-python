@@ -44,8 +44,9 @@ class NotificationMessageTemplate(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # The list of localized messages for this Notification Message Template.
         self._localized_notification_messages: Optional[List[localized_notification_message.LocalizedNotificationMessage]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
+        # List of Scope Tags for this Entity instance.
+        self._role_scope_tag_ids: Optional[List[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> NotificationMessageTemplate:
@@ -99,11 +100,12 @@ class NotificationMessageTemplate(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "branding_options": lambda n : setattr(self, 'branding_options', n.get_enum_value(notification_template_branding_options.NotificationTemplateBrandingOptions)),
-            "default_locale": lambda n : setattr(self, 'default_locale', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "localized_notification_messages": lambda n : setattr(self, 'localized_notification_messages', n.get_collection_of_object_values(localized_notification_message.LocalizedNotificationMessage)),
+            "brandingOptions": lambda n : setattr(self, 'branding_options', n.get_enum_value(notification_template_branding_options.NotificationTemplateBrandingOptions)),
+            "defaultLocale": lambda n : setattr(self, 'default_locale', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "localizedNotificationMessages": lambda n : setattr(self, 'localized_notification_messages', n.get_collection_of_object_values(localized_notification_message.LocalizedNotificationMessage)),
+            "roleScopeTagIds": lambda n : setattr(self, 'role_scope_tag_ids', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -143,6 +145,23 @@ class NotificationMessageTemplate(entity.Entity):
         """
         self._localized_notification_messages = value
     
+    @property
+    def role_scope_tag_ids(self,) -> Optional[List[str]]:
+        """
+        Gets the roleScopeTagIds property value. List of Scope Tags for this Entity instance.
+        Returns: Optional[List[str]]
+        """
+        return self._role_scope_tag_ids
+    
+    @role_scope_tag_ids.setter
+    def role_scope_tag_ids(self,value: Optional[List[str]] = None) -> None:
+        """
+        Sets the roleScopeTagIds property value. List of Scope Tags for this Entity instance.
+        Args:
+            value: Value to set for the roleScopeTagIds property.
+        """
+        self._role_scope_tag_ids = value
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -157,5 +176,6 @@ class NotificationMessageTemplate(entity.Entity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_collection_of_object_values("localizedNotificationMessages", self.localized_notification_messages)
+        writer.write_collection_of_primitive_values("roleScopeTagIds", self.role_scope_tag_ids)
     
 

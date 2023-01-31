@@ -19,7 +19,6 @@ class FileEvidence(alert_evidence.AlertEvidence):
         self._file_details: Optional[file_details.FileDetails] = None
         # A unique identifier assigned to a device by Microsoft Defender for Endpoint.
         self._mde_device_id: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -74,9 +73,9 @@ class FileEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "detection_status": lambda n : setattr(self, 'detection_status', n.get_enum_value(detection_status.DetectionStatus)),
-            "file_details": lambda n : setattr(self, 'file_details', n.get_object_value(file_details.FileDetails)),
-            "mde_device_id": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
+            "detectionStatus": lambda n : setattr(self, 'detection_status', n.get_enum_value(detection_status.DetectionStatus)),
+            "fileDetails": lambda n : setattr(self, 'file_details', n.get_object_value(file_details.FileDetails)),
+            "mdeDeviceId": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

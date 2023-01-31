@@ -13,7 +13,6 @@ class PrintServiceEndpoint(entity.Entity):
         super().__init__()
         # A human-readable display name for the endpoint.
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The URI that can be used to access the service.
         self._uri: Optional[str] = None
@@ -53,7 +52,7 @@ class PrintServiceEndpoint(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "uri": lambda n : setattr(self, 'uri', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

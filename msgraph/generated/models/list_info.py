@@ -32,7 +32,6 @@ class ListInfo(AdditionalDataHolder, Parsable):
         self._content_types_enabled: Optional[bool] = None
         # If true, indicates that the list is not normally visible in the SharePoint user experience.
         self._hidden: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # An enumerated value that represents the base list template used in creating the list. Possible values include documentLibrary, genericList, task, survey, announcements, contacts, and more.
         self._template: Optional[str] = None
@@ -72,7 +71,7 @@ class ListInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "content_types_enabled": lambda n : setattr(self, 'content_types_enabled', n.get_bool_value()),
+            "contentTypesEnabled": lambda n : setattr(self, 'content_types_enabled', n.get_bool_value()),
             "hidden": lambda n : setattr(self, 'hidden', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "template": lambda n : setattr(self, 'template', n.get_str_value()),
@@ -99,7 +98,7 @@ class ListInfo(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -107,7 +106,7 @@ class ListInfo(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

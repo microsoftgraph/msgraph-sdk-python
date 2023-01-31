@@ -101,7 +101,7 @@ class SolutionsRequestBuilder():
         """
         Update solutions
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[solutions_root.SolutionsRoot]
         """
@@ -140,7 +140,7 @@ class SolutionsRequestBuilder():
         """
         Update solutions
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

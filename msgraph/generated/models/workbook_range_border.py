@@ -30,7 +30,6 @@ class WorkbookRangeBorder(entity.Entity):
         super().__init__()
         # HTML color code representing the color of the border line, of the form #RRGGBB (e.g. 'FFA500') or as a named HTML color (e.g. 'orange').
         self._color: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Constant value that indicates the specific side of the border. The possible values are: EdgeTop, EdgeBottom, EdgeLeft, EdgeRight, InsideVertical, InsideHorizontal, DiagonalDown, DiagonalUp. Read-only.
         self._side_index: Optional[str] = None
@@ -58,7 +57,7 @@ class WorkbookRangeBorder(entity.Entity):
         """
         fields = {
             "color": lambda n : setattr(self, 'color', n.get_str_value()),
-            "side_index": lambda n : setattr(self, 'side_index', n.get_str_value()),
+            "sideIndex": lambda n : setattr(self, 'side_index', n.get_str_value()),
             "style": lambda n : setattr(self, 'style', n.get_str_value()),
             "weight": lambda n : setattr(self, 'weight', n.get_str_value()),
         }

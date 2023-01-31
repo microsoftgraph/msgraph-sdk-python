@@ -74,7 +74,6 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         self._is_approval_required_for_extension: Optional[bool] = None
         # Indicates whether the requestor is required to supply a justification in their request.
         self._is_requestor_justification_required: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -95,11 +94,11 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "approval_mode": lambda n : setattr(self, 'approval_mode', n.get_str_value()),
-            "approval_stages": lambda n : setattr(self, 'approval_stages', n.get_collection_of_object_values(unified_approval_stage.UnifiedApprovalStage)),
-            "is_approval_required": lambda n : setattr(self, 'is_approval_required', n.get_bool_value()),
-            "is_approval_required_for_extension": lambda n : setattr(self, 'is_approval_required_for_extension', n.get_bool_value()),
-            "is_requestor_justification_required": lambda n : setattr(self, 'is_requestor_justification_required', n.get_bool_value()),
+            "approvalMode": lambda n : setattr(self, 'approval_mode', n.get_str_value()),
+            "approvalStages": lambda n : setattr(self, 'approval_stages', n.get_collection_of_object_values(unified_approval_stage.UnifiedApprovalStage)),
+            "isApprovalRequired": lambda n : setattr(self, 'is_approval_required', n.get_bool_value()),
+            "isApprovalRequiredForExtension": lambda n : setattr(self, 'is_approval_required_for_extension', n.get_bool_value()),
+            "isRequestorJustificationRequired": lambda n : setattr(self, 'is_requestor_justification_required', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -158,7 +157,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -166,7 +165,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -17,9 +17,7 @@ class DeviceConfigurationUserStatus(entity.Entity):
         self._devices_count: Optional[int] = None
         # Last modified date time of the policy report.
         self._last_reported_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The status property
         self._status: Optional[compliance_status.ComplianceStatus] = None
         # User name of the DevicePolicyStatus.
         self._user_display_name: Optional[str] = None
@@ -61,11 +59,11 @@ class DeviceConfigurationUserStatus(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "devices_count": lambda n : setattr(self, 'devices_count', n.get_int_value()),
-            "last_reported_date_time": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
+            "devicesCount": lambda n : setattr(self, 'devices_count', n.get_int_value()),
+            "lastReportedDateTime": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(compliance_status.ComplianceStatus)),
-            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -106,7 +104,7 @@ class DeviceConfigurationUserStatus(entity.Entity):
     @property
     def status(self,) -> Optional[compliance_status.ComplianceStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[compliance_status.ComplianceStatus]
         """
         return self._status
@@ -114,7 +112,7 @@ class DeviceConfigurationUserStatus(entity.Entity):
     @status.setter
     def status(self,value: Optional[compliance_status.ComplianceStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

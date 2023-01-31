@@ -12,7 +12,6 @@ class IdentityUserFlowAttributeAssignmentCollectionResponse(base_collection_pagi
         Instantiates a new IdentityUserFlowAttributeAssignmentCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class IdentityUserFlowAttributeAssignmentCollectionResponse(base_collection_pagi
     @property
     def value(self,) -> Optional[List[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment]]
         """
         return self._value
@@ -61,7 +60,7 @@ class IdentityUserFlowAttributeAssignmentCollectionResponse(base_collection_pagi
     @value.setter
     def value(self,value: Optional[List[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

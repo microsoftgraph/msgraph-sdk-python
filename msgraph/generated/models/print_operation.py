@@ -10,14 +10,12 @@ print_operation_status = lazy_import('msgraph.generated.models.print_operation_s
 class PrintOperation(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new PrintOperation and sets the default values.
+        Instantiates a new printOperation and sets the default values.
         """
         super().__init__()
         # The DateTimeOffset when the operation was created. Read-only.
         self._created_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The status property
         self._status: Optional[print_operation_status.PrintOperationStatus] = None
     
     @property
@@ -55,7 +53,7 @@ class PrintOperation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_object_value(print_operation_status.PrintOperationStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -77,7 +75,7 @@ class PrintOperation(entity.Entity):
     @property
     def status(self,) -> Optional[print_operation_status.PrintOperationStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[print_operation_status.PrintOperationStatus]
         """
         return self._status
@@ -85,7 +83,7 @@ class PrintOperation(entity.Entity):
     @status.setter
     def status(self,value: Optional[print_operation_status.PrintOperationStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

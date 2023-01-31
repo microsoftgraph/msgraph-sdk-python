@@ -12,7 +12,6 @@ class EdiscoveryEstimateOperationCollectionResponse(base_collection_pagination_c
         Instantiates a new EdiscoveryEstimateOperationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[ediscovery_estimate_operation.EdiscoveryEstimateOperation]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class EdiscoveryEstimateOperationCollectionResponse(base_collection_pagination_c
     @property
     def value(self,) -> Optional[List[ediscovery_estimate_operation.EdiscoveryEstimateOperation]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[ediscovery_estimate_operation.EdiscoveryEstimateOperation]]
         """
         return self._value
@@ -61,7 +60,7 @@ class EdiscoveryEstimateOperationCollectionResponse(base_collection_pagination_c
     @value.setter
     def value(self,value: Optional[List[ediscovery_estimate_operation.EdiscoveryEstimateOperation]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

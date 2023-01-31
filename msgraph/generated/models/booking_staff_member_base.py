@@ -14,7 +14,6 @@ class BookingStaffMemberBase(entity.Entity):
         Instantiates a new bookingStaffMemberBase and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

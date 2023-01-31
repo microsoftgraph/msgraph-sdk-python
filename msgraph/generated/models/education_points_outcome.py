@@ -37,7 +37,7 @@ class EducationPointsOutcome(education_outcome.EducationOutcome):
         """
         fields = {
             "points": lambda n : setattr(self, 'points', n.get_object_value(education_assignment_points_grade.EducationAssignmentPointsGrade)),
-            "published_points": lambda n : setattr(self, 'published_points', n.get_object_value(education_assignment_points_grade.EducationAssignmentPointsGrade)),
+            "publishedPoints": lambda n : setattr(self, 'published_points', n.get_object_value(education_assignment_points_grade.EducationAssignmentPointsGrade)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

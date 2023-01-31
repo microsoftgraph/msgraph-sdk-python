@@ -12,7 +12,6 @@ class UnifiedRoleManagementPolicyRule(entity.Entity):
         Instantiates a new unifiedRoleManagementPolicyRule and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Defines details of scope that's targeted by role management policy rule. The details can include the principal type, the role assignment type, and actions affecting a role. Supports $filter (eq, ne).
         self._target: Optional[unified_role_management_policy_rule_target.UnifiedRoleManagementPolicyRuleTarget] = None

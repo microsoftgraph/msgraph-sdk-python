@@ -40,7 +40,6 @@ class TelecomExpenseManagementPartner(entity.Entity):
         self._enabled: Optional[bool] = None
         # Timestamp of the last request sent to Intune by the TEM partner.
         self._last_connection_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # URL of the TEM partner's administrative control panel, where an administrator can configure their TEM service.
         self._url: Optional[str] = None
@@ -97,10 +96,10 @@ class TelecomExpenseManagementPartner(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_authorized": lambda n : setattr(self, 'app_authorized', n.get_bool_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "appAuthorized": lambda n : setattr(self, 'app_authorized', n.get_bool_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "enabled": lambda n : setattr(self, 'enabled', n.get_bool_value()),
-            "last_connection_date_time": lambda n : setattr(self, 'last_connection_date_time', n.get_datetime_value()),
+            "lastConnectionDateTime": lambda n : setattr(self, 'last_connection_date_time', n.get_datetime_value()),
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

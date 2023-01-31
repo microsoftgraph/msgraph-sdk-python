@@ -66,7 +66,7 @@ class RoleManagementPolicyAssignmentsRequestBuilder():
         """
         Create new navigation property to roleManagementPolicyAssignments for policies
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[unified_role_management_policy_assignment.UnifiedRoleManagementPolicyAssignment]
         """
@@ -105,7 +105,7 @@ class RoleManagementPolicyAssignmentsRequestBuilder():
         """
         Create new navigation property to roleManagementPolicyAssignments for policies
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

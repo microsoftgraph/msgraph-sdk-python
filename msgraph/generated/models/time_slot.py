@@ -30,11 +30,8 @@ class TimeSlot(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The end property
         self._end: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The start property
         self._start: Optional[date_time_time_zone.DateTimeTimeZone] = None
     
     @staticmethod
@@ -52,7 +49,7 @@ class TimeSlot(AdditionalDataHolder, Parsable):
     @property
     def end(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
-        Gets the end property value. The end property
+        Gets the end property value. 
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._end
@@ -60,7 +57,7 @@ class TimeSlot(AdditionalDataHolder, Parsable):
     @end.setter
     def end(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
-        Sets the end property value. The end property
+        Sets the end property value. 
         Args:
             value: Value to set for the end property.
         """
@@ -81,7 +78,7 @@ class TimeSlot(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -89,7 +86,7 @@ class TimeSlot(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -111,7 +108,7 @@ class TimeSlot(AdditionalDataHolder, Parsable):
     @property
     def start(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
-        Gets the start property value. The start property
+        Gets the start property value. 
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._start
@@ -119,7 +116,7 @@ class TimeSlot(AdditionalDataHolder, Parsable):
     @start.setter
     def start(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
-        Sets the start property value. The start property
+        Sets the start property value. 
         Args:
             value: Value to set for the start property.
         """

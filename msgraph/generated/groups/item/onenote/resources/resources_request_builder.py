@@ -66,7 +66,7 @@ class ResourcesRequestBuilder():
         """
         Create new navigation property to resources for groups
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[onenote_resource.OnenoteResource]
         """
@@ -105,7 +105,7 @@ class ResourcesRequestBuilder():
         """
         Create new navigation property to resources for groups
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

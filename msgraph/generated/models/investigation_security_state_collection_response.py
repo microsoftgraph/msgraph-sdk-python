@@ -12,7 +12,6 @@ class InvestigationSecurityStateCollectionResponse(base_collection_pagination_co
         Instantiates a new InvestigationSecurityStateCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[investigation_security_state.InvestigationSecurityState]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class InvestigationSecurityStateCollectionResponse(base_collection_pagination_co
     @property
     def value(self,) -> Optional[List[investigation_security_state.InvestigationSecurityState]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[investigation_security_state.InvestigationSecurityState]]
         """
         return self._value
@@ -61,7 +60,7 @@ class InvestigationSecurityStateCollectionResponse(base_collection_pagination_co
     @value.setter
     def value(self,value: Optional[List[investigation_security_state.InvestigationSecurityState]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

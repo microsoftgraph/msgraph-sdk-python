@@ -32,7 +32,6 @@ class ObjectIdentity(AdditionalDataHolder, Parsable):
         self._issuer: Optional[str] = None
         # Specifies the unique identifier assigned to the user by the issuer. The combination of issuer and issuerAssignedId must be unique within the organization. Represents the sign-in name for the user, when signInType is set to emailAddress or userName (also known as local accounts).When signInType is set to: emailAddress, (or a custom string that starts with emailAddress like emailAddress1) issuerAssignedId must be a valid email addressuserName, issuerAssignedId must begin with alphabetical character or number, and can only contain alphanumeric characters and the following symbols: - or Supports $filter. 64 character limit.
         self._issuer_assigned_id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Specifies the user sign-in types in your directory, such as emailAddress, userName, federated, or userPrincipalName. federated represents a unique identifier for a user from an issuer, that can be in any format chosen by the issuer. Setting or updating a userPrincipalName identity will update the value of the userPrincipalName property on the user object. The validations performed on the userPrincipalName property on the user object, for example, verified domains and acceptable characters, will be performed when setting or updating a userPrincipalName identity. Additional validation is enforced on issuerAssignedId when the sign-in type is set to emailAddress or userName. This property can also be set to any custom string.
         self._sign_in_type: Optional[str] = None
@@ -56,9 +55,9 @@ class ObjectIdentity(AdditionalDataHolder, Parsable):
         """
         fields = {
             "issuer": lambda n : setattr(self, 'issuer', n.get_str_value()),
-            "issuer_assigned_id": lambda n : setattr(self, 'issuer_assigned_id', n.get_str_value()),
+            "issuerAssignedId": lambda n : setattr(self, 'issuer_assigned_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "sign_in_type": lambda n : setattr(self, 'sign_in_type', n.get_str_value()),
+            "signInType": lambda n : setattr(self, 'sign_in_type', n.get_str_value()),
         }
         return fields
     
@@ -99,7 +98,7 @@ class ObjectIdentity(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -107,7 +106,7 @@ class ObjectIdentity(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

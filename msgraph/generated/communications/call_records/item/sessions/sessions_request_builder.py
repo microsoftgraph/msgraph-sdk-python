@@ -66,7 +66,7 @@ class SessionsRequestBuilder():
         """
         Create new navigation property to sessions for communications
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[session.Session]
         """
@@ -105,7 +105,7 @@ class SessionsRequestBuilder():
         """
         Create new navigation property to sessions for communications
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

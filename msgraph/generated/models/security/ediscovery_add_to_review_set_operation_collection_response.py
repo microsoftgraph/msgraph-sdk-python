@@ -12,7 +12,6 @@ class EdiscoveryAddToReviewSetOperationCollectionResponse(base_collection_pagina
         Instantiates a new EdiscoveryAddToReviewSetOperationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class EdiscoveryAddToReviewSetOperationCollectionResponse(base_collection_pagina
     @property
     def value(self,) -> Optional[List[ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation]]
         """
         return self._value
@@ -61,7 +60,7 @@ class EdiscoveryAddToReviewSetOperationCollectionResponse(base_collection_pagina
     @value.setter
     def value(self,value: Optional[List[ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

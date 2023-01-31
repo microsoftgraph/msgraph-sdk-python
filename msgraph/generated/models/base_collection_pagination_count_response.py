@@ -28,9 +28,7 @@ class BaseCollectionPaginationCountResponse(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataCount property
         self._odata_count: Optional[int] = None
-        # The OdataNextLink property
         self._odata_next_link: Optional[str] = None
     
     @staticmethod
@@ -59,7 +57,7 @@ class BaseCollectionPaginationCountResponse(AdditionalDataHolder, Parsable):
     @property
     def odata_count(self,) -> Optional[int]:
         """
-        Gets the @odata.count property value. The OdataCount property
+        Gets the @odata.count property value. 
         Returns: Optional[int]
         """
         return self._odata_count
@@ -67,7 +65,7 @@ class BaseCollectionPaginationCountResponse(AdditionalDataHolder, Parsable):
     @odata_count.setter
     def odata_count(self,value: Optional[int] = None) -> None:
         """
-        Sets the @odata.count property value. The OdataCount property
+        Sets the @odata.count property value. 
         Args:
             value: Value to set for the OdataCount property.
         """
@@ -76,7 +74,7 @@ class BaseCollectionPaginationCountResponse(AdditionalDataHolder, Parsable):
     @property
     def odata_next_link(self,) -> Optional[str]:
         """
-        Gets the @odata.nextLink property value. The OdataNextLink property
+        Gets the @odata.nextLink property value. 
         Returns: Optional[str]
         """
         return self._odata_next_link
@@ -84,7 +82,7 @@ class BaseCollectionPaginationCountResponse(AdditionalDataHolder, Parsable):
     @odata_next_link.setter
     def odata_next_link(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.nextLink property value. The OdataNextLink property
+        Sets the @odata.nextLink property value. 
         Args:
             value: Value to set for the OdataNextLink property.
         """

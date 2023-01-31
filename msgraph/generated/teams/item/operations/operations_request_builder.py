@@ -66,7 +66,7 @@ class OperationsRequestBuilder():
         """
         Create new navigation property to operations for teams
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[teams_async_operation.TeamsAsyncOperation]
         """
@@ -105,7 +105,7 @@ class OperationsRequestBuilder():
         """
         Create new navigation property to operations for teams
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

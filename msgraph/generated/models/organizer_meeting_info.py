@@ -13,7 +13,6 @@ class OrganizerMeetingInfo(meeting_info.MeetingInfo):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.organizerMeetingInfo"
-        # The organizer property
         self._organizer: Optional[identity_set.IdentitySet] = None
     
     @staticmethod
@@ -43,7 +42,7 @@ class OrganizerMeetingInfo(meeting_info.MeetingInfo):
     @property
     def organizer(self,) -> Optional[identity_set.IdentitySet]:
         """
-        Gets the organizer property value. The organizer property
+        Gets the organizer property value. 
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._organizer
@@ -51,7 +50,7 @@ class OrganizerMeetingInfo(meeting_info.MeetingInfo):
     @organizer.setter
     def organizer(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
-        Sets the organizer property value. The organizer property
+        Sets the organizer property value. 
         Args:
             value: Value to set for the organizer property.
         """

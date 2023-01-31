@@ -19,9 +19,7 @@ class Permission(entity.Entity):
         super().__init__()
         # A format of yyyy-MM-ddTHH:mm:ssZ of DateTimeOffset indicates the expiration time of the permission. DateTime.MinValue indicates there is no expiration set for this permission. Optional.
         self._expiration_date_time: Optional[datetime] = None
-        # The grantedTo property
         self._granted_to: Optional[identity_set.IdentitySet] = None
-        # The grantedToIdentities property
         self._granted_to_identities: Optional[List[identity_set.IdentitySet]] = None
         # For link type permissions, the details of the users to whom permission was granted. Read-only.
         self._granted_to_identities_v2: Optional[List[share_point_identity_set.SharePointIdentitySet]] = None
@@ -35,7 +33,6 @@ class Permission(entity.Entity):
         self._invitation: Optional[sharing_invitation.SharingInvitation] = None
         # Provides the link details of the current permission, if it is a link type permissions. Read-only.
         self._link: Optional[sharing_link.SharingLink] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The type of permission, for example, read. See below for the full list of roles. Read-only.
         self._roles: Optional[List[str]] = None
@@ -77,17 +74,17 @@ class Permission(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "granted_to": lambda n : setattr(self, 'granted_to', n.get_object_value(identity_set.IdentitySet)),
-            "granted_to_identities": lambda n : setattr(self, 'granted_to_identities', n.get_collection_of_object_values(identity_set.IdentitySet)),
-            "granted_to_identities_v2": lambda n : setattr(self, 'granted_to_identities_v2', n.get_collection_of_object_values(share_point_identity_set.SharePointIdentitySet)),
-            "granted_to_v2": lambda n : setattr(self, 'granted_to_v2', n.get_object_value(share_point_identity_set.SharePointIdentitySet)),
-            "has_password": lambda n : setattr(self, 'has_password', n.get_bool_value()),
-            "inherited_from": lambda n : setattr(self, 'inherited_from', n.get_object_value(item_reference.ItemReference)),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "grantedTo": lambda n : setattr(self, 'granted_to', n.get_object_value(identity_set.IdentitySet)),
+            "grantedToIdentities": lambda n : setattr(self, 'granted_to_identities', n.get_collection_of_object_values(identity_set.IdentitySet)),
+            "grantedToIdentitiesV2": lambda n : setattr(self, 'granted_to_identities_v2', n.get_collection_of_object_values(share_point_identity_set.SharePointIdentitySet)),
+            "grantedToV2": lambda n : setattr(self, 'granted_to_v2', n.get_object_value(share_point_identity_set.SharePointIdentitySet)),
+            "hasPassword": lambda n : setattr(self, 'has_password', n.get_bool_value()),
+            "inheritedFrom": lambda n : setattr(self, 'inherited_from', n.get_object_value(item_reference.ItemReference)),
             "invitation": lambda n : setattr(self, 'invitation', n.get_object_value(sharing_invitation.SharingInvitation)),
             "link": lambda n : setattr(self, 'link', n.get_object_value(sharing_link.SharingLink)),
             "roles": lambda n : setattr(self, 'roles', n.get_collection_of_primitive_values(str)),
-            "share_id": lambda n : setattr(self, 'share_id', n.get_str_value()),
+            "shareId": lambda n : setattr(self, 'share_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -96,7 +93,7 @@ class Permission(entity.Entity):
     @property
     def granted_to(self,) -> Optional[identity_set.IdentitySet]:
         """
-        Gets the grantedTo property value. The grantedTo property
+        Gets the grantedTo property value. 
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._granted_to
@@ -104,7 +101,7 @@ class Permission(entity.Entity):
     @granted_to.setter
     def granted_to(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
-        Sets the grantedTo property value. The grantedTo property
+        Sets the grantedTo property value. 
         Args:
             value: Value to set for the grantedTo property.
         """
@@ -113,7 +110,7 @@ class Permission(entity.Entity):
     @property
     def granted_to_identities(self,) -> Optional[List[identity_set.IdentitySet]]:
         """
-        Gets the grantedToIdentities property value. The grantedToIdentities property
+        Gets the grantedToIdentities property value. 
         Returns: Optional[List[identity_set.IdentitySet]]
         """
         return self._granted_to_identities
@@ -121,7 +118,7 @@ class Permission(entity.Entity):
     @granted_to_identities.setter
     def granted_to_identities(self,value: Optional[List[identity_set.IdentitySet]] = None) -> None:
         """
-        Sets the grantedToIdentities property value. The grantedToIdentities property
+        Sets the grantedToIdentities property value. 
         Args:
             value: Value to set for the grantedToIdentities property.
         """

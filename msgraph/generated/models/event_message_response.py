@@ -14,9 +14,7 @@ class EventMessageResponse(event_message.EventMessage):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.eventMessageResponse"
-        # The proposedNewTime property
         self._proposed_new_time: Optional[time_slot.TimeSlot] = None
-        # The responseType property
         self._response_type: Optional[response_type.ResponseType] = None
     
     @staticmethod
@@ -37,8 +35,8 @@ class EventMessageResponse(event_message.EventMessage):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "proposed_new_time": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(time_slot.TimeSlot)),
-            "response_type": lambda n : setattr(self, 'response_type', n.get_enum_value(response_type.ResponseType)),
+            "proposedNewTime": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(time_slot.TimeSlot)),
+            "responseType": lambda n : setattr(self, 'response_type', n.get_enum_value(response_type.ResponseType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -47,7 +45,7 @@ class EventMessageResponse(event_message.EventMessage):
     @property
     def proposed_new_time(self,) -> Optional[time_slot.TimeSlot]:
         """
-        Gets the proposedNewTime property value. The proposedNewTime property
+        Gets the proposedNewTime property value. 
         Returns: Optional[time_slot.TimeSlot]
         """
         return self._proposed_new_time
@@ -55,7 +53,7 @@ class EventMessageResponse(event_message.EventMessage):
     @proposed_new_time.setter
     def proposed_new_time(self,value: Optional[time_slot.TimeSlot] = None) -> None:
         """
-        Sets the proposedNewTime property value. The proposedNewTime property
+        Sets the proposedNewTime property value. 
         Args:
             value: Value to set for the proposedNewTime property.
         """
@@ -64,7 +62,7 @@ class EventMessageResponse(event_message.EventMessage):
     @property
     def response_type(self,) -> Optional[response_type.ResponseType]:
         """
-        Gets the responseType property value. The responseType property
+        Gets the responseType property value. 
         Returns: Optional[response_type.ResponseType]
         """
         return self._response_type
@@ -72,7 +70,7 @@ class EventMessageResponse(event_message.EventMessage):
     @response_type.setter
     def response_type(self,value: Optional[response_type.ResponseType] = None) -> None:
         """
-        Sets the responseType property value. The responseType property
+        Sets the responseType property value. 
         Args:
             value: Value to set for the responseType property.
         """

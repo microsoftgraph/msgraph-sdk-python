@@ -66,7 +66,7 @@ class IosUpdateStatusesRequestBuilder():
         """
         Create new navigation property to iosUpdateStatuses for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ios_update_device_status.IosUpdateDeviceStatus]
         """
@@ -105,7 +105,7 @@ class IosUpdateStatusesRequestBuilder():
         """
         Create new navigation property to iosUpdateStatuses for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

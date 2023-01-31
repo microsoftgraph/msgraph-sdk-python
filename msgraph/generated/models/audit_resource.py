@@ -56,7 +56,6 @@ class AuditResource(AdditionalDataHolder, Parsable):
         self._display_name: Optional[str] = None
         # List of modified properties.
         self._modified_properties: Optional[List[audit_property.AuditProperty]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Audit resource's Id.
         self._resource_id: Optional[str] = None
@@ -96,11 +95,11 @@ class AuditResource(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "audit_resource_type": lambda n : setattr(self, 'audit_resource_type', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "modified_properties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(audit_property.AuditProperty)),
+            "auditResourceType": lambda n : setattr(self, 'audit_resource_type', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "modifiedProperties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(audit_property.AuditProperty)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "resource_id": lambda n : setattr(self, 'resource_id', n.get_str_value()),
+            "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
         }
         return fields
     
@@ -124,7 +123,7 @@ class AuditResource(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -132,7 +131,7 @@ class AuditResource(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -25,12 +25,13 @@ class UnifiedRoleAssignmentScheduleInstanceItemRequestBuilder():
         """
         return activated_using_request_builder.ActivatedUsingRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, unified_role_assignment_schedule_instance_id: Optional[str] = None) -> None:
         """
         Instantiates a new UnifiedRoleAssignmentScheduleInstanceItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            unifiedRoleAssignmentScheduleInstanceId: key: id of unifiedRoleAssignmentScheduleInstance
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -40,6 +41,7 @@ class UnifiedRoleAssignmentScheduleInstanceItemRequestBuilder():
         self.url_template: str = "{+baseurl}/roleManagement/entitlementManagement/roleAssignmentScheduleInstances/{unifiedRoleAssignmentScheduleInstance%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["unifiedRoleAssignmentScheduleInstance%2Did"] = unifiedRoleAssignmentScheduleInstanceId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -82,7 +84,7 @@ class UnifiedRoleAssignmentScheduleInstanceItemRequestBuilder():
         """
         Update the navigation property roleAssignmentScheduleInstances in roleManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance]
         """
@@ -137,7 +139,7 @@ class UnifiedRoleAssignmentScheduleInstanceItemRequestBuilder():
         """
         Update the navigation property roleAssignmentScheduleInstances in roleManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -30,7 +30,6 @@ class SelfServiceSignUpAuthenticationFlowConfiguration(AdditionalDataHolder, Par
 
         # Indicates whether self-service sign-up flow is enabled or disabled. The default value is false. This property is not a key. Required.
         self._is_enabled: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -51,7 +50,7 @@ class SelfServiceSignUpAuthenticationFlowConfiguration(AdditionalDataHolder, Par
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -76,7 +75,7 @@ class SelfServiceSignUpAuthenticationFlowConfiguration(AdditionalDataHolder, Par
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -84,7 +83,7 @@ class SelfServiceSignUpAuthenticationFlowConfiguration(AdditionalDataHolder, Par
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

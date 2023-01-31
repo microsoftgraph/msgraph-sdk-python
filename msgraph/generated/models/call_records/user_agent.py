@@ -49,7 +49,6 @@ class UserAgent(AdditionalDataHolder, Parsable):
         self._application_version: Optional[str] = None
         # User-agent header value reported by this endpoint.
         self._header_value: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -70,8 +69,8 @@ class UserAgent(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "application_version": lambda n : setattr(self, 'application_version', n.get_str_value()),
-            "header_value": lambda n : setattr(self, 'header_value', n.get_str_value()),
+            "applicationVersion": lambda n : setattr(self, 'application_version', n.get_str_value()),
+            "headerValue": lambda n : setattr(self, 'header_value', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -96,7 +95,7 @@ class UserAgent(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -104,7 +103,7 @@ class UserAgent(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

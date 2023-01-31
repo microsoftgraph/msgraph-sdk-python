@@ -10,7 +10,7 @@ class PrintUsage(entity.Entity):
     @property
     def completed_black_and_white_job_count(self,) -> Optional[int]:
         """
-        Gets the completedBlackAndWhiteJobCount property value. The completedBlackAndWhiteJobCount property
+        Gets the completedBlackAndWhiteJobCount property value. 
         Returns: Optional[int]
         """
         return self._completed_black_and_white_job_count
@@ -18,7 +18,7 @@ class PrintUsage(entity.Entity):
     @completed_black_and_white_job_count.setter
     def completed_black_and_white_job_count(self,value: Optional[int] = None) -> None:
         """
-        Sets the completedBlackAndWhiteJobCount property value. The completedBlackAndWhiteJobCount property
+        Sets the completedBlackAndWhiteJobCount property value. 
         Args:
             value: Value to set for the completedBlackAndWhiteJobCount property.
         """
@@ -27,7 +27,7 @@ class PrintUsage(entity.Entity):
     @property
     def completed_color_job_count(self,) -> Optional[int]:
         """
-        Gets the completedColorJobCount property value. The completedColorJobCount property
+        Gets the completedColorJobCount property value. 
         Returns: Optional[int]
         """
         return self._completed_color_job_count
@@ -35,7 +35,7 @@ class PrintUsage(entity.Entity):
     @completed_color_job_count.setter
     def completed_color_job_count(self,value: Optional[int] = None) -> None:
         """
-        Sets the completedColorJobCount property value. The completedColorJobCount property
+        Sets the completedColorJobCount property value. 
         Args:
             value: Value to set for the completedColorJobCount property.
         """
@@ -43,18 +43,13 @@ class PrintUsage(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new PrintUsage and sets the default values.
+        Instantiates a new printUsage and sets the default values.
         """
         super().__init__()
-        # The completedBlackAndWhiteJobCount property
         self._completed_black_and_white_job_count: Optional[int] = None
-        # The completedColorJobCount property
         self._completed_color_job_count: Optional[int] = None
-        # The incompleteJobCount property
         self._incomplete_job_count: Optional[int] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The usageDate property
         self._usage_date: Optional[Date] = None
     
     @staticmethod
@@ -75,10 +70,10 @@ class PrintUsage(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "completed_black_and_white_job_count": lambda n : setattr(self, 'completed_black_and_white_job_count', n.get_int_value()),
-            "completed_color_job_count": lambda n : setattr(self, 'completed_color_job_count', n.get_int_value()),
-            "incomplete_job_count": lambda n : setattr(self, 'incomplete_job_count', n.get_int_value()),
-            "usage_date": lambda n : setattr(self, 'usage_date', n.get_object_value(Date)),
+            "completedBlackAndWhiteJobCount": lambda n : setattr(self, 'completed_black_and_white_job_count', n.get_int_value()),
+            "completedColorJobCount": lambda n : setattr(self, 'completed_color_job_count', n.get_int_value()),
+            "incompleteJobCount": lambda n : setattr(self, 'incomplete_job_count', n.get_int_value()),
+            "usageDate": lambda n : setattr(self, 'usage_date', n.get_object_value(Date)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -87,7 +82,7 @@ class PrintUsage(entity.Entity):
     @property
     def incomplete_job_count(self,) -> Optional[int]:
         """
-        Gets the incompleteJobCount property value. The incompleteJobCount property
+        Gets the incompleteJobCount property value. 
         Returns: Optional[int]
         """
         return self._incomplete_job_count
@@ -95,7 +90,7 @@ class PrintUsage(entity.Entity):
     @incomplete_job_count.setter
     def incomplete_job_count(self,value: Optional[int] = None) -> None:
         """
-        Sets the incompleteJobCount property value. The incompleteJobCount property
+        Sets the incompleteJobCount property value. 
         Args:
             value: Value to set for the incompleteJobCount property.
         """
@@ -118,7 +113,7 @@ class PrintUsage(entity.Entity):
     @property
     def usage_date(self,) -> Optional[Date]:
         """
-        Gets the usageDate property value. The usageDate property
+        Gets the usageDate property value. 
         Returns: Optional[Date]
         """
         return self._usage_date
@@ -126,7 +121,7 @@ class PrintUsage(entity.Entity):
     @usage_date.setter
     def usage_date(self,value: Optional[Date] = None) -> None:
         """
-        Sets the usageDate property value. The usageDate property
+        Sets the usageDate property value. 
         Args:
             value: Value to set for the usageDate property.
         """

@@ -66,7 +66,7 @@ class DeviceSettingStateSummariesRequestBuilder():
         """
         Create new navigation property to deviceSettingStateSummaries for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[setting_state_device_summary.SettingStateDeviceSummary]
         """
@@ -105,7 +105,7 @@ class DeviceSettingStateSummariesRequestBuilder():
         """
         Create new navigation property to deviceSettingStateSummaries for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

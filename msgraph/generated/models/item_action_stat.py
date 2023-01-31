@@ -66,7 +66,6 @@ class ItemActionStat(AdditionalDataHolder, Parsable):
         self._action_count: Optional[int] = None
         # The number of distinct actors that performed the action. Read-only.
         self._actor_count: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -87,8 +86,8 @@ class ItemActionStat(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "action_count": lambda n : setattr(self, 'action_count', n.get_int_value()),
-            "actor_count": lambda n : setattr(self, 'actor_count', n.get_int_value()),
+            "actionCount": lambda n : setattr(self, 'action_count', n.get_int_value()),
+            "actorCount": lambda n : setattr(self, 'actor_count', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -96,7 +95,7 @@ class ItemActionStat(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -104,7 +103,7 @@ class ItemActionStat(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

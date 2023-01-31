@@ -14,7 +14,6 @@ class WorkbookChartPointFormat(entity.Entity):
         super().__init__()
         # Represents the fill format of a chart, which includes background formating information. Read-only.
         self._fill: Optional[workbook_chart_fill.WorkbookChartFill] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

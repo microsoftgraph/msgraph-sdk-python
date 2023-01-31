@@ -17,7 +17,6 @@ class WorkbookChartAxisFormat(entity.Entity):
         self._font: Optional[workbook_chart_font.WorkbookChartFont] = None
         # Represents chart line formatting. Read-only.
         self._line: Optional[workbook_chart_line_format.WorkbookChartLineFormat] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

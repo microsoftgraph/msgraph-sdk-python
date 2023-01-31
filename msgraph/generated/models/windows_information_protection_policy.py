@@ -73,18 +73,18 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "days_without_contact_before_unenroll": lambda n : setattr(self, 'days_without_contact_before_unenroll', n.get_int_value()),
-            "mdm_enrollment_url": lambda n : setattr(self, 'mdm_enrollment_url', n.get_str_value()),
-            "minutes_of_inactivity_before_device_lock": lambda n : setattr(self, 'minutes_of_inactivity_before_device_lock', n.get_int_value()),
-            "number_of_past_pins_remembered": lambda n : setattr(self, 'number_of_past_pins_remembered', n.get_int_value()),
-            "password_maximum_attempt_count": lambda n : setattr(self, 'password_maximum_attempt_count', n.get_int_value()),
-            "pin_expiration_days": lambda n : setattr(self, 'pin_expiration_days', n.get_int_value()),
-            "pin_lowercase_letters": lambda n : setattr(self, 'pin_lowercase_letters', n.get_enum_value(windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements)),
-            "pin_minimum_length": lambda n : setattr(self, 'pin_minimum_length', n.get_int_value()),
-            "pin_special_characters": lambda n : setattr(self, 'pin_special_characters', n.get_enum_value(windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements)),
-            "pin_uppercase_letters": lambda n : setattr(self, 'pin_uppercase_letters', n.get_enum_value(windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements)),
-            "revoke_on_mdm_handoff_disabled": lambda n : setattr(self, 'revoke_on_mdm_handoff_disabled', n.get_bool_value()),
-            "windows_hello_for_business_blocked": lambda n : setattr(self, 'windows_hello_for_business_blocked', n.get_bool_value()),
+            "daysWithoutContactBeforeUnenroll": lambda n : setattr(self, 'days_without_contact_before_unenroll', n.get_int_value()),
+            "mdmEnrollmentUrl": lambda n : setattr(self, 'mdm_enrollment_url', n.get_str_value()),
+            "minutesOfInactivityBeforeDeviceLock": lambda n : setattr(self, 'minutes_of_inactivity_before_device_lock', n.get_int_value()),
+            "numberOfPastPinsRemembered": lambda n : setattr(self, 'number_of_past_pins_remembered', n.get_int_value()),
+            "passwordMaximumAttemptCount": lambda n : setattr(self, 'password_maximum_attempt_count', n.get_int_value()),
+            "pinExpirationDays": lambda n : setattr(self, 'pin_expiration_days', n.get_int_value()),
+            "pinLowercaseLetters": lambda n : setattr(self, 'pin_lowercase_letters', n.get_enum_value(windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements)),
+            "pinMinimumLength": lambda n : setattr(self, 'pin_minimum_length', n.get_int_value()),
+            "pinSpecialCharacters": lambda n : setattr(self, 'pin_special_characters', n.get_enum_value(windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements)),
+            "pinUppercaseLetters": lambda n : setattr(self, 'pin_uppercase_letters', n.get_enum_value(windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements)),
+            "revokeOnMdmHandoffDisabled": lambda n : setattr(self, 'revoke_on_mdm_handoff_disabled', n.get_bool_value()),
+            "windowsHelloForBusinessBlocked": lambda n : setattr(self, 'windows_hello_for_business_blocked', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

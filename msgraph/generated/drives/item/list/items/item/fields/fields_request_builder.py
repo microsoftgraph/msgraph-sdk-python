@@ -74,7 +74,7 @@ class FieldsRequestBuilder():
         """
         Update the properties on a **[listItem][]**.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[field_value_set.FieldValueSet]
         """
@@ -129,7 +129,7 @@ class FieldsRequestBuilder():
         """
         Update the properties on a **[listItem][]**.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

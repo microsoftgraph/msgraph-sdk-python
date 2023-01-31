@@ -12,7 +12,6 @@ class Fido2AuthenticationMethodConfigurationCollectionResponse(base_collection_p
         Instantiates a new Fido2AuthenticationMethodConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[fido2_authentication_method_configuration.Fido2AuthenticationMethodConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class Fido2AuthenticationMethodConfigurationCollectionResponse(base_collection_p
     @property
     def value(self,) -> Optional[List[fido2_authentication_method_configuration.Fido2AuthenticationMethodConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[fido2_authentication_method_configuration.Fido2AuthenticationMethodConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class Fido2AuthenticationMethodConfigurationCollectionResponse(base_collection_p
     @value.setter
     def value(self,value: Optional[List[fido2_authentication_method_configuration.Fido2AuthenticationMethodConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

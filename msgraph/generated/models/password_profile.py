@@ -32,7 +32,6 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
         self._force_change_password_next_sign_in: Optional[bool] = None
         # If true, at next sign-in, the user must perform a multi-factor authentication (MFA) before being forced to change their password. The behavior is identical to forceChangePasswordNextSignIn except that the user is required to first perform a multi-factor authentication before password change. After a password change, this property will be automatically reset to false. If not set, default is false.
         self._force_change_password_next_sign_in_with_mfa: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The password for the user. This property is required when a user is created. It can be updated, but the user will be required to change the password on the next login. The password must satisfy minimum requirements as specified by the user’s passwordPolicies property. By default, a strong password is required.
         self._password: Optional[str] = None
@@ -89,8 +88,8 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "force_change_password_next_sign_in": lambda n : setattr(self, 'force_change_password_next_sign_in', n.get_bool_value()),
-            "force_change_password_next_sign_in_with_mfa": lambda n : setattr(self, 'force_change_password_next_sign_in_with_mfa', n.get_bool_value()),
+            "forceChangePasswordNextSignIn": lambda n : setattr(self, 'force_change_password_next_sign_in', n.get_bool_value()),
+            "forceChangePasswordNextSignInWithMfa": lambda n : setattr(self, 'force_change_password_next_sign_in_with_mfa', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "password": lambda n : setattr(self, 'password', n.get_str_value()),
         }
@@ -99,7 +98,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -107,7 +106,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

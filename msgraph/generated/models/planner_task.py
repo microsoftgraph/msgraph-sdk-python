@@ -222,7 +222,6 @@ class PlannerTask(entity.Entity):
         self._due_date_time: Optional[datetime] = None
         # Read-only. Value is true if the details object of the task has a non-empty description and false otherwise.
         self._has_description: Optional[bool] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Hint used to order items of this type in a list view. The format is defined as outlined here.
         self._order_hint: Optional[str] = None
@@ -346,30 +345,30 @@ class PlannerTask(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "active_checklist_item_count": lambda n : setattr(self, 'active_checklist_item_count', n.get_int_value()),
-            "applied_categories": lambda n : setattr(self, 'applied_categories', n.get_object_value(planner_applied_categories.PlannerAppliedCategories)),
-            "assigned_to_task_board_format": lambda n : setattr(self, 'assigned_to_task_board_format', n.get_object_value(planner_assigned_to_task_board_task_format.PlannerAssignedToTaskBoardTaskFormat)),
-            "assignee_priority": lambda n : setattr(self, 'assignee_priority', n.get_str_value()),
+            "activeChecklistItemCount": lambda n : setattr(self, 'active_checklist_item_count', n.get_int_value()),
+            "appliedCategories": lambda n : setattr(self, 'applied_categories', n.get_object_value(planner_applied_categories.PlannerAppliedCategories)),
+            "assignedToTaskBoardFormat": lambda n : setattr(self, 'assigned_to_task_board_format', n.get_object_value(planner_assigned_to_task_board_task_format.PlannerAssignedToTaskBoardTaskFormat)),
+            "assigneePriority": lambda n : setattr(self, 'assignee_priority', n.get_str_value()),
             "assignments": lambda n : setattr(self, 'assignments', n.get_object_value(planner_assignments.PlannerAssignments)),
-            "bucket_id": lambda n : setattr(self, 'bucket_id', n.get_str_value()),
-            "bucket_task_board_format": lambda n : setattr(self, 'bucket_task_board_format', n.get_object_value(planner_bucket_task_board_task_format.PlannerBucketTaskBoardTaskFormat)),
-            "checklist_item_count": lambda n : setattr(self, 'checklist_item_count', n.get_int_value()),
-            "completed_by": lambda n : setattr(self, 'completed_by', n.get_object_value(identity_set.IdentitySet)),
-            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
-            "conversation_thread_id": lambda n : setattr(self, 'conversation_thread_id', n.get_str_value()),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "bucketId": lambda n : setattr(self, 'bucket_id', n.get_str_value()),
+            "bucketTaskBoardFormat": lambda n : setattr(self, 'bucket_task_board_format', n.get_object_value(planner_bucket_task_board_task_format.PlannerBucketTaskBoardTaskFormat)),
+            "checklistItemCount": lambda n : setattr(self, 'checklist_item_count', n.get_int_value()),
+            "completedBy": lambda n : setattr(self, 'completed_by', n.get_object_value(identity_set.IdentitySet)),
+            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
+            "conversationThreadId": lambda n : setattr(self, 'conversation_thread_id', n.get_str_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "details": lambda n : setattr(self, 'details', n.get_object_value(planner_task_details.PlannerTaskDetails)),
-            "due_date_time": lambda n : setattr(self, 'due_date_time', n.get_datetime_value()),
-            "has_description": lambda n : setattr(self, 'has_description', n.get_bool_value()),
-            "order_hint": lambda n : setattr(self, 'order_hint', n.get_str_value()),
-            "percent_complete": lambda n : setattr(self, 'percent_complete', n.get_int_value()),
-            "plan_id": lambda n : setattr(self, 'plan_id', n.get_str_value()),
-            "preview_type": lambda n : setattr(self, 'preview_type', n.get_enum_value(planner_preview_type.PlannerPreviewType)),
+            "dueDateTime": lambda n : setattr(self, 'due_date_time', n.get_datetime_value()),
+            "hasDescription": lambda n : setattr(self, 'has_description', n.get_bool_value()),
+            "orderHint": lambda n : setattr(self, 'order_hint', n.get_str_value()),
+            "percentComplete": lambda n : setattr(self, 'percent_complete', n.get_int_value()),
+            "planId": lambda n : setattr(self, 'plan_id', n.get_str_value()),
+            "previewType": lambda n : setattr(self, 'preview_type', n.get_enum_value(planner_preview_type.PlannerPreviewType)),
             "priority": lambda n : setattr(self, 'priority', n.get_int_value()),
-            "progress_task_board_format": lambda n : setattr(self, 'progress_task_board_format', n.get_object_value(planner_progress_task_board_task_format.PlannerProgressTaskBoardTaskFormat)),
-            "reference_count": lambda n : setattr(self, 'reference_count', n.get_int_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "progressTaskBoardFormat": lambda n : setattr(self, 'progress_task_board_format', n.get_object_value(planner_progress_task_board_task_format.PlannerProgressTaskBoardTaskFormat)),
+            "referenceCount": lambda n : setattr(self, 'reference_count', n.get_int_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

@@ -13,27 +13,19 @@ class Search(entity.Entity):
         Instantiates a new search and sets the default values.
         """
         super().__init__()
-        # The contentQuery property
         self._content_query: Optional[str] = None
-        # The createdBy property
         self._created_by: Optional[identity_set.IdentitySet] = None
-        # The createdDateTime property
         self._created_date_time: Optional[datetime] = None
-        # The description property
         self._description: Optional[str] = None
-        # The displayName property
         self._display_name: Optional[str] = None
-        # The lastModifiedBy property
         self._last_modified_by: Optional[identity_set.IdentitySet] = None
-        # The lastModifiedDateTime property
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @property
     def content_query(self,) -> Optional[str]:
         """
-        Gets the contentQuery property value. The contentQuery property
+        Gets the contentQuery property value. 
         Returns: Optional[str]
         """
         return self._content_query
@@ -41,7 +33,7 @@ class Search(entity.Entity):
     @content_query.setter
     def content_query(self,value: Optional[str] = None) -> None:
         """
-        Sets the contentQuery property value. The contentQuery property
+        Sets the contentQuery property value. 
         Args:
             value: Value to set for the contentQuery property.
         """
@@ -50,7 +42,7 @@ class Search(entity.Entity):
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
         """
-        Gets the createdBy property value. The createdBy property
+        Gets the createdBy property value. 
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._created_by
@@ -58,7 +50,7 @@ class Search(entity.Entity):
     @created_by.setter
     def created_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
-        Sets the createdBy property value. The createdBy property
+        Sets the createdBy property value. 
         Args:
             value: Value to set for the createdBy property.
         """
@@ -67,7 +59,7 @@ class Search(entity.Entity):
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
-        Gets the createdDateTime property value. The createdDateTime property
+        Gets the createdDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._created_date_time
@@ -75,7 +67,7 @@ class Search(entity.Entity):
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the createdDateTime property value. The createdDateTime property
+        Sets the createdDateTime property value. 
         Args:
             value: Value to set for the createdDateTime property.
         """
@@ -96,7 +88,7 @@ class Search(entity.Entity):
     @property
     def description(self,) -> Optional[str]:
         """
-        Gets the description property value. The description property
+        Gets the description property value. 
         Returns: Optional[str]
         """
         return self._description
@@ -104,7 +96,7 @@ class Search(entity.Entity):
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
-        Sets the description property value. The description property
+        Sets the description property value. 
         Args:
             value: Value to set for the description property.
         """
@@ -113,7 +105,7 @@ class Search(entity.Entity):
     @property
     def display_name(self,) -> Optional[str]:
         """
-        Gets the displayName property value. The displayName property
+        Gets the displayName property value. 
         Returns: Optional[str]
         """
         return self._display_name
@@ -121,7 +113,7 @@ class Search(entity.Entity):
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the displayName property value. The displayName property
+        Sets the displayName property value. 
         Args:
             value: Value to set for the displayName property.
         """
@@ -133,13 +125,13 @@ class Search(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "content_query": lambda n : setattr(self, 'content_query', n.get_str_value()),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "contentQuery": lambda n : setattr(self, 'content_query', n.get_str_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -148,7 +140,7 @@ class Search(entity.Entity):
     @property
     def last_modified_by(self,) -> Optional[identity_set.IdentitySet]:
         """
-        Gets the lastModifiedBy property value. The lastModifiedBy property
+        Gets the lastModifiedBy property value. 
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._last_modified_by
@@ -156,7 +148,7 @@ class Search(entity.Entity):
     @last_modified_by.setter
     def last_modified_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
-        Sets the lastModifiedBy property value. The lastModifiedBy property
+        Sets the lastModifiedBy property value. 
         Args:
             value: Value to set for the lastModifiedBy property.
         """
@@ -165,7 +157,7 @@ class Search(entity.Entity):
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
-        Gets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Gets the lastModifiedDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
@@ -173,7 +165,7 @@ class Search(entity.Entity):
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Sets the lastModifiedDateTime property value. 
         Args:
             value: Value to set for the lastModifiedDateTime property.
         """

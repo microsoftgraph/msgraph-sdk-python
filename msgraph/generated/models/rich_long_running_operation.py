@@ -14,7 +14,6 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
         super().__init__()
         # Error that caused the operation to fail.
         self._error: Optional[public_error.PublicError] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # A value between 0 and 100 that indicates the progress of the operation.
         self._percentage_complete: Optional[int] = None
@@ -59,8 +58,8 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
         """
         fields = {
             "error": lambda n : setattr(self, 'error', n.get_object_value(public_error.PublicError)),
-            "percentage_complete": lambda n : setattr(self, 'percentage_complete', n.get_int_value()),
-            "resource_id": lambda n : setattr(self, 'resource_id', n.get_str_value()),
+            "percentageComplete": lambda n : setattr(self, 'percentage_complete', n.get_int_value()),
+            "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

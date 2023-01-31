@@ -33,7 +33,6 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Indicates the package type of an MSI Win32LobApp.
         self._package_type: Optional[win32_lob_app_msi_package_type.Win32LobAppMsiPackageType] = None
@@ -69,20 +68,20 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "package_type": lambda n : setattr(self, 'package_type', n.get_enum_value(win32_lob_app_msi_package_type.Win32LobAppMsiPackageType)),
-            "product_code": lambda n : setattr(self, 'product_code', n.get_str_value()),
-            "product_name": lambda n : setattr(self, 'product_name', n.get_str_value()),
-            "product_version": lambda n : setattr(self, 'product_version', n.get_str_value()),
+            "packageType": lambda n : setattr(self, 'package_type', n.get_enum_value(win32_lob_app_msi_package_type.Win32LobAppMsiPackageType)),
+            "productCode": lambda n : setattr(self, 'product_code', n.get_str_value()),
+            "productName": lambda n : setattr(self, 'product_name', n.get_str_value()),
+            "productVersion": lambda n : setattr(self, 'product_version', n.get_str_value()),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
-            "requires_reboot": lambda n : setattr(self, 'requires_reboot', n.get_bool_value()),
-            "upgrade_code": lambda n : setattr(self, 'upgrade_code', n.get_str_value()),
+            "requiresReboot": lambda n : setattr(self, 'requires_reboot', n.get_bool_value()),
+            "upgradeCode": lambda n : setattr(self, 'upgrade_code', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -90,7 +89,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

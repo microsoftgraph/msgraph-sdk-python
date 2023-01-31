@@ -55,7 +55,6 @@ class ManagedAppPolicyDeploymentSummary(entity.Entity):
         self._display_name: Optional[str] = None
         # Not yet documented
         self._last_refresh_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Version of the entity.
         self._version: Optional[str] = None
@@ -95,10 +94,10 @@ class ManagedAppPolicyDeploymentSummary(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "configuration_deployed_user_count": lambda n : setattr(self, 'configuration_deployed_user_count', n.get_int_value()),
-            "configuration_deployment_summary_per_app": lambda n : setattr(self, 'configuration_deployment_summary_per_app', n.get_collection_of_object_values(managed_app_policy_deployment_summary_per_app.ManagedAppPolicyDeploymentSummaryPerApp)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "last_refresh_time": lambda n : setattr(self, 'last_refresh_time', n.get_datetime_value()),
+            "configurationDeployedUserCount": lambda n : setattr(self, 'configuration_deployed_user_count', n.get_int_value()),
+            "configurationDeploymentSummaryPerApp": lambda n : setattr(self, 'configuration_deployment_summary_per_app', n.get_collection_of_object_values(managed_app_policy_deployment_summary_per_app.ManagedAppPolicyDeploymentSummaryPerApp)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "lastRefreshTime": lambda n : setattr(self, 'last_refresh_time', n.get_datetime_value()),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

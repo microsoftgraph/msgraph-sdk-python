@@ -50,7 +50,6 @@ class CrossTenantAccessPolicyTargetConfiguration(AdditionalDataHolder, Parsable)
 
         # Defines whether access is allowed or blocked. The possible values are: allowed, blocked, unknownFutureValue.
         self._access_type: Optional[cross_tenant_access_policy_target_configuration_access_type.CrossTenantAccessPolicyTargetConfigurationAccessType] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Specifies whether to target users, groups, or applications with this rule.
         self._targets: Optional[List[cross_tenant_access_policy_target.CrossTenantAccessPolicyTarget]] = None
@@ -73,7 +72,7 @@ class CrossTenantAccessPolicyTargetConfiguration(AdditionalDataHolder, Parsable)
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_type": lambda n : setattr(self, 'access_type', n.get_enum_value(cross_tenant_access_policy_target_configuration_access_type.CrossTenantAccessPolicyTargetConfigurationAccessType)),
+            "accessType": lambda n : setattr(self, 'access_type', n.get_enum_value(cross_tenant_access_policy_target_configuration_access_type.CrossTenantAccessPolicyTargetConfigurationAccessType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "targets": lambda n : setattr(self, 'targets', n.get_collection_of_object_values(cross_tenant_access_policy_target.CrossTenantAccessPolicyTarget)),
         }
@@ -82,7 +81,7 @@ class CrossTenantAccessPolicyTargetConfiguration(AdditionalDataHolder, Parsable)
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -90,7 +89,7 @@ class CrossTenantAccessPolicyTargetConfiguration(AdditionalDataHolder, Parsable)
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

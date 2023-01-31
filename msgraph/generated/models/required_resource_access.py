@@ -30,7 +30,6 @@ class RequiredResourceAccess(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The list of OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
         self._resource_access: Optional[List[resource_access.ResourceAccess]] = None
@@ -56,15 +55,15 @@ class RequiredResourceAccess(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "resource_access": lambda n : setattr(self, 'resource_access', n.get_collection_of_object_values(resource_access.ResourceAccess)),
-            "resource_app_id": lambda n : setattr(self, 'resource_app_id', n.get_str_value()),
+            "resourceAccess": lambda n : setattr(self, 'resource_access', n.get_collection_of_object_values(resource_access.ResourceAccess)),
+            "resourceAppId": lambda n : setattr(self, 'resource_app_id', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -72,7 +71,7 @@ class RequiredResourceAccess(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

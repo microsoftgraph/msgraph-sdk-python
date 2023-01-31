@@ -10,12 +10,11 @@ connection_operation_status = lazy_import('msgraph.generated.models.external_con
 class ConnectionOperation(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new ConnectionOperation and sets the default values.
+        Instantiates a new connectionOperation and sets the default values.
         """
         super().__init__()
         # If status is failed, provides more information about the error that caused the failure.
         self._error: Optional[public_error.PublicError] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Indicates the status of the asynchronous operation. Possible values are: unspecified, inprogress, completed, failed, unknownFutureValue.
         self._status: Optional[connection_operation_status.ConnectionOperationStatus] = None

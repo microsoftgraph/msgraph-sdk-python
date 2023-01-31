@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-check_member_groups_request_builder = lazy_import('msgraph.generated.group_setting_templates.item.check_member_groups.check_member_groups_request_builder')
-check_member_objects_request_builder = lazy_import('msgraph.generated.group_setting_templates.item.check_member_objects.check_member_objects_request_builder')
-get_member_groups_request_builder = lazy_import('msgraph.generated.group_setting_templates.item.get_member_groups.get_member_groups_request_builder')
-get_member_objects_request_builder = lazy_import('msgraph.generated.group_setting_templates.item.get_member_objects.get_member_objects_request_builder')
-restore_request_builder = lazy_import('msgraph.generated.group_setting_templates.item.restore.restore_request_builder')
+check_member_groups_request_builder = lazy_import('msgraph.generated.group_setting_templates.item.microsoft_graph_check_member_groups.check_member_groups_request_builder')
+check_member_objects_request_builder = lazy_import('msgraph.generated.group_setting_templates.item.microsoft_graph_check_member_objects.check_member_objects_request_builder')
+get_member_groups_request_builder = lazy_import('msgraph.generated.group_setting_templates.item.microsoft_graph_get_member_groups.get_member_groups_request_builder')
+get_member_objects_request_builder = lazy_import('msgraph.generated.group_setting_templates.item.microsoft_graph_get_member_objects.get_member_objects_request_builder')
+restore_request_builder = lazy_import('msgraph.generated.group_setting_templates.item.microsoft_graph_restore.restore_request_builder')
 group_setting_template = lazy_import('msgraph.generated.models.group_setting_template')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -23,44 +23,45 @@ class GroupSettingTemplateItemRequestBuilder():
     Provides operations to manage the collection of groupSettingTemplate entities.
     """
     @property
-    def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
+    def microsoft_graph_check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
         """
         Provides operations to call the checkMemberGroups method.
         """
         return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
+    def microsoft_graph_check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
         """
         Provides operations to call the checkMemberObjects method.
         """
         return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
+    def microsoft_graph_get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
         """
         Provides operations to call the getMemberGroups method.
         """
         return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
+    def microsoft_graph_get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
         """
         Provides operations to call the getMemberObjects method.
         """
         return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def restore(self) -> restore_request_builder.RestoreRequestBuilder:
+    def microsoft_graph_restore(self) -> restore_request_builder.RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
         return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, group_setting_template_id: Optional[str] = None) -> None:
         """
         Instantiates a new GroupSettingTemplateItemRequestBuilder and sets the default values.
         Args:
+            groupSettingTemplateId: key: id of groupSettingTemplate
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -72,12 +73,13 @@ class GroupSettingTemplateItemRequestBuilder():
         self.url_template: str = "{+baseurl}/groupSettingTemplates/{groupSettingTemplate%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["groupSettingTemplate%2Did"] = groupSettingTemplateId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
     async def delete(self,request_configuration: Optional[GroupSettingTemplateItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete entity from groupSettingTemplates by key (id)
+        Delete entity from groupSettingTemplates
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -112,9 +114,9 @@ class GroupSettingTemplateItemRequestBuilder():
     
     async def patch(self,body: Optional[group_setting_template.GroupSettingTemplate] = None, request_configuration: Optional[GroupSettingTemplateItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[group_setting_template.GroupSettingTemplate]:
         """
-        Update entity in groupSettingTemplates by key (id)
+        Update entity in groupSettingTemplates
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[group_setting_template.GroupSettingTemplate]
         """
@@ -133,7 +135,7 @@ class GroupSettingTemplateItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[GroupSettingTemplateItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete entity from groupSettingTemplates by key (id)
+        Delete entity from groupSettingTemplates
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -167,9 +169,9 @@ class GroupSettingTemplateItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[group_setting_template.GroupSettingTemplate] = None, request_configuration: Optional[GroupSettingTemplateItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update entity in groupSettingTemplates by key (id)
+        Update entity in groupSettingTemplates
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

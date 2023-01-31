@@ -71,7 +71,6 @@ class CalendarGroup(entity.Entity):
         self._class_id: Optional[Guid] = None
         # The group name.
         self._name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -93,8 +92,8 @@ class CalendarGroup(entity.Entity):
         """
         fields = {
             "calendars": lambda n : setattr(self, 'calendars', n.get_collection_of_object_values(calendar.Calendar)),
-            "change_key": lambda n : setattr(self, 'change_key', n.get_str_value()),
-            "class_id": lambda n : setattr(self, 'class_id', n.get_object_value(Guid)),
+            "changeKey": lambda n : setattr(self, 'change_key', n.get_str_value()),
+            "classId": lambda n : setattr(self, 'class_id', n.get_object_value(Guid)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

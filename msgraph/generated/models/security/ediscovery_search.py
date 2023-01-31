@@ -116,12 +116,12 @@ class EdiscoverySearch(search.Search):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "additional_sources": lambda n : setattr(self, 'additional_sources', n.get_collection_of_object_values(data_source.DataSource)),
-            "add_to_review_set_operation": lambda n : setattr(self, 'add_to_review_set_operation', n.get_object_value(ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation)),
-            "custodian_sources": lambda n : setattr(self, 'custodian_sources', n.get_collection_of_object_values(data_source.DataSource)),
-            "data_source_scopes": lambda n : setattr(self, 'data_source_scopes', n.get_enum_value(data_source_scopes.DataSourceScopes)),
-            "last_estimate_statistics_operation": lambda n : setattr(self, 'last_estimate_statistics_operation', n.get_object_value(ediscovery_estimate_operation.EdiscoveryEstimateOperation)),
-            "noncustodial_sources": lambda n : setattr(self, 'noncustodial_sources', n.get_collection_of_object_values(ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource)),
+            "additionalSources": lambda n : setattr(self, 'additional_sources', n.get_collection_of_object_values(data_source.DataSource)),
+            "addToReviewSetOperation": lambda n : setattr(self, 'add_to_review_set_operation', n.get_object_value(ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation)),
+            "custodianSources": lambda n : setattr(self, 'custodian_sources', n.get_collection_of_object_values(data_source.DataSource)),
+            "dataSourceScopes": lambda n : setattr(self, 'data_source_scopes', n.get_enum_value(data_source_scopes.DataSourceScopes)),
+            "lastEstimateStatisticsOperation": lambda n : setattr(self, 'last_estimate_statistics_operation', n.get_object_value(ediscovery_estimate_operation.EdiscoveryEstimateOperation)),
+            "noncustodialSources": lambda n : setattr(self, 'noncustodial_sources', n.get_collection_of_object_values(ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

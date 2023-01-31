@@ -20,7 +20,6 @@ class AccessReviewStage(entity.Entity):
         self._end_date_time: Optional[datetime] = None
         # This collection of reviewer scopes is used to define the list of fallback reviewers. These fallback reviewers will be notified to take action if no users are found from the list of reviewers specified. This could occur when either the group owner is specified as the reviewer but the group owner does not exist, or manager is specified as reviewer but a user's manager does not exist.
         self._fallback_reviewers: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # This collection of access review scopes is used to define who the reviewers are. For examples of options for assigning reviewers, see Assign reviewers to your access review definition using the Microsoft Graph API.
         self._reviewers: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]] = None
@@ -99,10 +98,10 @@ class AccessReviewStage(entity.Entity):
         """
         fields = {
             "decisions": lambda n : setattr(self, 'decisions', n.get_collection_of_object_values(access_review_instance_decision_item.AccessReviewInstanceDecisionItem)),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "fallback_reviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(access_review_reviewer_scope.AccessReviewReviewerScope)),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "fallbackReviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(access_review_reviewer_scope.AccessReviewReviewerScope)),
             "reviewers": lambda n : setattr(self, 'reviewers', n.get_collection_of_object_values(access_review_reviewer_scope.AccessReviewReviewerScope)),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

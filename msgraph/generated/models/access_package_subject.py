@@ -38,7 +38,6 @@ class AccessPackageSubject(entity.Entity):
         self._email: Optional[str] = None
         # The object identifier of the subject. null if the subject is not yet a user in the tenant.
         self._object_id: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # A string representation of the principal's security identifier, if known, or null if the subject does not have a security identifier.
         self._on_premises_security_identifier: Optional[str] = None
@@ -99,13 +98,13 @@ class AccessPackageSubject(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "connected_organization": lambda n : setattr(self, 'connected_organization', n.get_object_value(connected_organization.ConnectedOrganization)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "connectedOrganization": lambda n : setattr(self, 'connected_organization', n.get_object_value(connected_organization.ConnectedOrganization)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "object_id": lambda n : setattr(self, 'object_id', n.get_str_value()),
-            "on_premises_security_identifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
-            "principal_name": lambda n : setattr(self, 'principal_name', n.get_str_value()),
-            "subject_type": lambda n : setattr(self, 'subject_type', n.get_enum_value(access_package_subject_type.AccessPackageSubjectType)),
+            "objectId": lambda n : setattr(self, 'object_id', n.get_str_value()),
+            "onPremisesSecurityIdentifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
+            "principalName": lambda n : setattr(self, 'principal_name', n.get_str_value()),
+            "subjectType": lambda n : setattr(self, 'subject_type', n.get_enum_value(access_package_subject_type.AccessPackageSubjectType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

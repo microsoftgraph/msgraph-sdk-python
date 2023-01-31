@@ -55,7 +55,6 @@ class WindowsInformationProtectionAppLearningSummary(entity.Entity):
         self._application_type: Optional[application_type.ApplicationType] = None
         # Device Count
         self._device_count: Optional[int] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -93,9 +92,9 @@ class WindowsInformationProtectionAppLearningSummary(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "application_name": lambda n : setattr(self, 'application_name', n.get_str_value()),
-            "application_type": lambda n : setattr(self, 'application_type', n.get_enum_value(application_type.ApplicationType)),
-            "device_count": lambda n : setattr(self, 'device_count', n.get_int_value()),
+            "applicationName": lambda n : setattr(self, 'application_name', n.get_str_value()),
+            "applicationType": lambda n : setattr(self, 'application_type', n.get_enum_value(application_type.ApplicationType)),
+            "deviceCount": lambda n : setattr(self, 'device_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

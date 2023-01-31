@@ -12,7 +12,6 @@ class UserEvidence(alert_evidence.AlertEvidence):
         Instantiates a new UserEvidence and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The user account details.
         self._user_account: Optional[user_account.UserAccount] = None
@@ -35,7 +34,7 @@ class UserEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "user_account": lambda n : setattr(self, 'user_account', n.get_object_value(user_account.UserAccount)),
+            "userAccount": lambda n : setattr(self, 'user_account', n.get_object_value(user_account.UserAccount)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

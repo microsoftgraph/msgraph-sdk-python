@@ -66,7 +66,7 @@ class VerificationDnsRecordsRequestBuilder():
         """
         Create new navigation property to verificationDnsRecords for domains
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[domain_dns_record.DomainDnsRecord]
         """
@@ -105,7 +105,7 @@ class VerificationDnsRecordsRequestBuilder():
         """
         Create new navigation property to verificationDnsRecords for domains
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

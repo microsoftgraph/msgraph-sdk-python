@@ -12,7 +12,6 @@ class RubricQualitySelectedColumnModelCollectionResponse(base_collection_paginat
         Instantiates a new RubricQualitySelectedColumnModelCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[rubric_quality_selected_column_model.RubricQualitySelectedColumnModel]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class RubricQualitySelectedColumnModelCollectionResponse(base_collection_paginat
     @property
     def value(self,) -> Optional[List[rubric_quality_selected_column_model.RubricQualitySelectedColumnModel]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[rubric_quality_selected_column_model.RubricQualitySelectedColumnModel]]
         """
         return self._value
@@ -61,7 +60,7 @@ class RubricQualitySelectedColumnModelCollectionResponse(base_collection_paginat
     @value.setter
     def value(self,value: Optional[List[rubric_quality_selected_column_model.RubricQualitySelectedColumnModel]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

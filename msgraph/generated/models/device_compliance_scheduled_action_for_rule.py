@@ -15,7 +15,6 @@ class DeviceComplianceScheduledActionForRule(entity.Entity):
         Instantiates a new deviceComplianceScheduledActionForRule and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Name of the rule which this scheduled action applies to. Currently scheduled actions are created per policy instead of per rule, thus RuleName is always set to default value PasswordRequired.
         self._rule_name: Optional[str] = None
@@ -40,8 +39,8 @@ class DeviceComplianceScheduledActionForRule(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "rule_name": lambda n : setattr(self, 'rule_name', n.get_str_value()),
-            "scheduled_action_configurations": lambda n : setattr(self, 'scheduled_action_configurations', n.get_collection_of_object_values(device_compliance_action_item.DeviceComplianceActionItem)),
+            "ruleName": lambda n : setattr(self, 'rule_name', n.get_str_value()),
+            "scheduledActionConfigurations": lambda n : setattr(self, 'scheduled_action_configurations', n.get_collection_of_object_values(device_compliance_action_item.DeviceComplianceActionItem)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

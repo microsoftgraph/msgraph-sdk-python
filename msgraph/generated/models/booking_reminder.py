@@ -36,11 +36,9 @@ class BookingReminder(AdditionalDataHolder, Parsable):
 
         # The message in the reminder.
         self._message: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The amount of time before the start of an appointment that the reminder should be sent. It's denoted in ISO 8601 format.
         self._offset: Optional[Timedelta] = None
-        # The recipients property
         self._recipients: Optional[booking_reminder_recipients.BookingReminderRecipients] = None
     
     @staticmethod
@@ -88,7 +86,7 @@ class BookingReminder(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -96,7 +94,7 @@ class BookingReminder(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -122,7 +120,7 @@ class BookingReminder(AdditionalDataHolder, Parsable):
     @property
     def recipients(self,) -> Optional[booking_reminder_recipients.BookingReminderRecipients]:
         """
-        Gets the recipients property value. The recipients property
+        Gets the recipients property value. 
         Returns: Optional[booking_reminder_recipients.BookingReminderRecipients]
         """
         return self._recipients
@@ -130,7 +128,7 @@ class BookingReminder(AdditionalDataHolder, Parsable):
     @recipients.setter
     def recipients(self,value: Optional[booking_reminder_recipients.BookingReminderRecipients] = None) -> None:
         """
-        Sets the recipients property value. The recipients property
+        Sets the recipients property value. 
         Args:
             value: Value to set for the recipients property.
         """

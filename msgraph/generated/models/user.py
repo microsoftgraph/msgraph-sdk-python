@@ -208,7 +208,7 @@ class User(directory_object.DirectoryObject):
     @property
     def authorization_info(self,) -> Optional[authorization_info.AuthorizationInfo]:
         """
-        Gets the authorizationInfo property value. The authorizationInfo property
+        Gets the authorizationInfo property value. 
         Returns: Optional[authorization_info.AuthorizationInfo]
         """
         return self._authorization_info
@@ -216,7 +216,7 @@ class User(directory_object.DirectoryObject):
     @authorization_info.setter
     def authorization_info(self,value: Optional[authorization_info.AuthorizationInfo] = None) -> None:
         """
-        Sets the authorizationInfo property value. The authorizationInfo property
+        Sets the authorizationInfo property value. 
         Args:
             value: Value to set for the authorizationInfo property.
         """
@@ -327,7 +327,7 @@ class User(directory_object.DirectoryObject):
     @property
     def chats(self,) -> Optional[List[chat.Chat]]:
         """
-        Gets the chats property value. The chats property
+        Gets the chats property value. 
         Returns: Optional[List[chat.Chat]]
         """
         return self._chats
@@ -335,7 +335,7 @@ class User(directory_object.DirectoryObject):
     @chats.setter
     def chats(self,value: Optional[List[chat.Chat]] = None) -> None:
         """
-        Sets the chats property value. The chats property
+        Sets the chats property value. 
         Args:
             value: Value to set for the chats property.
         """
@@ -416,7 +416,6 @@ class User(directory_object.DirectoryObject):
         self._assigned_plans: Optional[List[assigned_plan.AssignedPlan]] = None
         # The authentication methods that are supported for the user.
         self._authentication: Optional[authentication.Authentication] = None
-        # The authorizationInfo property
         self._authorization_info: Optional[authorization_info.AuthorizationInfo] = None
         # The birthday of the user. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned only on $select.
         self._birthday: Optional[datetime] = None
@@ -430,7 +429,6 @@ class User(directory_object.DirectoryObject):
         self._calendars: Optional[List[calendar.Calendar]] = None
         # The calendar view for the calendar. Read-only. Nullable.
         self._calendar_view: Optional[List[event.Event]] = None
-        # The chats property
         self._chats: Optional[List[chat.Chat]] = None
         # The city in which the user is located. Maximum length is 128 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
         self._city: Optional[str] = None
@@ -482,7 +480,6 @@ class User(directory_object.DirectoryObject):
         self._external_user_state_change_date_time: Optional[datetime] = None
         # The fax number of the user. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).
         self._fax_number: Optional[str] = None
-        # The followedSites property
         self._followed_sites: Optional[List[site.Site]] = None
         # The given name (first name) of the user. Maximum length is 64 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).
         self._given_name: Optional[str] = None
@@ -494,7 +491,6 @@ class User(directory_object.DirectoryObject):
         self._im_addresses: Optional[List[str]] = None
         # Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
         self._inference_classification: Optional[inference_classification.InferenceClassification] = None
-        # The insights property
         self._insights: Optional[office_graph_insights.OfficeGraphInsights] = None
         # A list for the user to describe their interests. Returned only on $select.
         self._interests: Optional[List[str]] = None
@@ -502,7 +498,6 @@ class User(directory_object.DirectoryObject):
         self._is_resource_account: Optional[bool] = None
         # The user's job title. Maximum length is 128 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).
         self._job_title: Optional[str] = None
-        # The joinedTeams property
         self._joined_teams: Optional[List[team.Team]] = None
         # The time when this Azure AD user last changed their password or when their password was created, whichever date the latest action was performed. The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned only on $select.
         self._last_password_change_date_time: Optional[datetime] = None
@@ -534,13 +529,10 @@ class User(directory_object.DirectoryObject):
         self._mobile_phone: Optional[str] = None
         # The URL for the user's personal site. Returned only on $select.
         self._my_site: Optional[str] = None
-        # The oauth2PermissionGrants property
         self._oauth2_permission_grants: Optional[List[o_auth2_permission_grant.OAuth2PermissionGrant]] = None
         # The office location in the user's place of business. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
         self._office_location: Optional[str] = None
-        # The onenote property
         self._onenote: Optional[onenote.Onenote] = None
-        # The onlineMeetings property
         self._online_meetings: Optional[List[online_meeting.OnlineMeeting]] = None
         # Contains the on-premises Active Directory distinguished name or DN. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select.
         self._on_premises_distinguished_name: Optional[str] = None
@@ -564,7 +556,6 @@ class User(directory_object.DirectoryObject):
         self._on_premises_user_principal_name: Optional[str] = None
         # A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com']. NOTE: This property cannot contain accent characters. Returned only on $select. Supports $filter (eq, not, ge, le, in, startsWith, endsWith, /$count eq 0, /$count ne 0).
         self._other_mails: Optional[List[str]] = None
-        # The outlook property
         self._outlook: Optional[outlook_user.OutlookUser] = None
         # Devices that are owned by the user. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
         self._owned_devices: Optional[List[directory_object.DirectoryObject]] = None
@@ -580,7 +571,6 @@ class User(directory_object.DirectoryObject):
         self._people: Optional[List[person.Person]] = None
         # The user's profile photo. Read-only.
         self._photo: Optional[profile_photo.ProfilePhoto] = None
-        # The photos property
         self._photos: Optional[List[profile_photo.ProfilePhoto]] = None
         # Entry-point to the Planner resource that might exist for a user. Read-only.
         self._planner: Optional[planner_user.PlannerUser] = None
@@ -592,7 +582,6 @@ class User(directory_object.DirectoryObject):
         self._preferred_language: Optional[str] = None
         # The preferred name for the user. Not Supported. This attribute returns an empty string.Returned only on $select.
         self._preferred_name: Optional[str] = None
-        # The presence property
         self._presence: Optional[presence.Presence] = None
         # The plans that are provisioned for the user. Read-only. Not nullable. Returned only on $select. Supports $filter (eq, not, ge, le).
         self._provisioned_plans: Optional[List[provisioned_plan.ProvisionedPlan]] = None
@@ -604,11 +593,9 @@ class User(directory_object.DirectoryObject):
         self._responsibilities: Optional[List[str]] = None
         # A list for the user to enumerate the schools they have attended. Returned only on $select.
         self._schools: Optional[List[str]] = None
-        # The scopedRoleMemberOf property
         self._scoped_role_member_of: Optional[List[scoped_role_membership.ScopedRoleMembership]] = None
         # Security identifier (SID) of the user, used in Windows scenarios. Read-only. Returned by default. Supports $select and $filter (eq, not, ge, le, startsWith).
         self._security_identifier: Optional[str] = None
-        # The settings property
         self._settings: Optional[user_settings.UserSettings] = None
         # Do not use in Microsoft Graph. Manage this property through the Microsoft 365 admin center instead. Represents whether the user should be included in the Outlook global address list. See Known issue.
         self._show_in_address_list: Optional[bool] = None
@@ -622,7 +609,6 @@ class User(directory_object.DirectoryObject):
         self._street_address: Optional[str] = None
         # The user's surname (family name or last name). Maximum length is 64 characters. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
         self._surname: Optional[str] = None
-        # The teamwork property
         self._teamwork: Optional[user_teamwork.UserTeamwork] = None
         # Represents the To Do services available to a user.
         self._todo: Optional[todo.Todo] = None
@@ -1024,7 +1010,7 @@ class User(directory_object.DirectoryObject):
     @property
     def followed_sites(self,) -> Optional[List[site.Site]]:
         """
-        Gets the followedSites property value. The followedSites property
+        Gets the followedSites property value. 
         Returns: Optional[List[site.Site]]
         """
         return self._followed_sites
@@ -1032,7 +1018,7 @@ class User(directory_object.DirectoryObject):
     @followed_sites.setter
     def followed_sites(self,value: Optional[List[site.Site]] = None) -> None:
         """
-        Sets the followedSites property value. The followedSites property
+        Sets the followedSites property value. 
         Args:
             value: Value to set for the followedSites property.
         """
@@ -1044,124 +1030,124 @@ class User(directory_object.DirectoryObject):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "about_me": lambda n : setattr(self, 'about_me', n.get_str_value()),
-            "account_enabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
+            "aboutMe": lambda n : setattr(self, 'about_me', n.get_str_value()),
+            "accountEnabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
             "activities": lambda n : setattr(self, 'activities', n.get_collection_of_object_values(user_activity.UserActivity)),
-            "age_group": lambda n : setattr(self, 'age_group', n.get_str_value()),
-            "agreement_acceptances": lambda n : setattr(self, 'agreement_acceptances', n.get_collection_of_object_values(agreement_acceptance.AgreementAcceptance)),
-            "app_role_assignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
-            "assigned_licenses": lambda n : setattr(self, 'assigned_licenses', n.get_collection_of_object_values(assigned_license.AssignedLicense)),
-            "assigned_plans": lambda n : setattr(self, 'assigned_plans', n.get_collection_of_object_values(assigned_plan.AssignedPlan)),
+            "ageGroup": lambda n : setattr(self, 'age_group', n.get_str_value()),
+            "agreementAcceptances": lambda n : setattr(self, 'agreement_acceptances', n.get_collection_of_object_values(agreement_acceptance.AgreementAcceptance)),
+            "appRoleAssignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
+            "assignedLicenses": lambda n : setattr(self, 'assigned_licenses', n.get_collection_of_object_values(assigned_license.AssignedLicense)),
+            "assignedPlans": lambda n : setattr(self, 'assigned_plans', n.get_collection_of_object_values(assigned_plan.AssignedPlan)),
             "authentication": lambda n : setattr(self, 'authentication', n.get_object_value(authentication.Authentication)),
-            "authorization_info": lambda n : setattr(self, 'authorization_info', n.get_object_value(authorization_info.AuthorizationInfo)),
+            "authorizationInfo": lambda n : setattr(self, 'authorization_info', n.get_object_value(authorization_info.AuthorizationInfo)),
             "birthday": lambda n : setattr(self, 'birthday', n.get_datetime_value()),
-            "business_phones": lambda n : setattr(self, 'business_phones', n.get_collection_of_primitive_values(str)),
+            "businessPhones": lambda n : setattr(self, 'business_phones', n.get_collection_of_primitive_values(str)),
             "calendar": lambda n : setattr(self, 'calendar', n.get_object_value(calendar.Calendar)),
-            "calendar_groups": lambda n : setattr(self, 'calendar_groups', n.get_collection_of_object_values(calendar_group.CalendarGroup)),
+            "calendarGroups": lambda n : setattr(self, 'calendar_groups', n.get_collection_of_object_values(calendar_group.CalendarGroup)),
             "calendars": lambda n : setattr(self, 'calendars', n.get_collection_of_object_values(calendar.Calendar)),
-            "calendar_view": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(event.Event)),
+            "calendarView": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(event.Event)),
             "chats": lambda n : setattr(self, 'chats', n.get_collection_of_object_values(chat.Chat)),
             "city": lambda n : setattr(self, 'city', n.get_str_value()),
-            "company_name": lambda n : setattr(self, 'company_name', n.get_str_value()),
-            "consent_provided_for_minor": lambda n : setattr(self, 'consent_provided_for_minor', n.get_str_value()),
-            "contact_folders": lambda n : setattr(self, 'contact_folders', n.get_collection_of_object_values(contact_folder.ContactFolder)),
+            "companyName": lambda n : setattr(self, 'company_name', n.get_str_value()),
+            "consentProvidedForMinor": lambda n : setattr(self, 'consent_provided_for_minor', n.get_str_value()),
+            "contactFolders": lambda n : setattr(self, 'contact_folders', n.get_collection_of_object_values(contact_folder.ContactFolder)),
             "contacts": lambda n : setattr(self, 'contacts', n.get_collection_of_object_values(contact.Contact)),
             "country": lambda n : setattr(self, 'country', n.get_str_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "created_objects": lambda n : setattr(self, 'created_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "creation_type": lambda n : setattr(self, 'creation_type', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdObjects": lambda n : setattr(self, 'created_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "creationType": lambda n : setattr(self, 'creation_type', n.get_str_value()),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),
-            "device_enrollment_limit": lambda n : setattr(self, 'device_enrollment_limit', n.get_int_value()),
-            "device_management_troubleshooting_events": lambda n : setattr(self, 'device_management_troubleshooting_events', n.get_collection_of_object_values(device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent)),
-            "direct_reports": lambda n : setattr(self, 'direct_reports', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "deviceEnrollmentLimit": lambda n : setattr(self, 'device_enrollment_limit', n.get_int_value()),
+            "deviceManagementTroubleshootingEvents": lambda n : setattr(self, 'device_management_troubleshooting_events', n.get_collection_of_object_values(device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent)),
+            "directReports": lambda n : setattr(self, 'direct_reports', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "drive": lambda n : setattr(self, 'drive', n.get_object_value(drive.Drive)),
             "drives": lambda n : setattr(self, 'drives', n.get_collection_of_object_values(drive.Drive)),
-            "employee_hire_date": lambda n : setattr(self, 'employee_hire_date', n.get_datetime_value()),
-            "employee_id": lambda n : setattr(self, 'employee_id', n.get_str_value()),
-            "employee_org_data": lambda n : setattr(self, 'employee_org_data', n.get_object_value(employee_org_data.EmployeeOrgData)),
-            "employee_type": lambda n : setattr(self, 'employee_type', n.get_str_value()),
+            "employeeHireDate": lambda n : setattr(self, 'employee_hire_date', n.get_datetime_value()),
+            "employeeId": lambda n : setattr(self, 'employee_id', n.get_str_value()),
+            "employeeOrgData": lambda n : setattr(self, 'employee_org_data', n.get_object_value(employee_org_data.EmployeeOrgData)),
+            "employeeType": lambda n : setattr(self, 'employee_type', n.get_str_value()),
             "events": lambda n : setattr(self, 'events', n.get_collection_of_object_values(event.Event)),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
-            "external_user_state": lambda n : setattr(self, 'external_user_state', n.get_str_value()),
-            "external_user_state_change_date_time": lambda n : setattr(self, 'external_user_state_change_date_time', n.get_datetime_value()),
-            "fax_number": lambda n : setattr(self, 'fax_number', n.get_str_value()),
-            "followed_sites": lambda n : setattr(self, 'followed_sites', n.get_collection_of_object_values(site.Site)),
-            "given_name": lambda n : setattr(self, 'given_name', n.get_str_value()),
-            "hire_date": lambda n : setattr(self, 'hire_date', n.get_datetime_value()),
+            "externalUserState": lambda n : setattr(self, 'external_user_state', n.get_str_value()),
+            "externalUserStateChangeDateTime": lambda n : setattr(self, 'external_user_state_change_date_time', n.get_datetime_value()),
+            "faxNumber": lambda n : setattr(self, 'fax_number', n.get_str_value()),
+            "followedSites": lambda n : setattr(self, 'followed_sites', n.get_collection_of_object_values(site.Site)),
+            "givenName": lambda n : setattr(self, 'given_name', n.get_str_value()),
+            "hireDate": lambda n : setattr(self, 'hire_date', n.get_datetime_value()),
             "identities": lambda n : setattr(self, 'identities', n.get_collection_of_object_values(object_identity.ObjectIdentity)),
-            "im_addresses": lambda n : setattr(self, 'im_addresses', n.get_collection_of_primitive_values(str)),
-            "inference_classification": lambda n : setattr(self, 'inference_classification', n.get_object_value(inference_classification.InferenceClassification)),
+            "imAddresses": lambda n : setattr(self, 'im_addresses', n.get_collection_of_primitive_values(str)),
+            "inferenceClassification": lambda n : setattr(self, 'inference_classification', n.get_object_value(inference_classification.InferenceClassification)),
             "insights": lambda n : setattr(self, 'insights', n.get_object_value(office_graph_insights.OfficeGraphInsights)),
             "interests": lambda n : setattr(self, 'interests', n.get_collection_of_primitive_values(str)),
-            "is_resource_account": lambda n : setattr(self, 'is_resource_account', n.get_bool_value()),
-            "job_title": lambda n : setattr(self, 'job_title', n.get_str_value()),
-            "joined_teams": lambda n : setattr(self, 'joined_teams', n.get_collection_of_object_values(team.Team)),
-            "last_password_change_date_time": lambda n : setattr(self, 'last_password_change_date_time', n.get_datetime_value()),
-            "legal_age_group_classification": lambda n : setattr(self, 'legal_age_group_classification', n.get_str_value()),
-            "license_assignment_states": lambda n : setattr(self, 'license_assignment_states', n.get_collection_of_object_values(license_assignment_state.LicenseAssignmentState)),
-            "license_details": lambda n : setattr(self, 'license_details', n.get_collection_of_object_values(license_details.LicenseDetails)),
+            "isResourceAccount": lambda n : setattr(self, 'is_resource_account', n.get_bool_value()),
+            "jobTitle": lambda n : setattr(self, 'job_title', n.get_str_value()),
+            "joinedTeams": lambda n : setattr(self, 'joined_teams', n.get_collection_of_object_values(team.Team)),
+            "lastPasswordChangeDateTime": lambda n : setattr(self, 'last_password_change_date_time', n.get_datetime_value()),
+            "legalAgeGroupClassification": lambda n : setattr(self, 'legal_age_group_classification', n.get_str_value()),
+            "licenseAssignmentStates": lambda n : setattr(self, 'license_assignment_states', n.get_collection_of_object_values(license_assignment_state.LicenseAssignmentState)),
+            "licenseDetails": lambda n : setattr(self, 'license_details', n.get_collection_of_object_values(license_details.LicenseDetails)),
             "mail": lambda n : setattr(self, 'mail', n.get_str_value()),
-            "mailbox_settings": lambda n : setattr(self, 'mailbox_settings', n.get_object_value(mailbox_settings.MailboxSettings)),
-            "mail_folders": lambda n : setattr(self, 'mail_folders', n.get_collection_of_object_values(mail_folder.MailFolder)),
-            "mail_nickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
-            "managed_app_registrations": lambda n : setattr(self, 'managed_app_registrations', n.get_collection_of_object_values(managed_app_registration.ManagedAppRegistration)),
-            "managed_devices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(managed_device.ManagedDevice)),
+            "mailboxSettings": lambda n : setattr(self, 'mailbox_settings', n.get_object_value(mailbox_settings.MailboxSettings)),
+            "mailFolders": lambda n : setattr(self, 'mail_folders', n.get_collection_of_object_values(mail_folder.MailFolder)),
+            "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
+            "managedAppRegistrations": lambda n : setattr(self, 'managed_app_registrations', n.get_collection_of_object_values(managed_app_registration.ManagedAppRegistration)),
+            "managedDevices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(managed_device.ManagedDevice)),
             "manager": lambda n : setattr(self, 'manager', n.get_object_value(directory_object.DirectoryObject)),
-            "member_of": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "memberOf": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(message.Message)),
-            "mobile_phone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
-            "my_site": lambda n : setattr(self, 'my_site', n.get_str_value()),
-            "oauth2_permission_grants": lambda n : setattr(self, 'oauth2_permission_grants', n.get_collection_of_object_values(o_auth2_permission_grant.OAuth2PermissionGrant)),
-            "office_location": lambda n : setattr(self, 'office_location', n.get_str_value()),
+            "mobilePhone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
+            "mySite": lambda n : setattr(self, 'my_site', n.get_str_value()),
+            "oauth2PermissionGrants": lambda n : setattr(self, 'oauth2_permission_grants', n.get_collection_of_object_values(o_auth2_permission_grant.OAuth2PermissionGrant)),
+            "officeLocation": lambda n : setattr(self, 'office_location', n.get_str_value()),
             "onenote": lambda n : setattr(self, 'onenote', n.get_object_value(onenote.Onenote)),
-            "online_meetings": lambda n : setattr(self, 'online_meetings', n.get_collection_of_object_values(online_meeting.OnlineMeeting)),
-            "on_premises_distinguished_name": lambda n : setattr(self, 'on_premises_distinguished_name', n.get_str_value()),
-            "on_premises_domain_name": lambda n : setattr(self, 'on_premises_domain_name', n.get_str_value()),
-            "on_premises_extension_attributes": lambda n : setattr(self, 'on_premises_extension_attributes', n.get_object_value(on_premises_extension_attributes.OnPremisesExtensionAttributes)),
-            "on_premises_immutable_id": lambda n : setattr(self, 'on_premises_immutable_id', n.get_str_value()),
-            "on_premises_last_sync_date_time": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
-            "on_premises_provisioning_errors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(on_premises_provisioning_error.OnPremisesProvisioningError)),
-            "on_premises_sam_account_name": lambda n : setattr(self, 'on_premises_sam_account_name', n.get_str_value()),
-            "on_premises_security_identifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
-            "on_premises_sync_enabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
-            "on_premises_user_principal_name": lambda n : setattr(self, 'on_premises_user_principal_name', n.get_str_value()),
-            "other_mails": lambda n : setattr(self, 'other_mails', n.get_collection_of_primitive_values(str)),
+            "onlineMeetings": lambda n : setattr(self, 'online_meetings', n.get_collection_of_object_values(online_meeting.OnlineMeeting)),
+            "onPremisesDistinguishedName": lambda n : setattr(self, 'on_premises_distinguished_name', n.get_str_value()),
+            "onPremisesDomainName": lambda n : setattr(self, 'on_premises_domain_name', n.get_str_value()),
+            "onPremisesExtensionAttributes": lambda n : setattr(self, 'on_premises_extension_attributes', n.get_object_value(on_premises_extension_attributes.OnPremisesExtensionAttributes)),
+            "onPremisesImmutableId": lambda n : setattr(self, 'on_premises_immutable_id', n.get_str_value()),
+            "onPremisesLastSyncDateTime": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
+            "onPremisesProvisioningErrors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(on_premises_provisioning_error.OnPremisesProvisioningError)),
+            "onPremisesSamAccountName": lambda n : setattr(self, 'on_premises_sam_account_name', n.get_str_value()),
+            "onPremisesSecurityIdentifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
+            "onPremisesSyncEnabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
+            "onPremisesUserPrincipalName": lambda n : setattr(self, 'on_premises_user_principal_name', n.get_str_value()),
+            "otherMails": lambda n : setattr(self, 'other_mails', n.get_collection_of_primitive_values(str)),
             "outlook": lambda n : setattr(self, 'outlook', n.get_object_value(outlook_user.OutlookUser)),
-            "owned_devices": lambda n : setattr(self, 'owned_devices', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "owned_objects": lambda n : setattr(self, 'owned_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "password_policies": lambda n : setattr(self, 'password_policies', n.get_str_value()),
-            "password_profile": lambda n : setattr(self, 'password_profile', n.get_object_value(password_profile.PasswordProfile)),
-            "past_projects": lambda n : setattr(self, 'past_projects', n.get_collection_of_primitive_values(str)),
+            "ownedDevices": lambda n : setattr(self, 'owned_devices', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "ownedObjects": lambda n : setattr(self, 'owned_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "passwordPolicies": lambda n : setattr(self, 'password_policies', n.get_str_value()),
+            "passwordProfile": lambda n : setattr(self, 'password_profile', n.get_object_value(password_profile.PasswordProfile)),
+            "pastProjects": lambda n : setattr(self, 'past_projects', n.get_collection_of_primitive_values(str)),
             "people": lambda n : setattr(self, 'people', n.get_collection_of_object_values(person.Person)),
             "photo": lambda n : setattr(self, 'photo', n.get_object_value(profile_photo.ProfilePhoto)),
             "photos": lambda n : setattr(self, 'photos', n.get_collection_of_object_values(profile_photo.ProfilePhoto)),
             "planner": lambda n : setattr(self, 'planner', n.get_object_value(planner_user.PlannerUser)),
-            "postal_code": lambda n : setattr(self, 'postal_code', n.get_str_value()),
-            "preferred_data_location": lambda n : setattr(self, 'preferred_data_location', n.get_str_value()),
-            "preferred_language": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
-            "preferred_name": lambda n : setattr(self, 'preferred_name', n.get_str_value()),
+            "postalCode": lambda n : setattr(self, 'postal_code', n.get_str_value()),
+            "preferredDataLocation": lambda n : setattr(self, 'preferred_data_location', n.get_str_value()),
+            "preferredLanguage": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
+            "preferredName": lambda n : setattr(self, 'preferred_name', n.get_str_value()),
             "presence": lambda n : setattr(self, 'presence', n.get_object_value(presence.Presence)),
-            "provisioned_plans": lambda n : setattr(self, 'provisioned_plans', n.get_collection_of_object_values(provisioned_plan.ProvisionedPlan)),
-            "proxy_addresses": lambda n : setattr(self, 'proxy_addresses', n.get_collection_of_primitive_values(str)),
-            "registered_devices": lambda n : setattr(self, 'registered_devices', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "provisionedPlans": lambda n : setattr(self, 'provisioned_plans', n.get_collection_of_object_values(provisioned_plan.ProvisionedPlan)),
+            "proxyAddresses": lambda n : setattr(self, 'proxy_addresses', n.get_collection_of_primitive_values(str)),
+            "registeredDevices": lambda n : setattr(self, 'registered_devices', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "responsibilities": lambda n : setattr(self, 'responsibilities', n.get_collection_of_primitive_values(str)),
             "schools": lambda n : setattr(self, 'schools', n.get_collection_of_primitive_values(str)),
-            "scoped_role_member_of": lambda n : setattr(self, 'scoped_role_member_of', n.get_collection_of_object_values(scoped_role_membership.ScopedRoleMembership)),
-            "security_identifier": lambda n : setattr(self, 'security_identifier', n.get_str_value()),
+            "scopedRoleMemberOf": lambda n : setattr(self, 'scoped_role_member_of', n.get_collection_of_object_values(scoped_role_membership.ScopedRoleMembership)),
+            "securityIdentifier": lambda n : setattr(self, 'security_identifier', n.get_str_value()),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(user_settings.UserSettings)),
-            "show_in_address_list": lambda n : setattr(self, 'show_in_address_list', n.get_bool_value()),
-            "sign_in_sessions_valid_from_date_time": lambda n : setattr(self, 'sign_in_sessions_valid_from_date_time', n.get_datetime_value()),
+            "showInAddressList": lambda n : setattr(self, 'show_in_address_list', n.get_bool_value()),
+            "signInSessionsValidFromDateTime": lambda n : setattr(self, 'sign_in_sessions_valid_from_date_time', n.get_datetime_value()),
             "skills": lambda n : setattr(self, 'skills', n.get_collection_of_primitive_values(str)),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
-            "street_address": lambda n : setattr(self, 'street_address', n.get_str_value()),
+            "streetAddress": lambda n : setattr(self, 'street_address', n.get_str_value()),
             "surname": lambda n : setattr(self, 'surname', n.get_str_value()),
             "teamwork": lambda n : setattr(self, 'teamwork', n.get_object_value(user_teamwork.UserTeamwork)),
             "todo": lambda n : setattr(self, 'todo', n.get_object_value(todo.Todo)),
-            "transitive_member_of": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "usage_location": lambda n : setattr(self, 'usage_location', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
-            "user_type": lambda n : setattr(self, 'user_type', n.get_str_value()),
+            "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "usageLocation": lambda n : setattr(self, 'usage_location', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userType": lambda n : setattr(self, 'user_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -1255,7 +1241,7 @@ class User(directory_object.DirectoryObject):
     @property
     def insights(self,) -> Optional[office_graph_insights.OfficeGraphInsights]:
         """
-        Gets the insights property value. The insights property
+        Gets the insights property value. 
         Returns: Optional[office_graph_insights.OfficeGraphInsights]
         """
         return self._insights
@@ -1263,7 +1249,7 @@ class User(directory_object.DirectoryObject):
     @insights.setter
     def insights(self,value: Optional[office_graph_insights.OfficeGraphInsights] = None) -> None:
         """
-        Sets the insights property value. The insights property
+        Sets the insights property value. 
         Args:
             value: Value to set for the insights property.
         """
@@ -1323,7 +1309,7 @@ class User(directory_object.DirectoryObject):
     @property
     def joined_teams(self,) -> Optional[List[team.Team]]:
         """
-        Gets the joinedTeams property value. The joinedTeams property
+        Gets the joinedTeams property value. 
         Returns: Optional[List[team.Team]]
         """
         return self._joined_teams
@@ -1331,7 +1317,7 @@ class User(directory_object.DirectoryObject):
     @joined_teams.setter
     def joined_teams(self,value: Optional[List[team.Team]] = None) -> None:
         """
-        Sets the joinedTeams property value. The joinedTeams property
+        Sets the joinedTeams property value. 
         Args:
             value: Value to set for the joinedTeams property.
         """
@@ -1595,7 +1581,7 @@ class User(directory_object.DirectoryObject):
     @property
     def oauth2_permission_grants(self,) -> Optional[List[o_auth2_permission_grant.OAuth2PermissionGrant]]:
         """
-        Gets the oauth2PermissionGrants property value. The oauth2PermissionGrants property
+        Gets the oauth2PermissionGrants property value. 
         Returns: Optional[List[o_auth2_permission_grant.OAuth2PermissionGrant]]
         """
         return self._oauth2_permission_grants
@@ -1603,7 +1589,7 @@ class User(directory_object.DirectoryObject):
     @oauth2_permission_grants.setter
     def oauth2_permission_grants(self,value: Optional[List[o_auth2_permission_grant.OAuth2PermissionGrant]] = None) -> None:
         """
-        Sets the oauth2PermissionGrants property value. The oauth2PermissionGrants property
+        Sets the oauth2PermissionGrants property value. 
         Args:
             value: Value to set for the oauth2PermissionGrants property.
         """
@@ -1629,7 +1615,7 @@ class User(directory_object.DirectoryObject):
     @property
     def onenote(self,) -> Optional[onenote.Onenote]:
         """
-        Gets the onenote property value. The onenote property
+        Gets the onenote property value. 
         Returns: Optional[onenote.Onenote]
         """
         return self._onenote
@@ -1637,7 +1623,7 @@ class User(directory_object.DirectoryObject):
     @onenote.setter
     def onenote(self,value: Optional[onenote.Onenote] = None) -> None:
         """
-        Sets the onenote property value. The onenote property
+        Sets the onenote property value. 
         Args:
             value: Value to set for the onenote property.
         """
@@ -1646,7 +1632,7 @@ class User(directory_object.DirectoryObject):
     @property
     def online_meetings(self,) -> Optional[List[online_meeting.OnlineMeeting]]:
         """
-        Gets the onlineMeetings property value. The onlineMeetings property
+        Gets the onlineMeetings property value. 
         Returns: Optional[List[online_meeting.OnlineMeeting]]
         """
         return self._online_meetings
@@ -1654,7 +1640,7 @@ class User(directory_object.DirectoryObject):
     @online_meetings.setter
     def online_meetings(self,value: Optional[List[online_meeting.OnlineMeeting]] = None) -> None:
         """
-        Sets the onlineMeetings property value. The onlineMeetings property
+        Sets the onlineMeetings property value. 
         Args:
             value: Value to set for the onlineMeetings property.
         """
@@ -1850,7 +1836,7 @@ class User(directory_object.DirectoryObject):
     @property
     def outlook(self,) -> Optional[outlook_user.OutlookUser]:
         """
-        Gets the outlook property value. The outlook property
+        Gets the outlook property value. 
         Returns: Optional[outlook_user.OutlookUser]
         """
         return self._outlook
@@ -1858,7 +1844,7 @@ class User(directory_object.DirectoryObject):
     @outlook.setter
     def outlook(self,value: Optional[outlook_user.OutlookUser] = None) -> None:
         """
-        Sets the outlook property value. The outlook property
+        Sets the outlook property value. 
         Args:
             value: Value to set for the outlook property.
         """
@@ -1986,7 +1972,7 @@ class User(directory_object.DirectoryObject):
     @property
     def photos(self,) -> Optional[List[profile_photo.ProfilePhoto]]:
         """
-        Gets the photos property value. The photos property
+        Gets the photos property value. 
         Returns: Optional[List[profile_photo.ProfilePhoto]]
         """
         return self._photos
@@ -1994,7 +1980,7 @@ class User(directory_object.DirectoryObject):
     @photos.setter
     def photos(self,value: Optional[List[profile_photo.ProfilePhoto]] = None) -> None:
         """
-        Sets the photos property value. The photos property
+        Sets the photos property value. 
         Args:
             value: Value to set for the photos property.
         """
@@ -2088,7 +2074,7 @@ class User(directory_object.DirectoryObject):
     @property
     def presence(self,) -> Optional[presence.Presence]:
         """
-        Gets the presence property value. The presence property
+        Gets the presence property value. 
         Returns: Optional[presence.Presence]
         """
         return self._presence
@@ -2096,7 +2082,7 @@ class User(directory_object.DirectoryObject):
     @presence.setter
     def presence(self,value: Optional[presence.Presence] = None) -> None:
         """
-        Sets the presence property value. The presence property
+        Sets the presence property value. 
         Args:
             value: Value to set for the presence property.
         """
@@ -2190,7 +2176,7 @@ class User(directory_object.DirectoryObject):
     @property
     def scoped_role_member_of(self,) -> Optional[List[scoped_role_membership.ScopedRoleMembership]]:
         """
-        Gets the scopedRoleMemberOf property value. The scopedRoleMemberOf property
+        Gets the scopedRoleMemberOf property value. 
         Returns: Optional[List[scoped_role_membership.ScopedRoleMembership]]
         """
         return self._scoped_role_member_of
@@ -2198,7 +2184,7 @@ class User(directory_object.DirectoryObject):
     @scoped_role_member_of.setter
     def scoped_role_member_of(self,value: Optional[List[scoped_role_membership.ScopedRoleMembership]] = None) -> None:
         """
-        Sets the scopedRoleMemberOf property value. The scopedRoleMemberOf property
+        Sets the scopedRoleMemberOf property value. 
         Args:
             value: Value to set for the scopedRoleMemberOf property.
         """
@@ -2352,7 +2338,7 @@ class User(directory_object.DirectoryObject):
     @property
     def settings(self,) -> Optional[user_settings.UserSettings]:
         """
-        Gets the settings property value. The settings property
+        Gets the settings property value. 
         Returns: Optional[user_settings.UserSettings]
         """
         return self._settings
@@ -2360,7 +2346,7 @@ class User(directory_object.DirectoryObject):
     @settings.setter
     def settings(self,value: Optional[user_settings.UserSettings] = None) -> None:
         """
-        Sets the settings property value. The settings property
+        Sets the settings property value. 
         Args:
             value: Value to set for the settings property.
         """
@@ -2471,7 +2457,7 @@ class User(directory_object.DirectoryObject):
     @property
     def teamwork(self,) -> Optional[user_teamwork.UserTeamwork]:
         """
-        Gets the teamwork property value. The teamwork property
+        Gets the teamwork property value. 
         Returns: Optional[user_teamwork.UserTeamwork]
         """
         return self._teamwork
@@ -2479,7 +2465,7 @@ class User(directory_object.DirectoryObject):
     @teamwork.setter
     def teamwork(self,value: Optional[user_teamwork.UserTeamwork] = None) -> None:
         """
-        Sets the teamwork property value. The teamwork property
+        Sets the teamwork property value. 
         Args:
             value: Value to set for the teamwork property.
         """

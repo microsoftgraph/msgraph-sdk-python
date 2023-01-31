@@ -16,7 +16,6 @@ class WindowsInformationProtectionNetworkLearningSummary(entity.Entity):
         super().__init__()
         # Device Count
         self._device_count: Optional[int] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Website url
         self._url: Optional[str] = None
@@ -56,7 +55,7 @@ class WindowsInformationProtectionNetworkLearningSummary(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_count": lambda n : setattr(self, 'device_count', n.get_int_value()),
+            "deviceCount": lambda n : setattr(self, 'device_count', n.get_int_value()),
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

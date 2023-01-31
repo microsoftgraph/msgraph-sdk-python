@@ -79,7 +79,7 @@ class Device(directory_object.DirectoryObject):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new Device and sets the default values.
+        Instantiates a new device and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.device"
@@ -235,30 +235,30 @@ class Device(directory_object.DirectoryObject):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "account_enabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
-            "alternative_security_ids": lambda n : setattr(self, 'alternative_security_ids', n.get_collection_of_object_values(alternative_security_id.AlternativeSecurityId)),
-            "approximate_last_sign_in_date_time": lambda n : setattr(self, 'approximate_last_sign_in_date_time', n.get_datetime_value()),
-            "compliance_expiration_date_time": lambda n : setattr(self, 'compliance_expiration_date_time', n.get_datetime_value()),
-            "device_id": lambda n : setattr(self, 'device_id', n.get_str_value()),
-            "device_metadata": lambda n : setattr(self, 'device_metadata', n.get_str_value()),
-            "device_version": lambda n : setattr(self, 'device_version', n.get_int_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "accountEnabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
+            "alternativeSecurityIds": lambda n : setattr(self, 'alternative_security_ids', n.get_collection_of_object_values(alternative_security_id.AlternativeSecurityId)),
+            "approximateLastSignInDateTime": lambda n : setattr(self, 'approximate_last_sign_in_date_time', n.get_datetime_value()),
+            "complianceExpirationDateTime": lambda n : setattr(self, 'compliance_expiration_date_time', n.get_datetime_value()),
+            "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
+            "deviceMetadata": lambda n : setattr(self, 'device_metadata', n.get_str_value()),
+            "deviceVersion": lambda n : setattr(self, 'device_version', n.get_int_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
-            "is_compliant": lambda n : setattr(self, 'is_compliant', n.get_bool_value()),
-            "is_managed": lambda n : setattr(self, 'is_managed', n.get_bool_value()),
-            "mdm_app_id": lambda n : setattr(self, 'mdm_app_id', n.get_str_value()),
-            "member_of": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "on_premises_last_sync_date_time": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
-            "on_premises_sync_enabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
-            "operating_system": lambda n : setattr(self, 'operating_system', n.get_str_value()),
-            "operating_system_version": lambda n : setattr(self, 'operating_system_version', n.get_str_value()),
-            "physical_ids": lambda n : setattr(self, 'physical_ids', n.get_collection_of_primitive_values(str)),
-            "profile_type": lambda n : setattr(self, 'profile_type', n.get_str_value()),
-            "registered_owners": lambda n : setattr(self, 'registered_owners', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "registered_users": lambda n : setattr(self, 'registered_users', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "system_labels": lambda n : setattr(self, 'system_labels', n.get_collection_of_primitive_values(str)),
-            "transitive_member_of": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "trust_type": lambda n : setattr(self, 'trust_type', n.get_str_value()),
+            "isCompliant": lambda n : setattr(self, 'is_compliant', n.get_bool_value()),
+            "isManaged": lambda n : setattr(self, 'is_managed', n.get_bool_value()),
+            "mdmAppId": lambda n : setattr(self, 'mdm_app_id', n.get_str_value()),
+            "memberOf": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "onPremisesLastSyncDateTime": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
+            "onPremisesSyncEnabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
+            "operatingSystem": lambda n : setattr(self, 'operating_system', n.get_str_value()),
+            "operatingSystemVersion": lambda n : setattr(self, 'operating_system_version', n.get_str_value()),
+            "physicalIds": lambda n : setattr(self, 'physical_ids', n.get_collection_of_primitive_values(str)),
+            "profileType": lambda n : setattr(self, 'profile_type', n.get_str_value()),
+            "registeredOwners": lambda n : setattr(self, 'registered_owners', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "registeredUsers": lambda n : setattr(self, 'registered_users', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "systemLabels": lambda n : setattr(self, 'system_labels', n.get_collection_of_primitive_values(str)),
+            "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "trustType": lambda n : setattr(self, 'trust_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

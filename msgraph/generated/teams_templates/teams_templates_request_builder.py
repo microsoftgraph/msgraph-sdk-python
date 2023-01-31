@@ -66,7 +66,7 @@ class TeamsTemplatesRequestBuilder():
         """
         Add new entity to teamsTemplates
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[teams_template.TeamsTemplate]
         """
@@ -105,7 +105,7 @@ class TeamsTemplatesRequestBuilder():
         """
         Add new entity to teamsTemplates
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

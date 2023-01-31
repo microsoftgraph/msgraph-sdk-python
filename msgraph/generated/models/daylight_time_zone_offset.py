@@ -50,7 +50,7 @@ class DaylightTimeZoneOffset(standard_time_zone_offset.StandardTimeZoneOffset):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "daylight_bias": lambda n : setattr(self, 'daylight_bias', n.get_int_value()),
+            "daylightBias": lambda n : setattr(self, 'daylight_bias', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

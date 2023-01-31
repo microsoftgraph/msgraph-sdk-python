@@ -52,7 +52,6 @@ class RgbColor(AdditionalDataHolder, Parsable):
         self._b: Optional[int] = None
         # Green value
         self._g: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Red value
         self._r: Optional[int] = None
@@ -102,7 +101,7 @@ class RgbColor(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -110,7 +109,7 @@ class RgbColor(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

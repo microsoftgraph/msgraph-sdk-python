@@ -36,7 +36,6 @@ class CloudApplicationEvidence(alert_evidence.AlertEvidence):
         self._instance_id: Optional[int] = None
         # Name of the instance of the SaaS application.
         self._instance_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The identifier of the SaaS application.
         self._saas_app_id: Optional[int] = None
@@ -76,11 +75,11 @@ class CloudApplicationEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_id": lambda n : setattr(self, 'app_id', n.get_int_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "instance_id": lambda n : setattr(self, 'instance_id', n.get_int_value()),
-            "instance_name": lambda n : setattr(self, 'instance_name', n.get_str_value()),
-            "saas_app_id": lambda n : setattr(self, 'saas_app_id', n.get_int_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_int_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "instanceId": lambda n : setattr(self, 'instance_id', n.get_int_value()),
+            "instanceName": lambda n : setattr(self, 'instance_name', n.get_str_value()),
+            "saasAppId": lambda n : setattr(self, 'saas_app_id', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

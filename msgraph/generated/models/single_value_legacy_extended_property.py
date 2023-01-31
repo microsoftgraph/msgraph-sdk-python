@@ -11,7 +11,6 @@ class SingleValueLegacyExtendedProperty(entity.Entity):
         Instantiates a new singleValueLegacyExtendedProperty and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # A property value.
         self._value: Optional[str] = None

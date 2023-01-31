@@ -51,7 +51,7 @@ class CloudAppSecuritySessionControl(conditional_access_session_control.Conditio
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "cloud_app_security_type": lambda n : setattr(self, 'cloud_app_security_type', n.get_enum_value(cloud_app_security_session_control_type.CloudAppSecuritySessionControlType)),
+            "cloudAppSecurityType": lambda n : setattr(self, 'cloud_app_security_type', n.get_enum_value(cloud_app_security_session_control_type.CloudAppSecuritySessionControlType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

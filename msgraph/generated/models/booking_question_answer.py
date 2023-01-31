@@ -89,7 +89,6 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         self._answer_options: Optional[List[str]] = None
         # Indicates whether it is mandatory to answer the custom question.
         self._is_required: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The question.
         self._question: Optional[str] = None
@@ -117,13 +116,13 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         """
         fields = {
             "answer": lambda n : setattr(self, 'answer', n.get_str_value()),
-            "answer_input_type": lambda n : setattr(self, 'answer_input_type', n.get_enum_value(answer_input_type.AnswerInputType)),
-            "answer_options": lambda n : setattr(self, 'answer_options', n.get_collection_of_primitive_values(str)),
-            "is_required": lambda n : setattr(self, 'is_required', n.get_bool_value()),
+            "answerInputType": lambda n : setattr(self, 'answer_input_type', n.get_enum_value(answer_input_type.AnswerInputType)),
+            "answerOptions": lambda n : setattr(self, 'answer_options', n.get_collection_of_primitive_values(str)),
+            "isRequired": lambda n : setattr(self, 'is_required', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "question": lambda n : setattr(self, 'question', n.get_str_value()),
-            "question_id": lambda n : setattr(self, 'question_id', n.get_str_value()),
-            "selected_options": lambda n : setattr(self, 'selected_options', n.get_collection_of_primitive_values(str)),
+            "questionId": lambda n : setattr(self, 'question_id', n.get_str_value()),
+            "selectedOptions": lambda n : setattr(self, 'selected_options', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -147,7 +146,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -155,7 +154,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

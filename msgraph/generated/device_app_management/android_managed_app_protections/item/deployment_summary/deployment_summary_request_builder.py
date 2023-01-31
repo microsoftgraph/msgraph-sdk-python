@@ -74,7 +74,7 @@ class DeploymentSummaryRequestBuilder():
         """
         Update the navigation property deploymentSummary in deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary]
         """
@@ -129,7 +129,7 @@ class DeploymentSummaryRequestBuilder():
         """
         Update the navigation property deploymentSummary in deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

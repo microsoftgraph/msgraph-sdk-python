@@ -12,7 +12,6 @@ class WindowsInformationProtectionIPRangeCollectionCollectionResponse(base_colle
         Instantiates a new WindowsInformationProtectionIPRangeCollectionCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[windows_information_protection_i_p_range_collection.WindowsInformationProtectionIPRangeCollection]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class WindowsInformationProtectionIPRangeCollectionCollectionResponse(base_colle
     @property
     def value(self,) -> Optional[List[windows_information_protection_i_p_range_collection.WindowsInformationProtectionIPRangeCollection]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[windows_information_protection_i_p_range_collection.WindowsInformationProtectionIPRangeCollection]]
         """
         return self._value
@@ -61,7 +60,7 @@ class WindowsInformationProtectionIPRangeCollectionCollectionResponse(base_colle
     @value.setter
     def value(self,value: Optional[List[windows_information_protection_i_p_range_collection.WindowsInformationProtectionIPRangeCollection]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

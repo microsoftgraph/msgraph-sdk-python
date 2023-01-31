@@ -37,7 +37,6 @@ class Directory(entity.Entity):
         self._deleted_items: Optional[List[directory_object.DirectoryObject]] = None
         # Configure domain federation with organizations whose identity provider (IdP) supports either the SAML or WS-Fed protocol.
         self._federation_configurations: Optional[List[identity_provider_base.IdentityProviderBase]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -92,9 +91,9 @@ class Directory(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "administrative_units": lambda n : setattr(self, 'administrative_units', n.get_collection_of_object_values(administrative_unit.AdministrativeUnit)),
-            "deleted_items": lambda n : setattr(self, 'deleted_items', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "federation_configurations": lambda n : setattr(self, 'federation_configurations', n.get_collection_of_object_values(identity_provider_base.IdentityProviderBase)),
+            "administrativeUnits": lambda n : setattr(self, 'administrative_units', n.get_collection_of_object_values(administrative_unit.AdministrativeUnit)),
+            "deletedItems": lambda n : setattr(self, 'deleted_items', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "federationConfigurations": lambda n : setattr(self, 'federation_configurations', n.get_collection_of_object_values(identity_provider_base.IdentityProviderBase)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

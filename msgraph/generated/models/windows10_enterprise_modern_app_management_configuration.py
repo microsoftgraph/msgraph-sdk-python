@@ -33,7 +33,7 @@ class Windows10EnterpriseModernAppManagementConfiguration(device_configuration.D
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "uninstall_built_in_apps": lambda n : setattr(self, 'uninstall_built_in_apps', n.get_bool_value()),
+            "uninstallBuiltInApps": lambda n : setattr(self, 'uninstall_built_in_apps', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -94,7 +94,6 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         self._in_progress_trainings_count: Optional[int] = None
         # Indicates whether a user was compromised in an attack simulation and training campaign.
         self._is_compromised: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Date and time when a user reported the delivered payload as phishing in the attack simulation and training campaign.
         self._reported_phish_date_time: Optional[datetime] = None
@@ -123,16 +122,16 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assigned_trainings_count": lambda n : setattr(self, 'assigned_trainings_count', n.get_int_value()),
-            "completed_trainings_count": lambda n : setattr(self, 'completed_trainings_count', n.get_int_value()),
-            "compromised_date_time": lambda n : setattr(self, 'compromised_date_time', n.get_datetime_value()),
-            "in_progress_trainings_count": lambda n : setattr(self, 'in_progress_trainings_count', n.get_int_value()),
-            "is_compromised": lambda n : setattr(self, 'is_compromised', n.get_bool_value()),
+            "assignedTrainingsCount": lambda n : setattr(self, 'assigned_trainings_count', n.get_int_value()),
+            "completedTrainingsCount": lambda n : setattr(self, 'completed_trainings_count', n.get_int_value()),
+            "compromisedDateTime": lambda n : setattr(self, 'compromised_date_time', n.get_datetime_value()),
+            "inProgressTrainingsCount": lambda n : setattr(self, 'in_progress_trainings_count', n.get_int_value()),
+            "isCompromised": lambda n : setattr(self, 'is_compromised', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "reported_phish_date_time": lambda n : setattr(self, 'reported_phish_date_time', n.get_datetime_value()),
-            "simulation_events": lambda n : setattr(self, 'simulation_events', n.get_collection_of_object_values(user_simulation_event_info.UserSimulationEventInfo)),
-            "simulation_user": lambda n : setattr(self, 'simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
-            "training_events": lambda n : setattr(self, 'training_events', n.get_collection_of_object_values(user_training_event_info.UserTrainingEventInfo)),
+            "reportedPhishDateTime": lambda n : setattr(self, 'reported_phish_date_time', n.get_datetime_value()),
+            "simulationEvents": lambda n : setattr(self, 'simulation_events', n.get_collection_of_object_values(user_simulation_event_info.UserSimulationEventInfo)),
+            "simulationUser": lambda n : setattr(self, 'simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
+            "trainingEvents": lambda n : setattr(self, 'training_events', n.get_collection_of_object_values(user_training_event_info.UserTrainingEventInfo)),
         }
         return fields
     
@@ -173,7 +172,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -181,7 +180,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

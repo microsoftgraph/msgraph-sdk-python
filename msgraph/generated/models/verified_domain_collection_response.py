@@ -12,7 +12,6 @@ class VerifiedDomainCollectionResponse(base_collection_pagination_count_response
         Instantiates a new VerifiedDomainCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[verified_domain.VerifiedDomain]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class VerifiedDomainCollectionResponse(base_collection_pagination_count_response
     @property
     def value(self,) -> Optional[List[verified_domain.VerifiedDomain]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[verified_domain.VerifiedDomain]]
         """
         return self._value
@@ -61,7 +60,7 @@ class VerifiedDomainCollectionResponse(base_collection_pagination_count_response
     @value.setter
     def value(self,value: Optional[List[verified_domain.VerifiedDomain]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -66,7 +66,7 @@ class HistoryRequestBuilder():
         """
         Create new navigation property to history for identityProtection
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[risky_service_principal_history_item.RiskyServicePrincipalHistoryItem]
         """
@@ -105,7 +105,7 @@ class HistoryRequestBuilder():
         """
         Create new navigation property to history for identityProtection
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

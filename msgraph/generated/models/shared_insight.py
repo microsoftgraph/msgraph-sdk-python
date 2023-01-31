@@ -16,9 +16,7 @@ class SharedInsight(entity.Entity):
         super().__init__()
         # Details about the shared item. Read only.
         self._last_shared: Optional[sharing_detail.SharingDetail] = None
-        # The lastSharedMethod property
         self._last_shared_method: Optional[entity.Entity] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Used for navigating to the item that was shared. For file attachments, the type is fileAttachment. For linked attachments, the type is driveItem.
         self._resource: Optional[entity.Entity] = None
@@ -26,7 +24,6 @@ class SharedInsight(entity.Entity):
         self._resource_reference: Optional[resource_reference.ResourceReference] = None
         # Properties that you can use to visualize the document in your experience. Read-only
         self._resource_visualization: Optional[resource_visualization.ResourceVisualization] = None
-        # The sharingHistory property
         self._sharing_history: Optional[List[sharing_detail.SharingDetail]] = None
     
     @staticmethod
@@ -47,12 +44,12 @@ class SharedInsight(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "last_shared": lambda n : setattr(self, 'last_shared', n.get_object_value(sharing_detail.SharingDetail)),
-            "last_shared_method": lambda n : setattr(self, 'last_shared_method', n.get_object_value(entity.Entity)),
+            "lastShared": lambda n : setattr(self, 'last_shared', n.get_object_value(sharing_detail.SharingDetail)),
+            "lastSharedMethod": lambda n : setattr(self, 'last_shared_method', n.get_object_value(entity.Entity)),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(entity.Entity)),
-            "resource_reference": lambda n : setattr(self, 'resource_reference', n.get_object_value(resource_reference.ResourceReference)),
-            "resource_visualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(resource_visualization.ResourceVisualization)),
-            "sharing_history": lambda n : setattr(self, 'sharing_history', n.get_collection_of_object_values(sharing_detail.SharingDetail)),
+            "resourceReference": lambda n : setattr(self, 'resource_reference', n.get_object_value(resource_reference.ResourceReference)),
+            "resourceVisualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(resource_visualization.ResourceVisualization)),
+            "sharingHistory": lambda n : setattr(self, 'sharing_history', n.get_collection_of_object_values(sharing_detail.SharingDetail)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -78,7 +75,7 @@ class SharedInsight(entity.Entity):
     @property
     def last_shared_method(self,) -> Optional[entity.Entity]:
         """
-        Gets the lastSharedMethod property value. The lastSharedMethod property
+        Gets the lastSharedMethod property value. 
         Returns: Optional[entity.Entity]
         """
         return self._last_shared_method
@@ -86,7 +83,7 @@ class SharedInsight(entity.Entity):
     @last_shared_method.setter
     def last_shared_method(self,value: Optional[entity.Entity] = None) -> None:
         """
-        Sets the lastSharedMethod property value. The lastSharedMethod property
+        Sets the lastSharedMethod property value. 
         Args:
             value: Value to set for the lastSharedMethod property.
         """
@@ -160,7 +157,7 @@ class SharedInsight(entity.Entity):
     @property
     def sharing_history(self,) -> Optional[List[sharing_detail.SharingDetail]]:
         """
-        Gets the sharingHistory property value. The sharingHistory property
+        Gets the sharingHistory property value. 
         Returns: Optional[List[sharing_detail.SharingDetail]]
         """
         return self._sharing_history
@@ -168,7 +165,7 @@ class SharedInsight(entity.Entity):
     @sharing_history.setter
     def sharing_history(self,value: Optional[List[sharing_detail.SharingDetail]] = None) -> None:
         """
-        Sets the sharingHistory property value. The sharingHistory property
+        Sets the sharingHistory property value. 
         Args:
             value: Value to set for the sharingHistory property.
         """

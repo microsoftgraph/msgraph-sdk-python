@@ -60,7 +60,6 @@ class Session(entity.Entity):
         self._failure_info: Optional[failure_info.FailureInfo] = None
         # List of modalities present in the session. Possible values are: unknown, audio, video, videoBasedScreenSharing, data, screenSharing, unknownFutureValue.
         self._modalities: Optional[List[modality.Modality]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The list of segments involved in the session. Read-only. Nullable.
         self._segments: Optional[List[segment.Segment]] = None
@@ -121,11 +120,11 @@ class Session(entity.Entity):
         fields = {
             "callee": lambda n : setattr(self, 'callee', n.get_object_value(endpoint.Endpoint)),
             "caller": lambda n : setattr(self, 'caller', n.get_object_value(endpoint.Endpoint)),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "failure_info": lambda n : setattr(self, 'failure_info', n.get_object_value(failure_info.FailureInfo)),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "failureInfo": lambda n : setattr(self, 'failure_info', n.get_object_value(failure_info.FailureInfo)),
             "modalities": lambda n : setattr(self, 'modalities', n.get_collection_of_enum_values(modality.Modality)),
             "segments": lambda n : setattr(self, 'segments', n.get_collection_of_object_values(segment.Segment)),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

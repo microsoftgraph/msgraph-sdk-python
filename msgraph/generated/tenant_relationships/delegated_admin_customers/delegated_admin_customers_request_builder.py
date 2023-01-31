@@ -66,7 +66,7 @@ class DelegatedAdminCustomersRequestBuilder():
         """
         Create new navigation property to delegatedAdminCustomers for tenantRelationships
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[delegated_admin_customer.DelegatedAdminCustomer]
         """
@@ -105,7 +105,7 @@ class DelegatedAdminCustomersRequestBuilder():
         """
         Create new navigation property to delegatedAdminCustomers for tenantRelationships
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

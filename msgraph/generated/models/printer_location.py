@@ -95,7 +95,6 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         self._latitude: Optional[float] = None
         # The longitude that the printer is located at.
         self._longitude: Optional[float] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The organizational hierarchy that the printer belongs to. The elements should be in hierarchical order.
         self._organization: Optional[List[str]] = None
@@ -113,7 +112,6 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         self._street_address: Optional[str] = None
         # The subdivision that the printer is located in. The elements should be in hierarchical order.
         self._subdivision: Optional[List[str]] = None
-        # The subunit property
         self._subunit: Optional[List[str]] = None
     
     @property
@@ -185,22 +183,22 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "altitude_in_meters": lambda n : setattr(self, 'altitude_in_meters', n.get_int_value()),
+            "altitudeInMeters": lambda n : setattr(self, 'altitude_in_meters', n.get_int_value()),
             "building": lambda n : setattr(self, 'building', n.get_str_value()),
             "city": lambda n : setattr(self, 'city', n.get_str_value()),
-            "country_or_region": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
+            "countryOrRegion": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
             "floor": lambda n : setattr(self, 'floor', n.get_str_value()),
-            "floor_description": lambda n : setattr(self, 'floor_description', n.get_str_value()),
+            "floorDescription": lambda n : setattr(self, 'floor_description', n.get_str_value()),
             "latitude": lambda n : setattr(self, 'latitude', n.get_float_value()),
             "longitude": lambda n : setattr(self, 'longitude', n.get_float_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "organization": lambda n : setattr(self, 'organization', n.get_collection_of_primitive_values(str)),
-            "postal_code": lambda n : setattr(self, 'postal_code', n.get_str_value()),
-            "room_description": lambda n : setattr(self, 'room_description', n.get_str_value()),
-            "room_name": lambda n : setattr(self, 'room_name', n.get_str_value()),
+            "postalCode": lambda n : setattr(self, 'postal_code', n.get_str_value()),
+            "roomDescription": lambda n : setattr(self, 'room_description', n.get_str_value()),
+            "roomName": lambda n : setattr(self, 'room_name', n.get_str_value()),
             "site": lambda n : setattr(self, 'site', n.get_str_value()),
-            "state_or_province": lambda n : setattr(self, 'state_or_province', n.get_str_value()),
-            "street_address": lambda n : setattr(self, 'street_address', n.get_str_value()),
+            "stateOrProvince": lambda n : setattr(self, 'state_or_province', n.get_str_value()),
+            "streetAddress": lambda n : setattr(self, 'street_address', n.get_str_value()),
             "subdivision": lambda n : setattr(self, 'subdivision', n.get_collection_of_primitive_values(str)),
             "subunit": lambda n : setattr(self, 'subunit', n.get_collection_of_primitive_values(str)),
         }
@@ -243,7 +241,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -251,7 +249,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -424,7 +422,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
     @property
     def subunit(self,) -> Optional[List[str]]:
         """
-        Gets the subunit property value. The subunit property
+        Gets the subunit property value. 
         Returns: Optional[List[str]]
         """
         return self._subunit
@@ -432,7 +430,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
     @subunit.setter
     def subunit(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the subunit property value. The subunit property
+        Sets the subunit property value. 
         Args:
             value: Value to set for the subunit property.
         """

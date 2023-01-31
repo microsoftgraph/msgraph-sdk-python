@@ -11,7 +11,6 @@ class RemoteLockActionResult(device_action_result.DeviceActionResult):
         Instantiates a new RemoteLockActionResult and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Pin to unlock the client
         self._unlock_pin: Optional[str] = None
@@ -34,7 +33,7 @@ class RemoteLockActionResult(device_action_result.DeviceActionResult):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "unlock_pin": lambda n : setattr(self, 'unlock_pin', n.get_str_value()),
+            "unlockPin": lambda n : setattr(self, 'unlock_pin', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

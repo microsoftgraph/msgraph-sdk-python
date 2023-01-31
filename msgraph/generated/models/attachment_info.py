@@ -26,7 +26,7 @@ class AttachmentInfo(AdditionalDataHolder, Parsable):
     @property
     def attachment_type(self,) -> Optional[attachment_type.AttachmentType]:
         """
-        Gets the attachmentType property value. The attachmentType property
+        Gets the attachmentType property value. 
         Returns: Optional[attachment_type.AttachmentType]
         """
         return self._attachment_type
@@ -34,7 +34,7 @@ class AttachmentInfo(AdditionalDataHolder, Parsable):
     @attachment_type.setter
     def attachment_type(self,value: Optional[attachment_type.AttachmentType] = None) -> None:
         """
-        Sets the attachmentType property value. The attachmentType property
+        Sets the attachmentType property value. 
         Args:
             value: Value to set for the attachmentType property.
         """
@@ -47,21 +47,16 @@ class AttachmentInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The attachmentType property
         self._attachment_type: Optional[attachment_type.AttachmentType] = None
-        # The contentType property
         self._content_type: Optional[str] = None
-        # The name property
         self._name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The size property
         self._size: Optional[int] = None
     
     @property
     def content_type(self,) -> Optional[str]:
         """
-        Gets the contentType property value. The contentType property
+        Gets the contentType property value. 
         Returns: Optional[str]
         """
         return self._content_type
@@ -69,7 +64,7 @@ class AttachmentInfo(AdditionalDataHolder, Parsable):
     @content_type.setter
     def content_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the contentType property value. The contentType property
+        Sets the contentType property value. 
         Args:
             value: Value to set for the contentType property.
         """
@@ -93,8 +88,8 @@ class AttachmentInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "attachment_type": lambda n : setattr(self, 'attachment_type', n.get_enum_value(attachment_type.AttachmentType)),
-            "content_type": lambda n : setattr(self, 'content_type', n.get_str_value()),
+            "attachmentType": lambda n : setattr(self, 'attachment_type', n.get_enum_value(attachment_type.AttachmentType)),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
@@ -104,7 +99,7 @@ class AttachmentInfo(AdditionalDataHolder, Parsable):
     @property
     def name(self,) -> Optional[str]:
         """
-        Gets the name property value. The name property
+        Gets the name property value. 
         Returns: Optional[str]
         """
         return self._name
@@ -112,7 +107,7 @@ class AttachmentInfo(AdditionalDataHolder, Parsable):
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
-        Sets the name property value. The name property
+        Sets the name property value. 
         Args:
             value: Value to set for the name property.
         """
@@ -121,7 +116,7 @@ class AttachmentInfo(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -129,7 +124,7 @@ class AttachmentInfo(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -153,7 +148,7 @@ class AttachmentInfo(AdditionalDataHolder, Parsable):
     @property
     def size(self,) -> Optional[int]:
         """
-        Gets the size property value. The size property
+        Gets the size property value. 
         Returns: Optional[int]
         """
         return self._size
@@ -161,7 +156,7 @@ class AttachmentInfo(AdditionalDataHolder, Parsable):
     @size.setter
     def size(self,value: Optional[int] = None) -> None:
         """
-        Sets the size property value. The size property
+        Sets the size property value. 
         Args:
             value: Value to set for the size property.
         """

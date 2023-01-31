@@ -33,7 +33,6 @@ class OcrSettings(AdditionalDataHolder, Parsable):
         self._is_enabled: Optional[bool] = None
         # Maximum image size that will be processed in KB).
         self._max_image_size: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The timeout duration for the OCR engine. A longer timeout might increase success of OCR, but might add to the total processing time.
         self._timeout: Optional[Timedelta] = None
@@ -56,8 +55,8 @@ class OcrSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "max_image_size": lambda n : setattr(self, 'max_image_size', n.get_int_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "maxImageSize": lambda n : setattr(self, 'max_image_size', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "timeout": lambda n : setattr(self, 'timeout', n.get_object_value(Timedelta)),
         }
@@ -100,7 +99,7 @@ class OcrSettings(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -108,7 +107,7 @@ class OcrSettings(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

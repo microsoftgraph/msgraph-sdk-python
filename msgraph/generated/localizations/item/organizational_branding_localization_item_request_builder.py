@@ -41,10 +41,11 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
         """
         return square_logo_request_builder.SquareLogoRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, organizational_branding_localization_id: Optional[str] = None) -> None:
         """
         Instantiates a new OrganizationalBrandingLocalizationItemRequestBuilder and sets the default values.
         Args:
+            organizationalBrandingLocalizationId: key: id of organizationalBrandingLocalization
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -56,12 +57,13 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/localizations/{organizationalBrandingLocalization%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["organizationalBrandingLocalization%2Did"] = organizationalBrandingLocalizationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
     async def delete(self,request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete entity from localizations by key (id)
+        Delete entity from localizations
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -78,7 +80,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[organizational_branding_localization.OrganizationalBrandingLocalization]:
         """
-        Get entity from localizations by key (id)
+        Get entity from localizations by key
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[organizational_branding_localization.OrganizationalBrandingLocalization]
@@ -96,9 +98,9 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
     
     async def patch(self,body: Optional[organizational_branding_localization.OrganizationalBrandingLocalization] = None, request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[organizational_branding_localization.OrganizationalBrandingLocalization]:
         """
-        Update entity in localizations by key (id)
+        Update entity in localizations
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[organizational_branding_localization.OrganizationalBrandingLocalization]
         """
@@ -117,7 +119,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete entity from localizations by key (id)
+        Delete entity from localizations
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -133,7 +135,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get entity from localizations by key (id)
+        Get entity from localizations by key
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -151,9 +153,9 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[organizational_branding_localization.OrganizationalBrandingLocalization] = None, request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update entity in localizations by key (id)
+        Update entity in localizations
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -185,7 +187,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
     @dataclass
     class OrganizationalBrandingLocalizationItemRequestBuilderGetQueryParameters():
         """
-        Get entity from localizations by key (id)
+        Get entity from localizations by key
         """
         # Expand related entities
         expand: Optional[List[str]] = None

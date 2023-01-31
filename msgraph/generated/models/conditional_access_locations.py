@@ -32,7 +32,6 @@ class ConditionalAccessLocations(AdditionalDataHolder, Parsable):
         self._exclude_locations: Optional[List[str]] = None
         # Location IDs in scope of policy unless explicitly excluded, All, or AllTrusted.
         self._include_locations: Optional[List[str]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -70,8 +69,8 @@ class ConditionalAccessLocations(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "exclude_locations": lambda n : setattr(self, 'exclude_locations', n.get_collection_of_primitive_values(str)),
-            "include_locations": lambda n : setattr(self, 'include_locations', n.get_collection_of_primitive_values(str)),
+            "excludeLocations": lambda n : setattr(self, 'exclude_locations', n.get_collection_of_primitive_values(str)),
+            "includeLocations": lambda n : setattr(self, 'include_locations', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -96,7 +95,7 @@ class ConditionalAccessLocations(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -104,7 +103,7 @@ class ConditionalAccessLocations(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

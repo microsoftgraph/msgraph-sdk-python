@@ -28,7 +28,6 @@ class MediaInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Optional. Used to uniquely identity the resource. If passed in, the prompt uri will be cached against this resourceId as a key.
         self._resource_id: Optional[str] = None
@@ -54,7 +53,7 @@ class MediaInfo(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "resource_id": lambda n : setattr(self, 'resource_id', n.get_str_value()),
+            "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
             "uri": lambda n : setattr(self, 'uri', n.get_str_value()),
         }
         return fields
@@ -62,7 +61,7 @@ class MediaInfo(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -70,7 +69,7 @@ class MediaInfo(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

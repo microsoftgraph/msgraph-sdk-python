@@ -73,9 +73,7 @@ class IdentityContainer(entity.Entity):
         self._b2x_user_flows: Optional[List[b2x_identity_user_flow.B2xIdentityUserFlow]] = None
         # the entry point for the Conditional Access (CA) object model.
         self._conditional_access: Optional[conditional_access_root.ConditionalAccessRoot] = None
-        # The identityProviders property
         self._identity_providers: Optional[List[identity_provider_base.IdentityProviderBase]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Represents entry point for identity userflow attributes.
         self._user_flow_attributes: Optional[List[identity_user_flow_attribute.IdentityUserFlowAttribute]] = None
@@ -98,11 +96,11 @@ class IdentityContainer(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "api_connectors": lambda n : setattr(self, 'api_connectors', n.get_collection_of_object_values(identity_api_connector.IdentityApiConnector)),
-            "b2x_user_flows": lambda n : setattr(self, 'b2x_user_flows', n.get_collection_of_object_values(b2x_identity_user_flow.B2xIdentityUserFlow)),
-            "conditional_access": lambda n : setattr(self, 'conditional_access', n.get_object_value(conditional_access_root.ConditionalAccessRoot)),
-            "identity_providers": lambda n : setattr(self, 'identity_providers', n.get_collection_of_object_values(identity_provider_base.IdentityProviderBase)),
-            "user_flow_attributes": lambda n : setattr(self, 'user_flow_attributes', n.get_collection_of_object_values(identity_user_flow_attribute.IdentityUserFlowAttribute)),
+            "apiConnectors": lambda n : setattr(self, 'api_connectors', n.get_collection_of_object_values(identity_api_connector.IdentityApiConnector)),
+            "b2xUserFlows": lambda n : setattr(self, 'b2x_user_flows', n.get_collection_of_object_values(b2x_identity_user_flow.B2xIdentityUserFlow)),
+            "conditionalAccess": lambda n : setattr(self, 'conditional_access', n.get_object_value(conditional_access_root.ConditionalAccessRoot)),
+            "identityProviders": lambda n : setattr(self, 'identity_providers', n.get_collection_of_object_values(identity_provider_base.IdentityProviderBase)),
+            "userFlowAttributes": lambda n : setattr(self, 'user_flow_attributes', n.get_collection_of_object_values(identity_user_flow_attribute.IdentityUserFlowAttribute)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -111,7 +109,7 @@ class IdentityContainer(entity.Entity):
     @property
     def identity_providers(self,) -> Optional[List[identity_provider_base.IdentityProviderBase]]:
         """
-        Gets the identityProviders property value. The identityProviders property
+        Gets the identityProviders property value. 
         Returns: Optional[List[identity_provider_base.IdentityProviderBase]]
         """
         return self._identity_providers
@@ -119,7 +117,7 @@ class IdentityContainer(entity.Entity):
     @identity_providers.setter
     def identity_providers(self,value: Optional[List[identity_provider_base.IdentityProviderBase]] = None) -> None:
         """
-        Sets the identityProviders property value. The identityProviders property
+        Sets the identityProviders property value. 
         Args:
             value: Value to set for the identityProviders property.
         """

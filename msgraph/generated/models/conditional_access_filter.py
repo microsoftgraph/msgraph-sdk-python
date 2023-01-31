@@ -30,9 +30,7 @@ class ConditionalAccessFilter(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The mode property
         self._mode: Optional[filter_mode.FilterMode] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Rule syntax is similar to that used for membership rules for groups in Azure Active Directory (Azure AD). For details, see rules with multiple expressions
         self._rule: Optional[str] = None
@@ -64,7 +62,7 @@ class ConditionalAccessFilter(AdditionalDataHolder, Parsable):
     @property
     def mode(self,) -> Optional[filter_mode.FilterMode]:
         """
-        Gets the mode property value. The mode property
+        Gets the mode property value. 
         Returns: Optional[filter_mode.FilterMode]
         """
         return self._mode
@@ -72,7 +70,7 @@ class ConditionalAccessFilter(AdditionalDataHolder, Parsable):
     @mode.setter
     def mode(self,value: Optional[filter_mode.FilterMode] = None) -> None:
         """
-        Sets the mode property value. The mode property
+        Sets the mode property value. 
         Args:
             value: Value to set for the mode property.
         """
@@ -81,7 +79,7 @@ class ConditionalAccessFilter(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -89,7 +87,7 @@ class ConditionalAccessFilter(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -53,7 +53,6 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         self._availability_view: Optional[str] = None
         # Error information from attempting to get the availability of the user, distribution list, or resource.
         self._error: Optional[free_busy_error.FreeBusyError] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # An SMTP address of the user, distribution list, or resource, identifying an instance of scheduleInformation.
         self._schedule_id: Optional[str] = None
@@ -97,19 +96,19 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "availability_view": lambda n : setattr(self, 'availability_view', n.get_str_value()),
+            "availabilityView": lambda n : setattr(self, 'availability_view', n.get_str_value()),
             "error": lambda n : setattr(self, 'error', n.get_object_value(free_busy_error.FreeBusyError)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "schedule_id": lambda n : setattr(self, 'schedule_id', n.get_str_value()),
-            "schedule_items": lambda n : setattr(self, 'schedule_items', n.get_collection_of_object_values(schedule_item.ScheduleItem)),
-            "working_hours": lambda n : setattr(self, 'working_hours', n.get_object_value(working_hours.WorkingHours)),
+            "scheduleId": lambda n : setattr(self, 'schedule_id', n.get_str_value()),
+            "scheduleItems": lambda n : setattr(self, 'schedule_items', n.get_collection_of_object_values(schedule_item.ScheduleItem)),
+            "workingHours": lambda n : setattr(self, 'working_hours', n.get_object_value(working_hours.WorkingHours)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -117,7 +116,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

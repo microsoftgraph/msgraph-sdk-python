@@ -10,7 +10,7 @@ class CalendarSharingMessage(message.Message):
     @property
     def can_accept(self,) -> Optional[bool]:
         """
-        Gets the canAccept property value. The canAccept property
+        Gets the canAccept property value. 
         Returns: Optional[bool]
         """
         return self._can_accept
@@ -18,7 +18,7 @@ class CalendarSharingMessage(message.Message):
     @can_accept.setter
     def can_accept(self,value: Optional[bool] = None) -> None:
         """
-        Sets the canAccept property value. The canAccept property
+        Sets the canAccept property value. 
         Args:
             value: Value to set for the canAccept property.
         """
@@ -30,13 +30,9 @@ class CalendarSharingMessage(message.Message):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.calendarSharingMessage"
-        # The canAccept property
         self._can_accept: Optional[bool] = None
-        # The sharingMessageAction property
         self._sharing_message_action: Optional[calendar_sharing_message_action.CalendarSharingMessageAction] = None
-        # The sharingMessageActions property
         self._sharing_message_actions: Optional[List[calendar_sharing_message_action.CalendarSharingMessageAction]] = None
-        # The suggestedCalendarName property
         self._suggested_calendar_name: Optional[str] = None
     
     @staticmethod
@@ -57,10 +53,10 @@ class CalendarSharingMessage(message.Message):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "can_accept": lambda n : setattr(self, 'can_accept', n.get_bool_value()),
-            "sharing_message_action": lambda n : setattr(self, 'sharing_message_action', n.get_object_value(calendar_sharing_message_action.CalendarSharingMessageAction)),
-            "sharing_message_actions": lambda n : setattr(self, 'sharing_message_actions', n.get_collection_of_object_values(calendar_sharing_message_action.CalendarSharingMessageAction)),
-            "suggested_calendar_name": lambda n : setattr(self, 'suggested_calendar_name', n.get_str_value()),
+            "canAccept": lambda n : setattr(self, 'can_accept', n.get_bool_value()),
+            "sharingMessageAction": lambda n : setattr(self, 'sharing_message_action', n.get_object_value(calendar_sharing_message_action.CalendarSharingMessageAction)),
+            "sharingMessageActions": lambda n : setattr(self, 'sharing_message_actions', n.get_collection_of_object_values(calendar_sharing_message_action.CalendarSharingMessageAction)),
+            "suggestedCalendarName": lambda n : setattr(self, 'suggested_calendar_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -83,7 +79,7 @@ class CalendarSharingMessage(message.Message):
     @property
     def sharing_message_action(self,) -> Optional[calendar_sharing_message_action.CalendarSharingMessageAction]:
         """
-        Gets the sharingMessageAction property value. The sharingMessageAction property
+        Gets the sharingMessageAction property value. 
         Returns: Optional[calendar_sharing_message_action.CalendarSharingMessageAction]
         """
         return self._sharing_message_action
@@ -91,7 +87,7 @@ class CalendarSharingMessage(message.Message):
     @sharing_message_action.setter
     def sharing_message_action(self,value: Optional[calendar_sharing_message_action.CalendarSharingMessageAction] = None) -> None:
         """
-        Sets the sharingMessageAction property value. The sharingMessageAction property
+        Sets the sharingMessageAction property value. 
         Args:
             value: Value to set for the sharingMessageAction property.
         """
@@ -100,7 +96,7 @@ class CalendarSharingMessage(message.Message):
     @property
     def sharing_message_actions(self,) -> Optional[List[calendar_sharing_message_action.CalendarSharingMessageAction]]:
         """
-        Gets the sharingMessageActions property value. The sharingMessageActions property
+        Gets the sharingMessageActions property value. 
         Returns: Optional[List[calendar_sharing_message_action.CalendarSharingMessageAction]]
         """
         return self._sharing_message_actions
@@ -108,7 +104,7 @@ class CalendarSharingMessage(message.Message):
     @sharing_message_actions.setter
     def sharing_message_actions(self,value: Optional[List[calendar_sharing_message_action.CalendarSharingMessageAction]] = None) -> None:
         """
-        Sets the sharingMessageActions property value. The sharingMessageActions property
+        Sets the sharingMessageActions property value. 
         Args:
             value: Value to set for the sharingMessageActions property.
         """
@@ -117,7 +113,7 @@ class CalendarSharingMessage(message.Message):
     @property
     def suggested_calendar_name(self,) -> Optional[str]:
         """
-        Gets the suggestedCalendarName property value. The suggestedCalendarName property
+        Gets the suggestedCalendarName property value. 
         Returns: Optional[str]
         """
         return self._suggested_calendar_name
@@ -125,7 +121,7 @@ class CalendarSharingMessage(message.Message):
     @suggested_calendar_name.setter
     def suggested_calendar_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the suggestedCalendarName property value. The suggestedCalendarName property
+        Sets the suggestedCalendarName property value. 
         Args:
             value: Value to set for the suggestedCalendarName property.
         """

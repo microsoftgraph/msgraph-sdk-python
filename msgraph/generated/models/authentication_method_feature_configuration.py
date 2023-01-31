@@ -35,7 +35,6 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
         self._exclude_target: Optional[feature_target.FeatureTarget] = None
         # A single entity that is included in this feature.
         self._include_target: Optional[feature_target.FeatureTarget] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Enable or disable the feature. Possible values are: default, enabled, disabled, unknownFutureValue. The default value is used when the configuration hasn't been explicitly set and uses the default behavior of Azure AD for the setting. The default value is disabled.
         self._state: Optional[advanced_config_state.AdvancedConfigState] = None
@@ -75,8 +74,8 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "exclude_target": lambda n : setattr(self, 'exclude_target', n.get_object_value(feature_target.FeatureTarget)),
-            "include_target": lambda n : setattr(self, 'include_target', n.get_object_value(feature_target.FeatureTarget)),
+            "excludeTarget": lambda n : setattr(self, 'exclude_target', n.get_object_value(feature_target.FeatureTarget)),
+            "includeTarget": lambda n : setattr(self, 'include_target', n.get_object_value(feature_target.FeatureTarget)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(advanced_config_state.AdvancedConfigState)),
         }
@@ -102,7 +101,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -110,7 +109,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

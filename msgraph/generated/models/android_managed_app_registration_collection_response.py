@@ -12,7 +12,6 @@ class AndroidManagedAppRegistrationCollectionResponse(base_collection_pagination
         Instantiates a new AndroidManagedAppRegistrationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[android_managed_app_registration.AndroidManagedAppRegistration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class AndroidManagedAppRegistrationCollectionResponse(base_collection_pagination
     @property
     def value(self,) -> Optional[List[android_managed_app_registration.AndroidManagedAppRegistration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[android_managed_app_registration.AndroidManagedAppRegistration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class AndroidManagedAppRegistrationCollectionResponse(base_collection_pagination
     @value.setter
     def value(self,value: Optional[List[android_managed_app_registration.AndroidManagedAppRegistration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

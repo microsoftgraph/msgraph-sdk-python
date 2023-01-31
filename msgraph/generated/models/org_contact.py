@@ -13,7 +13,7 @@ class OrgContact(directory_object.DirectoryObject):
     @property
     def addresses(self,) -> Optional[List[physical_office_address.PhysicalOfficeAddress]]:
         """
-        Gets the addresses property value. The addresses property
+        Gets the addresses property value. 
         Returns: Optional[List[physical_office_address.PhysicalOfficeAddress]]
         """
         return self._addresses
@@ -21,7 +21,7 @@ class OrgContact(directory_object.DirectoryObject):
     @addresses.setter
     def addresses(self,value: Optional[List[physical_office_address.PhysicalOfficeAddress]] = None) -> None:
         """
-        Sets the addresses property value. The addresses property
+        Sets the addresses property value. 
         Args:
             value: Value to set for the addresses property.
         """
@@ -30,7 +30,7 @@ class OrgContact(directory_object.DirectoryObject):
     @property
     def company_name(self,) -> Optional[str]:
         """
-        Gets the companyName property value. The companyName property
+        Gets the companyName property value. 
         Returns: Optional[str]
         """
         return self._company_name
@@ -38,7 +38,7 @@ class OrgContact(directory_object.DirectoryObject):
     @company_name.setter
     def company_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the companyName property value. The companyName property
+        Sets the companyName property value. 
         Args:
             value: Value to set for the companyName property.
         """
@@ -50,41 +50,23 @@ class OrgContact(directory_object.DirectoryObject):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.orgContact"
-        # The addresses property
         self._addresses: Optional[List[physical_office_address.PhysicalOfficeAddress]] = None
-        # The companyName property
         self._company_name: Optional[str] = None
-        # The department property
         self._department: Optional[str] = None
-        # The directReports property
         self._direct_reports: Optional[List[directory_object.DirectoryObject]] = None
-        # The displayName property
         self._display_name: Optional[str] = None
-        # The givenName property
         self._given_name: Optional[str] = None
-        # The jobTitle property
         self._job_title: Optional[str] = None
-        # The mail property
         self._mail: Optional[str] = None
-        # The mailNickname property
         self._mail_nickname: Optional[str] = None
-        # The manager property
         self._manager: Optional[directory_object.DirectoryObject] = None
-        # The memberOf property
         self._member_of: Optional[List[directory_object.DirectoryObject]] = None
-        # The onPremisesLastSyncDateTime property
         self._on_premises_last_sync_date_time: Optional[datetime] = None
-        # The onPremisesProvisioningErrors property
         self._on_premises_provisioning_errors: Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]] = None
-        # The onPremisesSyncEnabled property
         self._on_premises_sync_enabled: Optional[bool] = None
-        # The phones property
         self._phones: Optional[List[phone.Phone]] = None
-        # The proxyAddresses property
         self._proxy_addresses: Optional[List[str]] = None
-        # The surname property
         self._surname: Optional[str] = None
-        # The transitiveMemberOf property
         self._transitive_member_of: Optional[List[directory_object.DirectoryObject]] = None
     
     @staticmethod
@@ -102,7 +84,7 @@ class OrgContact(directory_object.DirectoryObject):
     @property
     def department(self,) -> Optional[str]:
         """
-        Gets the department property value. The department property
+        Gets the department property value. 
         Returns: Optional[str]
         """
         return self._department
@@ -110,7 +92,7 @@ class OrgContact(directory_object.DirectoryObject):
     @department.setter
     def department(self,value: Optional[str] = None) -> None:
         """
-        Sets the department property value. The department property
+        Sets the department property value. 
         Args:
             value: Value to set for the department property.
         """
@@ -119,7 +101,7 @@ class OrgContact(directory_object.DirectoryObject):
     @property
     def direct_reports(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
-        Gets the directReports property value. The directReports property
+        Gets the directReports property value. 
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._direct_reports
@@ -127,7 +109,7 @@ class OrgContact(directory_object.DirectoryObject):
     @direct_reports.setter
     def direct_reports(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
-        Sets the directReports property value. The directReports property
+        Sets the directReports property value. 
         Args:
             value: Value to set for the directReports property.
         """
@@ -136,7 +118,7 @@ class OrgContact(directory_object.DirectoryObject):
     @property
     def display_name(self,) -> Optional[str]:
         """
-        Gets the displayName property value. The displayName property
+        Gets the displayName property value. 
         Returns: Optional[str]
         """
         return self._display_name
@@ -144,7 +126,7 @@ class OrgContact(directory_object.DirectoryObject):
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the displayName property value. The displayName property
+        Sets the displayName property value. 
         Args:
             value: Value to set for the displayName property.
         """
@@ -157,23 +139,23 @@ class OrgContact(directory_object.DirectoryObject):
         """
         fields = {
             "addresses": lambda n : setattr(self, 'addresses', n.get_collection_of_object_values(physical_office_address.PhysicalOfficeAddress)),
-            "company_name": lambda n : setattr(self, 'company_name', n.get_str_value()),
+            "companyName": lambda n : setattr(self, 'company_name', n.get_str_value()),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),
-            "direct_reports": lambda n : setattr(self, 'direct_reports', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "given_name": lambda n : setattr(self, 'given_name', n.get_str_value()),
-            "job_title": lambda n : setattr(self, 'job_title', n.get_str_value()),
+            "directReports": lambda n : setattr(self, 'direct_reports', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "givenName": lambda n : setattr(self, 'given_name', n.get_str_value()),
+            "jobTitle": lambda n : setattr(self, 'job_title', n.get_str_value()),
             "mail": lambda n : setattr(self, 'mail', n.get_str_value()),
-            "mail_nickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
+            "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
             "manager": lambda n : setattr(self, 'manager', n.get_object_value(directory_object.DirectoryObject)),
-            "member_of": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "on_premises_last_sync_date_time": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
-            "on_premises_provisioning_errors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(on_premises_provisioning_error.OnPremisesProvisioningError)),
-            "on_premises_sync_enabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
+            "memberOf": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "onPremisesLastSyncDateTime": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
+            "onPremisesProvisioningErrors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(on_premises_provisioning_error.OnPremisesProvisioningError)),
+            "onPremisesSyncEnabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
             "phones": lambda n : setattr(self, 'phones', n.get_collection_of_object_values(phone.Phone)),
-            "proxy_addresses": lambda n : setattr(self, 'proxy_addresses', n.get_collection_of_primitive_values(str)),
+            "proxyAddresses": lambda n : setattr(self, 'proxy_addresses', n.get_collection_of_primitive_values(str)),
             "surname": lambda n : setattr(self, 'surname', n.get_str_value()),
-            "transitive_member_of": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -182,7 +164,7 @@ class OrgContact(directory_object.DirectoryObject):
     @property
     def given_name(self,) -> Optional[str]:
         """
-        Gets the givenName property value. The givenName property
+        Gets the givenName property value. 
         Returns: Optional[str]
         """
         return self._given_name
@@ -190,7 +172,7 @@ class OrgContact(directory_object.DirectoryObject):
     @given_name.setter
     def given_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the givenName property value. The givenName property
+        Sets the givenName property value. 
         Args:
             value: Value to set for the givenName property.
         """
@@ -199,7 +181,7 @@ class OrgContact(directory_object.DirectoryObject):
     @property
     def job_title(self,) -> Optional[str]:
         """
-        Gets the jobTitle property value. The jobTitle property
+        Gets the jobTitle property value. 
         Returns: Optional[str]
         """
         return self._job_title
@@ -207,7 +189,7 @@ class OrgContact(directory_object.DirectoryObject):
     @job_title.setter
     def job_title(self,value: Optional[str] = None) -> None:
         """
-        Sets the jobTitle property value. The jobTitle property
+        Sets the jobTitle property value. 
         Args:
             value: Value to set for the jobTitle property.
         """
@@ -216,7 +198,7 @@ class OrgContact(directory_object.DirectoryObject):
     @property
     def mail(self,) -> Optional[str]:
         """
-        Gets the mail property value. The mail property
+        Gets the mail property value. 
         Returns: Optional[str]
         """
         return self._mail
@@ -224,7 +206,7 @@ class OrgContact(directory_object.DirectoryObject):
     @mail.setter
     def mail(self,value: Optional[str] = None) -> None:
         """
-        Sets the mail property value. The mail property
+        Sets the mail property value. 
         Args:
             value: Value to set for the mail property.
         """
@@ -233,7 +215,7 @@ class OrgContact(directory_object.DirectoryObject):
     @property
     def mail_nickname(self,) -> Optional[str]:
         """
-        Gets the mailNickname property value. The mailNickname property
+        Gets the mailNickname property value. 
         Returns: Optional[str]
         """
         return self._mail_nickname
@@ -241,7 +223,7 @@ class OrgContact(directory_object.DirectoryObject):
     @mail_nickname.setter
     def mail_nickname(self,value: Optional[str] = None) -> None:
         """
-        Sets the mailNickname property value. The mailNickname property
+        Sets the mailNickname property value. 
         Args:
             value: Value to set for the mailNickname property.
         """
@@ -250,7 +232,7 @@ class OrgContact(directory_object.DirectoryObject):
     @property
     def manager(self,) -> Optional[directory_object.DirectoryObject]:
         """
-        Gets the manager property value. The manager property
+        Gets the manager property value. 
         Returns: Optional[directory_object.DirectoryObject]
         """
         return self._manager
@@ -258,7 +240,7 @@ class OrgContact(directory_object.DirectoryObject):
     @manager.setter
     def manager(self,value: Optional[directory_object.DirectoryObject] = None) -> None:
         """
-        Sets the manager property value. The manager property
+        Sets the manager property value. 
         Args:
             value: Value to set for the manager property.
         """
@@ -267,7 +249,7 @@ class OrgContact(directory_object.DirectoryObject):
     @property
     def member_of(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
-        Gets the memberOf property value. The memberOf property
+        Gets the memberOf property value. 
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._member_of
@@ -275,7 +257,7 @@ class OrgContact(directory_object.DirectoryObject):
     @member_of.setter
     def member_of(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
-        Sets the memberOf property value. The memberOf property
+        Sets the memberOf property value. 
         Args:
             value: Value to set for the memberOf property.
         """
@@ -284,7 +266,7 @@ class OrgContact(directory_object.DirectoryObject):
     @property
     def on_premises_last_sync_date_time(self,) -> Optional[datetime]:
         """
-        Gets the onPremisesLastSyncDateTime property value. The onPremisesLastSyncDateTime property
+        Gets the onPremisesLastSyncDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._on_premises_last_sync_date_time
@@ -292,7 +274,7 @@ class OrgContact(directory_object.DirectoryObject):
     @on_premises_last_sync_date_time.setter
     def on_premises_last_sync_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the onPremisesLastSyncDateTime property value. The onPremisesLastSyncDateTime property
+        Sets the onPremisesLastSyncDateTime property value. 
         Args:
             value: Value to set for the onPremisesLastSyncDateTime property.
         """
@@ -301,7 +283,7 @@ class OrgContact(directory_object.DirectoryObject):
     @property
     def on_premises_provisioning_errors(self,) -> Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]]:
         """
-        Gets the onPremisesProvisioningErrors property value. The onPremisesProvisioningErrors property
+        Gets the onPremisesProvisioningErrors property value. 
         Returns: Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]]
         """
         return self._on_premises_provisioning_errors
@@ -309,7 +291,7 @@ class OrgContact(directory_object.DirectoryObject):
     @on_premises_provisioning_errors.setter
     def on_premises_provisioning_errors(self,value: Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]] = None) -> None:
         """
-        Sets the onPremisesProvisioningErrors property value. The onPremisesProvisioningErrors property
+        Sets the onPremisesProvisioningErrors property value. 
         Args:
             value: Value to set for the onPremisesProvisioningErrors property.
         """
@@ -318,7 +300,7 @@ class OrgContact(directory_object.DirectoryObject):
     @property
     def on_premises_sync_enabled(self,) -> Optional[bool]:
         """
-        Gets the onPremisesSyncEnabled property value. The onPremisesSyncEnabled property
+        Gets the onPremisesSyncEnabled property value. 
         Returns: Optional[bool]
         """
         return self._on_premises_sync_enabled
@@ -326,7 +308,7 @@ class OrgContact(directory_object.DirectoryObject):
     @on_premises_sync_enabled.setter
     def on_premises_sync_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the onPremisesSyncEnabled property value. The onPremisesSyncEnabled property
+        Sets the onPremisesSyncEnabled property value. 
         Args:
             value: Value to set for the onPremisesSyncEnabled property.
         """
@@ -335,7 +317,7 @@ class OrgContact(directory_object.DirectoryObject):
     @property
     def phones(self,) -> Optional[List[phone.Phone]]:
         """
-        Gets the phones property value. The phones property
+        Gets the phones property value. 
         Returns: Optional[List[phone.Phone]]
         """
         return self._phones
@@ -343,7 +325,7 @@ class OrgContact(directory_object.DirectoryObject):
     @phones.setter
     def phones(self,value: Optional[List[phone.Phone]] = None) -> None:
         """
-        Sets the phones property value. The phones property
+        Sets the phones property value. 
         Args:
             value: Value to set for the phones property.
         """
@@ -352,7 +334,7 @@ class OrgContact(directory_object.DirectoryObject):
     @property
     def proxy_addresses(self,) -> Optional[List[str]]:
         """
-        Gets the proxyAddresses property value. The proxyAddresses property
+        Gets the proxyAddresses property value. 
         Returns: Optional[List[str]]
         """
         return self._proxy_addresses
@@ -360,7 +342,7 @@ class OrgContact(directory_object.DirectoryObject):
     @proxy_addresses.setter
     def proxy_addresses(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the proxyAddresses property value. The proxyAddresses property
+        Sets the proxyAddresses property value. 
         Args:
             value: Value to set for the proxyAddresses property.
         """
@@ -397,7 +379,7 @@ class OrgContact(directory_object.DirectoryObject):
     @property
     def surname(self,) -> Optional[str]:
         """
-        Gets the surname property value. The surname property
+        Gets the surname property value. 
         Returns: Optional[str]
         """
         return self._surname
@@ -405,7 +387,7 @@ class OrgContact(directory_object.DirectoryObject):
     @surname.setter
     def surname(self,value: Optional[str] = None) -> None:
         """
-        Sets the surname property value. The surname property
+        Sets the surname property value. 
         Args:
             value: Value to set for the surname property.
         """
@@ -414,7 +396,7 @@ class OrgContact(directory_object.DirectoryObject):
     @property
     def transitive_member_of(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
-        Gets the transitiveMemberOf property value. The transitiveMemberOf property
+        Gets the transitiveMemberOf property value. 
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._transitive_member_of
@@ -422,7 +404,7 @@ class OrgContact(directory_object.DirectoryObject):
     @transitive_member_of.setter
     def transitive_member_of(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
-        Sets the transitiveMemberOf property value. The transitiveMemberOf property
+        Sets the transitiveMemberOf property value. 
         Args:
             value: Value to set for the transitiveMemberOf property.
         """

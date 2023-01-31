@@ -73,8 +73,8 @@ class ConversationMemberRoleUpdatedEventMessageDetail(event_message_detail.Event
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "conversation_member_roles": lambda n : setattr(self, 'conversation_member_roles', n.get_collection_of_primitive_values(str)),
-            "conversation_member_user": lambda n : setattr(self, 'conversation_member_user', n.get_object_value(teamwork_user_identity.TeamworkUserIdentity)),
+            "conversationMemberRoles": lambda n : setattr(self, 'conversation_member_roles', n.get_collection_of_primitive_values(str)),
+            "conversationMemberUser": lambda n : setattr(self, 'conversation_member_user', n.get_object_value(teamwork_user_identity.TeamworkUserIdentity)),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
         }
         super_fields = super().get_field_deserializers()

@@ -12,7 +12,6 @@ class SkypeForBusinessUserConversationMemberCollectionResponse(base_collection_p
         Instantiates a new SkypeForBusinessUserConversationMemberCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[skype_for_business_user_conversation_member.SkypeForBusinessUserConversationMember]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class SkypeForBusinessUserConversationMemberCollectionResponse(base_collection_p
     @property
     def value(self,) -> Optional[List[skype_for_business_user_conversation_member.SkypeForBusinessUserConversationMember]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[skype_for_business_user_conversation_member.SkypeForBusinessUserConversationMember]]
         """
         return self._value
@@ -61,7 +60,7 @@ class SkypeForBusinessUserConversationMemberCollectionResponse(base_collection_p
     @value.setter
     def value(self,value: Optional[List[skype_for_business_user_conversation_member.SkypeForBusinessUserConversationMember]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

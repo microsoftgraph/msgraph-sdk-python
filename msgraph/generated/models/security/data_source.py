@@ -22,7 +22,6 @@ class DataSource(entity.Entity):
         self._display_name: Optional[str] = None
         # The hold status of the dataSource.The possible values are: notApplied, applied, applying, removing, partial
         self._hold_status: Optional[data_source_hold_status.DataSourceHoldStatus] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @property
@@ -94,10 +93,10 @@ class DataSource(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "hold_status": lambda n : setattr(self, 'hold_status', n.get_enum_value(data_source_hold_status.DataSourceHoldStatus)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "holdStatus": lambda n : setattr(self, 'hold_status', n.get_enum_value(data_source_hold_status.DataSourceHoldStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

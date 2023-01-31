@@ -12,7 +12,6 @@ class MobileLobAppCollectionResponse(base_collection_pagination_count_response.B
         Instantiates a new MobileLobAppCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[mobile_lob_app.MobileLobApp]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class MobileLobAppCollectionResponse(base_collection_pagination_count_response.B
     @property
     def value(self,) -> Optional[List[mobile_lob_app.MobileLobApp]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[mobile_lob_app.MobileLobApp]]
         """
         return self._value
@@ -61,7 +60,7 @@ class MobileLobAppCollectionResponse(base_collection_pagination_count_response.B
     @value.setter
     def value(self,value: Optional[List[mobile_lob_app.MobileLobApp]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

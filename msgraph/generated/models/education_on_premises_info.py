@@ -30,7 +30,6 @@ class EducationOnPremisesInfo(AdditionalDataHolder, Parsable):
 
         # Unique identifier for the user object in Active Directory.
         self._immutable_id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -51,7 +50,7 @@ class EducationOnPremisesInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "immutable_id": lambda n : setattr(self, 'immutable_id', n.get_str_value()),
+            "immutableId": lambda n : setattr(self, 'immutable_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -76,7 +75,7 @@ class EducationOnPremisesInfo(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -84,7 +83,7 @@ class EducationOnPremisesInfo(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

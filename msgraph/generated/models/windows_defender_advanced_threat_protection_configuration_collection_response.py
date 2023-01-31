@@ -12,7 +12,6 @@ class WindowsDefenderAdvancedThreatProtectionConfigurationCollectionResponse(bas
         Instantiates a new WindowsDefenderAdvancedThreatProtectionConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[windows_defender_advanced_threat_protection_configuration.WindowsDefenderAdvancedThreatProtectionConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class WindowsDefenderAdvancedThreatProtectionConfigurationCollectionResponse(bas
     @property
     def value(self,) -> Optional[List[windows_defender_advanced_threat_protection_configuration.WindowsDefenderAdvancedThreatProtectionConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[windows_defender_advanced_threat_protection_configuration.WindowsDefenderAdvancedThreatProtectionConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class WindowsDefenderAdvancedThreatProtectionConfigurationCollectionResponse(bas
     @value.setter
     def value(self,value: Optional[List[windows_defender_advanced_threat_protection_configuration.WindowsDefenderAdvancedThreatProtectionConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

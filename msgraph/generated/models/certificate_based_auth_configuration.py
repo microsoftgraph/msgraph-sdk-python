@@ -31,7 +31,6 @@ class CertificateBasedAuthConfiguration(entity.Entity):
         super().__init__()
         # Collection of certificate authorities which creates a trusted certificate chain.
         self._certificate_authorities: Optional[List[certificate_authority.CertificateAuthority]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -52,7 +51,7 @@ class CertificateBasedAuthConfiguration(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "certificate_authorities": lambda n : setattr(self, 'certificate_authorities', n.get_collection_of_object_values(certificate_authority.CertificateAuthority)),
+            "certificateAuthorities": lambda n : setattr(self, 'certificate_authorities', n.get_collection_of_object_values(certificate_authority.CertificateAuthority)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

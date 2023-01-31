@@ -52,7 +52,6 @@ class AlertComment(AdditionalDataHolder, Parsable):
         self._created_by_display_name: Optional[str] = None
         # The time when the comment was submitted.
         self._created_date_time: Optional[datetime] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @property
@@ -108,8 +107,8 @@ class AlertComment(AdditionalDataHolder, Parsable):
         """
         fields = {
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
-            "created_by_display_name": lambda n : setattr(self, 'created_by_display_name', n.get_str_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdByDisplayName": lambda n : setattr(self, 'created_by_display_name', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -117,7 +116,7 @@ class AlertComment(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -125,7 +124,7 @@ class AlertComment(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

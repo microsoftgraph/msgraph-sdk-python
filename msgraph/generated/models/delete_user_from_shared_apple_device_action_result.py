@@ -11,7 +11,6 @@ class DeleteUserFromSharedAppleDeviceActionResult(device_action_result.DeviceAct
         Instantiates a new DeleteUserFromSharedAppleDeviceActionResult and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # User principal name of the user to be deleted
         self._user_principal_name: Optional[str] = None
@@ -34,7 +33,7 @@ class DeleteUserFromSharedAppleDeviceActionResult(device_action_result.DeviceAct
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

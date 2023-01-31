@@ -34,9 +34,7 @@ class File(AdditionalDataHolder, Parsable):
         self._hashes: Optional[hashes.Hashes] = None
         # The MIME type for the file. This is determined by logic on the server and might not be the value provided when the file was uploaded. Read-only.
         self._mime_type: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The processingMetadata property
         self._processing_metadata: Optional[bool] = None
     
     @staticmethod
@@ -58,9 +56,9 @@ class File(AdditionalDataHolder, Parsable):
         """
         fields = {
             "hashes": lambda n : setattr(self, 'hashes', n.get_object_value(hashes.Hashes)),
-            "mime_type": lambda n : setattr(self, 'mime_type', n.get_str_value()),
+            "mimeType": lambda n : setattr(self, 'mime_type', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "processing_metadata": lambda n : setattr(self, 'processing_metadata', n.get_bool_value()),
+            "processingMetadata": lambda n : setattr(self, 'processing_metadata', n.get_bool_value()),
         }
         return fields
     
@@ -101,7 +99,7 @@ class File(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -109,7 +107,7 @@ class File(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -118,7 +116,7 @@ class File(AdditionalDataHolder, Parsable):
     @property
     def processing_metadata(self,) -> Optional[bool]:
         """
-        Gets the processingMetadata property value. The processingMetadata property
+        Gets the processingMetadata property value. 
         Returns: Optional[bool]
         """
         return self._processing_metadata
@@ -126,7 +124,7 @@ class File(AdditionalDataHolder, Parsable):
     @processing_metadata.setter
     def processing_metadata(self,value: Optional[bool] = None) -> None:
         """
-        Sets the processingMetadata property value. The processingMetadata property
+        Sets the processingMetadata property value. 
         Args:
             value: Value to set for the processingMetadata property.
         """

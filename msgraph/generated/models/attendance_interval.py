@@ -35,7 +35,6 @@ class AttendanceInterval(AdditionalDataHolder, Parsable):
         self._join_date_time: Optional[datetime] = None
         # The time the attendee left in UTC.
         self._leave_date_time: Optional[datetime] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -73,9 +72,9 @@ class AttendanceInterval(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "duration_in_seconds": lambda n : setattr(self, 'duration_in_seconds', n.get_int_value()),
-            "join_date_time": lambda n : setattr(self, 'join_date_time', n.get_datetime_value()),
-            "leave_date_time": lambda n : setattr(self, 'leave_date_time', n.get_datetime_value()),
+            "durationInSeconds": lambda n : setattr(self, 'duration_in_seconds', n.get_int_value()),
+            "joinDateTime": lambda n : setattr(self, 'join_date_time', n.get_datetime_value()),
+            "leaveDateTime": lambda n : setattr(self, 'leave_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -117,7 +116,7 @@ class AttendanceInterval(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -125,7 +124,7 @@ class AttendanceInterval(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

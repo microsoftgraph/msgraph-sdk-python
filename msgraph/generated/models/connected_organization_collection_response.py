@@ -12,7 +12,6 @@ class ConnectedOrganizationCollectionResponse(base_collection_pagination_count_r
         Instantiates a new ConnectedOrganizationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[connected_organization.ConnectedOrganization]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ConnectedOrganizationCollectionResponse(base_collection_pagination_count_r
     @property
     def value(self,) -> Optional[List[connected_organization.ConnectedOrganization]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[connected_organization.ConnectedOrganization]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ConnectedOrganizationCollectionResponse(base_collection_pagination_count_r
     @value.setter
     def value(self,value: Optional[List[connected_organization.ConnectedOrganization]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

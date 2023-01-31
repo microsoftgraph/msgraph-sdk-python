@@ -12,7 +12,6 @@ class ServiceHealthIssueCollectionResponse(base_collection_pagination_count_resp
         Instantiates a new ServiceHealthIssueCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[service_health_issue.ServiceHealthIssue]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ServiceHealthIssueCollectionResponse(base_collection_pagination_count_resp
     @property
     def value(self,) -> Optional[List[service_health_issue.ServiceHealthIssue]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[service_health_issue.ServiceHealthIssue]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ServiceHealthIssueCollectionResponse(base_collection_pagination_count_resp
     @value.setter
     def value(self,value: Optional[List[service_health_issue.ServiceHealthIssue]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

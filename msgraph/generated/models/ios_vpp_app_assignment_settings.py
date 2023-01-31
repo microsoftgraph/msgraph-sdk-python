@@ -35,8 +35,8 @@ class IosVppAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssign
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "use_device_licensing": lambda n : setattr(self, 'use_device_licensing', n.get_bool_value()),
-            "vpn_configuration_id": lambda n : setattr(self, 'vpn_configuration_id', n.get_str_value()),
+            "useDeviceLicensing": lambda n : setattr(self, 'use_device_licensing', n.get_bool_value()),
+            "vpnConfigurationId": lambda n : setattr(self, 'vpn_configuration_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

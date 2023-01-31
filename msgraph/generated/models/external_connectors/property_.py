@@ -62,9 +62,7 @@ class Property_(AdditionalDataHolder, Parsable):
         self._labels: Optional[List[label.Label]] = None
         # The name of the property. Maximum 32 characters. Only alphanumeric characters allowed. For example, each string may not contain control characters, whitespace, or any of the following: :, ;, ,, (, ), [, ], {, }, %, $, +, !, *, =, &, ?, @, #, /, ~, ', ', <, >, `, ^.  Required.
         self._name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The type property
         self._type: Optional[property_type.PropertyType] = None
     
     @staticmethod
@@ -86,10 +84,10 @@ class Property_(AdditionalDataHolder, Parsable):
         """
         fields = {
             "aliases": lambda n : setattr(self, 'aliases', n.get_collection_of_primitive_values(str)),
-            "is_queryable": lambda n : setattr(self, 'is_queryable', n.get_bool_value()),
-            "is_refinable": lambda n : setattr(self, 'is_refinable', n.get_bool_value()),
-            "is_retrievable": lambda n : setattr(self, 'is_retrievable', n.get_bool_value()),
-            "is_searchable": lambda n : setattr(self, 'is_searchable', n.get_bool_value()),
+            "isQueryable": lambda n : setattr(self, 'is_queryable', n.get_bool_value()),
+            "isRefinable": lambda n : setattr(self, 'is_refinable', n.get_bool_value()),
+            "isRetrievable": lambda n : setattr(self, 'is_retrievable', n.get_bool_value()),
+            "isSearchable": lambda n : setattr(self, 'is_searchable', n.get_bool_value()),
             "labels": lambda n : setattr(self, 'labels', n.get_collection_of_enum_values(label.Label)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -202,7 +200,7 @@ class Property_(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -210,7 +208,7 @@ class Property_(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -238,7 +236,7 @@ class Property_(AdditionalDataHolder, Parsable):
     @property
     def type(self,) -> Optional[property_type.PropertyType]:
         """
-        Gets the type property value. The type property
+        Gets the type property value. 
         Returns: Optional[property_type.PropertyType]
         """
         return self._type
@@ -246,7 +244,7 @@ class Property_(AdditionalDataHolder, Parsable):
     @type.setter
     def type(self,value: Optional[property_type.PropertyType] = None) -> None:
         """
-        Sets the type property value. The type property
+        Sets the type property value. 
         Args:
             value: Value to set for the type property.
         """

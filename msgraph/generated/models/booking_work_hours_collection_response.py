@@ -12,7 +12,6 @@ class BookingWorkHoursCollectionResponse(base_collection_pagination_count_respon
         Instantiates a new BookingWorkHoursCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[booking_work_hours.BookingWorkHours]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class BookingWorkHoursCollectionResponse(base_collection_pagination_count_respon
     @property
     def value(self,) -> Optional[List[booking_work_hours.BookingWorkHours]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[booking_work_hours.BookingWorkHours]]
         """
         return self._value
@@ -61,7 +60,7 @@ class BookingWorkHoursCollectionResponse(base_collection_pagination_count_respon
     @value.setter
     def value(self,value: Optional[List[booking_work_hours.BookingWorkHours]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

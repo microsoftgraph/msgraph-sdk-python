@@ -81,7 +81,6 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         self._inbound_notifications_blocked: Optional[bool] = None
         # Configures the firewall to block all incoming traffic regardless of other policy settings. When IncomingTrafficRequired and IncomingTrafficBlocked are both true, IncomingTrafficBlocked takes priority.
         self._incoming_traffic_blocked: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Configures the firewall to block all outgoing connections by default. When OutboundConnectionsRequired and OutboundConnectionsBlocked are both true, OutboundConnectionsBlocked takes priority. This setting will get applied to Windows releases version 1809 and above.
         self._outbound_connections_blocked: Optional[bool] = None
@@ -129,19 +128,19 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "authorized_application_rules_from_group_policy_merged": lambda n : setattr(self, 'authorized_application_rules_from_group_policy_merged', n.get_bool_value()),
-            "connection_security_rules_from_group_policy_merged": lambda n : setattr(self, 'connection_security_rules_from_group_policy_merged', n.get_bool_value()),
-            "firewall_enabled": lambda n : setattr(self, 'firewall_enabled', n.get_enum_value(state_management_setting.StateManagementSetting)),
-            "global_port_rules_from_group_policy_merged": lambda n : setattr(self, 'global_port_rules_from_group_policy_merged', n.get_bool_value()),
-            "inbound_connections_blocked": lambda n : setattr(self, 'inbound_connections_blocked', n.get_bool_value()),
-            "inbound_notifications_blocked": lambda n : setattr(self, 'inbound_notifications_blocked', n.get_bool_value()),
-            "incoming_traffic_blocked": lambda n : setattr(self, 'incoming_traffic_blocked', n.get_bool_value()),
+            "authorizedApplicationRulesFromGroupPolicyMerged": lambda n : setattr(self, 'authorized_application_rules_from_group_policy_merged', n.get_bool_value()),
+            "connectionSecurityRulesFromGroupPolicyMerged": lambda n : setattr(self, 'connection_security_rules_from_group_policy_merged', n.get_bool_value()),
+            "firewallEnabled": lambda n : setattr(self, 'firewall_enabled', n.get_enum_value(state_management_setting.StateManagementSetting)),
+            "globalPortRulesFromGroupPolicyMerged": lambda n : setattr(self, 'global_port_rules_from_group_policy_merged', n.get_bool_value()),
+            "inboundConnectionsBlocked": lambda n : setattr(self, 'inbound_connections_blocked', n.get_bool_value()),
+            "inboundNotificationsBlocked": lambda n : setattr(self, 'inbound_notifications_blocked', n.get_bool_value()),
+            "incomingTrafficBlocked": lambda n : setattr(self, 'incoming_traffic_blocked', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "outbound_connections_blocked": lambda n : setattr(self, 'outbound_connections_blocked', n.get_bool_value()),
-            "policy_rules_from_group_policy_merged": lambda n : setattr(self, 'policy_rules_from_group_policy_merged', n.get_bool_value()),
-            "secured_packet_exemption_allowed": lambda n : setattr(self, 'secured_packet_exemption_allowed', n.get_bool_value()),
-            "stealth_mode_blocked": lambda n : setattr(self, 'stealth_mode_blocked', n.get_bool_value()),
-            "unicast_responses_to_multicast_broadcasts_blocked": lambda n : setattr(self, 'unicast_responses_to_multicast_broadcasts_blocked', n.get_bool_value()),
+            "outboundConnectionsBlocked": lambda n : setattr(self, 'outbound_connections_blocked', n.get_bool_value()),
+            "policyRulesFromGroupPolicyMerged": lambda n : setattr(self, 'policy_rules_from_group_policy_merged', n.get_bool_value()),
+            "securedPacketExemptionAllowed": lambda n : setattr(self, 'secured_packet_exemption_allowed', n.get_bool_value()),
+            "stealthModeBlocked": lambda n : setattr(self, 'stealth_mode_blocked', n.get_bool_value()),
+            "unicastResponsesToMulticastBroadcastsBlocked": lambda n : setattr(self, 'unicast_responses_to_multicast_broadcasts_blocked', n.get_bool_value()),
         }
         return fields
     
@@ -216,7 +215,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -224,7 +223,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

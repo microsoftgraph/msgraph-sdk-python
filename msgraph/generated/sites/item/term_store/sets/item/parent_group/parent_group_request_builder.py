@@ -83,7 +83,7 @@ class ParentGroupRequestBuilder():
         """
         Update the navigation property parentGroup in sites
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[group.Group]
         """
@@ -151,7 +151,7 @@ class ParentGroupRequestBuilder():
         """
         Update the navigation property parentGroup in sites
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

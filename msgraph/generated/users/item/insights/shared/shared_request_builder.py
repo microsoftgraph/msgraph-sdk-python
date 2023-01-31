@@ -66,7 +66,7 @@ class SharedRequestBuilder():
         """
         Create new navigation property to shared for users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[shared_insight.SharedInsight]
         """
@@ -105,7 +105,7 @@ class SharedRequestBuilder():
         """
         Create new navigation property to shared for users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

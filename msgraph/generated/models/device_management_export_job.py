@@ -26,7 +26,6 @@ class DeviceManagementExportJob(entity.Entity):
         self._format: Optional[device_management_report_file_format.DeviceManagementReportFileFormat] = None
         # Configures how the requested export job is localized
         self._localization_type: Optional[device_management_export_job_localization_type.DeviceManagementExportJobLocalizationType] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Name of the report
         self._report_name: Optional[str] = None
@@ -110,14 +109,14 @@ class DeviceManagementExportJob(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
             "filter": lambda n : setattr(self, 'filter', n.get_str_value()),
             "format": lambda n : setattr(self, 'format', n.get_enum_value(device_management_report_file_format.DeviceManagementReportFileFormat)),
-            "localization_type": lambda n : setattr(self, 'localization_type', n.get_enum_value(device_management_export_job_localization_type.DeviceManagementExportJobLocalizationType)),
-            "report_name": lambda n : setattr(self, 'report_name', n.get_str_value()),
-            "request_date_time": lambda n : setattr(self, 'request_date_time', n.get_datetime_value()),
+            "localizationType": lambda n : setattr(self, 'localization_type', n.get_enum_value(device_management_export_job_localization_type.DeviceManagementExportJobLocalizationType)),
+            "reportName": lambda n : setattr(self, 'report_name', n.get_str_value()),
+            "requestDateTime": lambda n : setattr(self, 'request_date_time', n.get_datetime_value()),
             "select": lambda n : setattr(self, 'select', n.get_collection_of_primitive_values(str)),
-            "snapshot_id": lambda n : setattr(self, 'snapshot_id', n.get_str_value()),
+            "snapshotId": lambda n : setattr(self, 'snapshot_id', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(device_management_report_status.DeviceManagementReportStatus)),
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
         }

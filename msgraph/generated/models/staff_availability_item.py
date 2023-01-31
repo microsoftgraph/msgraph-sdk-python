@@ -49,7 +49,6 @@ class StaffAvailabilityItem(AdditionalDataHolder, Parsable):
 
         # Each item in this collection indicates a slot and the status of the staff member.
         self._availability_items: Optional[List[availability_item.AvailabilityItem]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The ID of the staff member.
         self._staff_id: Optional[str] = None
@@ -72,16 +71,16 @@ class StaffAvailabilityItem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "availability_items": lambda n : setattr(self, 'availability_items', n.get_collection_of_object_values(availability_item.AvailabilityItem)),
+            "availabilityItems": lambda n : setattr(self, 'availability_items', n.get_collection_of_object_values(availability_item.AvailabilityItem)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "staff_id": lambda n : setattr(self, 'staff_id', n.get_str_value()),
+            "staffId": lambda n : setattr(self, 'staff_id', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -89,7 +88,7 @@ class StaffAvailabilityItem(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

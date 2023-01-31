@@ -73,7 +73,7 @@ class RoleManagementRequestBuilder():
         """
         Update roleManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[role_management.RoleManagement]
         """
@@ -112,7 +112,7 @@ class RoleManagementRequestBuilder():
         """
         Update roleManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -73,7 +73,6 @@ class Certification(AdditionalDataHolder, Parsable):
         self._is_publisher_attested: Optional[bool] = None
         # The timestamp when the certification for the application was most recently added or updated.
         self._last_certification_date_time: Optional[datetime] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -94,11 +93,11 @@ class Certification(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "certification_details_url": lambda n : setattr(self, 'certification_details_url', n.get_str_value()),
-            "certification_expiration_date_time": lambda n : setattr(self, 'certification_expiration_date_time', n.get_datetime_value()),
-            "is_certified_by_microsoft": lambda n : setattr(self, 'is_certified_by_microsoft', n.get_bool_value()),
-            "is_publisher_attested": lambda n : setattr(self, 'is_publisher_attested', n.get_bool_value()),
-            "last_certification_date_time": lambda n : setattr(self, 'last_certification_date_time', n.get_datetime_value()),
+            "certificationDetailsUrl": lambda n : setattr(self, 'certification_details_url', n.get_str_value()),
+            "certificationExpirationDateTime": lambda n : setattr(self, 'certification_expiration_date_time', n.get_datetime_value()),
+            "isCertifiedByMicrosoft": lambda n : setattr(self, 'is_certified_by_microsoft', n.get_bool_value()),
+            "isPublisherAttested": lambda n : setattr(self, 'is_publisher_attested', n.get_bool_value()),
+            "lastCertificationDateTime": lambda n : setattr(self, 'last_certification_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -157,7 +156,7 @@ class Certification(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -165,7 +164,7 @@ class Certification(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

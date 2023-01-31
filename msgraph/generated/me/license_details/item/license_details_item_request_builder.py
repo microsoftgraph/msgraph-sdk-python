@@ -17,10 +17,11 @@ class LicenseDetailsItemRequestBuilder():
     """
     Provides operations to manage the licenseDetails property of the microsoft.graph.user entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, license_details_id: Optional[str] = None) -> None:
         """
         Instantiates a new LicenseDetailsItemRequestBuilder and sets the default values.
         Args:
+            licenseDetailsId: key: id of licenseDetails
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class LicenseDetailsItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/licenseDetails/{licenseDetails%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["licenseDetails%2Did"] = licenseDetailsId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -74,7 +76,7 @@ class LicenseDetailsItemRequestBuilder():
         """
         Update the navigation property licenseDetails in me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[license_details.LicenseDetails]
         """
@@ -129,7 +131,7 @@ class LicenseDetailsItemRequestBuilder():
         """
         Update the navigation property licenseDetails in me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -56,7 +56,6 @@ class ConfigurationManagerClientEnabledFeatures(AdditionalDataHolder, Parsable):
         self._inventory: Optional[bool] = None
         # Whether modern application is managed by Intune
         self._modern_apps: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Whether resource access is managed by Intune
         self._resource_access: Optional[bool] = None
@@ -98,13 +97,13 @@ class ConfigurationManagerClientEnabledFeatures(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "compliance_policy": lambda n : setattr(self, 'compliance_policy', n.get_bool_value()),
-            "device_configuration": lambda n : setattr(self, 'device_configuration', n.get_bool_value()),
+            "compliancePolicy": lambda n : setattr(self, 'compliance_policy', n.get_bool_value()),
+            "deviceConfiguration": lambda n : setattr(self, 'device_configuration', n.get_bool_value()),
             "inventory": lambda n : setattr(self, 'inventory', n.get_bool_value()),
-            "modern_apps": lambda n : setattr(self, 'modern_apps', n.get_bool_value()),
+            "modernApps": lambda n : setattr(self, 'modern_apps', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "resource_access": lambda n : setattr(self, 'resource_access', n.get_bool_value()),
-            "windows_update_for_business": lambda n : setattr(self, 'windows_update_for_business', n.get_bool_value()),
+            "resourceAccess": lambda n : setattr(self, 'resource_access', n.get_bool_value()),
+            "windowsUpdateForBusiness": lambda n : setattr(self, 'windows_update_for_business', n.get_bool_value()),
         }
         return fields
     
@@ -145,7 +144,7 @@ class ConfigurationManagerClientEnabledFeatures(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -153,7 +152,7 @@ class ConfigurationManagerClientEnabledFeatures(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

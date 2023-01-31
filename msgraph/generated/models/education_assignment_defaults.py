@@ -45,7 +45,7 @@ class EducationAssignmentDefaults(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new EducationAssignmentDefaults and sets the default values.
+        Instantiates a new educationAssignmentDefaults and sets the default values.
         """
         super().__init__()
         # Class-level default behavior for handling students who are added after the assignment is published. Possible values are: none, assignIfOpen.
@@ -56,7 +56,6 @@ class EducationAssignmentDefaults(entity.Entity):
         self._due_time: Optional[Time] = None
         # Default Teams channel to which notifications will be sent. Default value is null.
         self._notification_channel_url: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -94,10 +93,10 @@ class EducationAssignmentDefaults(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "added_student_action": lambda n : setattr(self, 'added_student_action', n.get_enum_value(education_added_student_action.EducationAddedStudentAction)),
-            "add_to_calendar_action": lambda n : setattr(self, 'add_to_calendar_action', n.get_enum_value(education_add_to_calendar_options.EducationAddToCalendarOptions)),
-            "due_time": lambda n : setattr(self, 'due_time', n.get_object_value(Time)),
-            "notification_channel_url": lambda n : setattr(self, 'notification_channel_url', n.get_str_value()),
+            "addedStudentAction": lambda n : setattr(self, 'added_student_action', n.get_enum_value(education_added_student_action.EducationAddedStudentAction)),
+            "addToCalendarAction": lambda n : setattr(self, 'add_to_calendar_action', n.get_enum_value(education_add_to_calendar_options.EducationAddToCalendarOptions)),
+            "dueTime": lambda n : setattr(self, 'due_time', n.get_object_value(Time)),
+            "notificationChannelUrl": lambda n : setattr(self, 'notification_channel_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

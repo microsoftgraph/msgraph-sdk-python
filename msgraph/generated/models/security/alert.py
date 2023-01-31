@@ -158,7 +158,6 @@ class Alert(entity.Entity):
         self._last_update_date_time: Optional[datetime] = None
         # The attack techniques, as aligned with the MITRE ATT&CK framework.
         self._mitre_techniques: Optional[List[str]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The ID of the alert as it appears in the security provider product that generated the alert.
         self._provider_alert_id: Optional[str] = None
@@ -166,11 +165,8 @@ class Alert(entity.Entity):
         self._recommended_actions: Optional[str] = None
         # Time when the alert was resolved.
         self._resolved_date_time: Optional[datetime] = None
-        # The serviceSource property
         self._service_source: Optional[service_source.ServiceSource] = None
-        # The severity property
         self._severity: Optional[alert_severity.AlertSeverity] = None
-        # The status property
         self._status: Optional[alert_status.AlertStatus] = None
         # The Azure Active Directory tenant the alert was created in.
         self._tenant_id: Optional[str] = None
@@ -318,33 +314,33 @@ class Alert(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "actor_display_name": lambda n : setattr(self, 'actor_display_name', n.get_str_value()),
-            "alert_web_url": lambda n : setattr(self, 'alert_web_url', n.get_str_value()),
-            "assigned_to": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
+            "actorDisplayName": lambda n : setattr(self, 'actor_display_name', n.get_str_value()),
+            "alertWebUrl": lambda n : setattr(self, 'alert_web_url', n.get_str_value()),
+            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
             "classification": lambda n : setattr(self, 'classification', n.get_enum_value(alert_classification.AlertClassification)),
             "comments": lambda n : setattr(self, 'comments', n.get_collection_of_object_values(alert_comment.AlertComment)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "detection_source": lambda n : setattr(self, 'detection_source', n.get_enum_value(detection_source.DetectionSource)),
-            "detector_id": lambda n : setattr(self, 'detector_id', n.get_str_value()),
+            "detectionSource": lambda n : setattr(self, 'detection_source', n.get_enum_value(detection_source.DetectionSource)),
+            "detectorId": lambda n : setattr(self, 'detector_id', n.get_str_value()),
             "determination": lambda n : setattr(self, 'determination', n.get_enum_value(alert_determination.AlertDetermination)),
             "evidence": lambda n : setattr(self, 'evidence', n.get_collection_of_object_values(alert_evidence.AlertEvidence)),
-            "first_activity_date_time": lambda n : setattr(self, 'first_activity_date_time', n.get_datetime_value()),
-            "incident_id": lambda n : setattr(self, 'incident_id', n.get_str_value()),
-            "incident_web_url": lambda n : setattr(self, 'incident_web_url', n.get_str_value()),
-            "last_activity_date_time": lambda n : setattr(self, 'last_activity_date_time', n.get_datetime_value()),
-            "last_update_date_time": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
-            "mitre_techniques": lambda n : setattr(self, 'mitre_techniques', n.get_collection_of_primitive_values(str)),
-            "provider_alert_id": lambda n : setattr(self, 'provider_alert_id', n.get_str_value()),
-            "recommended_actions": lambda n : setattr(self, 'recommended_actions', n.get_str_value()),
-            "resolved_date_time": lambda n : setattr(self, 'resolved_date_time', n.get_datetime_value()),
-            "service_source": lambda n : setattr(self, 'service_source', n.get_enum_value(service_source.ServiceSource)),
+            "firstActivityDateTime": lambda n : setattr(self, 'first_activity_date_time', n.get_datetime_value()),
+            "incidentId": lambda n : setattr(self, 'incident_id', n.get_str_value()),
+            "incidentWebUrl": lambda n : setattr(self, 'incident_web_url', n.get_str_value()),
+            "lastActivityDateTime": lambda n : setattr(self, 'last_activity_date_time', n.get_datetime_value()),
+            "lastUpdateDateTime": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
+            "mitreTechniques": lambda n : setattr(self, 'mitre_techniques', n.get_collection_of_primitive_values(str)),
+            "providerAlertId": lambda n : setattr(self, 'provider_alert_id', n.get_str_value()),
+            "recommendedActions": lambda n : setattr(self, 'recommended_actions', n.get_str_value()),
+            "resolvedDateTime": lambda n : setattr(self, 'resolved_date_time', n.get_datetime_value()),
+            "serviceSource": lambda n : setattr(self, 'service_source', n.get_enum_value(service_source.ServiceSource)),
             "severity": lambda n : setattr(self, 'severity', n.get_enum_value(alert_severity.AlertSeverity)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(alert_status.AlertStatus)),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
-            "threat_display_name": lambda n : setattr(self, 'threat_display_name', n.get_str_value()),
-            "threat_family_name": lambda n : setattr(self, 'threat_family_name', n.get_str_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "threatDisplayName": lambda n : setattr(self, 'threat_display_name', n.get_str_value()),
+            "threatFamilyName": lambda n : setattr(self, 'threat_family_name', n.get_str_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -528,7 +524,7 @@ class Alert(entity.Entity):
     @property
     def service_source(self,) -> Optional[service_source.ServiceSource]:
         """
-        Gets the serviceSource property value. The serviceSource property
+        Gets the serviceSource property value. 
         Returns: Optional[service_source.ServiceSource]
         """
         return self._service_source
@@ -536,7 +532,7 @@ class Alert(entity.Entity):
     @service_source.setter
     def service_source(self,value: Optional[service_source.ServiceSource] = None) -> None:
         """
-        Sets the serviceSource property value. The serviceSource property
+        Sets the serviceSource property value. 
         Args:
             value: Value to set for the serviceSource property.
         """
@@ -545,7 +541,7 @@ class Alert(entity.Entity):
     @property
     def severity(self,) -> Optional[alert_severity.AlertSeverity]:
         """
-        Gets the severity property value. The severity property
+        Gets the severity property value. 
         Returns: Optional[alert_severity.AlertSeverity]
         """
         return self._severity
@@ -553,7 +549,7 @@ class Alert(entity.Entity):
     @severity.setter
     def severity(self,value: Optional[alert_severity.AlertSeverity] = None) -> None:
         """
-        Sets the severity property value. The severity property
+        Sets the severity property value. 
         Args:
             value: Value to set for the severity property.
         """
@@ -562,7 +558,7 @@ class Alert(entity.Entity):
     @property
     def status(self,) -> Optional[alert_status.AlertStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[alert_status.AlertStatus]
         """
         return self._status
@@ -570,7 +566,7 @@ class Alert(entity.Entity):
     @status.setter
     def status(self,value: Optional[alert_status.AlertStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

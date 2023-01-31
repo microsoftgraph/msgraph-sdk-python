@@ -66,7 +66,7 @@ class NamedLocationsRequestBuilder():
         """
         Create a new namedLocation object. Named locations can be either ipNamedLocation or countryNamedLocation objects.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[named_location.NamedLocation]
         """
@@ -105,7 +105,7 @@ class NamedLocationsRequestBuilder():
         """
         Create a new namedLocation object. Named locations can be either ipNamedLocation or countryNamedLocation objects.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

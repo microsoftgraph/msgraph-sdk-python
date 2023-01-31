@@ -17,7 +17,6 @@ class AadUserConversationMember(conversation_member.ConversationMember):
         self._email: Optional[str] = None
         # TenantId which the Azure AD user belongs to.
         self._tenant_id: Optional[str] = None
-        # The user property
         self._user: Optional[user.User] = None
         # The guid of the user.
         self._user_id: Optional[str] = None
@@ -58,9 +57,9 @@ class AadUserConversationMember(conversation_member.ConversationMember):
         """
         fields = {
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
             "user": lambda n : setattr(self, 'user', n.get_object_value(user.User)),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -100,7 +99,7 @@ class AadUserConversationMember(conversation_member.ConversationMember):
     @property
     def user(self,) -> Optional[user.User]:
         """
-        Gets the user property value. The user property
+        Gets the user property value. 
         Returns: Optional[user.User]
         """
         return self._user
@@ -108,7 +107,7 @@ class AadUserConversationMember(conversation_member.ConversationMember):
     @user.setter
     def user(self,value: Optional[user.User] = None) -> None:
         """
-        Sets the user property value. The user property
+        Sets the user property value. 
         Args:
             value: Value to set for the user property.
         """

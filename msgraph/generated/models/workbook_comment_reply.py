@@ -15,7 +15,6 @@ class WorkbookCommentReply(entity.Entity):
         self._content: Optional[str] = None
         # Indicates the type for the comment reply.
         self._content_type: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @property
@@ -71,7 +70,7 @@ class WorkbookCommentReply(entity.Entity):
         """
         fields = {
             "content": lambda n : setattr(self, 'content', n.get_str_value()),
-            "content_type": lambda n : setattr(self, 'content_type', n.get_str_value()),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

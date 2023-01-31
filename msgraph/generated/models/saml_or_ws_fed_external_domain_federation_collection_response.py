@@ -12,7 +12,6 @@ class SamlOrWsFedExternalDomainFederationCollectionResponse(base_collection_pagi
         Instantiates a new SamlOrWsFedExternalDomainFederationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[saml_or_ws_fed_external_domain_federation.SamlOrWsFedExternalDomainFederation]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class SamlOrWsFedExternalDomainFederationCollectionResponse(base_collection_pagi
     @property
     def value(self,) -> Optional[List[saml_or_ws_fed_external_domain_federation.SamlOrWsFedExternalDomainFederation]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[saml_or_ws_fed_external_domain_federation.SamlOrWsFedExternalDomainFederation]]
         """
         return self._value
@@ -61,7 +60,7 @@ class SamlOrWsFedExternalDomainFederationCollectionResponse(base_collection_pagi
     @value.setter
     def value(self,value: Optional[List[saml_or_ws_fed_external_domain_federation.SamlOrWsFedExternalDomainFederation]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

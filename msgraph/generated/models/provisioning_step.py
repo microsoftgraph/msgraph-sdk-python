@@ -38,7 +38,6 @@ class ProvisioningStep(AdditionalDataHolder, Parsable):
         self._details: Optional[details_info.DetailsInfo] = None
         # Name of the step.
         self._name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Type of step. Possible values are: import, scoping, matching, processing, referenceResolution, export, unknownFutureValue.
         self._provisioning_step_type: Optional[provisioning_step_type.ProvisioningStepType] = None
@@ -101,7 +100,7 @@ class ProvisioningStep(AdditionalDataHolder, Parsable):
             "details": lambda n : setattr(self, 'details', n.get_object_value(details_info.DetailsInfo)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "provisioning_step_type": lambda n : setattr(self, 'provisioning_step_type', n.get_enum_value(provisioning_step_type.ProvisioningStepType)),
+            "provisioningStepType": lambda n : setattr(self, 'provisioning_step_type', n.get_enum_value(provisioning_step_type.ProvisioningStepType)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(provisioning_result.ProvisioningResult)),
         }
         return fields
@@ -126,7 +125,7 @@ class ProvisioningStep(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -134,7 +133,7 @@ class ProvisioningStep(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

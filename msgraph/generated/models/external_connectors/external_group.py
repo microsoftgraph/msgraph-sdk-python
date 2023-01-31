@@ -18,7 +18,6 @@ class ExternalGroup(entity.Entity):
         self._display_name: Optional[str] = None
         # A member added to an externalGroup. You can add Azure Active Directory users, Azure Active Directory groups, or an externalGroup as members.
         self._members: Optional[List[identity.Identity]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -74,7 +73,7 @@ class ExternalGroup(entity.Entity):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(identity.Identity)),
         }
         super_fields = super().get_field_deserializers()

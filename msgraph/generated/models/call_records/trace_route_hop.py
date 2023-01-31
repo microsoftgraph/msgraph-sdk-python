@@ -33,7 +33,6 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         self._hop_count: Optional[int] = None
         # IP address used for this hop in the network trace.
         self._ip_address: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The time from when the trace route packet was sent from the client to this hop and back to the client, denoted in [ISO 8601][] format. For example, 1 second is denoted as PT1S, where P is the duration designator, T is the time designator, and S is the second designator.
         self._round_trip_time: Optional[Timedelta] = None
@@ -56,10 +55,10 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "hop_count": lambda n : setattr(self, 'hop_count', n.get_int_value()),
-            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "hopCount": lambda n : setattr(self, 'hop_count', n.get_int_value()),
+            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "round_trip_time": lambda n : setattr(self, 'round_trip_time', n.get_object_value(Timedelta)),
+            "roundTripTime": lambda n : setattr(self, 'round_trip_time', n.get_object_value(Timedelta)),
         }
         return fields
     
@@ -100,7 +99,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -108,7 +107,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

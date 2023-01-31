@@ -33,7 +33,6 @@ class EducationRubric(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # The collection of levels making up this rubric.
         self._levels: Optional[List[rubric_level.RubricLevel]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The collection of qualities making up this rubric.
         self._qualities: Optional[List[rubric_quality.RubricQuality]] = None
@@ -124,13 +123,13 @@ class EducationRubric(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_object_value(education_item_body.EducationItemBody)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "grading": lambda n : setattr(self, 'grading', n.get_object_value(education_assignment_grade_type.EducationAssignmentGradeType)),
-            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "levels": lambda n : setattr(self, 'levels', n.get_collection_of_object_values(rubric_level.RubricLevel)),
             "qualities": lambda n : setattr(self, 'qualities', n.get_collection_of_object_values(rubric_quality.RubricQuality)),
         }

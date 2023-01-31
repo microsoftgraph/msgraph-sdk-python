@@ -35,8 +35,8 @@ class IPv6Range(ip_range.IpRange):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "lower_address": lambda n : setattr(self, 'lower_address', n.get_str_value()),
-            "upper_address": lambda n : setattr(self, 'upper_address', n.get_str_value()),
+            "lowerAddress": lambda n : setattr(self, 'lower_address', n.get_str_value()),
+            "upperAddress": lambda n : setattr(self, 'upper_address', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

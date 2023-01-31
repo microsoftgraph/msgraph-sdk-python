@@ -30,7 +30,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
     @property
     def change_type(self,) -> Optional[change_type.ChangeType]:
         """
-        Gets the changeType property value. The changeType property
+        Gets the changeType property value. 
         Returns: Optional[change_type.ChangeType]
         """
         return self._change_type
@@ -38,7 +38,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
     @change_type.setter
     def change_type(self,value: Optional[change_type.ChangeType] = None) -> None:
         """
-        Sets the changeType property value. The changeType property
+        Sets the changeType property value. 
         Args:
             value: Value to set for the changeType property.
         """
@@ -68,7 +68,6 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The changeType property
         self._change_type: Optional[change_type.ChangeType] = None
         # Value of the clientState property sent in the subscription request (if any). The maximum length is 255 characters. The client can check whether the change notification came from the service by comparing the values of the clientState property. The value of the clientState property sent with the subscription is compared with the value of the clientState property received with each change notification. Optional.
         self._client_state: Optional[str] = None
@@ -78,7 +77,6 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         self._id: Optional[str] = None
         # The type of lifecycle notification if the current notification is a lifecycle notification. Optional. Supported values are missed, subscriptionRemoved, reauthorizationRequired. Optional.
         self._lifecycle_event: Optional[lifecycle_event_type.LifecycleEventType] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The URI of the resource that emitted the change notification relative to https://graph.microsoft.com. Required.
         self._resource: Optional[str] = None
@@ -126,17 +124,17 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "change_type": lambda n : setattr(self, 'change_type', n.get_enum_value(change_type.ChangeType)),
-            "client_state": lambda n : setattr(self, 'client_state', n.get_str_value()),
-            "encrypted_content": lambda n : setattr(self, 'encrypted_content', n.get_object_value(change_notification_encrypted_content.ChangeNotificationEncryptedContent)),
+            "changeType": lambda n : setattr(self, 'change_type', n.get_enum_value(change_type.ChangeType)),
+            "clientState": lambda n : setattr(self, 'client_state', n.get_str_value()),
+            "encryptedContent": lambda n : setattr(self, 'encrypted_content', n.get_object_value(change_notification_encrypted_content.ChangeNotificationEncryptedContent)),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "lifecycle_event": lambda n : setattr(self, 'lifecycle_event', n.get_enum_value(lifecycle_event_type.LifecycleEventType)),
+            "lifecycleEvent": lambda n : setattr(self, 'lifecycle_event', n.get_enum_value(lifecycle_event_type.LifecycleEventType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_str_value()),
-            "resource_data": lambda n : setattr(self, 'resource_data', n.get_object_value(resource_data.ResourceData)),
-            "subscription_expiration_date_time": lambda n : setattr(self, 'subscription_expiration_date_time', n.get_datetime_value()),
-            "subscription_id": lambda n : setattr(self, 'subscription_id', n.get_object_value(Guid)),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_object_value(Guid)),
+            "resourceData": lambda n : setattr(self, 'resource_data', n.get_object_value(resource_data.ResourceData)),
+            "subscriptionExpirationDateTime": lambda n : setattr(self, 'subscription_expiration_date_time', n.get_datetime_value()),
+            "subscriptionId": lambda n : setattr(self, 'subscription_id', n.get_object_value(Guid)),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_object_value(Guid)),
         }
         return fields
     
@@ -177,7 +175,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -185,7 +183,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -28,13 +28,9 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The getUrl property
         self._get_url: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The postParameters property
         self._post_parameters: Optional[str] = None
-        # The postUrl property
         self._post_url: Optional[str] = None
     
     @staticmethod
@@ -55,17 +51,17 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "get_url": lambda n : setattr(self, 'get_url', n.get_str_value()),
+            "getUrl": lambda n : setattr(self, 'get_url', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "post_parameters": lambda n : setattr(self, 'post_parameters', n.get_str_value()),
-            "post_url": lambda n : setattr(self, 'post_url', n.get_str_value()),
+            "postParameters": lambda n : setattr(self, 'post_parameters', n.get_str_value()),
+            "postUrl": lambda n : setattr(self, 'post_url', n.get_str_value()),
         }
         return fields
     
     @property
     def get_url(self,) -> Optional[str]:
         """
-        Gets the getUrl property value. The getUrl property
+        Gets the getUrl property value. 
         Returns: Optional[str]
         """
         return self._get_url
@@ -73,7 +69,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
     @get_url.setter
     def get_url(self,value: Optional[str] = None) -> None:
         """
-        Sets the getUrl property value. The getUrl property
+        Sets the getUrl property value. 
         Args:
             value: Value to set for the getUrl property.
         """
@@ -82,7 +78,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -90,7 +86,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -99,7 +95,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
     @property
     def post_parameters(self,) -> Optional[str]:
         """
-        Gets the postParameters property value. The postParameters property
+        Gets the postParameters property value. 
         Returns: Optional[str]
         """
         return self._post_parameters
@@ -107,7 +103,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
     @post_parameters.setter
     def post_parameters(self,value: Optional[str] = None) -> None:
         """
-        Sets the postParameters property value. The postParameters property
+        Sets the postParameters property value. 
         Args:
             value: Value to set for the postParameters property.
         """
@@ -116,7 +112,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
     @property
     def post_url(self,) -> Optional[str]:
         """
-        Gets the postUrl property value. The postUrl property
+        Gets the postUrl property value. 
         Returns: Optional[str]
         """
         return self._post_url
@@ -124,7 +120,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
     @post_url.setter
     def post_url(self,value: Optional[str] = None) -> None:
         """
-        Sets the postUrl property value. The postUrl property
+        Sets the postUrl property value. 
         Args:
             value: Value to set for the postUrl property.
         """

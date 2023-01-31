@@ -16,7 +16,7 @@ class Security(entity.Entity):
     @property
     def alerts(self,) -> Optional[List[alert.Alert]]:
         """
-        Gets the alerts property value. The alerts property
+        Gets the alerts property value. 
         Returns: Optional[List[alert.Alert]]
         """
         return self._alerts
@@ -24,7 +24,7 @@ class Security(entity.Entity):
     @alerts.setter
     def alerts(self,value: Optional[List[alert.Alert]] = None) -> None:
         """
-        Sets the alerts property value. The alerts property
+        Sets the alerts property value. 
         Args:
             value: Value to set for the alerts property.
         """
@@ -50,7 +50,7 @@ class Security(entity.Entity):
     @property
     def attack_simulation(self,) -> Optional[attack_simulation_root.AttackSimulationRoot]:
         """
-        Gets the attackSimulation property value. The attackSimulation property
+        Gets the attackSimulation property value. 
         Returns: Optional[attack_simulation_root.AttackSimulationRoot]
         """
         return self._attack_simulation
@@ -58,7 +58,7 @@ class Security(entity.Entity):
     @attack_simulation.setter
     def attack_simulation(self,value: Optional[attack_simulation_root.AttackSimulationRoot] = None) -> None:
         """
-        Sets the attackSimulation property value. The attackSimulation property
+        Sets the attackSimulation property value. 
         Args:
             value: Value to set for the attackSimulation property.
         """
@@ -67,7 +67,7 @@ class Security(entity.Entity):
     @property
     def cases(self,) -> Optional[cases_root.CasesRoot]:
         """
-        Gets the cases property value. The cases property
+        Gets the cases property value. 
         Returns: Optional[cases_root.CasesRoot]
         """
         return self._cases
@@ -75,7 +75,7 @@ class Security(entity.Entity):
     @cases.setter
     def cases(self,value: Optional[cases_root.CasesRoot] = None) -> None:
         """
-        Sets the cases property value. The cases property
+        Sets the cases property value. 
         Args:
             value: Value to set for the cases property.
         """
@@ -86,21 +86,15 @@ class Security(entity.Entity):
         Instantiates a new Security and sets the default values.
         """
         super().__init__()
-        # The alerts property
         self._alerts: Optional[List[alert.Alert]] = None
         # A collection of alerts in Microsoft 365 Defender.
         self._alerts_v2: Optional[List[alert.Alert]] = None
-        # The attackSimulation property
         self._attack_simulation: Optional[attack_simulation_root.AttackSimulationRoot] = None
-        # The cases property
         self._cases: Optional[cases_root.CasesRoot] = None
         # A collection of incidents in Microsoft 365 Defender, each of which is a set of correlated alerts and associated metadata that reflects the story of an attack.
         self._incidents: Optional[List[incident.Incident]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The secureScoreControlProfiles property
         self._secure_score_control_profiles: Optional[List[secure_score_control_profile.SecureScoreControlProfile]] = None
-        # The secureScores property
         self._secure_scores: Optional[List[secure_score.SecureScore]] = None
     
     @staticmethod
@@ -123,11 +117,11 @@ class Security(entity.Entity):
         fields = {
             "alerts": lambda n : setattr(self, 'alerts', n.get_collection_of_object_values(alert.Alert)),
             "alerts_v2": lambda n : setattr(self, 'alerts_v2', n.get_collection_of_object_values(alert.Alert)),
-            "attack_simulation": lambda n : setattr(self, 'attack_simulation', n.get_object_value(attack_simulation_root.AttackSimulationRoot)),
+            "attackSimulation": lambda n : setattr(self, 'attack_simulation', n.get_object_value(attack_simulation_root.AttackSimulationRoot)),
             "cases": lambda n : setattr(self, 'cases', n.get_object_value(cases_root.CasesRoot)),
             "incidents": lambda n : setattr(self, 'incidents', n.get_collection_of_object_values(incident.Incident)),
-            "secure_score_control_profiles": lambda n : setattr(self, 'secure_score_control_profiles', n.get_collection_of_object_values(secure_score_control_profile.SecureScoreControlProfile)),
-            "secure_scores": lambda n : setattr(self, 'secure_scores', n.get_collection_of_object_values(secure_score.SecureScore)),
+            "secureScoreControlProfiles": lambda n : setattr(self, 'secure_score_control_profiles', n.get_collection_of_object_values(secure_score_control_profile.SecureScoreControlProfile)),
+            "secureScores": lambda n : setattr(self, 'secure_scores', n.get_collection_of_object_values(secure_score.SecureScore)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -153,7 +147,7 @@ class Security(entity.Entity):
     @property
     def secure_score_control_profiles(self,) -> Optional[List[secure_score_control_profile.SecureScoreControlProfile]]:
         """
-        Gets the secureScoreControlProfiles property value. The secureScoreControlProfiles property
+        Gets the secureScoreControlProfiles property value. 
         Returns: Optional[List[secure_score_control_profile.SecureScoreControlProfile]]
         """
         return self._secure_score_control_profiles
@@ -161,7 +155,7 @@ class Security(entity.Entity):
     @secure_score_control_profiles.setter
     def secure_score_control_profiles(self,value: Optional[List[secure_score_control_profile.SecureScoreControlProfile]] = None) -> None:
         """
-        Sets the secureScoreControlProfiles property value. The secureScoreControlProfiles property
+        Sets the secureScoreControlProfiles property value. 
         Args:
             value: Value to set for the secureScoreControlProfiles property.
         """
@@ -170,7 +164,7 @@ class Security(entity.Entity):
     @property
     def secure_scores(self,) -> Optional[List[secure_score.SecureScore]]:
         """
-        Gets the secureScores property value. The secureScores property
+        Gets the secureScores property value. 
         Returns: Optional[List[secure_score.SecureScore]]
         """
         return self._secure_scores
@@ -178,7 +172,7 @@ class Security(entity.Entity):
     @secure_scores.setter
     def secure_scores(self,value: Optional[List[secure_score.SecureScore]] = None) -> None:
         """
-        Sets the secureScores property value. The secureScores property
+        Sets the secureScores property value. 
         Args:
             value: Value to set for the secureScores property.
         """

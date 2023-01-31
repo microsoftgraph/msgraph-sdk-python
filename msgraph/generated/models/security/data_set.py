@@ -13,19 +13,15 @@ class DataSet(entity.Entity):
         Instantiates a new dataSet and sets the default values.
         """
         super().__init__()
-        # The createdBy property
         self._created_by: Optional[identity_set.IdentitySet] = None
-        # The createdDateTime property
         self._created_date_time: Optional[datetime] = None
-        # The displayName property
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
         """
-        Gets the createdBy property value. The createdBy property
+        Gets the createdBy property value. 
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._created_by
@@ -33,7 +29,7 @@ class DataSet(entity.Entity):
     @created_by.setter
     def created_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
-        Sets the createdBy property value. The createdBy property
+        Sets the createdBy property value. 
         Args:
             value: Value to set for the createdBy property.
         """
@@ -42,7 +38,7 @@ class DataSet(entity.Entity):
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
-        Gets the createdDateTime property value. The createdDateTime property
+        Gets the createdDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._created_date_time
@@ -50,7 +46,7 @@ class DataSet(entity.Entity):
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the createdDateTime property value. The createdDateTime property
+        Sets the createdDateTime property value. 
         Args:
             value: Value to set for the createdDateTime property.
         """
@@ -71,7 +67,7 @@ class DataSet(entity.Entity):
     @property
     def display_name(self,) -> Optional[str]:
         """
-        Gets the displayName property value. The displayName property
+        Gets the displayName property value. 
         Returns: Optional[str]
         """
         return self._display_name
@@ -79,7 +75,7 @@ class DataSet(entity.Entity):
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the displayName property value. The displayName property
+        Sets the displayName property value. 
         Args:
             value: Value to set for the displayName property.
         """
@@ -91,9 +87,9 @@ class DataSet(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

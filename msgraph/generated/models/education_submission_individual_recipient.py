@@ -33,7 +33,7 @@ class EducationSubmissionIndividualRecipient(education_submission_recipient.Educ
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

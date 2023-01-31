@@ -33,7 +33,7 @@ class BuiltInIdentityProvider(identity_provider_base.IdentityProviderBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "identity_provider_type": lambda n : setattr(self, 'identity_provider_type', n.get_str_value()),
+            "identityProviderType": lambda n : setattr(self, 'identity_provider_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

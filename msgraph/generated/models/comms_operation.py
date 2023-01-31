@@ -32,11 +32,9 @@ class CommsOperation(entity.Entity):
         super().__init__()
         # Unique Client Context string. Max limit is 256 chars.
         self._client_context: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The result information. Read-only.
         self._result_info: Optional[result_info.ResultInfo] = None
-        # The status property
         self._status: Optional[operation_status.OperationStatus] = None
     
     @staticmethod
@@ -57,8 +55,8 @@ class CommsOperation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "client_context": lambda n : setattr(self, 'client_context', n.get_str_value()),
-            "result_info": lambda n : setattr(self, 'result_info', n.get_object_value(result_info.ResultInfo)),
+            "clientContext": lambda n : setattr(self, 'client_context', n.get_str_value()),
+            "resultInfo": lambda n : setattr(self, 'result_info', n.get_object_value(result_info.ResultInfo)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(operation_status.OperationStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -98,7 +96,7 @@ class CommsOperation(entity.Entity):
     @property
     def status(self,) -> Optional[operation_status.OperationStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[operation_status.OperationStatus]
         """
         return self._status
@@ -106,7 +104,7 @@ class CommsOperation(entity.Entity):
     @status.setter
     def status(self,value: Optional[operation_status.OperationStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

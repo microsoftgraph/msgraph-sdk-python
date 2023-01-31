@@ -11,7 +11,6 @@ class OnenoteEntityBaseModel(entity.Entity):
         Instantiates a new onenoteEntityBaseModel and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The endpoint where you can get details about the page. Read-only.
         self._self: Optional[str] = None

@@ -12,7 +12,6 @@ class DeviceConfigurationStateCollectionResponse(base_collection_pagination_coun
         Instantiates a new DeviceConfigurationStateCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[device_configuration_state.DeviceConfigurationState]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class DeviceConfigurationStateCollectionResponse(base_collection_pagination_coun
     @property
     def value(self,) -> Optional[List[device_configuration_state.DeviceConfigurationState]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[device_configuration_state.DeviceConfigurationState]]
         """
         return self._value
@@ -61,7 +60,7 @@ class DeviceConfigurationStateCollectionResponse(base_collection_pagination_coun
     @value.setter
     def value(self,value: Optional[List[device_configuration_state.DeviceConfigurationState]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -39,8 +39,8 @@ class MeetingPolicyUpdatedEventMessageDetail(event_message_detail.EventMessageDe
         """
         fields = {
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
-            "meeting_chat_enabled": lambda n : setattr(self, 'meeting_chat_enabled', n.get_bool_value()),
-            "meeting_chat_id": lambda n : setattr(self, 'meeting_chat_id', n.get_str_value()),
+            "meetingChatEnabled": lambda n : setattr(self, 'meeting_chat_enabled', n.get_bool_value()),
+            "meetingChatId": lambda n : setattr(self, 'meeting_chat_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

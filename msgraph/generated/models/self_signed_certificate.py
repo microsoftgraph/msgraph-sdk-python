@@ -29,25 +29,15 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The customKeyIdentifier property
         self._custom_key_identifier: Optional[bytes] = None
-        # The displayName property
         self._display_name: Optional[str] = None
-        # The endDateTime property
         self._end_date_time: Optional[datetime] = None
-        # The key property
         self._key: Optional[bytes] = None
-        # The keyId property
         self._key_id: Optional[Guid] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The startDateTime property
         self._start_date_time: Optional[datetime] = None
-        # The thumbprint property
         self._thumbprint: Optional[str] = None
-        # The type property
         self._type: Optional[str] = None
-        # The usage property
         self._usage: Optional[str] = None
     
     @staticmethod
@@ -65,7 +55,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     @property
     def custom_key_identifier(self,) -> Optional[bytes]:
         """
-        Gets the customKeyIdentifier property value. The customKeyIdentifier property
+        Gets the customKeyIdentifier property value. 
         Returns: Optional[bytes]
         """
         return self._custom_key_identifier
@@ -73,7 +63,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     @custom_key_identifier.setter
     def custom_key_identifier(self,value: Optional[bytes] = None) -> None:
         """
-        Sets the customKeyIdentifier property value. The customKeyIdentifier property
+        Sets the customKeyIdentifier property value. 
         Args:
             value: Value to set for the customKeyIdentifier property.
         """
@@ -82,7 +72,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     @property
     def display_name(self,) -> Optional[str]:
         """
-        Gets the displayName property value. The displayName property
+        Gets the displayName property value. 
         Returns: Optional[str]
         """
         return self._display_name
@@ -90,7 +80,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the displayName property value. The displayName property
+        Sets the displayName property value. 
         Args:
             value: Value to set for the displayName property.
         """
@@ -99,7 +89,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     @property
     def end_date_time(self,) -> Optional[datetime]:
         """
-        Gets the endDateTime property value. The endDateTime property
+        Gets the endDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._end_date_time
@@ -107,7 +97,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     @end_date_time.setter
     def end_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the endDateTime property value. The endDateTime property
+        Sets the endDateTime property value. 
         Args:
             value: Value to set for the endDateTime property.
         """
@@ -119,13 +109,13 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "custom_key_identifier": lambda n : setattr(self, 'custom_key_identifier', n.get_bytes_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "customKeyIdentifier": lambda n : setattr(self, 'custom_key_identifier', n.get_bytes_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "key": lambda n : setattr(self, 'key', n.get_bytes_value()),
-            "key_id": lambda n : setattr(self, 'key_id', n.get_object_value(Guid)),
+            "keyId": lambda n : setattr(self, 'key_id', n.get_object_value(Guid)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "thumbprint": lambda n : setattr(self, 'thumbprint', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
             "usage": lambda n : setattr(self, 'usage', n.get_str_value()),
@@ -135,7 +125,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     @property
     def key(self,) -> Optional[bytes]:
         """
-        Gets the key property value. The key property
+        Gets the key property value. 
         Returns: Optional[bytes]
         """
         return self._key
@@ -143,7 +133,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     @key.setter
     def key(self,value: Optional[bytes] = None) -> None:
         """
-        Sets the key property value. The key property
+        Sets the key property value. 
         Args:
             value: Value to set for the key property.
         """
@@ -152,7 +142,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     @property
     def key_id(self,) -> Optional[Guid]:
         """
-        Gets the keyId property value. The keyId property
+        Gets the keyId property value. 
         Returns: Optional[Guid]
         """
         return self._key_id
@@ -160,7 +150,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     @key_id.setter
     def key_id(self,value: Optional[Guid] = None) -> None:
         """
-        Sets the keyId property value. The keyId property
+        Sets the keyId property value. 
         Args:
             value: Value to set for the keyId property.
         """
@@ -169,7 +159,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -177,7 +167,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -206,7 +196,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
-        Gets the startDateTime property value. The startDateTime property
+        Gets the startDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._start_date_time
@@ -214,7 +204,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the startDateTime property value. The startDateTime property
+        Sets the startDateTime property value. 
         Args:
             value: Value to set for the startDateTime property.
         """
@@ -223,7 +213,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     @property
     def thumbprint(self,) -> Optional[str]:
         """
-        Gets the thumbprint property value. The thumbprint property
+        Gets the thumbprint property value. 
         Returns: Optional[str]
         """
         return self._thumbprint
@@ -231,7 +221,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     @thumbprint.setter
     def thumbprint(self,value: Optional[str] = None) -> None:
         """
-        Sets the thumbprint property value. The thumbprint property
+        Sets the thumbprint property value. 
         Args:
             value: Value to set for the thumbprint property.
         """
@@ -240,7 +230,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     @property
     def type(self,) -> Optional[str]:
         """
-        Gets the type property value. The type property
+        Gets the type property value. 
         Returns: Optional[str]
         """
         return self._type
@@ -248,7 +238,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     @type.setter
     def type(self,value: Optional[str] = None) -> None:
         """
-        Sets the type property value. The type property
+        Sets the type property value. 
         Args:
             value: Value to set for the type property.
         """
@@ -257,7 +247,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     @property
     def usage(self,) -> Optional[str]:
         """
-        Gets the usage property value. The usage property
+        Gets the usage property value. 
         Returns: Optional[str]
         """
         return self._usage
@@ -265,7 +255,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
     @usage.setter
     def usage(self,value: Optional[str] = None) -> None:
         """
-        Sets the usage property value. The usage property
+        Sets the usage property value. 
         Args:
             value: Value to set for the usage property.
         """

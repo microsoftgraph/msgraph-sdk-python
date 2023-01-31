@@ -66,7 +66,7 @@ class FeatureRolloutPoliciesRequestBuilder():
         """
         Create a new featureRolloutPolicy object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[feature_rollout_policy.FeatureRolloutPolicy]
         """
@@ -105,7 +105,7 @@ class FeatureRolloutPoliciesRequestBuilder():
         """
         Create a new featureRolloutPolicy object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -12,7 +12,6 @@ class PlannerPlanCollectionResponse(base_collection_pagination_count_response.Ba
         Instantiates a new PlannerPlanCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[planner_plan.PlannerPlan]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class PlannerPlanCollectionResponse(base_collection_pagination_count_response.Ba
     @property
     def value(self,) -> Optional[List[planner_plan.PlannerPlan]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[planner_plan.PlannerPlan]]
         """
         return self._value
@@ -61,7 +60,7 @@ class PlannerPlanCollectionResponse(base_collection_pagination_count_response.Ba
     @value.setter
     def value(self,value: Optional[List[planner_plan.PlannerPlan]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

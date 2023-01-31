@@ -50,7 +50,7 @@ class IPv6CidrRange(ip_range.IpRange):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "cidr_address": lambda n : setattr(self, 'cidr_address', n.get_str_value()),
+            "cidrAddress": lambda n : setattr(self, 'cidr_address', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

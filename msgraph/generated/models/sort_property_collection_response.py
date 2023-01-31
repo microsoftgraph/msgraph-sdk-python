@@ -12,7 +12,6 @@ class SortPropertyCollectionResponse(base_collection_pagination_count_response.B
         Instantiates a new SortPropertyCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[sort_property.SortProperty]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class SortPropertyCollectionResponse(base_collection_pagination_count_response.B
     @property
     def value(self,) -> Optional[List[sort_property.SortProperty]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[sort_property.SortProperty]]
         """
         return self._value
@@ -61,7 +60,7 @@ class SortPropertyCollectionResponse(base_collection_pagination_count_response.B
     @value.setter
     def value(self,value: Optional[List[sort_property.SortProperty]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

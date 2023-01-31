@@ -25,11 +25,12 @@ class PinnedChatMessageInfoItemRequestBuilder():
         """
         return message_request_builder.MessageRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, pinned_chat_message_info_id: Optional[str] = None) -> None:
         """
         Instantiates a new PinnedChatMessageInfoItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
+            pinnedChatMessageInfoId: key: id of pinnedChatMessageInfo
             requestAdapter: The request adapter to use to execute the requests.
         """
         if path_parameters is None:
@@ -40,6 +41,7 @@ class PinnedChatMessageInfoItemRequestBuilder():
         self.url_template: str = "{+baseurl}/users/{user%2Did}/chats/{chat%2Did}/pinnedMessages/{pinnedChatMessageInfo%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["pinnedChatMessageInfo%2Did"] = pinnedChatMessageInfoId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -82,7 +84,7 @@ class PinnedChatMessageInfoItemRequestBuilder():
         """
         Update the navigation property pinnedMessages in users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[pinned_chat_message_info.PinnedChatMessageInfo]
         """
@@ -137,7 +139,7 @@ class PinnedChatMessageInfoItemRequestBuilder():
         """
         Update the navigation property pinnedMessages in users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -46,7 +46,7 @@ class UnifiedRoleAssignment(entity.Entity):
     @property
     def condition(self,) -> Optional[str]:
         """
-        Gets the condition property value. The condition property
+        Gets the condition property value. 
         Returns: Optional[str]
         """
         return self._condition
@@ -54,7 +54,7 @@ class UnifiedRoleAssignment(entity.Entity):
     @condition.setter
     def condition(self,value: Optional[str] = None) -> None:
         """
-        Sets the condition property value. The condition property
+        Sets the condition property value. 
         Args:
             value: Value to set for the condition property.
         """
@@ -69,13 +69,11 @@ class UnifiedRoleAssignment(entity.Entity):
         self._app_scope: Optional[app_scope.AppScope] = None
         # Identifier of the app-specific scope when the assignment scope is app-specific.  Either this property or directoryScopeId is required. App scopes are scopes that are defined and understood by this application only. Use / for tenant-wide app scopes. Use directoryScopeId to limit the scope to particular directory objects, for example, administrative units. Supports $filter (eq, in).
         self._app_scope_id: Optional[str] = None
-        # The condition property
         self._condition: Optional[str] = None
         # The directory object that is the scope of the assignment. Read-only. Supports $expand.
         self._directory_scope: Optional[directory_object.DirectoryObject] = None
         # Identifier of the directory object representing the scope of the assignment.  Either this property or appScopeId is required. The scope of an assignment determines the set of resources for which the principal has been granted access. Directory scopes are shared scopes stored in the directory that are understood by multiple applications. Use / for tenant-wide scope. Use appScopeId to limit the scope to an application only. Supports $filter (eq, in).
         self._directory_scope_id: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Referencing the assigned principal. Read-only. Supports $expand.
         self._principal: Optional[directory_object.DirectoryObject] = None
@@ -138,15 +136,15 @@ class UnifiedRoleAssignment(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_scope": lambda n : setattr(self, 'app_scope', n.get_object_value(app_scope.AppScope)),
-            "app_scope_id": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
+            "appScope": lambda n : setattr(self, 'app_scope', n.get_object_value(app_scope.AppScope)),
+            "appScopeId": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
             "condition": lambda n : setattr(self, 'condition', n.get_str_value()),
-            "directory_scope": lambda n : setattr(self, 'directory_scope', n.get_object_value(directory_object.DirectoryObject)),
-            "directory_scope_id": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
+            "directoryScope": lambda n : setattr(self, 'directory_scope', n.get_object_value(directory_object.DirectoryObject)),
+            "directoryScopeId": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
             "principal": lambda n : setattr(self, 'principal', n.get_object_value(directory_object.DirectoryObject)),
-            "principal_id": lambda n : setattr(self, 'principal_id', n.get_str_value()),
-            "role_definition": lambda n : setattr(self, 'role_definition', n.get_object_value(unified_role_definition.UnifiedRoleDefinition)),
-            "role_definition_id": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
+            "principalId": lambda n : setattr(self, 'principal_id', n.get_str_value()),
+            "roleDefinition": lambda n : setattr(self, 'role_definition', n.get_object_value(unified_role_definition.UnifiedRoleDefinition)),
+            "roleDefinitionId": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

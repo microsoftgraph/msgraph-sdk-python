@@ -12,25 +12,26 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 subscription = lazy_import('msgraph.generated.models.subscription')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-reauthorize_request_builder = lazy_import('msgraph.generated.subscriptions.item.reauthorize.reauthorize_request_builder')
+reauthorize_request_builder = lazy_import('msgraph.generated.subscriptions.item.microsoft_graph_reauthorize.reauthorize_request_builder')
 
 class SubscriptionItemRequestBuilder():
     """
     Provides operations to manage the collection of subscription entities.
     """
     @property
-    def reauthorize(self) -> reauthorize_request_builder.ReauthorizeRequestBuilder:
+    def microsoft_graph_reauthorize(self) -> reauthorize_request_builder.ReauthorizeRequestBuilder:
         """
         Provides operations to call the reauthorize method.
         """
         return reauthorize_request_builder.ReauthorizeRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, subscription_id: Optional[str] = None) -> None:
         """
         Instantiates a new SubscriptionItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            subscriptionId: key: id of subscription
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -40,6 +41,7 @@ class SubscriptionItemRequestBuilder():
         self.url_template: str = "{+baseurl}/subscriptions/{subscription%2Did}{?%24select}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["subscription%2Did"] = subscriptionId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -82,7 +84,7 @@ class SubscriptionItemRequestBuilder():
         """
         Renew a subscription by extending its expiry time. The table in the Permissions section lists the resources that support subscribing to change notifications. Subscriptions expire after a length of time that varies by resource type. In order to avoid missing change notifications, an app should renew its subscriptions well in advance of their expiry date. See subscription for maximum length of a subscription for each resource type.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[subscription.Subscription]
         """
@@ -137,7 +139,7 @@ class SubscriptionItemRequestBuilder():
         """
         Renew a subscription by extending its expiry time. The table in the Permissions section lists the resources that support subscribing to change notifications. Subscriptions expire after a length of time that varies by resource type. In order to avoid missing change notifications, an app should renew its subscriptions well in advance of their expiry date. See subscription for maximum length of a subscription for each resource type.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -75,10 +75,10 @@ class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "active_hours_end": lambda n : setattr(self, 'active_hours_end', n.get_object_value(Time)),
-            "active_hours_start": lambda n : setattr(self, 'active_hours_start', n.get_object_value(Time)),
-            "scheduled_install_days": lambda n : setattr(self, 'scheduled_install_days', n.get_collection_of_enum_values(day_of_week.DayOfWeek)),
-            "utc_time_offset_in_minutes": lambda n : setattr(self, 'utc_time_offset_in_minutes', n.get_int_value()),
+            "activeHoursEnd": lambda n : setattr(self, 'active_hours_end', n.get_object_value(Time)),
+            "activeHoursStart": lambda n : setattr(self, 'active_hours_start', n.get_object_value(Time)),
+            "scheduledInstallDays": lambda n : setattr(self, 'scheduled_install_days', n.get_collection_of_enum_values(day_of_week.DayOfWeek)),
+            "utcTimeOffsetInMinutes": lambda n : setattr(self, 'utc_time_offset_in_minutes', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

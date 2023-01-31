@@ -12,7 +12,6 @@ class EnrollmentConfigurationAssignmentCollectionResponse(base_collection_pagina
         Instantiates a new EnrollmentConfigurationAssignmentCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[enrollment_configuration_assignment.EnrollmentConfigurationAssignment]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class EnrollmentConfigurationAssignmentCollectionResponse(base_collection_pagina
     @property
     def value(self,) -> Optional[List[enrollment_configuration_assignment.EnrollmentConfigurationAssignment]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[enrollment_configuration_assignment.EnrollmentConfigurationAssignment]]
         """
         return self._value
@@ -61,7 +60,7 @@ class EnrollmentConfigurationAssignmentCollectionResponse(base_collection_pagina
     @value.setter
     def value(self,value: Optional[List[enrollment_configuration_assignment.EnrollmentConfigurationAssignment]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

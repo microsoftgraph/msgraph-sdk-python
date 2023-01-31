@@ -12,9 +12,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 master_categories_request_builder = lazy_import('msgraph.generated.me.outlook.master_categories.master_categories_request_builder')
 outlook_category_item_request_builder = lazy_import('msgraph.generated.me.outlook.master_categories.item.outlook_category_item_request_builder')
-supported_languages_request_builder = lazy_import('msgraph.generated.me.outlook.supported_languages.supported_languages_request_builder')
-supported_time_zones_request_builder = lazy_import('msgraph.generated.me.outlook.supported_time_zones.supported_time_zones_request_builder')
-supported_time_zones_with_time_zone_standard_request_builder = lazy_import('msgraph.generated.me.outlook.supported_time_zones_with_time_zone_standard.supported_time_zones_with_time_zone_standard_request_builder')
+supported_languages_request_builder = lazy_import('msgraph.generated.me.outlook.microsoft_graph_supported_languages.supported_languages_request_builder')
+supported_time_zones_request_builder = lazy_import('msgraph.generated.me.outlook.microsoft_graph_supported_time_zones.supported_time_zones_request_builder')
+supported_time_zones_with_time_zone_standard_request_builder = lazy_import('msgraph.generated.me.outlook.microsoft_graph_supported_time_zones_with_time_zone_standard.supported_time_zones_with_time_zone_standard_request_builder')
 outlook_user = lazy_import('msgraph.generated.models.outlook_user')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -28,6 +28,20 @@ class OutlookRequestBuilder():
         Provides operations to manage the masterCategories property of the microsoft.graph.outlookUser entity.
         """
         return master_categories_request_builder.MasterCategoriesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_supported_languages(self) -> supported_languages_request_builder.SupportedLanguagesRequestBuilder:
+        """
+        Provides operations to call the supportedLanguages method.
+        """
+        return supported_languages_request_builder.SupportedLanguagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_supported_time_zones(self) -> supported_time_zones_request_builder.SupportedTimeZonesRequestBuilder:
+        """
+        Provides operations to call the supportedTimeZones method.
+        """
+        return supported_time_zones_request_builder.SupportedTimeZonesRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -78,21 +92,7 @@ class OutlookRequestBuilder():
         url_tpl_params["outlookCategory%2Did"] = id
         return outlook_category_item_request_builder.OutlookCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def supported_languages(self,) -> supported_languages_request_builder.SupportedLanguagesRequestBuilder:
-        """
-        Provides operations to call the supportedLanguages method.
-        Returns: supported_languages_request_builder.SupportedLanguagesRequestBuilder
-        """
-        return supported_languages_request_builder.SupportedLanguagesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    def supported_time_zones(self,) -> supported_time_zones_request_builder.SupportedTimeZonesRequestBuilder:
-        """
-        Provides operations to call the supportedTimeZones method.
-        Returns: supported_time_zones_request_builder.SupportedTimeZonesRequestBuilder
-        """
-        return supported_time_zones_request_builder.SupportedTimeZonesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    def supported_time_zones_with_time_zone_standard(self,time_zone_standard: Optional[str] = None) -> supported_time_zones_with_time_zone_standard_request_builder.SupportedTimeZonesWithTimeZoneStandardRequestBuilder:
+    def microsoft_graph_supported_time_zones_with_time_zone_standard(self,time_zone_standard: Optional[str] = None) -> supported_time_zones_with_time_zone_standard_request_builder.SupportedTimeZonesWithTimeZoneStandardRequestBuilder:
         """
         Provides operations to call the supportedTimeZones method.
         Args:

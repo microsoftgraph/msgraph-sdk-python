@@ -12,7 +12,6 @@ class MicrosoftAuthenticatorAuthenticationMethodConfigurationCollectionResponse(
         Instantiates a new MicrosoftAuthenticatorAuthenticationMethodConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[microsoft_authenticator_authentication_method_configuration.MicrosoftAuthenticatorAuthenticationMethodConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class MicrosoftAuthenticatorAuthenticationMethodConfigurationCollectionResponse(
     @property
     def value(self,) -> Optional[List[microsoft_authenticator_authentication_method_configuration.MicrosoftAuthenticatorAuthenticationMethodConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[microsoft_authenticator_authentication_method_configuration.MicrosoftAuthenticatorAuthenticationMethodConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class MicrosoftAuthenticatorAuthenticationMethodConfigurationCollectionResponse(
     @value.setter
     def value(self,value: Optional[List[microsoft_authenticator_authentication_method_configuration.MicrosoftAuthenticatorAuthenticationMethodConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

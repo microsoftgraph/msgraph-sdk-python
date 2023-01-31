@@ -12,7 +12,6 @@ class AndroidWorkProfileGeneralDeviceConfigurationCollectionResponse(base_collec
         Instantiates a new AndroidWorkProfileGeneralDeviceConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[android_work_profile_general_device_configuration.AndroidWorkProfileGeneralDeviceConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class AndroidWorkProfileGeneralDeviceConfigurationCollectionResponse(base_collec
     @property
     def value(self,) -> Optional[List[android_work_profile_general_device_configuration.AndroidWorkProfileGeneralDeviceConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[android_work_profile_general_device_configuration.AndroidWorkProfileGeneralDeviceConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class AndroidWorkProfileGeneralDeviceConfigurationCollectionResponse(base_collec
     @value.setter
     def value(self,value: Optional[List[android_work_profile_general_device_configuration.AndroidWorkProfileGeneralDeviceConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

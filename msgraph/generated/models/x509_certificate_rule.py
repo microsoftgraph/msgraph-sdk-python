@@ -33,7 +33,6 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
 
         # The identifier of the X.509 certificate. Required.
         self._identifier: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The type of strong authentication mode. The possible values are: x509CertificateSingleFactor, x509CertificateMultiFactor, unknownFutureValue. Required.
         self._x509_certificate_authentication_mode: Optional[x509_certificate_authentication_mode.X509CertificateAuthenticationMode] = None
@@ -60,8 +59,8 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
         fields = {
             "identifier": lambda n : setattr(self, 'identifier', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "x509_certificate_authentication_mode": lambda n : setattr(self, 'x509_certificate_authentication_mode', n.get_enum_value(x509_certificate_authentication_mode.X509CertificateAuthenticationMode)),
-            "x509_certificate_rule_type": lambda n : setattr(self, 'x509_certificate_rule_type', n.get_enum_value(x509_certificate_rule_type.X509CertificateRuleType)),
+            "x509CertificateAuthenticationMode": lambda n : setattr(self, 'x509_certificate_authentication_mode', n.get_enum_value(x509_certificate_authentication_mode.X509CertificateAuthenticationMode)),
+            "x509CertificateRuleType": lambda n : setattr(self, 'x509_certificate_rule_type', n.get_enum_value(x509_certificate_rule_type.X509CertificateRuleType)),
         }
         return fields
     
@@ -85,7 +84,7 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -93,7 +92,7 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

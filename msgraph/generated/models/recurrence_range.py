@@ -35,7 +35,6 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         self._end_date: Optional[Date] = None
         # The number of times to repeat the event. Required and must be positive if type is numbered.
         self._number_of_occurrences: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Time zone for the startDate and endDate properties. Optional. If not specified, the time zone of the event is used.
         self._recurrence_time_zone: Optional[str] = None
@@ -79,11 +78,11 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "end_date": lambda n : setattr(self, 'end_date', n.get_object_value(Date)),
-            "number_of_occurrences": lambda n : setattr(self, 'number_of_occurrences', n.get_int_value()),
+            "endDate": lambda n : setattr(self, 'end_date', n.get_object_value(Date)),
+            "numberOfOccurrences": lambda n : setattr(self, 'number_of_occurrences', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recurrence_time_zone": lambda n : setattr(self, 'recurrence_time_zone', n.get_str_value()),
-            "start_date": lambda n : setattr(self, 'start_date', n.get_object_value(Date)),
+            "recurrenceTimeZone": lambda n : setattr(self, 'recurrence_time_zone', n.get_str_value()),
+            "startDate": lambda n : setattr(self, 'start_date', n.get_object_value(Date)),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(recurrence_range_type.RecurrenceRangeType)),
         }
         return fields
@@ -108,7 +107,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -116,7 +115,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

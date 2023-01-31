@@ -17,10 +17,11 @@ class ConditionalAccessPolicyItemRequestBuilder():
     """
     Provides operations to manage the policies property of the microsoft.graph.conditionalAccessRoot entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, conditional_access_policy_id: Optional[str] = None) -> None:
         """
         Instantiates a new ConditionalAccessPolicyItemRequestBuilder and sets the default values.
         Args:
+            conditionalAccessPolicyId: key: id of conditionalAccessPolicy
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class ConditionalAccessPolicyItemRequestBuilder():
         self.url_template: str = "{+baseurl}/identity/conditionalAccess/policies/{conditionalAccessPolicy%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["conditionalAccessPolicy%2Did"] = conditionalAccessPolicyId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -74,7 +76,7 @@ class ConditionalAccessPolicyItemRequestBuilder():
         """
         Update the navigation property policies in identity
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[conditional_access_policy.ConditionalAccessPolicy]
         """
@@ -129,7 +131,7 @@ class ConditionalAccessPolicyItemRequestBuilder():
         """
         Update the navigation property policies in identity
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

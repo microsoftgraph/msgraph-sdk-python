@@ -20,7 +20,6 @@ class EducationOrganization(entity.Entity):
         self._external_source: Optional[education_external_source.EducationExternalSource] = None
         # The name of the external source this resources was generated from.
         self._external_source_detail: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -110,9 +109,9 @@ class EducationOrganization(entity.Entity):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "external_source": lambda n : setattr(self, 'external_source', n.get_enum_value(education_external_source.EducationExternalSource)),
-            "external_source_detail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "externalSource": lambda n : setattr(self, 'external_source', n.get_enum_value(education_external_source.EducationExternalSource)),
+            "externalSourceDetail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

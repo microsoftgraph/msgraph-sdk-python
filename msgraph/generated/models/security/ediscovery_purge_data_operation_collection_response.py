@@ -12,7 +12,6 @@ class EdiscoveryPurgeDataOperationCollectionResponse(base_collection_pagination_
         Instantiates a new EdiscoveryPurgeDataOperationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[ediscovery_purge_data_operation.EdiscoveryPurgeDataOperation]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class EdiscoveryPurgeDataOperationCollectionResponse(base_collection_pagination_
     @property
     def value(self,) -> Optional[List[ediscovery_purge_data_operation.EdiscoveryPurgeDataOperation]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[ediscovery_purge_data_operation.EdiscoveryPurgeDataOperation]]
         """
         return self._value
@@ -61,7 +60,7 @@ class EdiscoveryPurgeDataOperationCollectionResponse(base_collection_pagination_
     @value.setter
     def value(self,value: Optional[List[ediscovery_purge_data_operation.EdiscoveryPurgeDataOperation]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

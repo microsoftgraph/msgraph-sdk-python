@@ -81,14 +81,14 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "apple_id": lambda n : setattr(self, 'apple_id', n.get_str_value()),
+            "appleId": lambda n : setattr(self, 'apple_id', n.get_str_value()),
             "genres": lambda n : setattr(self, 'genres', n.get_collection_of_primitive_values(str)),
             "language": lambda n : setattr(self, 'language', n.get_str_value()),
             "seller": lambda n : setattr(self, 'seller', n.get_str_value()),
-            "total_license_count": lambda n : setattr(self, 'total_license_count', n.get_int_value()),
-            "used_license_count": lambda n : setattr(self, 'used_license_count', n.get_int_value()),
-            "vpp_organization_name": lambda n : setattr(self, 'vpp_organization_name', n.get_str_value()),
-            "vpp_token_id": lambda n : setattr(self, 'vpp_token_id', n.get_object_value(Guid)),
+            "totalLicenseCount": lambda n : setattr(self, 'total_license_count', n.get_int_value()),
+            "usedLicenseCount": lambda n : setattr(self, 'used_license_count', n.get_int_value()),
+            "vppOrganizationName": lambda n : setattr(self, 'vpp_organization_name', n.get_str_value()),
+            "vppTokenId": lambda n : setattr(self, 'vpp_token_id', n.get_object_value(Guid)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

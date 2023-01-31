@@ -17,10 +17,11 @@ class IdentityItemRequestBuilder():
     """
     Provides operations to manage the members property of the microsoft.graph.externalConnectors.externalGroup entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, identity_id: Optional[str] = None) -> None:
         """
         Instantiates a new IdentityItemRequestBuilder and sets the default values.
         Args:
+            identityId: key: id of identity
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class IdentityItemRequestBuilder():
         self.url_template: str = "{+baseurl}/external/connections/{externalConnection%2Did}/groups/{externalGroup%2Did}/members/{identity%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["identity%2Did"] = identityId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -74,7 +76,7 @@ class IdentityItemRequestBuilder():
         """
         Update the navigation property members in external
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[identity.Identity]
         """
@@ -129,7 +131,7 @@ class IdentityItemRequestBuilder():
         """
         Update the navigation property members in external
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

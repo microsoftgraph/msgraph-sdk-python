@@ -15,7 +15,6 @@ class RoomList(place.Place):
         self.odata_type = "#microsoft.graph.roomList"
         # The email address of the room list.
         self._email_address: Optional[str] = None
-        # The rooms property
         self._rooms: Optional[List[room.Room]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class RoomList(place.Place):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "email_address": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
             "rooms": lambda n : setattr(self, 'rooms', n.get_collection_of_object_values(room.Room)),
         }
         super_fields = super().get_field_deserializers()
@@ -63,7 +62,7 @@ class RoomList(place.Place):
     @property
     def rooms(self,) -> Optional[List[room.Room]]:
         """
-        Gets the rooms property value. The rooms property
+        Gets the rooms property value. 
         Returns: Optional[List[room.Room]]
         """
         return self._rooms
@@ -71,7 +70,7 @@ class RoomList(place.Place):
     @rooms.setter
     def rooms(self,value: Optional[List[room.Room]] = None) -> None:
         """
-        Sets the rooms property value. The rooms property
+        Sets the rooms property value. 
         Args:
             value: Value to set for the rooms property.
         """

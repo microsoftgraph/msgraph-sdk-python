@@ -109,7 +109,6 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         self._allow_invites_from: Optional[allow_invites_from.AllowInvitesFrom] = None
         # To disable the use of MSOL PowerShell set this property to true. This will also disable user-based access to the legacy service endpoint used by MSOL PowerShell. This does not affect Azure AD Connect or Microsoft Graph.
         self._block_msol_power_shell: Optional[bool] = None
-        # The defaultUserRolePermissions property
         self._default_user_role_permissions: Optional[default_user_role_permissions.DefaultUserRolePermissions] = None
         # Represents role templateId for the role that should be granted to guest user. Currently following roles are supported:  User (a0b1b346-4d3e-4e8b-98f8-753987be4970), Guest User (10dae51f-b6af-4016-8d66-8c2a99b929b3), and Restricted Guest User (2af84b1e-32c8-42b7-82bc-daa82404023b).
         self._guest_user_role_id: Optional[Guid] = None
@@ -129,7 +128,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
     @property
     def default_user_role_permissions(self,) -> Optional[default_user_role_permissions.DefaultUserRolePermissions]:
         """
-        Gets the defaultUserRolePermissions property value. The defaultUserRolePermissions property
+        Gets the defaultUserRolePermissions property value. 
         Returns: Optional[default_user_role_permissions.DefaultUserRolePermissions]
         """
         return self._default_user_role_permissions
@@ -137,7 +136,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
     @default_user_role_permissions.setter
     def default_user_role_permissions(self,value: Optional[default_user_role_permissions.DefaultUserRolePermissions] = None) -> None:
         """
-        Sets the defaultUserRolePermissions property value. The defaultUserRolePermissions property
+        Sets the defaultUserRolePermissions property value. 
         Args:
             value: Value to set for the defaultUserRolePermissions property.
         """
@@ -149,13 +148,13 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allowed_to_sign_up_email_based_subscriptions": lambda n : setattr(self, 'allowed_to_sign_up_email_based_subscriptions', n.get_bool_value()),
-            "allowed_to_use_s_s_p_r": lambda n : setattr(self, 'allowed_to_use_s_s_p_r', n.get_bool_value()),
-            "allow_email_verified_users_to_join_organization": lambda n : setattr(self, 'allow_email_verified_users_to_join_organization', n.get_bool_value()),
-            "allow_invites_from": lambda n : setattr(self, 'allow_invites_from', n.get_enum_value(allow_invites_from.AllowInvitesFrom)),
-            "block_msol_power_shell": lambda n : setattr(self, 'block_msol_power_shell', n.get_bool_value()),
-            "default_user_role_permissions": lambda n : setattr(self, 'default_user_role_permissions', n.get_object_value(default_user_role_permissions.DefaultUserRolePermissions)),
-            "guest_user_role_id": lambda n : setattr(self, 'guest_user_role_id', n.get_object_value(Guid)),
+            "allowedToSignUpEmailBasedSubscriptions": lambda n : setattr(self, 'allowed_to_sign_up_email_based_subscriptions', n.get_bool_value()),
+            "allowedToUseSSPR": lambda n : setattr(self, 'allowed_to_use_s_s_p_r', n.get_bool_value()),
+            "allowEmailVerifiedUsersToJoinOrganization": lambda n : setattr(self, 'allow_email_verified_users_to_join_organization', n.get_bool_value()),
+            "allowInvitesFrom": lambda n : setattr(self, 'allow_invites_from', n.get_enum_value(allow_invites_from.AllowInvitesFrom)),
+            "blockMsolPowerShell": lambda n : setattr(self, 'block_msol_power_shell', n.get_bool_value()),
+            "defaultUserRolePermissions": lambda n : setattr(self, 'default_user_role_permissions', n.get_object_value(default_user_role_permissions.DefaultUserRolePermissions)),
+            "guestUserRoleId": lambda n : setattr(self, 'guest_user_role_id', n.get_object_value(Guid)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -93,7 +93,7 @@ class IdentityProtectionRequestBuilder():
         """
         Update identityProtection
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[identity_protection_root.IdentityProtectionRoot]
         """
@@ -184,7 +184,7 @@ class IdentityProtectionRequestBuilder():
         """
         Update identityProtection
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

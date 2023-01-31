@@ -14,7 +14,7 @@ attachment_base = lazy_import('msgraph.generated.models.attachment_base')
 attachment_base_collection_response = lazy_import('msgraph.generated.models.attachment_base_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.users.item.todo.lists.item.tasks.item.attachments.count.count_request_builder')
-create_upload_session_request_builder = lazy_import('msgraph.generated.users.item.todo.lists.item.tasks.item.attachments.create_upload_session.create_upload_session_request_builder')
+create_upload_session_request_builder = lazy_import('msgraph.generated.users.item.todo.lists.item.tasks.item.attachments.microsoft_graph_create_upload_session.create_upload_session_request_builder')
 
 class AttachmentsRequestBuilder():
     """
@@ -28,7 +28,7 @@ class AttachmentsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def create_upload_session(self) -> create_upload_session_request_builder.CreateUploadSessionRequestBuilder:
+    def microsoft_graph_create_upload_session(self) -> create_upload_session_request_builder.CreateUploadSessionRequestBuilder:
         """
         Provides operations to call the createUploadSession method.
         """
@@ -74,7 +74,7 @@ class AttachmentsRequestBuilder():
         """
         Create new navigation property to attachments for users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[attachment_base.AttachmentBase]
         """
@@ -113,7 +113,7 @@ class AttachmentsRequestBuilder():
         """
         Create new navigation property to attachments for users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

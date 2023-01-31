@@ -31,7 +31,6 @@ class TimeRange(AdditionalDataHolder, Parsable):
 
         # End time for the time range.
         self._end_time: Optional[Time] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Start time for the time range.
         self._start_time: Optional[Time] = None
@@ -71,16 +70,16 @@ class TimeRange(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "end_time": lambda n : setattr(self, 'end_time', n.get_object_value(Time)),
+            "endTime": lambda n : setattr(self, 'end_time', n.get_object_value(Time)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "start_time": lambda n : setattr(self, 'start_time', n.get_object_value(Time)),
+            "startTime": lambda n : setattr(self, 'start_time', n.get_object_value(Time)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -88,7 +87,7 @@ class TimeRange(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

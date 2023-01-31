@@ -66,7 +66,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
     @property
     def body(self,) -> Optional[item_body.ItemBody]:
         """
-        Gets the body property value. The body property
+        Gets the body property value. 
         Returns: Optional[item_body.ItemBody]
         """
         return self._body
@@ -74,7 +74,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
     @body.setter
     def body(self,value: Optional[item_body.ItemBody] = None) -> None:
         """
-        Sets the body property value. The body property
+        Sets the body property value. 
         Args:
             value: Value to set for the body property.
         """
@@ -83,7 +83,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
     @property
     def category(self,) -> Optional[service_update_category.ServiceUpdateCategory]:
         """
-        Gets the category property value. The category property
+        Gets the category property value. 
         Returns: Optional[service_update_category.ServiceUpdateCategory]
         """
         return self._category
@@ -91,7 +91,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
     @category.setter
     def category(self,value: Optional[service_update_category.ServiceUpdateCategory] = None) -> None:
         """
-        Sets the category property value. The category property
+        Sets the category property value. 
         Args:
             value: Value to set for the category property.
         """
@@ -109,9 +109,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         self._attachments: Optional[List[service_announcement_attachment.ServiceAnnouncementAttachment]] = None
         # The zip file that contains all attachments for a message.
         self._attachments_archive: Optional[bytes] = None
-        # The body property
         self._body: Optional[item_body.ItemBody] = None
-        # The category property
         self._category: Optional[service_update_category.ServiceUpdateCategory] = None
         # Indicates whether the message has any attachment.
         self._has_attachments: Optional[bool] = None
@@ -119,7 +117,6 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         self._is_major_change: Optional[bool] = None
         # The affected services by the service message.
         self._services: Optional[List[str]] = None
-        # The severity property
         self._severity: Optional[service_update_severity.ServiceUpdateSeverity] = None
         # A collection of tags for the service message. Tags are provided by the service team/support team who post the message to tell whether this message contains privacy data, or whether this message is for a service new feature update, and so on.
         self._tags: Optional[List[str]] = None
@@ -144,17 +141,17 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "action_required_by_date_time": lambda n : setattr(self, 'action_required_by_date_time', n.get_datetime_value()),
+            "actionRequiredByDateTime": lambda n : setattr(self, 'action_required_by_date_time', n.get_datetime_value()),
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(service_announcement_attachment.ServiceAnnouncementAttachment)),
-            "attachments_archive": lambda n : setattr(self, 'attachments_archive', n.get_bytes_value()),
+            "attachmentsArchive": lambda n : setattr(self, 'attachments_archive', n.get_bytes_value()),
             "body": lambda n : setattr(self, 'body', n.get_object_value(item_body.ItemBody)),
             "category": lambda n : setattr(self, 'category', n.get_enum_value(service_update_category.ServiceUpdateCategory)),
-            "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
-            "is_major_change": lambda n : setattr(self, 'is_major_change', n.get_bool_value()),
+            "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
+            "isMajorChange": lambda n : setattr(self, 'is_major_change', n.get_bool_value()),
             "services": lambda n : setattr(self, 'services', n.get_collection_of_primitive_values(str)),
             "severity": lambda n : setattr(self, 'severity', n.get_enum_value(service_update_severity.ServiceUpdateSeverity)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
-            "view_point": lambda n : setattr(self, 'view_point', n.get_object_value(service_update_message_viewpoint.ServiceUpdateMessageViewpoint)),
+            "viewPoint": lambda n : setattr(self, 'view_point', n.get_object_value(service_update_message_viewpoint.ServiceUpdateMessageViewpoint)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -235,7 +232,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
     @property
     def severity(self,) -> Optional[service_update_severity.ServiceUpdateSeverity]:
         """
-        Gets the severity property value. The severity property
+        Gets the severity property value. 
         Returns: Optional[service_update_severity.ServiceUpdateSeverity]
         """
         return self._severity
@@ -243,7 +240,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
     @severity.setter
     def severity(self,value: Optional[service_update_severity.ServiceUpdateSeverity] = None) -> None:
         """
-        Sets the severity property value. The severity property
+        Sets the severity property value. 
         Args:
             value: Value to set for the severity property.
         """

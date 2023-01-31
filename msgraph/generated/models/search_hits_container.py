@@ -27,7 +27,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
     @property
     def aggregations(self,) -> Optional[List[search_aggregation.SearchAggregation]]:
         """
-        Gets the aggregations property value. The aggregations property
+        Gets the aggregations property value. 
         Returns: Optional[List[search_aggregation.SearchAggregation]]
         """
         return self._aggregations
@@ -35,7 +35,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
     @aggregations.setter
     def aggregations(self,value: Optional[List[search_aggregation.SearchAggregation]] = None) -> None:
         """
-        Sets the aggregations property value. The aggregations property
+        Sets the aggregations property value. 
         Args:
             value: Value to set for the aggregations property.
         """
@@ -48,13 +48,11 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The aggregations property
         self._aggregations: Optional[List[search_aggregation.SearchAggregation]] = None
         # A collection of the search results.
         self._hits: Optional[List[search_hit.SearchHit]] = None
         # Provides information if more results are available. Based on this information, you can adjust the from and size properties of the searchRequest accordingly.
         self._more_results_available: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The total number of results. Note this is not the number of results on the page, but the total number of results satisfying the query.
         self._total: Optional[int] = None
@@ -79,7 +77,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         fields = {
             "aggregations": lambda n : setattr(self, 'aggregations', n.get_collection_of_object_values(search_aggregation.SearchAggregation)),
             "hits": lambda n : setattr(self, 'hits', n.get_collection_of_object_values(search_hit.SearchHit)),
-            "more_results_available": lambda n : setattr(self, 'more_results_available', n.get_bool_value()),
+            "moreResultsAvailable": lambda n : setattr(self, 'more_results_available', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "total": lambda n : setattr(self, 'total', n.get_int_value()),
         }
@@ -122,7 +120,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -130,7 +128,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

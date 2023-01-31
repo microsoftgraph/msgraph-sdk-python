@@ -93,10 +93,10 @@ class WindowsHelloForBusinessAuthenticationMethod(authentication_method.Authenti
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "device": lambda n : setattr(self, 'device', n.get_object_value(device.Device)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "key_strength": lambda n : setattr(self, 'key_strength', n.get_enum_value(authentication_method_key_strength.AuthenticationMethodKeyStrength)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "keyStrength": lambda n : setattr(self, 'key_strength', n.get_enum_value(authentication_method_key_strength.AuthenticationMethodKeyStrength)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -33,7 +33,6 @@ class BaseItem(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # The name of the item. Read-write.
         self._name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Parent information, if the item has a parent. Read-write.
         self._parent_reference: Optional[item_reference.ItemReference] = None
@@ -143,17 +142,17 @@ class BaseItem(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_by_user": lambda n : setattr(self, 'created_by_user', n.get_object_value(user.User)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdByUser": lambda n : setattr(self, 'created_by_user', n.get_object_value(user.User)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "e_tag": lambda n : setattr(self, 'e_tag', n.get_str_value()),
-            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
-            "last_modified_by_user": lambda n : setattr(self, 'last_modified_by_user', n.get_object_value(user.User)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "eTag": lambda n : setattr(self, 'e_tag', n.get_str_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedByUser": lambda n : setattr(self, 'last_modified_by_user', n.get_object_value(user.User)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "parent_reference": lambda n : setattr(self, 'parent_reference', n.get_object_value(item_reference.ItemReference)),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "parentReference": lambda n : setattr(self, 'parent_reference', n.get_object_value(item_reference.ItemReference)),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

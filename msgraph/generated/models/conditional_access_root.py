@@ -36,7 +36,6 @@ class ConditionalAccessRoot(entity.Entity):
         self._authentication_context_class_references: Optional[List[authentication_context_class_reference.AuthenticationContextClassReference]] = None
         # Read-only. Nullable. Returns a collection of the specified named locations.
         self._named_locations: Optional[List[named_location.NamedLocation]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
         self._policies: Optional[List[conditional_access_policy.ConditionalAccessPolicy]] = None
@@ -61,8 +60,8 @@ class ConditionalAccessRoot(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "authentication_context_class_references": lambda n : setattr(self, 'authentication_context_class_references', n.get_collection_of_object_values(authentication_context_class_reference.AuthenticationContextClassReference)),
-            "named_locations": lambda n : setattr(self, 'named_locations', n.get_collection_of_object_values(named_location.NamedLocation)),
+            "authenticationContextClassReferences": lambda n : setattr(self, 'authentication_context_class_references', n.get_collection_of_object_values(authentication_context_class_reference.AuthenticationContextClassReference)),
+            "namedLocations": lambda n : setattr(self, 'named_locations', n.get_collection_of_object_values(named_location.NamedLocation)),
             "policies": lambda n : setattr(self, 'policies', n.get_collection_of_object_values(conditional_access_policy.ConditionalAccessPolicy)),
             "templates": lambda n : setattr(self, 'templates', n.get_collection_of_object_values(conditional_access_template.ConditionalAccessTemplate)),
         }

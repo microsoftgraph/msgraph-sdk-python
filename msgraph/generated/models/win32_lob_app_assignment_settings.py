@@ -60,10 +60,10 @@ class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "delivery_optimization_priority": lambda n : setattr(self, 'delivery_optimization_priority', n.get_enum_value(win32_lob_app_delivery_optimization_priority.Win32LobAppDeliveryOptimizationPriority)),
-            "install_time_settings": lambda n : setattr(self, 'install_time_settings', n.get_object_value(mobile_app_install_time_settings.MobileAppInstallTimeSettings)),
+            "deliveryOptimizationPriority": lambda n : setattr(self, 'delivery_optimization_priority', n.get_enum_value(win32_lob_app_delivery_optimization_priority.Win32LobAppDeliveryOptimizationPriority)),
+            "installTimeSettings": lambda n : setattr(self, 'install_time_settings', n.get_object_value(mobile_app_install_time_settings.MobileAppInstallTimeSettings)),
             "notifications": lambda n : setattr(self, 'notifications', n.get_enum_value(win32_lob_app_notification.Win32LobAppNotification)),
-            "restart_settings": lambda n : setattr(self, 'restart_settings', n.get_object_value(win32_lob_app_restart_settings.Win32LobAppRestartSettings)),
+            "restartSettings": lambda n : setattr(self, 'restart_settings', n.get_object_value(win32_lob_app_restart_settings.Win32LobAppRestartSettings)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

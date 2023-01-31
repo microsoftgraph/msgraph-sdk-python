@@ -27,7 +27,7 @@ class ApplicationServicePrincipal(AdditionalDataHolder, Parsable):
     @property
     def application(self,) -> Optional[application.Application]:
         """
-        Gets the application property value. The application property
+        Gets the application property value. 
         Returns: Optional[application.Application]
         """
         return self._application
@@ -35,7 +35,7 @@ class ApplicationServicePrincipal(AdditionalDataHolder, Parsable):
     @application.setter
     def application(self,value: Optional[application.Application] = None) -> None:
         """
-        Sets the application property value. The application property
+        Sets the application property value. 
         Args:
             value: Value to set for the application property.
         """
@@ -48,11 +48,8 @@ class ApplicationServicePrincipal(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The application property
         self._application: Optional[application.Application] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The servicePrincipal property
         self._service_principal: Optional[service_principal.ServicePrincipal] = None
     
     @staticmethod
@@ -75,14 +72,14 @@ class ApplicationServicePrincipal(AdditionalDataHolder, Parsable):
         fields = {
             "application": lambda n : setattr(self, 'application', n.get_object_value(application.Application)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "service_principal": lambda n : setattr(self, 'service_principal', n.get_object_value(service_principal.ServicePrincipal)),
+            "servicePrincipal": lambda n : setattr(self, 'service_principal', n.get_object_value(service_principal.ServicePrincipal)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -90,7 +87,7 @@ class ApplicationServicePrincipal(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -112,7 +109,7 @@ class ApplicationServicePrincipal(AdditionalDataHolder, Parsable):
     @property
     def service_principal(self,) -> Optional[service_principal.ServicePrincipal]:
         """
-        Gets the servicePrincipal property value. The servicePrincipal property
+        Gets the servicePrincipal property value. 
         Returns: Optional[service_principal.ServicePrincipal]
         """
         return self._service_principal
@@ -120,7 +117,7 @@ class ApplicationServicePrincipal(AdditionalDataHolder, Parsable):
     @service_principal.setter
     def service_principal(self,value: Optional[service_principal.ServicePrincipal] = None) -> None:
         """
-        Sets the servicePrincipal property value. The servicePrincipal property
+        Sets the servicePrincipal property value. 
         Args:
             value: Value to set for the servicePrincipal property.
         """

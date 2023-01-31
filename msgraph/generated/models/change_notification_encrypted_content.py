@@ -38,7 +38,6 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
         self._encryption_certificate_id: Optional[str] = None
         # Hexadecimal representation of the thumbprint of the certificate used to encrypt the dataKey.
         self._encryption_certificate_thumbprint: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -145,10 +144,10 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
         """
         fields = {
             "data": lambda n : setattr(self, 'data', n.get_str_value()),
-            "data_key": lambda n : setattr(self, 'data_key', n.get_str_value()),
-            "data_signature": lambda n : setattr(self, 'data_signature', n.get_str_value()),
-            "encryption_certificate_id": lambda n : setattr(self, 'encryption_certificate_id', n.get_str_value()),
-            "encryption_certificate_thumbprint": lambda n : setattr(self, 'encryption_certificate_thumbprint', n.get_str_value()),
+            "dataKey": lambda n : setattr(self, 'data_key', n.get_str_value()),
+            "dataSignature": lambda n : setattr(self, 'data_signature', n.get_str_value()),
+            "encryptionCertificateId": lambda n : setattr(self, 'encryption_certificate_id', n.get_str_value()),
+            "encryptionCertificateThumbprint": lambda n : setattr(self, 'encryption_certificate_thumbprint', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -156,7 +155,7 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -164,7 +163,7 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

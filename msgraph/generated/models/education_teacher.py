@@ -30,7 +30,6 @@ class EducationTeacher(AdditionalDataHolder, Parsable):
 
         # ID of the teacher in the source system.
         self._external_id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Teacher number.
         self._teacher_number: Optional[str] = None
@@ -70,16 +69,16 @@ class EducationTeacher(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "teacher_number": lambda n : setattr(self, 'teacher_number', n.get_str_value()),
+            "teacherNumber": lambda n : setattr(self, 'teacher_number', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -87,7 +86,7 @@ class EducationTeacher(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

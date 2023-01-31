@@ -125,7 +125,6 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         self._media_bypass_enabled: Optional[bool] = None
         # The datacenter used for media path in non-bypass call.
         self._media_path_location: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The datacenter used for signaling for both bypass and non-bypass calls.
         self._signaling_location: Optional[str] = None
@@ -262,28 +261,28 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "callee_number": lambda n : setattr(self, 'callee_number', n.get_str_value()),
-            "call_end_sub_reason": lambda n : setattr(self, 'call_end_sub_reason', n.get_int_value()),
-            "caller_number": lambda n : setattr(self, 'caller_number', n.get_str_value()),
-            "call_type": lambda n : setattr(self, 'call_type', n.get_str_value()),
-            "correlation_id": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
+            "calleeNumber": lambda n : setattr(self, 'callee_number', n.get_str_value()),
+            "callEndSubReason": lambda n : setattr(self, 'call_end_sub_reason', n.get_int_value()),
+            "callerNumber": lambda n : setattr(self, 'caller_number', n.get_str_value()),
+            "callType": lambda n : setattr(self, 'call_type', n.get_str_value()),
+            "correlationId": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
             "duration": lambda n : setattr(self, 'duration', n.get_int_value()),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "failure_date_time": lambda n : setattr(self, 'failure_date_time', n.get_datetime_value()),
-            "final_sip_code": lambda n : setattr(self, 'final_sip_code', n.get_int_value()),
-            "final_sip_code_phrase": lambda n : setattr(self, 'final_sip_code_phrase', n.get_str_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "failureDateTime": lambda n : setattr(self, 'failure_date_time', n.get_datetime_value()),
+            "finalSipCode": lambda n : setattr(self, 'final_sip_code', n.get_int_value()),
+            "finalSipCodePhrase": lambda n : setattr(self, 'final_sip_code_phrase', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "invite_date_time": lambda n : setattr(self, 'invite_date_time', n.get_datetime_value()),
-            "media_bypass_enabled": lambda n : setattr(self, 'media_bypass_enabled', n.get_bool_value()),
-            "media_path_location": lambda n : setattr(self, 'media_path_location', n.get_str_value()),
+            "inviteDateTime": lambda n : setattr(self, 'invite_date_time', n.get_datetime_value()),
+            "mediaBypassEnabled": lambda n : setattr(self, 'media_bypass_enabled', n.get_bool_value()),
+            "mediaPathLocation": lambda n : setattr(self, 'media_path_location', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "signaling_location": lambda n : setattr(self, 'signaling_location', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
-            "successful_call": lambda n : setattr(self, 'successful_call', n.get_bool_value()),
-            "trunk_fully_qualified_domain_name": lambda n : setattr(self, 'trunk_fully_qualified_domain_name', n.get_str_value()),
-            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "signalingLocation": lambda n : setattr(self, 'signaling_location', n.get_str_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "successfulCall": lambda n : setattr(self, 'successful_call', n.get_bool_value()),
+            "trunkFullyQualifiedDomainName": lambda n : setattr(self, 'trunk_fully_qualified_domain_name', n.get_str_value()),
+            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
     
@@ -358,7 +357,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -366,7 +365,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -12,7 +12,6 @@ class ServicePrincipalRiskDetectionCollectionResponse(base_collection_pagination
         Instantiates a new ServicePrincipalRiskDetectionCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[service_principal_risk_detection.ServicePrincipalRiskDetection]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ServicePrincipalRiskDetectionCollectionResponse(base_collection_pagination
     @property
     def value(self,) -> Optional[List[service_principal_risk_detection.ServicePrincipalRiskDetection]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[service_principal_risk_detection.ServicePrincipalRiskDetection]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ServicePrincipalRiskDetectionCollectionResponse(base_collection_pagination
     @value.setter
     def value(self,value: Optional[List[service_principal_risk_detection.ServicePrincipalRiskDetection]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

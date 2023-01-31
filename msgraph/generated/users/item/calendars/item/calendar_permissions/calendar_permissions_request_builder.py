@@ -66,7 +66,7 @@ class CalendarPermissionsRequestBuilder():
         """
         Create a calendarPermission resource to specify the identity and role of the user with whom the specified calendar is being shared or delegated.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[calendar_permission.CalendarPermission]
         """
@@ -105,7 +105,7 @@ class CalendarPermissionsRequestBuilder():
         """
         Create a calendarPermission resource to specify the identity and role of the user with whom the specified calendar is being shared or delegated.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

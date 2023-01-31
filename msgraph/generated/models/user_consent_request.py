@@ -31,7 +31,6 @@ class UserConsentRequest(request.Request):
         super().__init__()
         # Approval decisions associated with a request.
         self._approval: Optional[approval.Approval] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The user's justification for requiring access to the app. Supports $filter (eq only) and $orderby.
         self._reason: Optional[str] = None

@@ -44,9 +44,7 @@ class PlannerPlan(entity.Entity):
         self._created_date_time: Optional[datetime] = None
         # Read-only. Nullable. Additional details about the plan.
         self._details: Optional[planner_plan_details.PlannerPlanDetails] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The owner property
         self._owner: Optional[str] = None
         # Read-only. Nullable. Collection of tasks in the plan.
         self._tasks: Optional[List[planner_task.PlannerTask]] = None
@@ -141,8 +139,8 @@ class PlannerPlan(entity.Entity):
         fields = {
             "buckets": lambda n : setattr(self, 'buckets', n.get_collection_of_object_values(planner_bucket.PlannerBucket)),
             "container": lambda n : setattr(self, 'container', n.get_object_value(planner_plan_container.PlannerPlanContainer)),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "details": lambda n : setattr(self, 'details', n.get_object_value(planner_plan_details.PlannerPlanDetails)),
             "owner": lambda n : setattr(self, 'owner', n.get_str_value()),
             "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(planner_task.PlannerTask)),
@@ -155,7 +153,7 @@ class PlannerPlan(entity.Entity):
     @property
     def owner(self,) -> Optional[str]:
         """
-        Gets the owner property value. The owner property
+        Gets the owner property value. 
         Returns: Optional[str]
         """
         return self._owner
@@ -163,7 +161,7 @@ class PlannerPlan(entity.Entity):
     @owner.setter
     def owner(self,value: Optional[str] = None) -> None:
         """
-        Sets the owner property value. The owner property
+        Sets the owner property value. 
         Args:
             value: Value to set for the owner property.
         """

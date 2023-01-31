@@ -25,7 +25,7 @@ class ApplicationTemplate(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new applicationTemplate and sets the default values.
+        Instantiates a new ApplicationTemplate and sets the default values.
         """
         super().__init__()
         # The list of categories for the application. Supported values can be: Collaboration, Business Management, Consumer, Content management, CRM, Data services, Developer services, E-commerce, Education, ERP, Finance, Health, Human resources, IT infrastructure, Mail, Management, Marketing, Media, Productivity, Project management, Telecommunications, Tools, Travel, and Web design & hosting.
@@ -38,7 +38,6 @@ class ApplicationTemplate(entity.Entity):
         self._home_page_url: Optional[str] = None
         # The URL to get the logo for this application.
         self._logo_url: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The name of the publisher for this application.
         self._publisher: Optional[str] = None
@@ -101,12 +100,12 @@ class ApplicationTemplate(entity.Entity):
         fields = {
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_primitive_values(str)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "home_page_url": lambda n : setattr(self, 'home_page_url', n.get_str_value()),
-            "logo_url": lambda n : setattr(self, 'logo_url', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "homePageUrl": lambda n : setattr(self, 'home_page_url', n.get_str_value()),
+            "logoUrl": lambda n : setattr(self, 'logo_url', n.get_str_value()),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
-            "supported_provisioning_types": lambda n : setattr(self, 'supported_provisioning_types', n.get_collection_of_primitive_values(str)),
-            "supported_single_sign_on_modes": lambda n : setattr(self, 'supported_single_sign_on_modes', n.get_collection_of_primitive_values(str)),
+            "supportedProvisioningTypes": lambda n : setattr(self, 'supported_provisioning_types', n.get_collection_of_primitive_values(str)),
+            "supportedSingleSignOnModes": lambda n : setattr(self, 'supported_single_sign_on_modes', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

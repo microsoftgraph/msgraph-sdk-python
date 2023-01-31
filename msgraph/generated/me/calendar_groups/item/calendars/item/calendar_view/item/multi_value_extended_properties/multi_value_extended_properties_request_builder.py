@@ -66,7 +66,7 @@ class MultiValueExtendedPropertiesRequestBuilder():
         """
         Create new navigation property to multiValueExtendedProperties for me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]
         """
@@ -105,7 +105,7 @@ class MultiValueExtendedPropertiesRequestBuilder():
         """
         Create new navigation property to multiValueExtendedProperties for me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

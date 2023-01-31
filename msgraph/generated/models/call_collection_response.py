@@ -12,7 +12,6 @@ class CallCollectionResponse(base_collection_pagination_count_response.BaseColle
         Instantiates a new CallCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[call.Call]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class CallCollectionResponse(base_collection_pagination_count_response.BaseColle
     @property
     def value(self,) -> Optional[List[call.Call]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[call.Call]]
         """
         return self._value
@@ -61,7 +60,7 @@ class CallCollectionResponse(base_collection_pagination_count_response.BaseColle
     @value.setter
     def value(self,value: Optional[List[call.Call]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

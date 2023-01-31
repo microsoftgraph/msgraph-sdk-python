@@ -12,7 +12,6 @@ class ManagedIOSLobAppCollectionResponse(base_collection_pagination_count_respon
         Instantiates a new ManagedIOSLobAppCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[managed_i_o_s_lob_app.ManagedIOSLobApp]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ManagedIOSLobAppCollectionResponse(base_collection_pagination_count_respon
     @property
     def value(self,) -> Optional[List[managed_i_o_s_lob_app.ManagedIOSLobApp]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[managed_i_o_s_lob_app.ManagedIOSLobApp]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ManagedIOSLobAppCollectionResponse(base_collection_pagination_count_respon
     @value.setter
     def value(self,value: Optional[List[managed_i_o_s_lob_app.ManagedIOSLobApp]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

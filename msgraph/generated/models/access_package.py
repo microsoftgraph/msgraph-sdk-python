@@ -30,7 +30,7 @@ class AccessPackage(entity.Entity):
     @property
     def assignment_policies(self,) -> Optional[List[access_package_assignment_policy.AccessPackageAssignmentPolicy]]:
         """
-        Gets the assignmentPolicies property value. The assignmentPolicies property
+        Gets the assignmentPolicies property value. 
         Returns: Optional[List[access_package_assignment_policy.AccessPackageAssignmentPolicy]]
         """
         return self._assignment_policies
@@ -38,7 +38,7 @@ class AccessPackage(entity.Entity):
     @assignment_policies.setter
     def assignment_policies(self,value: Optional[List[access_package_assignment_policy.AccessPackageAssignmentPolicy]] = None) -> None:
         """
-        Sets the assignmentPolicies property value. The assignmentPolicies property
+        Sets the assignmentPolicies property value. 
         Args:
             value: Value to set for the assignmentPolicies property.
         """
@@ -47,7 +47,7 @@ class AccessPackage(entity.Entity):
     @property
     def catalog(self,) -> Optional[access_package_catalog.AccessPackageCatalog]:
         """
-        Gets the catalog property value. The catalog property
+        Gets the catalog property value. 
         Returns: Optional[access_package_catalog.AccessPackageCatalog]
         """
         return self._catalog
@@ -55,7 +55,7 @@ class AccessPackage(entity.Entity):
     @catalog.setter
     def catalog(self,value: Optional[access_package_catalog.AccessPackageCatalog] = None) -> None:
         """
-        Sets the catalog property value. The catalog property
+        Sets the catalog property value. 
         Args:
             value: Value to set for the catalog property.
         """
@@ -68,9 +68,7 @@ class AccessPackage(entity.Entity):
         super().__init__()
         # The access packages that are incompatible with this package. Read-only.
         self._access_packages_incompatible_with: Optional[List[AccessPackage]] = None
-        # The assignmentPolicies property
         self._assignment_policies: Optional[List[access_package_assignment_policy.AccessPackageAssignmentPolicy]] = None
-        # The catalog property
         self._catalog: Optional[access_package_catalog.AccessPackageCatalog] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         self._created_date_time: Optional[datetime] = None
@@ -86,7 +84,6 @@ class AccessPackage(entity.Entity):
         self._is_hidden: Optional[bool] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         self._modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @property
@@ -158,16 +155,16 @@ class AccessPackage(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_packages_incompatible_with": lambda n : setattr(self, 'access_packages_incompatible_with', n.get_collection_of_object_values(AccessPackage)),
-            "assignment_policies": lambda n : setattr(self, 'assignment_policies', n.get_collection_of_object_values(access_package_assignment_policy.AccessPackageAssignmentPolicy)),
+            "accessPackagesIncompatibleWith": lambda n : setattr(self, 'access_packages_incompatible_with', n.get_collection_of_object_values(AccessPackage)),
+            "assignmentPolicies": lambda n : setattr(self, 'assignment_policies', n.get_collection_of_object_values(access_package_assignment_policy.AccessPackageAssignmentPolicy)),
             "catalog": lambda n : setattr(self, 'catalog', n.get_object_value(access_package_catalog.AccessPackageCatalog)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "incompatible_access_packages": lambda n : setattr(self, 'incompatible_access_packages', n.get_collection_of_object_values(AccessPackage)),
-            "incompatible_groups": lambda n : setattr(self, 'incompatible_groups', n.get_collection_of_object_values(group.Group)),
-            "is_hidden": lambda n : setattr(self, 'is_hidden', n.get_bool_value()),
-            "modified_date_time": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "incompatibleAccessPackages": lambda n : setattr(self, 'incompatible_access_packages', n.get_collection_of_object_values(AccessPackage)),
+            "incompatibleGroups": lambda n : setattr(self, 'incompatible_groups', n.get_collection_of_object_values(group.Group)),
+            "isHidden": lambda n : setattr(self, 'is_hidden', n.get_bool_value()),
+            "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

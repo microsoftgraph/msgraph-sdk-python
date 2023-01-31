@@ -26,7 +26,7 @@ class VmMetadata(AdditionalDataHolder, Parsable):
     @property
     def cloud_provider(self,) -> Optional[vm_cloud_provider.VmCloudProvider]:
         """
-        Gets the cloudProvider property value. The cloudProvider property
+        Gets the cloudProvider property value. 
         Returns: Optional[vm_cloud_provider.VmCloudProvider]
         """
         return self._cloud_provider
@@ -34,7 +34,7 @@ class VmMetadata(AdditionalDataHolder, Parsable):
     @cloud_provider.setter
     def cloud_provider(self,value: Optional[vm_cloud_provider.VmCloudProvider] = None) -> None:
         """
-        Sets the cloudProvider property value. The cloudProvider property
+        Sets the cloudProvider property value. 
         Args:
             value: Value to set for the cloudProvider property.
         """
@@ -47,9 +47,7 @@ class VmMetadata(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The cloudProvider property
         self._cloud_provider: Optional[vm_cloud_provider.VmCloudProvider] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Unique identifier of the Azure resource.
         self._resource_id: Optional[str] = None
@@ -76,18 +74,18 @@ class VmMetadata(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "cloud_provider": lambda n : setattr(self, 'cloud_provider', n.get_enum_value(vm_cloud_provider.VmCloudProvider)),
+            "cloudProvider": lambda n : setattr(self, 'cloud_provider', n.get_enum_value(vm_cloud_provider.VmCloudProvider)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "resource_id": lambda n : setattr(self, 'resource_id', n.get_str_value()),
-            "subscription_id": lambda n : setattr(self, 'subscription_id', n.get_str_value()),
-            "vm_id": lambda n : setattr(self, 'vm_id', n.get_str_value()),
+            "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
+            "subscriptionId": lambda n : setattr(self, 'subscription_id', n.get_str_value()),
+            "vmId": lambda n : setattr(self, 'vm_id', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -95,7 +93,7 @@ class VmMetadata(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

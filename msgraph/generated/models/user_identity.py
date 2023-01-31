@@ -35,8 +35,8 @@ class UserIdentity(identity.Identity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

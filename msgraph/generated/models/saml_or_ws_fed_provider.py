@@ -42,11 +42,11 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "issuer_uri": lambda n : setattr(self, 'issuer_uri', n.get_str_value()),
-            "metadata_exchange_uri": lambda n : setattr(self, 'metadata_exchange_uri', n.get_str_value()),
-            "passive_sign_in_uri": lambda n : setattr(self, 'passive_sign_in_uri', n.get_str_value()),
-            "preferred_authentication_protocol": lambda n : setattr(self, 'preferred_authentication_protocol', n.get_enum_value(authentication_protocol.AuthenticationProtocol)),
-            "signing_certificate": lambda n : setattr(self, 'signing_certificate', n.get_str_value()),
+            "issuerUri": lambda n : setattr(self, 'issuer_uri', n.get_str_value()),
+            "metadataExchangeUri": lambda n : setattr(self, 'metadata_exchange_uri', n.get_str_value()),
+            "passiveSignInUri": lambda n : setattr(self, 'passive_sign_in_uri', n.get_str_value()),
+            "preferredAuthenticationProtocol": lambda n : setattr(self, 'preferred_authentication_protocol', n.get_enum_value(authentication_protocol.AuthenticationProtocol)),
+            "signingCertificate": lambda n : setattr(self, 'signing_certificate', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

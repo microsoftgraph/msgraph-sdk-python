@@ -12,7 +12,6 @@ class Approval(entity.Entity):
         Instantiates a new approval and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # A collection of stages in the approval decision.
         self._stages: Optional[List[approval_stage.ApprovalStage]] = None

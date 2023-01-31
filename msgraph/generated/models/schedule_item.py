@@ -37,7 +37,6 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         self._is_private: Optional[bool] = None
         # The location where the corresponding event is held or attended from. Optional.
         self._location: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The date, time, and time zone that the corresponding event starts.
         self._start: Optional[date_time_time_zone.DateTimeTimeZone] = None
@@ -82,7 +81,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         """
         fields = {
             "end": lambda n : setattr(self, 'end', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "is_private": lambda n : setattr(self, 'is_private', n.get_bool_value()),
+            "isPrivate": lambda n : setattr(self, 'is_private', n.get_bool_value()),
             "location": lambda n : setattr(self, 'location', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "start": lambda n : setattr(self, 'start', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
@@ -128,7 +127,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -136,7 +135,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

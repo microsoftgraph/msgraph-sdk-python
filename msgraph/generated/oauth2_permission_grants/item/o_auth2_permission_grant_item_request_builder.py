@@ -17,10 +17,11 @@ class OAuth2PermissionGrantItemRequestBuilder():
     """
     Provides operations to manage the collection of oAuth2PermissionGrant entities.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, o_auth2_permission_grant_id: Optional[str] = None) -> None:
         """
         Instantiates a new OAuth2PermissionGrantItemRequestBuilder and sets the default values.
         Args:
+            oAuth2PermissionGrantId: key: id of oAuth2PermissionGrant
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class OAuth2PermissionGrantItemRequestBuilder():
         self.url_template: str = "{+baseurl}/oauth2PermissionGrants/{oAuth2PermissionGrant%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["oAuth2PermissionGrant%2Did"] = oAuth2PermissionGrantId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -74,7 +76,7 @@ class OAuth2PermissionGrantItemRequestBuilder():
         """
         Update the properties of oAuth2PermissionGrant object, representing a delegated permission grant. An **oAuth2PermissionGrant** can be updated to change which delegated permissions are granted, by adding or removing items from the list in **scopes**.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[o_auth2_permission_grant.OAuth2PermissionGrant]
         """
@@ -129,7 +131,7 @@ class OAuth2PermissionGrantItemRequestBuilder():
         """
         Update the properties of oAuth2PermissionGrant object, representing a delegated permission grant. An **oAuth2PermissionGrant** can be updated to change which delegated permissions are granted, by adding or removing items from the list in **scopes**.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -23,7 +23,6 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         self._failure_reason: Optional[str] = None
         # Device identifier created or collected by Intune.
         self._managed_device_identifier: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Operating System.
         self._operating_system: Optional[str] = None
@@ -118,14 +117,14 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_id": lambda n : setattr(self, 'device_id', n.get_str_value()),
-            "enrollment_type": lambda n : setattr(self, 'enrollment_type', n.get_enum_value(device_enrollment_type.DeviceEnrollmentType)),
-            "failure_category": lambda n : setattr(self, 'failure_category', n.get_enum_value(device_enrollment_failure_reason.DeviceEnrollmentFailureReason)),
-            "failure_reason": lambda n : setattr(self, 'failure_reason', n.get_str_value()),
-            "managed_device_identifier": lambda n : setattr(self, 'managed_device_identifier', n.get_str_value()),
-            "operating_system": lambda n : setattr(self, 'operating_system', n.get_str_value()),
-            "os_version": lambda n : setattr(self, 'os_version', n.get_str_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
+            "enrollmentType": lambda n : setattr(self, 'enrollment_type', n.get_enum_value(device_enrollment_type.DeviceEnrollmentType)),
+            "failureCategory": lambda n : setattr(self, 'failure_category', n.get_enum_value(device_enrollment_failure_reason.DeviceEnrollmentFailureReason)),
+            "failureReason": lambda n : setattr(self, 'failure_reason', n.get_str_value()),
+            "managedDeviceIdentifier": lambda n : setattr(self, 'managed_device_identifier', n.get_str_value()),
+            "operatingSystem": lambda n : setattr(self, 'operating_system', n.get_str_value()),
+            "osVersion": lambda n : setattr(self, 'os_version', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

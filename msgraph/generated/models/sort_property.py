@@ -32,7 +32,6 @@ class SortProperty(AdditionalDataHolder, Parsable):
         self._is_descending: Optional[bool] = None
         # The name of the property to sort on. Required.
         self._name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class SortProperty(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_descending": lambda n : setattr(self, 'is_descending', n.get_bool_value()),
+            "isDescending": lambda n : setattr(self, 'is_descending', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
@@ -96,7 +95,7 @@ class SortProperty(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -104,7 +103,7 @@ class SortProperty(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -66,7 +66,7 @@ class IssuesRequestBuilder():
         """
         Create new navigation property to issues for admin
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[service_health_issue.ServiceHealthIssue]
         """
@@ -105,7 +105,7 @@ class IssuesRequestBuilder():
         """
         Create new navigation property to issues for admin
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

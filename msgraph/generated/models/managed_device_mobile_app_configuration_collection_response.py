@@ -12,7 +12,6 @@ class ManagedDeviceMobileAppConfigurationCollectionResponse(base_collection_pagi
         Instantiates a new ManagedDeviceMobileAppConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ManagedDeviceMobileAppConfigurationCollectionResponse(base_collection_pagi
     @property
     def value(self,) -> Optional[List[managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ManagedDeviceMobileAppConfigurationCollectionResponse(base_collection_pagi
     @value.setter
     def value(self,value: Optional[List[managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

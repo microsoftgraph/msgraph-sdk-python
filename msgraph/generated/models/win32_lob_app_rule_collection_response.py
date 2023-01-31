@@ -12,7 +12,6 @@ class Win32LobAppRuleCollectionResponse(base_collection_pagination_count_respons
         Instantiates a new Win32LobAppRuleCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[win32_lob_app_rule.Win32LobAppRule]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class Win32LobAppRuleCollectionResponse(base_collection_pagination_count_respons
     @property
     def value(self,) -> Optional[List[win32_lob_app_rule.Win32LobAppRule]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[win32_lob_app_rule.Win32LobAppRule]]
         """
         return self._value
@@ -61,7 +60,7 @@ class Win32LobAppRuleCollectionResponse(base_collection_pagination_count_respons
     @value.setter
     def value(self,value: Optional[List[win32_lob_app_rule.Win32LobAppRule]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

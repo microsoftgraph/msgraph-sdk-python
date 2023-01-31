@@ -138,11 +138,11 @@ class ListItem(base_item.BaseItem):
         """
         fields = {
             "analytics": lambda n : setattr(self, 'analytics', n.get_object_value(item_analytics.ItemAnalytics)),
-            "content_type": lambda n : setattr(self, 'content_type', n.get_object_value(content_type_info.ContentTypeInfo)),
-            "document_set_versions": lambda n : setattr(self, 'document_set_versions', n.get_collection_of_object_values(document_set_version.DocumentSetVersion)),
-            "drive_item": lambda n : setattr(self, 'drive_item', n.get_object_value(drive_item.DriveItem)),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_object_value(content_type_info.ContentTypeInfo)),
+            "documentSetVersions": lambda n : setattr(self, 'document_set_versions', n.get_collection_of_object_values(document_set_version.DocumentSetVersion)),
+            "driveItem": lambda n : setattr(self, 'drive_item', n.get_object_value(drive_item.DriveItem)),
             "fields": lambda n : setattr(self, 'fields', n.get_object_value(field_value_set.FieldValueSet)),
-            "sharepoint_ids": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
+            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
             "versions": lambda n : setattr(self, 'versions', n.get_collection_of_object_values(list_item_version.ListItemVersion)),
         }
         super_fields = super().get_field_deserializers()

@@ -12,7 +12,6 @@ class EdiscoveryHoldOperationCollectionResponse(base_collection_pagination_count
         Instantiates a new EdiscoveryHoldOperationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[ediscovery_hold_operation.EdiscoveryHoldOperation]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class EdiscoveryHoldOperationCollectionResponse(base_collection_pagination_count
     @property
     def value(self,) -> Optional[List[ediscovery_hold_operation.EdiscoveryHoldOperation]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[ediscovery_hold_operation.EdiscoveryHoldOperation]]
         """
         return self._value
@@ -61,7 +60,7 @@ class EdiscoveryHoldOperationCollectionResponse(base_collection_pagination_count
     @value.setter
     def value(self,value: Optional[List[ediscovery_hold_operation.EdiscoveryHoldOperation]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -15,7 +15,6 @@ class PrintDocument(entity.Entity):
         self._content_type: Optional[str] = None
         # The document's name. Read-only.
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The document's size in bytes. Read-only.
         self._size: Optional[int] = None
@@ -72,8 +71,8 @@ class PrintDocument(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "content_type": lambda n : setattr(self, 'content_type', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()

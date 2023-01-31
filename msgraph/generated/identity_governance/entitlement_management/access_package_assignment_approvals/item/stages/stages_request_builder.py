@@ -66,7 +66,7 @@ class StagesRequestBuilder():
         """
         Create new navigation property to stages for identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[approval_stage.ApprovalStage]
         """
@@ -105,7 +105,7 @@ class StagesRequestBuilder():
         """
         Create new navigation property to stages for identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

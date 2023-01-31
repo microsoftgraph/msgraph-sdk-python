@@ -16,7 +16,7 @@ class Workbook(entity.Entity):
     @property
     def application(self,) -> Optional[workbook_application.WorkbookApplication]:
         """
-        Gets the application property value. The application property
+        Gets the application property value. 
         Returns: Optional[workbook_application.WorkbookApplication]
         """
         return self._application
@@ -24,7 +24,7 @@ class Workbook(entity.Entity):
     @application.setter
     def application(self,value: Optional[workbook_application.WorkbookApplication] = None) -> None:
         """
-        Sets the application property value. The application property
+        Sets the application property value. 
         Args:
             value: Value to set for the application property.
         """
@@ -33,7 +33,7 @@ class Workbook(entity.Entity):
     @property
     def comments(self,) -> Optional[List[workbook_comment.WorkbookComment]]:
         """
-        Gets the comments property value. The comments property
+        Gets the comments property value. 
         Returns: Optional[List[workbook_comment.WorkbookComment]]
         """
         return self._comments
@@ -41,7 +41,7 @@ class Workbook(entity.Entity):
     @comments.setter
     def comments(self,value: Optional[List[workbook_comment.WorkbookComment]] = None) -> None:
         """
-        Sets the comments property value. The comments property
+        Sets the comments property value. 
         Args:
             value: Value to set for the comments property.
         """
@@ -52,15 +52,11 @@ class Workbook(entity.Entity):
         Instantiates a new workbook and sets the default values.
         """
         super().__init__()
-        # The application property
         self._application: Optional[workbook_application.WorkbookApplication] = None
-        # The comments property
         self._comments: Optional[List[workbook_comment.WorkbookComment]] = None
-        # The functions property
         self._functions: Optional[workbook_functions.WorkbookFunctions] = None
         # Represents a collection of workbooks scoped named items (named ranges and constants). Read-only.
         self._names: Optional[List[workbook_named_item.WorkbookNamedItem]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The status of workbook operations. Getting an operation collection is not supported, but you can get the status of a long-running operation if the Location header is returned in the response. Read-only.
         self._operations: Optional[List[workbook_operation.WorkbookOperation]] = None
@@ -84,7 +80,7 @@ class Workbook(entity.Entity):
     @property
     def functions(self,) -> Optional[workbook_functions.WorkbookFunctions]:
         """
-        Gets the functions property value. The functions property
+        Gets the functions property value. 
         Returns: Optional[workbook_functions.WorkbookFunctions]
         """
         return self._functions
@@ -92,7 +88,7 @@ class Workbook(entity.Entity):
     @functions.setter
     def functions(self,value: Optional[workbook_functions.WorkbookFunctions] = None) -> None:
         """
-        Sets the functions property value. The functions property
+        Sets the functions property value. 
         Args:
             value: Value to set for the functions property.
         """

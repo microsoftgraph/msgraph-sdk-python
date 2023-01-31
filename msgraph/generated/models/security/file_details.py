@@ -38,7 +38,6 @@ class FileDetails(AdditionalDataHolder, Parsable):
         self._file_size: Optional[int] = None
         # The certificate authority (CA) that issued the certificate.
         self._issuer: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The Sha1 cryptographic hash of the file content.
         self._sha1: Optional[str] = None
@@ -133,10 +132,10 @@ class FileDetails(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "file_name": lambda n : setattr(self, 'file_name', n.get_str_value()),
-            "file_path": lambda n : setattr(self, 'file_path', n.get_str_value()),
-            "file_publisher": lambda n : setattr(self, 'file_publisher', n.get_str_value()),
-            "file_size": lambda n : setattr(self, 'file_size', n.get_int_value()),
+            "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
+            "filePath": lambda n : setattr(self, 'file_path', n.get_str_value()),
+            "filePublisher": lambda n : setattr(self, 'file_publisher', n.get_str_value()),
+            "fileSize": lambda n : setattr(self, 'file_size', n.get_int_value()),
             "issuer": lambda n : setattr(self, 'issuer', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "sha1": lambda n : setattr(self, 'sha1', n.get_str_value()),
@@ -165,7 +164,7 @@ class FileDetails(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -173,7 +172,7 @@ class FileDetails(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

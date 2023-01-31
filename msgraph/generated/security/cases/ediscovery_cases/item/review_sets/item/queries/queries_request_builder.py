@@ -66,7 +66,7 @@ class QueriesRequestBuilder():
         """
         Create a new ediscoveryReviewSetQuery object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery]
         """
@@ -105,7 +105,7 @@ class QueriesRequestBuilder():
         """
         Create a new ediscoveryReviewSetQuery object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

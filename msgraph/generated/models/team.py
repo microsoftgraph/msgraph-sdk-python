@@ -93,7 +93,6 @@ class Team(entity.Entity):
         self._display_name: Optional[str] = None
         # Settings to configure use of Giphy, memes, and stickers in the team.
         self._fun_settings: Optional[team_fun_settings.TeamFunSettings] = None
-        # The group property
         self._group: Optional[group.Group] = None
         # Settings to configure whether guests can create, update, or delete channels in the team.
         self._guest_settings: Optional[team_guest_settings.TeamGuestSettings] = None
@@ -111,7 +110,6 @@ class Team(entity.Entity):
         self._member_settings: Optional[team_member_settings.TeamMemberSettings] = None
         # Settings to configure messaging and mentions in the team.
         self._messaging_settings: Optional[team_messaging_settings.TeamMessagingSettings] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The async operations that ran or are running on this team.
         self._operations: Optional[List[teams_async_operation.TeamsAsyncOperation]] = None
@@ -222,33 +220,33 @@ class Team(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "all_channels": lambda n : setattr(self, 'all_channels', n.get_collection_of_object_values(channel.Channel)),
+            "allChannels": lambda n : setattr(self, 'all_channels', n.get_collection_of_object_values(channel.Channel)),
             "channels": lambda n : setattr(self, 'channels', n.get_collection_of_object_values(channel.Channel)),
             "classification": lambda n : setattr(self, 'classification', n.get_str_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "fun_settings": lambda n : setattr(self, 'fun_settings', n.get_object_value(team_fun_settings.TeamFunSettings)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "funSettings": lambda n : setattr(self, 'fun_settings', n.get_object_value(team_fun_settings.TeamFunSettings)),
             "group": lambda n : setattr(self, 'group', n.get_object_value(group.Group)),
-            "guest_settings": lambda n : setattr(self, 'guest_settings', n.get_object_value(team_guest_settings.TeamGuestSettings)),
-            "incoming_channels": lambda n : setattr(self, 'incoming_channels', n.get_collection_of_object_values(channel.Channel)),
-            "installed_apps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(teams_app_installation.TeamsAppInstallation)),
-            "internal_id": lambda n : setattr(self, 'internal_id', n.get_str_value()),
-            "is_archived": lambda n : setattr(self, 'is_archived', n.get_bool_value()),
+            "guestSettings": lambda n : setattr(self, 'guest_settings', n.get_object_value(team_guest_settings.TeamGuestSettings)),
+            "incomingChannels": lambda n : setattr(self, 'incoming_channels', n.get_collection_of_object_values(channel.Channel)),
+            "installedApps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(teams_app_installation.TeamsAppInstallation)),
+            "internalId": lambda n : setattr(self, 'internal_id', n.get_str_value()),
+            "isArchived": lambda n : setattr(self, 'is_archived', n.get_bool_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(conversation_member.ConversationMember)),
-            "member_settings": lambda n : setattr(self, 'member_settings', n.get_object_value(team_member_settings.TeamMemberSettings)),
-            "messaging_settings": lambda n : setattr(self, 'messaging_settings', n.get_object_value(team_messaging_settings.TeamMessagingSettings)),
+            "memberSettings": lambda n : setattr(self, 'member_settings', n.get_object_value(team_member_settings.TeamMemberSettings)),
+            "messagingSettings": lambda n : setattr(self, 'messaging_settings', n.get_object_value(team_messaging_settings.TeamMessagingSettings)),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(teams_async_operation.TeamsAsyncOperation)),
             "photo": lambda n : setattr(self, 'photo', n.get_object_value(profile_photo.ProfilePhoto)),
-            "primary_channel": lambda n : setattr(self, 'primary_channel', n.get_object_value(channel.Channel)),
+            "primaryChannel": lambda n : setattr(self, 'primary_channel', n.get_object_value(channel.Channel)),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(schedule.Schedule)),
             "specialization": lambda n : setattr(self, 'specialization', n.get_enum_value(team_specialization.TeamSpecialization)),
             "summary": lambda n : setattr(self, 'summary', n.get_object_value(team_summary.TeamSummary)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_object_values(teamwork_tag.TeamworkTag)),
             "template": lambda n : setattr(self, 'template', n.get_object_value(teams_template.TeamsTemplate)),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
             "visibility": lambda n : setattr(self, 'visibility', n.get_enum_value(team_visibility_type.TeamVisibilityType)),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -257,7 +255,7 @@ class Team(entity.Entity):
     @property
     def group(self,) -> Optional[group.Group]:
         """
-        Gets the group property value. The group property
+        Gets the group property value. 
         Returns: Optional[group.Group]
         """
         return self._group
@@ -265,7 +263,7 @@ class Team(entity.Entity):
     @group.setter
     def group(self,value: Optional[group.Group] = None) -> None:
         """
-        Sets the group property value. The group property
+        Sets the group property value. 
         Args:
             value: Value to set for the group property.
         """

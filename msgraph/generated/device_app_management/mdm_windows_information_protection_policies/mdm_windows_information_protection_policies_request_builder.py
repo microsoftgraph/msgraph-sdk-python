@@ -66,7 +66,7 @@ class MdmWindowsInformationProtectionPoliciesRequestBuilder():
         """
         Create new navigation property to mdmWindowsInformationProtectionPolicies for deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy]
         """
@@ -105,7 +105,7 @@ class MdmWindowsInformationProtectionPoliciesRequestBuilder():
         """
         Create new navigation property to mdmWindowsInformationProtectionPolicies for deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

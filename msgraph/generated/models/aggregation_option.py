@@ -26,7 +26,7 @@ class AggregationOption(AdditionalDataHolder, Parsable):
     @property
     def bucket_definition(self,) -> Optional[bucket_aggregation_definition.BucketAggregationDefinition]:
         """
-        Gets the bucketDefinition property value. The bucketDefinition property
+        Gets the bucketDefinition property value. 
         Returns: Optional[bucket_aggregation_definition.BucketAggregationDefinition]
         """
         return self._bucket_definition
@@ -34,7 +34,7 @@ class AggregationOption(AdditionalDataHolder, Parsable):
     @bucket_definition.setter
     def bucket_definition(self,value: Optional[bucket_aggregation_definition.BucketAggregationDefinition] = None) -> None:
         """
-        Sets the bucketDefinition property value. The bucketDefinition property
+        Sets the bucketDefinition property value. 
         Args:
             value: Value to set for the bucketDefinition property.
         """
@@ -47,11 +47,9 @@ class AggregationOption(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The bucketDefinition property
         self._bucket_definition: Optional[bucket_aggregation_definition.BucketAggregationDefinition] = None
         # Computes aggregation on the field while the field exists in current entity type. Required.
         self._field: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The number of searchBucket resources to be returned. This is not required when the range is provided manually in the search request. Optional.
         self._size: Optional[int] = None
@@ -91,7 +89,7 @@ class AggregationOption(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "bucket_definition": lambda n : setattr(self, 'bucket_definition', n.get_object_value(bucket_aggregation_definition.BucketAggregationDefinition)),
+            "bucketDefinition": lambda n : setattr(self, 'bucket_definition', n.get_object_value(bucket_aggregation_definition.BucketAggregationDefinition)),
             "field": lambda n : setattr(self, 'field', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
@@ -101,7 +99,7 @@ class AggregationOption(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -109,7 +107,7 @@ class AggregationOption(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

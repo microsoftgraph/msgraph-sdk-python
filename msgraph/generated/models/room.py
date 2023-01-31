@@ -194,19 +194,19 @@ class Room(place.Place):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "audio_device_name": lambda n : setattr(self, 'audio_device_name', n.get_str_value()),
-            "booking_type": lambda n : setattr(self, 'booking_type', n.get_enum_value(booking_type.BookingType)),
+            "audioDeviceName": lambda n : setattr(self, 'audio_device_name', n.get_str_value()),
+            "bookingType": lambda n : setattr(self, 'booking_type', n.get_enum_value(booking_type.BookingType)),
             "building": lambda n : setattr(self, 'building', n.get_str_value()),
             "capacity": lambda n : setattr(self, 'capacity', n.get_int_value()),
-            "display_device_name": lambda n : setattr(self, 'display_device_name', n.get_str_value()),
-            "email_address": lambda n : setattr(self, 'email_address', n.get_str_value()),
-            "floor_label": lambda n : setattr(self, 'floor_label', n.get_str_value()),
-            "floor_number": lambda n : setattr(self, 'floor_number', n.get_int_value()),
-            "is_wheel_chair_accessible": lambda n : setattr(self, 'is_wheel_chair_accessible', n.get_bool_value()),
+            "displayDeviceName": lambda n : setattr(self, 'display_device_name', n.get_str_value()),
+            "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "floorLabel": lambda n : setattr(self, 'floor_label', n.get_str_value()),
+            "floorNumber": lambda n : setattr(self, 'floor_number', n.get_int_value()),
+            "isWheelChairAccessible": lambda n : setattr(self, 'is_wheel_chair_accessible', n.get_bool_value()),
             "label": lambda n : setattr(self, 'label', n.get_str_value()),
             "nickname": lambda n : setattr(self, 'nickname', n.get_str_value()),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
-            "video_device_name": lambda n : setattr(self, 'video_device_name', n.get_str_value()),
+            "videoDeviceName": lambda n : setattr(self, 'video_device_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -32,11 +32,9 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         self._exclude_applications: Optional[List[str]] = None
         # Can be one of the following:  The list of client IDs (appId) the policy applies to, unless explicitly excluded (in excludeApplications)  All  Office365 - For the list of apps included in Office365, see Conditional Access target apps: Office 365
         self._include_applications: Optional[List[str]] = None
-        # The includeAuthenticationContextClassReferences property
         self._include_authentication_context_class_references: Optional[List[str]] = None
         # User actions to include. Supported values are urn:user:registersecurityinfo and urn:user:registerdevice
         self._include_user_actions: Optional[List[str]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -74,10 +72,10 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "exclude_applications": lambda n : setattr(self, 'exclude_applications', n.get_collection_of_primitive_values(str)),
-            "include_applications": lambda n : setattr(self, 'include_applications', n.get_collection_of_primitive_values(str)),
-            "include_authentication_context_class_references": lambda n : setattr(self, 'include_authentication_context_class_references', n.get_collection_of_primitive_values(str)),
-            "include_user_actions": lambda n : setattr(self, 'include_user_actions', n.get_collection_of_primitive_values(str)),
+            "excludeApplications": lambda n : setattr(self, 'exclude_applications', n.get_collection_of_primitive_values(str)),
+            "includeApplications": lambda n : setattr(self, 'include_applications', n.get_collection_of_primitive_values(str)),
+            "includeAuthenticationContextClassReferences": lambda n : setattr(self, 'include_authentication_context_class_references', n.get_collection_of_primitive_values(str)),
+            "includeUserActions": lambda n : setattr(self, 'include_user_actions', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -102,7 +100,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
     @property
     def include_authentication_context_class_references(self,) -> Optional[List[str]]:
         """
-        Gets the includeAuthenticationContextClassReferences property value. The includeAuthenticationContextClassReferences property
+        Gets the includeAuthenticationContextClassReferences property value. 
         Returns: Optional[List[str]]
         """
         return self._include_authentication_context_class_references
@@ -110,7 +108,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
     @include_authentication_context_class_references.setter
     def include_authentication_context_class_references(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the includeAuthenticationContextClassReferences property value. The includeAuthenticationContextClassReferences property
+        Sets the includeAuthenticationContextClassReferences property value. 
         Args:
             value: Value to set for the includeAuthenticationContextClassReferences property.
         """
@@ -136,7 +134,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -144,7 +142,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

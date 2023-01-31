@@ -12,7 +12,6 @@ class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
         Instantiates a new plannerAssignedToTaskBoardTaskFormat and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Dictionary of hints used to order tasks on the AssignedTo view of the Task Board. The key of each entry is one of the users the task is assigned to and the value is the order hint. The format of each value is defined as outlined here.
         self._order_hints_by_assignee: Optional[planner_order_hints_by_assignee.PlannerOrderHintsByAssignee] = None
@@ -37,8 +36,8 @@ class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "order_hints_by_assignee": lambda n : setattr(self, 'order_hints_by_assignee', n.get_object_value(planner_order_hints_by_assignee.PlannerOrderHintsByAssignee)),
-            "unassigned_order_hint": lambda n : setattr(self, 'unassigned_order_hint', n.get_str_value()),
+            "orderHintsByAssignee": lambda n : setattr(self, 'order_hints_by_assignee', n.get_object_value(planner_order_hints_by_assignee.PlannerOrderHintsByAssignee)),
+            "unassignedOrderHint": lambda n : setattr(self, 'unassigned_order_hint', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

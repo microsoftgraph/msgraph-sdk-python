@@ -36,7 +36,6 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         self._days_of_week: Optional[List[day_of_week.DayOfWeek]] = None
         # The time of the day that the user stops working.
         self._end_time: Optional[Time] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The time of the day that the user starts working.
         self._start_time: Optional[Time] = None
@@ -95,18 +94,18 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "days_of_week": lambda n : setattr(self, 'days_of_week', n.get_collection_of_enum_values(day_of_week.DayOfWeek)),
-            "end_time": lambda n : setattr(self, 'end_time', n.get_object_value(Time)),
+            "daysOfWeek": lambda n : setattr(self, 'days_of_week', n.get_collection_of_enum_values(day_of_week.DayOfWeek)),
+            "endTime": lambda n : setattr(self, 'end_time', n.get_object_value(Time)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "start_time": lambda n : setattr(self, 'start_time', n.get_object_value(Time)),
-            "time_zone": lambda n : setattr(self, 'time_zone', n.get_object_value(time_zone_base.TimeZoneBase)),
+            "startTime": lambda n : setattr(self, 'start_time', n.get_object_value(Time)),
+            "timeZone": lambda n : setattr(self, 'time_zone', n.get_object_value(time_zone_base.TimeZoneBase)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -114,7 +113,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -11,7 +11,6 @@ class ResetPasscodeActionResult(device_action_result.DeviceActionResult):
         Instantiates a new ResetPasscodeActionResult and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Newly generated passcode for the device
         self._passcode: Optional[str] = None

@@ -12,7 +12,6 @@ class StoreCollectionResponse(base_collection_pagination_count_response.BaseColl
         Instantiates a new StoreCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[store.Store]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class StoreCollectionResponse(base_collection_pagination_count_response.BaseColl
     @property
     def value(self,) -> Optional[List[store.Store]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[store.Store]]
         """
         return self._value
@@ -61,7 +60,7 @@ class StoreCollectionResponse(base_collection_pagination_count_response.BaseColl
     @value.setter
     def value(self,value: Optional[List[store.Store]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -55,7 +55,6 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         self._end_date_time: Optional[datetime] = None
         # How the assignments is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleAssignmentSchedule can be managed by the caller. Supports $filter (eq, ne).
         self._member_type: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The identifier of the role assignment in Azure AD. Supports $filter (eq, ne).
         self._role_assignment_origin_id: Optional[str] = None
@@ -99,13 +98,13 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "activated_using": lambda n : setattr(self, 'activated_using', n.get_object_value(unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance)),
-            "assignment_type": lambda n : setattr(self, 'assignment_type', n.get_str_value()),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "member_type": lambda n : setattr(self, 'member_type', n.get_str_value()),
-            "role_assignment_origin_id": lambda n : setattr(self, 'role_assignment_origin_id', n.get_str_value()),
-            "role_assignment_schedule_id": lambda n : setattr(self, 'role_assignment_schedule_id', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "activatedUsing": lambda n : setattr(self, 'activated_using', n.get_object_value(unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance)),
+            "assignmentType": lambda n : setattr(self, 'assignment_type', n.get_str_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "memberType": lambda n : setattr(self, 'member_type', n.get_str_value()),
+            "roleAssignmentOriginId": lambda n : setattr(self, 'role_assignment_origin_id', n.get_str_value()),
+            "roleAssignmentScheduleId": lambda n : setattr(self, 'role_assignment_schedule_id', n.get_str_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

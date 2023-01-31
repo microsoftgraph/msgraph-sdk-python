@@ -64,7 +64,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
     @property
     def connection_type(self,) -> Optional[network_connection_type.NetworkConnectionType]:
         """
-        Gets the connectionType property value. The connectionType property
+        Gets the connectionType property value. 
         Returns: Optional[network_connection_type.NetworkConnectionType]
         """
         return self._connection_type
@@ -72,7 +72,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
     @connection_type.setter
     def connection_type(self,value: Optional[network_connection_type.NetworkConnectionType] = None) -> None:
         """
-        Sets the connectionType property value. The connectionType property
+        Sets the connectionType property value. 
         Args:
             value: Value to set for the connectionType property.
         """
@@ -89,7 +89,6 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         self._bandwidth_low_event_ratio: Optional[float] = None
         # The wireless LAN basic service set identifier of the media endpoint used to connect to the network.
         self._basic_service_set_identifier: Optional[str] = None
-        # The connectionType property
         self._connection_type: Optional[network_connection_type.NetworkConnectionType] = None
         # Fraction of the call that the media endpoint detected the network delay was significant enough to impact the ability to have real-time two-way communication.
         self._delay_event_ratio: Optional[float] = None
@@ -101,9 +100,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         self._link_speed: Optional[int] = None
         # The media access control (MAC) address of the media endpoint's network device.
         self._mac_address: Optional[str] = None
-        # The networkTransportProtocol property
         self._network_transport_protocol: Optional[network_transport_protocol.NetworkTransportProtocol] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Network port number used by media endpoint.
         self._port: Optional[int] = None
@@ -121,7 +118,6 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         self._subnet: Optional[str] = None
         # List of network trace route hops collected for this media stream.*
         self._trace_route_hops: Optional[List[trace_route_hop.TraceRouteHop]] = None
-        # The wifiBand property
         self._wifi_band: Optional[wifi_band.WifiBand] = None
         # Estimated remaining battery charge in percentage reported by the media endpoint.
         self._wifi_battery_charge: Optional[int] = None
@@ -131,7 +127,6 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         self._wifi_microsoft_driver: Optional[str] = None
         # Version of the Microsoft WiFi driver used by the media endpoint.
         self._wifi_microsoft_driver_version: Optional[str] = None
-        # The wifiRadioType property
         self._wifi_radio_type: Optional[wifi_radio_type.WifiRadioType] = None
         # WiFi signal strength in percentage reported by the media endpoint.
         self._wifi_signal_strength: Optional[int] = None
@@ -192,33 +187,33 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "bandwidth_low_event_ratio": lambda n : setattr(self, 'bandwidth_low_event_ratio', n.get_float_value()),
-            "basic_service_set_identifier": lambda n : setattr(self, 'basic_service_set_identifier', n.get_str_value()),
-            "connection_type": lambda n : setattr(self, 'connection_type', n.get_enum_value(network_connection_type.NetworkConnectionType)),
-            "delay_event_ratio": lambda n : setattr(self, 'delay_event_ratio', n.get_float_value()),
-            "dns_suffix": lambda n : setattr(self, 'dns_suffix', n.get_str_value()),
-            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
-            "link_speed": lambda n : setattr(self, 'link_speed', n.get_int_value()),
-            "mac_address": lambda n : setattr(self, 'mac_address', n.get_str_value()),
-            "network_transport_protocol": lambda n : setattr(self, 'network_transport_protocol', n.get_enum_value(network_transport_protocol.NetworkTransportProtocol)),
+            "bandwidthLowEventRatio": lambda n : setattr(self, 'bandwidth_low_event_ratio', n.get_float_value()),
+            "basicServiceSetIdentifier": lambda n : setattr(self, 'basic_service_set_identifier', n.get_str_value()),
+            "connectionType": lambda n : setattr(self, 'connection_type', n.get_enum_value(network_connection_type.NetworkConnectionType)),
+            "delayEventRatio": lambda n : setattr(self, 'delay_event_ratio', n.get_float_value()),
+            "dnsSuffix": lambda n : setattr(self, 'dns_suffix', n.get_str_value()),
+            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "linkSpeed": lambda n : setattr(self, 'link_speed', n.get_int_value()),
+            "macAddress": lambda n : setattr(self, 'mac_address', n.get_str_value()),
+            "networkTransportProtocol": lambda n : setattr(self, 'network_transport_protocol', n.get_enum_value(network_transport_protocol.NetworkTransportProtocol)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "port": lambda n : setattr(self, 'port', n.get_int_value()),
-            "received_quality_event_ratio": lambda n : setattr(self, 'received_quality_event_ratio', n.get_float_value()),
-            "reflexive_i_p_address": lambda n : setattr(self, 'reflexive_i_p_address', n.get_str_value()),
-            "relay_i_p_address": lambda n : setattr(self, 'relay_i_p_address', n.get_str_value()),
-            "relay_port": lambda n : setattr(self, 'relay_port', n.get_int_value()),
-            "sent_quality_event_ratio": lambda n : setattr(self, 'sent_quality_event_ratio', n.get_float_value()),
+            "receivedQualityEventRatio": lambda n : setattr(self, 'received_quality_event_ratio', n.get_float_value()),
+            "reflexiveIPAddress": lambda n : setattr(self, 'reflexive_i_p_address', n.get_str_value()),
+            "relayIPAddress": lambda n : setattr(self, 'relay_i_p_address', n.get_str_value()),
+            "relayPort": lambda n : setattr(self, 'relay_port', n.get_int_value()),
+            "sentQualityEventRatio": lambda n : setattr(self, 'sent_quality_event_ratio', n.get_float_value()),
             "subnet": lambda n : setattr(self, 'subnet', n.get_str_value()),
-            "trace_route_hops": lambda n : setattr(self, 'trace_route_hops', n.get_collection_of_object_values(trace_route_hop.TraceRouteHop)),
-            "wifi_band": lambda n : setattr(self, 'wifi_band', n.get_enum_value(wifi_band.WifiBand)),
-            "wifi_battery_charge": lambda n : setattr(self, 'wifi_battery_charge', n.get_int_value()),
-            "wifi_channel": lambda n : setattr(self, 'wifi_channel', n.get_int_value()),
-            "wifi_microsoft_driver": lambda n : setattr(self, 'wifi_microsoft_driver', n.get_str_value()),
-            "wifi_microsoft_driver_version": lambda n : setattr(self, 'wifi_microsoft_driver_version', n.get_str_value()),
-            "wifi_radio_type": lambda n : setattr(self, 'wifi_radio_type', n.get_enum_value(wifi_radio_type.WifiRadioType)),
-            "wifi_signal_strength": lambda n : setattr(self, 'wifi_signal_strength', n.get_int_value()),
-            "wifi_vendor_driver": lambda n : setattr(self, 'wifi_vendor_driver', n.get_str_value()),
-            "wifi_vendor_driver_version": lambda n : setattr(self, 'wifi_vendor_driver_version', n.get_str_value()),
+            "traceRouteHops": lambda n : setattr(self, 'trace_route_hops', n.get_collection_of_object_values(trace_route_hop.TraceRouteHop)),
+            "wifiBand": lambda n : setattr(self, 'wifi_band', n.get_enum_value(wifi_band.WifiBand)),
+            "wifiBatteryCharge": lambda n : setattr(self, 'wifi_battery_charge', n.get_int_value()),
+            "wifiChannel": lambda n : setattr(self, 'wifi_channel', n.get_int_value()),
+            "wifiMicrosoftDriver": lambda n : setattr(self, 'wifi_microsoft_driver', n.get_str_value()),
+            "wifiMicrosoftDriverVersion": lambda n : setattr(self, 'wifi_microsoft_driver_version', n.get_str_value()),
+            "wifiRadioType": lambda n : setattr(self, 'wifi_radio_type', n.get_enum_value(wifi_radio_type.WifiRadioType)),
+            "wifiSignalStrength": lambda n : setattr(self, 'wifi_signal_strength', n.get_int_value()),
+            "wifiVendorDriver": lambda n : setattr(self, 'wifi_vendor_driver', n.get_str_value()),
+            "wifiVendorDriverVersion": lambda n : setattr(self, 'wifi_vendor_driver_version', n.get_str_value()),
         }
         return fields
     
@@ -276,7 +271,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
     @property
     def network_transport_protocol(self,) -> Optional[network_transport_protocol.NetworkTransportProtocol]:
         """
-        Gets the networkTransportProtocol property value. The networkTransportProtocol property
+        Gets the networkTransportProtocol property value. 
         Returns: Optional[network_transport_protocol.NetworkTransportProtocol]
         """
         return self._network_transport_protocol
@@ -284,7 +279,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
     @network_transport_protocol.setter
     def network_transport_protocol(self,value: Optional[network_transport_protocol.NetworkTransportProtocol] = None) -> None:
         """
-        Sets the networkTransportProtocol property value. The networkTransportProtocol property
+        Sets the networkTransportProtocol property value. 
         Args:
             value: Value to set for the networkTransportProtocol property.
         """
@@ -293,7 +288,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -301,7 +296,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -483,7 +478,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
     @property
     def wifi_band(self,) -> Optional[wifi_band.WifiBand]:
         """
-        Gets the wifiBand property value. The wifiBand property
+        Gets the wifiBand property value. 
         Returns: Optional[wifi_band.WifiBand]
         """
         return self._wifi_band
@@ -491,7 +486,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
     @wifi_band.setter
     def wifi_band(self,value: Optional[wifi_band.WifiBand] = None) -> None:
         """
-        Sets the wifiBand property value. The wifiBand property
+        Sets the wifiBand property value. 
         Args:
             value: Value to set for the wifiBand property.
         """
@@ -568,7 +563,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
     @property
     def wifi_radio_type(self,) -> Optional[wifi_radio_type.WifiRadioType]:
         """
-        Gets the wifiRadioType property value. The wifiRadioType property
+        Gets the wifiRadioType property value. 
         Returns: Optional[wifi_radio_type.WifiRadioType]
         """
         return self._wifi_radio_type
@@ -576,7 +571,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
     @wifi_radio_type.setter
     def wifi_radio_type(self,value: Optional[wifi_radio_type.WifiRadioType] = None) -> None:
         """
-        Sets the wifiRadioType property value. The wifiRadioType property
+        Sets the wifiRadioType property value. 
         Args:
             value: Value to set for the wifiRadioType property.
         """

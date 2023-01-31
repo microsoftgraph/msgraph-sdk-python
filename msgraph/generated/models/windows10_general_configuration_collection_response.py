@@ -12,7 +12,6 @@ class Windows10GeneralConfigurationCollectionResponse(base_collection_pagination
         Instantiates a new Windows10GeneralConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[windows10_general_configuration.Windows10GeneralConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class Windows10GeneralConfigurationCollectionResponse(base_collection_pagination
     @property
     def value(self,) -> Optional[List[windows10_general_configuration.Windows10GeneralConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[windows10_general_configuration.Windows10GeneralConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class Windows10GeneralConfigurationCollectionResponse(base_collection_pagination
     @value.setter
     def value(self,value: Optional[List[windows10_general_configuration.Windows10GeneralConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -66,7 +66,7 @@ class AcceptanceStatusesRequestBuilder():
         """
         Create new navigation property to acceptanceStatuses for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus]
         """
@@ -105,7 +105,7 @@ class AcceptanceStatusesRequestBuilder():
         """
         Create new navigation property to acceptanceStatuses for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

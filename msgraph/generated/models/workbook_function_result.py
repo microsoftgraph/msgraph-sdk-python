@@ -12,11 +12,8 @@ class WorkbookFunctionResult(entity.Entity):
         Instantiates a new WorkbookFunctionResult and sets the default values.
         """
         super().__init__()
-        # The error property
         self._error: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The value property
         self._value: Optional[json.Json] = None
     
     @staticmethod
@@ -34,7 +31,7 @@ class WorkbookFunctionResult(entity.Entity):
     @property
     def error(self,) -> Optional[str]:
         """
-        Gets the error property value. The error property
+        Gets the error property value. 
         Returns: Optional[str]
         """
         return self._error
@@ -42,7 +39,7 @@ class WorkbookFunctionResult(entity.Entity):
     @error.setter
     def error(self,value: Optional[str] = None) -> None:
         """
-        Sets the error property value. The error property
+        Sets the error property value. 
         Args:
             value: Value to set for the error property.
         """
@@ -76,7 +73,7 @@ class WorkbookFunctionResult(entity.Entity):
     @property
     def value(self,) -> Optional[json.Json]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[json.Json]
         """
         return self._value
@@ -84,7 +81,7 @@ class WorkbookFunctionResult(entity.Entity):
     @value.setter
     def value(self,value: Optional[json.Json] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

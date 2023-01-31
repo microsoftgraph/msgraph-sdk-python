@@ -14,7 +14,6 @@ class Todo(entity.Entity):
         super().__init__()
         # The task lists in the users mailbox.
         self._lists: Optional[List[todo_task_list.TodoTaskList]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

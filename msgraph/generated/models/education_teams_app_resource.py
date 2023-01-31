@@ -73,10 +73,10 @@ class EducationTeamsAppResource(education_resource.EducationResource):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_icon_web_url": lambda n : setattr(self, 'app_icon_web_url', n.get_str_value()),
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "teams_embedded_content_url": lambda n : setattr(self, 'teams_embedded_content_url', n.get_str_value()),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "appIconWebUrl": lambda n : setattr(self, 'app_icon_web_url', n.get_str_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "teamsEmbeddedContentUrl": lambda n : setattr(self, 'teams_embedded_content_url', n.get_str_value()),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

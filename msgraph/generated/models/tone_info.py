@@ -30,11 +30,9 @@ class ToneInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # An incremental identifier used for ordering DTMF events.
         self._sequence_id: Optional[int] = None
-        # The tone property
         self._tone: Optional[tone.Tone] = None
     
     @staticmethod
@@ -56,7 +54,7 @@ class ToneInfo(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "sequence_id": lambda n : setattr(self, 'sequence_id', n.get_int_value()),
+            "sequenceId": lambda n : setattr(self, 'sequence_id', n.get_int_value()),
             "tone": lambda n : setattr(self, 'tone', n.get_enum_value(tone.Tone)),
         }
         return fields
@@ -64,7 +62,7 @@ class ToneInfo(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -72,7 +70,7 @@ class ToneInfo(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -111,7 +109,7 @@ class ToneInfo(AdditionalDataHolder, Parsable):
     @property
     def tone(self,) -> Optional[tone.Tone]:
         """
-        Gets the tone property value. The tone property
+        Gets the tone property value. 
         Returns: Optional[tone.Tone]
         """
         return self._tone
@@ -119,7 +117,7 @@ class ToneInfo(AdditionalDataHolder, Parsable):
     @tone.setter
     def tone(self,value: Optional[tone.Tone] = None) -> None:
         """
-        Sets the tone property value. The tone property
+        Sets the tone property value. 
         Args:
             value: Value to set for the tone property.
         """

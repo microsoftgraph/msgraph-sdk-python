@@ -38,7 +38,6 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         self._duration_in_days: Optional[int] = None
         # If provided, the fallback reviewers are asked to complete a review if the primary reviewers do not exist. For example, if managers are selected as reviewers and a principal under review does not have a manager in Azure AD, the fallback reviewers are asked to review that principal. NOTE: The value of this property will override the corresponding setting on the accessReviewScheduleDefinition object.
         self._fallback_reviewers: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Indicates whether showing recommendations to reviewers is enabled. Required. NOTE: The value of this property will override override the corresponding setting on the accessReviewScheduleDefinition object.
         self._recommendations_enabled: Optional[bool] = None
@@ -133,21 +132,21 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "decisions_that_will_move_to_next_stage": lambda n : setattr(self, 'decisions_that_will_move_to_next_stage', n.get_collection_of_primitive_values(str)),
-            "depends_on": lambda n : setattr(self, 'depends_on', n.get_collection_of_primitive_values(str)),
-            "duration_in_days": lambda n : setattr(self, 'duration_in_days', n.get_int_value()),
-            "fallback_reviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(access_review_reviewer_scope.AccessReviewReviewerScope)),
+            "decisionsThatWillMoveToNextStage": lambda n : setattr(self, 'decisions_that_will_move_to_next_stage', n.get_collection_of_primitive_values(str)),
+            "dependsOn": lambda n : setattr(self, 'depends_on', n.get_collection_of_primitive_values(str)),
+            "durationInDays": lambda n : setattr(self, 'duration_in_days', n.get_int_value()),
+            "fallbackReviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(access_review_reviewer_scope.AccessReviewReviewerScope)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recommendations_enabled": lambda n : setattr(self, 'recommendations_enabled', n.get_bool_value()),
+            "recommendationsEnabled": lambda n : setattr(self, 'recommendations_enabled', n.get_bool_value()),
             "reviewers": lambda n : setattr(self, 'reviewers', n.get_collection_of_object_values(access_review_reviewer_scope.AccessReviewReviewerScope)),
-            "stage_id": lambda n : setattr(self, 'stage_id', n.get_str_value()),
+            "stageId": lambda n : setattr(self, 'stage_id', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -155,7 +154,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

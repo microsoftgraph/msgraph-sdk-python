@@ -97,13 +97,11 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         self._device_count: Optional[int] = None
         # The user experience analytics device name.
         self._device_name: Optional[str] = None
-        # The diskType property
         self._disk_type: Optional[disk_type.DiskType] = None
         # The user experience analytics device group policy boot time in milliseconds.
         self._group_policy_boot_time_in_ms: Optional[int] = None
         # The user experience analytics device group policy login time in milliseconds.
         self._group_policy_login_time_in_ms: Optional[int] = None
-        # The healthStatus property
         self._health_status: Optional[user_experience_analytics_health_state.UserExperienceAnalyticsHealthState] = None
         # The user experience analytics device login score.
         self._login_score: Optional[int] = None
@@ -113,7 +111,6 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         self._model: Optional[str] = None
         # The user experience analytics model level startup performance score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
         self._model_startup_performance_score: Optional[float] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The user experience analytics device Operating System version.
         self._operating_system_version: Optional[str] = None
@@ -207,7 +204,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
     @property
     def disk_type(self,) -> Optional[disk_type.DiskType]:
         """
-        Gets the diskType property value. The diskType property
+        Gets the diskType property value. 
         Returns: Optional[disk_type.DiskType]
         """
         return self._disk_type
@@ -215,7 +212,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
     @disk_type.setter
     def disk_type(self,value: Optional[disk_type.DiskType] = None) -> None:
         """
-        Sets the diskType property value. The diskType property
+        Sets the diskType property value. 
         Args:
             value: Value to set for the diskType property.
         """
@@ -227,26 +224,26 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "average_blue_screens": lambda n : setattr(self, 'average_blue_screens', n.get_float_value()),
-            "average_restarts": lambda n : setattr(self, 'average_restarts', n.get_float_value()),
-            "blue_screen_count": lambda n : setattr(self, 'blue_screen_count', n.get_int_value()),
-            "boot_score": lambda n : setattr(self, 'boot_score', n.get_int_value()),
-            "core_boot_time_in_ms": lambda n : setattr(self, 'core_boot_time_in_ms', n.get_int_value()),
-            "core_login_time_in_ms": lambda n : setattr(self, 'core_login_time_in_ms', n.get_int_value()),
-            "device_count": lambda n : setattr(self, 'device_count', n.get_int_value()),
-            "device_name": lambda n : setattr(self, 'device_name', n.get_str_value()),
-            "disk_type": lambda n : setattr(self, 'disk_type', n.get_enum_value(disk_type.DiskType)),
-            "group_policy_boot_time_in_ms": lambda n : setattr(self, 'group_policy_boot_time_in_ms', n.get_int_value()),
-            "group_policy_login_time_in_ms": lambda n : setattr(self, 'group_policy_login_time_in_ms', n.get_int_value()),
-            "health_status": lambda n : setattr(self, 'health_status', n.get_enum_value(user_experience_analytics_health_state.UserExperienceAnalyticsHealthState)),
-            "login_score": lambda n : setattr(self, 'login_score', n.get_int_value()),
+            "averageBlueScreens": lambda n : setattr(self, 'average_blue_screens', n.get_float_value()),
+            "averageRestarts": lambda n : setattr(self, 'average_restarts', n.get_float_value()),
+            "blueScreenCount": lambda n : setattr(self, 'blue_screen_count', n.get_int_value()),
+            "bootScore": lambda n : setattr(self, 'boot_score', n.get_int_value()),
+            "coreBootTimeInMs": lambda n : setattr(self, 'core_boot_time_in_ms', n.get_int_value()),
+            "coreLoginTimeInMs": lambda n : setattr(self, 'core_login_time_in_ms', n.get_int_value()),
+            "deviceCount": lambda n : setattr(self, 'device_count', n.get_int_value()),
+            "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
+            "diskType": lambda n : setattr(self, 'disk_type', n.get_enum_value(disk_type.DiskType)),
+            "groupPolicyBootTimeInMs": lambda n : setattr(self, 'group_policy_boot_time_in_ms', n.get_int_value()),
+            "groupPolicyLoginTimeInMs": lambda n : setattr(self, 'group_policy_login_time_in_ms', n.get_int_value()),
+            "healthStatus": lambda n : setattr(self, 'health_status', n.get_enum_value(user_experience_analytics_health_state.UserExperienceAnalyticsHealthState)),
+            "loginScore": lambda n : setattr(self, 'login_score', n.get_int_value()),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
-            "model_startup_performance_score": lambda n : setattr(self, 'model_startup_performance_score', n.get_float_value()),
-            "operating_system_version": lambda n : setattr(self, 'operating_system_version', n.get_str_value()),
-            "responsive_desktop_time_in_ms": lambda n : setattr(self, 'responsive_desktop_time_in_ms', n.get_int_value()),
-            "restart_count": lambda n : setattr(self, 'restart_count', n.get_int_value()),
-            "startup_performance_score": lambda n : setattr(self, 'startup_performance_score', n.get_float_value()),
+            "modelStartupPerformanceScore": lambda n : setattr(self, 'model_startup_performance_score', n.get_float_value()),
+            "operatingSystemVersion": lambda n : setattr(self, 'operating_system_version', n.get_str_value()),
+            "responsiveDesktopTimeInMs": lambda n : setattr(self, 'responsive_desktop_time_in_ms', n.get_int_value()),
+            "restartCount": lambda n : setattr(self, 'restart_count', n.get_int_value()),
+            "startupPerformanceScore": lambda n : setattr(self, 'startup_performance_score', n.get_float_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -289,7 +286,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
     @property
     def health_status(self,) -> Optional[user_experience_analytics_health_state.UserExperienceAnalyticsHealthState]:
         """
-        Gets the healthStatus property value. The healthStatus property
+        Gets the healthStatus property value. 
         Returns: Optional[user_experience_analytics_health_state.UserExperienceAnalyticsHealthState]
         """
         return self._health_status
@@ -297,7 +294,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
     @health_status.setter
     def health_status(self,value: Optional[user_experience_analytics_health_state.UserExperienceAnalyticsHealthState] = None) -> None:
         """
-        Sets the healthStatus property value. The healthStatus property
+        Sets the healthStatus property value. 
         Args:
             value: Value to set for the healthStatus property.
         """

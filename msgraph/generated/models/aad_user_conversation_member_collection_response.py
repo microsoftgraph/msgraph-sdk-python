@@ -12,7 +12,6 @@ class AadUserConversationMemberCollectionResponse(base_collection_pagination_cou
         Instantiates a new AadUserConversationMemberCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[aad_user_conversation_member.AadUserConversationMember]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class AadUserConversationMemberCollectionResponse(base_collection_pagination_cou
     @property
     def value(self,) -> Optional[List[aad_user_conversation_member.AadUserConversationMember]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[aad_user_conversation_member.AadUserConversationMember]]
         """
         return self._value
@@ -61,7 +60,7 @@ class AadUserConversationMemberCollectionResponse(base_collection_pagination_cou
     @value.setter
     def value(self,value: Optional[List[aad_user_conversation_member.AadUserConversationMember]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -35,11 +35,12 @@ class PermissionGrantPolicyItemRequestBuilder():
         """
         return includes_request_builder.IncludesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, permission_grant_policy_id: Optional[str] = None) -> None:
         """
         Instantiates a new PermissionGrantPolicyItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
+            permissionGrantPolicyId: key: id of permissionGrantPolicy
             requestAdapter: The request adapter to use to execute the requests.
         """
         if path_parameters is None:
@@ -50,6 +51,7 @@ class PermissionGrantPolicyItemRequestBuilder():
         self.url_template: str = "{+baseurl}/policies/permissionGrantPolicies/{permissionGrantPolicy%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["permissionGrantPolicy%2Did"] = permissionGrantPolicyId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -118,7 +120,7 @@ class PermissionGrantPolicyItemRequestBuilder():
         """
         Update the navigation property permissionGrantPolicies in policies
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[permission_grant_policy.PermissionGrantPolicy]
         """
@@ -173,7 +175,7 @@ class PermissionGrantPolicyItemRequestBuilder():
         """
         Update the navigation property permissionGrantPolicies in policies
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

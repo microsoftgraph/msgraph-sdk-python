@@ -66,7 +66,7 @@ class ChecklistItemsRequestBuilder():
         """
         Create new navigation property to checklistItems for me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[checklist_item.ChecklistItem]
         """
@@ -105,7 +105,7 @@ class ChecklistItemsRequestBuilder():
         """
         Create new navigation property to checklistItems for me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

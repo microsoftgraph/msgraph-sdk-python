@@ -12,7 +12,6 @@ class SegmentCollectionResponse(base_collection_pagination_count_response.BaseCo
         Instantiates a new SegmentCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[segment.Segment]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class SegmentCollectionResponse(base_collection_pagination_count_response.BaseCo
     @property
     def value(self,) -> Optional[List[segment.Segment]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[segment.Segment]]
         """
         return self._value
@@ -61,7 +60,7 @@ class SegmentCollectionResponse(base_collection_pagination_count_response.BaseCo
     @value.setter
     def value(self,value: Optional[List[segment.Segment]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

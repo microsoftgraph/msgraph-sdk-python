@@ -66,7 +66,7 @@ class TaskTriggersRequestBuilder():
         """
         Create a new task trigger on the specified printer. Currently, only **one** task trigger can be specified per printer, but this limit might be removed in the future. 
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[print_task_trigger.PrintTaskTrigger]
         """
@@ -105,7 +105,7 @@ class TaskTriggersRequestBuilder():
         """
         Create a new task trigger on the specified printer. Currently, only **one** task trigger can be specified per printer, but this limit might be removed in the future. 
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

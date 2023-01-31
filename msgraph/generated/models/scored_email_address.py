@@ -49,13 +49,10 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
 
         # The email address.
         self._address: Optional[str] = None
-        # The itemId property
         self._item_id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The relevance score of the email address. A relevance score is used as a sort key, in relation to the other returned results. A higher relevance score value corresponds to a more relevant result. Relevance is determined by the user’s communication and collaboration patterns and business relationships.
         self._relevance_score: Optional[float] = None
-        # The selectionLikelihood property
         self._selection_likelihood: Optional[selection_likelihood_info.SelectionLikelihoodInfo] = None
     
     @staticmethod
@@ -77,17 +74,17 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
         """
         fields = {
             "address": lambda n : setattr(self, 'address', n.get_str_value()),
-            "item_id": lambda n : setattr(self, 'item_id', n.get_str_value()),
+            "itemId": lambda n : setattr(self, 'item_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "relevance_score": lambda n : setattr(self, 'relevance_score', n.get_float_value()),
-            "selection_likelihood": lambda n : setattr(self, 'selection_likelihood', n.get_enum_value(selection_likelihood_info.SelectionLikelihoodInfo)),
+            "relevanceScore": lambda n : setattr(self, 'relevance_score', n.get_float_value()),
+            "selectionLikelihood": lambda n : setattr(self, 'selection_likelihood', n.get_enum_value(selection_likelihood_info.SelectionLikelihoodInfo)),
         }
         return fields
     
     @property
     def item_id(self,) -> Optional[str]:
         """
-        Gets the itemId property value. The itemId property
+        Gets the itemId property value. 
         Returns: Optional[str]
         """
         return self._item_id
@@ -95,7 +92,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
     @item_id.setter
     def item_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the itemId property value. The itemId property
+        Sets the itemId property value. 
         Args:
             value: Value to set for the itemId property.
         """
@@ -104,7 +101,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -112,7 +109,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -138,7 +135,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
     @property
     def selection_likelihood(self,) -> Optional[selection_likelihood_info.SelectionLikelihoodInfo]:
         """
-        Gets the selectionLikelihood property value. The selectionLikelihood property
+        Gets the selectionLikelihood property value. 
         Returns: Optional[selection_likelihood_info.SelectionLikelihoodInfo]
         """
         return self._selection_likelihood
@@ -146,7 +143,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
     @selection_likelihood.setter
     def selection_likelihood(self,value: Optional[selection_likelihood_info.SelectionLikelihoodInfo] = None) -> None:
         """
-        Sets the selectionLikelihood property value. The selectionLikelihood property
+        Sets the selectionLikelihood property value. 
         Args:
             value: Value to set for the selectionLikelihood property.
         """

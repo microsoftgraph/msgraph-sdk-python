@@ -33,9 +33,7 @@ class RecordingInfo(AdditionalDataHolder, Parsable):
 
         # The identities of the recording initiator.
         self._initiator: Optional[identity_set.IdentitySet] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The recordingStatus property
         self._recording_status: Optional[recording_status.RecordingStatus] = None
     
     @staticmethod
@@ -58,7 +56,7 @@ class RecordingInfo(AdditionalDataHolder, Parsable):
         fields = {
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recording_status": lambda n : setattr(self, 'recording_status', n.get_enum_value(recording_status.RecordingStatus)),
+            "recordingStatus": lambda n : setattr(self, 'recording_status', n.get_enum_value(recording_status.RecordingStatus)),
         }
         return fields
     
@@ -82,7 +80,7 @@ class RecordingInfo(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -90,7 +88,7 @@ class RecordingInfo(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -99,7 +97,7 @@ class RecordingInfo(AdditionalDataHolder, Parsable):
     @property
     def recording_status(self,) -> Optional[recording_status.RecordingStatus]:
         """
-        Gets the recordingStatus property value. The recordingStatus property
+        Gets the recordingStatus property value. 
         Returns: Optional[recording_status.RecordingStatus]
         """
         return self._recording_status
@@ -107,7 +105,7 @@ class RecordingInfo(AdditionalDataHolder, Parsable):
     @recording_status.setter
     def recording_status(self,value: Optional[recording_status.RecordingStatus] = None) -> None:
         """
-        Sets the recordingStatus property value. The recordingStatus property
+        Sets the recordingStatus property value. 
         Args:
             value: Value to set for the recordingStatus property.
         """

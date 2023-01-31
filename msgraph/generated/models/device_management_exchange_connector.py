@@ -44,7 +44,6 @@ class DeviceManagementExchangeConnector(entity.Entity):
         self._exchange_organization: Optional[str] = None
         # Last sync time for the Exchange Connector
         self._last_sync_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Email address used to configure the Service To Service Exchange Connector.
         self._primary_smtp_address: Optional[str] = None
@@ -124,13 +123,13 @@ class DeviceManagementExchangeConnector(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "connector_server_name": lambda n : setattr(self, 'connector_server_name', n.get_str_value()),
-            "exchange_alias": lambda n : setattr(self, 'exchange_alias', n.get_str_value()),
-            "exchange_connector_type": lambda n : setattr(self, 'exchange_connector_type', n.get_enum_value(device_management_exchange_connector_type.DeviceManagementExchangeConnectorType)),
-            "exchange_organization": lambda n : setattr(self, 'exchange_organization', n.get_str_value()),
-            "last_sync_date_time": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
-            "primary_smtp_address": lambda n : setattr(self, 'primary_smtp_address', n.get_str_value()),
-            "server_name": lambda n : setattr(self, 'server_name', n.get_str_value()),
+            "connectorServerName": lambda n : setattr(self, 'connector_server_name', n.get_str_value()),
+            "exchangeAlias": lambda n : setattr(self, 'exchange_alias', n.get_str_value()),
+            "exchangeConnectorType": lambda n : setattr(self, 'exchange_connector_type', n.get_enum_value(device_management_exchange_connector_type.DeviceManagementExchangeConnectorType)),
+            "exchangeOrganization": lambda n : setattr(self, 'exchange_organization', n.get_str_value()),
+            "lastSyncDateTime": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
+            "primarySmtpAddress": lambda n : setattr(self, 'primary_smtp_address', n.get_str_value()),
+            "serverName": lambda n : setattr(self, 'server_name', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(device_management_exchange_connector_status.DeviceManagementExchangeConnectorStatus)),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }

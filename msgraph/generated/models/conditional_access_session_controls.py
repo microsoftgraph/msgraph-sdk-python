@@ -73,7 +73,6 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
         self._cloud_app_security: Optional[cloud_app_security_session_control.CloudAppSecuritySessionControl] = None
         # Session control that determines whether it is acceptable for Azure AD to extend existing sessions based on information collected prior to an outage or not.
         self._disable_resilience_defaults: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Session control to define whether to persist cookies or not. All apps should be selected for this session control to work correctly.
         self._persistent_browser: Optional[persistent_browser_session_control.PersistentBrowserSessionControl] = None
@@ -115,19 +114,19 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "application_enforced_restrictions": lambda n : setattr(self, 'application_enforced_restrictions', n.get_object_value(application_enforced_restrictions_session_control.ApplicationEnforcedRestrictionsSessionControl)),
-            "cloud_app_security": lambda n : setattr(self, 'cloud_app_security', n.get_object_value(cloud_app_security_session_control.CloudAppSecuritySessionControl)),
-            "disable_resilience_defaults": lambda n : setattr(self, 'disable_resilience_defaults', n.get_bool_value()),
+            "applicationEnforcedRestrictions": lambda n : setattr(self, 'application_enforced_restrictions', n.get_object_value(application_enforced_restrictions_session_control.ApplicationEnforcedRestrictionsSessionControl)),
+            "cloudAppSecurity": lambda n : setattr(self, 'cloud_app_security', n.get_object_value(cloud_app_security_session_control.CloudAppSecuritySessionControl)),
+            "disableResilienceDefaults": lambda n : setattr(self, 'disable_resilience_defaults', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "persistent_browser": lambda n : setattr(self, 'persistent_browser', n.get_object_value(persistent_browser_session_control.PersistentBrowserSessionControl)),
-            "sign_in_frequency": lambda n : setattr(self, 'sign_in_frequency', n.get_object_value(sign_in_frequency_session_control.SignInFrequencySessionControl)),
+            "persistentBrowser": lambda n : setattr(self, 'persistent_browser', n.get_object_value(persistent_browser_session_control.PersistentBrowserSessionControl)),
+            "signInFrequency": lambda n : setattr(self, 'sign_in_frequency', n.get_object_value(sign_in_frequency_session_control.SignInFrequencySessionControl)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -135,7 +134,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

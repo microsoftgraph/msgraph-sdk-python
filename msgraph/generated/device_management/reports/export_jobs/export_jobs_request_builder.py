@@ -66,7 +66,7 @@ class ExportJobsRequestBuilder():
         """
         Create new navigation property to exportJobs for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[device_management_export_job.DeviceManagementExportJob]
         """
@@ -105,7 +105,7 @@ class ExportJobsRequestBuilder():
         """
         Create new navigation property to exportJobs for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

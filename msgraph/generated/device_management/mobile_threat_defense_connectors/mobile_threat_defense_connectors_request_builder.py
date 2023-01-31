@@ -66,7 +66,7 @@ class MobileThreatDefenseConnectorsRequestBuilder():
         """
         Create new navigation property to mobileThreatDefenseConnectors for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[mobile_threat_defense_connector.MobileThreatDefenseConnector]
         """
@@ -105,7 +105,7 @@ class MobileThreatDefenseConnectorsRequestBuilder():
         """
         Create new navigation property to mobileThreatDefenseConnectors for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

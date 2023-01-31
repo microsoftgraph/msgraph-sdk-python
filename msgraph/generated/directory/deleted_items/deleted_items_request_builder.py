@@ -10,13 +10,13 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-application_request_builder = lazy_import('msgraph.generated.directory.deleted_items.application.application_request_builder')
 count_request_builder = lazy_import('msgraph.generated.directory.deleted_items.count.count_request_builder')
-get_available_extension_properties_request_builder = lazy_import('msgraph.generated.directory.deleted_items.get_available_extension_properties.get_available_extension_properties_request_builder')
-get_by_ids_request_builder = lazy_import('msgraph.generated.directory.deleted_items.get_by_ids.get_by_ids_request_builder')
-group_request_builder = lazy_import('msgraph.generated.directory.deleted_items.group.group_request_builder')
-user_request_builder = lazy_import('msgraph.generated.directory.deleted_items.user.user_request_builder')
-validate_properties_request_builder = lazy_import('msgraph.generated.directory.deleted_items.validate_properties.validate_properties_request_builder')
+application_request_builder = lazy_import('msgraph.generated.directory.deleted_items.microsoft_graph_application.application_request_builder')
+get_available_extension_properties_request_builder = lazy_import('msgraph.generated.directory.deleted_items.microsoft_graph_get_available_extension_properties.get_available_extension_properties_request_builder')
+get_by_ids_request_builder = lazy_import('msgraph.generated.directory.deleted_items.microsoft_graph_get_by_ids.get_by_ids_request_builder')
+group_request_builder = lazy_import('msgraph.generated.directory.deleted_items.microsoft_graph_group.group_request_builder')
+user_request_builder = lazy_import('msgraph.generated.directory.deleted_items.microsoft_graph_user.user_request_builder')
+validate_properties_request_builder = lazy_import('msgraph.generated.directory.deleted_items.microsoft_graph_validate_properties.validate_properties_request_builder')
 directory_object = lazy_import('msgraph.generated.models.directory_object')
 directory_object_collection_response = lazy_import('msgraph.generated.models.directory_object_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -26,13 +26,6 @@ class DeletedItemsRequestBuilder():
     Provides operations to manage the deletedItems property of the microsoft.graph.directory entity.
     """
     @property
-    def application(self) -> application_request_builder.ApplicationRequestBuilder:
-        """
-        Casts the previous resource to application.
-        """
-        return application_request_builder.ApplicationRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
@@ -40,35 +33,42 @@ class DeletedItemsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
+    def microsoft_graph_application(self) -> application_request_builder.ApplicationRequestBuilder:
+        """
+        Casts the previous resource to application.
+        """
+        return application_request_builder.ApplicationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
         """
         Provides operations to call the getAvailableExtensionProperties method.
         """
         return get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
+    def microsoft_graph_get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
         """
         Provides operations to call the getByIds method.
         """
         return get_by_ids_request_builder.GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def group(self) -> group_request_builder.GroupRequestBuilder:
+    def microsoft_graph_group(self) -> group_request_builder.GroupRequestBuilder:
         """
         Casts the previous resource to group.
         """
         return group_request_builder.GroupRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def user(self) -> user_request_builder.UserRequestBuilder:
+    def microsoft_graph_user(self) -> user_request_builder.UserRequestBuilder:
         """
         Casts the previous resource to user.
         """
         return user_request_builder.UserRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
+    def microsoft_graph_validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
         """
         Provides operations to call the validateProperties method.
         """
@@ -114,7 +114,7 @@ class DeletedItemsRequestBuilder():
         """
         Create new navigation property to deletedItems for directory
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[directory_object.DirectoryObject]
         """
@@ -153,7 +153,7 @@ class DeletedItemsRequestBuilder():
         """
         Create new navigation property to deletedItems for directory
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

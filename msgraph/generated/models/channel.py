@@ -36,7 +36,6 @@ class Channel(entity.Entity):
         self._membership_type: Optional[channel_membership_type.ChannelMembershipType] = None
         # A collection of all the messages in the channel. A navigation property. Nullable.
         self._messages: Optional[List[chat_message.ChatMessage]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # A collection of teams with which a channel is shared.
         self._shared_with_teams: Optional[List[shared_with_channel_team_info.SharedWithChannelTeamInfo]] = None
@@ -150,19 +149,19 @@ class Channel(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "files_folder": lambda n : setattr(self, 'files_folder', n.get_object_value(drive_item.DriveItem)),
-            "is_favorite_by_default": lambda n : setattr(self, 'is_favorite_by_default', n.get_bool_value()),
+            "filesFolder": lambda n : setattr(self, 'files_folder', n.get_object_value(drive_item.DriveItem)),
+            "isFavoriteByDefault": lambda n : setattr(self, 'is_favorite_by_default', n.get_bool_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(conversation_member.ConversationMember)),
-            "membership_type": lambda n : setattr(self, 'membership_type', n.get_enum_value(channel_membership_type.ChannelMembershipType)),
+            "membershipType": lambda n : setattr(self, 'membership_type', n.get_enum_value(channel_membership_type.ChannelMembershipType)),
             "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(chat_message.ChatMessage)),
-            "shared_with_teams": lambda n : setattr(self, 'shared_with_teams', n.get_collection_of_object_values(shared_with_channel_team_info.SharedWithChannelTeamInfo)),
+            "sharedWithTeams": lambda n : setattr(self, 'shared_with_teams', n.get_collection_of_object_values(shared_with_channel_team_info.SharedWithChannelTeamInfo)),
             "tabs": lambda n : setattr(self, 'tabs', n.get_collection_of_object_values(teams_tab.TeamsTab)),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

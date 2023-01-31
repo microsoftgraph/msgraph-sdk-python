@@ -50,7 +50,7 @@ class ChatMembersNotificationRecipient(teamwork_notification_recipient.TeamworkN
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "chat_id": lambda n : setattr(self, 'chat_id', n.get_str_value()),
+            "chatId": lambda n : setattr(self, 'chat_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

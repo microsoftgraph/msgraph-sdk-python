@@ -12,7 +12,6 @@ class UnifiedGroupSourceCollectionResponse(base_collection_pagination_count_resp
         Instantiates a new UnifiedGroupSourceCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[unified_group_source.UnifiedGroupSource]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class UnifiedGroupSourceCollectionResponse(base_collection_pagination_count_resp
     @property
     def value(self,) -> Optional[List[unified_group_source.UnifiedGroupSource]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[unified_group_source.UnifiedGroupSource]]
         """
         return self._value
@@ -61,7 +60,7 @@ class UnifiedGroupSourceCollectionResponse(base_collection_pagination_count_resp
     @value.setter
     def value(self,value: Optional[List[unified_group_source.UnifiedGroupSource]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

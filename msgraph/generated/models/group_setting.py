@@ -14,7 +14,6 @@ class GroupSetting(entity.Entity):
         super().__init__()
         # Display name of this group of settings, which comes from the associated template.
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Unique identifier for the tenant-level groupSettingTemplates object that's been customized for this group-level settings object. Read-only.
         self._template_id: Optional[str] = None
@@ -56,8 +55,8 @@ class GroupSetting(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "template_id": lambda n : setattr(self, 'template_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "templateId": lambda n : setattr(self, 'template_id', n.get_str_value()),
             "values": lambda n : setattr(self, 'values', n.get_collection_of_object_values(setting_value.SettingValue)),
         }
         super_fields = super().get_field_deserializers()

@@ -14,7 +14,6 @@ class DeviceManagementReports(entity.Entity):
         super().__init__()
         # Entity representing a job to export a report
         self._export_jobs: Optional[List[device_management_export_job.DeviceManagementExportJob]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -52,7 +51,7 @@ class DeviceManagementReports(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "export_jobs": lambda n : setattr(self, 'export_jobs', n.get_collection_of_object_values(device_management_export_job.DeviceManagementExportJob)),
+            "exportJobs": lambda n : setattr(self, 'export_jobs', n.get_collection_of_object_values(device_management_export_job.DeviceManagementExportJob)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

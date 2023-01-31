@@ -11,7 +11,6 @@ class TimeOffItem(schedule_entity.ScheduleEntity):
         Instantiates a new TimeOffItem and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # ID of the timeOffReason for this timeOffItem. Required.
         self._time_off_reason_id: Optional[str] = None
@@ -34,7 +33,7 @@ class TimeOffItem(schedule_entity.ScheduleEntity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "time_off_reason_id": lambda n : setattr(self, 'time_off_reason_id', n.get_str_value()),
+            "timeOffReasonId": lambda n : setattr(self, 'time_off_reason_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

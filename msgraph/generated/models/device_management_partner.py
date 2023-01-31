@@ -5,6 +5,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 device_management_partner_app_type = lazy_import('msgraph.generated.models.device_management_partner_app_type')
+device_management_partner_assignment = lazy_import('msgraph.generated.models.device_management_partner_assignment')
 device_management_partner_tenant_state = lazy_import('msgraph.generated.models.device_management_partner_tenant_state')
 entity = lazy_import('msgraph.generated.models.entity')
 
@@ -19,11 +20,12 @@ class DeviceManagementPartner(entity.Entity):
         super().__init__()
         # Partner display name
         self._display_name: Optional[str] = None
+        # User groups that specifies whether enrollment is through partner.
+        self._groups_requiring_partner_enrollment: Optional[List[device_management_partner_assignment.DeviceManagementPartnerAssignment]] = None
         # Whether device management partner is configured or not
         self._is_configured: Optional[bool] = None
         # Timestamp of last heartbeat after admin enabled option Connect to Device management Partner
         self._last_heartbeat_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Partner App Type.
         self._partner_app_type: Optional[device_management_partner_app_type.DeviceManagementPartnerAppType] = None
@@ -71,18 +73,36 @@ class DeviceManagementPartner(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_configured": lambda n : setattr(self, 'is_configured', n.get_bool_value()),
-            "last_heartbeat_date_time": lambda n : setattr(self, 'last_heartbeat_date_time', n.get_datetime_value()),
-            "partner_app_type": lambda n : setattr(self, 'partner_app_type', n.get_enum_value(device_management_partner_app_type.DeviceManagementPartnerAppType)),
-            "partner_state": lambda n : setattr(self, 'partner_state', n.get_enum_value(device_management_partner_tenant_state.DeviceManagementPartnerTenantState)),
-            "single_tenant_app_id": lambda n : setattr(self, 'single_tenant_app_id', n.get_str_value()),
-            "when_partner_devices_will_be_marked_as_non_compliant_date_time": lambda n : setattr(self, 'when_partner_devices_will_be_marked_as_non_compliant_date_time', n.get_datetime_value()),
-            "when_partner_devices_will_be_removed_date_time": lambda n : setattr(self, 'when_partner_devices_will_be_removed_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "groupsRequiringPartnerEnrollment": lambda n : setattr(self, 'groups_requiring_partner_enrollment', n.get_collection_of_object_values(device_management_partner_assignment.DeviceManagementPartnerAssignment)),
+            "isConfigured": lambda n : setattr(self, 'is_configured', n.get_bool_value()),
+            "lastHeartbeatDateTime": lambda n : setattr(self, 'last_heartbeat_date_time', n.get_datetime_value()),
+            "partnerAppType": lambda n : setattr(self, 'partner_app_type', n.get_enum_value(device_management_partner_app_type.DeviceManagementPartnerAppType)),
+            "partnerState": lambda n : setattr(self, 'partner_state', n.get_enum_value(device_management_partner_tenant_state.DeviceManagementPartnerTenantState)),
+            "singleTenantAppId": lambda n : setattr(self, 'single_tenant_app_id', n.get_str_value()),
+            "whenPartnerDevicesWillBeMarkedAsNonCompliantDateTime": lambda n : setattr(self, 'when_partner_devices_will_be_marked_as_non_compliant_date_time', n.get_datetime_value()),
+            "whenPartnerDevicesWillBeRemovedDateTime": lambda n : setattr(self, 'when_partner_devices_will_be_removed_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
+    
+    @property
+    def groups_requiring_partner_enrollment(self,) -> Optional[List[device_management_partner_assignment.DeviceManagementPartnerAssignment]]:
+        """
+        Gets the groupsRequiringPartnerEnrollment property value. User groups that specifies whether enrollment is through partner.
+        Returns: Optional[List[device_management_partner_assignment.DeviceManagementPartnerAssignment]]
+        """
+        return self._groups_requiring_partner_enrollment
+    
+    @groups_requiring_partner_enrollment.setter
+    def groups_requiring_partner_enrollment(self,value: Optional[List[device_management_partner_assignment.DeviceManagementPartnerAssignment]] = None) -> None:
+        """
+        Sets the groupsRequiringPartnerEnrollment property value. User groups that specifies whether enrollment is through partner.
+        Args:
+            value: Value to set for the groupsRequiringPartnerEnrollment property.
+        """
+        self._groups_requiring_partner_enrollment = value
     
     @property
     def is_configured(self,) -> Optional[bool]:
@@ -162,6 +182,7 @@ class DeviceManagementPartner(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)
+        writer.write_collection_of_object_values("groupsRequiringPartnerEnrollment", self.groups_requiring_partner_enrollment)
         writer.write_bool_value("isConfigured", self.is_configured)
         writer.write_datetime_value("lastHeartbeatDateTime", self.last_heartbeat_date_time)
         writer.write_enum_value("partnerAppType", self.partner_app_type)

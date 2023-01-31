@@ -104,7 +104,7 @@ class CrossTenantAccessPolicyRequestBuilder():
         """
         Update the properties of a cross-tenant access policy.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[cross_tenant_access_policy.CrossTenantAccessPolicy]
         """
@@ -159,7 +159,7 @@ class CrossTenantAccessPolicyRequestBuilder():
         """
         Update the properties of a cross-tenant access policy.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

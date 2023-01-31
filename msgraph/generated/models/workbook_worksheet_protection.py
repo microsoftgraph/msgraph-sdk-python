@@ -12,7 +12,6 @@ class WorkbookWorksheetProtection(entity.Entity):
         Instantiates a new workbookWorksheetProtection and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Sheet protection options. Read-only.
         self._options: Optional[workbook_worksheet_protection_options.WorkbookWorksheetProtectionOptions] = None

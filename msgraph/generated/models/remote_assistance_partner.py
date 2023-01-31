@@ -20,7 +20,6 @@ class RemoteAssistancePartner(entity.Entity):
         self._display_name: Optional[str] = None
         # Timestamp of the last request sent to Intune by the TEM partner.
         self._last_connection_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The current TeamViewer connector status
         self._onboarding_status: Optional[remote_assistance_onboarding_status.RemoteAssistanceOnboardingStatus] = None
@@ -62,10 +61,10 @@ class RemoteAssistancePartner(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "last_connection_date_time": lambda n : setattr(self, 'last_connection_date_time', n.get_datetime_value()),
-            "onboarding_status": lambda n : setattr(self, 'onboarding_status', n.get_enum_value(remote_assistance_onboarding_status.RemoteAssistanceOnboardingStatus)),
-            "onboarding_url": lambda n : setattr(self, 'onboarding_url', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "lastConnectionDateTime": lambda n : setattr(self, 'last_connection_date_time', n.get_datetime_value()),
+            "onboardingStatus": lambda n : setattr(self, 'onboarding_status', n.get_enum_value(remote_assistance_onboarding_status.RemoteAssistanceOnboardingStatus)),
+            "onboardingUrl": lambda n : setattr(self, 'onboarding_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

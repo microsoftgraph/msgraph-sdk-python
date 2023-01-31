@@ -12,6 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 schedule = lazy_import('msgraph.generated.models.schedule')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+share_request_builder = lazy_import('msgraph.generated.teams.item.schedule.microsoft_graph_share.share_request_builder')
 offer_shift_requests_request_builder = lazy_import('msgraph.generated.teams.item.schedule.offer_shift_requests.offer_shift_requests_request_builder')
 offer_shift_request_item_request_builder = lazy_import('msgraph.generated.teams.item.schedule.offer_shift_requests.item.offer_shift_request_item_request_builder')
 open_shift_change_requests_request_builder = lazy_import('msgraph.generated.teams.item.schedule.open_shift_change_requests.open_shift_change_requests_request_builder')
@@ -20,7 +21,6 @@ open_shifts_request_builder = lazy_import('msgraph.generated.teams.item.schedule
 open_shift_item_request_builder = lazy_import('msgraph.generated.teams.item.schedule.open_shifts.item.open_shift_item_request_builder')
 scheduling_groups_request_builder = lazy_import('msgraph.generated.teams.item.schedule.scheduling_groups.scheduling_groups_request_builder')
 scheduling_group_item_request_builder = lazy_import('msgraph.generated.teams.item.schedule.scheduling_groups.item.scheduling_group_item_request_builder')
-share_request_builder = lazy_import('msgraph.generated.teams.item.schedule.share.share_request_builder')
 shifts_request_builder = lazy_import('msgraph.generated.teams.item.schedule.shifts.shifts_request_builder')
 shift_item_request_builder = lazy_import('msgraph.generated.teams.item.schedule.shifts.item.shift_item_request_builder')
 swap_shifts_change_requests_request_builder = lazy_import('msgraph.generated.teams.item.schedule.swap_shifts_change_requests.swap_shifts_change_requests_request_builder')
@@ -36,6 +36,13 @@ class ScheduleRequestBuilder():
     """
     Provides operations to manage the schedule property of the microsoft.graph.team entity.
     """
+    @property
+    def microsoft_graph_share(self) -> share_request_builder.ShareRequestBuilder:
+        """
+        Provides operations to call the share method.
+        """
+        return share_request_builder.ShareRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @property
     def offer_shift_requests(self) -> offer_shift_requests_request_builder.OfferShiftRequestsRequestBuilder:
         """
@@ -63,13 +70,6 @@ class ScheduleRequestBuilder():
         Provides operations to manage the schedulingGroups property of the microsoft.graph.schedule entity.
         """
         return scheduling_groups_request_builder.SchedulingGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def share(self) -> share_request_builder.ShareRequestBuilder:
-        """
-        Provides operations to call the share method.
-        """
-        return share_request_builder.ShareRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def shifts(self) -> shifts_request_builder.ShiftsRequestBuilder:
@@ -202,7 +202,7 @@ class ScheduleRequestBuilder():
         """
         Update the navigation property schedule in teams
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[schedule.Schedule]
         """
@@ -335,7 +335,7 @@ class ScheduleRequestBuilder():
         """
         Update the navigation property schedule in teams
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

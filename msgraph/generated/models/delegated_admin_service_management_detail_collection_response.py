@@ -12,7 +12,6 @@ class DelegatedAdminServiceManagementDetailCollectionResponse(base_collection_pa
         Instantiates a new DelegatedAdminServiceManagementDetailCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class DelegatedAdminServiceManagementDetailCollectionResponse(base_collection_pa
     @property
     def value(self,) -> Optional[List[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail]]
         """
         return self._value
@@ -61,7 +60,7 @@ class DelegatedAdminServiceManagementDetailCollectionResponse(base_collection_pa
     @value.setter
     def value(self,value: Optional[List[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

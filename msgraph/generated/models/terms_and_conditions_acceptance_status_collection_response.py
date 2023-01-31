@@ -12,7 +12,6 @@ class TermsAndConditionsAcceptanceStatusCollectionResponse(base_collection_pagin
         Instantiates a new TermsAndConditionsAcceptanceStatusCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class TermsAndConditionsAcceptanceStatusCollectionResponse(base_collection_pagin
     @property
     def value(self,) -> Optional[List[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus]]
         """
         return self._value
@@ -61,7 +60,7 @@ class TermsAndConditionsAcceptanceStatusCollectionResponse(base_collection_pagin
     @value.setter
     def value(self,value: Optional[List[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

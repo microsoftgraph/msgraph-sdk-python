@@ -13,7 +13,6 @@ class AttackSimulationRoot(entity.Entity):
         Instantiates a new attackSimulationRoot and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Represents simulation automation created to run on a tenant.
         self._simulation_automations: Optional[List[simulation_automation.SimulationAutomation]] = None
@@ -38,7 +37,7 @@ class AttackSimulationRoot(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "simulation_automations": lambda n : setattr(self, 'simulation_automations', n.get_collection_of_object_values(simulation_automation.SimulationAutomation)),
+            "simulationAutomations": lambda n : setattr(self, 'simulation_automations', n.get_collection_of_object_values(simulation_automation.SimulationAutomation)),
             "simulations": lambda n : setattr(self, 'simulations', n.get_collection_of_object_values(simulation.Simulation)),
         }
         super_fields = super().get_field_deserializers()

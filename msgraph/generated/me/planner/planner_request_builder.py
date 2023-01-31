@@ -92,7 +92,7 @@ class PlannerRequestBuilder():
         """
         Update the navigation property planner in me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[planner_user.PlannerUser]
         """
@@ -173,7 +173,7 @@ class PlannerRequestBuilder():
         """
         Update the navigation property planner in me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

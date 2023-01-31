@@ -12,7 +12,6 @@ class GroupCollectionResponse(base_collection_pagination_count_response.BaseColl
         Instantiates a new GroupCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[group.Group]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class GroupCollectionResponse(base_collection_pagination_count_response.BaseColl
     @property
     def value(self,) -> Optional[List[group.Group]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[group.Group]]
         """
         return self._value
@@ -61,7 +60,7 @@ class GroupCollectionResponse(base_collection_pagination_count_response.BaseColl
     @value.setter
     def value(self,value: Optional[List[group.Group]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

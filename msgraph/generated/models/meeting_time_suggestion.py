@@ -75,7 +75,6 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         self._locations: Optional[List[location.Location]] = None
         # A time period suggested for the meeting.
         self._meeting_time_slot: Optional[time_slot.TimeSlot] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Order of meeting time suggestions sorted by their computed confidence value from high to low, then by chronology if there are suggestions with the same confidence.
         self._order: Optional[int] = None
@@ -102,14 +101,14 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "attendee_availability": lambda n : setattr(self, 'attendee_availability', n.get_collection_of_object_values(attendee_availability.AttendeeAvailability)),
+            "attendeeAvailability": lambda n : setattr(self, 'attendee_availability', n.get_collection_of_object_values(attendee_availability.AttendeeAvailability)),
             "confidence": lambda n : setattr(self, 'confidence', n.get_float_value()),
             "locations": lambda n : setattr(self, 'locations', n.get_collection_of_object_values(location.Location)),
-            "meeting_time_slot": lambda n : setattr(self, 'meeting_time_slot', n.get_object_value(time_slot.TimeSlot)),
+            "meetingTimeSlot": lambda n : setattr(self, 'meeting_time_slot', n.get_object_value(time_slot.TimeSlot)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "order": lambda n : setattr(self, 'order', n.get_int_value()),
-            "organizer_availability": lambda n : setattr(self, 'organizer_availability', n.get_enum_value(free_busy_status.FreeBusyStatus)),
-            "suggestion_reason": lambda n : setattr(self, 'suggestion_reason', n.get_str_value()),
+            "organizerAvailability": lambda n : setattr(self, 'organizer_availability', n.get_enum_value(free_busy_status.FreeBusyStatus)),
+            "suggestionReason": lambda n : setattr(self, 'suggestion_reason', n.get_str_value()),
         }
         return fields
     
@@ -150,7 +149,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -158,7 +157,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

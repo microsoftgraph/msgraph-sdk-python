@@ -11,7 +11,6 @@ class UserFlowLanguagePage(entity.Entity):
         Instantiates a new userFlowLanguagePage and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

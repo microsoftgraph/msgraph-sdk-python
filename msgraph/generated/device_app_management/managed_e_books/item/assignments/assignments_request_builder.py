@@ -66,7 +66,7 @@ class AssignmentsRequestBuilder():
         """
         Create new navigation property to assignments for deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[managed_e_book_assignment.ManagedEBookAssignment]
         """
@@ -105,7 +105,7 @@ class AssignmentsRequestBuilder():
         """
         Create new navigation property to assignments for deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

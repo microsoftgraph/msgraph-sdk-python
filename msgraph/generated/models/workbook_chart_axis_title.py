@@ -14,7 +14,6 @@ class WorkbookChartAxisTitle(entity.Entity):
         super().__init__()
         # Represents the formatting of chart axis title. Read-only.
         self._format: Optional[workbook_chart_axis_title_format.WorkbookChartAxisTitleFormat] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Represents the axis title.
         self._text: Optional[str] = None

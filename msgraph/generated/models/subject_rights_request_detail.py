@@ -38,7 +38,6 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         self._item_count: Optional[int] = None
         # Count of item that need review.
         self._item_need_review: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Count of items per product, such as Exchange, SharePoint, OneDrive, and Teams.
         self._product_item_counts: Optional[List[key_value_pair.KeyValuePair]] = None
@@ -82,14 +81,14 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "excluded_item_count": lambda n : setattr(self, 'excluded_item_count', n.get_int_value()),
-            "insight_counts": lambda n : setattr(self, 'insight_counts', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
-            "item_count": lambda n : setattr(self, 'item_count', n.get_int_value()),
-            "item_need_review": lambda n : setattr(self, 'item_need_review', n.get_int_value()),
+            "excludedItemCount": lambda n : setattr(self, 'excluded_item_count', n.get_int_value()),
+            "insightCounts": lambda n : setattr(self, 'insight_counts', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
+            "itemCount": lambda n : setattr(self, 'item_count', n.get_int_value()),
+            "itemNeedReview": lambda n : setattr(self, 'item_need_review', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "product_item_counts": lambda n : setattr(self, 'product_item_counts', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
-            "signed_off_item_count": lambda n : setattr(self, 'signed_off_item_count', n.get_int_value()),
-            "total_item_size": lambda n : setattr(self, 'total_item_size', n.get_int_value()),
+            "productItemCounts": lambda n : setattr(self, 'product_item_counts', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
+            "signedOffItemCount": lambda n : setattr(self, 'signed_off_item_count', n.get_int_value()),
+            "totalItemSize": lambda n : setattr(self, 'total_item_size', n.get_int_value()),
         }
         return fields
     
@@ -147,7 +146,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -155,7 +154,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

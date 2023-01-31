@@ -12,7 +12,6 @@ class RiskyServicePrincipalHistoryItemCollectionResponse(base_collection_paginat
         Instantiates a new RiskyServicePrincipalHistoryItemCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[risky_service_principal_history_item.RiskyServicePrincipalHistoryItem]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class RiskyServicePrincipalHistoryItemCollectionResponse(base_collection_paginat
     @property
     def value(self,) -> Optional[List[risky_service_principal_history_item.RiskyServicePrincipalHistoryItem]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[risky_service_principal_history_item.RiskyServicePrincipalHistoryItem]]
         """
         return self._value
@@ -61,7 +60,7 @@ class RiskyServicePrincipalHistoryItemCollectionResponse(base_collection_paginat
     @value.setter
     def value(self,value: Optional[List[risky_service_principal_history_item.RiskyServicePrincipalHistoryItem]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -31,9 +31,7 @@ class UserFeedback(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The rating property
         self._rating: Optional[user_feedback_rating.UserFeedbackRating] = None
         # The feedback text provided by the user of this endpoint for the session.
         self._text: Optional[str] = None
@@ -68,7 +66,7 @@ class UserFeedback(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -76,7 +74,7 @@ class UserFeedback(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -85,7 +83,7 @@ class UserFeedback(AdditionalDataHolder, Parsable):
     @property
     def rating(self,) -> Optional[user_feedback_rating.UserFeedbackRating]:
         """
-        Gets the rating property value. The rating property
+        Gets the rating property value. 
         Returns: Optional[user_feedback_rating.UserFeedbackRating]
         """
         return self._rating
@@ -93,7 +91,7 @@ class UserFeedback(AdditionalDataHolder, Parsable):
     @rating.setter
     def rating(self,value: Optional[user_feedback_rating.UserFeedbackRating] = None) -> None:
         """
-        Sets the rating property value. The rating property
+        Sets the rating property value. 
         Args:
             value: Value to set for the rating property.
         """

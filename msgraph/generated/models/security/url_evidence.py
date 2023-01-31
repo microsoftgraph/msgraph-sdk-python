@@ -11,7 +11,6 @@ class UrlEvidence(alert_evidence.AlertEvidence):
         Instantiates a new UrlEvidence and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The Unique Resource Locator (URL).
         self._url: Optional[str] = None

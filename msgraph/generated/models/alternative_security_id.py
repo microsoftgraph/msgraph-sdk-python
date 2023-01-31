@@ -32,7 +32,6 @@ class AlternativeSecurityId(AdditionalDataHolder, Parsable):
         self._identity_provider: Optional[str] = None
         # For internal use only
         self._key: Optional[bytes] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # For internal use only
         self._type: Optional[int] = None
@@ -55,7 +54,7 @@ class AlternativeSecurityId(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "identity_provider": lambda n : setattr(self, 'identity_provider', n.get_str_value()),
+            "identityProvider": lambda n : setattr(self, 'identity_provider', n.get_str_value()),
             "key": lambda n : setattr(self, 'key', n.get_bytes_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_int_value()),
@@ -99,7 +98,7 @@ class AlternativeSecurityId(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -107,7 +106,7 @@ class AlternativeSecurityId(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

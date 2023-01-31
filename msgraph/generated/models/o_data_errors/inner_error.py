@@ -50,7 +50,6 @@ class InnerError(AdditionalDataHolder, Parsable):
         self._client_request_id: Optional[str] = None
         # Date when the error occured.
         self._date: Optional[datetime] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Request Id as tracked internally by the service
         self._request_id: Optional[str] = None
@@ -100,7 +99,7 @@ class InnerError(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -108,7 +107,7 @@ class InnerError(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -140,7 +139,7 @@ class InnerError(AdditionalDataHolder, Parsable):
         if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("client-request-id", self.client_request_id)
-        writer.write_datetime_value("Date", self.date)
+        writer.write_datetime_value("date", self.date)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("request-id", self.request_id)
         writer.write_additional_data_value(self.additional_data)

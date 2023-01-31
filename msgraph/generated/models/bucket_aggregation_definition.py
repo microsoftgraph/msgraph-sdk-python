@@ -35,13 +35,11 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         self._is_descending: Optional[bool] = None
         # The minimum number of items that should be present in the aggregation to be returned in a bucket. Optional.
         self._minimum_count: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # A filter to define a matching criteria. The key should start with the specified prefix to be returned in the response. Optional.
         self._prefix_filter: Optional[str] = None
         # Specifies the manual ranges to compute the aggregations. This is only valid for non-string refiners of date or numeric type. Optional.
         self._ranges: Optional[List[bucket_aggregation_range.BucketAggregationRange]] = None
-        # The sortBy property
         self._sort_by: Optional[bucket_aggregation_sort_property.BucketAggregationSortProperty] = None
     
     @staticmethod
@@ -62,12 +60,12 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_descending": lambda n : setattr(self, 'is_descending', n.get_bool_value()),
-            "minimum_count": lambda n : setattr(self, 'minimum_count', n.get_int_value()),
+            "isDescending": lambda n : setattr(self, 'is_descending', n.get_bool_value()),
+            "minimumCount": lambda n : setattr(self, 'minimum_count', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "prefix_filter": lambda n : setattr(self, 'prefix_filter', n.get_str_value()),
+            "prefixFilter": lambda n : setattr(self, 'prefix_filter', n.get_str_value()),
             "ranges": lambda n : setattr(self, 'ranges', n.get_collection_of_object_values(bucket_aggregation_range.BucketAggregationRange)),
-            "sort_by": lambda n : setattr(self, 'sort_by', n.get_enum_value(bucket_aggregation_sort_property.BucketAggregationSortProperty)),
+            "sortBy": lambda n : setattr(self, 'sort_by', n.get_enum_value(bucket_aggregation_sort_property.BucketAggregationSortProperty)),
         }
         return fields
     
@@ -108,7 +106,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -116,7 +114,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -175,7 +173,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
     @property
     def sort_by(self,) -> Optional[bucket_aggregation_sort_property.BucketAggregationSortProperty]:
         """
-        Gets the sortBy property value. The sortBy property
+        Gets the sortBy property value. 
         Returns: Optional[bucket_aggregation_sort_property.BucketAggregationSortProperty]
         """
         return self._sort_by
@@ -183,7 +181,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
     @sort_by.setter
     def sort_by(self,value: Optional[bucket_aggregation_sort_property.BucketAggregationSortProperty] = None) -> None:
         """
-        Sets the sortBy property value. The sortBy property
+        Sets the sortBy property value. 
         Args:
             value: Value to set for the sortBy property.
         """

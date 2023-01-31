@@ -66,7 +66,7 @@ class UserFlowAttributesRequestBuilder():
         """
         Create a new identityUserFlowAttribute object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[identity_user_flow_attribute.IdentityUserFlowAttribute]
         """
@@ -105,7 +105,7 @@ class UserFlowAttributesRequestBuilder():
         """
         Create a new identityUserFlowAttribute object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

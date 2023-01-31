@@ -107,10 +107,10 @@ class TeleconferenceDeviceVideoQuality(teleconference_device_media_quality.Telec
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "average_inbound_bit_rate": lambda n : setattr(self, 'average_inbound_bit_rate', n.get_float_value()),
-            "average_inbound_frame_rate": lambda n : setattr(self, 'average_inbound_frame_rate', n.get_float_value()),
-            "average_outbound_bit_rate": lambda n : setattr(self, 'average_outbound_bit_rate', n.get_float_value()),
-            "average_outbound_frame_rate": lambda n : setattr(self, 'average_outbound_frame_rate', n.get_float_value()),
+            "averageInboundBitRate": lambda n : setattr(self, 'average_inbound_bit_rate', n.get_float_value()),
+            "averageInboundFrameRate": lambda n : setattr(self, 'average_inbound_frame_rate', n.get_float_value()),
+            "averageOutboundBitRate": lambda n : setattr(self, 'average_outbound_bit_rate', n.get_float_value()),
+            "averageOutboundFrameRate": lambda n : setattr(self, 'average_outbound_frame_rate', n.get_float_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

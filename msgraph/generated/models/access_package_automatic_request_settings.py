@@ -29,11 +29,8 @@ class AccessPackageAutomaticRequestSettings(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The gracePeriodBeforeAccessRemoval property
         self._grace_period_before_access_removal: Optional[Timedelta] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The removeAccessWhenTargetLeavesAllowedTargets property
         self._remove_access_when_target_leaves_allowed_targets: Optional[bool] = None
         # If set to true, automatic assignments will be created for targets in the allowed target scope.
         self._request_access_for_allowed_targets: Optional[bool] = None
@@ -56,17 +53,17 @@ class AccessPackageAutomaticRequestSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "grace_period_before_access_removal": lambda n : setattr(self, 'grace_period_before_access_removal', n.get_object_value(Timedelta)),
+            "gracePeriodBeforeAccessRemoval": lambda n : setattr(self, 'grace_period_before_access_removal', n.get_object_value(Timedelta)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "remove_access_when_target_leaves_allowed_targets": lambda n : setattr(self, 'remove_access_when_target_leaves_allowed_targets', n.get_bool_value()),
-            "request_access_for_allowed_targets": lambda n : setattr(self, 'request_access_for_allowed_targets', n.get_bool_value()),
+            "removeAccessWhenTargetLeavesAllowedTargets": lambda n : setattr(self, 'remove_access_when_target_leaves_allowed_targets', n.get_bool_value()),
+            "requestAccessForAllowedTargets": lambda n : setattr(self, 'request_access_for_allowed_targets', n.get_bool_value()),
         }
         return fields
     
     @property
     def grace_period_before_access_removal(self,) -> Optional[Timedelta]:
         """
-        Gets the gracePeriodBeforeAccessRemoval property value. The gracePeriodBeforeAccessRemoval property
+        Gets the gracePeriodBeforeAccessRemoval property value. 
         Returns: Optional[Timedelta]
         """
         return self._grace_period_before_access_removal
@@ -74,7 +71,7 @@ class AccessPackageAutomaticRequestSettings(AdditionalDataHolder, Parsable):
     @grace_period_before_access_removal.setter
     def grace_period_before_access_removal(self,value: Optional[Timedelta] = None) -> None:
         """
-        Sets the gracePeriodBeforeAccessRemoval property value. The gracePeriodBeforeAccessRemoval property
+        Sets the gracePeriodBeforeAccessRemoval property value. 
         Args:
             value: Value to set for the gracePeriodBeforeAccessRemoval property.
         """
@@ -83,7 +80,7 @@ class AccessPackageAutomaticRequestSettings(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -91,7 +88,7 @@ class AccessPackageAutomaticRequestSettings(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -100,7 +97,7 @@ class AccessPackageAutomaticRequestSettings(AdditionalDataHolder, Parsable):
     @property
     def remove_access_when_target_leaves_allowed_targets(self,) -> Optional[bool]:
         """
-        Gets the removeAccessWhenTargetLeavesAllowedTargets property value. The removeAccessWhenTargetLeavesAllowedTargets property
+        Gets the removeAccessWhenTargetLeavesAllowedTargets property value. 
         Returns: Optional[bool]
         """
         return self._remove_access_when_target_leaves_allowed_targets
@@ -108,7 +105,7 @@ class AccessPackageAutomaticRequestSettings(AdditionalDataHolder, Parsable):
     @remove_access_when_target_leaves_allowed_targets.setter
     def remove_access_when_target_leaves_allowed_targets(self,value: Optional[bool] = None) -> None:
         """
-        Sets the removeAccessWhenTargetLeavesAllowedTargets property value. The removeAccessWhenTargetLeavesAllowedTargets property
+        Sets the removeAccessWhenTargetLeavesAllowedTargets property value. 
         Args:
             value: Value to set for the removeAccessWhenTargetLeavesAllowedTargets property.
         """

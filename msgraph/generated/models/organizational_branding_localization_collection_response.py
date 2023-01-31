@@ -12,7 +12,6 @@ class OrganizationalBrandingLocalizationCollectionResponse(base_collection_pagin
         Instantiates a new OrganizationalBrandingLocalizationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[organizational_branding_localization.OrganizationalBrandingLocalization]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class OrganizationalBrandingLocalizationCollectionResponse(base_collection_pagin
     @property
     def value(self,) -> Optional[List[organizational_branding_localization.OrganizationalBrandingLocalization]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[organizational_branding_localization.OrganizationalBrandingLocalization]]
         """
         return self._value
@@ -61,7 +60,7 @@ class OrganizationalBrandingLocalizationCollectionResponse(base_collection_pagin
     @value.setter
     def value(self,value: Optional[List[organizational_branding_localization.OrganizationalBrandingLocalization]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

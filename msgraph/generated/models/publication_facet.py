@@ -30,7 +30,6 @@ class PublicationFacet(AdditionalDataHolder, Parsable):
 
         # The state of publication for this document. Either published or checkout. Read-only.
         self._level: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The unique identifier for the version that is visible to the current caller. Read-only.
         self._version_id: Optional[str] = None
@@ -55,7 +54,7 @@ class PublicationFacet(AdditionalDataHolder, Parsable):
         fields = {
             "level": lambda n : setattr(self, 'level', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "version_id": lambda n : setattr(self, 'version_id', n.get_str_value()),
+            "versionId": lambda n : setattr(self, 'version_id', n.get_str_value()),
         }
         return fields
     
@@ -79,7 +78,7 @@ class PublicationFacet(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -87,7 +86,7 @@ class PublicationFacet(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

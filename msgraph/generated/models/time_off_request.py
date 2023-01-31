@@ -55,9 +55,9 @@ class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
-            "time_off_reason_id": lambda n : setattr(self, 'time_off_reason_id', n.get_str_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "timeOffReasonId": lambda n : setattr(self, 'time_off_reason_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

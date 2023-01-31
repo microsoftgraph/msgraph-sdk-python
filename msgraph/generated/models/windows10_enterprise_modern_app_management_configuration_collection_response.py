@@ -12,7 +12,6 @@ class Windows10EnterpriseModernAppManagementConfigurationCollectionResponse(base
         Instantiates a new Windows10EnterpriseModernAppManagementConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[windows10_enterprise_modern_app_management_configuration.Windows10EnterpriseModernAppManagementConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class Windows10EnterpriseModernAppManagementConfigurationCollectionResponse(base
     @property
     def value(self,) -> Optional[List[windows10_enterprise_modern_app_management_configuration.Windows10EnterpriseModernAppManagementConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[windows10_enterprise_modern_app_management_configuration.Windows10EnterpriseModernAppManagementConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class Windows10EnterpriseModernAppManagementConfigurationCollectionResponse(base
     @value.setter
     def value(self,value: Optional[List[windows10_enterprise_modern_app_management_configuration.Windows10EnterpriseModernAppManagementConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

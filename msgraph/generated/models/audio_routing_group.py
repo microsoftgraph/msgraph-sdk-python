@@ -12,13 +12,9 @@ class AudioRoutingGroup(entity.Entity):
         Instantiates a new audioRoutingGroup and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The receivers property
         self._receivers: Optional[List[str]] = None
-        # The routingMode property
         self._routing_mode: Optional[routing_mode.RoutingMode] = None
-        # The sources property
         self._sources: Optional[List[str]] = None
     
     @staticmethod
@@ -40,7 +36,7 @@ class AudioRoutingGroup(entity.Entity):
         """
         fields = {
             "receivers": lambda n : setattr(self, 'receivers', n.get_collection_of_primitive_values(str)),
-            "routing_mode": lambda n : setattr(self, 'routing_mode', n.get_enum_value(routing_mode.RoutingMode)),
+            "routingMode": lambda n : setattr(self, 'routing_mode', n.get_enum_value(routing_mode.RoutingMode)),
             "sources": lambda n : setattr(self, 'sources', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
@@ -50,7 +46,7 @@ class AudioRoutingGroup(entity.Entity):
     @property
     def receivers(self,) -> Optional[List[str]]:
         """
-        Gets the receivers property value. The receivers property
+        Gets the receivers property value. 
         Returns: Optional[List[str]]
         """
         return self._receivers
@@ -58,7 +54,7 @@ class AudioRoutingGroup(entity.Entity):
     @receivers.setter
     def receivers(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the receivers property value. The receivers property
+        Sets the receivers property value. 
         Args:
             value: Value to set for the receivers property.
         """
@@ -67,7 +63,7 @@ class AudioRoutingGroup(entity.Entity):
     @property
     def routing_mode(self,) -> Optional[routing_mode.RoutingMode]:
         """
-        Gets the routingMode property value. The routingMode property
+        Gets the routingMode property value. 
         Returns: Optional[routing_mode.RoutingMode]
         """
         return self._routing_mode
@@ -75,7 +71,7 @@ class AudioRoutingGroup(entity.Entity):
     @routing_mode.setter
     def routing_mode(self,value: Optional[routing_mode.RoutingMode] = None) -> None:
         """
-        Sets the routingMode property value. The routingMode property
+        Sets the routingMode property value. 
         Args:
             value: Value to set for the routingMode property.
         """
@@ -97,7 +93,7 @@ class AudioRoutingGroup(entity.Entity):
     @property
     def sources(self,) -> Optional[List[str]]:
         """
-        Gets the sources property value. The sources property
+        Gets the sources property value. 
         Returns: Optional[List[str]]
         """
         return self._sources
@@ -105,7 +101,7 @@ class AudioRoutingGroup(entity.Entity):
     @sources.setter
     def sources(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the sources property value. The sources property
+        Sets the sources property value. 
         Args:
             value: Value to set for the sources property.
         """

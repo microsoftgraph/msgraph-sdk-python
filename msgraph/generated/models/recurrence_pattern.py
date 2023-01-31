@@ -44,7 +44,6 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         self._interval: Optional[int] = None
         # The month in which the event occurs.  This is a number from 1 to 12.
         self._month: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The recurrence pattern type: daily, weekly, absoluteMonthly, relativeMonthly, absoluteYearly, relativeYearly. Required. For more information, see values of type property.
         self._type: Optional[recurrence_pattern_type.RecurrencePatternType] = None
@@ -118,9 +117,9 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "day_of_month": lambda n : setattr(self, 'day_of_month', n.get_int_value()),
-            "days_of_week": lambda n : setattr(self, 'days_of_week', n.get_collection_of_enum_values(day_of_week.DayOfWeek)),
-            "first_day_of_week": lambda n : setattr(self, 'first_day_of_week', n.get_enum_value(day_of_week.DayOfWeek)),
+            "dayOfMonth": lambda n : setattr(self, 'day_of_month', n.get_int_value()),
+            "daysOfWeek": lambda n : setattr(self, 'days_of_week', n.get_collection_of_enum_values(day_of_week.DayOfWeek)),
+            "firstDayOfWeek": lambda n : setattr(self, 'first_day_of_week', n.get_enum_value(day_of_week.DayOfWeek)),
             "index": lambda n : setattr(self, 'index', n.get_enum_value(week_index.WeekIndex)),
             "interval": lambda n : setattr(self, 'interval', n.get_int_value()),
             "month": lambda n : setattr(self, 'month', n.get_int_value()),
@@ -183,7 +182,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -191,7 +190,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -66,7 +66,7 @@ class DeviceManagementTroubleshootingEventsRequestBuilder():
         """
         Create new navigation property to deviceManagementTroubleshootingEvents for me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent]
         """
@@ -105,7 +105,7 @@ class DeviceManagementTroubleshootingEventsRequestBuilder():
         """
         Create new navigation property to deviceManagementTroubleshootingEvents for me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

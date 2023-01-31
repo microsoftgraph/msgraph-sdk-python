@@ -34,7 +34,6 @@ class OauthApplicationEvidence(alert_evidence.AlertEvidence):
         self._display_name: Optional[str] = None
         # The unique identifier of the application object in Azure AD.
         self._object_id: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The name of the application publisher.
         self._publisher: Optional[str] = None
@@ -74,9 +73,9 @@ class OauthApplicationEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "object_id": lambda n : setattr(self, 'object_id', n.get_str_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "objectId": lambda n : setattr(self, 'object_id', n.get_str_value()),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

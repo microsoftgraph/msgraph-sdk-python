@@ -12,7 +12,6 @@ class IdentitySetCollectionResponse(base_collection_pagination_count_response.Ba
         Instantiates a new IdentitySetCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[identity_set.IdentitySet]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class IdentitySetCollectionResponse(base_collection_pagination_count_response.Ba
     @property
     def value(self,) -> Optional[List[identity_set.IdentitySet]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[identity_set.IdentitySet]]
         """
         return self._value
@@ -61,7 +60,7 @@ class IdentitySetCollectionResponse(base_collection_pagination_count_response.Ba
     @value.setter
     def value(self,value: Optional[List[identity_set.IdentitySet]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

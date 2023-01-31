@@ -34,9 +34,7 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The day property
         self._day: Optional[day_of_week.DayOfWeek] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # A list of start/end times during a day.
         self._time_slots: Optional[List[booking_work_time_slot.BookingWorkTimeSlot]] = None
@@ -56,7 +54,7 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
     @property
     def day(self,) -> Optional[day_of_week.DayOfWeek]:
         """
-        Gets the day property value. The day property
+        Gets the day property value. 
         Returns: Optional[day_of_week.DayOfWeek]
         """
         return self._day
@@ -64,7 +62,7 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
     @day.setter
     def day(self,value: Optional[day_of_week.DayOfWeek] = None) -> None:
         """
-        Sets the day property value. The day property
+        Sets the day property value. 
         Args:
             value: Value to set for the day property.
         """
@@ -78,14 +76,14 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
         fields = {
             "day": lambda n : setattr(self, 'day', n.get_enum_value(day_of_week.DayOfWeek)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "time_slots": lambda n : setattr(self, 'time_slots', n.get_collection_of_object_values(booking_work_time_slot.BookingWorkTimeSlot)),
+            "timeSlots": lambda n : setattr(self, 'time_slots', n.get_collection_of_object_values(booking_work_time_slot.BookingWorkTimeSlot)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -93,7 +91,7 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

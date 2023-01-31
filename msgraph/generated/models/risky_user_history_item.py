@@ -33,7 +33,6 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
         self._activity: Optional[risk_user_activity.RiskUserActivity] = None
         # The ID of actor that does the operation.
         self._initiated_by: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The ID of the user.
         self._user_id: Optional[str] = None
@@ -57,8 +56,8 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
         """
         fields = {
             "activity": lambda n : setattr(self, 'activity', n.get_object_value(risk_user_activity.RiskUserActivity)),
-            "initiated_by": lambda n : setattr(self, 'initiated_by', n.get_str_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "initiatedBy": lambda n : setattr(self, 'initiated_by', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

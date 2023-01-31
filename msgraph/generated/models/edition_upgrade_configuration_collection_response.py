@@ -12,7 +12,6 @@ class EditionUpgradeConfigurationCollectionResponse(base_collection_pagination_c
         Instantiates a new EditionUpgradeConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[edition_upgrade_configuration.EditionUpgradeConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class EditionUpgradeConfigurationCollectionResponse(base_collection_pagination_c
     @property
     def value(self,) -> Optional[List[edition_upgrade_configuration.EditionUpgradeConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[edition_upgrade_configuration.EditionUpgradeConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class EditionUpgradeConfigurationCollectionResponse(base_collection_pagination_c
     @value.setter
     def value(self,value: Optional[List[edition_upgrade_configuration.EditionUpgradeConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

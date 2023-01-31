@@ -70,10 +70,10 @@ class SharedDriveItem(base_item.BaseItem):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "drive_item": lambda n : setattr(self, 'drive_item', n.get_object_value(drive_item.DriveItem)),
+            "driveItem": lambda n : setattr(self, 'drive_item', n.get_object_value(drive_item.DriveItem)),
             "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(drive_item.DriveItem)),
             "list": lambda n : setattr(self, 'list', n.get_object_value(list.List)),
-            "list_item": lambda n : setattr(self, 'list_item', n.get_object_value(list_item.ListItem)),
+            "listItem": lambda n : setattr(self, 'list_item', n.get_object_value(list_item.ListItem)),
             "owner": lambda n : setattr(self, 'owner', n.get_object_value(identity_set.IdentitySet)),
             "permission": lambda n : setattr(self, 'permission', n.get_object_value(permission.Permission)),
             "root": lambda n : setattr(self, 'root', n.get_object_value(drive_item.DriveItem)),

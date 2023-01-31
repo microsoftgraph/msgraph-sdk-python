@@ -36,7 +36,6 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         self._parent_section: Optional[onenote_section.OnenoteSection] = None
         # The title of the page.
         self._title: Optional[str] = None
-        # The userTags property
         self._user_tags: Optional[List[str]] = None
     
     @property
@@ -109,16 +108,16 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         """
         fields = {
             "content": lambda n : setattr(self, 'content', n.get_bytes_value()),
-            "content_url": lambda n : setattr(self, 'content_url', n.get_str_value()),
-            "created_by_app_id": lambda n : setattr(self, 'created_by_app_id', n.get_str_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "contentUrl": lambda n : setattr(self, 'content_url', n.get_str_value()),
+            "createdByAppId": lambda n : setattr(self, 'created_by_app_id', n.get_str_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "level": lambda n : setattr(self, 'level', n.get_int_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(page_links.PageLinks)),
             "order": lambda n : setattr(self, 'order', n.get_int_value()),
-            "parent_notebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(notebook.Notebook)),
-            "parent_section": lambda n : setattr(self, 'parent_section', n.get_object_value(onenote_section.OnenoteSection)),
+            "parentNotebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(notebook.Notebook)),
+            "parentSection": lambda n : setattr(self, 'parent_section', n.get_object_value(onenote_section.OnenoteSection)),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
-            "user_tags": lambda n : setattr(self, 'user_tags', n.get_collection_of_primitive_values(str)),
+            "userTags": lambda n : setattr(self, 'user_tags', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -267,7 +266,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
     @property
     def user_tags(self,) -> Optional[List[str]]:
         """
-        Gets the userTags property value. The userTags property
+        Gets the userTags property value. 
         Returns: Optional[List[str]]
         """
         return self._user_tags
@@ -275,7 +274,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
     @user_tags.setter
     def user_tags(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the userTags property value. The userTags property
+        Sets the userTags property value. 
         Args:
             value: Value to set for the userTags property.
         """

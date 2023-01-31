@@ -12,7 +12,6 @@ class SubjectSetCollectionResponse(base_collection_pagination_count_response.Bas
         Instantiates a new SubjectSetCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[subject_set.SubjectSet]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class SubjectSetCollectionResponse(base_collection_pagination_count_response.Bas
     @property
     def value(self,) -> Optional[List[subject_set.SubjectSet]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[subject_set.SubjectSet]]
         """
         return self._value
@@ -61,7 +60,7 @@ class SubjectSetCollectionResponse(base_collection_pagination_count_response.Bas
     @value.setter
     def value(self,value: Optional[List[subject_set.SubjectSet]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

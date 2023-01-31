@@ -10,7 +10,7 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-target_apps_request_builder = lazy_import('msgraph.generated.device_app_management.managed_app_registrations.item.intended_policies.item.target_apps.target_apps_request_builder')
+target_apps_request_builder = lazy_import('msgraph.generated.device_app_management.managed_app_registrations.item.intended_policies.item.microsoft_graph_target_apps.target_apps_request_builder')
 managed_app_policy = lazy_import('msgraph.generated.models.managed_app_policy')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -19,16 +19,17 @@ class ManagedAppPolicyItemRequestBuilder():
     Provides operations to manage the intendedPolicies property of the microsoft.graph.managedAppRegistration entity.
     """
     @property
-    def target_apps(self) -> target_apps_request_builder.TargetAppsRequestBuilder:
+    def microsoft_graph_target_apps(self) -> target_apps_request_builder.TargetAppsRequestBuilder:
         """
         Provides operations to call the targetApps method.
         """
         return target_apps_request_builder.TargetAppsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, managed_app_policy_id: Optional[str] = None) -> None:
         """
         Instantiates a new ManagedAppPolicyItemRequestBuilder and sets the default values.
         Args:
+            managedAppPolicyId: key: id of managedAppPolicy
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -40,6 +41,7 @@ class ManagedAppPolicyItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceAppManagement/managedAppRegistrations/{managedAppRegistration%2Did}/intendedPolicies/{managedAppPolicy%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["managedAppPolicy%2Did"] = managedAppPolicyId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -82,7 +84,7 @@ class ManagedAppPolicyItemRequestBuilder():
         """
         Update the navigation property intendedPolicies in deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[managed_app_policy.ManagedAppPolicy]
         """
@@ -137,7 +139,7 @@ class ManagedAppPolicyItemRequestBuilder():
         """
         Update the navigation property intendedPolicies in deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -16,7 +16,6 @@ class UsedInsight(entity.Entity):
         super().__init__()
         # Information about when the item was last viewed or modified by the user. Read only.
         self._last_used: Optional[usage_details.UsageDetails] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Used for navigating to the item that was used. For file attachments, the type is fileAttachment. For linked attachments, the type is driveItem.
         self._resource: Optional[entity.Entity] = None
@@ -43,10 +42,10 @@ class UsedInsight(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "last_used": lambda n : setattr(self, 'last_used', n.get_object_value(usage_details.UsageDetails)),
+            "lastUsed": lambda n : setattr(self, 'last_used', n.get_object_value(usage_details.UsageDetails)),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(entity.Entity)),
-            "resource_reference": lambda n : setattr(self, 'resource_reference', n.get_object_value(resource_reference.ResourceReference)),
-            "resource_visualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(resource_visualization.ResourceVisualization)),
+            "resourceReference": lambda n : setattr(self, 'resource_reference', n.get_object_value(resource_reference.ResourceReference)),
+            "resourceVisualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(resource_visualization.ResourceVisualization)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

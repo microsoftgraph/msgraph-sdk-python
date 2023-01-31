@@ -45,7 +45,6 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         self._is_approver_justification_required: Optional[bool] = None
         # If true, then one or more escalationApprovers are configured in this approval stage.
         self._is_escalation_enabled: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The subjects, typically users, who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors or externalSponsors.
         self._primary_approvers: Optional[List[subject_set.SubjectSet]] = None
@@ -153,15 +152,15 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "duration_before_automatic_denial": lambda n : setattr(self, 'duration_before_automatic_denial', n.get_object_value(Timedelta)),
-            "duration_before_escalation": lambda n : setattr(self, 'duration_before_escalation', n.get_object_value(Timedelta)),
-            "escalation_approvers": lambda n : setattr(self, 'escalation_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
-            "fallback_escalation_approvers": lambda n : setattr(self, 'fallback_escalation_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
-            "fallback_primary_approvers": lambda n : setattr(self, 'fallback_primary_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
-            "is_approver_justification_required": lambda n : setattr(self, 'is_approver_justification_required', n.get_bool_value()),
-            "is_escalation_enabled": lambda n : setattr(self, 'is_escalation_enabled', n.get_bool_value()),
+            "durationBeforeAutomaticDenial": lambda n : setattr(self, 'duration_before_automatic_denial', n.get_object_value(Timedelta)),
+            "durationBeforeEscalation": lambda n : setattr(self, 'duration_before_escalation', n.get_object_value(Timedelta)),
+            "escalationApprovers": lambda n : setattr(self, 'escalation_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "fallbackEscalationApprovers": lambda n : setattr(self, 'fallback_escalation_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "fallbackPrimaryApprovers": lambda n : setattr(self, 'fallback_primary_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "isApproverJustificationRequired": lambda n : setattr(self, 'is_approver_justification_required', n.get_bool_value()),
+            "isEscalationEnabled": lambda n : setattr(self, 'is_escalation_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "primary_approvers": lambda n : setattr(self, 'primary_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "primaryApprovers": lambda n : setattr(self, 'primary_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
         }
         return fields
     
@@ -202,7 +201,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -210,7 +209,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

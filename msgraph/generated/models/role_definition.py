@@ -22,7 +22,6 @@ class RoleDefinition(entity.Entity):
         self._display_name: Optional[str] = None
         # Type of Role. Set to True if it is built-in, or set to False if it is a custom role definition.
         self._is_built_in: Optional[bool] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # List of Role assignments for this role definition.
         self._role_assignments: Optional[List[role_assignment.RoleAssignment]] = None
@@ -82,10 +81,10 @@ class RoleDefinition(entity.Entity):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_built_in": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
-            "role_assignments": lambda n : setattr(self, 'role_assignments', n.get_collection_of_object_values(role_assignment.RoleAssignment)),
-            "role_permissions": lambda n : setattr(self, 'role_permissions', n.get_collection_of_object_values(role_permission.RolePermission)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isBuiltIn": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
+            "roleAssignments": lambda n : setattr(self, 'role_assignments', n.get_collection_of_object_values(role_assignment.RoleAssignment)),
+            "rolePermissions": lambda n : setattr(self, 'role_permissions', n.get_collection_of_object_values(role_permission.RolePermission)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

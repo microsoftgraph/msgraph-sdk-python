@@ -36,7 +36,6 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
         self._file_name: Optional[str] = None
         # Folder name in which the file will be placed when a new document set is created in the library.
         self._folder_name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @property
@@ -108,9 +107,9 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "content_type": lambda n : setattr(self, 'content_type', n.get_object_value(content_type_info.ContentTypeInfo)),
-            "file_name": lambda n : setattr(self, 'file_name', n.get_str_value()),
-            "folder_name": lambda n : setattr(self, 'folder_name', n.get_str_value()),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_object_value(content_type_info.ContentTypeInfo)),
+            "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
+            "folderName": lambda n : setattr(self, 'folder_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -118,7 +117,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -126,7 +125,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

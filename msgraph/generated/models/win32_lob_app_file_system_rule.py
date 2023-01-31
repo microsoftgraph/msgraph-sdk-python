@@ -96,10 +96,10 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "check32_bit_on64_system": lambda n : setattr(self, 'check32_bit_on64_system', n.get_bool_value()),
-            "comparison_value": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
-            "file_or_folder_name": lambda n : setattr(self, 'file_or_folder_name', n.get_str_value()),
-            "operation_type": lambda n : setattr(self, 'operation_type', n.get_enum_value(win32_lob_app_file_system_operation_type.Win32LobAppFileSystemOperationType)),
+            "check32BitOn64System": lambda n : setattr(self, 'check32_bit_on64_system', n.get_bool_value()),
+            "comparisonValue": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
+            "fileOrFolderName": lambda n : setattr(self, 'file_or_folder_name', n.get_str_value()),
+            "operationType": lambda n : setattr(self, 'operation_type', n.get_enum_value(win32_lob_app_file_system_operation_type.Win32LobAppFileSystemOperationType)),
             "operator": lambda n : setattr(self, 'operator', n.get_enum_value(win32_lob_app_rule_operator.Win32LobAppRuleOperator)),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),
         }

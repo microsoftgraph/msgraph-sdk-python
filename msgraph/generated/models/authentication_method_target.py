@@ -14,9 +14,7 @@ class AuthenticationMethodTarget(entity.Entity):
         super().__init__()
         # Determines if the user is enforced to register the authentication method.
         self._is_registration_required: Optional[bool] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The targetType property
         self._target_type: Optional[authentication_method_target_type.AuthenticationMethodTargetType] = None
     
     @staticmethod
@@ -37,8 +35,8 @@ class AuthenticationMethodTarget(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_registration_required": lambda n : setattr(self, 'is_registration_required', n.get_bool_value()),
-            "target_type": lambda n : setattr(self, 'target_type', n.get_enum_value(authentication_method_target_type.AuthenticationMethodTargetType)),
+            "isRegistrationRequired": lambda n : setattr(self, 'is_registration_required', n.get_bool_value()),
+            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(authentication_method_target_type.AuthenticationMethodTargetType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -76,7 +74,7 @@ class AuthenticationMethodTarget(entity.Entity):
     @property
     def target_type(self,) -> Optional[authentication_method_target_type.AuthenticationMethodTargetType]:
         """
-        Gets the targetType property value. The targetType property
+        Gets the targetType property value. 
         Returns: Optional[authentication_method_target_type.AuthenticationMethodTargetType]
         """
         return self._target_type
@@ -84,7 +82,7 @@ class AuthenticationMethodTarget(entity.Entity):
     @target_type.setter
     def target_type(self,value: Optional[authentication_method_target_type.AuthenticationMethodTargetType] = None) -> None:
         """
-        Sets the targetType property value. The targetType property
+        Sets the targetType property value. 
         Args:
             value: Value to set for the targetType property.
         """

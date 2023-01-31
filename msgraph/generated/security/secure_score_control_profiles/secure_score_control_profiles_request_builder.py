@@ -66,7 +66,7 @@ class SecureScoreControlProfilesRequestBuilder():
         """
         Create new navigation property to secureScoreControlProfiles for security
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[secure_score_control_profile.SecureScoreControlProfile]
         """
@@ -105,7 +105,7 @@ class SecureScoreControlProfilesRequestBuilder():
         """
         Create new navigation property to secureScoreControlProfiles for security
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

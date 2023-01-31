@@ -12,7 +12,6 @@ class WindowsUniversalAppXContainedAppCollectionResponse(base_collection_paginat
         Instantiates a new WindowsUniversalAppXContainedAppCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[windows_universal_app_x_contained_app.WindowsUniversalAppXContainedApp]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class WindowsUniversalAppXContainedAppCollectionResponse(base_collection_paginat
     @property
     def value(self,) -> Optional[List[windows_universal_app_x_contained_app.WindowsUniversalAppXContainedApp]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[windows_universal_app_x_contained_app.WindowsUniversalAppXContainedApp]]
         """
         return self._value
@@ -61,7 +60,7 @@ class WindowsUniversalAppXContainedAppCollectionResponse(base_collection_paginat
     @value.setter
     def value(self,value: Optional[List[windows_universal_app_x_contained_app.WindowsUniversalAppXContainedApp]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

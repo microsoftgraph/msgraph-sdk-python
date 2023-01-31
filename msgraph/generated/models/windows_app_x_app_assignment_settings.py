@@ -33,7 +33,7 @@ class WindowsAppXAppAssignmentSettings(mobile_app_assignment_settings.MobileAppA
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "use_device_context": lambda n : setattr(self, 'use_device_context', n.get_bool_value()),
+            "useDeviceContext": lambda n : setattr(self, 'use_device_context', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -36,7 +36,6 @@ class MeetingAttendanceReport(entity.Entity):
         self._meeting_end_date_time: Optional[datetime] = None
         # UTC time when the meeting started. Read-only.
         self._meeting_start_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Total number of participants. Read-only.
         self._total_participant_count: Optional[int] = None
@@ -59,10 +58,10 @@ class MeetingAttendanceReport(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "attendance_records": lambda n : setattr(self, 'attendance_records', n.get_collection_of_object_values(attendance_record.AttendanceRecord)),
-            "meeting_end_date_time": lambda n : setattr(self, 'meeting_end_date_time', n.get_datetime_value()),
-            "meeting_start_date_time": lambda n : setattr(self, 'meeting_start_date_time', n.get_datetime_value()),
-            "total_participant_count": lambda n : setattr(self, 'total_participant_count', n.get_int_value()),
+            "attendanceRecords": lambda n : setattr(self, 'attendance_records', n.get_collection_of_object_values(attendance_record.AttendanceRecord)),
+            "meetingEndDateTime": lambda n : setattr(self, 'meeting_end_date_time', n.get_datetime_value()),
+            "meetingStartDateTime": lambda n : setattr(self, 'meeting_start_date_time', n.get_datetime_value()),
+            "totalParticipantCount": lambda n : setattr(self, 'total_participant_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

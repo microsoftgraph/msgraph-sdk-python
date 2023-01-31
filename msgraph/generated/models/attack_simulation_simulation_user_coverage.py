@@ -90,7 +90,6 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         self._compromised_count: Optional[int] = None
         # Date and time of the latest attack simulation and training campaign that the user was included in.
         self._latest_simulation_date_time: Optional[datetime] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Number of attack simulation and training campaigns that the user was included in.
         self._simulation_count: Optional[int] = None
@@ -113,12 +112,12 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "attack_simulation_user": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
-            "click_count": lambda n : setattr(self, 'click_count', n.get_int_value()),
-            "compromised_count": lambda n : setattr(self, 'compromised_count', n.get_int_value()),
-            "latest_simulation_date_time": lambda n : setattr(self, 'latest_simulation_date_time', n.get_datetime_value()),
+            "attackSimulationUser": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
+            "clickCount": lambda n : setattr(self, 'click_count', n.get_int_value()),
+            "compromisedCount": lambda n : setattr(self, 'compromised_count', n.get_int_value()),
+            "latestSimulationDateTime": lambda n : setattr(self, 'latest_simulation_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "simulation_count": lambda n : setattr(self, 'simulation_count', n.get_int_value()),
+            "simulationCount": lambda n : setattr(self, 'simulation_count', n.get_int_value()),
         }
         return fields
     
@@ -142,7 +141,7 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -150,7 +149,7 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

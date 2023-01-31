@@ -67,7 +67,6 @@ class BookingService(entity.Entity):
         self._maximum_attendees_count: Optional[int] = None
         # Additional information about this service.
         self._notes: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The time to buffer after an appointment for this service ends, and before the next customer appointment can be booked.
         self._post_buffer: Optional[Timedelta] = None
@@ -236,27 +235,27 @@ class BookingService(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "additional_information": lambda n : setattr(self, 'additional_information', n.get_str_value()),
-            "custom_questions": lambda n : setattr(self, 'custom_questions', n.get_collection_of_object_values(booking_question_assignment.BookingQuestionAssignment)),
-            "default_duration": lambda n : setattr(self, 'default_duration', n.get_object_value(Timedelta)),
-            "default_location": lambda n : setattr(self, 'default_location', n.get_object_value(location.Location)),
-            "default_price": lambda n : setattr(self, 'default_price', n.get_float_value()),
-            "default_price_type": lambda n : setattr(self, 'default_price_type', n.get_enum_value(booking_price_type.BookingPriceType)),
-            "default_reminders": lambda n : setattr(self, 'default_reminders', n.get_collection_of_object_values(booking_reminder.BookingReminder)),
+            "additionalInformation": lambda n : setattr(self, 'additional_information', n.get_str_value()),
+            "customQuestions": lambda n : setattr(self, 'custom_questions', n.get_collection_of_object_values(booking_question_assignment.BookingQuestionAssignment)),
+            "defaultDuration": lambda n : setattr(self, 'default_duration', n.get_object_value(Timedelta)),
+            "defaultLocation": lambda n : setattr(self, 'default_location', n.get_object_value(location.Location)),
+            "defaultPrice": lambda n : setattr(self, 'default_price', n.get_float_value()),
+            "defaultPriceType": lambda n : setattr(self, 'default_price_type', n.get_enum_value(booking_price_type.BookingPriceType)),
+            "defaultReminders": lambda n : setattr(self, 'default_reminders', n.get_collection_of_object_values(booking_reminder.BookingReminder)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_anonymous_join_enabled": lambda n : setattr(self, 'is_anonymous_join_enabled', n.get_bool_value()),
-            "is_hidden_from_customers": lambda n : setattr(self, 'is_hidden_from_customers', n.get_bool_value()),
-            "is_location_online": lambda n : setattr(self, 'is_location_online', n.get_bool_value()),
-            "language_tag": lambda n : setattr(self, 'language_tag', n.get_str_value()),
-            "maximum_attendees_count": lambda n : setattr(self, 'maximum_attendees_count', n.get_int_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isAnonymousJoinEnabled": lambda n : setattr(self, 'is_anonymous_join_enabled', n.get_bool_value()),
+            "isHiddenFromCustomers": lambda n : setattr(self, 'is_hidden_from_customers', n.get_bool_value()),
+            "isLocationOnline": lambda n : setattr(self, 'is_location_online', n.get_bool_value()),
+            "languageTag": lambda n : setattr(self, 'language_tag', n.get_str_value()),
+            "maximumAttendeesCount": lambda n : setattr(self, 'maximum_attendees_count', n.get_int_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
-            "post_buffer": lambda n : setattr(self, 'post_buffer', n.get_object_value(Timedelta)),
-            "pre_buffer": lambda n : setattr(self, 'pre_buffer', n.get_object_value(Timedelta)),
-            "scheduling_policy": lambda n : setattr(self, 'scheduling_policy', n.get_object_value(booking_scheduling_policy.BookingSchedulingPolicy)),
-            "sms_notifications_enabled": lambda n : setattr(self, 'sms_notifications_enabled', n.get_bool_value()),
-            "staff_member_ids": lambda n : setattr(self, 'staff_member_ids', n.get_collection_of_primitive_values(str)),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "postBuffer": lambda n : setattr(self, 'post_buffer', n.get_object_value(Timedelta)),
+            "preBuffer": lambda n : setattr(self, 'pre_buffer', n.get_object_value(Timedelta)),
+            "schedulingPolicy": lambda n : setattr(self, 'scheduling_policy', n.get_object_value(booking_scheduling_policy.BookingSchedulingPolicy)),
+            "smsNotificationsEnabled": lambda n : setattr(self, 'sms_notifications_enabled', n.get_bool_value()),
+            "staffMemberIds": lambda n : setattr(self, 'staff_member_ids', n.get_collection_of_primitive_values(str)),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

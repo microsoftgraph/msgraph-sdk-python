@@ -41,10 +41,10 @@ class Fido2AuthenticationMethodConfiguration(authentication_method_configuration
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "include_targets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_method_target.AuthenticationMethodTarget)),
-            "is_attestation_enforced": lambda n : setattr(self, 'is_attestation_enforced', n.get_bool_value()),
-            "is_self_service_registration_allowed": lambda n : setattr(self, 'is_self_service_registration_allowed', n.get_bool_value()),
-            "key_restrictions": lambda n : setattr(self, 'key_restrictions', n.get_object_value(fido2_key_restrictions.Fido2KeyRestrictions)),
+            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_method_target.AuthenticationMethodTarget)),
+            "isAttestationEnforced": lambda n : setattr(self, 'is_attestation_enforced', n.get_bool_value()),
+            "isSelfServiceRegistrationAllowed": lambda n : setattr(self, 'is_self_service_registration_allowed', n.get_bool_value()),
+            "keyRestrictions": lambda n : setattr(self, 'key_restrictions', n.get_object_value(fido2_key_restrictions.Fido2KeyRestrictions)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

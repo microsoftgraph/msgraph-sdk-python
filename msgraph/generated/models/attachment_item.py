@@ -57,7 +57,6 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
         self._is_inline: Optional[bool] = None
         # The display name of the attachment. This can be a descriptive string and does not have to be the actual file name. Required.
         self._name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The length of the attachment in bytes. Required.
         self._size: Optional[int] = None
@@ -114,10 +113,10 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "attachment_type": lambda n : setattr(self, 'attachment_type', n.get_enum_value(attachment_type.AttachmentType)),
-            "content_id": lambda n : setattr(self, 'content_id', n.get_str_value()),
-            "content_type": lambda n : setattr(self, 'content_type', n.get_str_value()),
-            "is_inline": lambda n : setattr(self, 'is_inline', n.get_bool_value()),
+            "attachmentType": lambda n : setattr(self, 'attachment_type', n.get_enum_value(attachment_type.AttachmentType)),
+            "contentId": lambda n : setattr(self, 'content_id', n.get_str_value()),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
+            "isInline": lambda n : setattr(self, 'is_inline', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
@@ -161,7 +160,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -169,7 +168,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

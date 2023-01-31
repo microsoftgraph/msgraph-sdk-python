@@ -170,7 +170,6 @@ class AuditEvent(entity.Entity):
         self._correlation_id: Optional[Guid] = None
         # Event display name.
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Resources being modified.
         self._resources: Optional[List[audit_resource.AuditResource]] = None
@@ -228,15 +227,15 @@ class AuditEvent(entity.Entity):
         """
         fields = {
             "activity": lambda n : setattr(self, 'activity', n.get_str_value()),
-            "activity_date_time": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
-            "activity_operation_type": lambda n : setattr(self, 'activity_operation_type', n.get_str_value()),
-            "activity_result": lambda n : setattr(self, 'activity_result', n.get_str_value()),
-            "activity_type": lambda n : setattr(self, 'activity_type', n.get_str_value()),
+            "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
+            "activityOperationType": lambda n : setattr(self, 'activity_operation_type', n.get_str_value()),
+            "activityResult": lambda n : setattr(self, 'activity_result', n.get_str_value()),
+            "activityType": lambda n : setattr(self, 'activity_type', n.get_str_value()),
             "actor": lambda n : setattr(self, 'actor', n.get_object_value(audit_actor.AuditActor)),
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
-            "component_name": lambda n : setattr(self, 'component_name', n.get_str_value()),
-            "correlation_id": lambda n : setattr(self, 'correlation_id', n.get_object_value(Guid)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "componentName": lambda n : setattr(self, 'component_name', n.get_str_value()),
+            "correlationId": lambda n : setattr(self, 'correlation_id', n.get_object_value(Guid)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(audit_resource.AuditResource)),
         }
         super_fields = super().get_field_deserializers()

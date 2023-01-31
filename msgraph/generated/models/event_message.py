@@ -18,25 +18,16 @@ class EventMessage(message.Message):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.eventMessage"
-        # The endDateTime property
         self._end_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
         # The event associated with the event message. The assumption for attendees or room resources is that the Calendar Attendant is set to automatically update the calendar with an event when meeting request event messages arrive. Navigation property.  Read-only.
         self._event: Optional[event.Event] = None
-        # The isAllDay property
         self._is_all_day: Optional[bool] = None
-        # The isDelegated property
         self._is_delegated: Optional[bool] = None
-        # The isOutOfDate property
         self._is_out_of_date: Optional[bool] = None
-        # The location property
         self._location: Optional[location.Location] = None
-        # The meetingMessageType property
         self._meeting_message_type: Optional[meeting_message_type.MeetingMessageType] = None
-        # The recurrence property
         self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
-        # The startDateTime property
         self._start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The type property
         self._type: Optional[event_type.EventType] = None
     
     @staticmethod
@@ -54,7 +45,7 @@ class EventMessage(message.Message):
     @property
     def end_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
-        Gets the endDateTime property value. The endDateTime property
+        Gets the endDateTime property value. 
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._end_date_time
@@ -62,7 +53,7 @@ class EventMessage(message.Message):
     @end_date_time.setter
     def end_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
-        Sets the endDateTime property value. The endDateTime property
+        Sets the endDateTime property value. 
         Args:
             value: Value to set for the endDateTime property.
         """
@@ -91,15 +82,15 @@ class EventMessage(message.Message):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "event": lambda n : setattr(self, 'event', n.get_object_value(event.Event)),
-            "is_all_day": lambda n : setattr(self, 'is_all_day', n.get_bool_value()),
-            "is_delegated": lambda n : setattr(self, 'is_delegated', n.get_bool_value()),
-            "is_out_of_date": lambda n : setattr(self, 'is_out_of_date', n.get_bool_value()),
+            "isAllDay": lambda n : setattr(self, 'is_all_day', n.get_bool_value()),
+            "isDelegated": lambda n : setattr(self, 'is_delegated', n.get_bool_value()),
+            "isOutOfDate": lambda n : setattr(self, 'is_out_of_date', n.get_bool_value()),
             "location": lambda n : setattr(self, 'location', n.get_object_value(location.Location)),
-            "meeting_message_type": lambda n : setattr(self, 'meeting_message_type', n.get_enum_value(meeting_message_type.MeetingMessageType)),
+            "meetingMessageType": lambda n : setattr(self, 'meeting_message_type', n.get_enum_value(meeting_message_type.MeetingMessageType)),
             "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(patterned_recurrence.PatternedRecurrence)),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(event_type.EventType)),
         }
         super_fields = super().get_field_deserializers()
@@ -109,7 +100,7 @@ class EventMessage(message.Message):
     @property
     def is_all_day(self,) -> Optional[bool]:
         """
-        Gets the isAllDay property value. The isAllDay property
+        Gets the isAllDay property value. 
         Returns: Optional[bool]
         """
         return self._is_all_day
@@ -117,7 +108,7 @@ class EventMessage(message.Message):
     @is_all_day.setter
     def is_all_day(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isAllDay property value. The isAllDay property
+        Sets the isAllDay property value. 
         Args:
             value: Value to set for the isAllDay property.
         """
@@ -126,7 +117,7 @@ class EventMessage(message.Message):
     @property
     def is_delegated(self,) -> Optional[bool]:
         """
-        Gets the isDelegated property value. The isDelegated property
+        Gets the isDelegated property value. 
         Returns: Optional[bool]
         """
         return self._is_delegated
@@ -134,7 +125,7 @@ class EventMessage(message.Message):
     @is_delegated.setter
     def is_delegated(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isDelegated property value. The isDelegated property
+        Sets the isDelegated property value. 
         Args:
             value: Value to set for the isDelegated property.
         """
@@ -143,7 +134,7 @@ class EventMessage(message.Message):
     @property
     def is_out_of_date(self,) -> Optional[bool]:
         """
-        Gets the isOutOfDate property value. The isOutOfDate property
+        Gets the isOutOfDate property value. 
         Returns: Optional[bool]
         """
         return self._is_out_of_date
@@ -151,7 +142,7 @@ class EventMessage(message.Message):
     @is_out_of_date.setter
     def is_out_of_date(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isOutOfDate property value. The isOutOfDate property
+        Sets the isOutOfDate property value. 
         Args:
             value: Value to set for the isOutOfDate property.
         """
@@ -160,7 +151,7 @@ class EventMessage(message.Message):
     @property
     def location(self,) -> Optional[location.Location]:
         """
-        Gets the location property value. The location property
+        Gets the location property value. 
         Returns: Optional[location.Location]
         """
         return self._location
@@ -168,7 +159,7 @@ class EventMessage(message.Message):
     @location.setter
     def location(self,value: Optional[location.Location] = None) -> None:
         """
-        Sets the location property value. The location property
+        Sets the location property value. 
         Args:
             value: Value to set for the location property.
         """
@@ -177,7 +168,7 @@ class EventMessage(message.Message):
     @property
     def meeting_message_type(self,) -> Optional[meeting_message_type.MeetingMessageType]:
         """
-        Gets the meetingMessageType property value. The meetingMessageType property
+        Gets the meetingMessageType property value. 
         Returns: Optional[meeting_message_type.MeetingMessageType]
         """
         return self._meeting_message_type
@@ -185,7 +176,7 @@ class EventMessage(message.Message):
     @meeting_message_type.setter
     def meeting_message_type(self,value: Optional[meeting_message_type.MeetingMessageType] = None) -> None:
         """
-        Sets the meetingMessageType property value. The meetingMessageType property
+        Sets the meetingMessageType property value. 
         Args:
             value: Value to set for the meetingMessageType property.
         """
@@ -194,7 +185,7 @@ class EventMessage(message.Message):
     @property
     def recurrence(self,) -> Optional[patterned_recurrence.PatternedRecurrence]:
         """
-        Gets the recurrence property value. The recurrence property
+        Gets the recurrence property value. 
         Returns: Optional[patterned_recurrence.PatternedRecurrence]
         """
         return self._recurrence
@@ -202,7 +193,7 @@ class EventMessage(message.Message):
     @recurrence.setter
     def recurrence(self,value: Optional[patterned_recurrence.PatternedRecurrence] = None) -> None:
         """
-        Sets the recurrence property value. The recurrence property
+        Sets the recurrence property value. 
         Args:
             value: Value to set for the recurrence property.
         """
@@ -231,7 +222,7 @@ class EventMessage(message.Message):
     @property
     def start_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
-        Gets the startDateTime property value. The startDateTime property
+        Gets the startDateTime property value. 
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._start_date_time
@@ -239,7 +230,7 @@ class EventMessage(message.Message):
     @start_date_time.setter
     def start_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
-        Sets the startDateTime property value. The startDateTime property
+        Sets the startDateTime property value. 
         Args:
             value: Value to set for the startDateTime property.
         """
@@ -248,7 +239,7 @@ class EventMessage(message.Message):
     @property
     def type(self,) -> Optional[event_type.EventType]:
         """
-        Gets the type property value. The type property
+        Gets the type property value. 
         Returns: Optional[event_type.EventType]
         """
         return self._type
@@ -256,7 +247,7 @@ class EventMessage(message.Message):
     @type.setter
     def type(self,value: Optional[event_type.EventType] = None) -> None:
         """
-        Sets the type property value. The type property
+        Sets the type property value. 
         Args:
             value: Value to set for the type property.
         """

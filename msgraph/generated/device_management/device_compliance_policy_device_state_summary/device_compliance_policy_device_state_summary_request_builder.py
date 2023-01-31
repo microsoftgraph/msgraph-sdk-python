@@ -74,7 +74,7 @@ class DeviceCompliancePolicyDeviceStateSummaryRequestBuilder():
         """
         Update the navigation property deviceCompliancePolicyDeviceStateSummary in deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[device_compliance_policy_device_state_summary.DeviceCompliancePolicyDeviceStateSummary]
         """
@@ -129,7 +129,7 @@ class DeviceCompliancePolicyDeviceStateSummaryRequestBuilder():
         """
         Update the navigation property deviceCompliancePolicyDeviceStateSummary in deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

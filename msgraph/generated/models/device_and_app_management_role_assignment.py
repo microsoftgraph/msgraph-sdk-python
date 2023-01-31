@@ -6,14 +6,16 @@ from typing import Any, Callable, Dict, List, Optional, Union
 role_assignment = lazy_import('msgraph.generated.models.role_assignment')
 
 class DeviceAndAppManagementRoleAssignment(role_assignment.RoleAssignment):
+    """
+    The Role Assignment resource. Role assignments tie together a role definition with members and scopes. There can be one or more role assignments per role. This applies to custom and built-in roles.
+    """
     def __init__(self,) -> None:
         """
-        Instantiates a new DeviceAndAppManagementRoleAssignment and sets the default values.
+        Instantiates a new deviceAndAppManagementRoleAssignment and sets the default values.
         """
         super().__init__()
         # The list of ids of role member security groups. These are IDs from Azure Active Directory.
         self._members: Optional[List[str]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

@@ -30,7 +30,6 @@ class AssignedLicense(AdditionalDataHolder, Parsable):
 
         # A collection of the unique identifiers for plans that have been disabled.
         self._disabled_plans: Optional[List[Guid]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The unique identifier for the SKU.
         self._sku_id: Optional[Guid] = None
@@ -70,16 +69,16 @@ class AssignedLicense(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "disabled_plans": lambda n : setattr(self, 'disabled_plans', n.get_collection_of_primitive_values(guid)),
+            "disabledPlans": lambda n : setattr(self, 'disabled_plans', n.get_collection_of_primitive_values(guid)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "sku_id": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
+            "skuId": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -87,7 +86,7 @@ class AssignedLicense(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

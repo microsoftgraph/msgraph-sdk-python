@@ -41,11 +41,11 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_default_recipients_enabled": lambda n : setattr(self, 'is_default_recipients_enabled', n.get_bool_value()),
-            "notification_level": lambda n : setattr(self, 'notification_level', n.get_str_value()),
-            "notification_recipients": lambda n : setattr(self, 'notification_recipients', n.get_collection_of_primitive_values(str)),
-            "notification_type": lambda n : setattr(self, 'notification_type', n.get_str_value()),
-            "recipient_type": lambda n : setattr(self, 'recipient_type', n.get_str_value()),
+            "isDefaultRecipientsEnabled": lambda n : setattr(self, 'is_default_recipients_enabled', n.get_bool_value()),
+            "notificationLevel": lambda n : setattr(self, 'notification_level', n.get_str_value()),
+            "notificationRecipients": lambda n : setattr(self, 'notification_recipients', n.get_collection_of_primitive_values(str)),
+            "notificationType": lambda n : setattr(self, 'notification_type', n.get_str_value()),
+            "recipientType": lambda n : setattr(self, 'recipient_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

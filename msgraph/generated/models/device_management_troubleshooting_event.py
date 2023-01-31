@@ -19,7 +19,6 @@ class DeviceManagementTroubleshootingEvent(entity.Entity):
         self._correlation_id: Optional[str] = None
         # Time when the event occurred .
         self._event_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @property
@@ -74,8 +73,8 @@ class DeviceManagementTroubleshootingEvent(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "correlation_id": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
-            "event_date_time": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
+            "correlationId": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
+            "eventDateTime": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

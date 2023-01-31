@@ -70,9 +70,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         self._id: Optional[Guid] = None
         # When creating or updating a permission, this property must be set to true (which is the default). To delete a permission, this property must first be set to false.  At that point, in a subsequent call, the permission may be removed.
         self._is_enabled: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The origin property
         self._origin: Optional[str] = None
         # The possible values are: User and Admin. Specifies whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator consent should always be required. While Microsoft Graph defines the default consent requirement for each permission, the tenant administrator may override the behavior in their organization (by allowing, restricting, or limiting user consent to this delegated permission). For more information, see Configure how users consent to applications.
         self._type: Optional[str] = None
@@ -101,15 +99,15 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "admin_consent_description": lambda n : setattr(self, 'admin_consent_description', n.get_str_value()),
-            "admin_consent_display_name": lambda n : setattr(self, 'admin_consent_display_name', n.get_str_value()),
+            "adminConsentDescription": lambda n : setattr(self, 'admin_consent_description', n.get_str_value()),
+            "adminConsentDisplayName": lambda n : setattr(self, 'admin_consent_display_name', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_object_value(Guid)),
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "origin": lambda n : setattr(self, 'origin', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
-            "user_consent_description": lambda n : setattr(self, 'user_consent_description', n.get_str_value()),
-            "user_consent_display_name": lambda n : setattr(self, 'user_consent_display_name', n.get_str_value()),
+            "userConsentDescription": lambda n : setattr(self, 'user_consent_description', n.get_str_value()),
+            "userConsentDisplayName": lambda n : setattr(self, 'user_consent_display_name', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
         }
         return fields
@@ -151,7 +149,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -159,7 +157,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -168,7 +166,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
     @property
     def origin(self,) -> Optional[str]:
         """
-        Gets the origin property value. The origin property
+        Gets the origin property value. 
         Returns: Optional[str]
         """
         return self._origin
@@ -176,7 +174,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
     @origin.setter
     def origin(self,value: Optional[str] = None) -> None:
         """
-        Sets the origin property value. The origin property
+        Sets the origin property value. 
         Args:
             value: Value to set for the origin property.
         """

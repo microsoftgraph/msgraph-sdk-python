@@ -30,7 +30,6 @@ class ExtensionSchemaProperty(AdditionalDataHolder, Parsable):
 
         # The name of the strongly-typed property defined as part of a schema extension.
         self._name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The type of the property that is defined as part of a schema extension.  Allowed values are Binary, Boolean, DateTime, Integer or String. See the table below for more details.
         self._type: Optional[str] = None
@@ -79,7 +78,7 @@ class ExtensionSchemaProperty(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -87,7 +86,7 @@ class ExtensionSchemaProperty(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

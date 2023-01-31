@@ -153,7 +153,7 @@ class MeRequestBuilder():
         """
         Update the navigation property me in education
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_user.EducationUser]
         """
@@ -247,7 +247,7 @@ class MeRequestBuilder():
         """
         Update the navigation property me in education
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -130,11 +130,11 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "aa_guid": lambda n : setattr(self, 'aa_guid', n.get_str_value()),
-            "attestation_certificates": lambda n : setattr(self, 'attestation_certificates', n.get_collection_of_primitive_values(str)),
-            "attestation_level": lambda n : setattr(self, 'attestation_level', n.get_enum_value(attestation_level.AttestationLevel)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "aaGuid": lambda n : setattr(self, 'aa_guid', n.get_str_value()),
+            "attestationCertificates": lambda n : setattr(self, 'attestation_certificates', n.get_collection_of_primitive_values(str)),
+            "attestationLevel": lambda n : setattr(self, 'attestation_level', n.get_enum_value(attestation_level.AttestationLevel)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

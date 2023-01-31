@@ -19,7 +19,6 @@ class ServiceAnnouncementBase(entity.Entity):
         self._end_date_time: Optional[datetime] = None
         # The last modified time of the service event.
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The start time of the service event.
         self._start_date_time: Optional[datetime] = None
@@ -79,9 +78,9 @@ class ServiceAnnouncementBase(entity.Entity):
         """
         fields = {
             "details": lambda n : setattr(self, 'details', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

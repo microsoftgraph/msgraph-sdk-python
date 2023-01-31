@@ -28,7 +28,6 @@ class TicketInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The ticket number.
         self._ticket_number: Optional[str] = None
@@ -54,15 +53,15 @@ class TicketInfo(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "ticket_number": lambda n : setattr(self, 'ticket_number', n.get_str_value()),
-            "ticket_system": lambda n : setattr(self, 'ticket_system', n.get_str_value()),
+            "ticketNumber": lambda n : setattr(self, 'ticket_number', n.get_str_value()),
+            "ticketSystem": lambda n : setattr(self, 'ticket_system', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -70,7 +69,7 @@ class TicketInfo(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

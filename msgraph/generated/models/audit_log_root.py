@@ -14,13 +14,9 @@ class AuditLogRoot(entity.Entity):
         Instantiates a new AuditLogRoot and sets the default values.
         """
         super().__init__()
-        # The directoryAudits property
         self._directory_audits: Optional[List[directory_audit.DirectoryAudit]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The provisioning property
         self._provisioning: Optional[List[provisioning_object_summary.ProvisioningObjectSummary]] = None
-        # The signIns property
         self._sign_ins: Optional[List[sign_in.SignIn]] = None
     
     @staticmethod
@@ -38,7 +34,7 @@ class AuditLogRoot(entity.Entity):
     @property
     def directory_audits(self,) -> Optional[List[directory_audit.DirectoryAudit]]:
         """
-        Gets the directoryAudits property value. The directoryAudits property
+        Gets the directoryAudits property value. 
         Returns: Optional[List[directory_audit.DirectoryAudit]]
         """
         return self._directory_audits
@@ -46,7 +42,7 @@ class AuditLogRoot(entity.Entity):
     @directory_audits.setter
     def directory_audits(self,value: Optional[List[directory_audit.DirectoryAudit]] = None) -> None:
         """
-        Sets the directoryAudits property value. The directoryAudits property
+        Sets the directoryAudits property value. 
         Args:
             value: Value to set for the directoryAudits property.
         """
@@ -58,9 +54,9 @@ class AuditLogRoot(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "directory_audits": lambda n : setattr(self, 'directory_audits', n.get_collection_of_object_values(directory_audit.DirectoryAudit)),
+            "directoryAudits": lambda n : setattr(self, 'directory_audits', n.get_collection_of_object_values(directory_audit.DirectoryAudit)),
             "provisioning": lambda n : setattr(self, 'provisioning', n.get_collection_of_object_values(provisioning_object_summary.ProvisioningObjectSummary)),
-            "sign_ins": lambda n : setattr(self, 'sign_ins', n.get_collection_of_object_values(sign_in.SignIn)),
+            "signIns": lambda n : setattr(self, 'sign_ins', n.get_collection_of_object_values(sign_in.SignIn)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -69,7 +65,7 @@ class AuditLogRoot(entity.Entity):
     @property
     def provisioning(self,) -> Optional[List[provisioning_object_summary.ProvisioningObjectSummary]]:
         """
-        Gets the provisioning property value. The provisioning property
+        Gets the provisioning property value. 
         Returns: Optional[List[provisioning_object_summary.ProvisioningObjectSummary]]
         """
         return self._provisioning
@@ -77,7 +73,7 @@ class AuditLogRoot(entity.Entity):
     @provisioning.setter
     def provisioning(self,value: Optional[List[provisioning_object_summary.ProvisioningObjectSummary]] = None) -> None:
         """
-        Sets the provisioning property value. The provisioning property
+        Sets the provisioning property value. 
         Args:
             value: Value to set for the provisioning property.
         """
@@ -99,7 +95,7 @@ class AuditLogRoot(entity.Entity):
     @property
     def sign_ins(self,) -> Optional[List[sign_in.SignIn]]:
         """
-        Gets the signIns property value. The signIns property
+        Gets the signIns property value. 
         Returns: Optional[List[sign_in.SignIn]]
         """
         return self._sign_ins
@@ -107,7 +103,7 @@ class AuditLogRoot(entity.Entity):
     @sign_ins.setter
     def sign_ins(self,value: Optional[List[sign_in.SignIn]] = None) -> None:
         """
-        Sets the signIns property value. The signIns property
+        Sets the signIns property value. 
         Args:
             value: Value to set for the signIns property.
         """

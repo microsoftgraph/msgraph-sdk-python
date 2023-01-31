@@ -12,7 +12,6 @@ class IdentityCustomUserFlowAttributeCollectionResponse(base_collection_paginati
         Instantiates a new IdentityCustomUserFlowAttributeCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[identity_custom_user_flow_attribute.IdentityCustomUserFlowAttribute]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class IdentityCustomUserFlowAttributeCollectionResponse(base_collection_paginati
     @property
     def value(self,) -> Optional[List[identity_custom_user_flow_attribute.IdentityCustomUserFlowAttribute]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[identity_custom_user_flow_attribute.IdentityCustomUserFlowAttribute]]
         """
         return self._value
@@ -61,7 +60,7 @@ class IdentityCustomUserFlowAttributeCollectionResponse(base_collection_paginati
     @value.setter
     def value(self,value: Optional[List[identity_custom_user_flow_attribute.IdentityCustomUserFlowAttribute]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

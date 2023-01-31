@@ -32,9 +32,7 @@ class InvitationParticipantInfo(AdditionalDataHolder, Parsable):
 
         # Optional. Whether to hide the participant from the roster.
         self._hidden: Optional[bool] = None
-        # The identity property
         self._identity: Optional[identity_set.IdentitySet] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Optional. The ID of the target participant.
         self._participant_id: Optional[str] = None
@@ -64,9 +62,9 @@ class InvitationParticipantInfo(AdditionalDataHolder, Parsable):
             "hidden": lambda n : setattr(self, 'hidden', n.get_bool_value()),
             "identity": lambda n : setattr(self, 'identity', n.get_object_value(identity_set.IdentitySet)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "participant_id": lambda n : setattr(self, 'participant_id', n.get_str_value()),
-            "remove_from_default_audio_routing_group": lambda n : setattr(self, 'remove_from_default_audio_routing_group', n.get_bool_value()),
-            "replaces_call_id": lambda n : setattr(self, 'replaces_call_id', n.get_str_value()),
+            "participantId": lambda n : setattr(self, 'participant_id', n.get_str_value()),
+            "removeFromDefaultAudioRoutingGroup": lambda n : setattr(self, 'remove_from_default_audio_routing_group', n.get_bool_value()),
+            "replacesCallId": lambda n : setattr(self, 'replaces_call_id', n.get_str_value()),
         }
         return fields
     
@@ -90,7 +88,7 @@ class InvitationParticipantInfo(AdditionalDataHolder, Parsable):
     @property
     def identity(self,) -> Optional[identity_set.IdentitySet]:
         """
-        Gets the identity property value. The identity property
+        Gets the identity property value. 
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._identity
@@ -98,7 +96,7 @@ class InvitationParticipantInfo(AdditionalDataHolder, Parsable):
     @identity.setter
     def identity(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
-        Sets the identity property value. The identity property
+        Sets the identity property value. 
         Args:
             value: Value to set for the identity property.
         """
@@ -107,7 +105,7 @@ class InvitationParticipantInfo(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -115,7 +113,7 @@ class InvitationParticipantInfo(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -8,10 +8,9 @@ entity = lazy_import('msgraph.generated.models.entity')
 class EducationAssignmentSettings(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new EducationAssignmentSettings and sets the default values.
+        Instantiates a new educationAssignmentSettings and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Indicates whether turn-in celebration animation will be shown. A value of true indicates that the animation will not be shown. Default value is false.
         self._submission_animation_disabled: Optional[bool] = None
@@ -34,7 +33,7 @@ class EducationAssignmentSettings(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "submission_animation_disabled": lambda n : setattr(self, 'submission_animation_disabled', n.get_bool_value()),
+            "submissionAnimationDisabled": lambda n : setattr(self, 'submission_animation_disabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

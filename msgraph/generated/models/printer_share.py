@@ -113,10 +113,10 @@ class PrinterShare(printer_base.PrinterBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_all_users": lambda n : setattr(self, 'allow_all_users', n.get_bool_value()),
-            "allowed_groups": lambda n : setattr(self, 'allowed_groups', n.get_collection_of_object_values(group.Group)),
-            "allowed_users": lambda n : setattr(self, 'allowed_users', n.get_collection_of_object_values(user.User)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "allowAllUsers": lambda n : setattr(self, 'allow_all_users', n.get_bool_value()),
+            "allowedGroups": lambda n : setattr(self, 'allowed_groups', n.get_collection_of_object_values(group.Group)),
+            "allowedUsers": lambda n : setattr(self, 'allowed_users', n.get_collection_of_object_values(user.User)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "printer": lambda n : setattr(self, 'printer', n.get_object_value(printer.Printer)),
         }
         super_fields = super().get_field_deserializers()

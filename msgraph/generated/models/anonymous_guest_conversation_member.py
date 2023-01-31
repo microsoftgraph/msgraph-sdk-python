@@ -9,7 +9,7 @@ class AnonymousGuestConversationMember(conversation_member.ConversationMember):
     @property
     def anonymous_guest_id(self,) -> Optional[str]:
         """
-        Gets the anonymousGuestId property value. The anonymousGuestId property
+        Gets the anonymousGuestId property value. 
         Returns: Optional[str]
         """
         return self._anonymous_guest_id
@@ -17,7 +17,7 @@ class AnonymousGuestConversationMember(conversation_member.ConversationMember):
     @anonymous_guest_id.setter
     def anonymous_guest_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the anonymousGuestId property value. The anonymousGuestId property
+        Sets the anonymousGuestId property value. 
         Args:
             value: Value to set for the anonymousGuestId property.
         """
@@ -29,7 +29,6 @@ class AnonymousGuestConversationMember(conversation_member.ConversationMember):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.anonymousGuestConversationMember"
-        # The anonymousGuestId property
         self._anonymous_guest_id: Optional[str] = None
     
     @staticmethod
@@ -50,7 +49,7 @@ class AnonymousGuestConversationMember(conversation_member.ConversationMember):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "anonymous_guest_id": lambda n : setattr(self, 'anonymous_guest_id', n.get_str_value()),
+            "anonymousGuestId": lambda n : setattr(self, 'anonymous_guest_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

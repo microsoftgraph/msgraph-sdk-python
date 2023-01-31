@@ -66,7 +66,7 @@ class SignInsRequestBuilder():
         """
         Create new navigation property to signIns for auditLogs
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[sign_in.SignIn]
         """
@@ -105,7 +105,7 @@ class SignInsRequestBuilder():
         """
         Create new navigation property to signIns for auditLogs
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

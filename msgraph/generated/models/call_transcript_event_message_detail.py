@@ -72,9 +72,9 @@ class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "call_id": lambda n : setattr(self, 'call_id', n.get_str_value()),
-            "call_transcript_i_cal_uid": lambda n : setattr(self, 'call_transcript_i_cal_uid', n.get_str_value()),
-            "meeting_organizer": lambda n : setattr(self, 'meeting_organizer', n.get_object_value(identity_set.IdentitySet)),
+            "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
+            "callTranscriptICalUid": lambda n : setattr(self, 'call_transcript_i_cal_uid', n.get_str_value()),
+            "meetingOrganizer": lambda n : setattr(self, 'meeting_organizer', n.get_object_value(identity_set.IdentitySet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

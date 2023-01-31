@@ -47,7 +47,6 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
 
         # For example, 'Enabled'.
         self._capability_status: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # For example, 'Success'.
         self._provisioning_status: Optional[str] = None
@@ -72,9 +71,9 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "capability_status": lambda n : setattr(self, 'capability_status', n.get_str_value()),
+            "capabilityStatus": lambda n : setattr(self, 'capability_status', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "provisioning_status": lambda n : setattr(self, 'provisioning_status', n.get_str_value()),
+            "provisioningStatus": lambda n : setattr(self, 'provisioning_status', n.get_str_value()),
             "service": lambda n : setattr(self, 'service', n.get_str_value()),
         }
         return fields
@@ -82,7 +81,7 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -90,7 +89,7 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

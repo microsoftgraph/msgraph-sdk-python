@@ -49,7 +49,6 @@ class OAuth2PermissionGrant(entity.Entity):
         self._client_id: Optional[str] = None
         # Indicates if authorization is granted for the client application to impersonate all users or only a specific user. AllPrincipals indicates authorization to impersonate all users. Principal indicates authorization to impersonate a specific user. Consent on behalf of all users can be granted by an administrator. Non-admin users may be authorized to consent on behalf of themselves in some cases, for some delegated permissions. Required. Supports $filter (eq only).
         self._consent_type: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The id of the user on behalf of whom the client is authorized to access the resource, when consentType is Principal. If consentType is AllPrincipals this value is null. Required when consentType is Principal. Supports $filter (eq only).
         self._principal_id: Optional[str] = None
@@ -76,10 +75,10 @@ class OAuth2PermissionGrant(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "client_id": lambda n : setattr(self, 'client_id', n.get_str_value()),
-            "consent_type": lambda n : setattr(self, 'consent_type', n.get_str_value()),
-            "principal_id": lambda n : setattr(self, 'principal_id', n.get_str_value()),
-            "resource_id": lambda n : setattr(self, 'resource_id', n.get_str_value()),
+            "clientId": lambda n : setattr(self, 'client_id', n.get_str_value()),
+            "consentType": lambda n : setattr(self, 'consent_type', n.get_str_value()),
+            "principalId": lambda n : setattr(self, 'principal_id', n.get_str_value()),
+            "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
             "scope": lambda n : setattr(self, 'scope', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

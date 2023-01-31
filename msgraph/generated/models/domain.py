@@ -67,11 +67,8 @@ class Domain(entity.Entity):
         self._is_root: Optional[bool] = None
         # true if the domain has completed domain ownership verification. Not nullable
         self._is_verified: Optional[bool] = None
-        # The manufacturer property
         self._manufacturer: Optional[str] = None
-        # The model property
         self._model: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Specifies the number of days before a user receives notification that their password will expire. If the property is not set, a default value of 14 days will be used.
         self._password_notification_window_in_days: Optional[int] = None
@@ -138,23 +135,23 @@ class Domain(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "authentication_type": lambda n : setattr(self, 'authentication_type', n.get_str_value()),
-            "availability_status": lambda n : setattr(self, 'availability_status', n.get_str_value()),
-            "domain_name_references": lambda n : setattr(self, 'domain_name_references', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "federation_configuration": lambda n : setattr(self, 'federation_configuration', n.get_collection_of_object_values(internal_domain_federation.InternalDomainFederation)),
-            "is_admin_managed": lambda n : setattr(self, 'is_admin_managed', n.get_bool_value()),
-            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
-            "is_initial": lambda n : setattr(self, 'is_initial', n.get_bool_value()),
-            "is_root": lambda n : setattr(self, 'is_root', n.get_bool_value()),
-            "is_verified": lambda n : setattr(self, 'is_verified', n.get_bool_value()),
+            "authenticationType": lambda n : setattr(self, 'authentication_type', n.get_str_value()),
+            "availabilityStatus": lambda n : setattr(self, 'availability_status', n.get_str_value()),
+            "domainNameReferences": lambda n : setattr(self, 'domain_name_references', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "federationConfiguration": lambda n : setattr(self, 'federation_configuration', n.get_collection_of_object_values(internal_domain_federation.InternalDomainFederation)),
+            "isAdminManaged": lambda n : setattr(self, 'is_admin_managed', n.get_bool_value()),
+            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "isInitial": lambda n : setattr(self, 'is_initial', n.get_bool_value()),
+            "isRoot": lambda n : setattr(self, 'is_root', n.get_bool_value()),
+            "isVerified": lambda n : setattr(self, 'is_verified', n.get_bool_value()),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
-            "password_notification_window_in_days": lambda n : setattr(self, 'password_notification_window_in_days', n.get_int_value()),
-            "password_validity_period_in_days": lambda n : setattr(self, 'password_validity_period_in_days', n.get_int_value()),
-            "service_configuration_records": lambda n : setattr(self, 'service_configuration_records', n.get_collection_of_object_values(domain_dns_record.DomainDnsRecord)),
+            "passwordNotificationWindowInDays": lambda n : setattr(self, 'password_notification_window_in_days', n.get_int_value()),
+            "passwordValidityPeriodInDays": lambda n : setattr(self, 'password_validity_period_in_days', n.get_int_value()),
+            "serviceConfigurationRecords": lambda n : setattr(self, 'service_configuration_records', n.get_collection_of_object_values(domain_dns_record.DomainDnsRecord)),
             "state": lambda n : setattr(self, 'state', n.get_object_value(domain_state.DomainState)),
-            "supported_services": lambda n : setattr(self, 'supported_services', n.get_collection_of_primitive_values(str)),
-            "verification_dns_records": lambda n : setattr(self, 'verification_dns_records', n.get_collection_of_object_values(domain_dns_record.DomainDnsRecord)),
+            "supportedServices": lambda n : setattr(self, 'supported_services', n.get_collection_of_primitive_values(str)),
+            "verificationDnsRecords": lambda n : setattr(self, 'verification_dns_records', n.get_collection_of_object_values(domain_dns_record.DomainDnsRecord)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -248,7 +245,7 @@ class Domain(entity.Entity):
     @property
     def manufacturer(self,) -> Optional[str]:
         """
-        Gets the manufacturer property value. The manufacturer property
+        Gets the manufacturer property value. 
         Returns: Optional[str]
         """
         return self._manufacturer
@@ -256,7 +253,7 @@ class Domain(entity.Entity):
     @manufacturer.setter
     def manufacturer(self,value: Optional[str] = None) -> None:
         """
-        Sets the manufacturer property value. The manufacturer property
+        Sets the manufacturer property value. 
         Args:
             value: Value to set for the manufacturer property.
         """
@@ -265,7 +262,7 @@ class Domain(entity.Entity):
     @property
     def model(self,) -> Optional[str]:
         """
-        Gets the model property value. The model property
+        Gets the model property value. 
         Returns: Optional[str]
         """
         return self._model
@@ -273,7 +270,7 @@ class Domain(entity.Entity):
     @model.setter
     def model(self,value: Optional[str] = None) -> None:
         """
-        Sets the model property value. The model property
+        Sets the model property value. 
         Args:
             value: Value to set for the model property.
         """

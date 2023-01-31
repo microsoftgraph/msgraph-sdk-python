@@ -61,7 +61,6 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
         self._latitude: Optional[float] = None
         # Longitude coordinate of the device's location
         self._longitude: Optional[float] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Speed the device is traveling in meters per second
         self._speed: Optional[float] = None
@@ -88,13 +87,13 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
         fields = {
             "altitude": lambda n : setattr(self, 'altitude', n.get_float_value()),
             "heading": lambda n : setattr(self, 'heading', n.get_float_value()),
-            "horizontal_accuracy": lambda n : setattr(self, 'horizontal_accuracy', n.get_float_value()),
-            "last_collected_date_time": lambda n : setattr(self, 'last_collected_date_time', n.get_datetime_value()),
+            "horizontalAccuracy": lambda n : setattr(self, 'horizontal_accuracy', n.get_float_value()),
+            "lastCollectedDateTime": lambda n : setattr(self, 'last_collected_date_time', n.get_datetime_value()),
             "latitude": lambda n : setattr(self, 'latitude', n.get_float_value()),
             "longitude": lambda n : setattr(self, 'longitude', n.get_float_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "speed": lambda n : setattr(self, 'speed', n.get_float_value()),
-            "vertical_accuracy": lambda n : setattr(self, 'vertical_accuracy', n.get_float_value()),
+            "verticalAccuracy": lambda n : setattr(self, 'vertical_accuracy', n.get_float_value()),
         }
         return fields
     
@@ -186,7 +185,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -194,7 +193,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -31,24 +31,19 @@ class ExternalConnection(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new ExternalConnection and sets the default values.
+        Instantiates a new externalConnection and sets the default values.
         """
         super().__init__()
         # Specifies additional application IDs that are allowed to manage the connection and to index content in the connection. Optional.
         self._configuration: Optional[configuration.Configuration] = None
         # Description of the connection displayed in the Microsoft 365 admin center. Optional.
         self._description: Optional[str] = None
-        # The groups property
         self._groups: Optional[List[external_group.ExternalGroup]] = None
-        # The items property
         self._items: Optional[List[external_item.ExternalItem]] = None
         # The display name of the connection to be displayed in the Microsoft 365 admin center. Maximum length of 128 characters. Required.
         self._name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The operations property
         self._operations: Optional[List[connection_operation.ConnectionOperation]] = None
-        # The schema property
         self._schema: Optional[schema.Schema] = None
         # Indicates the current state of the connection. Possible values are: draft, ready, obsolete, limitExceeded, unknownFutureValue.
         self._state: Optional[connection_state.ConnectionState] = None
@@ -104,7 +99,7 @@ class ExternalConnection(entity.Entity):
     @property
     def groups(self,) -> Optional[List[external_group.ExternalGroup]]:
         """
-        Gets the groups property value. The groups property
+        Gets the groups property value. 
         Returns: Optional[List[external_group.ExternalGroup]]
         """
         return self._groups
@@ -112,7 +107,7 @@ class ExternalConnection(entity.Entity):
     @groups.setter
     def groups(self,value: Optional[List[external_group.ExternalGroup]] = None) -> None:
         """
-        Sets the groups property value. The groups property
+        Sets the groups property value. 
         Args:
             value: Value to set for the groups property.
         """
@@ -121,7 +116,7 @@ class ExternalConnection(entity.Entity):
     @property
     def items(self,) -> Optional[List[external_item.ExternalItem]]:
         """
-        Gets the items property value. The items property
+        Gets the items property value. 
         Returns: Optional[List[external_item.ExternalItem]]
         """
         return self._items
@@ -129,7 +124,7 @@ class ExternalConnection(entity.Entity):
     @items.setter
     def items(self,value: Optional[List[external_item.ExternalItem]] = None) -> None:
         """
-        Sets the items property value. The items property
+        Sets the items property value. 
         Args:
             value: Value to set for the items property.
         """
@@ -155,7 +150,7 @@ class ExternalConnection(entity.Entity):
     @property
     def operations(self,) -> Optional[List[connection_operation.ConnectionOperation]]:
         """
-        Gets the operations property value. The operations property
+        Gets the operations property value. 
         Returns: Optional[List[connection_operation.ConnectionOperation]]
         """
         return self._operations
@@ -163,7 +158,7 @@ class ExternalConnection(entity.Entity):
     @operations.setter
     def operations(self,value: Optional[List[connection_operation.ConnectionOperation]] = None) -> None:
         """
-        Sets the operations property value. The operations property
+        Sets the operations property value. 
         Args:
             value: Value to set for the operations property.
         """
@@ -172,7 +167,7 @@ class ExternalConnection(entity.Entity):
     @property
     def schema(self,) -> Optional[schema.Schema]:
         """
-        Gets the schema property value. The schema property
+        Gets the schema property value. 
         Returns: Optional[schema.Schema]
         """
         return self._schema
@@ -180,7 +175,7 @@ class ExternalConnection(entity.Entity):
     @schema.setter
     def schema(self,value: Optional[schema.Schema] = None) -> None:
         """
-        Sets the schema property value. The schema property
+        Sets the schema property value. 
         Args:
             value: Value to set for the schema property.
         """

@@ -35,7 +35,6 @@ class WindowsInformationProtectionProxiedDomainCollection(AdditionalDataHolder, 
 
         # Display name
         self._display_name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Collection of proxied domains
         self._proxied_domains: Optional[List[proxied_domain.ProxiedDomain]] = None
@@ -75,16 +74,16 @@ class WindowsInformationProtectionProxiedDomainCollection(AdditionalDataHolder, 
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "proxied_domains": lambda n : setattr(self, 'proxied_domains', n.get_collection_of_object_values(proxied_domain.ProxiedDomain)),
+            "proxiedDomains": lambda n : setattr(self, 'proxied_domains', n.get_collection_of_object_values(proxied_domain.ProxiedDomain)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -92,7 +91,7 @@ class WindowsInformationProtectionProxiedDomainCollection(AdditionalDataHolder, 
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -34,7 +34,6 @@ class SubjectRightsRequestStageDetail(AdditionalDataHolder, Parsable):
 
         # Describes the error, if any, for the current stage.
         self._error: Optional[public_error.PublicError] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The stage of the subject rights request. Possible values are: contentRetrieval, contentReview, generateReport, contentDeletion, caseResolved, unknownFutureValue.
         self._stage: Optional[subject_rights_request_stage.SubjectRightsRequestStage] = None
@@ -86,7 +85,7 @@ class SubjectRightsRequestStageDetail(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -94,7 +93,7 @@ class SubjectRightsRequestStageDetail(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

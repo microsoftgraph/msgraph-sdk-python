@@ -12,7 +12,6 @@ class HomeRealmDiscoveryPolicyCollectionResponse(base_collection_pagination_coun
         Instantiates a new HomeRealmDiscoveryPolicyCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class HomeRealmDiscoveryPolicyCollectionResponse(base_collection_pagination_coun
     @property
     def value(self,) -> Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]]
         """
         return self._value
@@ -61,7 +60,7 @@ class HomeRealmDiscoveryPolicyCollectionResponse(base_collection_pagination_coun
     @value.setter
     def value(self,value: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

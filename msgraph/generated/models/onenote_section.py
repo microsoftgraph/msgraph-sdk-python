@@ -47,12 +47,12 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(section_links.SectionLinks)),
             "pages": lambda n : setattr(self, 'pages', n.get_collection_of_object_values(onenote_page.OnenotePage)),
-            "pages_url": lambda n : setattr(self, 'pages_url', n.get_str_value()),
-            "parent_notebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(notebook.Notebook)),
-            "parent_section_group": lambda n : setattr(self, 'parent_section_group', n.get_object_value(section_group.SectionGroup)),
+            "pagesUrl": lambda n : setattr(self, 'pages_url', n.get_str_value()),
+            "parentNotebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(notebook.Notebook)),
+            "parentSectionGroup": lambda n : setattr(self, 'parent_section_group', n.get_object_value(section_group.SectionGroup)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

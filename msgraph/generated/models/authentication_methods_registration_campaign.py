@@ -36,11 +36,9 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         self._exclude_targets: Optional[List[exclude_target.ExcludeTarget]] = None
         # Users and groups of users that are prompted to set up the authentication method.
         self._include_targets: Optional[List[authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Specifies the number of days that the user sees a prompt again if they select 'Not now' and snoozes the prompt. Minimum: 0 days. Maximum: 14 days. If the value is '0', the user is prompted during every MFA attempt.
         self._snooze_duration_in_days: Optional[int] = None
-        # The state property
         self._state: Optional[advanced_config_state.AdvancedConfigState] = None
     
     @staticmethod
@@ -78,10 +76,10 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "exclude_targets": lambda n : setattr(self, 'exclude_targets', n.get_collection_of_object_values(exclude_target.ExcludeTarget)),
-            "include_targets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget)),
+            "excludeTargets": lambda n : setattr(self, 'exclude_targets', n.get_collection_of_object_values(exclude_target.ExcludeTarget)),
+            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "snooze_duration_in_days": lambda n : setattr(self, 'snooze_duration_in_days', n.get_int_value()),
+            "snoozeDurationInDays": lambda n : setattr(self, 'snooze_duration_in_days', n.get_int_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(advanced_config_state.AdvancedConfigState)),
         }
         return fields
@@ -106,7 +104,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -114,7 +112,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -155,7 +153,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
     @property
     def state(self,) -> Optional[advanced_config_state.AdvancedConfigState]:
         """
-        Gets the state property value. The state property
+        Gets the state property value. 
         Returns: Optional[advanced_config_state.AdvancedConfigState]
         """
         return self._state
@@ -163,7 +161,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
     @state.setter
     def state(self,value: Optional[advanced_config_state.AdvancedConfigState] = None) -> None:
         """
-        Sets the state property value. The state property
+        Sets the state property value. 
         Args:
             value: Value to set for the state property.
         """

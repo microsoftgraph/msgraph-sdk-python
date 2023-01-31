@@ -33,7 +33,7 @@ class MacOsLobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "uninstall_on_device_removal": lambda n : setattr(self, 'uninstall_on_device_removal', n.get_bool_value()),
+            "uninstallOnDeviceRemoval": lambda n : setattr(self, 'uninstall_on_device_removal', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

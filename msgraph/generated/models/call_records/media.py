@@ -110,7 +110,6 @@ class Media(AdditionalDataHolder, Parsable):
         self._caller_network: Optional[network_info.NetworkInfo] = None
         # How the media was identified during media negotiation stage.
         self._label: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Network streams associated with this media.
         self._streams: Optional[List[media_stream.MediaStream]] = None
@@ -133,10 +132,10 @@ class Media(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "callee_device": lambda n : setattr(self, 'callee_device', n.get_object_value(device_info.DeviceInfo)),
-            "callee_network": lambda n : setattr(self, 'callee_network', n.get_object_value(network_info.NetworkInfo)),
-            "caller_device": lambda n : setattr(self, 'caller_device', n.get_object_value(device_info.DeviceInfo)),
-            "caller_network": lambda n : setattr(self, 'caller_network', n.get_object_value(network_info.NetworkInfo)),
+            "calleeDevice": lambda n : setattr(self, 'callee_device', n.get_object_value(device_info.DeviceInfo)),
+            "calleeNetwork": lambda n : setattr(self, 'callee_network', n.get_object_value(network_info.NetworkInfo)),
+            "callerDevice": lambda n : setattr(self, 'caller_device', n.get_object_value(device_info.DeviceInfo)),
+            "callerNetwork": lambda n : setattr(self, 'caller_network', n.get_object_value(network_info.NetworkInfo)),
             "label": lambda n : setattr(self, 'label', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "streams": lambda n : setattr(self, 'streams', n.get_collection_of_object_values(media_stream.MediaStream)),
@@ -163,7 +162,7 @@ class Media(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -171,7 +170,7 @@ class Media(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

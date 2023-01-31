@@ -14,15 +14,11 @@ class PrintTask(entity.Entity):
         Instantiates a new printTask and sets the default values.
         """
         super().__init__()
-        # The definition property
         self._definition: Optional[print_task_definition.PrintTaskDefinition] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The URL for the print entity that triggered this task. For example, https://graph.microsoft.com/v1.0/print/printers/{printerId}/jobs/{jobId}. Read-only.
         self._parent_url: Optional[str] = None
-        # The status property
         self._status: Optional[print_task_status.PrintTaskStatus] = None
-        # The trigger property
         self._trigger: Optional[print_task_trigger.PrintTaskTrigger] = None
     
     @staticmethod
@@ -40,7 +36,7 @@ class PrintTask(entity.Entity):
     @property
     def definition(self,) -> Optional[print_task_definition.PrintTaskDefinition]:
         """
-        Gets the definition property value. The definition property
+        Gets the definition property value. 
         Returns: Optional[print_task_definition.PrintTaskDefinition]
         """
         return self._definition
@@ -48,7 +44,7 @@ class PrintTask(entity.Entity):
     @definition.setter
     def definition(self,value: Optional[print_task_definition.PrintTaskDefinition] = None) -> None:
         """
-        Sets the definition property value. The definition property
+        Sets the definition property value. 
         Args:
             value: Value to set for the definition property.
         """
@@ -61,7 +57,7 @@ class PrintTask(entity.Entity):
         """
         fields = {
             "definition": lambda n : setattr(self, 'definition', n.get_object_value(print_task_definition.PrintTaskDefinition)),
-            "parent_url": lambda n : setattr(self, 'parent_url', n.get_str_value()),
+            "parentUrl": lambda n : setattr(self, 'parent_url', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_object_value(print_task_status.PrintTaskStatus)),
             "trigger": lambda n : setattr(self, 'trigger', n.get_object_value(print_task_trigger.PrintTaskTrigger)),
         }
@@ -103,7 +99,7 @@ class PrintTask(entity.Entity):
     @property
     def status(self,) -> Optional[print_task_status.PrintTaskStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[print_task_status.PrintTaskStatus]
         """
         return self._status
@@ -111,7 +107,7 @@ class PrintTask(entity.Entity):
     @status.setter
     def status(self,value: Optional[print_task_status.PrintTaskStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """
@@ -120,7 +116,7 @@ class PrintTask(entity.Entity):
     @property
     def trigger(self,) -> Optional[print_task_trigger.PrintTaskTrigger]:
         """
-        Gets the trigger property value. The trigger property
+        Gets the trigger property value. 
         Returns: Optional[print_task_trigger.PrintTaskTrigger]
         """
         return self._trigger
@@ -128,7 +124,7 @@ class PrintTask(entity.Entity):
     @trigger.setter
     def trigger(self,value: Optional[print_task_trigger.PrintTaskTrigger] = None) -> None:
         """
-        Sets the trigger property value. The trigger property
+        Sets the trigger property value. 
         Args:
             value: Value to set for the trigger property.
         """

@@ -12,7 +12,6 @@ class SiteSourceCollectionResponse(base_collection_pagination_count_response.Bas
         Instantiates a new SiteSourceCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[site_source.SiteSource]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class SiteSourceCollectionResponse(base_collection_pagination_count_response.Bas
     @property
     def value(self,) -> Optional[List[site_source.SiteSource]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[site_source.SiteSource]]
         """
         return self._value
@@ -61,7 +60,7 @@ class SiteSourceCollectionResponse(base_collection_pagination_count_response.Bas
     @value.setter
     def value(self,value: Optional[List[site_source.SiteSource]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

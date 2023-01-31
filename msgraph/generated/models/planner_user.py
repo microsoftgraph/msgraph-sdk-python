@@ -13,7 +13,6 @@ class PlannerUser(entity.Entity):
         Instantiates a new plannerUser and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Read-only. Nullable. Returns the plannerTasks assigned to the user.
         self._plans: Optional[List[planner_plan.PlannerPlan]] = None

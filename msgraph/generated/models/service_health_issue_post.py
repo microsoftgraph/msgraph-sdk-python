@@ -36,7 +36,6 @@ class ServiceHealthIssuePost(AdditionalDataHolder, Parsable):
         self._created_date_time: Optional[datetime] = None
         # The content of the service issue post. The supported value for the contentType property is html.
         self._description: Optional[item_body.ItemBody] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The post type of the service issue historical post. Possible values are: regular, quick, strategic, unknownFutureValue.
         self._post_type: Optional[post_type.PostType] = None
@@ -93,17 +92,17 @@ class ServiceHealthIssuePost(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_object_value(item_body.ItemBody)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "post_type": lambda n : setattr(self, 'post_type', n.get_enum_value(post_type.PostType)),
+            "postType": lambda n : setattr(self, 'post_type', n.get_enum_value(post_type.PostType)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -111,7 +110,7 @@ class ServiceHealthIssuePost(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

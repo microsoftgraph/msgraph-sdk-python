@@ -30,9 +30,7 @@ class DelegatedAdminAccessDetails(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The unifiedRoles property
         self._unified_roles: Optional[List[unified_role.UnifiedRole]] = None
     
     @staticmethod
@@ -54,14 +52,14 @@ class DelegatedAdminAccessDetails(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "unified_roles": lambda n : setattr(self, 'unified_roles', n.get_collection_of_object_values(unified_role.UnifiedRole)),
+            "unifiedRoles": lambda n : setattr(self, 'unified_roles', n.get_collection_of_object_values(unified_role.UnifiedRole)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -69,7 +67,7 @@ class DelegatedAdminAccessDetails(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -90,7 +88,7 @@ class DelegatedAdminAccessDetails(AdditionalDataHolder, Parsable):
     @property
     def unified_roles(self,) -> Optional[List[unified_role.UnifiedRole]]:
         """
-        Gets the unifiedRoles property value. The unifiedRoles property
+        Gets the unifiedRoles property value. 
         Returns: Optional[List[unified_role.UnifiedRole]]
         """
         return self._unified_roles
@@ -98,7 +96,7 @@ class DelegatedAdminAccessDetails(AdditionalDataHolder, Parsable):
     @unified_roles.setter
     def unified_roles(self,value: Optional[List[unified_role.UnifiedRole]] = None) -> None:
         """
-        Sets the unifiedRoles property value. The unifiedRoles property
+        Sets the unifiedRoles property value. 
         Args:
             value: Value to set for the unifiedRoles property.
         """

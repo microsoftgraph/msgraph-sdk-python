@@ -18,9 +18,7 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(entity.Entity):
         self._created_date_time_utc: Optional[datetime] = None
         # Collection of all Autopilot devices as a part of this upload.
         self._device_identities: Optional[List[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The status property
         self._status: Optional[imported_windows_autopilot_device_identity_upload_status.ImportedWindowsAutopilotDeviceIdentityUploadStatus] = None
     
     @property
@@ -75,8 +73,8 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time_utc": lambda n : setattr(self, 'created_date_time_utc', n.get_datetime_value()),
-            "device_identities": lambda n : setattr(self, 'device_identities', n.get_collection_of_object_values(imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity)),
+            "createdDateTimeUtc": lambda n : setattr(self, 'created_date_time_utc', n.get_datetime_value()),
+            "deviceIdentities": lambda n : setattr(self, 'device_identities', n.get_collection_of_object_values(imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(imported_windows_autopilot_device_identity_upload_status.ImportedWindowsAutopilotDeviceIdentityUploadStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -99,7 +97,7 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(entity.Entity):
     @property
     def status(self,) -> Optional[imported_windows_autopilot_device_identity_upload_status.ImportedWindowsAutopilotDeviceIdentityUploadStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[imported_windows_autopilot_device_identity_upload_status.ImportedWindowsAutopilotDeviceIdentityUploadStatus]
         """
         return self._status
@@ -107,7 +105,7 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(entity.Entity):
     @status.setter
     def status(self,value: Optional[imported_windows_autopilot_device_identity_upload_status.ImportedWindowsAutopilotDeviceIdentityUploadStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

@@ -39,11 +39,9 @@ class B2xIdentityUserFlow(identity_user_flow.IdentityUserFlow):
         self._identity_providers: Optional[List[identity_provider.IdentityProvider]] = None
         # The languages supported for customization within the user flow. Language customization is enabled by default in self-service sign-up user flow. You cannot create custom languages in self-service sign-up user flows.
         self._languages: Optional[List[user_flow_language_configuration.UserFlowLanguageConfiguration]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The user attribute assignments included in the user flow.
         self._user_attribute_assignments: Optional[List[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment]] = None
-        # The userFlowIdentityProviders property
         self._user_flow_identity_providers: Optional[List[identity_provider_base.IdentityProviderBase]] = None
     
     @staticmethod
@@ -64,11 +62,11 @@ class B2xIdentityUserFlow(identity_user_flow.IdentityUserFlow):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "api_connector_configuration": lambda n : setattr(self, 'api_connector_configuration', n.get_object_value(user_flow_api_connector_configuration.UserFlowApiConnectorConfiguration)),
-            "identity_providers": lambda n : setattr(self, 'identity_providers', n.get_collection_of_object_values(identity_provider.IdentityProvider)),
+            "apiConnectorConfiguration": lambda n : setattr(self, 'api_connector_configuration', n.get_object_value(user_flow_api_connector_configuration.UserFlowApiConnectorConfiguration)),
+            "identityProviders": lambda n : setattr(self, 'identity_providers', n.get_collection_of_object_values(identity_provider.IdentityProvider)),
             "languages": lambda n : setattr(self, 'languages', n.get_collection_of_object_values(user_flow_language_configuration.UserFlowLanguageConfiguration)),
-            "user_attribute_assignments": lambda n : setattr(self, 'user_attribute_assignments', n.get_collection_of_object_values(identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment)),
-            "user_flow_identity_providers": lambda n : setattr(self, 'user_flow_identity_providers', n.get_collection_of_object_values(identity_provider_base.IdentityProviderBase)),
+            "userAttributeAssignments": lambda n : setattr(self, 'user_attribute_assignments', n.get_collection_of_object_values(identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment)),
+            "userFlowIdentityProviders": lambda n : setattr(self, 'user_flow_identity_providers', n.get_collection_of_object_values(identity_provider_base.IdentityProviderBase)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -143,7 +141,7 @@ class B2xIdentityUserFlow(identity_user_flow.IdentityUserFlow):
     @property
     def user_flow_identity_providers(self,) -> Optional[List[identity_provider_base.IdentityProviderBase]]:
         """
-        Gets the userFlowIdentityProviders property value. The userFlowIdentityProviders property
+        Gets the userFlowIdentityProviders property value. 
         Returns: Optional[List[identity_provider_base.IdentityProviderBase]]
         """
         return self._user_flow_identity_providers
@@ -151,7 +149,7 @@ class B2xIdentityUserFlow(identity_user_flow.IdentityUserFlow):
     @user_flow_identity_providers.setter
     def user_flow_identity_providers(self,value: Optional[List[identity_provider_base.IdentityProviderBase]] = None) -> None:
         """
-        Sets the userFlowIdentityProviders property value. The userFlowIdentityProviders property
+        Sets the userFlowIdentityProviders property value. 
         Args:
             value: Value to set for the userFlowIdentityProviders property.
         """

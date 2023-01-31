@@ -33,7 +33,7 @@ class SoftwareOathAuthenticationMethod(authentication_method.AuthenticationMetho
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "secret_key": lambda n : setattr(self, 'secret_key', n.get_str_value()),
+            "secretKey": lambda n : setattr(self, 'secret_key', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -12,7 +12,6 @@ class DocumentSetVersionItemCollectionResponse(base_collection_pagination_count_
         Instantiates a new DocumentSetVersionItemCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[document_set_version_item.DocumentSetVersionItem]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class DocumentSetVersionItemCollectionResponse(base_collection_pagination_count_
     @property
     def value(self,) -> Optional[List[document_set_version_item.DocumentSetVersionItem]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[document_set_version_item.DocumentSetVersionItem]]
         """
         return self._value
@@ -61,7 +60,7 @@ class DocumentSetVersionItemCollectionResponse(base_collection_pagination_count_
     @value.setter
     def value(self,value: Optional[List[document_set_version_item.DocumentSetVersionItem]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

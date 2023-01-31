@@ -27,7 +27,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
     @property
     def color(self,) -> Optional[str]:
         """
-        Gets the color property value. The color property
+        Gets the color property value. 
         Returns: Optional[str]
         """
         return self._color
@@ -35,7 +35,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
     @color.setter
     def color(self,value: Optional[str] = None) -> None:
         """
-        Sets the color property value. The color property
+        Sets the color property value. 
         Args:
             value: Value to set for the color property.
         """
@@ -48,23 +48,14 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The color property
         self._color: Optional[str] = None
-        # The criterion1 property
         self._criterion1: Optional[str] = None
-        # The criterion2 property
         self._criterion2: Optional[str] = None
-        # The dynamicCriteria property
         self._dynamic_criteria: Optional[str] = None
-        # The filterOn property
         self._filter_on: Optional[str] = None
-        # The icon property
         self._icon: Optional[workbook_icon.WorkbookIcon] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The operator property
         self._operator: Optional[str] = None
-        # The values property
         self._values: Optional[json.Json] = None
     
     @staticmethod
@@ -82,7 +73,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
     @property
     def criterion1(self,) -> Optional[str]:
         """
-        Gets the criterion1 property value. The criterion1 property
+        Gets the criterion1 property value. 
         Returns: Optional[str]
         """
         return self._criterion1
@@ -90,7 +81,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
     @criterion1.setter
     def criterion1(self,value: Optional[str] = None) -> None:
         """
-        Sets the criterion1 property value. The criterion1 property
+        Sets the criterion1 property value. 
         Args:
             value: Value to set for the criterion1 property.
         """
@@ -99,7 +90,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
     @property
     def criterion2(self,) -> Optional[str]:
         """
-        Gets the criterion2 property value. The criterion2 property
+        Gets the criterion2 property value. 
         Returns: Optional[str]
         """
         return self._criterion2
@@ -107,7 +98,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
     @criterion2.setter
     def criterion2(self,value: Optional[str] = None) -> None:
         """
-        Sets the criterion2 property value. The criterion2 property
+        Sets the criterion2 property value. 
         Args:
             value: Value to set for the criterion2 property.
         """
@@ -116,7 +107,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
     @property
     def dynamic_criteria(self,) -> Optional[str]:
         """
-        Gets the dynamicCriteria property value. The dynamicCriteria property
+        Gets the dynamicCriteria property value. 
         Returns: Optional[str]
         """
         return self._dynamic_criteria
@@ -124,7 +115,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
     @dynamic_criteria.setter
     def dynamic_criteria(self,value: Optional[str] = None) -> None:
         """
-        Sets the dynamicCriteria property value. The dynamicCriteria property
+        Sets the dynamicCriteria property value. 
         Args:
             value: Value to set for the dynamicCriteria property.
         """
@@ -133,7 +124,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
     @property
     def filter_on(self,) -> Optional[str]:
         """
-        Gets the filterOn property value. The filterOn property
+        Gets the filterOn property value. 
         Returns: Optional[str]
         """
         return self._filter_on
@@ -141,7 +132,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
     @filter_on.setter
     def filter_on(self,value: Optional[str] = None) -> None:
         """
-        Sets the filterOn property value. The filterOn property
+        Sets the filterOn property value. 
         Args:
             value: Value to set for the filterOn property.
         """
@@ -156,8 +147,8 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
             "color": lambda n : setattr(self, 'color', n.get_str_value()),
             "criterion1": lambda n : setattr(self, 'criterion1', n.get_str_value()),
             "criterion2": lambda n : setattr(self, 'criterion2', n.get_str_value()),
-            "dynamic_criteria": lambda n : setattr(self, 'dynamic_criteria', n.get_str_value()),
-            "filter_on": lambda n : setattr(self, 'filter_on', n.get_str_value()),
+            "dynamicCriteria": lambda n : setattr(self, 'dynamic_criteria', n.get_str_value()),
+            "filterOn": lambda n : setattr(self, 'filter_on', n.get_str_value()),
             "icon": lambda n : setattr(self, 'icon', n.get_object_value(workbook_icon.WorkbookIcon)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operator": lambda n : setattr(self, 'operator', n.get_str_value()),
@@ -168,7 +159,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
     @property
     def icon(self,) -> Optional[workbook_icon.WorkbookIcon]:
         """
-        Gets the icon property value. The icon property
+        Gets the icon property value. 
         Returns: Optional[workbook_icon.WorkbookIcon]
         """
         return self._icon
@@ -176,7 +167,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
     @icon.setter
     def icon(self,value: Optional[workbook_icon.WorkbookIcon] = None) -> None:
         """
-        Sets the icon property value. The icon property
+        Sets the icon property value. 
         Args:
             value: Value to set for the icon property.
         """
@@ -185,7 +176,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -193,7 +184,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -202,7 +193,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
     @property
     def operator(self,) -> Optional[str]:
         """
-        Gets the operator property value. The operator property
+        Gets the operator property value. 
         Returns: Optional[str]
         """
         return self._operator
@@ -210,7 +201,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
     @operator.setter
     def operator(self,value: Optional[str] = None) -> None:
         """
-        Sets the operator property value. The operator property
+        Sets the operator property value. 
         Args:
             value: Value to set for the operator property.
         """
@@ -238,7 +229,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
     @property
     def values(self,) -> Optional[json.Json]:
         """
-        Gets the values property value. The values property
+        Gets the values property value. 
         Returns: Optional[json.Json]
         """
         return self._values
@@ -246,7 +237,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
     @values.setter
     def values(self,value: Optional[json.Json] = None) -> None:
         """
-        Sets the values property value. The values property
+        Sets the values property value. 
         Args:
             value: Value to set for the values property.
         """

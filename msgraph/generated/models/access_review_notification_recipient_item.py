@@ -34,7 +34,6 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
         self._notification_recipient_scope: Optional[access_review_notification_recipient_scope.AccessReviewNotificationRecipientScope] = None
         # Indicates the type of access review email to be sent. Supported template type is CompletedAdditionalRecipients, which sends review completion notifications to the recipients.
         self._notification_template_type: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -55,8 +54,8 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "notification_recipient_scope": lambda n : setattr(self, 'notification_recipient_scope', n.get_object_value(access_review_notification_recipient_scope.AccessReviewNotificationRecipientScope)),
-            "notification_template_type": lambda n : setattr(self, 'notification_template_type', n.get_str_value()),
+            "notificationRecipientScope": lambda n : setattr(self, 'notification_recipient_scope', n.get_object_value(access_review_notification_recipient_scope.AccessReviewNotificationRecipientScope)),
+            "notificationTemplateType": lambda n : setattr(self, 'notification_template_type', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -98,7 +97,7 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -106,7 +105,7 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

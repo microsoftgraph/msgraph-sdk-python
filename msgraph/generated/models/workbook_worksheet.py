@@ -39,7 +39,6 @@ class WorkbookWorksheet(entity.Entity):
         self._name: Optional[str] = None
         # Returns collection of names that are associated with the worksheet. Read-only.
         self._names: Optional[List[workbook_named_item.WorkbookNamedItem]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Collection of PivotTables that are part of the worksheet.
         self._pivot_tables: Optional[List[workbook_pivot_table.WorkbookPivotTable]] = None
@@ -73,7 +72,7 @@ class WorkbookWorksheet(entity.Entity):
             "charts": lambda n : setattr(self, 'charts', n.get_collection_of_object_values(workbook_chart.WorkbookChart)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "names": lambda n : setattr(self, 'names', n.get_collection_of_object_values(workbook_named_item.WorkbookNamedItem)),
-            "pivot_tables": lambda n : setattr(self, 'pivot_tables', n.get_collection_of_object_values(workbook_pivot_table.WorkbookPivotTable)),
+            "pivotTables": lambda n : setattr(self, 'pivot_tables', n.get_collection_of_object_values(workbook_pivot_table.WorkbookPivotTable)),
             "position": lambda n : setattr(self, 'position', n.get_int_value()),
             "protection": lambda n : setattr(self, 'protection', n.get_object_value(workbook_worksheet_protection.WorkbookWorksheetProtection)),
             "tables": lambda n : setattr(self, 'tables', n.get_collection_of_object_values(workbook_table.WorkbookTable)),

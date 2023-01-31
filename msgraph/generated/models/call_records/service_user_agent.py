@@ -13,7 +13,6 @@ class ServiceUserAgent(user_agent.UserAgent):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.callRecords.serviceUserAgent"
-        # The role property
         self._role: Optional[service_role.ServiceRole] = None
     
     @staticmethod
@@ -43,7 +42,7 @@ class ServiceUserAgent(user_agent.UserAgent):
     @property
     def role(self,) -> Optional[service_role.ServiceRole]:
         """
-        Gets the role property value. The role property
+        Gets the role property value. 
         Returns: Optional[service_role.ServiceRole]
         """
         return self._role
@@ -51,7 +50,7 @@ class ServiceUserAgent(user_agent.UserAgent):
     @role.setter
     def role(self,value: Optional[service_role.ServiceRole] = None) -> None:
         """
-        Sets the role property value. The role property
+        Sets the role property value. 
         Args:
             value: Value to set for the role property.
         """

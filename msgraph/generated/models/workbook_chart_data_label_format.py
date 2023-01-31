@@ -17,7 +17,6 @@ class WorkbookChartDataLabelFormat(entity.Entity):
         self._fill: Optional[workbook_chart_fill.WorkbookChartFill] = None
         # Represents the font attributes (font name, font size, color, etc.) for a chart data label. Read-only.
         self._font: Optional[workbook_chart_font.WorkbookChartFont] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

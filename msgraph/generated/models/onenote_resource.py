@@ -70,7 +70,7 @@ class OnenoteResource(onenote_entity_base_model.OnenoteEntityBaseModel):
         """
         fields = {
             "content": lambda n : setattr(self, 'content', n.get_bytes_value()),
-            "content_url": lambda n : setattr(self, 'content_url', n.get_str_value()),
+            "contentUrl": lambda n : setattr(self, 'content_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

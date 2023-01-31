@@ -54,7 +54,7 @@ class EducationFeedbackOutcome(education_outcome.EducationOutcome):
         """
         fields = {
             "feedback": lambda n : setattr(self, 'feedback', n.get_object_value(education_feedback.EducationFeedback)),
-            "published_feedback": lambda n : setattr(self, 'published_feedback', n.get_object_value(education_feedback.EducationFeedback)),
+            "publishedFeedback": lambda n : setattr(self, 'published_feedback', n.get_object_value(education_feedback.EducationFeedback)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

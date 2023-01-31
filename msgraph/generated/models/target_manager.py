@@ -33,7 +33,7 @@ class TargetManager(subject_set.SubjectSet):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "manager_level": lambda n : setattr(self, 'manager_level', n.get_int_value()),
+            "managerLevel": lambda n : setattr(self, 'manager_level', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -66,7 +66,7 @@ class AppliedPoliciesRequestBuilder():
         """
         Create new navigation property to appliedPolicies for deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[managed_app_policy.ManagedAppPolicy]
         """
@@ -105,7 +105,7 @@ class AppliedPoliciesRequestBuilder():
         """
         Create new navigation property to appliedPolicies for deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -22,7 +22,6 @@ class DataSourceContainer(entity.Entity):
         self._hold_status: Optional[data_source_hold_status.DataSourceHoldStatus] = None
         # Last modified date and time of the dataSourceContainer.
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Date and time that the dataSourceContainer was released from the case.
         self._released_date_time: Optional[datetime] = None
@@ -81,11 +80,11 @@ class DataSourceContainer(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "hold_status": lambda n : setattr(self, 'hold_status', n.get_enum_value(data_source_hold_status.DataSourceHoldStatus)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "released_date_time": lambda n : setattr(self, 'released_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "holdStatus": lambda n : setattr(self, 'hold_status', n.get_enum_value(data_source_hold_status.DataSourceHoldStatus)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "releasedDateTime": lambda n : setattr(self, 'released_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(data_source_container_status.DataSourceContainerStatus)),
         }
         super_fields = super().get_field_deserializers()

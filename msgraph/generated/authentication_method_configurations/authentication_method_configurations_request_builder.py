@@ -66,7 +66,7 @@ class AuthenticationMethodConfigurationsRequestBuilder():
         """
         Add new entity to authenticationMethodConfigurations
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[authentication_method_configuration.AuthenticationMethodConfiguration]
         """
@@ -105,7 +105,7 @@ class AuthenticationMethodConfigurationsRequestBuilder():
         """
         Add new entity to authenticationMethodConfigurations
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -69,11 +69,12 @@ class PrinterShareItemRequestBuilder():
         url_tpl_params["user%2Did"] = id
         return user_item_request_builder.UserItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, printer_share_id: Optional[str] = None) -> None:
         """
         Instantiates a new PrinterShareItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
+            printerShareId: key: id of printerShare
             requestAdapter: The request adapter to use to execute the requests.
         """
         if path_parameters is None:
@@ -84,6 +85,7 @@ class PrinterShareItemRequestBuilder():
         self.url_template: str = "{+baseurl}/print/shares/{printerShare%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["printerShare%2Did"] = printerShareId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -126,7 +128,7 @@ class PrinterShareItemRequestBuilder():
         """
         Update the navigation property shares in print
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[printer_share.PrinterShare]
         """
@@ -181,7 +183,7 @@ class PrinterShareItemRequestBuilder():
         """
         Update the navigation property shares in print
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

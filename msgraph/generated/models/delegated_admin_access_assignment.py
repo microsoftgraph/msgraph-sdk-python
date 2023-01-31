@@ -13,7 +13,7 @@ class DelegatedAdminAccessAssignment(entity.Entity):
     @property
     def access_container(self,) -> Optional[delegated_admin_access_container.DelegatedAdminAccessContainer]:
         """
-        Gets the accessContainer property value. The accessContainer property
+        Gets the accessContainer property value. 
         Returns: Optional[delegated_admin_access_container.DelegatedAdminAccessContainer]
         """
         return self._access_container
@@ -21,7 +21,7 @@ class DelegatedAdminAccessAssignment(entity.Entity):
     @access_container.setter
     def access_container(self,value: Optional[delegated_admin_access_container.DelegatedAdminAccessContainer] = None) -> None:
         """
-        Sets the accessContainer property value. The accessContainer property
+        Sets the accessContainer property value. 
         Args:
             value: Value to set for the accessContainer property.
         """
@@ -30,7 +30,7 @@ class DelegatedAdminAccessAssignment(entity.Entity):
     @property
     def access_details(self,) -> Optional[delegated_admin_access_details.DelegatedAdminAccessDetails]:
         """
-        Gets the accessDetails property value. The accessDetails property
+        Gets the accessDetails property value. 
         Returns: Optional[delegated_admin_access_details.DelegatedAdminAccessDetails]
         """
         return self._access_details
@@ -38,7 +38,7 @@ class DelegatedAdminAccessAssignment(entity.Entity):
     @access_details.setter
     def access_details(self,value: Optional[delegated_admin_access_details.DelegatedAdminAccessDetails] = None) -> None:
         """
-        Sets the accessDetails property value. The accessDetails property
+        Sets the accessDetails property value. 
         Args:
             value: Value to set for the accessDetails property.
         """
@@ -49,23 +49,17 @@ class DelegatedAdminAccessAssignment(entity.Entity):
         Instantiates a new DelegatedAdminAccessAssignment and sets the default values.
         """
         super().__init__()
-        # The accessContainer property
         self._access_container: Optional[delegated_admin_access_container.DelegatedAdminAccessContainer] = None
-        # The accessDetails property
         self._access_details: Optional[delegated_admin_access_details.DelegatedAdminAccessDetails] = None
-        # The createdDateTime property
         self._created_date_time: Optional[datetime] = None
-        # The lastModifiedDateTime property
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The status property
         self._status: Optional[delegated_admin_access_assignment_status.DelegatedAdminAccessAssignmentStatus] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
-        Gets the createdDateTime property value. The createdDateTime property
+        Gets the createdDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._created_date_time
@@ -73,7 +67,7 @@ class DelegatedAdminAccessAssignment(entity.Entity):
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the createdDateTime property value. The createdDateTime property
+        Sets the createdDateTime property value. 
         Args:
             value: Value to set for the createdDateTime property.
         """
@@ -97,10 +91,10 @@ class DelegatedAdminAccessAssignment(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_container": lambda n : setattr(self, 'access_container', n.get_object_value(delegated_admin_access_container.DelegatedAdminAccessContainer)),
-            "access_details": lambda n : setattr(self, 'access_details', n.get_object_value(delegated_admin_access_details.DelegatedAdminAccessDetails)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "accessContainer": lambda n : setattr(self, 'access_container', n.get_object_value(delegated_admin_access_container.DelegatedAdminAccessContainer)),
+            "accessDetails": lambda n : setattr(self, 'access_details', n.get_object_value(delegated_admin_access_details.DelegatedAdminAccessDetails)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(delegated_admin_access_assignment_status.DelegatedAdminAccessAssignmentStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -110,7 +104,7 @@ class DelegatedAdminAccessAssignment(entity.Entity):
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
-        Gets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Gets the lastModifiedDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
@@ -118,7 +112,7 @@ class DelegatedAdminAccessAssignment(entity.Entity):
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Sets the lastModifiedDateTime property value. 
         Args:
             value: Value to set for the lastModifiedDateTime property.
         """
@@ -142,7 +136,7 @@ class DelegatedAdminAccessAssignment(entity.Entity):
     @property
     def status(self,) -> Optional[delegated_admin_access_assignment_status.DelegatedAdminAccessAssignmentStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[delegated_admin_access_assignment_status.DelegatedAdminAccessAssignmentStatus]
         """
         return self._status
@@ -150,7 +144,7 @@ class DelegatedAdminAccessAssignment(entity.Entity):
     @status.setter
     def status(self,value: Optional[delegated_admin_access_assignment_status.DelegatedAdminAccessAssignmentStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

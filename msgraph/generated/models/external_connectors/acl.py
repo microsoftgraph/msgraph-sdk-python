@@ -10,7 +10,7 @@ class Acl(AdditionalDataHolder, Parsable):
     @property
     def access_type(self,) -> Optional[access_type.AccessType]:
         """
-        Gets the accessType property value. The accessType property
+        Gets the accessType property value. 
         Returns: Optional[access_type.AccessType]
         """
         return self._access_type
@@ -18,7 +18,7 @@ class Acl(AdditionalDataHolder, Parsable):
     @access_type.setter
     def access_type(self,value: Optional[access_type.AccessType] = None) -> None:
         """
-        Sets the accessType property value. The accessType property
+        Sets the accessType property value. 
         Args:
             value: Value to set for the accessType property.
         """
@@ -48,11 +48,8 @@ class Acl(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The accessType property
         self._access_type: Optional[access_type.AccessType] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The type property
         self._type: Optional[acl_type.AclType] = None
         # The unique identifer of the identity. In case of Azure Active Directory identities, value is set to the object identifier of the user, group or tenant for types user, group and everyone (and everyoneExceptGuests) respectively. In case of external groups value is set to the ID of the externalGroup
         self._value: Optional[str] = None
@@ -75,7 +72,7 @@ class Acl(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_type": lambda n : setattr(self, 'access_type', n.get_enum_value(access_type.AccessType)),
+            "accessType": lambda n : setattr(self, 'access_type', n.get_enum_value(access_type.AccessType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(acl_type.AclType)),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
@@ -85,7 +82,7 @@ class Acl(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -93,7 +90,7 @@ class Acl(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -116,7 +113,7 @@ class Acl(AdditionalDataHolder, Parsable):
     @property
     def type(self,) -> Optional[acl_type.AclType]:
         """
-        Gets the type property value. The type property
+        Gets the type property value. 
         Returns: Optional[acl_type.AclType]
         """
         return self._type
@@ -124,7 +121,7 @@ class Acl(AdditionalDataHolder, Parsable):
     @type.setter
     def type(self,value: Optional[acl_type.AclType] = None) -> None:
         """
-        Sets the type property value. The type property
+        Sets the type property value. 
         Args:
             value: Value to set for the type property.
         """

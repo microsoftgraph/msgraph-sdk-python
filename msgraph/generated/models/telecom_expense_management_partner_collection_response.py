@@ -12,7 +12,6 @@ class TelecomExpenseManagementPartnerCollectionResponse(base_collection_paginati
         Instantiates a new TelecomExpenseManagementPartnerCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[telecom_expense_management_partner.TelecomExpenseManagementPartner]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class TelecomExpenseManagementPartnerCollectionResponse(base_collection_paginati
     @property
     def value(self,) -> Optional[List[telecom_expense_management_partner.TelecomExpenseManagementPartner]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[telecom_expense_management_partner.TelecomExpenseManagementPartner]]
         """
         return self._value
@@ -61,7 +60,7 @@ class TelecomExpenseManagementPartnerCollectionResponse(base_collection_paginati
     @value.setter
     def value(self,value: Optional[List[telecom_expense_management_partner.TelecomExpenseManagementPartner]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

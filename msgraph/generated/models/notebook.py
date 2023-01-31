@@ -51,14 +51,14 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
-            "is_shared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
+            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "isShared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(notebook_links.NotebookLinks)),
-            "section_groups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(section_group.SectionGroup)),
-            "section_groups_url": lambda n : setattr(self, 'section_groups_url', n.get_str_value()),
+            "sectionGroups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(section_group.SectionGroup)),
+            "sectionGroupsUrl": lambda n : setattr(self, 'section_groups_url', n.get_str_value()),
             "sections": lambda n : setattr(self, 'sections', n.get_collection_of_object_values(onenote_section.OnenoteSection)),
-            "sections_url": lambda n : setattr(self, 'sections_url', n.get_str_value()),
-            "user_role": lambda n : setattr(self, 'user_role', n.get_enum_value(onenote_user_role.OnenoteUserRole)),
+            "sectionsUrl": lambda n : setattr(self, 'sections_url', n.get_str_value()),
+            "userRole": lambda n : setattr(self, 'user_role', n.get_enum_value(onenote_user_role.OnenoteUserRole)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

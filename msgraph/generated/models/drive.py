@@ -31,7 +31,7 @@ class Drive(base_item.BaseItem):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new Drive and sets the default values.
+        Instantiates a new drive and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.drive"
@@ -51,7 +51,6 @@ class Drive(base_item.BaseItem):
         self._quota: Optional[quota.Quota] = None
         # The root folder of the drive. Read-only.
         self._root: Optional[drive_item.DriveItem] = None
-        # The sharePointIds property
         self._share_point_ids: Optional[sharepoint_ids.SharepointIds] = None
         # Collection of common folders available in OneDrive. Read-only. Nullable.
         self._special: Optional[List[drive_item.DriveItem]] = None
@@ -111,14 +110,14 @@ class Drive(base_item.BaseItem):
         """
         fields = {
             "bundles": lambda n : setattr(self, 'bundles', n.get_collection_of_object_values(drive_item.DriveItem)),
-            "drive_type": lambda n : setattr(self, 'drive_type', n.get_str_value()),
+            "driveType": lambda n : setattr(self, 'drive_type', n.get_str_value()),
             "following": lambda n : setattr(self, 'following', n.get_collection_of_object_values(drive_item.DriveItem)),
             "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(drive_item.DriveItem)),
             "list": lambda n : setattr(self, 'list', n.get_object_value(list.List)),
             "owner": lambda n : setattr(self, 'owner', n.get_object_value(identity_set.IdentitySet)),
             "quota": lambda n : setattr(self, 'quota', n.get_object_value(quota.Quota)),
             "root": lambda n : setattr(self, 'root', n.get_object_value(drive_item.DriveItem)),
-            "share_point_ids": lambda n : setattr(self, 'share_point_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
+            "sharePointIds": lambda n : setattr(self, 'share_point_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
             "special": lambda n : setattr(self, 'special', n.get_collection_of_object_values(drive_item.DriveItem)),
             "system": lambda n : setattr(self, 'system', n.get_object_value(system_facet.SystemFacet)),
         }
@@ -235,7 +234,7 @@ class Drive(base_item.BaseItem):
     @property
     def share_point_ids(self,) -> Optional[sharepoint_ids.SharepointIds]:
         """
-        Gets the sharePointIds property value. The sharePointIds property
+        Gets the sharePointIds property value. 
         Returns: Optional[sharepoint_ids.SharepointIds]
         """
         return self._share_point_ids
@@ -243,7 +242,7 @@ class Drive(base_item.BaseItem):
     @share_point_ids.setter
     def share_point_ids(self,value: Optional[sharepoint_ids.SharepointIds] = None) -> None:
         """
-        Sets the sharePointIds property value. The sharePointIds property
+        Sets the sharePointIds property value. 
         Args:
             value: Value to set for the sharePointIds property.
         """

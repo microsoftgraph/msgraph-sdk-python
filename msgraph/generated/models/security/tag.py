@@ -13,21 +13,16 @@ class Tag(entity.Entity):
         Instantiates a new tag and sets the default values.
         """
         super().__init__()
-        # The createdBy property
         self._created_by: Optional[identity_set.IdentitySet] = None
-        # The description property
         self._description: Optional[str] = None
-        # The displayName property
         self._display_name: Optional[str] = None
-        # The lastModifiedDateTime property
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
         """
-        Gets the createdBy property value. The createdBy property
+        Gets the createdBy property value. 
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._created_by
@@ -35,7 +30,7 @@ class Tag(entity.Entity):
     @created_by.setter
     def created_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
-        Sets the createdBy property value. The createdBy property
+        Sets the createdBy property value. 
         Args:
             value: Value to set for the createdBy property.
         """
@@ -56,7 +51,7 @@ class Tag(entity.Entity):
     @property
     def description(self,) -> Optional[str]:
         """
-        Gets the description property value. The description property
+        Gets the description property value. 
         Returns: Optional[str]
         """
         return self._description
@@ -64,7 +59,7 @@ class Tag(entity.Entity):
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
-        Sets the description property value. The description property
+        Sets the description property value. 
         Args:
             value: Value to set for the description property.
         """
@@ -73,7 +68,7 @@ class Tag(entity.Entity):
     @property
     def display_name(self,) -> Optional[str]:
         """
-        Gets the displayName property value. The displayName property
+        Gets the displayName property value. 
         Returns: Optional[str]
         """
         return self._display_name
@@ -81,7 +76,7 @@ class Tag(entity.Entity):
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the displayName property value. The displayName property
+        Sets the displayName property value. 
         Args:
             value: Value to set for the displayName property.
         """
@@ -93,10 +88,10 @@ class Tag(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -105,7 +100,7 @@ class Tag(entity.Entity):
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
-        Gets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Gets the lastModifiedDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
@@ -113,7 +108,7 @@ class Tag(entity.Entity):
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Sets the lastModifiedDateTime property value. 
         Args:
             value: Value to set for the lastModifiedDateTime property.
         """

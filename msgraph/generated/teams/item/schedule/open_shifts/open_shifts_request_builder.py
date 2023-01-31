@@ -66,7 +66,7 @@ class OpenShiftsRequestBuilder():
         """
         Create new navigation property to openShifts for teams
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[open_shift.OpenShift]
         """
@@ -105,7 +105,7 @@ class OpenShiftsRequestBuilder():
         """
         Create new navigation property to openShifts for teams
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

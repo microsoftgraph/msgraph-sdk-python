@@ -38,7 +38,6 @@ class TeamsApp(entity.Entity):
         self._distribution_method: Optional[teams_app_distribution_method.TeamsAppDistributionMethod] = None
         # The ID of the catalog provided by the app developer in the Microsoft Teams zip app package.
         self._external_id: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -110,10 +109,10 @@ class TeamsApp(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_definitions": lambda n : setattr(self, 'app_definitions', n.get_collection_of_object_values(teams_app_definition.TeamsAppDefinition)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "distribution_method": lambda n : setattr(self, 'distribution_method', n.get_enum_value(teams_app_distribution_method.TeamsAppDistributionMethod)),
-            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "appDefinitions": lambda n : setattr(self, 'app_definitions', n.get_collection_of_object_values(teams_app_definition.TeamsAppDefinition)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "distributionMethod": lambda n : setattr(self, 'distribution_method', n.get_enum_value(teams_app_distribution_method.TeamsAppDistributionMethod)),
+            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

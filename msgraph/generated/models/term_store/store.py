@@ -19,7 +19,6 @@ class Store(entity.Entity):
         self._groups: Optional[List[group.Group]] = None
         # List of languages for the term store.
         self._language_tags: Optional[List[str]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Collection of all sets available in the term store. This relationship can only be used to load a specific term set.
         self._sets: Optional[List[set.Set]] = None
@@ -59,9 +58,9 @@ class Store(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "default_language_tag": lambda n : setattr(self, 'default_language_tag', n.get_str_value()),
+            "defaultLanguageTag": lambda n : setattr(self, 'default_language_tag', n.get_str_value()),
             "groups": lambda n : setattr(self, 'groups', n.get_collection_of_object_values(group.Group)),
-            "language_tags": lambda n : setattr(self, 'language_tags', n.get_collection_of_primitive_values(str)),
+            "languageTags": lambda n : setattr(self, 'language_tags', n.get_collection_of_primitive_values(str)),
             "sets": lambda n : setattr(self, 'sets', n.get_collection_of_object_values(set.Set)),
         }
         super_fields = super().get_field_deserializers()

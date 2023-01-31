@@ -34,7 +34,6 @@ class SearchResponse(AdditionalDataHolder, Parsable):
 
         # A collection of search results.
         self._hits_containers: Optional[List[search_hits_container.SearchHitsContainer]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Provides information related to spelling corrections in the alteration response.
         self._query_alteration_response: Optional[alteration_response.AlterationResponse] = None
@@ -61,11 +60,11 @@ class SearchResponse(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "hits_containers": lambda n : setattr(self, 'hits_containers', n.get_collection_of_object_values(search_hits_container.SearchHitsContainer)),
+            "hitsContainers": lambda n : setattr(self, 'hits_containers', n.get_collection_of_object_values(search_hits_container.SearchHitsContainer)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "query_alteration_response": lambda n : setattr(self, 'query_alteration_response', n.get_object_value(alteration_response.AlterationResponse)),
-            "result_templates": lambda n : setattr(self, 'result_templates', n.get_object_value(result_template_dictionary.ResultTemplateDictionary)),
-            "search_terms": lambda n : setattr(self, 'search_terms', n.get_collection_of_primitive_values(str)),
+            "queryAlterationResponse": lambda n : setattr(self, 'query_alteration_response', n.get_object_value(alteration_response.AlterationResponse)),
+            "resultTemplates": lambda n : setattr(self, 'result_templates', n.get_object_value(result_template_dictionary.ResultTemplateDictionary)),
+            "searchTerms": lambda n : setattr(self, 'search_terms', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -89,7 +88,7 @@ class SearchResponse(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -97,7 +96,7 @@ class SearchResponse(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -50,7 +50,6 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         self._category: Optional[str] = None
         # The date and time at which the error occurred.
         self._occurred_date_time: Optional[datetime] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Name of the directory property causing the error. Current possible values: UserPrincipalName or ProxyAddress
         self._property_causing_error: Optional[str] = None
@@ -76,9 +75,9 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         """
         fields = {
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
-            "occurred_date_time": lambda n : setattr(self, 'occurred_date_time', n.get_datetime_value()),
+            "occurredDateTime": lambda n : setattr(self, 'occurred_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "property_causing_error": lambda n : setattr(self, 'property_causing_error', n.get_str_value()),
+            "propertyCausingError": lambda n : setattr(self, 'property_causing_error', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
         }
         return fields
@@ -103,7 +102,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -111,7 +110,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -12,7 +12,6 @@ class ManagedAndroidStoreAppCollectionResponse(base_collection_pagination_count_
         Instantiates a new ManagedAndroidStoreAppCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[managed_android_store_app.ManagedAndroidStoreApp]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ManagedAndroidStoreAppCollectionResponse(base_collection_pagination_count_
     @property
     def value(self,) -> Optional[List[managed_android_store_app.ManagedAndroidStoreApp]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[managed_android_store_app.ManagedAndroidStoreApp]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ManagedAndroidStoreAppCollectionResponse(base_collection_pagination_count_
     @value.setter
     def value(self,value: Optional[List[managed_android_store_app.ManagedAndroidStoreApp]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -71,7 +71,7 @@ class WindowsMicrosoftEdgeApp(mobile_app.MobileApp):
         """
         fields = {
             "channel": lambda n : setattr(self, 'channel', n.get_enum_value(microsoft_edge_channel.MicrosoftEdgeChannel)),
-            "display_language_locale": lambda n : setattr(self, 'display_language_locale', n.get_str_value()),
+            "displayLanguageLocale": lambda n : setattr(self, 'display_language_locale', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

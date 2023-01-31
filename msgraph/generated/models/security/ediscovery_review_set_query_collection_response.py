@@ -12,7 +12,6 @@ class EdiscoveryReviewSetQueryCollectionResponse(base_collection_pagination_coun
         Instantiates a new EdiscoveryReviewSetQueryCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[ediscovery_review_set_query.EdiscoveryReviewSetQuery]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class EdiscoveryReviewSetQueryCollectionResponse(base_collection_pagination_coun
     @property
     def value(self,) -> Optional[List[ediscovery_review_set_query.EdiscoveryReviewSetQuery]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[ediscovery_review_set_query.EdiscoveryReviewSetQuery]]
         """
         return self._value
@@ -61,7 +60,7 @@ class EdiscoveryReviewSetQueryCollectionResponse(base_collection_pagination_coun
     @value.setter
     def value(self,value: Optional[List[ediscovery_review_set_query.EdiscoveryReviewSetQuery]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -14,25 +14,18 @@ class Case(entity.Entity):
         Instantiates a new case and sets the default values.
         """
         super().__init__()
-        # The createdDateTime property
         self._created_date_time: Optional[datetime] = None
-        # The description property
         self._description: Optional[str] = None
-        # The displayName property
         self._display_name: Optional[str] = None
-        # The lastModifiedBy property
         self._last_modified_by: Optional[identity_set.IdentitySet] = None
-        # The lastModifiedDateTime property
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The status property
         self._status: Optional[case_status.CaseStatus] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
-        Gets the createdDateTime property value. The createdDateTime property
+        Gets the createdDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._created_date_time
@@ -40,7 +33,7 @@ class Case(entity.Entity):
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the createdDateTime property value. The createdDateTime property
+        Sets the createdDateTime property value. 
         Args:
             value: Value to set for the createdDateTime property.
         """
@@ -61,7 +54,7 @@ class Case(entity.Entity):
     @property
     def description(self,) -> Optional[str]:
         """
-        Gets the description property value. The description property
+        Gets the description property value. 
         Returns: Optional[str]
         """
         return self._description
@@ -69,7 +62,7 @@ class Case(entity.Entity):
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
-        Sets the description property value. The description property
+        Sets the description property value. 
         Args:
             value: Value to set for the description property.
         """
@@ -78,7 +71,7 @@ class Case(entity.Entity):
     @property
     def display_name(self,) -> Optional[str]:
         """
-        Gets the displayName property value. The displayName property
+        Gets the displayName property value. 
         Returns: Optional[str]
         """
         return self._display_name
@@ -86,7 +79,7 @@ class Case(entity.Entity):
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the displayName property value. The displayName property
+        Sets the displayName property value. 
         Args:
             value: Value to set for the displayName property.
         """
@@ -98,11 +91,11 @@ class Case(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(case_status.CaseStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -112,7 +105,7 @@ class Case(entity.Entity):
     @property
     def last_modified_by(self,) -> Optional[identity_set.IdentitySet]:
         """
-        Gets the lastModifiedBy property value. The lastModifiedBy property
+        Gets the lastModifiedBy property value. 
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._last_modified_by
@@ -120,7 +113,7 @@ class Case(entity.Entity):
     @last_modified_by.setter
     def last_modified_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
-        Sets the lastModifiedBy property value. The lastModifiedBy property
+        Sets the lastModifiedBy property value. 
         Args:
             value: Value to set for the lastModifiedBy property.
         """
@@ -129,7 +122,7 @@ class Case(entity.Entity):
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
-        Gets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Gets the lastModifiedDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
@@ -137,7 +130,7 @@ class Case(entity.Entity):
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Sets the lastModifiedDateTime property value. 
         Args:
             value: Value to set for the lastModifiedDateTime property.
         """
@@ -162,7 +155,7 @@ class Case(entity.Entity):
     @property
     def status(self,) -> Optional[case_status.CaseStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[case_status.CaseStatus]
         """
         return self._status
@@ -170,7 +163,7 @@ class Case(entity.Entity):
     @status.setter
     def status(self,value: Optional[case_status.CaseStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

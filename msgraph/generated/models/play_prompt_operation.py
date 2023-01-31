@@ -11,7 +11,6 @@ class PlayPromptOperation(comms_operation.CommsOperation):
         Instantiates a new PlayPromptOperation and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

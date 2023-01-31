@@ -12,7 +12,6 @@ class IosMobileAppConfigurationCollectionResponse(base_collection_pagination_cou
         Instantiates a new IosMobileAppConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[ios_mobile_app_configuration.IosMobileAppConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class IosMobileAppConfigurationCollectionResponse(base_collection_pagination_cou
     @property
     def value(self,) -> Optional[List[ios_mobile_app_configuration.IosMobileAppConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[ios_mobile_app_configuration.IosMobileAppConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class IosMobileAppConfigurationCollectionResponse(base_collection_pagination_cou
     @value.setter
     def value(self,value: Optional[List[ios_mobile_app_configuration.IosMobileAppConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -51,7 +51,6 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
         self._email: Optional[str] = None
         # The unique identifier for the recipient in the directory.
         self._object_id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -91,7 +90,7 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
         fields = {
             "alias": lambda n : setattr(self, 'alias', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "object_id": lambda n : setattr(self, 'object_id', n.get_str_value()),
+            "objectId": lambda n : setattr(self, 'object_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -116,7 +115,7 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -124,7 +123,7 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

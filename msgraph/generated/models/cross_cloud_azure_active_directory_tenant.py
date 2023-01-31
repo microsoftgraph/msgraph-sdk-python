@@ -71,9 +71,9 @@ class CrossCloudAzureActiveDirectoryTenant(identity_source.IdentitySource):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "cloud_instance": lambda n : setattr(self, 'cloud_instance', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "cloudInstance": lambda n : setattr(self, 'cloud_instance', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

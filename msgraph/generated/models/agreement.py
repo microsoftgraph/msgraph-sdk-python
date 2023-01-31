@@ -45,7 +45,6 @@ class Agreement(entity.Entity):
         self._is_per_device_acceptance_required: Optional[bool] = None
         # Indicates whether the user has to expand the agreement before accepting. Supports $filter (eq).
         self._is_viewing_before_acceptance_required: Optional[bool] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Expiration schedule and frequency of agreement for all users. Supports $filter (eq).
         self._terms_expiration: Optional[terms_expiration.TermsExpiration] = None
@@ -122,13 +121,13 @@ class Agreement(entity.Entity):
         """
         fields = {
             "acceptances": lambda n : setattr(self, 'acceptances', n.get_collection_of_object_values(agreement_acceptance.AgreementAcceptance)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "file": lambda n : setattr(self, 'file', n.get_object_value(agreement_file.AgreementFile)),
             "files": lambda n : setattr(self, 'files', n.get_collection_of_object_values(agreement_file_localization.AgreementFileLocalization)),
-            "is_per_device_acceptance_required": lambda n : setattr(self, 'is_per_device_acceptance_required', n.get_bool_value()),
-            "is_viewing_before_acceptance_required": lambda n : setattr(self, 'is_viewing_before_acceptance_required', n.get_bool_value()),
-            "terms_expiration": lambda n : setattr(self, 'terms_expiration', n.get_object_value(terms_expiration.TermsExpiration)),
-            "user_reaccept_required_frequency": lambda n : setattr(self, 'user_reaccept_required_frequency', n.get_object_value(Timedelta)),
+            "isPerDeviceAcceptanceRequired": lambda n : setattr(self, 'is_per_device_acceptance_required', n.get_bool_value()),
+            "isViewingBeforeAcceptanceRequired": lambda n : setattr(self, 'is_viewing_before_acceptance_required', n.get_bool_value()),
+            "termsExpiration": lambda n : setattr(self, 'terms_expiration', n.get_object_value(terms_expiration.TermsExpiration)),
+            "userReacceptRequiredFrequency": lambda n : setattr(self, 'user_reaccept_required_frequency', n.get_object_value(Timedelta)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

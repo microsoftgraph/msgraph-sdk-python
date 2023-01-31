@@ -28,11 +28,8 @@ class InvestigationSecurityState(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The name property
         self._name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The status property
         self._status: Optional[str] = None
     
     @staticmethod
@@ -62,7 +59,7 @@ class InvestigationSecurityState(AdditionalDataHolder, Parsable):
     @property
     def name(self,) -> Optional[str]:
         """
-        Gets the name property value. The name property
+        Gets the name property value. 
         Returns: Optional[str]
         """
         return self._name
@@ -70,7 +67,7 @@ class InvestigationSecurityState(AdditionalDataHolder, Parsable):
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
-        Sets the name property value. The name property
+        Sets the name property value. 
         Args:
             value: Value to set for the name property.
         """
@@ -79,7 +76,7 @@ class InvestigationSecurityState(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -87,7 +84,7 @@ class InvestigationSecurityState(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -109,7 +106,7 @@ class InvestigationSecurityState(AdditionalDataHolder, Parsable):
     @property
     def status(self,) -> Optional[str]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[str]
         """
         return self._status
@@ -117,7 +114,7 @@ class InvestigationSecurityState(AdditionalDataHolder, Parsable):
     @status.setter
     def status(self,value: Optional[str] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

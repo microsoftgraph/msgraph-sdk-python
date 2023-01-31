@@ -12,7 +12,6 @@ class PrintUsageByPrinter(print_usage.PrintUsage):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.printUsageByPrinter"
-        # The printerId property
         self._printer_id: Optional[str] = None
     
     @staticmethod
@@ -33,7 +32,7 @@ class PrintUsageByPrinter(print_usage.PrintUsage):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "printer_id": lambda n : setattr(self, 'printer_id', n.get_str_value()),
+            "printerId": lambda n : setattr(self, 'printer_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -42,7 +41,7 @@ class PrintUsageByPrinter(print_usage.PrintUsage):
     @property
     def printer_id(self,) -> Optional[str]:
         """
-        Gets the printerId property value. The printerId property
+        Gets the printerId property value. 
         Returns: Optional[str]
         """
         return self._printer_id
@@ -50,7 +49,7 @@ class PrintUsageByPrinter(print_usage.PrintUsage):
     @printer_id.setter
     def printer_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the printerId property value. The printerId property
+        Sets the printerId property value. 
         Args:
             value: Value to set for the printerId property.
         """

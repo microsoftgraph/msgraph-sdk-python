@@ -62,7 +62,6 @@ class Location(AdditionalDataHolder, Parsable):
         self._location_type: Optional[location_type.LocationType] = None
         # Optional URI representing the location.
         self._location_uri: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # For internal use only.
         self._unique_id: Optional[str] = None
@@ -123,13 +122,13 @@ class Location(AdditionalDataHolder, Parsable):
         fields = {
             "address": lambda n : setattr(self, 'address', n.get_object_value(physical_address.PhysicalAddress)),
             "coordinates": lambda n : setattr(self, 'coordinates', n.get_object_value(outlook_geo_coordinates.OutlookGeoCoordinates)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "location_email_address": lambda n : setattr(self, 'location_email_address', n.get_str_value()),
-            "location_type": lambda n : setattr(self, 'location_type', n.get_enum_value(location_type.LocationType)),
-            "location_uri": lambda n : setattr(self, 'location_uri', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "locationEmailAddress": lambda n : setattr(self, 'location_email_address', n.get_str_value()),
+            "locationType": lambda n : setattr(self, 'location_type', n.get_enum_value(location_type.LocationType)),
+            "locationUri": lambda n : setattr(self, 'location_uri', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "unique_id": lambda n : setattr(self, 'unique_id', n.get_str_value()),
-            "unique_id_type": lambda n : setattr(self, 'unique_id_type', n.get_enum_value(location_unique_id_type.LocationUniqueIdType)),
+            "uniqueId": lambda n : setattr(self, 'unique_id', n.get_str_value()),
+            "uniqueIdType": lambda n : setattr(self, 'unique_id_type', n.get_enum_value(location_unique_id_type.LocationUniqueIdType)),
         }
         return fields
     
@@ -187,7 +186,7 @@ class Location(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -195,7 +194,7 @@ class Location(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

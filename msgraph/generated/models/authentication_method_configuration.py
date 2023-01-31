@@ -9,10 +9,9 @@ entity = lazy_import('msgraph.generated.models.entity')
 class AuthenticationMethodConfiguration(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new authenticationMethodConfiguration and sets the default values.
+        Instantiates a new AuthenticationMethodConfiguration and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The state of the policy. Possible values are: enabled, disabled.
         self._state: Optional[authentication_method_state.AuthenticationMethodState] = None

@@ -89,7 +89,6 @@ class TeamFunSettings(AdditionalDataHolder, Parsable):
         self._allow_stickers_and_memes: Optional[bool] = None
         # Giphy content rating. Possible values are: moderate, strict.
         self._giphy_content_rating: Optional[giphy_rating_type.GiphyRatingType] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -110,10 +109,10 @@ class TeamFunSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_custom_memes": lambda n : setattr(self, 'allow_custom_memes', n.get_bool_value()),
-            "allow_giphy": lambda n : setattr(self, 'allow_giphy', n.get_bool_value()),
-            "allow_stickers_and_memes": lambda n : setattr(self, 'allow_stickers_and_memes', n.get_bool_value()),
-            "giphy_content_rating": lambda n : setattr(self, 'giphy_content_rating', n.get_enum_value(giphy_rating_type.GiphyRatingType)),
+            "allowCustomMemes": lambda n : setattr(self, 'allow_custom_memes', n.get_bool_value()),
+            "allowGiphy": lambda n : setattr(self, 'allow_giphy', n.get_bool_value()),
+            "allowStickersAndMemes": lambda n : setattr(self, 'allow_stickers_and_memes', n.get_bool_value()),
+            "giphyContentRating": lambda n : setattr(self, 'giphy_content_rating', n.get_enum_value(giphy_rating_type.GiphyRatingType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -138,7 +137,7 @@ class TeamFunSettings(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -146,7 +145,7 @@ class TeamFunSettings(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -12,7 +12,6 @@ class DeviceConfigurationAssignmentCollectionResponse(base_collection_pagination
         Instantiates a new DeviceConfigurationAssignmentCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[device_configuration_assignment.DeviceConfigurationAssignment]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class DeviceConfigurationAssignmentCollectionResponse(base_collection_pagination
     @property
     def value(self,) -> Optional[List[device_configuration_assignment.DeviceConfigurationAssignment]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[device_configuration_assignment.DeviceConfigurationAssignment]]
         """
         return self._value
@@ -61,7 +60,7 @@ class DeviceConfigurationAssignmentCollectionResponse(base_collection_pagination
     @value.setter
     def value(self,value: Optional[List[device_configuration_assignment.DeviceConfigurationAssignment]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

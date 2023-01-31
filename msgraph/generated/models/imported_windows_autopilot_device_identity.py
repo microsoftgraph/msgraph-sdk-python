@@ -40,7 +40,6 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         self._hardware_identifier: Optional[bytes] = None
         # The Import Id of the Windows autopilot device.
         self._import_id: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Product Key of the Windows autopilot device.
         self._product_key: Optional[str] = None
@@ -67,12 +66,12 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assigned_user_principal_name": lambda n : setattr(self, 'assigned_user_principal_name', n.get_str_value()),
-            "group_tag": lambda n : setattr(self, 'group_tag', n.get_str_value()),
-            "hardware_identifier": lambda n : setattr(self, 'hardware_identifier', n.get_bytes_value()),
-            "import_id": lambda n : setattr(self, 'import_id', n.get_str_value()),
-            "product_key": lambda n : setattr(self, 'product_key', n.get_str_value()),
-            "serial_number": lambda n : setattr(self, 'serial_number', n.get_str_value()),
+            "assignedUserPrincipalName": lambda n : setattr(self, 'assigned_user_principal_name', n.get_str_value()),
+            "groupTag": lambda n : setattr(self, 'group_tag', n.get_str_value()),
+            "hardwareIdentifier": lambda n : setattr(self, 'hardware_identifier', n.get_bytes_value()),
+            "importId": lambda n : setattr(self, 'import_id', n.get_str_value()),
+            "productKey": lambda n : setattr(self, 'product_key', n.get_str_value()),
+            "serialNumber": lambda n : setattr(self, 'serial_number', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_object_value(imported_windows_autopilot_device_identity_state.ImportedWindowsAutopilotDeviceIdentityState)),
         }
         super_fields = super().get_field_deserializers()

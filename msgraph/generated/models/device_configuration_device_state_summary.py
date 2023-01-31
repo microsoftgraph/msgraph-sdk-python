@@ -55,7 +55,6 @@ class DeviceConfigurationDeviceStateSummary(entity.Entity):
         self._non_compliant_device_count: Optional[int] = None
         # Number of not applicable devices
         self._not_applicable_device_count: Optional[int] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Number of remediated devices
         self._remediated_device_count: Optional[int] = None
@@ -97,13 +96,13 @@ class DeviceConfigurationDeviceStateSummary(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "compliant_device_count": lambda n : setattr(self, 'compliant_device_count', n.get_int_value()),
-            "conflict_device_count": lambda n : setattr(self, 'conflict_device_count', n.get_int_value()),
-            "error_device_count": lambda n : setattr(self, 'error_device_count', n.get_int_value()),
-            "non_compliant_device_count": lambda n : setattr(self, 'non_compliant_device_count', n.get_int_value()),
-            "not_applicable_device_count": lambda n : setattr(self, 'not_applicable_device_count', n.get_int_value()),
-            "remediated_device_count": lambda n : setattr(self, 'remediated_device_count', n.get_int_value()),
-            "unknown_device_count": lambda n : setattr(self, 'unknown_device_count', n.get_int_value()),
+            "compliantDeviceCount": lambda n : setattr(self, 'compliant_device_count', n.get_int_value()),
+            "conflictDeviceCount": lambda n : setattr(self, 'conflict_device_count', n.get_int_value()),
+            "errorDeviceCount": lambda n : setattr(self, 'error_device_count', n.get_int_value()),
+            "nonCompliantDeviceCount": lambda n : setattr(self, 'non_compliant_device_count', n.get_int_value()),
+            "notApplicableDeviceCount": lambda n : setattr(self, 'not_applicable_device_count', n.get_int_value()),
+            "remediatedDeviceCount": lambda n : setattr(self, 'remediated_device_count', n.get_int_value()),
+            "unknownDeviceCount": lambda n : setattr(self, 'unknown_device_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

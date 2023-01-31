@@ -66,7 +66,7 @@ class ApplicationTemplatesRequestBuilder():
         """
         Add new entity to applicationTemplates
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[application_template.ApplicationTemplate]
         """
@@ -105,7 +105,7 @@ class ApplicationTemplatesRequestBuilder():
         """
         Add new entity to applicationTemplates
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

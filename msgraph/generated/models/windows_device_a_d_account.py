@@ -52,8 +52,8 @@ class WindowsDeviceADAccount(windows_device_account.WindowsDeviceAccount):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "domain_name": lambda n : setattr(self, 'domain_name', n.get_str_value()),
-            "user_name": lambda n : setattr(self, 'user_name', n.get_str_value()),
+            "domainName": lambda n : setattr(self, 'domain_name', n.get_str_value()),
+            "userName": lambda n : setattr(self, 'user_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

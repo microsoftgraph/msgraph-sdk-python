@@ -35,7 +35,6 @@ class EducationTerm(AdditionalDataHolder, Parsable):
         self._end_date: Optional[Date] = None
         # ID of term in the syncing system.
         self._external_id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Start of the term.
         self._start_date: Optional[Date] = None
@@ -109,18 +108,18 @@ class EducationTerm(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "end_date": lambda n : setattr(self, 'end_date', n.get_object_value(Date)),
-            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "endDate": lambda n : setattr(self, 'end_date', n.get_object_value(Date)),
+            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "start_date": lambda n : setattr(self, 'start_date', n.get_object_value(Date)),
+            "startDate": lambda n : setattr(self, 'start_date', n.get_object_value(Date)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -128,7 +127,7 @@ class EducationTerm(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

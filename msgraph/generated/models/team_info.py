@@ -14,9 +14,7 @@ class TeamInfo(entity.Entity):
         super().__init__()
         # The name of the team.
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The team property
         self._team: Optional[team.Team] = None
         # The ID of the Azure Active Directory tenant.
         self._tenant_id: Optional[str] = None
@@ -56,9 +54,9 @@ class TeamInfo(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "team": lambda n : setattr(self, 'team', n.get_object_value(team.Team)),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -80,7 +78,7 @@ class TeamInfo(entity.Entity):
     @property
     def team(self,) -> Optional[team.Team]:
         """
-        Gets the team property value. The team property
+        Gets the team property value. 
         Returns: Optional[team.Team]
         """
         return self._team
@@ -88,7 +86,7 @@ class TeamInfo(entity.Entity):
     @team.setter
     def team(self,value: Optional[team.Team] = None) -> None:
         """
-        Sets the team property value. The team property
+        Sets the team property value. 
         Args:
             value: Value to set for the team property.
         """

@@ -11,7 +11,6 @@ class RegistryKeyEvidence(alert_evidence.AlertEvidence):
         Instantiates a new RegistryKeyEvidence and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Registry hive of the key that the recorded action was applied to.
         self._registry_hive: Optional[str] = None
@@ -36,8 +35,8 @@ class RegistryKeyEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "registry_hive": lambda n : setattr(self, 'registry_hive', n.get_str_value()),
-            "registry_key": lambda n : setattr(self, 'registry_key', n.get_str_value()),
+            "registryHive": lambda n : setattr(self, 'registry_hive', n.get_str_value()),
+            "registryKey": lambda n : setattr(self, 'registry_key', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

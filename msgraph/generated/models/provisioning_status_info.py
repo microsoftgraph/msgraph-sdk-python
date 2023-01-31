@@ -31,9 +31,7 @@ class ProvisioningStatusInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The errorInformation property
         self._error_information: Optional[provisioning_error_info.ProvisioningErrorInfo] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Possible values are: success, warning, failure, skipped, unknownFutureValue.
         self._status: Optional[provisioning_result.ProvisioningResult] = None
@@ -53,7 +51,7 @@ class ProvisioningStatusInfo(AdditionalDataHolder, Parsable):
     @property
     def error_information(self,) -> Optional[provisioning_error_info.ProvisioningErrorInfo]:
         """
-        Gets the errorInformation property value. The errorInformation property
+        Gets the errorInformation property value. 
         Returns: Optional[provisioning_error_info.ProvisioningErrorInfo]
         """
         return self._error_information
@@ -61,7 +59,7 @@ class ProvisioningStatusInfo(AdditionalDataHolder, Parsable):
     @error_information.setter
     def error_information(self,value: Optional[provisioning_error_info.ProvisioningErrorInfo] = None) -> None:
         """
-        Sets the errorInformation property value. The errorInformation property
+        Sets the errorInformation property value. 
         Args:
             value: Value to set for the errorInformation property.
         """
@@ -73,7 +71,7 @@ class ProvisioningStatusInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "error_information": lambda n : setattr(self, 'error_information', n.get_object_value(provisioning_error_info.ProvisioningErrorInfo)),
+            "errorInformation": lambda n : setattr(self, 'error_information', n.get_object_value(provisioning_error_info.ProvisioningErrorInfo)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(provisioning_result.ProvisioningResult)),
         }
@@ -82,7 +80,7 @@ class ProvisioningStatusInfo(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -90,7 +88,7 @@ class ProvisioningStatusInfo(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

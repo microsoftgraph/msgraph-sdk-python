@@ -39,8 +39,8 @@ class TeamRenamedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         fields = {
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
-            "team_display_name": lambda n : setattr(self, 'team_display_name', n.get_str_value()),
-            "team_id": lambda n : setattr(self, 'team_id', n.get_str_value()),
+            "teamDisplayName": lambda n : setattr(self, 'team_display_name', n.get_str_value()),
+            "teamId": lambda n : setattr(self, 'team_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

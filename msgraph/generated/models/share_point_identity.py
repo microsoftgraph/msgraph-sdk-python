@@ -33,7 +33,7 @@ class SharePointIdentity(identity.Identity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "login_name": lambda n : setattr(self, 'login_name', n.get_str_value()),
+            "loginName": lambda n : setattr(self, 'login_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

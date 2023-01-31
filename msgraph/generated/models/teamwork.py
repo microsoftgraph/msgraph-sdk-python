@@ -12,9 +12,7 @@ class Teamwork(entity.Entity):
         Instantiates a new Teamwork and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The workforceIntegrations property
         self._workforce_integrations: Optional[List[workforce_integration.WorkforceIntegration]] = None
     
     @staticmethod
@@ -35,7 +33,7 @@ class Teamwork(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "workforce_integrations": lambda n : setattr(self, 'workforce_integrations', n.get_collection_of_object_values(workforce_integration.WorkforceIntegration)),
+            "workforceIntegrations": lambda n : setattr(self, 'workforce_integrations', n.get_collection_of_object_values(workforce_integration.WorkforceIntegration)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -55,7 +53,7 @@ class Teamwork(entity.Entity):
     @property
     def workforce_integrations(self,) -> Optional[List[workforce_integration.WorkforceIntegration]]:
         """
-        Gets the workforceIntegrations property value. The workforceIntegrations property
+        Gets the workforceIntegrations property value. 
         Returns: Optional[List[workforce_integration.WorkforceIntegration]]
         """
         return self._workforce_integrations
@@ -63,7 +61,7 @@ class Teamwork(entity.Entity):
     @workforce_integrations.setter
     def workforce_integrations(self,value: Optional[List[workforce_integration.WorkforceIntegration]] = None) -> None:
         """
-        Sets the workforceIntegrations property value. The workforceIntegrations property
+        Sets the workforceIntegrations property value. 
         Args:
             value: Value to set for the workforceIntegrations property.
         """

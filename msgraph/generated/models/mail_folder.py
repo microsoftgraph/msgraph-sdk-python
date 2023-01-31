@@ -63,7 +63,6 @@ class MailFolder(entity.Entity):
         self._messages: Optional[List[message.Message]] = None
         # The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
         self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The unique identifier for the mailFolder's parent mailFolder.
         self._parent_folder_id: Optional[str] = None
@@ -109,17 +108,17 @@ class MailFolder(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "child_folder_count": lambda n : setattr(self, 'child_folder_count', n.get_int_value()),
-            "child_folders": lambda n : setattr(self, 'child_folders', n.get_collection_of_object_values(MailFolder)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_hidden": lambda n : setattr(self, 'is_hidden', n.get_bool_value()),
-            "message_rules": lambda n : setattr(self, 'message_rules', n.get_collection_of_object_values(message_rule.MessageRule)),
+            "childFolderCount": lambda n : setattr(self, 'child_folder_count', n.get_int_value()),
+            "childFolders": lambda n : setattr(self, 'child_folders', n.get_collection_of_object_values(MailFolder)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isHidden": lambda n : setattr(self, 'is_hidden', n.get_bool_value()),
+            "messageRules": lambda n : setattr(self, 'message_rules', n.get_collection_of_object_values(message_rule.MessageRule)),
             "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(message.Message)),
-            "multi_value_extended_properties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty)),
-            "parent_folder_id": lambda n : setattr(self, 'parent_folder_id', n.get_str_value()),
-            "single_value_extended_properties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(single_value_legacy_extended_property.SingleValueLegacyExtendedProperty)),
-            "total_item_count": lambda n : setattr(self, 'total_item_count', n.get_int_value()),
-            "unread_item_count": lambda n : setattr(self, 'unread_item_count', n.get_int_value()),
+            "multiValueExtendedProperties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty)),
+            "parentFolderId": lambda n : setattr(self, 'parent_folder_id', n.get_str_value()),
+            "singleValueExtendedProperties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(single_value_legacy_extended_property.SingleValueLegacyExtendedProperty)),
+            "totalItemCount": lambda n : setattr(self, 'total_item_count', n.get_int_value()),
+            "unreadItemCount": lambda n : setattr(self, 'unread_item_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -12,7 +12,6 @@ class AttendeeCollectionResponse(base_collection_pagination_count_response.BaseC
         Instantiates a new AttendeeCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[attendee.Attendee]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class AttendeeCollectionResponse(base_collection_pagination_count_response.BaseC
     @property
     def value(self,) -> Optional[List[attendee.Attendee]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[attendee.Attendee]]
         """
         return self._value
@@ -61,7 +60,7 @@ class AttendeeCollectionResponse(base_collection_pagination_count_response.BaseC
     @value.setter
     def value(self,value: Optional[List[attendee.Attendee]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -34,9 +34,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
         self._email: Optional[str] = None
         # Provides information about who sent the invitation that created this permission, if that information is available. Read-only.
         self._invited_by: Optional[identity_set.IdentitySet] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The redeemedBy property
         self._redeemed_by: Optional[str] = None
         # If true the recipient of the invitation needs to sign in in order to access the shared item. Read-only.
         self._sign_in_required: Optional[bool] = None
@@ -77,10 +75,10 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
         """
         fields = {
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "invited_by": lambda n : setattr(self, 'invited_by', n.get_object_value(identity_set.IdentitySet)),
+            "invitedBy": lambda n : setattr(self, 'invited_by', n.get_object_value(identity_set.IdentitySet)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "redeemed_by": lambda n : setattr(self, 'redeemed_by', n.get_str_value()),
-            "sign_in_required": lambda n : setattr(self, 'sign_in_required', n.get_bool_value()),
+            "redeemedBy": lambda n : setattr(self, 'redeemed_by', n.get_str_value()),
+            "signInRequired": lambda n : setattr(self, 'sign_in_required', n.get_bool_value()),
         }
         return fields
     
@@ -104,7 +102,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -112,7 +110,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -121,7 +119,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
     @property
     def redeemed_by(self,) -> Optional[str]:
         """
-        Gets the redeemedBy property value. The redeemedBy property
+        Gets the redeemedBy property value. 
         Returns: Optional[str]
         """
         return self._redeemed_by
@@ -129,7 +127,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
     @redeemed_by.setter
     def redeemed_by(self,value: Optional[str] = None) -> None:
         """
-        Sets the redeemedBy property value. The redeemedBy property
+        Sets the redeemedBy property value. 
         Args:
             value: Value to set for the redeemedBy property.
         """

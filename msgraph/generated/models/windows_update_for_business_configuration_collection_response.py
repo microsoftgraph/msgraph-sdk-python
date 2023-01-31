@@ -12,7 +12,6 @@ class WindowsUpdateForBusinessConfigurationCollectionResponse(base_collection_pa
         Instantiates a new WindowsUpdateForBusinessConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[windows_update_for_business_configuration.WindowsUpdateForBusinessConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class WindowsUpdateForBusinessConfigurationCollectionResponse(base_collection_pa
     @property
     def value(self,) -> Optional[List[windows_update_for_business_configuration.WindowsUpdateForBusinessConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[windows_update_for_business_configuration.WindowsUpdateForBusinessConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class WindowsUpdateForBusinessConfigurationCollectionResponse(base_collection_pa
     @value.setter
     def value(self,value: Optional[List[windows_update_for_business_configuration.WindowsUpdateForBusinessConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -51,7 +51,6 @@ class SignInStatus(AdditionalDataHolder, Parsable):
         self._error_code: Optional[int] = None
         # Provides the error message or the reason for failure for the corresponding sign-in activity. Check out the list of error codes and messages.
         self._failure_reason: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -106,9 +105,9 @@ class SignInStatus(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "additional_details": lambda n : setattr(self, 'additional_details', n.get_str_value()),
-            "error_code": lambda n : setattr(self, 'error_code', n.get_int_value()),
-            "failure_reason": lambda n : setattr(self, 'failure_reason', n.get_str_value()),
+            "additionalDetails": lambda n : setattr(self, 'additional_details', n.get_str_value()),
+            "errorCode": lambda n : setattr(self, 'error_code', n.get_int_value()),
+            "failureReason": lambda n : setattr(self, 'failure_reason', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -116,7 +115,7 @@ class SignInStatus(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -124,7 +123,7 @@ class SignInStatus(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

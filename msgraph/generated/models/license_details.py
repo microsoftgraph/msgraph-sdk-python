@@ -12,7 +12,6 @@ class LicenseDetails(entity.Entity):
         Instantiates a new licenseDetails and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Information about the service plans assigned with the license. Read-only, Not nullable
         self._service_plans: Optional[List[service_plan_info.ServicePlanInfo]] = None
@@ -39,9 +38,9 @@ class LicenseDetails(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "service_plans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(service_plan_info.ServicePlanInfo)),
-            "sku_id": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
-            "sku_part_number": lambda n : setattr(self, 'sku_part_number', n.get_str_value()),
+            "servicePlans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(service_plan_info.ServicePlanInfo)),
+            "skuId": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
+            "skuPartNumber": lambda n : setattr(self, 'sku_part_number', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

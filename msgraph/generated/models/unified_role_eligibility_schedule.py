@@ -14,7 +14,6 @@ class UnifiedRoleEligibilitySchedule(unified_role_schedule_base.UnifiedRoleSched
         super().__init__()
         # How the role eligibility is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleEligibilitySchedule can be managed by the caller. Supports $filter (eq, ne).
         self._member_type: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The period of the role eligibility.
         self._schedule_info: Optional[request_schedule.RequestSchedule] = None
@@ -37,8 +36,8 @@ class UnifiedRoleEligibilitySchedule(unified_role_schedule_base.UnifiedRoleSched
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "member_type": lambda n : setattr(self, 'member_type', n.get_str_value()),
-            "schedule_info": lambda n : setattr(self, 'schedule_info', n.get_object_value(request_schedule.RequestSchedule)),
+            "memberType": lambda n : setattr(self, 'member_type', n.get_str_value()),
+            "scheduleInfo": lambda n : setattr(self, 'schedule_info', n.get_object_value(request_schedule.RequestSchedule)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

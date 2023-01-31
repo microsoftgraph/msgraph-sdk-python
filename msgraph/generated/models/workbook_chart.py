@@ -49,7 +49,6 @@ class WorkbookChart(entity.Entity):
         self._legend: Optional[workbook_chart_legend.WorkbookChartLegend] = None
         # Represents the name of a chart object.
         self._name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Represents either a single series or collection of series in the chart. Read-only.
         self._series: Optional[List[workbook_chart_series.WorkbookChartSeries]] = None
@@ -115,7 +114,7 @@ class WorkbookChart(entity.Entity):
         """
         fields = {
             "axes": lambda n : setattr(self, 'axes', n.get_object_value(workbook_chart_axes.WorkbookChartAxes)),
-            "data_labels": lambda n : setattr(self, 'data_labels', n.get_object_value(workbook_chart_data_labels.WorkbookChartDataLabels)),
+            "dataLabels": lambda n : setattr(self, 'data_labels', n.get_object_value(workbook_chart_data_labels.WorkbookChartDataLabels)),
             "format": lambda n : setattr(self, 'format', n.get_object_value(workbook_chart_area_format.WorkbookChartAreaFormat)),
             "height": lambda n : setattr(self, 'height', n.get_float_value()),
             "left": lambda n : setattr(self, 'left', n.get_float_value()),

@@ -12,7 +12,6 @@ class SubscribeToToneOperationCollectionResponse(base_collection_pagination_coun
         Instantiates a new SubscribeToToneOperationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[subscribe_to_tone_operation.SubscribeToToneOperation]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class SubscribeToToneOperationCollectionResponse(base_collection_pagination_coun
     @property
     def value(self,) -> Optional[List[subscribe_to_tone_operation.SubscribeToToneOperation]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[subscribe_to_tone_operation.SubscribeToToneOperation]]
         """
         return self._value
@@ -61,7 +60,7 @@ class SubscribeToToneOperationCollectionResponse(base_collection_pagination_coun
     @value.setter
     def value(self,value: Optional[List[subscribe_to_tone_operation.SubscribeToToneOperation]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

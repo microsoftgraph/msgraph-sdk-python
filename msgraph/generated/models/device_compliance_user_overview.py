@@ -39,7 +39,6 @@ class DeviceComplianceUserOverview(entity.Entity):
         self._last_update_date_time: Optional[datetime] = None
         # Number of not applicable users
         self._not_applicable_count: Optional[int] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Number of pending Users
         self._pending_count: Optional[int] = None
@@ -98,13 +97,13 @@ class DeviceComplianceUserOverview(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "configuration_version": lambda n : setattr(self, 'configuration_version', n.get_int_value()),
-            "error_count": lambda n : setattr(self, 'error_count', n.get_int_value()),
-            "failed_count": lambda n : setattr(self, 'failed_count', n.get_int_value()),
-            "last_update_date_time": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
-            "not_applicable_count": lambda n : setattr(self, 'not_applicable_count', n.get_int_value()),
-            "pending_count": lambda n : setattr(self, 'pending_count', n.get_int_value()),
-            "success_count": lambda n : setattr(self, 'success_count', n.get_int_value()),
+            "configurationVersion": lambda n : setattr(self, 'configuration_version', n.get_int_value()),
+            "errorCount": lambda n : setattr(self, 'error_count', n.get_int_value()),
+            "failedCount": lambda n : setattr(self, 'failed_count', n.get_int_value()),
+            "lastUpdateDateTime": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
+            "notApplicableCount": lambda n : setattr(self, 'not_applicable_count', n.get_int_value()),
+            "pendingCount": lambda n : setattr(self, 'pending_count', n.get_int_value()),
+            "successCount": lambda n : setattr(self, 'success_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -17,10 +17,11 @@ class ManagedAppStatusItemRequestBuilder():
     """
     Provides operations to manage the managedAppStatuses property of the microsoft.graph.deviceAppManagement entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, managed_app_status_id: Optional[str] = None) -> None:
         """
         Instantiates a new ManagedAppStatusItemRequestBuilder and sets the default values.
         Args:
+            managedAppStatusId: key: id of managedAppStatus
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class ManagedAppStatusItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceAppManagement/managedAppStatuses/{managedAppStatus%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["managedAppStatus%2Did"] = managedAppStatusId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -74,7 +76,7 @@ class ManagedAppStatusItemRequestBuilder():
         """
         Update the navigation property managedAppStatuses in deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[managed_app_status.ManagedAppStatus]
         """
@@ -129,7 +131,7 @@ class ManagedAppStatusItemRequestBuilder():
         """
         Update the navigation property managedAppStatuses in deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

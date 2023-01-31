@@ -57,7 +57,6 @@ class Request(entity.Entity):
         self._created_date_time: Optional[datetime] = None
         # Free text field to define any custom data for the request. Not used.
         self._custom_data: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The status of the request. Not nullable. The possible values are: Canceled, Denied, Failed, Granted, PendingAdminDecision, PendingApproval, PendingProvisioning, PendingScheduleCreation, Provisioned, Revoked, and ScheduleCreated. Not nullable.
         self._status: Optional[str] = None
@@ -131,11 +130,11 @@ class Request(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "approval_id": lambda n : setattr(self, 'approval_id', n.get_str_value()),
-            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "custom_data": lambda n : setattr(self, 'custom_data', n.get_str_value()),
+            "approvalId": lambda n : setattr(self, 'approval_id', n.get_str_value()),
+            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "customData": lambda n : setattr(self, 'custom_data', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

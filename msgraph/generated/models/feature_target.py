@@ -32,7 +32,6 @@ class FeatureTarget(AdditionalDataHolder, Parsable):
 
         # The ID of the entity that's targeted in the include or exclude rule, or all_users to target all users.
         self._id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The kind of entity that's targeted. The possible values are: group, administrativeUnit, role, unknownFutureValue.
         self._target_type: Optional[feature_target_type.FeatureTargetType] = None
@@ -57,7 +56,7 @@ class FeatureTarget(AdditionalDataHolder, Parsable):
         fields = {
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "target_type": lambda n : setattr(self, 'target_type', n.get_enum_value(feature_target_type.FeatureTargetType)),
+            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(feature_target_type.FeatureTargetType)),
         }
         return fields
     
@@ -81,7 +80,7 @@ class FeatureTarget(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -89,7 +88,7 @@ class FeatureTarget(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

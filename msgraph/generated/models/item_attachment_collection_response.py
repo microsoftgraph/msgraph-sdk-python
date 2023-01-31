@@ -12,7 +12,6 @@ class ItemAttachmentCollectionResponse(base_collection_pagination_count_response
         Instantiates a new ItemAttachmentCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[item_attachment.ItemAttachment]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ItemAttachmentCollectionResponse(base_collection_pagination_count_response
     @property
     def value(self,) -> Optional[List[item_attachment.ItemAttachment]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[item_attachment.ItemAttachment]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ItemAttachmentCollectionResponse(base_collection_pagination_count_response
     @value.setter
     def value(self,value: Optional[List[item_attachment.ItemAttachment]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

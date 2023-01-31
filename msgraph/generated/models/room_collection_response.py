@@ -12,7 +12,6 @@ class RoomCollectionResponse(base_collection_pagination_count_response.BaseColle
         Instantiates a new RoomCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[room.Room]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class RoomCollectionResponse(base_collection_pagination_count_response.BaseColle
     @property
     def value(self,) -> Optional[List[room.Room]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[room.Room]]
         """
         return self._value
@@ -61,7 +60,7 @@ class RoomCollectionResponse(base_collection_pagination_count_response.BaseColle
     @value.setter
     def value(self,value: Optional[List[room.Room]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

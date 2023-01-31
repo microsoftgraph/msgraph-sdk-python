@@ -54,9 +54,9 @@ class SchedulingGroup(change_tracked_entity.ChangeTrackedEntity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_active": lambda n : setattr(self, 'is_active', n.get_bool_value()),
-            "user_ids": lambda n : setattr(self, 'user_ids', n.get_collection_of_primitive_values(str)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
+            "userIds": lambda n : setattr(self, 'user_ids', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

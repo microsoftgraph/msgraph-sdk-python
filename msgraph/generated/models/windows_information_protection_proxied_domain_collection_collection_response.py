@@ -12,7 +12,6 @@ class WindowsInformationProtectionProxiedDomainCollectionCollectionResponse(base
         Instantiates a new WindowsInformationProtectionProxiedDomainCollectionCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[windows_information_protection_proxied_domain_collection.WindowsInformationProtectionProxiedDomainCollection]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class WindowsInformationProtectionProxiedDomainCollectionCollectionResponse(base
     @property
     def value(self,) -> Optional[List[windows_information_protection_proxied_domain_collection.WindowsInformationProtectionProxiedDomainCollection]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[windows_information_protection_proxied_domain_collection.WindowsInformationProtectionProxiedDomainCollection]]
         """
         return self._value
@@ -61,7 +60,7 @@ class WindowsInformationProtectionProxiedDomainCollectionCollectionResponse(base
     @value.setter
     def value(self,value: Optional[List[windows_information_protection_proxied_domain_collection.WindowsInformationProtectionProxiedDomainCollection]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -24,7 +24,6 @@ class CallRecord(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # List of all the modalities used in the call. Possible values are: unknown, audio, video, videoBasedScreenSharing, data, screenSharing, unknownFutureValue.
         self._modalities: Optional[List[modality.Modality]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The organizing party's identity.
         self._organizer: Optional[identity_set.IdentitySet] = None
@@ -34,7 +33,6 @@ class CallRecord(entity.Entity):
         self._sessions: Optional[List[session.Session]] = None
         # UTC time when the first user joined the call. The DatetimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._start_date_time: Optional[datetime] = None
-        # The type property
         self._type: Optional[call_type.CallType] = None
         # Monotonically increasing version of the call record. Higher version call records with the same id includes additional data compared to the lower version.
         self._version: Optional[int] = None
@@ -74,14 +72,14 @@ class CallRecord(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "join_web_url": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "joinWebUrl": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "modalities": lambda n : setattr(self, 'modalities', n.get_collection_of_enum_values(modality.Modality)),
             "organizer": lambda n : setattr(self, 'organizer', n.get_object_value(identity_set.IdentitySet)),
             "participants": lambda n : setattr(self, 'participants', n.get_collection_of_object_values(identity_set.IdentitySet)),
             "sessions": lambda n : setattr(self, 'sessions', n.get_collection_of_object_values(session.Session)),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(call_type.CallType)),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
         }
@@ -231,7 +229,7 @@ class CallRecord(entity.Entity):
     @property
     def type(self,) -> Optional[call_type.CallType]:
         """
-        Gets the type property value. The type property
+        Gets the type property value. 
         Returns: Optional[call_type.CallType]
         """
         return self._type
@@ -239,7 +237,7 @@ class CallRecord(entity.Entity):
     @type.setter
     def type(self,value: Optional[call_type.CallType] = None) -> None:
         """
-        Sets the type property value. The type property
+        Sets the type property value. 
         Args:
             value: Value to set for the type property.
         """

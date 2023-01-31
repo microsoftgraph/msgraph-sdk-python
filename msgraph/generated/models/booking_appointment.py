@@ -61,7 +61,6 @@ class BookingAppointment(entity.Entity):
         self._customer_time_zone: Optional[str] = None
         # The length of the appointment, denoted in ISO8601 format.
         self._duration: Optional[Timedelta] = None
-        # The endDateTime property
         self._end_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
         # The current number of customers in the appointment
         self._filled_attendees_count: Optional[int] = None
@@ -71,7 +70,6 @@ class BookingAppointment(entity.Entity):
         self._join_web_url: Optional[str] = None
         # The maximum number of customers allowed in an appointment. If maximumAttendeesCount of the service is greater than 1, pass valid customer IDs while creating or updating an appointment. To create a customer, use the Create bookingCustomer operation.
         self._maximum_attendees_count: Optional[int] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # If true indicates that the bookingCustomer for this appointment does not wish to receive a confirmation for this appointment.
         self._opt_out_of_customer_email: Optional[bool] = None
@@ -99,7 +97,6 @@ class BookingAppointment(entity.Entity):
         self._sms_notifications_enabled: Optional[bool] = None
         # The ID of each bookingStaffMember who is scheduled in this appointment.
         self._staff_member_ids: Optional[List[str]] = None
-        # The startDateTime property
         self._start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
     
     @staticmethod
@@ -168,7 +165,7 @@ class BookingAppointment(entity.Entity):
     @property
     def end_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
-        Gets the endDateTime property value. The endDateTime property
+        Gets the endDateTime property value. 
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._end_date_time
@@ -176,7 +173,7 @@ class BookingAppointment(entity.Entity):
     @end_date_time.setter
     def end_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
-        Sets the endDateTime property value. The endDateTime property
+        Sets the endDateTime property value. 
         Args:
             value: Value to set for the endDateTime property.
         """
@@ -205,30 +202,30 @@ class BookingAppointment(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "additional_information": lambda n : setattr(self, 'additional_information', n.get_str_value()),
-            "anonymous_join_web_url": lambda n : setattr(self, 'anonymous_join_web_url', n.get_str_value()),
+            "additionalInformation": lambda n : setattr(self, 'additional_information', n.get_str_value()),
+            "anonymousJoinWebUrl": lambda n : setattr(self, 'anonymous_join_web_url', n.get_str_value()),
             "customers": lambda n : setattr(self, 'customers', n.get_collection_of_object_values(booking_customer_information_base.BookingCustomerInformationBase)),
-            "customer_time_zone": lambda n : setattr(self, 'customer_time_zone', n.get_str_value()),
+            "customerTimeZone": lambda n : setattr(self, 'customer_time_zone', n.get_str_value()),
             "duration": lambda n : setattr(self, 'duration', n.get_object_value(Timedelta)),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "filled_attendees_count": lambda n : setattr(self, 'filled_attendees_count', n.get_int_value()),
-            "is_location_online": lambda n : setattr(self, 'is_location_online', n.get_bool_value()),
-            "join_web_url": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
-            "maximum_attendees_count": lambda n : setattr(self, 'maximum_attendees_count', n.get_int_value()),
-            "opt_out_of_customer_email": lambda n : setattr(self, 'opt_out_of_customer_email', n.get_bool_value()),
-            "post_buffer": lambda n : setattr(self, 'post_buffer', n.get_object_value(Timedelta)),
-            "pre_buffer": lambda n : setattr(self, 'pre_buffer', n.get_object_value(Timedelta)),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "filledAttendeesCount": lambda n : setattr(self, 'filled_attendees_count', n.get_int_value()),
+            "isLocationOnline": lambda n : setattr(self, 'is_location_online', n.get_bool_value()),
+            "joinWebUrl": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
+            "maximumAttendeesCount": lambda n : setattr(self, 'maximum_attendees_count', n.get_int_value()),
+            "optOutOfCustomerEmail": lambda n : setattr(self, 'opt_out_of_customer_email', n.get_bool_value()),
+            "postBuffer": lambda n : setattr(self, 'post_buffer', n.get_object_value(Timedelta)),
+            "preBuffer": lambda n : setattr(self, 'pre_buffer', n.get_object_value(Timedelta)),
             "price": lambda n : setattr(self, 'price', n.get_float_value()),
-            "price_type": lambda n : setattr(self, 'price_type', n.get_enum_value(booking_price_type.BookingPriceType)),
+            "priceType": lambda n : setattr(self, 'price_type', n.get_enum_value(booking_price_type.BookingPriceType)),
             "reminders": lambda n : setattr(self, 'reminders', n.get_collection_of_object_values(booking_reminder.BookingReminder)),
-            "self_service_appointment_id": lambda n : setattr(self, 'self_service_appointment_id', n.get_str_value()),
-            "service_id": lambda n : setattr(self, 'service_id', n.get_str_value()),
-            "service_location": lambda n : setattr(self, 'service_location', n.get_object_value(location.Location)),
-            "service_name": lambda n : setattr(self, 'service_name', n.get_str_value()),
-            "service_notes": lambda n : setattr(self, 'service_notes', n.get_str_value()),
-            "sms_notifications_enabled": lambda n : setattr(self, 'sms_notifications_enabled', n.get_bool_value()),
-            "staff_member_ids": lambda n : setattr(self, 'staff_member_ids', n.get_collection_of_primitive_values(str)),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "selfServiceAppointmentId": lambda n : setattr(self, 'self_service_appointment_id', n.get_str_value()),
+            "serviceId": lambda n : setattr(self, 'service_id', n.get_str_value()),
+            "serviceLocation": lambda n : setattr(self, 'service_location', n.get_object_value(location.Location)),
+            "serviceName": lambda n : setattr(self, 'service_name', n.get_str_value()),
+            "serviceNotes": lambda n : setattr(self, 'service_notes', n.get_str_value()),
+            "smsNotificationsEnabled": lambda n : setattr(self, 'sms_notifications_enabled', n.get_bool_value()),
+            "staffMemberIds": lambda n : setattr(self, 'staff_member_ids', n.get_collection_of_primitive_values(str)),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -541,7 +538,7 @@ class BookingAppointment(entity.Entity):
     @property
     def start_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
-        Gets the startDateTime property value. The startDateTime property
+        Gets the startDateTime property value. 
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._start_date_time
@@ -549,7 +546,7 @@ class BookingAppointment(entity.Entity):
     @start_date_time.setter
     def start_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
-        Sets the startDateTime property value. The startDateTime property
+        Sets the startDateTime property value. 
         Args:
             value: Value to set for the startDateTime property.
         """

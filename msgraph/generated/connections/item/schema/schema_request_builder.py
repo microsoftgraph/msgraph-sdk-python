@@ -74,7 +74,7 @@ class SchemaRequestBuilder():
         """
         Update the navigation property schema in connections
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[schema.Schema]
         """
@@ -129,7 +129,7 @@ class SchemaRequestBuilder():
         """
         Update the navigation property schema in connections
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

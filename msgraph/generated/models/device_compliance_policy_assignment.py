@@ -15,7 +15,6 @@ class DeviceCompliancePolicyAssignment(entity.Entity):
         Instantiates a new deviceCompliancePolicyAssignment and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Target for the compliance policy assignment.
         self._target: Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget] = None

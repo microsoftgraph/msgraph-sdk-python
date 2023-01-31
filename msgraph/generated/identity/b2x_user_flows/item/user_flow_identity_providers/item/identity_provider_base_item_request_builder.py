@@ -17,10 +17,11 @@ class IdentityProviderBaseItemRequestBuilder():
         """
         return ref_request_builder.RefRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, identity_provider_base_id: Optional[str] = None) -> None:
         """
         Instantiates a new IdentityProviderBaseItemRequestBuilder and sets the default values.
         Args:
+            identityProviderBaseId: key: id of identityProviderBase
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class IdentityProviderBaseItemRequestBuilder():
         self.url_template: str = "{+baseurl}/identity/b2xUserFlows/{b2xIdentityUserFlow%2Did}/userFlowIdentityProviders/{identityProviderBase%2Did}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["identityProviderBase%2Did"] = identityProviderBaseId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

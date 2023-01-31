@@ -1,16 +1,18 @@
 from enum import Enum
 
 class NotificationTemplateBrandingOptions(Enum):
-    # No Branding.
+    # Indicates that no branding options are set in the message template.
     None_ = "none",
-    # Include Company Logo.
+    # Indicates to include company logo in the message template.
     IncludeCompanyLogo = "includeCompanyLogo",
-    # Include Company Name.
+    # Indicates to include company name in the message template.
     IncludeCompanyName = "includeCompanyName",
-    # Include Contact Info.
+    # Indicates to include contact information in the message template.
     IncludeContactInformation = "includeContactInformation",
-    # Include Company Portal Link.
+    # Indicates to include company portal website link in the message template.
     IncludeCompanyPortalLink = "includeCompanyPortalLink",
-    # Include Device Details.
+    # Indicates to include device details in the message template.
     IncludeDeviceDetails = "includeDeviceDetails",
+    # Evolvable enumeration sentinel value. Do not use.
+    UnknownFutureValue = "unknownFutureValue",
 

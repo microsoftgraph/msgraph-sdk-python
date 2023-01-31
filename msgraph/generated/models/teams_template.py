@@ -11,7 +11,6 @@ class TeamsTemplate(entity.Entity):
         Instantiates a new teamsTemplate and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

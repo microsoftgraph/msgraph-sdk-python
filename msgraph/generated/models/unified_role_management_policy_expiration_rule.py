@@ -36,8 +36,8 @@ class UnifiedRoleManagementPolicyExpirationRule(unified_role_management_policy_r
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_expiration_required": lambda n : setattr(self, 'is_expiration_required', n.get_bool_value()),
-            "maximum_duration": lambda n : setattr(self, 'maximum_duration', n.get_object_value(Timedelta)),
+            "isExpirationRequired": lambda n : setattr(self, 'is_expiration_required', n.get_bool_value()),
+            "maximumDuration": lambda n : setattr(self, 'maximum_duration', n.get_object_value(Timedelta)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

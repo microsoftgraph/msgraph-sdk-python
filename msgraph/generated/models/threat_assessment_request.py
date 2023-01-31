@@ -17,7 +17,7 @@ class ThreatAssessmentRequest(entity.Entity):
     @property
     def category(self,) -> Optional[threat_category.ThreatCategory]:
         """
-        Gets the category property value. The category property
+        Gets the category property value. 
         Returns: Optional[threat_category.ThreatCategory]
         """
         return self._category
@@ -25,7 +25,7 @@ class ThreatAssessmentRequest(entity.Entity):
     @category.setter
     def category(self,value: Optional[threat_category.ThreatCategory] = None) -> None:
         """
-        Sets the category property value. The category property
+        Sets the category property value. 
         Args:
             value: Value to set for the category property.
         """
@@ -36,7 +36,6 @@ class ThreatAssessmentRequest(entity.Entity):
         Instantiates a new ThreatAssessmentRequest and sets the default values.
         """
         super().__init__()
-        # The category property
         self._category: Optional[threat_category.ThreatCategory] = None
         # The content type of threat assessment. Possible values are: mail, url, file.
         self._content_type: Optional[threat_assessment_content_type.ThreatAssessmentContentType] = None
@@ -44,9 +43,7 @@ class ThreatAssessmentRequest(entity.Entity):
         self._created_by: Optional[identity_set.IdentitySet] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._created_date_time: Optional[datetime] = None
-        # The expectedAssessment property
         self._expected_assessment: Optional[threat_expected_assessment.ThreatExpectedAssessment] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The source of the threat assessment request. Possible values are: administrator.
         self._request_source: Optional[threat_assessment_request_source.ThreatAssessmentRequestSource] = None
@@ -121,7 +118,7 @@ class ThreatAssessmentRequest(entity.Entity):
     @property
     def expected_assessment(self,) -> Optional[threat_expected_assessment.ThreatExpectedAssessment]:
         """
-        Gets the expectedAssessment property value. The expectedAssessment property
+        Gets the expectedAssessment property value. 
         Returns: Optional[threat_expected_assessment.ThreatExpectedAssessment]
         """
         return self._expected_assessment
@@ -129,7 +126,7 @@ class ThreatAssessmentRequest(entity.Entity):
     @expected_assessment.setter
     def expected_assessment(self,value: Optional[threat_expected_assessment.ThreatExpectedAssessment] = None) -> None:
         """
-        Sets the expectedAssessment property value. The expectedAssessment property
+        Sets the expectedAssessment property value. 
         Args:
             value: Value to set for the expectedAssessment property.
         """
@@ -142,11 +139,11 @@ class ThreatAssessmentRequest(entity.Entity):
         """
         fields = {
             "category": lambda n : setattr(self, 'category', n.get_enum_value(threat_category.ThreatCategory)),
-            "content_type": lambda n : setattr(self, 'content_type', n.get_enum_value(threat_assessment_content_type.ThreatAssessmentContentType)),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "expected_assessment": lambda n : setattr(self, 'expected_assessment', n.get_enum_value(threat_expected_assessment.ThreatExpectedAssessment)),
-            "request_source": lambda n : setattr(self, 'request_source', n.get_enum_value(threat_assessment_request_source.ThreatAssessmentRequestSource)),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_enum_value(threat_assessment_content_type.ThreatAssessmentContentType)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "expectedAssessment": lambda n : setattr(self, 'expected_assessment', n.get_enum_value(threat_expected_assessment.ThreatExpectedAssessment)),
+            "requestSource": lambda n : setattr(self, 'request_source', n.get_enum_value(threat_assessment_request_source.ThreatAssessmentRequestSource)),
             "results": lambda n : setattr(self, 'results', n.get_collection_of_object_values(threat_assessment_result.ThreatAssessmentResult)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(threat_assessment_status.ThreatAssessmentStatus)),
         }

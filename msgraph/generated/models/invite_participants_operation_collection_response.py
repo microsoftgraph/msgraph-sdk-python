@@ -12,7 +12,6 @@ class InviteParticipantsOperationCollectionResponse(base_collection_pagination_c
         Instantiates a new InviteParticipantsOperationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[invite_participants_operation.InviteParticipantsOperation]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class InviteParticipantsOperationCollectionResponse(base_collection_pagination_c
     @property
     def value(self,) -> Optional[List[invite_participants_operation.InviteParticipantsOperation]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[invite_participants_operation.InviteParticipantsOperation]]
         """
         return self._value
@@ -61,7 +60,7 @@ class InviteParticipantsOperationCollectionResponse(base_collection_pagination_c
     @value.setter
     def value(self,value: Optional[List[invite_participants_operation.InviteParticipantsOperation]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

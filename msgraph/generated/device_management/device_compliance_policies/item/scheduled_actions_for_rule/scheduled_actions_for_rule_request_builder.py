@@ -66,7 +66,7 @@ class ScheduledActionsForRuleRequestBuilder():
         """
         Create new navigation property to scheduledActionsForRule for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule]
         """
@@ -105,7 +105,7 @@ class ScheduledActionsForRuleRequestBuilder():
         """
         Create new navigation property to scheduledActionsForRule for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

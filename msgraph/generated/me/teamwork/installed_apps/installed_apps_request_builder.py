@@ -66,7 +66,7 @@ class InstalledAppsRequestBuilder():
         """
         Install an app in the personal scope of the specified user.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]
         """
@@ -105,7 +105,7 @@ class InstalledAppsRequestBuilder():
         """
         Install an app in the personal scope of the specified user.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

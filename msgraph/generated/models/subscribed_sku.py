@@ -53,7 +53,6 @@ class SubscribedSku(entity.Entity):
         self._capability_status: Optional[str] = None
         # The number of licenses that have been assigned.
         self._consumed_units: Optional[int] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Information about the number and status of prepaid licenses.
         self._prepaid_units: Optional[license_units_detail.LicenseUnitsDetail] = None
@@ -99,13 +98,13 @@ class SubscribedSku(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "applies_to": lambda n : setattr(self, 'applies_to', n.get_str_value()),
-            "capability_status": lambda n : setattr(self, 'capability_status', n.get_str_value()),
-            "consumed_units": lambda n : setattr(self, 'consumed_units', n.get_int_value()),
-            "prepaid_units": lambda n : setattr(self, 'prepaid_units', n.get_object_value(license_units_detail.LicenseUnitsDetail)),
-            "service_plans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(service_plan_info.ServicePlanInfo)),
-            "sku_id": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
-            "sku_part_number": lambda n : setattr(self, 'sku_part_number', n.get_str_value()),
+            "appliesTo": lambda n : setattr(self, 'applies_to', n.get_str_value()),
+            "capabilityStatus": lambda n : setattr(self, 'capability_status', n.get_str_value()),
+            "consumedUnits": lambda n : setattr(self, 'consumed_units', n.get_int_value()),
+            "prepaidUnits": lambda n : setattr(self, 'prepaid_units', n.get_object_value(license_units_detail.LicenseUnitsDetail)),
+            "servicePlans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(service_plan_info.ServicePlanInfo)),
+            "skuId": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
+            "skuPartNumber": lambda n : setattr(self, 'sku_part_number', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

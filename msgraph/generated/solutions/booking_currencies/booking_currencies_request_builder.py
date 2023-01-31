@@ -66,7 +66,7 @@ class BookingCurrenciesRequestBuilder():
         """
         Create new navigation property to bookingCurrencies for solutions
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[booking_currency.BookingCurrency]
         """
@@ -105,7 +105,7 @@ class BookingCurrenciesRequestBuilder():
         """
         Create new navigation property to bookingCurrencies for solutions
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

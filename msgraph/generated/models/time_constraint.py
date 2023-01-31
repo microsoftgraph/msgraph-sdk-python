@@ -50,9 +50,7 @@ class TimeConstraint(AdditionalDataHolder, Parsable):
 
         # The nature of the activity, optional. The possible values are: work, personal, unrestricted, or unknown.
         self._activity_domain: Optional[activity_domain.ActivityDomain] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The timeSlots property
         self._time_slots: Optional[List[time_slot.TimeSlot]] = None
     
     @staticmethod
@@ -73,16 +71,16 @@ class TimeConstraint(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "activity_domain": lambda n : setattr(self, 'activity_domain', n.get_enum_value(activity_domain.ActivityDomain)),
+            "activityDomain": lambda n : setattr(self, 'activity_domain', n.get_enum_value(activity_domain.ActivityDomain)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "time_slots": lambda n : setattr(self, 'time_slots', n.get_collection_of_object_values(time_slot.TimeSlot)),
+            "timeSlots": lambda n : setattr(self, 'time_slots', n.get_collection_of_object_values(time_slot.TimeSlot)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -90,7 +88,7 @@ class TimeConstraint(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -112,7 +110,7 @@ class TimeConstraint(AdditionalDataHolder, Parsable):
     @property
     def time_slots(self,) -> Optional[List[time_slot.TimeSlot]]:
         """
-        Gets the timeSlots property value. The timeSlots property
+        Gets the timeSlots property value. 
         Returns: Optional[List[time_slot.TimeSlot]]
         """
         return self._time_slots
@@ -120,7 +118,7 @@ class TimeConstraint(AdditionalDataHolder, Parsable):
     @time_slots.setter
     def time_slots(self,value: Optional[List[time_slot.TimeSlot]] = None) -> None:
         """
-        Sets the timeSlots property value. The timeSlots property
+        Sets the timeSlots property value. 
         Args:
             value: Value to set for the timeSlots property.
         """

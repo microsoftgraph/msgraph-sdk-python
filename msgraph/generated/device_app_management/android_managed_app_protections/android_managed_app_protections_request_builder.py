@@ -66,7 +66,7 @@ class AndroidManagedAppProtectionsRequestBuilder():
         """
         Create new navigation property to androidManagedAppProtections for deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[android_managed_app_protection.AndroidManagedAppProtection]
         """
@@ -105,7 +105,7 @@ class AndroidManagedAppProtectionsRequestBuilder():
         """
         Create new navigation property to androidManagedAppProtections for deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

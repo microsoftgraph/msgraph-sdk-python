@@ -66,7 +66,7 @@ class ServicePrincipalRiskDetectionsRequestBuilder():
         """
         Create new navigation property to servicePrincipalRiskDetections for identityProtection
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[service_principal_risk_detection.ServicePrincipalRiskDetection]
         """
@@ -105,7 +105,7 @@ class ServicePrincipalRiskDetectionsRequestBuilder():
         """
         Create new navigation property to servicePrincipalRiskDetections for identityProtection
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -66,7 +66,7 @@ class MembersRequestBuilder():
         """
         Create an identity resource for a new member in an externalGroup.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[identity.Identity]
         """
@@ -105,7 +105,7 @@ class MembersRequestBuilder():
         """
         Create an identity resource for a new member in an externalGroup.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

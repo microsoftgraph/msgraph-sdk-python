@@ -82,7 +82,7 @@ class RubricRequestBuilder():
         """
         Update the navigation property rubric in education
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_rubric.EducationRubric]
         """
@@ -137,7 +137,7 @@ class RubricRequestBuilder():
         """
         Update the navigation property rubric in education
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

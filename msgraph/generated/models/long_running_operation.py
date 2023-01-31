@@ -17,7 +17,6 @@ class LongRunningOperation(entity.Entity):
         self._created_date_time: Optional[datetime] = None
         # The time of the last action in the operation. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._last_action_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # URI of the resource that the operation is performed on.
         self._resource_location: Optional[str] = None
@@ -61,11 +60,11 @@ class LongRunningOperation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "last_action_date_time": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
-            "resource_location": lambda n : setattr(self, 'resource_location', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "lastActionDateTime": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
+            "resourceLocation": lambda n : setattr(self, 'resource_location', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(long_running_operation_status.LongRunningOperationStatus)),
-            "status_detail": lambda n : setattr(self, 'status_detail', n.get_str_value()),
+            "statusDetail": lambda n : setattr(self, 'status_detail', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

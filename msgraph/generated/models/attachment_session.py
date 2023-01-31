@@ -12,19 +12,15 @@ class AttachmentSession(entity.Entity):
         Instantiates a new attachmentSession and sets the default values.
         """
         super().__init__()
-        # The content property
         self._content: Optional[bytes] = None
-        # The expirationDateTime property
         self._expiration_date_time: Optional[datetime] = None
-        # The nextExpectedRanges property
         self._next_expected_ranges: Optional[List[str]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @property
     def content(self,) -> Optional[bytes]:
         """
-        Gets the content property value. The content property
+        Gets the content property value. 
         Returns: Optional[bytes]
         """
         return self._content
@@ -32,7 +28,7 @@ class AttachmentSession(entity.Entity):
     @content.setter
     def content(self,value: Optional[bytes] = None) -> None:
         """
-        Sets the content property value. The content property
+        Sets the content property value. 
         Args:
             value: Value to set for the content property.
         """
@@ -53,7 +49,7 @@ class AttachmentSession(entity.Entity):
     @property
     def expiration_date_time(self,) -> Optional[datetime]:
         """
-        Gets the expirationDateTime property value. The expirationDateTime property
+        Gets the expirationDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._expiration_date_time
@@ -61,7 +57,7 @@ class AttachmentSession(entity.Entity):
     @expiration_date_time.setter
     def expiration_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the expirationDateTime property value. The expirationDateTime property
+        Sets the expirationDateTime property value. 
         Args:
             value: Value to set for the expirationDateTime property.
         """
@@ -74,8 +70,8 @@ class AttachmentSession(entity.Entity):
         """
         fields = {
             "content": lambda n : setattr(self, 'content', n.get_bytes_value()),
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "next_expected_ranges": lambda n : setattr(self, 'next_expected_ranges', n.get_collection_of_primitive_values(str)),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "nextExpectedRanges": lambda n : setattr(self, 'next_expected_ranges', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -84,7 +80,7 @@ class AttachmentSession(entity.Entity):
     @property
     def next_expected_ranges(self,) -> Optional[List[str]]:
         """
-        Gets the nextExpectedRanges property value. The nextExpectedRanges property
+        Gets the nextExpectedRanges property value. 
         Returns: Optional[List[str]]
         """
         return self._next_expected_ranges
@@ -92,7 +88,7 @@ class AttachmentSession(entity.Entity):
     @next_expected_ranges.setter
     def next_expected_ranges(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the nextExpectedRanges property value. The nextExpectedRanges property
+        Sets the nextExpectedRanges property value. 
         Args:
             value: Value to set for the nextExpectedRanges property.
         """

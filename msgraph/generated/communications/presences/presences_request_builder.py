@@ -66,7 +66,7 @@ class PresencesRequestBuilder():
         """
         Create new navigation property to presences for communications
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[presence.Presence]
         """
@@ -105,7 +105,7 @@ class PresencesRequestBuilder():
         """
         Create new navigation property to presences for communications
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

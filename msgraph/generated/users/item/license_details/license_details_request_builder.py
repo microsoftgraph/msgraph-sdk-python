@@ -66,7 +66,7 @@ class LicenseDetailsRequestBuilder():
         """
         Create new navigation property to licenseDetails for users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[license_details.LicenseDetails]
         """
@@ -105,7 +105,7 @@ class LicenseDetailsRequestBuilder():
         """
         Create new navigation property to licenseDetails for users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

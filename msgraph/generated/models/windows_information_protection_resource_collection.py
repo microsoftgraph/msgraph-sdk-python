@@ -33,7 +33,6 @@ class WindowsInformationProtectionResourceCollection(AdditionalDataHolder, Parsa
 
         # Display name
         self._display_name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Collection of resources
         self._resources: Optional[List[str]] = None
@@ -73,7 +72,7 @@ class WindowsInformationProtectionResourceCollection(AdditionalDataHolder, Parsa
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_primitive_values(str)),
         }
@@ -82,7 +81,7 @@ class WindowsInformationProtectionResourceCollection(AdditionalDataHolder, Parsa
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -90,7 +89,7 @@ class WindowsInformationProtectionResourceCollection(AdditionalDataHolder, Parsa
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

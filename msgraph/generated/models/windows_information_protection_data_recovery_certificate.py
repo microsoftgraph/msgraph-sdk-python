@@ -55,7 +55,6 @@ class WindowsInformationProtectionDataRecoveryCertificate(AdditionalDataHolder, 
         self._description: Optional[str] = None
         # Data recovery Certificate expiration datetime
         self._expiration_date_time: Optional[datetime] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Data recovery Certificate subject name
         self._subject_name: Optional[str] = None
@@ -114,16 +113,16 @@ class WindowsInformationProtectionDataRecoveryCertificate(AdditionalDataHolder, 
         fields = {
             "certificate": lambda n : setattr(self, 'certificate', n.get_bytes_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "subject_name": lambda n : setattr(self, 'subject_name', n.get_str_value()),
+            "subjectName": lambda n : setattr(self, 'subject_name', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -131,7 +130,7 @@ class WindowsInformationProtectionDataRecoveryCertificate(AdditionalDataHolder, 
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -14,13 +14,13 @@ domain_name_references_request_builder = lazy_import('msgraph.generated.domains.
 directory_object_item_request_builder = lazy_import('msgraph.generated.domains.item.domain_name_references.item.directory_object_item_request_builder')
 federation_configuration_request_builder = lazy_import('msgraph.generated.domains.item.federation_configuration.federation_configuration_request_builder')
 internal_domain_federation_item_request_builder = lazy_import('msgraph.generated.domains.item.federation_configuration.item.internal_domain_federation_item_request_builder')
-force_delete_request_builder = lazy_import('msgraph.generated.domains.item.force_delete.force_delete_request_builder')
-promote_request_builder = lazy_import('msgraph.generated.domains.item.promote.promote_request_builder')
+force_delete_request_builder = lazy_import('msgraph.generated.domains.item.microsoft_graph_force_delete.force_delete_request_builder')
+promote_request_builder = lazy_import('msgraph.generated.domains.item.microsoft_graph_promote.promote_request_builder')
+verify_request_builder = lazy_import('msgraph.generated.domains.item.microsoft_graph_verify.verify_request_builder')
 service_configuration_records_request_builder = lazy_import('msgraph.generated.domains.item.service_configuration_records.service_configuration_records_request_builder')
 domain_dns_record_item_request_builder = lazy_import('msgraph.generated.domains.item.service_configuration_records.item.domain_dns_record_item_request_builder')
 verification_dns_records_request_builder = lazy_import('msgraph.generated.domains.item.verification_dns_records.verification_dns_records_request_builder')
 domain_dns_record_item_request_builder = lazy_import('msgraph.generated.domains.item.verification_dns_records.item.domain_dns_record_item_request_builder')
-verify_request_builder = lazy_import('msgraph.generated.domains.item.verify.verify_request_builder')
 domain = lazy_import('msgraph.generated.models.domain')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -43,18 +43,25 @@ class DomainItemRequestBuilder():
         return federation_configuration_request_builder.FederationConfigurationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def force_delete(self) -> force_delete_request_builder.ForceDeleteRequestBuilder:
+    def microsoft_graph_force_delete(self) -> force_delete_request_builder.ForceDeleteRequestBuilder:
         """
         Provides operations to call the forceDelete method.
         """
         return force_delete_request_builder.ForceDeleteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def promote(self) -> promote_request_builder.PromoteRequestBuilder:
+    def microsoft_graph_promote(self) -> promote_request_builder.PromoteRequestBuilder:
         """
         Provides operations to call the promote method.
         """
         return promote_request_builder.PromoteRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_verify(self) -> verify_request_builder.VerifyRequestBuilder:
+        """
+        Provides operations to call the verify method.
+        """
+        return verify_request_builder.VerifyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def service_configuration_records(self) -> service_configuration_records_request_builder.ServiceConfigurationRecordsRequestBuilder:
@@ -70,17 +77,11 @@ class DomainItemRequestBuilder():
         """
         return verification_dns_records_request_builder.VerificationDnsRecordsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    @property
-    def verify(self) -> verify_request_builder.VerifyRequestBuilder:
-        """
-        Provides operations to call the verify method.
-        """
-        return verify_request_builder.VerifyRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, domain_id: Optional[str] = None) -> None:
         """
         Instantiates a new DomainItemRequestBuilder and sets the default values.
         Args:
+            domainId: key: id of domain
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -92,6 +93,7 @@ class DomainItemRequestBuilder():
         self.url_template: str = "{+baseurl}/domains/{domain%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["domain%2Did"] = domainId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -160,7 +162,7 @@ class DomainItemRequestBuilder():
         """
         Update the properties of domain object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[domain.Domain]
         """
@@ -228,7 +230,7 @@ class DomainItemRequestBuilder():
         """
         Update the properties of domain object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

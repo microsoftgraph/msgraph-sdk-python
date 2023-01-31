@@ -66,7 +66,7 @@ class CalendarsRequestBuilder():
         """
         Create a new calendar for a user.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[calendar.Calendar]
         """
@@ -105,7 +105,7 @@ class CalendarsRequestBuilder():
         """
         Create a new calendar for a user.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

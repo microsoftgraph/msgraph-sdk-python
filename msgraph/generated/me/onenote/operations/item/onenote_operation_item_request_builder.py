@@ -17,10 +17,11 @@ class OnenoteOperationItemRequestBuilder():
     """
     Provides operations to manage the operations property of the microsoft.graph.onenote entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, onenote_operation_id: Optional[str] = None) -> None:
         """
         Instantiates a new OnenoteOperationItemRequestBuilder and sets the default values.
         Args:
+            onenoteOperationId: key: id of onenoteOperation
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class OnenoteOperationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/onenote/operations/{onenoteOperation%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["onenoteOperation%2Did"] = onenoteOperationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -74,7 +76,7 @@ class OnenoteOperationItemRequestBuilder():
         """
         Update the navigation property operations in me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[onenote_operation.OnenoteOperation]
         """
@@ -129,7 +131,7 @@ class OnenoteOperationItemRequestBuilder():
         """
         Update the navigation property operations in me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

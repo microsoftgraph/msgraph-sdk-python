@@ -17,12 +17,13 @@ class TokenIssuancePolicyItemRequestBuilder():
         """
         return ref_request_builder.RefRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, token_issuance_policy_id: Optional[str] = None) -> None:
         """
         Instantiates a new TokenIssuancePolicyItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            tokenIssuancePolicyId: key: id of tokenIssuancePolicy
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -32,6 +33,7 @@ class TokenIssuancePolicyItemRequestBuilder():
         self.url_template: str = "{+baseurl}/applications/{application%2Did}/tokenIssuancePolicies/{tokenIssuancePolicy%2Did}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["tokenIssuancePolicy%2Did"] = tokenIssuancePolicyId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

@@ -118,7 +118,7 @@ class AccessReviewsRequestBuilder():
         """
         Update the navigation property accessReviews in identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[access_review_set.AccessReviewSet]
         """
@@ -173,7 +173,7 @@ class AccessReviewsRequestBuilder():
         """
         Update the navigation property accessReviews in identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

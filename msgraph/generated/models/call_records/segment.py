@@ -59,7 +59,6 @@ class Segment(entity.Entity):
         self._failure_info: Optional[failure_info.FailureInfo] = None
         # Media associated with this segment.
         self._media: Optional[List[media.Media]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # UTC time when the segment started. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         self._start_date_time: Optional[datetime] = None
@@ -118,10 +117,10 @@ class Segment(entity.Entity):
         fields = {
             "callee": lambda n : setattr(self, 'callee', n.get_object_value(endpoint.Endpoint)),
             "caller": lambda n : setattr(self, 'caller', n.get_object_value(endpoint.Endpoint)),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "failure_info": lambda n : setattr(self, 'failure_info', n.get_object_value(failure_info.FailureInfo)),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "failureInfo": lambda n : setattr(self, 'failure_info', n.get_object_value(failure_info.FailureInfo)),
             "media": lambda n : setattr(self, 'media', n.get_collection_of_object_values(media.Media)),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

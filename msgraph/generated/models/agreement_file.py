@@ -14,7 +14,6 @@ class AgreementFile(agreement_file_properties.AgreementFileProperties):
         super().__init__()
         # The localized version of the terms of use agreement files attached to the agreement.
         self._localizations: Optional[List[agreement_file_localization.AgreementFileLocalization]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

@@ -66,7 +66,7 @@ class DirectoryAuditsRequestBuilder():
         """
         Create new navigation property to directoryAudits for auditLogs
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[directory_audit.DirectoryAudit]
         """
@@ -105,7 +105,7 @@ class DirectoryAuditsRequestBuilder():
         """
         Create new navigation property to directoryAudits for auditLogs
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -54,8 +54,8 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "feature_settings": lambda n : setattr(self, 'feature_settings', n.get_object_value(microsoft_authenticator_feature_settings.MicrosoftAuthenticatorFeatureSettings)),
-            "include_targets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget)),
+            "featureSettings": lambda n : setattr(self, 'feature_settings', n.get_object_value(microsoft_authenticator_feature_settings.MicrosoftAuthenticatorFeatureSettings)),
+            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

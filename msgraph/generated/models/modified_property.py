@@ -32,7 +32,6 @@ class ModifiedProperty(AdditionalDataHolder, Parsable):
         self._display_name: Optional[str] = None
         # Indicates the updated value for the propery.
         self._new_value: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Indicates the previous value (before the update) for the property.
         self._old_value: Optional[str] = None
@@ -72,10 +71,10 @@ class ModifiedProperty(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "new_value": lambda n : setattr(self, 'new_value', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "newValue": lambda n : setattr(self, 'new_value', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "old_value": lambda n : setattr(self, 'old_value', n.get_str_value()),
+            "oldValue": lambda n : setattr(self, 'old_value', n.get_str_value()),
         }
         return fields
     
@@ -99,7 +98,7 @@ class ModifiedProperty(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -107,7 +106,7 @@ class ModifiedProperty(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

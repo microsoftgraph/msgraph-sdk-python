@@ -88,7 +88,6 @@ class PermissionGrantConditionSet(entity.Entity):
         self._client_applications_from_verified_publisher_only: Optional[bool] = None
         # A list of Azure Active Directory tenant IDs in which the client application is registered, or a list with the single value all to match with client apps registered in any tenant. Default is the single value all.
         self._client_application_tenant_ids: Optional[List[str]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The permission classification for the permission being granted, or all to match with any permission classification (including permissions which are not classified). Default is all.
         self._permission_classification: Optional[str] = None
@@ -117,14 +116,14 @@ class PermissionGrantConditionSet(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "client_application_ids": lambda n : setattr(self, 'client_application_ids', n.get_collection_of_primitive_values(str)),
-            "client_application_publisher_ids": lambda n : setattr(self, 'client_application_publisher_ids', n.get_collection_of_primitive_values(str)),
-            "client_applications_from_verified_publisher_only": lambda n : setattr(self, 'client_applications_from_verified_publisher_only', n.get_bool_value()),
-            "client_application_tenant_ids": lambda n : setattr(self, 'client_application_tenant_ids', n.get_collection_of_primitive_values(str)),
-            "permission_classification": lambda n : setattr(self, 'permission_classification', n.get_str_value()),
+            "clientApplicationIds": lambda n : setattr(self, 'client_application_ids', n.get_collection_of_primitive_values(str)),
+            "clientApplicationPublisherIds": lambda n : setattr(self, 'client_application_publisher_ids', n.get_collection_of_primitive_values(str)),
+            "clientApplicationsFromVerifiedPublisherOnly": lambda n : setattr(self, 'client_applications_from_verified_publisher_only', n.get_bool_value()),
+            "clientApplicationTenantIds": lambda n : setattr(self, 'client_application_tenant_ids', n.get_collection_of_primitive_values(str)),
+            "permissionClassification": lambda n : setattr(self, 'permission_classification', n.get_str_value()),
             "permissions": lambda n : setattr(self, 'permissions', n.get_collection_of_primitive_values(str)),
-            "permission_type": lambda n : setattr(self, 'permission_type', n.get_enum_value(permission_type.PermissionType)),
-            "resource_application": lambda n : setattr(self, 'resource_application', n.get_str_value()),
+            "permissionType": lambda n : setattr(self, 'permission_type', n.get_enum_value(permission_type.PermissionType)),
+            "resourceApplication": lambda n : setattr(self, 'resource_application', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

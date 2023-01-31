@@ -66,7 +66,7 @@ class AttendanceRecordsRequestBuilder():
         """
         Create new navigation property to attendanceRecords for me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[attendance_record.AttendanceRecord]
         """
@@ -105,7 +105,7 @@ class AttendanceRecordsRequestBuilder():
         """
         Create new navigation property to attendanceRecords for me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -51,7 +51,6 @@ class IdentityProvider(entity.Entity):
         self._client_secret: Optional[str] = None
         # The display name of the identity provider. Not nullable.
         self._name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The identity provider type is a required field. For B2B scenario: Google, Facebook. For B2C scenario: Microsoft, Google, Amazon, LinkedIn, Facebook, GitHub, Twitter, Weibo, QQ, WeChat, OpenIDConnect. Not nullable.
         self._type: Optional[str] = None
@@ -74,8 +73,8 @@ class IdentityProvider(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "client_id": lambda n : setattr(self, 'client_id', n.get_str_value()),
-            "client_secret": lambda n : setattr(self, 'client_secret', n.get_str_value()),
+            "clientId": lambda n : setattr(self, 'client_id', n.get_str_value()),
+            "clientSecret": lambda n : setattr(self, 'client_secret', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
         }

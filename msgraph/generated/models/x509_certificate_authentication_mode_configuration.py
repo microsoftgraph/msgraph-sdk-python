@@ -31,7 +31,6 @@ class X509CertificateAuthenticationModeConfiguration(AdditionalDataHolder, Parsa
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Rules are configured in addition to the authentication mode to bind a specific x509CertificateRuleType to an x509CertificateAuthenticationMode. For example, bind the policyOID with identifier 1.32.132.343 to x509CertificateMultiFactor authentication mode.
         self._rules: Optional[List[x509_certificate_rule.X509CertificateRule]] = None
@@ -58,14 +57,14 @@ class X509CertificateAuthenticationModeConfiguration(AdditionalDataHolder, Parsa
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "rules": lambda n : setattr(self, 'rules', n.get_collection_of_object_values(x509_certificate_rule.X509CertificateRule)),
-            "x509_certificate_authentication_default_mode": lambda n : setattr(self, 'x509_certificate_authentication_default_mode', n.get_enum_value(x509_certificate_authentication_mode.X509CertificateAuthenticationMode)),
+            "x509CertificateAuthenticationDefaultMode": lambda n : setattr(self, 'x509_certificate_authentication_default_mode', n.get_enum_value(x509_certificate_authentication_mode.X509CertificateAuthenticationMode)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -73,7 +72,7 @@ class X509CertificateAuthenticationModeConfiguration(AdditionalDataHolder, Parsa
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

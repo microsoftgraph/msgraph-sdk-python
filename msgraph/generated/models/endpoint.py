@@ -9,7 +9,7 @@ class Endpoint(directory_object.DirectoryObject):
     @property
     def capability(self,) -> Optional[str]:
         """
-        Gets the capability property value. The capability property
+        Gets the capability property value. 
         Returns: Optional[str]
         """
         return self._capability
@@ -17,7 +17,7 @@ class Endpoint(directory_object.DirectoryObject):
     @capability.setter
     def capability(self,value: Optional[str] = None) -> None:
         """
-        Sets the capability property value. The capability property
+        Sets the capability property value. 
         Args:
             value: Value to set for the capability property.
         """
@@ -29,15 +29,10 @@ class Endpoint(directory_object.DirectoryObject):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.endpoint"
-        # The capability property
         self._capability: Optional[str] = None
-        # The providerId property
         self._provider_id: Optional[str] = None
-        # The providerName property
         self._provider_name: Optional[str] = None
-        # The providerResourceId property
         self._provider_resource_id: Optional[str] = None
-        # The uri property
         self._uri: Optional[str] = None
     
     @staticmethod
@@ -59,9 +54,9 @@ class Endpoint(directory_object.DirectoryObject):
         """
         fields = {
             "capability": lambda n : setattr(self, 'capability', n.get_str_value()),
-            "provider_id": lambda n : setattr(self, 'provider_id', n.get_str_value()),
-            "provider_name": lambda n : setattr(self, 'provider_name', n.get_str_value()),
-            "provider_resource_id": lambda n : setattr(self, 'provider_resource_id', n.get_str_value()),
+            "providerId": lambda n : setattr(self, 'provider_id', n.get_str_value()),
+            "providerName": lambda n : setattr(self, 'provider_name', n.get_str_value()),
+            "providerResourceId": lambda n : setattr(self, 'provider_resource_id', n.get_str_value()),
             "uri": lambda n : setattr(self, 'uri', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -71,7 +66,7 @@ class Endpoint(directory_object.DirectoryObject):
     @property
     def provider_id(self,) -> Optional[str]:
         """
-        Gets the providerId property value. The providerId property
+        Gets the providerId property value. 
         Returns: Optional[str]
         """
         return self._provider_id
@@ -79,7 +74,7 @@ class Endpoint(directory_object.DirectoryObject):
     @provider_id.setter
     def provider_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the providerId property value. The providerId property
+        Sets the providerId property value. 
         Args:
             value: Value to set for the providerId property.
         """
@@ -88,7 +83,7 @@ class Endpoint(directory_object.DirectoryObject):
     @property
     def provider_name(self,) -> Optional[str]:
         """
-        Gets the providerName property value. The providerName property
+        Gets the providerName property value. 
         Returns: Optional[str]
         """
         return self._provider_name
@@ -96,7 +91,7 @@ class Endpoint(directory_object.DirectoryObject):
     @provider_name.setter
     def provider_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the providerName property value. The providerName property
+        Sets the providerName property value. 
         Args:
             value: Value to set for the providerName property.
         """
@@ -105,7 +100,7 @@ class Endpoint(directory_object.DirectoryObject):
     @property
     def provider_resource_id(self,) -> Optional[str]:
         """
-        Gets the providerResourceId property value. The providerResourceId property
+        Gets the providerResourceId property value. 
         Returns: Optional[str]
         """
         return self._provider_resource_id
@@ -113,7 +108,7 @@ class Endpoint(directory_object.DirectoryObject):
     @provider_resource_id.setter
     def provider_resource_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the providerResourceId property value. The providerResourceId property
+        Sets the providerResourceId property value. 
         Args:
             value: Value to set for the providerResourceId property.
         """
@@ -137,7 +132,7 @@ class Endpoint(directory_object.DirectoryObject):
     @property
     def uri(self,) -> Optional[str]:
         """
-        Gets the uri property value. The uri property
+        Gets the uri property value. 
         Returns: Optional[str]
         """
         return self._uri
@@ -145,7 +140,7 @@ class Endpoint(directory_object.DirectoryObject):
     @uri.setter
     def uri(self,value: Optional[str] = None) -> None:
         """
-        Sets the uri property value. The uri property
+        Sets the uri property value. 
         Args:
             value: Value to set for the uri property.
         """

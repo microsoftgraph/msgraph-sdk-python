@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.categories.count.count_request_builder')
-delta_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.categories.delta.delta_request_builder')
+delta_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.categories.microsoft_graph_delta.delta_request_builder')
 ref_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.categories.ref.ref_request_builder')
 education_category = lazy_import('msgraph.generated.models.education_category')
 education_category_collection_response = lazy_import('msgraph.generated.models.education_category_collection_response')
@@ -27,6 +27,13 @@ class CategoriesRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_delta(self) -> delta_request_builder.DeltaRequestBuilder:
+        """
+        Provides operations to call the delta method.
+        """
+        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def ref(self) -> ref_request_builder.RefRequestBuilder:
@@ -53,13 +60,6 @@ class CategoriesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def delta(self,) -> delta_request_builder.DeltaRequestBuilder:
-        """
-        Provides operations to call the delta method.
-        Returns: delta_request_builder.DeltaRequestBuilder
-        """
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
-    
     async def get(self,request_configuration: Optional[CategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[education_category_collection_response.EducationCategoryCollectionResponse]:
         """
         List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
@@ -82,7 +82,7 @@ class CategoriesRequestBuilder():
         """
         Create new navigation property to categories for education
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_category.EducationCategory]
         """
@@ -121,7 +121,7 @@ class CategoriesRequestBuilder():
         """
         Create new navigation property to categories for education
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

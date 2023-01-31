@@ -12,7 +12,6 @@ class ManagedAppPolicyDeploymentSummaryPerAppCollectionResponse(base_collection_
         Instantiates a new ManagedAppPolicyDeploymentSummaryPerAppCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[managed_app_policy_deployment_summary_per_app.ManagedAppPolicyDeploymentSummaryPerApp]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ManagedAppPolicyDeploymentSummaryPerAppCollectionResponse(base_collection_
     @property
     def value(self,) -> Optional[List[managed_app_policy_deployment_summary_per_app.ManagedAppPolicyDeploymentSummaryPerApp]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[managed_app_policy_deployment_summary_per_app.ManagedAppPolicyDeploymentSummaryPerApp]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ManagedAppPolicyDeploymentSummaryPerAppCollectionResponse(base_collection_
     @value.setter
     def value(self,value: Optional[List[managed_app_policy_deployment_summary_per_app.ManagedAppPolicyDeploymentSummaryPerApp]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

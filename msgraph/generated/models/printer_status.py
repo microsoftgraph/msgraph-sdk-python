@@ -35,9 +35,7 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
         self._description: Optional[str] = None
         # The list of details describing why the printer is in the current state. Valid values are described in the following table. Read-only.
         self._details: Optional[List[printer_processing_state_detail.PrinterProcessingStateDetail]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The state property
         self._state: Optional[printer_processing_state.PrinterProcessingState] = None
     
     @staticmethod
@@ -102,7 +100,7 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -110,7 +108,7 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -133,7 +131,7 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
     @property
     def state(self,) -> Optional[printer_processing_state.PrinterProcessingState]:
         """
-        Gets the state property value. The state property
+        Gets the state property value. 
         Returns: Optional[printer_processing_state.PrinterProcessingState]
         """
         return self._state
@@ -141,7 +139,7 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
     @state.setter
     def state(self,value: Optional[printer_processing_state.PrinterProcessingState] = None) -> None:
         """
-        Sets the state property value. The state property
+        Sets the state property value. 
         Args:
             value: Value to set for the state property.
         """

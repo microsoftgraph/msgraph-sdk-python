@@ -12,7 +12,6 @@ class SettingStateDeviceSummaryCollectionResponse(base_collection_pagination_cou
         Instantiates a new SettingStateDeviceSummaryCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[setting_state_device_summary.SettingStateDeviceSummary]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class SettingStateDeviceSummaryCollectionResponse(base_collection_pagination_cou
     @property
     def value(self,) -> Optional[List[setting_state_device_summary.SettingStateDeviceSummary]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[setting_state_device_summary.SettingStateDeviceSummary]]
         """
         return self._value
@@ -61,7 +60,7 @@ class SettingStateDeviceSummaryCollectionResponse(base_collection_pagination_cou
     @value.setter
     def value(self,value: Optional[List[setting_state_device_summary.SettingStateDeviceSummary]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

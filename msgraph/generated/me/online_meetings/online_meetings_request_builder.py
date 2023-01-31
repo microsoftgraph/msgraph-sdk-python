@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.me.online_meetings.count.count_request_builder')
-create_or_get_request_builder = lazy_import('msgraph.generated.me.online_meetings.create_or_get.create_or_get_request_builder')
+create_or_get_request_builder = lazy_import('msgraph.generated.me.online_meetings.microsoft_graph_create_or_get.create_or_get_request_builder')
 online_meeting = lazy_import('msgraph.generated.models.online_meeting')
 online_meeting_collection_response = lazy_import('msgraph.generated.models.online_meeting_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -28,7 +28,7 @@ class OnlineMeetingsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def create_or_get(self) -> create_or_get_request_builder.CreateOrGetRequestBuilder:
+    def microsoft_graph_create_or_get(self) -> create_or_get_request_builder.CreateOrGetRequestBuilder:
         """
         Provides operations to call the createOrGet method.
         """
@@ -74,7 +74,7 @@ class OnlineMeetingsRequestBuilder():
         """
         Create an online meeting on behalf of a user.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[online_meeting.OnlineMeeting]
         """
@@ -113,7 +113,7 @@ class OnlineMeetingsRequestBuilder():
         """
         Create an online meeting on behalf of a user.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

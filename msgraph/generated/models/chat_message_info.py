@@ -43,9 +43,7 @@ class ChatMessageInfo(entity.Entity):
         self._from_: Optional[chat_message_from_identity_set.ChatMessageFromIdentitySet] = None
         # If set to true, the original message has been deleted.
         self._is_deleted: Optional[bool] = None
-        # The messageType property
         self._message_type: Optional[chat_message_type.ChatMessageType] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @property
@@ -118,11 +116,11 @@ class ChatMessageInfo(entity.Entity):
         """
         fields = {
             "body": lambda n : setattr(self, 'body', n.get_object_value(item_body.ItemBody)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "event_detail": lambda n : setattr(self, 'event_detail', n.get_object_value(event_message_detail.EventMessageDetail)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "eventDetail": lambda n : setattr(self, 'event_detail', n.get_object_value(event_message_detail.EventMessageDetail)),
             "from": lambda n : setattr(self, 'from_', n.get_object_value(chat_message_from_identity_set.ChatMessageFromIdentitySet)),
-            "is_deleted": lambda n : setattr(self, 'is_deleted', n.get_bool_value()),
-            "message_type": lambda n : setattr(self, 'message_type', n.get_enum_value(chat_message_type.ChatMessageType)),
+            "isDeleted": lambda n : setattr(self, 'is_deleted', n.get_bool_value()),
+            "messageType": lambda n : setattr(self, 'message_type', n.get_enum_value(chat_message_type.ChatMessageType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -148,7 +146,7 @@ class ChatMessageInfo(entity.Entity):
     @property
     def message_type(self,) -> Optional[chat_message_type.ChatMessageType]:
         """
-        Gets the messageType property value. The messageType property
+        Gets the messageType property value. 
         Returns: Optional[chat_message_type.ChatMessageType]
         """
         return self._message_type
@@ -156,7 +154,7 @@ class ChatMessageInfo(entity.Entity):
     @message_type.setter
     def message_type(self,value: Optional[chat_message_type.ChatMessageType] = None) -> None:
         """
-        Sets the messageType property value. The messageType property
+        Sets the messageType property value. 
         Args:
             value: Value to set for the messageType property.
         """

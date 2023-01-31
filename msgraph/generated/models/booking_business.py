@@ -128,7 +128,6 @@ class BookingBusiness(entity.Entity):
         self._is_published: Optional[bool] = None
         # The language of the self-service booking page.
         self._language_tag: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The telephone number for the business. The phone property, together with address and webSiteUrl, appear in the footer of a business scheduling page.
         self._phone: Optional[str] = None
@@ -248,22 +247,22 @@ class BookingBusiness(entity.Entity):
         fields = {
             "address": lambda n : setattr(self, 'address', n.get_object_value(physical_address.PhysicalAddress)),
             "appointments": lambda n : setattr(self, 'appointments', n.get_collection_of_object_values(booking_appointment.BookingAppointment)),
-            "business_hours": lambda n : setattr(self, 'business_hours', n.get_collection_of_object_values(booking_work_hours.BookingWorkHours)),
-            "business_type": lambda n : setattr(self, 'business_type', n.get_str_value()),
-            "calendar_view": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(booking_appointment.BookingAppointment)),
+            "businessHours": lambda n : setattr(self, 'business_hours', n.get_collection_of_object_values(booking_work_hours.BookingWorkHours)),
+            "businessType": lambda n : setattr(self, 'business_type', n.get_str_value()),
+            "calendarView": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(booking_appointment.BookingAppointment)),
             "customers": lambda n : setattr(self, 'customers', n.get_collection_of_object_values(booking_customer_base.BookingCustomerBase)),
-            "custom_questions": lambda n : setattr(self, 'custom_questions', n.get_collection_of_object_values(booking_custom_question.BookingCustomQuestion)),
-            "default_currency_iso": lambda n : setattr(self, 'default_currency_iso', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "customQuestions": lambda n : setattr(self, 'custom_questions', n.get_collection_of_object_values(booking_custom_question.BookingCustomQuestion)),
+            "defaultCurrencyIso": lambda n : setattr(self, 'default_currency_iso', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "is_published": lambda n : setattr(self, 'is_published', n.get_bool_value()),
-            "language_tag": lambda n : setattr(self, 'language_tag', n.get_str_value()),
+            "isPublished": lambda n : setattr(self, 'is_published', n.get_bool_value()),
+            "languageTag": lambda n : setattr(self, 'language_tag', n.get_str_value()),
             "phone": lambda n : setattr(self, 'phone', n.get_str_value()),
-            "public_url": lambda n : setattr(self, 'public_url', n.get_str_value()),
-            "scheduling_policy": lambda n : setattr(self, 'scheduling_policy', n.get_object_value(booking_scheduling_policy.BookingSchedulingPolicy)),
+            "publicUrl": lambda n : setattr(self, 'public_url', n.get_str_value()),
+            "schedulingPolicy": lambda n : setattr(self, 'scheduling_policy', n.get_object_value(booking_scheduling_policy.BookingSchedulingPolicy)),
             "services": lambda n : setattr(self, 'services', n.get_collection_of_object_values(booking_service.BookingService)),
-            "staff_members": lambda n : setattr(self, 'staff_members', n.get_collection_of_object_values(booking_staff_member_base.BookingStaffMemberBase)),
-            "web_site_url": lambda n : setattr(self, 'web_site_url', n.get_str_value()),
+            "staffMembers": lambda n : setattr(self, 'staff_members', n.get_collection_of_object_values(booking_staff_member_base.BookingStaffMemberBase)),
+            "webSiteUrl": lambda n : setattr(self, 'web_site_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -34,7 +34,6 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
 
         # When the access should expire.
         self._expiration: Optional[expiration_pattern.ExpirationPattern] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # For recurring access reviews.  Not used in access requests.
         self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
@@ -79,14 +78,14 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
             "expiration": lambda n : setattr(self, 'expiration', n.get_object_value(expiration_pattern.ExpirationPattern)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(patterned_recurrence.PatternedRecurrence)),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -94,7 +93,7 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

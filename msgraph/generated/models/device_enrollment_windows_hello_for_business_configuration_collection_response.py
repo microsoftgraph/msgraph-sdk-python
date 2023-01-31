@@ -12,7 +12,6 @@ class DeviceEnrollmentWindowsHelloForBusinessConfigurationCollectionResponse(bas
         Instantiates a new DeviceEnrollmentWindowsHelloForBusinessConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[device_enrollment_windows_hello_for_business_configuration.DeviceEnrollmentWindowsHelloForBusinessConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfigurationCollectionResponse(bas
     @property
     def value(self,) -> Optional[List[device_enrollment_windows_hello_for_business_configuration.DeviceEnrollmentWindowsHelloForBusinessConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[device_enrollment_windows_hello_for_business_configuration.DeviceEnrollmentWindowsHelloForBusinessConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfigurationCollectionResponse(bas
     @value.setter
     def value(self,value: Optional[List[device_enrollment_windows_hello_for_business_configuration.DeviceEnrollmentWindowsHelloForBusinessConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

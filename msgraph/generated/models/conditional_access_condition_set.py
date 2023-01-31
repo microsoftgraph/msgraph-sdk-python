@@ -98,7 +98,6 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         self._devices: Optional[conditional_access_devices.ConditionalAccessDevices] = None
         # Locations included in and excluded from the policy.
         self._locations: Optional[conditional_access_locations.ConditionalAccessLocations] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Platforms included in and excluded from the policy.
         self._platforms: Optional[conditional_access_platforms.ConditionalAccessPlatforms] = None
@@ -147,15 +146,15 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         """
         fields = {
             "applications": lambda n : setattr(self, 'applications', n.get_object_value(conditional_access_applications.ConditionalAccessApplications)),
-            "client_applications": lambda n : setattr(self, 'client_applications', n.get_object_value(conditional_access_client_applications.ConditionalAccessClientApplications)),
-            "client_app_types": lambda n : setattr(self, 'client_app_types', n.get_collection_of_enum_values(conditional_access_client_app.ConditionalAccessClientApp)),
+            "clientApplications": lambda n : setattr(self, 'client_applications', n.get_object_value(conditional_access_client_applications.ConditionalAccessClientApplications)),
+            "clientAppTypes": lambda n : setattr(self, 'client_app_types', n.get_collection_of_enum_values(conditional_access_client_app.ConditionalAccessClientApp)),
             "devices": lambda n : setattr(self, 'devices', n.get_object_value(conditional_access_devices.ConditionalAccessDevices)),
             "locations": lambda n : setattr(self, 'locations', n.get_object_value(conditional_access_locations.ConditionalAccessLocations)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "platforms": lambda n : setattr(self, 'platforms', n.get_object_value(conditional_access_platforms.ConditionalAccessPlatforms)),
-            "service_principal_risk_levels": lambda n : setattr(self, 'service_principal_risk_levels', n.get_collection_of_enum_values(risk_level.RiskLevel)),
-            "sign_in_risk_levels": lambda n : setattr(self, 'sign_in_risk_levels', n.get_collection_of_enum_values(risk_level.RiskLevel)),
-            "user_risk_levels": lambda n : setattr(self, 'user_risk_levels', n.get_collection_of_enum_values(risk_level.RiskLevel)),
+            "servicePrincipalRiskLevels": lambda n : setattr(self, 'service_principal_risk_levels', n.get_collection_of_enum_values(risk_level.RiskLevel)),
+            "signInRiskLevels": lambda n : setattr(self, 'sign_in_risk_levels', n.get_collection_of_enum_values(risk_level.RiskLevel)),
+            "userRiskLevels": lambda n : setattr(self, 'user_risk_levels', n.get_collection_of_enum_values(risk_level.RiskLevel)),
             "users": lambda n : setattr(self, 'users', n.get_object_value(conditional_access_users.ConditionalAccessUsers)),
         }
         return fields
@@ -180,7 +179,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -188,7 +187,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

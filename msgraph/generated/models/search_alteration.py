@@ -87,7 +87,6 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
         self._altered_query_string: Optional[str] = None
         # Represents changed segments related to an original user query.
         self._altered_query_tokens: Optional[List[altered_query_token.AlteredQueryToken]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -108,9 +107,9 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "altered_highlighted_query_string": lambda n : setattr(self, 'altered_highlighted_query_string', n.get_str_value()),
-            "altered_query_string": lambda n : setattr(self, 'altered_query_string', n.get_str_value()),
-            "altered_query_tokens": lambda n : setattr(self, 'altered_query_tokens', n.get_collection_of_object_values(altered_query_token.AlteredQueryToken)),
+            "alteredHighlightedQueryString": lambda n : setattr(self, 'altered_highlighted_query_string', n.get_str_value()),
+            "alteredQueryString": lambda n : setattr(self, 'altered_query_string', n.get_str_value()),
+            "alteredQueryTokens": lambda n : setattr(self, 'altered_query_tokens', n.get_collection_of_object_values(altered_query_token.AlteredQueryToken)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -118,7 +117,7 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -126,7 +125,7 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -30,9 +30,7 @@ class OnenotePagePreviewLinks(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The previewImageUrl property
         self._preview_image_url: Optional[external_link.ExternalLink] = None
     
     @staticmethod
@@ -54,14 +52,14 @@ class OnenotePagePreviewLinks(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "preview_image_url": lambda n : setattr(self, 'preview_image_url', n.get_object_value(external_link.ExternalLink)),
+            "previewImageUrl": lambda n : setattr(self, 'preview_image_url', n.get_object_value(external_link.ExternalLink)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -69,7 +67,7 @@ class OnenotePagePreviewLinks(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -78,7 +76,7 @@ class OnenotePagePreviewLinks(AdditionalDataHolder, Parsable):
     @property
     def preview_image_url(self,) -> Optional[external_link.ExternalLink]:
         """
-        Gets the previewImageUrl property value. The previewImageUrl property
+        Gets the previewImageUrl property value. 
         Returns: Optional[external_link.ExternalLink]
         """
         return self._preview_image_url
@@ -86,7 +84,7 @@ class OnenotePagePreviewLinks(AdditionalDataHolder, Parsable):
     @preview_image_url.setter
     def preview_image_url(self,value: Optional[external_link.ExternalLink] = None) -> None:
         """
-        Sets the previewImageUrl property value. The previewImageUrl property
+        Sets the previewImageUrl property value. 
         Args:
             value: Value to set for the previewImageUrl property.
         """

@@ -12,19 +12,15 @@ class UserSettings(entity.Entity):
         Instantiates a new userSettings and sets the default values.
         """
         super().__init__()
-        # The contributionToContentDiscoveryAsOrganizationDisabled property
         self._contribution_to_content_discovery_as_organization_disabled: Optional[bool] = None
-        # The contributionToContentDiscoveryDisabled property
         self._contribution_to_content_discovery_disabled: Optional[bool] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The shiftPreferences property
         self._shift_preferences: Optional[shift_preferences.ShiftPreferences] = None
     
     @property
     def contribution_to_content_discovery_as_organization_disabled(self,) -> Optional[bool]:
         """
-        Gets the contributionToContentDiscoveryAsOrganizationDisabled property value. The contributionToContentDiscoveryAsOrganizationDisabled property
+        Gets the contributionToContentDiscoveryAsOrganizationDisabled property value. 
         Returns: Optional[bool]
         """
         return self._contribution_to_content_discovery_as_organization_disabled
@@ -32,7 +28,7 @@ class UserSettings(entity.Entity):
     @contribution_to_content_discovery_as_organization_disabled.setter
     def contribution_to_content_discovery_as_organization_disabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the contributionToContentDiscoveryAsOrganizationDisabled property value. The contributionToContentDiscoveryAsOrganizationDisabled property
+        Sets the contributionToContentDiscoveryAsOrganizationDisabled property value. 
         Args:
             value: Value to set for the contributionToContentDiscoveryAsOrganizationDisabled property.
         """
@@ -41,7 +37,7 @@ class UserSettings(entity.Entity):
     @property
     def contribution_to_content_discovery_disabled(self,) -> Optional[bool]:
         """
-        Gets the contributionToContentDiscoveryDisabled property value. The contributionToContentDiscoveryDisabled property
+        Gets the contributionToContentDiscoveryDisabled property value. 
         Returns: Optional[bool]
         """
         return self._contribution_to_content_discovery_disabled
@@ -49,7 +45,7 @@ class UserSettings(entity.Entity):
     @contribution_to_content_discovery_disabled.setter
     def contribution_to_content_discovery_disabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the contributionToContentDiscoveryDisabled property value. The contributionToContentDiscoveryDisabled property
+        Sets the contributionToContentDiscoveryDisabled property value. 
         Args:
             value: Value to set for the contributionToContentDiscoveryDisabled property.
         """
@@ -73,9 +69,9 @@ class UserSettings(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "contribution_to_content_discovery_as_organization_disabled": lambda n : setattr(self, 'contribution_to_content_discovery_as_organization_disabled', n.get_bool_value()),
-            "contribution_to_content_discovery_disabled": lambda n : setattr(self, 'contribution_to_content_discovery_disabled', n.get_bool_value()),
-            "shift_preferences": lambda n : setattr(self, 'shift_preferences', n.get_object_value(shift_preferences.ShiftPreferences)),
+            "contributionToContentDiscoveryAsOrganizationDisabled": lambda n : setattr(self, 'contribution_to_content_discovery_as_organization_disabled', n.get_bool_value()),
+            "contributionToContentDiscoveryDisabled": lambda n : setattr(self, 'contribution_to_content_discovery_disabled', n.get_bool_value()),
+            "shiftPreferences": lambda n : setattr(self, 'shift_preferences', n.get_object_value(shift_preferences.ShiftPreferences)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -97,7 +93,7 @@ class UserSettings(entity.Entity):
     @property
     def shift_preferences(self,) -> Optional[shift_preferences.ShiftPreferences]:
         """
-        Gets the shiftPreferences property value. The shiftPreferences property
+        Gets the shiftPreferences property value. 
         Returns: Optional[shift_preferences.ShiftPreferences]
         """
         return self._shift_preferences
@@ -105,7 +101,7 @@ class UserSettings(entity.Entity):
     @shift_preferences.setter
     def shift_preferences(self,value: Optional[shift_preferences.ShiftPreferences] = None) -> None:
         """
-        Sets the shiftPreferences property value. The shiftPreferences property
+        Sets the shiftPreferences property value. 
         Args:
             value: Value to set for the shiftPreferences property.
         """

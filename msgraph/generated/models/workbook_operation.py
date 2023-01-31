@@ -15,11 +15,9 @@ class WorkbookOperation(entity.Entity):
         super().__init__()
         # The error returned by the operation.
         self._error: Optional[workbook_operation_error.WorkbookOperationError] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The resource URI for the result.
         self._resource_location: Optional[str] = None
-        # The status property
         self._status: Optional[workbook_operation_status.WorkbookOperationStatus] = None
     
     @staticmethod
@@ -58,7 +56,7 @@ class WorkbookOperation(entity.Entity):
         """
         fields = {
             "error": lambda n : setattr(self, 'error', n.get_object_value(workbook_operation_error.WorkbookOperationError)),
-            "resource_location": lambda n : setattr(self, 'resource_location', n.get_str_value()),
+            "resourceLocation": lambda n : setattr(self, 'resource_location', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(workbook_operation_status.WorkbookOperationStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -98,7 +96,7 @@ class WorkbookOperation(entity.Entity):
     @property
     def status(self,) -> Optional[workbook_operation_status.WorkbookOperationStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[workbook_operation_status.WorkbookOperationStatus]
         """
         return self._status
@@ -106,7 +104,7 @@ class WorkbookOperation(entity.Entity):
     @status.setter
     def status(self,value: Optional[workbook_operation_status.WorkbookOperationStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

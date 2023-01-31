@@ -12,7 +12,6 @@ class SimulationAutomationCollectionResponse(base_collection_pagination_count_re
         Instantiates a new SimulationAutomationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[simulation_automation.SimulationAutomation]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class SimulationAutomationCollectionResponse(base_collection_pagination_count_re
     @property
     def value(self,) -> Optional[List[simulation_automation.SimulationAutomation]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[simulation_automation.SimulationAutomation]]
         """
         return self._value
@@ -61,7 +60,7 @@ class SimulationAutomationCollectionResponse(base_collection_pagination_count_re
     @value.setter
     def value(self,value: Optional[List[simulation_automation.SimulationAutomation]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

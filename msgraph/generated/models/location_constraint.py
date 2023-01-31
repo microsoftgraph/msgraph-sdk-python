@@ -34,7 +34,6 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
         self._is_required: Optional[bool] = None
         # Constraint information for one or more locations that the client requests for the meeting.
         self._locations: Optional[List[location_constraint_item.LocationConstraintItem]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The client requests the service to suggest one or more meeting locations.
         self._suggest_location: Optional[bool] = None
@@ -57,10 +56,10 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_required": lambda n : setattr(self, 'is_required', n.get_bool_value()),
+            "isRequired": lambda n : setattr(self, 'is_required', n.get_bool_value()),
             "locations": lambda n : setattr(self, 'locations', n.get_collection_of_object_values(location_constraint_item.LocationConstraintItem)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "suggest_location": lambda n : setattr(self, 'suggest_location', n.get_bool_value()),
+            "suggestLocation": lambda n : setattr(self, 'suggest_location', n.get_bool_value()),
         }
         return fields
     
@@ -101,7 +100,7 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -109,7 +108,7 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

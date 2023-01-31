@@ -77,7 +77,6 @@ class AccessPackageAssignmentRequest(entity.Entity):
         self._completed_date_time: Optional[datetime] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter.
         self._created_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The subject who requested or, if a direct assignment, was assigned. Read-only. Nullable. Supports $expand.
         self._requestor: Optional[access_package_subject.AccessPackageSubject] = None
@@ -125,12 +124,12 @@ class AccessPackageAssignmentRequest(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_package": lambda n : setattr(self, 'access_package', n.get_object_value(access_package.AccessPackage)),
+            "accessPackage": lambda n : setattr(self, 'access_package', n.get_object_value(access_package.AccessPackage)),
             "assignment": lambda n : setattr(self, 'assignment', n.get_object_value(access_package_assignment.AccessPackageAssignment)),
-            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "requestor": lambda n : setattr(self, 'requestor', n.get_object_value(access_package_subject.AccessPackageSubject)),
-            "request_type": lambda n : setattr(self, 'request_type', n.get_enum_value(access_package_request_type.AccessPackageRequestType)),
+            "requestType": lambda n : setattr(self, 'request_type', n.get_enum_value(access_package_request_type.AccessPackageRequestType)),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(entitlement_management_schedule.EntitlementManagementSchedule)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(access_package_request_state.AccessPackageRequestState)),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),

@@ -38,7 +38,7 @@ class ChatMessage(entity.Entity):
     @property
     def body(self,) -> Optional[item_body.ItemBody]:
         """
-        Gets the body property value. The body property
+        Gets the body property value. 
         Returns: Optional[item_body.ItemBody]
         """
         return self._body
@@ -46,7 +46,7 @@ class ChatMessage(entity.Entity):
     @body.setter
     def body(self,value: Optional[item_body.ItemBody] = None) -> None:
         """
-        Sets the body property value. The body property
+        Sets the body property value. 
         Args:
             value: Value to set for the body property.
         """
@@ -93,7 +93,6 @@ class ChatMessage(entity.Entity):
         super().__init__()
         # References to attached objects like files, tabs, meetings etc.
         self._attachments: Optional[List[chat_message_attachment.ChatMessageAttachment]] = None
-        # The body property
         self._body: Optional[item_body.ItemBody] = None
         # If the message was sent in a channel, represents identity of the channel.
         self._channel_identity: Optional[channel_identity.ChannelIdentity] = None
@@ -111,7 +110,6 @@ class ChatMessage(entity.Entity):
         self._from_: Optional[chat_message_from_identity_set.ChatMessageFromIdentitySet] = None
         # Content in a message hosted by Microsoft Teams - for example, images or code snippets.
         self._hosted_contents: Optional[List[chat_message_hosted_content.ChatMessageHostedContent]] = None
-        # The importance property
         self._importance: Optional[chat_message_importance.ChatMessageImportance] = None
         # Read only. Timestamp when edits to the chat message were made. Triggers an 'Edited' flag in the Teams UI. If no edits are made the value is null.
         self._last_edited_date_time: Optional[datetime] = None
@@ -121,9 +119,7 @@ class ChatMessage(entity.Entity):
         self._locale: Optional[str] = None
         # List of entities mentioned in the chat message. Supported entities are: user, bot, team, and channel.
         self._mentions: Optional[List[chat_message_mention.ChatMessageMention]] = None
-        # The messageType property
         self._message_type: Optional[chat_message_type.ChatMessageType] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Defines the properties of a policy violation set by a data loss prevention (DLP) application.
         self._policy_violation: Optional[chat_message_policy_violation.ChatMessagePolicyViolation] = None
@@ -245,27 +241,27 @@ class ChatMessage(entity.Entity):
         fields = {
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(chat_message_attachment.ChatMessageAttachment)),
             "body": lambda n : setattr(self, 'body', n.get_object_value(item_body.ItemBody)),
-            "channel_identity": lambda n : setattr(self, 'channel_identity', n.get_object_value(channel_identity.ChannelIdentity)),
-            "chat_id": lambda n : setattr(self, 'chat_id', n.get_str_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "deleted_date_time": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
+            "channelIdentity": lambda n : setattr(self, 'channel_identity', n.get_object_value(channel_identity.ChannelIdentity)),
+            "chatId": lambda n : setattr(self, 'chat_id', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "deletedDateTime": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
             "etag": lambda n : setattr(self, 'etag', n.get_str_value()),
-            "event_detail": lambda n : setattr(self, 'event_detail', n.get_object_value(event_message_detail.EventMessageDetail)),
+            "eventDetail": lambda n : setattr(self, 'event_detail', n.get_object_value(event_message_detail.EventMessageDetail)),
             "from": lambda n : setattr(self, 'from_', n.get_object_value(chat_message_from_identity_set.ChatMessageFromIdentitySet)),
-            "hosted_contents": lambda n : setattr(self, 'hosted_contents', n.get_collection_of_object_values(chat_message_hosted_content.ChatMessageHostedContent)),
+            "hostedContents": lambda n : setattr(self, 'hosted_contents', n.get_collection_of_object_values(chat_message_hosted_content.ChatMessageHostedContent)),
             "importance": lambda n : setattr(self, 'importance', n.get_enum_value(chat_message_importance.ChatMessageImportance)),
-            "last_edited_date_time": lambda n : setattr(self, 'last_edited_date_time', n.get_datetime_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "lastEditedDateTime": lambda n : setattr(self, 'last_edited_date_time', n.get_datetime_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "locale": lambda n : setattr(self, 'locale', n.get_str_value()),
             "mentions": lambda n : setattr(self, 'mentions', n.get_collection_of_object_values(chat_message_mention.ChatMessageMention)),
-            "message_type": lambda n : setattr(self, 'message_type', n.get_enum_value(chat_message_type.ChatMessageType)),
-            "policy_violation": lambda n : setattr(self, 'policy_violation', n.get_object_value(chat_message_policy_violation.ChatMessagePolicyViolation)),
+            "messageType": lambda n : setattr(self, 'message_type', n.get_enum_value(chat_message_type.ChatMessageType)),
+            "policyViolation": lambda n : setattr(self, 'policy_violation', n.get_object_value(chat_message_policy_violation.ChatMessagePolicyViolation)),
             "reactions": lambda n : setattr(self, 'reactions', n.get_collection_of_object_values(chat_message_reaction.ChatMessageReaction)),
             "replies": lambda n : setattr(self, 'replies', n.get_collection_of_object_values(ChatMessage)),
-            "reply_to_id": lambda n : setattr(self, 'reply_to_id', n.get_str_value()),
+            "replyToId": lambda n : setattr(self, 'reply_to_id', n.get_str_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
             "summary": lambda n : setattr(self, 'summary', n.get_str_value()),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -291,7 +287,7 @@ class ChatMessage(entity.Entity):
     @property
     def importance(self,) -> Optional[chat_message_importance.ChatMessageImportance]:
         """
-        Gets the importance property value. The importance property
+        Gets the importance property value. 
         Returns: Optional[chat_message_importance.ChatMessageImportance]
         """
         return self._importance
@@ -299,7 +295,7 @@ class ChatMessage(entity.Entity):
     @importance.setter
     def importance(self,value: Optional[chat_message_importance.ChatMessageImportance] = None) -> None:
         """
-        Sets the importance property value. The importance property
+        Sets the importance property value. 
         Args:
             value: Value to set for the importance property.
         """
@@ -376,7 +372,7 @@ class ChatMessage(entity.Entity):
     @property
     def message_type(self,) -> Optional[chat_message_type.ChatMessageType]:
         """
-        Gets the messageType property value. The messageType property
+        Gets the messageType property value. 
         Returns: Optional[chat_message_type.ChatMessageType]
         """
         return self._message_type
@@ -384,7 +380,7 @@ class ChatMessage(entity.Entity):
     @message_type.setter
     def message_type(self,value: Optional[chat_message_type.ChatMessageType] = None) -> None:
         """
-        Sets the messageType property value. The messageType property
+        Sets the messageType property value. 
         Args:
             value: Value to set for the messageType property.
         """

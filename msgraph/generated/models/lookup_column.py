@@ -87,7 +87,6 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         self._column_name: Optional[str] = None
         # The unique identifier of the lookup source list.
         self._list_id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # If specified, this column is a secondary lookup, pulling an additional field from the list item looked up by the primary lookup. Use the list item looked up by the primary as the source for the column named here.
         self._primary_lookup_column_id: Optional[str] = None
@@ -110,12 +109,12 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_multiple_values": lambda n : setattr(self, 'allow_multiple_values', n.get_bool_value()),
-            "allow_unlimited_length": lambda n : setattr(self, 'allow_unlimited_length', n.get_bool_value()),
-            "column_name": lambda n : setattr(self, 'column_name', n.get_str_value()),
-            "list_id": lambda n : setattr(self, 'list_id', n.get_str_value()),
+            "allowMultipleValues": lambda n : setattr(self, 'allow_multiple_values', n.get_bool_value()),
+            "allowUnlimitedLength": lambda n : setattr(self, 'allow_unlimited_length', n.get_bool_value()),
+            "columnName": lambda n : setattr(self, 'column_name', n.get_str_value()),
+            "listId": lambda n : setattr(self, 'list_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "primary_lookup_column_id": lambda n : setattr(self, 'primary_lookup_column_id', n.get_str_value()),
+            "primaryLookupColumnId": lambda n : setattr(self, 'primary_lookup_column_id', n.get_str_value()),
         }
         return fields
     
@@ -139,7 +138,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -147,7 +146,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -60,7 +60,6 @@ class WorkbookRangeView(entity.Entity):
         self._index: Optional[int] = None
         # Represents Excel's number format code for the given cell. Read-only.
         self._number_format: Optional[json.Json] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Returns the number of visible rows. Read-only.
         self._row_count: Optional[int] = None
@@ -142,18 +141,18 @@ class WorkbookRangeView(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "cell_addresses": lambda n : setattr(self, 'cell_addresses', n.get_object_value(json.Json)),
-            "column_count": lambda n : setattr(self, 'column_count', n.get_int_value()),
+            "cellAddresses": lambda n : setattr(self, 'cell_addresses', n.get_object_value(json.Json)),
+            "columnCount": lambda n : setattr(self, 'column_count', n.get_int_value()),
             "formulas": lambda n : setattr(self, 'formulas', n.get_object_value(json.Json)),
-            "formulas_local": lambda n : setattr(self, 'formulas_local', n.get_object_value(json.Json)),
-            "formulas_r1_c1": lambda n : setattr(self, 'formulas_r1_c1', n.get_object_value(json.Json)),
+            "formulasLocal": lambda n : setattr(self, 'formulas_local', n.get_object_value(json.Json)),
+            "formulasR1C1": lambda n : setattr(self, 'formulas_r1_c1', n.get_object_value(json.Json)),
             "index": lambda n : setattr(self, 'index', n.get_int_value()),
-            "number_format": lambda n : setattr(self, 'number_format', n.get_object_value(json.Json)),
-            "row_count": lambda n : setattr(self, 'row_count', n.get_int_value()),
+            "numberFormat": lambda n : setattr(self, 'number_format', n.get_object_value(json.Json)),
+            "rowCount": lambda n : setattr(self, 'row_count', n.get_int_value()),
             "rows": lambda n : setattr(self, 'rows', n.get_collection_of_object_values(workbook_range_view.WorkbookRangeView)),
             "text": lambda n : setattr(self, 'text', n.get_object_value(json.Json)),
             "values": lambda n : setattr(self, 'values', n.get_object_value(json.Json)),
-            "value_types": lambda n : setattr(self, 'value_types', n.get_object_value(json.Json)),
+            "valueTypes": lambda n : setattr(self, 'value_types', n.get_object_value(json.Json)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

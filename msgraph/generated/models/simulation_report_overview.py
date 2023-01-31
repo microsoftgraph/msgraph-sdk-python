@@ -32,7 +32,6 @@ class SimulationReportOverview(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # List of recommended actions for a tenant to improve its security posture based on the attack simulation and training campaign attack type.
         self._recommended_actions: Optional[List[recommended_action.RecommendedAction]] = None
@@ -62,17 +61,17 @@ class SimulationReportOverview(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recommended_actions": lambda n : setattr(self, 'recommended_actions', n.get_collection_of_object_values(recommended_action.RecommendedAction)),
-            "resolved_targets_count": lambda n : setattr(self, 'resolved_targets_count', n.get_int_value()),
-            "simulation_events_content": lambda n : setattr(self, 'simulation_events_content', n.get_object_value(simulation_events_content.SimulationEventsContent)),
-            "training_events_content": lambda n : setattr(self, 'training_events_content', n.get_object_value(training_events_content.TrainingEventsContent)),
+            "recommendedActions": lambda n : setattr(self, 'recommended_actions', n.get_collection_of_object_values(recommended_action.RecommendedAction)),
+            "resolvedTargetsCount": lambda n : setattr(self, 'resolved_targets_count', n.get_int_value()),
+            "simulationEventsContent": lambda n : setattr(self, 'simulation_events_content', n.get_object_value(simulation_events_content.SimulationEventsContent)),
+            "trainingEventsContent": lambda n : setattr(self, 'training_events_content', n.get_object_value(training_events_content.TrainingEventsContent)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -80,7 +79,7 @@ class SimulationReportOverview(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -11,7 +11,6 @@ class MultiValueLegacyExtendedProperty(entity.Entity):
         Instantiates a new multiValueLegacyExtendedProperty and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # A collection of property values.
         self._value: Optional[List[str]] = None

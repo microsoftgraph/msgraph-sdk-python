@@ -66,7 +66,7 @@ class PermissionsRequestBuilder():
         """
         Create a new permission object on a site.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[permission.Permission]
         """
@@ -105,7 +105,7 @@ class PermissionsRequestBuilder():
         """
         Create a new permission object on a site.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

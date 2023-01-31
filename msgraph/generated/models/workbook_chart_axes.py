@@ -31,7 +31,6 @@ class WorkbookChartAxes(entity.Entity):
         super().__init__()
         # Represents the category axis in a chart. Read-only.
         self._category_axis: Optional[workbook_chart_axis.WorkbookChartAxis] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Represents the series axis of a 3-dimensional chart. Read-only.
         self._series_axis: Optional[workbook_chart_axis.WorkbookChartAxis] = None
@@ -56,9 +55,9 @@ class WorkbookChartAxes(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "category_axis": lambda n : setattr(self, 'category_axis', n.get_object_value(workbook_chart_axis.WorkbookChartAxis)),
-            "series_axis": lambda n : setattr(self, 'series_axis', n.get_object_value(workbook_chart_axis.WorkbookChartAxis)),
-            "value_axis": lambda n : setattr(self, 'value_axis', n.get_object_value(workbook_chart_axis.WorkbookChartAxis)),
+            "categoryAxis": lambda n : setattr(self, 'category_axis', n.get_object_value(workbook_chart_axis.WorkbookChartAxis)),
+            "seriesAxis": lambda n : setattr(self, 'series_axis', n.get_object_value(workbook_chart_axis.WorkbookChartAxis)),
+            "valueAxis": lambda n : setattr(self, 'value_axis', n.get_object_value(workbook_chart_axis.WorkbookChartAxis)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -66,7 +66,7 @@ class StaffMembersRequestBuilder():
         """
         Create a new bookingStaffMember in the specified bookingBusiness.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[booking_staff_member_base.BookingStaffMemberBase]
         """
@@ -105,7 +105,7 @@ class StaffMembersRequestBuilder():
         """
         Create a new bookingStaffMember in the specified bookingBusiness.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

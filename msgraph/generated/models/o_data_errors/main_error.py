@@ -27,7 +27,7 @@ class MainError(AdditionalDataHolder, Parsable):
     @property
     def code(self,) -> Optional[str]:
         """
-        Gets the code property value. The code property
+        Gets the code property value. 
         Returns: Optional[str]
         """
         return self._code
@@ -35,7 +35,7 @@ class MainError(AdditionalDataHolder, Parsable):
     @code.setter
     def code(self,value: Optional[str] = None) -> None:
         """
-        Sets the code property value. The code property
+        Sets the code property value. 
         Args:
             value: Value to set for the code property.
         """
@@ -48,15 +48,10 @@ class MainError(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The code property
         self._code: Optional[str] = None
-        # The details property
         self._details: Optional[List[error_details.ErrorDetails]] = None
-        # The innererror property
         self._innererror: Optional[inner_error.InnerError] = None
-        # The message property
         self._message: Optional[str] = None
-        # The target property
         self._target: Optional[str] = None
     
     @staticmethod
@@ -74,7 +69,7 @@ class MainError(AdditionalDataHolder, Parsable):
     @property
     def details(self,) -> Optional[List[error_details.ErrorDetails]]:
         """
-        Gets the details property value. The details property
+        Gets the details property value. 
         Returns: Optional[List[error_details.ErrorDetails]]
         """
         return self._details
@@ -82,7 +77,7 @@ class MainError(AdditionalDataHolder, Parsable):
     @details.setter
     def details(self,value: Optional[List[error_details.ErrorDetails]] = None) -> None:
         """
-        Sets the details property value. The details property
+        Sets the details property value. 
         Args:
             value: Value to set for the details property.
         """
@@ -105,7 +100,7 @@ class MainError(AdditionalDataHolder, Parsable):
     @property
     def innererror(self,) -> Optional[inner_error.InnerError]:
         """
-        Gets the innererror property value. The innererror property
+        Gets the innererror property value. 
         Returns: Optional[inner_error.InnerError]
         """
         return self._innererror
@@ -113,7 +108,7 @@ class MainError(AdditionalDataHolder, Parsable):
     @innererror.setter
     def innererror(self,value: Optional[inner_error.InnerError] = None) -> None:
         """
-        Sets the innererror property value. The innererror property
+        Sets the innererror property value. 
         Args:
             value: Value to set for the innererror property.
         """
@@ -122,7 +117,7 @@ class MainError(AdditionalDataHolder, Parsable):
     @property
     def message(self,) -> Optional[str]:
         """
-        Gets the message property value. The message property
+        Gets the message property value. 
         Returns: Optional[str]
         """
         return self._message
@@ -130,7 +125,7 @@ class MainError(AdditionalDataHolder, Parsable):
     @message.setter
     def message(self,value: Optional[str] = None) -> None:
         """
-        Sets the message property value. The message property
+        Sets the message property value. 
         Args:
             value: Value to set for the message property.
         """
@@ -154,7 +149,7 @@ class MainError(AdditionalDataHolder, Parsable):
     @property
     def target(self,) -> Optional[str]:
         """
-        Gets the target property value. The target property
+        Gets the target property value. 
         Returns: Optional[str]
         """
         return self._target
@@ -162,7 +157,7 @@ class MainError(AdditionalDataHolder, Parsable):
     @target.setter
     def target(self,value: Optional[str] = None) -> None:
         """
-        Sets the target property value. The target property
+        Sets the target property value. 
         Args:
             value: Value to set for the target property.
         """

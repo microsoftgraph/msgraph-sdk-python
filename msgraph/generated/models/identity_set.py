@@ -51,7 +51,6 @@ class IdentitySet(AdditionalDataHolder, Parsable):
         self._application: Optional[identity.Identity] = None
         # Optional. The device associated with this action.
         self._device: Optional[identity.Identity] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Optional. The user associated with this action.
         self._user: Optional[identity.Identity] = None
@@ -101,7 +100,7 @@ class IdentitySet(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -109,7 +108,7 @@ class IdentitySet(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -68,7 +68,6 @@ class UserAccount(AdditionalDataHolder, Parsable):
         self._azure_ad_user_id: Optional[str] = None
         # The name of the Active Directory domain of which the user is a member.
         self._domain_name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The user principal name of the account in Azure AD.
         self._user_principal_name: Optional[str] = None
@@ -110,19 +109,19 @@ class UserAccount(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "account_name": lambda n : setattr(self, 'account_name', n.get_str_value()),
-            "azure_ad_user_id": lambda n : setattr(self, 'azure_ad_user_id', n.get_str_value()),
-            "domain_name": lambda n : setattr(self, 'domain_name', n.get_str_value()),
+            "accountName": lambda n : setattr(self, 'account_name', n.get_str_value()),
+            "azureAdUserId": lambda n : setattr(self, 'azure_ad_user_id', n.get_str_value()),
+            "domainName": lambda n : setattr(self, 'domain_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
-            "user_sid": lambda n : setattr(self, 'user_sid', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userSid": lambda n : setattr(self, 'user_sid', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -130,7 +129,7 @@ class UserAccount(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

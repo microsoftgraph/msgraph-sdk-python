@@ -56,11 +56,9 @@ class ShiftActivity(AdditionalDataHolder, Parsable):
         self._end_date_time: Optional[datetime] = None
         # Indicates whether the microsoft.graph.user should be paid for the activity during their shift. Required.
         self._is_paid: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The start date and time for the shiftActivity. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Required.
         self._start_date_time: Optional[datetime] = None
-        # The theme property
         self._theme: Optional[schedule_entity_theme.ScheduleEntityTheme] = None
     
     @staticmethod
@@ -116,11 +114,11 @@ class ShiftActivity(AdditionalDataHolder, Parsable):
         """
         fields = {
             "code": lambda n : setattr(self, 'code', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "is_paid": lambda n : setattr(self, 'is_paid', n.get_bool_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "isPaid": lambda n : setattr(self, 'is_paid', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "theme": lambda n : setattr(self, 'theme', n.get_enum_value(schedule_entity_theme.ScheduleEntityTheme)),
         }
         return fields
@@ -145,7 +143,7 @@ class ShiftActivity(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -153,7 +151,7 @@ class ShiftActivity(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -196,7 +194,7 @@ class ShiftActivity(AdditionalDataHolder, Parsable):
     @property
     def theme(self,) -> Optional[schedule_entity_theme.ScheduleEntityTheme]:
         """
-        Gets the theme property value. The theme property
+        Gets the theme property value. 
         Returns: Optional[schedule_entity_theme.ScheduleEntityTheme]
         """
         return self._theme
@@ -204,7 +202,7 @@ class ShiftActivity(AdditionalDataHolder, Parsable):
     @theme.setter
     def theme(self,value: Optional[schedule_entity_theme.ScheduleEntityTheme] = None) -> None:
         """
-        Sets the theme property value. The theme property
+        Sets the theme property value. 
         Args:
             value: Value to set for the theme property.
         """

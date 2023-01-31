@@ -25,10 +25,11 @@ class AttachmentBaseItemRequestBuilder():
         """
         return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, attachment_base_id: Optional[str] = None) -> None:
         """
         Instantiates a new AttachmentBaseItemRequestBuilder and sets the default values.
         Args:
+            attachmentBaseId: key: id of attachmentBase
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -40,6 +41,7 @@ class AttachmentBaseItemRequestBuilder():
         self.url_template: str = "{+baseurl}/users/{user%2Did}/todo/lists/{todoTaskList%2Did}/tasks/{todoTask%2Did}/attachments/{attachmentBase%2Did}{?%24select}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["attachmentBase%2Did"] = attachmentBaseId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

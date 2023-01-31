@@ -32,7 +32,6 @@ class PlannerPlanDetails(entity.Entity):
         super().__init__()
         # An object that specifies the descriptions of the 25 categories that can be associated with tasks in the plan.
         self._category_descriptions: Optional[planner_category_descriptions.PlannerCategoryDescriptions] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Set of user IDs that this plan is shared with. If you are leveraging Microsoft 365 groups, use the Groups API to manage group membership to share the group's plan. You can also add existing members of the group to this collection, although it is not required for them to access the plan owned by the group.
         self._shared_with: Optional[planner_user_ids.PlannerUserIds] = None
@@ -55,8 +54,8 @@ class PlannerPlanDetails(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "category_descriptions": lambda n : setattr(self, 'category_descriptions', n.get_object_value(planner_category_descriptions.PlannerCategoryDescriptions)),
-            "shared_with": lambda n : setattr(self, 'shared_with', n.get_object_value(planner_user_ids.PlannerUserIds)),
+            "categoryDescriptions": lambda n : setattr(self, 'category_descriptions', n.get_object_value(planner_category_descriptions.PlannerCategoryDescriptions)),
+            "sharedWith": lambda n : setattr(self, 'shared_with', n.get_object_value(planner_user_ids.PlannerUserIds)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

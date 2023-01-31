@@ -34,7 +34,6 @@ class ControlScore(AdditionalDataHolder, Parsable):
         self._control_name: Optional[str] = None
         # Description of the control.
         self._description: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Tenant achieved score for the control (it varies day by day depending on tenant operations on the control).
         self._score: Optional[float] = None
@@ -108,8 +107,8 @@ class ControlScore(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "control_category": lambda n : setattr(self, 'control_category', n.get_str_value()),
-            "control_name": lambda n : setattr(self, 'control_name', n.get_str_value()),
+            "controlCategory": lambda n : setattr(self, 'control_category', n.get_str_value()),
+            "controlName": lambda n : setattr(self, 'control_name', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "score": lambda n : setattr(self, 'score', n.get_float_value()),
@@ -119,7 +118,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -127,7 +126,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -34,7 +34,7 @@ class Initiator(identity.Identity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "initiator_type": lambda n : setattr(self, 'initiator_type', n.get_enum_value(initiator_type.InitiatorType)),
+            "initiatorType": lambda n : setattr(self, 'initiator_type', n.get_enum_value(initiator_type.InitiatorType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -51,7 +51,6 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, Parsable):
         self._built_in_controls: Optional[List[conditional_access_grant_control.ConditionalAccessGrantControl]] = None
         # List of custom controls IDs required by the policy. For more information, see Custom controls.
         self._custom_authentication_factors: Optional[List[str]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Defines the relationship of the grant controls. Possible values: AND, OR.
         self._operator: Optional[str] = None
@@ -93,18 +92,18 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "built_in_controls": lambda n : setattr(self, 'built_in_controls', n.get_collection_of_enum_values(conditional_access_grant_control.ConditionalAccessGrantControl)),
-            "custom_authentication_factors": lambda n : setattr(self, 'custom_authentication_factors', n.get_collection_of_primitive_values(str)),
+            "builtInControls": lambda n : setattr(self, 'built_in_controls', n.get_collection_of_enum_values(conditional_access_grant_control.ConditionalAccessGrantControl)),
+            "customAuthenticationFactors": lambda n : setattr(self, 'custom_authentication_factors', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operator": lambda n : setattr(self, 'operator', n.get_str_value()),
-            "terms_of_use": lambda n : setattr(self, 'terms_of_use', n.get_collection_of_primitive_values(str)),
+            "termsOfUse": lambda n : setattr(self, 'terms_of_use', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -112,7 +111,7 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

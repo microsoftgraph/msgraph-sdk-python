@@ -39,9 +39,9 @@ class PhoneAuthenticationMethod(authentication_method.AuthenticationMethod):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "phone_number": lambda n : setattr(self, 'phone_number', n.get_str_value()),
-            "phone_type": lambda n : setattr(self, 'phone_type', n.get_enum_value(authentication_phone_type.AuthenticationPhoneType)),
-            "sms_sign_in_state": lambda n : setattr(self, 'sms_sign_in_state', n.get_enum_value(authentication_method_sign_in_state.AuthenticationMethodSignInState)),
+            "phoneNumber": lambda n : setattr(self, 'phone_number', n.get_str_value()),
+            "phoneType": lambda n : setattr(self, 'phone_type', n.get_enum_value(authentication_phone_type.AuthenticationPhoneType)),
+            "smsSignInState": lambda n : setattr(self, 'sms_sign_in_state', n.get_enum_value(authentication_method_sign_in_state.AuthenticationMethodSignInState)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

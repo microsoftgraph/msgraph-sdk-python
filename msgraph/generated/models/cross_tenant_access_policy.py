@@ -11,7 +11,7 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
     @property
     def allowed_cloud_endpoints(self,) -> Optional[List[str]]:
         """
-        Gets the allowedCloudEndpoints property value. The allowedCloudEndpoints property
+        Gets the allowedCloudEndpoints property value. 
         Returns: Optional[List[str]]
         """
         return self._allowed_cloud_endpoints
@@ -19,7 +19,7 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
     @allowed_cloud_endpoints.setter
     def allowed_cloud_endpoints(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the allowedCloudEndpoints property value. The allowedCloudEndpoints property
+        Sets the allowedCloudEndpoints property value. 
         Args:
             value: Value to set for the allowedCloudEndpoints property.
         """
@@ -31,7 +31,6 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.crossTenantAccessPolicy"
-        # The allowedCloudEndpoints property
         self._allowed_cloud_endpoints: Optional[List[str]] = None
         # Defines the default configuration for how your organization interacts with external Azure Active Directory organizations.
         self._default: Optional[cross_tenant_access_policy_configuration_default.CrossTenantAccessPolicyConfigurationDefault] = None
@@ -73,7 +72,7 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allowed_cloud_endpoints": lambda n : setattr(self, 'allowed_cloud_endpoints', n.get_collection_of_primitive_values(str)),
+            "allowedCloudEndpoints": lambda n : setattr(self, 'allowed_cloud_endpoints', n.get_collection_of_primitive_values(str)),
             "default": lambda n : setattr(self, 'default', n.get_object_value(cross_tenant_access_policy_configuration_default.CrossTenantAccessPolicyConfigurationDefault)),
             "partners": lambda n : setattr(self, 'partners', n.get_collection_of_object_values(cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner)),
         }

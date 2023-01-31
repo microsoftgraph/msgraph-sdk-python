@@ -114,9 +114,9 @@ class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfig
         fields = {
             "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(managed_mobile_app.ManagedMobileApp)),
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment)),
-            "deployed_app_count": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
-            "deployment_summary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary)),
-            "is_assigned": lambda n : setattr(self, 'is_assigned', n.get_bool_value()),
+            "deployedAppCount": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
+            "deploymentSummary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary)),
+            "isAssigned": lambda n : setattr(self, 'is_assigned', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

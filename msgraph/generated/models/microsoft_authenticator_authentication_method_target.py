@@ -10,7 +10,7 @@ class MicrosoftAuthenticatorAuthenticationMethodTarget(authentication_method_tar
     @property
     def authentication_mode(self,) -> Optional[microsoft_authenticator_authentication_mode.MicrosoftAuthenticatorAuthenticationMode]:
         """
-        Gets the authenticationMode property value. The authenticationMode property
+        Gets the authenticationMode property value. 
         Returns: Optional[microsoft_authenticator_authentication_mode.MicrosoftAuthenticatorAuthenticationMode]
         """
         return self._authentication_mode
@@ -18,7 +18,7 @@ class MicrosoftAuthenticatorAuthenticationMethodTarget(authentication_method_tar
     @authentication_mode.setter
     def authentication_mode(self,value: Optional[microsoft_authenticator_authentication_mode.MicrosoftAuthenticatorAuthenticationMode] = None) -> None:
         """
-        Sets the authenticationMode property value. The authenticationMode property
+        Sets the authenticationMode property value. 
         Args:
             value: Value to set for the authenticationMode property.
         """
@@ -29,9 +29,7 @@ class MicrosoftAuthenticatorAuthenticationMethodTarget(authentication_method_tar
         Instantiates a new MicrosoftAuthenticatorAuthenticationMethodTarget and sets the default values.
         """
         super().__init__()
-        # The authenticationMode property
         self._authentication_mode: Optional[microsoft_authenticator_authentication_mode.MicrosoftAuthenticatorAuthenticationMode] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -52,7 +50,7 @@ class MicrosoftAuthenticatorAuthenticationMethodTarget(authentication_method_tar
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "authentication_mode": lambda n : setattr(self, 'authentication_mode', n.get_enum_value(microsoft_authenticator_authentication_mode.MicrosoftAuthenticatorAuthenticationMode)),
+            "authenticationMode": lambda n : setattr(self, 'authentication_mode', n.get_enum_value(microsoft_authenticator_authentication_mode.MicrosoftAuthenticatorAuthenticationMode)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

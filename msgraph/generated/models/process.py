@@ -80,7 +80,6 @@ class Process(AdditionalDataHolder, Parsable):
         self._is_elevated: Optional[bool] = None
         # The name of the process' Image file.
         self._name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # DateTime at which the parent process was started. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._parent_process_created_date_time: Optional[datetime] = None
@@ -145,19 +144,19 @@ class Process(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "account_name": lambda n : setattr(self, 'account_name', n.get_str_value()),
-            "command_line": lambda n : setattr(self, 'command_line', n.get_str_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "file_hash": lambda n : setattr(self, 'file_hash', n.get_object_value(file_hash.FileHash)),
-            "integrity_level": lambda n : setattr(self, 'integrity_level', n.get_enum_value(process_integrity_level.ProcessIntegrityLevel)),
-            "is_elevated": lambda n : setattr(self, 'is_elevated', n.get_bool_value()),
+            "accountName": lambda n : setattr(self, 'account_name', n.get_str_value()),
+            "commandLine": lambda n : setattr(self, 'command_line', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "fileHash": lambda n : setattr(self, 'file_hash', n.get_object_value(file_hash.FileHash)),
+            "integrityLevel": lambda n : setattr(self, 'integrity_level', n.get_enum_value(process_integrity_level.ProcessIntegrityLevel)),
+            "isElevated": lambda n : setattr(self, 'is_elevated', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "parent_process_created_date_time": lambda n : setattr(self, 'parent_process_created_date_time', n.get_datetime_value()),
-            "parent_process_id": lambda n : setattr(self, 'parent_process_id', n.get_int_value()),
-            "parent_process_name": lambda n : setattr(self, 'parent_process_name', n.get_str_value()),
+            "parentProcessCreatedDateTime": lambda n : setattr(self, 'parent_process_created_date_time', n.get_datetime_value()),
+            "parentProcessId": lambda n : setattr(self, 'parent_process_id', n.get_int_value()),
+            "parentProcessName": lambda n : setattr(self, 'parent_process_name', n.get_str_value()),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),
-            "process_id": lambda n : setattr(self, 'process_id', n.get_int_value()),
+            "processId": lambda n : setattr(self, 'process_id', n.get_int_value()),
         }
         return fields
     
@@ -215,7 +214,7 @@ class Process(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -223,7 +222,7 @@ class Process(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

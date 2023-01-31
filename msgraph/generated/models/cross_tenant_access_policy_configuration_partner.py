@@ -111,7 +111,6 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         self._inbound_trust: Optional[cross_tenant_access_policy_inbound_trust.CrossTenantAccessPolicyInboundTrust] = None
         # Identifies whether the partner-specific configuration is a Cloud Service Provider for your organization.
         self._is_service_provider: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The tenant identifier for the partner Azure AD organization. Read-only. Key.
         self._tenant_id: Optional[str] = None
@@ -134,14 +133,14 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "b2b_collaboration_inbound": lambda n : setattr(self, 'b2b_collaboration_inbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
-            "b2b_collaboration_outbound": lambda n : setattr(self, 'b2b_collaboration_outbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
-            "b2b_direct_connect_inbound": lambda n : setattr(self, 'b2b_direct_connect_inbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
-            "b2b_direct_connect_outbound": lambda n : setattr(self, 'b2b_direct_connect_outbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
-            "inbound_trust": lambda n : setattr(self, 'inbound_trust', n.get_object_value(cross_tenant_access_policy_inbound_trust.CrossTenantAccessPolicyInboundTrust)),
-            "is_service_provider": lambda n : setattr(self, 'is_service_provider', n.get_bool_value()),
+            "b2bCollaborationInbound": lambda n : setattr(self, 'b2b_collaboration_inbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
+            "b2bCollaborationOutbound": lambda n : setattr(self, 'b2b_collaboration_outbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
+            "b2bDirectConnectInbound": lambda n : setattr(self, 'b2b_direct_connect_inbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
+            "b2bDirectConnectOutbound": lambda n : setattr(self, 'b2b_direct_connect_outbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
+            "inboundTrust": lambda n : setattr(self, 'inbound_trust', n.get_object_value(cross_tenant_access_policy_inbound_trust.CrossTenantAccessPolicyInboundTrust)),
+            "isServiceProvider": lambda n : setattr(self, 'is_service_provider', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         return fields
     
@@ -182,7 +181,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -190,7 +189,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

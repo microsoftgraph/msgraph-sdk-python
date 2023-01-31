@@ -34,7 +34,6 @@ class UserTeamwork(entity.Entity):
         self._associated_teams: Optional[List[associated_team_info.AssociatedTeamInfo]] = None
         # The apps installed in the personal scope of this user.
         self._installed_apps: Optional[List[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -55,8 +54,8 @@ class UserTeamwork(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "associated_teams": lambda n : setattr(self, 'associated_teams', n.get_collection_of_object_values(associated_team_info.AssociatedTeamInfo)),
-            "installed_apps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(user_scope_teams_app_installation.UserScopeTeamsAppInstallation)),
+            "associatedTeams": lambda n : setattr(self, 'associated_teams', n.get_collection_of_object_values(associated_team_info.AssociatedTeamInfo)),
+            "installedApps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(user_scope_teams_app_installation.UserScopeTeamsAppInstallation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

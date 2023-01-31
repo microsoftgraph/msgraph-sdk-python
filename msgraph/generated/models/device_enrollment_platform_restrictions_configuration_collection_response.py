@@ -12,7 +12,6 @@ class DeviceEnrollmentPlatformRestrictionsConfigurationCollectionResponse(base_c
         Instantiates a new DeviceEnrollmentPlatformRestrictionsConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[device_enrollment_platform_restrictions_configuration.DeviceEnrollmentPlatformRestrictionsConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class DeviceEnrollmentPlatformRestrictionsConfigurationCollectionResponse(base_c
     @property
     def value(self,) -> Optional[List[device_enrollment_platform_restrictions_configuration.DeviceEnrollmentPlatformRestrictionsConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[device_enrollment_platform_restrictions_configuration.DeviceEnrollmentPlatformRestrictionsConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class DeviceEnrollmentPlatformRestrictionsConfigurationCollectionResponse(base_c
     @value.setter
     def value(self,value: Optional[List[device_enrollment_platform_restrictions_configuration.DeviceEnrollmentPlatformRestrictionsConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

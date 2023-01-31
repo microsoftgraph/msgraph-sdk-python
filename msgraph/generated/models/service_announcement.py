@@ -20,7 +20,6 @@ class ServiceAnnouncement(entity.Entity):
         self._issues: Optional[List[service_health_issue.ServiceHealthIssue]] = None
         # A collection of service messages for tenant. This property is a contained navigation property, it is nullable and readonly.
         self._messages: Optional[List[service_update_message.ServiceUpdateMessage]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -41,7 +40,7 @@ class ServiceAnnouncement(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "health_overviews": lambda n : setattr(self, 'health_overviews', n.get_collection_of_object_values(service_health.ServiceHealth)),
+            "healthOverviews": lambda n : setattr(self, 'health_overviews', n.get_collection_of_object_values(service_health.ServiceHealth)),
             "issues": lambda n : setattr(self, 'issues', n.get_collection_of_object_values(service_health_issue.ServiceHealthIssue)),
             "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(service_update_message.ServiceUpdateMessage)),
         }

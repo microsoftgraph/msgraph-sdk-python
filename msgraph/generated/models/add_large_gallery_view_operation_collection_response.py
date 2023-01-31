@@ -12,7 +12,6 @@ class AddLargeGalleryViewOperationCollectionResponse(base_collection_pagination_
         Instantiates a new AddLargeGalleryViewOperationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[add_large_gallery_view_operation.AddLargeGalleryViewOperation]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class AddLargeGalleryViewOperationCollectionResponse(base_collection_pagination_
     @property
     def value(self,) -> Optional[List[add_large_gallery_view_operation.AddLargeGalleryViewOperation]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[add_large_gallery_view_operation.AddLargeGalleryViewOperation]]
         """
         return self._value
@@ -61,7 +60,7 @@ class AddLargeGalleryViewOperationCollectionResponse(base_collection_pagination_
     @value.setter
     def value(self,value: Optional[List[add_large_gallery_view_operation.AddLargeGalleryViewOperation]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

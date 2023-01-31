@@ -66,7 +66,7 @@ class PasswordMethodsRequestBuilder():
         """
         Create new navigation property to passwordMethods for me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[password_authentication_method.PasswordAuthenticationMethod]
         """
@@ -105,7 +105,7 @@ class PasswordMethodsRequestBuilder():
         """
         Create new navigation property to passwordMethods for me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

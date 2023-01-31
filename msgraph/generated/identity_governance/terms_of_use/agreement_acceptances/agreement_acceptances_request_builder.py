@@ -66,7 +66,7 @@ class AgreementAcceptancesRequestBuilder():
         """
         Create new navigation property to agreementAcceptances for identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[agreement_acceptance.AgreementAcceptance]
         """
@@ -105,7 +105,7 @@ class AgreementAcceptancesRequestBuilder():
         """
         Create new navigation property to agreementAcceptances for identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -66,7 +66,7 @@ class ClaimsMappingPoliciesRequestBuilder():
         """
         Create a new claimsMappingPolicy object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[claims_mapping_policy.ClaimsMappingPolicy]
         """
@@ -105,7 +105,7 @@ class ClaimsMappingPoliciesRequestBuilder():
         """
         Create a new claimsMappingPolicy object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

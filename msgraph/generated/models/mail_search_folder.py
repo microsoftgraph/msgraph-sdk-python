@@ -56,10 +56,10 @@ class MailSearchFolder(mail_folder.MailFolder):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "filter_query": lambda n : setattr(self, 'filter_query', n.get_str_value()),
-            "include_nested_folders": lambda n : setattr(self, 'include_nested_folders', n.get_bool_value()),
-            "is_supported": lambda n : setattr(self, 'is_supported', n.get_bool_value()),
-            "source_folder_ids": lambda n : setattr(self, 'source_folder_ids', n.get_collection_of_primitive_values(str)),
+            "filterQuery": lambda n : setattr(self, 'filter_query', n.get_str_value()),
+            "includeNestedFolders": lambda n : setattr(self, 'include_nested_folders', n.get_bool_value()),
+            "isSupported": lambda n : setattr(self, 'is_supported', n.get_bool_value()),
+            "sourceFolderIds": lambda n : setattr(self, 'source_folder_ids', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

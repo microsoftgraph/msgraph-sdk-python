@@ -17,7 +17,6 @@ class AccessReviewSet(entity.Entity):
         self._definitions: Optional[List[access_review_schedule_definition.AccessReviewScheduleDefinition]] = None
         # Represents a collection of access review history data and the scopes used to collect that data.
         self._history_definitions: Optional[List[access_review_history_definition.AccessReviewHistoryDefinition]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -56,7 +55,7 @@ class AccessReviewSet(entity.Entity):
         """
         fields = {
             "definitions": lambda n : setattr(self, 'definitions', n.get_collection_of_object_values(access_review_schedule_definition.AccessReviewScheduleDefinition)),
-            "history_definitions": lambda n : setattr(self, 'history_definitions', n.get_collection_of_object_values(access_review_history_definition.AccessReviewHistoryDefinition)),
+            "historyDefinitions": lambda n : setattr(self, 'history_definitions', n.get_collection_of_object_values(access_review_history_definition.AccessReviewHistoryDefinition)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

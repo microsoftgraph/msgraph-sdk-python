@@ -66,7 +66,7 @@ class AttachmentsRequestBuilder():
         """
         Create new navigation property to attachments for admin
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[service_announcement_attachment.ServiceAnnouncementAttachment]
         """
@@ -105,7 +105,7 @@ class AttachmentsRequestBuilder():
         """
         Create new navigation property to attachments for admin
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

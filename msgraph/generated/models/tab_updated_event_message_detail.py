@@ -37,7 +37,7 @@ class TabUpdatedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         fields = {
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
-            "tab_id": lambda n : setattr(self, 'tab_id', n.get_str_value()),
+            "tabId": lambda n : setattr(self, 'tab_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

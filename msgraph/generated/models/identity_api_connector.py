@@ -33,7 +33,6 @@ class IdentityApiConnector(entity.Entity):
         self._authentication_configuration: Optional[api_authentication_configuration_base.ApiAuthenticationConfigurationBase] = None
         # The name of the API connector.
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The URL of the API endpoint to call.
         self._target_url: Optional[str] = None
@@ -73,9 +72,9 @@ class IdentityApiConnector(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "authentication_configuration": lambda n : setattr(self, 'authentication_configuration', n.get_object_value(api_authentication_configuration_base.ApiAuthenticationConfigurationBase)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "target_url": lambda n : setattr(self, 'target_url', n.get_str_value()),
+            "authenticationConfiguration": lambda n : setattr(self, 'authentication_configuration', n.get_object_value(api_authentication_configuration_base.ApiAuthenticationConfigurationBase)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "targetUrl": lambda n : setattr(self, 'target_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

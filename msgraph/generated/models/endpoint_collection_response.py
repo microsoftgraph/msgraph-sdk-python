@@ -12,7 +12,6 @@ class EndpointCollectionResponse(base_collection_pagination_count_response.BaseC
         Instantiates a new EndpointCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[endpoint.Endpoint]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class EndpointCollectionResponse(base_collection_pagination_count_response.BaseC
     @property
     def value(self,) -> Optional[List[endpoint.Endpoint]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[endpoint.Endpoint]]
         """
         return self._value
@@ -61,7 +60,7 @@ class EndpointCollectionResponse(base_collection_pagination_count_response.BaseC
     @value.setter
     def value(self,value: Optional[List[endpoint.Endpoint]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

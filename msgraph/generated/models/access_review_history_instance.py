@@ -19,7 +19,6 @@ class AccessReviewHistoryInstance(entity.Entity):
         self._expiration_date_time: Optional[datetime] = None
         # Timestamp when all of the available data for this instance was collected. This will be set after this instance's status is set to done. Required.
         self._fulfilled_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Timestamp, reviews ending on or before this date will be included in the fetched history data.
         self._review_history_period_end_date_time: Optional[datetime] = None
@@ -99,12 +98,12 @@ class AccessReviewHistoryInstance(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "download_uri": lambda n : setattr(self, 'download_uri', n.get_str_value()),
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "fulfilled_date_time": lambda n : setattr(self, 'fulfilled_date_time', n.get_datetime_value()),
-            "review_history_period_end_date_time": lambda n : setattr(self, 'review_history_period_end_date_time', n.get_datetime_value()),
-            "review_history_period_start_date_time": lambda n : setattr(self, 'review_history_period_start_date_time', n.get_datetime_value()),
-            "run_date_time": lambda n : setattr(self, 'run_date_time', n.get_datetime_value()),
+            "downloadUri": lambda n : setattr(self, 'download_uri', n.get_str_value()),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "fulfilledDateTime": lambda n : setattr(self, 'fulfilled_date_time', n.get_datetime_value()),
+            "reviewHistoryPeriodEndDateTime": lambda n : setattr(self, 'review_history_period_end_date_time', n.get_datetime_value()),
+            "reviewHistoryPeriodStartDateTime": lambda n : setattr(self, 'review_history_period_start_date_time', n.get_datetime_value()),
+            "runDateTime": lambda n : setattr(self, 'run_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(access_review_history_status.AccessReviewHistoryStatus)),
         }
         super_fields = super().get_field_deserializers()

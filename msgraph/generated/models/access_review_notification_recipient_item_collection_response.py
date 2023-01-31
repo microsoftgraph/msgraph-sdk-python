@@ -12,7 +12,6 @@ class AccessReviewNotificationRecipientItemCollectionResponse(base_collection_pa
         Instantiates a new AccessReviewNotificationRecipientItemCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[access_review_notification_recipient_item.AccessReviewNotificationRecipientItem]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class AccessReviewNotificationRecipientItemCollectionResponse(base_collection_pa
     @property
     def value(self,) -> Optional[List[access_review_notification_recipient_item.AccessReviewNotificationRecipientItem]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[access_review_notification_recipient_item.AccessReviewNotificationRecipientItem]]
         """
         return self._value
@@ -61,7 +60,7 @@ class AccessReviewNotificationRecipientItemCollectionResponse(base_collection_pa
     @value.setter
     def value(self,value: Optional[List[access_review_notification_recipient_item.AccessReviewNotificationRecipientItem]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

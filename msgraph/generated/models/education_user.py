@@ -165,9 +165,7 @@ class EducationUser(entity.Entity):
         self._middle_name: Optional[str] = None
         # The primary cellular telephone number for the user.
         self._mobile_phone: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The officeLocation property
         self._office_location: Optional[str] = None
         # Additional information used to associate the Azure Active Directory user with its Active Directory counterpart.
         self._on_premises_info: Optional[education_on_premises_info.EducationOnPremisesInfo] = None
@@ -177,11 +175,9 @@ class EducationUser(entity.Entity):
         self._password_profile: Optional[password_profile.PasswordProfile] = None
         # The preferred language for the user that should follow the ISO 639-1 code, for example, en-US.
         self._preferred_language: Optional[str] = None
-        # The primaryRole property
         self._primary_role: Optional[education_user_role.EducationUserRole] = None
         # The plans that are provisioned for the user. Read-only. Not nullable.
         self._provisioned_plans: Optional[List[provisioned_plan.ProvisionedPlan]] = None
-        # The refreshTokensValidFromDateTime property
         self._refresh_tokens_valid_from_date_time: Optional[datetime] = None
         # Related records associated with the user. Read-only.
         self._related_contacts: Optional[List[related_contact.RelatedContact]] = None
@@ -313,44 +309,44 @@ class EducationUser(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "account_enabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
-            "assigned_licenses": lambda n : setattr(self, 'assigned_licenses', n.get_collection_of_object_values(assigned_license.AssignedLicense)),
-            "assigned_plans": lambda n : setattr(self, 'assigned_plans', n.get_collection_of_object_values(assigned_plan.AssignedPlan)),
+            "accountEnabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
+            "assignedLicenses": lambda n : setattr(self, 'assigned_licenses', n.get_collection_of_object_values(assigned_license.AssignedLicense)),
+            "assignedPlans": lambda n : setattr(self, 'assigned_plans', n.get_collection_of_object_values(assigned_plan.AssignedPlan)),
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(education_assignment.EducationAssignment)),
-            "business_phones": lambda n : setattr(self, 'business_phones', n.get_collection_of_primitive_values(str)),
+            "businessPhones": lambda n : setattr(self, 'business_phones', n.get_collection_of_primitive_values(str)),
             "classes": lambda n : setattr(self, 'classes', n.get_collection_of_object_values(education_class.EducationClass)),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "external_source": lambda n : setattr(self, 'external_source', n.get_enum_value(education_external_source.EducationExternalSource)),
-            "external_source_detail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
-            "given_name": lambda n : setattr(self, 'given_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "externalSource": lambda n : setattr(self, 'external_source', n.get_enum_value(education_external_source.EducationExternalSource)),
+            "externalSourceDetail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
+            "givenName": lambda n : setattr(self, 'given_name', n.get_str_value()),
             "mail": lambda n : setattr(self, 'mail', n.get_str_value()),
-            "mailing_address": lambda n : setattr(self, 'mailing_address', n.get_object_value(physical_address.PhysicalAddress)),
-            "mail_nickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
-            "middle_name": lambda n : setattr(self, 'middle_name', n.get_str_value()),
-            "mobile_phone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
-            "office_location": lambda n : setattr(self, 'office_location', n.get_str_value()),
-            "on_premises_info": lambda n : setattr(self, 'on_premises_info', n.get_object_value(education_on_premises_info.EducationOnPremisesInfo)),
-            "password_policies": lambda n : setattr(self, 'password_policies', n.get_str_value()),
-            "password_profile": lambda n : setattr(self, 'password_profile', n.get_object_value(password_profile.PasswordProfile)),
-            "preferred_language": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
-            "primary_role": lambda n : setattr(self, 'primary_role', n.get_enum_value(education_user_role.EducationUserRole)),
-            "provisioned_plans": lambda n : setattr(self, 'provisioned_plans', n.get_collection_of_object_values(provisioned_plan.ProvisionedPlan)),
-            "refresh_tokens_valid_from_date_time": lambda n : setattr(self, 'refresh_tokens_valid_from_date_time', n.get_datetime_value()),
-            "related_contacts": lambda n : setattr(self, 'related_contacts', n.get_collection_of_object_values(related_contact.RelatedContact)),
-            "residence_address": lambda n : setattr(self, 'residence_address', n.get_object_value(physical_address.PhysicalAddress)),
+            "mailingAddress": lambda n : setattr(self, 'mailing_address', n.get_object_value(physical_address.PhysicalAddress)),
+            "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
+            "middleName": lambda n : setattr(self, 'middle_name', n.get_str_value()),
+            "mobilePhone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
+            "officeLocation": lambda n : setattr(self, 'office_location', n.get_str_value()),
+            "onPremisesInfo": lambda n : setattr(self, 'on_premises_info', n.get_object_value(education_on_premises_info.EducationOnPremisesInfo)),
+            "passwordPolicies": lambda n : setattr(self, 'password_policies', n.get_str_value()),
+            "passwordProfile": lambda n : setattr(self, 'password_profile', n.get_object_value(password_profile.PasswordProfile)),
+            "preferredLanguage": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
+            "primaryRole": lambda n : setattr(self, 'primary_role', n.get_enum_value(education_user_role.EducationUserRole)),
+            "provisionedPlans": lambda n : setattr(self, 'provisioned_plans', n.get_collection_of_object_values(provisioned_plan.ProvisionedPlan)),
+            "refreshTokensValidFromDateTime": lambda n : setattr(self, 'refresh_tokens_valid_from_date_time', n.get_datetime_value()),
+            "relatedContacts": lambda n : setattr(self, 'related_contacts', n.get_collection_of_object_values(related_contact.RelatedContact)),
+            "residenceAddress": lambda n : setattr(self, 'residence_address', n.get_object_value(physical_address.PhysicalAddress)),
             "rubrics": lambda n : setattr(self, 'rubrics', n.get_collection_of_object_values(education_rubric.EducationRubric)),
             "schools": lambda n : setattr(self, 'schools', n.get_collection_of_object_values(education_school.EducationSchool)),
-            "show_in_address_list": lambda n : setattr(self, 'show_in_address_list', n.get_bool_value()),
+            "showInAddressList": lambda n : setattr(self, 'show_in_address_list', n.get_bool_value()),
             "student": lambda n : setattr(self, 'student', n.get_object_value(education_student.EducationStudent)),
             "surname": lambda n : setattr(self, 'surname', n.get_str_value()),
-            "taught_classes": lambda n : setattr(self, 'taught_classes', n.get_collection_of_object_values(education_class.EducationClass)),
+            "taughtClasses": lambda n : setattr(self, 'taught_classes', n.get_collection_of_object_values(education_class.EducationClass)),
             "teacher": lambda n : setattr(self, 'teacher', n.get_object_value(education_teacher.EducationTeacher)),
-            "usage_location": lambda n : setattr(self, 'usage_location', n.get_str_value()),
+            "usageLocation": lambda n : setattr(self, 'usage_location', n.get_str_value()),
             "user": lambda n : setattr(self, 'user', n.get_object_value(user.User)),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
-            "user_type": lambda n : setattr(self, 'user_type', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userType": lambda n : setattr(self, 'user_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -461,7 +457,7 @@ class EducationUser(entity.Entity):
     @property
     def office_location(self,) -> Optional[str]:
         """
-        Gets the officeLocation property value. The officeLocation property
+        Gets the officeLocation property value. 
         Returns: Optional[str]
         """
         return self._office_location
@@ -469,7 +465,7 @@ class EducationUser(entity.Entity):
     @office_location.setter
     def office_location(self,value: Optional[str] = None) -> None:
         """
-        Sets the officeLocation property value. The officeLocation property
+        Sets the officeLocation property value. 
         Args:
             value: Value to set for the officeLocation property.
         """
@@ -546,7 +542,7 @@ class EducationUser(entity.Entity):
     @property
     def primary_role(self,) -> Optional[education_user_role.EducationUserRole]:
         """
-        Gets the primaryRole property value. The primaryRole property
+        Gets the primaryRole property value. 
         Returns: Optional[education_user_role.EducationUserRole]
         """
         return self._primary_role
@@ -554,7 +550,7 @@ class EducationUser(entity.Entity):
     @primary_role.setter
     def primary_role(self,value: Optional[education_user_role.EducationUserRole] = None) -> None:
         """
-        Sets the primaryRole property value. The primaryRole property
+        Sets the primaryRole property value. 
         Args:
             value: Value to set for the primaryRole property.
         """
@@ -580,7 +576,7 @@ class EducationUser(entity.Entity):
     @property
     def refresh_tokens_valid_from_date_time(self,) -> Optional[datetime]:
         """
-        Gets the refreshTokensValidFromDateTime property value. The refreshTokensValidFromDateTime property
+        Gets the refreshTokensValidFromDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._refresh_tokens_valid_from_date_time
@@ -588,7 +584,7 @@ class EducationUser(entity.Entity):
     @refresh_tokens_valid_from_date_time.setter
     def refresh_tokens_valid_from_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the refreshTokensValidFromDateTime property value. The refreshTokensValidFromDateTime property
+        Sets the refreshTokensValidFromDateTime property value. 
         Args:
             value: Value to set for the refreshTokensValidFromDateTime property.
         """

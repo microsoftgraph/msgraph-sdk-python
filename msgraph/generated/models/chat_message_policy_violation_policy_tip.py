@@ -51,7 +51,6 @@ class ChatMessagePolicyViolationPolicyTip(AdditionalDataHolder, Parsable):
         self._general_text: Optional[str] = None
         # The list of improper data in the message that was detected by the data loss prevention app. Each DLP app defines its own conditions, examples include 'Credit Card Number' and 'Social Security Number'.
         self._matched_condition_descriptions: Optional[List[str]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -89,9 +88,9 @@ class ChatMessagePolicyViolationPolicyTip(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "compliance_url": lambda n : setattr(self, 'compliance_url', n.get_str_value()),
-            "general_text": lambda n : setattr(self, 'general_text', n.get_str_value()),
-            "matched_condition_descriptions": lambda n : setattr(self, 'matched_condition_descriptions', n.get_collection_of_primitive_values(str)),
+            "complianceUrl": lambda n : setattr(self, 'compliance_url', n.get_str_value()),
+            "generalText": lambda n : setattr(self, 'general_text', n.get_str_value()),
+            "matchedConditionDescriptions": lambda n : setattr(self, 'matched_condition_descriptions', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -116,7 +115,7 @@ class ChatMessagePolicyViolationPolicyTip(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -124,7 +123,7 @@ class ChatMessagePolicyViolationPolicyTip(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

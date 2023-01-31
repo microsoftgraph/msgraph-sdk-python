@@ -14,7 +14,7 @@ chat_message = lazy_import('msgraph.generated.models.chat_message')
 chat_message_collection_response = lazy_import('msgraph.generated.models.chat_message_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.teams.item.channels.item.messages.count.count_request_builder')
-delta_request_builder = lazy_import('msgraph.generated.teams.item.channels.item.messages.delta.delta_request_builder')
+delta_request_builder = lazy_import('msgraph.generated.teams.item.channels.item.messages.microsoft_graph_delta.delta_request_builder')
 
 class MessagesRequestBuilder():
     """
@@ -26,6 +26,13 @@ class MessagesRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_delta(self) -> delta_request_builder.DeltaRequestBuilder:
+        """
+        Provides operations to call the delta method.
+        """
+        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -44,13 +51,6 @@ class MessagesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def delta(self,) -> delta_request_builder.DeltaRequestBuilder:
-        """
-        Provides operations to call the delta method.
-        Returns: delta_request_builder.DeltaRequestBuilder
-        """
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     async def get(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[chat_message_collection_response.ChatMessageCollectionResponse]:
         """
@@ -74,7 +74,7 @@ class MessagesRequestBuilder():
         """
         Send a new chatMessage in the specified channel.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[chat_message.ChatMessage]
         """
@@ -113,7 +113,7 @@ class MessagesRequestBuilder():
         """
         Send a new chatMessage in the specified channel.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

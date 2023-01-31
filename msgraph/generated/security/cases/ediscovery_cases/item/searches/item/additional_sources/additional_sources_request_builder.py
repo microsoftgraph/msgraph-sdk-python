@@ -66,7 +66,7 @@ class AdditionalSourcesRequestBuilder():
         """
         Create a new additional source associated with an eDiscovery search.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[data_source.DataSource]
         """
@@ -105,7 +105,7 @@ class AdditionalSourcesRequestBuilder():
         """
         Create a new additional source associated with an eDiscovery search.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

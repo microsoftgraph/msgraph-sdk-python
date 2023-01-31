@@ -28,11 +28,8 @@ class RedirectUriSettings(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The index property
         self._index: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The uri property
         self._uri: Optional[str] = None
     
     @staticmethod
@@ -62,7 +59,7 @@ class RedirectUriSettings(AdditionalDataHolder, Parsable):
     @property
     def index(self,) -> Optional[int]:
         """
-        Gets the index property value. The index property
+        Gets the index property value. 
         Returns: Optional[int]
         """
         return self._index
@@ -70,7 +67,7 @@ class RedirectUriSettings(AdditionalDataHolder, Parsable):
     @index.setter
     def index(self,value: Optional[int] = None) -> None:
         """
-        Sets the index property value. The index property
+        Sets the index property value. 
         Args:
             value: Value to set for the index property.
         """
@@ -79,7 +76,7 @@ class RedirectUriSettings(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -87,7 +84,7 @@ class RedirectUriSettings(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -109,7 +106,7 @@ class RedirectUriSettings(AdditionalDataHolder, Parsable):
     @property
     def uri(self,) -> Optional[str]:
         """
-        Gets the uri property value. The uri property
+        Gets the uri property value. 
         Returns: Optional[str]
         """
         return self._uri
@@ -117,7 +114,7 @@ class RedirectUriSettings(AdditionalDataHolder, Parsable):
     @uri.setter
     def uri(self,value: Optional[str] = None) -> None:
         """
-        Sets the uri property value. The uri property
+        Sets the uri property value. 
         Args:
             value: Value to set for the uri property.
         """

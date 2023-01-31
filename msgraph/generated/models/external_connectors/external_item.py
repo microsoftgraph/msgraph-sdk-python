@@ -35,7 +35,6 @@ class ExternalItem(entity.Entity):
         self._acl: Optional[List[acl.Acl]] = None
         # A plain-text  representation of the contents of the item. The text in this property is full-text indexed. Optional.
         self._content: Optional[external_item_content.ExternalItemContent] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # A property bag with the properties of the item. The properties MUST conform to the schema defined for the externalConnection. Required.
         self._properties: Optional[properties.Properties] = None

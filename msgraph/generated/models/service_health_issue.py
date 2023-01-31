@@ -13,7 +13,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
     @property
     def classification(self,) -> Optional[service_health_classification_type.ServiceHealthClassificationType]:
         """
-        Gets the classification property value. The classification property
+        Gets the classification property value. 
         Returns: Optional[service_health_classification_type.ServiceHealthClassificationType]
         """
         return self._classification
@@ -21,7 +21,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
     @classification.setter
     def classification(self,value: Optional[service_health_classification_type.ServiceHealthClassificationType] = None) -> None:
         """
-        Sets the classification property value. The classification property
+        Sets the classification property value. 
         Args:
             value: Value to set for the classification property.
         """
@@ -33,7 +33,6 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.serviceHealthIssue"
-        # The classification property
         self._classification: Optional[service_health_classification_type.ServiceHealthClassificationType] = None
         # The feature name of the service issue.
         self._feature: Optional[str] = None
@@ -43,13 +42,11 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         self._impact_description: Optional[str] = None
         # Indicates whether the issue is resolved.
         self._is_resolved: Optional[bool] = None
-        # The origin property
         self._origin: Optional[service_health_origin.ServiceHealthOrigin] = None
         # Collection of historical posts for the service issue.
         self._posts: Optional[List[service_health_issue_post.ServiceHealthIssuePost]] = None
         # Indicates the service affected by the issue.
         self._service: Optional[str] = None
-        # The status property
         self._status: Optional[service_health_status.ServiceHealthStatus] = None
     
     @staticmethod
@@ -106,9 +103,9 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         fields = {
             "classification": lambda n : setattr(self, 'classification', n.get_enum_value(service_health_classification_type.ServiceHealthClassificationType)),
             "feature": lambda n : setattr(self, 'feature', n.get_str_value()),
-            "feature_group": lambda n : setattr(self, 'feature_group', n.get_str_value()),
-            "impact_description": lambda n : setattr(self, 'impact_description', n.get_str_value()),
-            "is_resolved": lambda n : setattr(self, 'is_resolved', n.get_bool_value()),
+            "featureGroup": lambda n : setattr(self, 'feature_group', n.get_str_value()),
+            "impactDescription": lambda n : setattr(self, 'impact_description', n.get_str_value()),
+            "isResolved": lambda n : setattr(self, 'is_resolved', n.get_bool_value()),
             "origin": lambda n : setattr(self, 'origin', n.get_enum_value(service_health_origin.ServiceHealthOrigin)),
             "posts": lambda n : setattr(self, 'posts', n.get_collection_of_object_values(service_health_issue_post.ServiceHealthIssuePost)),
             "service": lambda n : setattr(self, 'service', n.get_str_value()),
@@ -155,7 +152,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
     @property
     def origin(self,) -> Optional[service_health_origin.ServiceHealthOrigin]:
         """
-        Gets the origin property value. The origin property
+        Gets the origin property value. 
         Returns: Optional[service_health_origin.ServiceHealthOrigin]
         """
         return self._origin
@@ -163,7 +160,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
     @origin.setter
     def origin(self,value: Optional[service_health_origin.ServiceHealthOrigin] = None) -> None:
         """
-        Sets the origin property value. The origin property
+        Sets the origin property value. 
         Args:
             value: Value to set for the origin property.
         """
@@ -225,7 +222,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
     @property
     def status(self,) -> Optional[service_health_status.ServiceHealthStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[service_health_status.ServiceHealthStatus]
         """
         return self._status
@@ -233,7 +230,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
     @status.setter
     def status(self,value: Optional[service_health_status.ServiceHealthStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

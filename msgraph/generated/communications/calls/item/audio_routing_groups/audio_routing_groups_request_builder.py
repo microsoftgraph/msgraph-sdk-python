@@ -66,7 +66,7 @@ class AudioRoutingGroupsRequestBuilder():
         """
         Create new navigation property to audioRoutingGroups for communications
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[audio_routing_group.AudioRoutingGroup]
         """
@@ -105,7 +105,7 @@ class AudioRoutingGroupsRequestBuilder():
         """
         Create new navigation property to audioRoutingGroups for communications
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

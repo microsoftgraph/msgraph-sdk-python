@@ -12,7 +12,7 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
     @property
     def access_reviews(self,) -> Optional[access_review_set.AccessReviewSet]:
         """
-        Gets the accessReviews property value. The accessReviews property
+        Gets the accessReviews property value. 
         Returns: Optional[access_review_set.AccessReviewSet]
         """
         return self._access_reviews
@@ -20,7 +20,7 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
     @access_reviews.setter
     def access_reviews(self,value: Optional[access_review_set.AccessReviewSet] = None) -> None:
         """
-        Sets the accessReviews property value. The accessReviews property
+        Sets the accessReviews property value. 
         Args:
             value: Value to set for the accessReviews property.
         """
@@ -46,7 +46,7 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
     @property
     def app_consent(self,) -> Optional[app_consent_approval_route.AppConsentApprovalRoute]:
         """
-        Gets the appConsent property value. The appConsent property
+        Gets the appConsent property value. 
         Returns: Optional[app_consent_approval_route.AppConsentApprovalRoute]
         """
         return self._app_consent
@@ -54,7 +54,7 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
     @app_consent.setter
     def app_consent(self,value: Optional[app_consent_approval_route.AppConsentApprovalRoute] = None) -> None:
         """
-        Sets the appConsent property value. The appConsent property
+        Sets the appConsent property value. 
         Args:
             value: Value to set for the appConsent property.
         """
@@ -67,15 +67,10 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The accessReviews property
         self._access_reviews: Optional[access_review_set.AccessReviewSet] = None
-        # The appConsent property
         self._app_consent: Optional[app_consent_approval_route.AppConsentApprovalRoute] = None
-        # The entitlementManagement property
         self._entitlement_management: Optional[entitlement_management.EntitlementManagement] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The termsOfUse property
         self._terms_of_use: Optional[terms_of_use_container.TermsOfUseContainer] = None
     
     @staticmethod
@@ -93,7 +88,7 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
     @property
     def entitlement_management(self,) -> Optional[entitlement_management.EntitlementManagement]:
         """
-        Gets the entitlementManagement property value. The entitlementManagement property
+        Gets the entitlementManagement property value. 
         Returns: Optional[entitlement_management.EntitlementManagement]
         """
         return self._entitlement_management
@@ -101,7 +96,7 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
     @entitlement_management.setter
     def entitlement_management(self,value: Optional[entitlement_management.EntitlementManagement] = None) -> None:
         """
-        Sets the entitlementManagement property value. The entitlementManagement property
+        Sets the entitlementManagement property value. 
         Args:
             value: Value to set for the entitlementManagement property.
         """
@@ -113,18 +108,18 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_reviews": lambda n : setattr(self, 'access_reviews', n.get_object_value(access_review_set.AccessReviewSet)),
-            "app_consent": lambda n : setattr(self, 'app_consent', n.get_object_value(app_consent_approval_route.AppConsentApprovalRoute)),
-            "entitlement_management": lambda n : setattr(self, 'entitlement_management', n.get_object_value(entitlement_management.EntitlementManagement)),
+            "accessReviews": lambda n : setattr(self, 'access_reviews', n.get_object_value(access_review_set.AccessReviewSet)),
+            "appConsent": lambda n : setattr(self, 'app_consent', n.get_object_value(app_consent_approval_route.AppConsentApprovalRoute)),
+            "entitlementManagement": lambda n : setattr(self, 'entitlement_management', n.get_object_value(entitlement_management.EntitlementManagement)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "terms_of_use": lambda n : setattr(self, 'terms_of_use', n.get_object_value(terms_of_use_container.TermsOfUseContainer)),
+            "termsOfUse": lambda n : setattr(self, 'terms_of_use', n.get_object_value(terms_of_use_container.TermsOfUseContainer)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -132,7 +127,7 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -156,7 +151,7 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
     @property
     def terms_of_use(self,) -> Optional[terms_of_use_container.TermsOfUseContainer]:
         """
-        Gets the termsOfUse property value. The termsOfUse property
+        Gets the termsOfUse property value. 
         Returns: Optional[terms_of_use_container.TermsOfUseContainer]
         """
         return self._terms_of_use
@@ -164,7 +159,7 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
     @terms_of_use.setter
     def terms_of_use(self,value: Optional[terms_of_use_container.TermsOfUseContainer] = None) -> None:
         """
-        Sets the termsOfUse property value. The termsOfUse property
+        Sets the termsOfUse property value. 
         Args:
             value: Value to set for the termsOfUse property.
         """

@@ -31,7 +31,6 @@ class IncompleteData(AdditionalDataHolder, Parsable):
 
         # The service does not have source data before the specified time.
         self._missing_data_before_date_time: Optional[datetime] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Some data was not recorded due to excessive activity.
         self._was_throttled: Optional[bool] = None
@@ -54,9 +53,9 @@ class IncompleteData(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "missing_data_before_date_time": lambda n : setattr(self, 'missing_data_before_date_time', n.get_datetime_value()),
+            "missingDataBeforeDateTime": lambda n : setattr(self, 'missing_data_before_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "was_throttled": lambda n : setattr(self, 'was_throttled', n.get_bool_value()),
+            "wasThrottled": lambda n : setattr(self, 'was_throttled', n.get_bool_value()),
         }
         return fields
     
@@ -80,7 +79,7 @@ class IncompleteData(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -88,7 +87,7 @@ class IncompleteData(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

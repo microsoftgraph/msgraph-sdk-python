@@ -66,7 +66,7 @@ class AgreementsRequestBuilder():
         """
         Create a new agreement object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[agreement.Agreement]
         """
@@ -105,7 +105,7 @@ class AgreementsRequestBuilder():
         """
         Create a new agreement object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

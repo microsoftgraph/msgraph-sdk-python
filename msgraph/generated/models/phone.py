@@ -30,13 +30,10 @@ class Phone(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The language property
         self._language: Optional[str] = None
         # The phone number.
         self._number: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The region property
         self._region: Optional[str] = None
         # The type of phone number. The possible values are: home, business, mobile, other, assistant, homeFax, businessFax, otherFax, pager, radio.
         self._type: Optional[phone_type.PhoneType] = None
@@ -70,7 +67,7 @@ class Phone(AdditionalDataHolder, Parsable):
     @property
     def language(self,) -> Optional[str]:
         """
-        Gets the language property value. The language property
+        Gets the language property value. 
         Returns: Optional[str]
         """
         return self._language
@@ -78,7 +75,7 @@ class Phone(AdditionalDataHolder, Parsable):
     @language.setter
     def language(self,value: Optional[str] = None) -> None:
         """
-        Sets the language property value. The language property
+        Sets the language property value. 
         Args:
             value: Value to set for the language property.
         """
@@ -104,7 +101,7 @@ class Phone(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -112,7 +109,7 @@ class Phone(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -121,7 +118,7 @@ class Phone(AdditionalDataHolder, Parsable):
     @property
     def region(self,) -> Optional[str]:
         """
-        Gets the region property value. The region property
+        Gets the region property value. 
         Returns: Optional[str]
         """
         return self._region
@@ -129,7 +126,7 @@ class Phone(AdditionalDataHolder, Parsable):
     @region.setter
     def region(self,value: Optional[str] = None) -> None:
         """
-        Sets the region property value. The region property
+        Sets the region property value. 
         Args:
             value: Value to set for the region property.
         """

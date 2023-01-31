@@ -12,7 +12,6 @@ class WorkbookPivotTableCollectionResponse(base_collection_pagination_count_resp
         Instantiates a new WorkbookPivotTableCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[workbook_pivot_table.WorkbookPivotTable]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class WorkbookPivotTableCollectionResponse(base_collection_pagination_count_resp
     @property
     def value(self,) -> Optional[List[workbook_pivot_table.WorkbookPivotTable]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[workbook_pivot_table.WorkbookPivotTable]]
         """
         return self._value
@@ -61,7 +60,7 @@ class WorkbookPivotTableCollectionResponse(base_collection_pagination_count_resp
     @value.setter
     def value(self,value: Optional[List[workbook_pivot_table.WorkbookPivotTable]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

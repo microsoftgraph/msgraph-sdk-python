@@ -97,7 +97,7 @@ class AuditLogsRequestBuilder():
         """
         Update auditLogs
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[audit_log_root.AuditLogRoot]
         """
@@ -162,7 +162,7 @@ class AuditLogsRequestBuilder():
         """
         Update auditLogs
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

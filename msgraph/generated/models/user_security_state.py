@@ -87,7 +87,6 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         self._logon_location: Optional[str] = None
         # Method of user sign in. Possible values are: unknown, interactive, remoteInteractive, network, batch, service.
         self._logon_type: Optional[logon_type.LogonType] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Active Directory (on-premises) Security Identifier (SID) of the user.
         self._on_premises_security_identifier: Optional[str] = None
@@ -150,21 +149,21 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "aad_user_id": lambda n : setattr(self, 'aad_user_id', n.get_str_value()),
-            "account_name": lambda n : setattr(self, 'account_name', n.get_str_value()),
-            "domain_name": lambda n : setattr(self, 'domain_name', n.get_str_value()),
-            "email_role": lambda n : setattr(self, 'email_role', n.get_enum_value(email_role.EmailRole)),
-            "is_vpn": lambda n : setattr(self, 'is_vpn', n.get_bool_value()),
-            "logon_date_time": lambda n : setattr(self, 'logon_date_time', n.get_datetime_value()),
-            "logon_id": lambda n : setattr(self, 'logon_id', n.get_str_value()),
-            "logon_ip": lambda n : setattr(self, 'logon_ip', n.get_str_value()),
-            "logon_location": lambda n : setattr(self, 'logon_location', n.get_str_value()),
-            "logon_type": lambda n : setattr(self, 'logon_type', n.get_enum_value(logon_type.LogonType)),
+            "aadUserId": lambda n : setattr(self, 'aad_user_id', n.get_str_value()),
+            "accountName": lambda n : setattr(self, 'account_name', n.get_str_value()),
+            "domainName": lambda n : setattr(self, 'domain_name', n.get_str_value()),
+            "emailRole": lambda n : setattr(self, 'email_role', n.get_enum_value(email_role.EmailRole)),
+            "isVpn": lambda n : setattr(self, 'is_vpn', n.get_bool_value()),
+            "logonDateTime": lambda n : setattr(self, 'logon_date_time', n.get_datetime_value()),
+            "logonId": lambda n : setattr(self, 'logon_id', n.get_str_value()),
+            "logonIp": lambda n : setattr(self, 'logon_ip', n.get_str_value()),
+            "logonLocation": lambda n : setattr(self, 'logon_location', n.get_str_value()),
+            "logonType": lambda n : setattr(self, 'logon_type', n.get_enum_value(logon_type.LogonType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "on_premises_security_identifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
-            "risk_score": lambda n : setattr(self, 'risk_score', n.get_str_value()),
-            "user_account_type": lambda n : setattr(self, 'user_account_type', n.get_enum_value(user_account_security_type.UserAccountSecurityType)),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "onPremisesSecurityIdentifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
+            "riskScore": lambda n : setattr(self, 'risk_score', n.get_str_value()),
+            "userAccountType": lambda n : setattr(self, 'user_account_type', n.get_enum_value(user_account_security_type.UserAccountSecurityType)),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
     
@@ -273,7 +272,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -281,7 +280,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

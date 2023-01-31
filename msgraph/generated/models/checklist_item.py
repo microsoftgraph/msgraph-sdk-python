@@ -37,7 +37,6 @@ class ChecklistItem(entity.Entity):
         self._display_name: Optional[str] = None
         # State indicating whether the item is checked off or not.
         self._is_checked: Optional[bool] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @property
@@ -92,10 +91,10 @@ class ChecklistItem(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "checked_date_time": lambda n : setattr(self, 'checked_date_time', n.get_datetime_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_checked": lambda n : setattr(self, 'is_checked', n.get_bool_value()),
+            "checkedDateTime": lambda n : setattr(self, 'checked_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isChecked": lambda n : setattr(self, 'is_checked', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

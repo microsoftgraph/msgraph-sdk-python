@@ -11,7 +11,6 @@ class CancelMediaProcessingOperation(comms_operation.CommsOperation):
         Instantiates a new CancelMediaProcessingOperation and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

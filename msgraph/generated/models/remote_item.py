@@ -61,7 +61,6 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         self._last_modified_date_time: Optional[datetime] = None
         # Optional. Filename of the remote item. Read-only.
         self._name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # If present, indicates that this item is a package instead of a folder or file. Packages are treated like files in some contexts and folders in others. Read-only.
         self._package: Optional[package.Package] = None
@@ -185,26 +184,26 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "file": lambda n : setattr(self, 'file', n.get_object_value(file.File)),
-            "file_system_info": lambda n : setattr(self, 'file_system_info', n.get_object_value(file_system_info.FileSystemInfo)),
+            "fileSystemInfo": lambda n : setattr(self, 'file_system_info', n.get_object_value(file_system_info.FileSystemInfo)),
             "folder": lambda n : setattr(self, 'folder', n.get_object_value(folder.Folder)),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "image": lambda n : setattr(self, 'image', n.get_object_value(image.Image)),
-            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "package": lambda n : setattr(self, 'package', n.get_object_value(package.Package)),
-            "parent_reference": lambda n : setattr(self, 'parent_reference', n.get_object_value(item_reference.ItemReference)),
+            "parentReference": lambda n : setattr(self, 'parent_reference', n.get_object_value(item_reference.ItemReference)),
             "shared": lambda n : setattr(self, 'shared', n.get_object_value(shared.Shared)),
-            "sharepoint_ids": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
+            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
-            "special_folder": lambda n : setattr(self, 'special_folder', n.get_object_value(special_folder.SpecialFolder)),
+            "specialFolder": lambda n : setattr(self, 'special_folder', n.get_object_value(special_folder.SpecialFolder)),
             "video": lambda n : setattr(self, 'video', n.get_object_value(video.Video)),
-            "web_dav_url": lambda n : setattr(self, 'web_dav_url', n.get_str_value()),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "webDavUrl": lambda n : setattr(self, 'web_dav_url', n.get_str_value()),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         return fields
     
@@ -296,7 +295,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -304,7 +303,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

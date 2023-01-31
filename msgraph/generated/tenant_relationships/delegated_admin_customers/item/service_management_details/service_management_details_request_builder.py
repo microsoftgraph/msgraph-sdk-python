@@ -66,7 +66,7 @@ class ServiceManagementDetailsRequestBuilder():
         """
         Create new navigation property to serviceManagementDetails for tenantRelationships
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail]
         """
@@ -105,7 +105,7 @@ class ServiceManagementDetailsRequestBuilder():
         """
         Create new navigation property to serviceManagementDetails for tenantRelationships
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

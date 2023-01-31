@@ -39,7 +39,6 @@ class KeyCredential(AdditionalDataHolder, Parsable):
         self._key: Optional[bytes] = None
         # The unique identifier (GUID) for the key.
         self._key_id: Optional[Guid] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The date and time at which the credential becomes valid.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._start_date_time: Optional[datetime] = None
@@ -117,13 +116,13 @@ class KeyCredential(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "custom_key_identifier": lambda n : setattr(self, 'custom_key_identifier', n.get_bytes_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "customKeyIdentifier": lambda n : setattr(self, 'custom_key_identifier', n.get_bytes_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "key": lambda n : setattr(self, 'key', n.get_bytes_value()),
-            "key_id": lambda n : setattr(self, 'key_id', n.get_object_value(Guid)),
+            "keyId": lambda n : setattr(self, 'key_id', n.get_object_value(Guid)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
             "usage": lambda n : setattr(self, 'usage', n.get_str_value()),
         }
@@ -166,7 +165,7 @@ class KeyCredential(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -174,7 +173,7 @@ class KeyCredential(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

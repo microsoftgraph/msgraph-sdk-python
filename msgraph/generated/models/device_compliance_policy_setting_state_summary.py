@@ -62,7 +62,6 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
         self._non_compliant_device_count: Optional[int] = None
         # Number of not applicable devices
         self._not_applicable_device_count: Optional[int] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Supported platform types for policies.
         self._platform_type: Optional[policy_platform_type.PolicyPlatformType] = None
@@ -127,17 +126,17 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "compliant_device_count": lambda n : setattr(self, 'compliant_device_count', n.get_int_value()),
-            "conflict_device_count": lambda n : setattr(self, 'conflict_device_count', n.get_int_value()),
-            "device_compliance_setting_states": lambda n : setattr(self, 'device_compliance_setting_states', n.get_collection_of_object_values(device_compliance_setting_state.DeviceComplianceSettingState)),
-            "error_device_count": lambda n : setattr(self, 'error_device_count', n.get_int_value()),
-            "non_compliant_device_count": lambda n : setattr(self, 'non_compliant_device_count', n.get_int_value()),
-            "not_applicable_device_count": lambda n : setattr(self, 'not_applicable_device_count', n.get_int_value()),
-            "platform_type": lambda n : setattr(self, 'platform_type', n.get_enum_value(policy_platform_type.PolicyPlatformType)),
-            "remediated_device_count": lambda n : setattr(self, 'remediated_device_count', n.get_int_value()),
+            "compliantDeviceCount": lambda n : setattr(self, 'compliant_device_count', n.get_int_value()),
+            "conflictDeviceCount": lambda n : setattr(self, 'conflict_device_count', n.get_int_value()),
+            "deviceComplianceSettingStates": lambda n : setattr(self, 'device_compliance_setting_states', n.get_collection_of_object_values(device_compliance_setting_state.DeviceComplianceSettingState)),
+            "errorDeviceCount": lambda n : setattr(self, 'error_device_count', n.get_int_value()),
+            "nonCompliantDeviceCount": lambda n : setattr(self, 'non_compliant_device_count', n.get_int_value()),
+            "notApplicableDeviceCount": lambda n : setattr(self, 'not_applicable_device_count', n.get_int_value()),
+            "platformType": lambda n : setattr(self, 'platform_type', n.get_enum_value(policy_platform_type.PolicyPlatformType)),
+            "remediatedDeviceCount": lambda n : setattr(self, 'remediated_device_count', n.get_int_value()),
             "setting": lambda n : setattr(self, 'setting', n.get_str_value()),
-            "setting_name": lambda n : setattr(self, 'setting_name', n.get_str_value()),
-            "unknown_device_count": lambda n : setattr(self, 'unknown_device_count', n.get_int_value()),
+            "settingName": lambda n : setattr(self, 'setting_name', n.get_str_value()),
+            "unknownDeviceCount": lambda n : setattr(self, 'unknown_device_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

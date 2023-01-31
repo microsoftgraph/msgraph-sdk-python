@@ -35,7 +35,6 @@ class Win32LobAppRestartSettings(AdditionalDataHolder, Parsable):
         self._countdown_display_before_restart_in_minutes: Optional[int] = None
         # The number of minutes to wait before restarting the device after an app installation.
         self._grace_period_in_minutes: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The number of minutes to snooze the restart notification dialog when the snooze button is selected.
         self._restart_notification_snooze_duration_in_minutes: Optional[int] = None
@@ -75,10 +74,10 @@ class Win32LobAppRestartSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "countdown_display_before_restart_in_minutes": lambda n : setattr(self, 'countdown_display_before_restart_in_minutes', n.get_int_value()),
-            "grace_period_in_minutes": lambda n : setattr(self, 'grace_period_in_minutes', n.get_int_value()),
+            "countdownDisplayBeforeRestartInMinutes": lambda n : setattr(self, 'countdown_display_before_restart_in_minutes', n.get_int_value()),
+            "gracePeriodInMinutes": lambda n : setattr(self, 'grace_period_in_minutes', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "restart_notification_snooze_duration_in_minutes": lambda n : setattr(self, 'restart_notification_snooze_duration_in_minutes', n.get_int_value()),
+            "restartNotificationSnoozeDurationInMinutes": lambda n : setattr(self, 'restart_notification_snooze_duration_in_minutes', n.get_int_value()),
         }
         return fields
     
@@ -102,7 +101,7 @@ class Win32LobAppRestartSettings(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -110,7 +109,7 @@ class Win32LobAppRestartSettings(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

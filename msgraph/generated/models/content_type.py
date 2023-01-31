@@ -147,7 +147,6 @@ class ContentType(entity.Entity):
         self._is_built_in: Optional[bool] = None
         # The name of the content type.
         self._name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Specifies the order in which the content type appears in the selection UI.
         self._order: Optional[content_type_order.ContentTypeOrder] = None
@@ -229,24 +228,24 @@ class ContentType(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "associated_hubs_urls": lambda n : setattr(self, 'associated_hubs_urls', n.get_collection_of_primitive_values(str)),
+            "associatedHubsUrls": lambda n : setattr(self, 'associated_hubs_urls', n.get_collection_of_primitive_values(str)),
             "base": lambda n : setattr(self, 'base', n.get_object_value(ContentType)),
-            "base_types": lambda n : setattr(self, 'base_types', n.get_collection_of_object_values(ContentType)),
-            "column_links": lambda n : setattr(self, 'column_links', n.get_collection_of_object_values(column_link.ColumnLink)),
-            "column_positions": lambda n : setattr(self, 'column_positions', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
+            "baseTypes": lambda n : setattr(self, 'base_types', n.get_collection_of_object_values(ContentType)),
+            "columnLinks": lambda n : setattr(self, 'column_links', n.get_collection_of_object_values(column_link.ColumnLink)),
+            "columnPositions": lambda n : setattr(self, 'column_positions', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
             "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "document_set": lambda n : setattr(self, 'document_set', n.get_object_value(document_set.DocumentSet)),
-            "document_template": lambda n : setattr(self, 'document_template', n.get_object_value(document_set_content.DocumentSetContent)),
+            "documentSet": lambda n : setattr(self, 'document_set', n.get_object_value(document_set.DocumentSet)),
+            "documentTemplate": lambda n : setattr(self, 'document_template', n.get_object_value(document_set_content.DocumentSetContent)),
             "group": lambda n : setattr(self, 'group', n.get_str_value()),
             "hidden": lambda n : setattr(self, 'hidden', n.get_bool_value()),
-            "inherited_from": lambda n : setattr(self, 'inherited_from', n.get_object_value(item_reference.ItemReference)),
-            "is_built_in": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
+            "inheritedFrom": lambda n : setattr(self, 'inherited_from', n.get_object_value(item_reference.ItemReference)),
+            "isBuiltIn": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "order": lambda n : setattr(self, 'order', n.get_object_value(content_type_order.ContentTypeOrder)),
-            "parent_id": lambda n : setattr(self, 'parent_id', n.get_str_value()),
-            "propagate_changes": lambda n : setattr(self, 'propagate_changes', n.get_bool_value()),
-            "read_only": lambda n : setattr(self, 'read_only', n.get_bool_value()),
+            "parentId": lambda n : setattr(self, 'parent_id', n.get_str_value()),
+            "propagateChanges": lambda n : setattr(self, 'propagate_changes', n.get_bool_value()),
+            "readOnly": lambda n : setattr(self, 'read_only', n.get_bool_value()),
             "sealed": lambda n : setattr(self, 'sealed', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

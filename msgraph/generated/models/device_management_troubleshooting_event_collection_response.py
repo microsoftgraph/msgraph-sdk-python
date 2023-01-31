@@ -12,7 +12,6 @@ class DeviceManagementTroubleshootingEventCollectionResponse(base_collection_pag
         Instantiates a new DeviceManagementTroubleshootingEventCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class DeviceManagementTroubleshootingEventCollectionResponse(base_collection_pag
     @property
     def value(self,) -> Optional[List[device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent]]
         """
         return self._value
@@ -61,7 +60,7 @@ class DeviceManagementTroubleshootingEventCollectionResponse(base_collection_pag
     @value.setter
     def value(self,value: Optional[List[device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

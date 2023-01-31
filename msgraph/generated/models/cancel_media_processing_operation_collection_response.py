@@ -12,7 +12,6 @@ class CancelMediaProcessingOperationCollectionResponse(base_collection_paginatio
         Instantiates a new CancelMediaProcessingOperationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[cancel_media_processing_operation.CancelMediaProcessingOperation]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class CancelMediaProcessingOperationCollectionResponse(base_collection_paginatio
     @property
     def value(self,) -> Optional[List[cancel_media_processing_operation.CancelMediaProcessingOperation]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[cancel_media_processing_operation.CancelMediaProcessingOperation]]
         """
         return self._value
@@ -61,7 +60,7 @@ class CancelMediaProcessingOperationCollectionResponse(base_collection_paginatio
     @value.setter
     def value(self,value: Optional[List[cancel_media_processing_operation.CancelMediaProcessingOperation]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

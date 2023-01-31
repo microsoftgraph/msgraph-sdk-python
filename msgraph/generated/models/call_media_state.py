@@ -49,7 +49,6 @@ class CallMediaState(AdditionalDataHolder, Parsable):
 
         # The audio media state. Possible values are: active, inactive, unknownFutureValue.
         self._audio: Optional[media_state.MediaState] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -78,7 +77,7 @@ class CallMediaState(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -86,7 +85,7 @@ class CallMediaState(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

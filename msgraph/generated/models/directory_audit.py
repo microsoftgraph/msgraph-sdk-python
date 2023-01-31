@@ -94,11 +94,9 @@ class DirectoryAudit(entity.Entity):
         self._category: Optional[str] = None
         # Indicates a unique ID that helps correlate activities that span across various services. Can be used to trace logs across services.
         self._correlation_id: Optional[str] = None
-        # The initiatedBy property
         self._initiated_by: Optional[audit_activity_initiator.AuditActivityInitiator] = None
         # Indicates information on which service initiated the activity (For example: Self-service Password Management, Core Directory, B2C, Invited Users, Microsoft Identity Manager, Privileged Identity Management.
         self._logged_by_service: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Indicates the type of operation that was performed. The possible values include but are not limited to the following: Add, Assign, Update, Unassign, and Delete.
         self._operation_type: Optional[str] = None
@@ -144,17 +142,17 @@ class DirectoryAudit(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "activity_date_time": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
-            "activity_display_name": lambda n : setattr(self, 'activity_display_name', n.get_str_value()),
-            "additional_details": lambda n : setattr(self, 'additional_details', n.get_collection_of_object_values(key_value.KeyValue)),
+            "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
+            "activityDisplayName": lambda n : setattr(self, 'activity_display_name', n.get_str_value()),
+            "additionalDetails": lambda n : setattr(self, 'additional_details', n.get_collection_of_object_values(key_value.KeyValue)),
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
-            "correlation_id": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
-            "initiated_by": lambda n : setattr(self, 'initiated_by', n.get_object_value(audit_activity_initiator.AuditActivityInitiator)),
-            "logged_by_service": lambda n : setattr(self, 'logged_by_service', n.get_str_value()),
-            "operation_type": lambda n : setattr(self, 'operation_type', n.get_str_value()),
+            "correlationId": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
+            "initiatedBy": lambda n : setattr(self, 'initiated_by', n.get_object_value(audit_activity_initiator.AuditActivityInitiator)),
+            "loggedByService": lambda n : setattr(self, 'logged_by_service', n.get_str_value()),
+            "operationType": lambda n : setattr(self, 'operation_type', n.get_str_value()),
             "result": lambda n : setattr(self, 'result', n.get_enum_value(operation_result.OperationResult)),
-            "result_reason": lambda n : setattr(self, 'result_reason', n.get_str_value()),
-            "target_resources": lambda n : setattr(self, 'target_resources', n.get_collection_of_object_values(target_resource.TargetResource)),
+            "resultReason": lambda n : setattr(self, 'result_reason', n.get_str_value()),
+            "targetResources": lambda n : setattr(self, 'target_resources', n.get_collection_of_object_values(target_resource.TargetResource)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -163,7 +161,7 @@ class DirectoryAudit(entity.Entity):
     @property
     def initiated_by(self,) -> Optional[audit_activity_initiator.AuditActivityInitiator]:
         """
-        Gets the initiatedBy property value. The initiatedBy property
+        Gets the initiatedBy property value. 
         Returns: Optional[audit_activity_initiator.AuditActivityInitiator]
         """
         return self._initiated_by
@@ -171,7 +169,7 @@ class DirectoryAudit(entity.Entity):
     @initiated_by.setter
     def initiated_by(self,value: Optional[audit_activity_initiator.AuditActivityInitiator] = None) -> None:
         """
-        Sets the initiatedBy property value. The initiatedBy property
+        Sets the initiatedBy property value. 
         Args:
             value: Value to set for the initiatedBy property.
         """

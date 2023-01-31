@@ -57,10 +57,10 @@ class Shift(change_tracked_entity.ChangeTrackedEntity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "draft_shift": lambda n : setattr(self, 'draft_shift', n.get_object_value(shift_item.ShiftItem)),
-            "scheduling_group_id": lambda n : setattr(self, 'scheduling_group_id', n.get_str_value()),
-            "shared_shift": lambda n : setattr(self, 'shared_shift', n.get_object_value(shift_item.ShiftItem)),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "draftShift": lambda n : setattr(self, 'draft_shift', n.get_object_value(shift_item.ShiftItem)),
+            "schedulingGroupId": lambda n : setattr(self, 'scheduling_group_id', n.get_str_value()),
+            "sharedShift": lambda n : setattr(self, 'shared_shift', n.get_object_value(shift_item.ShiftItem)),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

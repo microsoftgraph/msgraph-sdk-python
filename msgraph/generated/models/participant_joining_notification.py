@@ -10,7 +10,7 @@ class ParticipantJoiningNotification(entity.Entity):
     @property
     def call(self,) -> Optional[call.Call]:
         """
-        Gets the call property value. The call property
+        Gets the call property value. 
         Returns: Optional[call.Call]
         """
         return self._call
@@ -18,7 +18,7 @@ class ParticipantJoiningNotification(entity.Entity):
     @call.setter
     def call(self,value: Optional[call.Call] = None) -> None:
         """
-        Sets the call property value. The call property
+        Sets the call property value. 
         Args:
             value: Value to set for the call property.
         """
@@ -29,9 +29,7 @@ class ParticipantJoiningNotification(entity.Entity):
         Instantiates a new ParticipantJoiningNotification and sets the default values.
         """
         super().__init__()
-        # The call property
         self._call: Optional[call.Call] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

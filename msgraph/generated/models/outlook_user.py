@@ -14,7 +14,6 @@ class OutlookUser(entity.Entity):
         super().__init__()
         # A list of categories defined for the user.
         self._master_categories: Optional[List[outlook_category.OutlookCategory]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -35,7 +34,7 @@ class OutlookUser(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "master_categories": lambda n : setattr(self, 'master_categories', n.get_collection_of_object_values(outlook_category.OutlookCategory)),
+            "masterCategories": lambda n : setattr(self, 'master_categories', n.get_collection_of_object_values(outlook_category.OutlookCategory)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

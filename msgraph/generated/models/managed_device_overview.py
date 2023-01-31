@@ -23,7 +23,6 @@ class ManagedDeviceOverview(entity.Entity):
         self._enrolled_device_count: Optional[int] = None
         # The number of devices enrolled in MDM
         self._mdm_enrolled_count: Optional[int] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -112,11 +111,11 @@ class ManagedDeviceOverview(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_exchange_access_state_summary": lambda n : setattr(self, 'device_exchange_access_state_summary', n.get_object_value(device_exchange_access_state_summary.DeviceExchangeAccessStateSummary)),
-            "device_operating_system_summary": lambda n : setattr(self, 'device_operating_system_summary', n.get_object_value(device_operating_system_summary.DeviceOperatingSystemSummary)),
-            "dual_enrolled_device_count": lambda n : setattr(self, 'dual_enrolled_device_count', n.get_int_value()),
-            "enrolled_device_count": lambda n : setattr(self, 'enrolled_device_count', n.get_int_value()),
-            "mdm_enrolled_count": lambda n : setattr(self, 'mdm_enrolled_count', n.get_int_value()),
+            "deviceExchangeAccessStateSummary": lambda n : setattr(self, 'device_exchange_access_state_summary', n.get_object_value(device_exchange_access_state_summary.DeviceExchangeAccessStateSummary)),
+            "deviceOperatingSystemSummary": lambda n : setattr(self, 'device_operating_system_summary', n.get_object_value(device_operating_system_summary.DeviceOperatingSystemSummary)),
+            "dualEnrolledDeviceCount": lambda n : setattr(self, 'dual_enrolled_device_count', n.get_int_value()),
+            "enrolledDeviceCount": lambda n : setattr(self, 'enrolled_device_count', n.get_int_value()),
+            "mdmEnrolledCount": lambda n : setattr(self, 'mdm_enrolled_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

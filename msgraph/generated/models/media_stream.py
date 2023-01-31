@@ -31,13 +31,10 @@ class MediaStream(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The direction property
         self._direction: Optional[media_direction.MediaDirection] = None
         # The media stream label.
         self._label: Optional[str] = None
-        # The mediaType property
         self._media_type: Optional[modality.Modality] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # If the media is muted by the server.
         self._server_muted: Optional[bool] = None
@@ -59,7 +56,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
     @property
     def direction(self,) -> Optional[media_direction.MediaDirection]:
         """
-        Gets the direction property value. The direction property
+        Gets the direction property value. 
         Returns: Optional[media_direction.MediaDirection]
         """
         return self._direction
@@ -67,7 +64,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
     @direction.setter
     def direction(self,value: Optional[media_direction.MediaDirection] = None) -> None:
         """
-        Sets the direction property value. The direction property
+        Sets the direction property value. 
         Args:
             value: Value to set for the direction property.
         """
@@ -81,10 +78,10 @@ class MediaStream(AdditionalDataHolder, Parsable):
         fields = {
             "direction": lambda n : setattr(self, 'direction', n.get_enum_value(media_direction.MediaDirection)),
             "label": lambda n : setattr(self, 'label', n.get_str_value()),
-            "media_type": lambda n : setattr(self, 'media_type', n.get_enum_value(modality.Modality)),
+            "mediaType": lambda n : setattr(self, 'media_type', n.get_enum_value(modality.Modality)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "server_muted": lambda n : setattr(self, 'server_muted', n.get_bool_value()),
-            "source_id": lambda n : setattr(self, 'source_id', n.get_str_value()),
+            "serverMuted": lambda n : setattr(self, 'server_muted', n.get_bool_value()),
+            "sourceId": lambda n : setattr(self, 'source_id', n.get_str_value()),
         }
         return fields
     
@@ -108,7 +105,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
     @property
     def media_type(self,) -> Optional[modality.Modality]:
         """
-        Gets the mediaType property value. The mediaType property
+        Gets the mediaType property value. 
         Returns: Optional[modality.Modality]
         """
         return self._media_type
@@ -116,7 +113,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
     @media_type.setter
     def media_type(self,value: Optional[modality.Modality] = None) -> None:
         """
-        Sets the mediaType property value. The mediaType property
+        Sets the mediaType property value. 
         Args:
             value: Value to set for the mediaType property.
         """
@@ -125,7 +122,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -133,7 +130,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

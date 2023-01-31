@@ -39,7 +39,6 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         self._email_address: Optional[str] = None
         # True indicates that a staff member will be notified via email when a booking assigned to them is created or changed.
         self._is_email_notification_enabled: Optional[bool] = None
-        # The role property
         self._role: Optional[booking_staff_role.BookingStaffRole] = None
         # The time zone of the staff member. For a list of possible values, see dateTimeTimeZone.
         self._time_zone: Optional[str] = None
@@ -100,14 +99,14 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "availability_is_affected_by_personal_calendar": lambda n : setattr(self, 'availability_is_affected_by_personal_calendar', n.get_bool_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "email_address": lambda n : setattr(self, 'email_address', n.get_str_value()),
-            "is_email_notification_enabled": lambda n : setattr(self, 'is_email_notification_enabled', n.get_bool_value()),
+            "availabilityIsAffectedByPersonalCalendar": lambda n : setattr(self, 'availability_is_affected_by_personal_calendar', n.get_bool_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "isEmailNotificationEnabled": lambda n : setattr(self, 'is_email_notification_enabled', n.get_bool_value()),
             "role": lambda n : setattr(self, 'role', n.get_enum_value(booking_staff_role.BookingStaffRole)),
-            "time_zone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
-            "use_business_hours": lambda n : setattr(self, 'use_business_hours', n.get_bool_value()),
-            "working_hours": lambda n : setattr(self, 'working_hours', n.get_collection_of_object_values(booking_work_hours.BookingWorkHours)),
+            "timeZone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
+            "useBusinessHours": lambda n : setattr(self, 'use_business_hours', n.get_bool_value()),
+            "workingHours": lambda n : setattr(self, 'working_hours', n.get_collection_of_object_values(booking_work_hours.BookingWorkHours)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -133,7 +132,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
     @property
     def role(self,) -> Optional[booking_staff_role.BookingStaffRole]:
         """
-        Gets the role property value. The role property
+        Gets the role property value. 
         Returns: Optional[booking_staff_role.BookingStaffRole]
         """
         return self._role
@@ -141,7 +140,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
     @role.setter
     def role(self,value: Optional[booking_staff_role.BookingStaffRole] = None) -> None:
         """
-        Sets the role property value. The role property
+        Sets the role property value. 
         Args:
             value: Value to set for the role property.
         """

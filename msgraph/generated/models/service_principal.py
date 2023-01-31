@@ -279,7 +279,6 @@ class ServicePrincipal(directory_object.DirectoryObject):
         self._claims_mapping_policies: Optional[List[claims_mapping_policy.ClaimsMappingPolicy]] = None
         # Directory objects created by this service principal. Read-only. Nullable.
         self._created_objects: Optional[List[directory_object.DirectoryObject]] = None
-        # The delegatedPermissionClassifications property
         self._delegated_permission_classifications: Optional[List[delegated_permission_classification.DelegatedPermissionClassification]] = None
         # Free text field to provide an internal end-user facing description of the service principal. End-user portals such MyApps will display the application description in this field. The maximum allowed size is 1024 characters. Supports $filter (eq, ne, not, ge, le, startsWith) and $search.
         self._description: Optional[str] = None
@@ -287,7 +286,6 @@ class ServicePrincipal(directory_object.DirectoryObject):
         self._disabled_by_microsoft_status: Optional[str] = None
         # The display name for the service principal. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
         self._display_name: Optional[str] = None
-        # The endpoints property
         self._endpoints: Optional[List[endpoint.Endpoint]] = None
         # Federated identities for a specific type of service principal - managed identity. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         self._federated_identity_credentials: Optional[List[federated_identity_credential.FederatedIdentityCredential]] = None
@@ -343,7 +341,6 @@ class ServicePrincipal(directory_object.DirectoryObject):
         self._token_issuance_policies: Optional[List[token_issuance_policy.TokenIssuancePolicy]] = None
         # The tokenLifetimePolicies assigned to this service principal.
         self._token_lifetime_policies: Optional[List[token_lifetime_policy.TokenLifetimePolicy]] = None
-        # The transitiveMemberOf property
         self._transitive_member_of: Optional[List[directory_object.DirectoryObject]] = None
         # Specifies the verified publisher of the application which this service principal represents.
         self._verified_publisher: Optional[verified_publisher.VerifiedPublisher] = None
@@ -380,7 +377,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
     @property
     def delegated_permission_classifications(self,) -> Optional[List[delegated_permission_classification.DelegatedPermissionClassification]]:
         """
-        Gets the delegatedPermissionClassifications property value. The delegatedPermissionClassifications property
+        Gets the delegatedPermissionClassifications property value. 
         Returns: Optional[List[delegated_permission_classification.DelegatedPermissionClassification]]
         """
         return self._delegated_permission_classifications
@@ -388,7 +385,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
     @delegated_permission_classifications.setter
     def delegated_permission_classifications(self,value: Optional[List[delegated_permission_classification.DelegatedPermissionClassification]] = None) -> None:
         """
-        Sets the delegatedPermissionClassifications property value. The delegatedPermissionClassifications property
+        Sets the delegatedPermissionClassifications property value. 
         Args:
             value: Value to set for the delegatedPermissionClassifications property.
         """
@@ -448,7 +445,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
     @property
     def endpoints(self,) -> Optional[List[endpoint.Endpoint]]:
         """
-        Gets the endpoints property value. The endpoints property
+        Gets the endpoints property value. 
         Returns: Optional[List[endpoint.Endpoint]]
         """
         return self._endpoints
@@ -456,7 +453,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
     @endpoints.setter
     def endpoints(self,value: Optional[List[endpoint.Endpoint]] = None) -> None:
         """
-        Sets the endpoints property value. The endpoints property
+        Sets the endpoints property value. 
         Args:
             value: Value to set for the endpoints property.
         """
@@ -485,54 +482,54 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "account_enabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
-            "add_ins": lambda n : setattr(self, 'add_ins', n.get_collection_of_object_values(add_in.AddIn)),
-            "alternative_names": lambda n : setattr(self, 'alternative_names', n.get_collection_of_primitive_values(str)),
-            "app_description": lambda n : setattr(self, 'app_description', n.get_str_value()),
-            "app_display_name": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "application_template_id": lambda n : setattr(self, 'application_template_id', n.get_str_value()),
-            "app_owner_organization_id": lambda n : setattr(self, 'app_owner_organization_id', n.get_object_value(Guid)),
-            "app_role_assigned_to": lambda n : setattr(self, 'app_role_assigned_to', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
-            "app_role_assignment_required": lambda n : setattr(self, 'app_role_assignment_required', n.get_bool_value()),
-            "app_role_assignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
-            "app_roles": lambda n : setattr(self, 'app_roles', n.get_collection_of_object_values(app_role.AppRole)),
-            "claims_mapping_policies": lambda n : setattr(self, 'claims_mapping_policies', n.get_collection_of_object_values(claims_mapping_policy.ClaimsMappingPolicy)),
-            "created_objects": lambda n : setattr(self, 'created_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "delegated_permission_classifications": lambda n : setattr(self, 'delegated_permission_classifications', n.get_collection_of_object_values(delegated_permission_classification.DelegatedPermissionClassification)),
+            "accountEnabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
+            "addIns": lambda n : setattr(self, 'add_ins', n.get_collection_of_object_values(add_in.AddIn)),
+            "alternativeNames": lambda n : setattr(self, 'alternative_names', n.get_collection_of_primitive_values(str)),
+            "appDescription": lambda n : setattr(self, 'app_description', n.get_str_value()),
+            "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "applicationTemplateId": lambda n : setattr(self, 'application_template_id', n.get_str_value()),
+            "appOwnerOrganizationId": lambda n : setattr(self, 'app_owner_organization_id', n.get_object_value(Guid)),
+            "appRoleAssignedTo": lambda n : setattr(self, 'app_role_assigned_to', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
+            "appRoleAssignmentRequired": lambda n : setattr(self, 'app_role_assignment_required', n.get_bool_value()),
+            "appRoleAssignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
+            "appRoles": lambda n : setattr(self, 'app_roles', n.get_collection_of_object_values(app_role.AppRole)),
+            "claimsMappingPolicies": lambda n : setattr(self, 'claims_mapping_policies', n.get_collection_of_object_values(claims_mapping_policy.ClaimsMappingPolicy)),
+            "createdObjects": lambda n : setattr(self, 'created_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "delegatedPermissionClassifications": lambda n : setattr(self, 'delegated_permission_classifications', n.get_collection_of_object_values(delegated_permission_classification.DelegatedPermissionClassification)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "disabled_by_microsoft_status": lambda n : setattr(self, 'disabled_by_microsoft_status', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "disabledByMicrosoftStatus": lambda n : setattr(self, 'disabled_by_microsoft_status', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "endpoints": lambda n : setattr(self, 'endpoints', n.get_collection_of_object_values(endpoint.Endpoint)),
-            "federated_identity_credentials": lambda n : setattr(self, 'federated_identity_credentials', n.get_collection_of_object_values(federated_identity_credential.FederatedIdentityCredential)),
+            "federatedIdentityCredentials": lambda n : setattr(self, 'federated_identity_credentials', n.get_collection_of_object_values(federated_identity_credential.FederatedIdentityCredential)),
             "homepage": lambda n : setattr(self, 'homepage', n.get_str_value()),
-            "home_realm_discovery_policies": lambda n : setattr(self, 'home_realm_discovery_policies', n.get_collection_of_object_values(home_realm_discovery_policy.HomeRealmDiscoveryPolicy)),
+            "homeRealmDiscoveryPolicies": lambda n : setattr(self, 'home_realm_discovery_policies', n.get_collection_of_object_values(home_realm_discovery_policy.HomeRealmDiscoveryPolicy)),
             "info": lambda n : setattr(self, 'info', n.get_object_value(informational_url.InformationalUrl)),
-            "key_credentials": lambda n : setattr(self, 'key_credentials', n.get_collection_of_object_values(key_credential.KeyCredential)),
-            "login_url": lambda n : setattr(self, 'login_url', n.get_str_value()),
-            "logout_url": lambda n : setattr(self, 'logout_url', n.get_str_value()),
-            "member_of": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "keyCredentials": lambda n : setattr(self, 'key_credentials', n.get_collection_of_object_values(key_credential.KeyCredential)),
+            "loginUrl": lambda n : setattr(self, 'login_url', n.get_str_value()),
+            "logoutUrl": lambda n : setattr(self, 'logout_url', n.get_str_value()),
+            "memberOf": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
-            "notification_email_addresses": lambda n : setattr(self, 'notification_email_addresses', n.get_collection_of_primitive_values(str)),
-            "oauth2_permission_grants": lambda n : setattr(self, 'oauth2_permission_grants', n.get_collection_of_object_values(o_auth2_permission_grant.OAuth2PermissionGrant)),
-            "oauth2_permission_scopes": lambda n : setattr(self, 'oauth2_permission_scopes', n.get_collection_of_object_values(permission_scope.PermissionScope)),
-            "owned_objects": lambda n : setattr(self, 'owned_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "notificationEmailAddresses": lambda n : setattr(self, 'notification_email_addresses', n.get_collection_of_primitive_values(str)),
+            "oauth2PermissionGrants": lambda n : setattr(self, 'oauth2_permission_grants', n.get_collection_of_object_values(o_auth2_permission_grant.OAuth2PermissionGrant)),
+            "oauth2PermissionScopes": lambda n : setattr(self, 'oauth2_permission_scopes', n.get_collection_of_object_values(permission_scope.PermissionScope)),
+            "ownedObjects": lambda n : setattr(self, 'owned_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "owners": lambda n : setattr(self, 'owners', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "password_credentials": lambda n : setattr(self, 'password_credentials', n.get_collection_of_object_values(password_credential.PasswordCredential)),
-            "preferred_single_sign_on_mode": lambda n : setattr(self, 'preferred_single_sign_on_mode', n.get_str_value()),
-            "preferred_token_signing_key_thumbprint": lambda n : setattr(self, 'preferred_token_signing_key_thumbprint', n.get_str_value()),
-            "reply_urls": lambda n : setattr(self, 'reply_urls', n.get_collection_of_primitive_values(str)),
-            "resource_specific_application_permissions": lambda n : setattr(self, 'resource_specific_application_permissions', n.get_collection_of_object_values(resource_specific_permission.ResourceSpecificPermission)),
-            "saml_single_sign_on_settings": lambda n : setattr(self, 'saml_single_sign_on_settings', n.get_object_value(saml_single_sign_on_settings.SamlSingleSignOnSettings)),
-            "service_principal_names": lambda n : setattr(self, 'service_principal_names', n.get_collection_of_primitive_values(str)),
-            "service_principal_type": lambda n : setattr(self, 'service_principal_type', n.get_str_value()),
-            "sign_in_audience": lambda n : setattr(self, 'sign_in_audience', n.get_str_value()),
+            "passwordCredentials": lambda n : setattr(self, 'password_credentials', n.get_collection_of_object_values(password_credential.PasswordCredential)),
+            "preferredSingleSignOnMode": lambda n : setattr(self, 'preferred_single_sign_on_mode', n.get_str_value()),
+            "preferredTokenSigningKeyThumbprint": lambda n : setattr(self, 'preferred_token_signing_key_thumbprint', n.get_str_value()),
+            "replyUrls": lambda n : setattr(self, 'reply_urls', n.get_collection_of_primitive_values(str)),
+            "resourceSpecificApplicationPermissions": lambda n : setattr(self, 'resource_specific_application_permissions', n.get_collection_of_object_values(resource_specific_permission.ResourceSpecificPermission)),
+            "samlSingleSignOnSettings": lambda n : setattr(self, 'saml_single_sign_on_settings', n.get_object_value(saml_single_sign_on_settings.SamlSingleSignOnSettings)),
+            "servicePrincipalNames": lambda n : setattr(self, 'service_principal_names', n.get_collection_of_primitive_values(str)),
+            "servicePrincipalType": lambda n : setattr(self, 'service_principal_type', n.get_str_value()),
+            "signInAudience": lambda n : setattr(self, 'sign_in_audience', n.get_str_value()),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
-            "token_encryption_key_id": lambda n : setattr(self, 'token_encryption_key_id', n.get_object_value(Guid)),
-            "token_issuance_policies": lambda n : setattr(self, 'token_issuance_policies', n.get_collection_of_object_values(token_issuance_policy.TokenIssuancePolicy)),
-            "token_lifetime_policies": lambda n : setattr(self, 'token_lifetime_policies', n.get_collection_of_object_values(token_lifetime_policy.TokenLifetimePolicy)),
-            "transitive_member_of": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "verified_publisher": lambda n : setattr(self, 'verified_publisher', n.get_object_value(verified_publisher.VerifiedPublisher)),
+            "tokenEncryptionKeyId": lambda n : setattr(self, 'token_encryption_key_id', n.get_object_value(Guid)),
+            "tokenIssuancePolicies": lambda n : setattr(self, 'token_issuance_policies', n.get_collection_of_object_values(token_issuance_policy.TokenIssuancePolicy)),
+            "tokenLifetimePolicies": lambda n : setattr(self, 'token_lifetime_policies', n.get_collection_of_object_values(token_lifetime_policy.TokenLifetimePolicy)),
+            "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "verifiedPublisher": lambda n : setattr(self, 'verified_publisher', n.get_object_value(verified_publisher.VerifiedPublisher)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -1041,7 +1038,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
     @property
     def transitive_member_of(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
-        Gets the transitiveMemberOf property value. The transitiveMemberOf property
+        Gets the transitiveMemberOf property value. 
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._transitive_member_of
@@ -1049,7 +1046,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
     @transitive_member_of.setter
     def transitive_member_of(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
-        Sets the transitiveMemberOf property value. The transitiveMemberOf property
+        Sets the transitiveMemberOf property value. 
         Args:
             value: Value to set for the transitiveMemberOf property.
         """

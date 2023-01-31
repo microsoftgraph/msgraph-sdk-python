@@ -52,8 +52,8 @@ class ChannelMembersNotificationRecipient(teamwork_notification_recipient.Teamwo
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "channel_id": lambda n : setattr(self, 'channel_id', n.get_str_value()),
-            "team_id": lambda n : setattr(self, 'team_id', n.get_str_value()),
+            "channelId": lambda n : setattr(self, 'channel_id', n.get_str_value()),
+            "teamId": lambda n : setattr(self, 'team_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

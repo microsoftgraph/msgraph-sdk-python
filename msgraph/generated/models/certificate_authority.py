@@ -74,7 +74,6 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         self._issuer: Optional[str] = None
         # The subject key identifier of the certificate, calculated from the certificate value. Read-only.
         self._issuer_ski: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -113,11 +112,11 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         """
         fields = {
             "certificate": lambda n : setattr(self, 'certificate', n.get_bytes_value()),
-            "certificate_revocation_list_url": lambda n : setattr(self, 'certificate_revocation_list_url', n.get_str_value()),
-            "delta_certificate_revocation_list_url": lambda n : setattr(self, 'delta_certificate_revocation_list_url', n.get_str_value()),
-            "is_root_authority": lambda n : setattr(self, 'is_root_authority', n.get_bool_value()),
+            "certificateRevocationListUrl": lambda n : setattr(self, 'certificate_revocation_list_url', n.get_str_value()),
+            "deltaCertificateRevocationListUrl": lambda n : setattr(self, 'delta_certificate_revocation_list_url', n.get_str_value()),
+            "isRootAuthority": lambda n : setattr(self, 'is_root_authority', n.get_bool_value()),
             "issuer": lambda n : setattr(self, 'issuer', n.get_str_value()),
-            "issuer_ski": lambda n : setattr(self, 'issuer_ski', n.get_str_value()),
+            "issuerSki": lambda n : setattr(self, 'issuer_ski', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -176,7 +175,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -184,7 +183,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -66,7 +66,7 @@ class InstancesRequestBuilder():
         """
         Create new navigation property to instances for identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[access_review_history_instance.AccessReviewHistoryInstance]
         """
@@ -105,7 +105,7 @@ class InstancesRequestBuilder():
         """
         Create new navigation property to instances for identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

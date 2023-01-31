@@ -66,7 +66,7 @@ class SectionGroupsRequestBuilder():
         """
         Create a new section group in the specified notebook.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[section_group.SectionGroup]
         """
@@ -105,7 +105,7 @@ class SectionGroupsRequestBuilder():
         """
         Create a new section group in the specified notebook.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

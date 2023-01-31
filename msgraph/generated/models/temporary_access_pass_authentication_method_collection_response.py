@@ -12,7 +12,6 @@ class TemporaryAccessPassAuthenticationMethodCollectionResponse(base_collection_
         Instantiates a new TemporaryAccessPassAuthenticationMethodCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class TemporaryAccessPassAuthenticationMethodCollectionResponse(base_collection_
     @property
     def value(self,) -> Optional[List[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]]
         """
         return self._value
@@ -61,7 +60,7 @@ class TemporaryAccessPassAuthenticationMethodCollectionResponse(base_collection_
     @value.setter
     def value(self,value: Optional[List[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

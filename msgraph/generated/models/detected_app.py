@@ -22,7 +22,6 @@ class DetectedApp(entity.Entity):
         self._display_name: Optional[str] = None
         # The devices that have the discovered application installed
         self._managed_devices: Optional[List[managed_device.ManagedDevice]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Indicates the operating system / platform of the discovered application.  Some possible values are Windows, iOS, macOS. The default value is unknown (0).
         self._platform: Optional[detected_app_platform_type.DetectedAppPlatformType] = None
@@ -85,12 +84,12 @@ class DetectedApp(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_count": lambda n : setattr(self, 'device_count', n.get_int_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "managed_devices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(managed_device.ManagedDevice)),
+            "deviceCount": lambda n : setattr(self, 'device_count', n.get_int_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "managedDevices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(managed_device.ManagedDevice)),
             "platform": lambda n : setattr(self, 'platform', n.get_enum_value(detected_app_platform_type.DetectedAppPlatformType)),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
-            "size_in_byte": lambda n : setattr(self, 'size_in_byte', n.get_int_value()),
+            "sizeInByte": lambda n : setattr(self, 'size_in_byte', n.get_int_value()),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

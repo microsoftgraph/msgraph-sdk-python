@@ -70,7 +70,6 @@ class TextColumn(AdditionalDataHolder, Parsable):
         self._lines_for_editing: Optional[int] = None
         # The maximum number of characters for the value.
         self._max_length: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The type of text being stored. Must be one of plain or richText
         self._text_type: Optional[str] = None
@@ -93,12 +92,12 @@ class TextColumn(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_multiple_lines": lambda n : setattr(self, 'allow_multiple_lines', n.get_bool_value()),
-            "append_changes_to_existing_text": lambda n : setattr(self, 'append_changes_to_existing_text', n.get_bool_value()),
-            "lines_for_editing": lambda n : setattr(self, 'lines_for_editing', n.get_int_value()),
-            "max_length": lambda n : setattr(self, 'max_length', n.get_int_value()),
+            "allowMultipleLines": lambda n : setattr(self, 'allow_multiple_lines', n.get_bool_value()),
+            "appendChangesToExistingText": lambda n : setattr(self, 'append_changes_to_existing_text', n.get_bool_value()),
+            "linesForEditing": lambda n : setattr(self, 'lines_for_editing', n.get_int_value()),
+            "maxLength": lambda n : setattr(self, 'max_length', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "text_type": lambda n : setattr(self, 'text_type', n.get_str_value()),
+            "textType": lambda n : setattr(self, 'text_type', n.get_str_value()),
         }
         return fields
     
@@ -139,7 +138,7 @@ class TextColumn(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -147,7 +146,7 @@ class TextColumn(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

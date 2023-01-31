@@ -95,20 +95,20 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_threat_protection_enabled": lambda n : setattr(self, 'device_threat_protection_enabled', n.get_bool_value()),
-            "device_threat_protection_required_security_level": lambda n : setattr(self, 'device_threat_protection_required_security_level', n.get_enum_value(device_threat_protection_level.DeviceThreatProtectionLevel)),
-            "managed_email_profile_required": lambda n : setattr(self, 'managed_email_profile_required', n.get_bool_value()),
-            "os_maximum_version": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
-            "os_minimum_version": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
-            "passcode_block_simple": lambda n : setattr(self, 'passcode_block_simple', n.get_bool_value()),
-            "passcode_expiration_days": lambda n : setattr(self, 'passcode_expiration_days', n.get_int_value()),
-            "passcode_minimum_character_set_count": lambda n : setattr(self, 'passcode_minimum_character_set_count', n.get_int_value()),
-            "passcode_minimum_length": lambda n : setattr(self, 'passcode_minimum_length', n.get_int_value()),
-            "passcode_minutes_of_inactivity_before_lock": lambda n : setattr(self, 'passcode_minutes_of_inactivity_before_lock', n.get_int_value()),
-            "passcode_previous_passcode_block_count": lambda n : setattr(self, 'passcode_previous_passcode_block_count', n.get_int_value()),
-            "passcode_required": lambda n : setattr(self, 'passcode_required', n.get_bool_value()),
-            "passcode_required_type": lambda n : setattr(self, 'passcode_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
-            "security_block_jailbroken_devices": lambda n : setattr(self, 'security_block_jailbroken_devices', n.get_bool_value()),
+            "deviceThreatProtectionEnabled": lambda n : setattr(self, 'device_threat_protection_enabled', n.get_bool_value()),
+            "deviceThreatProtectionRequiredSecurityLevel": lambda n : setattr(self, 'device_threat_protection_required_security_level', n.get_enum_value(device_threat_protection_level.DeviceThreatProtectionLevel)),
+            "managedEmailProfileRequired": lambda n : setattr(self, 'managed_email_profile_required', n.get_bool_value()),
+            "osMaximumVersion": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
+            "osMinimumVersion": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
+            "passcodeBlockSimple": lambda n : setattr(self, 'passcode_block_simple', n.get_bool_value()),
+            "passcodeExpirationDays": lambda n : setattr(self, 'passcode_expiration_days', n.get_int_value()),
+            "passcodeMinimumCharacterSetCount": lambda n : setattr(self, 'passcode_minimum_character_set_count', n.get_int_value()),
+            "passcodeMinimumLength": lambda n : setattr(self, 'passcode_minimum_length', n.get_int_value()),
+            "passcodeMinutesOfInactivityBeforeLock": lambda n : setattr(self, 'passcode_minutes_of_inactivity_before_lock', n.get_int_value()),
+            "passcodePreviousPasscodeBlockCount": lambda n : setattr(self, 'passcode_previous_passcode_block_count', n.get_int_value()),
+            "passcodeRequired": lambda n : setattr(self, 'passcode_required', n.get_bool_value()),
+            "passcodeRequiredType": lambda n : setattr(self, 'passcode_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
+            "securityBlockJailbrokenDevices": lambda n : setattr(self, 'security_block_jailbroken_devices', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

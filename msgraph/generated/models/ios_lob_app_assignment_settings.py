@@ -37,9 +37,9 @@ class IosLobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssign
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_removable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),
-            "uninstall_on_device_removal": lambda n : setattr(self, 'uninstall_on_device_removal', n.get_bool_value()),
-            "vpn_configuration_id": lambda n : setattr(self, 'vpn_configuration_id', n.get_str_value()),
+            "isRemovable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),
+            "uninstallOnDeviceRemoval": lambda n : setattr(self, 'uninstall_on_device_removal', n.get_bool_value()),
+            "vpnConfigurationId": lambda n : setattr(self, 'vpn_configuration_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

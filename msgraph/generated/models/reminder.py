@@ -62,7 +62,6 @@ class Reminder(AdditionalDataHolder, Parsable):
         self._event_subject: Optional[str] = None
         # The URL to open the event in Outlook on the web.The event will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.
         self._event_web_link: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The date, time, and time zone that the reminder is set to occur.
         self._reminder_fire_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
@@ -187,22 +186,22 @@ class Reminder(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "change_key": lambda n : setattr(self, 'change_key', n.get_str_value()),
-            "event_end_time": lambda n : setattr(self, 'event_end_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "event_id": lambda n : setattr(self, 'event_id', n.get_str_value()),
-            "event_location": lambda n : setattr(self, 'event_location', n.get_object_value(location.Location)),
-            "event_start_time": lambda n : setattr(self, 'event_start_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "event_subject": lambda n : setattr(self, 'event_subject', n.get_str_value()),
-            "event_web_link": lambda n : setattr(self, 'event_web_link', n.get_str_value()),
+            "changeKey": lambda n : setattr(self, 'change_key', n.get_str_value()),
+            "eventEndTime": lambda n : setattr(self, 'event_end_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "eventId": lambda n : setattr(self, 'event_id', n.get_str_value()),
+            "eventLocation": lambda n : setattr(self, 'event_location', n.get_object_value(location.Location)),
+            "eventStartTime": lambda n : setattr(self, 'event_start_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "eventSubject": lambda n : setattr(self, 'event_subject', n.get_str_value()),
+            "eventWebLink": lambda n : setattr(self, 'event_web_link', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "reminder_fire_time": lambda n : setattr(self, 'reminder_fire_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "reminderFireTime": lambda n : setattr(self, 'reminder_fire_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -210,7 +209,7 @@ class Reminder(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

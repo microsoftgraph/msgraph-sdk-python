@@ -53,7 +53,6 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         self._is_approval_required_for_add: Optional[bool] = None
         # Indicates whether a request to update must be approved by an approver.
         self._is_approval_required_for_update: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The description of the policy that the user is trying to request access using.
         self._policy_description: Optional[str] = None
@@ -82,13 +81,13 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_custom_assignment_schedule": lambda n : setattr(self, 'allow_custom_assignment_schedule', n.get_bool_value()),
-            "is_approval_required_for_add": lambda n : setattr(self, 'is_approval_required_for_add', n.get_bool_value()),
-            "is_approval_required_for_update": lambda n : setattr(self, 'is_approval_required_for_update', n.get_bool_value()),
+            "allowCustomAssignmentSchedule": lambda n : setattr(self, 'allow_custom_assignment_schedule', n.get_bool_value()),
+            "isApprovalRequiredForAdd": lambda n : setattr(self, 'is_approval_required_for_add', n.get_bool_value()),
+            "isApprovalRequiredForUpdate": lambda n : setattr(self, 'is_approval_required_for_update', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "policy_description": lambda n : setattr(self, 'policy_description', n.get_str_value()),
-            "policy_display_name": lambda n : setattr(self, 'policy_display_name', n.get_str_value()),
-            "policy_id": lambda n : setattr(self, 'policy_id', n.get_str_value()),
+            "policyDescription": lambda n : setattr(self, 'policy_description', n.get_str_value()),
+            "policyDisplayName": lambda n : setattr(self, 'policy_display_name', n.get_str_value()),
+            "policyId": lambda n : setattr(self, 'policy_id', n.get_str_value()),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(entitlement_management_schedule.EntitlementManagementSchedule)),
         }
         return fields
@@ -130,7 +129,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -138,7 +137,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

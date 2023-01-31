@@ -8,9 +8,6 @@ print_usage_by_user = lazy_import('msgraph.generated.models.print_usage_by_user'
 security_reports_root = lazy_import('msgraph.generated.models.security_reports_root')
 
 class ReportRoot(AdditionalDataHolder, Parsable):
-    """
-    The resource that represents an instance of Enrollment Failure Reports.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -35,17 +32,11 @@ class ReportRoot(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The dailyPrintUsageByPrinter property
         self._daily_print_usage_by_printer: Optional[List[print_usage_by_printer.PrintUsageByPrinter]] = None
-        # The dailyPrintUsageByUser property
         self._daily_print_usage_by_user: Optional[List[print_usage_by_user.PrintUsageByUser]] = None
-        # The monthlyPrintUsageByPrinter property
         self._monthly_print_usage_by_printer: Optional[List[print_usage_by_printer.PrintUsageByPrinter]] = None
-        # The monthlyPrintUsageByUser property
         self._monthly_print_usage_by_user: Optional[List[print_usage_by_user.PrintUsageByUser]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The security property
         self._security: Optional[security_reports_root.SecurityReportsRoot] = None
     
     @staticmethod
@@ -63,7 +54,7 @@ class ReportRoot(AdditionalDataHolder, Parsable):
     @property
     def daily_print_usage_by_printer(self,) -> Optional[List[print_usage_by_printer.PrintUsageByPrinter]]:
         """
-        Gets the dailyPrintUsageByPrinter property value. The dailyPrintUsageByPrinter property
+        Gets the dailyPrintUsageByPrinter property value. 
         Returns: Optional[List[print_usage_by_printer.PrintUsageByPrinter]]
         """
         return self._daily_print_usage_by_printer
@@ -71,7 +62,7 @@ class ReportRoot(AdditionalDataHolder, Parsable):
     @daily_print_usage_by_printer.setter
     def daily_print_usage_by_printer(self,value: Optional[List[print_usage_by_printer.PrintUsageByPrinter]] = None) -> None:
         """
-        Sets the dailyPrintUsageByPrinter property value. The dailyPrintUsageByPrinter property
+        Sets the dailyPrintUsageByPrinter property value. 
         Args:
             value: Value to set for the dailyPrintUsageByPrinter property.
         """
@@ -80,7 +71,7 @@ class ReportRoot(AdditionalDataHolder, Parsable):
     @property
     def daily_print_usage_by_user(self,) -> Optional[List[print_usage_by_user.PrintUsageByUser]]:
         """
-        Gets the dailyPrintUsageByUser property value. The dailyPrintUsageByUser property
+        Gets the dailyPrintUsageByUser property value. 
         Returns: Optional[List[print_usage_by_user.PrintUsageByUser]]
         """
         return self._daily_print_usage_by_user
@@ -88,7 +79,7 @@ class ReportRoot(AdditionalDataHolder, Parsable):
     @daily_print_usage_by_user.setter
     def daily_print_usage_by_user(self,value: Optional[List[print_usage_by_user.PrintUsageByUser]] = None) -> None:
         """
-        Sets the dailyPrintUsageByUser property value. The dailyPrintUsageByUser property
+        Sets the dailyPrintUsageByUser property value. 
         Args:
             value: Value to set for the dailyPrintUsageByUser property.
         """
@@ -100,10 +91,10 @@ class ReportRoot(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "daily_print_usage_by_printer": lambda n : setattr(self, 'daily_print_usage_by_printer', n.get_collection_of_object_values(print_usage_by_printer.PrintUsageByPrinter)),
-            "daily_print_usage_by_user": lambda n : setattr(self, 'daily_print_usage_by_user', n.get_collection_of_object_values(print_usage_by_user.PrintUsageByUser)),
-            "monthly_print_usage_by_printer": lambda n : setattr(self, 'monthly_print_usage_by_printer', n.get_collection_of_object_values(print_usage_by_printer.PrintUsageByPrinter)),
-            "monthly_print_usage_by_user": lambda n : setattr(self, 'monthly_print_usage_by_user', n.get_collection_of_object_values(print_usage_by_user.PrintUsageByUser)),
+            "dailyPrintUsageByPrinter": lambda n : setattr(self, 'daily_print_usage_by_printer', n.get_collection_of_object_values(print_usage_by_printer.PrintUsageByPrinter)),
+            "dailyPrintUsageByUser": lambda n : setattr(self, 'daily_print_usage_by_user', n.get_collection_of_object_values(print_usage_by_user.PrintUsageByUser)),
+            "monthlyPrintUsageByPrinter": lambda n : setattr(self, 'monthly_print_usage_by_printer', n.get_collection_of_object_values(print_usage_by_printer.PrintUsageByPrinter)),
+            "monthlyPrintUsageByUser": lambda n : setattr(self, 'monthly_print_usage_by_user', n.get_collection_of_object_values(print_usage_by_user.PrintUsageByUser)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "security": lambda n : setattr(self, 'security', n.get_object_value(security_reports_root.SecurityReportsRoot)),
         }
@@ -112,7 +103,7 @@ class ReportRoot(AdditionalDataHolder, Parsable):
     @property
     def monthly_print_usage_by_printer(self,) -> Optional[List[print_usage_by_printer.PrintUsageByPrinter]]:
         """
-        Gets the monthlyPrintUsageByPrinter property value. The monthlyPrintUsageByPrinter property
+        Gets the monthlyPrintUsageByPrinter property value. 
         Returns: Optional[List[print_usage_by_printer.PrintUsageByPrinter]]
         """
         return self._monthly_print_usage_by_printer
@@ -120,7 +111,7 @@ class ReportRoot(AdditionalDataHolder, Parsable):
     @monthly_print_usage_by_printer.setter
     def monthly_print_usage_by_printer(self,value: Optional[List[print_usage_by_printer.PrintUsageByPrinter]] = None) -> None:
         """
-        Sets the monthlyPrintUsageByPrinter property value. The monthlyPrintUsageByPrinter property
+        Sets the monthlyPrintUsageByPrinter property value. 
         Args:
             value: Value to set for the monthlyPrintUsageByPrinter property.
         """
@@ -129,7 +120,7 @@ class ReportRoot(AdditionalDataHolder, Parsable):
     @property
     def monthly_print_usage_by_user(self,) -> Optional[List[print_usage_by_user.PrintUsageByUser]]:
         """
-        Gets the monthlyPrintUsageByUser property value. The monthlyPrintUsageByUser property
+        Gets the monthlyPrintUsageByUser property value. 
         Returns: Optional[List[print_usage_by_user.PrintUsageByUser]]
         """
         return self._monthly_print_usage_by_user
@@ -137,7 +128,7 @@ class ReportRoot(AdditionalDataHolder, Parsable):
     @monthly_print_usage_by_user.setter
     def monthly_print_usage_by_user(self,value: Optional[List[print_usage_by_user.PrintUsageByUser]] = None) -> None:
         """
-        Sets the monthlyPrintUsageByUser property value. The monthlyPrintUsageByUser property
+        Sets the monthlyPrintUsageByUser property value. 
         Args:
             value: Value to set for the monthlyPrintUsageByUser property.
         """
@@ -146,7 +137,7 @@ class ReportRoot(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -154,7 +145,7 @@ class ReportRoot(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -163,7 +154,7 @@ class ReportRoot(AdditionalDataHolder, Parsable):
     @property
     def security(self,) -> Optional[security_reports_root.SecurityReportsRoot]:
         """
-        Gets the security property value. The security property
+        Gets the security property value. 
         Returns: Optional[security_reports_root.SecurityReportsRoot]
         """
         return self._security
@@ -171,7 +162,7 @@ class ReportRoot(AdditionalDataHolder, Parsable):
     @security.setter
     def security(self,value: Optional[security_reports_root.SecurityReportsRoot] = None) -> None:
         """
-        Sets the security property value. The security property
+        Sets the security property value. 
         Args:
             value: Value to set for the security property.
         """

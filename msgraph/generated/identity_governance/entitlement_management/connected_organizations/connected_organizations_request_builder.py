@@ -66,7 +66,7 @@ class ConnectedOrganizationsRequestBuilder():
         """
         Create new navigation property to connectedOrganizations for identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[connected_organization.ConnectedOrganization]
         """
@@ -105,7 +105,7 @@ class ConnectedOrganizationsRequestBuilder():
         """
         Create new navigation property to connectedOrganizations for identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

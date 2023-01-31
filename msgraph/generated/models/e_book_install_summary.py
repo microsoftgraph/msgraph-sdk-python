@@ -23,7 +23,6 @@ class EBookInstallSummary(entity.Entity):
         self._not_installed_device_count: Optional[int] = None
         # Number of Users that did not install this book.
         self._not_installed_user_count: Optional[int] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -78,12 +77,12 @@ class EBookInstallSummary(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "failed_device_count": lambda n : setattr(self, 'failed_device_count', n.get_int_value()),
-            "failed_user_count": lambda n : setattr(self, 'failed_user_count', n.get_int_value()),
-            "installed_device_count": lambda n : setattr(self, 'installed_device_count', n.get_int_value()),
-            "installed_user_count": lambda n : setattr(self, 'installed_user_count', n.get_int_value()),
-            "not_installed_device_count": lambda n : setattr(self, 'not_installed_device_count', n.get_int_value()),
-            "not_installed_user_count": lambda n : setattr(self, 'not_installed_user_count', n.get_int_value()),
+            "failedDeviceCount": lambda n : setattr(self, 'failed_device_count', n.get_int_value()),
+            "failedUserCount": lambda n : setattr(self, 'failed_user_count', n.get_int_value()),
+            "installedDeviceCount": lambda n : setattr(self, 'installed_device_count', n.get_int_value()),
+            "installedUserCount": lambda n : setattr(self, 'installed_user_count', n.get_int_value()),
+            "notInstalledDeviceCount": lambda n : setattr(self, 'not_installed_device_count', n.get_int_value()),
+            "notInstalledUserCount": lambda n : setattr(self, 'not_installed_user_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

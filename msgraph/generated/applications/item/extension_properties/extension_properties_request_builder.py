@@ -66,7 +66,7 @@ class ExtensionPropertiesRequestBuilder():
         """
         Create a new directory extension definition, represented by an extensionProperty object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[extension_property.ExtensionProperty]
         """
@@ -105,7 +105,7 @@ class ExtensionPropertiesRequestBuilder():
         """
         Create a new directory extension definition, represented by an extensionProperty object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

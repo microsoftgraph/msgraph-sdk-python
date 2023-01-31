@@ -12,24 +12,25 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 place = lazy_import('msgraph.generated.models.place')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-room_request_builder = lazy_import('msgraph.generated.places.item.room.room_request_builder')
+room_request_builder = lazy_import('msgraph.generated.places.item.microsoft_graph_room.room_request_builder')
 
 class PlaceItemRequestBuilder():
     """
     Provides operations to manage the collection of place entities.
     """
     @property
-    def room(self) -> room_request_builder.RoomRequestBuilder:
+    def microsoft_graph_room(self) -> room_request_builder.RoomRequestBuilder:
         """
         Casts the previous resource to room.
         """
         return room_request_builder.RoomRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, place_id: Optional[str] = None) -> None:
         """
         Instantiates a new PlaceItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
+            placeId: key: id of place
             requestAdapter: The request adapter to use to execute the requests.
         """
         if path_parameters is None:
@@ -40,12 +41,13 @@ class PlaceItemRequestBuilder():
         self.url_template: str = "{+baseurl}/places/{place%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["place%2Did"] = placeId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
     async def delete(self,request_configuration: Optional[PlaceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete entity from places by key (id)
+        Delete entity from places
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -82,7 +84,7 @@ class PlaceItemRequestBuilder():
         """
         Update the properties of place object, which can be a room or roomList. You can identify the **room** or **roomList** by specifying the **id** or **emailAddress** property.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[place.Place]
         """
@@ -101,7 +103,7 @@ class PlaceItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[PlaceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete entity from places by key (id)
+        Delete entity from places
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +139,7 @@ class PlaceItemRequestBuilder():
         """
         Update the properties of place object, which can be a room or roomList. You can identify the **room** or **roomList** by specifying the **id** or **emailAddress** property.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

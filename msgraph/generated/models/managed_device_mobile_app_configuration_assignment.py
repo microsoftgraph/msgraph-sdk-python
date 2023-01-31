@@ -15,7 +15,6 @@ class ManagedDeviceMobileAppConfigurationAssignment(entity.Entity):
         Instantiates a new managedDeviceMobileAppConfigurationAssignment and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Assignment target that the T&C policy is assigned to.
         self._target: Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget] = None

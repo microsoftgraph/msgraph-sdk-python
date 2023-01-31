@@ -73,7 +73,6 @@ class IosNetworkUsageRule(AdditionalDataHolder, Parsable):
         self._cellular_data_block_when_roaming: Optional[bool] = None
         # Information about the managed apps that this rule is going to apply to. This collection can contain a maximum of 500 elements.
         self._managed_apps: Optional[List[app_list_item.AppListItem]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -94,9 +93,9 @@ class IosNetworkUsageRule(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "cellular_data_blocked": lambda n : setattr(self, 'cellular_data_blocked', n.get_bool_value()),
-            "cellular_data_block_when_roaming": lambda n : setattr(self, 'cellular_data_block_when_roaming', n.get_bool_value()),
-            "managed_apps": lambda n : setattr(self, 'managed_apps', n.get_collection_of_object_values(app_list_item.AppListItem)),
+            "cellularDataBlocked": lambda n : setattr(self, 'cellular_data_blocked', n.get_bool_value()),
+            "cellularDataBlockWhenRoaming": lambda n : setattr(self, 'cellular_data_block_when_roaming', n.get_bool_value()),
+            "managedApps": lambda n : setattr(self, 'managed_apps', n.get_collection_of_object_values(app_list_item.AppListItem)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -121,7 +120,7 @@ class IosNetworkUsageRule(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -129,7 +128,7 @@ class IosNetworkUsageRule(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

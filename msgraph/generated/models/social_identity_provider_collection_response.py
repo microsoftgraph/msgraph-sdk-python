@@ -12,7 +12,6 @@ class SocialIdentityProviderCollectionResponse(base_collection_pagination_count_
         Instantiates a new SocialIdentityProviderCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[social_identity_provider.SocialIdentityProvider]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class SocialIdentityProviderCollectionResponse(base_collection_pagination_count_
     @property
     def value(self,) -> Optional[List[social_identity_provider.SocialIdentityProvider]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[social_identity_provider.SocialIdentityProvider]]
         """
         return self._value
@@ -61,7 +60,7 @@ class SocialIdentityProviderCollectionResponse(base_collection_pagination_count_
     @value.setter
     def value(self,value: Optional[List[social_identity_provider.SocialIdentityProvider]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

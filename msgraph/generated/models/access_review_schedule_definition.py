@@ -56,7 +56,6 @@ class AccessReviewScheduleDefinition(entity.Entity):
         self._instances: Optional[List[access_review_instance.AccessReviewInstance]] = None
         # Timestamp when the access review series was last modified. Supports $select. Read-only.
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # This collection of access review scopes is used to define who are the reviewers. The reviewers property is only updatable if individual users are assigned as reviewers. Required on create. Supports $select. For examples of options for assigning reviewers, see Assign reviewers to your access review definition using the Microsoft Graph API. NOTE: The value of this property will be ignored if reviewers are assigned through the stageSettings property.
         self._reviewers: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]] = None
@@ -189,20 +188,20 @@ class AccessReviewScheduleDefinition(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "additional_notification_recipients": lambda n : setattr(self, 'additional_notification_recipients', n.get_collection_of_object_values(access_review_notification_recipient_item.AccessReviewNotificationRecipientItem)),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(user_identity.UserIdentity)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "description_for_admins": lambda n : setattr(self, 'description_for_admins', n.get_str_value()),
-            "description_for_reviewers": lambda n : setattr(self, 'description_for_reviewers', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "fallback_reviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(access_review_reviewer_scope.AccessReviewReviewerScope)),
-            "instance_enumeration_scope": lambda n : setattr(self, 'instance_enumeration_scope', n.get_object_value(access_review_scope.AccessReviewScope)),
+            "additionalNotificationRecipients": lambda n : setattr(self, 'additional_notification_recipients', n.get_collection_of_object_values(access_review_notification_recipient_item.AccessReviewNotificationRecipientItem)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(user_identity.UserIdentity)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "descriptionForAdmins": lambda n : setattr(self, 'description_for_admins', n.get_str_value()),
+            "descriptionForReviewers": lambda n : setattr(self, 'description_for_reviewers', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "fallbackReviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(access_review_reviewer_scope.AccessReviewReviewerScope)),
+            "instanceEnumerationScope": lambda n : setattr(self, 'instance_enumeration_scope', n.get_object_value(access_review_scope.AccessReviewScope)),
             "instances": lambda n : setattr(self, 'instances', n.get_collection_of_object_values(access_review_instance.AccessReviewInstance)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "reviewers": lambda n : setattr(self, 'reviewers', n.get_collection_of_object_values(access_review_reviewer_scope.AccessReviewReviewerScope)),
             "scope": lambda n : setattr(self, 'scope', n.get_object_value(access_review_scope.AccessReviewScope)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(access_review_schedule_settings.AccessReviewScheduleSettings)),
-            "stage_settings": lambda n : setattr(self, 'stage_settings', n.get_collection_of_object_values(access_review_stage_settings.AccessReviewStageSettings)),
+            "stageSettings": lambda n : setattr(self, 'stage_settings', n.get_collection_of_object_values(access_review_stage_settings.AccessReviewStageSettings)),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

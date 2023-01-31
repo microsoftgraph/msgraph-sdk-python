@@ -74,7 +74,7 @@ class IdentitySecurityDefaultsEnforcementPolicyRequestBuilder():
         """
         Update the properties of an identitySecurityDefaultsEnforcementPolicy object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy]
         """
@@ -129,7 +129,7 @@ class IdentitySecurityDefaultsEnforcementPolicyRequestBuilder():
         """
         Update the properties of an identitySecurityDefaultsEnforcementPolicy object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

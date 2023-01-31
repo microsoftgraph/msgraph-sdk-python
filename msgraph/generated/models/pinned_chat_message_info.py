@@ -14,7 +14,6 @@ class PinnedChatMessageInfo(entity.Entity):
         super().__init__()
         # Represents details about the chat message that is pinned.
         self._message: Optional[chat_message.ChatMessage] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

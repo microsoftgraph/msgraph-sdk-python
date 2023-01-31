@@ -66,7 +66,7 @@ class SetsRequestBuilder():
         """
         Create new navigation property to sets for sites
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[set.Set]
         """
@@ -105,7 +105,7 @@ class SetsRequestBuilder():
         """
         Create new navigation property to sets for sites
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

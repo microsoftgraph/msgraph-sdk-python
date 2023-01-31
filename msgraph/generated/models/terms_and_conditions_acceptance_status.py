@@ -54,7 +54,6 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         self._accepted_date_time: Optional[datetime] = None
         # Most recent version number of the T&C accepted by the user.
         self._accepted_version: Optional[int] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Navigation link to the terms and conditions that are assigned.
         self._terms_and_conditions: Optional[terms_and_conditions.TermsAndConditions] = None
@@ -81,11 +80,11 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "accepted_date_time": lambda n : setattr(self, 'accepted_date_time', n.get_datetime_value()),
-            "accepted_version": lambda n : setattr(self, 'accepted_version', n.get_int_value()),
-            "terms_and_conditions": lambda n : setattr(self, 'terms_and_conditions', n.get_object_value(terms_and_conditions.TermsAndConditions)),
-            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "acceptedDateTime": lambda n : setattr(self, 'accepted_date_time', n.get_datetime_value()),
+            "acceptedVersion": lambda n : setattr(self, 'accepted_version', n.get_int_value()),
+            "termsAndConditions": lambda n : setattr(self, 'terms_and_conditions', n.get_object_value(terms_and_conditions.TermsAndConditions)),
+            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

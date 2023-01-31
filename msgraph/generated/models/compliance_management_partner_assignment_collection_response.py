@@ -12,7 +12,6 @@ class ComplianceManagementPartnerAssignmentCollectionResponse(base_collection_pa
         Instantiates a new ComplianceManagementPartnerAssignmentCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ComplianceManagementPartnerAssignmentCollectionResponse(base_collection_pa
     @property
     def value(self,) -> Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ComplianceManagementPartnerAssignmentCollectionResponse(base_collection_pa
     @value.setter
     def value(self,value: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

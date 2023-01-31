@@ -12,7 +12,6 @@ class SharedDriveItemCollectionResponse(base_collection_pagination_count_respons
         Instantiates a new SharedDriveItemCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[shared_drive_item.SharedDriveItem]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class SharedDriveItemCollectionResponse(base_collection_pagination_count_respons
     @property
     def value(self,) -> Optional[List[shared_drive_item.SharedDriveItem]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[shared_drive_item.SharedDriveItem]]
         """
         return self._value
@@ -61,7 +60,7 @@ class SharedDriveItemCollectionResponse(base_collection_pagination_count_respons
     @value.setter
     def value(self,value: Optional[List[shared_drive_item.SharedDriveItem]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

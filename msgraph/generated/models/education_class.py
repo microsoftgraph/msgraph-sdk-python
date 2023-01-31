@@ -104,7 +104,7 @@ class EducationClass(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new EducationClass and sets the default values.
+        Instantiates a new educationClass and sets the default values.
         """
         super().__init__()
         # All categories associated with this class. Nullable.
@@ -117,7 +117,6 @@ class EducationClass(entity.Entity):
         self._assignment_settings: Optional[education_assignment_settings.EducationAssignmentSettings] = None
         # Class code used by the school to identify the class.
         self._class_code: Optional[str] = None
-        # The course property
         self._course: Optional[education_course.EducationCourse] = None
         # Entity who created the class
         self._created_by: Optional[identity_set.IdentitySet] = None
@@ -141,7 +140,6 @@ class EducationClass(entity.Entity):
         self._mail_nickname: Optional[str] = None
         # All users in the class. Nullable.
         self._members: Optional[List[education_user.EducationUser]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # All schools that this class is associated with. Nullable.
         self._schools: Optional[List[education_school.EducationSchool]] = None
@@ -153,7 +151,7 @@ class EducationClass(entity.Entity):
     @property
     def course(self,) -> Optional[education_course.EducationCourse]:
         """
-        Gets the course property value. The course property
+        Gets the course property value. 
         Returns: Optional[education_course.EducationCourse]
         """
         return self._course
@@ -161,7 +159,7 @@ class EducationClass(entity.Entity):
     @course.setter
     def course(self,value: Optional[education_course.EducationCourse] = None) -> None:
         """
-        Sets the course property value. The course property
+        Sets the course property value. 
         Args:
             value: Value to set for the course property.
         """
@@ -304,22 +302,22 @@ class EducationClass(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assignment_categories": lambda n : setattr(self, 'assignment_categories', n.get_collection_of_object_values(education_category.EducationCategory)),
-            "assignment_defaults": lambda n : setattr(self, 'assignment_defaults', n.get_object_value(education_assignment_defaults.EducationAssignmentDefaults)),
+            "assignmentCategories": lambda n : setattr(self, 'assignment_categories', n.get_collection_of_object_values(education_category.EducationCategory)),
+            "assignmentDefaults": lambda n : setattr(self, 'assignment_defaults', n.get_object_value(education_assignment_defaults.EducationAssignmentDefaults)),
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(education_assignment.EducationAssignment)),
-            "assignment_settings": lambda n : setattr(self, 'assignment_settings', n.get_object_value(education_assignment_settings.EducationAssignmentSettings)),
-            "class_code": lambda n : setattr(self, 'class_code', n.get_str_value()),
+            "assignmentSettings": lambda n : setattr(self, 'assignment_settings', n.get_object_value(education_assignment_settings.EducationAssignmentSettings)),
+            "classCode": lambda n : setattr(self, 'class_code', n.get_str_value()),
             "course": lambda n : setattr(self, 'course', n.get_object_value(education_course.EducationCourse)),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
-            "external_name": lambda n : setattr(self, 'external_name', n.get_str_value()),
-            "external_source": lambda n : setattr(self, 'external_source', n.get_enum_value(education_external_source.EducationExternalSource)),
-            "external_source_detail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "externalName": lambda n : setattr(self, 'external_name', n.get_str_value()),
+            "externalSource": lambda n : setattr(self, 'external_source', n.get_enum_value(education_external_source.EducationExternalSource)),
+            "externalSourceDetail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
             "grade": lambda n : setattr(self, 'grade', n.get_str_value()),
             "group": lambda n : setattr(self, 'group', n.get_object_value(group.Group)),
-            "mail_nickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
+            "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(education_user.EducationUser)),
             "schools": lambda n : setattr(self, 'schools', n.get_collection_of_object_values(education_school.EducationSchool)),
             "teachers": lambda n : setattr(self, 'teachers', n.get_collection_of_object_values(education_user.EducationUser)),

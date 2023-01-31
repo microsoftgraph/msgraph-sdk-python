@@ -21,7 +21,6 @@ class TeamworkTag(entity.Entity):
         self._member_count: Optional[int] = None
         # Users assigned to the tag.
         self._members: Optional[List[teamwork_tag_member.TeamworkTagMember]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The type of the tag. Default is standard.
         self._tag_type: Optional[teamwork_tag_type.TeamworkTagType] = None
@@ -81,11 +80,11 @@ class TeamworkTag(entity.Entity):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "member_count": lambda n : setattr(self, 'member_count', n.get_int_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "memberCount": lambda n : setattr(self, 'member_count', n.get_int_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(teamwork_tag_member.TeamworkTagMember)),
-            "tag_type": lambda n : setattr(self, 'tag_type', n.get_enum_value(teamwork_tag_type.TeamworkTagType)),
-            "team_id": lambda n : setattr(self, 'team_id', n.get_str_value()),
+            "tagType": lambda n : setattr(self, 'tag_type', n.get_enum_value(teamwork_tag_type.TeamworkTagType)),
+            "teamId": lambda n : setattr(self, 'team_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

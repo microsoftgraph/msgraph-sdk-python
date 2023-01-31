@@ -53,7 +53,6 @@ class SignInLocation(AdditionalDataHolder, Parsable):
         self._country_or_region: Optional[str] = None
         # Provides the latitude, longitude and altitude where the sign-in originated.
         self._geo_coordinates: Optional[geo_coordinates.GeoCoordinates] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Provides the State where the sign-in originated. This is calculated using latitude/longitude information from the sign-in activity.
         self._state: Optional[str] = None
@@ -111,8 +110,8 @@ class SignInLocation(AdditionalDataHolder, Parsable):
         """
         fields = {
             "city": lambda n : setattr(self, 'city', n.get_str_value()),
-            "country_or_region": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
-            "geo_coordinates": lambda n : setattr(self, 'geo_coordinates', n.get_object_value(geo_coordinates.GeoCoordinates)),
+            "countryOrRegion": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
+            "geoCoordinates": lambda n : setattr(self, 'geo_coordinates', n.get_object_value(geo_coordinates.GeoCoordinates)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
         }
@@ -121,7 +120,7 @@ class SignInLocation(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -129,7 +128,7 @@ class SignInLocation(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

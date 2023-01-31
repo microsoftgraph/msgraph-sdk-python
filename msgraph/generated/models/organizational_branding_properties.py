@@ -125,7 +125,6 @@ class OrganizationalBrandingProperties(entity.Entity):
         self._banner_logo_relative_url: Optional[str] = None
         # A list of base URLs for all available CDN providers that are serving the assets of the current resource. Several CDN providers are used at the same time for high availability of read requests. Read-only.
         self._cdn_list: Optional[List[str]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Text that appears at the bottom of the sign-in box. You can use this to communicate additional information, such as the phone number to your help desk or a legal statement. This text must be Unicode and not exceed 1024 characters.
         self._sign_in_page_text: Optional[str] = None
@@ -154,16 +153,16 @@ class OrganizationalBrandingProperties(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "background_color": lambda n : setattr(self, 'background_color', n.get_str_value()),
-            "background_image": lambda n : setattr(self, 'background_image', n.get_bytes_value()),
-            "background_image_relative_url": lambda n : setattr(self, 'background_image_relative_url', n.get_str_value()),
-            "banner_logo": lambda n : setattr(self, 'banner_logo', n.get_bytes_value()),
-            "banner_logo_relative_url": lambda n : setattr(self, 'banner_logo_relative_url', n.get_str_value()),
-            "cdn_list": lambda n : setattr(self, 'cdn_list', n.get_collection_of_primitive_values(str)),
-            "sign_in_page_text": lambda n : setattr(self, 'sign_in_page_text', n.get_str_value()),
-            "square_logo": lambda n : setattr(self, 'square_logo', n.get_bytes_value()),
-            "square_logo_relative_url": lambda n : setattr(self, 'square_logo_relative_url', n.get_str_value()),
-            "username_hint_text": lambda n : setattr(self, 'username_hint_text', n.get_str_value()),
+            "backgroundColor": lambda n : setattr(self, 'background_color', n.get_str_value()),
+            "backgroundImage": lambda n : setattr(self, 'background_image', n.get_bytes_value()),
+            "backgroundImageRelativeUrl": lambda n : setattr(self, 'background_image_relative_url', n.get_str_value()),
+            "bannerLogo": lambda n : setattr(self, 'banner_logo', n.get_bytes_value()),
+            "bannerLogoRelativeUrl": lambda n : setattr(self, 'banner_logo_relative_url', n.get_str_value()),
+            "cdnList": lambda n : setattr(self, 'cdn_list', n.get_collection_of_primitive_values(str)),
+            "signInPageText": lambda n : setattr(self, 'sign_in_page_text', n.get_str_value()),
+            "squareLogo": lambda n : setattr(self, 'square_logo', n.get_bytes_value()),
+            "squareLogoRelativeUrl": lambda n : setattr(self, 'square_logo_relative_url', n.get_str_value()),
+            "usernameHintText": lambda n : setattr(self, 'username_hint_text', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

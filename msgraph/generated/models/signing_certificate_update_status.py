@@ -50,7 +50,6 @@ class SigningCertificateUpdateStatus(AdditionalDataHolder, Parsable):
         self._certificate_update_result: Optional[str] = None
         # Date and time in ISO 8601 format and in UTC time when the certificate was last updated. Read-only.
         self._last_run_date_time: Optional[datetime] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -71,8 +70,8 @@ class SigningCertificateUpdateStatus(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "certificate_update_result": lambda n : setattr(self, 'certificate_update_result', n.get_str_value()),
-            "last_run_date_time": lambda n : setattr(self, 'last_run_date_time', n.get_datetime_value()),
+            "certificateUpdateResult": lambda n : setattr(self, 'certificate_update_result', n.get_str_value()),
+            "lastRunDateTime": lambda n : setattr(self, 'last_run_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -97,7 +96,7 @@ class SigningCertificateUpdateStatus(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -105,7 +104,7 @@ class SigningCertificateUpdateStatus(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

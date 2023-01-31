@@ -54,8 +54,8 @@ class EmailAuthenticationMethodConfiguration(authentication_method_configuration
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_external_id_to_use_email_otp": lambda n : setattr(self, 'allow_external_id_to_use_email_otp', n.get_enum_value(external_email_otp_state.ExternalEmailOtpState)),
-            "include_targets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_method_target.AuthenticationMethodTarget)),
+            "allowExternalIdToUseEmailOtp": lambda n : setattr(self, 'allow_external_id_to_use_email_otp', n.get_enum_value(external_email_otp_state.ExternalEmailOtpState)),
+            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_method_target.AuthenticationMethodTarget)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

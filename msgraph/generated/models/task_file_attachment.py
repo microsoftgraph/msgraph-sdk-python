@@ -12,13 +12,12 @@ class TaskFileAttachment(attachment_base.AttachmentBase):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.taskFileAttachment"
-        # The contentBytes property
         self._content_bytes: Optional[bytes] = None
     
     @property
     def content_bytes(self,) -> Optional[bytes]:
         """
-        Gets the contentBytes property value. The contentBytes property
+        Gets the contentBytes property value. 
         Returns: Optional[bytes]
         """
         return self._content_bytes
@@ -26,7 +25,7 @@ class TaskFileAttachment(attachment_base.AttachmentBase):
     @content_bytes.setter
     def content_bytes(self,value: Optional[bytes] = None) -> None:
         """
-        Sets the contentBytes property value. The contentBytes property
+        Sets the contentBytes property value. 
         Args:
             value: Value to set for the contentBytes property.
         """
@@ -50,7 +49,7 @@ class TaskFileAttachment(attachment_base.AttachmentBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "content_bytes": lambda n : setattr(self, 'content_bytes', n.get_bytes_value()),
+            "contentBytes": lambda n : setattr(self, 'content_bytes', n.get_bytes_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

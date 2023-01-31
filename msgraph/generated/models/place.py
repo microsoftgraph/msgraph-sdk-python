@@ -36,7 +36,6 @@ class Place(entity.Entity):
         self._display_name: Optional[str] = None
         # Specifies the place location in latitude, longitude and (optionally) altitude coordinates.
         self._geo_coordinates: Optional[outlook_geo_coordinates.OutlookGeoCoordinates] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The phone number of the place.
         self._phone: Optional[str] = None
@@ -94,8 +93,8 @@ class Place(entity.Entity):
         """
         fields = {
             "address": lambda n : setattr(self, 'address', n.get_object_value(physical_address.PhysicalAddress)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "geo_coordinates": lambda n : setattr(self, 'geo_coordinates', n.get_object_value(outlook_geo_coordinates.OutlookGeoCoordinates)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "geoCoordinates": lambda n : setattr(self, 'geo_coordinates', n.get_object_value(outlook_geo_coordinates.OutlookGeoCoordinates)),
             "phone": lambda n : setattr(self, 'phone', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

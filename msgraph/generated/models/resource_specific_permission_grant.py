@@ -75,11 +75,11 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "client_app_id": lambda n : setattr(self, 'client_app_id', n.get_str_value()),
-            "client_id": lambda n : setattr(self, 'client_id', n.get_str_value()),
+            "clientAppId": lambda n : setattr(self, 'client_app_id', n.get_str_value()),
+            "clientId": lambda n : setattr(self, 'client_id', n.get_str_value()),
             "permission": lambda n : setattr(self, 'permission', n.get_str_value()),
-            "permission_type": lambda n : setattr(self, 'permission_type', n.get_str_value()),
-            "resource_app_id": lambda n : setattr(self, 'resource_app_id', n.get_str_value()),
+            "permissionType": lambda n : setattr(self, 'permission_type', n.get_str_value()),
+            "resourceAppId": lambda n : setattr(self, 'resource_app_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

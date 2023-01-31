@@ -31,7 +31,6 @@ class AppConsentApprovalRoute(entity.Entity):
         super().__init__()
         # A collection of userConsentRequest objects for a specific application.
         self._app_consent_requests: Optional[List[app_consent_request.AppConsentRequest]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -52,7 +51,7 @@ class AppConsentApprovalRoute(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_consent_requests": lambda n : setattr(self, 'app_consent_requests', n.get_collection_of_object_values(app_consent_request.AppConsentRequest)),
+            "appConsentRequests": lambda n : setattr(self, 'app_consent_requests', n.get_collection_of_object_values(app_consent_request.AppConsentRequest)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

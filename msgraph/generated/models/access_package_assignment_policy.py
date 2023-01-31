@@ -107,7 +107,6 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         self._expiration: Optional[expiration_pattern.ExpirationPattern] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Specifies the settings for approval of requests for an access package assignment through this policy. For example, if approval is required for new requests.
         self._request_approval_settings: Optional[access_package_assignment_approval_settings.AccessPackageAssignmentApprovalSettings] = None
@@ -204,19 +203,19 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_package": lambda n : setattr(self, 'access_package', n.get_object_value(access_package.AccessPackage)),
-            "allowed_target_scope": lambda n : setattr(self, 'allowed_target_scope', n.get_enum_value(allowed_target_scope.AllowedTargetScope)),
-            "automatic_request_settings": lambda n : setattr(self, 'automatic_request_settings', n.get_object_value(access_package_automatic_request_settings.AccessPackageAutomaticRequestSettings)),
+            "accessPackage": lambda n : setattr(self, 'access_package', n.get_object_value(access_package.AccessPackage)),
+            "allowedTargetScope": lambda n : setattr(self, 'allowed_target_scope', n.get_enum_value(allowed_target_scope.AllowedTargetScope)),
+            "automaticRequestSettings": lambda n : setattr(self, 'automatic_request_settings', n.get_object_value(access_package_automatic_request_settings.AccessPackageAutomaticRequestSettings)),
             "catalog": lambda n : setattr(self, 'catalog', n.get_object_value(access_package_catalog.AccessPackageCatalog)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "expiration": lambda n : setattr(self, 'expiration', n.get_object_value(expiration_pattern.ExpirationPattern)),
-            "modified_date_time": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
-            "request_approval_settings": lambda n : setattr(self, 'request_approval_settings', n.get_object_value(access_package_assignment_approval_settings.AccessPackageAssignmentApprovalSettings)),
-            "requestor_settings": lambda n : setattr(self, 'requestor_settings', n.get_object_value(access_package_assignment_requestor_settings.AccessPackageAssignmentRequestorSettings)),
-            "review_settings": lambda n : setattr(self, 'review_settings', n.get_object_value(access_package_assignment_review_settings.AccessPackageAssignmentReviewSettings)),
-            "specific_allowed_targets": lambda n : setattr(self, 'specific_allowed_targets', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "requestApprovalSettings": lambda n : setattr(self, 'request_approval_settings', n.get_object_value(access_package_assignment_approval_settings.AccessPackageAssignmentApprovalSettings)),
+            "requestorSettings": lambda n : setattr(self, 'requestor_settings', n.get_object_value(access_package_assignment_requestor_settings.AccessPackageAssignmentRequestorSettings)),
+            "reviewSettings": lambda n : setattr(self, 'review_settings', n.get_object_value(access_package_assignment_review_settings.AccessPackageAssignmentReviewSettings)),
+            "specificAllowedTargets": lambda n : setattr(self, 'specific_allowed_targets', n.get_collection_of_object_values(subject_set.SubjectSet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

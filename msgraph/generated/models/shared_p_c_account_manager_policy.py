@@ -73,7 +73,6 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         self._cache_accounts_above_disk_free_percentage: Optional[int] = None
         # Specifies when the accounts will start being deleted when they have not been logged on during the specified period, given as number of days. Only applies when AccountDeletionPolicy is DiskSpaceThreshold or DiskSpaceThresholdOrInactiveThreshold.
         self._inactive_threshold_days: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Sets the percentage of disk space remaining on a PC before cached accounts will be deleted to free disk space. Accounts that have been inactive the longest will be deleted first. Only applies when AccountDeletionPolicy is DiskSpaceThresholdOrInactiveThreshold. Valid values 0 to 100
         self._remove_accounts_below_disk_free_percentage: Optional[int] = None
@@ -96,11 +95,11 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "account_deletion_policy": lambda n : setattr(self, 'account_deletion_policy', n.get_enum_value(shared_p_c_account_deletion_policy_type.SharedPCAccountDeletionPolicyType)),
-            "cache_accounts_above_disk_free_percentage": lambda n : setattr(self, 'cache_accounts_above_disk_free_percentage', n.get_int_value()),
-            "inactive_threshold_days": lambda n : setattr(self, 'inactive_threshold_days', n.get_int_value()),
+            "accountDeletionPolicy": lambda n : setattr(self, 'account_deletion_policy', n.get_enum_value(shared_p_c_account_deletion_policy_type.SharedPCAccountDeletionPolicyType)),
+            "cacheAccountsAboveDiskFreePercentage": lambda n : setattr(self, 'cache_accounts_above_disk_free_percentage', n.get_int_value()),
+            "inactiveThresholdDays": lambda n : setattr(self, 'inactive_threshold_days', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "remove_accounts_below_disk_free_percentage": lambda n : setattr(self, 'remove_accounts_below_disk_free_percentage', n.get_int_value()),
+            "removeAccountsBelowDiskFreePercentage": lambda n : setattr(self, 'remove_accounts_below_disk_free_percentage', n.get_int_value()),
         }
         return fields
     
@@ -124,7 +123,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -132,7 +131,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

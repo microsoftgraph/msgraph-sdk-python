@@ -13,7 +13,6 @@ class TeamsAppInstallation(entity.Entity):
         Instantiates a new teamsAppInstallation and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The app that is installed.
         self._teams_app: Optional[teams_app.TeamsApp] = None
@@ -38,8 +37,8 @@ class TeamsAppInstallation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "teams_app": lambda n : setattr(self, 'teams_app', n.get_object_value(teams_app.TeamsApp)),
-            "teams_app_definition": lambda n : setattr(self, 'teams_app_definition', n.get_object_value(teams_app_definition.TeamsAppDefinition)),
+            "teamsApp": lambda n : setattr(self, 'teams_app', n.get_object_value(teams_app.TeamsApp)),
+            "teamsAppDefinition": lambda n : setattr(self, 'teams_app_definition', n.get_object_value(teams_app_definition.TeamsAppDefinition)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

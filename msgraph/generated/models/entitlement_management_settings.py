@@ -17,7 +17,6 @@ class EntitlementManagementSettings(entity.Entity):
         self._duration_until_external_user_deleted_after_blocked: Optional[Timedelta] = None
         # Automatic action that the service should take when an external user's last access package assignment is removed. The possible values are: none, blockSignIn, blockSignInAndDelete, unknownFutureValue.
         self._external_user_lifecycle_action: Optional[access_package_external_user_lifecycle_action.AccessPackageExternalUserLifecycleAction] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -72,8 +71,8 @@ class EntitlementManagementSettings(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "duration_until_external_user_deleted_after_blocked": lambda n : setattr(self, 'duration_until_external_user_deleted_after_blocked', n.get_object_value(Timedelta)),
-            "external_user_lifecycle_action": lambda n : setattr(self, 'external_user_lifecycle_action', n.get_enum_value(access_package_external_user_lifecycle_action.AccessPackageExternalUserLifecycleAction)),
+            "durationUntilExternalUserDeletedAfterBlocked": lambda n : setattr(self, 'duration_until_external_user_deleted_after_blocked', n.get_object_value(Timedelta)),
+            "externalUserLifecycleAction": lambda n : setattr(self, 'external_user_lifecycle_action', n.get_enum_value(access_package_external_user_lifecycle_action.AccessPackageExternalUserLifecycleAction)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

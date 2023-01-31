@@ -33,12 +33,13 @@ class SharedInsightItemRequestBuilder():
         """
         return resource_request_builder.ResourceRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, shared_insight_id: Optional[str] = None) -> None:
         """
         Instantiates a new SharedInsightItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            sharedInsightId: key: id of sharedInsight
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -48,6 +49,7 @@ class SharedInsightItemRequestBuilder():
         self.url_template: str = "{+baseurl}/users/{user%2Did}/insights/shared/{sharedInsight%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["sharedInsight%2Did"] = sharedInsightId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -90,7 +92,7 @@ class SharedInsightItemRequestBuilder():
         """
         Update the navigation property shared in users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[shared_insight.SharedInsight]
         """
@@ -145,7 +147,7 @@ class SharedInsightItemRequestBuilder():
         """
         Update the navigation property shared in users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

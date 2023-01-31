@@ -14,7 +14,6 @@ class Participant(entity.Entity):
         Instantiates a new participant and sets the default values.
         """
         super().__init__()
-        # The info property
         self._info: Optional[participant_info.ParticipantInfo] = None
         # true if the participant is in lobby.
         self._is_in_lobby: Optional[bool] = None
@@ -24,7 +23,6 @@ class Participant(entity.Entity):
         self._media_streams: Optional[List[media_stream.MediaStream]] = None
         # A blob of data provided by the participant in the roster.
         self._metadata: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Information about whether the participant has recording capability.
         self._recording_info: Optional[recording_info.RecordingInfo] = None
@@ -48,11 +46,11 @@ class Participant(entity.Entity):
         """
         fields = {
             "info": lambda n : setattr(self, 'info', n.get_object_value(participant_info.ParticipantInfo)),
-            "is_in_lobby": lambda n : setattr(self, 'is_in_lobby', n.get_bool_value()),
-            "is_muted": lambda n : setattr(self, 'is_muted', n.get_bool_value()),
-            "media_streams": lambda n : setattr(self, 'media_streams', n.get_collection_of_object_values(media_stream.MediaStream)),
+            "isInLobby": lambda n : setattr(self, 'is_in_lobby', n.get_bool_value()),
+            "isMuted": lambda n : setattr(self, 'is_muted', n.get_bool_value()),
+            "mediaStreams": lambda n : setattr(self, 'media_streams', n.get_collection_of_object_values(media_stream.MediaStream)),
             "metadata": lambda n : setattr(self, 'metadata', n.get_str_value()),
-            "recording_info": lambda n : setattr(self, 'recording_info', n.get_object_value(recording_info.RecordingInfo)),
+            "recordingInfo": lambda n : setattr(self, 'recording_info', n.get_object_value(recording_info.RecordingInfo)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -61,7 +59,7 @@ class Participant(entity.Entity):
     @property
     def info(self,) -> Optional[participant_info.ParticipantInfo]:
         """
-        Gets the info property value. The info property
+        Gets the info property value. 
         Returns: Optional[participant_info.ParticipantInfo]
         """
         return self._info
@@ -69,7 +67,7 @@ class Participant(entity.Entity):
     @info.setter
     def info(self,value: Optional[participant_info.ParticipantInfo] = None) -> None:
         """
-        Sets the info property value. The info property
+        Sets the info property value. 
         Args:
             value: Value to set for the info property.
         """

@@ -55,7 +55,6 @@ class ManagedEBook(entity.Entity):
         self._large_cover: Optional[mime_content.MimeContent] = None
         # The date and time when the eBook was last modified.
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The privacy statement Url.
         self._privacy_information_url: Optional[str] = None
@@ -153,18 +152,18 @@ class ManagedEBook(entity.Entity):
         """
         fields = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(managed_e_book_assignment.ManagedEBookAssignment)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "device_states": lambda n : setattr(self, 'device_states', n.get_collection_of_object_values(device_install_state.DeviceInstallState)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "information_url": lambda n : setattr(self, 'information_url', n.get_str_value()),
-            "install_summary": lambda n : setattr(self, 'install_summary', n.get_object_value(e_book_install_summary.EBookInstallSummary)),
-            "large_cover": lambda n : setattr(self, 'large_cover', n.get_object_value(mime_content.MimeContent)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "privacy_information_url": lambda n : setattr(self, 'privacy_information_url', n.get_str_value()),
-            "published_date_time": lambda n : setattr(self, 'published_date_time', n.get_datetime_value()),
+            "deviceStates": lambda n : setattr(self, 'device_states', n.get_collection_of_object_values(device_install_state.DeviceInstallState)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "informationUrl": lambda n : setattr(self, 'information_url', n.get_str_value()),
+            "installSummary": lambda n : setattr(self, 'install_summary', n.get_object_value(e_book_install_summary.EBookInstallSummary)),
+            "largeCover": lambda n : setattr(self, 'large_cover', n.get_object_value(mime_content.MimeContent)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "privacyInformationUrl": lambda n : setattr(self, 'privacy_information_url', n.get_str_value()),
+            "publishedDateTime": lambda n : setattr(self, 'published_date_time', n.get_datetime_value()),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
-            "user_state_summary": lambda n : setattr(self, 'user_state_summary', n.get_collection_of_object_values(user_install_state_summary.UserInstallStateSummary)),
+            "userStateSummary": lambda n : setattr(self, 'user_state_summary', n.get_collection_of_object_values(user_install_state_summary.UserInstallStateSummary)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

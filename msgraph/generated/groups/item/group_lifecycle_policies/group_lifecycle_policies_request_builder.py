@@ -66,7 +66,7 @@ class GroupLifecyclePoliciesRequestBuilder():
         """
         Create new navigation property to groupLifecyclePolicies for groups
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[group_lifecycle_policy.GroupLifecyclePolicy]
         """
@@ -105,7 +105,7 @@ class GroupLifecyclePoliciesRequestBuilder():
         """
         Create new navigation property to groupLifecyclePolicies for groups
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

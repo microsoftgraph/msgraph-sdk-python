@@ -54,17 +54,17 @@ class WindowsPhone81CompliancePolicy(device_compliance_policy.DeviceCompliancePo
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "os_maximum_version": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
-            "os_minimum_version": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
-            "password_block_simple": lambda n : setattr(self, 'password_block_simple', n.get_bool_value()),
-            "password_expiration_days": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
-            "password_minimum_character_set_count": lambda n : setattr(self, 'password_minimum_character_set_count', n.get_int_value()),
-            "password_minimum_length": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
-            "password_minutes_of_inactivity_before_lock": lambda n : setattr(self, 'password_minutes_of_inactivity_before_lock', n.get_int_value()),
-            "password_previous_password_block_count": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
-            "password_required": lambda n : setattr(self, 'password_required', n.get_bool_value()),
-            "password_required_type": lambda n : setattr(self, 'password_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
-            "storage_require_encryption": lambda n : setattr(self, 'storage_require_encryption', n.get_bool_value()),
+            "osMaximumVersion": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
+            "osMinimumVersion": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
+            "passwordBlockSimple": lambda n : setattr(self, 'password_block_simple', n.get_bool_value()),
+            "passwordExpirationDays": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
+            "passwordMinimumCharacterSetCount": lambda n : setattr(self, 'password_minimum_character_set_count', n.get_int_value()),
+            "passwordMinimumLength": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
+            "passwordMinutesOfInactivityBeforeLock": lambda n : setattr(self, 'password_minutes_of_inactivity_before_lock', n.get_int_value()),
+            "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
+            "passwordRequired": lambda n : setattr(self, 'password_required', n.get_bool_value()),
+            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
+            "storageRequireEncryption": lambda n : setattr(self, 'storage_require_encryption', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

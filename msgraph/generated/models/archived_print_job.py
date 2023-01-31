@@ -97,11 +97,9 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         self._created_date_time: Optional[datetime] = None
         # The archived print job's GUID. Read-only.
         self._id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The printer ID that the job was queued for. Read-only.
         self._printer_id: Optional[str] = None
-        # The processingState property
         self._processing_state: Optional[print_job_processing_state.PrintJobProcessingState] = None
     
     @property
@@ -173,16 +171,16 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "acquired_by_printer": lambda n : setattr(self, 'acquired_by_printer', n.get_bool_value()),
-            "acquired_date_time": lambda n : setattr(self, 'acquired_date_time', n.get_datetime_value()),
-            "completion_date_time": lambda n : setattr(self, 'completion_date_time', n.get_datetime_value()),
-            "copies_printed": lambda n : setattr(self, 'copies_printed', n.get_int_value()),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(user_identity.UserIdentity)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "acquiredByPrinter": lambda n : setattr(self, 'acquired_by_printer', n.get_bool_value()),
+            "acquiredDateTime": lambda n : setattr(self, 'acquired_date_time', n.get_datetime_value()),
+            "completionDateTime": lambda n : setattr(self, 'completion_date_time', n.get_datetime_value()),
+            "copiesPrinted": lambda n : setattr(self, 'copies_printed', n.get_int_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(user_identity.UserIdentity)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "printer_id": lambda n : setattr(self, 'printer_id', n.get_str_value()),
-            "processing_state": lambda n : setattr(self, 'processing_state', n.get_enum_value(print_job_processing_state.PrintJobProcessingState)),
+            "printerId": lambda n : setattr(self, 'printer_id', n.get_str_value()),
+            "processingState": lambda n : setattr(self, 'processing_state', n.get_enum_value(print_job_processing_state.PrintJobProcessingState)),
         }
         return fields
     
@@ -206,7 +204,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -214,7 +212,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -240,7 +238,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
     @property
     def processing_state(self,) -> Optional[print_job_processing_state.PrintJobProcessingState]:
         """
-        Gets the processingState property value. The processingState property
+        Gets the processingState property value. 
         Returns: Optional[print_job_processing_state.PrintJobProcessingState]
         """
         return self._processing_state
@@ -248,7 +246,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
     @processing_state.setter
     def processing_state(self,value: Optional[print_job_processing_state.PrintJobProcessingState] = None) -> None:
         """
-        Sets the processingState property value. The processingState property
+        Sets the processingState property value. 
         Args:
             value: Value to set for the processingState property.
         """

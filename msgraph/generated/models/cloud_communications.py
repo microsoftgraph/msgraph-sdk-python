@@ -13,7 +13,7 @@ class CloudCommunications(entity.Entity):
     @property
     def call_records(self,) -> Optional[List[call_record.CallRecord]]:
         """
-        Gets the callRecords property value. The callRecords property
+        Gets the callRecords property value. 
         Returns: Optional[List[call_record.CallRecord]]
         """
         return self._call_records
@@ -21,7 +21,7 @@ class CloudCommunications(entity.Entity):
     @call_records.setter
     def call_records(self,value: Optional[List[call_record.CallRecord]] = None) -> None:
         """
-        Sets the callRecords property value. The callRecords property
+        Sets the callRecords property value. 
         Args:
             value: Value to set for the callRecords property.
         """
@@ -30,7 +30,7 @@ class CloudCommunications(entity.Entity):
     @property
     def calls(self,) -> Optional[List[call.Call]]:
         """
-        Gets the calls property value. The calls property
+        Gets the calls property value. 
         Returns: Optional[List[call.Call]]
         """
         return self._calls
@@ -38,7 +38,7 @@ class CloudCommunications(entity.Entity):
     @calls.setter
     def calls(self,value: Optional[List[call.Call]] = None) -> None:
         """
-        Sets the calls property value. The calls property
+        Sets the calls property value. 
         Args:
             value: Value to set for the calls property.
         """
@@ -49,15 +49,10 @@ class CloudCommunications(entity.Entity):
         Instantiates a new CloudCommunications and sets the default values.
         """
         super().__init__()
-        # The callRecords property
         self._call_records: Optional[List[call_record.CallRecord]] = None
-        # The calls property
         self._calls: Optional[List[call.Call]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The onlineMeetings property
         self._online_meetings: Optional[List[online_meeting.OnlineMeeting]] = None
-        # The presences property
         self._presences: Optional[List[presence.Presence]] = None
     
     @staticmethod
@@ -78,9 +73,9 @@ class CloudCommunications(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "call_records": lambda n : setattr(self, 'call_records', n.get_collection_of_object_values(call_record.CallRecord)),
+            "callRecords": lambda n : setattr(self, 'call_records', n.get_collection_of_object_values(call_record.CallRecord)),
             "calls": lambda n : setattr(self, 'calls', n.get_collection_of_object_values(call.Call)),
-            "online_meetings": lambda n : setattr(self, 'online_meetings', n.get_collection_of_object_values(online_meeting.OnlineMeeting)),
+            "onlineMeetings": lambda n : setattr(self, 'online_meetings', n.get_collection_of_object_values(online_meeting.OnlineMeeting)),
             "presences": lambda n : setattr(self, 'presences', n.get_collection_of_object_values(presence.Presence)),
         }
         super_fields = super().get_field_deserializers()
@@ -90,7 +85,7 @@ class CloudCommunications(entity.Entity):
     @property
     def online_meetings(self,) -> Optional[List[online_meeting.OnlineMeeting]]:
         """
-        Gets the onlineMeetings property value. The onlineMeetings property
+        Gets the onlineMeetings property value. 
         Returns: Optional[List[online_meeting.OnlineMeeting]]
         """
         return self._online_meetings
@@ -98,7 +93,7 @@ class CloudCommunications(entity.Entity):
     @online_meetings.setter
     def online_meetings(self,value: Optional[List[online_meeting.OnlineMeeting]] = None) -> None:
         """
-        Sets the onlineMeetings property value. The onlineMeetings property
+        Sets the onlineMeetings property value. 
         Args:
             value: Value to set for the onlineMeetings property.
         """
@@ -107,7 +102,7 @@ class CloudCommunications(entity.Entity):
     @property
     def presences(self,) -> Optional[List[presence.Presence]]:
         """
-        Gets the presences property value. The presences property
+        Gets the presences property value. 
         Returns: Optional[List[presence.Presence]]
         """
         return self._presences
@@ -115,7 +110,7 @@ class CloudCommunications(entity.Entity):
     @presences.setter
     def presences(self,value: Optional[List[presence.Presence]] = None) -> None:
         """
-        Sets the presences property value. The presences property
+        Sets the presences property value. 
         Args:
             value: Value to set for the presences property.
         """

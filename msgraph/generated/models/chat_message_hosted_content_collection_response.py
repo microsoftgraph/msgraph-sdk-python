@@ -12,7 +12,6 @@ class ChatMessageHostedContentCollectionResponse(base_collection_pagination_coun
         Instantiates a new ChatMessageHostedContentCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[chat_message_hosted_content.ChatMessageHostedContent]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ChatMessageHostedContentCollectionResponse(base_collection_pagination_coun
     @property
     def value(self,) -> Optional[List[chat_message_hosted_content.ChatMessageHostedContent]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[chat_message_hosted_content.ChatMessageHostedContent]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ChatMessageHostedContentCollectionResponse(base_collection_pagination_coun
     @value.setter
     def value(self,value: Optional[List[chat_message_hosted_content.ChatMessageHostedContent]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -107,10 +107,10 @@ class Contract(directory_object.DirectoryObject):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "contract_type": lambda n : setattr(self, 'contract_type', n.get_str_value()),
-            "customer_id": lambda n : setattr(self, 'customer_id', n.get_object_value(Guid)),
-            "default_domain_name": lambda n : setattr(self, 'default_domain_name', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "contractType": lambda n : setattr(self, 'contract_type', n.get_str_value()),
+            "customerId": lambda n : setattr(self, 'customer_id', n.get_object_value(Guid)),
+            "defaultDomainName": lambda n : setattr(self, 'default_domain_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

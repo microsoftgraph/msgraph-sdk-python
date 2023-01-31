@@ -75,11 +75,11 @@ class ExtensionProperty(directory_object.DirectoryObject):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_display_name": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
-            "data_type": lambda n : setattr(self, 'data_type', n.get_str_value()),
-            "is_synced_from_on_premises": lambda n : setattr(self, 'is_synced_from_on_premises', n.get_bool_value()),
+            "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
+            "dataType": lambda n : setattr(self, 'data_type', n.get_str_value()),
+            "isSyncedFromOnPremises": lambda n : setattr(self, 'is_synced_from_on_premises', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "target_objects": lambda n : setattr(self, 'target_objects', n.get_collection_of_primitive_values(str)),
+            "targetObjects": lambda n : setattr(self, 'target_objects', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

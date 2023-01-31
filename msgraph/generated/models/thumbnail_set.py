@@ -16,7 +16,6 @@ class ThumbnailSet(entity.Entity):
         self._large: Optional[thumbnail.Thumbnail] = None
         # A 176x176 scaled thumbnail.
         self._medium: Optional[thumbnail.Thumbnail] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # A 48x48 cropped thumbnail.
         self._small: Optional[thumbnail.Thumbnail] = None

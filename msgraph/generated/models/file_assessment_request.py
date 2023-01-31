@@ -69,8 +69,8 @@ class FileAssessmentRequest(threat_assessment_request.ThreatAssessmentRequest):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "content_data": lambda n : setattr(self, 'content_data', n.get_str_value()),
-            "file_name": lambda n : setattr(self, 'file_name', n.get_str_value()),
+            "contentData": lambda n : setattr(self, 'content_data', n.get_str_value()),
+            "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

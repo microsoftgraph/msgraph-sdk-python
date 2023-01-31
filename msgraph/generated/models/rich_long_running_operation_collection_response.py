@@ -12,7 +12,6 @@ class RichLongRunningOperationCollectionResponse(base_collection_pagination_coun
         Instantiates a new RichLongRunningOperationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[rich_long_running_operation.RichLongRunningOperation]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class RichLongRunningOperationCollectionResponse(base_collection_pagination_coun
     @property
     def value(self,) -> Optional[List[rich_long_running_operation.RichLongRunningOperation]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[rich_long_running_operation.RichLongRunningOperation]]
         """
         return self._value
@@ -61,7 +60,7 @@ class RichLongRunningOperationCollectionResponse(base_collection_pagination_coun
     @value.setter
     def value(self,value: Optional[List[rich_long_running_operation.RichLongRunningOperation]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

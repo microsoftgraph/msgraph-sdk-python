@@ -34,11 +34,9 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         self._device_error_code: Optional[int] = None
         # Device error name reported by Device Directory Service(DDS).
         self._device_error_name: Optional[str] = None
-        # The deviceImportStatus property
         self._device_import_status: Optional[imported_windows_autopilot_device_identity_import_status.ImportedWindowsAutopilotDeviceIdentityImportStatus] = None
         # Device Registration ID for successfully added device reported by Device Directory Service(DDS).
         self._device_registration_id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -90,7 +88,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
     @property
     def device_import_status(self,) -> Optional[imported_windows_autopilot_device_identity_import_status.ImportedWindowsAutopilotDeviceIdentityImportStatus]:
         """
-        Gets the deviceImportStatus property value. The deviceImportStatus property
+        Gets the deviceImportStatus property value. 
         Returns: Optional[imported_windows_autopilot_device_identity_import_status.ImportedWindowsAutopilotDeviceIdentityImportStatus]
         """
         return self._device_import_status
@@ -98,7 +96,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
     @device_import_status.setter
     def device_import_status(self,value: Optional[imported_windows_autopilot_device_identity_import_status.ImportedWindowsAutopilotDeviceIdentityImportStatus] = None) -> None:
         """
-        Sets the deviceImportStatus property value. The deviceImportStatus property
+        Sets the deviceImportStatus property value. 
         Args:
             value: Value to set for the deviceImportStatus property.
         """
@@ -127,10 +125,10 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_error_code": lambda n : setattr(self, 'device_error_code', n.get_int_value()),
-            "device_error_name": lambda n : setattr(self, 'device_error_name', n.get_str_value()),
-            "device_import_status": lambda n : setattr(self, 'device_import_status', n.get_enum_value(imported_windows_autopilot_device_identity_import_status.ImportedWindowsAutopilotDeviceIdentityImportStatus)),
-            "device_registration_id": lambda n : setattr(self, 'device_registration_id', n.get_str_value()),
+            "deviceErrorCode": lambda n : setattr(self, 'device_error_code', n.get_int_value()),
+            "deviceErrorName": lambda n : setattr(self, 'device_error_name', n.get_str_value()),
+            "deviceImportStatus": lambda n : setattr(self, 'device_import_status', n.get_enum_value(imported_windows_autopilot_device_identity_import_status.ImportedWindowsAutopilotDeviceIdentityImportStatus)),
+            "deviceRegistrationId": lambda n : setattr(self, 'device_registration_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -138,7 +136,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -146,7 +144,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

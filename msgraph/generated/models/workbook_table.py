@@ -42,7 +42,6 @@ class WorkbookTable(entity.Entity):
         self._legacy_id: Optional[str] = None
         # Name of the table.
         self._name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Represents a collection of all the rows in the table. Read-only.
         self._rows: Optional[List[workbook_table_row.WorkbookTableRow]] = None
@@ -82,16 +81,16 @@ class WorkbookTable(entity.Entity):
         """
         fields = {
             "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(workbook_table_column.WorkbookTableColumn)),
-            "highlight_first_column": lambda n : setattr(self, 'highlight_first_column', n.get_bool_value()),
-            "highlight_last_column": lambda n : setattr(self, 'highlight_last_column', n.get_bool_value()),
-            "legacy_id": lambda n : setattr(self, 'legacy_id', n.get_str_value()),
+            "highlightFirstColumn": lambda n : setattr(self, 'highlight_first_column', n.get_bool_value()),
+            "highlightLastColumn": lambda n : setattr(self, 'highlight_last_column', n.get_bool_value()),
+            "legacyId": lambda n : setattr(self, 'legacy_id', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "rows": lambda n : setattr(self, 'rows', n.get_collection_of_object_values(workbook_table_row.WorkbookTableRow)),
-            "show_banded_columns": lambda n : setattr(self, 'show_banded_columns', n.get_bool_value()),
-            "show_banded_rows": lambda n : setattr(self, 'show_banded_rows', n.get_bool_value()),
-            "show_filter_button": lambda n : setattr(self, 'show_filter_button', n.get_bool_value()),
-            "show_headers": lambda n : setattr(self, 'show_headers', n.get_bool_value()),
-            "show_totals": lambda n : setattr(self, 'show_totals', n.get_bool_value()),
+            "showBandedColumns": lambda n : setattr(self, 'show_banded_columns', n.get_bool_value()),
+            "showBandedRows": lambda n : setattr(self, 'show_banded_rows', n.get_bool_value()),
+            "showFilterButton": lambda n : setattr(self, 'show_filter_button', n.get_bool_value()),
+            "showHeaders": lambda n : setattr(self, 'show_headers', n.get_bool_value()),
+            "showTotals": lambda n : setattr(self, 'show_totals', n.get_bool_value()),
             "sort": lambda n : setattr(self, 'sort', n.get_object_value(workbook_table_sort.WorkbookTableSort)),
             "style": lambda n : setattr(self, 'style', n.get_str_value()),
             "worksheet": lambda n : setattr(self, 'worksheet', n.get_object_value(workbook_worksheet.WorkbookWorksheet)),

@@ -66,7 +66,7 @@ class CalendarsRequestBuilder():
         """
         Use this API to create a new calendar in a calendar group for a user.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[calendar.Calendar]
         """
@@ -105,7 +105,7 @@ class CalendarsRequestBuilder():
         """
         Use this API to create a new calendar in a calendar group for a user.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

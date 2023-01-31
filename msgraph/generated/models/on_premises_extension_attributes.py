@@ -58,7 +58,6 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
         self._extension_attribute8: Optional[str] = None
         # Ninth customizable extension attribute.
         self._extension_attribute9: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -334,21 +333,21 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "extension_attribute1": lambda n : setattr(self, 'extension_attribute1', n.get_str_value()),
-            "extension_attribute10": lambda n : setattr(self, 'extension_attribute10', n.get_str_value()),
-            "extension_attribute11": lambda n : setattr(self, 'extension_attribute11', n.get_str_value()),
-            "extension_attribute12": lambda n : setattr(self, 'extension_attribute12', n.get_str_value()),
-            "extension_attribute13": lambda n : setattr(self, 'extension_attribute13', n.get_str_value()),
-            "extension_attribute14": lambda n : setattr(self, 'extension_attribute14', n.get_str_value()),
-            "extension_attribute15": lambda n : setattr(self, 'extension_attribute15', n.get_str_value()),
-            "extension_attribute2": lambda n : setattr(self, 'extension_attribute2', n.get_str_value()),
-            "extension_attribute3": lambda n : setattr(self, 'extension_attribute3', n.get_str_value()),
-            "extension_attribute4": lambda n : setattr(self, 'extension_attribute4', n.get_str_value()),
-            "extension_attribute5": lambda n : setattr(self, 'extension_attribute5', n.get_str_value()),
-            "extension_attribute6": lambda n : setattr(self, 'extension_attribute6', n.get_str_value()),
-            "extension_attribute7": lambda n : setattr(self, 'extension_attribute7', n.get_str_value()),
-            "extension_attribute8": lambda n : setattr(self, 'extension_attribute8', n.get_str_value()),
-            "extension_attribute9": lambda n : setattr(self, 'extension_attribute9', n.get_str_value()),
+            "extensionAttribute1": lambda n : setattr(self, 'extension_attribute1', n.get_str_value()),
+            "extensionAttribute10": lambda n : setattr(self, 'extension_attribute10', n.get_str_value()),
+            "extensionAttribute11": lambda n : setattr(self, 'extension_attribute11', n.get_str_value()),
+            "extensionAttribute12": lambda n : setattr(self, 'extension_attribute12', n.get_str_value()),
+            "extensionAttribute13": lambda n : setattr(self, 'extension_attribute13', n.get_str_value()),
+            "extensionAttribute14": lambda n : setattr(self, 'extension_attribute14', n.get_str_value()),
+            "extensionAttribute15": lambda n : setattr(self, 'extension_attribute15', n.get_str_value()),
+            "extensionAttribute2": lambda n : setattr(self, 'extension_attribute2', n.get_str_value()),
+            "extensionAttribute3": lambda n : setattr(self, 'extension_attribute3', n.get_str_value()),
+            "extensionAttribute4": lambda n : setattr(self, 'extension_attribute4', n.get_str_value()),
+            "extensionAttribute5": lambda n : setattr(self, 'extension_attribute5', n.get_str_value()),
+            "extensionAttribute6": lambda n : setattr(self, 'extension_attribute6', n.get_str_value()),
+            "extensionAttribute7": lambda n : setattr(self, 'extension_attribute7', n.get_str_value()),
+            "extensionAttribute8": lambda n : setattr(self, 'extension_attribute8', n.get_str_value()),
+            "extensionAttribute9": lambda n : setattr(self, 'extension_attribute9', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -356,7 +355,7 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -364,7 +363,7 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

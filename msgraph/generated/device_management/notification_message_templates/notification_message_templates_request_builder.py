@@ -66,7 +66,7 @@ class NotificationMessageTemplatesRequestBuilder():
         """
         Create new navigation property to notificationMessageTemplates for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[notification_message_template.NotificationMessageTemplate]
         """
@@ -105,7 +105,7 @@ class NotificationMessageTemplatesRequestBuilder():
         """
         Create new navigation property to notificationMessageTemplates for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

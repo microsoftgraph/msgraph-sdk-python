@@ -216,7 +216,6 @@ class OnlineMeeting(entity.Entity):
         self._creation_date_time: Optional[datetime] = None
         # The meeting end time in UTC.
         self._end_date_time: Optional[datetime] = None
-        # The externalId property
         self._external_id: Optional[str] = None
         # Indicates if this is a Teams live event.
         self._is_broadcast: Optional[bool] = None
@@ -230,7 +229,6 @@ class OnlineMeeting(entity.Entity):
         self._join_web_url: Optional[str] = None
         # Specifies which participants can bypass the meeting   lobby.
         self._lobby_bypass_settings: Optional[lobby_bypass_settings.LobbyBypassSettings] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The participants associated with the online meeting.  This includes the organizer and the attendees.
         self._participants: Optional[meeting_participants.MeetingParticipants] = None
@@ -292,7 +290,7 @@ class OnlineMeeting(entity.Entity):
     @property
     def external_id(self,) -> Optional[str]:
         """
-        Gets the externalId property value. The externalId property
+        Gets the externalId property value. 
         Returns: Optional[str]
         """
         return self._external_id
@@ -300,7 +298,7 @@ class OnlineMeeting(entity.Entity):
     @external_id.setter
     def external_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the externalId property value. The externalId property
+        Sets the externalId property value. 
         Args:
             value: Value to set for the externalId property.
         """
@@ -312,30 +310,30 @@ class OnlineMeeting(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_attendee_to_enable_camera": lambda n : setattr(self, 'allow_attendee_to_enable_camera', n.get_bool_value()),
-            "allow_attendee_to_enable_mic": lambda n : setattr(self, 'allow_attendee_to_enable_mic', n.get_bool_value()),
-            "allowed_presenters": lambda n : setattr(self, 'allowed_presenters', n.get_enum_value(online_meeting_presenters.OnlineMeetingPresenters)),
-            "allow_meeting_chat": lambda n : setattr(self, 'allow_meeting_chat', n.get_enum_value(meeting_chat_mode.MeetingChatMode)),
-            "allow_teamwork_reactions": lambda n : setattr(self, 'allow_teamwork_reactions', n.get_bool_value()),
-            "attendance_reports": lambda n : setattr(self, 'attendance_reports', n.get_collection_of_object_values(meeting_attendance_report.MeetingAttendanceReport)),
-            "attendee_report": lambda n : setattr(self, 'attendee_report', n.get_bytes_value()),
-            "audio_conferencing": lambda n : setattr(self, 'audio_conferencing', n.get_object_value(audio_conferencing.AudioConferencing)),
-            "broadcast_settings": lambda n : setattr(self, 'broadcast_settings', n.get_object_value(broadcast_meeting_settings.BroadcastMeetingSettings)),
-            "chat_info": lambda n : setattr(self, 'chat_info', n.get_object_value(chat_info.ChatInfo)),
-            "creation_date_time": lambda n : setattr(self, 'creation_date_time', n.get_datetime_value()),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
-            "is_broadcast": lambda n : setattr(self, 'is_broadcast', n.get_bool_value()),
-            "is_entry_exit_announced": lambda n : setattr(self, 'is_entry_exit_announced', n.get_bool_value()),
-            "join_information": lambda n : setattr(self, 'join_information', n.get_object_value(item_body.ItemBody)),
-            "join_meeting_id_settings": lambda n : setattr(self, 'join_meeting_id_settings', n.get_object_value(join_meeting_id_settings.JoinMeetingIdSettings)),
-            "join_web_url": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
-            "lobby_bypass_settings": lambda n : setattr(self, 'lobby_bypass_settings', n.get_object_value(lobby_bypass_settings.LobbyBypassSettings)),
+            "allowAttendeeToEnableCamera": lambda n : setattr(self, 'allow_attendee_to_enable_camera', n.get_bool_value()),
+            "allowAttendeeToEnableMic": lambda n : setattr(self, 'allow_attendee_to_enable_mic', n.get_bool_value()),
+            "allowedPresenters": lambda n : setattr(self, 'allowed_presenters', n.get_enum_value(online_meeting_presenters.OnlineMeetingPresenters)),
+            "allowMeetingChat": lambda n : setattr(self, 'allow_meeting_chat', n.get_enum_value(meeting_chat_mode.MeetingChatMode)),
+            "allowTeamworkReactions": lambda n : setattr(self, 'allow_teamwork_reactions', n.get_bool_value()),
+            "attendanceReports": lambda n : setattr(self, 'attendance_reports', n.get_collection_of_object_values(meeting_attendance_report.MeetingAttendanceReport)),
+            "attendeeReport": lambda n : setattr(self, 'attendee_report', n.get_bytes_value()),
+            "audioConferencing": lambda n : setattr(self, 'audio_conferencing', n.get_object_value(audio_conferencing.AudioConferencing)),
+            "broadcastSettings": lambda n : setattr(self, 'broadcast_settings', n.get_object_value(broadcast_meeting_settings.BroadcastMeetingSettings)),
+            "chatInfo": lambda n : setattr(self, 'chat_info', n.get_object_value(chat_info.ChatInfo)),
+            "creationDateTime": lambda n : setattr(self, 'creation_date_time', n.get_datetime_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "isBroadcast": lambda n : setattr(self, 'is_broadcast', n.get_bool_value()),
+            "isEntryExitAnnounced": lambda n : setattr(self, 'is_entry_exit_announced', n.get_bool_value()),
+            "joinInformation": lambda n : setattr(self, 'join_information', n.get_object_value(item_body.ItemBody)),
+            "joinMeetingIdSettings": lambda n : setattr(self, 'join_meeting_id_settings', n.get_object_value(join_meeting_id_settings.JoinMeetingIdSettings)),
+            "joinWebUrl": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
+            "lobbyBypassSettings": lambda n : setattr(self, 'lobby_bypass_settings', n.get_object_value(lobby_bypass_settings.LobbyBypassSettings)),
             "participants": lambda n : setattr(self, 'participants', n.get_object_value(meeting_participants.MeetingParticipants)),
-            "record_automatically": lambda n : setattr(self, 'record_automatically', n.get_bool_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "recordAutomatically": lambda n : setattr(self, 'record_automatically', n.get_bool_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
-            "video_teleconference_id": lambda n : setattr(self, 'video_teleconference_id', n.get_str_value()),
+            "videoTeleconferenceId": lambda n : setattr(self, 'video_teleconference_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

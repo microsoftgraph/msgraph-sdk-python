@@ -66,7 +66,7 @@ class EmailMethodsRequestBuilder():
         """
         Set a user's emailAuthenticationMethod object. Email authentication is a self-service password reset method. A user may only have one email authentication method.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[email_authentication_method.EmailAuthenticationMethod]
         """
@@ -105,7 +105,7 @@ class EmailMethodsRequestBuilder():
         """
         Set a user's emailAuthenticationMethod object. Email authentication is a self-service password reset method. A user may only have one email authentication method.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

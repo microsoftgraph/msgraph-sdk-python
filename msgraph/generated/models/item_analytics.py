@@ -10,7 +10,7 @@ class ItemAnalytics(entity.Entity):
     @property
     def all_time(self,) -> Optional[item_activity_stat.ItemActivityStat]:
         """
-        Gets the allTime property value. The allTime property
+        Gets the allTime property value. 
         Returns: Optional[item_activity_stat.ItemActivityStat]
         """
         return self._all_time
@@ -18,7 +18,7 @@ class ItemAnalytics(entity.Entity):
     @all_time.setter
     def all_time(self,value: Optional[item_activity_stat.ItemActivityStat] = None) -> None:
         """
-        Sets the allTime property value. The allTime property
+        Sets the allTime property value. 
         Args:
             value: Value to set for the allTime property.
         """
@@ -29,13 +29,9 @@ class ItemAnalytics(entity.Entity):
         Instantiates a new itemAnalytics and sets the default values.
         """
         super().__init__()
-        # The allTime property
         self._all_time: Optional[item_activity_stat.ItemActivityStat] = None
-        # The itemActivityStats property
         self._item_activity_stats: Optional[List[item_activity_stat.ItemActivityStat]] = None
-        # The lastSevenDays property
         self._last_seven_days: Optional[item_activity_stat.ItemActivityStat] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -56,9 +52,9 @@ class ItemAnalytics(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "all_time": lambda n : setattr(self, 'all_time', n.get_object_value(item_activity_stat.ItemActivityStat)),
-            "item_activity_stats": lambda n : setattr(self, 'item_activity_stats', n.get_collection_of_object_values(item_activity_stat.ItemActivityStat)),
-            "last_seven_days": lambda n : setattr(self, 'last_seven_days', n.get_object_value(item_activity_stat.ItemActivityStat)),
+            "allTime": lambda n : setattr(self, 'all_time', n.get_object_value(item_activity_stat.ItemActivityStat)),
+            "itemActivityStats": lambda n : setattr(self, 'item_activity_stats', n.get_collection_of_object_values(item_activity_stat.ItemActivityStat)),
+            "lastSevenDays": lambda n : setattr(self, 'last_seven_days', n.get_object_value(item_activity_stat.ItemActivityStat)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -67,7 +63,7 @@ class ItemAnalytics(entity.Entity):
     @property
     def item_activity_stats(self,) -> Optional[List[item_activity_stat.ItemActivityStat]]:
         """
-        Gets the itemActivityStats property value. The itemActivityStats property
+        Gets the itemActivityStats property value. 
         Returns: Optional[List[item_activity_stat.ItemActivityStat]]
         """
         return self._item_activity_stats
@@ -75,7 +71,7 @@ class ItemAnalytics(entity.Entity):
     @item_activity_stats.setter
     def item_activity_stats(self,value: Optional[List[item_activity_stat.ItemActivityStat]] = None) -> None:
         """
-        Sets the itemActivityStats property value. The itemActivityStats property
+        Sets the itemActivityStats property value. 
         Args:
             value: Value to set for the itemActivityStats property.
         """
@@ -84,7 +80,7 @@ class ItemAnalytics(entity.Entity):
     @property
     def last_seven_days(self,) -> Optional[item_activity_stat.ItemActivityStat]:
         """
-        Gets the lastSevenDays property value. The lastSevenDays property
+        Gets the lastSevenDays property value. 
         Returns: Optional[item_activity_stat.ItemActivityStat]
         """
         return self._last_seven_days
@@ -92,7 +88,7 @@ class ItemAnalytics(entity.Entity):
     @last_seven_days.setter
     def last_seven_days(self,value: Optional[item_activity_stat.ItemActivityStat] = None) -> None:
         """
-        Sets the lastSevenDays property value. The lastSevenDays property
+        Sets the lastSevenDays property value. 
         Args:
             value: Value to set for the lastSevenDays property.
         """

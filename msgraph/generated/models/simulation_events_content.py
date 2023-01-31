@@ -51,7 +51,6 @@ class SimulationEventsContent(AdditionalDataHolder, Parsable):
         self._compromised_rate: Optional[float] = None
         # List of simulation events in an attack simulation and training campaign.
         self._events: Optional[List[simulation_event.SimulationEvent]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -89,7 +88,7 @@ class SimulationEventsContent(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "compromised_rate": lambda n : setattr(self, 'compromised_rate', n.get_float_value()),
+            "compromisedRate": lambda n : setattr(self, 'compromised_rate', n.get_float_value()),
             "events": lambda n : setattr(self, 'events', n.get_collection_of_object_values(simulation_event.SimulationEvent)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
@@ -98,7 +97,7 @@ class SimulationEventsContent(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -106,7 +105,7 @@ class SimulationEventsContent(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

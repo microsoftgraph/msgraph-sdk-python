@@ -17,12 +17,13 @@ class WindowsInformationProtectionAppLearningSummaryItemRequestBuilder():
     """
     Provides operations to manage the windowsInformationProtectionAppLearningSummaries property of the microsoft.graph.deviceManagement entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, windows_information_protection_app_learning_summary_id: Optional[str] = None) -> None:
         """
         Instantiates a new WindowsInformationProtectionAppLearningSummaryItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            windowsInformationProtectionAppLearningSummaryId: key: id of windowsInformationProtectionAppLearningSummary
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -32,6 +33,7 @@ class WindowsInformationProtectionAppLearningSummaryItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceManagement/windowsInformationProtectionAppLearningSummaries/{windowsInformationProtectionAppLearningSummary%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["windowsInformationProtectionAppLearningSummary%2Did"] = windowsInformationProtectionAppLearningSummaryId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -74,7 +76,7 @@ class WindowsInformationProtectionAppLearningSummaryItemRequestBuilder():
         """
         Update the navigation property windowsInformationProtectionAppLearningSummaries in deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[windows_information_protection_app_learning_summary.WindowsInformationProtectionAppLearningSummary]
         """
@@ -129,7 +131,7 @@ class WindowsInformationProtectionAppLearningSummaryItemRequestBuilder():
         """
         Update the navigation property windowsInformationProtectionAppLearningSummaries in deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -96,11 +96,11 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "api_version": lambda n : setattr(self, 'api_version', n.get_int_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "apiVersion": lambda n : setattr(self, 'api_version', n.get_int_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "encryption": lambda n : setattr(self, 'encryption', n.get_object_value(workforce_integration_encryption.WorkforceIntegrationEncryption)),
-            "is_active": lambda n : setattr(self, 'is_active', n.get_bool_value()),
-            "supported_entities": lambda n : setattr(self, 'supported_entities', n.get_enum_value(workforce_integration_supported_entities.WorkforceIntegrationSupportedEntities)),
+            "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
+            "supportedEntities": lambda n : setattr(self, 'supported_entities', n.get_enum_value(workforce_integration_supported_entities.WorkforceIntegrationSupportedEntities)),
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

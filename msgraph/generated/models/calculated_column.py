@@ -32,7 +32,6 @@ class CalculatedColumn(AdditionalDataHolder, Parsable):
         self._format: Optional[str] = None
         # The formula used to compute the value for this column.
         self._formula: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The output type used to format values in this column. Must be one of boolean, currency, dateTime, number, or text.
         self._output_type: Optional[str] = None
@@ -92,14 +91,14 @@ class CalculatedColumn(AdditionalDataHolder, Parsable):
             "format": lambda n : setattr(self, 'format', n.get_str_value()),
             "formula": lambda n : setattr(self, 'formula', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "output_type": lambda n : setattr(self, 'output_type', n.get_str_value()),
+            "outputType": lambda n : setattr(self, 'output_type', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -107,7 +106,7 @@ class CalculatedColumn(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

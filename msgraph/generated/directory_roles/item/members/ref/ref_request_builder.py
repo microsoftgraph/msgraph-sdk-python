@@ -58,7 +58,7 @@ class RefRequestBuilder():
         """
         Create new navigation property ref to members for directoryRoles
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         if body is None:
@@ -96,7 +96,7 @@ class RefRequestBuilder():
         """
         Create new navigation property ref to members for directoryRoles
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

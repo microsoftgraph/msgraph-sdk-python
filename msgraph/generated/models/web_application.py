@@ -37,11 +37,9 @@ class WebApplication(AdditionalDataHolder, Parsable):
         self._implicit_grant_settings: Optional[implicit_grant_settings.ImplicitGrantSettings] = None
         # Specifies the URL that will be used by Microsoft's authorization service to logout an user using front-channel, back-channel or SAML logout protocols.
         self._logout_url: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
         self._redirect_uris: Optional[List[str]] = None
-        # The redirectUriSettings property
         self._redirect_uri_settings: Optional[List[redirect_uri_settings.RedirectUriSettings]] = None
     
     @staticmethod
@@ -62,12 +60,12 @@ class WebApplication(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "home_page_url": lambda n : setattr(self, 'home_page_url', n.get_str_value()),
-            "implicit_grant_settings": lambda n : setattr(self, 'implicit_grant_settings', n.get_object_value(implicit_grant_settings.ImplicitGrantSettings)),
-            "logout_url": lambda n : setattr(self, 'logout_url', n.get_str_value()),
+            "homePageUrl": lambda n : setattr(self, 'home_page_url', n.get_str_value()),
+            "implicitGrantSettings": lambda n : setattr(self, 'implicit_grant_settings', n.get_object_value(implicit_grant_settings.ImplicitGrantSettings)),
+            "logoutUrl": lambda n : setattr(self, 'logout_url', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "redirect_uris": lambda n : setattr(self, 'redirect_uris', n.get_collection_of_primitive_values(str)),
-            "redirect_uri_settings": lambda n : setattr(self, 'redirect_uri_settings', n.get_collection_of_object_values(redirect_uri_settings.RedirectUriSettings)),
+            "redirectUris": lambda n : setattr(self, 'redirect_uris', n.get_collection_of_primitive_values(str)),
+            "redirectUriSettings": lambda n : setattr(self, 'redirect_uri_settings', n.get_collection_of_object_values(redirect_uri_settings.RedirectUriSettings)),
         }
         return fields
     
@@ -125,7 +123,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -133,7 +131,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -159,7 +157,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
     @property
     def redirect_uri_settings(self,) -> Optional[List[redirect_uri_settings.RedirectUriSettings]]:
         """
-        Gets the redirectUriSettings property value. The redirectUriSettings property
+        Gets the redirectUriSettings property value. 
         Returns: Optional[List[redirect_uri_settings.RedirectUriSettings]]
         """
         return self._redirect_uri_settings
@@ -167,7 +165,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
     @redirect_uri_settings.setter
     def redirect_uri_settings(self,value: Optional[List[redirect_uri_settings.RedirectUriSettings]] = None) -> None:
         """
-        Sets the redirectUriSettings property value. The redirectUriSettings property
+        Sets the redirectUriSettings property value. 
         Args:
             value: Value to set for the redirectUriSettings property.
         """

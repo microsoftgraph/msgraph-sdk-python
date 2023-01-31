@@ -66,7 +66,7 @@ class DocumentSetVersionsRequestBuilder():
         """
         Create a new version of a document set item in a list.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[document_set_version.DocumentSetVersion]
         """
@@ -105,7 +105,7 @@ class DocumentSetVersionsRequestBuilder():
         """
         Create a new version of a document set item in a list.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

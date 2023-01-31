@@ -66,7 +66,7 @@ class AssociatedTeamsRequestBuilder():
         """
         Create new navigation property to associatedTeams for users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[associated_team_info.AssociatedTeamInfo]
         """
@@ -105,7 +105,7 @@ class AssociatedTeamsRequestBuilder():
         """
         Create new navigation property to associatedTeams for users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

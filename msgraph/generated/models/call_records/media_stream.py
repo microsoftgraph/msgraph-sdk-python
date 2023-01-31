@@ -277,7 +277,6 @@ class MediaStream(AdditionalDataHolder, Parsable):
         self._max_ratio_of_concealed_samples: Optional[float] = None
         # Maximum network propagation round-trip time computed as specified in [RFC 3550][], denoted in [ISO 8601][] format. For example, 1 second is denoted as 'PT1S', where 'P' is the duration designator, 'T' is the time designator, and 'S' is the second designator.
         self._max_round_trip_time: Optional[Timedelta] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Packet count for the stream.
         self._packet_utilization: Optional[int] = None
@@ -285,7 +284,6 @@ class MediaStream(AdditionalDataHolder, Parsable):
         self._post_forward_error_correction_packet_loss_rate: Optional[float] = None
         # UTC time when the stream started. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         self._start_date_time: Optional[datetime] = None
-        # The streamDirection property
         self._stream_direction: Optional[media_stream_direction.MediaStreamDirection] = None
         # Unique identifier for the stream.
         self._stream_id: Optional[str] = None
@@ -329,34 +327,34 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "audio_codec": lambda n : setattr(self, 'audio_codec', n.get_enum_value(audio_codec.AudioCodec)),
-            "average_audio_degradation": lambda n : setattr(self, 'average_audio_degradation', n.get_float_value()),
-            "average_audio_network_jitter": lambda n : setattr(self, 'average_audio_network_jitter', n.get_object_value(Timedelta)),
-            "average_bandwidth_estimate": lambda n : setattr(self, 'average_bandwidth_estimate', n.get_int_value()),
-            "average_jitter": lambda n : setattr(self, 'average_jitter', n.get_object_value(Timedelta)),
-            "average_packet_loss_rate": lambda n : setattr(self, 'average_packet_loss_rate', n.get_float_value()),
-            "average_ratio_of_concealed_samples": lambda n : setattr(self, 'average_ratio_of_concealed_samples', n.get_float_value()),
-            "average_received_frame_rate": lambda n : setattr(self, 'average_received_frame_rate', n.get_float_value()),
-            "average_round_trip_time": lambda n : setattr(self, 'average_round_trip_time', n.get_object_value(Timedelta)),
-            "average_video_frame_loss_percentage": lambda n : setattr(self, 'average_video_frame_loss_percentage', n.get_float_value()),
-            "average_video_frame_rate": lambda n : setattr(self, 'average_video_frame_rate', n.get_float_value()),
-            "average_video_packet_loss_rate": lambda n : setattr(self, 'average_video_packet_loss_rate', n.get_float_value()),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "low_frame_rate_ratio": lambda n : setattr(self, 'low_frame_rate_ratio', n.get_float_value()),
-            "low_video_processing_capability_ratio": lambda n : setattr(self, 'low_video_processing_capability_ratio', n.get_float_value()),
-            "max_audio_network_jitter": lambda n : setattr(self, 'max_audio_network_jitter', n.get_object_value(Timedelta)),
-            "max_jitter": lambda n : setattr(self, 'max_jitter', n.get_object_value(Timedelta)),
-            "max_packet_loss_rate": lambda n : setattr(self, 'max_packet_loss_rate', n.get_float_value()),
-            "max_ratio_of_concealed_samples": lambda n : setattr(self, 'max_ratio_of_concealed_samples', n.get_float_value()),
-            "max_round_trip_time": lambda n : setattr(self, 'max_round_trip_time', n.get_object_value(Timedelta)),
+            "audioCodec": lambda n : setattr(self, 'audio_codec', n.get_enum_value(audio_codec.AudioCodec)),
+            "averageAudioDegradation": lambda n : setattr(self, 'average_audio_degradation', n.get_float_value()),
+            "averageAudioNetworkJitter": lambda n : setattr(self, 'average_audio_network_jitter', n.get_object_value(Timedelta)),
+            "averageBandwidthEstimate": lambda n : setattr(self, 'average_bandwidth_estimate', n.get_int_value()),
+            "averageJitter": lambda n : setattr(self, 'average_jitter', n.get_object_value(Timedelta)),
+            "averagePacketLossRate": lambda n : setattr(self, 'average_packet_loss_rate', n.get_float_value()),
+            "averageRatioOfConcealedSamples": lambda n : setattr(self, 'average_ratio_of_concealed_samples', n.get_float_value()),
+            "averageReceivedFrameRate": lambda n : setattr(self, 'average_received_frame_rate', n.get_float_value()),
+            "averageRoundTripTime": lambda n : setattr(self, 'average_round_trip_time', n.get_object_value(Timedelta)),
+            "averageVideoFrameLossPercentage": lambda n : setattr(self, 'average_video_frame_loss_percentage', n.get_float_value()),
+            "averageVideoFrameRate": lambda n : setattr(self, 'average_video_frame_rate', n.get_float_value()),
+            "averageVideoPacketLossRate": lambda n : setattr(self, 'average_video_packet_loss_rate', n.get_float_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "lowFrameRateRatio": lambda n : setattr(self, 'low_frame_rate_ratio', n.get_float_value()),
+            "lowVideoProcessingCapabilityRatio": lambda n : setattr(self, 'low_video_processing_capability_ratio', n.get_float_value()),
+            "maxAudioNetworkJitter": lambda n : setattr(self, 'max_audio_network_jitter', n.get_object_value(Timedelta)),
+            "maxJitter": lambda n : setattr(self, 'max_jitter', n.get_object_value(Timedelta)),
+            "maxPacketLossRate": lambda n : setattr(self, 'max_packet_loss_rate', n.get_float_value()),
+            "maxRatioOfConcealedSamples": lambda n : setattr(self, 'max_ratio_of_concealed_samples', n.get_float_value()),
+            "maxRoundTripTime": lambda n : setattr(self, 'max_round_trip_time', n.get_object_value(Timedelta)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "packet_utilization": lambda n : setattr(self, 'packet_utilization', n.get_int_value()),
-            "post_forward_error_correction_packet_loss_rate": lambda n : setattr(self, 'post_forward_error_correction_packet_loss_rate', n.get_float_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
-            "stream_direction": lambda n : setattr(self, 'stream_direction', n.get_enum_value(media_stream_direction.MediaStreamDirection)),
-            "stream_id": lambda n : setattr(self, 'stream_id', n.get_str_value()),
-            "video_codec": lambda n : setattr(self, 'video_codec', n.get_enum_value(video_codec.VideoCodec)),
-            "was_media_bypassed": lambda n : setattr(self, 'was_media_bypassed', n.get_bool_value()),
+            "packetUtilization": lambda n : setattr(self, 'packet_utilization', n.get_int_value()),
+            "postForwardErrorCorrectionPacketLossRate": lambda n : setattr(self, 'post_forward_error_correction_packet_loss_rate', n.get_float_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "streamDirection": lambda n : setattr(self, 'stream_direction', n.get_enum_value(media_stream_direction.MediaStreamDirection)),
+            "streamId": lambda n : setattr(self, 'stream_id', n.get_str_value()),
+            "videoCodec": lambda n : setattr(self, 'video_codec', n.get_enum_value(video_codec.VideoCodec)),
+            "wasMediaBypassed": lambda n : setattr(self, 'was_media_bypassed', n.get_bool_value()),
         }
         return fields
     
@@ -482,7 +480,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -490,7 +488,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -588,7 +586,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
     @property
     def stream_direction(self,) -> Optional[media_stream_direction.MediaStreamDirection]:
         """
-        Gets the streamDirection property value. The streamDirection property
+        Gets the streamDirection property value. 
         Returns: Optional[media_stream_direction.MediaStreamDirection]
         """
         return self._stream_direction
@@ -596,7 +594,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
     @stream_direction.setter
     def stream_direction(self,value: Optional[media_stream_direction.MediaStreamDirection] = None) -> None:
         """
-        Sets the streamDirection property value. The streamDirection property
+        Sets the streamDirection property value. 
         Args:
             value: Value to set for the streamDirection property.
         """

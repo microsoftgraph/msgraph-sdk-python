@@ -12,9 +12,7 @@ class AppCatalogs(entity.Entity):
         Instantiates a new AppCatalogs and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The teamsApps property
         self._teams_apps: Optional[List[teams_app.TeamsApp]] = None
     
     @staticmethod
@@ -35,7 +33,7 @@ class AppCatalogs(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "teams_apps": lambda n : setattr(self, 'teams_apps', n.get_collection_of_object_values(teams_app.TeamsApp)),
+            "teamsApps": lambda n : setattr(self, 'teams_apps', n.get_collection_of_object_values(teams_app.TeamsApp)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -55,7 +53,7 @@ class AppCatalogs(entity.Entity):
     @property
     def teams_apps(self,) -> Optional[List[teams_app.TeamsApp]]:
         """
-        Gets the teamsApps property value. The teamsApps property
+        Gets the teamsApps property value. 
         Returns: Optional[List[teams_app.TeamsApp]]
         """
         return self._teams_apps
@@ -63,7 +61,7 @@ class AppCatalogs(entity.Entity):
     @teams_apps.setter
     def teams_apps(self,value: Optional[List[teams_app.TeamsApp]] = None) -> None:
         """
-        Sets the teamsApps property value. The teamsApps property
+        Sets the teamsApps property value. 
         Args:
             value: Value to set for the teamsApps property.
         """

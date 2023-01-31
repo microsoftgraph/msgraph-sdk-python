@@ -54,7 +54,6 @@ class OutlookItem(entity.Entity):
         self._created_date_time: Optional[datetime] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @property
@@ -93,9 +92,9 @@ class OutlookItem(entity.Entity):
         """
         fields = {
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_primitive_values(str)),
-            "change_key": lambda n : setattr(self, 'change_key', n.get_str_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "changeKey": lambda n : setattr(self, 'change_key', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

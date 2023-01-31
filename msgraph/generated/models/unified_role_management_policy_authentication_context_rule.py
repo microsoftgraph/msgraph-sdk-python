@@ -52,8 +52,8 @@ class UnifiedRoleManagementPolicyAuthenticationContextRule(unified_role_manageme
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "claim_value": lambda n : setattr(self, 'claim_value', n.get_str_value()),
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "claimValue": lambda n : setattr(self, 'claim_value', n.get_str_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

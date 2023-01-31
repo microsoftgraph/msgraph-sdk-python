@@ -17,12 +17,13 @@ class RiskyServicePrincipalHistoryItemItemRequestBuilder():
     """
     Provides operations to manage the history property of the microsoft.graph.riskyServicePrincipal entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, risky_service_principal_history_item_id: Optional[str] = None) -> None:
         """
         Instantiates a new RiskyServicePrincipalHistoryItemItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            riskyServicePrincipalHistoryItemId: key: id of riskyServicePrincipalHistoryItem
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -32,6 +33,7 @@ class RiskyServicePrincipalHistoryItemItemRequestBuilder():
         self.url_template: str = "{+baseurl}/identityProtection/riskyServicePrincipals/{riskyServicePrincipal%2Did}/history/{riskyServicePrincipalHistoryItem%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["riskyServicePrincipalHistoryItem%2Did"] = riskyServicePrincipalHistoryItemId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -74,7 +76,7 @@ class RiskyServicePrincipalHistoryItemItemRequestBuilder():
         """
         Update the navigation property history in identityProtection
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[risky_service_principal_history_item.RiskyServicePrincipalHistoryItem]
         """
@@ -129,7 +131,7 @@ class RiskyServicePrincipalHistoryItemItemRequestBuilder():
         """
         Update the navigation property history in identityProtection
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

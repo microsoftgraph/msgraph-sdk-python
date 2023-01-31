@@ -12,7 +12,6 @@ class ManagedAppOperationCollectionResponse(base_collection_pagination_count_res
         Instantiates a new ManagedAppOperationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[managed_app_operation.ManagedAppOperation]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ManagedAppOperationCollectionResponse(base_collection_pagination_count_res
     @property
     def value(self,) -> Optional[List[managed_app_operation.ManagedAppOperation]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[managed_app_operation.ManagedAppOperation]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ManagedAppOperationCollectionResponse(base_collection_pagination_count_res
     @value.setter
     def value(self,value: Optional[List[managed_app_operation.ManagedAppOperation]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

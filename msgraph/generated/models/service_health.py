@@ -15,11 +15,9 @@ class ServiceHealth(entity.Entity):
         super().__init__()
         # A collection of issues that happened on the service, with detailed information for each issue.
         self._issues: Optional[List[service_health_issue.ServiceHealthIssue]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The service name. Use the list healthOverviews operation to get exact string names for services subscribed by the tenant.
         self._service: Optional[str] = None
-        # The status property
         self._status: Optional[service_health_status.ServiceHealthStatus] = None
     
     @staticmethod
@@ -98,7 +96,7 @@ class ServiceHealth(entity.Entity):
     @property
     def status(self,) -> Optional[service_health_status.ServiceHealthStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[service_health_status.ServiceHealthStatus]
         """
         return self._status
@@ -106,7 +104,7 @@ class ServiceHealth(entity.Entity):
     @status.setter
     def status(self,value: Optional[service_health_status.ServiceHealthStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

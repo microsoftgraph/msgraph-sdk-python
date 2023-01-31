@@ -12,7 +12,6 @@ class DeviceEnrollmentConfigurationCollectionResponse(base_collection_pagination
         Instantiates a new DeviceEnrollmentConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[device_enrollment_configuration.DeviceEnrollmentConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class DeviceEnrollmentConfigurationCollectionResponse(base_collection_pagination
     @property
     def value(self,) -> Optional[List[device_enrollment_configuration.DeviceEnrollmentConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[device_enrollment_configuration.DeviceEnrollmentConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class DeviceEnrollmentConfigurationCollectionResponse(base_collection_pagination
     @value.setter
     def value(self,value: Optional[List[device_enrollment_configuration.DeviceEnrollmentConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

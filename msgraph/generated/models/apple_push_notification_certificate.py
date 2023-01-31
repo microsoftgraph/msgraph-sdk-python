@@ -111,7 +111,6 @@ class ApplePushNotificationCertificate(entity.Entity):
         self._expiration_date_time: Optional[datetime] = None
         # Last modified date and time for Apple push notification certificate.
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Topic Id.
         self._topic_identifier: Optional[str] = None
@@ -151,14 +150,14 @@ class ApplePushNotificationCertificate(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "apple_identifier": lambda n : setattr(self, 'apple_identifier', n.get_str_value()),
+            "appleIdentifier": lambda n : setattr(self, 'apple_identifier', n.get_str_value()),
             "certificate": lambda n : setattr(self, 'certificate', n.get_str_value()),
-            "certificate_serial_number": lambda n : setattr(self, 'certificate_serial_number', n.get_str_value()),
-            "certificate_upload_failure_reason": lambda n : setattr(self, 'certificate_upload_failure_reason', n.get_str_value()),
-            "certificate_upload_status": lambda n : setattr(self, 'certificate_upload_status', n.get_str_value()),
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "topic_identifier": lambda n : setattr(self, 'topic_identifier', n.get_str_value()),
+            "certificateSerialNumber": lambda n : setattr(self, 'certificate_serial_number', n.get_str_value()),
+            "certificateUploadFailureReason": lambda n : setattr(self, 'certificate_upload_failure_reason', n.get_str_value()),
+            "certificateUploadStatus": lambda n : setattr(self, 'certificate_upload_status', n.get_str_value()),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "topicIdentifier": lambda n : setattr(self, 'topic_identifier', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

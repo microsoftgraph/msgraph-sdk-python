@@ -12,7 +12,6 @@ class WindowsInformationProtectionNetworkLearningSummaryCollectionResponse(base_
         Instantiates a new WindowsInformationProtectionNetworkLearningSummaryCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[windows_information_protection_network_learning_summary.WindowsInformationProtectionNetworkLearningSummary]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class WindowsInformationProtectionNetworkLearningSummaryCollectionResponse(base_
     @property
     def value(self,) -> Optional[List[windows_information_protection_network_learning_summary.WindowsInformationProtectionNetworkLearningSummary]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[windows_information_protection_network_learning_summary.WindowsInformationProtectionNetworkLearningSummary]]
         """
         return self._value
@@ -61,7 +60,7 @@ class WindowsInformationProtectionNetworkLearningSummaryCollectionResponse(base_
     @value.setter
     def value(self,value: Optional[List[windows_information_protection_network_learning_summary.WindowsInformationProtectionNetworkLearningSummary]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

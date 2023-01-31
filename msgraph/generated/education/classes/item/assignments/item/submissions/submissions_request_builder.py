@@ -66,7 +66,7 @@ class SubmissionsRequestBuilder():
         """
         Create new navigation property to submissions for education
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_submission.EducationSubmission]
         """
@@ -105,7 +105,7 @@ class SubmissionsRequestBuilder():
         """
         Create new navigation property to submissions for education
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

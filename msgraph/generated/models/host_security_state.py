@@ -30,15 +30,12 @@ class HostSecurityState(AdditionalDataHolder, Parsable):
 
         # Host FQDN (Fully Qualified Domain Name) (for example, machine.company.com).
         self._fqdn: Optional[str] = None
-        # The isAzureAdJoined property
         self._is_azure_ad_joined: Optional[bool] = None
-        # The isAzureAdRegistered property
         self._is_azure_ad_registered: Optional[bool] = None
         # True if the host is domain joined to an on-premises Active Directory domain.
         self._is_hybrid_azure_domain_joined: Optional[bool] = None
         # The local host name, without the DNS domain name.
         self._net_bios_name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Host Operating System. (For example, Windows10, MacOS, RHEL, etc.).
         self._os: Optional[str] = None
@@ -85,22 +82,22 @@ class HostSecurityState(AdditionalDataHolder, Parsable):
         """
         fields = {
             "fqdn": lambda n : setattr(self, 'fqdn', n.get_str_value()),
-            "is_azure_ad_joined": lambda n : setattr(self, 'is_azure_ad_joined', n.get_bool_value()),
-            "is_azure_ad_registered": lambda n : setattr(self, 'is_azure_ad_registered', n.get_bool_value()),
-            "is_hybrid_azure_domain_joined": lambda n : setattr(self, 'is_hybrid_azure_domain_joined', n.get_bool_value()),
-            "net_bios_name": lambda n : setattr(self, 'net_bios_name', n.get_str_value()),
+            "isAzureAdJoined": lambda n : setattr(self, 'is_azure_ad_joined', n.get_bool_value()),
+            "isAzureAdRegistered": lambda n : setattr(self, 'is_azure_ad_registered', n.get_bool_value()),
+            "isHybridAzureDomainJoined": lambda n : setattr(self, 'is_hybrid_azure_domain_joined', n.get_bool_value()),
+            "netBiosName": lambda n : setattr(self, 'net_bios_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "os": lambda n : setattr(self, 'os', n.get_str_value()),
-            "private_ip_address": lambda n : setattr(self, 'private_ip_address', n.get_str_value()),
-            "public_ip_address": lambda n : setattr(self, 'public_ip_address', n.get_str_value()),
-            "risk_score": lambda n : setattr(self, 'risk_score', n.get_str_value()),
+            "privateIpAddress": lambda n : setattr(self, 'private_ip_address', n.get_str_value()),
+            "publicIpAddress": lambda n : setattr(self, 'public_ip_address', n.get_str_value()),
+            "riskScore": lambda n : setattr(self, 'risk_score', n.get_str_value()),
         }
         return fields
     
     @property
     def is_azure_ad_joined(self,) -> Optional[bool]:
         """
-        Gets the isAzureAdJoined property value. The isAzureAdJoined property
+        Gets the isAzureAdJoined property value. 
         Returns: Optional[bool]
         """
         return self._is_azure_ad_joined
@@ -108,7 +105,7 @@ class HostSecurityState(AdditionalDataHolder, Parsable):
     @is_azure_ad_joined.setter
     def is_azure_ad_joined(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isAzureAdJoined property value. The isAzureAdJoined property
+        Sets the isAzureAdJoined property value. 
         Args:
             value: Value to set for the isAzureAdJoined property.
         """
@@ -117,7 +114,7 @@ class HostSecurityState(AdditionalDataHolder, Parsable):
     @property
     def is_azure_ad_registered(self,) -> Optional[bool]:
         """
-        Gets the isAzureAdRegistered property value. The isAzureAdRegistered property
+        Gets the isAzureAdRegistered property value. 
         Returns: Optional[bool]
         """
         return self._is_azure_ad_registered
@@ -125,7 +122,7 @@ class HostSecurityState(AdditionalDataHolder, Parsable):
     @is_azure_ad_registered.setter
     def is_azure_ad_registered(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isAzureAdRegistered property value. The isAzureAdRegistered property
+        Sets the isAzureAdRegistered property value. 
         Args:
             value: Value to set for the isAzureAdRegistered property.
         """
@@ -168,7 +165,7 @@ class HostSecurityState(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -176,7 +173,7 @@ class HostSecurityState(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

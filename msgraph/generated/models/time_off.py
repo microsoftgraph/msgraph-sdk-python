@@ -55,9 +55,9 @@ class TimeOff(change_tracked_entity.ChangeTrackedEntity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "draft_time_off": lambda n : setattr(self, 'draft_time_off', n.get_object_value(time_off_item.TimeOffItem)),
-            "shared_time_off": lambda n : setattr(self, 'shared_time_off', n.get_object_value(time_off_item.TimeOffItem)),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "draftTimeOff": lambda n : setattr(self, 'draft_time_off', n.get_object_value(time_off_item.TimeOffItem)),
+            "sharedTimeOff": lambda n : setattr(self, 'shared_time_off', n.get_object_value(time_off_item.TimeOffItem)),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

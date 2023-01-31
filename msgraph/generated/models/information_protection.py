@@ -27,7 +27,7 @@ class InformationProtection(AdditionalDataHolder, Parsable):
     @property
     def bitlocker(self,) -> Optional[bitlocker.Bitlocker]:
         """
-        Gets the bitlocker property value. The bitlocker property
+        Gets the bitlocker property value. 
         Returns: Optional[bitlocker.Bitlocker]
         """
         return self._bitlocker
@@ -35,7 +35,7 @@ class InformationProtection(AdditionalDataHolder, Parsable):
     @bitlocker.setter
     def bitlocker(self,value: Optional[bitlocker.Bitlocker] = None) -> None:
         """
-        Sets the bitlocker property value. The bitlocker property
+        Sets the bitlocker property value. 
         Args:
             value: Value to set for the bitlocker property.
         """
@@ -48,11 +48,8 @@ class InformationProtection(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The bitlocker property
         self._bitlocker: Optional[bitlocker.Bitlocker] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The threatAssessmentRequests property
         self._threat_assessment_requests: Optional[List[threat_assessment_request.ThreatAssessmentRequest]] = None
     
     @staticmethod
@@ -75,14 +72,14 @@ class InformationProtection(AdditionalDataHolder, Parsable):
         fields = {
             "bitlocker": lambda n : setattr(self, 'bitlocker', n.get_object_value(bitlocker.Bitlocker)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "threat_assessment_requests": lambda n : setattr(self, 'threat_assessment_requests', n.get_collection_of_object_values(threat_assessment_request.ThreatAssessmentRequest)),
+            "threatAssessmentRequests": lambda n : setattr(self, 'threat_assessment_requests', n.get_collection_of_object_values(threat_assessment_request.ThreatAssessmentRequest)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -90,7 +87,7 @@ class InformationProtection(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -112,7 +109,7 @@ class InformationProtection(AdditionalDataHolder, Parsable):
     @property
     def threat_assessment_requests(self,) -> Optional[List[threat_assessment_request.ThreatAssessmentRequest]]:
         """
-        Gets the threatAssessmentRequests property value. The threatAssessmentRequests property
+        Gets the threatAssessmentRequests property value. 
         Returns: Optional[List[threat_assessment_request.ThreatAssessmentRequest]]
         """
         return self._threat_assessment_requests
@@ -120,7 +117,7 @@ class InformationProtection(AdditionalDataHolder, Parsable):
     @threat_assessment_requests.setter
     def threat_assessment_requests(self,value: Optional[List[threat_assessment_request.ThreatAssessmentRequest]] = None) -> None:
         """
-        Sets the threatAssessmentRequests property value. The threatAssessmentRequests property
+        Sets the threatAssessmentRequests property value. 
         Args:
             value: Value to set for the threatAssessmentRequests property.
         """

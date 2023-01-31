@@ -54,7 +54,6 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, Parsable):
         self._block_cross_organization_write_access: Optional[bool] = None
         # Select the encryption method for removable  drives. Possible values are: aesCbc128, aesCbc256, xtsAes128, xtsAes256.
         self._encryption_method: Optional[bit_locker_encryption_method.BitLockerEncryptionMethod] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Indicates whether to block write access to devices configured in another organization.  If requireEncryptionForWriteAccess is false, this value does not affect.
         self._require_encryption_for_write_access: Optional[bool] = None
@@ -94,17 +93,17 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "block_cross_organization_write_access": lambda n : setattr(self, 'block_cross_organization_write_access', n.get_bool_value()),
-            "encryption_method": lambda n : setattr(self, 'encryption_method', n.get_enum_value(bit_locker_encryption_method.BitLockerEncryptionMethod)),
+            "blockCrossOrganizationWriteAccess": lambda n : setattr(self, 'block_cross_organization_write_access', n.get_bool_value()),
+            "encryptionMethod": lambda n : setattr(self, 'encryption_method', n.get_enum_value(bit_locker_encryption_method.BitLockerEncryptionMethod)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "require_encryption_for_write_access": lambda n : setattr(self, 'require_encryption_for_write_access', n.get_bool_value()),
+            "requireEncryptionForWriteAccess": lambda n : setattr(self, 'require_encryption_for_write_access', n.get_bool_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -112,7 +111,7 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

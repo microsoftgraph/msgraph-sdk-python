@@ -34,7 +34,6 @@ class WorkbookNamedItem(entity.Entity):
         self._comment: Optional[str] = None
         # The name of the object. Read-only.
         self._name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Indicates whether the name is scoped to the workbook or to a specific worksheet. Read-only.
         self._scope: Optional[str] = None

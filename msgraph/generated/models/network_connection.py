@@ -76,7 +76,6 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         self._nat_source_address: Optional[str] = None
         # Network Address Translation source port.
         self._nat_source_port: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Network protocol. Possible values are: unknown, ip, icmp, igmp, ggp, ipv4, tcp, pup, udp, idp, ipv6, ipv6RoutingHeader, ipv6FragmentHeader, ipSecEncapsulatingSecurityPayload, ipSecAuthenticationHeader, icmpV6, ipv6NoNextHeader, ipv6DestinationOptions, nd, raw, ipx, spx, spxII.
         self._protocol: Optional[security_network_protocol.SecurityNetworkProtocol] = None
@@ -230,27 +229,27 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "application_name": lambda n : setattr(self, 'application_name', n.get_str_value()),
-            "destination_address": lambda n : setattr(self, 'destination_address', n.get_str_value()),
-            "destination_domain": lambda n : setattr(self, 'destination_domain', n.get_str_value()),
-            "destination_location": lambda n : setattr(self, 'destination_location', n.get_str_value()),
-            "destination_port": lambda n : setattr(self, 'destination_port', n.get_str_value()),
-            "destination_url": lambda n : setattr(self, 'destination_url', n.get_str_value()),
+            "applicationName": lambda n : setattr(self, 'application_name', n.get_str_value()),
+            "destinationAddress": lambda n : setattr(self, 'destination_address', n.get_str_value()),
+            "destinationDomain": lambda n : setattr(self, 'destination_domain', n.get_str_value()),
+            "destinationLocation": lambda n : setattr(self, 'destination_location', n.get_str_value()),
+            "destinationPort": lambda n : setattr(self, 'destination_port', n.get_str_value()),
+            "destinationUrl": lambda n : setattr(self, 'destination_url', n.get_str_value()),
             "direction": lambda n : setattr(self, 'direction', n.get_enum_value(connection_direction.ConnectionDirection)),
-            "domain_registered_date_time": lambda n : setattr(self, 'domain_registered_date_time', n.get_datetime_value()),
-            "local_dns_name": lambda n : setattr(self, 'local_dns_name', n.get_str_value()),
-            "nat_destination_address": lambda n : setattr(self, 'nat_destination_address', n.get_str_value()),
-            "nat_destination_port": lambda n : setattr(self, 'nat_destination_port', n.get_str_value()),
-            "nat_source_address": lambda n : setattr(self, 'nat_source_address', n.get_str_value()),
-            "nat_source_port": lambda n : setattr(self, 'nat_source_port', n.get_str_value()),
+            "domainRegisteredDateTime": lambda n : setattr(self, 'domain_registered_date_time', n.get_datetime_value()),
+            "localDnsName": lambda n : setattr(self, 'local_dns_name', n.get_str_value()),
+            "natDestinationAddress": lambda n : setattr(self, 'nat_destination_address', n.get_str_value()),
+            "natDestinationPort": lambda n : setattr(self, 'nat_destination_port', n.get_str_value()),
+            "natSourceAddress": lambda n : setattr(self, 'nat_source_address', n.get_str_value()),
+            "natSourcePort": lambda n : setattr(self, 'nat_source_port', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "protocol": lambda n : setattr(self, 'protocol', n.get_enum_value(security_network_protocol.SecurityNetworkProtocol)),
-            "risk_score": lambda n : setattr(self, 'risk_score', n.get_str_value()),
-            "source_address": lambda n : setattr(self, 'source_address', n.get_str_value()),
-            "source_location": lambda n : setattr(self, 'source_location', n.get_str_value()),
-            "source_port": lambda n : setattr(self, 'source_port', n.get_str_value()),
+            "riskScore": lambda n : setattr(self, 'risk_score', n.get_str_value()),
+            "sourceAddress": lambda n : setattr(self, 'source_address', n.get_str_value()),
+            "sourceLocation": lambda n : setattr(self, 'source_location', n.get_str_value()),
+            "sourcePort": lambda n : setattr(self, 'source_port', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(connection_status.ConnectionStatus)),
-            "url_parameters": lambda n : setattr(self, 'url_parameters', n.get_str_value()),
+            "urlParameters": lambda n : setattr(self, 'url_parameters', n.get_str_value()),
         }
         return fields
     
@@ -342,7 +341,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -350,7 +349,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

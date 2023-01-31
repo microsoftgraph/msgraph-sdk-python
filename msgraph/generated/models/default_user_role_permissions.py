@@ -85,7 +85,6 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         self._allowed_to_create_security_groups: Optional[bool] = None
         # Indicates whether the default user role can read other users.
         self._allowed_to_read_other_users: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Indicates if user consent to apps is allowed, and if it is, which permission to grant consent and which app consent policy (permissionGrantPolicy) govern the permission for users to grant consent. Value should be in the format managePermissionGrantsForSelf.{id}, where {id} is the id of a built-in or custom app consent policy. An empty list indicates user consent to apps is disabled.
         self._permission_grant_policies_assigned: Optional[List[str]] = None
@@ -108,18 +107,18 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allowed_to_create_apps": lambda n : setattr(self, 'allowed_to_create_apps', n.get_bool_value()),
-            "allowed_to_create_security_groups": lambda n : setattr(self, 'allowed_to_create_security_groups', n.get_bool_value()),
-            "allowed_to_read_other_users": lambda n : setattr(self, 'allowed_to_read_other_users', n.get_bool_value()),
+            "allowedToCreateApps": lambda n : setattr(self, 'allowed_to_create_apps', n.get_bool_value()),
+            "allowedToCreateSecurityGroups": lambda n : setattr(self, 'allowed_to_create_security_groups', n.get_bool_value()),
+            "allowedToReadOtherUsers": lambda n : setattr(self, 'allowed_to_read_other_users', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "permission_grant_policies_assigned": lambda n : setattr(self, 'permission_grant_policies_assigned', n.get_collection_of_primitive_values(str)),
+            "permissionGrantPoliciesAssigned": lambda n : setattr(self, 'permission_grant_policies_assigned', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -127,7 +126,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

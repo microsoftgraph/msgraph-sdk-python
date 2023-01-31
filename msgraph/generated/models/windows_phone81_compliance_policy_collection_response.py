@@ -12,7 +12,6 @@ class WindowsPhone81CompliancePolicyCollectionResponse(base_collection_paginatio
         Instantiates a new WindowsPhone81CompliancePolicyCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[windows_phone81_compliance_policy.WindowsPhone81CompliancePolicy]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class WindowsPhone81CompliancePolicyCollectionResponse(base_collection_paginatio
     @property
     def value(self,) -> Optional[List[windows_phone81_compliance_policy.WindowsPhone81CompliancePolicy]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[windows_phone81_compliance_policy.WindowsPhone81CompliancePolicy]]
         """
         return self._value
@@ -61,7 +60,7 @@ class WindowsPhone81CompliancePolicyCollectionResponse(base_collection_paginatio
     @value.setter
     def value(self,value: Optional[List[windows_phone81_compliance_policy.WindowsPhone81CompliancePolicy]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

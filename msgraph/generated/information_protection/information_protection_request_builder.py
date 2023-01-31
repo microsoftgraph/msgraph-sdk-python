@@ -74,7 +74,7 @@ class InformationProtectionRequestBuilder():
         """
         Update informationProtection
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[information_protection.InformationProtection]
         """
@@ -126,7 +126,7 @@ class InformationProtectionRequestBuilder():
         """
         Update informationProtection
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

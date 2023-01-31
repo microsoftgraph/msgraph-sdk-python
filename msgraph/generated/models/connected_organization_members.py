@@ -69,7 +69,7 @@ class ConnectedOrganizationMembers(subject_set.SubjectSet):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "connected_organization_id": lambda n : setattr(self, 'connected_organization_id', n.get_str_value()),
+            "connectedOrganizationId": lambda n : setattr(self, 'connected_organization_id', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

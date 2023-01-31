@@ -19,7 +19,6 @@ class MobileAppAssignment(entity.Entity):
         super().__init__()
         # Possible values for the install intent chosen by the admin.
         self._intent: Optional[install_intent.InstallIntent] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The settings for target assignment defined by the admin.
         self._settings: Optional[mobile_app_assignment_settings.MobileAppAssignmentSettings] = None

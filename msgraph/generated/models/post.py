@@ -49,7 +49,7 @@ class Post(outlook_item.OutlookItem):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new Post and sets the default values.
+        Instantiates a new post and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.post"
@@ -63,12 +63,11 @@ class Post(outlook_item.OutlookItem):
         self._conversation_thread_id: Optional[str] = None
         # The collection of open extensions defined for the post. Read-only. Nullable. Supports $expand.
         self._extensions: Optional[List[extension.Extension]] = None
-        # The from property
         self._from_: Optional[recipient.Recipient] = None
         # Indicates whether the post has at least one attachment. This is a default property.
         self._has_attachments: Optional[bool] = None
         # Read-only. Supports $expand.
-        self._in_reply_to: Optional[post.Post] = None
+        self._in_reply_to: Optional[Post] = None
         # The collection of multi-value extended properties defined for the post. Read-only. Nullable.
         self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
         # Conversation participants that were added to the thread as part of this post.
@@ -146,7 +145,7 @@ class Post(outlook_item.OutlookItem):
     @property
     def from_(self,) -> Optional[recipient.Recipient]:
         """
-        Gets the from property value. The from property
+        Gets the from property value. 
         Returns: Optional[recipient.Recipient]
         """
         return self._from_
@@ -154,7 +153,7 @@ class Post(outlook_item.OutlookItem):
     @from_.setter
     def from_(self,value: Optional[recipient.Recipient] = None) -> None:
         """
-        Sets the from property value. The from property
+        Sets the from property value. 
         Args:
             value: Value to set for the from_ property.
         """
@@ -168,17 +167,17 @@ class Post(outlook_item.OutlookItem):
         fields = {
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(attachment.Attachment)),
             "body": lambda n : setattr(self, 'body', n.get_object_value(item_body.ItemBody)),
-            "conversation_id": lambda n : setattr(self, 'conversation_id', n.get_str_value()),
-            "conversation_thread_id": lambda n : setattr(self, 'conversation_thread_id', n.get_str_value()),
+            "conversationId": lambda n : setattr(self, 'conversation_id', n.get_str_value()),
+            "conversationThreadId": lambda n : setattr(self, 'conversation_thread_id', n.get_str_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
             "from": lambda n : setattr(self, 'from_', n.get_object_value(recipient.Recipient)),
-            "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
-            "in_reply_to": lambda n : setattr(self, 'in_reply_to', n.get_object_value(post.Post)),
-            "multi_value_extended_properties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty)),
-            "new_participants": lambda n : setattr(self, 'new_participants', n.get_collection_of_object_values(recipient.Recipient)),
-            "received_date_time": lambda n : setattr(self, 'received_date_time', n.get_datetime_value()),
+            "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
+            "inReplyTo": lambda n : setattr(self, 'in_reply_to', n.get_object_value(Post)),
+            "multiValueExtendedProperties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty)),
+            "newParticipants": lambda n : setattr(self, 'new_participants', n.get_collection_of_object_values(recipient.Recipient)),
+            "receivedDateTime": lambda n : setattr(self, 'received_date_time', n.get_datetime_value()),
             "sender": lambda n : setattr(self, 'sender', n.get_object_value(recipient.Recipient)),
-            "single_value_extended_properties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(single_value_legacy_extended_property.SingleValueLegacyExtendedProperty)),
+            "singleValueExtendedProperties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(single_value_legacy_extended_property.SingleValueLegacyExtendedProperty)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -202,15 +201,15 @@ class Post(outlook_item.OutlookItem):
         self._has_attachments = value
     
     @property
-    def in_reply_to(self,) -> Optional[post.Post]:
+    def in_reply_to(self,) -> Optional[Post]:
         """
         Gets the inReplyTo property value. Read-only. Supports $expand.
-        Returns: Optional[post.Post]
+        Returns: Optional[Post]
         """
         return self._in_reply_to
     
     @in_reply_to.setter
-    def in_reply_to(self,value: Optional[post.Post] = None) -> None:
+    def in_reply_to(self,value: Optional[Post] = None) -> None:
         """
         Sets the inReplyTo property value. Read-only. Supports $expand.
         Args:

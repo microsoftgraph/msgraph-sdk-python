@@ -37,7 +37,6 @@ class RubricQuality(AdditionalDataHolder, Parsable):
         self._description: Optional[education_item_body.EducationItemBody] = None
         # The name of this rubric quality.
         self._display_name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The ID of this resource.
         self._quality_id: Optional[str] = None
@@ -115,9 +114,9 @@ class RubricQuality(AdditionalDataHolder, Parsable):
         fields = {
             "criteria": lambda n : setattr(self, 'criteria', n.get_collection_of_object_values(rubric_criterion.RubricCriterion)),
             "description": lambda n : setattr(self, 'description', n.get_object_value(education_item_body.EducationItemBody)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "quality_id": lambda n : setattr(self, 'quality_id', n.get_str_value()),
+            "qualityId": lambda n : setattr(self, 'quality_id', n.get_str_value()),
             "weight": lambda n : setattr(self, 'weight', n.get_float_value()),
         }
         return fields
@@ -125,7 +124,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -133,7 +132,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

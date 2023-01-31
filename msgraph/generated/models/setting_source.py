@@ -34,9 +34,7 @@ class SettingSource(AdditionalDataHolder, Parsable):
         self._display_name: Optional[str] = None
         # Not yet documented
         self._id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The sourceType property
         self._source_type: Optional[setting_source_type.SettingSourceType] = None
     
     @staticmethod
@@ -74,10 +72,10 @@ class SettingSource(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "source_type": lambda n : setattr(self, 'source_type', n.get_enum_value(setting_source_type.SettingSourceType)),
+            "sourceType": lambda n : setattr(self, 'source_type', n.get_enum_value(setting_source_type.SettingSourceType)),
         }
         return fields
     
@@ -101,7 +99,7 @@ class SettingSource(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -109,7 +107,7 @@ class SettingSource(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -132,7 +130,7 @@ class SettingSource(AdditionalDataHolder, Parsable):
     @property
     def source_type(self,) -> Optional[setting_source_type.SettingSourceType]:
         """
-        Gets the sourceType property value. The sourceType property
+        Gets the sourceType property value. 
         Returns: Optional[setting_source_type.SettingSourceType]
         """
         return self._source_type
@@ -140,7 +138,7 @@ class SettingSource(AdditionalDataHolder, Parsable):
     @source_type.setter
     def source_type(self,value: Optional[setting_source_type.SettingSourceType] = None) -> None:
         """
-        Sets the sourceType property value. The sourceType property
+        Sets the sourceType property value. 
         Args:
             value: Value to set for the sourceType property.
         """

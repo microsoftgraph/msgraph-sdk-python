@@ -109,11 +109,11 @@ class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfigur
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_printing": lambda n : setattr(self, 'allow_printing', n.get_bool_value()),
-            "allow_screen_capture": lambda n : setattr(self, 'allow_screen_capture', n.get_bool_value()),
-            "allow_text_suggestion": lambda n : setattr(self, 'allow_text_suggestion', n.get_bool_value()),
-            "configuration_account": lambda n : setattr(self, 'configuration_account', n.get_str_value()),
-            "launch_uri": lambda n : setattr(self, 'launch_uri', n.get_str_value()),
+            "allowPrinting": lambda n : setattr(self, 'allow_printing', n.get_bool_value()),
+            "allowScreenCapture": lambda n : setattr(self, 'allow_screen_capture', n.get_bool_value()),
+            "allowTextSuggestion": lambda n : setattr(self, 'allow_text_suggestion', n.get_bool_value()),
+            "configurationAccount": lambda n : setattr(self, 'configuration_account', n.get_str_value()),
+            "launchUri": lambda n : setattr(self, 'launch_uri', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

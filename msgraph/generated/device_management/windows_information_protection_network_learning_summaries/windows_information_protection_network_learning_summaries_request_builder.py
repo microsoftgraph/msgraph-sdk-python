@@ -66,7 +66,7 @@ class WindowsInformationProtectionNetworkLearningSummariesRequestBuilder():
         """
         Create new navigation property to windowsInformationProtectionNetworkLearningSummaries for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[windows_information_protection_network_learning_summary.WindowsInformationProtectionNetworkLearningSummary]
         """
@@ -105,7 +105,7 @@ class WindowsInformationProtectionNetworkLearningSummariesRequestBuilder():
         """
         Create new navigation property to windowsInformationProtectionNetworkLearningSummaries for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -14,7 +14,6 @@ class DirectoryObject(entity.Entity):
         super().__init__()
         # Date and time when this object was deleted. Always null when the object hasn't been deleted.
         self._deleted_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -52,7 +51,7 @@ class DirectoryObject(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "deleted_date_time": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
+            "deletedDateTime": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

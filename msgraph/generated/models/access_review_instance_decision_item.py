@@ -95,7 +95,6 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         self._decision: Optional[str] = None
         # Justification left by the reviewer when they made the decision.
         self._justification: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Every decision item in an access review represents a principal's access to a resource. This property represents details of the principal. For example, if a decision item represents access of User 'Bob' to Group 'Sales' - The principal is 'Bob' and the resource is 'Sales'. Principals can be of two types - userIdentity and servicePrincipalIdentity. Supports $select. Read-only.
         self._principal: Optional[identity.Identity] = None
@@ -147,19 +146,19 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_review_id": lambda n : setattr(self, 'access_review_id', n.get_str_value()),
-            "applied_by": lambda n : setattr(self, 'applied_by', n.get_object_value(user_identity.UserIdentity)),
-            "applied_date_time": lambda n : setattr(self, 'applied_date_time', n.get_datetime_value()),
-            "apply_result": lambda n : setattr(self, 'apply_result', n.get_str_value()),
+            "accessReviewId": lambda n : setattr(self, 'access_review_id', n.get_str_value()),
+            "appliedBy": lambda n : setattr(self, 'applied_by', n.get_object_value(user_identity.UserIdentity)),
+            "appliedDateTime": lambda n : setattr(self, 'applied_date_time', n.get_datetime_value()),
+            "applyResult": lambda n : setattr(self, 'apply_result', n.get_str_value()),
             "decision": lambda n : setattr(self, 'decision', n.get_str_value()),
             "justification": lambda n : setattr(self, 'justification', n.get_str_value()),
             "principal": lambda n : setattr(self, 'principal', n.get_object_value(identity.Identity)),
-            "principal_link": lambda n : setattr(self, 'principal_link', n.get_str_value()),
+            "principalLink": lambda n : setattr(self, 'principal_link', n.get_str_value()),
             "recommendation": lambda n : setattr(self, 'recommendation', n.get_str_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(access_review_instance_decision_item_resource.AccessReviewInstanceDecisionItemResource)),
-            "resource_link": lambda n : setattr(self, 'resource_link', n.get_str_value()),
-            "reviewed_by": lambda n : setattr(self, 'reviewed_by', n.get_object_value(user_identity.UserIdentity)),
-            "reviewed_date_time": lambda n : setattr(self, 'reviewed_date_time', n.get_datetime_value()),
+            "resourceLink": lambda n : setattr(self, 'resource_link', n.get_str_value()),
+            "reviewedBy": lambda n : setattr(self, 'reviewed_by', n.get_object_value(user_identity.UserIdentity)),
+            "reviewedDateTime": lambda n : setattr(self, 'reviewed_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

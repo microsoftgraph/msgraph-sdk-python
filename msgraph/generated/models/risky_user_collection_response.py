@@ -12,7 +12,6 @@ class RiskyUserCollectionResponse(base_collection_pagination_count_response.Base
         Instantiates a new RiskyUserCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[risky_user.RiskyUser]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class RiskyUserCollectionResponse(base_collection_pagination_count_response.Base
     @property
     def value(self,) -> Optional[List[risky_user.RiskyUser]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[risky_user.RiskyUser]]
         """
         return self._value
@@ -61,7 +60,7 @@ class RiskyUserCollectionResponse(base_collection_pagination_count_response.Base
     @value.setter
     def value(self,value: Optional[List[risky_user.RiskyUser]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

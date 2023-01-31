@@ -33,7 +33,7 @@ class WindowsDeviceAzureADAccount(windows_device_account.WindowsDeviceAccount):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

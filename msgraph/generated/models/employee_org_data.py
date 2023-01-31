@@ -32,7 +32,6 @@ class EmployeeOrgData(AdditionalDataHolder, Parsable):
         self._cost_center: Optional[str] = None
         # The name of the division in which the user works. Returned only on $select. Supports $filter.
         self._division: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @property
@@ -87,7 +86,7 @@ class EmployeeOrgData(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "cost_center": lambda n : setattr(self, 'cost_center', n.get_str_value()),
+            "costCenter": lambda n : setattr(self, 'cost_center', n.get_str_value()),
             "division": lambda n : setattr(self, 'division', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
@@ -96,7 +95,7 @@ class EmployeeOrgData(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -104,7 +103,7 @@ class EmployeeOrgData(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

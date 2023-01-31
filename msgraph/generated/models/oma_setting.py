@@ -35,7 +35,6 @@ class OmaSetting(AdditionalDataHolder, Parsable):
         self._description: Optional[str] = None
         # Display Name.
         self._display_name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # OMA.
         self._oma_uri: Optional[str] = None
@@ -93,16 +92,16 @@ class OmaSetting(AdditionalDataHolder, Parsable):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "oma_uri": lambda n : setattr(self, 'oma_uri', n.get_str_value()),
+            "omaUri": lambda n : setattr(self, 'oma_uri', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -110,7 +109,7 @@ class OmaSetting(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

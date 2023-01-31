@@ -14,7 +14,7 @@ mail_folder = lazy_import('msgraph.generated.models.mail_folder')
 mail_folder_collection_response = lazy_import('msgraph.generated.models.mail_folder_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.users.item.mail_folders.item.child_folders.count.count_request_builder')
-delta_request_builder = lazy_import('msgraph.generated.users.item.mail_folders.item.child_folders.delta.delta_request_builder')
+delta_request_builder = lazy_import('msgraph.generated.users.item.mail_folders.item.child_folders.microsoft_graph_delta.delta_request_builder')
 
 class ChildFoldersRequestBuilder():
     """
@@ -26,6 +26,13 @@ class ChildFoldersRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_delta(self) -> delta_request_builder.DeltaRequestBuilder:
+        """
+        Provides operations to call the delta method.
+        """
+        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -44,13 +51,6 @@ class ChildFoldersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def delta(self,) -> delta_request_builder.DeltaRequestBuilder:
-        """
-        Provides operations to call the delta method.
-        Returns: delta_request_builder.DeltaRequestBuilder
-        """
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     async def get(self,request_configuration: Optional[ChildFoldersRequestBuilderGetRequestConfiguration] = None) -> Optional[mail_folder_collection_response.MailFolderCollectionResponse]:
         """
@@ -74,7 +74,7 @@ class ChildFoldersRequestBuilder():
         """
         Use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[mail_folder.MailFolder]
         """
@@ -113,7 +113,7 @@ class ChildFoldersRequestBuilder():
         """
         Use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

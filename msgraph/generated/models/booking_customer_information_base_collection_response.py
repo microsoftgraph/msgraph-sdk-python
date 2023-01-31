@@ -12,7 +12,6 @@ class BookingCustomerInformationBaseCollectionResponse(base_collection_paginatio
         Instantiates a new BookingCustomerInformationBaseCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[booking_customer_information_base.BookingCustomerInformationBase]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class BookingCustomerInformationBaseCollectionResponse(base_collection_paginatio
     @property
     def value(self,) -> Optional[List[booking_customer_information_base.BookingCustomerInformationBase]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[booking_customer_information_base.BookingCustomerInformationBase]]
         """
         return self._value
@@ -61,7 +60,7 @@ class BookingCustomerInformationBaseCollectionResponse(base_collection_paginatio
     @value.setter
     def value(self,value: Optional[List[booking_customer_information_base.BookingCustomerInformationBase]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

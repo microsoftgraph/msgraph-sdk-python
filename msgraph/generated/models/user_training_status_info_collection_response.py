@@ -12,7 +12,6 @@ class UserTrainingStatusInfoCollectionResponse(base_collection_pagination_count_
         Instantiates a new UserTrainingStatusInfoCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[user_training_status_info.UserTrainingStatusInfo]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class UserTrainingStatusInfoCollectionResponse(base_collection_pagination_count_
     @property
     def value(self,) -> Optional[List[user_training_status_info.UserTrainingStatusInfo]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[user_training_status_info.UserTrainingStatusInfo]]
         """
         return self._value
@@ -61,7 +60,7 @@ class UserTrainingStatusInfoCollectionResponse(base_collection_pagination_count_
     @value.setter
     def value(self,value: Optional[List[user_training_status_info.UserTrainingStatusInfo]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

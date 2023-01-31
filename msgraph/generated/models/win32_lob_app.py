@@ -79,19 +79,19 @@ class Win32LobApp(mobile_lob_app.MobileLobApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "applicable_architectures": lambda n : setattr(self, 'applicable_architectures', n.get_enum_value(windows_architecture.WindowsArchitecture)),
-            "install_command_line": lambda n : setattr(self, 'install_command_line', n.get_str_value()),
-            "install_experience": lambda n : setattr(self, 'install_experience', n.get_object_value(win32_lob_app_install_experience.Win32LobAppInstallExperience)),
-            "minimum_cpu_speed_in_m_hz": lambda n : setattr(self, 'minimum_cpu_speed_in_m_hz', n.get_int_value()),
-            "minimum_free_disk_space_in_m_b": lambda n : setattr(self, 'minimum_free_disk_space_in_m_b', n.get_int_value()),
-            "minimum_memory_in_m_b": lambda n : setattr(self, 'minimum_memory_in_m_b', n.get_int_value()),
-            "minimum_number_of_processors": lambda n : setattr(self, 'minimum_number_of_processors', n.get_int_value()),
-            "minimum_supported_windows_release": lambda n : setattr(self, 'minimum_supported_windows_release', n.get_str_value()),
-            "msi_information": lambda n : setattr(self, 'msi_information', n.get_object_value(win32_lob_app_msi_information.Win32LobAppMsiInformation)),
-            "return_codes": lambda n : setattr(self, 'return_codes', n.get_collection_of_object_values(win32_lob_app_return_code.Win32LobAppReturnCode)),
+            "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_enum_value(windows_architecture.WindowsArchitecture)),
+            "installCommandLine": lambda n : setattr(self, 'install_command_line', n.get_str_value()),
+            "installExperience": lambda n : setattr(self, 'install_experience', n.get_object_value(win32_lob_app_install_experience.Win32LobAppInstallExperience)),
+            "minimumCpuSpeedInMHz": lambda n : setattr(self, 'minimum_cpu_speed_in_m_hz', n.get_int_value()),
+            "minimumFreeDiskSpaceInMB": lambda n : setattr(self, 'minimum_free_disk_space_in_m_b', n.get_int_value()),
+            "minimumMemoryInMB": lambda n : setattr(self, 'minimum_memory_in_m_b', n.get_int_value()),
+            "minimumNumberOfProcessors": lambda n : setattr(self, 'minimum_number_of_processors', n.get_int_value()),
+            "minimumSupportedWindowsRelease": lambda n : setattr(self, 'minimum_supported_windows_release', n.get_str_value()),
+            "msiInformation": lambda n : setattr(self, 'msi_information', n.get_object_value(win32_lob_app_msi_information.Win32LobAppMsiInformation)),
+            "returnCodes": lambda n : setattr(self, 'return_codes', n.get_collection_of_object_values(win32_lob_app_return_code.Win32LobAppReturnCode)),
             "rules": lambda n : setattr(self, 'rules', n.get_collection_of_object_values(win32_lob_app_rule.Win32LobAppRule)),
-            "setup_file_path": lambda n : setattr(self, 'setup_file_path', n.get_str_value()),
-            "uninstall_command_line": lambda n : setattr(self, 'uninstall_command_line', n.get_str_value()),
+            "setupFilePath": lambda n : setattr(self, 'setup_file_path', n.get_str_value()),
+            "uninstallCommandLine": lambda n : setattr(self, 'uninstall_command_line', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

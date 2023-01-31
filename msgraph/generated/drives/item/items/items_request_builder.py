@@ -66,7 +66,7 @@ class ItemsRequestBuilder():
         """
         Create new navigation property to items for drives
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[drive_item.DriveItem]
         """
@@ -105,7 +105,7 @@ class ItemsRequestBuilder():
         """
         Create new navigation property to items for drives
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

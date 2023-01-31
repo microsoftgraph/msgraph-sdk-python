@@ -55,9 +55,9 @@ class TimeOffReason(change_tracked_entity.ChangeTrackedEntity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "icon_type": lambda n : setattr(self, 'icon_type', n.get_enum_value(time_off_reason_icon_type.TimeOffReasonIconType)),
-            "is_active": lambda n : setattr(self, 'is_active', n.get_bool_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "iconType": lambda n : setattr(self, 'icon_type', n.get_enum_value(time_off_reason_icon_type.TimeOffReasonIconType)),
+            "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

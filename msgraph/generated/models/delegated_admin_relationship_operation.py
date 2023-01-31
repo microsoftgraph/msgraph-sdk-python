@@ -14,23 +14,17 @@ class DelegatedAdminRelationshipOperation(entity.Entity):
         Instantiates a new delegatedAdminRelationshipOperation and sets the default values.
         """
         super().__init__()
-        # The createdDateTime property
         self._created_date_time: Optional[datetime] = None
-        # The data property
         self._data: Optional[str] = None
-        # The lastModifiedDateTime property
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The operationType property
         self._operation_type: Optional[delegated_admin_relationship_operation_type.DelegatedAdminRelationshipOperationType] = None
-        # The status property
         self._status: Optional[long_running_operation_status.LongRunningOperationStatus] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
-        Gets the createdDateTime property value. The createdDateTime property
+        Gets the createdDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._created_date_time
@@ -38,7 +32,7 @@ class DelegatedAdminRelationshipOperation(entity.Entity):
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the createdDateTime property value. The createdDateTime property
+        Sets the createdDateTime property value. 
         Args:
             value: Value to set for the createdDateTime property.
         """
@@ -59,7 +53,7 @@ class DelegatedAdminRelationshipOperation(entity.Entity):
     @property
     def data(self,) -> Optional[str]:
         """
-        Gets the data property value. The data property
+        Gets the data property value. 
         Returns: Optional[str]
         """
         return self._data
@@ -67,7 +61,7 @@ class DelegatedAdminRelationshipOperation(entity.Entity):
     @data.setter
     def data(self,value: Optional[str] = None) -> None:
         """
-        Sets the data property value. The data property
+        Sets the data property value. 
         Args:
             value: Value to set for the data property.
         """
@@ -79,10 +73,10 @@ class DelegatedAdminRelationshipOperation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "data": lambda n : setattr(self, 'data', n.get_str_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "operation_type": lambda n : setattr(self, 'operation_type', n.get_enum_value(delegated_admin_relationship_operation_type.DelegatedAdminRelationshipOperationType)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "operationType": lambda n : setattr(self, 'operation_type', n.get_enum_value(delegated_admin_relationship_operation_type.DelegatedAdminRelationshipOperationType)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(long_running_operation_status.LongRunningOperationStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -92,7 +86,7 @@ class DelegatedAdminRelationshipOperation(entity.Entity):
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
-        Gets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Gets the lastModifiedDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
@@ -100,7 +94,7 @@ class DelegatedAdminRelationshipOperation(entity.Entity):
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Sets the lastModifiedDateTime property value. 
         Args:
             value: Value to set for the lastModifiedDateTime property.
         """
@@ -109,7 +103,7 @@ class DelegatedAdminRelationshipOperation(entity.Entity):
     @property
     def operation_type(self,) -> Optional[delegated_admin_relationship_operation_type.DelegatedAdminRelationshipOperationType]:
         """
-        Gets the operationType property value. The operationType property
+        Gets the operationType property value. 
         Returns: Optional[delegated_admin_relationship_operation_type.DelegatedAdminRelationshipOperationType]
         """
         return self._operation_type
@@ -117,7 +111,7 @@ class DelegatedAdminRelationshipOperation(entity.Entity):
     @operation_type.setter
     def operation_type(self,value: Optional[delegated_admin_relationship_operation_type.DelegatedAdminRelationshipOperationType] = None) -> None:
         """
-        Sets the operationType property value. The operationType property
+        Sets the operationType property value. 
         Args:
             value: Value to set for the operationType property.
         """
@@ -141,7 +135,7 @@ class DelegatedAdminRelationshipOperation(entity.Entity):
     @property
     def status(self,) -> Optional[long_running_operation_status.LongRunningOperationStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[long_running_operation_status.LongRunningOperationStatus]
         """
         return self._status
@@ -149,7 +143,7 @@ class DelegatedAdminRelationshipOperation(entity.Entity):
     @status.setter
     def status(self,value: Optional[long_running_operation_status.LongRunningOperationStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

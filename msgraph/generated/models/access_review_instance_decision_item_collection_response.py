@@ -12,7 +12,6 @@ class AccessReviewInstanceDecisionItemCollectionResponse(base_collection_paginat
         Instantiates a new AccessReviewInstanceDecisionItemCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[access_review_instance_decision_item.AccessReviewInstanceDecisionItem]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class AccessReviewInstanceDecisionItemCollectionResponse(base_collection_paginat
     @property
     def value(self,) -> Optional[List[access_review_instance_decision_item.AccessReviewInstanceDecisionItem]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[access_review_instance_decision_item.AccessReviewInstanceDecisionItem]]
         """
         return self._value
@@ -61,7 +60,7 @@ class AccessReviewInstanceDecisionItemCollectionResponse(base_collection_paginat
     @value.setter
     def value(self,value: Optional[List[access_review_instance_decision_item.AccessReviewInstanceDecisionItem]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

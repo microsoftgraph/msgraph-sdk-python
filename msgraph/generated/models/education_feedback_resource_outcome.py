@@ -54,8 +54,8 @@ class EducationFeedbackResourceOutcome(education_outcome.EducationOutcome):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "feedback_resource": lambda n : setattr(self, 'feedback_resource', n.get_object_value(education_resource.EducationResource)),
-            "resource_status": lambda n : setattr(self, 'resource_status', n.get_enum_value(education_feedback_resource_outcome_status.EducationFeedbackResourceOutcomeStatus)),
+            "feedbackResource": lambda n : setattr(self, 'feedback_resource', n.get_object_value(education_resource.EducationResource)),
+            "resourceStatus": lambda n : setattr(self, 'resource_status', n.get_enum_value(education_feedback_resource_outcome_status.EducationFeedbackResourceOutcomeStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -12,7 +12,6 @@ class UserActivityCollectionResponse(base_collection_pagination_count_response.B
         Instantiates a new UserActivityCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[user_activity.UserActivity]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class UserActivityCollectionResponse(base_collection_pagination_count_response.B
     @property
     def value(self,) -> Optional[List[user_activity.UserActivity]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[user_activity.UserActivity]]
         """
         return self._value
@@ -61,7 +60,7 @@ class UserActivityCollectionResponse(base_collection_pagination_count_response.B
     @value.setter
     def value(self,value: Optional[List[user_activity.UserActivity]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

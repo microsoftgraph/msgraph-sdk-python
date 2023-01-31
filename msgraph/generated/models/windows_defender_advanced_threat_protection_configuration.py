@@ -69,8 +69,8 @@ class WindowsDefenderAdvancedThreatProtectionConfiguration(device_configuration.
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_sample_sharing": lambda n : setattr(self, 'allow_sample_sharing', n.get_bool_value()),
-            "enable_expedited_telemetry_reporting": lambda n : setattr(self, 'enable_expedited_telemetry_reporting', n.get_bool_value()),
+            "allowSampleSharing": lambda n : setattr(self, 'allow_sample_sharing', n.get_bool_value()),
+            "enableExpeditedTelemetryReporting": lambda n : setattr(self, 'enable_expedited_telemetry_reporting', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

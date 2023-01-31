@@ -66,7 +66,7 @@ class AssignmentPoliciesRequestBuilder():
         """
         Create new navigation property to assignmentPolicies for identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[access_package_assignment_policy.AccessPackageAssignmentPolicy]
         """
@@ -105,7 +105,7 @@ class AssignmentPoliciesRequestBuilder():
         """
         Create new navigation property to assignmentPolicies for identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -66,7 +66,7 @@ class DefaultPagesRequestBuilder():
         """
         Create new navigation property to defaultPages for identity
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[user_flow_language_page.UserFlowLanguagePage]
         """
@@ -105,7 +105,7 @@ class DefaultPagesRequestBuilder():
         """
         Create new navigation property to defaultPages for identity
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

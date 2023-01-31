@@ -12,7 +12,6 @@ class ChatCollectionResponse(base_collection_pagination_count_response.BaseColle
         Instantiates a new ChatCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[chat.Chat]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ChatCollectionResponse(base_collection_pagination_count_response.BaseColle
     @property
     def value(self,) -> Optional[List[chat.Chat]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[chat.Chat]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ChatCollectionResponse(base_collection_pagination_count_response.BaseColle
     @value.setter
     def value(self,value: Optional[List[chat.Chat]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

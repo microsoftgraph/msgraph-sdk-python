@@ -28,9 +28,7 @@ class ReferenceUpdate(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataId property
         self._odata_id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -59,7 +57,7 @@ class ReferenceUpdate(AdditionalDataHolder, Parsable):
     @property
     def odata_id(self,) -> Optional[str]:
         """
-        Gets the @odata.id property value. The OdataId property
+        Gets the @odata.id property value. 
         Returns: Optional[str]
         """
         return self._odata_id
@@ -67,7 +65,7 @@ class ReferenceUpdate(AdditionalDataHolder, Parsable):
     @odata_id.setter
     def odata_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.id property value. The OdataId property
+        Sets the @odata.id property value. 
         Args:
             value: Value to set for the OdataId property.
         """
@@ -76,7 +74,7 @@ class ReferenceUpdate(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -84,7 +82,7 @@ class ReferenceUpdate(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -34,7 +34,6 @@ class SiteCollection(AdditionalDataHolder, Parsable):
         self._data_location_code: Optional[str] = None
         # The hostname for the site collection. Read-only.
         self._hostname: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # If present, indicates that this is a root site collection in SharePoint. Read-only.
         self._root: Optional[root.Root] = None
@@ -74,7 +73,7 @@ class SiteCollection(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "data_location_code": lambda n : setattr(self, 'data_location_code', n.get_str_value()),
+            "dataLocationCode": lambda n : setattr(self, 'data_location_code', n.get_str_value()),
             "hostname": lambda n : setattr(self, 'hostname', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "root": lambda n : setattr(self, 'root', n.get_object_value(root.Root)),
@@ -101,7 +100,7 @@ class SiteCollection(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -109,7 +108,7 @@ class SiteCollection(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

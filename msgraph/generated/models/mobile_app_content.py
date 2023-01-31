@@ -20,7 +20,6 @@ class MobileAppContent(entity.Entity):
         self._contained_apps: Optional[List[mobile_contained_app.MobileContainedApp]] = None
         # The list of files for this app content version.
         self._files: Optional[List[mobile_app_content_file.MobileAppContentFile]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @property
@@ -75,7 +74,7 @@ class MobileAppContent(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "contained_apps": lambda n : setattr(self, 'contained_apps', n.get_collection_of_object_values(mobile_contained_app.MobileContainedApp)),
+            "containedApps": lambda n : setattr(self, 'contained_apps', n.get_collection_of_object_values(mobile_contained_app.MobileContainedApp)),
             "files": lambda n : setattr(self, 'files', n.get_collection_of_object_values(mobile_app_content_file.MobileAppContentFile)),
         }
         super_fields = super().get_field_deserializers()

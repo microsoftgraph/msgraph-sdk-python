@@ -15,7 +15,6 @@ class EnrollmentConfigurationAssignment(entity.Entity):
         Instantiates a new enrollmentConfigurationAssignment and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Represents an assignment to managed devices in the tenant
         self._target: Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget] = None

@@ -31,11 +31,9 @@ class ScopedRoleMembership(entity.Entity):
         super().__init__()
         # Unique identifier for the administrative unit that the directory role is scoped to
         self._administrative_unit_id: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Unique identifier for the directory role that the member is in.
         self._role_id: Optional[str] = None
-        # The roleMemberInfo property
         self._role_member_info: Optional[identity.Identity] = None
     
     @staticmethod
@@ -56,9 +54,9 @@ class ScopedRoleMembership(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "administrative_unit_id": lambda n : setattr(self, 'administrative_unit_id', n.get_str_value()),
-            "role_id": lambda n : setattr(self, 'role_id', n.get_str_value()),
-            "role_member_info": lambda n : setattr(self, 'role_member_info', n.get_object_value(identity.Identity)),
+            "administrativeUnitId": lambda n : setattr(self, 'administrative_unit_id', n.get_str_value()),
+            "roleId": lambda n : setattr(self, 'role_id', n.get_str_value()),
+            "roleMemberInfo": lambda n : setattr(self, 'role_member_info', n.get_object_value(identity.Identity)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -84,7 +82,7 @@ class ScopedRoleMembership(entity.Entity):
     @property
     def role_member_info(self,) -> Optional[identity.Identity]:
         """
-        Gets the roleMemberInfo property value. The roleMemberInfo property
+        Gets the roleMemberInfo property value. 
         Returns: Optional[identity.Identity]
         """
         return self._role_member_info
@@ -92,7 +90,7 @@ class ScopedRoleMembership(entity.Entity):
     @role_member_info.setter
     def role_member_info(self,value: Optional[identity.Identity] = None) -> None:
         """
-        Sets the roleMemberInfo property value. The roleMemberInfo property
+        Sets the roleMemberInfo property value. 
         Args:
             value: Value to set for the roleMemberInfo property.
         """

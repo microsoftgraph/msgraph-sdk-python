@@ -13,11 +13,8 @@ class PrintTaskTrigger(entity.Entity):
         Instantiates a new printTaskTrigger and sets the default values.
         """
         super().__init__()
-        # The definition property
         self._definition: Optional[print_task_definition.PrintTaskDefinition] = None
-        # The event property
         self._event: Optional[print_event.PrintEvent] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -35,7 +32,7 @@ class PrintTaskTrigger(entity.Entity):
     @property
     def definition(self,) -> Optional[print_task_definition.PrintTaskDefinition]:
         """
-        Gets the definition property value. The definition property
+        Gets the definition property value. 
         Returns: Optional[print_task_definition.PrintTaskDefinition]
         """
         return self._definition
@@ -43,7 +40,7 @@ class PrintTaskTrigger(entity.Entity):
     @definition.setter
     def definition(self,value: Optional[print_task_definition.PrintTaskDefinition] = None) -> None:
         """
-        Sets the definition property value. The definition property
+        Sets the definition property value. 
         Args:
             value: Value to set for the definition property.
         """
@@ -52,7 +49,7 @@ class PrintTaskTrigger(entity.Entity):
     @property
     def event(self,) -> Optional[print_event.PrintEvent]:
         """
-        Gets the event property value. The event property
+        Gets the event property value. 
         Returns: Optional[print_event.PrintEvent]
         """
         return self._event
@@ -60,7 +57,7 @@ class PrintTaskTrigger(entity.Entity):
     @event.setter
     def event(self,value: Optional[print_event.PrintEvent] = None) -> None:
         """
-        Sets the event property value. The event property
+        Sets the event property value. 
         Args:
             value: Value to set for the event property.
         """

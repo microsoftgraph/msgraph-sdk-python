@@ -12,7 +12,6 @@ class AclCollectionResponse(base_collection_pagination_count_response.BaseCollec
         Instantiates a new AclCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[acl.Acl]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class AclCollectionResponse(base_collection_pagination_count_response.BaseCollec
     @property
     def value(self,) -> Optional[List[acl.Acl]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[acl.Acl]]
         """
         return self._value
@@ -61,7 +60,7 @@ class AclCollectionResponse(base_collection_pagination_count_response.BaseCollec
     @value.setter
     def value(self,value: Optional[List[acl.Acl]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

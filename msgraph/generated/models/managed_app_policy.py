@@ -23,7 +23,6 @@ class ManagedAppPolicy(entity.Entity):
         self._display_name: Optional[str] = None
         # Last time the policy was modified.
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Version of the entity.
         self._version: Optional[str] = None
@@ -97,10 +96,10 @@ class ManagedAppPolicy(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

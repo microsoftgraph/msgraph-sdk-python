@@ -12,7 +12,6 @@ class StartHoldMusicOperationCollectionResponse(base_collection_pagination_count
         Instantiates a new StartHoldMusicOperationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[start_hold_music_operation.StartHoldMusicOperation]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class StartHoldMusicOperationCollectionResponse(base_collection_pagination_count
     @property
     def value(self,) -> Optional[List[start_hold_music_operation.StartHoldMusicOperation]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[start_hold_music_operation.StartHoldMusicOperation]]
         """
         return self._value
@@ -61,7 +60,7 @@ class StartHoldMusicOperationCollectionResponse(base_collection_pagination_count
     @value.setter
     def value(self,value: Optional[List[start_hold_music_operation.StartHoldMusicOperation]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

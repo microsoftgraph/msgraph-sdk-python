@@ -14,7 +14,7 @@ class ConditionalAccessPolicy(entity.Entity):
     @property
     def conditions(self,) -> Optional[conditional_access_condition_set.ConditionalAccessConditionSet]:
         """
-        Gets the conditions property value. The conditions property
+        Gets the conditions property value. 
         Returns: Optional[conditional_access_condition_set.ConditionalAccessConditionSet]
         """
         return self._conditions
@@ -22,7 +22,7 @@ class ConditionalAccessPolicy(entity.Entity):
     @conditions.setter
     def conditions(self,value: Optional[conditional_access_condition_set.ConditionalAccessConditionSet] = None) -> None:
         """
-        Sets the conditions property value. The conditions property
+        Sets the conditions property value. 
         Args:
             value: Value to set for the conditions property.
         """
@@ -33,11 +33,9 @@ class ConditionalAccessPolicy(entity.Entity):
         Instantiates a new conditionalAccessPolicy and sets the default values.
         """
         super().__init__()
-        # The conditions property
         self._conditions: Optional[conditional_access_condition_set.ConditionalAccessConditionSet] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Readonly.
         self._created_date_time: Optional[datetime] = None
-        # The description property
         self._description: Optional[str] = None
         # Specifies a display name for the conditionalAccessPolicy object.
         self._display_name: Optional[str] = None
@@ -45,11 +43,9 @@ class ConditionalAccessPolicy(entity.Entity):
         self._grant_controls: Optional[conditional_access_grant_controls.ConditionalAccessGrantControls] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Readonly.
         self._modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Specifies the session controls that are enforced after sign-in.
         self._session_controls: Optional[conditional_access_session_controls.ConditionalAccessSessionControls] = None
-        # The state property
         self._state: Optional[conditional_access_policy_state.ConditionalAccessPolicyState] = None
     
     @property
@@ -84,7 +80,7 @@ class ConditionalAccessPolicy(entity.Entity):
     @property
     def description(self,) -> Optional[str]:
         """
-        Gets the description property value. The description property
+        Gets the description property value. 
         Returns: Optional[str]
         """
         return self._description
@@ -92,7 +88,7 @@ class ConditionalAccessPolicy(entity.Entity):
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
-        Sets the description property value. The description property
+        Sets the description property value. 
         Args:
             value: Value to set for the description property.
         """
@@ -122,12 +118,12 @@ class ConditionalAccessPolicy(entity.Entity):
         """
         fields = {
             "conditions": lambda n : setattr(self, 'conditions', n.get_object_value(conditional_access_condition_set.ConditionalAccessConditionSet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "grant_controls": lambda n : setattr(self, 'grant_controls', n.get_object_value(conditional_access_grant_controls.ConditionalAccessGrantControls)),
-            "modified_date_time": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
-            "session_controls": lambda n : setattr(self, 'session_controls', n.get_object_value(conditional_access_session_controls.ConditionalAccessSessionControls)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "grantControls": lambda n : setattr(self, 'grant_controls', n.get_object_value(conditional_access_grant_controls.ConditionalAccessGrantControls)),
+            "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "sessionControls": lambda n : setattr(self, 'session_controls', n.get_object_value(conditional_access_session_controls.ConditionalAccessSessionControls)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(conditional_access_policy_state.ConditionalAccessPolicyState)),
         }
         super_fields = super().get_field_deserializers()
@@ -206,7 +202,7 @@ class ConditionalAccessPolicy(entity.Entity):
     @property
     def state(self,) -> Optional[conditional_access_policy_state.ConditionalAccessPolicyState]:
         """
-        Gets the state property value. The state property
+        Gets the state property value. 
         Returns: Optional[conditional_access_policy_state.ConditionalAccessPolicyState]
         """
         return self._state
@@ -214,7 +210,7 @@ class ConditionalAccessPolicy(entity.Entity):
     @state.setter
     def state(self,value: Optional[conditional_access_policy_state.ConditionalAccessPolicyState] = None) -> None:
         """
-        Sets the state property value. The state property
+        Sets the state property value. 
         Args:
             value: Value to set for the state property.
         """

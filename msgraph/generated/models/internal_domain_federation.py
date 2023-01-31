@@ -82,13 +82,13 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "active_sign_in_uri": lambda n : setattr(self, 'active_sign_in_uri', n.get_str_value()),
-            "federated_idp_mfa_behavior": lambda n : setattr(self, 'federated_idp_mfa_behavior', n.get_enum_value(federated_idp_mfa_behavior.FederatedIdpMfaBehavior)),
-            "is_signed_authentication_request_required": lambda n : setattr(self, 'is_signed_authentication_request_required', n.get_bool_value()),
-            "next_signing_certificate": lambda n : setattr(self, 'next_signing_certificate', n.get_str_value()),
-            "prompt_login_behavior": lambda n : setattr(self, 'prompt_login_behavior', n.get_enum_value(prompt_login_behavior.PromptLoginBehavior)),
-            "signing_certificate_update_status": lambda n : setattr(self, 'signing_certificate_update_status', n.get_object_value(signing_certificate_update_status.SigningCertificateUpdateStatus)),
-            "sign_out_uri": lambda n : setattr(self, 'sign_out_uri', n.get_str_value()),
+            "activeSignInUri": lambda n : setattr(self, 'active_sign_in_uri', n.get_str_value()),
+            "federatedIdpMfaBehavior": lambda n : setattr(self, 'federated_idp_mfa_behavior', n.get_enum_value(federated_idp_mfa_behavior.FederatedIdpMfaBehavior)),
+            "isSignedAuthenticationRequestRequired": lambda n : setattr(self, 'is_signed_authentication_request_required', n.get_bool_value()),
+            "nextSigningCertificate": lambda n : setattr(self, 'next_signing_certificate', n.get_str_value()),
+            "promptLoginBehavior": lambda n : setattr(self, 'prompt_login_behavior', n.get_enum_value(prompt_login_behavior.PromptLoginBehavior)),
+            "signingCertificateUpdateStatus": lambda n : setattr(self, 'signing_certificate_update_status', n.get_object_value(signing_certificate_update_status.SigningCertificateUpdateStatus)),
+            "signOutUri": lambda n : setattr(self, 'sign_out_uri', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

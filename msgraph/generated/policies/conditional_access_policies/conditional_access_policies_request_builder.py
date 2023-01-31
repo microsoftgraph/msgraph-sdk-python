@@ -66,7 +66,7 @@ class ConditionalAccessPoliciesRequestBuilder():
         """
         Create new navigation property to conditionalAccessPolicies for policies
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[conditional_access_policy.ConditionalAccessPolicy]
         """
@@ -105,7 +105,7 @@ class ConditionalAccessPoliciesRequestBuilder():
         """
         Create new navigation property to conditionalAccessPolicies for policies
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

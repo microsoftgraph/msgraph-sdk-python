@@ -38,7 +38,6 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
         self._file_system_info: Optional[file_system_info.FileSystemInfo] = None
         # The name of the item (filename and extension). Read-write.
         self._name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -111,8 +110,8 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "file_size": lambda n : setattr(self, 'file_size', n.get_int_value()),
-            "file_system_info": lambda n : setattr(self, 'file_system_info', n.get_object_value(file_system_info.FileSystemInfo)),
+            "fileSize": lambda n : setattr(self, 'file_size', n.get_int_value()),
+            "fileSystemInfo": lambda n : setattr(self, 'file_system_info', n.get_object_value(file_system_info.FileSystemInfo)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
@@ -138,7 +137,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -146,7 +145,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

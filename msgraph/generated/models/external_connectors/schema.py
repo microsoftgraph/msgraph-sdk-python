@@ -31,7 +31,6 @@ class Schema(entity.Entity):
         super().__init__()
         # Must be set to microsoft.graph.externalConnector.externalItem. Required.
         self._base_type: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The properties defined for the items in the connection. The minimum number of properties is one, the maximum is 128.
         self._properties: Optional[List[property_.Property_]] = None
@@ -54,7 +53,7 @@ class Schema(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "base_type": lambda n : setattr(self, 'base_type', n.get_str_value()),
+            "baseType": lambda n : setattr(self, 'base_type', n.get_str_value()),
             "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(property_.Property_)),
         }
         super_fields = super().get_field_deserializers()

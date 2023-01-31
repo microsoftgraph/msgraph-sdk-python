@@ -12,7 +12,6 @@ class ApplicationCollectionResponse(base_collection_pagination_count_response.Ba
         Instantiates a new ApplicationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[application.Application]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ApplicationCollectionResponse(base_collection_pagination_count_response.Ba
     @property
     def value(self,) -> Optional[List[application.Application]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[application.Application]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ApplicationCollectionResponse(base_collection_pagination_count_response.Ba
     @value.setter
     def value(self,value: Optional[List[application.Application]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

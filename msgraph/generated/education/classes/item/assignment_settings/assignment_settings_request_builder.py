@@ -74,7 +74,7 @@ class AssignmentSettingsRequestBuilder():
         """
         Update the properties of an educationAssignmentSettings object. Only Teachers can update these settings.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_assignment_settings.EducationAssignmentSettings]
         """
@@ -129,7 +129,7 @@ class AssignmentSettingsRequestBuilder():
         """
         Update the properties of an educationAssignmentSettings object. Only Teachers can update these settings.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

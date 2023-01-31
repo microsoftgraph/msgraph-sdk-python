@@ -23,7 +23,6 @@ class LocalizedNotificationMessage(entity.Entity):
         self._locale: Optional[str] = None
         # The Message Template content.
         self._message_template: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The Message Template Subject.
         self._subject: Optional[str] = None
@@ -46,10 +45,10 @@ class LocalizedNotificationMessage(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "locale": lambda n : setattr(self, 'locale', n.get_str_value()),
-            "message_template": lambda n : setattr(self, 'message_template', n.get_str_value()),
+            "messageTemplate": lambda n : setattr(self, 'message_template', n.get_str_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

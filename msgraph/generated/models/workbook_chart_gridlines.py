@@ -14,7 +14,6 @@ class WorkbookChartGridlines(entity.Entity):
         super().__init__()
         # Represents the formatting of chart gridlines. Read-only.
         self._format: Optional[workbook_chart_gridlines_format.WorkbookChartGridlinesFormat] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Boolean value representing if the axis gridlines are visible or not.
         self._visible: Optional[bool] = None

@@ -66,7 +66,7 @@ class TelecomExpenseManagementPartnersRequestBuilder():
         """
         Create new navigation property to telecomExpenseManagementPartners for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[telecom_expense_management_partner.TelecomExpenseManagementPartner]
         """
@@ -105,7 +105,7 @@ class TelecomExpenseManagementPartnersRequestBuilder():
         """
         Create new navigation property to telecomExpenseManagementPartners for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

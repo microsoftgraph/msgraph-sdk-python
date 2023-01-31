@@ -18,7 +18,6 @@ class BaseItemVersion(entity.Entity):
         self._last_modified_by: Optional[identity_set.IdentitySet] = None
         # Date and time the version was last modified. Read-only.
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Indicates the publication status of this particular version. Read-only.
         self._publication: Optional[publication_facet.PublicationFacet] = None
@@ -41,8 +40,8 @@ class BaseItemVersion(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "publication": lambda n : setattr(self, 'publication', n.get_object_value(publication_facet.PublicationFacet)),
         }
         super_fields = super().get_field_deserializers()

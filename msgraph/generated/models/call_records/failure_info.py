@@ -30,11 +30,9 @@ class FailureInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Classification of why a call or portion of a call failed.
         self._reason: Optional[str] = None
-        # The stage property
         self._stage: Optional[failure_stage.FailureStage] = None
     
     @staticmethod
@@ -64,7 +62,7 @@ class FailureInfo(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -72,7 +70,7 @@ class FailureInfo(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -111,7 +109,7 @@ class FailureInfo(AdditionalDataHolder, Parsable):
     @property
     def stage(self,) -> Optional[failure_stage.FailureStage]:
         """
-        Gets the stage property value. The stage property
+        Gets the stage property value. 
         Returns: Optional[failure_stage.FailureStage]
         """
         return self._stage
@@ -119,7 +117,7 @@ class FailureInfo(AdditionalDataHolder, Parsable):
     @stage.setter
     def stage(self,value: Optional[failure_stage.FailureStage] = None) -> None:
         """
-        Sets the stage property value. The stage property
+        Sets the stage property value. 
         Args:
             value: Value to set for the stage property.
         """

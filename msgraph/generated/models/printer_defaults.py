@@ -67,7 +67,6 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         self._finishings: Optional[List[print_finishing.PrintFinishing]] = None
         # The default fitPdfToPage setting. True to fit each page of a PDF document to a physical sheet of media; false to let the printer decide how to lay out impressions.
         self._fit_pdf_to_page: Optional[bool] = None
-        # The inputBin property
         self._input_bin: Optional[str] = None
         # The default media (such as paper) color to print the document on.
         self._media_color: Optional[str] = None
@@ -77,7 +76,6 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         self._media_type: Optional[str] = None
         # The default direction to lay out pages when multiple pages are being printed per sheet. Valid values are described in the following table.
         self._multipage_layout: Optional[print_multipage_layout.PrintMultipageLayout] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The default orientation to use when printing the document. Valid values are described in the following table.
         self._orientation: Optional[print_orientation.PrintOrientation] = None
@@ -210,22 +208,22 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "color_mode": lambda n : setattr(self, 'color_mode', n.get_enum_value(print_color_mode.PrintColorMode)),
-            "content_type": lambda n : setattr(self, 'content_type', n.get_str_value()),
-            "copies_per_job": lambda n : setattr(self, 'copies_per_job', n.get_int_value()),
+            "colorMode": lambda n : setattr(self, 'color_mode', n.get_enum_value(print_color_mode.PrintColorMode)),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
+            "copiesPerJob": lambda n : setattr(self, 'copies_per_job', n.get_int_value()),
             "dpi": lambda n : setattr(self, 'dpi', n.get_int_value()),
-            "duplex_mode": lambda n : setattr(self, 'duplex_mode', n.get_enum_value(print_duplex_mode.PrintDuplexMode)),
+            "duplexMode": lambda n : setattr(self, 'duplex_mode', n.get_enum_value(print_duplex_mode.PrintDuplexMode)),
             "finishings": lambda n : setattr(self, 'finishings', n.get_collection_of_enum_values(print_finishing.PrintFinishing)),
-            "fit_pdf_to_page": lambda n : setattr(self, 'fit_pdf_to_page', n.get_bool_value()),
-            "input_bin": lambda n : setattr(self, 'input_bin', n.get_str_value()),
-            "media_color": lambda n : setattr(self, 'media_color', n.get_str_value()),
-            "media_size": lambda n : setattr(self, 'media_size', n.get_str_value()),
-            "media_type": lambda n : setattr(self, 'media_type', n.get_str_value()),
-            "multipage_layout": lambda n : setattr(self, 'multipage_layout', n.get_enum_value(print_multipage_layout.PrintMultipageLayout)),
+            "fitPdfToPage": lambda n : setattr(self, 'fit_pdf_to_page', n.get_bool_value()),
+            "inputBin": lambda n : setattr(self, 'input_bin', n.get_str_value()),
+            "mediaColor": lambda n : setattr(self, 'media_color', n.get_str_value()),
+            "mediaSize": lambda n : setattr(self, 'media_size', n.get_str_value()),
+            "mediaType": lambda n : setattr(self, 'media_type', n.get_str_value()),
+            "multipageLayout": lambda n : setattr(self, 'multipage_layout', n.get_enum_value(print_multipage_layout.PrintMultipageLayout)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "orientation": lambda n : setattr(self, 'orientation', n.get_enum_value(print_orientation.PrintOrientation)),
-            "output_bin": lambda n : setattr(self, 'output_bin', n.get_str_value()),
-            "pages_per_sheet": lambda n : setattr(self, 'pages_per_sheet', n.get_int_value()),
+            "outputBin": lambda n : setattr(self, 'output_bin', n.get_str_value()),
+            "pagesPerSheet": lambda n : setattr(self, 'pages_per_sheet', n.get_int_value()),
             "quality": lambda n : setattr(self, 'quality', n.get_enum_value(print_quality.PrintQuality)),
             "scaling": lambda n : setattr(self, 'scaling', n.get_enum_value(print_scaling.PrintScaling)),
         }
@@ -234,7 +232,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
     @property
     def input_bin(self,) -> Optional[str]:
         """
-        Gets the inputBin property value. The inputBin property
+        Gets the inputBin property value. 
         Returns: Optional[str]
         """
         return self._input_bin
@@ -242,7 +240,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
     @input_bin.setter
     def input_bin(self,value: Optional[str] = None) -> None:
         """
-        Sets the inputBin property value. The inputBin property
+        Sets the inputBin property value. 
         Args:
             value: Value to set for the inputBin property.
         """
@@ -319,7 +317,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -327,7 +325,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

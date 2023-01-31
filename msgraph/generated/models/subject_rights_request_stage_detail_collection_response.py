@@ -12,7 +12,6 @@ class SubjectRightsRequestStageDetailCollectionResponse(base_collection_paginati
         Instantiates a new SubjectRightsRequestStageDetailCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[subject_rights_request_stage_detail.SubjectRightsRequestStageDetail]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class SubjectRightsRequestStageDetailCollectionResponse(base_collection_paginati
     @property
     def value(self,) -> Optional[List[subject_rights_request_stage_detail.SubjectRightsRequestStageDetail]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[subject_rights_request_stage_detail.SubjectRightsRequestStageDetail]]
         """
         return self._value
@@ -61,7 +60,7 @@ class SubjectRightsRequestStageDetailCollectionResponse(base_collection_paginati
     @value.setter
     def value(self,value: Optional[List[subject_rights_request_stage_detail.SubjectRightsRequestStageDetail]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

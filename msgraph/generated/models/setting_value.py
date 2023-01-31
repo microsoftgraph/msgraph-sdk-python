@@ -30,7 +30,6 @@ class SettingValue(AdditionalDataHolder, Parsable):
 
         # Name of the setting (as defined by the groupSettingTemplate).
         self._name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Value of the setting.
         self._value: Optional[str] = None
@@ -79,7 +78,7 @@ class SettingValue(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -87,7 +86,7 @@ class SettingValue(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

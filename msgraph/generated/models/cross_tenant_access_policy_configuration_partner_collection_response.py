@@ -12,7 +12,6 @@ class CrossTenantAccessPolicyConfigurationPartnerCollectionResponse(base_collect
         Instantiates a new CrossTenantAccessPolicyConfigurationPartnerCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class CrossTenantAccessPolicyConfigurationPartnerCollectionResponse(base_collect
     @property
     def value(self,) -> Optional[List[cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner]]
         """
         return self._value
@@ -61,7 +60,7 @@ class CrossTenantAccessPolicyConfigurationPartnerCollectionResponse(base_collect
     @value.setter
     def value(self,value: Optional[List[cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

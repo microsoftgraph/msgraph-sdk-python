@@ -12,7 +12,6 @@ class SkypeUserConversationMemberCollectionResponse(base_collection_pagination_c
         Instantiates a new SkypeUserConversationMemberCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[skype_user_conversation_member.SkypeUserConversationMember]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class SkypeUserConversationMemberCollectionResponse(base_collection_pagination_c
     @property
     def value(self,) -> Optional[List[skype_user_conversation_member.SkypeUserConversationMember]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[skype_user_conversation_member.SkypeUserConversationMember]]
         """
         return self._value
@@ -61,7 +60,7 @@ class SkypeUserConversationMemberCollectionResponse(base_collection_pagination_c
     @value.setter
     def value(self,value: Optional[List[skype_user_conversation_member.SkypeUserConversationMember]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

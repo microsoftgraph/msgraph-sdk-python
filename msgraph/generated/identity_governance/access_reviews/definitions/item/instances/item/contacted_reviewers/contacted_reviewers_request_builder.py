@@ -66,7 +66,7 @@ class ContactedReviewersRequestBuilder():
         """
         Create new navigation property to contactedReviewers for identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[access_review_reviewer.AccessReviewReviewer]
         """
@@ -105,7 +105,7 @@ class ContactedReviewersRequestBuilder():
         """
         Create new navigation property to contactedReviewers for identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

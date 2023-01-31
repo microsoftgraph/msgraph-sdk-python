@@ -12,7 +12,6 @@ class CertificateBasedAuthConfigurationCollectionResponse(base_collection_pagina
         Instantiates a new CertificateBasedAuthConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[certificate_based_auth_configuration.CertificateBasedAuthConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class CertificateBasedAuthConfigurationCollectionResponse(base_collection_pagina
     @property
     def value(self,) -> Optional[List[certificate_based_auth_configuration.CertificateBasedAuthConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[certificate_based_auth_configuration.CertificateBasedAuthConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class CertificateBasedAuthConfigurationCollectionResponse(base_collection_pagina
     @value.setter
     def value(self,value: Optional[List[certificate_based_auth_configuration.CertificateBasedAuthConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

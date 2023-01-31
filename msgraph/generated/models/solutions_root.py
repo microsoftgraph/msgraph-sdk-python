@@ -27,7 +27,7 @@ class SolutionsRoot(AdditionalDataHolder, Parsable):
     @property
     def booking_businesses(self,) -> Optional[List[booking_business.BookingBusiness]]:
         """
-        Gets the bookingBusinesses property value. The bookingBusinesses property
+        Gets the bookingBusinesses property value. 
         Returns: Optional[List[booking_business.BookingBusiness]]
         """
         return self._booking_businesses
@@ -35,7 +35,7 @@ class SolutionsRoot(AdditionalDataHolder, Parsable):
     @booking_businesses.setter
     def booking_businesses(self,value: Optional[List[booking_business.BookingBusiness]] = None) -> None:
         """
-        Sets the bookingBusinesses property value. The bookingBusinesses property
+        Sets the bookingBusinesses property value. 
         Args:
             value: Value to set for the bookingBusinesses property.
         """
@@ -44,7 +44,7 @@ class SolutionsRoot(AdditionalDataHolder, Parsable):
     @property
     def booking_currencies(self,) -> Optional[List[booking_currency.BookingCurrency]]:
         """
-        Gets the bookingCurrencies property value. The bookingCurrencies property
+        Gets the bookingCurrencies property value. 
         Returns: Optional[List[booking_currency.BookingCurrency]]
         """
         return self._booking_currencies
@@ -52,7 +52,7 @@ class SolutionsRoot(AdditionalDataHolder, Parsable):
     @booking_currencies.setter
     def booking_currencies(self,value: Optional[List[booking_currency.BookingCurrency]] = None) -> None:
         """
-        Sets the bookingCurrencies property value. The bookingCurrencies property
+        Sets the bookingCurrencies property value. 
         Args:
             value: Value to set for the bookingCurrencies property.
         """
@@ -65,11 +65,8 @@ class SolutionsRoot(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The bookingBusinesses property
         self._booking_businesses: Optional[List[booking_business.BookingBusiness]] = None
-        # The bookingCurrencies property
         self._booking_currencies: Optional[List[booking_currency.BookingCurrency]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -90,8 +87,8 @@ class SolutionsRoot(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "booking_businesses": lambda n : setattr(self, 'booking_businesses', n.get_collection_of_object_values(booking_business.BookingBusiness)),
-            "booking_currencies": lambda n : setattr(self, 'booking_currencies', n.get_collection_of_object_values(booking_currency.BookingCurrency)),
+            "bookingBusinesses": lambda n : setattr(self, 'booking_businesses', n.get_collection_of_object_values(booking_business.BookingBusiness)),
+            "bookingCurrencies": lambda n : setattr(self, 'booking_currencies', n.get_collection_of_object_values(booking_currency.BookingCurrency)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -99,7 +96,7 @@ class SolutionsRoot(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -107,7 +104,7 @@ class SolutionsRoot(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

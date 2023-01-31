@@ -11,8 +11,8 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.user_attribute_assignments.count.count_request_builder')
-get_order_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.user_attribute_assignments.get_order.get_order_request_builder')
-set_order_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.user_attribute_assignments.set_order.set_order_request_builder')
+get_order_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.user_attribute_assignments.microsoft_graph_get_order.get_order_request_builder')
+set_order_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.user_attribute_assignments.microsoft_graph_set_order.set_order_request_builder')
 identity_user_flow_attribute_assignment = lazy_import('msgraph.generated.models.identity_user_flow_attribute_assignment')
 identity_user_flow_attribute_assignment_collection_response = lazy_import('msgraph.generated.models.identity_user_flow_attribute_assignment_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -29,7 +29,14 @@ class UserAttributeAssignmentsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def set_order(self) -> set_order_request_builder.SetOrderRequestBuilder:
+    def microsoft_graph_get_order(self) -> get_order_request_builder.GetOrderRequestBuilder:
+        """
+        Provides operations to call the getOrder method.
+        """
+        return get_order_request_builder.GetOrderRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_set_order(self) -> set_order_request_builder.SetOrderRequestBuilder:
         """
         Provides operations to call the setOrder method.
         """
@@ -71,18 +78,11 @@ class UserAttributeAssignmentsRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, identity_user_flow_attribute_assignment_collection_response.IdentityUserFlowAttributeAssignmentCollectionResponse, error_mapping)
     
-    def get_order(self,) -> get_order_request_builder.GetOrderRequestBuilder:
-        """
-        Provides operations to call the getOrder method.
-        Returns: get_order_request_builder.GetOrderRequestBuilder
-        """
-        return get_order_request_builder.GetOrderRequestBuilder(self.request_adapter, self.path_parameters)
-    
     async def post(self,body: Optional[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment] = None, request_configuration: Optional[UserAttributeAssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment]:
         """
         Create a new identityUserFlowAttributeAssignment object in a b2xIdentityUserFlow.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment]
         """
@@ -121,7 +121,7 @@ class UserAttributeAssignmentsRequestBuilder():
         """
         Create a new identityUserFlowAttributeAssignment object in a b2xIdentityUserFlow.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

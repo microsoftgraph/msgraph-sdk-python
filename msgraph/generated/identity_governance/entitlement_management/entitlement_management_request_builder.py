@@ -236,7 +236,7 @@ class EntitlementManagementRequestBuilder():
         """
         Update the navigation property entitlementManagement in identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[entitlement_management.EntitlementManagement]
         """
@@ -291,7 +291,7 @@ class EntitlementManagementRequestBuilder():
         """
         Update the navigation property entitlementManagement in identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

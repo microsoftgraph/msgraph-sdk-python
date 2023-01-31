@@ -61,7 +61,6 @@ class AgreementAcceptance(entity.Entity):
         self._device_o_s_version: Optional[str] = None
         # The expiration date time of the acceptance. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Supports $filter (eq, ge, le) and eq for null values.
         self._expiration_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._recorded_date_time: Optional[datetime] = None
@@ -179,19 +178,19 @@ class AgreementAcceptance(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "agreement_file_id": lambda n : setattr(self, 'agreement_file_id', n.get_str_value()),
-            "agreement_id": lambda n : setattr(self, 'agreement_id', n.get_str_value()),
-            "device_display_name": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
-            "device_id": lambda n : setattr(self, 'device_id', n.get_str_value()),
-            "device_o_s_type": lambda n : setattr(self, 'device_o_s_type', n.get_str_value()),
-            "device_o_s_version": lambda n : setattr(self, 'device_o_s_version', n.get_str_value()),
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "recorded_date_time": lambda n : setattr(self, 'recorded_date_time', n.get_datetime_value()),
+            "agreementFileId": lambda n : setattr(self, 'agreement_file_id', n.get_str_value()),
+            "agreementId": lambda n : setattr(self, 'agreement_id', n.get_str_value()),
+            "deviceDisplayName": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
+            "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
+            "deviceOSType": lambda n : setattr(self, 'device_o_s_type', n.get_str_value()),
+            "deviceOSVersion": lambda n : setattr(self, 'device_o_s_version', n.get_str_value()),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "recordedDateTime": lambda n : setattr(self, 'recorded_date_time', n.get_datetime_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(agreement_acceptance_state.AgreementAcceptanceState)),
-            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "user_email": lambda n : setattr(self, 'user_email', n.get_str_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "userEmail": lambda n : setattr(self, 'user_email', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

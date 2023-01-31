@@ -37,7 +37,6 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         self._dlp_action: Optional[chat_message_policy_violation_dlp_action_types.ChatMessagePolicyViolationDlpActionTypes] = None
         # Justification text provided by the sender of the message when overriding a policy violation.
         self._justification_text: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Information to display to the message sender about why the message was flagged as a violation.
         self._policy_tip: Optional[chat_message_policy_violation_policy_tip.ChatMessagePolicyViolationPolicyTip] = None
@@ -81,12 +80,12 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "dlp_action": lambda n : setattr(self, 'dlp_action', n.get_enum_value(chat_message_policy_violation_dlp_action_types.ChatMessagePolicyViolationDlpActionTypes)),
-            "justification_text": lambda n : setattr(self, 'justification_text', n.get_str_value()),
+            "dlpAction": lambda n : setattr(self, 'dlp_action', n.get_enum_value(chat_message_policy_violation_dlp_action_types.ChatMessagePolicyViolationDlpActionTypes)),
+            "justificationText": lambda n : setattr(self, 'justification_text', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "policy_tip": lambda n : setattr(self, 'policy_tip', n.get_object_value(chat_message_policy_violation_policy_tip.ChatMessagePolicyViolationPolicyTip)),
-            "user_action": lambda n : setattr(self, 'user_action', n.get_enum_value(chat_message_policy_violation_user_action_types.ChatMessagePolicyViolationUserActionTypes)),
-            "verdict_details": lambda n : setattr(self, 'verdict_details', n.get_enum_value(chat_message_policy_violation_verdict_details_types.ChatMessagePolicyViolationVerdictDetailsTypes)),
+            "policyTip": lambda n : setattr(self, 'policy_tip', n.get_object_value(chat_message_policy_violation_policy_tip.ChatMessagePolicyViolationPolicyTip)),
+            "userAction": lambda n : setattr(self, 'user_action', n.get_enum_value(chat_message_policy_violation_user_action_types.ChatMessagePolicyViolationUserActionTypes)),
+            "verdictDetails": lambda n : setattr(self, 'verdict_details', n.get_enum_value(chat_message_policy_violation_verdict_details_types.ChatMessagePolicyViolationVerdictDetailsTypes)),
         }
         return fields
     
@@ -110,7 +109,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -118,7 +117,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

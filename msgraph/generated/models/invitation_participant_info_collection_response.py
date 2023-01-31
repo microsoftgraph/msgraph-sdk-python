@@ -12,7 +12,6 @@ class InvitationParticipantInfoCollectionResponse(base_collection_pagination_cou
         Instantiates a new InvitationParticipantInfoCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[invitation_participant_info.InvitationParticipantInfo]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class InvitationParticipantInfoCollectionResponse(base_collection_pagination_cou
     @property
     def value(self,) -> Optional[List[invitation_participant_info.InvitationParticipantInfo]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[invitation_participant_info.InvitationParticipantInfo]]
         """
         return self._value
@@ -61,7 +60,7 @@ class InvitationParticipantInfoCollectionResponse(base_collection_pagination_cou
     @value.setter
     def value(self,value: Optional[List[invitation_participant_info.InvitationParticipantInfo]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -96,7 +96,7 @@ class AppConsentRequestBuilder():
         """
         Update the navigation property appConsent in identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[app_consent_approval_route.AppConsentApprovalRoute]
         """
@@ -151,7 +151,7 @@ class AppConsentRequestBuilder():
         """
         Update the navigation property appConsent in identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -12,7 +12,6 @@ class Windows10MobileCompliancePolicyCollectionResponse(base_collection_paginati
         Instantiates a new Windows10MobileCompliancePolicyCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[windows10_mobile_compliance_policy.Windows10MobileCompliancePolicy]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class Windows10MobileCompliancePolicyCollectionResponse(base_collection_paginati
     @property
     def value(self,) -> Optional[List[windows10_mobile_compliance_policy.Windows10MobileCompliancePolicy]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[windows10_mobile_compliance_policy.Windows10MobileCompliancePolicy]]
         """
         return self._value
@@ -61,7 +60,7 @@ class Windows10MobileCompliancePolicyCollectionResponse(base_collection_paginati
     @value.setter
     def value(self,value: Optional[List[windows10_mobile_compliance_policy.Windows10MobileCompliancePolicy]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

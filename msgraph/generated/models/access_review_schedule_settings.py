@@ -81,7 +81,6 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         self._justification_required_on_approval: Optional[bool] = None
         # Indicates whether emails are enabled or disabled. Default value is false.
         self._mail_notifications_enabled: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Indicates whether decision recommendations are enabled or disabled. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationsEnabled setting will be used instead of the value of this property.
         self._recommendations_enabled: Optional[bool] = None
@@ -159,18 +158,18 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "apply_actions": lambda n : setattr(self, 'apply_actions', n.get_collection_of_object_values(access_review_apply_action.AccessReviewApplyAction)),
-            "auto_apply_decisions_enabled": lambda n : setattr(self, 'auto_apply_decisions_enabled', n.get_bool_value()),
-            "decision_histories_for_reviewers_enabled": lambda n : setattr(self, 'decision_histories_for_reviewers_enabled', n.get_bool_value()),
-            "default_decision": lambda n : setattr(self, 'default_decision', n.get_str_value()),
-            "default_decision_enabled": lambda n : setattr(self, 'default_decision_enabled', n.get_bool_value()),
-            "instance_duration_in_days": lambda n : setattr(self, 'instance_duration_in_days', n.get_int_value()),
-            "justification_required_on_approval": lambda n : setattr(self, 'justification_required_on_approval', n.get_bool_value()),
-            "mail_notifications_enabled": lambda n : setattr(self, 'mail_notifications_enabled', n.get_bool_value()),
+            "applyActions": lambda n : setattr(self, 'apply_actions', n.get_collection_of_object_values(access_review_apply_action.AccessReviewApplyAction)),
+            "autoApplyDecisionsEnabled": lambda n : setattr(self, 'auto_apply_decisions_enabled', n.get_bool_value()),
+            "decisionHistoriesForReviewersEnabled": lambda n : setattr(self, 'decision_histories_for_reviewers_enabled', n.get_bool_value()),
+            "defaultDecision": lambda n : setattr(self, 'default_decision', n.get_str_value()),
+            "defaultDecisionEnabled": lambda n : setattr(self, 'default_decision_enabled', n.get_bool_value()),
+            "instanceDurationInDays": lambda n : setattr(self, 'instance_duration_in_days', n.get_int_value()),
+            "justificationRequiredOnApproval": lambda n : setattr(self, 'justification_required_on_approval', n.get_bool_value()),
+            "mailNotificationsEnabled": lambda n : setattr(self, 'mail_notifications_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recommendations_enabled": lambda n : setattr(self, 'recommendations_enabled', n.get_bool_value()),
+            "recommendationsEnabled": lambda n : setattr(self, 'recommendations_enabled', n.get_bool_value()),
             "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(patterned_recurrence.PatternedRecurrence)),
-            "reminder_notifications_enabled": lambda n : setattr(self, 'reminder_notifications_enabled', n.get_bool_value()),
+            "reminderNotificationsEnabled": lambda n : setattr(self, 'reminder_notifications_enabled', n.get_bool_value()),
         }
         return fields
     
@@ -228,7 +227,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -236,7 +235,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

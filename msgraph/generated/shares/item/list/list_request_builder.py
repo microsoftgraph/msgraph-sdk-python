@@ -179,7 +179,7 @@ class ListRequestBuilder():
         """
         Update the navigation property list in shares
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[list.List]
         """
@@ -247,7 +247,7 @@ class ListRequestBuilder():
         """
         Update the navigation property list in shares
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

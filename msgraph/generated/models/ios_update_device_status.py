@@ -39,15 +39,12 @@ class IosUpdateDeviceStatus(entity.Entity):
         self._device_id: Optional[str] = None
         # The device model that is being reported
         self._device_model: Optional[str] = None
-        # The installStatus property
         self._install_status: Optional[ios_updates_install_status.IosUpdatesInstallStatus] = None
         # Last modified date time of the policy report.
         self._last_reported_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The device version that is being reported.
         self._os_version: Optional[str] = None
-        # The status property
         self._status: Optional[compliance_status.ComplianceStatus] = None
         # The User id that is being reported.
         self._user_id: Optional[str] = None
@@ -125,17 +122,17 @@ class IosUpdateDeviceStatus(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "compliance_grace_period_expiration_date_time": lambda n : setattr(self, 'compliance_grace_period_expiration_date_time', n.get_datetime_value()),
-            "device_display_name": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
-            "device_id": lambda n : setattr(self, 'device_id', n.get_str_value()),
-            "device_model": lambda n : setattr(self, 'device_model', n.get_str_value()),
-            "install_status": lambda n : setattr(self, 'install_status', n.get_enum_value(ios_updates_install_status.IosUpdatesInstallStatus)),
-            "last_reported_date_time": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
-            "os_version": lambda n : setattr(self, 'os_version', n.get_str_value()),
+            "complianceGracePeriodExpirationDateTime": lambda n : setattr(self, 'compliance_grace_period_expiration_date_time', n.get_datetime_value()),
+            "deviceDisplayName": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
+            "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
+            "deviceModel": lambda n : setattr(self, 'device_model', n.get_str_value()),
+            "installStatus": lambda n : setattr(self, 'install_status', n.get_enum_value(ios_updates_install_status.IosUpdatesInstallStatus)),
+            "lastReportedDateTime": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
+            "osVersion": lambda n : setattr(self, 'os_version', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(compliance_status.ComplianceStatus)),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
-            "user_name": lambda n : setattr(self, 'user_name', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userName": lambda n : setattr(self, 'user_name', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -144,7 +141,7 @@ class IosUpdateDeviceStatus(entity.Entity):
     @property
     def install_status(self,) -> Optional[ios_updates_install_status.IosUpdatesInstallStatus]:
         """
-        Gets the installStatus property value. The installStatus property
+        Gets the installStatus property value. 
         Returns: Optional[ios_updates_install_status.IosUpdatesInstallStatus]
         """
         return self._install_status
@@ -152,7 +149,7 @@ class IosUpdateDeviceStatus(entity.Entity):
     @install_status.setter
     def install_status(self,value: Optional[ios_updates_install_status.IosUpdatesInstallStatus] = None) -> None:
         """
-        Sets the installStatus property value. The installStatus property
+        Sets the installStatus property value. 
         Args:
             value: Value to set for the installStatus property.
         """
@@ -216,7 +213,7 @@ class IosUpdateDeviceStatus(entity.Entity):
     @property
     def status(self,) -> Optional[compliance_status.ComplianceStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[compliance_status.ComplianceStatus]
         """
         return self._status
@@ -224,7 +221,7 @@ class IosUpdateDeviceStatus(entity.Entity):
     @status.setter
     def status(self,value: Optional[compliance_status.ComplianceStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

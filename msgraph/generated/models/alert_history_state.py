@@ -28,7 +28,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
     @property
     def app_id(self,) -> Optional[str]:
         """
-        Gets the appId property value. The appId property
+        Gets the appId property value. 
         Returns: Optional[str]
         """
         return self._app_id
@@ -36,7 +36,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
     @app_id.setter
     def app_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the appId property value. The appId property
+        Sets the appId property value. 
         Args:
             value: Value to set for the appId property.
         """
@@ -45,7 +45,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
     @property
     def assigned_to(self,) -> Optional[str]:
         """
-        Gets the assignedTo property value. The assignedTo property
+        Gets the assignedTo property value. 
         Returns: Optional[str]
         """
         return self._assigned_to
@@ -53,7 +53,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
     @assigned_to.setter
     def assigned_to(self,value: Optional[str] = None) -> None:
         """
-        Sets the assignedTo property value. The assignedTo property
+        Sets the assignedTo property value. 
         Args:
             value: Value to set for the assignedTo property.
         """
@@ -62,7 +62,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
     @property
     def comments(self,) -> Optional[List[str]]:
         """
-        Gets the comments property value. The comments property
+        Gets the comments property value. 
         Returns: Optional[List[str]]
         """
         return self._comments
@@ -70,7 +70,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
     @comments.setter
     def comments(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the comments property value. The comments property
+        Sets the comments property value. 
         Args:
             value: Value to set for the comments property.
         """
@@ -83,21 +83,13 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The appId property
         self._app_id: Optional[str] = None
-        # The assignedTo property
         self._assigned_to: Optional[str] = None
-        # The comments property
         self._comments: Optional[List[str]] = None
-        # The feedback property
         self._feedback: Optional[alert_feedback.AlertFeedback] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The status property
         self._status: Optional[alert_status.AlertStatus] = None
-        # The updatedDateTime property
         self._updated_date_time: Optional[datetime] = None
-        # The user property
         self._user: Optional[str] = None
     
     @staticmethod
@@ -115,7 +107,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
     @property
     def feedback(self,) -> Optional[alert_feedback.AlertFeedback]:
         """
-        Gets the feedback property value. The feedback property
+        Gets the feedback property value. 
         Returns: Optional[alert_feedback.AlertFeedback]
         """
         return self._feedback
@@ -123,7 +115,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
     @feedback.setter
     def feedback(self,value: Optional[alert_feedback.AlertFeedback] = None) -> None:
         """
-        Sets the feedback property value. The feedback property
+        Sets the feedback property value. 
         Args:
             value: Value to set for the feedback property.
         """
@@ -135,13 +127,13 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "assigned_to": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
             "comments": lambda n : setattr(self, 'comments', n.get_collection_of_primitive_values(str)),
             "feedback": lambda n : setattr(self, 'feedback', n.get_enum_value(alert_feedback.AlertFeedback)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(alert_status.AlertStatus)),
-            "updated_date_time": lambda n : setattr(self, 'updated_date_time', n.get_datetime_value()),
+            "updatedDateTime": lambda n : setattr(self, 'updated_date_time', n.get_datetime_value()),
             "user": lambda n : setattr(self, 'user', n.get_str_value()),
         }
         return fields
@@ -149,7 +141,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -157,7 +149,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -184,7 +176,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
     @property
     def status(self,) -> Optional[alert_status.AlertStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[alert_status.AlertStatus]
         """
         return self._status
@@ -192,7 +184,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
     @status.setter
     def status(self,value: Optional[alert_status.AlertStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """
@@ -201,7 +193,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
     @property
     def updated_date_time(self,) -> Optional[datetime]:
         """
-        Gets the updatedDateTime property value. The updatedDateTime property
+        Gets the updatedDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._updated_date_time
@@ -209,7 +201,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
     @updated_date_time.setter
     def updated_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the updatedDateTime property value. The updatedDateTime property
+        Sets the updatedDateTime property value. 
         Args:
             value: Value to set for the updatedDateTime property.
         """
@@ -218,7 +210,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
     @property
     def user(self,) -> Optional[str]:
         """
-        Gets the user property value. The user property
+        Gets the user property value. 
         Returns: Optional[str]
         """
         return self._user
@@ -226,7 +218,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
     @user.setter
     def user(self,value: Optional[str] = None) -> None:
         """
-        Sets the user property value. The user property
+        Sets the user property value. 
         Args:
             value: Value to set for the user property.
         """

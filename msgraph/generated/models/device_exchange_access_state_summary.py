@@ -69,7 +69,6 @@ class DeviceExchangeAccessStateSummary(AdditionalDataHolder, Parsable):
         self._allowed_device_count: Optional[int] = None
         # Total count of devices with Exchange Access State: Blocked.
         self._blocked_device_count: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Total count of devices with Exchange Access State: Quarantined.
         self._quarantined_device_count: Optional[int] = None
@@ -96,19 +95,19 @@ class DeviceExchangeAccessStateSummary(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allowed_device_count": lambda n : setattr(self, 'allowed_device_count', n.get_int_value()),
-            "blocked_device_count": lambda n : setattr(self, 'blocked_device_count', n.get_int_value()),
+            "allowedDeviceCount": lambda n : setattr(self, 'allowed_device_count', n.get_int_value()),
+            "blockedDeviceCount": lambda n : setattr(self, 'blocked_device_count', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "quarantined_device_count": lambda n : setattr(self, 'quarantined_device_count', n.get_int_value()),
-            "unavailable_device_count": lambda n : setattr(self, 'unavailable_device_count', n.get_int_value()),
-            "unknown_device_count": lambda n : setattr(self, 'unknown_device_count', n.get_int_value()),
+            "quarantinedDeviceCount": lambda n : setattr(self, 'quarantined_device_count', n.get_int_value()),
+            "unavailableDeviceCount": lambda n : setattr(self, 'unavailable_device_count', n.get_int_value()),
+            "unknownDeviceCount": lambda n : setattr(self, 'unknown_device_count', n.get_int_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -116,7 +115,7 @@ class DeviceExchangeAccessStateSummary(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

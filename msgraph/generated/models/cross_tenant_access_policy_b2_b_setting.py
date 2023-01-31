@@ -49,7 +49,6 @@ class CrossTenantAccessPolicyB2BSetting(AdditionalDataHolder, Parsable):
 
         # The list of applications targeted with your cross-tenant access policy.
         self._applications: Optional[cross_tenant_access_policy_target_configuration.CrossTenantAccessPolicyTargetConfiguration] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The list of users and groups targeted with your cross-tenant access policy.
         self._users_and_groups: Optional[cross_tenant_access_policy_target_configuration.CrossTenantAccessPolicyTargetConfiguration] = None
@@ -74,14 +73,14 @@ class CrossTenantAccessPolicyB2BSetting(AdditionalDataHolder, Parsable):
         fields = {
             "applications": lambda n : setattr(self, 'applications', n.get_object_value(cross_tenant_access_policy_target_configuration.CrossTenantAccessPolicyTargetConfiguration)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "users_and_groups": lambda n : setattr(self, 'users_and_groups', n.get_object_value(cross_tenant_access_policy_target_configuration.CrossTenantAccessPolicyTargetConfiguration)),
+            "usersAndGroups": lambda n : setattr(self, 'users_and_groups', n.get_object_value(cross_tenant_access_policy_target_configuration.CrossTenantAccessPolicyTargetConfiguration)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -89,7 +88,7 @@ class CrossTenantAccessPolicyB2BSetting(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -31,7 +31,6 @@ class VppLicensingType(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Whether the program supports the device licensing type.
         self._supports_device_licensing: Optional[bool] = None
@@ -57,15 +56,15 @@ class VppLicensingType(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "supports_device_licensing": lambda n : setattr(self, 'supports_device_licensing', n.get_bool_value()),
-            "supports_user_licensing": lambda n : setattr(self, 'supports_user_licensing', n.get_bool_value()),
+            "supportsDeviceLicensing": lambda n : setattr(self, 'supports_device_licensing', n.get_bool_value()),
+            "supportsUserLicensing": lambda n : setattr(self, 'supports_user_licensing', n.get_bool_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -73,7 +72,7 @@ class VppLicensingType(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

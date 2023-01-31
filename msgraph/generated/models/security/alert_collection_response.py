@@ -12,7 +12,6 @@ class AlertCollectionResponse(base_collection_pagination_count_response.BaseColl
         Instantiates a new AlertCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[alert.Alert]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class AlertCollectionResponse(base_collection_pagination_count_response.BaseColl
     @property
     def value(self,) -> Optional[List[alert.Alert]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[alert.Alert]]
         """
         return self._value
@@ -61,7 +60,7 @@ class AlertCollectionResponse(base_collection_pagination_count_response.BaseColl
     @value.setter
     def value(self,value: Optional[List[alert.Alert]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

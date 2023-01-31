@@ -33,11 +33,12 @@ class PrintTaskItemRequestBuilder():
         """
         return trigger_request_builder.TriggerRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, print_task_id: Optional[str] = None) -> None:
         """
         Instantiates a new PrintTaskItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
+            printTaskId: key: id of printTask
             requestAdapter: The request adapter to use to execute the requests.
         """
         if path_parameters is None:
@@ -48,6 +49,7 @@ class PrintTaskItemRequestBuilder():
         self.url_template: str = "{+baseurl}/print/taskDefinitions/{printTaskDefinition%2Did}/tasks/{printTask%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["printTask%2Did"] = printTaskId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -90,7 +92,7 @@ class PrintTaskItemRequestBuilder():
         """
         Update the navigation property tasks in print
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[print_task.PrintTask]
         """
@@ -145,7 +147,7 @@ class PrintTaskItemRequestBuilder():
         """
         Update the navigation property tasks in print
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

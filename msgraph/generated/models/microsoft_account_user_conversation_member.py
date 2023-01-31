@@ -12,7 +12,6 @@ class MicrosoftAccountUserConversationMember(conversation_member.ConversationMem
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.microsoftAccountUserConversationMember"
-        # The userId property
         self._user_id: Optional[str] = None
     
     @staticmethod
@@ -33,7 +32,7 @@ class MicrosoftAccountUserConversationMember(conversation_member.ConversationMem
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -53,7 +52,7 @@ class MicrosoftAccountUserConversationMember(conversation_member.ConversationMem
     @property
     def user_id(self,) -> Optional[str]:
         """
-        Gets the userId property value. The userId property
+        Gets the userId property value. 
         Returns: Optional[str]
         """
         return self._user_id
@@ -61,7 +60,7 @@ class MicrosoftAccountUserConversationMember(conversation_member.ConversationMem
     @user_id.setter
     def user_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the userId property value. The userId property
+        Sets the userId property value. 
         Args:
             value: Value to set for the userId property.
         """

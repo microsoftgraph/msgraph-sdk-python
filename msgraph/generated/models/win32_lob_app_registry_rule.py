@@ -79,12 +79,12 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "check32_bit_on64_system": lambda n : setattr(self, 'check32_bit_on64_system', n.get_bool_value()),
-            "comparison_value": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
-            "key_path": lambda n : setattr(self, 'key_path', n.get_str_value()),
-            "operation_type": lambda n : setattr(self, 'operation_type', n.get_enum_value(win32_lob_app_registry_rule_operation_type.Win32LobAppRegistryRuleOperationType)),
+            "check32BitOn64System": lambda n : setattr(self, 'check32_bit_on64_system', n.get_bool_value()),
+            "comparisonValue": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
+            "keyPath": lambda n : setattr(self, 'key_path', n.get_str_value()),
+            "operationType": lambda n : setattr(self, 'operation_type', n.get_enum_value(win32_lob_app_registry_rule_operation_type.Win32LobAppRegistryRuleOperationType)),
             "operator": lambda n : setattr(self, 'operator', n.get_enum_value(win32_lob_app_rule_operator.Win32LobAppRuleOperator)),
-            "value_name": lambda n : setattr(self, 'value_name', n.get_str_value()),
+            "valueName": lambda n : setattr(self, 'value_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

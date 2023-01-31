@@ -30,7 +30,6 @@ class AlertTrigger(AdditionalDataHolder, Parsable):
 
         # Name of the property serving as a detection trigger.
         self._name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Type of the property in the key:value pair for interpretation. For example, String, Boolean etc.
         self._type: Optional[str] = None
@@ -82,7 +81,7 @@ class AlertTrigger(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -90,7 +89,7 @@ class AlertTrigger(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

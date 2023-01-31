@@ -52,7 +52,6 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
         self._content_date_time: Optional[datetime] = None
         # IP address of the user for the training event.
         self._ip_address: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The operating system, platform, and device details of the user for the training event.
         self._os_platform_device_details: Optional[str] = None
@@ -95,11 +94,11 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
         """
         fields = {
             "browser": lambda n : setattr(self, 'browser', n.get_str_value()),
-            "content_date_time": lambda n : setattr(self, 'content_date_time', n.get_datetime_value()),
-            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "contentDateTime": lambda n : setattr(self, 'content_date_time', n.get_datetime_value()),
+            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "os_platform_device_details": lambda n : setattr(self, 'os_platform_device_details', n.get_str_value()),
-            "potential_score_impact": lambda n : setattr(self, 'potential_score_impact', n.get_float_value()),
+            "osPlatformDeviceDetails": lambda n : setattr(self, 'os_platform_device_details', n.get_str_value()),
+            "potentialScoreImpact": lambda n : setattr(self, 'potential_score_impact', n.get_float_value()),
         }
         return fields
     
@@ -123,7 +122,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -131,7 +130,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

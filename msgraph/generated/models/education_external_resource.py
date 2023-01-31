@@ -33,7 +33,7 @@ class EducationExternalResource(education_resource.EducationResource):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

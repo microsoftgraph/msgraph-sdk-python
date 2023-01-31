@@ -19,7 +19,6 @@ class Onenote(entity.Entity):
         super().__init__()
         # The collection of OneNote notebooks that are owned by the user or group. Read-only. Nullable.
         self._notebooks: Optional[List[notebook.Notebook]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The status of OneNote operations. Getting an operations collection is not supported, but you can get the status of long-running operations if the Operation-Location header is returned in the response. Read-only. Nullable.
         self._operations: Optional[List[onenote_operation.OnenoteOperation]] = None
@@ -54,7 +53,7 @@ class Onenote(entity.Entity):
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(onenote_operation.OnenoteOperation)),
             "pages": lambda n : setattr(self, 'pages', n.get_collection_of_object_values(onenote_page.OnenotePage)),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(onenote_resource.OnenoteResource)),
-            "section_groups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(section_group.SectionGroup)),
+            "sectionGroups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(section_group.SectionGroup)),
             "sections": lambda n : setattr(self, 'sections', n.get_collection_of_object_values(onenote_section.OnenoteSection)),
         }
         super_fields = super().get_field_deserializers()

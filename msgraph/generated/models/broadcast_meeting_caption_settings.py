@@ -30,7 +30,6 @@ class BroadcastMeetingCaptionSettings(AdditionalDataHolder, Parsable):
 
         # Indicates whether captions are enabled for this Teams live event.
         self._is_caption_enabled: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The spoken language.
         self._spoken_language: Optional[str] = None
@@ -55,10 +54,10 @@ class BroadcastMeetingCaptionSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_caption_enabled": lambda n : setattr(self, 'is_caption_enabled', n.get_bool_value()),
+            "isCaptionEnabled": lambda n : setattr(self, 'is_caption_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "spoken_language": lambda n : setattr(self, 'spoken_language', n.get_str_value()),
-            "translation_languages": lambda n : setattr(self, 'translation_languages', n.get_collection_of_primitive_values(str)),
+            "spokenLanguage": lambda n : setattr(self, 'spoken_language', n.get_str_value()),
+            "translationLanguages": lambda n : setattr(self, 'translation_languages', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -82,7 +81,7 @@ class BroadcastMeetingCaptionSettings(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -90,7 +89,7 @@ class BroadcastMeetingCaptionSettings(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

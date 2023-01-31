@@ -40,10 +40,10 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "recipient_action_date_time": lambda n : setattr(self, 'recipient_action_date_time', n.get_datetime_value()),
-            "recipient_action_message": lambda n : setattr(self, 'recipient_action_message', n.get_str_value()),
-            "recipient_user_id": lambda n : setattr(self, 'recipient_user_id', n.get_str_value()),
-            "sender_shift_id": lambda n : setattr(self, 'sender_shift_id', n.get_str_value()),
+            "recipientActionDateTime": lambda n : setattr(self, 'recipient_action_date_time', n.get_datetime_value()),
+            "recipientActionMessage": lambda n : setattr(self, 'recipient_action_message', n.get_str_value()),
+            "recipientUserId": lambda n : setattr(self, 'recipient_user_id', n.get_str_value()),
+            "senderShiftId": lambda n : setattr(self, 'sender_shift_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

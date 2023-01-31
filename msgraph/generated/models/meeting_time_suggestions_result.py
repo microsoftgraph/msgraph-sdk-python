@@ -34,7 +34,6 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
         self._empty_suggestions_reason: Optional[str] = None
         # An array of meeting suggestions.
         self._meeting_time_suggestions: Optional[List[meeting_time_suggestion.MeetingTimeSuggestion]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -72,8 +71,8 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "empty_suggestions_reason": lambda n : setattr(self, 'empty_suggestions_reason', n.get_str_value()),
-            "meeting_time_suggestions": lambda n : setattr(self, 'meeting_time_suggestions', n.get_collection_of_object_values(meeting_time_suggestion.MeetingTimeSuggestion)),
+            "emptySuggestionsReason": lambda n : setattr(self, 'empty_suggestions_reason', n.get_str_value()),
+            "meetingTimeSuggestions": lambda n : setattr(self, 'meeting_time_suggestions', n.get_collection_of_object_values(meeting_time_suggestion.MeetingTimeSuggestion)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -98,7 +97,7 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -106,7 +105,7 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

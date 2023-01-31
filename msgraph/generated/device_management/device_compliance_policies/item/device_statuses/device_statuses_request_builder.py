@@ -66,7 +66,7 @@ class DeviceStatusesRequestBuilder():
         """
         Create new navigation property to deviceStatuses for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[device_compliance_device_status.DeviceComplianceDeviceStatus]
         """
@@ -105,7 +105,7 @@ class DeviceStatusesRequestBuilder():
         """
         Create new navigation property to deviceStatuses for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

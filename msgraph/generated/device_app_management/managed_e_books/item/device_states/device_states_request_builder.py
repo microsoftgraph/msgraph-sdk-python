@@ -66,7 +66,7 @@ class DeviceStatesRequestBuilder():
         """
         Create new navigation property to deviceStates for deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[device_install_state.DeviceInstallState]
         """
@@ -105,7 +105,7 @@ class DeviceStatesRequestBuilder():
         """
         Create new navigation property to deviceStates for deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

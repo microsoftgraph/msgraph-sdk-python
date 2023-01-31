@@ -57,7 +57,6 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         self._is_approver_justification_required: Optional[bool] = None
         # Indicates whether escalation if enabled.
         self._is_escalation_enabled: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The primary approvers of this stage.
         self._primary_approvers: Optional[List[subject_set.SubjectSet]] = None
@@ -114,13 +113,13 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "approval_stage_time_out_in_days": lambda n : setattr(self, 'approval_stage_time_out_in_days', n.get_int_value()),
-            "escalation_approvers": lambda n : setattr(self, 'escalation_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
-            "escalation_time_in_minutes": lambda n : setattr(self, 'escalation_time_in_minutes', n.get_int_value()),
-            "is_approver_justification_required": lambda n : setattr(self, 'is_approver_justification_required', n.get_bool_value()),
-            "is_escalation_enabled": lambda n : setattr(self, 'is_escalation_enabled', n.get_bool_value()),
+            "approvalStageTimeOutInDays": lambda n : setattr(self, 'approval_stage_time_out_in_days', n.get_int_value()),
+            "escalationApprovers": lambda n : setattr(self, 'escalation_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "escalationTimeInMinutes": lambda n : setattr(self, 'escalation_time_in_minutes', n.get_int_value()),
+            "isApproverJustificationRequired": lambda n : setattr(self, 'is_approver_justification_required', n.get_bool_value()),
+            "isEscalationEnabled": lambda n : setattr(self, 'is_escalation_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "primary_approvers": lambda n : setattr(self, 'primary_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "primaryApprovers": lambda n : setattr(self, 'primary_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
         }
         return fields
     
@@ -161,7 +160,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -169,7 +168,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

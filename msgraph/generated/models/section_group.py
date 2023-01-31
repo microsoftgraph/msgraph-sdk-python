@@ -45,12 +45,12 @@ class SectionGroup(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "parent_notebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(notebook.Notebook)),
-            "parent_section_group": lambda n : setattr(self, 'parent_section_group', n.get_object_value(SectionGroup)),
-            "section_groups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(SectionGroup)),
-            "section_groups_url": lambda n : setattr(self, 'section_groups_url', n.get_str_value()),
+            "parentNotebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(notebook.Notebook)),
+            "parentSectionGroup": lambda n : setattr(self, 'parent_section_group', n.get_object_value(SectionGroup)),
+            "sectionGroups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(SectionGroup)),
+            "sectionGroupsUrl": lambda n : setattr(self, 'section_groups_url', n.get_str_value()),
             "sections": lambda n : setattr(self, 'sections', n.get_collection_of_object_values(onenote_section.OnenoteSection)),
-            "sections_url": lambda n : setattr(self, 'sections_url', n.get_str_value()),
+            "sectionsUrl": lambda n : setattr(self, 'sections_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

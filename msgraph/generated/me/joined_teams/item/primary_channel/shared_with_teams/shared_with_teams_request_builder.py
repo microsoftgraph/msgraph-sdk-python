@@ -66,7 +66,7 @@ class SharedWithTeamsRequestBuilder():
         """
         Create new navigation property to sharedWithTeams for me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo]
         """
@@ -105,7 +105,7 @@ class SharedWithTeamsRequestBuilder():
         """
         Create new navigation property to sharedWithTeams for me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

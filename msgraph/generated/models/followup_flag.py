@@ -54,7 +54,6 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         self._due_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
         # The status for follow-up for an item. Possible values are notFlagged, complete, and flagged.
         self._flag_status: Optional[followup_flag_status.FollowupFlagStatus] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The date and time that the follow-up is to begin.
         self._start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
@@ -111,18 +110,18 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "due_date_time": lambda n : setattr(self, 'due_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "flag_status": lambda n : setattr(self, 'flag_status', n.get_enum_value(followup_flag_status.FollowupFlagStatus)),
+            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "dueDateTime": lambda n : setattr(self, 'due_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "flagStatus": lambda n : setattr(self, 'flag_status', n.get_enum_value(followup_flag_status.FollowupFlagStatus)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -130,7 +129,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

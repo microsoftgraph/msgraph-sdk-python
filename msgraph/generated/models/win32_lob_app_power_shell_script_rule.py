@@ -101,14 +101,14 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "comparison_value": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "enforce_signature_check": lambda n : setattr(self, 'enforce_signature_check', n.get_bool_value()),
-            "operation_type": lambda n : setattr(self, 'operation_type', n.get_enum_value(win32_lob_app_power_shell_script_rule_operation_type.Win32LobAppPowerShellScriptRuleOperationType)),
+            "comparisonValue": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "enforceSignatureCheck": lambda n : setattr(self, 'enforce_signature_check', n.get_bool_value()),
+            "operationType": lambda n : setattr(self, 'operation_type', n.get_enum_value(win32_lob_app_power_shell_script_rule_operation_type.Win32LobAppPowerShellScriptRuleOperationType)),
             "operator": lambda n : setattr(self, 'operator', n.get_enum_value(win32_lob_app_rule_operator.Win32LobAppRuleOperator)),
-            "run_as32_bit": lambda n : setattr(self, 'run_as32_bit', n.get_bool_value()),
-            "run_as_account": lambda n : setattr(self, 'run_as_account', n.get_enum_value(run_as_account_type.RunAsAccountType)),
-            "script_content": lambda n : setattr(self, 'script_content', n.get_str_value()),
+            "runAs32Bit": lambda n : setattr(self, 'run_as32_bit', n.get_bool_value()),
+            "runAsAccount": lambda n : setattr(self, 'run_as_account', n.get_enum_value(run_as_account_type.RunAsAccountType)),
+            "scriptContent": lambda n : setattr(self, 'script_content', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

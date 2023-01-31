@@ -11,7 +11,6 @@ class RecordOperation(comms_operation.CommsOperation):
         Instantiates a new RecordOperation and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The access token required to retrieve the recording.
         self._recording_access_token: Optional[str] = None
@@ -36,8 +35,8 @@ class RecordOperation(comms_operation.CommsOperation):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "recording_access_token": lambda n : setattr(self, 'recording_access_token', n.get_str_value()),
-            "recording_location": lambda n : setattr(self, 'recording_location', n.get_str_value()),
+            "recordingAccessToken": lambda n : setattr(self, 'recording_access_token', n.get_str_value()),
+            "recordingLocation": lambda n : setattr(self, 'recording_location', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -12,7 +12,6 @@ class AndroidWorkProfileCompliancePolicyCollectionResponse(base_collection_pagin
         Instantiates a new AndroidWorkProfileCompliancePolicyCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[android_work_profile_compliance_policy.AndroidWorkProfileCompliancePolicy]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class AndroidWorkProfileCompliancePolicyCollectionResponse(base_collection_pagin
     @property
     def value(self,) -> Optional[List[android_work_profile_compliance_policy.AndroidWorkProfileCompliancePolicy]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[android_work_profile_compliance_policy.AndroidWorkProfileCompliancePolicy]]
         """
         return self._value
@@ -61,7 +60,7 @@ class AndroidWorkProfileCompliancePolicyCollectionResponse(base_collection_pagin
     @value.setter
     def value(self,value: Optional[List[android_work_profile_compliance_policy.AndroidWorkProfileCompliancePolicy]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

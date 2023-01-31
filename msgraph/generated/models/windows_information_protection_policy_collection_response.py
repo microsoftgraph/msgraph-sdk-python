@@ -12,7 +12,6 @@ class WindowsInformationProtectionPolicyCollectionResponse(base_collection_pagin
         Instantiates a new WindowsInformationProtectionPolicyCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[windows_information_protection_policy.WindowsInformationProtectionPolicy]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class WindowsInformationProtectionPolicyCollectionResponse(base_collection_pagin
     @property
     def value(self,) -> Optional[List[windows_information_protection_policy.WindowsInformationProtectionPolicy]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[windows_information_protection_policy.WindowsInformationProtectionPolicy]]
         """
         return self._value
@@ -61,7 +60,7 @@ class WindowsInformationProtectionPolicyCollectionResponse(base_collection_pagin
     @value.setter
     def value(self,value: Optional[List[windows_information_protection_policy.WindowsInformationProtectionPolicy]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

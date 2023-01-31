@@ -14,7 +14,6 @@ class OnenoteOperation(operation.Operation):
         super().__init__()
         # The error returned by the operation.
         self._error: Optional[onenote_operation_error.OnenoteOperationError] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The operation percent complete if the operation is still in running status.
         self._percent_complete: Optional[str] = None
@@ -59,9 +58,9 @@ class OnenoteOperation(operation.Operation):
         """
         fields = {
             "error": lambda n : setattr(self, 'error', n.get_object_value(onenote_operation_error.OnenoteOperationError)),
-            "percent_complete": lambda n : setattr(self, 'percent_complete', n.get_str_value()),
-            "resource_id": lambda n : setattr(self, 'resource_id', n.get_str_value()),
-            "resource_location": lambda n : setattr(self, 'resource_location', n.get_str_value()),
+            "percentComplete": lambda n : setattr(self, 'percent_complete', n.get_str_value()),
+            "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
+            "resourceLocation": lambda n : setattr(self, 'resource_location', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -74,7 +74,7 @@ class LastMessagePreviewRequestBuilder():
         """
         Update the navigation property lastMessagePreview in users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[chat_message_info.ChatMessageInfo]
         """
@@ -129,7 +129,7 @@ class LastMessagePreviewRequestBuilder():
         """
         Update the navigation property lastMessagePreview in users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

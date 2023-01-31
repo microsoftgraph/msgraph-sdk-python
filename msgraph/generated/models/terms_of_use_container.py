@@ -51,7 +51,6 @@ class TermsOfUseContainer(entity.Entity):
         self._agreement_acceptances: Optional[List[agreement_acceptance.AgreementAcceptance]] = None
         # Represents a tenant's customizable terms of use agreement that's created and managed with Azure Active Directory (Azure AD).
         self._agreements: Optional[List[agreement.Agreement]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -72,7 +71,7 @@ class TermsOfUseContainer(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "agreement_acceptances": lambda n : setattr(self, 'agreement_acceptances', n.get_collection_of_object_values(agreement_acceptance.AgreementAcceptance)),
+            "agreementAcceptances": lambda n : setattr(self, 'agreement_acceptances', n.get_collection_of_object_values(agreement_acceptance.AgreementAcceptance)),
             "agreements": lambda n : setattr(self, 'agreements', n.get_collection_of_object_values(agreement.Agreement)),
         }
         super_fields = super().get_field_deserializers()

@@ -16,7 +16,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def access_assignments(self,) -> Optional[List[delegated_admin_access_assignment.DelegatedAdminAccessAssignment]]:
         """
-        Gets the accessAssignments property value. The accessAssignments property
+        Gets the accessAssignments property value. 
         Returns: Optional[List[delegated_admin_access_assignment.DelegatedAdminAccessAssignment]]
         """
         return self._access_assignments
@@ -24,7 +24,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @access_assignments.setter
     def access_assignments(self,value: Optional[List[delegated_admin_access_assignment.DelegatedAdminAccessAssignment]] = None) -> None:
         """
-        Sets the accessAssignments property value. The accessAssignments property
+        Sets the accessAssignments property value. 
         Args:
             value: Value to set for the accessAssignments property.
         """
@@ -33,7 +33,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def access_details(self,) -> Optional[delegated_admin_access_details.DelegatedAdminAccessDetails]:
         """
-        Gets the accessDetails property value. The accessDetails property
+        Gets the accessDetails property value. 
         Returns: Optional[delegated_admin_access_details.DelegatedAdminAccessDetails]
         """
         return self._access_details
@@ -41,7 +41,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @access_details.setter
     def access_details(self,value: Optional[delegated_admin_access_details.DelegatedAdminAccessDetails] = None) -> None:
         """
-        Sets the accessDetails property value. The accessDetails property
+        Sets the accessDetails property value. 
         Args:
             value: Value to set for the accessDetails property.
         """
@@ -50,7 +50,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def activated_date_time(self,) -> Optional[datetime]:
         """
-        Gets the activatedDateTime property value. The activatedDateTime property
+        Gets the activatedDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._activated_date_time
@@ -58,7 +58,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @activated_date_time.setter
     def activated_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the activatedDateTime property value. The activatedDateTime property
+        Sets the activatedDateTime property value. 
         Args:
             value: Value to set for the activatedDateTime property.
         """
@@ -69,37 +69,24 @@ class DelegatedAdminRelationship(entity.Entity):
         Instantiates a new DelegatedAdminRelationship and sets the default values.
         """
         super().__init__()
-        # The accessAssignments property
         self._access_assignments: Optional[List[delegated_admin_access_assignment.DelegatedAdminAccessAssignment]] = None
-        # The accessDetails property
         self._access_details: Optional[delegated_admin_access_details.DelegatedAdminAccessDetails] = None
-        # The activatedDateTime property
         self._activated_date_time: Optional[datetime] = None
-        # The createdDateTime property
         self._created_date_time: Optional[datetime] = None
-        # The customer property
         self._customer: Optional[delegated_admin_relationship_customer_participant.DelegatedAdminRelationshipCustomerParticipant] = None
-        # The displayName property
         self._display_name: Optional[str] = None
-        # The duration property
         self._duration: Optional[Timedelta] = None
-        # The endDateTime property
         self._end_date_time: Optional[datetime] = None
-        # The lastModifiedDateTime property
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The operations property
         self._operations: Optional[List[delegated_admin_relationship_operation.DelegatedAdminRelationshipOperation]] = None
-        # The requests property
         self._requests: Optional[List[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]] = None
-        # The status property
         self._status: Optional[delegated_admin_relationship_status.DelegatedAdminRelationshipStatus] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
-        Gets the createdDateTime property value. The createdDateTime property
+        Gets the createdDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._created_date_time
@@ -107,7 +94,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the createdDateTime property value. The createdDateTime property
+        Sets the createdDateTime property value. 
         Args:
             value: Value to set for the createdDateTime property.
         """
@@ -128,7 +115,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def customer(self,) -> Optional[delegated_admin_relationship_customer_participant.DelegatedAdminRelationshipCustomerParticipant]:
         """
-        Gets the customer property value. The customer property
+        Gets the customer property value. 
         Returns: Optional[delegated_admin_relationship_customer_participant.DelegatedAdminRelationshipCustomerParticipant]
         """
         return self._customer
@@ -136,7 +123,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @customer.setter
     def customer(self,value: Optional[delegated_admin_relationship_customer_participant.DelegatedAdminRelationshipCustomerParticipant] = None) -> None:
         """
-        Sets the customer property value. The customer property
+        Sets the customer property value. 
         Args:
             value: Value to set for the customer property.
         """
@@ -145,7 +132,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def display_name(self,) -> Optional[str]:
         """
-        Gets the displayName property value. The displayName property
+        Gets the displayName property value. 
         Returns: Optional[str]
         """
         return self._display_name
@@ -153,7 +140,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the displayName property value. The displayName property
+        Sets the displayName property value. 
         Args:
             value: Value to set for the displayName property.
         """
@@ -162,7 +149,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def duration(self,) -> Optional[Timedelta]:
         """
-        Gets the duration property value. The duration property
+        Gets the duration property value. 
         Returns: Optional[Timedelta]
         """
         return self._duration
@@ -170,7 +157,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @duration.setter
     def duration(self,value: Optional[Timedelta] = None) -> None:
         """
-        Sets the duration property value. The duration property
+        Sets the duration property value. 
         Args:
             value: Value to set for the duration property.
         """
@@ -179,7 +166,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def end_date_time(self,) -> Optional[datetime]:
         """
-        Gets the endDateTime property value. The endDateTime property
+        Gets the endDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._end_date_time
@@ -187,7 +174,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @end_date_time.setter
     def end_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the endDateTime property value. The endDateTime property
+        Sets the endDateTime property value. 
         Args:
             value: Value to set for the endDateTime property.
         """
@@ -199,15 +186,15 @@ class DelegatedAdminRelationship(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_assignments": lambda n : setattr(self, 'access_assignments', n.get_collection_of_object_values(delegated_admin_access_assignment.DelegatedAdminAccessAssignment)),
-            "access_details": lambda n : setattr(self, 'access_details', n.get_object_value(delegated_admin_access_details.DelegatedAdminAccessDetails)),
-            "activated_date_time": lambda n : setattr(self, 'activated_date_time', n.get_datetime_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "accessAssignments": lambda n : setattr(self, 'access_assignments', n.get_collection_of_object_values(delegated_admin_access_assignment.DelegatedAdminAccessAssignment)),
+            "accessDetails": lambda n : setattr(self, 'access_details', n.get_object_value(delegated_admin_access_details.DelegatedAdminAccessDetails)),
+            "activatedDateTime": lambda n : setattr(self, 'activated_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "customer": lambda n : setattr(self, 'customer', n.get_object_value(delegated_admin_relationship_customer_participant.DelegatedAdminRelationshipCustomerParticipant)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "duration": lambda n : setattr(self, 'duration', n.get_object_value(Timedelta)),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(delegated_admin_relationship_operation.DelegatedAdminRelationshipOperation)),
             "requests": lambda n : setattr(self, 'requests', n.get_collection_of_object_values(delegated_admin_relationship_request.DelegatedAdminRelationshipRequest)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(delegated_admin_relationship_status.DelegatedAdminRelationshipStatus)),
@@ -219,7 +206,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
-        Gets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Gets the lastModifiedDateTime property value. 
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
@@ -227,7 +214,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Sets the lastModifiedDateTime property value. 
         Args:
             value: Value to set for the lastModifiedDateTime property.
         """
@@ -236,7 +223,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def operations(self,) -> Optional[List[delegated_admin_relationship_operation.DelegatedAdminRelationshipOperation]]:
         """
-        Gets the operations property value. The operations property
+        Gets the operations property value. 
         Returns: Optional[List[delegated_admin_relationship_operation.DelegatedAdminRelationshipOperation]]
         """
         return self._operations
@@ -244,7 +231,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @operations.setter
     def operations(self,value: Optional[List[delegated_admin_relationship_operation.DelegatedAdminRelationshipOperation]] = None) -> None:
         """
-        Sets the operations property value. The operations property
+        Sets the operations property value. 
         Args:
             value: Value to set for the operations property.
         """
@@ -253,7 +240,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def requests(self,) -> Optional[List[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]]:
         """
-        Gets the requests property value. The requests property
+        Gets the requests property value. 
         Returns: Optional[List[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]]
         """
         return self._requests
@@ -261,7 +248,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @requests.setter
     def requests(self,value: Optional[List[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]] = None) -> None:
         """
-        Sets the requests property value. The requests property
+        Sets the requests property value. 
         Args:
             value: Value to set for the requests property.
         """
@@ -292,7 +279,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def status(self,) -> Optional[delegated_admin_relationship_status.DelegatedAdminRelationshipStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[delegated_admin_relationship_status.DelegatedAdminRelationshipStatus]
         """
         return self._status
@@ -300,7 +287,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @status.setter
     def status(self,value: Optional[delegated_admin_relationship_status.DelegatedAdminRelationshipStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

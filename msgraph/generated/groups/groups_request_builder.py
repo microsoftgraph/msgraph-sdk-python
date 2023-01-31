@@ -11,10 +11,10 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.groups.count.count_request_builder')
-delta_request_builder = lazy_import('msgraph.generated.groups.delta.delta_request_builder')
-get_available_extension_properties_request_builder = lazy_import('msgraph.generated.groups.get_available_extension_properties.get_available_extension_properties_request_builder')
-get_by_ids_request_builder = lazy_import('msgraph.generated.groups.get_by_ids.get_by_ids_request_builder')
-validate_properties_request_builder = lazy_import('msgraph.generated.groups.validate_properties.validate_properties_request_builder')
+delta_request_builder = lazy_import('msgraph.generated.groups.microsoft_graph_delta.delta_request_builder')
+get_available_extension_properties_request_builder = lazy_import('msgraph.generated.groups.microsoft_graph_get_available_extension_properties.get_available_extension_properties_request_builder')
+get_by_ids_request_builder = lazy_import('msgraph.generated.groups.microsoft_graph_get_by_ids.get_by_ids_request_builder')
+validate_properties_request_builder = lazy_import('msgraph.generated.groups.microsoft_graph_validate_properties.validate_properties_request_builder')
 group = lazy_import('msgraph.generated.models.group')
 group_collection_response = lazy_import('msgraph.generated.models.group_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -31,21 +31,28 @@ class GroupsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
+    def microsoft_graph_delta(self) -> delta_request_builder.DeltaRequestBuilder:
+        """
+        Provides operations to call the delta method.
+        """
+        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
         """
         Provides operations to call the getAvailableExtensionProperties method.
         """
         return get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
+    def microsoft_graph_get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
         """
         Provides operations to call the getByIds method.
         """
         return get_by_ids_request_builder.GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
+    def microsoft_graph_validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
         """
         Provides operations to call the validateProperties method.
         """
@@ -69,13 +76,6 @@ class GroupsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def delta(self,) -> delta_request_builder.DeltaRequestBuilder:
-        """
-        Provides operations to call the delta method.
-        Returns: delta_request_builder.DeltaRequestBuilder
-        """
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
-    
     async def get(self,request_configuration: Optional[GroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[group_collection_response.GroupCollectionResponse]:
         """
         List all the groups available in an organization, excluding dynamic distribution groups. To retrieve dynamic distribution groups, use the Exchange admin center. This operation returns by default only a subset of the properties for each group. These default properties are noted in the Properties section. To get properties that are _not_ returned by default, do a GET operation for the group and specify the properties in a `$select` OData query option. The **hasMembersWithLicenseErrors** and **isArchived** properties are an exception and are not returned in the `$select` query.
@@ -98,7 +98,7 @@ class GroupsRequestBuilder():
         """
         Create a new group as specified in the request body. You can create the following types of groups: This operation returns by default only a subset of the properties for each group. These default properties are noted in the Properties section. To get properties that are _not_ returned by default, do a GET operation and specify the properties in a `$select` OData query option.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[group.Group]
         """
@@ -137,7 +137,7 @@ class GroupsRequestBuilder():
         """
         Create a new group as specified in the request body. You can create the following types of groups: This operation returns by default only a subset of the properties for each group. These default properties are noted in the Properties section. To get properties that are _not_ returned by default, do a GET operation and specify the properties in a `$select` OData query option.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

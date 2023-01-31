@@ -20,7 +20,6 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
         self._file: Optional[bytes] = None
         # SHA256 hash of the file
         self._file_hash: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Version of the entity.
         self._version: Optional[str] = None
@@ -94,9 +93,9 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "file": lambda n : setattr(self, 'file', n.get_bytes_value()),
-            "file_hash": lambda n : setattr(self, 'file_hash', n.get_str_value()),
+            "fileHash": lambda n : setattr(self, 'file_hash', n.get_str_value()),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

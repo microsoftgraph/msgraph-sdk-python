@@ -12,11 +12,8 @@ class IdentityUserFlow(entity.Entity):
         Instantiates a new IdentityUserFlow and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The userFlowType property
         self._user_flow_type: Optional[user_flow_type.UserFlowType] = None
-        # The userFlowTypeVersion property
         self._user_flow_type_version: Optional[float] = None
     
     @staticmethod
@@ -37,8 +34,8 @@ class IdentityUserFlow(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "user_flow_type": lambda n : setattr(self, 'user_flow_type', n.get_enum_value(user_flow_type.UserFlowType)),
-            "user_flow_type_version": lambda n : setattr(self, 'user_flow_type_version', n.get_float_value()),
+            "userFlowType": lambda n : setattr(self, 'user_flow_type', n.get_enum_value(user_flow_type.UserFlowType)),
+            "userFlowTypeVersion": lambda n : setattr(self, 'user_flow_type_version', n.get_float_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -59,7 +56,7 @@ class IdentityUserFlow(entity.Entity):
     @property
     def user_flow_type(self,) -> Optional[user_flow_type.UserFlowType]:
         """
-        Gets the userFlowType property value. The userFlowType property
+        Gets the userFlowType property value. 
         Returns: Optional[user_flow_type.UserFlowType]
         """
         return self._user_flow_type
@@ -67,7 +64,7 @@ class IdentityUserFlow(entity.Entity):
     @user_flow_type.setter
     def user_flow_type(self,value: Optional[user_flow_type.UserFlowType] = None) -> None:
         """
-        Sets the userFlowType property value. The userFlowType property
+        Sets the userFlowType property value. 
         Args:
             value: Value to set for the userFlowType property.
         """
@@ -76,7 +73,7 @@ class IdentityUserFlow(entity.Entity):
     @property
     def user_flow_type_version(self,) -> Optional[float]:
         """
-        Gets the userFlowTypeVersion property value. The userFlowTypeVersion property
+        Gets the userFlowTypeVersion property value. 
         Returns: Optional[float]
         """
         return self._user_flow_type_version
@@ -84,7 +81,7 @@ class IdentityUserFlow(entity.Entity):
     @user_flow_type_version.setter
     def user_flow_type_version(self,value: Optional[float] = None) -> None:
         """
-        Sets the userFlowTypeVersion property value. The userFlowTypeVersion property
+        Sets the userFlowTypeVersion property value. 
         Args:
             value: Value to set for the userFlowTypeVersion property.
         """

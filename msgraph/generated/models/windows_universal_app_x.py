@@ -104,15 +104,15 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "applicable_architectures": lambda n : setattr(self, 'applicable_architectures', n.get_enum_value(windows_architecture.WindowsArchitecture)),
-            "applicable_device_types": lambda n : setattr(self, 'applicable_device_types', n.get_enum_value(windows_device_type.WindowsDeviceType)),
-            "committed_contained_apps": lambda n : setattr(self, 'committed_contained_apps', n.get_collection_of_object_values(mobile_contained_app.MobileContainedApp)),
-            "identity_name": lambda n : setattr(self, 'identity_name', n.get_str_value()),
-            "identity_publisher_hash": lambda n : setattr(self, 'identity_publisher_hash', n.get_str_value()),
-            "identity_resource_identifier": lambda n : setattr(self, 'identity_resource_identifier', n.get_str_value()),
-            "identity_version": lambda n : setattr(self, 'identity_version', n.get_str_value()),
-            "is_bundle": lambda n : setattr(self, 'is_bundle', n.get_bool_value()),
-            "minimum_supported_operating_system": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(windows_minimum_operating_system.WindowsMinimumOperatingSystem)),
+            "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_enum_value(windows_architecture.WindowsArchitecture)),
+            "applicableDeviceTypes": lambda n : setattr(self, 'applicable_device_types', n.get_enum_value(windows_device_type.WindowsDeviceType)),
+            "committedContainedApps": lambda n : setattr(self, 'committed_contained_apps', n.get_collection_of_object_values(mobile_contained_app.MobileContainedApp)),
+            "identityName": lambda n : setattr(self, 'identity_name', n.get_str_value()),
+            "identityPublisherHash": lambda n : setattr(self, 'identity_publisher_hash', n.get_str_value()),
+            "identityResourceIdentifier": lambda n : setattr(self, 'identity_resource_identifier', n.get_str_value()),
+            "identityVersion": lambda n : setattr(self, 'identity_version', n.get_str_value()),
+            "isBundle": lambda n : setattr(self, 'is_bundle', n.get_bool_value()),
+            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(windows_minimum_operating_system.WindowsMinimumOperatingSystem)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

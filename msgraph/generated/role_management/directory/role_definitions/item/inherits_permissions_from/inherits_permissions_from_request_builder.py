@@ -66,7 +66,7 @@ class InheritsPermissionsFromRequestBuilder():
         """
         Create new navigation property to inheritsPermissionsFrom for roleManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[unified_role_definition.UnifiedRoleDefinition]
         """
@@ -105,7 +105,7 @@ class InheritsPermissionsFromRequestBuilder():
         """
         Create new navigation property to inheritsPermissionsFrom for roleManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -115,22 +115,22 @@ class Windows10MobileCompliancePolicy(device_compliance_policy.DeviceComplianceP
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "bit_locker_enabled": lambda n : setattr(self, 'bit_locker_enabled', n.get_bool_value()),
-            "code_integrity_enabled": lambda n : setattr(self, 'code_integrity_enabled', n.get_bool_value()),
-            "early_launch_anti_malware_driver_enabled": lambda n : setattr(self, 'early_launch_anti_malware_driver_enabled', n.get_bool_value()),
-            "os_maximum_version": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
-            "os_minimum_version": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
-            "password_block_simple": lambda n : setattr(self, 'password_block_simple', n.get_bool_value()),
-            "password_expiration_days": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
-            "password_minimum_character_set_count": lambda n : setattr(self, 'password_minimum_character_set_count', n.get_int_value()),
-            "password_minimum_length": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
-            "password_minutes_of_inactivity_before_lock": lambda n : setattr(self, 'password_minutes_of_inactivity_before_lock', n.get_int_value()),
-            "password_previous_password_block_count": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
-            "password_required": lambda n : setattr(self, 'password_required', n.get_bool_value()),
-            "password_required_type": lambda n : setattr(self, 'password_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
-            "password_require_to_unlock_from_idle": lambda n : setattr(self, 'password_require_to_unlock_from_idle', n.get_bool_value()),
-            "secure_boot_enabled": lambda n : setattr(self, 'secure_boot_enabled', n.get_bool_value()),
-            "storage_require_encryption": lambda n : setattr(self, 'storage_require_encryption', n.get_bool_value()),
+            "bitLockerEnabled": lambda n : setattr(self, 'bit_locker_enabled', n.get_bool_value()),
+            "codeIntegrityEnabled": lambda n : setattr(self, 'code_integrity_enabled', n.get_bool_value()),
+            "earlyLaunchAntiMalwareDriverEnabled": lambda n : setattr(self, 'early_launch_anti_malware_driver_enabled', n.get_bool_value()),
+            "osMaximumVersion": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
+            "osMinimumVersion": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
+            "passwordBlockSimple": lambda n : setattr(self, 'password_block_simple', n.get_bool_value()),
+            "passwordExpirationDays": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
+            "passwordMinimumCharacterSetCount": lambda n : setattr(self, 'password_minimum_character_set_count', n.get_int_value()),
+            "passwordMinimumLength": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
+            "passwordMinutesOfInactivityBeforeLock": lambda n : setattr(self, 'password_minutes_of_inactivity_before_lock', n.get_int_value()),
+            "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
+            "passwordRequired": lambda n : setattr(self, 'password_required', n.get_bool_value()),
+            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
+            "passwordRequireToUnlockFromIdle": lambda n : setattr(self, 'password_require_to_unlock_from_idle', n.get_bool_value()),
+            "secureBootEnabled": lambda n : setattr(self, 'secure_boot_enabled', n.get_bool_value()),
+            "storageRequireEncryption": lambda n : setattr(self, 'storage_require_encryption', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

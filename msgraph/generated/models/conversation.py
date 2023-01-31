@@ -17,7 +17,6 @@ class Conversation(entity.Entity):
         self._has_attachments: Optional[bool] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         self._last_delivered_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # A short summary from the body of the latest post in this conversation. Supports $filter (eq, ne, le, ge).
         self._preview: Optional[str] = None
@@ -46,12 +45,12 @@ class Conversation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
-            "last_delivered_date_time": lambda n : setattr(self, 'last_delivered_date_time', n.get_datetime_value()),
+            "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
+            "lastDeliveredDateTime": lambda n : setattr(self, 'last_delivered_date_time', n.get_datetime_value()),
             "preview": lambda n : setattr(self, 'preview', n.get_str_value()),
             "threads": lambda n : setattr(self, 'threads', n.get_collection_of_object_values(conversation_thread.ConversationThread)),
             "topic": lambda n : setattr(self, 'topic', n.get_str_value()),
-            "unique_senders": lambda n : setattr(self, 'unique_senders', n.get_collection_of_primitive_values(str)),
+            "uniqueSenders": lambda n : setattr(self, 'unique_senders', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

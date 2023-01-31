@@ -55,7 +55,6 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         self._device_account_email: Optional[str] = None
         # Not yet documented
         self._exchange_server: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Not yet documented
         self._password_rotation_enabled: Optional[bool] = None
@@ -131,20 +130,20 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "calendar_sync_enabled": lambda n : setattr(self, 'calendar_sync_enabled', n.get_bool_value()),
-            "device_account": lambda n : setattr(self, 'device_account', n.get_object_value(windows_device_account.WindowsDeviceAccount)),
-            "device_account_email": lambda n : setattr(self, 'device_account_email', n.get_str_value()),
-            "exchange_server": lambda n : setattr(self, 'exchange_server', n.get_str_value()),
+            "calendarSyncEnabled": lambda n : setattr(self, 'calendar_sync_enabled', n.get_bool_value()),
+            "deviceAccount": lambda n : setattr(self, 'device_account', n.get_object_value(windows_device_account.WindowsDeviceAccount)),
+            "deviceAccountEmail": lambda n : setattr(self, 'device_account_email', n.get_str_value()),
+            "exchangeServer": lambda n : setattr(self, 'exchange_server', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "password_rotation_enabled": lambda n : setattr(self, 'password_rotation_enabled', n.get_bool_value()),
-            "session_initiation_protocal_address": lambda n : setattr(self, 'session_initiation_protocal_address', n.get_str_value()),
+            "passwordRotationEnabled": lambda n : setattr(self, 'password_rotation_enabled', n.get_bool_value()),
+            "sessionInitiationProtocalAddress": lambda n : setattr(self, 'session_initiation_protocal_address', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -152,7 +151,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -12,14 +12,35 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 security_reports_root = lazy_import('msgraph.generated.models.security_reports_root')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-get_attack_simulation_repeat_offenders_request_builder = lazy_import('msgraph.generated.reports.security.get_attack_simulation_repeat_offenders.get_attack_simulation_repeat_offenders_request_builder')
-get_attack_simulation_simulation_user_coverage_request_builder = lazy_import('msgraph.generated.reports.security.get_attack_simulation_simulation_user_coverage.get_attack_simulation_simulation_user_coverage_request_builder')
-get_attack_simulation_training_user_coverage_request_builder = lazy_import('msgraph.generated.reports.security.get_attack_simulation_training_user_coverage.get_attack_simulation_training_user_coverage_request_builder')
+get_attack_simulation_repeat_offenders_request_builder = lazy_import('msgraph.generated.reports.security.microsoft_graph_get_attack_simulation_repeat_offenders.get_attack_simulation_repeat_offenders_request_builder')
+get_attack_simulation_simulation_user_coverage_request_builder = lazy_import('msgraph.generated.reports.security.microsoft_graph_get_attack_simulation_simulation_user_coverage.get_attack_simulation_simulation_user_coverage_request_builder')
+get_attack_simulation_training_user_coverage_request_builder = lazy_import('msgraph.generated.reports.security.microsoft_graph_get_attack_simulation_training_user_coverage.get_attack_simulation_training_user_coverage_request_builder')
 
 class SecurityRequestBuilder():
     """
     Provides operations to manage the security property of the microsoft.graph.reportRoot entity.
     """
+    @property
+    def microsoft_graph_get_attack_simulation_repeat_offenders(self) -> get_attack_simulation_repeat_offenders_request_builder.GetAttackSimulationRepeatOffendersRequestBuilder:
+        """
+        Provides operations to call the getAttackSimulationRepeatOffenders method.
+        """
+        return get_attack_simulation_repeat_offenders_request_builder.GetAttackSimulationRepeatOffendersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_get_attack_simulation_simulation_user_coverage(self) -> get_attack_simulation_simulation_user_coverage_request_builder.GetAttackSimulationSimulationUserCoverageRequestBuilder:
+        """
+        Provides operations to call the getAttackSimulationSimulationUserCoverage method.
+        """
+        return get_attack_simulation_simulation_user_coverage_request_builder.GetAttackSimulationSimulationUserCoverageRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_get_attack_simulation_training_user_coverage(self) -> get_attack_simulation_training_user_coverage_request_builder.GetAttackSimulationTrainingUserCoverageRequestBuilder:
+        """
+        Provides operations to call the getAttackSimulationTrainingUserCoverage method.
+        """
+        return get_attack_simulation_training_user_coverage_request_builder.GetAttackSimulationTrainingUserCoverageRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SecurityRequestBuilder and sets the default values.
@@ -73,32 +94,11 @@ class SecurityRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, security_reports_root.SecurityReportsRoot, error_mapping)
     
-    def get_attack_simulation_repeat_offenders(self,) -> get_attack_simulation_repeat_offenders_request_builder.GetAttackSimulationRepeatOffendersRequestBuilder:
-        """
-        Provides operations to call the getAttackSimulationRepeatOffenders method.
-        Returns: get_attack_simulation_repeat_offenders_request_builder.GetAttackSimulationRepeatOffendersRequestBuilder
-        """
-        return get_attack_simulation_repeat_offenders_request_builder.GetAttackSimulationRepeatOffendersRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    def get_attack_simulation_simulation_user_coverage(self,) -> get_attack_simulation_simulation_user_coverage_request_builder.GetAttackSimulationSimulationUserCoverageRequestBuilder:
-        """
-        Provides operations to call the getAttackSimulationSimulationUserCoverage method.
-        Returns: get_attack_simulation_simulation_user_coverage_request_builder.GetAttackSimulationSimulationUserCoverageRequestBuilder
-        """
-        return get_attack_simulation_simulation_user_coverage_request_builder.GetAttackSimulationSimulationUserCoverageRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    def get_attack_simulation_training_user_coverage(self,) -> get_attack_simulation_training_user_coverage_request_builder.GetAttackSimulationTrainingUserCoverageRequestBuilder:
-        """
-        Provides operations to call the getAttackSimulationTrainingUserCoverage method.
-        Returns: get_attack_simulation_training_user_coverage_request_builder.GetAttackSimulationTrainingUserCoverageRequestBuilder
-        """
-        return get_attack_simulation_training_user_coverage_request_builder.GetAttackSimulationTrainingUserCoverageRequestBuilder(self.request_adapter, self.path_parameters)
-    
     async def patch(self,body: Optional[security_reports_root.SecurityReportsRoot] = None, request_configuration: Optional[SecurityRequestBuilderPatchRequestConfiguration] = None) -> Optional[security_reports_root.SecurityReportsRoot]:
         """
         Update the navigation property security in reports
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[security_reports_root.SecurityReportsRoot]
         """
@@ -153,7 +153,7 @@ class SecurityRequestBuilder():
         """
         Update the navigation property security in reports
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

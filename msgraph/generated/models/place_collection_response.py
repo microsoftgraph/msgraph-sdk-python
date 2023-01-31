@@ -12,7 +12,6 @@ class PlaceCollectionResponse(base_collection_pagination_count_response.BaseColl
         Instantiates a new PlaceCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[place.Place]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class PlaceCollectionResponse(base_collection_pagination_count_response.BaseColl
     @property
     def value(self,) -> Optional[List[place.Place]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[place.Place]]
         """
         return self._value
@@ -61,7 +60,7 @@ class PlaceCollectionResponse(base_collection_pagination_count_response.BaseColl
     @value.setter
     def value(self,value: Optional[List[place.Place]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

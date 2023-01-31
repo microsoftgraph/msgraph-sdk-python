@@ -88,9 +88,9 @@ class WindowsInformationProtectionDesktopApp(windows_information_protection_app.
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "binary_name": lambda n : setattr(self, 'binary_name', n.get_str_value()),
-            "binary_version_high": lambda n : setattr(self, 'binary_version_high', n.get_str_value()),
-            "binary_version_low": lambda n : setattr(self, 'binary_version_low', n.get_str_value()),
+            "binaryName": lambda n : setattr(self, 'binary_name', n.get_str_value()),
+            "binaryVersionHigh": lambda n : setattr(self, 'binary_version_high', n.get_str_value()),
+            "binaryVersionLow": lambda n : setattr(self, 'binary_version_low', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

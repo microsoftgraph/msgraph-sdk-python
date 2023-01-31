@@ -34,7 +34,6 @@ class TeamsTab(entity.Entity):
         self._configuration: Optional[teams_tab_configuration.TeamsTabConfiguration] = None
         # Name of the tab.
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The application that is linked to the tab. This cannot be changed after tab creation.
         self._teams_app: Optional[teams_app.TeamsApp] = None
@@ -77,9 +76,9 @@ class TeamsTab(entity.Entity):
         """
         fields = {
             "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(teams_tab_configuration.TeamsTabConfiguration)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "teams_app": lambda n : setattr(self, 'teams_app', n.get_object_value(teams_app.TeamsApp)),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "teamsApp": lambda n : setattr(self, 'teams_app', n.get_object_value(teams_app.TeamsApp)),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

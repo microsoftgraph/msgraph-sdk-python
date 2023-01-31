@@ -110,7 +110,6 @@ class Simulation(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # Date and time of the launch/start of the attack simulation and training campaign. Supports $filter and $orderby.
         self._launch_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Method of delivery of the phishing payload used in the attack simulation and training campaign. Possible values are: unknown, sms, email, teams, unknownFutureValue.
         self._payload_delivery_platform: Optional[payload_delivery_platform.PayloadDeliveryPlatform] = None
@@ -205,19 +204,19 @@ class Simulation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "attack_technique": lambda n : setattr(self, 'attack_technique', n.get_enum_value(simulation_attack_technique.SimulationAttackTechnique)),
-            "attack_type": lambda n : setattr(self, 'attack_type', n.get_enum_value(simulation_attack_type.SimulationAttackType)),
-            "automation_id": lambda n : setattr(self, 'automation_id', n.get_str_value()),
-            "completion_date_time": lambda n : setattr(self, 'completion_date_time', n.get_datetime_value()),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(email_identity.EmailIdentity)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "attackTechnique": lambda n : setattr(self, 'attack_technique', n.get_enum_value(simulation_attack_technique.SimulationAttackTechnique)),
+            "attackType": lambda n : setattr(self, 'attack_type', n.get_enum_value(simulation_attack_type.SimulationAttackType)),
+            "automationId": lambda n : setattr(self, 'automation_id', n.get_str_value()),
+            "completionDateTime": lambda n : setattr(self, 'completion_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(email_identity.EmailIdentity)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_automated": lambda n : setattr(self, 'is_automated', n.get_bool_value()),
-            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(email_identity.EmailIdentity)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "launch_date_time": lambda n : setattr(self, 'launch_date_time', n.get_datetime_value()),
-            "payload_delivery_platform": lambda n : setattr(self, 'payload_delivery_platform', n.get_enum_value(payload_delivery_platform.PayloadDeliveryPlatform)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isAutomated": lambda n : setattr(self, 'is_automated', n.get_bool_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(email_identity.EmailIdentity)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "launchDateTime": lambda n : setattr(self, 'launch_date_time', n.get_datetime_value()),
+            "payloadDeliveryPlatform": lambda n : setattr(self, 'payload_delivery_platform', n.get_enum_value(payload_delivery_platform.PayloadDeliveryPlatform)),
             "report": lambda n : setattr(self, 'report', n.get_object_value(simulation_report.SimulationReport)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(simulation_status.SimulationStatus)),
         }

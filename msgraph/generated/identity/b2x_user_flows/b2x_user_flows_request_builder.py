@@ -66,7 +66,7 @@ class B2xUserFlowsRequestBuilder():
         """
         Create a new b2xIdentityUserFlow object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[b2x_identity_user_flow.B2xIdentityUserFlow]
         """
@@ -105,7 +105,7 @@ class B2xUserFlowsRequestBuilder():
         """
         Create a new b2xIdentityUserFlow object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

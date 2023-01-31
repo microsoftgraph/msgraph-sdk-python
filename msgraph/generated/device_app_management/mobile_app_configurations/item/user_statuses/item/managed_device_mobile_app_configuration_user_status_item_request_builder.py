@@ -17,10 +17,11 @@ class ManagedDeviceMobileAppConfigurationUserStatusItemRequestBuilder():
     """
     Provides operations to manage the userStatuses property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, managed_device_mobile_app_configuration_user_status_id: Optional[str] = None) -> None:
         """
         Instantiates a new ManagedDeviceMobileAppConfigurationUserStatusItemRequestBuilder and sets the default values.
         Args:
+            managedDeviceMobileAppConfigurationUserStatusId: key: id of managedDeviceMobileAppConfigurationUserStatus
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class ManagedDeviceMobileAppConfigurationUserStatusItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceAppManagement/mobileAppConfigurations/{managedDeviceMobileAppConfiguration%2Did}/userStatuses/{managedDeviceMobileAppConfigurationUserStatus%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["managedDeviceMobileAppConfigurationUserStatus%2Did"] = managedDeviceMobileAppConfigurationUserStatusId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -74,7 +76,7 @@ class ManagedDeviceMobileAppConfigurationUserStatusItemRequestBuilder():
         """
         Update the navigation property userStatuses in deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[managed_device_mobile_app_configuration_user_status.ManagedDeviceMobileAppConfigurationUserStatus]
         """
@@ -129,7 +131,7 @@ class ManagedDeviceMobileAppConfigurationUserStatusItemRequestBuilder():
         """
         Update the navigation property userStatuses in deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

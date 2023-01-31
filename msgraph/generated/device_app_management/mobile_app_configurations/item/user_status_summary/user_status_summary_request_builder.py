@@ -74,7 +74,7 @@ class UserStatusSummaryRequestBuilder():
         """
         Update the navigation property userStatusSummary in deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[managed_device_mobile_app_configuration_user_summary.ManagedDeviceMobileAppConfigurationUserSummary]
         """
@@ -129,7 +129,7 @@ class UserStatusSummaryRequestBuilder():
         """
         Update the navigation property userStatusSummary in deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

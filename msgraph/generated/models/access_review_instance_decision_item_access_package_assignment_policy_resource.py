@@ -69,8 +69,8 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(acce
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_package_display_name": lambda n : setattr(self, 'access_package_display_name', n.get_str_value()),
-            "access_package_id": lambda n : setattr(self, 'access_package_id', n.get_str_value()),
+            "accessPackageDisplayName": lambda n : setattr(self, 'access_package_display_name', n.get_str_value()),
+            "accessPackageId": lambda n : setattr(self, 'access_package_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -34,7 +34,6 @@ class LocalizedLabel(AdditionalDataHolder, Parsable):
         self._language_tag: Optional[str] = None
         # The name of the label.
         self._name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -55,8 +54,8 @@ class LocalizedLabel(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
-            "language_tag": lambda n : setattr(self, 'language_tag', n.get_str_value()),
+            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "languageTag": lambda n : setattr(self, 'language_tag', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
@@ -116,7 +115,7 @@ class LocalizedLabel(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -124,7 +123,7 @@ class LocalizedLabel(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

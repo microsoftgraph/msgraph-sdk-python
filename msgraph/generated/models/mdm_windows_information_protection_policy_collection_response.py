@@ -12,7 +12,6 @@ class MdmWindowsInformationProtectionPolicyCollectionResponse(base_collection_pa
         Instantiates a new MdmWindowsInformationProtectionPolicyCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class MdmWindowsInformationProtectionPolicyCollectionResponse(base_collection_pa
     @property
     def value(self,) -> Optional[List[mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy]]
         """
         return self._value
@@ -61,7 +60,7 @@ class MdmWindowsInformationProtectionPolicyCollectionResponse(base_collection_pa
     @value.setter
     def value(self,value: Optional[List[mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

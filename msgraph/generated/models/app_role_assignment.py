@@ -26,7 +26,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new AppRoleAssignment and sets the default values.
+        Instantiates a new appRoleAssignment and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.appRoleAssignment"
@@ -80,13 +80,13 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_role_id": lambda n : setattr(self, 'app_role_id', n.get_object_value(Guid)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "principal_display_name": lambda n : setattr(self, 'principal_display_name', n.get_str_value()),
-            "principal_id": lambda n : setattr(self, 'principal_id', n.get_object_value(Guid)),
-            "principal_type": lambda n : setattr(self, 'principal_type', n.get_str_value()),
-            "resource_display_name": lambda n : setattr(self, 'resource_display_name', n.get_str_value()),
-            "resource_id": lambda n : setattr(self, 'resource_id', n.get_object_value(Guid)),
+            "appRoleId": lambda n : setattr(self, 'app_role_id', n.get_object_value(Guid)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "principalDisplayName": lambda n : setattr(self, 'principal_display_name', n.get_str_value()),
+            "principalId": lambda n : setattr(self, 'principal_id', n.get_object_value(Guid)),
+            "principalType": lambda n : setattr(self, 'principal_type', n.get_str_value()),
+            "resourceDisplayName": lambda n : setattr(self, 'resource_display_name', n.get_str_value()),
+            "resourceId": lambda n : setattr(self, 'resource_id', n.get_object_value(Guid)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

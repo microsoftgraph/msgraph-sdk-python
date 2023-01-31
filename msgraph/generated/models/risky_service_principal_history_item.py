@@ -33,7 +33,6 @@ class RiskyServicePrincipalHistoryItem(risky_service_principal.RiskyServicePrinc
         self._activity: Optional[risk_service_principal_activity.RiskServicePrincipalActivity] = None
         # The identifier of the actor of the operation.
         self._initiated_by: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -55,7 +54,7 @@ class RiskyServicePrincipalHistoryItem(risky_service_principal.RiskyServicePrinc
         """
         fields = {
             "activity": lambda n : setattr(self, 'activity', n.get_object_value(risk_service_principal_activity.RiskServicePrincipalActivity)),
-            "initiated_by": lambda n : setattr(self, 'initiated_by', n.get_str_value()),
+            "initiatedBy": lambda n : setattr(self, 'initiated_by', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

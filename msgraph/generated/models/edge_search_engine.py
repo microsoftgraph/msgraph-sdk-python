@@ -51,7 +51,7 @@ class EdgeSearchEngine(edge_search_engine_base.EdgeSearchEngineBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "edge_search_engine_type": lambda n : setattr(self, 'edge_search_engine_type', n.get_enum_value(edge_search_engine_type.EdgeSearchEngineType)),
+            "edgeSearchEngineType": lambda n : setattr(self, 'edge_search_engine_type', n.get_enum_value(edge_search_engine_type.EdgeSearchEngineType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

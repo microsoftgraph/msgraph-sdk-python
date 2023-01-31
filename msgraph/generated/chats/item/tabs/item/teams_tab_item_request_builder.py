@@ -25,12 +25,13 @@ class TeamsTabItemRequestBuilder():
         """
         return teams_app_request_builder.TeamsAppRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, teams_tab_id: Optional[str] = None) -> None:
         """
         Instantiates a new TeamsTabItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            teamsTabId: key: id of teamsTab
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -40,6 +41,7 @@ class TeamsTabItemRequestBuilder():
         self.url_template: str = "{+baseurl}/chats/{chat%2Did}/tabs/{teamsTab%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["teamsTab%2Did"] = teamsTabId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -82,7 +84,7 @@ class TeamsTabItemRequestBuilder():
         """
         Update the navigation property tabs in chats
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[teams_tab.TeamsTab]
         """
@@ -137,7 +139,7 @@ class TeamsTabItemRequestBuilder():
         """
         Update the navigation property tabs in chats
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

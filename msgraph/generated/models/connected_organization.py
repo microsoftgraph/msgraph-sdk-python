@@ -21,15 +21,12 @@ class ConnectedOrganization(entity.Entity):
         self._description: Optional[str] = None
         # The display name of the connected organization. Supports $filter (eq).
         self._display_name: Optional[str] = None
-        # The externalSponsors property
         self._external_sponsors: Optional[List[directory_object.DirectoryObject]] = None
         # The identity sources in this connected organization, one of azureActiveDirectoryTenant, domainIdentitySource, externalDomainFederation or crossCloudAzureActiveDirectoryTenant. Nullable.
         self._identity_sources: Optional[List[identity_source.IdentitySource]] = None
-        # The internalSponsors property
         self._internal_sponsors: Optional[List[directory_object.DirectoryObject]] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         self._modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The state of a connected organization defines whether assignment policies with requestor scope type AllConfiguredConnectedOrganizationSubjects are applicable or not.  The possible values are: configured, proposed, unknownFutureValue.
         self._state: Optional[connected_organization_state.ConnectedOrganizationState] = None
@@ -100,7 +97,7 @@ class ConnectedOrganization(entity.Entity):
     @property
     def external_sponsors(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
-        Gets the externalSponsors property value. The externalSponsors property
+        Gets the externalSponsors property value. 
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._external_sponsors
@@ -108,7 +105,7 @@ class ConnectedOrganization(entity.Entity):
     @external_sponsors.setter
     def external_sponsors(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
-        Sets the externalSponsors property value. The externalSponsors property
+        Sets the externalSponsors property value. 
         Args:
             value: Value to set for the externalSponsors property.
         """
@@ -120,13 +117,13 @@ class ConnectedOrganization(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "external_sponsors": lambda n : setattr(self, 'external_sponsors', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "identity_sources": lambda n : setattr(self, 'identity_sources', n.get_collection_of_object_values(identity_source.IdentitySource)),
-            "internal_sponsors": lambda n : setattr(self, 'internal_sponsors', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "modified_date_time": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "externalSponsors": lambda n : setattr(self, 'external_sponsors', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "identitySources": lambda n : setattr(self, 'identity_sources', n.get_collection_of_object_values(identity_source.IdentitySource)),
+            "internalSponsors": lambda n : setattr(self, 'internal_sponsors', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(connected_organization_state.ConnectedOrganizationState)),
         }
         super_fields = super().get_field_deserializers()
@@ -153,7 +150,7 @@ class ConnectedOrganization(entity.Entity):
     @property
     def internal_sponsors(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
-        Gets the internalSponsors property value. The internalSponsors property
+        Gets the internalSponsors property value. 
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._internal_sponsors
@@ -161,7 +158,7 @@ class ConnectedOrganization(entity.Entity):
     @internal_sponsors.setter
     def internal_sponsors(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
-        Sets the internalSponsors property value. The internalSponsors property
+        Sets the internalSponsors property value. 
         Args:
             value: Value to set for the internalSponsors property.
         """

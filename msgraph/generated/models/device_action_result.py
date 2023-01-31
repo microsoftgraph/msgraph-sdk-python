@@ -74,7 +74,6 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         self._action_state: Optional[action_state.ActionState] = None
         # Time the action state was last updated
         self._last_updated_date_time: Optional[datetime] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Time the action was initiated
         self._start_date_time: Optional[datetime] = None
@@ -97,11 +96,11 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "action_name": lambda n : setattr(self, 'action_name', n.get_str_value()),
-            "action_state": lambda n : setattr(self, 'action_state', n.get_enum_value(action_state.ActionState)),
-            "last_updated_date_time": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
+            "actionName": lambda n : setattr(self, 'action_name', n.get_str_value()),
+            "actionState": lambda n : setattr(self, 'action_state', n.get_enum_value(action_state.ActionState)),
+            "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         return fields
     
@@ -125,7 +124,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -133,7 +132,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

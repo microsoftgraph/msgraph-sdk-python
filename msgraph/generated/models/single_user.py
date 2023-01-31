@@ -53,7 +53,7 @@ class SingleUser(subject_set.SubjectSet):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

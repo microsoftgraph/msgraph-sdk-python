@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-assign_user_to_device_request_builder = lazy_import('msgraph.generated.device_management.windows_autopilot_device_identities.item.assign_user_to_device.assign_user_to_device_request_builder')
-unassign_user_from_device_request_builder = lazy_import('msgraph.generated.device_management.windows_autopilot_device_identities.item.unassign_user_from_device.unassign_user_from_device_request_builder')
-update_device_properties_request_builder = lazy_import('msgraph.generated.device_management.windows_autopilot_device_identities.item.update_device_properties.update_device_properties_request_builder')
+assign_user_to_device_request_builder = lazy_import('msgraph.generated.device_management.windows_autopilot_device_identities.item.microsoft_graph_assign_user_to_device.assign_user_to_device_request_builder')
+unassign_user_from_device_request_builder = lazy_import('msgraph.generated.device_management.windows_autopilot_device_identities.item.microsoft_graph_unassign_user_from_device.unassign_user_from_device_request_builder')
+update_device_properties_request_builder = lazy_import('msgraph.generated.device_management.windows_autopilot_device_identities.item.microsoft_graph_update_device_properties.update_device_properties_request_builder')
 windows_autopilot_device_identity = lazy_import('msgraph.generated.models.windows_autopilot_device_identity')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -21,32 +21,33 @@ class WindowsAutopilotDeviceIdentityItemRequestBuilder():
     Provides operations to manage the windowsAutopilotDeviceIdentities property of the microsoft.graph.deviceManagement entity.
     """
     @property
-    def assign_user_to_device(self) -> assign_user_to_device_request_builder.AssignUserToDeviceRequestBuilder:
+    def microsoft_graph_assign_user_to_device(self) -> assign_user_to_device_request_builder.AssignUserToDeviceRequestBuilder:
         """
         Provides operations to call the assignUserToDevice method.
         """
         return assign_user_to_device_request_builder.AssignUserToDeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def unassign_user_from_device(self) -> unassign_user_from_device_request_builder.UnassignUserFromDeviceRequestBuilder:
+    def microsoft_graph_unassign_user_from_device(self) -> unassign_user_from_device_request_builder.UnassignUserFromDeviceRequestBuilder:
         """
         Provides operations to call the unassignUserFromDevice method.
         """
         return unassign_user_from_device_request_builder.UnassignUserFromDeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def update_device_properties(self) -> update_device_properties_request_builder.UpdateDevicePropertiesRequestBuilder:
+    def microsoft_graph_update_device_properties(self) -> update_device_properties_request_builder.UpdateDevicePropertiesRequestBuilder:
         """
         Provides operations to call the updateDeviceProperties method.
         """
         return update_device_properties_request_builder.UpdateDevicePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, windows_autopilot_device_identity_id: Optional[str] = None) -> None:
         """
         Instantiates a new WindowsAutopilotDeviceIdentityItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            windowsAutopilotDeviceIdentityId: key: id of windowsAutopilotDeviceIdentity
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -56,6 +57,7 @@ class WindowsAutopilotDeviceIdentityItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceManagement/windowsAutopilotDeviceIdentities/{windowsAutopilotDeviceIdentity%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["windowsAutopilotDeviceIdentity%2Did"] = windowsAutopilotDeviceIdentityId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -98,7 +100,7 @@ class WindowsAutopilotDeviceIdentityItemRequestBuilder():
         """
         Update the navigation property windowsAutopilotDeviceIdentities in deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[windows_autopilot_device_identity.WindowsAutopilotDeviceIdentity]
         """
@@ -153,7 +155,7 @@ class WindowsAutopilotDeviceIdentityItemRequestBuilder():
         """
         Update the navigation property windowsAutopilotDeviceIdentities in deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -14,7 +14,6 @@ class WorkbookTableRow(entity.Entity):
         super().__init__()
         # Returns the index number of the row within the rows collection of the table. Zero-indexed. Read-only.
         self._index: Optional[int] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
         self._values: Optional[json.Json] = None

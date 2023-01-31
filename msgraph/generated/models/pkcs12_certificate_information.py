@@ -34,7 +34,6 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
         self._not_after: Optional[int] = None
         # The certificate's issue time (not before). This value is a NumericDate as defined in RFC 7519 (A JSON numeric value representing the number of seconds from 1970-01-01T00:00:00Z UTC until the specified UTC date/time, ignoring leap seconds.)
         self._not_before: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The certificate thumbprint.
         self._thumbprint: Optional[str] = None
@@ -57,9 +56,9 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_active": lambda n : setattr(self, 'is_active', n.get_bool_value()),
-            "not_after": lambda n : setattr(self, 'not_after', n.get_int_value()),
-            "not_before": lambda n : setattr(self, 'not_before', n.get_int_value()),
+            "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
+            "notAfter": lambda n : setattr(self, 'not_after', n.get_int_value()),
+            "notBefore": lambda n : setattr(self, 'not_before', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "thumbprint": lambda n : setattr(self, 'thumbprint', n.get_str_value()),
         }
@@ -119,7 +118,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -127,7 +126,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

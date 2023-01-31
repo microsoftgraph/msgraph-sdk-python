@@ -56,11 +56,9 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
         self._inheritable_settings: Optional[List[str]] = None
         # The role assignment type that's the target of policy rule. Allowed values are: Eligibility, Assignment.
         self._level: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The role management operations that are the target of the policy rule. Allowed values are: All, Activate, Deactivate, Assign, Update, Remove, Extend, Renew.
         self._operations: Optional[List[unified_role_management_policy_rule_target_operations.UnifiedRoleManagementPolicyRuleTargetOperations]] = None
-        # The targetObjects property
         self._target_objects: Optional[List[directory_object.DirectoryObject]] = None
     
     @staticmethod
@@ -99,12 +97,12 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
         """
         fields = {
             "caller": lambda n : setattr(self, 'caller', n.get_str_value()),
-            "enforced_settings": lambda n : setattr(self, 'enforced_settings', n.get_collection_of_primitive_values(str)),
-            "inheritable_settings": lambda n : setattr(self, 'inheritable_settings', n.get_collection_of_primitive_values(str)),
+            "enforcedSettings": lambda n : setattr(self, 'enforced_settings', n.get_collection_of_primitive_values(str)),
+            "inheritableSettings": lambda n : setattr(self, 'inheritable_settings', n.get_collection_of_primitive_values(str)),
             "level": lambda n : setattr(self, 'level', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_enum_values(unified_role_management_policy_rule_target_operations.UnifiedRoleManagementPolicyRuleTargetOperations)),
-            "target_objects": lambda n : setattr(self, 'target_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "targetObjects": lambda n : setattr(self, 'target_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
         }
         return fields
     
@@ -145,7 +143,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -153,7 +151,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -196,7 +194,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
     @property
     def target_objects(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
-        Gets the targetObjects property value. The targetObjects property
+        Gets the targetObjects property value. 
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._target_objects
@@ -204,7 +202,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
     @target_objects.setter
     def target_objects(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
-        Sets the targetObjects property value. The targetObjects property
+        Sets the targetObjects property value. 
         Args:
             value: Value to set for the targetObjects property.
         """

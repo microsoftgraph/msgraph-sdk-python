@@ -56,10 +56,10 @@ class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "command_line": lambda n : setattr(self, 'command_line', n.get_str_value()),
-            "ignore_version_detection": lambda n : setattr(self, 'ignore_version_detection', n.get_bool_value()),
-            "product_code": lambda n : setattr(self, 'product_code', n.get_str_value()),
-            "product_version": lambda n : setattr(self, 'product_version', n.get_str_value()),
+            "commandLine": lambda n : setattr(self, 'command_line', n.get_str_value()),
+            "ignoreVersionDetection": lambda n : setattr(self, 'ignore_version_detection', n.get_bool_value()),
+            "productCode": lambda n : setattr(self, 'product_code', n.get_str_value()),
+            "productVersion": lambda n : setattr(self, 'product_version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -50,7 +50,6 @@ class AttackSimulationTrainingUserCoverage(AdditionalDataHolder, Parsable):
 
         # User in an attack simulation and training campaign.
         self._attack_simulation_user: Optional[attack_simulation_user.AttackSimulationUser] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # List of assigned trainings and their statuses for the user.
         self._user_trainings: Optional[List[user_training_status_info.UserTrainingStatusInfo]] = None
@@ -73,16 +72,16 @@ class AttackSimulationTrainingUserCoverage(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "attack_simulation_user": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
+            "attackSimulationUser": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "user_trainings": lambda n : setattr(self, 'user_trainings', n.get_collection_of_object_values(user_training_status_info.UserTrainingStatusInfo)),
+            "userTrainings": lambda n : setattr(self, 'user_trainings', n.get_collection_of_object_values(user_training_status_info.UserTrainingStatusInfo)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -90,7 +89,7 @@ class AttackSimulationTrainingUserCoverage(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

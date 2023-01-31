@@ -18,7 +18,6 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         self._display_name: Optional[str] = None
         # Determines whether the identityUserFlowAttribute is optional. true means the user doesn't have to provide a value. false means the user cannot complete sign-up without providing a value.
         self._is_optional: Optional[bool] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Determines whether the identityUserFlowAttribute requires verification. This is only used for verifying the user's phone number or email address.
         self._requires_verification: Optional[bool] = None
@@ -26,7 +25,6 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         self._user_attribute: Optional[identity_user_flow_attribute.IdentityUserFlowAttribute] = None
         # The input options for the user flow attribute. Only applicable when the userInputType is radioSingleSelect, dropdownSingleSelect, or checkboxMultiSelect.
         self._user_attribute_values: Optional[List[user_attribute_values_item.UserAttributeValuesItem]] = None
-        # The userInputType property
         self._user_input_type: Optional[identity_user_flow_attribute_input_type.IdentityUserFlowAttributeInputType] = None
     
     @staticmethod
@@ -64,12 +62,12 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_optional": lambda n : setattr(self, 'is_optional', n.get_bool_value()),
-            "requires_verification": lambda n : setattr(self, 'requires_verification', n.get_bool_value()),
-            "user_attribute": lambda n : setattr(self, 'user_attribute', n.get_object_value(identity_user_flow_attribute.IdentityUserFlowAttribute)),
-            "user_attribute_values": lambda n : setattr(self, 'user_attribute_values', n.get_collection_of_object_values(user_attribute_values_item.UserAttributeValuesItem)),
-            "user_input_type": lambda n : setattr(self, 'user_input_type', n.get_enum_value(identity_user_flow_attribute_input_type.IdentityUserFlowAttributeInputType)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isOptional": lambda n : setattr(self, 'is_optional', n.get_bool_value()),
+            "requiresVerification": lambda n : setattr(self, 'requires_verification', n.get_bool_value()),
+            "userAttribute": lambda n : setattr(self, 'user_attribute', n.get_object_value(identity_user_flow_attribute.IdentityUserFlowAttribute)),
+            "userAttributeValues": lambda n : setattr(self, 'user_attribute_values', n.get_collection_of_object_values(user_attribute_values_item.UserAttributeValuesItem)),
+            "userInputType": lambda n : setattr(self, 'user_input_type', n.get_enum_value(identity_user_flow_attribute_input_type.IdentityUserFlowAttributeInputType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -162,7 +160,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
     @property
     def user_input_type(self,) -> Optional[identity_user_flow_attribute_input_type.IdentityUserFlowAttributeInputType]:
         """
-        Gets the userInputType property value. The userInputType property
+        Gets the userInputType property value. 
         Returns: Optional[identity_user_flow_attribute_input_type.IdentityUserFlowAttributeInputType]
         """
         return self._user_input_type
@@ -170,7 +168,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
     @user_input_type.setter
     def user_input_type(self,value: Optional[identity_user_flow_attribute_input_type.IdentityUserFlowAttributeInputType] = None) -> None:
         """
-        Sets the userInputType property value. The userInputType property
+        Sets the userInputType property value. 
         Args:
             value: Value to set for the userInputType property.
         """

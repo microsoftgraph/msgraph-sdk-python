@@ -12,7 +12,6 @@ class TimeOffCollectionResponse(base_collection_pagination_count_response.BaseCo
         Instantiates a new TimeOffCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[time_off.TimeOff]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class TimeOffCollectionResponse(base_collection_pagination_count_response.BaseCo
     @property
     def value(self,) -> Optional[List[time_off.TimeOff]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[time_off.TimeOff]]
         """
         return self._value
@@ -61,7 +60,7 @@ class TimeOffCollectionResponse(base_collection_pagination_count_response.BaseCo
     @value.setter
     def value(self,value: Optional[List[time_off.TimeOff]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

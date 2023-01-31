@@ -39,9 +39,7 @@ class ConversationThread(entity.Entity):
         self._is_locked: Optional[bool] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.Returned by default.
         self._last_delivered_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The posts property
         self._posts: Optional[List[post.Post]] = None
         # A short summary from the body of the latest post in this conversation. Returned by default.
         self._preview: Optional[str] = None
@@ -70,15 +68,15 @@ class ConversationThread(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "cc_recipients": lambda n : setattr(self, 'cc_recipients', n.get_collection_of_object_values(recipient.Recipient)),
-            "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
-            "is_locked": lambda n : setattr(self, 'is_locked', n.get_bool_value()),
-            "last_delivered_date_time": lambda n : setattr(self, 'last_delivered_date_time', n.get_datetime_value()),
+            "ccRecipients": lambda n : setattr(self, 'cc_recipients', n.get_collection_of_object_values(recipient.Recipient)),
+            "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
+            "isLocked": lambda n : setattr(self, 'is_locked', n.get_bool_value()),
+            "lastDeliveredDateTime": lambda n : setattr(self, 'last_delivered_date_time', n.get_datetime_value()),
             "posts": lambda n : setattr(self, 'posts', n.get_collection_of_object_values(post.Post)),
             "preview": lambda n : setattr(self, 'preview', n.get_str_value()),
             "topic": lambda n : setattr(self, 'topic', n.get_str_value()),
-            "to_recipients": lambda n : setattr(self, 'to_recipients', n.get_collection_of_object_values(recipient.Recipient)),
-            "unique_senders": lambda n : setattr(self, 'unique_senders', n.get_collection_of_primitive_values(str)),
+            "toRecipients": lambda n : setattr(self, 'to_recipients', n.get_collection_of_object_values(recipient.Recipient)),
+            "uniqueSenders": lambda n : setattr(self, 'unique_senders', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -138,7 +136,7 @@ class ConversationThread(entity.Entity):
     @property
     def posts(self,) -> Optional[List[post.Post]]:
         """
-        Gets the posts property value. The posts property
+        Gets the posts property value. 
         Returns: Optional[List[post.Post]]
         """
         return self._posts
@@ -146,7 +144,7 @@ class ConversationThread(entity.Entity):
     @posts.setter
     def posts(self,value: Optional[List[post.Post]] = None) -> None:
         """
-        Sets the posts property value. The posts property
+        Sets the posts property value. 
         Args:
             value: Value to set for the posts property.
         """

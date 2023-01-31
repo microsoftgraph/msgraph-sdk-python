@@ -12,9 +12,7 @@ class SkypeForBusinessUserConversationMember(conversation_member.ConversationMem
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.skypeForBusinessUserConversationMember"
-        # The tenantId property
         self._tenant_id: Optional[str] = None
-        # The userId property
         self._user_id: Optional[str] = None
     
     @staticmethod
@@ -35,8 +33,8 @@ class SkypeForBusinessUserConversationMember(conversation_member.ConversationMem
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,7 +55,7 @@ class SkypeForBusinessUserConversationMember(conversation_member.ConversationMem
     @property
     def tenant_id(self,) -> Optional[str]:
         """
-        Gets the tenantId property value. The tenantId property
+        Gets the tenantId property value. 
         Returns: Optional[str]
         """
         return self._tenant_id
@@ -65,7 +63,7 @@ class SkypeForBusinessUserConversationMember(conversation_member.ConversationMem
     @tenant_id.setter
     def tenant_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the tenantId property value. The tenantId property
+        Sets the tenantId property value. 
         Args:
             value: Value to set for the tenantId property.
         """
@@ -74,7 +72,7 @@ class SkypeForBusinessUserConversationMember(conversation_member.ConversationMem
     @property
     def user_id(self,) -> Optional[str]:
         """
-        Gets the userId property value. The userId property
+        Gets the userId property value. 
         Returns: Optional[str]
         """
         return self._user_id
@@ -82,7 +80,7 @@ class SkypeForBusinessUserConversationMember(conversation_member.ConversationMem
     @user_id.setter
     def user_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the userId property value. The userId property
+        Sets the userId property value. 
         Args:
             value: Value to set for the userId property.
         """

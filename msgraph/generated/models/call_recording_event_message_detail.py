@@ -133,13 +133,13 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "call_id": lambda n : setattr(self, 'call_id', n.get_str_value()),
-            "call_recording_display_name": lambda n : setattr(self, 'call_recording_display_name', n.get_str_value()),
-            "call_recording_duration": lambda n : setattr(self, 'call_recording_duration', n.get_object_value(Timedelta)),
-            "call_recording_status": lambda n : setattr(self, 'call_recording_status', n.get_enum_value(call_recording_status.CallRecordingStatus)),
-            "call_recording_url": lambda n : setattr(self, 'call_recording_url', n.get_str_value()),
+            "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
+            "callRecordingDisplayName": lambda n : setattr(self, 'call_recording_display_name', n.get_str_value()),
+            "callRecordingDuration": lambda n : setattr(self, 'call_recording_duration', n.get_object_value(Timedelta)),
+            "callRecordingStatus": lambda n : setattr(self, 'call_recording_status', n.get_enum_value(call_recording_status.CallRecordingStatus)),
+            "callRecordingUrl": lambda n : setattr(self, 'call_recording_url', n.get_str_value()),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
-            "meeting_organizer": lambda n : setattr(self, 'meeting_organizer', n.get_object_value(identity_set.IdentitySet)),
+            "meetingOrganizer": lambda n : setattr(self, 'meeting_organizer', n.get_object_value(identity_set.IdentitySet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

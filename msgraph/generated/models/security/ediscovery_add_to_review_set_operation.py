@@ -13,7 +13,6 @@ class EdiscoveryAddToReviewSetOperation(case_operation.CaseOperation):
         Instantiates a new EdiscoveryAddToReviewSetOperation and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # eDiscovery review set to which items matching source collection query gets added.
         self._review_set: Optional[ediscovery_review_set.EdiscoveryReviewSet] = None
@@ -38,7 +37,7 @@ class EdiscoveryAddToReviewSetOperation(case_operation.CaseOperation):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "review_set": lambda n : setattr(self, 'review_set', n.get_object_value(ediscovery_review_set.EdiscoveryReviewSet)),
+            "reviewSet": lambda n : setattr(self, 'review_set', n.get_object_value(ediscovery_review_set.EdiscoveryReviewSet)),
             "search": lambda n : setattr(self, 'search', n.get_object_value(ediscovery_search.EdiscoverySearch)),
         }
         super_fields = super().get_field_deserializers()

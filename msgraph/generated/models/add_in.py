@@ -30,13 +30,9 @@ class AddIn(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The id property
         self._id: Optional[Guid] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The properties property
         self._properties: Optional[List[key_value.KeyValue]] = None
-        # The type property
         self._type: Optional[str] = None
     
     @staticmethod
@@ -67,7 +63,7 @@ class AddIn(AdditionalDataHolder, Parsable):
     @property
     def id(self,) -> Optional[Guid]:
         """
-        Gets the id property value. The id property
+        Gets the id property value. 
         Returns: Optional[Guid]
         """
         return self._id
@@ -75,7 +71,7 @@ class AddIn(AdditionalDataHolder, Parsable):
     @id.setter
     def id(self,value: Optional[Guid] = None) -> None:
         """
-        Sets the id property value. The id property
+        Sets the id property value. 
         Args:
             value: Value to set for the id property.
         """
@@ -84,7 +80,7 @@ class AddIn(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -92,7 +88,7 @@ class AddIn(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -101,7 +97,7 @@ class AddIn(AdditionalDataHolder, Parsable):
     @property
     def properties(self,) -> Optional[List[key_value.KeyValue]]:
         """
-        Gets the properties property value. The properties property
+        Gets the properties property value. 
         Returns: Optional[List[key_value.KeyValue]]
         """
         return self._properties
@@ -109,7 +105,7 @@ class AddIn(AdditionalDataHolder, Parsable):
     @properties.setter
     def properties(self,value: Optional[List[key_value.KeyValue]] = None) -> None:
         """
-        Sets the properties property value. The properties property
+        Sets the properties property value. 
         Args:
             value: Value to set for the properties property.
         """
@@ -132,7 +128,7 @@ class AddIn(AdditionalDataHolder, Parsable):
     @property
     def type(self,) -> Optional[str]:
         """
-        Gets the type property value. The type property
+        Gets the type property value. 
         Returns: Optional[str]
         """
         return self._type
@@ -140,7 +136,7 @@ class AddIn(AdditionalDataHolder, Parsable):
     @type.setter
     def type(self,value: Optional[str] = None) -> None:
         """
-        Sets the type property value. The type property
+        Sets the type property value. 
         Args:
             value: Value to set for the type property.
         """

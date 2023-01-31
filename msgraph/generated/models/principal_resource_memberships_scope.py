@@ -35,8 +35,8 @@ class PrincipalResourceMembershipsScope(access_review_scope.AccessReviewScope):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "principal_scopes": lambda n : setattr(self, 'principal_scopes', n.get_collection_of_object_values(access_review_scope.AccessReviewScope)),
-            "resource_scopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_object_values(access_review_scope.AccessReviewScope)),
+            "principalScopes": lambda n : setattr(self, 'principal_scopes', n.get_collection_of_object_values(access_review_scope.AccessReviewScope)),
+            "resourceScopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_object_values(access_review_scope.AccessReviewScope)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

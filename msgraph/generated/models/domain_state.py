@@ -31,7 +31,6 @@ class DomainState(AdditionalDataHolder, Parsable):
 
         # Timestamp for when the last activity occurred. The value is updated when an operation is scheduled, the asynchronous task starts, and when the operation completes.
         self._last_action_date_time: Optional[datetime] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Type of asynchronous operation. The values can be ForceDelete or Verification
         self._operation: Optional[str] = None
@@ -56,7 +55,7 @@ class DomainState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "last_action_date_time": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
+            "lastActionDateTime": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operation": lambda n : setattr(self, 'operation', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
@@ -83,7 +82,7 @@ class DomainState(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -91,7 +90,7 @@ class DomainState(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

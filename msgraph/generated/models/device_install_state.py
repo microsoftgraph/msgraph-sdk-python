@@ -26,7 +26,6 @@ class DeviceInstallState(entity.Entity):
         self._install_state: Optional[install_state.InstallState] = None
         # Last sync date and time.
         self._last_sync_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # OS Description.
         self._os_description: Optional[str] = None
@@ -104,14 +103,14 @@ class DeviceInstallState(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_id": lambda n : setattr(self, 'device_id', n.get_str_value()),
-            "device_name": lambda n : setattr(self, 'device_name', n.get_str_value()),
-            "error_code": lambda n : setattr(self, 'error_code', n.get_str_value()),
-            "install_state": lambda n : setattr(self, 'install_state', n.get_enum_value(install_state.InstallState)),
-            "last_sync_date_time": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
-            "os_description": lambda n : setattr(self, 'os_description', n.get_str_value()),
-            "os_version": lambda n : setattr(self, 'os_version', n.get_str_value()),
-            "user_name": lambda n : setattr(self, 'user_name', n.get_str_value()),
+            "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
+            "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
+            "errorCode": lambda n : setattr(self, 'error_code', n.get_str_value()),
+            "installState": lambda n : setattr(self, 'install_state', n.get_enum_value(install_state.InstallState)),
+            "lastSyncDateTime": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
+            "osDescription": lambda n : setattr(self, 'os_description', n.get_str_value()),
+            "osVersion": lambda n : setattr(self, 'os_version', n.get_str_value()),
+            "userName": lambda n : setattr(self, 'user_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -10,7 +10,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
     @property
     def action(self,) -> Optional[onenote_patch_action_type.OnenotePatchActionType]:
         """
-        Gets the action property value. The action property
+        Gets the action property value. 
         Returns: Optional[onenote_patch_action_type.OnenotePatchActionType]
         """
         return self._action
@@ -18,7 +18,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
     @action.setter
     def action(self,value: Optional[onenote_patch_action_type.OnenotePatchActionType] = None) -> None:
         """
-        Sets the action property value. The action property
+        Sets the action property value. 
         Args:
             value: Value to set for the action property.
         """
@@ -48,11 +48,9 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The action property
         self._action: Optional[onenote_patch_action_type.OnenotePatchActionType] = None
         # A string of well-formed HTML to add to the page, and any image or file binary data. If the content contains binary data, the request must be sent using the multipart/form-data content type with a 'Commands' part.
         self._content: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The location to add the supplied content, relative to the target element. The possible values are: after (default) or before.
         self._position: Optional[onenote_patch_insert_position.OnenotePatchInsertPosition] = None
@@ -105,7 +103,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -113,7 +111,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

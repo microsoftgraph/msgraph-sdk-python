@@ -36,13 +36,11 @@ class FeatureRolloutPolicy(entity.Entity):
         self._description: Optional[str] = None
         # The display name for this  feature rollout policy.
         self._display_name: Optional[str] = None
-        # The feature property
         self._feature: Optional[staged_feature_name.StagedFeatureName] = None
         # Indicates whether this feature rollout policy should be applied to the entire organization.
         self._is_applied_to_organization: Optional[bool] = None
         # Indicates whether the feature rollout is enabled.
         self._is_enabled: Optional[bool] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -94,7 +92,7 @@ class FeatureRolloutPolicy(entity.Entity):
     @property
     def feature(self,) -> Optional[staged_feature_name.StagedFeatureName]:
         """
-        Gets the feature property value. The feature property
+        Gets the feature property value. 
         Returns: Optional[staged_feature_name.StagedFeatureName]
         """
         return self._feature
@@ -102,7 +100,7 @@ class FeatureRolloutPolicy(entity.Entity):
     @feature.setter
     def feature(self,value: Optional[staged_feature_name.StagedFeatureName] = None) -> None:
         """
-        Sets the feature property value. The feature property
+        Sets the feature property value. 
         Args:
             value: Value to set for the feature property.
         """
@@ -114,12 +112,12 @@ class FeatureRolloutPolicy(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "applies_to": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "appliesTo": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "feature": lambda n : setattr(self, 'feature', n.get_enum_value(staged_feature_name.StagedFeatureName)),
-            "is_applied_to_organization": lambda n : setattr(self, 'is_applied_to_organization', n.get_bool_value()),
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "isAppliedToOrganization": lambda n : setattr(self, 'is_applied_to_organization', n.get_bool_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

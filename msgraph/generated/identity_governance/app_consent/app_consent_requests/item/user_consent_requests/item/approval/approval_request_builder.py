@@ -83,7 +83,7 @@ class ApprovalRequestBuilder():
         """
         Update the navigation property approval in identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[approval.Approval]
         """
@@ -151,7 +151,7 @@ class ApprovalRequestBuilder():
         """
         Update the navigation property approval in identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

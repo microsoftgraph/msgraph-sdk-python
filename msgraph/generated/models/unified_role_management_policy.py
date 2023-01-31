@@ -26,7 +26,6 @@ class UnifiedRoleManagementPolicy(entity.Entity):
         self._last_modified_by: Optional[identity.Identity] = None
         # The time when the role setting was last modified.
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The collection of rules like approval rules and expiration rules. Supports $expand.
         self._rules: Optional[List[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule]] = None
@@ -105,14 +104,14 @@ class UnifiedRoleManagementPolicy(entity.Entity):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "effective_rules": lambda n : setattr(self, 'effective_rules', n.get_collection_of_object_values(unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule)),
-            "is_organization_default": lambda n : setattr(self, 'is_organization_default', n.get_bool_value()),
-            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity.Identity)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "effectiveRules": lambda n : setattr(self, 'effective_rules', n.get_collection_of_object_values(unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule)),
+            "isOrganizationDefault": lambda n : setattr(self, 'is_organization_default', n.get_bool_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity.Identity)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "rules": lambda n : setattr(self, 'rules', n.get_collection_of_object_values(unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule)),
-            "scope_id": lambda n : setattr(self, 'scope_id', n.get_str_value()),
-            "scope_type": lambda n : setattr(self, 'scope_type', n.get_str_value()),
+            "scopeId": lambda n : setattr(self, 'scope_id', n.get_str_value()),
+            "scopeType": lambda n : setattr(self, 'scope_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

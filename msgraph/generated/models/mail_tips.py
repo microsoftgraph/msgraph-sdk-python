@@ -69,7 +69,6 @@ class MailTips(AdditionalDataHolder, Parsable):
         self._mailbox_full: Optional[bool] = None
         # The maximum message size that has been configured for the recipient's organization or mailbox.
         self._max_message_size: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The scope of the recipient. Possible values are: none, internal, external, externalPartner, externalNonParther. For example, an administrator can set another organization to be its 'partner'. The scope is useful if an administrator wants certain mailtips to be accessible to certain scopes. It's also useful to senders to inform them that their message may leave the organization, helping them make the correct decisions about wording, tone and content.
         self._recipient_scope: Optional[recipient_scope_type.RecipientScopeType] = None
@@ -181,19 +180,19 @@ class MailTips(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "automatic_replies": lambda n : setattr(self, 'automatic_replies', n.get_object_value(automatic_replies_mail_tips.AutomaticRepliesMailTips)),
-            "custom_mail_tip": lambda n : setattr(self, 'custom_mail_tip', n.get_str_value()),
-            "delivery_restricted": lambda n : setattr(self, 'delivery_restricted', n.get_bool_value()),
-            "email_address": lambda n : setattr(self, 'email_address', n.get_object_value(email_address.EmailAddress)),
+            "automaticReplies": lambda n : setattr(self, 'automatic_replies', n.get_object_value(automatic_replies_mail_tips.AutomaticRepliesMailTips)),
+            "customMailTip": lambda n : setattr(self, 'custom_mail_tip', n.get_str_value()),
+            "deliveryRestricted": lambda n : setattr(self, 'delivery_restricted', n.get_bool_value()),
+            "emailAddress": lambda n : setattr(self, 'email_address', n.get_object_value(email_address.EmailAddress)),
             "error": lambda n : setattr(self, 'error', n.get_object_value(mail_tips_error.MailTipsError)),
-            "external_member_count": lambda n : setattr(self, 'external_member_count', n.get_int_value()),
-            "is_moderated": lambda n : setattr(self, 'is_moderated', n.get_bool_value()),
-            "mailbox_full": lambda n : setattr(self, 'mailbox_full', n.get_bool_value()),
-            "max_message_size": lambda n : setattr(self, 'max_message_size', n.get_int_value()),
+            "externalMemberCount": lambda n : setattr(self, 'external_member_count', n.get_int_value()),
+            "isModerated": lambda n : setattr(self, 'is_moderated', n.get_bool_value()),
+            "mailboxFull": lambda n : setattr(self, 'mailbox_full', n.get_bool_value()),
+            "maxMessageSize": lambda n : setattr(self, 'max_message_size', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recipient_scope": lambda n : setattr(self, 'recipient_scope', n.get_enum_value(recipient_scope_type.RecipientScopeType)),
-            "recipient_suggestions": lambda n : setattr(self, 'recipient_suggestions', n.get_collection_of_object_values(recipient.Recipient)),
-            "total_member_count": lambda n : setattr(self, 'total_member_count', n.get_int_value()),
+            "recipientScope": lambda n : setattr(self, 'recipient_scope', n.get_enum_value(recipient_scope_type.RecipientScopeType)),
+            "recipientSuggestions": lambda n : setattr(self, 'recipient_suggestions', n.get_collection_of_object_values(recipient.Recipient)),
+            "totalMemberCount": lambda n : setattr(self, 'total_member_count', n.get_int_value()),
         }
         return fields
     
@@ -251,7 +250,7 @@ class MailTips(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -259,7 +258,7 @@ class MailTips(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

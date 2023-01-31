@@ -66,7 +66,7 @@ class ContentSharingSessionsRequestBuilder():
         """
         Create new navigation property to contentSharingSessions for communications
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[content_sharing_session.ContentSharingSession]
         """
@@ -105,7 +105,7 @@ class ContentSharingSessionsRequestBuilder():
         """
         Create new navigation property to contentSharingSessions for communications
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

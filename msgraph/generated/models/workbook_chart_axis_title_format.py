@@ -14,7 +14,6 @@ class WorkbookChartAxisTitleFormat(entity.Entity):
         super().__init__()
         # Represents the font attributes, such as font name, font size, color, etc. of chart axis title object. Read-only.
         self._font: Optional[workbook_chart_font.WorkbookChartFont] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

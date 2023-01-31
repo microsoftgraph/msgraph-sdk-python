@@ -12,7 +12,6 @@ class ManagedEBookAssignmentCollectionResponse(base_collection_pagination_count_
         Instantiates a new ManagedEBookAssignmentCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[managed_e_book_assignment.ManagedEBookAssignment]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ManagedEBookAssignmentCollectionResponse(base_collection_pagination_count_
     @property
     def value(self,) -> Optional[List[managed_e_book_assignment.ManagedEBookAssignment]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[managed_e_book_assignment.ManagedEBookAssignment]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ManagedEBookAssignmentCollectionResponse(base_collection_pagination_count_
     @value.setter
     def value(self,value: Optional[List[managed_e_book_assignment.ManagedEBookAssignment]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

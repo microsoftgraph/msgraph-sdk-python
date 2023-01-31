@@ -39,7 +39,6 @@ class ContactFolder(entity.Entity):
         self._display_name: Optional[str] = None
         # The collection of multi-value extended properties defined for the contactFolder. Read-only. Nullable.
         self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The ID of the folder's parent folder.
         self._parent_folder_id: Optional[str] = None
@@ -98,12 +97,12 @@ class ContactFolder(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "child_folders": lambda n : setattr(self, 'child_folders', n.get_collection_of_object_values(ContactFolder)),
+            "childFolders": lambda n : setattr(self, 'child_folders', n.get_collection_of_object_values(ContactFolder)),
             "contacts": lambda n : setattr(self, 'contacts', n.get_collection_of_object_values(contact.Contact)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "multi_value_extended_properties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty)),
-            "parent_folder_id": lambda n : setattr(self, 'parent_folder_id', n.get_str_value()),
-            "single_value_extended_properties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(single_value_legacy_extended_property.SingleValueLegacyExtendedProperty)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "multiValueExtendedProperties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty)),
+            "parentFolderId": lambda n : setattr(self, 'parent_folder_id', n.get_str_value()),
+            "singleValueExtendedProperties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(single_value_legacy_extended_property.SingleValueLegacyExtendedProperty)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

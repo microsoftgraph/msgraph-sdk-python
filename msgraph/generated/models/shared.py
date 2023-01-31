@@ -31,7 +31,6 @@ class Shared(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The identity of the owner of the shared item. Read-only.
         self._owner: Optional[identity_set.IdentitySet] = None
@@ -63,15 +62,15 @@ class Shared(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "owner": lambda n : setattr(self, 'owner', n.get_object_value(identity_set.IdentitySet)),
             "scope": lambda n : setattr(self, 'scope', n.get_str_value()),
-            "shared_by": lambda n : setattr(self, 'shared_by', n.get_object_value(identity_set.IdentitySet)),
-            "shared_date_time": lambda n : setattr(self, 'shared_date_time', n.get_datetime_value()),
+            "sharedBy": lambda n : setattr(self, 'shared_by', n.get_object_value(identity_set.IdentitySet)),
+            "sharedDateTime": lambda n : setattr(self, 'shared_date_time', n.get_datetime_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -79,7 +78,7 @@ class Shared(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

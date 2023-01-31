@@ -35,7 +35,6 @@ class ShiftItem(schedule_entity.ScheduleEntity):
         self._display_name: Optional[str] = None
         # The shift notes for the shiftItem.
         self._notes: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -74,7 +73,7 @@ class ShiftItem(schedule_entity.ScheduleEntity):
         """
         fields = {
             "activities": lambda n : setattr(self, 'activities', n.get_collection_of_object_values(shift_activity.ShiftActivity)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

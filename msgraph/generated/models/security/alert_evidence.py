@@ -35,9 +35,7 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
 
         # The time the evidence was created and added to the alert.
         self._created_date_time: Optional[datetime] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The remediationStatus property
         self._remediation_status: Optional[evidence_remediation_status.EvidenceRemediationStatus] = None
         # Details about the remediation status.
         self._remediation_status_details: Optional[str] = None
@@ -45,7 +43,6 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
         self._roles: Optional[List[evidence_role.EvidenceRole]] = None
         # Array of custom tags associated with an evidence instance, for example to denote a group of devices, high value assets, etc.
         self._tags: Optional[List[str]] = None
-        # The verdict property
         self._verdict: Optional[evidence_verdict.EvidenceVerdict] = None
     
     @property
@@ -83,10 +80,10 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "remediation_status": lambda n : setattr(self, 'remediation_status', n.get_enum_value(evidence_remediation_status.EvidenceRemediationStatus)),
-            "remediation_status_details": lambda n : setattr(self, 'remediation_status_details', n.get_str_value()),
+            "remediationStatus": lambda n : setattr(self, 'remediation_status', n.get_enum_value(evidence_remediation_status.EvidenceRemediationStatus)),
+            "remediationStatusDetails": lambda n : setattr(self, 'remediation_status_details', n.get_str_value()),
             "roles": lambda n : setattr(self, 'roles', n.get_collection_of_enum_values(evidence_role.EvidenceRole)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
             "verdict": lambda n : setattr(self, 'verdict', n.get_enum_value(evidence_verdict.EvidenceVerdict)),
@@ -96,7 +93,7 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -104,7 +101,7 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -113,7 +110,7 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
     @property
     def remediation_status(self,) -> Optional[evidence_remediation_status.EvidenceRemediationStatus]:
         """
-        Gets the remediationStatus property value. The remediationStatus property
+        Gets the remediationStatus property value. 
         Returns: Optional[evidence_remediation_status.EvidenceRemediationStatus]
         """
         return self._remediation_status
@@ -121,7 +118,7 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
     @remediation_status.setter
     def remediation_status(self,value: Optional[evidence_remediation_status.EvidenceRemediationStatus] = None) -> None:
         """
-        Sets the remediationStatus property value. The remediationStatus property
+        Sets the remediationStatus property value. 
         Args:
             value: Value to set for the remediationStatus property.
         """
@@ -198,7 +195,7 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
     @property
     def verdict(self,) -> Optional[evidence_verdict.EvidenceVerdict]:
         """
-        Gets the verdict property value. The verdict property
+        Gets the verdict property value. 
         Returns: Optional[evidence_verdict.EvidenceVerdict]
         """
         return self._verdict
@@ -206,7 +203,7 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
     @verdict.setter
     def verdict(self,value: Optional[evidence_verdict.EvidenceVerdict] = None) -> None:
         """
-        Sets the verdict property value. The verdict property
+        Sets the verdict property value. 
         Args:
             value: Value to set for the verdict property.
         """

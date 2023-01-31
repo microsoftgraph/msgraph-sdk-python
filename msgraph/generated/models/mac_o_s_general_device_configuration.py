@@ -109,18 +109,18 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "compliant_app_list_type": lambda n : setattr(self, 'compliant_app_list_type', n.get_enum_value(app_list_type.AppListType)),
-            "compliant_apps_list": lambda n : setattr(self, 'compliant_apps_list', n.get_collection_of_object_values(app_list_item.AppListItem)),
-            "email_in_domain_suffixes": lambda n : setattr(self, 'email_in_domain_suffixes', n.get_collection_of_primitive_values(str)),
-            "password_block_simple": lambda n : setattr(self, 'password_block_simple', n.get_bool_value()),
-            "password_expiration_days": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
-            "password_minimum_character_set_count": lambda n : setattr(self, 'password_minimum_character_set_count', n.get_int_value()),
-            "password_minimum_length": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
-            "password_minutes_of_inactivity_before_lock": lambda n : setattr(self, 'password_minutes_of_inactivity_before_lock', n.get_int_value()),
-            "password_minutes_of_inactivity_before_screen_timeout": lambda n : setattr(self, 'password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
-            "password_previous_password_block_count": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
-            "password_required": lambda n : setattr(self, 'password_required', n.get_bool_value()),
-            "password_required_type": lambda n : setattr(self, 'password_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
+            "compliantAppListType": lambda n : setattr(self, 'compliant_app_list_type', n.get_enum_value(app_list_type.AppListType)),
+            "compliantAppsList": lambda n : setattr(self, 'compliant_apps_list', n.get_collection_of_object_values(app_list_item.AppListItem)),
+            "emailInDomainSuffixes": lambda n : setattr(self, 'email_in_domain_suffixes', n.get_collection_of_primitive_values(str)),
+            "passwordBlockSimple": lambda n : setattr(self, 'password_block_simple', n.get_bool_value()),
+            "passwordExpirationDays": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
+            "passwordMinimumCharacterSetCount": lambda n : setattr(self, 'password_minimum_character_set_count', n.get_int_value()),
+            "passwordMinimumLength": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
+            "passwordMinutesOfInactivityBeforeLock": lambda n : setattr(self, 'password_minutes_of_inactivity_before_lock', n.get_int_value()),
+            "passwordMinutesOfInactivityBeforeScreenTimeout": lambda n : setattr(self, 'password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
+            "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
+            "passwordRequired": lambda n : setattr(self, 'password_required', n.get_bool_value()),
+            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

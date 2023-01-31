@@ -27,7 +27,6 @@ class AgreementFileProperties(entity.Entity):
         self._is_major_version: Optional[bool] = None
         # The language of the agreement file in the format 'languagecode2-country/regioncode2'. 'languagecode2' is a lowercase two-letter code derived from ISO 639-1, while 'country/regioncode2' is derived from ISO 3166 and usually consists of two uppercase letters, or a BCP-47 language tag. For example, U.S. English is en-US. Read-only.
         self._language: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @property
@@ -116,12 +115,12 @@ class AgreementFileProperties(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "file_data": lambda n : setattr(self, 'file_data', n.get_object_value(agreement_file_data.AgreementFileData)),
-            "file_name": lambda n : setattr(self, 'file_name', n.get_str_value()),
-            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
-            "is_major_version": lambda n : setattr(self, 'is_major_version', n.get_bool_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "fileData": lambda n : setattr(self, 'file_data', n.get_object_value(agreement_file_data.AgreementFileData)),
+            "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
+            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "isMajorVersion": lambda n : setattr(self, 'is_major_version', n.get_bool_value()),
             "language": lambda n : setattr(self, 'language', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

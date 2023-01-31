@@ -51,7 +51,6 @@ class TeamworkOnlineMeetingInfo(AdditionalDataHolder, Parsable):
         self._calendar_event_id: Optional[str] = None
         # The URL that users click to join or uniquely identify the meeting.
         self._join_web_url: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The organizer of the meeting.
         self._organizer: Optional[teamwork_user_identity.TeamworkUserIdentity] = None
@@ -74,8 +73,8 @@ class TeamworkOnlineMeetingInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "calendar_event_id": lambda n : setattr(self, 'calendar_event_id', n.get_str_value()),
-            "join_web_url": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
+            "calendarEventId": lambda n : setattr(self, 'calendar_event_id', n.get_str_value()),
+            "joinWebUrl": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "organizer": lambda n : setattr(self, 'organizer', n.get_object_value(teamwork_user_identity.TeamworkUserIdentity)),
         }
@@ -101,7 +100,7 @@ class TeamworkOnlineMeetingInfo(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -109,7 +108,7 @@ class TeamworkOnlineMeetingInfo(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

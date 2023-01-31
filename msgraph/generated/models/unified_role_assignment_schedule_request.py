@@ -103,7 +103,6 @@ class UnifiedRoleAssignmentScheduleRequest(request.Request):
         self._is_validation_only: Optional[bool] = None
         # A message provided by users and administrators when create they create the unifiedRoleAssignmentScheduleRequest object.
         self._justification: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The principal that's getting a role assignment through the request. Supports $expand.
         self._principal: Optional[directory_object.DirectoryObject] = None
@@ -175,21 +174,21 @@ class UnifiedRoleAssignmentScheduleRequest(request.Request):
         """
         fields = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(unified_role_schedule_request_actions.UnifiedRoleScheduleRequestActions)),
-            "activated_using": lambda n : setattr(self, 'activated_using', n.get_object_value(unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule)),
-            "app_scope": lambda n : setattr(self, 'app_scope', n.get_object_value(app_scope.AppScope)),
-            "app_scope_id": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
-            "directory_scope": lambda n : setattr(self, 'directory_scope', n.get_object_value(directory_object.DirectoryObject)),
-            "directory_scope_id": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
-            "is_validation_only": lambda n : setattr(self, 'is_validation_only', n.get_bool_value()),
+            "activatedUsing": lambda n : setattr(self, 'activated_using', n.get_object_value(unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule)),
+            "appScope": lambda n : setattr(self, 'app_scope', n.get_object_value(app_scope.AppScope)),
+            "appScopeId": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
+            "directoryScope": lambda n : setattr(self, 'directory_scope', n.get_object_value(directory_object.DirectoryObject)),
+            "directoryScopeId": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
+            "isValidationOnly": lambda n : setattr(self, 'is_validation_only', n.get_bool_value()),
             "justification": lambda n : setattr(self, 'justification', n.get_str_value()),
             "principal": lambda n : setattr(self, 'principal', n.get_object_value(directory_object.DirectoryObject)),
-            "principal_id": lambda n : setattr(self, 'principal_id', n.get_str_value()),
-            "role_definition": lambda n : setattr(self, 'role_definition', n.get_object_value(unified_role_definition.UnifiedRoleDefinition)),
-            "role_definition_id": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
-            "schedule_info": lambda n : setattr(self, 'schedule_info', n.get_object_value(request_schedule.RequestSchedule)),
-            "target_schedule": lambda n : setattr(self, 'target_schedule', n.get_object_value(unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule)),
-            "target_schedule_id": lambda n : setattr(self, 'target_schedule_id', n.get_str_value()),
-            "ticket_info": lambda n : setattr(self, 'ticket_info', n.get_object_value(ticket_info.TicketInfo)),
+            "principalId": lambda n : setattr(self, 'principal_id', n.get_str_value()),
+            "roleDefinition": lambda n : setattr(self, 'role_definition', n.get_object_value(unified_role_definition.UnifiedRoleDefinition)),
+            "roleDefinitionId": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
+            "scheduleInfo": lambda n : setattr(self, 'schedule_info', n.get_object_value(request_schedule.RequestSchedule)),
+            "targetSchedule": lambda n : setattr(self, 'target_schedule', n.get_object_value(unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule)),
+            "targetScheduleId": lambda n : setattr(self, 'target_schedule_id', n.get_str_value()),
+            "ticketInfo": lambda n : setattr(self, 'ticket_info', n.get_object_value(ticket_info.TicketInfo)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

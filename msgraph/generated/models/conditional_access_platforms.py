@@ -34,7 +34,6 @@ class ConditionalAccessPlatforms(AdditionalDataHolder, Parsable):
         self._exclude_platforms: Optional[List[conditional_access_device_platform.ConditionalAccessDevicePlatform]] = None
         # Possible values are: android, iOS, windows, windowsPhone, macOS, linux, all, unknownFutureValue.
         self._include_platforms: Optional[List[conditional_access_device_platform.ConditionalAccessDevicePlatform]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -72,8 +71,8 @@ class ConditionalAccessPlatforms(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "exclude_platforms": lambda n : setattr(self, 'exclude_platforms', n.get_collection_of_enum_values(conditional_access_device_platform.ConditionalAccessDevicePlatform)),
-            "include_platforms": lambda n : setattr(self, 'include_platforms', n.get_collection_of_enum_values(conditional_access_device_platform.ConditionalAccessDevicePlatform)),
+            "excludePlatforms": lambda n : setattr(self, 'exclude_platforms', n.get_collection_of_enum_values(conditional_access_device_platform.ConditionalAccessDevicePlatform)),
+            "includePlatforms": lambda n : setattr(self, 'include_platforms', n.get_collection_of_enum_values(conditional_access_device_platform.ConditionalAccessDevicePlatform)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -98,7 +97,7 @@ class ConditionalAccessPlatforms(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -106,7 +105,7 @@ class ConditionalAccessPlatforms(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

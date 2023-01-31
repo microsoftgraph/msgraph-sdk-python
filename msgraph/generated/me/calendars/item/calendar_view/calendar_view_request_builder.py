@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.me.calendars.item.calendar_view.count.count_request_builder')
-delta_request_builder = lazy_import('msgraph.generated.me.calendars.item.calendar_view.delta.delta_request_builder')
+delta_request_builder = lazy_import('msgraph.generated.me.calendars.item.calendar_view.microsoft_graph_delta.delta_request_builder')
 event_collection_response = lazy_import('msgraph.generated.models.event_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -25,6 +25,13 @@ class CalendarViewRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_delta(self) -> delta_request_builder.DeltaRequestBuilder:
+        """
+        Provides operations to call the delta method.
+        """
+        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -43,13 +50,6 @@ class CalendarViewRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def delta(self,) -> delta_request_builder.DeltaRequestBuilder:
-        """
-        Provides operations to call the delta method.
-        Returns: delta_request_builder.DeltaRequestBuilder
-        """
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     async def get(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> Optional[event_collection_response.EventCollectionResponse]:
         """

@@ -13,7 +13,6 @@ class MediaPrompt(prompt.Prompt):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.mediaPrompt"
-        # The mediaInfo property
         self._media_info: Optional[media_info.MediaInfo] = None
     
     @staticmethod
@@ -34,7 +33,7 @@ class MediaPrompt(prompt.Prompt):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "media_info": lambda n : setattr(self, 'media_info', n.get_object_value(media_info.MediaInfo)),
+            "mediaInfo": lambda n : setattr(self, 'media_info', n.get_object_value(media_info.MediaInfo)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -43,7 +42,7 @@ class MediaPrompt(prompt.Prompt):
     @property
     def media_info(self,) -> Optional[media_info.MediaInfo]:
         """
-        Gets the mediaInfo property value. The mediaInfo property
+        Gets the mediaInfo property value. 
         Returns: Optional[media_info.MediaInfo]
         """
         return self._media_info
@@ -51,7 +50,7 @@ class MediaPrompt(prompt.Prompt):
     @media_info.setter
     def media_info(self,value: Optional[media_info.MediaInfo] = None) -> None:
         """
-        Sets the mediaInfo property value. The mediaInfo property
+        Sets the mediaInfo property value. 
         Args:
             value: Value to set for the mediaInfo property.
         """

@@ -237,7 +237,6 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         self._allow_pivot_tables: Optional[bool] = None
         # Represents the worksheet protection option of allowing using sort feature.
         self._allow_sort: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -258,17 +257,17 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_auto_filter": lambda n : setattr(self, 'allow_auto_filter', n.get_bool_value()),
-            "allow_delete_columns": lambda n : setattr(self, 'allow_delete_columns', n.get_bool_value()),
-            "allow_delete_rows": lambda n : setattr(self, 'allow_delete_rows', n.get_bool_value()),
-            "allow_format_cells": lambda n : setattr(self, 'allow_format_cells', n.get_bool_value()),
-            "allow_format_columns": lambda n : setattr(self, 'allow_format_columns', n.get_bool_value()),
-            "allow_format_rows": lambda n : setattr(self, 'allow_format_rows', n.get_bool_value()),
-            "allow_insert_columns": lambda n : setattr(self, 'allow_insert_columns', n.get_bool_value()),
-            "allow_insert_hyperlinks": lambda n : setattr(self, 'allow_insert_hyperlinks', n.get_bool_value()),
-            "allow_insert_rows": lambda n : setattr(self, 'allow_insert_rows', n.get_bool_value()),
-            "allow_pivot_tables": lambda n : setattr(self, 'allow_pivot_tables', n.get_bool_value()),
-            "allow_sort": lambda n : setattr(self, 'allow_sort', n.get_bool_value()),
+            "allowAutoFilter": lambda n : setattr(self, 'allow_auto_filter', n.get_bool_value()),
+            "allowDeleteColumns": lambda n : setattr(self, 'allow_delete_columns', n.get_bool_value()),
+            "allowDeleteRows": lambda n : setattr(self, 'allow_delete_rows', n.get_bool_value()),
+            "allowFormatCells": lambda n : setattr(self, 'allow_format_cells', n.get_bool_value()),
+            "allowFormatColumns": lambda n : setattr(self, 'allow_format_columns', n.get_bool_value()),
+            "allowFormatRows": lambda n : setattr(self, 'allow_format_rows', n.get_bool_value()),
+            "allowInsertColumns": lambda n : setattr(self, 'allow_insert_columns', n.get_bool_value()),
+            "allowInsertHyperlinks": lambda n : setattr(self, 'allow_insert_hyperlinks', n.get_bool_value()),
+            "allowInsertRows": lambda n : setattr(self, 'allow_insert_rows', n.get_bool_value()),
+            "allowPivotTables": lambda n : setattr(self, 'allow_pivot_tables', n.get_bool_value()),
+            "allowSort": lambda n : setattr(self, 'allow_sort', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -276,7 +275,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -284,7 +283,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

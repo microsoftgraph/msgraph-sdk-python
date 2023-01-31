@@ -14,7 +14,6 @@ class ConversationMember(entity.Entity):
         super().__init__()
         # The display name of the user.
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The roles for that user. This property only contains additional qualifiers when relevant - for example, if the member has owner privileges, the roles property contains owner as one of the values. Similarly, if the member is a guest, the roles property contains guest as one of the values. A basic member should not have any values specified in the roles property.
         self._roles: Optional[List[str]] = None
@@ -56,9 +55,9 @@ class ConversationMember(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "roles": lambda n : setattr(self, 'roles', n.get_collection_of_primitive_values(str)),
-            "visible_history_start_date_time": lambda n : setattr(self, 'visible_history_start_date_time', n.get_datetime_value()),
+            "visibleHistoryStartDateTime": lambda n : setattr(self, 'visible_history_start_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

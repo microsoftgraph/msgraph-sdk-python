@@ -55,7 +55,6 @@ class AppRole(AdditionalDataHolder, Parsable):
         self._id: Optional[Guid] = None
         # When creating or updating an app role, this must be set to true (which is the default). To delete a role, this must first be set to false.  At that point, in a subsequent call, this role may be removed.
         self._is_enabled: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Specifies if the app role is defined on the application object or on the servicePrincipal entity. Must not be included in any POST or PATCH requests. Read-only.
         self._origin: Optional[str] = None
@@ -114,11 +113,11 @@ class AppRole(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allowed_member_types": lambda n : setattr(self, 'allowed_member_types', n.get_collection_of_primitive_values(str)),
+            "allowedMemberTypes": lambda n : setattr(self, 'allowed_member_types', n.get_collection_of_primitive_values(str)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_object_value(Guid)),
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "origin": lambda n : setattr(self, 'origin', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
@@ -162,7 +161,7 @@ class AppRole(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -170,7 +169,7 @@ class AppRole(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

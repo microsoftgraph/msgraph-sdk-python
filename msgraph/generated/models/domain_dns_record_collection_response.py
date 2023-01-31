@@ -12,7 +12,6 @@ class DomainDnsRecordCollectionResponse(base_collection_pagination_count_respons
         Instantiates a new DomainDnsRecordCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[domain_dns_record.DomainDnsRecord]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class DomainDnsRecordCollectionResponse(base_collection_pagination_count_respons
     @property
     def value(self,) -> Optional[List[domain_dns_record.DomainDnsRecord]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[domain_dns_record.DomainDnsRecord]]
         """
         return self._value
@@ -61,7 +60,7 @@ class DomainDnsRecordCollectionResponse(base_collection_pagination_count_respons
     @value.setter
     def value(self,value: Optional[List[domain_dns_record.DomainDnsRecord]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

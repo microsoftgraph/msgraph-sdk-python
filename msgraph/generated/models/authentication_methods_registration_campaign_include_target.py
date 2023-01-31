@@ -32,11 +32,9 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
 
         # The object identifier of an Azure Active Directory user or group.
         self._id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The authentication method that the user is prompted to register. The value must be microsoftAuthenticator.
         self._targeted_authentication_method: Optional[str] = None
-        # The targetType property
         self._target_type: Optional[authentication_method_target_type.AuthenticationMethodTargetType] = None
     
     @staticmethod
@@ -59,8 +57,8 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
         fields = {
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "targeted_authentication_method": lambda n : setattr(self, 'targeted_authentication_method', n.get_str_value()),
-            "target_type": lambda n : setattr(self, 'target_type', n.get_enum_value(authentication_method_target_type.AuthenticationMethodTargetType)),
+            "targetedAuthenticationMethod": lambda n : setattr(self, 'targeted_authentication_method', n.get_str_value()),
+            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(authentication_method_target_type.AuthenticationMethodTargetType)),
         }
         return fields
     
@@ -84,7 +82,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -92,7 +90,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -132,7 +130,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
     @property
     def target_type(self,) -> Optional[authentication_method_target_type.AuthenticationMethodTargetType]:
         """
-        Gets the targetType property value. The targetType property
+        Gets the targetType property value. 
         Returns: Optional[authentication_method_target_type.AuthenticationMethodTargetType]
         """
         return self._target_type
@@ -140,7 +138,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
     @target_type.setter
     def target_type(self,value: Optional[authentication_method_target_type.AuthenticationMethodTargetType] = None) -> None:
         """
-        Sets the targetType property value. The targetType property
+        Sets the targetType property value. 
         Args:
             value: Value to set for the targetType property.
         """

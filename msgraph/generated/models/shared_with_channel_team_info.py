@@ -33,7 +33,6 @@ class SharedWithChannelTeamInfo(team_info.TeamInfo):
         self._allowed_members: Optional[List[conversation_member.ConversationMember]] = None
         # Indicates whether the team is the host of the channel.
         self._is_host_team: Optional[bool] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -54,8 +53,8 @@ class SharedWithChannelTeamInfo(team_info.TeamInfo):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allowed_members": lambda n : setattr(self, 'allowed_members', n.get_collection_of_object_values(conversation_member.ConversationMember)),
-            "is_host_team": lambda n : setattr(self, 'is_host_team', n.get_bool_value()),
+            "allowedMembers": lambda n : setattr(self, 'allowed_members', n.get_collection_of_object_values(conversation_member.ConversationMember)),
+            "isHostTeam": lambda n : setattr(self, 'is_host_team', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

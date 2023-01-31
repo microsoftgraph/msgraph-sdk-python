@@ -63,13 +63,13 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "is_usable": lambda n : setattr(self, 'is_usable', n.get_bool_value()),
-            "is_usable_once": lambda n : setattr(self, 'is_usable_once', n.get_bool_value()),
-            "lifetime_in_minutes": lambda n : setattr(self, 'lifetime_in_minutes', n.get_int_value()),
-            "method_usability_reason": lambda n : setattr(self, 'method_usability_reason', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
-            "temporary_access_pass": lambda n : setattr(self, 'temporary_access_pass', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "isUsable": lambda n : setattr(self, 'is_usable', n.get_bool_value()),
+            "isUsableOnce": lambda n : setattr(self, 'is_usable_once', n.get_bool_value()),
+            "lifetimeInMinutes": lambda n : setattr(self, 'lifetime_in_minutes', n.get_int_value()),
+            "methodUsabilityReason": lambda n : setattr(self, 'method_usability_reason', n.get_str_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "temporaryAccessPass": lambda n : setattr(self, 'temporary_access_pass', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

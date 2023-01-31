@@ -12,7 +12,6 @@ class SkypeUserConversationMember(conversation_member.ConversationMember):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.skypeUserConversationMember"
-        # The skypeId property
         self._skype_id: Optional[str] = None
     
     @staticmethod
@@ -33,7 +32,7 @@ class SkypeUserConversationMember(conversation_member.ConversationMember):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "skype_id": lambda n : setattr(self, 'skype_id', n.get_str_value()),
+            "skypeId": lambda n : setattr(self, 'skype_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -53,7 +52,7 @@ class SkypeUserConversationMember(conversation_member.ConversationMember):
     @property
     def skype_id(self,) -> Optional[str]:
         """
-        Gets the skypeId property value. The skypeId property
+        Gets the skypeId property value. 
         Returns: Optional[str]
         """
         return self._skype_id
@@ -61,7 +60,7 @@ class SkypeUserConversationMember(conversation_member.ConversationMember):
     @skype_id.setter
     def skype_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the skypeId property value. The skypeId property
+        Sets the skypeId property value. 
         Args:
             value: Value to set for the skypeId property.
         """

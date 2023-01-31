@@ -11,7 +11,6 @@ class ResultTemplateDictionary(dictionary.Dictionary):
         Instantiates a new ResultTemplateDictionary and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

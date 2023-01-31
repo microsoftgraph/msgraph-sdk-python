@@ -55,9 +55,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         self._email_address: Optional[str] = None
         # Mobile phone number of the contact.
         self._mobile_phone: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The relationship property
         self._relationship: Optional[contact_relationship.ContactRelationship] = None
     
     @staticmethod
@@ -112,10 +110,10 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_consent": lambda n : setattr(self, 'access_consent', n.get_bool_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "email_address": lambda n : setattr(self, 'email_address', n.get_str_value()),
-            "mobile_phone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
+            "accessConsent": lambda n : setattr(self, 'access_consent', n.get_bool_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "mobilePhone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "relationship": lambda n : setattr(self, 'relationship', n.get_enum_value(contact_relationship.ContactRelationship)),
         }
@@ -141,7 +139,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -149,7 +147,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -158,7 +156,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
     @property
     def relationship(self,) -> Optional[contact_relationship.ContactRelationship]:
         """
-        Gets the relationship property value. The relationship property
+        Gets the relationship property value. 
         Returns: Optional[contact_relationship.ContactRelationship]
         """
         return self._relationship
@@ -166,7 +164,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
     @relationship.setter
     def relationship(self,value: Optional[contact_relationship.ContactRelationship] = None) -> None:
         """
-        Sets the relationship property value. The relationship property
+        Sets the relationship property value. 
         Args:
             value: Value to set for the relationship property.
         """

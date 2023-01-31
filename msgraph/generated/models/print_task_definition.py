@@ -13,11 +13,9 @@ class PrintTaskDefinition(entity.Entity):
         Instantiates a new printTaskDefinition and sets the default values.
         """
         super().__init__()
-        # The createdBy property
         self._created_by: Optional[app_identity.AppIdentity] = None
         # The name of the printTaskDefinition.
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # A list of tasks that have been created based on this definition. The list includes currently running tasks and recently completed tasks. Read-only.
         self._tasks: Optional[List[print_task.PrintTask]] = None
@@ -25,7 +23,7 @@ class PrintTaskDefinition(entity.Entity):
     @property
     def created_by(self,) -> Optional[app_identity.AppIdentity]:
         """
-        Gets the createdBy property value. The createdBy property
+        Gets the createdBy property value. 
         Returns: Optional[app_identity.AppIdentity]
         """
         return self._created_by
@@ -33,7 +31,7 @@ class PrintTaskDefinition(entity.Entity):
     @created_by.setter
     def created_by(self,value: Optional[app_identity.AppIdentity] = None) -> None:
         """
-        Sets the createdBy property value. The createdBy property
+        Sets the createdBy property value. 
         Args:
             value: Value to set for the createdBy property.
         """
@@ -74,8 +72,8 @@ class PrintTaskDefinition(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(app_identity.AppIdentity)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(app_identity.AppIdentity)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(print_task.PrintTask)),
         }
         super_fields = super().get_field_deserializers()

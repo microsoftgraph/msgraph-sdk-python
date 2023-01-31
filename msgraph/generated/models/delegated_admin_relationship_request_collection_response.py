@@ -12,7 +12,6 @@ class DelegatedAdminRelationshipRequestCollectionResponse(base_collection_pagina
         Instantiates a new DelegatedAdminRelationshipRequestCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class DelegatedAdminRelationshipRequestCollectionResponse(base_collection_pagina
     @property
     def value(self,) -> Optional[List[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]]
         """
         return self._value
@@ -61,7 +60,7 @@ class DelegatedAdminRelationshipRequestCollectionResponse(base_collection_pagina
     @value.setter
     def value(self,value: Optional[List[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

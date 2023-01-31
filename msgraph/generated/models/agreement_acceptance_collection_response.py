@@ -12,7 +12,6 @@ class AgreementAcceptanceCollectionResponse(base_collection_pagination_count_res
         Instantiates a new AgreementAcceptanceCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[agreement_acceptance.AgreementAcceptance]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class AgreementAcceptanceCollectionResponse(base_collection_pagination_count_res
     @property
     def value(self,) -> Optional[List[agreement_acceptance.AgreementAcceptance]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[agreement_acceptance.AgreementAcceptance]]
         """
         return self._value
@@ -61,7 +60,7 @@ class AgreementAcceptanceCollectionResponse(base_collection_pagination_count_res
     @value.setter
     def value(self,value: Optional[List[agreement_acceptance.AgreementAcceptance]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

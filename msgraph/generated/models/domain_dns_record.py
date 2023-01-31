@@ -15,7 +15,6 @@ class DomainDnsRecord(entity.Entity):
         self._is_optional: Optional[bool] = None
         # Value used when configuring the name of the DNS record at the DNS host.
         self._label: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Indicates what type of DNS record this entity represents.The value can be one of the following: CName, Mx, Srv, Txt.
         self._record_type: Optional[str] = None
@@ -42,10 +41,10 @@ class DomainDnsRecord(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_optional": lambda n : setattr(self, 'is_optional', n.get_bool_value()),
+            "isOptional": lambda n : setattr(self, 'is_optional', n.get_bool_value()),
             "label": lambda n : setattr(self, 'label', n.get_str_value()),
-            "record_type": lambda n : setattr(self, 'record_type', n.get_str_value()),
-            "supported_service": lambda n : setattr(self, 'supported_service', n.get_str_value()),
+            "recordType": lambda n : setattr(self, 'record_type', n.get_str_value()),
+            "supportedService": lambda n : setattr(self, 'supported_service', n.get_str_value()),
             "ttl": lambda n : setattr(self, 'ttl', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()

@@ -16,7 +16,6 @@ class IpNamedLocation(named_location.NamedLocation):
         self._ip_ranges: Optional[List[ip_range.IpRange]] = None
         # true if this location is explicitly trusted. Optional. Default value is false.
         self._is_trusted: Optional[bool] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -37,8 +36,8 @@ class IpNamedLocation(named_location.NamedLocation):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "ip_ranges": lambda n : setattr(self, 'ip_ranges', n.get_collection_of_object_values(ip_range.IpRange)),
-            "is_trusted": lambda n : setattr(self, 'is_trusted', n.get_bool_value()),
+            "ipRanges": lambda n : setattr(self, 'ip_ranges', n.get_collection_of_object_values(ip_range.IpRange)),
+            "isTrusted": lambda n : setattr(self, 'is_trusted', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

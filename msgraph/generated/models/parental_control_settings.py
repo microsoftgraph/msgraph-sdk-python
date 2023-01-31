@@ -32,7 +32,6 @@ class ParentalControlSettings(AdditionalDataHolder, Parsable):
         self._countries_blocked_for_minors: Optional[List[str]] = None
         # Specifies the legal age group rule that applies to users of the app. Can be set to one of the following values: ValueDescriptionAllowDefault. Enforces the legal minimum. This means parental consent is required for minors in the European Union and Korea.RequireConsentForPrivacyServicesEnforces the user to specify date of birth to comply with COPPA rules. RequireConsentForMinorsRequires parental consent for ages below 18, regardless of country minor rules.RequireConsentForKidsRequires parental consent for ages below 14, regardless of country minor rules.BlockMinorsBlocks minors from using the app.
         self._legal_age_group_rule: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @property
@@ -70,8 +69,8 @@ class ParentalControlSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "countries_blocked_for_minors": lambda n : setattr(self, 'countries_blocked_for_minors', n.get_collection_of_primitive_values(str)),
-            "legal_age_group_rule": lambda n : setattr(self, 'legal_age_group_rule', n.get_str_value()),
+            "countriesBlockedForMinors": lambda n : setattr(self, 'countries_blocked_for_minors', n.get_collection_of_primitive_values(str)),
+            "legalAgeGroupRule": lambda n : setattr(self, 'legal_age_group_rule', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -96,7 +95,7 @@ class ParentalControlSettings(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -104,7 +103,7 @@ class ParentalControlSettings(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

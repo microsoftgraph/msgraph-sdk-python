@@ -28,11 +28,8 @@ class DelegatedAdminRelationshipCustomerParticipant(AdditionalDataHolder, Parsab
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The displayName property
         self._display_name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The tenantId property
         self._tenant_id: Optional[str] = None
     
     @staticmethod
@@ -50,7 +47,7 @@ class DelegatedAdminRelationshipCustomerParticipant(AdditionalDataHolder, Parsab
     @property
     def display_name(self,) -> Optional[str]:
         """
-        Gets the displayName property value. The displayName property
+        Gets the displayName property value. 
         Returns: Optional[str]
         """
         return self._display_name
@@ -58,7 +55,7 @@ class DelegatedAdminRelationshipCustomerParticipant(AdditionalDataHolder, Parsab
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the displayName property value. The displayName property
+        Sets the displayName property value. 
         Args:
             value: Value to set for the displayName property.
         """
@@ -70,16 +67,16 @@ class DelegatedAdminRelationshipCustomerParticipant(AdditionalDataHolder, Parsab
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -87,7 +84,7 @@ class DelegatedAdminRelationshipCustomerParticipant(AdditionalDataHolder, Parsab
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -109,7 +106,7 @@ class DelegatedAdminRelationshipCustomerParticipant(AdditionalDataHolder, Parsab
     @property
     def tenant_id(self,) -> Optional[str]:
         """
-        Gets the tenantId property value. The tenantId property
+        Gets the tenantId property value. 
         Returns: Optional[str]
         """
         return self._tenant_id
@@ -117,7 +114,7 @@ class DelegatedAdminRelationshipCustomerParticipant(AdditionalDataHolder, Parsab
     @tenant_id.setter
     def tenant_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the tenantId property value. The tenantId property
+        Sets the tenantId property value. 
         Args:
             value: Value to set for the tenantId property.
         """

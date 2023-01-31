@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.groups.item.events.item.instances.item.attachments.count.count_request_builder')
-create_upload_session_request_builder = lazy_import('msgraph.generated.groups.item.events.item.instances.item.attachments.create_upload_session.create_upload_session_request_builder')
+create_upload_session_request_builder = lazy_import('msgraph.generated.groups.item.events.item.instances.item.attachments.microsoft_graph_create_upload_session.create_upload_session_request_builder')
 attachment = lazy_import('msgraph.generated.models.attachment')
 attachment_collection_response = lazy_import('msgraph.generated.models.attachment_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -28,7 +28,7 @@ class AttachmentsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def create_upload_session(self) -> create_upload_session_request_builder.CreateUploadSessionRequestBuilder:
+    def microsoft_graph_create_upload_session(self) -> create_upload_session_request_builder.CreateUploadSessionRequestBuilder:
         """
         Provides operations to call the createUploadSession method.
         """
@@ -74,7 +74,7 @@ class AttachmentsRequestBuilder():
         """
         Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[attachment.Attachment]
         """
@@ -113,7 +113,7 @@ class AttachmentsRequestBuilder():
         """
         Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

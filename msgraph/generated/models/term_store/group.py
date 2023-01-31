@@ -20,7 +20,6 @@ class Group(entity.Entity):
         self._description: Optional[str] = None
         # Name of the group.
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # ID of the parent site of this group.
         self._parent_site_id: Optional[str] = None
@@ -98,10 +97,10 @@ class Group(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "parent_site_id": lambda n : setattr(self, 'parent_site_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "parentSiteId": lambda n : setattr(self, 'parent_site_id', n.get_str_value()),
             "scope": lambda n : setattr(self, 'scope', n.get_enum_value(term_group_scope.TermGroupScope)),
             "sets": lambda n : setattr(self, 'sets', n.get_collection_of_object_values(set.Set)),
         }

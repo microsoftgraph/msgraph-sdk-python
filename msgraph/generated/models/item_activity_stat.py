@@ -67,7 +67,6 @@ class ItemActivityStat(entity.Entity):
         self._is_trending: Optional[bool] = None
         # Statistics about the move actions in this interval. Read-only.
         self._move: Optional[item_action_stat.ItemActionStat] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # When the interval starts. Read-only.
         self._start_date_time: Optional[datetime] = None
@@ -163,11 +162,11 @@ class ItemActivityStat(entity.Entity):
             "create": lambda n : setattr(self, 'create', n.get_object_value(item_action_stat.ItemActionStat)),
             "delete": lambda n : setattr(self, 'delete', n.get_object_value(item_action_stat.ItemActionStat)),
             "edit": lambda n : setattr(self, 'edit', n.get_object_value(item_action_stat.ItemActionStat)),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "incomplete_data": lambda n : setattr(self, 'incomplete_data', n.get_object_value(incomplete_data.IncompleteData)),
-            "is_trending": lambda n : setattr(self, 'is_trending', n.get_bool_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "incompleteData": lambda n : setattr(self, 'incomplete_data', n.get_object_value(incomplete_data.IncompleteData)),
+            "isTrending": lambda n : setattr(self, 'is_trending', n.get_bool_value()),
             "move": lambda n : setattr(self, 'move', n.get_object_value(item_action_stat.ItemActionStat)),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

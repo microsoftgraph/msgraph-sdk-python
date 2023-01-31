@@ -10,19 +10,19 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-check_member_groups_request_builder = lazy_import('msgraph.generated.devices.item.check_member_groups.check_member_groups_request_builder')
-check_member_objects_request_builder = lazy_import('msgraph.generated.devices.item.check_member_objects.check_member_objects_request_builder')
 extensions_request_builder = lazy_import('msgraph.generated.devices.item.extensions.extensions_request_builder')
 extension_item_request_builder = lazy_import('msgraph.generated.devices.item.extensions.item.extension_item_request_builder')
-get_member_groups_request_builder = lazy_import('msgraph.generated.devices.item.get_member_groups.get_member_groups_request_builder')
-get_member_objects_request_builder = lazy_import('msgraph.generated.devices.item.get_member_objects.get_member_objects_request_builder')
 member_of_request_builder = lazy_import('msgraph.generated.devices.item.member_of.member_of_request_builder')
 directory_object_item_request_builder = lazy_import('msgraph.generated.devices.item.member_of.item.directory_object_item_request_builder')
+check_member_groups_request_builder = lazy_import('msgraph.generated.devices.item.microsoft_graph_check_member_groups.check_member_groups_request_builder')
+check_member_objects_request_builder = lazy_import('msgraph.generated.devices.item.microsoft_graph_check_member_objects.check_member_objects_request_builder')
+get_member_groups_request_builder = lazy_import('msgraph.generated.devices.item.microsoft_graph_get_member_groups.get_member_groups_request_builder')
+get_member_objects_request_builder = lazy_import('msgraph.generated.devices.item.microsoft_graph_get_member_objects.get_member_objects_request_builder')
+restore_request_builder = lazy_import('msgraph.generated.devices.item.microsoft_graph_restore.restore_request_builder')
 registered_owners_request_builder = lazy_import('msgraph.generated.devices.item.registered_owners.registered_owners_request_builder')
 directory_object_item_request_builder = lazy_import('msgraph.generated.devices.item.registered_owners.item.directory_object_item_request_builder')
 registered_users_request_builder = lazy_import('msgraph.generated.devices.item.registered_users.registered_users_request_builder')
 directory_object_item_request_builder = lazy_import('msgraph.generated.devices.item.registered_users.item.directory_object_item_request_builder')
-restore_request_builder = lazy_import('msgraph.generated.devices.item.restore.restore_request_builder')
 transitive_member_of_request_builder = lazy_import('msgraph.generated.devices.item.transitive_member_of.transitive_member_of_request_builder')
 directory_object_item_request_builder = lazy_import('msgraph.generated.devices.item.transitive_member_of.item.directory_object_item_request_builder')
 device = lazy_import('msgraph.generated.models.device')
@@ -33,20 +33,6 @@ class DeviceItemRequestBuilder():
     Provides operations to manage the collection of device entities.
     """
     @property
-    def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
-        """
-        Provides operations to call the checkMemberGroups method.
-        """
-        return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
-        """
-        Provides operations to call the checkMemberObjects method.
-        """
-        return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
         """
         Provides operations to manage the extensions property of the microsoft.graph.device entity.
@@ -54,25 +40,46 @@ class DeviceItemRequestBuilder():
         return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
+    def member_of(self) -> member_of_request_builder.MemberOfRequestBuilder:
+        """
+        Provides operations to manage the memberOf property of the microsoft.graph.device entity.
+        """
+        return member_of_request_builder.MemberOfRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
+        """
+        Provides operations to call the checkMemberGroups method.
+        """
+        return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
+        """
+        Provides operations to call the checkMemberObjects method.
+        """
+        return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
         """
         Provides operations to call the getMemberGroups method.
         """
         return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
+    def microsoft_graph_get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
         """
         Provides operations to call the getMemberObjects method.
         """
         return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def member_of(self) -> member_of_request_builder.MemberOfRequestBuilder:
+    def microsoft_graph_restore(self) -> restore_request_builder.RestoreRequestBuilder:
         """
-        Provides operations to manage the memberOf property of the microsoft.graph.device entity.
+        Provides operations to call the restore method.
         """
-        return member_of_request_builder.MemberOfRequestBuilder(self.request_adapter, self.path_parameters)
+        return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def registered_owners(self) -> registered_owners_request_builder.RegisteredOwnersRequestBuilder:
@@ -89,23 +96,17 @@ class DeviceItemRequestBuilder():
         return registered_users_request_builder.RegisteredUsersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def restore(self) -> restore_request_builder.RestoreRequestBuilder:
-        """
-        Provides operations to call the restore method.
-        """
-        return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def transitive_member_of(self) -> transitive_member_of_request_builder.TransitiveMemberOfRequestBuilder:
         """
         Provides operations to manage the transitiveMemberOf property of the microsoft.graph.device entity.
         """
         return transitive_member_of_request_builder.TransitiveMemberOfRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, device_id: Optional[str] = None) -> None:
         """
         Instantiates a new DeviceItemRequestBuilder and sets the default values.
         Args:
+            deviceId: key: id of device
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -117,6 +118,7 @@ class DeviceItemRequestBuilder():
         self.url_template: str = "{+baseurl}/devices/{device%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["device%2Did"] = deviceId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -185,7 +187,7 @@ class DeviceItemRequestBuilder():
         """
         Update the properties of a registered device. Only certain properties of a device can be updated through approved Mobile Device Managment (MDM) apps.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[device.Device]
         """
@@ -266,7 +268,7 @@ class DeviceItemRequestBuilder():
         """
         Update the properties of a registered device. Only certain properties of a device can be updated through approved Mobile Device Managment (MDM) apps.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

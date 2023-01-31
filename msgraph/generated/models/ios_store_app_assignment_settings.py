@@ -33,7 +33,7 @@ class IosStoreAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "vpn_configuration_id": lambda n : setattr(self, 'vpn_configuration_id', n.get_str_value()),
+            "vpnConfigurationId": lambda n : setattr(self, 'vpn_configuration_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

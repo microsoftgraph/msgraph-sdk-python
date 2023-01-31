@@ -39,10 +39,11 @@ class CalendarGroupItemRequestBuilder():
         url_tpl_params["calendar%2Did"] = id
         return calendar_item_request_builder.CalendarItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, calendar_group_id: Optional[str] = None) -> None:
         """
         Instantiates a new CalendarGroupItemRequestBuilder and sets the default values.
         Args:
+            calendarGroupId: key: id of calendarGroup
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -54,6 +55,7 @@ class CalendarGroupItemRequestBuilder():
         self.url_template: str = "{+baseurl}/users/{user%2Did}/calendarGroups/{calendarGroup%2Did}{?%24select}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["calendarGroup%2Did"] = calendarGroupId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -96,7 +98,7 @@ class CalendarGroupItemRequestBuilder():
         """
         Update the navigation property calendarGroups in users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[calendar_group.CalendarGroup]
         """
@@ -151,7 +153,7 @@ class CalendarGroupItemRequestBuilder():
         """
         Update the navigation property calendarGroups in users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

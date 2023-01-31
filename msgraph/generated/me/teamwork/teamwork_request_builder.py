@@ -14,7 +14,7 @@ associated_teams_request_builder = lazy_import('msgraph.generated.me.teamwork.as
 associated_team_info_item_request_builder = lazy_import('msgraph.generated.me.teamwork.associated_teams.item.associated_team_info_item_request_builder')
 installed_apps_request_builder = lazy_import('msgraph.generated.me.teamwork.installed_apps.installed_apps_request_builder')
 user_scope_teams_app_installation_item_request_builder = lazy_import('msgraph.generated.me.teamwork.installed_apps.item.user_scope_teams_app_installation_item_request_builder')
-send_activity_notification_request_builder = lazy_import('msgraph.generated.me.teamwork.send_activity_notification.send_activity_notification_request_builder')
+send_activity_notification_request_builder = lazy_import('msgraph.generated.me.teamwork.microsoft_graph_send_activity_notification.send_activity_notification_request_builder')
 user_teamwork = lazy_import('msgraph.generated.models.user_teamwork')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -37,7 +37,7 @@ class TeamworkRequestBuilder():
         return installed_apps_request_builder.InstalledAppsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def send_activity_notification(self) -> send_activity_notification_request_builder.SendActivityNotificationRequestBuilder:
+    def microsoft_graph_send_activity_notification(self) -> send_activity_notification_request_builder.SendActivityNotificationRequestBuilder:
         """
         Provides operations to call the sendActivityNotification method.
         """
@@ -126,7 +126,7 @@ class TeamworkRequestBuilder():
         """
         Update the navigation property teamwork in me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[user_teamwork.UserTeamwork]
         """
@@ -181,7 +181,7 @@ class TeamworkRequestBuilder():
         """
         Update the navigation property teamwork in me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

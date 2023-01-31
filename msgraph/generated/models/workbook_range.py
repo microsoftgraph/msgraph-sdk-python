@@ -141,7 +141,6 @@ class WorkbookRange(entity.Entity):
         self._hidden: Optional[bool] = None
         # Represents Excel's number format code for the given cell.
         self._number_format: Optional[json.Json] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Returns the total number of rows in the range. Read-only.
         self._row_count: Optional[int] = None
@@ -247,24 +246,24 @@ class WorkbookRange(entity.Entity):
         """
         fields = {
             "address": lambda n : setattr(self, 'address', n.get_str_value()),
-            "address_local": lambda n : setattr(self, 'address_local', n.get_str_value()),
-            "cell_count": lambda n : setattr(self, 'cell_count', n.get_int_value()),
-            "column_count": lambda n : setattr(self, 'column_count', n.get_int_value()),
-            "column_hidden": lambda n : setattr(self, 'column_hidden', n.get_bool_value()),
-            "column_index": lambda n : setattr(self, 'column_index', n.get_int_value()),
+            "addressLocal": lambda n : setattr(self, 'address_local', n.get_str_value()),
+            "cellCount": lambda n : setattr(self, 'cell_count', n.get_int_value()),
+            "columnCount": lambda n : setattr(self, 'column_count', n.get_int_value()),
+            "columnHidden": lambda n : setattr(self, 'column_hidden', n.get_bool_value()),
+            "columnIndex": lambda n : setattr(self, 'column_index', n.get_int_value()),
             "format": lambda n : setattr(self, 'format', n.get_object_value(workbook_range_format.WorkbookRangeFormat)),
             "formulas": lambda n : setattr(self, 'formulas', n.get_object_value(json.Json)),
-            "formulas_local": lambda n : setattr(self, 'formulas_local', n.get_object_value(json.Json)),
-            "formulas_r1_c1": lambda n : setattr(self, 'formulas_r1_c1', n.get_object_value(json.Json)),
+            "formulasLocal": lambda n : setattr(self, 'formulas_local', n.get_object_value(json.Json)),
+            "formulasR1C1": lambda n : setattr(self, 'formulas_r1_c1', n.get_object_value(json.Json)),
             "hidden": lambda n : setattr(self, 'hidden', n.get_bool_value()),
-            "number_format": lambda n : setattr(self, 'number_format', n.get_object_value(json.Json)),
-            "row_count": lambda n : setattr(self, 'row_count', n.get_int_value()),
-            "row_hidden": lambda n : setattr(self, 'row_hidden', n.get_bool_value()),
-            "row_index": lambda n : setattr(self, 'row_index', n.get_int_value()),
+            "numberFormat": lambda n : setattr(self, 'number_format', n.get_object_value(json.Json)),
+            "rowCount": lambda n : setattr(self, 'row_count', n.get_int_value()),
+            "rowHidden": lambda n : setattr(self, 'row_hidden', n.get_bool_value()),
+            "rowIndex": lambda n : setattr(self, 'row_index', n.get_int_value()),
             "sort": lambda n : setattr(self, 'sort', n.get_object_value(workbook_range_sort.WorkbookRangeSort)),
             "text": lambda n : setattr(self, 'text', n.get_object_value(json.Json)),
             "values": lambda n : setattr(self, 'values', n.get_object_value(json.Json)),
-            "value_types": lambda n : setattr(self, 'value_types', n.get_object_value(json.Json)),
+            "valueTypes": lambda n : setattr(self, 'value_types', n.get_object_value(json.Json)),
             "worksheet": lambda n : setattr(self, 'worksheet', n.get_object_value(workbook_worksheet.WorkbookWorksheet)),
         }
         super_fields = super().get_field_deserializers()

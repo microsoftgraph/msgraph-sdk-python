@@ -66,7 +66,7 @@ class InvitationsRequestBuilder():
         """
         Use this API to create a new invitation. Invitation adds an external user to the organization. When creating a new invitation you have several options available:
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[invitation.Invitation]
         """
@@ -105,7 +105,7 @@ class InvitationsRequestBuilder():
         """
         Use this API to create a new invitation. Invitation adds an external user to the organization. When creating a new invitation you have several options available:
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

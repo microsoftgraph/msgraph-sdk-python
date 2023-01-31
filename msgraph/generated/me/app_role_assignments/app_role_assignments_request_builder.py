@@ -66,7 +66,7 @@ class AppRoleAssignmentsRequestBuilder():
         """
         Use this API to assign an app role to a user. To grant an app role assignment to a user, you need three identifiers:
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[app_role_assignment.AppRoleAssignment]
         """
@@ -105,7 +105,7 @@ class AppRoleAssignmentsRequestBuilder():
         """
         Use this API to assign an app role to a user. To grant an app role assignment to a user, you need three identifiers:
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

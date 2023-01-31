@@ -31,7 +31,6 @@ class ODataError(APIError):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The error property
         self._error: Optional[main_error.MainError] = None
     
     @staticmethod
@@ -49,7 +48,7 @@ class ODataError(APIError):
     @property
     def error(self,) -> Optional[main_error.MainError]:
         """
-        Gets the error property value. The error property
+        Gets the error property value. 
         Returns: Optional[main_error.MainError]
         """
         return self._error
@@ -57,7 +56,7 @@ class ODataError(APIError):
     @error.setter
     def error(self,value: Optional[main_error.MainError] = None) -> None:
         """
-        Sets the error property value. The error property
+        Sets the error property value. 
         Args:
             value: Value to set for the error property.
         """

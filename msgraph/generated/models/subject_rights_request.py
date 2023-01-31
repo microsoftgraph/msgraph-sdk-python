@@ -85,7 +85,6 @@ class SubjectRightsRequest(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # List of notes associcated with the request.
         self._notes: Optional[List[authored_note.AuthoredNote]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # List of regulations that this request will fulfill.
         self._regulations: Optional[List[str]] = None
@@ -218,19 +217,19 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assigned_to": lambda n : setattr(self, 'assigned_to', n.get_object_value(identity.Identity)),
-            "closed_date_time": lambda n : setattr(self, 'closed_date_time', n.get_datetime_value()),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "data_subject": lambda n : setattr(self, 'data_subject', n.get_object_value(data_subject.DataSubject)),
-            "data_subject_type": lambda n : setattr(self, 'data_subject_type', n.get_enum_value(data_subject_type.DataSubjectType)),
+            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_object_value(identity.Identity)),
+            "closedDateTime": lambda n : setattr(self, 'closed_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "dataSubject": lambda n : setattr(self, 'data_subject', n.get_object_value(data_subject.DataSubject)),
+            "dataSubjectType": lambda n : setattr(self, 'data_subject_type', n.get_enum_value(data_subject_type.DataSubjectType)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(subject_rights_request_history.SubjectRightsRequestHistory)),
             "insight": lambda n : setattr(self, 'insight', n.get_object_value(subject_rights_request_detail.SubjectRightsRequestDetail)),
-            "internal_due_date_time": lambda n : setattr(self, 'internal_due_date_time', n.get_datetime_value()),
-            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "internalDueDateTime": lambda n : setattr(self, 'internal_due_date_time', n.get_datetime_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_collection_of_object_values(authored_note.AuthoredNote)),
             "regulations": lambda n : setattr(self, 'regulations', n.get_collection_of_primitive_values(str)),
             "stages": lambda n : setattr(self, 'stages', n.get_collection_of_object_values(subject_rights_request_stage_detail.SubjectRightsRequestStageDetail)),

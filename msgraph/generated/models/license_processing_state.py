@@ -28,9 +28,7 @@ class LicenseProcessingState(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The state property
         self._state: Optional[str] = None
     
     @staticmethod
@@ -59,7 +57,7 @@ class LicenseProcessingState(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -67,7 +65,7 @@ class LicenseProcessingState(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -88,7 +86,7 @@ class LicenseProcessingState(AdditionalDataHolder, Parsable):
     @property
     def state(self,) -> Optional[str]:
         """
-        Gets the state property value. The state property
+        Gets the state property value. 
         Returns: Optional[str]
         """
         return self._state
@@ -96,7 +94,7 @@ class LicenseProcessingState(AdditionalDataHolder, Parsable):
     @state.setter
     def state(self,value: Optional[str] = None) -> None:
         """
-        Sets the state property value. The state property
+        Sets the state property value. 
         Args:
             value: Value to set for the state property.
         """

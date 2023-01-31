@@ -50,7 +50,7 @@ class UnifiedRoleManagementPolicyEnablementRule(unified_role_management_policy_r
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "enabled_rules": lambda n : setattr(self, 'enabled_rules', n.get_collection_of_primitive_values(str)),
+            "enabledRules": lambda n : setattr(self, 'enabled_rules', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

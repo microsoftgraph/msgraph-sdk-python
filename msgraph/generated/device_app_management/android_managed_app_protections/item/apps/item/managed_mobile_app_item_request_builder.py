@@ -17,10 +17,11 @@ class ManagedMobileAppItemRequestBuilder():
     """
     Provides operations to manage the apps property of the microsoft.graph.androidManagedAppProtection entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, managed_mobile_app_id: Optional[str] = None) -> None:
         """
         Instantiates a new ManagedMobileAppItemRequestBuilder and sets the default values.
         Args:
+            managedMobileAppId: key: id of managedMobileApp
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class ManagedMobileAppItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceAppManagement/androidManagedAppProtections/{androidManagedAppProtection%2Did}/apps/{managedMobileApp%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["managedMobileApp%2Did"] = managedMobileAppId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -74,7 +76,7 @@ class ManagedMobileAppItemRequestBuilder():
         """
         Update the navigation property apps in deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[managed_mobile_app.ManagedMobileApp]
         """
@@ -129,7 +131,7 @@ class ManagedMobileAppItemRequestBuilder():
         """
         Update the navigation property apps in deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

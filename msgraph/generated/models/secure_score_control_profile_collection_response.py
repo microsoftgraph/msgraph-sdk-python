@@ -12,7 +12,6 @@ class SecureScoreControlProfileCollectionResponse(base_collection_pagination_cou
         Instantiates a new SecureScoreControlProfileCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[secure_score_control_profile.SecureScoreControlProfile]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class SecureScoreControlProfileCollectionResponse(base_collection_pagination_cou
     @property
     def value(self,) -> Optional[List[secure_score_control_profile.SecureScoreControlProfile]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[secure_score_control_profile.SecureScoreControlProfile]]
         """
         return self._value
@@ -61,7 +60,7 @@ class SecureScoreControlProfileCollectionResponse(base_collection_pagination_cou
     @value.setter
     def value(self,value: Optional[List[secure_score_control_profile.SecureScoreControlProfile]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

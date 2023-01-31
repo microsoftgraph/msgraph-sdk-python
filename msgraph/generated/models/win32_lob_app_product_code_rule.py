@@ -38,9 +38,9 @@ class Win32LobAppProductCodeRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "product_code": lambda n : setattr(self, 'product_code', n.get_str_value()),
-            "product_version": lambda n : setattr(self, 'product_version', n.get_str_value()),
-            "product_version_operator": lambda n : setattr(self, 'product_version_operator', n.get_enum_value(win32_lob_app_rule_operator.Win32LobAppRuleOperator)),
+            "productCode": lambda n : setattr(self, 'product_code', n.get_str_value()),
+            "productVersion": lambda n : setattr(self, 'product_version', n.get_str_value()),
+            "productVersionOperator": lambda n : setattr(self, 'product_version_operator', n.get_enum_value(win32_lob_app_rule_operator.Win32LobAppRuleOperator)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

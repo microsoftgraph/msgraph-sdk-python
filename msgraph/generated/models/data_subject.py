@@ -34,7 +34,6 @@ class DataSubject(AdditionalDataHolder, Parsable):
         self._first_name: Optional[str] = None
         # Last Name of the data subject.
         self._last_name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The country/region of residency. The residency information is uesed only for internal reporting but not for the content search.
         self._residency: Optional[str] = None
@@ -92,8 +91,8 @@ class DataSubject(AdditionalDataHolder, Parsable):
         """
         fields = {
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "first_name": lambda n : setattr(self, 'first_name', n.get_str_value()),
-            "last_name": lambda n : setattr(self, 'last_name', n.get_str_value()),
+            "firstName": lambda n : setattr(self, 'first_name', n.get_str_value()),
+            "lastName": lambda n : setattr(self, 'last_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "residency": lambda n : setattr(self, 'residency', n.get_str_value()),
         }
@@ -119,7 +118,7 @@ class DataSubject(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -127,7 +126,7 @@ class DataSubject(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

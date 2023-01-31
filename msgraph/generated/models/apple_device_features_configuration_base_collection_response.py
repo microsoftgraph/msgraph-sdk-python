@@ -12,7 +12,6 @@ class AppleDeviceFeaturesConfigurationBaseCollectionResponse(base_collection_pag
         Instantiates a new AppleDeviceFeaturesConfigurationBaseCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[apple_device_features_configuration_base.AppleDeviceFeaturesConfigurationBase]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class AppleDeviceFeaturesConfigurationBaseCollectionResponse(base_collection_pag
     @property
     def value(self,) -> Optional[List[apple_device_features_configuration_base.AppleDeviceFeaturesConfigurationBase]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[apple_device_features_configuration_base.AppleDeviceFeaturesConfigurationBase]]
         """
         return self._value
@@ -61,7 +60,7 @@ class AppleDeviceFeaturesConfigurationBaseCollectionResponse(base_collection_pag
     @value.setter
     def value(self,value: Optional[List[apple_device_features_configuration_base.AppleDeviceFeaturesConfigurationBase]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

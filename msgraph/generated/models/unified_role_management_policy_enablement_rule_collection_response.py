@@ -12,7 +12,6 @@ class UnifiedRoleManagementPolicyEnablementRuleCollectionResponse(base_collectio
         Instantiates a new UnifiedRoleManagementPolicyEnablementRuleCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[unified_role_management_policy_enablement_rule.UnifiedRoleManagementPolicyEnablementRule]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class UnifiedRoleManagementPolicyEnablementRuleCollectionResponse(base_collectio
     @property
     def value(self,) -> Optional[List[unified_role_management_policy_enablement_rule.UnifiedRoleManagementPolicyEnablementRule]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[unified_role_management_policy_enablement_rule.UnifiedRoleManagementPolicyEnablementRule]]
         """
         return self._value
@@ -61,7 +60,7 @@ class UnifiedRoleManagementPolicyEnablementRuleCollectionResponse(base_collectio
     @value.setter
     def value(self,value: Optional[List[unified_role_management_policy_enablement_rule.UnifiedRoleManagementPolicyEnablementRule]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

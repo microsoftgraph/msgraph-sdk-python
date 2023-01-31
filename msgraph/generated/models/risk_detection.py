@@ -67,7 +67,7 @@ class RiskDetection(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new riskDetection and sets the default values.
+        Instantiates a new RiskDetection and sets the default values.
         """
         super().__init__()
         # Indicates the activity type the detected risk is linked to. Possible values are: signin, user, unknownFutureValue.
@@ -88,7 +88,6 @@ class RiskDetection(entity.Entity):
         self._last_updated_date_time: Optional[datetime] = None
         # Location of the sign-in.
         self._location: Optional[sign_in_location.SignInLocation] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Request ID of the sign-in associated with the risk detection. This property is null if the risk detection is not associated with a sign-in.
         self._request_id: Optional[str] = None
@@ -181,24 +180,24 @@ class RiskDetection(entity.Entity):
         """
         fields = {
             "activity": lambda n : setattr(self, 'activity', n.get_enum_value(activity_type.ActivityType)),
-            "activity_date_time": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
-            "additional_info": lambda n : setattr(self, 'additional_info', n.get_str_value()),
-            "correlation_id": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
-            "detected_date_time": lambda n : setattr(self, 'detected_date_time', n.get_datetime_value()),
-            "detection_timing_type": lambda n : setattr(self, 'detection_timing_type', n.get_enum_value(risk_detection_timing_type.RiskDetectionTimingType)),
-            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
-            "last_updated_date_time": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
+            "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
+            "additionalInfo": lambda n : setattr(self, 'additional_info', n.get_str_value()),
+            "correlationId": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
+            "detectedDateTime": lambda n : setattr(self, 'detected_date_time', n.get_datetime_value()),
+            "detectionTimingType": lambda n : setattr(self, 'detection_timing_type', n.get_enum_value(risk_detection_timing_type.RiskDetectionTimingType)),
+            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
             "location": lambda n : setattr(self, 'location', n.get_object_value(sign_in_location.SignInLocation)),
-            "request_id": lambda n : setattr(self, 'request_id', n.get_str_value()),
-            "risk_detail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(risk_detail.RiskDetail)),
-            "risk_event_type": lambda n : setattr(self, 'risk_event_type', n.get_str_value()),
-            "risk_level": lambda n : setattr(self, 'risk_level', n.get_enum_value(risk_level.RiskLevel)),
-            "risk_state": lambda n : setattr(self, 'risk_state', n.get_enum_value(risk_state.RiskState)),
+            "requestId": lambda n : setattr(self, 'request_id', n.get_str_value()),
+            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(risk_detail.RiskDetail)),
+            "riskEventType": lambda n : setattr(self, 'risk_event_type', n.get_str_value()),
+            "riskLevel": lambda n : setattr(self, 'risk_level', n.get_enum_value(risk_level.RiskLevel)),
+            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(risk_state.RiskState)),
             "source": lambda n : setattr(self, 'source', n.get_str_value()),
-            "token_issuer_type": lambda n : setattr(self, 'token_issuer_type', n.get_enum_value(token_issuer_type.TokenIssuerType)),
-            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "tokenIssuerType": lambda n : setattr(self, 'token_issuer_type', n.get_enum_value(token_issuer_type.TokenIssuerType)),
+            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -32,7 +32,6 @@ class CallOptions(AdditionalDataHolder, Parsable):
         self._hide_bot_after_escalation: Optional[bool] = None
         # Indicates whether content sharing notifications should be enabled for the call.
         self._is_content_sharing_notification_enabled: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -53,8 +52,8 @@ class CallOptions(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "hide_bot_after_escalation": lambda n : setattr(self, 'hide_bot_after_escalation', n.get_bool_value()),
-            "is_content_sharing_notification_enabled": lambda n : setattr(self, 'is_content_sharing_notification_enabled', n.get_bool_value()),
+            "hideBotAfterEscalation": lambda n : setattr(self, 'hide_bot_after_escalation', n.get_bool_value()),
+            "isContentSharingNotificationEnabled": lambda n : setattr(self, 'is_content_sharing_notification_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -96,7 +95,7 @@ class CallOptions(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -104,7 +103,7 @@ class CallOptions(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

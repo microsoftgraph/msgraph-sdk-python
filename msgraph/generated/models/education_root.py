@@ -28,7 +28,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
     @property
     def classes(self,) -> Optional[List[education_class.EducationClass]]:
         """
-        Gets the classes property value. The classes property
+        Gets the classes property value. 
         Returns: Optional[List[education_class.EducationClass]]
         """
         return self._classes
@@ -36,7 +36,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
     @classes.setter
     def classes(self,value: Optional[List[education_class.EducationClass]] = None) -> None:
         """
-        Sets the classes property value. The classes property
+        Sets the classes property value. 
         Args:
             value: Value to set for the classes property.
         """
@@ -49,15 +49,10 @@ class EducationRoot(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The classes property
         self._classes: Optional[List[education_class.EducationClass]] = None
-        # The me property
         self._me: Optional[education_user.EducationUser] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The schools property
         self._schools: Optional[List[education_school.EducationSchool]] = None
-        # The users property
         self._users: Optional[List[education_user.EducationUser]] = None
     
     @staticmethod
@@ -89,7 +84,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
     @property
     def me(self,) -> Optional[education_user.EducationUser]:
         """
-        Gets the me property value. The me property
+        Gets the me property value. 
         Returns: Optional[education_user.EducationUser]
         """
         return self._me
@@ -97,7 +92,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
     @me.setter
     def me(self,value: Optional[education_user.EducationUser] = None) -> None:
         """
-        Sets the me property value. The me property
+        Sets the me property value. 
         Args:
             value: Value to set for the me property.
         """
@@ -106,7 +101,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -114,7 +109,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -123,7 +118,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
     @property
     def schools(self,) -> Optional[List[education_school.EducationSchool]]:
         """
-        Gets the schools property value. The schools property
+        Gets the schools property value. 
         Returns: Optional[List[education_school.EducationSchool]]
         """
         return self._schools
@@ -131,7 +126,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
     @schools.setter
     def schools(self,value: Optional[List[education_school.EducationSchool]] = None) -> None:
         """
-        Sets the schools property value. The schools property
+        Sets the schools property value. 
         Args:
             value: Value to set for the schools property.
         """
@@ -155,7 +150,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
     @property
     def users(self,) -> Optional[List[education_user.EducationUser]]:
         """
-        Gets the users property value. The users property
+        Gets the users property value. 
         Returns: Optional[List[education_user.EducationUser]]
         """
         return self._users
@@ -163,7 +158,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
     @users.setter
     def users(self,value: Optional[List[education_user.EducationUser]] = None) -> None:
         """
-        Sets the users property value. The users property
+        Sets the users property value. 
         Args:
             value: Value to set for the users property.
         """

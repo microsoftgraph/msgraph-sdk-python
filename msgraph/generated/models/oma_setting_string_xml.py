@@ -52,7 +52,7 @@ class OmaSettingStringXml(oma_setting.OmaSetting):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "file_name": lambda n : setattr(self, 'file_name', n.get_str_value()),
+            "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_bytes_value()),
         }
         super_fields = super().get_field_deserializers()

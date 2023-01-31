@@ -155,67 +155,39 @@ class Event(outlook_item.OutlookItem):
         self._hide_attendees: Optional[bool] = None
         # A unique identifier for an event across calendars. This ID is different for each occurrence in a recurring series. Read-only.
         self._i_cal_u_id: Optional[str] = None
-        # The importance property
         self._importance: Optional[importance.Importance] = None
         # The occurrences of a recurring series, if the event is a series master. This property includes occurrences that are part of the recurrence pattern, and exceptions that have been modified, but does not include occurrences that have been cancelled from the series. Navigation property. Read-only. Nullable.
         self._instances: Optional[List[event.Event]] = None
-        # The isAllDay property
         self._is_all_day: Optional[bool] = None
-        # The isCancelled property
         self._is_cancelled: Optional[bool] = None
-        # The isDraft property
         self._is_draft: Optional[bool] = None
-        # The isOnlineMeeting property
         self._is_online_meeting: Optional[bool] = None
-        # The isOrganizer property
         self._is_organizer: Optional[bool] = None
-        # The isReminderOn property
         self._is_reminder_on: Optional[bool] = None
-        # The location property
         self._location: Optional[location.Location] = None
-        # The locations property
         self._locations: Optional[List[location.Location]] = None
         # The collection of multi-value extended properties defined for the event. Read-only. Nullable.
         self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
-        # The onlineMeeting property
         self._online_meeting: Optional[online_meeting_info.OnlineMeetingInfo] = None
-        # The onlineMeetingProvider property
         self._online_meeting_provider: Optional[online_meeting_provider_type.OnlineMeetingProviderType] = None
-        # The onlineMeetingUrl property
         self._online_meeting_url: Optional[str] = None
-        # The organizer property
         self._organizer: Optional[recipient.Recipient] = None
-        # The originalEndTimeZone property
         self._original_end_time_zone: Optional[str] = None
-        # The originalStart property
         self._original_start: Optional[datetime] = None
-        # The originalStartTimeZone property
         self._original_start_time_zone: Optional[str] = None
-        # The recurrence property
         self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
-        # The reminderMinutesBeforeStart property
         self._reminder_minutes_before_start: Optional[int] = None
-        # The responseRequested property
         self._response_requested: Optional[bool] = None
-        # The responseStatus property
         self._response_status: Optional[response_status.ResponseStatus] = None
-        # The sensitivity property
         self._sensitivity: Optional[sensitivity.Sensitivity] = None
-        # The seriesMasterId property
         self._series_master_id: Optional[str] = None
-        # The showAs property
         self._show_as: Optional[free_busy_status.FreeBusyStatus] = None
         # The collection of single-value extended properties defined for the event. Read-only. Nullable.
         self._single_value_extended_properties: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None
-        # The start property
         self._start: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The subject property
         self._subject: Optional[str] = None
-        # The transactionId property
         self._transaction_id: Optional[str] = None
-        # The type property
         self._type: Optional[event_type.EventType] = None
-        # The webLink property
         self._web_link: Optional[str] = None
     
     @staticmethod
@@ -270,48 +242,48 @@ class Event(outlook_item.OutlookItem):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_new_time_proposals": lambda n : setattr(self, 'allow_new_time_proposals', n.get_bool_value()),
+            "allowNewTimeProposals": lambda n : setattr(self, 'allow_new_time_proposals', n.get_bool_value()),
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(attachment.Attachment)),
             "attendees": lambda n : setattr(self, 'attendees', n.get_collection_of_object_values(attendee.Attendee)),
             "body": lambda n : setattr(self, 'body', n.get_object_value(item_body.ItemBody)),
-            "body_preview": lambda n : setattr(self, 'body_preview', n.get_str_value()),
+            "bodyPreview": lambda n : setattr(self, 'body_preview', n.get_str_value()),
             "calendar": lambda n : setattr(self, 'calendar', n.get_object_value(calendar.Calendar)),
             "end": lambda n : setattr(self, 'end', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
-            "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
-            "hide_attendees": lambda n : setattr(self, 'hide_attendees', n.get_bool_value()),
-            "i_cal_u_id": lambda n : setattr(self, 'i_cal_u_id', n.get_str_value()),
+            "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
+            "hideAttendees": lambda n : setattr(self, 'hide_attendees', n.get_bool_value()),
+            "iCalUId": lambda n : setattr(self, 'i_cal_u_id', n.get_str_value()),
             "importance": lambda n : setattr(self, 'importance', n.get_enum_value(importance.Importance)),
             "instances": lambda n : setattr(self, 'instances', n.get_collection_of_object_values(event.Event)),
-            "is_all_day": lambda n : setattr(self, 'is_all_day', n.get_bool_value()),
-            "is_cancelled": lambda n : setattr(self, 'is_cancelled', n.get_bool_value()),
-            "is_draft": lambda n : setattr(self, 'is_draft', n.get_bool_value()),
-            "is_online_meeting": lambda n : setattr(self, 'is_online_meeting', n.get_bool_value()),
-            "is_organizer": lambda n : setattr(self, 'is_organizer', n.get_bool_value()),
-            "is_reminder_on": lambda n : setattr(self, 'is_reminder_on', n.get_bool_value()),
+            "isAllDay": lambda n : setattr(self, 'is_all_day', n.get_bool_value()),
+            "isCancelled": lambda n : setattr(self, 'is_cancelled', n.get_bool_value()),
+            "isDraft": lambda n : setattr(self, 'is_draft', n.get_bool_value()),
+            "isOnlineMeeting": lambda n : setattr(self, 'is_online_meeting', n.get_bool_value()),
+            "isOrganizer": lambda n : setattr(self, 'is_organizer', n.get_bool_value()),
+            "isReminderOn": lambda n : setattr(self, 'is_reminder_on', n.get_bool_value()),
             "location": lambda n : setattr(self, 'location', n.get_object_value(location.Location)),
             "locations": lambda n : setattr(self, 'locations', n.get_collection_of_object_values(location.Location)),
-            "multi_value_extended_properties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty)),
-            "online_meeting": lambda n : setattr(self, 'online_meeting', n.get_object_value(online_meeting_info.OnlineMeetingInfo)),
-            "online_meeting_provider": lambda n : setattr(self, 'online_meeting_provider', n.get_enum_value(online_meeting_provider_type.OnlineMeetingProviderType)),
-            "online_meeting_url": lambda n : setattr(self, 'online_meeting_url', n.get_str_value()),
+            "multiValueExtendedProperties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty)),
+            "onlineMeeting": lambda n : setattr(self, 'online_meeting', n.get_object_value(online_meeting_info.OnlineMeetingInfo)),
+            "onlineMeetingProvider": lambda n : setattr(self, 'online_meeting_provider', n.get_enum_value(online_meeting_provider_type.OnlineMeetingProviderType)),
+            "onlineMeetingUrl": lambda n : setattr(self, 'online_meeting_url', n.get_str_value()),
             "organizer": lambda n : setattr(self, 'organizer', n.get_object_value(recipient.Recipient)),
-            "original_end_time_zone": lambda n : setattr(self, 'original_end_time_zone', n.get_str_value()),
-            "original_start": lambda n : setattr(self, 'original_start', n.get_datetime_value()),
-            "original_start_time_zone": lambda n : setattr(self, 'original_start_time_zone', n.get_str_value()),
+            "originalEndTimeZone": lambda n : setattr(self, 'original_end_time_zone', n.get_str_value()),
+            "originalStart": lambda n : setattr(self, 'original_start', n.get_datetime_value()),
+            "originalStartTimeZone": lambda n : setattr(self, 'original_start_time_zone', n.get_str_value()),
             "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(patterned_recurrence.PatternedRecurrence)),
-            "reminder_minutes_before_start": lambda n : setattr(self, 'reminder_minutes_before_start', n.get_int_value()),
-            "response_requested": lambda n : setattr(self, 'response_requested', n.get_bool_value()),
-            "response_status": lambda n : setattr(self, 'response_status', n.get_object_value(response_status.ResponseStatus)),
+            "reminderMinutesBeforeStart": lambda n : setattr(self, 'reminder_minutes_before_start', n.get_int_value()),
+            "responseRequested": lambda n : setattr(self, 'response_requested', n.get_bool_value()),
+            "responseStatus": lambda n : setattr(self, 'response_status', n.get_object_value(response_status.ResponseStatus)),
             "sensitivity": lambda n : setattr(self, 'sensitivity', n.get_enum_value(sensitivity.Sensitivity)),
-            "series_master_id": lambda n : setattr(self, 'series_master_id', n.get_str_value()),
-            "show_as": lambda n : setattr(self, 'show_as', n.get_enum_value(free_busy_status.FreeBusyStatus)),
-            "single_value_extended_properties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(single_value_legacy_extended_property.SingleValueLegacyExtendedProperty)),
+            "seriesMasterId": lambda n : setattr(self, 'series_master_id', n.get_str_value()),
+            "showAs": lambda n : setattr(self, 'show_as', n.get_enum_value(free_busy_status.FreeBusyStatus)),
+            "singleValueExtendedProperties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(single_value_legacy_extended_property.SingleValueLegacyExtendedProperty)),
             "start": lambda n : setattr(self, 'start', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
-            "transaction_id": lambda n : setattr(self, 'transaction_id', n.get_str_value()),
+            "transactionId": lambda n : setattr(self, 'transaction_id', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(event_type.EventType)),
-            "web_link": lambda n : setattr(self, 'web_link', n.get_str_value()),
+            "webLink": lambda n : setattr(self, 'web_link', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -371,7 +343,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def importance(self,) -> Optional[importance.Importance]:
         """
-        Gets the importance property value. The importance property
+        Gets the importance property value. 
         Returns: Optional[importance.Importance]
         """
         return self._importance
@@ -379,7 +351,7 @@ class Event(outlook_item.OutlookItem):
     @importance.setter
     def importance(self,value: Optional[importance.Importance] = None) -> None:
         """
-        Sets the importance property value. The importance property
+        Sets the importance property value. 
         Args:
             value: Value to set for the importance property.
         """
@@ -405,7 +377,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def is_all_day(self,) -> Optional[bool]:
         """
-        Gets the isAllDay property value. The isAllDay property
+        Gets the isAllDay property value. 
         Returns: Optional[bool]
         """
         return self._is_all_day
@@ -413,7 +385,7 @@ class Event(outlook_item.OutlookItem):
     @is_all_day.setter
     def is_all_day(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isAllDay property value. The isAllDay property
+        Sets the isAllDay property value. 
         Args:
             value: Value to set for the isAllDay property.
         """
@@ -422,7 +394,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def is_cancelled(self,) -> Optional[bool]:
         """
-        Gets the isCancelled property value. The isCancelled property
+        Gets the isCancelled property value. 
         Returns: Optional[bool]
         """
         return self._is_cancelled
@@ -430,7 +402,7 @@ class Event(outlook_item.OutlookItem):
     @is_cancelled.setter
     def is_cancelled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isCancelled property value. The isCancelled property
+        Sets the isCancelled property value. 
         Args:
             value: Value to set for the isCancelled property.
         """
@@ -439,7 +411,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def is_draft(self,) -> Optional[bool]:
         """
-        Gets the isDraft property value. The isDraft property
+        Gets the isDraft property value. 
         Returns: Optional[bool]
         """
         return self._is_draft
@@ -447,7 +419,7 @@ class Event(outlook_item.OutlookItem):
     @is_draft.setter
     def is_draft(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isDraft property value. The isDraft property
+        Sets the isDraft property value. 
         Args:
             value: Value to set for the isDraft property.
         """
@@ -456,7 +428,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def is_online_meeting(self,) -> Optional[bool]:
         """
-        Gets the isOnlineMeeting property value. The isOnlineMeeting property
+        Gets the isOnlineMeeting property value. 
         Returns: Optional[bool]
         """
         return self._is_online_meeting
@@ -464,7 +436,7 @@ class Event(outlook_item.OutlookItem):
     @is_online_meeting.setter
     def is_online_meeting(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isOnlineMeeting property value. The isOnlineMeeting property
+        Sets the isOnlineMeeting property value. 
         Args:
             value: Value to set for the isOnlineMeeting property.
         """
@@ -473,7 +445,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def is_organizer(self,) -> Optional[bool]:
         """
-        Gets the isOrganizer property value. The isOrganizer property
+        Gets the isOrganizer property value. 
         Returns: Optional[bool]
         """
         return self._is_organizer
@@ -481,7 +453,7 @@ class Event(outlook_item.OutlookItem):
     @is_organizer.setter
     def is_organizer(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isOrganizer property value. The isOrganizer property
+        Sets the isOrganizer property value. 
         Args:
             value: Value to set for the isOrganizer property.
         """
@@ -490,7 +462,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def is_reminder_on(self,) -> Optional[bool]:
         """
-        Gets the isReminderOn property value. The isReminderOn property
+        Gets the isReminderOn property value. 
         Returns: Optional[bool]
         """
         return self._is_reminder_on
@@ -498,7 +470,7 @@ class Event(outlook_item.OutlookItem):
     @is_reminder_on.setter
     def is_reminder_on(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isReminderOn property value. The isReminderOn property
+        Sets the isReminderOn property value. 
         Args:
             value: Value to set for the isReminderOn property.
         """
@@ -507,7 +479,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def location(self,) -> Optional[location.Location]:
         """
-        Gets the location property value. The location property
+        Gets the location property value. 
         Returns: Optional[location.Location]
         """
         return self._location
@@ -515,7 +487,7 @@ class Event(outlook_item.OutlookItem):
     @location.setter
     def location(self,value: Optional[location.Location] = None) -> None:
         """
-        Sets the location property value. The location property
+        Sets the location property value. 
         Args:
             value: Value to set for the location property.
         """
@@ -524,7 +496,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def locations(self,) -> Optional[List[location.Location]]:
         """
-        Gets the locations property value. The locations property
+        Gets the locations property value. 
         Returns: Optional[List[location.Location]]
         """
         return self._locations
@@ -532,7 +504,7 @@ class Event(outlook_item.OutlookItem):
     @locations.setter
     def locations(self,value: Optional[List[location.Location]] = None) -> None:
         """
-        Sets the locations property value. The locations property
+        Sets the locations property value. 
         Args:
             value: Value to set for the locations property.
         """
@@ -558,7 +530,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def online_meeting(self,) -> Optional[online_meeting_info.OnlineMeetingInfo]:
         """
-        Gets the onlineMeeting property value. The onlineMeeting property
+        Gets the onlineMeeting property value. 
         Returns: Optional[online_meeting_info.OnlineMeetingInfo]
         """
         return self._online_meeting
@@ -566,7 +538,7 @@ class Event(outlook_item.OutlookItem):
     @online_meeting.setter
     def online_meeting(self,value: Optional[online_meeting_info.OnlineMeetingInfo] = None) -> None:
         """
-        Sets the onlineMeeting property value. The onlineMeeting property
+        Sets the onlineMeeting property value. 
         Args:
             value: Value to set for the onlineMeeting property.
         """
@@ -575,7 +547,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def online_meeting_provider(self,) -> Optional[online_meeting_provider_type.OnlineMeetingProviderType]:
         """
-        Gets the onlineMeetingProvider property value. The onlineMeetingProvider property
+        Gets the onlineMeetingProvider property value. 
         Returns: Optional[online_meeting_provider_type.OnlineMeetingProviderType]
         """
         return self._online_meeting_provider
@@ -583,7 +555,7 @@ class Event(outlook_item.OutlookItem):
     @online_meeting_provider.setter
     def online_meeting_provider(self,value: Optional[online_meeting_provider_type.OnlineMeetingProviderType] = None) -> None:
         """
-        Sets the onlineMeetingProvider property value. The onlineMeetingProvider property
+        Sets the onlineMeetingProvider property value. 
         Args:
             value: Value to set for the onlineMeetingProvider property.
         """
@@ -592,7 +564,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def online_meeting_url(self,) -> Optional[str]:
         """
-        Gets the onlineMeetingUrl property value. The onlineMeetingUrl property
+        Gets the onlineMeetingUrl property value. 
         Returns: Optional[str]
         """
         return self._online_meeting_url
@@ -600,7 +572,7 @@ class Event(outlook_item.OutlookItem):
     @online_meeting_url.setter
     def online_meeting_url(self,value: Optional[str] = None) -> None:
         """
-        Sets the onlineMeetingUrl property value. The onlineMeetingUrl property
+        Sets the onlineMeetingUrl property value. 
         Args:
             value: Value to set for the onlineMeetingUrl property.
         """
@@ -609,7 +581,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def organizer(self,) -> Optional[recipient.Recipient]:
         """
-        Gets the organizer property value. The organizer property
+        Gets the organizer property value. 
         Returns: Optional[recipient.Recipient]
         """
         return self._organizer
@@ -617,7 +589,7 @@ class Event(outlook_item.OutlookItem):
     @organizer.setter
     def organizer(self,value: Optional[recipient.Recipient] = None) -> None:
         """
-        Sets the organizer property value. The organizer property
+        Sets the organizer property value. 
         Args:
             value: Value to set for the organizer property.
         """
@@ -626,7 +598,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def original_end_time_zone(self,) -> Optional[str]:
         """
-        Gets the originalEndTimeZone property value. The originalEndTimeZone property
+        Gets the originalEndTimeZone property value. 
         Returns: Optional[str]
         """
         return self._original_end_time_zone
@@ -634,7 +606,7 @@ class Event(outlook_item.OutlookItem):
     @original_end_time_zone.setter
     def original_end_time_zone(self,value: Optional[str] = None) -> None:
         """
-        Sets the originalEndTimeZone property value. The originalEndTimeZone property
+        Sets the originalEndTimeZone property value. 
         Args:
             value: Value to set for the originalEndTimeZone property.
         """
@@ -643,7 +615,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def original_start(self,) -> Optional[datetime]:
         """
-        Gets the originalStart property value. The originalStart property
+        Gets the originalStart property value. 
         Returns: Optional[datetime]
         """
         return self._original_start
@@ -651,7 +623,7 @@ class Event(outlook_item.OutlookItem):
     @original_start.setter
     def original_start(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the originalStart property value. The originalStart property
+        Sets the originalStart property value. 
         Args:
             value: Value to set for the originalStart property.
         """
@@ -660,7 +632,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def original_start_time_zone(self,) -> Optional[str]:
         """
-        Gets the originalStartTimeZone property value. The originalStartTimeZone property
+        Gets the originalStartTimeZone property value. 
         Returns: Optional[str]
         """
         return self._original_start_time_zone
@@ -668,7 +640,7 @@ class Event(outlook_item.OutlookItem):
     @original_start_time_zone.setter
     def original_start_time_zone(self,value: Optional[str] = None) -> None:
         """
-        Sets the originalStartTimeZone property value. The originalStartTimeZone property
+        Sets the originalStartTimeZone property value. 
         Args:
             value: Value to set for the originalStartTimeZone property.
         """
@@ -677,7 +649,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def recurrence(self,) -> Optional[patterned_recurrence.PatternedRecurrence]:
         """
-        Gets the recurrence property value. The recurrence property
+        Gets the recurrence property value. 
         Returns: Optional[patterned_recurrence.PatternedRecurrence]
         """
         return self._recurrence
@@ -685,7 +657,7 @@ class Event(outlook_item.OutlookItem):
     @recurrence.setter
     def recurrence(self,value: Optional[patterned_recurrence.PatternedRecurrence] = None) -> None:
         """
-        Sets the recurrence property value. The recurrence property
+        Sets the recurrence property value. 
         Args:
             value: Value to set for the recurrence property.
         """
@@ -694,7 +666,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def reminder_minutes_before_start(self,) -> Optional[int]:
         """
-        Gets the reminderMinutesBeforeStart property value. The reminderMinutesBeforeStart property
+        Gets the reminderMinutesBeforeStart property value. 
         Returns: Optional[int]
         """
         return self._reminder_minutes_before_start
@@ -702,7 +674,7 @@ class Event(outlook_item.OutlookItem):
     @reminder_minutes_before_start.setter
     def reminder_minutes_before_start(self,value: Optional[int] = None) -> None:
         """
-        Sets the reminderMinutesBeforeStart property value. The reminderMinutesBeforeStart property
+        Sets the reminderMinutesBeforeStart property value. 
         Args:
             value: Value to set for the reminderMinutesBeforeStart property.
         """
@@ -711,7 +683,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def response_requested(self,) -> Optional[bool]:
         """
-        Gets the responseRequested property value. The responseRequested property
+        Gets the responseRequested property value. 
         Returns: Optional[bool]
         """
         return self._response_requested
@@ -719,7 +691,7 @@ class Event(outlook_item.OutlookItem):
     @response_requested.setter
     def response_requested(self,value: Optional[bool] = None) -> None:
         """
-        Sets the responseRequested property value. The responseRequested property
+        Sets the responseRequested property value. 
         Args:
             value: Value to set for the responseRequested property.
         """
@@ -728,7 +700,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def response_status(self,) -> Optional[response_status.ResponseStatus]:
         """
-        Gets the responseStatus property value. The responseStatus property
+        Gets the responseStatus property value. 
         Returns: Optional[response_status.ResponseStatus]
         """
         return self._response_status
@@ -736,7 +708,7 @@ class Event(outlook_item.OutlookItem):
     @response_status.setter
     def response_status(self,value: Optional[response_status.ResponseStatus] = None) -> None:
         """
-        Sets the responseStatus property value. The responseStatus property
+        Sets the responseStatus property value. 
         Args:
             value: Value to set for the responseStatus property.
         """
@@ -745,7 +717,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def sensitivity(self,) -> Optional[sensitivity.Sensitivity]:
         """
-        Gets the sensitivity property value. The sensitivity property
+        Gets the sensitivity property value. 
         Returns: Optional[sensitivity.Sensitivity]
         """
         return self._sensitivity
@@ -753,7 +725,7 @@ class Event(outlook_item.OutlookItem):
     @sensitivity.setter
     def sensitivity(self,value: Optional[sensitivity.Sensitivity] = None) -> None:
         """
-        Sets the sensitivity property value. The sensitivity property
+        Sets the sensitivity property value. 
         Args:
             value: Value to set for the sensitivity property.
         """
@@ -814,7 +786,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def series_master_id(self,) -> Optional[str]:
         """
-        Gets the seriesMasterId property value. The seriesMasterId property
+        Gets the seriesMasterId property value. 
         Returns: Optional[str]
         """
         return self._series_master_id
@@ -822,7 +794,7 @@ class Event(outlook_item.OutlookItem):
     @series_master_id.setter
     def series_master_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the seriesMasterId property value. The seriesMasterId property
+        Sets the seriesMasterId property value. 
         Args:
             value: Value to set for the seriesMasterId property.
         """
@@ -831,7 +803,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def show_as(self,) -> Optional[free_busy_status.FreeBusyStatus]:
         """
-        Gets the showAs property value. The showAs property
+        Gets the showAs property value. 
         Returns: Optional[free_busy_status.FreeBusyStatus]
         """
         return self._show_as
@@ -839,7 +811,7 @@ class Event(outlook_item.OutlookItem):
     @show_as.setter
     def show_as(self,value: Optional[free_busy_status.FreeBusyStatus] = None) -> None:
         """
-        Sets the showAs property value. The showAs property
+        Sets the showAs property value. 
         Args:
             value: Value to set for the showAs property.
         """
@@ -865,7 +837,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def start(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
-        Gets the start property value. The start property
+        Gets the start property value. 
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._start
@@ -873,7 +845,7 @@ class Event(outlook_item.OutlookItem):
     @start.setter
     def start(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
-        Sets the start property value. The start property
+        Sets the start property value. 
         Args:
             value: Value to set for the start property.
         """
@@ -882,7 +854,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def subject(self,) -> Optional[str]:
         """
-        Gets the subject property value. The subject property
+        Gets the subject property value. 
         Returns: Optional[str]
         """
         return self._subject
@@ -890,7 +862,7 @@ class Event(outlook_item.OutlookItem):
     @subject.setter
     def subject(self,value: Optional[str] = None) -> None:
         """
-        Sets the subject property value. The subject property
+        Sets the subject property value. 
         Args:
             value: Value to set for the subject property.
         """
@@ -899,7 +871,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def transaction_id(self,) -> Optional[str]:
         """
-        Gets the transactionId property value. The transactionId property
+        Gets the transactionId property value. 
         Returns: Optional[str]
         """
         return self._transaction_id
@@ -907,7 +879,7 @@ class Event(outlook_item.OutlookItem):
     @transaction_id.setter
     def transaction_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the transactionId property value. The transactionId property
+        Sets the transactionId property value. 
         Args:
             value: Value to set for the transactionId property.
         """
@@ -916,7 +888,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def type(self,) -> Optional[event_type.EventType]:
         """
-        Gets the type property value. The type property
+        Gets the type property value. 
         Returns: Optional[event_type.EventType]
         """
         return self._type
@@ -924,7 +896,7 @@ class Event(outlook_item.OutlookItem):
     @type.setter
     def type(self,value: Optional[event_type.EventType] = None) -> None:
         """
-        Sets the type property value. The type property
+        Sets the type property value. 
         Args:
             value: Value to set for the type property.
         """
@@ -933,7 +905,7 @@ class Event(outlook_item.OutlookItem):
     @property
     def web_link(self,) -> Optional[str]:
         """
-        Gets the webLink property value. The webLink property
+        Gets the webLink property value. 
         Returns: Optional[str]
         """
         return self._web_link
@@ -941,7 +913,7 @@ class Event(outlook_item.OutlookItem):
     @web_link.setter
     def web_link(self,value: Optional[str] = None) -> None:
         """
-        Sets the webLink property value. The webLink property
+        Sets the webLink property value. 
         Args:
             value: Value to set for the webLink property.
         """

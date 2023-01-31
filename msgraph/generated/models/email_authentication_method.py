@@ -50,7 +50,7 @@ class EmailAuthenticationMethod(authentication_method.AuthenticationMethod):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "email_address": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -29,7 +29,6 @@ class PendingContentUpdate(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Date and time the pending binary operation was queued in UTC time. Read-only.
         self._queued_date_time: Optional[datetime] = None
@@ -53,14 +52,14 @@ class PendingContentUpdate(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "queued_date_time": lambda n : setattr(self, 'queued_date_time', n.get_datetime_value()),
+            "queuedDateTime": lambda n : setattr(self, 'queued_date_time', n.get_datetime_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -68,7 +67,7 @@ class PendingContentUpdate(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

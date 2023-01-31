@@ -18,7 +18,6 @@ class UserFlowLanguageConfiguration(entity.Entity):
         self._display_name: Optional[str] = None
         # Indicates whether the language is enabled within the user flow.
         self._is_enabled: Optional[bool] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows to modify the content of the page, any other modification is not allowed (creation or deletion of pages).
         self._overrides_pages: Optional[List[user_flow_language_page.UserFlowLanguagePage]] = None
@@ -75,10 +74,10 @@ class UserFlowLanguageConfiguration(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "default_pages": lambda n : setattr(self, 'default_pages', n.get_collection_of_object_values(user_flow_language_page.UserFlowLanguagePage)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "overrides_pages": lambda n : setattr(self, 'overrides_pages', n.get_collection_of_object_values(user_flow_language_page.UserFlowLanguagePage)),
+            "defaultPages": lambda n : setattr(self, 'default_pages', n.get_collection_of_object_values(user_flow_language_page.UserFlowLanguagePage)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "overridesPages": lambda n : setattr(self, 'overrides_pages', n.get_collection_of_object_values(user_flow_language_page.UserFlowLanguagePage)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -38,7 +38,6 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         self._enforced_session_controls: Optional[List[str]] = None
         # An identifier of the conditional access policy.
         self._id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Indicates the result of the CA policy that was triggered. Possible values are: success, failure, notApplied (Policy isn't applied because policy conditions were not met),notEnabled (This is due to the policy in disabled state), unknown, unknownFutureValue.
         self._result: Optional[applied_conditional_access_policy_result.AppliedConditionalAccessPolicyResult] = None
@@ -112,9 +111,9 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "enforced_grant_controls": lambda n : setattr(self, 'enforced_grant_controls', n.get_collection_of_primitive_values(str)),
-            "enforced_session_controls": lambda n : setattr(self, 'enforced_session_controls', n.get_collection_of_primitive_values(str)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "enforcedGrantControls": lambda n : setattr(self, 'enforced_grant_controls', n.get_collection_of_primitive_values(str)),
+            "enforcedSessionControls": lambda n : setattr(self, 'enforced_session_controls', n.get_collection_of_primitive_values(str)),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "result": lambda n : setattr(self, 'result', n.get_enum_value(applied_conditional_access_policy_result.AppliedConditionalAccessPolicyResult)),
@@ -141,7 +140,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -149,7 +148,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

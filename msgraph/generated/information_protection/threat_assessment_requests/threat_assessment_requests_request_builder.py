@@ -66,7 +66,7 @@ class ThreatAssessmentRequestsRequestBuilder():
         """
         Create a new threat assessment request. A threat assessment request can be one of the following types:
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[threat_assessment_request.ThreatAssessmentRequest]
         """
@@ -105,7 +105,7 @@ class ThreatAssessmentRequestsRequestBuilder():
         """
         Create a new threat assessment request. A threat assessment request can be one of the following types:
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

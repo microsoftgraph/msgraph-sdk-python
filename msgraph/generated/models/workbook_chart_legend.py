@@ -14,7 +14,6 @@ class WorkbookChartLegend(entity.Entity):
         super().__init__()
         # Represents the formatting of a chart legend, which includes fill and font formatting. Read-only.
         self._format: Optional[workbook_chart_legend_format.WorkbookChartLegendFormat] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Boolean value for whether the chart legend should overlap with the main body of the chart.
         self._overlay: Optional[bool] = None

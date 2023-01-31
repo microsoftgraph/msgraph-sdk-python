@@ -74,7 +74,7 @@ class AuthenticationFlowsPolicyRequestBuilder():
         """
         Update the **selfServiceSignUp** property of an authenticationFlowsPolicy object. The properties **id**, **type**, and **description** cannot be modified.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[authentication_flows_policy.AuthenticationFlowsPolicy]
         """
@@ -129,7 +129,7 @@ class AuthenticationFlowsPolicyRequestBuilder():
         """
         Update the **selfServiceSignUp** property of an authenticationFlowsPolicy object. The properties **id**, **type**, and **description** cannot be modified.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

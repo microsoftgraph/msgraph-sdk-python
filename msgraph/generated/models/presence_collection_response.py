@@ -12,7 +12,6 @@ class PresenceCollectionResponse(base_collection_pagination_count_response.BaseC
         Instantiates a new PresenceCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[presence.Presence]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class PresenceCollectionResponse(base_collection_pagination_count_response.BaseC
     @property
     def value(self,) -> Optional[List[presence.Presence]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[presence.Presence]]
         """
         return self._value
@@ -61,7 +60,7 @@ class PresenceCollectionResponse(base_collection_pagination_count_response.BaseC
     @value.setter
     def value(self,value: Optional[List[presence.Presence]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

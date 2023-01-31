@@ -103,7 +103,6 @@ class SecureScoreControlProfile(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # max attainable score for the control.
         self._max_score: Optional[float] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Microsoft's stack ranking of control.
         self._rank: Optional[int] = None
@@ -115,13 +114,9 @@ class SecureScoreControlProfile(entity.Entity):
         self._service: Optional[str] = None
         # List of threats the control mitigates (accountBreach,dataDeletion,dataExfiltration,dataSpillage,
         self._threats: Optional[List[str]] = None
-        # The tier property
         self._tier: Optional[str] = None
-        # The title property
         self._title: Optional[str] = None
-        # The userImpact property
         self._user_impact: Optional[str] = None
-        # The vendorInformation property
         self._vendor_information: Optional[security_vendor_information.SecurityVendorInformation] = None
     
     @property
@@ -193,25 +188,25 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "action_type": lambda n : setattr(self, 'action_type', n.get_str_value()),
-            "action_url": lambda n : setattr(self, 'action_url', n.get_str_value()),
-            "azure_tenant_id": lambda n : setattr(self, 'azure_tenant_id', n.get_str_value()),
-            "compliance_information": lambda n : setattr(self, 'compliance_information', n.get_collection_of_object_values(compliance_information.ComplianceInformation)),
-            "control_category": lambda n : setattr(self, 'control_category', n.get_str_value()),
-            "control_state_updates": lambda n : setattr(self, 'control_state_updates', n.get_collection_of_object_values(secure_score_control_state_update.SecureScoreControlStateUpdate)),
+            "actionType": lambda n : setattr(self, 'action_type', n.get_str_value()),
+            "actionUrl": lambda n : setattr(self, 'action_url', n.get_str_value()),
+            "azureTenantId": lambda n : setattr(self, 'azure_tenant_id', n.get_str_value()),
+            "complianceInformation": lambda n : setattr(self, 'compliance_information', n.get_collection_of_object_values(compliance_information.ComplianceInformation)),
+            "controlCategory": lambda n : setattr(self, 'control_category', n.get_str_value()),
+            "controlStateUpdates": lambda n : setattr(self, 'control_state_updates', n.get_collection_of_object_values(secure_score_control_state_update.SecureScoreControlStateUpdate)),
             "deprecated": lambda n : setattr(self, 'deprecated', n.get_bool_value()),
-            "implementation_cost": lambda n : setattr(self, 'implementation_cost', n.get_str_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "max_score": lambda n : setattr(self, 'max_score', n.get_float_value()),
+            "implementationCost": lambda n : setattr(self, 'implementation_cost', n.get_str_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "maxScore": lambda n : setattr(self, 'max_score', n.get_float_value()),
             "rank": lambda n : setattr(self, 'rank', n.get_int_value()),
             "remediation": lambda n : setattr(self, 'remediation', n.get_str_value()),
-            "remediation_impact": lambda n : setattr(self, 'remediation_impact', n.get_str_value()),
+            "remediationImpact": lambda n : setattr(self, 'remediation_impact', n.get_str_value()),
             "service": lambda n : setattr(self, 'service', n.get_str_value()),
             "threats": lambda n : setattr(self, 'threats', n.get_collection_of_primitive_values(str)),
             "tier": lambda n : setattr(self, 'tier', n.get_str_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
-            "user_impact": lambda n : setattr(self, 'user_impact', n.get_str_value()),
-            "vendor_information": lambda n : setattr(self, 'vendor_information', n.get_object_value(security_vendor_information.SecurityVendorInformation)),
+            "userImpact": lambda n : setattr(self, 'user_impact', n.get_str_value()),
+            "vendorInformation": lambda n : setattr(self, 'vendor_information', n.get_object_value(security_vendor_information.SecurityVendorInformation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -385,7 +380,7 @@ class SecureScoreControlProfile(entity.Entity):
     @property
     def tier(self,) -> Optional[str]:
         """
-        Gets the tier property value. The tier property
+        Gets the tier property value. 
         Returns: Optional[str]
         """
         return self._tier
@@ -393,7 +388,7 @@ class SecureScoreControlProfile(entity.Entity):
     @tier.setter
     def tier(self,value: Optional[str] = None) -> None:
         """
-        Sets the tier property value. The tier property
+        Sets the tier property value. 
         Args:
             value: Value to set for the tier property.
         """
@@ -402,7 +397,7 @@ class SecureScoreControlProfile(entity.Entity):
     @property
     def title(self,) -> Optional[str]:
         """
-        Gets the title property value. The title property
+        Gets the title property value. 
         Returns: Optional[str]
         """
         return self._title
@@ -410,7 +405,7 @@ class SecureScoreControlProfile(entity.Entity):
     @title.setter
     def title(self,value: Optional[str] = None) -> None:
         """
-        Sets the title property value. The title property
+        Sets the title property value. 
         Args:
             value: Value to set for the title property.
         """
@@ -419,7 +414,7 @@ class SecureScoreControlProfile(entity.Entity):
     @property
     def user_impact(self,) -> Optional[str]:
         """
-        Gets the userImpact property value. The userImpact property
+        Gets the userImpact property value. 
         Returns: Optional[str]
         """
         return self._user_impact
@@ -427,7 +422,7 @@ class SecureScoreControlProfile(entity.Entity):
     @user_impact.setter
     def user_impact(self,value: Optional[str] = None) -> None:
         """
-        Sets the userImpact property value. The userImpact property
+        Sets the userImpact property value. 
         Args:
             value: Value to set for the userImpact property.
         """
@@ -436,7 +431,7 @@ class SecureScoreControlProfile(entity.Entity):
     @property
     def vendor_information(self,) -> Optional[security_vendor_information.SecurityVendorInformation]:
         """
-        Gets the vendorInformation property value. The vendorInformation property
+        Gets the vendorInformation property value. 
         Returns: Optional[security_vendor_information.SecurityVendorInformation]
         """
         return self._vendor_information
@@ -444,7 +439,7 @@ class SecureScoreControlProfile(entity.Entity):
     @vendor_information.setter
     def vendor_information(self,value: Optional[security_vendor_information.SecurityVendorInformation] = None) -> None:
         """
-        Sets the vendorInformation property value. The vendorInformation property
+        Sets the vendorInformation property value. 
         Args:
             value: Value to set for the vendorInformation property.
         """

@@ -12,7 +12,6 @@ class WindowsHelloForBusinessAuthenticationMethodCollectionResponse(base_collect
         Instantiates a new WindowsHelloForBusinessAuthenticationMethodCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class WindowsHelloForBusinessAuthenticationMethodCollectionResponse(base_collect
     @property
     def value(self,) -> Optional[List[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod]]
         """
         return self._value
@@ -61,7 +60,7 @@ class WindowsHelloForBusinessAuthenticationMethodCollectionResponse(base_collect
     @value.setter
     def value(self,value: Optional[List[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

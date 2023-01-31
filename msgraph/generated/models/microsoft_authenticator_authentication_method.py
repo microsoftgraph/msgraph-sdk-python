@@ -111,11 +111,11 @@ class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.Authentic
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "device": lambda n : setattr(self, 'device', n.get_object_value(device.Device)),
-            "device_tag": lambda n : setattr(self, 'device_tag', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "phone_app_version": lambda n : setattr(self, 'phone_app_version', n.get_str_value()),
+            "deviceTag": lambda n : setattr(self, 'device_tag', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "phoneAppVersion": lambda n : setattr(self, 'phone_app_version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

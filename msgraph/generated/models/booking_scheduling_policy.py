@@ -55,7 +55,6 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         self._maximum_advance: Optional[Timedelta] = None
         # The minimum amount of time before which bookings and cancellations must be made. It follows the ISO 8601 format.
         self._minimum_lead_time: Optional[Timedelta] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # True to notify the business via email when a booking is created or changed. Use the email address specified in the email property of the bookingBusiness entity for the business.
         self._send_confirmations_to_owner: Optional[bool] = None
@@ -80,12 +79,12 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_staff_selection": lambda n : setattr(self, 'allow_staff_selection', n.get_bool_value()),
-            "maximum_advance": lambda n : setattr(self, 'maximum_advance', n.get_object_value(Timedelta)),
-            "minimum_lead_time": lambda n : setattr(self, 'minimum_lead_time', n.get_object_value(Timedelta)),
+            "allowStaffSelection": lambda n : setattr(self, 'allow_staff_selection', n.get_bool_value()),
+            "maximumAdvance": lambda n : setattr(self, 'maximum_advance', n.get_object_value(Timedelta)),
+            "minimumLeadTime": lambda n : setattr(self, 'minimum_lead_time', n.get_object_value(Timedelta)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "send_confirmations_to_owner": lambda n : setattr(self, 'send_confirmations_to_owner', n.get_bool_value()),
-            "time_slot_interval": lambda n : setattr(self, 'time_slot_interval', n.get_object_value(Timedelta)),
+            "sendConfirmationsToOwner": lambda n : setattr(self, 'send_confirmations_to_owner', n.get_bool_value()),
+            "timeSlotInterval": lambda n : setattr(self, 'time_slot_interval', n.get_object_value(Timedelta)),
         }
         return fields
     
@@ -126,7 +125,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -134,7 +133,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

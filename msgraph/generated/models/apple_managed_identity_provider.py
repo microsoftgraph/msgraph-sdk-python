@@ -73,10 +73,10 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "certificate_data": lambda n : setattr(self, 'certificate_data', n.get_str_value()),
-            "developer_id": lambda n : setattr(self, 'developer_id', n.get_str_value()),
-            "key_id": lambda n : setattr(self, 'key_id', n.get_str_value()),
-            "service_id": lambda n : setattr(self, 'service_id', n.get_str_value()),
+            "certificateData": lambda n : setattr(self, 'certificate_data', n.get_str_value()),
+            "developerId": lambda n : setattr(self, 'developer_id', n.get_str_value()),
+            "keyId": lambda n : setattr(self, 'key_id', n.get_str_value()),
+            "serviceId": lambda n : setattr(self, 'service_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

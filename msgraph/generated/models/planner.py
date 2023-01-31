@@ -33,7 +33,6 @@ class Planner(entity.Entity):
         super().__init__()
         # Read-only. Nullable. Returns a collection of the specified buckets
         self._buckets: Optional[List[planner_bucket.PlannerBucket]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Read-only. Nullable. Returns a collection of the specified plans
         self._plans: Optional[List[planner_plan.PlannerPlan]] = None

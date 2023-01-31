@@ -73,8 +73,8 @@ class CallStartedEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "call_event_type": lambda n : setattr(self, 'call_event_type', n.get_enum_value(teamwork_call_event_type.TeamworkCallEventType)),
-            "call_id": lambda n : setattr(self, 'call_id', n.get_str_value()),
+            "callEventType": lambda n : setattr(self, 'call_event_type', n.get_enum_value(teamwork_call_event_type.TeamworkCallEventType)),
+            "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
         }
         super_fields = super().get_field_deserializers()

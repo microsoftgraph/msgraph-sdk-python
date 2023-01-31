@@ -49,13 +49,10 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         self._conference_id: Optional[str] = None
         # A URL to the externally-accessible web page that contains dial-in information.
         self._dialin_url: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The tollFreeNumber property
         self._toll_free_number: Optional[str] = None
         # List of toll-free numbers that are displayed in the meeting invite.
         self._toll_free_numbers: Optional[List[str]] = None
-        # The tollNumber property
         self._toll_number: Optional[str] = None
         # List of toll numbers that are displayed in the meeting invite.
         self._toll_numbers: Optional[List[str]] = None
@@ -95,20 +92,20 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "conference_id": lambda n : setattr(self, 'conference_id', n.get_str_value()),
-            "dialin_url": lambda n : setattr(self, 'dialin_url', n.get_str_value()),
+            "conferenceId": lambda n : setattr(self, 'conference_id', n.get_str_value()),
+            "dialinUrl": lambda n : setattr(self, 'dialin_url', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "toll_free_number": lambda n : setattr(self, 'toll_free_number', n.get_str_value()),
-            "toll_free_numbers": lambda n : setattr(self, 'toll_free_numbers', n.get_collection_of_primitive_values(str)),
-            "toll_number": lambda n : setattr(self, 'toll_number', n.get_str_value()),
-            "toll_numbers": lambda n : setattr(self, 'toll_numbers', n.get_collection_of_primitive_values(str)),
+            "tollFreeNumber": lambda n : setattr(self, 'toll_free_number', n.get_str_value()),
+            "tollFreeNumbers": lambda n : setattr(self, 'toll_free_numbers', n.get_collection_of_primitive_values(str)),
+            "tollNumber": lambda n : setattr(self, 'toll_number', n.get_str_value()),
+            "tollNumbers": lambda n : setattr(self, 'toll_numbers', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -116,7 +113,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -142,7 +139,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
     @property
     def toll_free_number(self,) -> Optional[str]:
         """
-        Gets the tollFreeNumber property value. The tollFreeNumber property
+        Gets the tollFreeNumber property value. 
         Returns: Optional[str]
         """
         return self._toll_free_number
@@ -150,7 +147,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
     @toll_free_number.setter
     def toll_free_number(self,value: Optional[str] = None) -> None:
         """
-        Sets the tollFreeNumber property value. The tollFreeNumber property
+        Sets the tollFreeNumber property value. 
         Args:
             value: Value to set for the tollFreeNumber property.
         """
@@ -176,7 +173,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
     @property
     def toll_number(self,) -> Optional[str]:
         """
-        Gets the tollNumber property value. The tollNumber property
+        Gets the tollNumber property value. 
         Returns: Optional[str]
         """
         return self._toll_number
@@ -184,7 +181,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
     @toll_number.setter
     def toll_number(self,value: Optional[str] = None) -> None:
         """
-        Sets the tollNumber property value. The tollNumber property
+        Sets the tollNumber property value. 
         Args:
             value: Value to set for the tollNumber property.
         """

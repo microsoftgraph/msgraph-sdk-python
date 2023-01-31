@@ -66,7 +66,7 @@ class TaskDefinitionsRequestBuilder():
         """
         Create a new task definition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[print_task_definition.PrintTaskDefinition]
         """
@@ -105,7 +105,7 @@ class TaskDefinitionsRequestBuilder():
         """
         Create a new task definition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

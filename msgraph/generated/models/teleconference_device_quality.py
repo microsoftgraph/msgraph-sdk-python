@@ -133,7 +133,6 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         self._media_leg_id: Optional[Guid] = None
         # The list of media qualities in a media session (call), such as audio quality, video quality, and/or screen sharing quality.
         self._media_quality_list: Optional[List[teleconference_device_media_quality.TeleconferenceDeviceMediaQuality]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # A unique identifier for a specific participant in a conference. The CVI partner needs to copy over Call.MyParticipantId to this property.
         self._participant_id: Optional[Guid] = None
@@ -190,17 +189,17 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "call_chain_id": lambda n : setattr(self, 'call_chain_id', n.get_object_value(Guid)),
-            "cloud_service_deployment_environment": lambda n : setattr(self, 'cloud_service_deployment_environment', n.get_str_value()),
-            "cloud_service_deployment_id": lambda n : setattr(self, 'cloud_service_deployment_id', n.get_str_value()),
-            "cloud_service_instance_name": lambda n : setattr(self, 'cloud_service_instance_name', n.get_str_value()),
-            "cloud_service_name": lambda n : setattr(self, 'cloud_service_name', n.get_str_value()),
-            "device_description": lambda n : setattr(self, 'device_description', n.get_str_value()),
-            "device_name": lambda n : setattr(self, 'device_name', n.get_str_value()),
-            "media_leg_id": lambda n : setattr(self, 'media_leg_id', n.get_object_value(Guid)),
-            "media_quality_list": lambda n : setattr(self, 'media_quality_list', n.get_collection_of_object_values(teleconference_device_media_quality.TeleconferenceDeviceMediaQuality)),
+            "callChainId": lambda n : setattr(self, 'call_chain_id', n.get_object_value(Guid)),
+            "cloudServiceDeploymentEnvironment": lambda n : setattr(self, 'cloud_service_deployment_environment', n.get_str_value()),
+            "cloudServiceDeploymentId": lambda n : setattr(self, 'cloud_service_deployment_id', n.get_str_value()),
+            "cloudServiceInstanceName": lambda n : setattr(self, 'cloud_service_instance_name', n.get_str_value()),
+            "cloudServiceName": lambda n : setattr(self, 'cloud_service_name', n.get_str_value()),
+            "deviceDescription": lambda n : setattr(self, 'device_description', n.get_str_value()),
+            "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
+            "mediaLegId": lambda n : setattr(self, 'media_leg_id', n.get_object_value(Guid)),
+            "mediaQualityList": lambda n : setattr(self, 'media_quality_list', n.get_collection_of_object_values(teleconference_device_media_quality.TeleconferenceDeviceMediaQuality)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "participant_id": lambda n : setattr(self, 'participant_id', n.get_object_value(Guid)),
+            "participantId": lambda n : setattr(self, 'participant_id', n.get_object_value(Guid)),
         }
         return fields
     
@@ -241,7 +240,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -249,7 +248,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

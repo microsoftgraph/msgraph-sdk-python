@@ -15,7 +15,6 @@ class TargetedManagedAppPolicyAssignment(entity.Entity):
         Instantiates a new targetedManagedAppPolicyAssignment and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Identifier for deployment to a group or app
         self._target: Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget] = None

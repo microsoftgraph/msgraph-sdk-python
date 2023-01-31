@@ -12,7 +12,6 @@ class AndroidWorkProfileCustomConfigurationCollectionResponse(base_collection_pa
         Instantiates a new AndroidWorkProfileCustomConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[android_work_profile_custom_configuration.AndroidWorkProfileCustomConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class AndroidWorkProfileCustomConfigurationCollectionResponse(base_collection_pa
     @property
     def value(self,) -> Optional[List[android_work_profile_custom_configuration.AndroidWorkProfileCustomConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[android_work_profile_custom_configuration.AndroidWorkProfileCustomConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class AndroidWorkProfileCustomConfigurationCollectionResponse(base_collection_pa
     @value.setter
     def value(self,value: Optional[List[android_work_profile_custom_configuration.AndroidWorkProfileCustomConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

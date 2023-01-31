@@ -12,7 +12,6 @@ class DelegatedAdminCustomerCollectionResponse(base_collection_pagination_count_
         Instantiates a new DelegatedAdminCustomerCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[delegated_admin_customer.DelegatedAdminCustomer]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class DelegatedAdminCustomerCollectionResponse(base_collection_pagination_count_
     @property
     def value(self,) -> Optional[List[delegated_admin_customer.DelegatedAdminCustomer]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[delegated_admin_customer.DelegatedAdminCustomer]]
         """
         return self._value
@@ -61,7 +60,7 @@ class DelegatedAdminCustomerCollectionResponse(base_collection_pagination_count_
     @value.setter
     def value(self,value: Optional[List[delegated_admin_customer.DelegatedAdminCustomer]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

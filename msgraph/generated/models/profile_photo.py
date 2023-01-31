@@ -13,7 +13,6 @@ class ProfilePhoto(entity.Entity):
         super().__init__()
         # The height of the photo. Read-only.
         self._height: Optional[int] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The width of the photo. Read-only.
         self._width: Optional[int] = None

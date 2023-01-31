@@ -77,10 +77,10 @@ class DirectoryRole(directory_object.DirectoryObject):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "role_template_id": lambda n : setattr(self, 'role_template_id', n.get_str_value()),
-            "scoped_members": lambda n : setattr(self, 'scoped_members', n.get_collection_of_object_values(scoped_role_membership.ScopedRoleMembership)),
+            "roleTemplateId": lambda n : setattr(self, 'role_template_id', n.get_str_value()),
+            "scopedMembers": lambda n : setattr(self, 'scoped_members', n.get_collection_of_object_values(scoped_role_membership.ScopedRoleMembership)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -12,7 +12,6 @@ class IdentitySecurityDefaultsEnforcementPolicyCollectionResponse(base_collectio
         Instantiates a new IdentitySecurityDefaultsEnforcementPolicyCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class IdentitySecurityDefaultsEnforcementPolicyCollectionResponse(base_collectio
     @property
     def value(self,) -> Optional[List[identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy]]
         """
         return self._value
@@ -61,7 +60,7 @@ class IdentitySecurityDefaultsEnforcementPolicyCollectionResponse(base_collectio
     @value.setter
     def value(self,value: Optional[List[identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

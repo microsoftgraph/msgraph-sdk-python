@@ -13,26 +13,26 @@ from typing import Any, Callable, Dict, List, Optional, Union
 conversation_member = lazy_import('msgraph.generated.models.conversation_member')
 conversation_member_collection_response = lazy_import('msgraph.generated.models.conversation_member_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-add_request_builder = lazy_import('msgraph.generated.users.item.chats.item.members.add.add_request_builder')
 count_request_builder = lazy_import('msgraph.generated.users.item.chats.item.members.count.count_request_builder')
+add_request_builder = lazy_import('msgraph.generated.users.item.chats.item.members.microsoft_graph_add.add_request_builder')
 
 class MembersRequestBuilder():
     """
     Provides operations to manage the members property of the microsoft.graph.chat entity.
     """
     @property
-    def add(self) -> add_request_builder.AddRequestBuilder:
-        """
-        Provides operations to call the add method.
-        """
-        return add_request_builder.AddRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_add(self) -> add_request_builder.AddRequestBuilder:
+        """
+        Provides operations to call the add method.
+        """
+        return add_request_builder.AddRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -74,7 +74,7 @@ class MembersRequestBuilder():
         """
         Add a conversationMember to a chat.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[conversation_member.ConversationMember]
         """
@@ -113,7 +113,7 @@ class MembersRequestBuilder():
         """
         Add a conversationMember to a chat.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

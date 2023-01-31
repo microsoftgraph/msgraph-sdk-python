@@ -12,7 +12,6 @@ class RiskDetectionCollectionResponse(base_collection_pagination_count_response.
         Instantiates a new RiskDetectionCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[risk_detection.RiskDetection]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class RiskDetectionCollectionResponse(base_collection_pagination_count_response.
     @property
     def value(self,) -> Optional[List[risk_detection.RiskDetection]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[risk_detection.RiskDetection]]
         """
         return self._value
@@ -61,7 +60,7 @@ class RiskDetectionCollectionResponse(base_collection_pagination_count_response.
     @value.setter
     def value(self,value: Optional[List[risk_detection.RiskDetection]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

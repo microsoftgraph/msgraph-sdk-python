@@ -31,7 +31,6 @@ class DelegatedPermissionClassification(entity.Entity):
         super().__init__()
         # The classification value being given. Possible value: low. Does not support $filter.
         self._classification: Optional[permission_classification_type.PermissionClassificationType] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The unique identifier (id) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Required on create. Does not support $filter.
         self._permission_id: Optional[str] = None
@@ -57,8 +56,8 @@ class DelegatedPermissionClassification(entity.Entity):
         """
         fields = {
             "classification": lambda n : setattr(self, 'classification', n.get_enum_value(permission_classification_type.PermissionClassificationType)),
-            "permission_id": lambda n : setattr(self, 'permission_id', n.get_str_value()),
-            "permission_name": lambda n : setattr(self, 'permission_name', n.get_str_value()),
+            "permissionId": lambda n : setattr(self, 'permission_id', n.get_str_value()),
+            "permissionName": lambda n : setattr(self, 'permission_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

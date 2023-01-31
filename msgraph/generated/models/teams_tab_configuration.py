@@ -32,7 +32,6 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
         self._content_url: Optional[str] = None
         # Identifier for the entity hosted by the tab provider.
         self._entity_id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Url called by Teams client when a Tab is removed using the Teams Client.
         self._remove_url: Optional[str] = None
@@ -91,18 +90,18 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "content_url": lambda n : setattr(self, 'content_url', n.get_str_value()),
-            "entity_id": lambda n : setattr(self, 'entity_id', n.get_str_value()),
+            "contentUrl": lambda n : setattr(self, 'content_url', n.get_str_value()),
+            "entityId": lambda n : setattr(self, 'entity_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "remove_url": lambda n : setattr(self, 'remove_url', n.get_str_value()),
-            "website_url": lambda n : setattr(self, 'website_url', n.get_str_value()),
+            "removeUrl": lambda n : setattr(self, 'remove_url', n.get_str_value()),
+            "websiteUrl": lambda n : setattr(self, 'website_url', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -110,7 +109,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -88,9 +88,9 @@ class FileAttachment(attachment.Attachment):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "content_bytes": lambda n : setattr(self, 'content_bytes', n.get_bytes_value()),
-            "content_id": lambda n : setattr(self, 'content_id', n.get_str_value()),
-            "content_location": lambda n : setattr(self, 'content_location', n.get_str_value()),
+            "contentBytes": lambda n : setattr(self, 'content_bytes', n.get_bytes_value()),
+            "contentId": lambda n : setattr(self, 'content_id', n.get_str_value()),
+            "contentLocation": lambda n : setattr(self, 'content_location', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

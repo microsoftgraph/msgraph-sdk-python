@@ -66,7 +66,7 @@ class OfferShiftRequestsRequestBuilder():
         """
         Create new navigation property to offerShiftRequests for groups
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[offer_shift_request.OfferShiftRequest]
         """
@@ -105,7 +105,7 @@ class OfferShiftRequestsRequestBuilder():
         """
         Create new navigation property to offerShiftRequests for groups
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

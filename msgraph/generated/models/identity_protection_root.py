@@ -33,7 +33,6 @@ class IdentityProtectionRoot(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Risk detection in Azure AD Identity Protection and the associated information about the detection.
         self._risk_detections: Optional[List[risk_detection.RiskDetection]] = None
@@ -63,17 +62,17 @@ class IdentityProtectionRoot(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "risk_detections": lambda n : setattr(self, 'risk_detections', n.get_collection_of_object_values(risk_detection.RiskDetection)),
-            "risky_service_principals": lambda n : setattr(self, 'risky_service_principals', n.get_collection_of_object_values(risky_service_principal.RiskyServicePrincipal)),
-            "risky_users": lambda n : setattr(self, 'risky_users', n.get_collection_of_object_values(risky_user.RiskyUser)),
-            "service_principal_risk_detections": lambda n : setattr(self, 'service_principal_risk_detections', n.get_collection_of_object_values(service_principal_risk_detection.ServicePrincipalRiskDetection)),
+            "riskDetections": lambda n : setattr(self, 'risk_detections', n.get_collection_of_object_values(risk_detection.RiskDetection)),
+            "riskyServicePrincipals": lambda n : setattr(self, 'risky_service_principals', n.get_collection_of_object_values(risky_service_principal.RiskyServicePrincipal)),
+            "riskyUsers": lambda n : setattr(self, 'risky_users', n.get_collection_of_object_values(risky_user.RiskyUser)),
+            "servicePrincipalRiskDetections": lambda n : setattr(self, 'service_principal_risk_detections', n.get_collection_of_object_values(service_principal_risk_detection.ServicePrincipalRiskDetection)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -81,7 +80,7 @@ class IdentityProtectionRoot(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

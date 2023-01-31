@@ -34,7 +34,6 @@ class MicrosoftAuthenticatorFeatureSettings(AdditionalDataHolder, Parsable):
         self._display_app_information_required_state: Optional[authentication_method_feature_configuration.AuthenticationMethodFeatureConfiguration] = None
         # Determines whether the user's Authenticator app will show them the geographic location of where the authentication request originated from.
         self._display_location_information_required_state: Optional[authentication_method_feature_configuration.AuthenticationMethodFeatureConfiguration] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -89,8 +88,8 @@ class MicrosoftAuthenticatorFeatureSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_app_information_required_state": lambda n : setattr(self, 'display_app_information_required_state', n.get_object_value(authentication_method_feature_configuration.AuthenticationMethodFeatureConfiguration)),
-            "display_location_information_required_state": lambda n : setattr(self, 'display_location_information_required_state', n.get_object_value(authentication_method_feature_configuration.AuthenticationMethodFeatureConfiguration)),
+            "displayAppInformationRequiredState": lambda n : setattr(self, 'display_app_information_required_state', n.get_object_value(authentication_method_feature_configuration.AuthenticationMethodFeatureConfiguration)),
+            "displayLocationInformationRequiredState": lambda n : setattr(self, 'display_location_information_required_state', n.get_object_value(authentication_method_feature_configuration.AuthenticationMethodFeatureConfiguration)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -98,7 +97,7 @@ class MicrosoftAuthenticatorFeatureSettings(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -106,7 +105,7 @@ class MicrosoftAuthenticatorFeatureSettings(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -9,7 +9,7 @@ class DelegatedAdminAccessContainer(AdditionalDataHolder, Parsable):
     @property
     def access_container_id(self,) -> Optional[str]:
         """
-        Gets the accessContainerId property value. The accessContainerId property
+        Gets the accessContainerId property value. 
         Returns: Optional[str]
         """
         return self._access_container_id
@@ -17,7 +17,7 @@ class DelegatedAdminAccessContainer(AdditionalDataHolder, Parsable):
     @access_container_id.setter
     def access_container_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the accessContainerId property value. The accessContainerId property
+        Sets the accessContainerId property value. 
         Args:
             value: Value to set for the accessContainerId property.
         """
@@ -26,7 +26,7 @@ class DelegatedAdminAccessContainer(AdditionalDataHolder, Parsable):
     @property
     def access_container_type(self,) -> Optional[delegated_admin_access_container_type.DelegatedAdminAccessContainerType]:
         """
-        Gets the accessContainerType property value. The accessContainerType property
+        Gets the accessContainerType property value. 
         Returns: Optional[delegated_admin_access_container_type.DelegatedAdminAccessContainerType]
         """
         return self._access_container_type
@@ -34,7 +34,7 @@ class DelegatedAdminAccessContainer(AdditionalDataHolder, Parsable):
     @access_container_type.setter
     def access_container_type(self,value: Optional[delegated_admin_access_container_type.DelegatedAdminAccessContainerType] = None) -> None:
         """
-        Sets the accessContainerType property value. The accessContainerType property
+        Sets the accessContainerType property value. 
         Args:
             value: Value to set for the accessContainerType property.
         """
@@ -64,11 +64,8 @@ class DelegatedAdminAccessContainer(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The accessContainerId property
         self._access_container_id: Optional[str] = None
-        # The accessContainerType property
         self._access_container_type: Optional[delegated_admin_access_container_type.DelegatedAdminAccessContainerType] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -89,8 +86,8 @@ class DelegatedAdminAccessContainer(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_container_id": lambda n : setattr(self, 'access_container_id', n.get_str_value()),
-            "access_container_type": lambda n : setattr(self, 'access_container_type', n.get_enum_value(delegated_admin_access_container_type.DelegatedAdminAccessContainerType)),
+            "accessContainerId": lambda n : setattr(self, 'access_container_id', n.get_str_value()),
+            "accessContainerType": lambda n : setattr(self, 'access_container_type', n.get_enum_value(delegated_admin_access_container_type.DelegatedAdminAccessContainerType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -98,7 +95,7 @@ class DelegatedAdminAccessContainer(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -106,7 +103,7 @@ class DelegatedAdminAccessContainer(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

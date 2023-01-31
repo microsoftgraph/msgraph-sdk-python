@@ -30,7 +30,6 @@ class Hashes(AdditionalDataHolder, Parsable):
 
         # The CRC32 value of the file in little endian (if available). Read-only.
         self._crc32_hash: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # A proprietary hash of the file that can be used to determine if the contents of the file have changed (if available). Read-only.
         self._quick_xor_hash: Optional[str] = None
@@ -74,18 +73,18 @@ class Hashes(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "crc32_hash": lambda n : setattr(self, 'crc32_hash', n.get_str_value()),
+            "crc32Hash": lambda n : setattr(self, 'crc32_hash', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "quick_xor_hash": lambda n : setattr(self, 'quick_xor_hash', n.get_str_value()),
-            "sha1_hash": lambda n : setattr(self, 'sha1_hash', n.get_str_value()),
-            "sha256_hash": lambda n : setattr(self, 'sha256_hash', n.get_str_value()),
+            "quickXorHash": lambda n : setattr(self, 'quick_xor_hash', n.get_str_value()),
+            "sha1Hash": lambda n : setattr(self, 'sha1_hash', n.get_str_value()),
+            "sha256Hash": lambda n : setattr(self, 'sha256_hash', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -93,7 +92,7 @@ class Hashes(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

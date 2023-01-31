@@ -12,7 +12,6 @@ class EdiscoveryReviewTagCollectionResponse(base_collection_pagination_count_res
         Instantiates a new EdiscoveryReviewTagCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class EdiscoveryReviewTagCollectionResponse(base_collection_pagination_count_res
     @property
     def value(self,) -> Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]]
         """
         return self._value
@@ -61,7 +60,7 @@ class EdiscoveryReviewTagCollectionResponse(base_collection_pagination_count_res
     @value.setter
     def value(self,value: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

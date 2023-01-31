@@ -26,12 +26,13 @@ class UserActivityItemRequestBuilder():
         """
         return history_items_request_builder.HistoryItemsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, user_activity_id: Optional[str] = None) -> None:
         """
         Instantiates a new UserActivityItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            userActivityId: key: id of userActivity
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -41,6 +42,7 @@ class UserActivityItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/activities/{userActivity%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["userActivity%2Did"] = userActivityId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -96,7 +98,7 @@ class UserActivityItemRequestBuilder():
         """
         Update the navigation property activities in me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[user_activity.UserActivity]
         """
@@ -151,7 +153,7 @@ class UserActivityItemRequestBuilder():
         """
         Update the navigation property activities in me
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

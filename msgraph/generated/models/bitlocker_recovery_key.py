@@ -19,7 +19,6 @@ class BitlockerRecoveryKey(entity.Entity):
         self._device_id: Optional[str] = None
         # The BitLocker recovery key. Returned only on $select. Not nullable.
         self._key: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Indicates the type of volume the BitLocker key is associated with. The possible values are: 1 (for operatingSystemVolume), 2 (for fixedDataVolume), 3 (for removableDataVolume), and 4 (for unknownFutureValue).
         self._volume_type: Optional[volume_type.VolumeType] = None
@@ -76,10 +75,10 @@ class BitlockerRecoveryKey(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "device_id": lambda n : setattr(self, 'device_id', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
             "key": lambda n : setattr(self, 'key', n.get_str_value()),
-            "volume_type": lambda n : setattr(self, 'volume_type', n.get_enum_value(volume_type.VolumeType)),
+            "volumeType": lambda n : setattr(self, 'volume_type', n.get_enum_value(volume_type.VolumeType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

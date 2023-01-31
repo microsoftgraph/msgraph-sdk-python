@@ -30,7 +30,6 @@ class WorkbookChartLineFormat(entity.Entity):
         super().__init__()
         # HTML color code representing the color of lines in the chart.
         self._color: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

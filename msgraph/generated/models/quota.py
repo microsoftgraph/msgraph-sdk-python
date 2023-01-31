@@ -32,7 +32,6 @@ class Quota(AdditionalDataHolder, Parsable):
 
         # Total space consumed by files in the recycle bin, in bytes. Read-only.
         self._deleted: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Total space remaining before reaching the quota limit, in bytes. Read-only.
         self._remaining: Optional[int] = None
@@ -84,7 +83,7 @@ class Quota(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "remaining": lambda n : setattr(self, 'remaining', n.get_int_value()),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
-            "storage_plan_information": lambda n : setattr(self, 'storage_plan_information', n.get_object_value(storage_plan_information.StoragePlanInformation)),
+            "storagePlanInformation": lambda n : setattr(self, 'storage_plan_information', n.get_object_value(storage_plan_information.StoragePlanInformation)),
             "total": lambda n : setattr(self, 'total', n.get_int_value()),
             "used": lambda n : setattr(self, 'used', n.get_int_value()),
         }
@@ -93,7 +92,7 @@ class Quota(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -101,7 +100,7 @@ class Quota(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -12,7 +12,6 @@ class SubjectRightsRequestCollectionResponse(base_collection_pagination_count_re
         Instantiates a new SubjectRightsRequestCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[subject_rights_request.SubjectRightsRequest]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class SubjectRightsRequestCollectionResponse(base_collection_pagination_count_re
     @property
     def value(self,) -> Optional[List[subject_rights_request.SubjectRightsRequest]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[subject_rights_request.SubjectRightsRequest]]
         """
         return self._value
@@ -61,7 +60,7 @@ class SubjectRightsRequestCollectionResponse(base_collection_pagination_count_re
     @value.setter
     def value(self,value: Optional[List[subject_rights_request.SubjectRightsRequest]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

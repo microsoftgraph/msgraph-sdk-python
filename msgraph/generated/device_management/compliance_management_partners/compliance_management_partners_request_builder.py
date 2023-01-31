@@ -66,7 +66,7 @@ class ComplianceManagementPartnersRequestBuilder():
         """
         Create new navigation property to complianceManagementPartners for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[compliance_management_partner.ComplianceManagementPartner]
         """
@@ -105,7 +105,7 @@ class ComplianceManagementPartnersRequestBuilder():
         """
         Create new navigation property to complianceManagementPartners for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

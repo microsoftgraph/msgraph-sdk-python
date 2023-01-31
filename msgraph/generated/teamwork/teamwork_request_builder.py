@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 teamwork = lazy_import('msgraph.generated.models.teamwork')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-send_activity_notification_to_recipients_request_builder = lazy_import('msgraph.generated.teamwork.send_activity_notification_to_recipients.send_activity_notification_to_recipients_request_builder')
+send_activity_notification_to_recipients_request_builder = lazy_import('msgraph.generated.teamwork.microsoft_graph_send_activity_notification_to_recipients.send_activity_notification_to_recipients_request_builder')
 workforce_integrations_request_builder = lazy_import('msgraph.generated.teamwork.workforce_integrations.workforce_integrations_request_builder')
 workforce_integration_item_request_builder = lazy_import('msgraph.generated.teamwork.workforce_integrations.item.workforce_integration_item_request_builder')
 
@@ -21,7 +21,7 @@ class TeamworkRequestBuilder():
     Provides operations to manage the teamwork singleton.
     """
     @property
-    def send_activity_notification_to_recipients(self) -> send_activity_notification_to_recipients_request_builder.SendActivityNotificationToRecipientsRequestBuilder:
+    def microsoft_graph_send_activity_notification_to_recipients(self) -> send_activity_notification_to_recipients_request_builder.SendActivityNotificationToRecipientsRequestBuilder:
         """
         Provides operations to call the sendActivityNotificationToRecipients method.
         """
@@ -74,7 +74,7 @@ class TeamworkRequestBuilder():
         """
         Update teamwork
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[teamwork.Teamwork]
         """
@@ -113,7 +113,7 @@ class TeamworkRequestBuilder():
         """
         Update teamwork
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

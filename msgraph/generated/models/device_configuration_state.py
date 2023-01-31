@@ -19,15 +19,12 @@ class DeviceConfigurationState(entity.Entity):
         super().__init__()
         # The name of the policy for this policyBase
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Supported platform types for policies.
         self._platform_type: Optional[policy_platform_type.PolicyPlatformType] = None
         # Count of how many setting a policy holds
         self._setting_count: Optional[int] = None
-        # The settingStates property
         self._setting_states: Optional[List[device_configuration_setting_state.DeviceConfigurationSettingState]] = None
-        # The state property
         self._state: Optional[compliance_status.ComplianceStatus] = None
         # The version of the policy
         self._version: Optional[int] = None
@@ -67,10 +64,10 @@ class DeviceConfigurationState(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "platform_type": lambda n : setattr(self, 'platform_type', n.get_enum_value(policy_platform_type.PolicyPlatformType)),
-            "setting_count": lambda n : setattr(self, 'setting_count', n.get_int_value()),
-            "setting_states": lambda n : setattr(self, 'setting_states', n.get_collection_of_object_values(device_configuration_setting_state.DeviceConfigurationSettingState)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "platformType": lambda n : setattr(self, 'platform_type', n.get_enum_value(policy_platform_type.PolicyPlatformType)),
+            "settingCount": lambda n : setattr(self, 'setting_count', n.get_int_value()),
+            "settingStates": lambda n : setattr(self, 'setting_states', n.get_collection_of_object_values(device_configuration_setting_state.DeviceConfigurationSettingState)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(compliance_status.ComplianceStatus)),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
         }
@@ -131,7 +128,7 @@ class DeviceConfigurationState(entity.Entity):
     @property
     def setting_states(self,) -> Optional[List[device_configuration_setting_state.DeviceConfigurationSettingState]]:
         """
-        Gets the settingStates property value. The settingStates property
+        Gets the settingStates property value. 
         Returns: Optional[List[device_configuration_setting_state.DeviceConfigurationSettingState]]
         """
         return self._setting_states
@@ -139,7 +136,7 @@ class DeviceConfigurationState(entity.Entity):
     @setting_states.setter
     def setting_states(self,value: Optional[List[device_configuration_setting_state.DeviceConfigurationSettingState]] = None) -> None:
         """
-        Sets the settingStates property value. The settingStates property
+        Sets the settingStates property value. 
         Args:
             value: Value to set for the settingStates property.
         """
@@ -148,7 +145,7 @@ class DeviceConfigurationState(entity.Entity):
     @property
     def state(self,) -> Optional[compliance_status.ComplianceStatus]:
         """
-        Gets the state property value. The state property
+        Gets the state property value. 
         Returns: Optional[compliance_status.ComplianceStatus]
         """
         return self._state
@@ -156,7 +153,7 @@ class DeviceConfigurationState(entity.Entity):
     @state.setter
     def state(self,value: Optional[compliance_status.ComplianceStatus] = None) -> None:
         """
-        Sets the state property value. The state property
+        Sets the state property value. 
         Args:
             value: Value to set for the state property.
         """

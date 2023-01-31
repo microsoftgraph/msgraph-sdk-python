@@ -32,9 +32,7 @@ class ExcludeTarget(AdditionalDataHolder, Parsable):
 
         # The object identifier of an Azure Active Directory user or group.
         self._id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The targetType property
         self._target_type: Optional[authentication_method_target_type.AuthenticationMethodTargetType] = None
     
     @staticmethod
@@ -57,7 +55,7 @@ class ExcludeTarget(AdditionalDataHolder, Parsable):
         fields = {
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "target_type": lambda n : setattr(self, 'target_type', n.get_enum_value(authentication_method_target_type.AuthenticationMethodTargetType)),
+            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(authentication_method_target_type.AuthenticationMethodTargetType)),
         }
         return fields
     
@@ -81,7 +79,7 @@ class ExcludeTarget(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -89,7 +87,7 @@ class ExcludeTarget(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -111,7 +109,7 @@ class ExcludeTarget(AdditionalDataHolder, Parsable):
     @property
     def target_type(self,) -> Optional[authentication_method_target_type.AuthenticationMethodTargetType]:
         """
-        Gets the targetType property value. The targetType property
+        Gets the targetType property value. 
         Returns: Optional[authentication_method_target_type.AuthenticationMethodTargetType]
         """
         return self._target_type
@@ -119,7 +117,7 @@ class ExcludeTarget(AdditionalDataHolder, Parsable):
     @target_type.setter
     def target_type(self,value: Optional[authentication_method_target_type.AuthenticationMethodTargetType] = None) -> None:
         """
-        Sets the targetType property value. The targetType property
+        Sets the targetType property value. 
         Args:
             value: Value to set for the targetType property.
         """

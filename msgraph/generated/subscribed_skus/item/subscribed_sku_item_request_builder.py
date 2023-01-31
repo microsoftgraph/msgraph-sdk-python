@@ -17,12 +17,13 @@ class SubscribedSkuItemRequestBuilder():
     """
     Provides operations to manage the collection of subscribedSku entities.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, subscribed_sku_id: Optional[str] = None) -> None:
         """
         Instantiates a new SubscribedSkuItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            subscribedSkuId: key: id of subscribedSku
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -32,12 +33,13 @@ class SubscribedSkuItemRequestBuilder():
         self.url_template: str = "{+baseurl}/subscribedSkus/{subscribedSku%2Did}{?%24select}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["subscribedSku%2Did"] = subscribedSkuId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
     async def delete(self,request_configuration: Optional[SubscribedSkuItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete entity from subscribedSkus by key (id)
+        Delete entity from subscribedSkus
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -72,9 +74,9 @@ class SubscribedSkuItemRequestBuilder():
     
     async def patch(self,body: Optional[subscribed_sku.SubscribedSku] = None, request_configuration: Optional[SubscribedSkuItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[subscribed_sku.SubscribedSku]:
         """
-        Update entity in subscribedSkus by key (id)
+        Update entity in subscribedSkus
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[subscribed_sku.SubscribedSku]
         """
@@ -93,7 +95,7 @@ class SubscribedSkuItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[SubscribedSkuItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete entity from subscribedSkus by key (id)
+        Delete entity from subscribedSkus
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -127,9 +129,9 @@ class SubscribedSkuItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[subscribed_sku.SubscribedSku] = None, request_configuration: Optional[SubscribedSkuItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update entity in subscribedSkus by key (id)
+        Update entity in subscribedSkus
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

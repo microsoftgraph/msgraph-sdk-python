@@ -36,7 +36,6 @@ class ColumnValidation(AdditionalDataHolder, Parsable):
         self._descriptions: Optional[List[display_name_localization.DisplayNameLocalization]] = None
         # The formula to validate column value. For examples, see Examples of common formulas in lists.
         self._formula: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -108,7 +107,7 @@ class ColumnValidation(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "default_language": lambda n : setattr(self, 'default_language', n.get_str_value()),
+            "defaultLanguage": lambda n : setattr(self, 'default_language', n.get_str_value()),
             "descriptions": lambda n : setattr(self, 'descriptions', n.get_collection_of_object_values(display_name_localization.DisplayNameLocalization)),
             "formula": lambda n : setattr(self, 'formula', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -118,7 +117,7 @@ class ColumnValidation(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -126,7 +125,7 @@ class ColumnValidation(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

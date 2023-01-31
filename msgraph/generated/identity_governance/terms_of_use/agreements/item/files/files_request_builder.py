@@ -66,7 +66,7 @@ class FilesRequestBuilder():
         """
         Create a new localized agreement file.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[agreement_file_localization.AgreementFileLocalization]
         """
@@ -105,7 +105,7 @@ class FilesRequestBuilder():
         """
         Create a new localized agreement file.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

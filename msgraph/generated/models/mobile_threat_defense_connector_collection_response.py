@@ -12,7 +12,6 @@ class MobileThreatDefenseConnectorCollectionResponse(base_collection_pagination_
         Instantiates a new MobileThreatDefenseConnectorCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[mobile_threat_defense_connector.MobileThreatDefenseConnector]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class MobileThreatDefenseConnectorCollectionResponse(base_collection_pagination_
     @property
     def value(self,) -> Optional[List[mobile_threat_defense_connector.MobileThreatDefenseConnector]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[mobile_threat_defense_connector.MobileThreatDefenseConnector]]
         """
         return self._value
@@ -61,7 +60,7 @@ class MobileThreatDefenseConnectorCollectionResponse(base_collection_pagination_
     @value.setter
     def value(self,value: Optional[List[mobile_threat_defense_connector.MobileThreatDefenseConnector]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

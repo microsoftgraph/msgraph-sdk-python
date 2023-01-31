@@ -12,7 +12,6 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
         Instantiates a new unifiedRoleManagementPolicyAssignment and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The policy that's associated with a policy assignment. Supports $expand and a nested $expand of the rules and effectiveRules relationships for the policy.
         self._policy: Optional[unified_role_management_policy.UnifiedRoleManagementPolicy] = None
@@ -44,10 +43,10 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
         """
         fields = {
             "policy": lambda n : setattr(self, 'policy', n.get_object_value(unified_role_management_policy.UnifiedRoleManagementPolicy)),
-            "policy_id": lambda n : setattr(self, 'policy_id', n.get_str_value()),
-            "role_definition_id": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
-            "scope_id": lambda n : setattr(self, 'scope_id', n.get_str_value()),
-            "scope_type": lambda n : setattr(self, 'scope_type', n.get_str_value()),
+            "policyId": lambda n : setattr(self, 'policy_id', n.get_str_value()),
+            "roleDefinitionId": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
+            "scopeId": lambda n : setattr(self, 'scope_id', n.get_str_value()),
+            "scopeType": lambda n : setattr(self, 'scope_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -12,7 +12,6 @@ class DeviceCompliancePolicySettingStateSummaryCollectionResponse(base_collectio
         Instantiates a new DeviceCompliancePolicySettingStateSummaryCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class DeviceCompliancePolicySettingStateSummaryCollectionResponse(base_collectio
     @property
     def value(self,) -> Optional[List[device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary]]
         """
         return self._value
@@ -61,7 +60,7 @@ class DeviceCompliancePolicySettingStateSummaryCollectionResponse(base_collectio
     @value.setter
     def value(self,value: Optional[List[device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

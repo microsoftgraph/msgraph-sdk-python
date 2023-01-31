@@ -106,13 +106,11 @@ class UserActivity(entity.Entity):
         self._history_items: Optional[List[activity_history_item.ActivityHistoryItem]] = None
         # Set by the server. DateTime in UTC when the object was modified on the server.
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Set by the server. A status code used to identify valid objects. Values: active, updated, deleted, ignored.
         self._status: Optional[status.Status] = None
         # Optional. The timezone in which the user's device used to generate the activity was located at activity creation time; values supplied as Olson IDs in order to support cross-platform representation.
         self._user_timezone: Optional[str] = None
-        # The visualElements property
         self._visual_elements: Optional[visual_info.VisualInfo] = None
     
     @property
@@ -218,20 +216,20 @@ class UserActivity(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "activation_url": lambda n : setattr(self, 'activation_url', n.get_str_value()),
-            "activity_source_host": lambda n : setattr(self, 'activity_source_host', n.get_str_value()),
-            "app_activity_id": lambda n : setattr(self, 'app_activity_id', n.get_str_value()),
-            "app_display_name": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
-            "content_info": lambda n : setattr(self, 'content_info', n.get_object_value(json.Json)),
-            "content_url": lambda n : setattr(self, 'content_url', n.get_str_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "fallback_url": lambda n : setattr(self, 'fallback_url', n.get_str_value()),
-            "history_items": lambda n : setattr(self, 'history_items', n.get_collection_of_object_values(activity_history_item.ActivityHistoryItem)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "activationUrl": lambda n : setattr(self, 'activation_url', n.get_str_value()),
+            "activitySourceHost": lambda n : setattr(self, 'activity_source_host', n.get_str_value()),
+            "appActivityId": lambda n : setattr(self, 'app_activity_id', n.get_str_value()),
+            "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
+            "contentInfo": lambda n : setattr(self, 'content_info', n.get_object_value(json.Json)),
+            "contentUrl": lambda n : setattr(self, 'content_url', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "fallbackUrl": lambda n : setattr(self, 'fallback_url', n.get_str_value()),
+            "historyItems": lambda n : setattr(self, 'history_items', n.get_collection_of_object_values(activity_history_item.ActivityHistoryItem)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(status.Status)),
-            "user_timezone": lambda n : setattr(self, 'user_timezone', n.get_str_value()),
-            "visual_elements": lambda n : setattr(self, 'visual_elements', n.get_object_value(visual_info.VisualInfo)),
+            "userTimezone": lambda n : setattr(self, 'user_timezone', n.get_str_value()),
+            "visualElements": lambda n : setattr(self, 'visual_elements', n.get_object_value(visual_info.VisualInfo)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -332,7 +330,7 @@ class UserActivity(entity.Entity):
     @property
     def visual_elements(self,) -> Optional[visual_info.VisualInfo]:
         """
-        Gets the visualElements property value. The visualElements property
+        Gets the visualElements property value. 
         Returns: Optional[visual_info.VisualInfo]
         """
         return self._visual_elements
@@ -340,7 +338,7 @@ class UserActivity(entity.Entity):
     @visual_elements.setter
     def visual_elements(self,value: Optional[visual_info.VisualInfo] = None) -> None:
         """
-        Sets the visualElements property value. The visualElements property
+        Sets the visualElements property value. 
         Args:
             value: Value to set for the visualElements property.
         """

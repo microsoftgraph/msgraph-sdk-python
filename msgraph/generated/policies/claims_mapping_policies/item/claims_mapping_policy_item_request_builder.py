@@ -17,10 +17,11 @@ class ClaimsMappingPolicyItemRequestBuilder():
     """
     Provides operations to manage the claimsMappingPolicies property of the microsoft.graph.policyRoot entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, claims_mapping_policy_id: Optional[str] = None) -> None:
         """
         Instantiates a new ClaimsMappingPolicyItemRequestBuilder and sets the default values.
         Args:
+            claimsMappingPolicyId: key: id of claimsMappingPolicy
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class ClaimsMappingPolicyItemRequestBuilder():
         self.url_template: str = "{+baseurl}/policies/claimsMappingPolicies/{claimsMappingPolicy%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["claimsMappingPolicy%2Did"] = claimsMappingPolicyId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -74,7 +76,7 @@ class ClaimsMappingPolicyItemRequestBuilder():
         """
         Update the navigation property claimsMappingPolicies in policies
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[claims_mapping_policy.ClaimsMappingPolicy]
         """
@@ -129,7 +131,7 @@ class ClaimsMappingPolicyItemRequestBuilder():
         """
         Update the navigation property claimsMappingPolicies in policies
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

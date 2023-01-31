@@ -17,10 +17,11 @@ class DeviceAndAppManagementRoleAssignmentItemRequestBuilder():
     """
     Provides operations to manage the roleAssignments property of the microsoft.graph.deviceManagement entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, device_and_app_management_role_assignment_id: Optional[str] = None) -> None:
         """
         Instantiates a new DeviceAndAppManagementRoleAssignmentItemRequestBuilder and sets the default values.
         Args:
+            deviceAndAppManagementRoleAssignmentId: key: id of deviceAndAppManagementRoleAssignment
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class DeviceAndAppManagementRoleAssignmentItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceManagement/roleAssignments/{deviceAndAppManagementRoleAssignment%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["deviceAndAppManagementRoleAssignment%2Did"] = deviceAndAppManagementRoleAssignmentId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -74,7 +76,7 @@ class DeviceAndAppManagementRoleAssignmentItemRequestBuilder():
         """
         Update the navigation property roleAssignments in deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[device_and_app_management_role_assignment.DeviceAndAppManagementRoleAssignment]
         """
@@ -129,7 +131,7 @@ class DeviceAndAppManagementRoleAssignmentItemRequestBuilder():
         """
         Update the navigation property roleAssignments in deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

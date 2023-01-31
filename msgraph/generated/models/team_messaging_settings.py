@@ -123,7 +123,6 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         self._allow_user_delete_messages: Optional[bool] = None
         # If set to true, users can edit their messages.
         self._allow_user_edit_messages: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -144,11 +143,11 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_channel_mentions": lambda n : setattr(self, 'allow_channel_mentions', n.get_bool_value()),
-            "allow_owner_delete_messages": lambda n : setattr(self, 'allow_owner_delete_messages', n.get_bool_value()),
-            "allow_team_mentions": lambda n : setattr(self, 'allow_team_mentions', n.get_bool_value()),
-            "allow_user_delete_messages": lambda n : setattr(self, 'allow_user_delete_messages', n.get_bool_value()),
-            "allow_user_edit_messages": lambda n : setattr(self, 'allow_user_edit_messages', n.get_bool_value()),
+            "allowChannelMentions": lambda n : setattr(self, 'allow_channel_mentions', n.get_bool_value()),
+            "allowOwnerDeleteMessages": lambda n : setattr(self, 'allow_owner_delete_messages', n.get_bool_value()),
+            "allowTeamMentions": lambda n : setattr(self, 'allow_team_mentions', n.get_bool_value()),
+            "allowUserDeleteMessages": lambda n : setattr(self, 'allow_user_delete_messages', n.get_bool_value()),
+            "allowUserEditMessages": lambda n : setattr(self, 'allow_user_edit_messages', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -156,7 +155,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -164,7 +163,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -12,7 +12,6 @@ class AuthenticationContextClassReferenceCollectionResponse(base_collection_pagi
         Instantiates a new AuthenticationContextClassReferenceCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[authentication_context_class_reference.AuthenticationContextClassReference]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class AuthenticationContextClassReferenceCollectionResponse(base_collection_pagi
     @property
     def value(self,) -> Optional[List[authentication_context_class_reference.AuthenticationContextClassReference]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[authentication_context_class_reference.AuthenticationContextClassReference]]
         """
         return self._value
@@ -61,7 +60,7 @@ class AuthenticationContextClassReferenceCollectionResponse(base_collection_pagi
     @value.setter
     def value(self,value: Optional[List[authentication_context_class_reference.AuthenticationContextClassReference]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

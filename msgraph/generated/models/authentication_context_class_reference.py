@@ -17,7 +17,6 @@ class AuthenticationContextClassReference(entity.Entity):
         self._display_name: Optional[str] = None
         # Indicates whether the authenticationContextClassReference has been published by the security admin and is ready for use by apps. When it is set to false, it should not be shown in authentication context selection UX, or used to protect app resources. It will be shown and available for Conditional Access policy authoring. The default value is false.  Supports $filter (eq).
         self._is_available: Optional[bool] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -73,8 +72,8 @@ class AuthenticationContextClassReference(entity.Entity):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_available": lambda n : setattr(self, 'is_available', n.get_bool_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isAvailable": lambda n : setattr(self, 'is_available', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

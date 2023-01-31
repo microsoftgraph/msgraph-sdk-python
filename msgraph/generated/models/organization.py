@@ -137,7 +137,7 @@ class Organization(directory_object.DirectoryObject):
         self._on_premises_last_sync_date_time: Optional[datetime] = None
         # true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
         self._on_premises_sync_enabled: Optional[bool] = None
-        # The partnerTenantType property
+        # The type of partnership this tenant has with Microsoft. The possible values are: microsoftSupport, syndicatePartner, breadthPartner, breadthPartnerDelegatedAdmin, resellerPartnerDelegatedAdmin, valueAddedResellerPartnerDelegatedAdmin, unknownFutureValue. Nullable. For more information about the possible types, see partnerTenantType values.
         self._partner_tenant_type: Optional[partner_tenant_type.PartnerTenantType] = None
         # Postal code of the address for the organization.
         self._postal_code: Optional[str] = None
@@ -147,9 +147,7 @@ class Organization(directory_object.DirectoryObject):
         self._privacy_profile: Optional[privacy_profile.PrivacyProfile] = None
         # Not nullable.
         self._provisioned_plans: Optional[List[provisioned_plan.ProvisionedPlan]] = None
-        # The securityComplianceNotificationMails property
         self._security_compliance_notification_mails: Optional[List[str]] = None
-        # The securityComplianceNotificationPhones property
         self._security_compliance_notification_phones: Optional[List[str]] = None
         # State name of the address for the organization.
         self._state: Optional[str] = None
@@ -157,7 +155,7 @@ class Organization(directory_object.DirectoryObject):
         self._street: Optional[str] = None
         # Not nullable.
         self._technical_notification_mails: Optional[List[str]] = None
-        # The tenantType property
+        # Not nullable. The tenant type option that was selected when the tenant was created. The possible values are:  AAD - An enterprise identity access management (IAM) service that serves business-to-employee and business-to-business (B2B) scenarios.  AAD B2C A customer identity access management (CIAM) service that serves business-to-consumer (B2C) scenarios.
         self._tenant_type: Optional[str] = None
         # The collection of domains associated with this tenant. Not nullable.
         self._verified_domains: Optional[List[verified_domain.VerifiedDomain]] = None
@@ -282,33 +280,33 @@ class Organization(directory_object.DirectoryObject):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assigned_plans": lambda n : setattr(self, 'assigned_plans', n.get_collection_of_object_values(assigned_plan.AssignedPlan)),
+            "assignedPlans": lambda n : setattr(self, 'assigned_plans', n.get_collection_of_object_values(assigned_plan.AssignedPlan)),
             "branding": lambda n : setattr(self, 'branding', n.get_object_value(organizational_branding.OrganizationalBranding)),
-            "business_phones": lambda n : setattr(self, 'business_phones', n.get_collection_of_primitive_values(str)),
-            "certificate_based_auth_configuration": lambda n : setattr(self, 'certificate_based_auth_configuration', n.get_collection_of_object_values(certificate_based_auth_configuration.CertificateBasedAuthConfiguration)),
+            "businessPhones": lambda n : setattr(self, 'business_phones', n.get_collection_of_primitive_values(str)),
+            "certificateBasedAuthConfiguration": lambda n : setattr(self, 'certificate_based_auth_configuration', n.get_collection_of_object_values(certificate_based_auth_configuration.CertificateBasedAuthConfiguration)),
             "city": lambda n : setattr(self, 'city', n.get_str_value()),
             "country": lambda n : setattr(self, 'country', n.get_str_value()),
-            "country_letter_code": lambda n : setattr(self, 'country_letter_code', n.get_str_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "default_usage_location": lambda n : setattr(self, 'default_usage_location', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "countryLetterCode": lambda n : setattr(self, 'country_letter_code', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "defaultUsageLocation": lambda n : setattr(self, 'default_usage_location', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
-            "marketing_notification_emails": lambda n : setattr(self, 'marketing_notification_emails', n.get_collection_of_primitive_values(str)),
-            "mobile_device_management_authority": lambda n : setattr(self, 'mobile_device_management_authority', n.get_enum_value(mdm_authority.MdmAuthority)),
-            "on_premises_last_sync_date_time": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
-            "on_premises_sync_enabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
-            "partner_tenant_type": lambda n : setattr(self, 'partner_tenant_type', n.get_enum_value(partner_tenant_type.PartnerTenantType)),
-            "postal_code": lambda n : setattr(self, 'postal_code', n.get_str_value()),
-            "preferred_language": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
-            "privacy_profile": lambda n : setattr(self, 'privacy_profile', n.get_object_value(privacy_profile.PrivacyProfile)),
-            "provisioned_plans": lambda n : setattr(self, 'provisioned_plans', n.get_collection_of_object_values(provisioned_plan.ProvisionedPlan)),
-            "security_compliance_notification_mails": lambda n : setattr(self, 'security_compliance_notification_mails', n.get_collection_of_primitive_values(str)),
-            "security_compliance_notification_phones": lambda n : setattr(self, 'security_compliance_notification_phones', n.get_collection_of_primitive_values(str)),
+            "marketingNotificationEmails": lambda n : setattr(self, 'marketing_notification_emails', n.get_collection_of_primitive_values(str)),
+            "mobileDeviceManagementAuthority": lambda n : setattr(self, 'mobile_device_management_authority', n.get_enum_value(mdm_authority.MdmAuthority)),
+            "onPremisesLastSyncDateTime": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
+            "onPremisesSyncEnabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
+            "partnerTenantType": lambda n : setattr(self, 'partner_tenant_type', n.get_enum_value(partner_tenant_type.PartnerTenantType)),
+            "postalCode": lambda n : setattr(self, 'postal_code', n.get_str_value()),
+            "preferredLanguage": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
+            "privacyProfile": lambda n : setattr(self, 'privacy_profile', n.get_object_value(privacy_profile.PrivacyProfile)),
+            "provisionedPlans": lambda n : setattr(self, 'provisioned_plans', n.get_collection_of_object_values(provisioned_plan.ProvisionedPlan)),
+            "securityComplianceNotificationMails": lambda n : setattr(self, 'security_compliance_notification_mails', n.get_collection_of_primitive_values(str)),
+            "securityComplianceNotificationPhones": lambda n : setattr(self, 'security_compliance_notification_phones', n.get_collection_of_primitive_values(str)),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
             "street": lambda n : setattr(self, 'street', n.get_str_value()),
-            "technical_notification_mails": lambda n : setattr(self, 'technical_notification_mails', n.get_collection_of_primitive_values(str)),
-            "tenant_type": lambda n : setattr(self, 'tenant_type', n.get_str_value()),
-            "verified_domains": lambda n : setattr(self, 'verified_domains', n.get_collection_of_object_values(verified_domain.VerifiedDomain)),
+            "technicalNotificationMails": lambda n : setattr(self, 'technical_notification_mails', n.get_collection_of_primitive_values(str)),
+            "tenantType": lambda n : setattr(self, 'tenant_type', n.get_str_value()),
+            "verifiedDomains": lambda n : setattr(self, 'verified_domains', n.get_collection_of_object_values(verified_domain.VerifiedDomain)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -385,7 +383,7 @@ class Organization(directory_object.DirectoryObject):
     @property
     def partner_tenant_type(self,) -> Optional[partner_tenant_type.PartnerTenantType]:
         """
-        Gets the partnerTenantType property value. The partnerTenantType property
+        Gets the partnerTenantType property value. The type of partnership this tenant has with Microsoft. The possible values are: microsoftSupport, syndicatePartner, breadthPartner, breadthPartnerDelegatedAdmin, resellerPartnerDelegatedAdmin, valueAddedResellerPartnerDelegatedAdmin, unknownFutureValue. Nullable. For more information about the possible types, see partnerTenantType values.
         Returns: Optional[partner_tenant_type.PartnerTenantType]
         """
         return self._partner_tenant_type
@@ -393,7 +391,7 @@ class Organization(directory_object.DirectoryObject):
     @partner_tenant_type.setter
     def partner_tenant_type(self,value: Optional[partner_tenant_type.PartnerTenantType] = None) -> None:
         """
-        Sets the partnerTenantType property value. The partnerTenantType property
+        Sets the partnerTenantType property value. The type of partnership this tenant has with Microsoft. The possible values are: microsoftSupport, syndicatePartner, breadthPartner, breadthPartnerDelegatedAdmin, resellerPartnerDelegatedAdmin, valueAddedResellerPartnerDelegatedAdmin, unknownFutureValue. Nullable. For more information about the possible types, see partnerTenantType values.
         Args:
             value: Value to set for the partnerTenantType property.
         """
@@ -470,7 +468,7 @@ class Organization(directory_object.DirectoryObject):
     @property
     def security_compliance_notification_mails(self,) -> Optional[List[str]]:
         """
-        Gets the securityComplianceNotificationMails property value. The securityComplianceNotificationMails property
+        Gets the securityComplianceNotificationMails property value. 
         Returns: Optional[List[str]]
         """
         return self._security_compliance_notification_mails
@@ -478,7 +476,7 @@ class Organization(directory_object.DirectoryObject):
     @security_compliance_notification_mails.setter
     def security_compliance_notification_mails(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the securityComplianceNotificationMails property value. The securityComplianceNotificationMails property
+        Sets the securityComplianceNotificationMails property value. 
         Args:
             value: Value to set for the securityComplianceNotificationMails property.
         """
@@ -487,7 +485,7 @@ class Organization(directory_object.DirectoryObject):
     @property
     def security_compliance_notification_phones(self,) -> Optional[List[str]]:
         """
-        Gets the securityComplianceNotificationPhones property value. The securityComplianceNotificationPhones property
+        Gets the securityComplianceNotificationPhones property value. 
         Returns: Optional[List[str]]
         """
         return self._security_compliance_notification_phones
@@ -495,7 +493,7 @@ class Organization(directory_object.DirectoryObject):
     @security_compliance_notification_phones.setter
     def security_compliance_notification_phones(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the securityComplianceNotificationPhones property value. The securityComplianceNotificationPhones property
+        Sets the securityComplianceNotificationPhones property value. 
         Args:
             value: Value to set for the securityComplianceNotificationPhones property.
         """
@@ -592,7 +590,7 @@ class Organization(directory_object.DirectoryObject):
     @property
     def tenant_type(self,) -> Optional[str]:
         """
-        Gets the tenantType property value. The tenantType property
+        Gets the tenantType property value. Not nullable. The tenant type option that was selected when the tenant was created. The possible values are:  AAD - An enterprise identity access management (IAM) service that serves business-to-employee and business-to-business (B2B) scenarios.  AAD B2C A customer identity access management (CIAM) service that serves business-to-consumer (B2C) scenarios.
         Returns: Optional[str]
         """
         return self._tenant_type
@@ -600,7 +598,7 @@ class Organization(directory_object.DirectoryObject):
     @tenant_type.setter
     def tenant_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the tenantType property value. The tenantType property
+        Sets the tenantType property value. Not nullable. The tenant type option that was selected when the tenant was created. The possible values are:  AAD - An enterprise identity access management (IAM) service that serves business-to-employee and business-to-business (B2B) scenarios.  AAD B2C A customer identity access management (CIAM) service that serves business-to-consumer (B2C) scenarios.
         Args:
             value: Value to set for the tenantType property.
         """

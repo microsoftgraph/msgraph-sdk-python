@@ -35,11 +35,9 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
         self._country_code: Optional[str] = None
         # The type of endpoint the participant is using. Possible values are: default, skypeForBusiness, or skypeForBusinessVoipPhone. Read-only.
         self._endpoint_type: Optional[endpoint_type.EndpointType] = None
-        # The identity property
         self._identity: Optional[identity_set.IdentitySet] = None
         # The language culture string. Read-only.
         self._language_id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The participant ID of the participant. Read-only.
         self._participant_id: Optional[str] = None
@@ -98,12 +96,12 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "country_code": lambda n : setattr(self, 'country_code', n.get_str_value()),
-            "endpoint_type": lambda n : setattr(self, 'endpoint_type', n.get_enum_value(endpoint_type.EndpointType)),
+            "countryCode": lambda n : setattr(self, 'country_code', n.get_str_value()),
+            "endpointType": lambda n : setattr(self, 'endpoint_type', n.get_enum_value(endpoint_type.EndpointType)),
             "identity": lambda n : setattr(self, 'identity', n.get_object_value(identity_set.IdentitySet)),
-            "language_id": lambda n : setattr(self, 'language_id', n.get_str_value()),
+            "languageId": lambda n : setattr(self, 'language_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "participant_id": lambda n : setattr(self, 'participant_id', n.get_str_value()),
+            "participantId": lambda n : setattr(self, 'participant_id', n.get_str_value()),
             "region": lambda n : setattr(self, 'region', n.get_str_value()),
         }
         return fields
@@ -111,7 +109,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
     @property
     def identity(self,) -> Optional[identity_set.IdentitySet]:
         """
-        Gets the identity property value. The identity property
+        Gets the identity property value. 
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._identity
@@ -119,7 +117,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
     @identity.setter
     def identity(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
-        Sets the identity property value. The identity property
+        Sets the identity property value. 
         Args:
             value: Value to set for the identity property.
         """
@@ -145,7 +143,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -153,7 +151,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

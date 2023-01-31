@@ -101,7 +101,7 @@ class InsightsRequestBuilder():
         """
         Update the navigation property insights in users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[office_graph_insights.OfficeGraphInsights]
         """
@@ -169,7 +169,7 @@ class InsightsRequestBuilder():
         """
         Update the navigation property insights in users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

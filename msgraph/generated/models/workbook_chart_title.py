@@ -14,7 +14,6 @@ class WorkbookChartTitle(entity.Entity):
         super().__init__()
         # Represents the formatting of a chart title, which includes fill and font formatting. Read-only.
         self._format: Optional[workbook_chart_title_format.WorkbookChartTitleFormat] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Boolean value representing if the chart title will overlay the chart or not.
         self._overlay: Optional[bool] = None

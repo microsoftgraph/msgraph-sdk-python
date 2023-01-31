@@ -123,7 +123,6 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         self._media_types: Optional[List[str]] = None
         # The presentation directions supported by the printer. Supported values are described in the following table.
         self._multipage_layouts: Optional[List[print_multipage_layout.PrintMultipageLayout]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The print orientations supported by the printer. Valid values are described in the following table.
         self._orientations: Optional[List[print_orientation.PrintOrientation]] = None
@@ -262,32 +261,32 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "bottom_margins": lambda n : setattr(self, 'bottom_margins', n.get_collection_of_primitive_values(int)),
+            "bottomMargins": lambda n : setattr(self, 'bottom_margins', n.get_collection_of_primitive_values(int)),
             "collation": lambda n : setattr(self, 'collation', n.get_bool_value()),
-            "color_modes": lambda n : setattr(self, 'color_modes', n.get_collection_of_enum_values(print_color_mode.PrintColorMode)),
-            "content_types": lambda n : setattr(self, 'content_types', n.get_collection_of_primitive_values(str)),
-            "copies_per_job": lambda n : setattr(self, 'copies_per_job', n.get_object_value(integer_range.IntegerRange)),
+            "colorModes": lambda n : setattr(self, 'color_modes', n.get_collection_of_enum_values(print_color_mode.PrintColorMode)),
+            "contentTypes": lambda n : setattr(self, 'content_types', n.get_collection_of_primitive_values(str)),
+            "copiesPerJob": lambda n : setattr(self, 'copies_per_job', n.get_object_value(integer_range.IntegerRange)),
             "dpis": lambda n : setattr(self, 'dpis', n.get_collection_of_primitive_values(int)),
-            "duplex_modes": lambda n : setattr(self, 'duplex_modes', n.get_collection_of_enum_values(print_duplex_mode.PrintDuplexMode)),
-            "feed_orientations": lambda n : setattr(self, 'feed_orientations', n.get_collection_of_enum_values(printer_feed_orientation.PrinterFeedOrientation)),
+            "duplexModes": lambda n : setattr(self, 'duplex_modes', n.get_collection_of_enum_values(print_duplex_mode.PrintDuplexMode)),
+            "feedOrientations": lambda n : setattr(self, 'feed_orientations', n.get_collection_of_enum_values(printer_feed_orientation.PrinterFeedOrientation)),
             "finishings": lambda n : setattr(self, 'finishings', n.get_collection_of_enum_values(print_finishing.PrintFinishing)),
-            "input_bins": lambda n : setattr(self, 'input_bins', n.get_collection_of_primitive_values(str)),
-            "is_color_printing_supported": lambda n : setattr(self, 'is_color_printing_supported', n.get_bool_value()),
-            "is_page_range_supported": lambda n : setattr(self, 'is_page_range_supported', n.get_bool_value()),
-            "left_margins": lambda n : setattr(self, 'left_margins', n.get_collection_of_primitive_values(int)),
-            "media_colors": lambda n : setattr(self, 'media_colors', n.get_collection_of_primitive_values(str)),
-            "media_sizes": lambda n : setattr(self, 'media_sizes', n.get_collection_of_primitive_values(str)),
-            "media_types": lambda n : setattr(self, 'media_types', n.get_collection_of_primitive_values(str)),
-            "multipage_layouts": lambda n : setattr(self, 'multipage_layouts', n.get_collection_of_enum_values(print_multipage_layout.PrintMultipageLayout)),
+            "inputBins": lambda n : setattr(self, 'input_bins', n.get_collection_of_primitive_values(str)),
+            "isColorPrintingSupported": lambda n : setattr(self, 'is_color_printing_supported', n.get_bool_value()),
+            "isPageRangeSupported": lambda n : setattr(self, 'is_page_range_supported', n.get_bool_value()),
+            "leftMargins": lambda n : setattr(self, 'left_margins', n.get_collection_of_primitive_values(int)),
+            "mediaColors": lambda n : setattr(self, 'media_colors', n.get_collection_of_primitive_values(str)),
+            "mediaSizes": lambda n : setattr(self, 'media_sizes', n.get_collection_of_primitive_values(str)),
+            "mediaTypes": lambda n : setattr(self, 'media_types', n.get_collection_of_primitive_values(str)),
+            "multipageLayouts": lambda n : setattr(self, 'multipage_layouts', n.get_collection_of_enum_values(print_multipage_layout.PrintMultipageLayout)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "orientations": lambda n : setattr(self, 'orientations', n.get_collection_of_enum_values(print_orientation.PrintOrientation)),
-            "output_bins": lambda n : setattr(self, 'output_bins', n.get_collection_of_primitive_values(str)),
-            "pages_per_sheet": lambda n : setattr(self, 'pages_per_sheet', n.get_collection_of_primitive_values(int)),
+            "outputBins": lambda n : setattr(self, 'output_bins', n.get_collection_of_primitive_values(str)),
+            "pagesPerSheet": lambda n : setattr(self, 'pages_per_sheet', n.get_collection_of_primitive_values(int)),
             "qualities": lambda n : setattr(self, 'qualities', n.get_collection_of_enum_values(print_quality.PrintQuality)),
-            "right_margins": lambda n : setattr(self, 'right_margins', n.get_collection_of_primitive_values(int)),
+            "rightMargins": lambda n : setattr(self, 'right_margins', n.get_collection_of_primitive_values(int)),
             "scalings": lambda n : setattr(self, 'scalings', n.get_collection_of_enum_values(print_scaling.PrintScaling)),
-            "supports_fit_pdf_to_page": lambda n : setattr(self, 'supports_fit_pdf_to_page', n.get_bool_value()),
-            "top_margins": lambda n : setattr(self, 'top_margins', n.get_collection_of_primitive_values(int)),
+            "supportsFitPdfToPage": lambda n : setattr(self, 'supports_fit_pdf_to_page', n.get_bool_value()),
+            "topMargins": lambda n : setattr(self, 'top_margins', n.get_collection_of_primitive_values(int)),
         }
         return fields
     
@@ -430,7 +429,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -438,7 +437,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

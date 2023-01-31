@@ -12,7 +12,6 @@ class Windows10SecureAssessmentConfigurationCollectionResponse(base_collection_p
         Instantiates a new Windows10SecureAssessmentConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[windows10_secure_assessment_configuration.Windows10SecureAssessmentConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class Windows10SecureAssessmentConfigurationCollectionResponse(base_collection_p
     @property
     def value(self,) -> Optional[List[windows10_secure_assessment_configuration.Windows10SecureAssessmentConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[windows10_secure_assessment_configuration.Windows10SecureAssessmentConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class Windows10SecureAssessmentConfigurationCollectionResponse(base_collection_p
     @value.setter
     def value(self,value: Optional[List[windows10_secure_assessment_configuration.Windows10SecureAssessmentConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

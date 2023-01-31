@@ -152,7 +152,6 @@ class EntitlementManagement(entity.Entity):
         self._catalogs: Optional[List[access_package_catalog.AccessPackageCatalog]] = None
         # References to a directory or domain of another organization whose users can request access.
         self._connected_organizations: Optional[List[connected_organization.ConnectedOrganization]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The settings that control the behavior of Azure AD entitlement management.
         self._settings: Optional[entitlement_management_settings.EntitlementManagementSettings] = None
@@ -175,13 +174,13 @@ class EntitlementManagement(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_package_assignment_approvals": lambda n : setattr(self, 'access_package_assignment_approvals', n.get_collection_of_object_values(approval.Approval)),
-            "access_packages": lambda n : setattr(self, 'access_packages', n.get_collection_of_object_values(access_package.AccessPackage)),
-            "assignment_policies": lambda n : setattr(self, 'assignment_policies', n.get_collection_of_object_values(access_package_assignment_policy.AccessPackageAssignmentPolicy)),
-            "assignment_requests": lambda n : setattr(self, 'assignment_requests', n.get_collection_of_object_values(access_package_assignment_request.AccessPackageAssignmentRequest)),
+            "accessPackageAssignmentApprovals": lambda n : setattr(self, 'access_package_assignment_approvals', n.get_collection_of_object_values(approval.Approval)),
+            "accessPackages": lambda n : setattr(self, 'access_packages', n.get_collection_of_object_values(access_package.AccessPackage)),
+            "assignmentPolicies": lambda n : setattr(self, 'assignment_policies', n.get_collection_of_object_values(access_package_assignment_policy.AccessPackageAssignmentPolicy)),
+            "assignmentRequests": lambda n : setattr(self, 'assignment_requests', n.get_collection_of_object_values(access_package_assignment_request.AccessPackageAssignmentRequest)),
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(access_package_assignment.AccessPackageAssignment)),
             "catalogs": lambda n : setattr(self, 'catalogs', n.get_collection_of_object_values(access_package_catalog.AccessPackageCatalog)),
-            "connected_organizations": lambda n : setattr(self, 'connected_organizations', n.get_collection_of_object_values(connected_organization.ConnectedOrganization)),
+            "connectedOrganizations": lambda n : setattr(self, 'connected_organizations', n.get_collection_of_object_values(connected_organization.ConnectedOrganization)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(entitlement_management_settings.EntitlementManagementSettings)),
         }
         super_fields = super().get_field_deserializers()

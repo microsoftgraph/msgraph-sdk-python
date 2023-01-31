@@ -12,7 +12,6 @@ class Bitlocker(entity.Entity):
         Instantiates a new Bitlocker and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The recovery keys associated with the bitlocker entity.
         self._recovery_keys: Optional[List[bitlocker_recovery_key.BitlockerRecoveryKey]] = None
@@ -35,7 +34,7 @@ class Bitlocker(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "recovery_keys": lambda n : setattr(self, 'recovery_keys', n.get_collection_of_object_values(bitlocker_recovery_key.BitlockerRecoveryKey)),
+            "recoveryKeys": lambda n : setattr(self, 'recovery_keys', n.get_collection_of_object_values(bitlocker_recovery_key.BitlockerRecoveryKey)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

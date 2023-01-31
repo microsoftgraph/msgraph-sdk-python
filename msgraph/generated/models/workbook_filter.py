@@ -14,7 +14,6 @@ class WorkbookFilter(entity.Entity):
         super().__init__()
         # The currently applied filter on the given column. Read-only.
         self._criteria: Optional[workbook_filter_criteria.WorkbookFilterCriteria] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

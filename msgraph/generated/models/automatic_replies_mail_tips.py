@@ -35,7 +35,6 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, Parsable):
         self._message: Optional[str] = None
         # The language that the automatic reply message is in.
         self._message_language: Optional[locale_info.LocaleInfo] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The date and time that automatic replies are set to end.
         self._scheduled_end_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
@@ -61,10 +60,10 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, Parsable):
         """
         fields = {
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
-            "message_language": lambda n : setattr(self, 'message_language', n.get_object_value(locale_info.LocaleInfo)),
+            "messageLanguage": lambda n : setattr(self, 'message_language', n.get_object_value(locale_info.LocaleInfo)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "scheduled_end_time": lambda n : setattr(self, 'scheduled_end_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "scheduled_start_time": lambda n : setattr(self, 'scheduled_start_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "scheduledEndTime": lambda n : setattr(self, 'scheduled_end_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "scheduledStartTime": lambda n : setattr(self, 'scheduled_start_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
         }
         return fields
     
@@ -105,7 +104,7 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -113,7 +112,7 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

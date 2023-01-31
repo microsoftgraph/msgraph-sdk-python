@@ -12,7 +12,6 @@ class AgreementFileLocalization(agreement_file_properties.AgreementFilePropertie
         Instantiates a new agreementFileLocalization and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Read-only. Customized versions of the terms of use agreement in the Azure AD tenant.
         self._versions: Optional[List[agreement_file_version.AgreementFileVersion]] = None

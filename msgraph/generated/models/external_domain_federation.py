@@ -71,9 +71,9 @@ class ExternalDomainFederation(identity_source.IdentitySource):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "domain_name": lambda n : setattr(self, 'domain_name', n.get_str_value()),
-            "issuer_uri": lambda n : setattr(self, 'issuer_uri', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "domainName": lambda n : setattr(self, 'domain_name', n.get_str_value()),
+            "issuerUri": lambda n : setattr(self, 'issuer_uri', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -190,7 +190,7 @@ class EducationAssignment(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new EducationAssignment and sets the default values.
+        Instantiates a new educationAssignment and sets the default values.
         """
         super().__init__()
         # Optional field to control the assignment behavior for students who are added after the assignment is published. If not specified, defaults to none. Supported values are: none, assignIfOpen. For example, a teacher can use assignIfOpen to indicate that an assignment should be assigned to any new student who joins the class while the assignment is still open, and none to indicate that an assignment should not be assigned to new students.
@@ -233,7 +233,6 @@ class EducationAssignment(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # Optional field to specify the URL of the channel to post the assignment publish notification. If not specified or null, defaults to the General channel. This field only applies to assignments where the assignTo value is educationAssignmentClassRecipient. Updating the notificationChannelUrl isn't allowed after the assignment has been published.
         self._notification_channel_url: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Learning objects that are associated with this assignment.  Only teachers can modify this list. Nullable.
         self._resources: Optional[List[education_assignment_resource.EducationAssignmentResource]] = None
@@ -351,32 +350,32 @@ class EducationAssignment(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "added_student_action": lambda n : setattr(self, 'added_student_action', n.get_enum_value(education_added_student_action.EducationAddedStudentAction)),
-            "add_to_calendar_action": lambda n : setattr(self, 'add_to_calendar_action', n.get_enum_value(education_add_to_calendar_options.EducationAddToCalendarOptions)),
-            "allow_late_submissions": lambda n : setattr(self, 'allow_late_submissions', n.get_bool_value()),
-            "allow_students_to_add_resources_to_submission": lambda n : setattr(self, 'allow_students_to_add_resources_to_submission', n.get_bool_value()),
-            "assign_date_time": lambda n : setattr(self, 'assign_date_time', n.get_datetime_value()),
-            "assigned_date_time": lambda n : setattr(self, 'assigned_date_time', n.get_datetime_value()),
-            "assign_to": lambda n : setattr(self, 'assign_to', n.get_object_value(education_assignment_recipient.EducationAssignmentRecipient)),
+            "addedStudentAction": lambda n : setattr(self, 'added_student_action', n.get_enum_value(education_added_student_action.EducationAddedStudentAction)),
+            "addToCalendarAction": lambda n : setattr(self, 'add_to_calendar_action', n.get_enum_value(education_add_to_calendar_options.EducationAddToCalendarOptions)),
+            "allowLateSubmissions": lambda n : setattr(self, 'allow_late_submissions', n.get_bool_value()),
+            "allowStudentsToAddResourcesToSubmission": lambda n : setattr(self, 'allow_students_to_add_resources_to_submission', n.get_bool_value()),
+            "assignDateTime": lambda n : setattr(self, 'assign_date_time', n.get_datetime_value()),
+            "assignedDateTime": lambda n : setattr(self, 'assigned_date_time', n.get_datetime_value()),
+            "assignTo": lambda n : setattr(self, 'assign_to', n.get_object_value(education_assignment_recipient.EducationAssignmentRecipient)),
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_object_values(education_category.EducationCategory)),
-            "class_id": lambda n : setattr(self, 'class_id', n.get_str_value()),
-            "close_date_time": lambda n : setattr(self, 'close_date_time', n.get_datetime_value()),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "due_date_time": lambda n : setattr(self, 'due_date_time', n.get_datetime_value()),
-            "feedback_resources_folder_url": lambda n : setattr(self, 'feedback_resources_folder_url', n.get_str_value()),
+            "classId": lambda n : setattr(self, 'class_id', n.get_str_value()),
+            "closeDateTime": lambda n : setattr(self, 'close_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "dueDateTime": lambda n : setattr(self, 'due_date_time', n.get_datetime_value()),
+            "feedbackResourcesFolderUrl": lambda n : setattr(self, 'feedback_resources_folder_url', n.get_str_value()),
             "grading": lambda n : setattr(self, 'grading', n.get_object_value(education_assignment_grade_type.EducationAssignmentGradeType)),
             "instructions": lambda n : setattr(self, 'instructions', n.get_object_value(education_item_body.EducationItemBody)),
-            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "notification_channel_url": lambda n : setattr(self, 'notification_channel_url', n.get_str_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "notificationChannelUrl": lambda n : setattr(self, 'notification_channel_url', n.get_str_value()),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(education_assignment_resource.EducationAssignmentResource)),
-            "resources_folder_url": lambda n : setattr(self, 'resources_folder_url', n.get_str_value()),
+            "resourcesFolderUrl": lambda n : setattr(self, 'resources_folder_url', n.get_str_value()),
             "rubric": lambda n : setattr(self, 'rubric', n.get_object_value(education_rubric.EducationRubric)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(education_assignment_status.EducationAssignmentStatus)),
             "submissions": lambda n : setattr(self, 'submissions', n.get_collection_of_object_values(education_submission.EducationSubmission)),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

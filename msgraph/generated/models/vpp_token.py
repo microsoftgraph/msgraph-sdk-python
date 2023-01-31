@@ -66,7 +66,6 @@ class VppToken(entity.Entity):
         self._last_sync_date_time: Optional[datetime] = None
         # Possible sync statuses associated with an Apple Volume Purchase Program token.
         self._last_sync_status: Optional[vpp_token_sync_status.VppTokenSyncStatus] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The organization associated with the Apple Volume Purchase Program Token
         self._organization_name: Optional[str] = None
@@ -129,17 +128,17 @@ class VppToken(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "apple_id": lambda n : setattr(self, 'apple_id', n.get_str_value()),
-            "automatically_update_apps": lambda n : setattr(self, 'automatically_update_apps', n.get_bool_value()),
-            "country_or_region": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "last_sync_date_time": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
-            "last_sync_status": lambda n : setattr(self, 'last_sync_status', n.get_enum_value(vpp_token_sync_status.VppTokenSyncStatus)),
-            "organization_name": lambda n : setattr(self, 'organization_name', n.get_str_value()),
+            "appleId": lambda n : setattr(self, 'apple_id', n.get_str_value()),
+            "automaticallyUpdateApps": lambda n : setattr(self, 'automatically_update_apps', n.get_bool_value()),
+            "countryOrRegion": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "lastSyncDateTime": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
+            "lastSyncStatus": lambda n : setattr(self, 'last_sync_status', n.get_enum_value(vpp_token_sync_status.VppTokenSyncStatus)),
+            "organizationName": lambda n : setattr(self, 'organization_name', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(vpp_token_state.VppTokenState)),
             "token": lambda n : setattr(self, 'token', n.get_str_value()),
-            "vpp_token_account_type": lambda n : setattr(self, 'vpp_token_account_type', n.get_enum_value(vpp_token_account_type.VppTokenAccountType)),
+            "vppTokenAccountType": lambda n : setattr(self, 'vpp_token_account_type', n.get_enum_value(vpp_token_account_type.VppTokenAccountType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

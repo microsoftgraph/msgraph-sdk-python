@@ -38,7 +38,6 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         self._last_accessed_time: Optional[datetime] = None
         # Links for opening the notebook. The oneNoteClientURL link opens the notebook in the OneNote client, if it's installed. The oneNoteWebURL link opens the notebook in OneNote on the web.
         self._links: Optional[recent_notebook_links.RecentNotebookLinks] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The backend store where the Notebook resides, either OneDriveForBusiness or OneDrive.
         self._source_service: Optional[onenote_source_service.OnenoteSourceService] = None
@@ -78,11 +77,11 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "last_accessed_time": lambda n : setattr(self, 'last_accessed_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "lastAccessedTime": lambda n : setattr(self, 'last_accessed_time', n.get_datetime_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(recent_notebook_links.RecentNotebookLinks)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "source_service": lambda n : setattr(self, 'source_service', n.get_enum_value(onenote_source_service.OnenoteSourceService)),
+            "sourceService": lambda n : setattr(self, 'source_service', n.get_enum_value(onenote_source_service.OnenoteSourceService)),
         }
         return fields
     
@@ -123,7 +122,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -131,7 +130,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

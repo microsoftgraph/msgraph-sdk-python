@@ -41,10 +41,10 @@ class EducationRubricOutcome(education_outcome.EducationOutcome):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "published_rubric_quality_feedback": lambda n : setattr(self, 'published_rubric_quality_feedback', n.get_collection_of_object_values(rubric_quality_feedback_model.RubricQualityFeedbackModel)),
-            "published_rubric_quality_selected_levels": lambda n : setattr(self, 'published_rubric_quality_selected_levels', n.get_collection_of_object_values(rubric_quality_selected_column_model.RubricQualitySelectedColumnModel)),
-            "rubric_quality_feedback": lambda n : setattr(self, 'rubric_quality_feedback', n.get_collection_of_object_values(rubric_quality_feedback_model.RubricQualityFeedbackModel)),
-            "rubric_quality_selected_levels": lambda n : setattr(self, 'rubric_quality_selected_levels', n.get_collection_of_object_values(rubric_quality_selected_column_model.RubricQualitySelectedColumnModel)),
+            "publishedRubricQualityFeedback": lambda n : setattr(self, 'published_rubric_quality_feedback', n.get_collection_of_object_values(rubric_quality_feedback_model.RubricQualityFeedbackModel)),
+            "publishedRubricQualitySelectedLevels": lambda n : setattr(self, 'published_rubric_quality_selected_levels', n.get_collection_of_object_values(rubric_quality_selected_column_model.RubricQualitySelectedColumnModel)),
+            "rubricQualityFeedback": lambda n : setattr(self, 'rubric_quality_feedback', n.get_collection_of_object_values(rubric_quality_feedback_model.RubricQualityFeedbackModel)),
+            "rubricQualitySelectedLevels": lambda n : setattr(self, 'rubric_quality_selected_levels', n.get_collection_of_object_values(rubric_quality_selected_column_model.RubricQualitySelectedColumnModel)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

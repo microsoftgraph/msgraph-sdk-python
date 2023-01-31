@@ -66,7 +66,7 @@ class RoleDefinitionsRequestBuilder():
         """
         Create new navigation property to roleDefinitions for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[role_definition.RoleDefinition]
         """
@@ -105,7 +105,7 @@ class RoleDefinitionsRequestBuilder():
         """
         Create new navigation property to roleDefinitions for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

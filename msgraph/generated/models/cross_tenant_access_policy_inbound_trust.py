@@ -34,7 +34,6 @@ class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, Parsable):
         self._is_hybrid_azure_a_d_joined_device_accepted: Optional[bool] = None
         # Specifies whether MFA from external Azure AD organizations is trusted.
         self._is_mfa_accepted: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -55,9 +54,9 @@ class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_compliant_device_accepted": lambda n : setattr(self, 'is_compliant_device_accepted', n.get_bool_value()),
-            "is_hybrid_azure_a_d_joined_device_accepted": lambda n : setattr(self, 'is_hybrid_azure_a_d_joined_device_accepted', n.get_bool_value()),
-            "is_mfa_accepted": lambda n : setattr(self, 'is_mfa_accepted', n.get_bool_value()),
+            "isCompliantDeviceAccepted": lambda n : setattr(self, 'is_compliant_device_accepted', n.get_bool_value()),
+            "isHybridAzureADJoinedDeviceAccepted": lambda n : setattr(self, 'is_hybrid_azure_a_d_joined_device_accepted', n.get_bool_value()),
+            "isMfaAccepted": lambda n : setattr(self, 'is_mfa_accepted', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -116,7 +115,7 @@ class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -124,7 +123,7 @@ class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

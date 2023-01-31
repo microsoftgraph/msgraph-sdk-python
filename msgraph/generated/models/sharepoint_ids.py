@@ -34,7 +34,6 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         self._list_item_id: Optional[str] = None
         # The unique identifier (guid) for the item within OneDrive for Business or a SharePoint site.
         self._list_item_unique_id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The unique identifier (guid) for the item's site collection (SPSite).
         self._site_id: Optional[str] = None
@@ -63,14 +62,14 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "list_id": lambda n : setattr(self, 'list_id', n.get_str_value()),
-            "list_item_id": lambda n : setattr(self, 'list_item_id', n.get_str_value()),
-            "list_item_unique_id": lambda n : setattr(self, 'list_item_unique_id', n.get_str_value()),
+            "listId": lambda n : setattr(self, 'list_id', n.get_str_value()),
+            "listItemId": lambda n : setattr(self, 'list_item_id', n.get_str_value()),
+            "listItemUniqueId": lambda n : setattr(self, 'list_item_unique_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "site_id": lambda n : setattr(self, 'site_id', n.get_str_value()),
-            "site_url": lambda n : setattr(self, 'site_url', n.get_str_value()),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
-            "web_id": lambda n : setattr(self, 'web_id', n.get_str_value()),
+            "siteId": lambda n : setattr(self, 'site_id', n.get_str_value()),
+            "siteUrl": lambda n : setattr(self, 'site_url', n.get_str_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "webId": lambda n : setattr(self, 'web_id', n.get_str_value()),
         }
         return fields
     
@@ -128,7 +127,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -136,7 +135,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

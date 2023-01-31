@@ -150,13 +150,13 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_data_encryption_type": lambda n : setattr(self, 'app_data_encryption_type', n.get_enum_value(managed_app_data_encryption_type.ManagedAppDataEncryptionType)),
+            "appDataEncryptionType": lambda n : setattr(self, 'app_data_encryption_type', n.get_enum_value(managed_app_data_encryption_type.ManagedAppDataEncryptionType)),
             "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(managed_mobile_app.ManagedMobileApp)),
-            "custom_browser_protocol": lambda n : setattr(self, 'custom_browser_protocol', n.get_str_value()),
-            "deployed_app_count": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
-            "deployment_summary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary)),
-            "face_id_blocked": lambda n : setattr(self, 'face_id_blocked', n.get_bool_value()),
-            "minimum_required_sdk_version": lambda n : setattr(self, 'minimum_required_sdk_version', n.get_str_value()),
+            "customBrowserProtocol": lambda n : setattr(self, 'custom_browser_protocol', n.get_str_value()),
+            "deployedAppCount": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
+            "deploymentSummary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary)),
+            "faceIdBlocked": lambda n : setattr(self, 'face_id_blocked', n.get_bool_value()),
+            "minimumRequiredSdkVersion": lambda n : setattr(self, 'minimum_required_sdk_version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

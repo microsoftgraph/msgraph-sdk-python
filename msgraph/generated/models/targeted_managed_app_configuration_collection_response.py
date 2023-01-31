@@ -12,7 +12,6 @@ class TargetedManagedAppConfigurationCollectionResponse(base_collection_paginati
         Instantiates a new TargetedManagedAppConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[targeted_managed_app_configuration.TargetedManagedAppConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class TargetedManagedAppConfigurationCollectionResponse(base_collection_paginati
     @property
     def value(self,) -> Optional[List[targeted_managed_app_configuration.TargetedManagedAppConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[targeted_managed_app_configuration.TargetedManagedAppConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class TargetedManagedAppConfigurationCollectionResponse(base_collection_paginati
     @value.setter
     def value(self,value: Optional[List[targeted_managed_app_configuration.TargetedManagedAppConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

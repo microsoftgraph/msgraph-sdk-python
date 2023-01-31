@@ -74,7 +74,6 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         self._icon: Optional[workbook_icon.WorkbookIcon] = None
         # Represents the column (or row, depending on the sort orientation) that the condition is on. Represented as an offset from the first column (or row).
         self._key: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Represents the type of sorting of this condition. The possible values are: Value, CellColor, FontColor, Icon.
         self._sort_on: Optional[str] = None
@@ -116,11 +115,11 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         fields = {
             "ascending": lambda n : setattr(self, 'ascending', n.get_bool_value()),
             "color": lambda n : setattr(self, 'color', n.get_str_value()),
-            "data_option": lambda n : setattr(self, 'data_option', n.get_str_value()),
+            "dataOption": lambda n : setattr(self, 'data_option', n.get_str_value()),
             "icon": lambda n : setattr(self, 'icon', n.get_object_value(workbook_icon.WorkbookIcon)),
             "key": lambda n : setattr(self, 'key', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "sort_on": lambda n : setattr(self, 'sort_on', n.get_str_value()),
+            "sortOn": lambda n : setattr(self, 'sort_on', n.get_str_value()),
         }
         return fields
     
@@ -161,7 +160,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -169,7 +168,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -31,13 +31,10 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The endDateTime property
         self._end_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Indicates the service ID in case of 1:n appointments. If the appointment is of type 1:n, this field will be present, otherwise, null.
         self._service_id: Optional[str] = None
-        # The startDateTime property
         self._start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
         # The status of the staff member. Possible values are: available, busy, slotsAvailable, outOfOffice, unknownFutureValue.
         self._status: Optional[bookings_availability_status.BookingsAvailabilityStatus] = None
@@ -57,7 +54,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
     @property
     def end_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
-        Gets the endDateTime property value. The endDateTime property
+        Gets the endDateTime property value. 
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._end_date_time
@@ -65,7 +62,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
     @end_date_time.setter
     def end_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
-        Sets the endDateTime property value. The endDateTime property
+        Sets the endDateTime property value. 
         Args:
             value: Value to set for the endDateTime property.
         """
@@ -77,10 +74,10 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "service_id": lambda n : setattr(self, 'service_id', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "serviceId": lambda n : setattr(self, 'service_id', n.get_str_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(bookings_availability_status.BookingsAvailabilityStatus)),
         }
         return fields
@@ -88,7 +85,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -96,7 +93,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -137,7 +134,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
     @property
     def start_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
-        Gets the startDateTime property value. The startDateTime property
+        Gets the startDateTime property value. 
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._start_date_time
@@ -145,7 +142,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
     @start_date_time.setter
     def start_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
-        Sets the startDateTime property value. The startDateTime property
+        Sets the startDateTime property value. 
         Args:
             value: Value to set for the startDateTime property.
         """

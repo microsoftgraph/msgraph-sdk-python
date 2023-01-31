@@ -34,7 +34,6 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
 
         # The time at which the app should be installed.
         self._deadline_date_time: Optional[datetime] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The time at which the app should be available for installation.
         self._start_date_time: Optional[datetime] = None
@@ -76,17 +75,17 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "deadline_date_time": lambda n : setattr(self, 'deadline_date_time', n.get_datetime_value()),
+            "deadlineDateTime": lambda n : setattr(self, 'deadline_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
-            "use_local_time": lambda n : setattr(self, 'use_local_time', n.get_bool_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "useLocalTime": lambda n : setattr(self, 'use_local_time', n.get_bool_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -94,7 +93,7 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

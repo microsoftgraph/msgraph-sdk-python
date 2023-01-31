@@ -12,7 +12,6 @@ class DelegatedPermissionClassificationCollectionResponse(base_collection_pagina
         Instantiates a new DelegatedPermissionClassificationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[delegated_permission_classification.DelegatedPermissionClassification]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class DelegatedPermissionClassificationCollectionResponse(base_collection_pagina
     @property
     def value(self,) -> Optional[List[delegated_permission_classification.DelegatedPermissionClassification]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[delegated_permission_classification.DelegatedPermissionClassification]]
         """
         return self._value
@@ -61,7 +60,7 @@ class DelegatedPermissionClassificationCollectionResponse(base_collection_pagina
     @value.setter
     def value(self,value: Optional[List[delegated_permission_classification.DelegatedPermissionClassification]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

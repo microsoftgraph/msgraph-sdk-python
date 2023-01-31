@@ -30,7 +30,6 @@ class DateTimeTimeZone(AdditionalDataHolder, Parsable):
 
         # A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
         self._date_time: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
         self._time_zone: Optional[str] = None
@@ -70,16 +69,16 @@ class DateTimeTimeZone(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "date_time": lambda n : setattr(self, 'date_time', n.get_str_value()),
+            "dateTime": lambda n : setattr(self, 'date_time', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "time_zone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
+            "timeZone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -87,7 +86,7 @@ class DateTimeTimeZone(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

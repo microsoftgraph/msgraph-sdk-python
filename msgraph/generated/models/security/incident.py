@@ -106,13 +106,10 @@ class Incident(entity.Entity):
         self._incident_web_url: Optional[str] = None
         # Time when the incident was last updated.
         self._last_update_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Only populated in case an incident is grouped together with another incident, as part of the logic that processes incidents. In such a case, the status property is redirected.
         self._redirect_incident_id: Optional[str] = None
-        # The severity property
         self._severity: Optional[alert_severity.AlertSeverity] = None
-        # The status property
         self._status: Optional[incident_status.IncidentStatus] = None
         # The Azure Active Directory tenant in which the alert was created.
         self._tenant_id: Optional[str] = None
@@ -204,19 +201,19 @@ class Incident(entity.Entity):
         """
         fields = {
             "alerts": lambda n : setattr(self, 'alerts', n.get_collection_of_object_values(alert.Alert)),
-            "assigned_to": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
+            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
             "classification": lambda n : setattr(self, 'classification', n.get_enum_value(alert_classification.AlertClassification)),
             "comments": lambda n : setattr(self, 'comments', n.get_collection_of_object_values(alert_comment.AlertComment)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "custom_tags": lambda n : setattr(self, 'custom_tags', n.get_collection_of_primitive_values(str)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "customTags": lambda n : setattr(self, 'custom_tags', n.get_collection_of_primitive_values(str)),
             "determination": lambda n : setattr(self, 'determination', n.get_enum_value(alert_determination.AlertDetermination)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "incident_web_url": lambda n : setattr(self, 'incident_web_url', n.get_str_value()),
-            "last_update_date_time": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
-            "redirect_incident_id": lambda n : setattr(self, 'redirect_incident_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "incidentWebUrl": lambda n : setattr(self, 'incident_web_url', n.get_str_value()),
+            "lastUpdateDateTime": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
+            "redirectIncidentId": lambda n : setattr(self, 'redirect_incident_id', n.get_str_value()),
             "severity": lambda n : setattr(self, 'severity', n.get_enum_value(alert_severity.AlertSeverity)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(incident_status.IncidentStatus)),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -300,7 +297,7 @@ class Incident(entity.Entity):
     @property
     def severity(self,) -> Optional[alert_severity.AlertSeverity]:
         """
-        Gets the severity property value. The severity property
+        Gets the severity property value. 
         Returns: Optional[alert_severity.AlertSeverity]
         """
         return self._severity
@@ -308,7 +305,7 @@ class Incident(entity.Entity):
     @severity.setter
     def severity(self,value: Optional[alert_severity.AlertSeverity] = None) -> None:
         """
-        Sets the severity property value. The severity property
+        Sets the severity property value. 
         Args:
             value: Value to set for the severity property.
         """
@@ -317,7 +314,7 @@ class Incident(entity.Entity):
     @property
     def status(self,) -> Optional[incident_status.IncidentStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[incident_status.IncidentStatus]
         """
         return self._status
@@ -325,7 +322,7 @@ class Incident(entity.Entity):
     @status.setter
     def status(self,value: Optional[incident_status.IncidentStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

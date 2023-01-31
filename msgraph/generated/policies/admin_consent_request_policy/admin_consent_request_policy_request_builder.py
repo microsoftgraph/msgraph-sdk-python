@@ -74,7 +74,7 @@ class AdminConsentRequestPolicyRequestBuilder():
         """
         Update the properties of an adminConsentRequestPolicy object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[admin_consent_request_policy.AdminConsentRequestPolicy]
         """
@@ -129,7 +129,7 @@ class AdminConsentRequestPolicyRequestBuilder():
         """
         Update the properties of an adminConsentRequestPolicy object.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

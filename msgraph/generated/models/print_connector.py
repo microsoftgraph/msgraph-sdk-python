@@ -27,7 +27,7 @@ class PrintConnector(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new PrintConnector and sets the default values.
+        Instantiates a new printConnector and sets the default values.
         """
         super().__init__()
         # The connector's version.
@@ -38,7 +38,6 @@ class PrintConnector(entity.Entity):
         self._fully_qualified_domain_name: Optional[str] = None
         # The physical and/or organizational location of the connector.
         self._location: Optional[printer_location.PrinterLocation] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The connector machine's operating system version.
         self._operating_system: Optional[str] = None
@@ -97,12 +96,12 @@ class PrintConnector(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_version": lambda n : setattr(self, 'app_version', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "fully_qualified_domain_name": lambda n : setattr(self, 'fully_qualified_domain_name', n.get_str_value()),
+            "appVersion": lambda n : setattr(self, 'app_version', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "fullyQualifiedDomainName": lambda n : setattr(self, 'fully_qualified_domain_name', n.get_str_value()),
             "location": lambda n : setattr(self, 'location', n.get_object_value(printer_location.PrinterLocation)),
-            "operating_system": lambda n : setattr(self, 'operating_system', n.get_str_value()),
-            "registered_date_time": lambda n : setattr(self, 'registered_date_time', n.get_datetime_value()),
+            "operatingSystem": lambda n : setattr(self, 'operating_system', n.get_str_value()),
+            "registeredDateTime": lambda n : setattr(self, 'registered_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -30,9 +30,7 @@ class ExternalItemContent(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The type property
         self._type: Optional[external_item_content_type.ExternalItemContentType] = None
         # The content for the externalItem. Required.
         self._value: Optional[str] = None
@@ -64,7 +62,7 @@ class ExternalItemContent(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -72,7 +70,7 @@ class ExternalItemContent(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -94,7 +92,7 @@ class ExternalItemContent(AdditionalDataHolder, Parsable):
     @property
     def type(self,) -> Optional[external_item_content_type.ExternalItemContentType]:
         """
-        Gets the type property value. The type property
+        Gets the type property value. 
         Returns: Optional[external_item_content_type.ExternalItemContentType]
         """
         return self._type
@@ -102,7 +100,7 @@ class ExternalItemContent(AdditionalDataHolder, Parsable):
     @type.setter
     def type(self,value: Optional[external_item_content_type.ExternalItemContentType] = None) -> None:
         """
-        Sets the type property value. The type property
+        Sets the type property value. 
         Args:
             value: Value to set for the type property.
         """

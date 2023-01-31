@@ -58,7 +58,6 @@ class CaseOperation(entity.Entity):
         self._created_by: Optional[identity_set.IdentitySet] = None
         # The date and time the operation was created.
         self._created_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The progress of the operation.
         self._percent_progress: Optional[int] = None
@@ -120,11 +119,11 @@ class CaseOperation(entity.Entity):
         """
         fields = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(case_action.CaseAction)),
-            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "percent_progress": lambda n : setattr(self, 'percent_progress', n.get_int_value()),
-            "result_info": lambda n : setattr(self, 'result_info', n.get_object_value(result_info.ResultInfo)),
+            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "percentProgress": lambda n : setattr(self, 'percent_progress', n.get_int_value()),
+            "resultInfo": lambda n : setattr(self, 'result_info', n.get_object_value(result_info.ResultInfo)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(case_operation_status.CaseOperationStatus)),
         }
         super_fields = super().get_field_deserializers()

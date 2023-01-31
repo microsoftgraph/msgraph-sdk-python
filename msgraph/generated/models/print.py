@@ -55,7 +55,6 @@ class Print(AdditionalDataHolder, Parsable):
 
         # The list of available print connectors.
         self._connectors: Optional[List[print_connector.PrintConnector]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The list of print long running operations.
         self._operations: Optional[List[print_operation.PrintOperation]] = None
@@ -95,14 +94,14 @@ class Print(AdditionalDataHolder, Parsable):
             "services": lambda n : setattr(self, 'services', n.get_collection_of_object_values(print_service.PrintService)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(print_settings.PrintSettings)),
             "shares": lambda n : setattr(self, 'shares', n.get_collection_of_object_values(printer_share.PrinterShare)),
-            "task_definitions": lambda n : setattr(self, 'task_definitions', n.get_collection_of_object_values(print_task_definition.PrintTaskDefinition)),
+            "taskDefinitions": lambda n : setattr(self, 'task_definitions', n.get_collection_of_object_values(print_task_definition.PrintTaskDefinition)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -110,7 +109,7 @@ class Print(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

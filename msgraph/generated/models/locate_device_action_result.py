@@ -14,7 +14,6 @@ class LocateDeviceActionResult(device_action_result.DeviceActionResult):
         super().__init__()
         # device location
         self._device_location: Optional[device_geo_location.DeviceGeoLocation] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -52,7 +51,7 @@ class LocateDeviceActionResult(device_action_result.DeviceActionResult):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_location": lambda n : setattr(self, 'device_location', n.get_object_value(device_geo_location.DeviceGeoLocation)),
+            "deviceLocation": lambda n : setattr(self, 'device_location', n.get_object_value(device_geo_location.DeviceGeoLocation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

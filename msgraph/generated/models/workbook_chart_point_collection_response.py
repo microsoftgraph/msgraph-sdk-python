@@ -12,7 +12,6 @@ class WorkbookChartPointCollectionResponse(base_collection_pagination_count_resp
         Instantiates a new WorkbookChartPointCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[workbook_chart_point.WorkbookChartPoint]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class WorkbookChartPointCollectionResponse(base_collection_pagination_count_resp
     @property
     def value(self,) -> Optional[List[workbook_chart_point.WorkbookChartPoint]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[workbook_chart_point.WorkbookChartPoint]]
         """
         return self._value
@@ -61,7 +60,7 @@ class WorkbookChartPointCollectionResponse(base_collection_pagination_count_resp
     @value.setter
     def value(self,value: Optional[List[workbook_chart_point.WorkbookChartPoint]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

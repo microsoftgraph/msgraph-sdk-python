@@ -66,7 +66,7 @@ class UserStateSummaryRequestBuilder():
         """
         Create new navigation property to userStateSummary for deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[user_install_state_summary.UserInstallStateSummary]
         """
@@ -105,7 +105,7 @@ class UserStateSummaryRequestBuilder():
         """
         Create new navigation property to userStateSummary for deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

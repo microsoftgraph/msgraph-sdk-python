@@ -43,7 +43,6 @@ class RiskyServicePrincipal(entity.Entity):
         self._is_enabled: Optional[bool] = None
         # Indicates whether Azure AD is currently processing the service principal's risky state.
         self._is_processing: Optional[bool] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Details of the detected risk. Note: Details for this property are only available for Workload Identities Premium customers. Events in tenants without this license will be returned hidden. The possible values are: none, hidden,  unknownFutureValue, adminConfirmedServicePrincipalCompromised, adminDismissedAllRiskForServicePrincipal. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: adminConfirmedServicePrincipalCompromised , adminDismissedAllRiskForServicePrincipal.
         self._risk_detail: Optional[risk_detail.RiskDetail] = None
@@ -91,16 +90,16 @@ class RiskyServicePrincipal(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(risky_service_principal_history_item.RiskyServicePrincipalHistoryItem)),
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "is_processing": lambda n : setattr(self, 'is_processing', n.get_bool_value()),
-            "risk_detail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(risk_detail.RiskDetail)),
-            "risk_last_updated_date_time": lambda n : setattr(self, 'risk_last_updated_date_time', n.get_datetime_value()),
-            "risk_level": lambda n : setattr(self, 'risk_level', n.get_enum_value(risk_level.RiskLevel)),
-            "risk_state": lambda n : setattr(self, 'risk_state', n.get_enum_value(risk_state.RiskState)),
-            "service_principal_type": lambda n : setattr(self, 'service_principal_type', n.get_str_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "isProcessing": lambda n : setattr(self, 'is_processing', n.get_bool_value()),
+            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(risk_detail.RiskDetail)),
+            "riskLastUpdatedDateTime": lambda n : setattr(self, 'risk_last_updated_date_time', n.get_datetime_value()),
+            "riskLevel": lambda n : setattr(self, 'risk_level', n.get_enum_value(risk_level.RiskLevel)),
+            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(risk_state.RiskState)),
+            "servicePrincipalType": lambda n : setattr(self, 'service_principal_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

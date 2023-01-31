@@ -63,7 +63,6 @@ class UnifiedRoleScheduleBase(entity.Entity):
         self._directory_scope_id: Optional[str] = None
         # When the schedule was last modified.
         self._modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The principal that's getting a role assignment or that's eligible for a role through the request.
         self._principal: Optional[directory_object.DirectoryObject] = None
@@ -162,17 +161,17 @@ class UnifiedRoleScheduleBase(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_scope": lambda n : setattr(self, 'app_scope', n.get_object_value(app_scope.AppScope)),
-            "app_scope_id": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "created_using": lambda n : setattr(self, 'created_using', n.get_str_value()),
-            "directory_scope": lambda n : setattr(self, 'directory_scope', n.get_object_value(directory_object.DirectoryObject)),
-            "directory_scope_id": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
-            "modified_date_time": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "appScope": lambda n : setattr(self, 'app_scope', n.get_object_value(app_scope.AppScope)),
+            "appScopeId": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdUsing": lambda n : setattr(self, 'created_using', n.get_str_value()),
+            "directoryScope": lambda n : setattr(self, 'directory_scope', n.get_object_value(directory_object.DirectoryObject)),
+            "directoryScopeId": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
+            "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
             "principal": lambda n : setattr(self, 'principal', n.get_object_value(directory_object.DirectoryObject)),
-            "principal_id": lambda n : setattr(self, 'principal_id', n.get_str_value()),
-            "role_definition": lambda n : setattr(self, 'role_definition', n.get_object_value(unified_role_definition.UnifiedRoleDefinition)),
-            "role_definition_id": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
+            "principalId": lambda n : setattr(self, 'principal_id', n.get_str_value()),
+            "roleDefinition": lambda n : setattr(self, 'role_definition', n.get_object_value(unified_role_definition.UnifiedRoleDefinition)),
+            "roleDefinitionId": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

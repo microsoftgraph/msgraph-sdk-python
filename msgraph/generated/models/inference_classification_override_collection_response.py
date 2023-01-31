@@ -12,7 +12,6 @@ class InferenceClassificationOverrideCollectionResponse(base_collection_paginati
         Instantiates a new InferenceClassificationOverrideCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[inference_classification_override.InferenceClassificationOverride]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class InferenceClassificationOverrideCollectionResponse(base_collection_paginati
     @property
     def value(self,) -> Optional[List[inference_classification_override.InferenceClassificationOverride]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[inference_classification_override.InferenceClassificationOverride]]
         """
         return self._value
@@ -61,7 +60,7 @@ class InferenceClassificationOverrideCollectionResponse(base_collection_paginati
     @value.setter
     def value(self,value: Optional[List[inference_classification_override.InferenceClassificationOverride]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

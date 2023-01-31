@@ -67,12 +67,12 @@ class Printer(printer_base.PrinterBase):
         """
         fields = {
             "connectors": lambda n : setattr(self, 'connectors', n.get_collection_of_object_values(print_connector.PrintConnector)),
-            "has_physical_device": lambda n : setattr(self, 'has_physical_device', n.get_bool_value()),
-            "is_shared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
-            "last_seen_date_time": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
-            "registered_date_time": lambda n : setattr(self, 'registered_date_time', n.get_datetime_value()),
+            "hasPhysicalDevice": lambda n : setattr(self, 'has_physical_device', n.get_bool_value()),
+            "isShared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
+            "lastSeenDateTime": lambda n : setattr(self, 'last_seen_date_time', n.get_datetime_value()),
+            "registeredDateTime": lambda n : setattr(self, 'registered_date_time', n.get_datetime_value()),
             "shares": lambda n : setattr(self, 'shares', n.get_collection_of_object_values(printer_share.PrinterShare)),
-            "task_triggers": lambda n : setattr(self, 'task_triggers', n.get_collection_of_object_values(print_task_trigger.PrintTaskTrigger)),
+            "taskTriggers": lambda n : setattr(self, 'task_triggers', n.get_collection_of_object_values(print_task_trigger.PrintTaskTrigger)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

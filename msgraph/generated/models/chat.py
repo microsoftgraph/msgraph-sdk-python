@@ -19,7 +19,7 @@ class Chat(entity.Entity):
     @property
     def chat_type(self,) -> Optional[chat_type.ChatType]:
         """
-        Gets the chatType property value. The chatType property
+        Gets the chatType property value. 
         Returns: Optional[chat_type.ChatType]
         """
         return self._chat_type
@@ -27,7 +27,7 @@ class Chat(entity.Entity):
     @chat_type.setter
     def chat_type(self,value: Optional[chat_type.ChatType] = None) -> None:
         """
-        Sets the chatType property value. The chatType property
+        Sets the chatType property value. 
         Args:
             value: Value to set for the chatType property.
         """
@@ -38,7 +38,6 @@ class Chat(entity.Entity):
         Instantiates a new chat and sets the default values.
         """
         super().__init__()
-        # The chatType property
         self._chat_type: Optional[chat_type.ChatType] = None
         # Date and time at which the chat was created. Read-only.
         self._created_date_time: Optional[datetime] = None
@@ -52,7 +51,6 @@ class Chat(entity.Entity):
         self._members: Optional[List[conversation_member.ConversationMember]] = None
         # A collection of all the messages in the chat. Nullable.
         self._messages: Optional[List[chat_message.ChatMessage]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Represents details about an online meeting. If the chat isn't associated with an online meeting, the property is empty. Read-only.
         self._online_meeting_info: Optional[teamwork_online_meeting_info.TeamworkOnlineMeetingInfo] = None
@@ -104,20 +102,20 @@ class Chat(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "chat_type": lambda n : setattr(self, 'chat_type', n.get_enum_value(chat_type.ChatType)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "installed_apps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(teams_app_installation.TeamsAppInstallation)),
-            "last_message_preview": lambda n : setattr(self, 'last_message_preview', n.get_object_value(chat_message_info.ChatMessageInfo)),
-            "last_updated_date_time": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
+            "chatType": lambda n : setattr(self, 'chat_type', n.get_enum_value(chat_type.ChatType)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "installedApps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(teams_app_installation.TeamsAppInstallation)),
+            "lastMessagePreview": lambda n : setattr(self, 'last_message_preview', n.get_object_value(chat_message_info.ChatMessageInfo)),
+            "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(conversation_member.ConversationMember)),
             "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(chat_message.ChatMessage)),
-            "online_meeting_info": lambda n : setattr(self, 'online_meeting_info', n.get_object_value(teamwork_online_meeting_info.TeamworkOnlineMeetingInfo)),
-            "pinned_messages": lambda n : setattr(self, 'pinned_messages', n.get_collection_of_object_values(pinned_chat_message_info.PinnedChatMessageInfo)),
+            "onlineMeetingInfo": lambda n : setattr(self, 'online_meeting_info', n.get_object_value(teamwork_online_meeting_info.TeamworkOnlineMeetingInfo)),
+            "pinnedMessages": lambda n : setattr(self, 'pinned_messages', n.get_collection_of_object_values(pinned_chat_message_info.PinnedChatMessageInfo)),
             "tabs": lambda n : setattr(self, 'tabs', n.get_collection_of_object_values(teams_tab.TeamsTab)),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
             "topic": lambda n : setattr(self, 'topic', n.get_str_value()),
             "viewpoint": lambda n : setattr(self, 'viewpoint', n.get_object_value(chat_viewpoint.ChatViewpoint)),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

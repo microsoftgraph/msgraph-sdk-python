@@ -12,7 +12,6 @@ class ContactCollectionResponse(base_collection_pagination_count_response.BaseCo
         Instantiates a new ContactCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[contact.Contact]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ContactCollectionResponse(base_collection_pagination_count_response.BaseCo
     @property
     def value(self,) -> Optional[List[contact.Contact]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[contact.Contact]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ContactCollectionResponse(base_collection_pagination_count_response.BaseCo
     @value.setter
     def value(self,value: Optional[List[contact.Contact]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -12,9 +12,7 @@ class CasesRoot(entity.Entity):
         Instantiates a new casesRoot and sets the default values.
         """
         super().__init__()
-        # The ediscoveryCases property
         self._ediscovery_cases: Optional[List[ediscovery_case.EdiscoveryCase]] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -32,7 +30,7 @@ class CasesRoot(entity.Entity):
     @property
     def ediscovery_cases(self,) -> Optional[List[ediscovery_case.EdiscoveryCase]]:
         """
-        Gets the ediscoveryCases property value. The ediscoveryCases property
+        Gets the ediscoveryCases property value. 
         Returns: Optional[List[ediscovery_case.EdiscoveryCase]]
         """
         return self._ediscovery_cases
@@ -40,7 +38,7 @@ class CasesRoot(entity.Entity):
     @ediscovery_cases.setter
     def ediscovery_cases(self,value: Optional[List[ediscovery_case.EdiscoveryCase]] = None) -> None:
         """
-        Sets the ediscoveryCases property value. The ediscoveryCases property
+        Sets the ediscoveryCases property value. 
         Args:
             value: Value to set for the ediscoveryCases property.
         """
@@ -52,7 +50,7 @@ class CasesRoot(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "ediscovery_cases": lambda n : setattr(self, 'ediscovery_cases', n.get_collection_of_object_values(ediscovery_case.EdiscoveryCase)),
+            "ediscoveryCases": lambda n : setattr(self, 'ediscovery_cases', n.get_collection_of_object_values(ediscovery_case.EdiscoveryCase)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

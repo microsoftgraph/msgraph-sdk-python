@@ -14,7 +14,6 @@ class OfficeGraphInsights(entity.Entity):
         Instantiates a new officeGraphInsights and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Calculated relationship identifying documents shared with or by the user. This includes URLs, file attachments, and reference attachments to OneDrive for Business and SharePoint files found in Outlook messages and meetings. This also includes URLs and reference attachments to Teams conversations. Ordered by recency of share.
         self._shared: Optional[List[shared_insight.SharedInsight]] = None

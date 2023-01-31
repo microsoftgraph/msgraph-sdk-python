@@ -66,7 +66,7 @@ class UserSourcesRequestBuilder():
         """
         Create a new userSource object associated with an eDiscovery custodian.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[user_source.UserSource]
         """
@@ -105,7 +105,7 @@ class UserSourcesRequestBuilder():
         """
         Create a new userSource object associated with an eDiscovery custodian.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

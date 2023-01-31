@@ -17,10 +17,11 @@ class ManagedAppOperationItemRequestBuilder():
     """
     Provides operations to manage the operations property of the microsoft.graph.managedAppRegistration entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, managed_app_operation_id: Optional[str] = None) -> None:
         """
         Instantiates a new ManagedAppOperationItemRequestBuilder and sets the default values.
         Args:
+            managedAppOperationId: key: id of managedAppOperation
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class ManagedAppOperationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceAppManagement/managedAppRegistrations/{managedAppRegistration%2Did}/operations/{managedAppOperation%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["managedAppOperation%2Did"] = managedAppOperationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -74,7 +76,7 @@ class ManagedAppOperationItemRequestBuilder():
         """
         Update the navigation property operations in deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[managed_app_operation.ManagedAppOperation]
         """
@@ -129,7 +131,7 @@ class ManagedAppOperationItemRequestBuilder():
         """
         Update the navigation property operations in deviceAppManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

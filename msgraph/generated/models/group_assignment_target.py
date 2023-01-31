@@ -33,7 +33,7 @@ class GroupAssignmentTarget(device_and_app_management_assignment_target.DeviceAn
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "group_id": lambda n : setattr(self, 'group_id', n.get_str_value()),
+            "groupId": lambda n : setattr(self, 'group_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

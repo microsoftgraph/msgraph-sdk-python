@@ -53,7 +53,6 @@ class UnifiedRoleAssignmentSchedule(unified_role_schedule_base.UnifiedRoleSchedu
         self._assignment_type: Optional[str] = None
         # How the assignments is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleAssignmentSchedule can be managed by the caller. Supports $filter (eq, ne).
         self._member_type: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The period of the role assignment. It can represent a single occurrence or multiple recurrences.
         self._schedule_info: Optional[request_schedule.RequestSchedule] = None
@@ -76,10 +75,10 @@ class UnifiedRoleAssignmentSchedule(unified_role_schedule_base.UnifiedRoleSchedu
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "activated_using": lambda n : setattr(self, 'activated_using', n.get_object_value(unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule)),
-            "assignment_type": lambda n : setattr(self, 'assignment_type', n.get_str_value()),
-            "member_type": lambda n : setattr(self, 'member_type', n.get_str_value()),
-            "schedule_info": lambda n : setattr(self, 'schedule_info', n.get_object_value(request_schedule.RequestSchedule)),
+            "activatedUsing": lambda n : setattr(self, 'activated_using', n.get_object_value(unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule)),
+            "assignmentType": lambda n : setattr(self, 'assignment_type', n.get_str_value()),
+            "memberType": lambda n : setattr(self, 'member_type', n.get_str_value()),
+            "scheduleInfo": lambda n : setattr(self, 'schedule_info', n.get_object_value(request_schedule.RequestSchedule)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -74,9 +74,9 @@ class X509CertificateAuthenticationMethodConfiguration(authentication_method_con
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "authentication_mode_configuration": lambda n : setattr(self, 'authentication_mode_configuration', n.get_object_value(x509_certificate_authentication_mode_configuration.X509CertificateAuthenticationModeConfiguration)),
-            "certificate_user_bindings": lambda n : setattr(self, 'certificate_user_bindings', n.get_collection_of_object_values(x509_certificate_user_binding.X509CertificateUserBinding)),
-            "include_targets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_method_target.AuthenticationMethodTarget)),
+            "authenticationModeConfiguration": lambda n : setattr(self, 'authentication_mode_configuration', n.get_object_value(x509_certificate_authentication_mode_configuration.X509CertificateAuthenticationModeConfiguration)),
+            "certificateUserBindings": lambda n : setattr(self, 'certificate_user_bindings', n.get_collection_of_object_values(x509_certificate_user_binding.X509CertificateUserBinding)),
+            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_method_target.AuthenticationMethodTarget)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

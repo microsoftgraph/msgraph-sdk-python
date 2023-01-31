@@ -32,9 +32,7 @@ class PrintOperationStatus(AdditionalDataHolder, Parsable):
 
         # A human-readable description of the printOperation's current processing state. Read-only.
         self._description: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The state property
         self._state: Optional[print_operation_processing_state.PrintOperationProcessingState] = None
     
     @staticmethod
@@ -81,7 +79,7 @@ class PrintOperationStatus(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -89,7 +87,7 @@ class PrintOperationStatus(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -111,7 +109,7 @@ class PrintOperationStatus(AdditionalDataHolder, Parsable):
     @property
     def state(self,) -> Optional[print_operation_processing_state.PrintOperationProcessingState]:
         """
-        Gets the state property value. The state property
+        Gets the state property value. 
         Returns: Optional[print_operation_processing_state.PrintOperationProcessingState]
         """
         return self._state
@@ -119,7 +117,7 @@ class PrintOperationStatus(AdditionalDataHolder, Parsable):
     @state.setter
     def state(self,value: Optional[print_operation_processing_state.PrintOperationProcessingState] = None) -> None:
         """
-        Sets the state property value. The state property
+        Sets the state property value. 
         Args:
             value: Value to set for the state property.
         """

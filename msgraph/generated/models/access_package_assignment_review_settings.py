@@ -44,7 +44,6 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         self._is_reviewer_justification_required: Optional[bool] = None
         # Specifies whether the principals can review their own assignments.
         self._is_self_review: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # This collection specifies the users or group of users who will review the access package assignments.
         self._primary_reviewers: Optional[List[subject_set.SubjectSet]] = None
@@ -103,14 +102,14 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "expiration_behavior": lambda n : setattr(self, 'expiration_behavior', n.get_enum_value(access_review_expiration_behavior.AccessReviewExpirationBehavior)),
-            "fallback_reviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(subject_set.SubjectSet)),
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "is_recommendation_enabled": lambda n : setattr(self, 'is_recommendation_enabled', n.get_bool_value()),
-            "is_reviewer_justification_required": lambda n : setattr(self, 'is_reviewer_justification_required', n.get_bool_value()),
-            "is_self_review": lambda n : setattr(self, 'is_self_review', n.get_bool_value()),
+            "expirationBehavior": lambda n : setattr(self, 'expiration_behavior', n.get_enum_value(access_review_expiration_behavior.AccessReviewExpirationBehavior)),
+            "fallbackReviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "isRecommendationEnabled": lambda n : setattr(self, 'is_recommendation_enabled', n.get_bool_value()),
+            "isReviewerJustificationRequired": lambda n : setattr(self, 'is_reviewer_justification_required', n.get_bool_value()),
+            "isSelfReview": lambda n : setattr(self, 'is_self_review', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "primary_reviewers": lambda n : setattr(self, 'primary_reviewers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "primaryReviewers": lambda n : setattr(self, 'primary_reviewers', n.get_collection_of_object_values(subject_set.SubjectSet)),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(entitlement_management_schedule.EntitlementManagementSchedule)),
         }
         return fields
@@ -186,7 +185,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -194,7 +193,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

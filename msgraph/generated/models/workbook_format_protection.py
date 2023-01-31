@@ -15,7 +15,6 @@ class WorkbookFormatProtection(entity.Entity):
         self._formula_hidden: Optional[bool] = None
         # Indicates if Excel locks the cells in the object. A null value indicates that the entire range doesn't have uniform lock setting.
         self._locked: Optional[bool] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class WorkbookFormatProtection(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "formula_hidden": lambda n : setattr(self, 'formula_hidden', n.get_bool_value()),
+            "formulaHidden": lambda n : setattr(self, 'formula_hidden', n.get_bool_value()),
             "locked": lambda n : setattr(self, 'locked', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

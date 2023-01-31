@@ -18,6 +18,7 @@ optional_claims = lazy_import('msgraph.generated.models.optional_claims')
 parental_control_settings = lazy_import('msgraph.generated.models.parental_control_settings')
 password_credential = lazy_import('msgraph.generated.models.password_credential')
 public_client_application = lazy_import('msgraph.generated.models.public_client_application')
+request_signature_verification = lazy_import('msgraph.generated.models.request_signature_verification')
 required_resource_access = lazy_import('msgraph.generated.models.required_resource_access')
 spa_application = lazy_import('msgraph.generated.models.spa_application')
 token_issuance_policy = lazy_import('msgraph.generated.models.token_issuance_policy')
@@ -150,7 +151,6 @@ class Application(directory_object.DirectoryObject):
         self._created_date_time: Optional[datetime] = None
         # Supports $filter (/$count eq 0, /$count ne 0). Read-only.
         self._created_on_behalf_of: Optional[directory_object.DirectoryObject] = None
-        # The defaultRedirectUri property
         self._default_redirect_uri: Optional[str] = None
         # Free text field to provide a description of the application object to end users. The maximum allowed size is 1024 characters. Supports $filter (eq, ne, not, ge, le, startsWith) and $search.
         self._description: Optional[str] = None
@@ -164,7 +164,6 @@ class Application(directory_object.DirectoryObject):
         self._federated_identity_credentials: Optional[List[federated_identity_credential.FederatedIdentityCredential]] = None
         # Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute, use one of the following valid string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all of the security groups, distribution groups, and Azure AD directory roles that the signed-in user is a member of).
         self._group_membership_claims: Optional[str] = None
-        # The homeRealmDiscoveryPolicies property
         self._home_realm_discovery_policies: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]] = None
         # Also known as App ID URI, this value is set when an application is used as a resource app. The identifierUris acts as the prefix for the scopes you'll reference in your API's code, and it must be globally unique. You can use the default value provided, which is in the form api://<application-client-id>, or specify a more readable URI like https://contoso.com/api. For more information on valid identifierUris patterns and best practices, see Azure AD application registration security best practices. Not nullable. Supports $filter (eq, ne, ge, le, startsWith).
         self._identifier_uris: Optional[List[str]] = None
@@ -180,7 +179,6 @@ class Application(directory_object.DirectoryObject):
         self._logo: Optional[bytes] = None
         # Notes relevant for the management of the application.
         self._notes: Optional[str] = None
-        # The oauth2RequirePostResponse property
         self._oauth2_require_post_response: Optional[bool] = None
         # Application developers can configure optional claims in their Azure AD applications to specify the claims that are sent to their application by the Microsoft security token service. For more information, see How to: Provide optional claims to your app.
         self._optional_claims: Optional[optional_claims.OptionalClaims] = None
@@ -194,6 +192,7 @@ class Application(directory_object.DirectoryObject):
         self._public_client: Optional[public_client_application.PublicClientApplication] = None
         # The verified publisher domain for the application. Read-only. For more information, see How to: Configure an application's publisher domain. Supports $filter (eq, ne, ge, le, startsWith).
         self._publisher_domain: Optional[str] = None
+        self._request_signature_verification: Optional[request_signature_verification.RequestSignatureVerification] = None
         # Specifies the resources that the application needs to access. This property also specifies the set of delegated permissions and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. No more than 50 resource services (APIs) can be configured. Beginning mid-October 2021, the total number of required permissions must not exceed 400. For more information, see Limits on requested permissions per app. Not nullable. Supports $filter (eq, not, ge, le).
         self._required_resource_access: Optional[List[required_resource_access.RequiredResourceAccess]] = None
         # The URL where the service exposes SAML metadata for federation. This property is valid only for single-tenant applications. Nullable.
@@ -208,9 +207,7 @@ class Application(directory_object.DirectoryObject):
         self._tags: Optional[List[str]] = None
         # Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD encrypts all the tokens it emits by using the key this property points to. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
         self._token_encryption_key_id: Optional[Guid] = None
-        # The tokenIssuancePolicies property
         self._token_issuance_policies: Optional[List[token_issuance_policy.TokenIssuancePolicy]] = None
-        # The tokenLifetimePolicies property
         self._token_lifetime_policies: Optional[List[token_lifetime_policy.TokenLifetimePolicy]] = None
         # Specifies the verified publisher of the application. For more information about how publisher verification helps support application security, trustworthiness, and compliance, see Publisher verification.
         self._verified_publisher: Optional[verified_publisher.VerifiedPublisher] = None
@@ -266,7 +263,7 @@ class Application(directory_object.DirectoryObject):
     @property
     def default_redirect_uri(self,) -> Optional[str]:
         """
-        Gets the defaultRedirectUri property value. The defaultRedirectUri property
+        Gets the defaultRedirectUri property value. 
         Returns: Optional[str]
         """
         return self._default_redirect_uri
@@ -274,7 +271,7 @@ class Application(directory_object.DirectoryObject):
     @default_redirect_uri.setter
     def default_redirect_uri(self,value: Optional[str] = None) -> None:
         """
-        Sets the defaultRedirectUri property value. The defaultRedirectUri property
+        Sets the defaultRedirectUri property value. 
         Args:
             value: Value to set for the defaultRedirectUri property.
         """
@@ -371,46 +368,47 @@ class Application(directory_object.DirectoryObject):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "add_ins": lambda n : setattr(self, 'add_ins', n.get_collection_of_object_values(add_in.AddIn)),
+            "addIns": lambda n : setattr(self, 'add_ins', n.get_collection_of_object_values(add_in.AddIn)),
             "api": lambda n : setattr(self, 'api', n.get_object_value(api_application.ApiApplication)),
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "application_template_id": lambda n : setattr(self, 'application_template_id', n.get_str_value()),
-            "app_roles": lambda n : setattr(self, 'app_roles', n.get_collection_of_object_values(app_role.AppRole)),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "applicationTemplateId": lambda n : setattr(self, 'application_template_id', n.get_str_value()),
+            "appRoles": lambda n : setattr(self, 'app_roles', n.get_collection_of_object_values(app_role.AppRole)),
             "certification": lambda n : setattr(self, 'certification', n.get_object_value(certification.Certification)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "created_on_behalf_of": lambda n : setattr(self, 'created_on_behalf_of', n.get_object_value(directory_object.DirectoryObject)),
-            "default_redirect_uri": lambda n : setattr(self, 'default_redirect_uri', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdOnBehalfOf": lambda n : setattr(self, 'created_on_behalf_of', n.get_object_value(directory_object.DirectoryObject)),
+            "defaultRedirectUri": lambda n : setattr(self, 'default_redirect_uri', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "disabled_by_microsoft_status": lambda n : setattr(self, 'disabled_by_microsoft_status', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "extension_properties": lambda n : setattr(self, 'extension_properties', n.get_collection_of_object_values(extension_property.ExtensionProperty)),
-            "federated_identity_credentials": lambda n : setattr(self, 'federated_identity_credentials', n.get_collection_of_object_values(federated_identity_credential.FederatedIdentityCredential)),
-            "group_membership_claims": lambda n : setattr(self, 'group_membership_claims', n.get_str_value()),
-            "home_realm_discovery_policies": lambda n : setattr(self, 'home_realm_discovery_policies', n.get_collection_of_object_values(home_realm_discovery_policy.HomeRealmDiscoveryPolicy)),
-            "identifier_uris": lambda n : setattr(self, 'identifier_uris', n.get_collection_of_primitive_values(str)),
+            "disabledByMicrosoftStatus": lambda n : setattr(self, 'disabled_by_microsoft_status', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "extensionProperties": lambda n : setattr(self, 'extension_properties', n.get_collection_of_object_values(extension_property.ExtensionProperty)),
+            "federatedIdentityCredentials": lambda n : setattr(self, 'federated_identity_credentials', n.get_collection_of_object_values(federated_identity_credential.FederatedIdentityCredential)),
+            "groupMembershipClaims": lambda n : setattr(self, 'group_membership_claims', n.get_str_value()),
+            "homeRealmDiscoveryPolicies": lambda n : setattr(self, 'home_realm_discovery_policies', n.get_collection_of_object_values(home_realm_discovery_policy.HomeRealmDiscoveryPolicy)),
+            "identifierUris": lambda n : setattr(self, 'identifier_uris', n.get_collection_of_primitive_values(str)),
             "info": lambda n : setattr(self, 'info', n.get_object_value(informational_url.InformationalUrl)),
-            "is_device_only_auth_supported": lambda n : setattr(self, 'is_device_only_auth_supported', n.get_bool_value()),
-            "is_fallback_public_client": lambda n : setattr(self, 'is_fallback_public_client', n.get_bool_value()),
-            "key_credentials": lambda n : setattr(self, 'key_credentials', n.get_collection_of_object_values(key_credential.KeyCredential)),
+            "isDeviceOnlyAuthSupported": lambda n : setattr(self, 'is_device_only_auth_supported', n.get_bool_value()),
+            "isFallbackPublicClient": lambda n : setattr(self, 'is_fallback_public_client', n.get_bool_value()),
+            "keyCredentials": lambda n : setattr(self, 'key_credentials', n.get_collection_of_object_values(key_credential.KeyCredential)),
             "logo": lambda n : setattr(self, 'logo', n.get_bytes_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
-            "oauth2_require_post_response": lambda n : setattr(self, 'oauth2_require_post_response', n.get_bool_value()),
-            "optional_claims": lambda n : setattr(self, 'optional_claims', n.get_object_value(optional_claims.OptionalClaims)),
+            "oauth2RequirePostResponse": lambda n : setattr(self, 'oauth2_require_post_response', n.get_bool_value()),
+            "optionalClaims": lambda n : setattr(self, 'optional_claims', n.get_object_value(optional_claims.OptionalClaims)),
             "owners": lambda n : setattr(self, 'owners', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "parental_control_settings": lambda n : setattr(self, 'parental_control_settings', n.get_object_value(parental_control_settings.ParentalControlSettings)),
-            "password_credentials": lambda n : setattr(self, 'password_credentials', n.get_collection_of_object_values(password_credential.PasswordCredential)),
-            "public_client": lambda n : setattr(self, 'public_client', n.get_object_value(public_client_application.PublicClientApplication)),
-            "publisher_domain": lambda n : setattr(self, 'publisher_domain', n.get_str_value()),
-            "required_resource_access": lambda n : setattr(self, 'required_resource_access', n.get_collection_of_object_values(required_resource_access.RequiredResourceAccess)),
-            "saml_metadata_url": lambda n : setattr(self, 'saml_metadata_url', n.get_str_value()),
-            "service_management_reference": lambda n : setattr(self, 'service_management_reference', n.get_str_value()),
-            "sign_in_audience": lambda n : setattr(self, 'sign_in_audience', n.get_str_value()),
+            "parentalControlSettings": lambda n : setattr(self, 'parental_control_settings', n.get_object_value(parental_control_settings.ParentalControlSettings)),
+            "passwordCredentials": lambda n : setattr(self, 'password_credentials', n.get_collection_of_object_values(password_credential.PasswordCredential)),
+            "publicClient": lambda n : setattr(self, 'public_client', n.get_object_value(public_client_application.PublicClientApplication)),
+            "publisherDomain": lambda n : setattr(self, 'publisher_domain', n.get_str_value()),
+            "requestSignatureVerification": lambda n : setattr(self, 'request_signature_verification', n.get_object_value(request_signature_verification.RequestSignatureVerification)),
+            "requiredResourceAccess": lambda n : setattr(self, 'required_resource_access', n.get_collection_of_object_values(required_resource_access.RequiredResourceAccess)),
+            "samlMetadataUrl": lambda n : setattr(self, 'saml_metadata_url', n.get_str_value()),
+            "serviceManagementReference": lambda n : setattr(self, 'service_management_reference', n.get_str_value()),
+            "signInAudience": lambda n : setattr(self, 'sign_in_audience', n.get_str_value()),
             "spa": lambda n : setattr(self, 'spa', n.get_object_value(spa_application.SpaApplication)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
-            "token_encryption_key_id": lambda n : setattr(self, 'token_encryption_key_id', n.get_object_value(Guid)),
-            "token_issuance_policies": lambda n : setattr(self, 'token_issuance_policies', n.get_collection_of_object_values(token_issuance_policy.TokenIssuancePolicy)),
-            "token_lifetime_policies": lambda n : setattr(self, 'token_lifetime_policies', n.get_collection_of_object_values(token_lifetime_policy.TokenLifetimePolicy)),
-            "verified_publisher": lambda n : setattr(self, 'verified_publisher', n.get_object_value(verified_publisher.VerifiedPublisher)),
+            "tokenEncryptionKeyId": lambda n : setattr(self, 'token_encryption_key_id', n.get_object_value(Guid)),
+            "tokenIssuancePolicies": lambda n : setattr(self, 'token_issuance_policies', n.get_collection_of_object_values(token_issuance_policy.TokenIssuancePolicy)),
+            "tokenLifetimePolicies": lambda n : setattr(self, 'token_lifetime_policies', n.get_collection_of_object_values(token_lifetime_policy.TokenLifetimePolicy)),
+            "verifiedPublisher": lambda n : setattr(self, 'verified_publisher', n.get_object_value(verified_publisher.VerifiedPublisher)),
             "web": lambda n : setattr(self, 'web', n.get_object_value(web_application.WebApplication)),
         }
         super_fields = super().get_field_deserializers()
@@ -437,7 +435,7 @@ class Application(directory_object.DirectoryObject):
     @property
     def home_realm_discovery_policies(self,) -> Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]]:
         """
-        Gets the homeRealmDiscoveryPolicies property value. The homeRealmDiscoveryPolicies property
+        Gets the homeRealmDiscoveryPolicies property value. 
         Returns: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]]
         """
         return self._home_realm_discovery_policies
@@ -445,7 +443,7 @@ class Application(directory_object.DirectoryObject):
     @home_realm_discovery_policies.setter
     def home_realm_discovery_policies(self,value: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]] = None) -> None:
         """
-        Sets the homeRealmDiscoveryPolicies property value. The homeRealmDiscoveryPolicies property
+        Sets the homeRealmDiscoveryPolicies property value. 
         Args:
             value: Value to set for the homeRealmDiscoveryPolicies property.
         """
@@ -573,7 +571,7 @@ class Application(directory_object.DirectoryObject):
     @property
     def oauth2_require_post_response(self,) -> Optional[bool]:
         """
-        Gets the oauth2RequirePostResponse property value. The oauth2RequirePostResponse property
+        Gets the oauth2RequirePostResponse property value. 
         Returns: Optional[bool]
         """
         return self._oauth2_require_post_response
@@ -581,7 +579,7 @@ class Application(directory_object.DirectoryObject):
     @oauth2_require_post_response.setter
     def oauth2_require_post_response(self,value: Optional[bool] = None) -> None:
         """
-        Sets the oauth2RequirePostResponse property value. The oauth2RequirePostResponse property
+        Sets the oauth2RequirePostResponse property value. 
         Args:
             value: Value to set for the oauth2RequirePostResponse property.
         """
@@ -690,6 +688,23 @@ class Application(directory_object.DirectoryObject):
         self._publisher_domain = value
     
     @property
+    def request_signature_verification(self,) -> Optional[request_signature_verification.RequestSignatureVerification]:
+        """
+        Gets the requestSignatureVerification property value. 
+        Returns: Optional[request_signature_verification.RequestSignatureVerification]
+        """
+        return self._request_signature_verification
+    
+    @request_signature_verification.setter
+    def request_signature_verification(self,value: Optional[request_signature_verification.RequestSignatureVerification] = None) -> None:
+        """
+        Sets the requestSignatureVerification property value. 
+        Args:
+            value: Value to set for the requestSignatureVerification property.
+        """
+        self._request_signature_verification = value
+    
+    @property
     def required_resource_access(self,) -> Optional[List[required_resource_access.RequiredResourceAccess]]:
         """
         Gets the requiredResourceAccess property value. Specifies the resources that the application needs to access. This property also specifies the set of delegated permissions and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. No more than 50 resource services (APIs) can be configured. Beginning mid-October 2021, the total number of required permissions must not exceed 400. For more information, see Limits on requested permissions per app. Not nullable. Supports $filter (eq, not, ge, le).
@@ -762,6 +777,7 @@ class Application(directory_object.DirectoryObject):
         writer.write_collection_of_object_values("passwordCredentials", self.password_credentials)
         writer.write_object_value("publicClient", self.public_client)
         writer.write_str_value("publisherDomain", self.publisher_domain)
+        writer.write_object_value("requestSignatureVerification", self.request_signature_verification)
         writer.write_collection_of_object_values("requiredResourceAccess", self.required_resource_access)
         writer.write_str_value("samlMetadataUrl", self.saml_metadata_url)
         writer.write_str_value("serviceManagementReference", self.service_management_reference)
@@ -862,7 +878,7 @@ class Application(directory_object.DirectoryObject):
     @property
     def token_issuance_policies(self,) -> Optional[List[token_issuance_policy.TokenIssuancePolicy]]:
         """
-        Gets the tokenIssuancePolicies property value. The tokenIssuancePolicies property
+        Gets the tokenIssuancePolicies property value. 
         Returns: Optional[List[token_issuance_policy.TokenIssuancePolicy]]
         """
         return self._token_issuance_policies
@@ -870,7 +886,7 @@ class Application(directory_object.DirectoryObject):
     @token_issuance_policies.setter
     def token_issuance_policies(self,value: Optional[List[token_issuance_policy.TokenIssuancePolicy]] = None) -> None:
         """
-        Sets the tokenIssuancePolicies property value. The tokenIssuancePolicies property
+        Sets the tokenIssuancePolicies property value. 
         Args:
             value: Value to set for the tokenIssuancePolicies property.
         """
@@ -879,7 +895,7 @@ class Application(directory_object.DirectoryObject):
     @property
     def token_lifetime_policies(self,) -> Optional[List[token_lifetime_policy.TokenLifetimePolicy]]:
         """
-        Gets the tokenLifetimePolicies property value. The tokenLifetimePolicies property
+        Gets the tokenLifetimePolicies property value. 
         Returns: Optional[List[token_lifetime_policy.TokenLifetimePolicy]]
         """
         return self._token_lifetime_policies
@@ -887,7 +903,7 @@ class Application(directory_object.DirectoryObject):
     @token_lifetime_policies.setter
     def token_lifetime_policies(self,value: Optional[List[token_lifetime_policy.TokenLifetimePolicy]] = None) -> None:
         """
-        Sets the tokenLifetimePolicies property value. The tokenLifetimePolicies property
+        Sets the tokenLifetimePolicies property value. 
         Args:
             value: Value to set for the tokenLifetimePolicies property.
         """

@@ -34,7 +34,6 @@ class ItemBody(AdditionalDataHolder, Parsable):
         self._content: Optional[str] = None
         # The type of the content. Possible values are text and html.
         self._content_type: Optional[body_type.BodyType] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @property
@@ -90,7 +89,7 @@ class ItemBody(AdditionalDataHolder, Parsable):
         """
         fields = {
             "content": lambda n : setattr(self, 'content', n.get_str_value()),
-            "content_type": lambda n : setattr(self, 'content_type', n.get_enum_value(body_type.BodyType)),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_enum_value(body_type.BodyType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -98,7 +97,7 @@ class ItemBody(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -106,7 +105,7 @@ class ItemBody(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

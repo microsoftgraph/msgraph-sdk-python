@@ -12,7 +12,6 @@ class DeviceActionResultCollectionResponse(base_collection_pagination_count_resp
         Instantiates a new DeviceActionResultCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[device_action_result.DeviceActionResult]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class DeviceActionResultCollectionResponse(base_collection_pagination_count_resp
     @property
     def value(self,) -> Optional[List[device_action_result.DeviceActionResult]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[device_action_result.DeviceActionResult]]
         """
         return self._value
@@ -61,7 +60,7 @@ class DeviceActionResultCollectionResponse(base_collection_pagination_count_resp
     @value.setter
     def value(self,value: Optional[List[device_action_result.DeviceActionResult]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

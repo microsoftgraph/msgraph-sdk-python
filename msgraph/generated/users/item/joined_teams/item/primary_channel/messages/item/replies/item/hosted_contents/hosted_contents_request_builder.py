@@ -66,7 +66,7 @@ class HostedContentsRequestBuilder():
         """
         Create new navigation property to hostedContents for users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[chat_message_hosted_content.ChatMessageHostedContent]
         """
@@ -105,7 +105,7 @@ class HostedContentsRequestBuilder():
         """
         Create new navigation property to hostedContents for users
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

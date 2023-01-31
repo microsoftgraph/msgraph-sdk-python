@@ -84,7 +84,6 @@ class SecureScore(entity.Entity):
         self._licensed_user_count: Optional[int] = None
         # Tenant maximum possible score on specified date.
         self._max_score: Optional[float] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Complex type containing details about the security product/service vendor, provider, and subprovider (for example, vendor=Microsoft; provider=SecureScore). Required.
         self._vendor_information: Optional[security_vendor_information.SecurityVendorInformation] = None
@@ -175,16 +174,16 @@ class SecureScore(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "active_user_count": lambda n : setattr(self, 'active_user_count', n.get_int_value()),
-            "average_comparative_scores": lambda n : setattr(self, 'average_comparative_scores', n.get_collection_of_object_values(average_comparative_score.AverageComparativeScore)),
-            "azure_tenant_id": lambda n : setattr(self, 'azure_tenant_id', n.get_str_value()),
-            "control_scores": lambda n : setattr(self, 'control_scores', n.get_collection_of_object_values(control_score.ControlScore)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "current_score": lambda n : setattr(self, 'current_score', n.get_float_value()),
-            "enabled_services": lambda n : setattr(self, 'enabled_services', n.get_collection_of_primitive_values(str)),
-            "licensed_user_count": lambda n : setattr(self, 'licensed_user_count', n.get_int_value()),
-            "max_score": lambda n : setattr(self, 'max_score', n.get_float_value()),
-            "vendor_information": lambda n : setattr(self, 'vendor_information', n.get_object_value(security_vendor_information.SecurityVendorInformation)),
+            "activeUserCount": lambda n : setattr(self, 'active_user_count', n.get_int_value()),
+            "averageComparativeScores": lambda n : setattr(self, 'average_comparative_scores', n.get_collection_of_object_values(average_comparative_score.AverageComparativeScore)),
+            "azureTenantId": lambda n : setattr(self, 'azure_tenant_id', n.get_str_value()),
+            "controlScores": lambda n : setattr(self, 'control_scores', n.get_collection_of_object_values(control_score.ControlScore)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "currentScore": lambda n : setattr(self, 'current_score', n.get_float_value()),
+            "enabledServices": lambda n : setattr(self, 'enabled_services', n.get_collection_of_primitive_values(str)),
+            "licensedUserCount": lambda n : setattr(self, 'licensed_user_count', n.get_int_value()),
+            "maxScore": lambda n : setattr(self, 'max_score', n.get_float_value()),
+            "vendorInformation": lambda n : setattr(self, 'vendor_information', n.get_object_value(security_vendor_information.SecurityVendorInformation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -199,7 +199,6 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         self._inventory_type: Optional[str] = None
         # The license used for the call.
         self._license_capability: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The telecommunications operator which provided PSTN services for this call. This may be Microsoft, or it may be a third-party operator via the Operator Connect Program.
         self._operator: Optional[str] = None
@@ -319,30 +318,30 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "call_duration_source": lambda n : setattr(self, 'call_duration_source', n.get_enum_value(pstn_call_duration_source.PstnCallDurationSource)),
-            "callee_number": lambda n : setattr(self, 'callee_number', n.get_str_value()),
-            "caller_number": lambda n : setattr(self, 'caller_number', n.get_str_value()),
-            "call_id": lambda n : setattr(self, 'call_id', n.get_str_value()),
-            "call_type": lambda n : setattr(self, 'call_type', n.get_str_value()),
+            "callDurationSource": lambda n : setattr(self, 'call_duration_source', n.get_enum_value(pstn_call_duration_source.PstnCallDurationSource)),
+            "calleeNumber": lambda n : setattr(self, 'callee_number', n.get_str_value()),
+            "callerNumber": lambda n : setattr(self, 'caller_number', n.get_str_value()),
+            "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
+            "callType": lambda n : setattr(self, 'call_type', n.get_str_value()),
             "charge": lambda n : setattr(self, 'charge', n.get_float_value()),
-            "conference_id": lambda n : setattr(self, 'conference_id', n.get_str_value()),
-            "connection_charge": lambda n : setattr(self, 'connection_charge', n.get_float_value()),
+            "conferenceId": lambda n : setattr(self, 'conference_id', n.get_str_value()),
+            "connectionCharge": lambda n : setattr(self, 'connection_charge', n.get_float_value()),
             "currency": lambda n : setattr(self, 'currency', n.get_str_value()),
-            "destination_context": lambda n : setattr(self, 'destination_context', n.get_str_value()),
-            "destination_name": lambda n : setattr(self, 'destination_name', n.get_str_value()),
+            "destinationContext": lambda n : setattr(self, 'destination_context', n.get_str_value()),
+            "destinationName": lambda n : setattr(self, 'destination_name', n.get_str_value()),
             "duration": lambda n : setattr(self, 'duration', n.get_int_value()),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "inventory_type": lambda n : setattr(self, 'inventory_type', n.get_str_value()),
-            "license_capability": lambda n : setattr(self, 'license_capability', n.get_str_value()),
+            "inventoryType": lambda n : setattr(self, 'inventory_type', n.get_str_value()),
+            "licenseCapability": lambda n : setattr(self, 'license_capability', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operator": lambda n : setattr(self, 'operator', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
-            "tenant_country_code": lambda n : setattr(self, 'tenant_country_code', n.get_str_value()),
-            "usage_country_code": lambda n : setattr(self, 'usage_country_code', n.get_str_value()),
-            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "tenantCountryCode": lambda n : setattr(self, 'tenant_country_code', n.get_str_value()),
+            "usageCountryCode": lambda n : setattr(self, 'usage_country_code', n.get_str_value()),
+            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
     
@@ -400,7 +399,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -408,7 +407,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

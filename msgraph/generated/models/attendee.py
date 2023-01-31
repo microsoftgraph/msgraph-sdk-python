@@ -37,7 +37,7 @@ class Attendee(attendee_base.AttendeeBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "proposed_new_time": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(time_slot.TimeSlot)),
+            "proposedNewTime": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(time_slot.TimeSlot)),
             "status": lambda n : setattr(self, 'status', n.get_object_value(response_status.ResponseStatus)),
         }
         super_fields = super().get_field_deserializers()

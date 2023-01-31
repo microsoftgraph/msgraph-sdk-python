@@ -32,13 +32,11 @@ class SharingDetail(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The user who shared the document.
         self._shared_by: Optional[insight_identity.InsightIdentity] = None
         # The date and time the file was last shared. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         self._shared_date_time: Optional[datetime] = None
-        # The sharingReference property
         self._sharing_reference: Optional[resource_reference.ResourceReference] = None
         # The subject with which the document was shared.
         self._sharing_subject: Optional[str] = None
@@ -64,18 +62,18 @@ class SharingDetail(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "shared_by": lambda n : setattr(self, 'shared_by', n.get_object_value(insight_identity.InsightIdentity)),
-            "shared_date_time": lambda n : setattr(self, 'shared_date_time', n.get_datetime_value()),
-            "sharing_reference": lambda n : setattr(self, 'sharing_reference', n.get_object_value(resource_reference.ResourceReference)),
-            "sharing_subject": lambda n : setattr(self, 'sharing_subject', n.get_str_value()),
-            "sharing_type": lambda n : setattr(self, 'sharing_type', n.get_str_value()),
+            "sharedBy": lambda n : setattr(self, 'shared_by', n.get_object_value(insight_identity.InsightIdentity)),
+            "sharedDateTime": lambda n : setattr(self, 'shared_date_time', n.get_datetime_value()),
+            "sharingReference": lambda n : setattr(self, 'sharing_reference', n.get_object_value(resource_reference.ResourceReference)),
+            "sharingSubject": lambda n : setattr(self, 'sharing_subject', n.get_str_value()),
+            "sharingType": lambda n : setattr(self, 'sharing_type', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -83,7 +81,7 @@ class SharingDetail(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -141,7 +139,7 @@ class SharingDetail(AdditionalDataHolder, Parsable):
     @property
     def sharing_reference(self,) -> Optional[resource_reference.ResourceReference]:
         """
-        Gets the sharingReference property value. The sharingReference property
+        Gets the sharingReference property value. 
         Returns: Optional[resource_reference.ResourceReference]
         """
         return self._sharing_reference
@@ -149,7 +147,7 @@ class SharingDetail(AdditionalDataHolder, Parsable):
     @sharing_reference.setter
     def sharing_reference(self,value: Optional[resource_reference.ResourceReference] = None) -> None:
         """
-        Sets the sharingReference property value. The sharingReference property
+        Sets the sharingReference property value. 
         Args:
             value: Value to set for the sharingReference property.
         """

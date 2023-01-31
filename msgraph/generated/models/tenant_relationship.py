@@ -31,11 +31,8 @@ class TenantRelationship(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The delegatedAdminCustomers property
         self._delegated_admin_customers: Optional[List[delegated_admin_customer.DelegatedAdminCustomer]] = None
-        # The delegatedAdminRelationships property
         self._delegated_admin_relationships: Optional[List[delegated_admin_relationship.DelegatedAdminRelationship]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -53,7 +50,7 @@ class TenantRelationship(AdditionalDataHolder, Parsable):
     @property
     def delegated_admin_customers(self,) -> Optional[List[delegated_admin_customer.DelegatedAdminCustomer]]:
         """
-        Gets the delegatedAdminCustomers property value. The delegatedAdminCustomers property
+        Gets the delegatedAdminCustomers property value. 
         Returns: Optional[List[delegated_admin_customer.DelegatedAdminCustomer]]
         """
         return self._delegated_admin_customers
@@ -61,7 +58,7 @@ class TenantRelationship(AdditionalDataHolder, Parsable):
     @delegated_admin_customers.setter
     def delegated_admin_customers(self,value: Optional[List[delegated_admin_customer.DelegatedAdminCustomer]] = None) -> None:
         """
-        Sets the delegatedAdminCustomers property value. The delegatedAdminCustomers property
+        Sets the delegatedAdminCustomers property value. 
         Args:
             value: Value to set for the delegatedAdminCustomers property.
         """
@@ -70,7 +67,7 @@ class TenantRelationship(AdditionalDataHolder, Parsable):
     @property
     def delegated_admin_relationships(self,) -> Optional[List[delegated_admin_relationship.DelegatedAdminRelationship]]:
         """
-        Gets the delegatedAdminRelationships property value. The delegatedAdminRelationships property
+        Gets the delegatedAdminRelationships property value. 
         Returns: Optional[List[delegated_admin_relationship.DelegatedAdminRelationship]]
         """
         return self._delegated_admin_relationships
@@ -78,7 +75,7 @@ class TenantRelationship(AdditionalDataHolder, Parsable):
     @delegated_admin_relationships.setter
     def delegated_admin_relationships(self,value: Optional[List[delegated_admin_relationship.DelegatedAdminRelationship]] = None) -> None:
         """
-        Sets the delegatedAdminRelationships property value. The delegatedAdminRelationships property
+        Sets the delegatedAdminRelationships property value. 
         Args:
             value: Value to set for the delegatedAdminRelationships property.
         """
@@ -90,8 +87,8 @@ class TenantRelationship(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "delegated_admin_customers": lambda n : setattr(self, 'delegated_admin_customers', n.get_collection_of_object_values(delegated_admin_customer.DelegatedAdminCustomer)),
-            "delegated_admin_relationships": lambda n : setattr(self, 'delegated_admin_relationships', n.get_collection_of_object_values(delegated_admin_relationship.DelegatedAdminRelationship)),
+            "delegatedAdminCustomers": lambda n : setattr(self, 'delegated_admin_customers', n.get_collection_of_object_values(delegated_admin_customer.DelegatedAdminCustomer)),
+            "delegatedAdminRelationships": lambda n : setattr(self, 'delegated_admin_relationships', n.get_collection_of_object_values(delegated_admin_relationship.DelegatedAdminRelationship)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -99,7 +96,7 @@ class TenantRelationship(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -107,7 +104,7 @@ class TenantRelationship(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

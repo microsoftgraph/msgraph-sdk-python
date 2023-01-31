@@ -15,7 +15,6 @@ class TeamworkHostedContent(entity.Entity):
         self._content_bytes: Optional[bytes] = None
         # Write only. Content type. sicj as image/png, image/jpg.
         self._content_type: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @property
@@ -70,8 +69,8 @@ class TeamworkHostedContent(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "content_bytes": lambda n : setattr(self, 'content_bytes', n.get_bytes_value()),
-            "content_type": lambda n : setattr(self, 'content_type', n.get_str_value()),
+            "contentBytes": lambda n : setattr(self, 'content_bytes', n.get_bytes_value()),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

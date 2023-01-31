@@ -32,7 +32,6 @@ class SearchAlterationOptions(AdditionalDataHolder, Parsable):
         self._enable_modification: Optional[bool] = None
         # Indicates whether spelling suggestions are enabled. If enabled, the user will get the search results for the original search query and suggestions for spelling correction in the queryAlterationResponse property of the response for the typos in the query. Optional.
         self._enable_suggestion: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -87,8 +86,8 @@ class SearchAlterationOptions(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "enable_modification": lambda n : setattr(self, 'enable_modification', n.get_bool_value()),
-            "enable_suggestion": lambda n : setattr(self, 'enable_suggestion', n.get_bool_value()),
+            "enableModification": lambda n : setattr(self, 'enable_modification', n.get_bool_value()),
+            "enableSuggestion": lambda n : setattr(self, 'enable_suggestion', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -96,7 +95,7 @@ class SearchAlterationOptions(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -104,7 +103,7 @@ class SearchAlterationOptions(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

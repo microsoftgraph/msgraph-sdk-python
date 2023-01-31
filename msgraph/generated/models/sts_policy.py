@@ -10,7 +10,7 @@ class StsPolicy(policy_base.PolicyBase):
     @property
     def applies_to(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
-        Gets the appliesTo property value. The appliesTo property
+        Gets the appliesTo property value. 
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._applies_to
@@ -18,7 +18,7 @@ class StsPolicy(policy_base.PolicyBase):
     @applies_to.setter
     def applies_to(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
-        Sets the appliesTo property value. The appliesTo property
+        Sets the appliesTo property value. 
         Args:
             value: Value to set for the appliesTo property.
         """
@@ -30,7 +30,6 @@ class StsPolicy(policy_base.PolicyBase):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.stsPolicy"
-        # The appliesTo property
         self._applies_to: Optional[List[directory_object.DirectoryObject]] = None
         # A string collection containing a JSON string that defines the rules and settings for a policy. The syntax for the definition differs for each derived policy type. Required.
         self._definition: Optional[List[str]] = None
@@ -72,9 +71,9 @@ class StsPolicy(policy_base.PolicyBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "applies_to": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "appliesTo": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "definition": lambda n : setattr(self, 'definition', n.get_collection_of_primitive_values(str)),
-            "is_organization_default": lambda n : setattr(self, 'is_organization_default', n.get_bool_value()),
+            "isOrganizationDefault": lambda n : setattr(self, 'is_organization_default', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

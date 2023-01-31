@@ -51,7 +51,7 @@ class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "custom_settings": lambda n : setattr(self, 'custom_settings', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
+            "customSettings": lambda n : setattr(self, 'custom_settings', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

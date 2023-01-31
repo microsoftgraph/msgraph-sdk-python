@@ -33,7 +33,7 @@ class OpenShiftItem(shift_item.ShiftItem):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "open_slot_count": lambda n : setattr(self, 'open_slot_count', n.get_int_value()),
+            "openSlotCount": lambda n : setattr(self, 'open_slot_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

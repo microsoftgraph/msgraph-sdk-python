@@ -48,7 +48,6 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         self._display_name: Optional[str] = None
         # Logo image displayed in Company Portal apps which have a light background behind the logo.
         self._light_background_logo: Optional[mime_content.MimeContent] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Display name of the company/organization’s IT helpdesk site.
         self._online_support_site_name: Optional[str] = None
@@ -185,21 +184,21 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "contact_i_t_email_address": lambda n : setattr(self, 'contact_i_t_email_address', n.get_str_value()),
-            "contact_i_t_name": lambda n : setattr(self, 'contact_i_t_name', n.get_str_value()),
-            "contact_i_t_notes": lambda n : setattr(self, 'contact_i_t_notes', n.get_str_value()),
-            "contact_i_t_phone_number": lambda n : setattr(self, 'contact_i_t_phone_number', n.get_str_value()),
-            "dark_background_logo": lambda n : setattr(self, 'dark_background_logo', n.get_object_value(mime_content.MimeContent)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "light_background_logo": lambda n : setattr(self, 'light_background_logo', n.get_object_value(mime_content.MimeContent)),
+            "contactITEmailAddress": lambda n : setattr(self, 'contact_i_t_email_address', n.get_str_value()),
+            "contactITName": lambda n : setattr(self, 'contact_i_t_name', n.get_str_value()),
+            "contactITNotes": lambda n : setattr(self, 'contact_i_t_notes', n.get_str_value()),
+            "contactITPhoneNumber": lambda n : setattr(self, 'contact_i_t_phone_number', n.get_str_value()),
+            "darkBackgroundLogo": lambda n : setattr(self, 'dark_background_logo', n.get_object_value(mime_content.MimeContent)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "lightBackgroundLogo": lambda n : setattr(self, 'light_background_logo', n.get_object_value(mime_content.MimeContent)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "online_support_site_name": lambda n : setattr(self, 'online_support_site_name', n.get_str_value()),
-            "online_support_site_url": lambda n : setattr(self, 'online_support_site_url', n.get_str_value()),
-            "privacy_url": lambda n : setattr(self, 'privacy_url', n.get_str_value()),
-            "show_display_name_next_to_logo": lambda n : setattr(self, 'show_display_name_next_to_logo', n.get_bool_value()),
-            "show_logo": lambda n : setattr(self, 'show_logo', n.get_bool_value()),
-            "show_name_next_to_logo": lambda n : setattr(self, 'show_name_next_to_logo', n.get_bool_value()),
-            "theme_color": lambda n : setattr(self, 'theme_color', n.get_object_value(rgb_color.RgbColor)),
+            "onlineSupportSiteName": lambda n : setattr(self, 'online_support_site_name', n.get_str_value()),
+            "onlineSupportSiteUrl": lambda n : setattr(self, 'online_support_site_url', n.get_str_value()),
+            "privacyUrl": lambda n : setattr(self, 'privacy_url', n.get_str_value()),
+            "showDisplayNameNextToLogo": lambda n : setattr(self, 'show_display_name_next_to_logo', n.get_bool_value()),
+            "showLogo": lambda n : setattr(self, 'show_logo', n.get_bool_value()),
+            "showNameNextToLogo": lambda n : setattr(self, 'show_name_next_to_logo', n.get_bool_value()),
+            "themeColor": lambda n : setattr(self, 'theme_color', n.get_object_value(rgb_color.RgbColor)),
         }
         return fields
     
@@ -223,7 +222,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -231,7 +230,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

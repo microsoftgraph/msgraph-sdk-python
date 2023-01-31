@@ -66,7 +66,7 @@ class DelegatedPermissionClassificationsRequestBuilder():
         """
         Classify a delegated permission by adding a delegatedPermissionClassification to the servicePrincipal representing the API.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[delegated_permission_classification.DelegatedPermissionClassification]
         """
@@ -105,7 +105,7 @@ class DelegatedPermissionClassificationsRequestBuilder():
         """
         Classify a delegated permission by adding a delegatedPermissionClassification to the servicePrincipal representing the API.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

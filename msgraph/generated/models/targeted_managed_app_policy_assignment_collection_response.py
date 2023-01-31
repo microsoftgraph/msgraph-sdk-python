@@ -12,7 +12,6 @@ class TargetedManagedAppPolicyAssignmentCollectionResponse(base_collection_pagin
         Instantiates a new TargetedManagedAppPolicyAssignmentCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class TargetedManagedAppPolicyAssignmentCollectionResponse(base_collection_pagin
     @property
     def value(self,) -> Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]]
         """
         return self._value
@@ -61,7 +60,7 @@ class TargetedManagedAppPolicyAssignmentCollectionResponse(base_collection_pagin
     @value.setter
     def value(self,value: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

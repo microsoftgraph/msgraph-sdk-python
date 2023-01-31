@@ -15,7 +15,6 @@ class IpEvidence(alert_evidence.AlertEvidence):
         self._country_letter_code: Optional[str] = None
         # The value of the IP Address, can be either in V4 address or V6 address format.
         self._ip_address: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @property
@@ -53,8 +52,8 @@ class IpEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "country_letter_code": lambda n : setattr(self, 'country_letter_code', n.get_str_value()),
-            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "countryLetterCode": lambda n : setattr(self, 'country_letter_code', n.get_str_value()),
+            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

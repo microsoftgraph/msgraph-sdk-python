@@ -17,12 +17,13 @@ class SiteItemRequestBuilder():
     """
     Provides operations to manage the sites property of the microsoft.graph.site entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, site_id1: Optional[str] = None) -> None:
         """
         Instantiates a new SiteItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            siteId1: key: id of site
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -32,6 +33,7 @@ class SiteItemRequestBuilder():
         self.url_template: str = "{+baseurl}/sites/{site%2Did}/sites/{site%2Did1}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["site%2Did1"] = siteId1
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

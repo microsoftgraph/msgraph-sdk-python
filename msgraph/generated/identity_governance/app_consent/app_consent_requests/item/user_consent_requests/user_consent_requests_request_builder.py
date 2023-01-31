@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.identity_governance.app_consent.app_consent_requests.item.user_consent_requests.count.count_request_builder')
-filter_by_current_user_with_on_request_builder = lazy_import('msgraph.generated.identity_governance.app_consent.app_consent_requests.item.user_consent_requests.filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder')
+filter_by_current_user_with_on_request_builder = lazy_import('msgraph.generated.identity_governance.app_consent.app_consent_requests.item.user_consent_requests.microsoft_graph_filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder')
 user_consent_request = lazy_import('msgraph.generated.models.user_consent_request')
 user_consent_request_collection_response = lazy_import('msgraph.generated.models.user_consent_request_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -45,17 +45,6 @@ class UserConsentRequestsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
-        """
-        Provides operations to call the filterByCurrentUser method.
-        Args:
-            on: Usage: on='{on}'
-        Returns: filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder
-        """
-        if on is None:
-            raise Exception("on cannot be undefined")
-        return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
-    
     async def get(self,request_configuration: Optional[UserConsentRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[user_consent_request_collection_response.UserConsentRequestCollectionResponse]:
         """
         Retrieve a collection of userConsentRequest objects and their properties.
@@ -74,11 +63,22 @@ class UserConsentRequestsRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, user_consent_request_collection_response.UserConsentRequestCollectionResponse, error_mapping)
     
+    def microsoft_graph_filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
+        """
+        Provides operations to call the filterByCurrentUser method.
+        Args:
+            on: Usage: on='{on}'
+        Returns: filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder
+        """
+        if on is None:
+            raise Exception("on cannot be undefined")
+        return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
+    
     async def post(self,body: Optional[user_consent_request.UserConsentRequest] = None, request_configuration: Optional[UserConsentRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[user_consent_request.UserConsentRequest]:
         """
         Create new navigation property to userConsentRequests for identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[user_consent_request.UserConsentRequest]
         """
@@ -117,7 +117,7 @@ class UserConsentRequestsRequestBuilder():
         """
         Create new navigation property to userConsentRequests for identityGovernance
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

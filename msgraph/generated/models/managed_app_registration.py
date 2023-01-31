@@ -92,7 +92,6 @@ class ManagedAppRegistration(entity.Entity):
         self._last_sync_date_time: Optional[datetime] = None
         # App management SDK version
         self._management_sdk_version: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Zero or more long running operations triggered on the app registration.
         self._operations: Optional[List[managed_app_operation.ManagedAppOperation]] = None
@@ -206,20 +205,20 @@ class ManagedAppRegistration(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_identifier": lambda n : setattr(self, 'app_identifier', n.get_object_value(mobile_app_identifier.MobileAppIdentifier)),
-            "application_version": lambda n : setattr(self, 'application_version', n.get_str_value()),
-            "applied_policies": lambda n : setattr(self, 'applied_policies', n.get_collection_of_object_values(managed_app_policy.ManagedAppPolicy)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "device_name": lambda n : setattr(self, 'device_name', n.get_str_value()),
-            "device_tag": lambda n : setattr(self, 'device_tag', n.get_str_value()),
-            "device_type": lambda n : setattr(self, 'device_type', n.get_str_value()),
-            "flagged_reasons": lambda n : setattr(self, 'flagged_reasons', n.get_collection_of_enum_values(managed_app_flagged_reason.ManagedAppFlaggedReason)),
-            "intended_policies": lambda n : setattr(self, 'intended_policies', n.get_collection_of_object_values(managed_app_policy.ManagedAppPolicy)),
-            "last_sync_date_time": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
-            "management_sdk_version": lambda n : setattr(self, 'management_sdk_version', n.get_str_value()),
+            "appIdentifier": lambda n : setattr(self, 'app_identifier', n.get_object_value(mobile_app_identifier.MobileAppIdentifier)),
+            "applicationVersion": lambda n : setattr(self, 'application_version', n.get_str_value()),
+            "appliedPolicies": lambda n : setattr(self, 'applied_policies', n.get_collection_of_object_values(managed_app_policy.ManagedAppPolicy)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
+            "deviceTag": lambda n : setattr(self, 'device_tag', n.get_str_value()),
+            "deviceType": lambda n : setattr(self, 'device_type', n.get_str_value()),
+            "flaggedReasons": lambda n : setattr(self, 'flagged_reasons', n.get_collection_of_enum_values(managed_app_flagged_reason.ManagedAppFlaggedReason)),
+            "intendedPolicies": lambda n : setattr(self, 'intended_policies', n.get_collection_of_object_values(managed_app_policy.ManagedAppPolicy)),
+            "lastSyncDateTime": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
+            "managementSdkVersion": lambda n : setattr(self, 'management_sdk_version', n.get_str_value()),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(managed_app_operation.ManagedAppOperation)),
-            "platform_version": lambda n : setattr(self, 'platform_version', n.get_str_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "platformVersion": lambda n : setattr(self, 'platform_version', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

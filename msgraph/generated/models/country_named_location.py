@@ -18,7 +18,6 @@ class CountryNamedLocation(named_location.NamedLocation):
         self._country_lookup_method: Optional[country_lookup_method_type.CountryLookupMethodType] = None
         # true if IP addresses that don't map to a country or region should be included in the named location. Optional. Default value is false.
         self._include_unknown_countries_and_regions: Optional[bool] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @property
@@ -73,9 +72,9 @@ class CountryNamedLocation(named_location.NamedLocation):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "countries_and_regions": lambda n : setattr(self, 'countries_and_regions', n.get_collection_of_primitive_values(str)),
-            "country_lookup_method": lambda n : setattr(self, 'country_lookup_method', n.get_enum_value(country_lookup_method_type.CountryLookupMethodType)),
-            "include_unknown_countries_and_regions": lambda n : setattr(self, 'include_unknown_countries_and_regions', n.get_bool_value()),
+            "countriesAndRegions": lambda n : setattr(self, 'countries_and_regions', n.get_collection_of_primitive_values(str)),
+            "countryLookupMethod": lambda n : setattr(self, 'country_lookup_method', n.get_enum_value(country_lookup_method_type.CountryLookupMethodType)),
+            "includeUnknownCountriesAndRegions": lambda n : setattr(self, 'include_unknown_countries_and_regions', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

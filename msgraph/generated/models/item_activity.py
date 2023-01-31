@@ -74,7 +74,6 @@ class ItemActivity(entity.Entity):
         self._actor: Optional[identity_set.IdentitySet] = None
         # Exposes the driveItem that was the target of this activity.
         self._drive_item: Optional[drive_item.DriveItem] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -113,9 +112,9 @@ class ItemActivity(entity.Entity):
         """
         fields = {
             "access": lambda n : setattr(self, 'access', n.get_object_value(access_action.AccessAction)),
-            "activity_date_time": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
+            "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
             "actor": lambda n : setattr(self, 'actor', n.get_object_value(identity_set.IdentitySet)),
-            "drive_item": lambda n : setattr(self, 'drive_item', n.get_object_value(drive_item.DriveItem)),
+            "driveItem": lambda n : setattr(self, 'drive_item', n.get_object_value(drive_item.DriveItem)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -17,10 +17,11 @@ class LocalizedNotificationMessageItemRequestBuilder():
     """
     Provides operations to manage the localizedNotificationMessages property of the microsoft.graph.notificationMessageTemplate entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, localized_notification_message_id: Optional[str] = None) -> None:
         """
         Instantiates a new LocalizedNotificationMessageItemRequestBuilder and sets the default values.
         Args:
+            localizedNotificationMessageId: key: id of localizedNotificationMessage
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class LocalizedNotificationMessageItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceManagement/notificationMessageTemplates/{notificationMessageTemplate%2Did}/localizedNotificationMessages/{localizedNotificationMessage%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["localizedNotificationMessage%2Did"] = localizedNotificationMessageId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -74,7 +76,7 @@ class LocalizedNotificationMessageItemRequestBuilder():
         """
         Update the navigation property localizedNotificationMessages in deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[localized_notification_message.LocalizedNotificationMessage]
         """
@@ -129,7 +131,7 @@ class LocalizedNotificationMessageItemRequestBuilder():
         """
         Update the navigation property localizedNotificationMessages in deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

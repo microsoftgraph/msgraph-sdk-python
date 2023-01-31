@@ -18,7 +18,6 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
         self._indexed_items_size: Optional[int] = None
         # The number of mailboxes that had search hits.
         self._mailbox_count: Optional[int] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # eDiscovery search.
         self._search: Optional[ediscovery_search.EdiscoverySearch] = None
@@ -47,13 +46,13 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "indexed_item_count": lambda n : setattr(self, 'indexed_item_count', n.get_int_value()),
-            "indexed_items_size": lambda n : setattr(self, 'indexed_items_size', n.get_int_value()),
-            "mailbox_count": lambda n : setattr(self, 'mailbox_count', n.get_int_value()),
+            "indexedItemCount": lambda n : setattr(self, 'indexed_item_count', n.get_int_value()),
+            "indexedItemsSize": lambda n : setattr(self, 'indexed_items_size', n.get_int_value()),
+            "mailboxCount": lambda n : setattr(self, 'mailbox_count', n.get_int_value()),
             "search": lambda n : setattr(self, 'search', n.get_object_value(ediscovery_search.EdiscoverySearch)),
-            "site_count": lambda n : setattr(self, 'site_count', n.get_int_value()),
-            "unindexed_item_count": lambda n : setattr(self, 'unindexed_item_count', n.get_int_value()),
-            "unindexed_items_size": lambda n : setattr(self, 'unindexed_items_size', n.get_int_value()),
+            "siteCount": lambda n : setattr(self, 'site_count', n.get_int_value()),
+            "unindexedItemCount": lambda n : setattr(self, 'unindexed_item_count', n.get_int_value()),
+            "unindexedItemsSize": lambda n : setattr(self, 'unindexed_items_size', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

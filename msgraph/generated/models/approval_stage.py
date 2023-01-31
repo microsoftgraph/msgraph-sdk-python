@@ -36,7 +36,6 @@ class ApprovalStage(entity.Entity):
         self._display_name: Optional[str] = None
         # The justification associated with the approval stage decision.
         self._justification: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The identifier of the reviewer. 00000000-0000-0000-0000-000000000000 if the assigned reviewer hasn't reviewed. Read-only.
         self._reviewed_by: Optional[identity.Identity] = None
@@ -82,12 +81,12 @@ class ApprovalStage(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assigned_to_me": lambda n : setattr(self, 'assigned_to_me', n.get_bool_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "assignedToMe": lambda n : setattr(self, 'assigned_to_me', n.get_bool_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "justification": lambda n : setattr(self, 'justification', n.get_str_value()),
-            "reviewed_by": lambda n : setattr(self, 'reviewed_by', n.get_object_value(identity.Identity)),
-            "reviewed_date_time": lambda n : setattr(self, 'reviewed_date_time', n.get_datetime_value()),
-            "review_result": lambda n : setattr(self, 'review_result', n.get_str_value()),
+            "reviewedBy": lambda n : setattr(self, 'reviewed_by', n.get_object_value(identity.Identity)),
+            "reviewedDateTime": lambda n : setattr(self, 'reviewed_date_time', n.get_datetime_value()),
+            "reviewResult": lambda n : setattr(self, 'review_result', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

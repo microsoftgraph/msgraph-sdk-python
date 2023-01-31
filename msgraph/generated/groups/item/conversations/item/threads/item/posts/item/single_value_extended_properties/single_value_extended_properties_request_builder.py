@@ -66,7 +66,7 @@ class SingleValueExtendedPropertiesRequestBuilder():
         """
         Create new navigation property to singleValueExtendedProperties for groups
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]
         """
@@ -105,7 +105,7 @@ class SingleValueExtendedPropertiesRequestBuilder():
         """
         Create new navigation property to singleValueExtendedProperties for groups
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

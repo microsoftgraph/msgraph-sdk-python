@@ -34,11 +34,9 @@ class SearchHit(AdditionalDataHolder, Parsable):
         self._content_source: Optional[str] = None
         # The internal identifier for the item. The format of the identifier varies based on the entity type. For details, see hitId format.
         self._hit_id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The rank or the order of the result.
         self._rank: Optional[int] = None
-        # The resource property
         self._resource: Optional[entity.Entity] = None
         # ID of the result template used to render the search result. This ID must map to a display layout in the resultTemplates dictionary that is also included in the searchResponse.
         self._result_template_id: Optional[str] = None
@@ -80,12 +78,12 @@ class SearchHit(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "content_source": lambda n : setattr(self, 'content_source', n.get_str_value()),
-            "hit_id": lambda n : setattr(self, 'hit_id', n.get_str_value()),
+            "contentSource": lambda n : setattr(self, 'content_source', n.get_str_value()),
+            "hitId": lambda n : setattr(self, 'hit_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "rank": lambda n : setattr(self, 'rank', n.get_int_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(entity.Entity)),
-            "result_template_id": lambda n : setattr(self, 'result_template_id', n.get_str_value()),
+            "resultTemplateId": lambda n : setattr(self, 'result_template_id', n.get_str_value()),
             "summary": lambda n : setattr(self, 'summary', n.get_str_value()),
         }
         return fields
@@ -110,7 +108,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -118,7 +116,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -144,7 +142,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
     @property
     def resource(self,) -> Optional[entity.Entity]:
         """
-        Gets the resource property value. The resource property
+        Gets the resource property value. 
         Returns: Optional[entity.Entity]
         """
         return self._resource
@@ -152,7 +150,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
     @resource.setter
     def resource(self,value: Optional[entity.Entity] = None) -> None:
         """
-        Sets the resource property value. The resource property
+        Sets the resource property value. 
         Args:
             value: Value to set for the resource property.
         """

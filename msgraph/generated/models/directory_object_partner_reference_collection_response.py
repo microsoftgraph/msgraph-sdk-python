@@ -12,7 +12,6 @@ class DirectoryObjectPartnerReferenceCollectionResponse(base_collection_paginati
         Instantiates a new DirectoryObjectPartnerReferenceCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[directory_object_partner_reference.DirectoryObjectPartnerReference]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class DirectoryObjectPartnerReferenceCollectionResponse(base_collection_paginati
     @property
     def value(self,) -> Optional[List[directory_object_partner_reference.DirectoryObjectPartnerReference]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[directory_object_partner_reference.DirectoryObjectPartnerReference]]
         """
         return self._value
@@ -61,7 +60,7 @@ class DirectoryObjectPartnerReferenceCollectionResponse(base_collection_paginati
     @value.setter
     def value(self,value: Optional[List[directory_object_partner_reference.DirectoryObjectPartnerReference]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

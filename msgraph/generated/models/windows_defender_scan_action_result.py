@@ -11,7 +11,6 @@ class WindowsDefenderScanActionResult(device_action_result.DeviceActionResult):
         Instantiates a new WindowsDefenderScanActionResult and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Scan type either full scan or quick scan
         self._scan_type: Optional[str] = None
@@ -34,7 +33,7 @@ class WindowsDefenderScanActionResult(device_action_result.DeviceActionResult):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "scan_type": lambda n : setattr(self, 'scan_type', n.get_str_value()),
+            "scanType": lambda n : setattr(self, 'scan_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

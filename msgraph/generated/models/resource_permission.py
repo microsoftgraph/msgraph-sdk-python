@@ -28,11 +28,8 @@ class ResourcePermission(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The type property
         self._type: Optional[str] = None
-        # The value property
         self._value: Optional[str] = None
     
     @staticmethod
@@ -62,7 +59,7 @@ class ResourcePermission(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -70,7 +67,7 @@ class ResourcePermission(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -92,7 +89,7 @@ class ResourcePermission(AdditionalDataHolder, Parsable):
     @property
     def type(self,) -> Optional[str]:
         """
-        Gets the type property value. The type property
+        Gets the type property value. 
         Returns: Optional[str]
         """
         return self._type
@@ -100,7 +97,7 @@ class ResourcePermission(AdditionalDataHolder, Parsable):
     @type.setter
     def type(self,value: Optional[str] = None) -> None:
         """
-        Sets the type property value. The type property
+        Sets the type property value. 
         Args:
             value: Value to set for the type property.
         """
@@ -109,7 +106,7 @@ class ResourcePermission(AdditionalDataHolder, Parsable):
     @property
     def value(self,) -> Optional[str]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[str]
         """
         return self._value
@@ -117,7 +114,7 @@ class ResourcePermission(AdditionalDataHolder, Parsable):
     @value.setter
     def value(self,value: Optional[str] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

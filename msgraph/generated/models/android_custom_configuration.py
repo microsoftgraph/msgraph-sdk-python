@@ -34,7 +34,7 @@ class AndroidCustomConfiguration(device_configuration.DeviceConfiguration):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "oma_settings": lambda n : setattr(self, 'oma_settings', n.get_collection_of_object_values(oma_setting.OmaSetting)),
+            "omaSettings": lambda n : setattr(self, 'oma_settings', n.get_collection_of_object_values(oma_setting.OmaSetting)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

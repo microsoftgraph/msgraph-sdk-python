@@ -12,7 +12,6 @@ class ConversationMemberCollectionResponse(base_collection_pagination_count_resp
         Instantiates a new ConversationMemberCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[conversation_member.ConversationMember]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class ConversationMemberCollectionResponse(base_collection_pagination_count_resp
     @property
     def value(self,) -> Optional[List[conversation_member.ConversationMember]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[conversation_member.ConversationMember]]
         """
         return self._value
@@ -61,7 +60,7 @@ class ConversationMemberCollectionResponse(base_collection_pagination_count_resp
     @value.setter
     def value(self,value: Optional[List[conversation_member.ConversationMember]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

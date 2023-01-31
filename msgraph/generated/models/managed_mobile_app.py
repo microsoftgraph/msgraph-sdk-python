@@ -17,7 +17,6 @@ class ManagedMobileApp(entity.Entity):
         super().__init__()
         # The identifier for an app with it's operating system type.
         self._mobile_app_identifier: Optional[mobile_app_identifier.MobileAppIdentifier] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Version of the entity.
         self._version: Optional[str] = None
@@ -40,7 +39,7 @@ class ManagedMobileApp(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "mobile_app_identifier": lambda n : setattr(self, 'mobile_app_identifier', n.get_object_value(mobile_app_identifier.MobileAppIdentifier)),
+            "mobileAppIdentifier": lambda n : setattr(self, 'mobile_app_identifier', n.get_object_value(mobile_app_identifier.MobileAppIdentifier)),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

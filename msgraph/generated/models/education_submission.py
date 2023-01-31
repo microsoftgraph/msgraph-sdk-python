@@ -17,9 +17,7 @@ class EducationSubmission(entity.Entity):
         Instantiates a new educationSubmission and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The outcomes property
         self._outcomes: Optional[List[education_outcome.EducationOutcome]] = None
         # User who moved the status of this submission to reassigned.
         self._reassigned_by: Optional[identity_set.IdentitySet] = None
@@ -27,7 +25,6 @@ class EducationSubmission(entity.Entity):
         self._reassigned_date_time: Optional[datetime] = None
         # Who this submission is assigned to.
         self._recipient: Optional[education_submission_recipient.EducationSubmissionRecipient] = None
-        # The resources property
         self._resources: Optional[List[education_submission_resource.EducationSubmissionResource]] = None
         # Folder where all file resources for this submission need to be stored.
         self._resources_folder_url: Optional[str] = None
@@ -41,7 +38,6 @@ class EducationSubmission(entity.Entity):
         self._submitted_by: Optional[identity_set.IdentitySet] = None
         # Moment in time when the submission was moved into the submitted state. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         self._submitted_date_time: Optional[datetime] = None
-        # The submittedResources property
         self._submitted_resources: Optional[List[education_submission_resource.EducationSubmissionResource]] = None
         # User who moved the resource from submitted into the working state.
         self._unsubmitted_by: Optional[identity_set.IdentitySet] = None
@@ -67,19 +63,19 @@ class EducationSubmission(entity.Entity):
         """
         fields = {
             "outcomes": lambda n : setattr(self, 'outcomes', n.get_collection_of_object_values(education_outcome.EducationOutcome)),
-            "reassigned_by": lambda n : setattr(self, 'reassigned_by', n.get_object_value(identity_set.IdentitySet)),
-            "reassigned_date_time": lambda n : setattr(self, 'reassigned_date_time', n.get_datetime_value()),
+            "reassignedBy": lambda n : setattr(self, 'reassigned_by', n.get_object_value(identity_set.IdentitySet)),
+            "reassignedDateTime": lambda n : setattr(self, 'reassigned_date_time', n.get_datetime_value()),
             "recipient": lambda n : setattr(self, 'recipient', n.get_object_value(education_submission_recipient.EducationSubmissionRecipient)),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(education_submission_resource.EducationSubmissionResource)),
-            "resources_folder_url": lambda n : setattr(self, 'resources_folder_url', n.get_str_value()),
-            "returned_by": lambda n : setattr(self, 'returned_by', n.get_object_value(identity_set.IdentitySet)),
-            "returned_date_time": lambda n : setattr(self, 'returned_date_time', n.get_datetime_value()),
+            "resourcesFolderUrl": lambda n : setattr(self, 'resources_folder_url', n.get_str_value()),
+            "returnedBy": lambda n : setattr(self, 'returned_by', n.get_object_value(identity_set.IdentitySet)),
+            "returnedDateTime": lambda n : setattr(self, 'returned_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(education_submission_status.EducationSubmissionStatus)),
-            "submitted_by": lambda n : setattr(self, 'submitted_by', n.get_object_value(identity_set.IdentitySet)),
-            "submitted_date_time": lambda n : setattr(self, 'submitted_date_time', n.get_datetime_value()),
-            "submitted_resources": lambda n : setattr(self, 'submitted_resources', n.get_collection_of_object_values(education_submission_resource.EducationSubmissionResource)),
-            "unsubmitted_by": lambda n : setattr(self, 'unsubmitted_by', n.get_object_value(identity_set.IdentitySet)),
-            "unsubmitted_date_time": lambda n : setattr(self, 'unsubmitted_date_time', n.get_datetime_value()),
+            "submittedBy": lambda n : setattr(self, 'submitted_by', n.get_object_value(identity_set.IdentitySet)),
+            "submittedDateTime": lambda n : setattr(self, 'submitted_date_time', n.get_datetime_value()),
+            "submittedResources": lambda n : setattr(self, 'submitted_resources', n.get_collection_of_object_values(education_submission_resource.EducationSubmissionResource)),
+            "unsubmittedBy": lambda n : setattr(self, 'unsubmitted_by', n.get_object_value(identity_set.IdentitySet)),
+            "unsubmittedDateTime": lambda n : setattr(self, 'unsubmitted_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -88,7 +84,7 @@ class EducationSubmission(entity.Entity):
     @property
     def outcomes(self,) -> Optional[List[education_outcome.EducationOutcome]]:
         """
-        Gets the outcomes property value. The outcomes property
+        Gets the outcomes property value. 
         Returns: Optional[List[education_outcome.EducationOutcome]]
         """
         return self._outcomes
@@ -96,7 +92,7 @@ class EducationSubmission(entity.Entity):
     @outcomes.setter
     def outcomes(self,value: Optional[List[education_outcome.EducationOutcome]] = None) -> None:
         """
-        Sets the outcomes property value. The outcomes property
+        Sets the outcomes property value. 
         Args:
             value: Value to set for the outcomes property.
         """
@@ -156,7 +152,7 @@ class EducationSubmission(entity.Entity):
     @property
     def resources(self,) -> Optional[List[education_submission_resource.EducationSubmissionResource]]:
         """
-        Gets the resources property value. The resources property
+        Gets the resources property value. 
         Returns: Optional[List[education_submission_resource.EducationSubmissionResource]]
         """
         return self._resources
@@ -164,7 +160,7 @@ class EducationSubmission(entity.Entity):
     @resources.setter
     def resources(self,value: Optional[List[education_submission_resource.EducationSubmissionResource]] = None) -> None:
         """
-        Sets the resources property value. The resources property
+        Sets the resources property value. 
         Args:
             value: Value to set for the resources property.
         """
@@ -289,7 +285,7 @@ class EducationSubmission(entity.Entity):
     @property
     def submitted_resources(self,) -> Optional[List[education_submission_resource.EducationSubmissionResource]]:
         """
-        Gets the submittedResources property value. The submittedResources property
+        Gets the submittedResources property value. 
         Returns: Optional[List[education_submission_resource.EducationSubmissionResource]]
         """
         return self._submitted_resources
@@ -297,7 +293,7 @@ class EducationSubmission(entity.Entity):
     @submitted_resources.setter
     def submitted_resources(self,value: Optional[List[education_submission_resource.EducationSubmissionResource]] = None) -> None:
         """
-        Sets the submittedResources property value. The submittedResources property
+        Sets the submittedResources property value. 
         Args:
             value: Value to set for the submittedResources property.
         """

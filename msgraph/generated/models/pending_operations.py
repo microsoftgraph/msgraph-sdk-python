@@ -30,7 +30,6 @@ class PendingOperations(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # A property that indicates that an operation that might update the binary content of a file is pending completion.
         self._pending_content_update: Optional[pending_content_update.PendingContentUpdate] = None
@@ -54,14 +53,14 @@ class PendingOperations(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "pending_content_update": lambda n : setattr(self, 'pending_content_update', n.get_object_value(pending_content_update.PendingContentUpdate)),
+            "pendingContentUpdate": lambda n : setattr(self, 'pending_content_update', n.get_object_value(pending_content_update.PendingContentUpdate)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -69,7 +68,7 @@ class PendingOperations(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -17,7 +17,6 @@ class WorkbookChartLegendFormat(entity.Entity):
         self._fill: Optional[workbook_chart_fill.WorkbookChartFill] = None
         # Represents the font attributes such as font name, font size, color, etc. of a chart legend. Read-only.
         self._font: Optional[workbook_chart_font.WorkbookChartFont] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod

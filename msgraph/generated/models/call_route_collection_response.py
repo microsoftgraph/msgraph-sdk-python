@@ -12,7 +12,6 @@ class CallRouteCollectionResponse(base_collection_pagination_count_response.Base
         Instantiates a new CallRouteCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[call_route.CallRoute]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class CallRouteCollectionResponse(base_collection_pagination_count_response.Base
     @property
     def value(self,) -> Optional[List[call_route.CallRoute]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[call_route.CallRoute]]
         """
         return self._value
@@ -61,7 +60,7 @@ class CallRouteCollectionResponse(base_collection_pagination_count_response.Base
     @value.setter
     def value(self,value: Optional[List[call_route.CallRoute]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

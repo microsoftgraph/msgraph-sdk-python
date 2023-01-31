@@ -12,7 +12,6 @@ class DeviceAndAppManagementRoleDefinitionCollectionResponse(base_collection_pag
         Instantiates a new DeviceAndAppManagementRoleDefinitionCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[device_and_app_management_role_definition.DeviceAndAppManagementRoleDefinition]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class DeviceAndAppManagementRoleDefinitionCollectionResponse(base_collection_pag
     @property
     def value(self,) -> Optional[List[device_and_app_management_role_definition.DeviceAndAppManagementRoleDefinition]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[device_and_app_management_role_definition.DeviceAndAppManagementRoleDefinition]]
         """
         return self._value
@@ -61,7 +60,7 @@ class DeviceAndAppManagementRoleDefinitionCollectionResponse(base_collection_pag
     @value.setter
     def value(self,value: Optional[List[device_and_app_management_role_definition.DeviceAndAppManagementRoleDefinition]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

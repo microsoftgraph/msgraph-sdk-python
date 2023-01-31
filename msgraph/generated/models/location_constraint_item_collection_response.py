@@ -12,7 +12,6 @@ class LocationConstraintItemCollectionResponse(base_collection_pagination_count_
         Instantiates a new LocationConstraintItemCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[location_constraint_item.LocationConstraintItem]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class LocationConstraintItemCollectionResponse(base_collection_pagination_count_
     @property
     def value(self,) -> Optional[List[location_constraint_item.LocationConstraintItem]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[location_constraint_item.LocationConstraintItem]]
         """
         return self._value
@@ -61,7 +60,7 @@ class LocationConstraintItemCollectionResponse(base_collection_pagination_count_
     @value.setter
     def value(self,value: Optional[List[location_constraint_item.LocationConstraintItem]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -50,7 +50,7 @@ class IosHomeScreenApp(ios_home_screen_item.IosHomeScreenItem):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "bundle_i_d": lambda n : setattr(self, 'bundle_i_d', n.get_str_value()),
+            "bundleID": lambda n : setattr(self, 'bundle_i_d', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

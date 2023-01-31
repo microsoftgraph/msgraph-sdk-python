@@ -53,15 +53,12 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         self._allowed_content_types: Optional[List[content_type_info.ContentTypeInfo]] = None
         # Default contents of document set.
         self._default_contents: Optional[List[document_set_content.DocumentSetContent]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Specifies whether to push welcome page changes to inherited content types.
         self._propagate_welcome_page_changes: Optional[bool] = None
-        # The sharedColumns property
         self._shared_columns: Optional[List[column_definition.ColumnDefinition]] = None
         # Indicates whether to add the name of the document set to each file name.
         self._should_prefix_name_to_file: Optional[bool] = None
-        # The welcomePageColumns property
         self._welcome_page_columns: Optional[List[column_definition.ColumnDefinition]] = None
         # Welcome page absolute URL.
         self._welcome_page_url: Optional[str] = None
@@ -101,21 +98,21 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allowed_content_types": lambda n : setattr(self, 'allowed_content_types', n.get_collection_of_object_values(content_type_info.ContentTypeInfo)),
-            "default_contents": lambda n : setattr(self, 'default_contents', n.get_collection_of_object_values(document_set_content.DocumentSetContent)),
+            "allowedContentTypes": lambda n : setattr(self, 'allowed_content_types', n.get_collection_of_object_values(content_type_info.ContentTypeInfo)),
+            "defaultContents": lambda n : setattr(self, 'default_contents', n.get_collection_of_object_values(document_set_content.DocumentSetContent)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "propagate_welcome_page_changes": lambda n : setattr(self, 'propagate_welcome_page_changes', n.get_bool_value()),
-            "shared_columns": lambda n : setattr(self, 'shared_columns', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
-            "should_prefix_name_to_file": lambda n : setattr(self, 'should_prefix_name_to_file', n.get_bool_value()),
-            "welcome_page_columns": lambda n : setattr(self, 'welcome_page_columns', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
-            "welcome_page_url": lambda n : setattr(self, 'welcome_page_url', n.get_str_value()),
+            "propagateWelcomePageChanges": lambda n : setattr(self, 'propagate_welcome_page_changes', n.get_bool_value()),
+            "sharedColumns": lambda n : setattr(self, 'shared_columns', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
+            "shouldPrefixNameToFile": lambda n : setattr(self, 'should_prefix_name_to_file', n.get_bool_value()),
+            "welcomePageColumns": lambda n : setattr(self, 'welcome_page_columns', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
+            "welcomePageUrl": lambda n : setattr(self, 'welcome_page_url', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -123,7 +120,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -167,7 +164,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
     @property
     def shared_columns(self,) -> Optional[List[column_definition.ColumnDefinition]]:
         """
-        Gets the sharedColumns property value. The sharedColumns property
+        Gets the sharedColumns property value. 
         Returns: Optional[List[column_definition.ColumnDefinition]]
         """
         return self._shared_columns
@@ -175,7 +172,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
     @shared_columns.setter
     def shared_columns(self,value: Optional[List[column_definition.ColumnDefinition]] = None) -> None:
         """
-        Sets the sharedColumns property value. The sharedColumns property
+        Sets the sharedColumns property value. 
         Args:
             value: Value to set for the sharedColumns property.
         """
@@ -201,7 +198,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
     @property
     def welcome_page_columns(self,) -> Optional[List[column_definition.ColumnDefinition]]:
         """
-        Gets the welcomePageColumns property value. The welcomePageColumns property
+        Gets the welcomePageColumns property value. 
         Returns: Optional[List[column_definition.ColumnDefinition]]
         """
         return self._welcome_page_columns
@@ -209,7 +206,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
     @welcome_page_columns.setter
     def welcome_page_columns(self,value: Optional[List[column_definition.ColumnDefinition]] = None) -> None:
         """
-        Sets the welcomePageColumns property value. The welcomePageColumns property
+        Sets the welcomePageColumns property value. 
         Args:
             value: Value to set for the welcomePageColumns property.
         """

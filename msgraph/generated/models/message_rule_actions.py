@@ -64,7 +64,6 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         self._mark_importance: Optional[importance.Importance] = None
         # The ID of the folder that a message will be moved to.
         self._move_to_folder: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
         self._permanent_delete: Optional[bool] = None
@@ -159,18 +158,18 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assign_categories": lambda n : setattr(self, 'assign_categories', n.get_collection_of_primitive_values(str)),
-            "copy_to_folder": lambda n : setattr(self, 'copy_to_folder', n.get_str_value()),
+            "assignCategories": lambda n : setattr(self, 'assign_categories', n.get_collection_of_primitive_values(str)),
+            "copyToFolder": lambda n : setattr(self, 'copy_to_folder', n.get_str_value()),
             "delete": lambda n : setattr(self, 'delete', n.get_bool_value()),
-            "forward_as_attachment_to": lambda n : setattr(self, 'forward_as_attachment_to', n.get_collection_of_object_values(recipient.Recipient)),
-            "forward_to": lambda n : setattr(self, 'forward_to', n.get_collection_of_object_values(recipient.Recipient)),
-            "mark_as_read": lambda n : setattr(self, 'mark_as_read', n.get_bool_value()),
-            "mark_importance": lambda n : setattr(self, 'mark_importance', n.get_enum_value(importance.Importance)),
-            "move_to_folder": lambda n : setattr(self, 'move_to_folder', n.get_str_value()),
+            "forwardAsAttachmentTo": lambda n : setattr(self, 'forward_as_attachment_to', n.get_collection_of_object_values(recipient.Recipient)),
+            "forwardTo": lambda n : setattr(self, 'forward_to', n.get_collection_of_object_values(recipient.Recipient)),
+            "markAsRead": lambda n : setattr(self, 'mark_as_read', n.get_bool_value()),
+            "markImportance": lambda n : setattr(self, 'mark_importance', n.get_enum_value(importance.Importance)),
+            "moveToFolder": lambda n : setattr(self, 'move_to_folder', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "permanent_delete": lambda n : setattr(self, 'permanent_delete', n.get_bool_value()),
-            "redirect_to": lambda n : setattr(self, 'redirect_to', n.get_collection_of_object_values(recipient.Recipient)),
-            "stop_processing_rules": lambda n : setattr(self, 'stop_processing_rules', n.get_bool_value()),
+            "permanentDelete": lambda n : setattr(self, 'permanent_delete', n.get_bool_value()),
+            "redirectTo": lambda n : setattr(self, 'redirect_to', n.get_collection_of_object_values(recipient.Recipient)),
+            "stopProcessingRules": lambda n : setattr(self, 'stop_processing_rules', n.get_bool_value()),
         }
         return fields
     
@@ -228,7 +227,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -236,7 +235,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

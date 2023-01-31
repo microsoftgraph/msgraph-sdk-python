@@ -47,7 +47,6 @@ class RubricQualitySelectedColumnModel(AdditionalDataHolder, Parsable):
 
         # ID of the selected level for this quality.
         self._column_id: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # ID of the associated quality.
         self._quality_id: Optional[str] = None
@@ -70,16 +69,16 @@ class RubricQualitySelectedColumnModel(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "column_id": lambda n : setattr(self, 'column_id', n.get_str_value()),
+            "columnId": lambda n : setattr(self, 'column_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "quality_id": lambda n : setattr(self, 'quality_id', n.get_str_value()),
+            "qualityId": lambda n : setattr(self, 'quality_id', n.get_str_value()),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -87,7 +86,7 @@ class RubricQualitySelectedColumnModel(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

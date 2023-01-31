@@ -54,7 +54,6 @@ domain_dns_records_request_builder = lazy_import('msgraph.generated.domain_dns_r
 domain_dns_record_item_request_builder = lazy_import('msgraph.generated.domain_dns_records.item.domain_dns_record_item_request_builder')
 domains_request_builder = lazy_import('msgraph.generated.domains.domains_request_builder')
 domain_item_request_builder = lazy_import('msgraph.generated.domains.item.domain_item_request_builder')
-drive_request_builder = lazy_import('msgraph.generated.drive.drive_request_builder')
 drives_request_builder = lazy_import('msgraph.generated.drives.drives_request_builder')
 drive_item_request_builder = lazy_import('msgraph.generated.drives.item.drive_item_request_builder')
 education_request_builder = lazy_import('msgraph.generated.education.education_request_builder')
@@ -310,13 +309,6 @@ class BaseGraphServiceClient():
         Provides operations to manage the collection of domain entities.
         """
         return domains_request_builder.DomainsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def drive(self) -> drive_request_builder.DriveRequestBuilder:
-        """
-        Provides operations to manage the drive singleton.
-        """
-        return drive_request_builder.DriveRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def drives(self) -> drives_request_builder.DrivesRequestBuilder:

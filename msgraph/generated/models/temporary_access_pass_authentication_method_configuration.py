@@ -78,12 +78,12 @@ class TemporaryAccessPassAuthenticationMethodConfiguration(authentication_method
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "default_length": lambda n : setattr(self, 'default_length', n.get_int_value()),
-            "default_lifetime_in_minutes": lambda n : setattr(self, 'default_lifetime_in_minutes', n.get_int_value()),
-            "include_targets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_method_target.AuthenticationMethodTarget)),
-            "is_usable_once": lambda n : setattr(self, 'is_usable_once', n.get_bool_value()),
-            "maximum_lifetime_in_minutes": lambda n : setattr(self, 'maximum_lifetime_in_minutes', n.get_int_value()),
-            "minimum_lifetime_in_minutes": lambda n : setattr(self, 'minimum_lifetime_in_minutes', n.get_int_value()),
+            "defaultLength": lambda n : setattr(self, 'default_length', n.get_int_value()),
+            "defaultLifetimeInMinutes": lambda n : setattr(self, 'default_lifetime_in_minutes', n.get_int_value()),
+            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_method_target.AuthenticationMethodTarget)),
+            "isUsableOnce": lambda n : setattr(self, 'is_usable_once', n.get_bool_value()),
+            "maximumLifetimeInMinutes": lambda n : setattr(self, 'maximum_lifetime_in_minutes', n.get_int_value()),
+            "minimumLifetimeInMinutes": lambda n : setattr(self, 'minimum_lifetime_in_minutes', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

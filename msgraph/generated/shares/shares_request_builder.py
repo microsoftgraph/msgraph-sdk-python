@@ -66,7 +66,7 @@ class SharesRequestBuilder():
         """
         Add new entity to shares
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[shared_drive_item.SharedDriveItem]
         """
@@ -105,7 +105,7 @@ class SharesRequestBuilder():
         """
         Add new entity to shares
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

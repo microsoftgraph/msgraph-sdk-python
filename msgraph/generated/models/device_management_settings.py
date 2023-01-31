@@ -32,7 +32,6 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
         self._device_compliance_checkin_threshold_days: Optional[int] = None
         # Is feature enabled or not for scheduled action for rule.
         self._is_scheduled_action_enabled: Optional[bool] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Device should be noncompliant when there is no compliance policy targeted when this is true
         self._secure_by_default: Optional[bool] = None
@@ -72,10 +71,10 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_compliance_checkin_threshold_days": lambda n : setattr(self, 'device_compliance_checkin_threshold_days', n.get_int_value()),
-            "is_scheduled_action_enabled": lambda n : setattr(self, 'is_scheduled_action_enabled', n.get_bool_value()),
+            "deviceComplianceCheckinThresholdDays": lambda n : setattr(self, 'device_compliance_checkin_threshold_days', n.get_int_value()),
+            "isScheduledActionEnabled": lambda n : setattr(self, 'is_scheduled_action_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "secure_by_default": lambda n : setattr(self, 'secure_by_default', n.get_bool_value()),
+            "secureByDefault": lambda n : setattr(self, 'secure_by_default', n.get_bool_value()),
         }
         return fields
     
@@ -99,7 +98,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -107,7 +106,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

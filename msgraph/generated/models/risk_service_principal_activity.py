@@ -32,9 +32,7 @@ class RiskServicePrincipalActivity(AdditionalDataHolder, Parsable):
 
         # Details of the detected risk. Note: Details for this property are only available for Workload Identities Premium customers. Events in tenants without this license will be returned hidden. The possible values are: none, hidden, adminConfirmedServicePrincipalCompromised, adminDismissedAllRiskForServicePrincipal. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: adminConfirmedServicePrincipalCompromised , adminDismissedAllRiskForServicePrincipal.
         self._detail: Optional[risk_detail.RiskDetail] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
-        # The riskEventTypes property
         self._risk_event_types: Optional[List[str]] = None
     
     @staticmethod
@@ -74,14 +72,14 @@ class RiskServicePrincipalActivity(AdditionalDataHolder, Parsable):
         fields = {
             "detail": lambda n : setattr(self, 'detail', n.get_enum_value(risk_detail.RiskDetail)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "risk_event_types": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_primitive_values(str)),
+            "riskEventTypes": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -89,7 +87,7 @@ class RiskServicePrincipalActivity(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -98,7 +96,7 @@ class RiskServicePrincipalActivity(AdditionalDataHolder, Parsable):
     @property
     def risk_event_types(self,) -> Optional[List[str]]:
         """
-        Gets the riskEventTypes property value. The riskEventTypes property
+        Gets the riskEventTypes property value. 
         Returns: Optional[List[str]]
         """
         return self._risk_event_types
@@ -106,7 +104,7 @@ class RiskServicePrincipalActivity(AdditionalDataHolder, Parsable):
     @risk_event_types.setter
     def risk_event_types(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the riskEventTypes property value. The riskEventTypes property
+        Sets the riskEventTypes property value. 
         Args:
             value: Value to set for the riskEventTypes property.
         """

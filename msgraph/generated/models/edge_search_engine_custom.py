@@ -50,7 +50,7 @@ class EdgeSearchEngineCustom(edge_search_engine_base.EdgeSearchEngineBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "edge_search_engine_open_search_xml_url": lambda n : setattr(self, 'edge_search_engine_open_search_xml_url', n.get_str_value()),
+            "edgeSearchEngineOpenSearchXmlUrl": lambda n : setattr(self, 'edge_search_engine_open_search_xml_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -17,12 +17,13 @@ class TokenIssuancePolicyItemRequestBuilder():
     """
     Provides operations to manage the tokenIssuancePolicies property of the microsoft.graph.policyRoot entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, token_issuance_policy_id: Optional[str] = None) -> None:
         """
         Instantiates a new TokenIssuancePolicyItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            tokenIssuancePolicyId: key: id of tokenIssuancePolicy
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -32,6 +33,7 @@ class TokenIssuancePolicyItemRequestBuilder():
         self.url_template: str = "{+baseurl}/policies/tokenIssuancePolicies/{tokenIssuancePolicy%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["tokenIssuancePolicy%2Did"] = tokenIssuancePolicyId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -74,7 +76,7 @@ class TokenIssuancePolicyItemRequestBuilder():
         """
         Update the navigation property tokenIssuancePolicies in policies
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[token_issuance_policy.TokenIssuancePolicy]
         """
@@ -129,7 +131,7 @@ class TokenIssuancePolicyItemRequestBuilder():
         """
         Update the navigation property tokenIssuancePolicies in policies
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

@@ -42,7 +42,6 @@ class DeviceCompliancePolicySettingState(AdditionalDataHolder, Parsable):
         self._error_description: Optional[str] = None
         # Name of setting instance that is being reported.
         self._instance_display_name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The setting that is being reported
         self._setting: Optional[str] = None
@@ -50,7 +49,6 @@ class DeviceCompliancePolicySettingState(AdditionalDataHolder, Parsable):
         self._setting_name: Optional[str] = None
         # Contributing policies
         self._sources: Optional[List[setting_source.SettingSource]] = None
-        # The state property
         self._state: Optional[compliance_status.ComplianceStatus] = None
         # UserEmail
         self._user_email: Optional[str] = None
@@ -130,19 +128,19 @@ class DeviceCompliancePolicySettingState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "current_value": lambda n : setattr(self, 'current_value', n.get_str_value()),
-            "error_code": lambda n : setattr(self, 'error_code', n.get_int_value()),
-            "error_description": lambda n : setattr(self, 'error_description', n.get_str_value()),
-            "instance_display_name": lambda n : setattr(self, 'instance_display_name', n.get_str_value()),
+            "currentValue": lambda n : setattr(self, 'current_value', n.get_str_value()),
+            "errorCode": lambda n : setattr(self, 'error_code', n.get_int_value()),
+            "errorDescription": lambda n : setattr(self, 'error_description', n.get_str_value()),
+            "instanceDisplayName": lambda n : setattr(self, 'instance_display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "setting": lambda n : setattr(self, 'setting', n.get_str_value()),
-            "setting_name": lambda n : setattr(self, 'setting_name', n.get_str_value()),
+            "settingName": lambda n : setattr(self, 'setting_name', n.get_str_value()),
             "sources": lambda n : setattr(self, 'sources', n.get_collection_of_object_values(setting_source.SettingSource)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(compliance_status.ComplianceStatus)),
-            "user_email": lambda n : setattr(self, 'user_email', n.get_str_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
-            "user_name": lambda n : setattr(self, 'user_name', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userEmail": lambda n : setattr(self, 'user_email', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userName": lambda n : setattr(self, 'user_name', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
     
@@ -166,7 +164,7 @@ class DeviceCompliancePolicySettingState(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -174,7 +172,7 @@ class DeviceCompliancePolicySettingState(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -257,7 +255,7 @@ class DeviceCompliancePolicySettingState(AdditionalDataHolder, Parsable):
     @property
     def state(self,) -> Optional[compliance_status.ComplianceStatus]:
         """
-        Gets the state property value. The state property
+        Gets the state property value. 
         Returns: Optional[compliance_status.ComplianceStatus]
         """
         return self._state
@@ -265,7 +263,7 @@ class DeviceCompliancePolicySettingState(AdditionalDataHolder, Parsable):
     @state.setter
     def state(self,value: Optional[compliance_status.ComplianceStatus] = None) -> None:
         """
-        Sets the state property value. The state property
+        Sets the state property value. 
         Args:
             value: Value to set for the state property.
         """

@@ -15,7 +15,6 @@ class SimulationAutomationRun(entity.Entity):
         super().__init__()
         # Date and time when the run ends in an attack simulation automation.
         self._end_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Unique identifier for the attack simulation campaign initiated in the attack simulation automation run.
         self._simulation_id: Optional[str] = None
@@ -59,9 +58,9 @@ class SimulationAutomationRun(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "simulation_id": lambda n : setattr(self, 'simulation_id', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "simulationId": lambda n : setattr(self, 'simulation_id', n.get_str_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(simulation_automation_run_status.SimulationAutomationRunStatus)),
         }
         super_fields = super().get_field_deserializers()

@@ -15,14 +15,14 @@ o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error'
 branding_request_builder = lazy_import('msgraph.generated.organization.item.branding.branding_request_builder')
 certificate_based_auth_configuration_request_builder = lazy_import('msgraph.generated.organization.item.certificate_based_auth_configuration.certificate_based_auth_configuration_request_builder')
 certificate_based_auth_configuration_item_request_builder = lazy_import('msgraph.generated.organization.item.certificate_based_auth_configuration.item.certificate_based_auth_configuration_item_request_builder')
-check_member_groups_request_builder = lazy_import('msgraph.generated.organization.item.check_member_groups.check_member_groups_request_builder')
-check_member_objects_request_builder = lazy_import('msgraph.generated.organization.item.check_member_objects.check_member_objects_request_builder')
 extensions_request_builder = lazy_import('msgraph.generated.organization.item.extensions.extensions_request_builder')
 extension_item_request_builder = lazy_import('msgraph.generated.organization.item.extensions.item.extension_item_request_builder')
-get_member_groups_request_builder = lazy_import('msgraph.generated.organization.item.get_member_groups.get_member_groups_request_builder')
-get_member_objects_request_builder = lazy_import('msgraph.generated.organization.item.get_member_objects.get_member_objects_request_builder')
-restore_request_builder = lazy_import('msgraph.generated.organization.item.restore.restore_request_builder')
-set_mobile_device_management_authority_request_builder = lazy_import('msgraph.generated.organization.item.set_mobile_device_management_authority.set_mobile_device_management_authority_request_builder')
+check_member_groups_request_builder = lazy_import('msgraph.generated.organization.item.microsoft_graph_check_member_groups.check_member_groups_request_builder')
+check_member_objects_request_builder = lazy_import('msgraph.generated.organization.item.microsoft_graph_check_member_objects.check_member_objects_request_builder')
+get_member_groups_request_builder = lazy_import('msgraph.generated.organization.item.microsoft_graph_get_member_groups.get_member_groups_request_builder')
+get_member_objects_request_builder = lazy_import('msgraph.generated.organization.item.microsoft_graph_get_member_objects.get_member_objects_request_builder')
+restore_request_builder = lazy_import('msgraph.generated.organization.item.microsoft_graph_restore.restore_request_builder')
+set_mobile_device_management_authority_request_builder = lazy_import('msgraph.generated.organization.item.microsoft_graph_set_mobile_device_management_authority.set_mobile_device_management_authority_request_builder')
 
 class OrganizationItemRequestBuilder():
     """
@@ -43,20 +43,6 @@ class OrganizationItemRequestBuilder():
         return certificate_based_auth_configuration_request_builder.CertificateBasedAuthConfigurationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
-        """
-        Provides operations to call the checkMemberGroups method.
-        """
-        return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
-        """
-        Provides operations to call the checkMemberObjects method.
-        """
-        return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
         """
         Provides operations to manage the extensions property of the microsoft.graph.organization entity.
@@ -64,28 +50,42 @@ class OrganizationItemRequestBuilder():
         return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
+    def microsoft_graph_check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
+        """
+        Provides operations to call the checkMemberGroups method.
+        """
+        return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
+        """
+        Provides operations to call the checkMemberObjects method.
+        """
+        return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
         """
         Provides operations to call the getMemberGroups method.
         """
         return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
+    def microsoft_graph_get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
         """
         Provides operations to call the getMemberObjects method.
         """
         return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def restore(self) -> restore_request_builder.RestoreRequestBuilder:
+    def microsoft_graph_restore(self) -> restore_request_builder.RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
         return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def set_mobile_device_management_authority(self) -> set_mobile_device_management_authority_request_builder.SetMobileDeviceManagementAuthorityRequestBuilder:
+    def microsoft_graph_set_mobile_device_management_authority(self) -> set_mobile_device_management_authority_request_builder.SetMobileDeviceManagementAuthorityRequestBuilder:
         """
         Provides operations to call the setMobileDeviceManagementAuthority method.
         """
@@ -104,10 +104,11 @@ class OrganizationItemRequestBuilder():
         url_tpl_params["certificateBasedAuthConfiguration%2Did"] = id
         return certificate_based_auth_configuration_item_request_builder.CertificateBasedAuthConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, organization_id: Optional[str] = None) -> None:
         """
         Instantiates a new OrganizationItemRequestBuilder and sets the default values.
         Args:
+            organizationId: key: id of organization
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -119,12 +120,13 @@ class OrganizationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/organization/{organization%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["organization%2Did"] = organizationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
     async def delete(self,request_configuration: Optional[OrganizationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete entity from organization by key (id)
+        Delete entity from organization
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -174,7 +176,7 @@ class OrganizationItemRequestBuilder():
         """
         Update the properties of the currently authenticated organization. In this case, `organization` is defined as a collection of exactly one record, and so its **ID** must be specified in the request.  The **ID** is also known as the **tenantId** of the organization.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[organization.Organization]
         """
@@ -193,7 +195,7 @@ class OrganizationItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[OrganizationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete entity from organization by key (id)
+        Delete entity from organization
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -229,7 +231,7 @@ class OrganizationItemRequestBuilder():
         """
         Update the properties of the currently authenticated organization. In this case, `organization` is defined as a collection of exactly one record, and so its **ID** must be specified in the request.  The **ID** is also known as the **tenantId** of the organization.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

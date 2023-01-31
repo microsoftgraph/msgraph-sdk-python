@@ -78,13 +78,11 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         self._delegate_meeting_message_delivery_options: Optional[delegate_meeting_message_delivery_options.DelegateMeetingMessageDeliveryOptions] = None
         # The locale information for the user, including the preferred language and country/region.
         self._language: Optional[locale_info.LocaleInfo] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The time format for the user's mailbox.
         self._time_format: Optional[str] = None
         # The default time zone for the user's mailbox.
         self._time_zone: Optional[str] = None
-        # The userPurpose property
         self._user_purpose: Optional[user_purpose.UserPurpose] = None
         # The days of the week and hours in a specific time zone that the user works.
         self._working_hours: Optional[working_hours.WorkingHours] = None
@@ -141,16 +139,16 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "archive_folder": lambda n : setattr(self, 'archive_folder', n.get_str_value()),
-            "automatic_replies_setting": lambda n : setattr(self, 'automatic_replies_setting', n.get_object_value(automatic_replies_setting.AutomaticRepliesSetting)),
-            "date_format": lambda n : setattr(self, 'date_format', n.get_str_value()),
-            "delegate_meeting_message_delivery_options": lambda n : setattr(self, 'delegate_meeting_message_delivery_options', n.get_enum_value(delegate_meeting_message_delivery_options.DelegateMeetingMessageDeliveryOptions)),
+            "archiveFolder": lambda n : setattr(self, 'archive_folder', n.get_str_value()),
+            "automaticRepliesSetting": lambda n : setattr(self, 'automatic_replies_setting', n.get_object_value(automatic_replies_setting.AutomaticRepliesSetting)),
+            "dateFormat": lambda n : setattr(self, 'date_format', n.get_str_value()),
+            "delegateMeetingMessageDeliveryOptions": lambda n : setattr(self, 'delegate_meeting_message_delivery_options', n.get_enum_value(delegate_meeting_message_delivery_options.DelegateMeetingMessageDeliveryOptions)),
             "language": lambda n : setattr(self, 'language', n.get_object_value(locale_info.LocaleInfo)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "time_format": lambda n : setattr(self, 'time_format', n.get_str_value()),
-            "time_zone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
-            "user_purpose": lambda n : setattr(self, 'user_purpose', n.get_enum_value(user_purpose.UserPurpose)),
-            "working_hours": lambda n : setattr(self, 'working_hours', n.get_object_value(working_hours.WorkingHours)),
+            "timeFormat": lambda n : setattr(self, 'time_format', n.get_str_value()),
+            "timeZone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
+            "userPurpose": lambda n : setattr(self, 'user_purpose', n.get_enum_value(user_purpose.UserPurpose)),
+            "workingHours": lambda n : setattr(self, 'working_hours', n.get_object_value(working_hours.WorkingHours)),
         }
         return fields
     
@@ -174,7 +172,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -182,7 +180,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """
@@ -245,7 +243,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
     @property
     def user_purpose(self,) -> Optional[user_purpose.UserPurpose]:
         """
-        Gets the userPurpose property value. The userPurpose property
+        Gets the userPurpose property value. 
         Returns: Optional[user_purpose.UserPurpose]
         """
         return self._user_purpose
@@ -253,7 +251,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
     @user_purpose.setter
     def user_purpose(self,value: Optional[user_purpose.UserPurpose] = None) -> None:
         """
-        Sets the userPurpose property value. The userPurpose property
+        Sets the userPurpose property value. 
         Args:
             value: Value to set for the userPurpose property.
         """

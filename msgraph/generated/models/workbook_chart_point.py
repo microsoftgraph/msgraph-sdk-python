@@ -15,7 +15,6 @@ class WorkbookChartPoint(entity.Entity):
         super().__init__()
         # Encapsulates the format properties chart point. Read-only.
         self._format: Optional[workbook_chart_point_format.WorkbookChartPointFormat] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Returns the value of a chart point. Read-only.
         self._value: Optional[json.Json] = None

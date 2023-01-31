@@ -9,16 +9,12 @@ entity = lazy_import('msgraph.generated.models.entity')
 class DelegatedAdminCustomer(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new DelegatedAdminCustomer and sets the default values.
+        Instantiates a new delegatedAdminCustomer and sets the default values.
         """
         super().__init__()
-        # The displayName property
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The serviceManagementDetails property
         self._service_management_details: Optional[List[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail]] = None
-        # The tenantId property
         self._tenant_id: Optional[str] = None
     
     @staticmethod
@@ -36,7 +32,7 @@ class DelegatedAdminCustomer(entity.Entity):
     @property
     def display_name(self,) -> Optional[str]:
         """
-        Gets the displayName property value. The displayName property
+        Gets the displayName property value. 
         Returns: Optional[str]
         """
         return self._display_name
@@ -44,7 +40,7 @@ class DelegatedAdminCustomer(entity.Entity):
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the displayName property value. The displayName property
+        Sets the displayName property value. 
         Args:
             value: Value to set for the displayName property.
         """
@@ -56,9 +52,9 @@ class DelegatedAdminCustomer(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "service_management_details": lambda n : setattr(self, 'service_management_details', n.get_collection_of_object_values(delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail)),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "serviceManagementDetails": lambda n : setattr(self, 'service_management_details', n.get_collection_of_object_values(delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail)),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -80,7 +76,7 @@ class DelegatedAdminCustomer(entity.Entity):
     @property
     def service_management_details(self,) -> Optional[List[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail]]:
         """
-        Gets the serviceManagementDetails property value. The serviceManagementDetails property
+        Gets the serviceManagementDetails property value. 
         Returns: Optional[List[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail]]
         """
         return self._service_management_details
@@ -88,7 +84,7 @@ class DelegatedAdminCustomer(entity.Entity):
     @service_management_details.setter
     def service_management_details(self,value: Optional[List[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail]] = None) -> None:
         """
-        Sets the serviceManagementDetails property value. The serviceManagementDetails property
+        Sets the serviceManagementDetails property value. 
         Args:
             value: Value to set for the serviceManagementDetails property.
         """
@@ -97,7 +93,7 @@ class DelegatedAdminCustomer(entity.Entity):
     @property
     def tenant_id(self,) -> Optional[str]:
         """
-        Gets the tenantId property value. The tenantId property
+        Gets the tenantId property value. 
         Returns: Optional[str]
         """
         return self._tenant_id
@@ -105,7 +101,7 @@ class DelegatedAdminCustomer(entity.Entity):
     @tenant_id.setter
     def tenant_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the tenantId property value. The tenantId property
+        Sets the tenantId property value. 
         Args:
             value: Value to set for the tenantId property.
         """

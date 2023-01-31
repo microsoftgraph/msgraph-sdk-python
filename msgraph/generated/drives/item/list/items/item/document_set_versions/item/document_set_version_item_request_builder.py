@@ -10,7 +10,7 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-restore_request_builder = lazy_import('msgraph.generated.drives.item.list.items.item.document_set_versions.item.restore.restore_request_builder')
+restore_request_builder = lazy_import('msgraph.generated.drives.item.list.items.item.document_set_versions.item.microsoft_graph_restore.restore_request_builder')
 document_set_version = lazy_import('msgraph.generated.models.document_set_version')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -19,16 +19,17 @@ class DocumentSetVersionItemRequestBuilder():
     Provides operations to manage the documentSetVersions property of the microsoft.graph.listItem entity.
     """
     @property
-    def restore(self) -> restore_request_builder.RestoreRequestBuilder:
+    def microsoft_graph_restore(self) -> restore_request_builder.RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
         return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, document_set_version_id: Optional[str] = None) -> None:
         """
         Instantiates a new DocumentSetVersionItemRequestBuilder and sets the default values.
         Args:
+            documentSetVersionId: key: id of documentSetVersion
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -40,6 +41,7 @@ class DocumentSetVersionItemRequestBuilder():
         self.url_template: str = "{+baseurl}/drives/{drive%2Did}/list/items/{listItem%2Did}/documentSetVersions/{documentSetVersion%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["documentSetVersion%2Did"] = documentSetVersionId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -82,7 +84,7 @@ class DocumentSetVersionItemRequestBuilder():
         """
         Update the navigation property documentSetVersions in drives
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[document_set_version.DocumentSetVersion]
         """
@@ -137,7 +139,7 @@ class DocumentSetVersionItemRequestBuilder():
         """
         Update the navigation property documentSetVersions in drives
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

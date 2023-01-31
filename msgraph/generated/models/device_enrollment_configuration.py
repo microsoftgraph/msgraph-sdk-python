@@ -43,7 +43,6 @@ class DeviceEnrollmentConfiguration(entity.Entity):
         self._display_name: Optional[str] = None
         # Last modified date time in UTC of the device enrollment configuration
         self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Priority is used when a user exists in multiple groups that are assigned enrollment configuration. Users are subject only to the configuration with the lowest priority value.
         self._priority: Optional[int] = None
@@ -120,10 +119,10 @@ class DeviceEnrollmentConfiguration(entity.Entity):
         """
         fields = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(enrollment_configuration_assignment.EnrollmentConfigurationAssignment)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "priority": lambda n : setattr(self, 'priority', n.get_int_value()),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
         }

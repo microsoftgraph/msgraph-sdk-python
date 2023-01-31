@@ -146,7 +146,7 @@ class DirectoryRequestBuilder():
         """
         Update the navigation property directory in roleManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[rbac_application.RbacApplication]
         """
@@ -305,7 +305,7 @@ class DirectoryRequestBuilder():
         """
         Update the navigation property directory in roleManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

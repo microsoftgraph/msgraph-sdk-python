@@ -38,7 +38,6 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         self._external_reply_message: Optional[str] = None
         # The automatic reply to send to the audience internal to the signed-in user's organization, if Status is AlwaysEnabled or Scheduled.
         self._internal_reply_message: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The date and time that automatic replies are set to end, if Status is set to Scheduled.
         self._scheduled_end_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
@@ -99,12 +98,12 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "external_audience": lambda n : setattr(self, 'external_audience', n.get_enum_value(external_audience_scope.ExternalAudienceScope)),
-            "external_reply_message": lambda n : setattr(self, 'external_reply_message', n.get_str_value()),
-            "internal_reply_message": lambda n : setattr(self, 'internal_reply_message', n.get_str_value()),
+            "externalAudience": lambda n : setattr(self, 'external_audience', n.get_enum_value(external_audience_scope.ExternalAudienceScope)),
+            "externalReplyMessage": lambda n : setattr(self, 'external_reply_message', n.get_str_value()),
+            "internalReplyMessage": lambda n : setattr(self, 'internal_reply_message', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "scheduled_end_date_time": lambda n : setattr(self, 'scheduled_end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "scheduled_start_date_time": lambda n : setattr(self, 'scheduled_start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "scheduledEndDateTime": lambda n : setattr(self, 'scheduled_end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "scheduledStartDateTime": lambda n : setattr(self, 'scheduled_start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(automatic_replies_status.AutomaticRepliesStatus)),
         }
         return fields
@@ -129,7 +128,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -137,7 +136,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

@@ -12,7 +12,6 @@ class OfferShiftRequestCollectionResponse(base_collection_pagination_count_respo
         Instantiates a new OfferShiftRequestCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[offer_shift_request.OfferShiftRequest]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class OfferShiftRequestCollectionResponse(base_collection_pagination_count_respo
     @property
     def value(self,) -> Optional[List[offer_shift_request.OfferShiftRequest]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[offer_shift_request.OfferShiftRequest]]
         """
         return self._value
@@ -61,7 +60,7 @@ class OfferShiftRequestCollectionResponse(base_collection_pagination_count_respo
     @value.setter
     def value(self,value: Optional[List[offer_shift_request.OfferShiftRequest]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

@@ -32,7 +32,6 @@ class SizeRange(AdditionalDataHolder, Parsable):
         self._maximum_size: Optional[int] = None
         # The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
         self._minimum_size: Optional[int] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -53,8 +52,8 @@ class SizeRange(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "maximum_size": lambda n : setattr(self, 'maximum_size', n.get_int_value()),
-            "minimum_size": lambda n : setattr(self, 'minimum_size', n.get_int_value()),
+            "maximumSize": lambda n : setattr(self, 'maximum_size', n.get_int_value()),
+            "minimumSize": lambda n : setattr(self, 'minimum_size', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -96,7 +95,7 @@ class SizeRange(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -104,7 +103,7 @@ class SizeRange(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

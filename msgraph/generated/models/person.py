@@ -66,7 +66,6 @@ class Person(entity.Entity):
         self._is_favorite: Optional[bool] = None
         # The person's job title.
         self._job_title: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # The location of the person's office.
         self._office_location: Optional[str] = None
@@ -144,24 +143,24 @@ class Person(entity.Entity):
         """
         fields = {
             "birthday": lambda n : setattr(self, 'birthday', n.get_str_value()),
-            "company_name": lambda n : setattr(self, 'company_name', n.get_str_value()),
+            "companyName": lambda n : setattr(self, 'company_name', n.get_str_value()),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "given_name": lambda n : setattr(self, 'given_name', n.get_str_value()),
-            "im_address": lambda n : setattr(self, 'im_address', n.get_str_value()),
-            "is_favorite": lambda n : setattr(self, 'is_favorite', n.get_bool_value()),
-            "job_title": lambda n : setattr(self, 'job_title', n.get_str_value()),
-            "office_location": lambda n : setattr(self, 'office_location', n.get_str_value()),
-            "person_notes": lambda n : setattr(self, 'person_notes', n.get_str_value()),
-            "person_type": lambda n : setattr(self, 'person_type', n.get_object_value(person_type.PersonType)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "givenName": lambda n : setattr(self, 'given_name', n.get_str_value()),
+            "imAddress": lambda n : setattr(self, 'im_address', n.get_str_value()),
+            "isFavorite": lambda n : setattr(self, 'is_favorite', n.get_bool_value()),
+            "jobTitle": lambda n : setattr(self, 'job_title', n.get_str_value()),
+            "officeLocation": lambda n : setattr(self, 'office_location', n.get_str_value()),
+            "personNotes": lambda n : setattr(self, 'person_notes', n.get_str_value()),
+            "personType": lambda n : setattr(self, 'person_type', n.get_object_value(person_type.PersonType)),
             "phones": lambda n : setattr(self, 'phones', n.get_collection_of_object_values(phone.Phone)),
-            "postal_addresses": lambda n : setattr(self, 'postal_addresses', n.get_collection_of_object_values(location.Location)),
+            "postalAddresses": lambda n : setattr(self, 'postal_addresses', n.get_collection_of_object_values(location.Location)),
             "profession": lambda n : setattr(self, 'profession', n.get_str_value()),
-            "scored_email_addresses": lambda n : setattr(self, 'scored_email_addresses', n.get_collection_of_object_values(scored_email_address.ScoredEmailAddress)),
+            "scoredEmailAddresses": lambda n : setattr(self, 'scored_email_addresses', n.get_collection_of_object_values(scored_email_address.ScoredEmailAddress)),
             "surname": lambda n : setattr(self, 'surname', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
             "websites": lambda n : setattr(self, 'websites', n.get_collection_of_object_values(website.Website)),
-            "yomi_company": lambda n : setattr(self, 'yomi_company', n.get_str_value()),
+            "yomiCompany": lambda n : setattr(self, 'yomi_company', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

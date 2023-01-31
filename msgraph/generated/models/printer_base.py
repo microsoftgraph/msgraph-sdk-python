@@ -49,9 +49,7 @@ class PrinterBase(entity.Entity):
         self._manufacturer: Optional[str] = None
         # The model name of the printer/printerShare.
         self._model: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The status property
         self._status: Optional[printer_status.PrinterStatus] = None
     
     @staticmethod
@@ -108,8 +106,8 @@ class PrinterBase(entity.Entity):
         fields = {
             "capabilities": lambda n : setattr(self, 'capabilities', n.get_object_value(printer_capabilities.PrinterCapabilities)),
             "defaults": lambda n : setattr(self, 'defaults', n.get_object_value(printer_defaults.PrinterDefaults)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_accepting_jobs": lambda n : setattr(self, 'is_accepting_jobs', n.get_bool_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isAcceptingJobs": lambda n : setattr(self, 'is_accepting_jobs', n.get_bool_value()),
             "jobs": lambda n : setattr(self, 'jobs', n.get_collection_of_object_values(print_job.PrintJob)),
             "location": lambda n : setattr(self, 'location', n.get_object_value(printer_location.PrinterLocation)),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
@@ -227,7 +225,7 @@ class PrinterBase(entity.Entity):
     @property
     def status(self,) -> Optional[printer_status.PrinterStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. 
         Returns: Optional[printer_status.PrinterStatus]
         """
         return self._status
@@ -235,7 +233,7 @@ class PrinterBase(entity.Entity):
     @status.setter
     def status(self,value: Optional[printer_status.PrinterStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. 
         Args:
             value: Value to set for the status property.
         """

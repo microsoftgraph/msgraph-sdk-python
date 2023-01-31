@@ -11,7 +11,6 @@ class DomainDnsTxtRecord(domain_dns_record.DomainDnsRecord):
         Instantiates a new DomainDnsTxtRecord and sets the default values.
         """
         super().__init__()
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Value used when configuring the text property at the DNS host.
         self._text: Optional[str] = None

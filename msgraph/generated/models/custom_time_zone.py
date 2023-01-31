@@ -74,8 +74,8 @@ class CustomTimeZone(time_zone_base.TimeZoneBase):
         """
         fields = {
             "bias": lambda n : setattr(self, 'bias', n.get_int_value()),
-            "daylight_offset": lambda n : setattr(self, 'daylight_offset', n.get_object_value(daylight_time_zone_offset.DaylightTimeZoneOffset)),
-            "standard_offset": lambda n : setattr(self, 'standard_offset', n.get_object_value(standard_time_zone_offset.StandardTimeZoneOffset)),
+            "daylightOffset": lambda n : setattr(self, 'daylight_offset', n.get_object_value(daylight_time_zone_offset.DaylightTimeZoneOffset)),
+            "standardOffset": lambda n : setattr(self, 'standard_offset', n.get_object_value(standard_time_zone_offset.StandardTimeZoneOffset)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

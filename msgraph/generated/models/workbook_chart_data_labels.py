@@ -14,7 +14,6 @@ class WorkbookChartDataLabels(entity.Entity):
         super().__init__()
         # Represents the format of chart data labels, which includes fill and font formatting. Read-only.
         self._format: Optional[workbook_chart_data_label_format.WorkbookChartDataLabelFormat] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # DataLabelPosition value that represents the position of the data label. The possible values are: None, Center, InsideEnd, InsideBase, OutsideEnd, Left, Right, Top, Bottom, BestFit, Callout.
         self._position: Optional[str] = None
@@ -71,12 +70,12 @@ class WorkbookChartDataLabels(entity.Entity):
             "format": lambda n : setattr(self, 'format', n.get_object_value(workbook_chart_data_label_format.WorkbookChartDataLabelFormat)),
             "position": lambda n : setattr(self, 'position', n.get_str_value()),
             "separator": lambda n : setattr(self, 'separator', n.get_str_value()),
-            "show_bubble_size": lambda n : setattr(self, 'show_bubble_size', n.get_bool_value()),
-            "show_category_name": lambda n : setattr(self, 'show_category_name', n.get_bool_value()),
-            "show_legend_key": lambda n : setattr(self, 'show_legend_key', n.get_bool_value()),
-            "show_percentage": lambda n : setattr(self, 'show_percentage', n.get_bool_value()),
-            "show_series_name": lambda n : setattr(self, 'show_series_name', n.get_bool_value()),
-            "show_value": lambda n : setattr(self, 'show_value', n.get_bool_value()),
+            "showBubbleSize": lambda n : setattr(self, 'show_bubble_size', n.get_bool_value()),
+            "showCategoryName": lambda n : setattr(self, 'show_category_name', n.get_bool_value()),
+            "showLegendKey": lambda n : setattr(self, 'show_legend_key', n.get_bool_value()),
+            "showPercentage": lambda n : setattr(self, 'show_percentage', n.get_bool_value()),
+            "showSeriesName": lambda n : setattr(self, 'show_series_name', n.get_bool_value()),
+            "showValue": lambda n : setattr(self, 'show_value', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

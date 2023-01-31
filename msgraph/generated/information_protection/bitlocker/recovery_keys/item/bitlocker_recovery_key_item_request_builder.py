@@ -17,10 +17,11 @@ class BitlockerRecoveryKeyItemRequestBuilder():
     """
     Provides operations to manage the recoveryKeys property of the microsoft.graph.bitlocker entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, bitlocker_recovery_key_id: Optional[str] = None) -> None:
         """
         Instantiates a new BitlockerRecoveryKeyItemRequestBuilder and sets the default values.
         Args:
+            bitlockerRecoveryKeyId: key: id of bitlockerRecoveryKey
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class BitlockerRecoveryKeyItemRequestBuilder():
         self.url_template: str = "{+baseurl}/informationProtection/bitlocker/recoveryKeys/{bitlockerRecoveryKey%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["bitlockerRecoveryKey%2Did"] = bitlockerRecoveryKeyId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

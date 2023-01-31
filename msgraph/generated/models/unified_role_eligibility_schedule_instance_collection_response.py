@@ -12,7 +12,6 @@ class UnifiedRoleEligibilityScheduleInstanceCollectionResponse(base_collection_p
         Instantiates a new UnifiedRoleEligibilityScheduleInstanceCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class UnifiedRoleEligibilityScheduleInstanceCollectionResponse(base_collection_p
     @property
     def value(self,) -> Optional[List[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]]
         """
         return self._value
@@ -61,7 +60,7 @@ class UnifiedRoleEligibilityScheduleInstanceCollectionResponse(base_collection_p
     @value.setter
     def value(self,value: Optional[List[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

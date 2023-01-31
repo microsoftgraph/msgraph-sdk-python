@@ -89,7 +89,6 @@ class Subscription(entity.Entity):
         self._notification_url: Optional[str] = None
         # Optional. The app ID that the subscription service can use to generate the validation token. This allows the client to validate the authenticity of the notification received.
         self._notification_url_app_id: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
         # Required. Specifies the resource that will be monitored for changes. Do not include the base URL (https://graph.microsoft.com/v1.0/). See the possible resource path values for each supported resource.
         self._resource: Optional[str] = None
@@ -180,19 +179,19 @@ class Subscription(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "application_id": lambda n : setattr(self, 'application_id', n.get_str_value()),
-            "change_type": lambda n : setattr(self, 'change_type', n.get_str_value()),
-            "client_state": lambda n : setattr(self, 'client_state', n.get_str_value()),
-            "creator_id": lambda n : setattr(self, 'creator_id', n.get_str_value()),
-            "encryption_certificate": lambda n : setattr(self, 'encryption_certificate', n.get_str_value()),
-            "encryption_certificate_id": lambda n : setattr(self, 'encryption_certificate_id', n.get_str_value()),
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "include_resource_data": lambda n : setattr(self, 'include_resource_data', n.get_bool_value()),
-            "latest_supported_tls_version": lambda n : setattr(self, 'latest_supported_tls_version', n.get_str_value()),
-            "lifecycle_notification_url": lambda n : setattr(self, 'lifecycle_notification_url', n.get_str_value()),
-            "notification_query_options": lambda n : setattr(self, 'notification_query_options', n.get_str_value()),
-            "notification_url": lambda n : setattr(self, 'notification_url', n.get_str_value()),
-            "notification_url_app_id": lambda n : setattr(self, 'notification_url_app_id', n.get_str_value()),
+            "applicationId": lambda n : setattr(self, 'application_id', n.get_str_value()),
+            "changeType": lambda n : setattr(self, 'change_type', n.get_str_value()),
+            "clientState": lambda n : setattr(self, 'client_state', n.get_str_value()),
+            "creatorId": lambda n : setattr(self, 'creator_id', n.get_str_value()),
+            "encryptionCertificate": lambda n : setattr(self, 'encryption_certificate', n.get_str_value()),
+            "encryptionCertificateId": lambda n : setattr(self, 'encryption_certificate_id', n.get_str_value()),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "includeResourceData": lambda n : setattr(self, 'include_resource_data', n.get_bool_value()),
+            "latestSupportedTlsVersion": lambda n : setattr(self, 'latest_supported_tls_version', n.get_str_value()),
+            "lifecycleNotificationUrl": lambda n : setattr(self, 'lifecycle_notification_url', n.get_str_value()),
+            "notificationQueryOptions": lambda n : setattr(self, 'notification_query_options', n.get_str_value()),
+            "notificationUrl": lambda n : setattr(self, 'notification_url', n.get_str_value()),
+            "notificationUrlAppId": lambda n : setattr(self, 'notification_url_app_id', n.get_str_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

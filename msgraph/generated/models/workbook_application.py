@@ -30,7 +30,6 @@ class WorkbookApplication(entity.Entity):
         super().__init__()
         # Returns the calculation mode used in the workbook. Possible values are: Automatic, AutomaticExceptTables, Manual.
         self._calculation_mode: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
@@ -51,7 +50,7 @@ class WorkbookApplication(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "calculation_mode": lambda n : setattr(self, 'calculation_mode', n.get_str_value()),
+            "calculationMode": lambda n : setattr(self, 'calculation_mode', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

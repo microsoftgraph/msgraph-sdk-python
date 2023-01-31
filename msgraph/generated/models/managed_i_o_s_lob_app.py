@@ -114,12 +114,12 @@ class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "applicable_device_type": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(ios_device_type.IosDeviceType)),
-            "build_number": lambda n : setattr(self, 'build_number', n.get_str_value()),
-            "bundle_id": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "minimum_supported_operating_system": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(ios_minimum_operating_system.IosMinimumOperatingSystem)),
-            "version_number": lambda n : setattr(self, 'version_number', n.get_str_value()),
+            "applicableDeviceType": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(ios_device_type.IosDeviceType)),
+            "buildNumber": lambda n : setattr(self, 'build_number', n.get_str_value()),
+            "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(ios_minimum_operating_system.IosMinimumOperatingSystem)),
+            "versionNumber": lambda n : setattr(self, 'version_number', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

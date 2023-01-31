@@ -38,7 +38,6 @@ class ItemReference(AdditionalDataHolder, Parsable):
         self._id: Optional[str] = None
         # The name of the item being referenced. Read-only.
         self._name: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # Path that can be used to navigate to the item. Read-only.
         self._path: Optional[str] = None
@@ -101,15 +100,15 @@ class ItemReference(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "drive_id": lambda n : setattr(self, 'drive_id', n.get_str_value()),
-            "drive_type": lambda n : setattr(self, 'drive_type', n.get_str_value()),
+            "driveId": lambda n : setattr(self, 'drive_id', n.get_str_value()),
+            "driveType": lambda n : setattr(self, 'drive_type', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),
-            "share_id": lambda n : setattr(self, 'share_id', n.get_str_value()),
-            "sharepoint_ids": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
-            "site_id": lambda n : setattr(self, 'site_id', n.get_str_value()),
+            "shareId": lambda n : setattr(self, 'share_id', n.get_str_value()),
+            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
+            "siteId": lambda n : setattr(self, 'site_id', n.get_str_value()),
         }
         return fields
     
@@ -150,7 +149,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -158,7 +157,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

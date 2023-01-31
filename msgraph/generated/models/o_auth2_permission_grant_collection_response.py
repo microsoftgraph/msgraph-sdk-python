@@ -12,7 +12,6 @@ class OAuth2PermissionGrantCollectionResponse(base_collection_pagination_count_r
         Instantiates a new OAuth2PermissionGrantCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[o_auth2_permission_grant.OAuth2PermissionGrant]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class OAuth2PermissionGrantCollectionResponse(base_collection_pagination_count_r
     @property
     def value(self,) -> Optional[List[o_auth2_permission_grant.OAuth2PermissionGrant]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[o_auth2_permission_grant.OAuth2PermissionGrant]]
         """
         return self._value
@@ -61,7 +60,7 @@ class OAuth2PermissionGrantCollectionResponse(base_collection_pagination_count_r
     @value.setter
     def value(self,value: Optional[List[o_auth2_permission_grant.OAuth2PermissionGrant]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

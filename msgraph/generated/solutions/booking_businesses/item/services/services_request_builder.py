@@ -66,7 +66,7 @@ class ServicesRequestBuilder():
         """
         Create a new bookingService for the specified bookingBusiness.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[booking_service.BookingService]
         """
@@ -105,7 +105,7 @@ class ServicesRequestBuilder():
         """
         Create a new bookingService for the specified bookingBusiness.
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

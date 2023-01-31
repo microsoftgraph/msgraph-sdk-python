@@ -15,13 +15,10 @@ class ConditionalAccessTemplate(entity.Entity):
         super().__init__()
         # The user-friendly name of the template.
         self._description: Optional[str] = None
-        # The details property
         self._details: Optional[conditional_access_policy_detail.ConditionalAccessPolicyDetail] = None
         # The user-friendly name of the template.
         self._name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The scenarios property
         self._scenarios: Optional[template_scenarios.TemplateScenarios] = None
     
     @staticmethod
@@ -56,7 +53,7 @@ class ConditionalAccessTemplate(entity.Entity):
     @property
     def details(self,) -> Optional[conditional_access_policy_detail.ConditionalAccessPolicyDetail]:
         """
-        Gets the details property value. The details property
+        Gets the details property value. 
         Returns: Optional[conditional_access_policy_detail.ConditionalAccessPolicyDetail]
         """
         return self._details
@@ -64,7 +61,7 @@ class ConditionalAccessTemplate(entity.Entity):
     @details.setter
     def details(self,value: Optional[conditional_access_policy_detail.ConditionalAccessPolicyDetail] = None) -> None:
         """
-        Sets the details property value. The details property
+        Sets the details property value. 
         Args:
             value: Value to set for the details property.
         """
@@ -105,7 +102,7 @@ class ConditionalAccessTemplate(entity.Entity):
     @property
     def scenarios(self,) -> Optional[template_scenarios.TemplateScenarios]:
         """
-        Gets the scenarios property value. The scenarios property
+        Gets the scenarios property value. 
         Returns: Optional[template_scenarios.TemplateScenarios]
         """
         return self._scenarios
@@ -113,7 +110,7 @@ class ConditionalAccessTemplate(entity.Entity):
     @scenarios.setter
     def scenarios(self,value: Optional[template_scenarios.TemplateScenarios] = None) -> None:
         """
-        Sets the scenarios property value. The scenarios property
+        Sets the scenarios property value. 
         Args:
             value: Value to set for the scenarios property.
         """

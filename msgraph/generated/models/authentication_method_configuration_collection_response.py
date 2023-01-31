@@ -12,7 +12,6 @@ class AuthenticationMethodConfigurationCollectionResponse(base_collection_pagina
         Instantiates a new AuthenticationMethodConfigurationCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[authentication_method_configuration.AuthenticationMethodConfiguration]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class AuthenticationMethodConfigurationCollectionResponse(base_collection_pagina
     @property
     def value(self,) -> Optional[List[authentication_method_configuration.AuthenticationMethodConfiguration]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[authentication_method_configuration.AuthenticationMethodConfiguration]]
         """
         return self._value
@@ -61,7 +60,7 @@ class AuthenticationMethodConfigurationCollectionResponse(base_collection_pagina
     @value.setter
     def value(self,value: Optional[List[authentication_method_configuration.AuthenticationMethodConfiguration]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

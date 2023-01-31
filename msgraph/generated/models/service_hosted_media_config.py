@@ -34,7 +34,7 @@ class ServiceHostedMediaConfig(media_config.MediaConfig):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "pre_fetch_media": lambda n : setattr(self, 'pre_fetch_media', n.get_collection_of_object_values(media_info.MediaInfo)),
+            "preFetchMedia": lambda n : setattr(self, 'pre_fetch_media', n.get_collection_of_object_values(media_info.MediaInfo)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

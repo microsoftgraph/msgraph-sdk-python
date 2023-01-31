@@ -12,7 +12,6 @@ class X509CertificateUserBindingCollectionResponse(base_collection_pagination_co
         Instantiates a new X509CertificateUserBindingCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[x509_certificate_user_binding.X509CertificateUserBinding]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class X509CertificateUserBindingCollectionResponse(base_collection_pagination_co
     @property
     def value(self,) -> Optional[List[x509_certificate_user_binding.X509CertificateUserBinding]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[x509_certificate_user_binding.X509CertificateUserBinding]]
         """
         return self._value
@@ -61,7 +60,7 @@ class X509CertificateUserBindingCollectionResponse(base_collection_pagination_co
     @value.setter
     def value(self,value: Optional[List[x509_certificate_user_binding.X509CertificateUserBinding]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

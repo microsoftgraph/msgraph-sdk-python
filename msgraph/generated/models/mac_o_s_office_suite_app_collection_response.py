@@ -12,7 +12,6 @@ class MacOSOfficeSuiteAppCollectionResponse(base_collection_pagination_count_res
         Instantiates a new MacOSOfficeSuiteAppCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[mac_o_s_office_suite_app.MacOSOfficeSuiteApp]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class MacOSOfficeSuiteAppCollectionResponse(base_collection_pagination_count_res
     @property
     def value(self,) -> Optional[List[mac_o_s_office_suite_app.MacOSOfficeSuiteApp]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[mac_o_s_office_suite_app.MacOSOfficeSuiteApp]]
         """
         return self._value
@@ -61,7 +60,7 @@ class MacOSOfficeSuiteAppCollectionResponse(base_collection_pagination_count_res
     @value.setter
     def value(self,value: Optional[List[mac_o_s_office_suite_app.MacOSOfficeSuiteApp]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

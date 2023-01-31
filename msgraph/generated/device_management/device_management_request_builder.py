@@ -34,7 +34,6 @@ device_management_partners_request_builder = lazy_import('msgraph.generated.devi
 device_management_partner_item_request_builder = lazy_import('msgraph.generated.device_management.device_management_partners.item.device_management_partner_item_request_builder')
 exchange_connectors_request_builder = lazy_import('msgraph.generated.device_management.exchange_connectors.exchange_connectors_request_builder')
 device_management_exchange_connector_item_request_builder = lazy_import('msgraph.generated.device_management.exchange_connectors.item.device_management_exchange_connector_item_request_builder')
-get_effective_permissions_with_scope_request_builder = lazy_import('msgraph.generated.device_management.get_effective_permissions_with_scope.get_effective_permissions_with_scope_request_builder')
 imported_windows_autopilot_device_identities_request_builder = lazy_import('msgraph.generated.device_management.imported_windows_autopilot_device_identities.imported_windows_autopilot_device_identities_request_builder')
 imported_windows_autopilot_device_identity_item_request_builder = lazy_import('msgraph.generated.device_management.imported_windows_autopilot_device_identities.item.imported_windows_autopilot_device_identity_item_request_builder')
 ios_update_statuses_request_builder = lazy_import('msgraph.generated.device_management.ios_update_statuses.ios_update_statuses_request_builder')
@@ -42,6 +41,8 @@ ios_update_device_status_item_request_builder = lazy_import('msgraph.generated.d
 managed_device_overview_request_builder = lazy_import('msgraph.generated.device_management.managed_device_overview.managed_device_overview_request_builder')
 managed_devices_request_builder = lazy_import('msgraph.generated.device_management.managed_devices.managed_devices_request_builder')
 managed_device_item_request_builder = lazy_import('msgraph.generated.device_management.managed_devices.item.managed_device_item_request_builder')
+get_effective_permissions_with_scope_request_builder = lazy_import('msgraph.generated.device_management.microsoft_graph_get_effective_permissions_with_scope.get_effective_permissions_with_scope_request_builder')
+verify_windows_enrollment_auto_discovery_with_domain_name_request_builder = lazy_import('msgraph.generated.device_management.microsoft_graph_verify_windows_enrollment_auto_discovery_with_domain_name.verify_windows_enrollment_auto_discovery_with_domain_name_request_builder')
 mobile_threat_defense_connectors_request_builder = lazy_import('msgraph.generated.device_management.mobile_threat_defense_connectors.mobile_threat_defense_connectors_request_builder')
 mobile_threat_defense_connector_item_request_builder = lazy_import('msgraph.generated.device_management.mobile_threat_defense_connectors.item.mobile_threat_defense_connector_item_request_builder')
 notification_message_templates_request_builder = lazy_import('msgraph.generated.device_management.notification_message_templates.notification_message_templates_request_builder')
@@ -62,7 +63,6 @@ terms_and_conditions_request_builder = lazy_import('msgraph.generated.device_man
 terms_and_conditions_item_request_builder = lazy_import('msgraph.generated.device_management.terms_and_conditions.item.terms_and_conditions_item_request_builder')
 troubleshooting_events_request_builder = lazy_import('msgraph.generated.device_management.troubleshooting_events.troubleshooting_events_request_builder')
 device_management_troubleshooting_event_item_request_builder = lazy_import('msgraph.generated.device_management.troubleshooting_events.item.device_management_troubleshooting_event_item_request_builder')
-verify_windows_enrollment_auto_discovery_with_domain_name_request_builder = lazy_import('msgraph.generated.device_management.verify_windows_enrollment_auto_discovery_with_domain_name.verify_windows_enrollment_auto_discovery_with_domain_name_request_builder')
 windows_autopilot_device_identities_request_builder = lazy_import('msgraph.generated.device_management.windows_autopilot_device_identities.windows_autopilot_device_identities_request_builder')
 windows_autopilot_device_identity_item_request_builder = lazy_import('msgraph.generated.device_management.windows_autopilot_device_identities.item.windows_autopilot_device_identity_item_request_builder')
 windows_information_protection_app_learning_summaries_request_builder = lazy_import('msgraph.generated.device_management.windows_information_protection_app_learning_summaries.windows_information_protection_app_learning_summaries_request_builder')
@@ -466,17 +466,6 @@ class DeviceManagementRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, device_management.DeviceManagement, error_mapping)
     
-    def get_effective_permissions_with_scope(self,scope: Optional[str] = None) -> get_effective_permissions_with_scope_request_builder.GetEffectivePermissionsWithScopeRequestBuilder:
-        """
-        Provides operations to call the getEffectivePermissions method.
-        Args:
-            scope: Usage: scope='{scope}'
-        Returns: get_effective_permissions_with_scope_request_builder.GetEffectivePermissionsWithScopeRequestBuilder
-        """
-        if scope is None:
-            raise Exception("scope cannot be undefined")
-        return get_effective_permissions_with_scope_request_builder.GetEffectivePermissionsWithScopeRequestBuilder(self.request_adapter, self.path_parameters, scope)
-    
     def imported_windows_autopilot_device_identities_by_id(self,id: str) -> imported_windows_autopilot_device_identity_item_request_builder.ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder:
         """
         Provides operations to manage the importedWindowsAutopilotDeviceIdentities property of the microsoft.graph.deviceManagement entity.
@@ -516,6 +505,28 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["managedDevice%2Did"] = id
         return managed_device_item_request_builder.ManagedDeviceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
+    def microsoft_graph_get_effective_permissions_with_scope(self,scope: Optional[str] = None) -> get_effective_permissions_with_scope_request_builder.GetEffectivePermissionsWithScopeRequestBuilder:
+        """
+        Provides operations to call the getEffectivePermissions method.
+        Args:
+            scope: Usage: scope='{scope}'
+        Returns: get_effective_permissions_with_scope_request_builder.GetEffectivePermissionsWithScopeRequestBuilder
+        """
+        if scope is None:
+            raise Exception("scope cannot be undefined")
+        return get_effective_permissions_with_scope_request_builder.GetEffectivePermissionsWithScopeRequestBuilder(self.request_adapter, self.path_parameters, scope)
+    
+    def microsoft_graph_verify_windows_enrollment_auto_discovery_with_domain_name(self,domain_name: Optional[str] = None) -> verify_windows_enrollment_auto_discovery_with_domain_name_request_builder.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder:
+        """
+        Provides operations to call the verifyWindowsEnrollmentAutoDiscovery method.
+        Args:
+            domainName: Usage: domainName='{domainName}'
+        Returns: verify_windows_enrollment_auto_discovery_with_domain_name_request_builder.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder
+        """
+        if domain_name is None:
+            raise Exception("domain_name cannot be undefined")
+        return verify_windows_enrollment_auto_discovery_with_domain_name_request_builder.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder(self.request_adapter, self.path_parameters, domainName)
+    
     def mobile_threat_defense_connectors_by_id(self,id: str) -> mobile_threat_defense_connector_item_request_builder.MobileThreatDefenseConnectorItemRequestBuilder:
         """
         Provides operations to manage the mobileThreatDefenseConnectors property of the microsoft.graph.deviceManagement entity.
@@ -546,7 +557,7 @@ class DeviceManagementRequestBuilder():
         """
         Update deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[device_management.DeviceManagement]
         """
@@ -663,7 +674,7 @@ class DeviceManagementRequestBuilder():
         """
         Update deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -692,17 +703,6 @@ class DeviceManagementRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceManagementTroubleshootingEvent%2Did"] = id
         return device_management_troubleshooting_event_item_request_builder.DeviceManagementTroubleshootingEventItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def verify_windows_enrollment_auto_discovery_with_domain_name(self,domain_name: Optional[str] = None) -> verify_windows_enrollment_auto_discovery_with_domain_name_request_builder.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder:
-        """
-        Provides operations to call the verifyWindowsEnrollmentAutoDiscovery method.
-        Args:
-            domainName: Usage: domainName='{domainName}'
-        Returns: verify_windows_enrollment_auto_discovery_with_domain_name_request_builder.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder
-        """
-        if domain_name is None:
-            raise Exception("domain_name cannot be undefined")
-        return verify_windows_enrollment_auto_discovery_with_domain_name_request_builder.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder(self.request_adapter, self.path_parameters, domainName)
     
     def windows_autopilot_device_identities_by_id(self,id: str) -> windows_autopilot_device_identity_item_request_builder.WindowsAutopilotDeviceIdentityItemRequestBuilder:
         """

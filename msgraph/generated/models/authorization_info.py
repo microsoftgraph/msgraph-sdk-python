@@ -24,7 +24,7 @@ class AuthorizationInfo(AdditionalDataHolder, Parsable):
     @property
     def certificate_user_ids(self,) -> Optional[List[str]]:
         """
-        Gets the certificateUserIds property value. The certificateUserIds property
+        Gets the certificateUserIds property value. 
         Returns: Optional[List[str]]
         """
         return self._certificate_user_ids
@@ -32,7 +32,7 @@ class AuthorizationInfo(AdditionalDataHolder, Parsable):
     @certificate_user_ids.setter
     def certificate_user_ids(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the certificateUserIds property value. The certificateUserIds property
+        Sets the certificateUserIds property value. 
         Args:
             value: Value to set for the certificateUserIds property.
         """
@@ -45,9 +45,7 @@ class AuthorizationInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The certificateUserIds property
         self._certificate_user_ids: Optional[List[str]] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
     
     @staticmethod
@@ -68,7 +66,7 @@ class AuthorizationInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "certificate_user_ids": lambda n : setattr(self, 'certificate_user_ids', n.get_collection_of_primitive_values(str)),
+            "certificateUserIds": lambda n : setattr(self, 'certificate_user_ids', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -76,7 +74,7 @@ class AuthorizationInfo(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -84,7 +82,7 @@ class AuthorizationInfo(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

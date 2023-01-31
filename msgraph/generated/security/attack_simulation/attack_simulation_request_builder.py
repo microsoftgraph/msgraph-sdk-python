@@ -92,7 +92,7 @@ class AttackSimulationRequestBuilder():
         """
         Update the navigation property attackSimulation in security
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[attack_simulation_root.AttackSimulationRoot]
         """
@@ -173,7 +173,7 @@ class AttackSimulationRequestBuilder():
         """
         Update the navigation property attackSimulation in security
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

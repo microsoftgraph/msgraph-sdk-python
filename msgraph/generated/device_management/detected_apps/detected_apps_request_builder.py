@@ -66,7 +66,7 @@ class DetectedAppsRequestBuilder():
         """
         Create new navigation property to detectedApps for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[detected_app.DetectedApp]
         """
@@ -105,7 +105,7 @@ class DetectedAppsRequestBuilder():
         """
         Create new navigation property to detectedApps for deviceManagement
         Args:
-            body: The request body
+            body: 
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

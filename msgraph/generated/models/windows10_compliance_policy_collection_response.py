@@ -12,7 +12,6 @@ class Windows10CompliancePolicyCollectionResponse(base_collection_pagination_cou
         Instantiates a new Windows10CompliancePolicyCollectionResponse and sets the default values.
         """
         super().__init__()
-        # The value property
         self._value: Optional[List[windows10_compliance_policy.Windows10CompliancePolicy]] = None
     
     @staticmethod
@@ -53,7 +52,7 @@ class Windows10CompliancePolicyCollectionResponse(base_collection_pagination_cou
     @property
     def value(self,) -> Optional[List[windows10_compliance_policy.Windows10CompliancePolicy]]:
         """
-        Gets the value property value. The value property
+        Gets the value property value. 
         Returns: Optional[List[windows10_compliance_policy.Windows10CompliancePolicy]]
         """
         return self._value
@@ -61,7 +60,7 @@ class Windows10CompliancePolicyCollectionResponse(base_collection_pagination_cou
     @value.setter
     def value(self,value: Optional[List[windows10_compliance_policy.Windows10CompliancePolicy]] = None) -> None:
         """
-        Sets the value property value. The value property
+        Sets the value property value. 
         Args:
             value: Value to set for the value property.
         """

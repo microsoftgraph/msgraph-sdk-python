@@ -73,7 +73,7 @@ class GroupSettingTemplate(directory_object.DirectoryObject):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "values": lambda n : setattr(self, 'values', n.get_collection_of_object_values(setting_template_value.SettingTemplateValue)),
         }
         super_fields = super().get_field_deserializers()

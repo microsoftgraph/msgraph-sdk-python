@@ -33,7 +33,6 @@ class ManagedAppDiagnosticStatus(AdditionalDataHolder, Parsable):
 
         # Instruction on how to mitigate a failed validation
         self._mitigation_instruction: Optional[str] = None
-        # The OdataType property
         self._odata_type: Optional[str] = None
         # The state of the operation
         self._state: Optional[str] = None
@@ -58,10 +57,10 @@ class ManagedAppDiagnosticStatus(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "mitigation_instruction": lambda n : setattr(self, 'mitigation_instruction', n.get_str_value()),
+            "mitigationInstruction": lambda n : setattr(self, 'mitigation_instruction', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
-            "validation_name": lambda n : setattr(self, 'validation_name', n.get_str_value()),
+            "validationName": lambda n : setattr(self, 'validation_name', n.get_str_value()),
         }
         return fields
     
@@ -85,7 +84,7 @@ class ManagedAppDiagnosticStatus(AdditionalDataHolder, Parsable):
     @property
     def odata_type(self,) -> Optional[str]:
         """
-        Gets the @odata.type property value. The OdataType property
+        Gets the @odata.type property value. 
         Returns: Optional[str]
         """
         return self._odata_type
@@ -93,7 +92,7 @@ class ManagedAppDiagnosticStatus(AdditionalDataHolder, Parsable):
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the @odata.type property value. The OdataType property
+        Sets the @odata.type property value. 
         Args:
             value: Value to set for the OdataType property.
         """

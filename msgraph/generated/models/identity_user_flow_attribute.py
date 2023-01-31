@@ -13,15 +13,12 @@ class IdentityUserFlowAttribute(entity.Entity):
         Instantiates a new identityUserFlowAttribute and sets the default values.
         """
         super().__init__()
-        # The dataType property
         self._data_type: Optional[identity_user_flow_attribute_data_type.IdentityUserFlowAttributeDataType] = None
         # The description of the user flow attribute that's shown to the user at the time of sign-up.
         self._description: Optional[str] = None
         # The display name of the user flow attribute.
         self._display_name: Optional[str] = None
-        # The OdataType property
         self.odata_type: Optional[str] = None
-        # The userFlowAttributeType property
         self._user_flow_attribute_type: Optional[identity_user_flow_attribute_type.IdentityUserFlowAttributeType] = None
     
     @staticmethod
@@ -39,7 +36,7 @@ class IdentityUserFlowAttribute(entity.Entity):
     @property
     def data_type(self,) -> Optional[identity_user_flow_attribute_data_type.IdentityUserFlowAttributeDataType]:
         """
-        Gets the dataType property value. The dataType property
+        Gets the dataType property value. 
         Returns: Optional[identity_user_flow_attribute_data_type.IdentityUserFlowAttributeDataType]
         """
         return self._data_type
@@ -47,7 +44,7 @@ class IdentityUserFlowAttribute(entity.Entity):
     @data_type.setter
     def data_type(self,value: Optional[identity_user_flow_attribute_data_type.IdentityUserFlowAttributeDataType] = None) -> None:
         """
-        Sets the dataType property value. The dataType property
+        Sets the dataType property value. 
         Args:
             value: Value to set for the dataType property.
         """
@@ -93,10 +90,10 @@ class IdentityUserFlowAttribute(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "data_type": lambda n : setattr(self, 'data_type', n.get_enum_value(identity_user_flow_attribute_data_type.IdentityUserFlowAttributeDataType)),
+            "dataType": lambda n : setattr(self, 'data_type', n.get_enum_value(identity_user_flow_attribute_data_type.IdentityUserFlowAttributeDataType)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "user_flow_attribute_type": lambda n : setattr(self, 'user_flow_attribute_type', n.get_enum_value(identity_user_flow_attribute_type.IdentityUserFlowAttributeType)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "userFlowAttributeType": lambda n : setattr(self, 'user_flow_attribute_type', n.get_enum_value(identity_user_flow_attribute_type.IdentityUserFlowAttributeType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -119,7 +116,7 @@ class IdentityUserFlowAttribute(entity.Entity):
     @property
     def user_flow_attribute_type(self,) -> Optional[identity_user_flow_attribute_type.IdentityUserFlowAttributeType]:
         """
-        Gets the userFlowAttributeType property value. The userFlowAttributeType property
+        Gets the userFlowAttributeType property value. 
         Returns: Optional[identity_user_flow_attribute_type.IdentityUserFlowAttributeType]
         """
         return self._user_flow_attribute_type
@@ -127,7 +124,7 @@ class IdentityUserFlowAttribute(entity.Entity):
     @user_flow_attribute_type.setter
     def user_flow_attribute_type(self,value: Optional[identity_user_flow_attribute_type.IdentityUserFlowAttributeType] = None) -> None:
         """
-        Sets the userFlowAttributeType property value. The userFlowAttributeType property
+        Sets the userFlowAttributeType property value. 
         Args:
             value: Value to set for the userFlowAttributeType property.
         """

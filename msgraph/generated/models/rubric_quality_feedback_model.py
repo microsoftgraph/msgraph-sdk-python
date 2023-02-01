@@ -74,7 +74,7 @@ class RubricQualityFeedbackModel(AdditionalDataHolder, Parsable):
         fields = {
             "feedback": lambda n : setattr(self, 'feedback', n.get_object_value(education_item_body.EducationItemBody)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "quality_id": lambda n : setattr(self, 'quality_id', n.get_str_value()),
+            "qualityId": lambda n : setattr(self, 'quality_id', n.get_str_value()),
         }
         return fields
     
@@ -91,7 +91,7 @@ class RubricQualityFeedbackModel(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -108,7 +108,7 @@ class RubricQualityFeedbackModel(AdditionalDataHolder, Parsable):
         """
         Sets the qualityId property value. The ID of the rubricQuality that this feedback is related to.
         Args:
-            value: Value to set for the qualityId property.
+            value: Value to set for the quality_id property.
         """
         self._quality_id = value
     

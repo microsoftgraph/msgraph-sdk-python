@@ -21,13 +21,13 @@ class DataPolicyOperation(entity.Entity):
         """
         Sets the completedDateTime property value. Represents when the request for this data policy operation was completed, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Null until the operation completes.
         Args:
-            value: Value to set for the completedDateTime property.
+            value: Value to set for the completed_date_time property.
         """
         self._completed_date_time = value
     
     def __init__(self,) -> None:
         """
-        Instantiates a new DataPolicyOperation and sets the default values.
+        Instantiates a new dataPolicyOperation and sets the default values.
         """
         super().__init__()
         # Represents when the request for this data policy operation was completed, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Null until the operation completes.
@@ -63,12 +63,12 @@ class DataPolicyOperation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
+            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
             "progress": lambda n : setattr(self, 'progress', n.get_float_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(data_policy_operation_status.DataPolicyOperationStatus)),
-            "storage_location": lambda n : setattr(self, 'storage_location', n.get_str_value()),
-            "submitted_date_time": lambda n : setattr(self, 'submitted_date_time', n.get_datetime_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "storageLocation": lambda n : setattr(self, 'storage_location', n.get_str_value()),
+            "submittedDateTime": lambda n : setattr(self, 'submitted_date_time', n.get_datetime_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -137,7 +137,7 @@ class DataPolicyOperation(entity.Entity):
         """
         Sets the storageLocation property value. The URL location to where data is being exported for export requests.
         Args:
-            value: Value to set for the storageLocation property.
+            value: Value to set for the storage_location property.
         """
         self._storage_location = value
     
@@ -154,7 +154,7 @@ class DataPolicyOperation(entity.Entity):
         """
         Sets the submittedDateTime property value. Represents when the request for this data operation was submitted, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the submittedDateTime property.
+            value: Value to set for the submitted_date_time property.
         """
         self._submitted_date_time = value
     
@@ -171,7 +171,7 @@ class DataPolicyOperation(entity.Entity):
         """
         Sets the userId property value. The id for the user on whom the operation is performed.
         Args:
-            value: Value to set for the userId property.
+            value: Value to set for the user_id property.
         """
         self._user_id = value
     

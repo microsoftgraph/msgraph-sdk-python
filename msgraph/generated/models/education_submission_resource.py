@@ -20,7 +20,7 @@ class EducationSubmissionResource(entity.Entity):
         """
         Sets the assignmentResourceUrl property value. Pointer to the assignment from which this resource was copied. If this is null, the student uploaded the resource.
         Args:
-            value: Value to set for the assignmentResourceUrl property.
+            value: Value to set for the assignment_resource_url property.
         """
         self._assignment_resource_url = value
     
@@ -54,7 +54,7 @@ class EducationSubmissionResource(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assignment_resource_url": lambda n : setattr(self, 'assignment_resource_url', n.get_str_value()),
+            "assignmentResourceUrl": lambda n : setattr(self, 'assignment_resource_url', n.get_str_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(education_resource.EducationResource)),
         }
         super_fields = super().get_field_deserializers()

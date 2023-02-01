@@ -43,7 +43,7 @@ class IosMobileAppConfiguration(managed_device_mobile_app_configuration.ManagedD
         """
         Sets the encodedSettingXml property value. mdm app configuration Base64 binary.
         Args:
-            value: Value to set for the encodedSettingXml property.
+            value: Value to set for the encoded_setting_xml property.
         """
         self._encoded_setting_xml = value
     
@@ -53,7 +53,7 @@ class IosMobileAppConfiguration(managed_device_mobile_app_configuration.ManagedD
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "encoded_setting_xml": lambda n : setattr(self, 'encoded_setting_xml', n.get_bytes_value()),
+            "encodedSettingXml": lambda n : setattr(self, 'encoded_setting_xml', n.get_bytes_value()),
             "settings": lambda n : setattr(self, 'settings', n.get_collection_of_object_values(app_configuration_setting_item.AppConfigurationSettingItem)),
         }
         super_fields = super().get_field_deserializers()

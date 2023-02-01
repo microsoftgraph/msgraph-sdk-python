@@ -37,8 +37,8 @@ class EventMessageResponse(event_message.EventMessage):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "proposed_new_time": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(time_slot.TimeSlot)),
-            "response_type": lambda n : setattr(self, 'response_type', n.get_enum_value(response_type.ResponseType)),
+            "proposedNewTime": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(time_slot.TimeSlot)),
+            "responseType": lambda n : setattr(self, 'response_type', n.get_enum_value(response_type.ResponseType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,7 +57,7 @@ class EventMessageResponse(event_message.EventMessage):
         """
         Sets the proposedNewTime property value. The proposedNewTime property
         Args:
-            value: Value to set for the proposedNewTime property.
+            value: Value to set for the proposed_new_time property.
         """
         self._proposed_new_time = value
     
@@ -74,7 +74,7 @@ class EventMessageResponse(event_message.EventMessage):
         """
         Sets the responseType property value. The responseType property
         Args:
-            value: Value to set for the responseType property.
+            value: Value to set for the response_type property.
         """
         self._response_type = value
     

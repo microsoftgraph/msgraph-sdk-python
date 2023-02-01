@@ -82,7 +82,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
         """
         Sets the endDateTime property value. Timestamp of date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the endDateTime property.
+            value: Value to set for the end_date_time property.
         """
         self._end_date_time = value
     
@@ -93,7 +93,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
         """
         fields = {
             "duration": lambda n : setattr(self, 'duration', n.get_object_value(Timedelta)),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(expiration_pattern_type.ExpirationPatternType)),
         }
@@ -112,7 +112,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

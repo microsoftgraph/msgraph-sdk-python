@@ -21,7 +21,7 @@ class CallStartedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the callEventType property value. Represents the call event type. Possible values are: call, meeting, screenShare, unknownFutureValue.
         Args:
-            value: Value to set for the callEventType property.
+            value: Value to set for the call_event_type property.
         """
         self._call_event_type = value
     
@@ -38,7 +38,7 @@ class CallStartedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the callId property value. Unique identifier of the call.
         Args:
-            value: Value to set for the callId property.
+            value: Value to set for the call_id property.
         """
         self._call_id = value
     
@@ -73,8 +73,8 @@ class CallStartedEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "call_event_type": lambda n : setattr(self, 'call_event_type', n.get_enum_value(teamwork_call_event_type.TeamworkCallEventType)),
-            "call_id": lambda n : setattr(self, 'call_id', n.get_str_value()),
+            "callEventType": lambda n : setattr(self, 'call_event_type', n.get_enum_value(teamwork_call_event_type.TeamworkCallEventType)),
+            "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
         }
         super_fields = super().get_field_deserializers()

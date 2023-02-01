@@ -33,7 +33,7 @@ class BuiltInIdentityProvider(identity_provider_base.IdentityProviderBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "identity_provider_type": lambda n : setattr(self, 'identity_provider_type', n.get_str_value()),
+            "identityProviderType": lambda n : setattr(self, 'identity_provider_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -52,7 +52,7 @@ class BuiltInIdentityProvider(identity_provider_base.IdentityProviderBase):
         """
         Sets the identityProviderType property value. The identity provider type. For a B2B scenario, possible values: AADSignup, MicrosoftAccount, EmailOTP. Required.
         Args:
-            value: Value to set for the identityProviderType property.
+            value: Value to set for the identity_provider_type property.
         """
         self._identity_provider_type = value
     

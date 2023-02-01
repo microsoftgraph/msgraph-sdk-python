@@ -37,7 +37,7 @@ class ResourceAction(AdditionalDataHolder, Parsable):
         """
         Sets the allowedResourceActions property value. Allowed Actions
         Args:
-            value: Value to set for the allowedResourceActions property.
+            value: Value to set for the allowed_resource_actions property.
         """
         self._allowed_resource_actions = value
     
@@ -73,8 +73,8 @@ class ResourceAction(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allowed_resource_actions": lambda n : setattr(self, 'allowed_resource_actions', n.get_collection_of_primitive_values(str)),
-            "not_allowed_resource_actions": lambda n : setattr(self, 'not_allowed_resource_actions', n.get_collection_of_primitive_values(str)),
+            "allowedResourceActions": lambda n : setattr(self, 'allowed_resource_actions', n.get_collection_of_primitive_values(str)),
+            "notAllowedResourceActions": lambda n : setattr(self, 'not_allowed_resource_actions', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -92,7 +92,7 @@ class ResourceAction(AdditionalDataHolder, Parsable):
         """
         Sets the notAllowedResourceActions property value. Not Allowed Actions.
         Args:
-            value: Value to set for the notAllowedResourceActions property.
+            value: Value to set for the not_allowed_resource_actions property.
         """
         self._not_allowed_resource_actions = value
     
@@ -109,7 +109,7 @@ class ResourceAction(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

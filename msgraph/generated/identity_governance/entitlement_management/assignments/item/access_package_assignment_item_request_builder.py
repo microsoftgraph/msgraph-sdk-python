@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 access_package_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignments.item.access_package.access_package_request_builder')
 assignment_policy_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignments.item.assignment_policy.assignment_policy_request_builder')
-reprocess_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignments.item.reprocess.reprocess_request_builder')
+reprocess_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignments.item.microsoft_graph_reprocess.reprocess_request_builder')
 target_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignments.item.target.target_request_builder')
 access_package_assignment = lazy_import('msgraph.generated.models.access_package_assignment')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -36,7 +36,7 @@ class AccessPackageAssignmentItemRequestBuilder():
         return assignment_policy_request_builder.AssignmentPolicyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def reprocess(self) -> reprocess_request_builder.ReprocessRequestBuilder:
+    def microsoft_graph_reprocess(self) -> reprocess_request_builder.ReprocessRequestBuilder:
         """
         Provides operations to call the reprocess method.
         """
@@ -49,10 +49,11 @@ class AccessPackageAssignmentItemRequestBuilder():
         """
         return target_request_builder.TargetRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, access_package_assignment_id: Optional[str] = None) -> None:
         """
         Instantiates a new AccessPackageAssignmentItemRequestBuilder and sets the default values.
         Args:
+            accessPackageAssignmentId: key: id of accessPackageAssignment
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -64,6 +65,7 @@ class AccessPackageAssignmentItemRequestBuilder():
         self.url_template: str = "{+baseurl}/identityGovernance/entitlementManagement/assignments/{accessPackageAssignment%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["accessPackageAssignment%2Did"] = accessPackageAssignmentId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

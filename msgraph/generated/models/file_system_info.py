@@ -51,7 +51,7 @@ class FileSystemInfo(AdditionalDataHolder, Parsable):
         """
         Sets the createdDateTime property value. The UTC date and time the file was created on a client.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -73,9 +73,9 @@ class FileSystemInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "last_accessed_date_time": lambda n : setattr(self, 'last_accessed_date_time', n.get_datetime_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "lastAccessedDateTime": lambda n : setattr(self, 'last_accessed_date_time', n.get_datetime_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -93,7 +93,7 @@ class FileSystemInfo(AdditionalDataHolder, Parsable):
         """
         Sets the lastAccessedDateTime property value. The UTC date and time the file was last accessed. Available for the recent file list only.
         Args:
-            value: Value to set for the lastAccessedDateTime property.
+            value: Value to set for the last_accessed_date_time property.
         """
         self._last_accessed_date_time = value
     
@@ -110,7 +110,7 @@ class FileSystemInfo(AdditionalDataHolder, Parsable):
         """
         Sets the lastModifiedDateTime property value. The UTC date and time the file was last modified on a client.
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     
@@ -127,7 +127,7 @@ class FileSystemInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

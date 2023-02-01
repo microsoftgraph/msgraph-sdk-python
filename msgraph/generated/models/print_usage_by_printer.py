@@ -33,7 +33,7 @@ class PrintUsageByPrinter(print_usage.PrintUsage):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "printer_id": lambda n : setattr(self, 'printer_id', n.get_str_value()),
+            "printerId": lambda n : setattr(self, 'printer_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -52,7 +52,7 @@ class PrintUsageByPrinter(print_usage.PrintUsage):
         """
         Sets the printerId property value. The printerId property
         Args:
-            value: Value to set for the printerId property.
+            value: Value to set for the printer_id property.
         """
         self._printer_id = value
     

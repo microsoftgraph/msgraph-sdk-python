@@ -78,7 +78,7 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
         fields = {
             "day": lambda n : setattr(self, 'day', n.get_enum_value(day_of_week.DayOfWeek)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "time_slots": lambda n : setattr(self, 'time_slots', n.get_collection_of_object_values(booking_work_time_slot.BookingWorkTimeSlot)),
+            "timeSlots": lambda n : setattr(self, 'time_slots', n.get_collection_of_object_values(booking_work_time_slot.BookingWorkTimeSlot)),
         }
         return fields
     
@@ -95,7 +95,7 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -125,7 +125,7 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
         """
         Sets the timeSlots property value. A list of start/end times during a day.
         Args:
-            value: Value to set for the timeSlots property.
+            value: Value to set for the time_slots property.
         """
         self._time_slots = value
     

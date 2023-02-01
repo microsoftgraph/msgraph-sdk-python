@@ -63,7 +63,7 @@ class DirectoryObjectPartnerReference(directory_object.DirectoryObject):
         """
         Sets the displayName property value. Name of directory object being returned, like group or application. Read-only.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -80,7 +80,7 @@ class DirectoryObjectPartnerReference(directory_object.DirectoryObject):
         """
         Sets the externalPartnerTenantId property value. The tenant identifier for the partner tenant. Read-only.
         Args:
-            value: Value to set for the externalPartnerTenantId property.
+            value: Value to set for the external_partner_tenant_id property.
         """
         self._external_partner_tenant_id = value
     
@@ -91,9 +91,9 @@ class DirectoryObjectPartnerReference(directory_object.DirectoryObject):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "external_partner_tenant_id": lambda n : setattr(self, 'external_partner_tenant_id', n.get_object_value(Guid)),
-            "object_type": lambda n : setattr(self, 'object_type', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "externalPartnerTenantId": lambda n : setattr(self, 'external_partner_tenant_id', n.get_object_value(Guid)),
+            "objectType": lambda n : setattr(self, 'object_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -112,7 +112,7 @@ class DirectoryObjectPartnerReference(directory_object.DirectoryObject):
         """
         Sets the objectType property value. The type of the referenced object in the partner tenant. Read-only.
         Args:
-            value: Value to set for the objectType property.
+            value: Value to set for the object_type property.
         """
         self._object_type = value
     

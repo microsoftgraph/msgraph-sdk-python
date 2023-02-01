@@ -22,7 +22,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the aadUserId property value. AAD User object identifier (GUID) - represents the physical/multi-account user entity.
         Args:
-            value: Value to set for the aadUserId property.
+            value: Value to set for the aad_user_id property.
         """
         self._aad_user_id = value
     
@@ -39,7 +39,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the accountName property value. Account name of user account (without Active Directory domain or DNS domain) - (also called mailNickName).
         Args:
-            value: Value to set for the accountName property.
+            value: Value to set for the account_name property.
         """
         self._account_name = value
     
@@ -123,7 +123,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the domainName property value. NetBIOS/Active Directory domain of user account (that is, domain/account format).
         Args:
-            value: Value to set for the domainName property.
+            value: Value to set for the domain_name property.
         """
         self._domain_name = value
     
@@ -140,7 +140,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the emailRole property value. For email-related alerts - user account's email 'role'. Possible values are: unknown, sender, recipient.
         Args:
-            value: Value to set for the emailRole property.
+            value: Value to set for the email_role property.
         """
         self._email_role = value
     
@@ -150,21 +150,21 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "aad_user_id": lambda n : setattr(self, 'aad_user_id', n.get_str_value()),
-            "account_name": lambda n : setattr(self, 'account_name', n.get_str_value()),
-            "domain_name": lambda n : setattr(self, 'domain_name', n.get_str_value()),
-            "email_role": lambda n : setattr(self, 'email_role', n.get_enum_value(email_role.EmailRole)),
-            "is_vpn": lambda n : setattr(self, 'is_vpn', n.get_bool_value()),
-            "logon_date_time": lambda n : setattr(self, 'logon_date_time', n.get_datetime_value()),
-            "logon_id": lambda n : setattr(self, 'logon_id', n.get_str_value()),
-            "logon_ip": lambda n : setattr(self, 'logon_ip', n.get_str_value()),
-            "logon_location": lambda n : setattr(self, 'logon_location', n.get_str_value()),
-            "logon_type": lambda n : setattr(self, 'logon_type', n.get_enum_value(logon_type.LogonType)),
+            "aadUserId": lambda n : setattr(self, 'aad_user_id', n.get_str_value()),
+            "accountName": lambda n : setattr(self, 'account_name', n.get_str_value()),
+            "domainName": lambda n : setattr(self, 'domain_name', n.get_str_value()),
+            "emailRole": lambda n : setattr(self, 'email_role', n.get_enum_value(email_role.EmailRole)),
+            "isVpn": lambda n : setattr(self, 'is_vpn', n.get_bool_value()),
+            "logonDateTime": lambda n : setattr(self, 'logon_date_time', n.get_datetime_value()),
+            "logonId": lambda n : setattr(self, 'logon_id', n.get_str_value()),
+            "logonIp": lambda n : setattr(self, 'logon_ip', n.get_str_value()),
+            "logonLocation": lambda n : setattr(self, 'logon_location', n.get_str_value()),
+            "logonType": lambda n : setattr(self, 'logon_type', n.get_enum_value(logon_type.LogonType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "on_premises_security_identifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
-            "risk_score": lambda n : setattr(self, 'risk_score', n.get_str_value()),
-            "user_account_type": lambda n : setattr(self, 'user_account_type', n.get_enum_value(user_account_security_type.UserAccountSecurityType)),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "onPremisesSecurityIdentifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
+            "riskScore": lambda n : setattr(self, 'risk_score', n.get_str_value()),
+            "userAccountType": lambda n : setattr(self, 'user_account_type', n.get_enum_value(user_account_security_type.UserAccountSecurityType)),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
     
@@ -181,7 +181,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the isVpn property value. Indicates whether the user logged on through a VPN.
         Args:
-            value: Value to set for the isVpn property.
+            value: Value to set for the is_vpn property.
         """
         self._is_vpn = value
     
@@ -198,7 +198,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the logonDateTime property value. Time at which the sign-in occurred. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the logonDateTime property.
+            value: Value to set for the logon_date_time property.
         """
         self._logon_date_time = value
     
@@ -215,7 +215,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the logonId property value. User sign-in ID.
         Args:
-            value: Value to set for the logonId property.
+            value: Value to set for the logon_id property.
         """
         self._logon_id = value
     
@@ -232,7 +232,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the logonIp property value. IP Address the sign-in request originated from.
         Args:
-            value: Value to set for the logonIp property.
+            value: Value to set for the logon_ip property.
         """
         self._logon_ip = value
     
@@ -249,7 +249,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the logonLocation property value. Location (by IP address mapping) associated with a user sign-in event by this user.
         Args:
-            value: Value to set for the logonLocation property.
+            value: Value to set for the logon_location property.
         """
         self._logon_location = value
     
@@ -266,7 +266,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the logonType property value. Method of user sign in. Possible values are: unknown, interactive, remoteInteractive, network, batch, service.
         Args:
-            value: Value to set for the logonType property.
+            value: Value to set for the logon_type property.
         """
         self._logon_type = value
     
@@ -283,7 +283,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -300,7 +300,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the onPremisesSecurityIdentifier property value. Active Directory (on-premises) Security Identifier (SID) of the user.
         Args:
-            value: Value to set for the onPremisesSecurityIdentifier property.
+            value: Value to set for the on_premises_security_identifier property.
         """
         self._on_premises_security_identifier = value
     
@@ -317,7 +317,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the riskScore property value. Provider-generated/calculated risk score of the user account. Recommended value range of 0-1, which equates to a percentage.
         Args:
-            value: Value to set for the riskScore property.
+            value: Value to set for the risk_score property.
         """
         self._risk_score = value
     
@@ -359,7 +359,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the userAccountType property value. User account type (group membership), per Windows definition. Possible values are: unknown, standard, power, administrator.
         Args:
-            value: Value to set for the userAccountType property.
+            value: Value to set for the user_account_type property.
         """
         self._user_account_type = value
     
@@ -376,7 +376,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the userPrincipalName property value. User sign-in name - internet format: (user account name)@(user account DNS domain name).
         Args:
-            value: Value to set for the userPrincipalName property.
+            value: Value to set for the user_principal_name property.
         """
         self._user_principal_name = value
     

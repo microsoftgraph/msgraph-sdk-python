@@ -47,7 +47,7 @@ class FileEvidence(alert_evidence.AlertEvidence):
         """
         Sets the detectionStatus property value. The status of the detection.The possible values are: detected, blocked, prevented, unknownFutureValue.
         Args:
-            value: Value to set for the detectionStatus property.
+            value: Value to set for the detection_status property.
         """
         self._detection_status = value
     
@@ -64,7 +64,7 @@ class FileEvidence(alert_evidence.AlertEvidence):
         """
         Sets the fileDetails property value. The file details.
         Args:
-            value: Value to set for the fileDetails property.
+            value: Value to set for the file_details property.
         """
         self._file_details = value
     
@@ -74,9 +74,9 @@ class FileEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "detection_status": lambda n : setattr(self, 'detection_status', n.get_enum_value(detection_status.DetectionStatus)),
-            "file_details": lambda n : setattr(self, 'file_details', n.get_object_value(file_details.FileDetails)),
-            "mde_device_id": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
+            "detectionStatus": lambda n : setattr(self, 'detection_status', n.get_enum_value(detection_status.DetectionStatus)),
+            "fileDetails": lambda n : setattr(self, 'file_details', n.get_object_value(file_details.FileDetails)),
+            "mdeDeviceId": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -95,7 +95,7 @@ class FileEvidence(alert_evidence.AlertEvidence):
         """
         Sets the mdeDeviceId property value. A unique identifier assigned to a device by Microsoft Defender for Endpoint.
         Args:
-            value: Value to set for the mdeDeviceId property.
+            value: Value to set for the mde_device_id property.
         """
         self._mde_device_id = value
     

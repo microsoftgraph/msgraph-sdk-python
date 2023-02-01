@@ -55,7 +55,7 @@ class AccessReviewHistoryInstance(entity.Entity):
         """
         Sets the downloadUri property value. Uri which can be used to retrieve review history data. This URI will be active for 24 hours after being generated. Required.
         Args:
-            value: Value to set for the downloadUri property.
+            value: Value to set for the download_uri property.
         """
         self._download_uri = value
     
@@ -72,7 +72,7 @@ class AccessReviewHistoryInstance(entity.Entity):
         """
         Sets the expirationDateTime property value. Timestamp when this instance and associated data expires and the history is deleted. Required.
         Args:
-            value: Value to set for the expirationDateTime property.
+            value: Value to set for the expiration_date_time property.
         """
         self._expiration_date_time = value
     
@@ -89,7 +89,7 @@ class AccessReviewHistoryInstance(entity.Entity):
         """
         Sets the fulfilledDateTime property value. Timestamp when all of the available data for this instance was collected. This will be set after this instance's status is set to done. Required.
         Args:
-            value: Value to set for the fulfilledDateTime property.
+            value: Value to set for the fulfilled_date_time property.
         """
         self._fulfilled_date_time = value
     
@@ -99,12 +99,12 @@ class AccessReviewHistoryInstance(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "download_uri": lambda n : setattr(self, 'download_uri', n.get_str_value()),
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "fulfilled_date_time": lambda n : setattr(self, 'fulfilled_date_time', n.get_datetime_value()),
-            "review_history_period_end_date_time": lambda n : setattr(self, 'review_history_period_end_date_time', n.get_datetime_value()),
-            "review_history_period_start_date_time": lambda n : setattr(self, 'review_history_period_start_date_time', n.get_datetime_value()),
-            "run_date_time": lambda n : setattr(self, 'run_date_time', n.get_datetime_value()),
+            "downloadUri": lambda n : setattr(self, 'download_uri', n.get_str_value()),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "fulfilledDateTime": lambda n : setattr(self, 'fulfilled_date_time', n.get_datetime_value()),
+            "reviewHistoryPeriodEndDateTime": lambda n : setattr(self, 'review_history_period_end_date_time', n.get_datetime_value()),
+            "reviewHistoryPeriodStartDateTime": lambda n : setattr(self, 'review_history_period_start_date_time', n.get_datetime_value()),
+            "runDateTime": lambda n : setattr(self, 'run_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(access_review_history_status.AccessReviewHistoryStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -124,7 +124,7 @@ class AccessReviewHistoryInstance(entity.Entity):
         """
         Sets the reviewHistoryPeriodEndDateTime property value. Timestamp, reviews ending on or before this date will be included in the fetched history data.
         Args:
-            value: Value to set for the reviewHistoryPeriodEndDateTime property.
+            value: Value to set for the review_history_period_end_date_time property.
         """
         self._review_history_period_end_date_time = value
     
@@ -141,7 +141,7 @@ class AccessReviewHistoryInstance(entity.Entity):
         """
         Sets the reviewHistoryPeriodStartDateTime property value. Timestamp, reviews starting on or after this date will be included in the fetched history data.
         Args:
-            value: Value to set for the reviewHistoryPeriodStartDateTime property.
+            value: Value to set for the review_history_period_start_date_time property.
         """
         self._review_history_period_start_date_time = value
     
@@ -158,7 +158,7 @@ class AccessReviewHistoryInstance(entity.Entity):
         """
         Sets the runDateTime property value. Timestamp when the instance's history data is scheduled to be generated.
         Args:
-            value: Value to set for the runDateTime property.
+            value: Value to set for the run_date_time property.
         """
         self._run_date_time = value
     

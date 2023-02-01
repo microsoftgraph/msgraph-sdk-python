@@ -17,10 +17,11 @@ class AccessReviewReviewerItemRequestBuilder():
     """
     Provides operations to manage the contactedReviewers property of the microsoft.graph.accessReviewInstance entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, access_review_reviewer_id: Optional[str] = None) -> None:
         """
         Instantiates a new AccessReviewReviewerItemRequestBuilder and sets the default values.
         Args:
+            accessReviewReviewerId: key: id of accessReviewReviewer
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class AccessReviewReviewerItemRequestBuilder():
         self.url_template: str = "{+baseurl}/identityGovernance/accessReviews/definitions/{accessReviewScheduleDefinition%2Did}/instances/{accessReviewInstance%2Did}/contactedReviewers/{accessReviewReviewer%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["accessReviewReviewer%2Did"] = accessReviewReviewerId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

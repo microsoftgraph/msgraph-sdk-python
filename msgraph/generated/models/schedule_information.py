@@ -38,7 +38,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         """
         Sets the availabilityView property value. Represents a merged view of availability of all the items in scheduleItems. The view consists of time slots. Availability during each time slot is indicated with: 0= free, 1= tentative, 2= busy, 3= out of office, 4= working elsewhere.
         Args:
-            value: Value to set for the availabilityView property.
+            value: Value to set for the availability_view property.
         """
         self._availability_view = value
     
@@ -97,12 +97,12 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "availability_view": lambda n : setattr(self, 'availability_view', n.get_str_value()),
+            "availabilityView": lambda n : setattr(self, 'availability_view', n.get_str_value()),
             "error": lambda n : setattr(self, 'error', n.get_object_value(free_busy_error.FreeBusyError)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "schedule_id": lambda n : setattr(self, 'schedule_id', n.get_str_value()),
-            "schedule_items": lambda n : setattr(self, 'schedule_items', n.get_collection_of_object_values(schedule_item.ScheduleItem)),
-            "working_hours": lambda n : setattr(self, 'working_hours', n.get_object_value(working_hours.WorkingHours)),
+            "scheduleId": lambda n : setattr(self, 'schedule_id', n.get_str_value()),
+            "scheduleItems": lambda n : setattr(self, 'schedule_items', n.get_collection_of_object_values(schedule_item.ScheduleItem)),
+            "workingHours": lambda n : setattr(self, 'working_hours', n.get_object_value(working_hours.WorkingHours)),
         }
         return fields
     
@@ -119,7 +119,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -136,7 +136,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         """
         Sets the scheduleId property value. An SMTP address of the user, distribution list, or resource, identifying an instance of scheduleInformation.
         Args:
-            value: Value to set for the scheduleId property.
+            value: Value to set for the schedule_id property.
         """
         self._schedule_id = value
     
@@ -153,7 +153,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         """
         Sets the scheduleItems property value. Contains the items that describe the availability of the user or resource.
         Args:
-            value: Value to set for the scheduleItems property.
+            value: Value to set for the schedule_items property.
         """
         self._schedule_items = value
     
@@ -186,7 +186,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         """
         Sets the workingHours property value. The days of the week and hours in a specific time zone that the user works. These are set as part of the user's mailboxSettings.
         Args:
-            value: Value to set for the workingHours property.
+            value: Value to set for the working_hours property.
         """
         self._working_hours = value
     

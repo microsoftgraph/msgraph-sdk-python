@@ -53,7 +53,7 @@ class SingleUser(subject_set.SubjectSet):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -84,7 +84,7 @@ class SingleUser(subject_set.SubjectSet):
         """
         Sets the userId property value. The ID of the user in Azure AD.
         Args:
-            value: Value to set for the userId property.
+            value: Value to set for the user_id property.
         """
         self._user_id = value
     

@@ -37,8 +37,8 @@ class IpNamedLocation(named_location.NamedLocation):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "ip_ranges": lambda n : setattr(self, 'ip_ranges', n.get_collection_of_object_values(ip_range.IpRange)),
-            "is_trusted": lambda n : setattr(self, 'is_trusted', n.get_bool_value()),
+            "ipRanges": lambda n : setattr(self, 'ip_ranges', n.get_collection_of_object_values(ip_range.IpRange)),
+            "isTrusted": lambda n : setattr(self, 'is_trusted', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,7 +57,7 @@ class IpNamedLocation(named_location.NamedLocation):
         """
         Sets the ipRanges property value. List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596. Required.
         Args:
-            value: Value to set for the ipRanges property.
+            value: Value to set for the ip_ranges property.
         """
         self._ip_ranges = value
     
@@ -74,7 +74,7 @@ class IpNamedLocation(named_location.NamedLocation):
         """
         Sets the isTrusted property value. true if this location is explicitly trusted. Optional. Default value is false.
         Args:
-            value: Value to set for the isTrusted property.
+            value: Value to set for the is_trusted property.
         """
         self._is_trusted = value
     

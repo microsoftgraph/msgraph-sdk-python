@@ -40,7 +40,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         """
         Sets the changeType property value. The changeType property
         Args:
-            value: Value to set for the changeType property.
+            value: Value to set for the change_type property.
         """
         self._change_type = value
     
@@ -57,7 +57,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         """
         Sets the clientState property value. Value of the clientState property sent in the subscription request (if any). The maximum length is 255 characters. The client can check whether the change notification came from the service by comparing the values of the clientState property. The value of the clientState property sent with the subscription is compared with the value of the clientState property received with each change notification. Optional.
         Args:
-            value: Value to set for the clientState property.
+            value: Value to set for the client_state property.
         """
         self._client_state = value
     
@@ -116,7 +116,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         """
         Sets the encryptedContent property value. (Preview) Encrypted content attached with the change notification. Only provided if encryptionCertificate and includeResourceData were defined during the subscription request and if the resource supports it. Optional.
         Args:
-            value: Value to set for the encryptedContent property.
+            value: Value to set for the encrypted_content property.
         """
         self._encrypted_content = value
     
@@ -126,17 +126,17 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "change_type": lambda n : setattr(self, 'change_type', n.get_enum_value(change_type.ChangeType)),
-            "client_state": lambda n : setattr(self, 'client_state', n.get_str_value()),
-            "encrypted_content": lambda n : setattr(self, 'encrypted_content', n.get_object_value(change_notification_encrypted_content.ChangeNotificationEncryptedContent)),
+            "changeType": lambda n : setattr(self, 'change_type', n.get_enum_value(change_type.ChangeType)),
+            "clientState": lambda n : setattr(self, 'client_state', n.get_str_value()),
+            "encryptedContent": lambda n : setattr(self, 'encrypted_content', n.get_object_value(change_notification_encrypted_content.ChangeNotificationEncryptedContent)),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "lifecycle_event": lambda n : setattr(self, 'lifecycle_event', n.get_enum_value(lifecycle_event_type.LifecycleEventType)),
+            "lifecycleEvent": lambda n : setattr(self, 'lifecycle_event', n.get_enum_value(lifecycle_event_type.LifecycleEventType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_str_value()),
-            "resource_data": lambda n : setattr(self, 'resource_data', n.get_object_value(resource_data.ResourceData)),
-            "subscription_expiration_date_time": lambda n : setattr(self, 'subscription_expiration_date_time', n.get_datetime_value()),
-            "subscription_id": lambda n : setattr(self, 'subscription_id', n.get_object_value(Guid)),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_object_value(Guid)),
+            "resourceData": lambda n : setattr(self, 'resource_data', n.get_object_value(resource_data.ResourceData)),
+            "subscriptionExpirationDateTime": lambda n : setattr(self, 'subscription_expiration_date_time', n.get_datetime_value()),
+            "subscriptionId": lambda n : setattr(self, 'subscription_id', n.get_object_value(Guid)),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_object_value(Guid)),
         }
         return fields
     
@@ -170,7 +170,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         """
         Sets the lifecycleEvent property value. The type of lifecycle notification if the current notification is a lifecycle notification. Optional. Supported values are missed, subscriptionRemoved, reauthorizationRequired. Optional.
         Args:
-            value: Value to set for the lifecycleEvent property.
+            value: Value to set for the lifecycle_event property.
         """
         self._lifecycle_event = value
     
@@ -187,7 +187,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -221,7 +221,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         """
         Sets the resourceData property value. The content of this property depends on the type of resource being subscribed to. Optional.
         Args:
-            value: Value to set for the resourceData property.
+            value: Value to set for the resource_data property.
         """
         self._resource_data = value
     
@@ -259,7 +259,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         """
         Sets the subscriptionExpirationDateTime property value. The expiration time for the subscription. Required.
         Args:
-            value: Value to set for the subscriptionExpirationDateTime property.
+            value: Value to set for the subscription_expiration_date_time property.
         """
         self._subscription_expiration_date_time = value
     
@@ -276,7 +276,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         """
         Sets the subscriptionId property value. The unique identifier of the subscription that generated the notification.Required.
         Args:
-            value: Value to set for the subscriptionId property.
+            value: Value to set for the subscription_id property.
         """
         self._subscription_id = value
     
@@ -293,7 +293,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         """
         Sets the tenantId property value. The unique identifier of the tenant from which the change notification originated. Required.
         Args:
-            value: Value to set for the tenantId property.
+            value: Value to set for the tenant_id property.
         """
         self._tenant_id = value
     

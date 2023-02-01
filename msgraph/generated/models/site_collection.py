@@ -64,7 +64,7 @@ class SiteCollection(AdditionalDataHolder, Parsable):
         """
         Sets the dataLocationCode property value. The geographic region code for where this site collection resides. Read-only.
         Args:
-            value: Value to set for the dataLocationCode property.
+            value: Value to set for the data_location_code property.
         """
         self._data_location_code = value
     
@@ -74,7 +74,7 @@ class SiteCollection(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "data_location_code": lambda n : setattr(self, 'data_location_code', n.get_str_value()),
+            "dataLocationCode": lambda n : setattr(self, 'data_location_code', n.get_str_value()),
             "hostname": lambda n : setattr(self, 'hostname', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "root": lambda n : setattr(self, 'root', n.get_object_value(root.Root)),
@@ -111,7 +111,7 @@ class SiteCollection(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

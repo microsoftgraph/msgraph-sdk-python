@@ -41,7 +41,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         """
         Sets the createdDateTime property value. The date and time when the Temporary Access Pass was created.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -63,13 +63,13 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "is_usable": lambda n : setattr(self, 'is_usable', n.get_bool_value()),
-            "is_usable_once": lambda n : setattr(self, 'is_usable_once', n.get_bool_value()),
-            "lifetime_in_minutes": lambda n : setattr(self, 'lifetime_in_minutes', n.get_int_value()),
-            "method_usability_reason": lambda n : setattr(self, 'method_usability_reason', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
-            "temporary_access_pass": lambda n : setattr(self, 'temporary_access_pass', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "isUsable": lambda n : setattr(self, 'is_usable', n.get_bool_value()),
+            "isUsableOnce": lambda n : setattr(self, 'is_usable_once', n.get_bool_value()),
+            "lifetimeInMinutes": lambda n : setattr(self, 'lifetime_in_minutes', n.get_int_value()),
+            "methodUsabilityReason": lambda n : setattr(self, 'method_usability_reason', n.get_str_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "temporaryAccessPass": lambda n : setattr(self, 'temporary_access_pass', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -88,7 +88,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         """
         Sets the isUsable property value. The state of the authentication method that indicates whether it's currently usable by the user.
         Args:
-            value: Value to set for the isUsable property.
+            value: Value to set for the is_usable property.
         """
         self._is_usable = value
     
@@ -105,7 +105,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         """
         Sets the isUsableOnce property value. Determines whether the pass is limited to a one-time use. If true, the pass can be used once; if false, the pass can be used multiple times within the Temporary Access Pass lifetime.
         Args:
-            value: Value to set for the isUsableOnce property.
+            value: Value to set for the is_usable_once property.
         """
         self._is_usable_once = value
     
@@ -122,7 +122,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         """
         Sets the lifetimeInMinutes property value. The lifetime of the Temporary Access Pass in minutes starting at startDateTime. Must be between 10 and 43200 inclusive (equivalent to 30 days).
         Args:
-            value: Value to set for the lifetimeInMinutes property.
+            value: Value to set for the lifetime_in_minutes property.
         """
         self._lifetime_in_minutes = value
     
@@ -139,7 +139,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         """
         Sets the methodUsabilityReason property value. Details about the usability state (isUsable). Reasons can include: EnabledByPolicy, DisabledByPolicy, Expired, NotYetValid, OneTimeUsed.
         Args:
-            value: Value to set for the methodUsabilityReason property.
+            value: Value to set for the method_usability_reason property.
         """
         self._method_usability_reason = value
     
@@ -173,7 +173,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         """
         Sets the startDateTime property value. The date and time when the Temporary Access Pass becomes available to use and when isUsable is true is enforced.
         Args:
-            value: Value to set for the startDateTime property.
+            value: Value to set for the start_date_time property.
         """
         self._start_date_time = value
     
@@ -190,7 +190,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         """
         Sets the temporaryAccessPass property value. The Temporary Access Pass used to authenticate. Returned only on creation of a new temporaryAccessPassAuthenticationMethod object; Hidden in subsequent read operations and returned as null with GET.
         Args:
-            value: Value to set for the temporaryAccessPass property.
+            value: Value to set for the temporary_access_pass property.
         """
         self._temporary_access_pass = value
     

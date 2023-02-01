@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.communications.calls.item.participants.count.count_request_builder')
-invite_request_builder = lazy_import('msgraph.generated.communications.calls.item.participants.invite.invite_request_builder')
+invite_request_builder = lazy_import('msgraph.generated.communications.calls.item.participants.microsoft_graph_invite.invite_request_builder')
 participant = lazy_import('msgraph.generated.models.participant')
 participant_collection_response = lazy_import('msgraph.generated.models.participant_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -28,7 +28,7 @@ class ParticipantsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def invite(self) -> invite_request_builder.InviteRequestBuilder:
+    def microsoft_graph_invite(self) -> invite_request_builder.InviteRequestBuilder:
         """
         Provides operations to call the invite method.
         """

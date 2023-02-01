@@ -52,7 +52,7 @@ class SamlSingleSignOnSettings(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "relay_state": lambda n : setattr(self, 'relay_state', n.get_str_value()),
+            "relayState": lambda n : setattr(self, 'relay_state', n.get_str_value()),
         }
         return fields
     
@@ -69,7 +69,7 @@ class SamlSingleSignOnSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -86,7 +86,7 @@ class SamlSingleSignOnSettings(AdditionalDataHolder, Parsable):
         """
         Sets the relayState property value. The relative URI the service provider would redirect to after completion of the single sign-on flow.
         Args:
-            value: Value to set for the relayState property.
+            value: Value to set for the relay_state property.
         """
         self._relay_state = value
     

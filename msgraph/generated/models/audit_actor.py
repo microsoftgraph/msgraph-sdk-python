@@ -37,7 +37,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         """
         Sets the applicationDisplayName property value. Name of the Application.
         Args:
-            value: Value to set for the applicationDisplayName property.
+            value: Value to set for the application_display_name property.
         """
         self._application_display_name = value
     
@@ -54,7 +54,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         """
         Sets the applicationId property value. AAD Application Id.
         Args:
-            value: Value to set for the applicationId property.
+            value: Value to set for the application_id property.
         """
         self._application_id = value
     
@@ -71,7 +71,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         """
         Sets the auditActorType property value. Actor Type.
         Args:
-            value: Value to set for the auditActorType property.
+            value: Value to set for the audit_actor_type property.
         """
         self._audit_actor_type = value
     
@@ -119,15 +119,15 @@ class AuditActor(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "application_display_name": lambda n : setattr(self, 'application_display_name', n.get_str_value()),
-            "application_id": lambda n : setattr(self, 'application_id', n.get_str_value()),
-            "audit_actor_type": lambda n : setattr(self, 'audit_actor_type', n.get_str_value()),
-            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "applicationDisplayName": lambda n : setattr(self, 'application_display_name', n.get_str_value()),
+            "applicationId": lambda n : setattr(self, 'application_id', n.get_str_value()),
+            "auditActorType": lambda n : setattr(self, 'audit_actor_type', n.get_str_value()),
+            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "service_principal_name": lambda n : setattr(self, 'service_principal_name', n.get_str_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
-            "user_permissions": lambda n : setattr(self, 'user_permissions', n.get_collection_of_primitive_values(str)),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "servicePrincipalName": lambda n : setattr(self, 'service_principal_name', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userPermissions": lambda n : setattr(self, 'user_permissions', n.get_collection_of_primitive_values(str)),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
     
@@ -144,7 +144,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         """
         Sets the ipAddress property value. IPAddress.
         Args:
-            value: Value to set for the ipAddress property.
+            value: Value to set for the ip_address property.
         """
         self._ip_address = value
     
@@ -161,7 +161,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -197,7 +197,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         """
         Sets the servicePrincipalName property value. Service Principal Name (SPN).
         Args:
-            value: Value to set for the servicePrincipalName property.
+            value: Value to set for the service_principal_name property.
         """
         self._service_principal_name = value
     
@@ -214,7 +214,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         """
         Sets the userId property value. User Id.
         Args:
-            value: Value to set for the userId property.
+            value: Value to set for the user_id property.
         """
         self._user_id = value
     
@@ -231,7 +231,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         """
         Sets the userPermissions property value. List of user permissions when the audit was performed.
         Args:
-            value: Value to set for the userPermissions property.
+            value: Value to set for the user_permissions property.
         """
         self._user_permissions = value
     
@@ -248,7 +248,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         """
         Sets the userPrincipalName property value. User Principal Name (UPN).
         Args:
-            value: Value to set for the userPrincipalName property.
+            value: Value to set for the user_principal_name property.
         """
         self._user_principal_name = value
     

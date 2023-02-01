@@ -20,7 +20,7 @@ class CloudAppSecuritySessionControl(conditional_access_session_control.Conditio
         """
         Sets the cloudAppSecurityType property value. Possible values are: mcasConfigured, monitorOnly, blockDownloads, unknownFutureValue. For more information, see Deploy Conditional Access App Control for featured apps.
         Args:
-            value: Value to set for the cloudAppSecurityType property.
+            value: Value to set for the cloud_app_security_type property.
         """
         self._cloud_app_security_type = value
     
@@ -51,7 +51,7 @@ class CloudAppSecuritySessionControl(conditional_access_session_control.Conditio
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "cloud_app_security_type": lambda n : setattr(self, 'cloud_app_security_type', n.get_enum_value(cloud_app_security_session_control_type.CloudAppSecuritySessionControlType)),
+            "cloudAppSecurityType": lambda n : setattr(self, 'cloud_app_security_type', n.get_enum_value(cloud_app_security_session_control_type.CloudAppSecuritySessionControlType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

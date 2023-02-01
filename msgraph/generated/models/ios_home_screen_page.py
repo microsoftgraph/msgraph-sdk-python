@@ -65,7 +65,7 @@ class IosHomeScreenPage(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. Name of the page
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -75,7 +75,7 @@ class IosHomeScreenPage(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "icons": lambda n : setattr(self, 'icons', n.get_collection_of_object_values(ios_home_screen_item.IosHomeScreenItem)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
@@ -111,7 +111,7 @@ class IosHomeScreenPage(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

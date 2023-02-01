@@ -72,7 +72,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         """
         Sets the excludedItemCount property value. Count of items that are excluded from the request.
         Args:
-            value: Value to set for the excludedItemCount property.
+            value: Value to set for the excluded_item_count property.
         """
         self._excluded_item_count = value
     
@@ -82,14 +82,14 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "excluded_item_count": lambda n : setattr(self, 'excluded_item_count', n.get_int_value()),
-            "insight_counts": lambda n : setattr(self, 'insight_counts', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
-            "item_count": lambda n : setattr(self, 'item_count', n.get_int_value()),
-            "item_need_review": lambda n : setattr(self, 'item_need_review', n.get_int_value()),
+            "excludedItemCount": lambda n : setattr(self, 'excluded_item_count', n.get_int_value()),
+            "insightCounts": lambda n : setattr(self, 'insight_counts', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
+            "itemCount": lambda n : setattr(self, 'item_count', n.get_int_value()),
+            "itemNeedReview": lambda n : setattr(self, 'item_need_review', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "product_item_counts": lambda n : setattr(self, 'product_item_counts', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
-            "signed_off_item_count": lambda n : setattr(self, 'signed_off_item_count', n.get_int_value()),
-            "total_item_size": lambda n : setattr(self, 'total_item_size', n.get_int_value()),
+            "productItemCounts": lambda n : setattr(self, 'product_item_counts', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
+            "signedOffItemCount": lambda n : setattr(self, 'signed_off_item_count', n.get_int_value()),
+            "totalItemSize": lambda n : setattr(self, 'total_item_size', n.get_int_value()),
         }
         return fields
     
@@ -106,7 +106,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         """
         Sets the insightCounts property value. Count of items per insight.
         Args:
-            value: Value to set for the insightCounts property.
+            value: Value to set for the insight_counts property.
         """
         self._insight_counts = value
     
@@ -123,7 +123,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         """
         Sets the itemCount property value. Count of items found.
         Args:
-            value: Value to set for the itemCount property.
+            value: Value to set for the item_count property.
         """
         self._item_count = value
     
@@ -140,7 +140,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         """
         Sets the itemNeedReview property value. Count of item that need review.
         Args:
-            value: Value to set for the itemNeedReview property.
+            value: Value to set for the item_need_review property.
         """
         self._item_need_review = value
     
@@ -157,7 +157,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -174,7 +174,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         """
         Sets the productItemCounts property value. Count of items per product, such as Exchange, SharePoint, OneDrive, and Teams.
         Args:
-            value: Value to set for the productItemCounts property.
+            value: Value to set for the product_item_counts property.
         """
         self._product_item_counts = value
     
@@ -209,7 +209,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         """
         Sets the signedOffItemCount property value. Count of items signed off by the administrator.
         Args:
-            value: Value to set for the signedOffItemCount property.
+            value: Value to set for the signed_off_item_count property.
         """
         self._signed_off_item_count = value
     
@@ -226,7 +226,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         """
         Sets the totalItemSize property value. Total item size in bytes.
         Args:
-            value: Value to set for the totalItemSize property.
+            value: Value to set for the total_item_size property.
         """
         self._total_item_size = value
     

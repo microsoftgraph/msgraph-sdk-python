@@ -52,7 +52,7 @@ class SearchQuery(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "query_string": lambda n : setattr(self, 'query_string', n.get_str_value()),
+            "queryString": lambda n : setattr(self, 'query_string', n.get_str_value()),
         }
         return fields
     
@@ -69,7 +69,7 @@ class SearchQuery(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -86,7 +86,7 @@ class SearchQuery(AdditionalDataHolder, Parsable):
         """
         Sets the queryString property value. The search query containing the search terms. Required.
         Args:
-            value: Value to set for the queryString property.
+            value: Value to set for the query_string property.
         """
         self._query_string = value
     

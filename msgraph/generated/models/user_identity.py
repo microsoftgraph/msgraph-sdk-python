@@ -35,8 +35,8 @@ class UserIdentity(identity.Identity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -55,7 +55,7 @@ class UserIdentity(identity.Identity):
         """
         Sets the ipAddress property value. Indicates the client IP address used by user performing the activity (audit log only).
         Args:
-            value: Value to set for the ipAddress property.
+            value: Value to set for the ip_address property.
         """
         self._ip_address = value
     
@@ -84,7 +84,7 @@ class UserIdentity(identity.Identity):
         """
         Sets the userPrincipalName property value. The userPrincipalName attribute of the user.
         Args:
-            value: Value to set for the userPrincipalName property.
+            value: Value to set for the user_principal_name property.
         """
         self._user_principal_name = value
     

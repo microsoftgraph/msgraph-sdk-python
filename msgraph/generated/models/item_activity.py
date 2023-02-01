@@ -40,7 +40,7 @@ class ItemActivity(entity.Entity):
         """
         Sets the activityDateTime property value. Details about when the activity took place. Read-only.
         Args:
-            value: Value to set for the activityDateTime property.
+            value: Value to set for the activity_date_time property.
         """
         self._activity_date_time = value
     
@@ -102,7 +102,7 @@ class ItemActivity(entity.Entity):
         """
         Sets the driveItem property value. Exposes the driveItem that was the target of this activity.
         Args:
-            value: Value to set for the driveItem property.
+            value: Value to set for the drive_item property.
         """
         self._drive_item = value
     
@@ -113,9 +113,9 @@ class ItemActivity(entity.Entity):
         """
         fields = {
             "access": lambda n : setattr(self, 'access', n.get_object_value(access_action.AccessAction)),
-            "activity_date_time": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
+            "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
             "actor": lambda n : setattr(self, 'actor', n.get_object_value(identity_set.IdentitySet)),
-            "drive_item": lambda n : setattr(self, 'drive_item', n.get_object_value(drive_item.DriveItem)),
+            "driveItem": lambda n : setattr(self, 'drive_item', n.get_object_value(drive_item.DriveItem)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -40,7 +40,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the bandwidthLowEventRatio property value. Fraction of the call that the media endpoint detected the available bandwidth or bandwidth policy was low enough to cause poor quality of the audio sent.
         Args:
-            value: Value to set for the bandwidthLowEventRatio property.
+            value: Value to set for the bandwidth_low_event_ratio property.
         """
         self._bandwidth_low_event_ratio = value
     
@@ -57,7 +57,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the basicServiceSetIdentifier property value. The wireless LAN basic service set identifier of the media endpoint used to connect to the network.
         Args:
-            value: Value to set for the basicServiceSetIdentifier property.
+            value: Value to set for the basic_service_set_identifier property.
         """
         self._basic_service_set_identifier = value
     
@@ -74,7 +74,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the connectionType property value. The connectionType property
         Args:
-            value: Value to set for the connectionType property.
+            value: Value to set for the connection_type property.
         """
         self._connection_type = value
     
@@ -165,7 +165,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the delayEventRatio property value. Fraction of the call that the media endpoint detected the network delay was significant enough to impact the ability to have real-time two-way communication.
         Args:
-            value: Value to set for the delayEventRatio property.
+            value: Value to set for the delay_event_ratio property.
         """
         self._delay_event_ratio = value
     
@@ -182,7 +182,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the dnsSuffix property value. DNS suffix associated with the network adapter of the media endpoint.
         Args:
-            value: Value to set for the dnsSuffix property.
+            value: Value to set for the dns_suffix property.
         """
         self._dns_suffix = value
     
@@ -192,33 +192,33 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "bandwidth_low_event_ratio": lambda n : setattr(self, 'bandwidth_low_event_ratio', n.get_float_value()),
-            "basic_service_set_identifier": lambda n : setattr(self, 'basic_service_set_identifier', n.get_str_value()),
-            "connection_type": lambda n : setattr(self, 'connection_type', n.get_enum_value(network_connection_type.NetworkConnectionType)),
-            "delay_event_ratio": lambda n : setattr(self, 'delay_event_ratio', n.get_float_value()),
-            "dns_suffix": lambda n : setattr(self, 'dns_suffix', n.get_str_value()),
-            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
-            "link_speed": lambda n : setattr(self, 'link_speed', n.get_int_value()),
-            "mac_address": lambda n : setattr(self, 'mac_address', n.get_str_value()),
-            "network_transport_protocol": lambda n : setattr(self, 'network_transport_protocol', n.get_enum_value(network_transport_protocol.NetworkTransportProtocol)),
+            "bandwidthLowEventRatio": lambda n : setattr(self, 'bandwidth_low_event_ratio', n.get_float_value()),
+            "basicServiceSetIdentifier": lambda n : setattr(self, 'basic_service_set_identifier', n.get_str_value()),
+            "connectionType": lambda n : setattr(self, 'connection_type', n.get_enum_value(network_connection_type.NetworkConnectionType)),
+            "delayEventRatio": lambda n : setattr(self, 'delay_event_ratio', n.get_float_value()),
+            "dnsSuffix": lambda n : setattr(self, 'dns_suffix', n.get_str_value()),
+            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "linkSpeed": lambda n : setattr(self, 'link_speed', n.get_int_value()),
+            "macAddress": lambda n : setattr(self, 'mac_address', n.get_str_value()),
+            "networkTransportProtocol": lambda n : setattr(self, 'network_transport_protocol', n.get_enum_value(network_transport_protocol.NetworkTransportProtocol)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "port": lambda n : setattr(self, 'port', n.get_int_value()),
-            "received_quality_event_ratio": lambda n : setattr(self, 'received_quality_event_ratio', n.get_float_value()),
-            "reflexive_i_p_address": lambda n : setattr(self, 'reflexive_i_p_address', n.get_str_value()),
-            "relay_i_p_address": lambda n : setattr(self, 'relay_i_p_address', n.get_str_value()),
-            "relay_port": lambda n : setattr(self, 'relay_port', n.get_int_value()),
-            "sent_quality_event_ratio": lambda n : setattr(self, 'sent_quality_event_ratio', n.get_float_value()),
+            "receivedQualityEventRatio": lambda n : setattr(self, 'received_quality_event_ratio', n.get_float_value()),
+            "reflexiveIPAddress": lambda n : setattr(self, 'reflexive_i_p_address', n.get_str_value()),
+            "relayIPAddress": lambda n : setattr(self, 'relay_i_p_address', n.get_str_value()),
+            "relayPort": lambda n : setattr(self, 'relay_port', n.get_int_value()),
+            "sentQualityEventRatio": lambda n : setattr(self, 'sent_quality_event_ratio', n.get_float_value()),
             "subnet": lambda n : setattr(self, 'subnet', n.get_str_value()),
-            "trace_route_hops": lambda n : setattr(self, 'trace_route_hops', n.get_collection_of_object_values(trace_route_hop.TraceRouteHop)),
-            "wifi_band": lambda n : setattr(self, 'wifi_band', n.get_enum_value(wifi_band.WifiBand)),
-            "wifi_battery_charge": lambda n : setattr(self, 'wifi_battery_charge', n.get_int_value()),
-            "wifi_channel": lambda n : setattr(self, 'wifi_channel', n.get_int_value()),
-            "wifi_microsoft_driver": lambda n : setattr(self, 'wifi_microsoft_driver', n.get_str_value()),
-            "wifi_microsoft_driver_version": lambda n : setattr(self, 'wifi_microsoft_driver_version', n.get_str_value()),
-            "wifi_radio_type": lambda n : setattr(self, 'wifi_radio_type', n.get_enum_value(wifi_radio_type.WifiRadioType)),
-            "wifi_signal_strength": lambda n : setattr(self, 'wifi_signal_strength', n.get_int_value()),
-            "wifi_vendor_driver": lambda n : setattr(self, 'wifi_vendor_driver', n.get_str_value()),
-            "wifi_vendor_driver_version": lambda n : setattr(self, 'wifi_vendor_driver_version', n.get_str_value()),
+            "traceRouteHops": lambda n : setattr(self, 'trace_route_hops', n.get_collection_of_object_values(trace_route_hop.TraceRouteHop)),
+            "wifiBand": lambda n : setattr(self, 'wifi_band', n.get_enum_value(wifi_band.WifiBand)),
+            "wifiBatteryCharge": lambda n : setattr(self, 'wifi_battery_charge', n.get_int_value()),
+            "wifiChannel": lambda n : setattr(self, 'wifi_channel', n.get_int_value()),
+            "wifiMicrosoftDriver": lambda n : setattr(self, 'wifi_microsoft_driver', n.get_str_value()),
+            "wifiMicrosoftDriverVersion": lambda n : setattr(self, 'wifi_microsoft_driver_version', n.get_str_value()),
+            "wifiRadioType": lambda n : setattr(self, 'wifi_radio_type', n.get_enum_value(wifi_radio_type.WifiRadioType)),
+            "wifiSignalStrength": lambda n : setattr(self, 'wifi_signal_strength', n.get_int_value()),
+            "wifiVendorDriver": lambda n : setattr(self, 'wifi_vendor_driver', n.get_str_value()),
+            "wifiVendorDriverVersion": lambda n : setattr(self, 'wifi_vendor_driver_version', n.get_str_value()),
         }
         return fields
     
@@ -235,7 +235,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the ipAddress property value. IP address of the media endpoint.
         Args:
-            value: Value to set for the ipAddress property.
+            value: Value to set for the ip_address property.
         """
         self._ip_address = value
     
@@ -252,7 +252,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the linkSpeed property value. Link speed in bits per second reported by the network adapter used by the media endpoint.
         Args:
-            value: Value to set for the linkSpeed property.
+            value: Value to set for the link_speed property.
         """
         self._link_speed = value
     
@@ -269,7 +269,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the macAddress property value. The media access control (MAC) address of the media endpoint's network device.
         Args:
-            value: Value to set for the macAddress property.
+            value: Value to set for the mac_address property.
         """
         self._mac_address = value
     
@@ -286,7 +286,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the networkTransportProtocol property value. The networkTransportProtocol property
         Args:
-            value: Value to set for the networkTransportProtocol property.
+            value: Value to set for the network_transport_protocol property.
         """
         self._network_transport_protocol = value
     
@@ -303,7 +303,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -337,7 +337,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the receivedQualityEventRatio property value. Fraction of the call that the media endpoint detected the network was causing poor quality of the audio received.
         Args:
-            value: Value to set for the receivedQualityEventRatio property.
+            value: Value to set for the received_quality_event_ratio property.
         """
         self._received_quality_event_ratio = value
     
@@ -354,7 +354,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the reflexiveIPAddress property value. IP address of the media endpoint as seen by the media relay server. This is typically the public internet IP address associated to the endpoint.
         Args:
-            value: Value to set for the reflexiveIPAddress property.
+            value: Value to set for the reflexive_i_p_address property.
         """
         self._reflexive_i_p_address = value
     
@@ -371,7 +371,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the relayIPAddress property value. IP address of the media relay server allocated by the media endpoint.
         Args:
-            value: Value to set for the relayIPAddress property.
+            value: Value to set for the relay_i_p_address property.
         """
         self._relay_i_p_address = value
     
@@ -388,7 +388,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the relayPort property value. Network port number allocated on the media relay server by the media endpoint.
         Args:
-            value: Value to set for the relayPort property.
+            value: Value to set for the relay_port property.
         """
         self._relay_port = value
     
@@ -405,7 +405,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the sentQualityEventRatio property value. Fraction of the call that the media endpoint detected the network was causing poor quality of the audio sent.
         Args:
-            value: Value to set for the sentQualityEventRatio property.
+            value: Value to set for the sent_quality_event_ratio property.
         """
         self._sent_quality_event_ratio = value
     
@@ -476,7 +476,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the traceRouteHops property value. List of network trace route hops collected for this media stream.*
         Args:
-            value: Value to set for the traceRouteHops property.
+            value: Value to set for the trace_route_hops property.
         """
         self._trace_route_hops = value
     
@@ -493,7 +493,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the wifiBand property value. The wifiBand property
         Args:
-            value: Value to set for the wifiBand property.
+            value: Value to set for the wifi_band property.
         """
         self._wifi_band = value
     
@@ -510,7 +510,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the wifiBatteryCharge property value. Estimated remaining battery charge in percentage reported by the media endpoint.
         Args:
-            value: Value to set for the wifiBatteryCharge property.
+            value: Value to set for the wifi_battery_charge property.
         """
         self._wifi_battery_charge = value
     
@@ -527,7 +527,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the wifiChannel property value. WiFi channel used by the media endpoint.
         Args:
-            value: Value to set for the wifiChannel property.
+            value: Value to set for the wifi_channel property.
         """
         self._wifi_channel = value
     
@@ -544,7 +544,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the wifiMicrosoftDriver property value. Name of the Microsoft WiFi driver used by the media endpoint. Value may be localized based on the language used by endpoint.
         Args:
-            value: Value to set for the wifiMicrosoftDriver property.
+            value: Value to set for the wifi_microsoft_driver property.
         """
         self._wifi_microsoft_driver = value
     
@@ -561,7 +561,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the wifiMicrosoftDriverVersion property value. Version of the Microsoft WiFi driver used by the media endpoint.
         Args:
-            value: Value to set for the wifiMicrosoftDriverVersion property.
+            value: Value to set for the wifi_microsoft_driver_version property.
         """
         self._wifi_microsoft_driver_version = value
     
@@ -578,7 +578,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the wifiRadioType property value. The wifiRadioType property
         Args:
-            value: Value to set for the wifiRadioType property.
+            value: Value to set for the wifi_radio_type property.
         """
         self._wifi_radio_type = value
     
@@ -595,7 +595,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the wifiSignalStrength property value. WiFi signal strength in percentage reported by the media endpoint.
         Args:
-            value: Value to set for the wifiSignalStrength property.
+            value: Value to set for the wifi_signal_strength property.
         """
         self._wifi_signal_strength = value
     
@@ -612,7 +612,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the wifiVendorDriver property value. Name of the WiFi driver used by the media endpoint. Value may be localized based on the language used by endpoint.
         Args:
-            value: Value to set for the wifiVendorDriver property.
+            value: Value to set for the wifi_vendor_driver property.
         """
         self._wifi_vendor_driver = value
     
@@ -629,7 +629,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         Sets the wifiVendorDriverVersion property value. Version of the WiFi driver used by the media endpoint.
         Args:
-            value: Value to set for the wifiVendorDriverVersion property.
+            value: Value to set for the wifi_vendor_driver_version property.
         """
         self._wifi_vendor_driver_version = value
     

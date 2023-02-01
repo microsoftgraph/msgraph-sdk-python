@@ -17,11 +17,12 @@ class PrintServiceEndpointItemRequestBuilder():
     """
     Provides operations to manage the endpoints property of the microsoft.graph.printService entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, print_service_endpoint_id: Optional[str] = None) -> None:
         """
         Instantiates a new PrintServiceEndpointItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
+            printServiceEndpointId: key: id of printServiceEndpoint
             requestAdapter: The request adapter to use to execute the requests.
         """
         if path_parameters is None:
@@ -32,6 +33,7 @@ class PrintServiceEndpointItemRequestBuilder():
         self.url_template: str = "{+baseurl}/print/services/{printService%2Did}/endpoints/{printServiceEndpoint%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["printServiceEndpoint%2Did"] = printServiceEndpointId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

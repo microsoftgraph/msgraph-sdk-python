@@ -49,7 +49,7 @@ class Store(entity.Entity):
         """
         Sets the defaultLanguageTag property value. Default language of the term store.
         Args:
-            value: Value to set for the defaultLanguageTag property.
+            value: Value to set for the default_language_tag property.
         """
         self._default_language_tag = value
     
@@ -59,9 +59,9 @@ class Store(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "default_language_tag": lambda n : setattr(self, 'default_language_tag', n.get_str_value()),
+            "defaultLanguageTag": lambda n : setattr(self, 'default_language_tag', n.get_str_value()),
             "groups": lambda n : setattr(self, 'groups', n.get_collection_of_object_values(group.Group)),
-            "language_tags": lambda n : setattr(self, 'language_tags', n.get_collection_of_primitive_values(str)),
+            "languageTags": lambda n : setattr(self, 'language_tags', n.get_collection_of_primitive_values(str)),
             "sets": lambda n : setattr(self, 'sets', n.get_collection_of_object_values(set.Set)),
         }
         super_fields = super().get_field_deserializers()
@@ -98,7 +98,7 @@ class Store(entity.Entity):
         """
         Sets the languageTags property value. List of languages for the term store.
         Args:
-            value: Value to set for the languageTags property.
+            value: Value to set for the language_tags property.
         """
         self._language_tags = value
     

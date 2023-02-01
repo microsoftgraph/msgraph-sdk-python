@@ -63,7 +63,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         """
         Sets the daysWithoutContactBeforeUnenroll property value. Offline interval before app data is wiped (days)
         Args:
-            value: Value to set for the daysWithoutContactBeforeUnenroll property.
+            value: Value to set for the days_without_contact_before_unenroll property.
         """
         self._days_without_contact_before_unenroll = value
     
@@ -73,18 +73,18 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "days_without_contact_before_unenroll": lambda n : setattr(self, 'days_without_contact_before_unenroll', n.get_int_value()),
-            "mdm_enrollment_url": lambda n : setattr(self, 'mdm_enrollment_url', n.get_str_value()),
-            "minutes_of_inactivity_before_device_lock": lambda n : setattr(self, 'minutes_of_inactivity_before_device_lock', n.get_int_value()),
-            "number_of_past_pins_remembered": lambda n : setattr(self, 'number_of_past_pins_remembered', n.get_int_value()),
-            "password_maximum_attempt_count": lambda n : setattr(self, 'password_maximum_attempt_count', n.get_int_value()),
-            "pin_expiration_days": lambda n : setattr(self, 'pin_expiration_days', n.get_int_value()),
-            "pin_lowercase_letters": lambda n : setattr(self, 'pin_lowercase_letters', n.get_enum_value(windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements)),
-            "pin_minimum_length": lambda n : setattr(self, 'pin_minimum_length', n.get_int_value()),
-            "pin_special_characters": lambda n : setattr(self, 'pin_special_characters', n.get_enum_value(windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements)),
-            "pin_uppercase_letters": lambda n : setattr(self, 'pin_uppercase_letters', n.get_enum_value(windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements)),
-            "revoke_on_mdm_handoff_disabled": lambda n : setattr(self, 'revoke_on_mdm_handoff_disabled', n.get_bool_value()),
-            "windows_hello_for_business_blocked": lambda n : setattr(self, 'windows_hello_for_business_blocked', n.get_bool_value()),
+            "daysWithoutContactBeforeUnenroll": lambda n : setattr(self, 'days_without_contact_before_unenroll', n.get_int_value()),
+            "mdmEnrollmentUrl": lambda n : setattr(self, 'mdm_enrollment_url', n.get_str_value()),
+            "minutesOfInactivityBeforeDeviceLock": lambda n : setattr(self, 'minutes_of_inactivity_before_device_lock', n.get_int_value()),
+            "numberOfPastPinsRemembered": lambda n : setattr(self, 'number_of_past_pins_remembered', n.get_int_value()),
+            "passwordMaximumAttemptCount": lambda n : setattr(self, 'password_maximum_attempt_count', n.get_int_value()),
+            "pinExpirationDays": lambda n : setattr(self, 'pin_expiration_days', n.get_int_value()),
+            "pinLowercaseLetters": lambda n : setattr(self, 'pin_lowercase_letters', n.get_enum_value(windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements)),
+            "pinMinimumLength": lambda n : setattr(self, 'pin_minimum_length', n.get_int_value()),
+            "pinSpecialCharacters": lambda n : setattr(self, 'pin_special_characters', n.get_enum_value(windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements)),
+            "pinUppercaseLetters": lambda n : setattr(self, 'pin_uppercase_letters', n.get_enum_value(windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements)),
+            "revokeOnMdmHandoffDisabled": lambda n : setattr(self, 'revoke_on_mdm_handoff_disabled', n.get_bool_value()),
+            "windowsHelloForBusinessBlocked": lambda n : setattr(self, 'windows_hello_for_business_blocked', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -103,7 +103,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         """
         Sets the mdmEnrollmentUrl property value. Enrollment url for the MDM
         Args:
-            value: Value to set for the mdmEnrollmentUrl property.
+            value: Value to set for the mdm_enrollment_url property.
         """
         self._mdm_enrollment_url = value
     
@@ -120,7 +120,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         """
         Sets the minutesOfInactivityBeforeDeviceLock property value. Specifies the maximum amount of time (in minutes) allowed after the device is idle that will cause the device to become PIN or password locked.   Range is an integer X where 0 <= X <= 999.
         Args:
-            value: Value to set for the minutesOfInactivityBeforeDeviceLock property.
+            value: Value to set for the minutes_of_inactivity_before_device_lock property.
         """
         self._minutes_of_inactivity_before_device_lock = value
     
@@ -137,7 +137,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         """
         Sets the numberOfPastPinsRemembered property value. Integer value that specifies the number of past PINs that can be associated to a user account that can't be reused. The largest number you can configure for this policy setting is 50. The lowest number you can configure for this policy setting is 0. If this policy is set to 0, then storage of previous PINs is not required. This node was added in Windows 10, version 1511. Default is 0.
         Args:
-            value: Value to set for the numberOfPastPinsRemembered property.
+            value: Value to set for the number_of_past_pins_remembered property.
         """
         self._number_of_past_pins_remembered = value
     
@@ -154,7 +154,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         """
         Sets the passwordMaximumAttemptCount property value. The number of authentication failures allowed before the device will be wiped. A value of 0 disables device wipe functionality. Range is an integer X where 4 <= X <= 16 for desktop and 0 <= X <= 999 for mobile devices.
         Args:
-            value: Value to set for the passwordMaximumAttemptCount property.
+            value: Value to set for the password_maximum_attempt_count property.
         """
         self._password_maximum_attempt_count = value
     
@@ -171,7 +171,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         """
         Sets the pinExpirationDays property value. Integer value specifies the period of time (in days) that a PIN can be used before the system requires the user to change it. The largest number you can configure for this policy setting is 730. The lowest number you can configure for this policy setting is 0. If this policy is set to 0, then the user's PIN will never expire. This node was added in Windows 10, version 1511. Default is 0.
         Args:
-            value: Value to set for the pinExpirationDays property.
+            value: Value to set for the pin_expiration_days property.
         """
         self._pin_expiration_days = value
     
@@ -188,7 +188,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         """
         Sets the pinLowercaseLetters property value. Pin Character Requirements
         Args:
-            value: Value to set for the pinLowercaseLetters property.
+            value: Value to set for the pin_lowercase_letters property.
         """
         self._pin_lowercase_letters = value
     
@@ -205,7 +205,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         """
         Sets the pinMinimumLength property value. Integer value that sets the minimum number of characters required for the PIN. Default value is 4. The lowest number you can configure for this policy setting is 4. The largest number you can configure must be less than the number configured in the Maximum PIN length policy setting or the number 127, whichever is the lowest.
         Args:
-            value: Value to set for the pinMinimumLength property.
+            value: Value to set for the pin_minimum_length property.
         """
         self._pin_minimum_length = value
     
@@ -222,7 +222,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         """
         Sets the pinSpecialCharacters property value. Pin Character Requirements
         Args:
-            value: Value to set for the pinSpecialCharacters property.
+            value: Value to set for the pin_special_characters property.
         """
         self._pin_special_characters = value
     
@@ -239,7 +239,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         """
         Sets the pinUppercaseLetters property value. Pin Character Requirements
         Args:
-            value: Value to set for the pinUppercaseLetters property.
+            value: Value to set for the pin_uppercase_letters property.
         """
         self._pin_uppercase_letters = value
     
@@ -256,7 +256,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         """
         Sets the revokeOnMdmHandoffDisabled property value. New property in RS2, pending documentation
         Args:
-            value: Value to set for the revokeOnMdmHandoffDisabled property.
+            value: Value to set for the revoke_on_mdm_handoff_disabled property.
         """
         self._revoke_on_mdm_handoff_disabled = value
     
@@ -295,7 +295,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         """
         Sets the windowsHelloForBusinessBlocked property value. Boolean value that sets Windows Hello for Business as a method for signing into Windows.
         Args:
-            value: Value to set for the windowsHelloForBusinessBlocked property.
+            value: Value to set for the windows_hello_for_business_blocked property.
         """
         self._windows_hello_for_business_blocked = value
     

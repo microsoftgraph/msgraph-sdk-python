@@ -22,7 +22,7 @@ class X509CertificateAuthenticationMethodConfiguration(authentication_method_con
         """
         Sets the authenticationModeConfiguration property value. Defines strong authentication configurations. This configuration includes the default authentication mode and the different rules for strong authentication bindings.
         Args:
-            value: Value to set for the authenticationModeConfiguration property.
+            value: Value to set for the authentication_mode_configuration property.
         """
         self._authentication_mode_configuration = value
     
@@ -39,7 +39,7 @@ class X509CertificateAuthenticationMethodConfiguration(authentication_method_con
         """
         Sets the certificateUserBindings property value. Defines fields in the X.509 certificate that map to attributes of the Azure AD user object in order to bind the certificate to the user. The priority of the object determines the order in which the binding is carried out. The first binding that matches will be used and the rest ignored.
         Args:
-            value: Value to set for the certificateUserBindings property.
+            value: Value to set for the certificate_user_bindings property.
         """
         self._certificate_user_bindings = value
     
@@ -74,9 +74,9 @@ class X509CertificateAuthenticationMethodConfiguration(authentication_method_con
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "authentication_mode_configuration": lambda n : setattr(self, 'authentication_mode_configuration', n.get_object_value(x509_certificate_authentication_mode_configuration.X509CertificateAuthenticationModeConfiguration)),
-            "certificate_user_bindings": lambda n : setattr(self, 'certificate_user_bindings', n.get_collection_of_object_values(x509_certificate_user_binding.X509CertificateUserBinding)),
-            "include_targets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_method_target.AuthenticationMethodTarget)),
+            "authenticationModeConfiguration": lambda n : setattr(self, 'authentication_mode_configuration', n.get_object_value(x509_certificate_authentication_mode_configuration.X509CertificateAuthenticationModeConfiguration)),
+            "certificateUserBindings": lambda n : setattr(self, 'certificate_user_bindings', n.get_collection_of_object_values(x509_certificate_user_binding.X509CertificateUserBinding)),
+            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_method_target.AuthenticationMethodTarget)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -95,7 +95,7 @@ class X509CertificateAuthenticationMethodConfiguration(authentication_method_con
         """
         Sets the includeTargets property value. A collection of groups that are enabled to use the authentication method.
         Args:
-            value: Value to set for the includeTargets property.
+            value: Value to set for the include_targets property.
         """
         self._include_targets = value
     

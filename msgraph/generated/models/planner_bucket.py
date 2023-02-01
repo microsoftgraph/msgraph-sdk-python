@@ -16,7 +16,7 @@ class PlannerBucket(entity.Entity):
         self._name: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-        # Hint used to order items of this type in a list view. The format is defined as outlined here.
+        # Hint used to order items of this type in a list view. For details about the supported format, see Using order hints in Planner.
         self._order_hint: Optional[str] = None
         # Plan ID to which the bucket belongs.
         self._plan_id: Optional[str] = None
@@ -42,8 +42,8 @@ class PlannerBucket(entity.Entity):
         """
         fields = {
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "order_hint": lambda n : setattr(self, 'order_hint', n.get_str_value()),
-            "plan_id": lambda n : setattr(self, 'plan_id', n.get_str_value()),
+            "orderHint": lambda n : setattr(self, 'order_hint', n.get_str_value()),
+            "planId": lambda n : setattr(self, 'plan_id', n.get_str_value()),
             "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(planner_task.PlannerTask)),
         }
         super_fields = super().get_field_deserializers()
@@ -70,7 +70,7 @@ class PlannerBucket(entity.Entity):
     @property
     def order_hint(self,) -> Optional[str]:
         """
-        Gets the orderHint property value. Hint used to order items of this type in a list view. The format is defined as outlined here.
+        Gets the orderHint property value. Hint used to order items of this type in a list view. For details about the supported format, see Using order hints in Planner.
         Returns: Optional[str]
         """
         return self._order_hint
@@ -78,9 +78,9 @@ class PlannerBucket(entity.Entity):
     @order_hint.setter
     def order_hint(self,value: Optional[str] = None) -> None:
         """
-        Sets the orderHint property value. Hint used to order items of this type in a list view. The format is defined as outlined here.
+        Sets the orderHint property value. Hint used to order items of this type in a list view. For details about the supported format, see Using order hints in Planner.
         Args:
-            value: Value to set for the orderHint property.
+            value: Value to set for the order_hint property.
         """
         self._order_hint = value
     
@@ -97,7 +97,7 @@ class PlannerBucket(entity.Entity):
         """
         Sets the planId property value. Plan ID to which the bucket belongs.
         Args:
-            value: Value to set for the planId property.
+            value: Value to set for the plan_id property.
         """
         self._plan_id = value
     

@@ -64,9 +64,9 @@ class InvitationParticipantInfo(AdditionalDataHolder, Parsable):
             "hidden": lambda n : setattr(self, 'hidden', n.get_bool_value()),
             "identity": lambda n : setattr(self, 'identity', n.get_object_value(identity_set.IdentitySet)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "participant_id": lambda n : setattr(self, 'participant_id', n.get_str_value()),
-            "remove_from_default_audio_routing_group": lambda n : setattr(self, 'remove_from_default_audio_routing_group', n.get_bool_value()),
-            "replaces_call_id": lambda n : setattr(self, 'replaces_call_id', n.get_str_value()),
+            "participantId": lambda n : setattr(self, 'participant_id', n.get_str_value()),
+            "removeFromDefaultAudioRoutingGroup": lambda n : setattr(self, 'remove_from_default_audio_routing_group', n.get_bool_value()),
+            "replacesCallId": lambda n : setattr(self, 'replaces_call_id', n.get_str_value()),
         }
         return fields
     
@@ -117,7 +117,7 @@ class InvitationParticipantInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -134,7 +134,7 @@ class InvitationParticipantInfo(AdditionalDataHolder, Parsable):
         """
         Sets the participantId property value. Optional. The ID of the target participant.
         Args:
-            value: Value to set for the participantId property.
+            value: Value to set for the participant_id property.
         """
         self._participant_id = value
     
@@ -151,7 +151,7 @@ class InvitationParticipantInfo(AdditionalDataHolder, Parsable):
         """
         Sets the removeFromDefaultAudioRoutingGroup property value. Optional. Whether to remove them from the main mixer.
         Args:
-            value: Value to set for the removeFromDefaultAudioRoutingGroup property.
+            value: Value to set for the remove_from_default_audio_routing_group property.
         """
         self._remove_from_default_audio_routing_group = value
     
@@ -168,7 +168,7 @@ class InvitationParticipantInfo(AdditionalDataHolder, Parsable):
         """
         Sets the replacesCallId property value. Optional. The call which the target identity is currently a part of. For peer-to-peer case, the call will be dropped once the participant is added successfully.
         Args:
-            value: Value to set for the replacesCallId property.
+            value: Value to set for the replaces_call_id property.
         """
         self._replaces_call_id = value
     

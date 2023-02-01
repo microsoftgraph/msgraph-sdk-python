@@ -47,12 +47,12 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(section_links.SectionLinks)),
             "pages": lambda n : setattr(self, 'pages', n.get_collection_of_object_values(onenote_page.OnenotePage)),
-            "pages_url": lambda n : setattr(self, 'pages_url', n.get_str_value()),
-            "parent_notebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(notebook.Notebook)),
-            "parent_section_group": lambda n : setattr(self, 'parent_section_group', n.get_object_value(section_group.SectionGroup)),
+            "pagesUrl": lambda n : setattr(self, 'pages_url', n.get_str_value()),
+            "parentNotebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(notebook.Notebook)),
+            "parentSectionGroup": lambda n : setattr(self, 'parent_section_group', n.get_object_value(section_group.SectionGroup)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -71,7 +71,7 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
         """
         Sets the isDefault property value. Indicates whether this is the user's default section. Read-only.
         Args:
-            value: Value to set for the isDefault property.
+            value: Value to set for the is_default property.
         """
         self._is_default = value
     
@@ -122,7 +122,7 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
         """
         Sets the pagesUrl property value. The pages endpoint where you can get details for all the pages in the section. Read-only.
         Args:
-            value: Value to set for the pagesUrl property.
+            value: Value to set for the pages_url property.
         """
         self._pages_url = value
     
@@ -139,7 +139,7 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
         """
         Sets the parentNotebook property value. The notebook that contains the section.  Read-only.
         Args:
-            value: Value to set for the parentNotebook property.
+            value: Value to set for the parent_notebook property.
         """
         self._parent_notebook = value
     
@@ -156,7 +156,7 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
         """
         Sets the parentSectionGroup property value. The section group that contains the section.  Read-only.
         Args:
-            value: Value to set for the parentSectionGroup property.
+            value: Value to set for the parent_section_group property.
         """
         self._parent_section_group = value
     

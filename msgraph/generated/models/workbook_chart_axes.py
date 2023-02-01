@@ -20,7 +20,7 @@ class WorkbookChartAxes(entity.Entity):
         """
         Sets the categoryAxis property value. Represents the category axis in a chart. Read-only.
         Args:
-            value: Value to set for the categoryAxis property.
+            value: Value to set for the category_axis property.
         """
         self._category_axis = value
     
@@ -56,9 +56,9 @@ class WorkbookChartAxes(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "category_axis": lambda n : setattr(self, 'category_axis', n.get_object_value(workbook_chart_axis.WorkbookChartAxis)),
-            "series_axis": lambda n : setattr(self, 'series_axis', n.get_object_value(workbook_chart_axis.WorkbookChartAxis)),
-            "value_axis": lambda n : setattr(self, 'value_axis', n.get_object_value(workbook_chart_axis.WorkbookChartAxis)),
+            "categoryAxis": lambda n : setattr(self, 'category_axis', n.get_object_value(workbook_chart_axis.WorkbookChartAxis)),
+            "seriesAxis": lambda n : setattr(self, 'series_axis', n.get_object_value(workbook_chart_axis.WorkbookChartAxis)),
+            "valueAxis": lambda n : setattr(self, 'value_axis', n.get_object_value(workbook_chart_axis.WorkbookChartAxis)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -90,7 +90,7 @@ class WorkbookChartAxes(entity.Entity):
         """
         Sets the seriesAxis property value. Represents the series axis of a 3-dimensional chart. Read-only.
         Args:
-            value: Value to set for the seriesAxis property.
+            value: Value to set for the series_axis property.
         """
         self._series_axis = value
     
@@ -107,7 +107,7 @@ class WorkbookChartAxes(entity.Entity):
         """
         Sets the valueAxis property value. Represents the value axis in an axis. Read-only.
         Args:
-            value: Value to set for the valueAxis property.
+            value: Value to set for the value_axis property.
         """
         self._value_axis = value
     

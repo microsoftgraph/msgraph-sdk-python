@@ -21,7 +21,7 @@ class TeamsApp(entity.Entity):
         """
         Sets the appDefinitions property value. The details for each version of the app.
         Args:
-            value: Value to set for the appDefinitions property.
+            value: Value to set for the app_definitions property.
         """
         self._app_definitions = value
     
@@ -66,7 +66,7 @@ class TeamsApp(entity.Entity):
         """
         Sets the displayName property value. The name of the catalog app provided by the app developer in the Microsoft Teams zip app package.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -83,7 +83,7 @@ class TeamsApp(entity.Entity):
         """
         Sets the distributionMethod property value. The method of distribution for the app. Read-only.
         Args:
-            value: Value to set for the distributionMethod property.
+            value: Value to set for the distribution_method property.
         """
         self._distribution_method = value
     
@@ -100,7 +100,7 @@ class TeamsApp(entity.Entity):
         """
         Sets the externalId property value. The ID of the catalog provided by the app developer in the Microsoft Teams zip app package.
         Args:
-            value: Value to set for the externalId property.
+            value: Value to set for the external_id property.
         """
         self._external_id = value
     
@@ -110,10 +110,10 @@ class TeamsApp(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_definitions": lambda n : setattr(self, 'app_definitions', n.get_collection_of_object_values(teams_app_definition.TeamsAppDefinition)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "distribution_method": lambda n : setattr(self, 'distribution_method', n.get_enum_value(teams_app_distribution_method.TeamsAppDistributionMethod)),
-            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "appDefinitions": lambda n : setattr(self, 'app_definitions', n.get_collection_of_object_values(teams_app_definition.TeamsAppDefinition)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "distributionMethod": lambda n : setattr(self, 'distribution_method', n.get_enum_value(teams_app_distribution_method.TeamsAppDistributionMethod)),
+            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

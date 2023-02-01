@@ -23,7 +23,7 @@ class UnifiedRoleScheduleBase(entity.Entity):
         """
         Sets the appScope property value. Read-only property with details of the app-specific scope when the role eligibility or assignment is scoped to an app. Nullable.
         Args:
-            value: Value to set for the appScope property.
+            value: Value to set for the app_scope property.
         """
         self._app_scope = value
     
@@ -40,7 +40,7 @@ class UnifiedRoleScheduleBase(entity.Entity):
         """
         Sets the appScopeId property value. Identifier of the app-specific scope when the assignment or eligibility is scoped to an app. The scope of an assignment or eligibility determines the set of resources for which the principal has been granted access. App scopes are scopes that are defined and understood by this application only. Use / for tenant-wide app scopes. Use directoryScopeId to limit the scope to particular directory objects, for example, administrative units.
         Args:
-            value: Value to set for the appScopeId property.
+            value: Value to set for the app_scope_id property.
         """
         self._app_scope_id = value
     
@@ -89,7 +89,7 @@ class UnifiedRoleScheduleBase(entity.Entity):
         """
         Sets the createdDateTime property value. When the schedule was created.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -106,7 +106,7 @@ class UnifiedRoleScheduleBase(entity.Entity):
         """
         Sets the createdUsing property value. Identifier of the object through which this schedule was created.
         Args:
-            value: Value to set for the createdUsing property.
+            value: Value to set for the created_using property.
         """
         self._created_using = value
     
@@ -135,7 +135,7 @@ class UnifiedRoleScheduleBase(entity.Entity):
         """
         Sets the directoryScope property value. The directory object that is the scope of the role eligibility or assignment. Read-only.
         Args:
-            value: Value to set for the directoryScope property.
+            value: Value to set for the directory_scope property.
         """
         self._directory_scope = value
     
@@ -152,7 +152,7 @@ class UnifiedRoleScheduleBase(entity.Entity):
         """
         Sets the directoryScopeId property value. Identifier of the directory object representing the scope of the assignment or eligibility. The scope of an assignment or eligibility determines the set of resources for which the principal has been granted access. Directory scopes are shared scopes stored in the directory that are understood by multiple applications. Use / for tenant-wide scope. Use appScopeId to limit the scope to an application only.
         Args:
-            value: Value to set for the directoryScopeId property.
+            value: Value to set for the directory_scope_id property.
         """
         self._directory_scope_id = value
     
@@ -162,17 +162,17 @@ class UnifiedRoleScheduleBase(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_scope": lambda n : setattr(self, 'app_scope', n.get_object_value(app_scope.AppScope)),
-            "app_scope_id": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "created_using": lambda n : setattr(self, 'created_using', n.get_str_value()),
-            "directory_scope": lambda n : setattr(self, 'directory_scope', n.get_object_value(directory_object.DirectoryObject)),
-            "directory_scope_id": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
-            "modified_date_time": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "appScope": lambda n : setattr(self, 'app_scope', n.get_object_value(app_scope.AppScope)),
+            "appScopeId": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdUsing": lambda n : setattr(self, 'created_using', n.get_str_value()),
+            "directoryScope": lambda n : setattr(self, 'directory_scope', n.get_object_value(directory_object.DirectoryObject)),
+            "directoryScopeId": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
+            "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
             "principal": lambda n : setattr(self, 'principal', n.get_object_value(directory_object.DirectoryObject)),
-            "principal_id": lambda n : setattr(self, 'principal_id', n.get_str_value()),
-            "role_definition": lambda n : setattr(self, 'role_definition', n.get_object_value(unified_role_definition.UnifiedRoleDefinition)),
-            "role_definition_id": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
+            "principalId": lambda n : setattr(self, 'principal_id', n.get_str_value()),
+            "roleDefinition": lambda n : setattr(self, 'role_definition', n.get_object_value(unified_role_definition.UnifiedRoleDefinition)),
+            "roleDefinitionId": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -192,7 +192,7 @@ class UnifiedRoleScheduleBase(entity.Entity):
         """
         Sets the modifiedDateTime property value. When the schedule was last modified.
         Args:
-            value: Value to set for the modifiedDateTime property.
+            value: Value to set for the modified_date_time property.
         """
         self._modified_date_time = value
     
@@ -226,7 +226,7 @@ class UnifiedRoleScheduleBase(entity.Entity):
         """
         Sets the principalId property value. Identifier of the principal that has been granted the role assignment or eligibility.
         Args:
-            value: Value to set for the principalId property.
+            value: Value to set for the principal_id property.
         """
         self._principal_id = value
     
@@ -243,7 +243,7 @@ class UnifiedRoleScheduleBase(entity.Entity):
         """
         Sets the roleDefinition property value. Detailed information for the roleDefinition object that is referenced through the roleDefinitionId property.
         Args:
-            value: Value to set for the roleDefinition property.
+            value: Value to set for the role_definition property.
         """
         self._role_definition = value
     
@@ -260,7 +260,7 @@ class UnifiedRoleScheduleBase(entity.Entity):
         """
         Sets the roleDefinitionId property value. Identifier of the unifiedRoleDefinition object that is being assigned to the principal or that a principal is eligible for.
         Args:
-            value: Value to set for the roleDefinitionId property.
+            value: Value to set for the role_definition_id property.
         """
         self._role_definition_id = value
     

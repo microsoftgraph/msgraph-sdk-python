@@ -42,7 +42,7 @@ class MembersAddedEventMessageDetail(event_message_detail.EventMessageDetail):
         fields = {
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(teamwork_user_identity.TeamworkUserIdentity)),
-            "visible_history_start_date_time": lambda n : setattr(self, 'visible_history_start_date_time', n.get_datetime_value()),
+            "visibleHistoryStartDateTime": lambda n : setattr(self, 'visible_history_start_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -108,7 +108,7 @@ class MembersAddedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the visibleHistoryStartDateTime property value. The timestamp that denotes how far back a conversation's history is shared with the conversation members.
         Args:
-            value: Value to set for the visibleHistoryStartDateTime property.
+            value: Value to set for the visible_history_start_date_time property.
         """
         self._visible_history_start_date_time = value
     

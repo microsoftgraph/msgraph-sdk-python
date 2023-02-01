@@ -111,7 +111,7 @@ class Location(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. The name associated with the location.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -123,13 +123,13 @@ class Location(AdditionalDataHolder, Parsable):
         fields = {
             "address": lambda n : setattr(self, 'address', n.get_object_value(physical_address.PhysicalAddress)),
             "coordinates": lambda n : setattr(self, 'coordinates', n.get_object_value(outlook_geo_coordinates.OutlookGeoCoordinates)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "location_email_address": lambda n : setattr(self, 'location_email_address', n.get_str_value()),
-            "location_type": lambda n : setattr(self, 'location_type', n.get_enum_value(location_type.LocationType)),
-            "location_uri": lambda n : setattr(self, 'location_uri', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "locationEmailAddress": lambda n : setattr(self, 'location_email_address', n.get_str_value()),
+            "locationType": lambda n : setattr(self, 'location_type', n.get_enum_value(location_type.LocationType)),
+            "locationUri": lambda n : setattr(self, 'location_uri', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "unique_id": lambda n : setattr(self, 'unique_id', n.get_str_value()),
-            "unique_id_type": lambda n : setattr(self, 'unique_id_type', n.get_enum_value(location_unique_id_type.LocationUniqueIdType)),
+            "uniqueId": lambda n : setattr(self, 'unique_id', n.get_str_value()),
+            "uniqueIdType": lambda n : setattr(self, 'unique_id_type', n.get_enum_value(location_unique_id_type.LocationUniqueIdType)),
         }
         return fields
     
@@ -146,7 +146,7 @@ class Location(AdditionalDataHolder, Parsable):
         """
         Sets the locationEmailAddress property value. Optional email address of the location.
         Args:
-            value: Value to set for the locationEmailAddress property.
+            value: Value to set for the location_email_address property.
         """
         self._location_email_address = value
     
@@ -163,7 +163,7 @@ class Location(AdditionalDataHolder, Parsable):
         """
         Sets the locationType property value. The type of location. The possible values are: default, conferenceRoom, homeAddress, businessAddress,geoCoordinates, streetAddress, hotel, restaurant, localBusiness, postalAddress. Read-only.
         Args:
-            value: Value to set for the locationType property.
+            value: Value to set for the location_type property.
         """
         self._location_type = value
     
@@ -180,7 +180,7 @@ class Location(AdditionalDataHolder, Parsable):
         """
         Sets the locationUri property value. Optional URI representing the location.
         Args:
-            value: Value to set for the locationUri property.
+            value: Value to set for the location_uri property.
         """
         self._location_uri = value
     
@@ -197,7 +197,7 @@ class Location(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -233,7 +233,7 @@ class Location(AdditionalDataHolder, Parsable):
         """
         Sets the uniqueId property value. For internal use only.
         Args:
-            value: Value to set for the uniqueId property.
+            value: Value to set for the unique_id property.
         """
         self._unique_id = value
     
@@ -250,7 +250,7 @@ class Location(AdditionalDataHolder, Parsable):
         """
         Sets the uniqueIdType property value. For internal use only.
         Args:
-            value: Value to set for the uniqueIdType property.
+            value: Value to set for the unique_id_type property.
         """
         self._unique_id_type = value
     

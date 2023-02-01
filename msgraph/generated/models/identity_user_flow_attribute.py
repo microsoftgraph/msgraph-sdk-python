@@ -49,7 +49,7 @@ class IdentityUserFlowAttribute(entity.Entity):
         """
         Sets the dataType property value. The dataType property
         Args:
-            value: Value to set for the dataType property.
+            value: Value to set for the data_type property.
         """
         self._data_type = value
     
@@ -83,7 +83,7 @@ class IdentityUserFlowAttribute(entity.Entity):
         """
         Sets the displayName property value. The display name of the user flow attribute.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -93,10 +93,10 @@ class IdentityUserFlowAttribute(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "data_type": lambda n : setattr(self, 'data_type', n.get_enum_value(identity_user_flow_attribute_data_type.IdentityUserFlowAttributeDataType)),
+            "dataType": lambda n : setattr(self, 'data_type', n.get_enum_value(identity_user_flow_attribute_data_type.IdentityUserFlowAttributeDataType)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "user_flow_attribute_type": lambda n : setattr(self, 'user_flow_attribute_type', n.get_enum_value(identity_user_flow_attribute_type.IdentityUserFlowAttributeType)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "userFlowAttributeType": lambda n : setattr(self, 'user_flow_attribute_type', n.get_enum_value(identity_user_flow_attribute_type.IdentityUserFlowAttributeType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -129,7 +129,7 @@ class IdentityUserFlowAttribute(entity.Entity):
         """
         Sets the userFlowAttributeType property value. The userFlowAttributeType property
         Args:
-            value: Value to set for the userFlowAttributeType property.
+            value: Value to set for the user_flow_attribute_type property.
         """
         self._user_flow_attribute_type = value
     

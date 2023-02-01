@@ -40,10 +40,10 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "recipient_action_date_time": lambda n : setattr(self, 'recipient_action_date_time', n.get_datetime_value()),
-            "recipient_action_message": lambda n : setattr(self, 'recipient_action_message', n.get_str_value()),
-            "recipient_user_id": lambda n : setattr(self, 'recipient_user_id', n.get_str_value()),
-            "sender_shift_id": lambda n : setattr(self, 'sender_shift_id', n.get_str_value()),
+            "recipientActionDateTime": lambda n : setattr(self, 'recipient_action_date_time', n.get_datetime_value()),
+            "recipientActionMessage": lambda n : setattr(self, 'recipient_action_message', n.get_str_value()),
+            "recipientUserId": lambda n : setattr(self, 'recipient_user_id', n.get_str_value()),
+            "senderShiftId": lambda n : setattr(self, 'sender_shift_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -62,7 +62,7 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
         """
         Sets the recipientActionDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the recipientActionDateTime property.
+            value: Value to set for the recipient_action_date_time property.
         """
         self._recipient_action_date_time = value
     
@@ -79,7 +79,7 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
         """
         Sets the recipientActionMessage property value. Custom message sent by recipient of the offer shift request.
         Args:
-            value: Value to set for the recipientActionMessage property.
+            value: Value to set for the recipient_action_message property.
         """
         self._recipient_action_message = value
     
@@ -96,7 +96,7 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
         """
         Sets the recipientUserId property value. User ID of the recipient of the offer shift request.
         Args:
-            value: Value to set for the recipientUserId property.
+            value: Value to set for the recipient_user_id property.
         """
         self._recipient_user_id = value
     
@@ -113,7 +113,7 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
         """
         Sets the senderShiftId property value. User ID of the sender of the offer shift request.
         Args:
-            value: Value to set for the senderShiftId property.
+            value: Value to set for the sender_shift_id property.
         """
         self._sender_shift_id = value
     

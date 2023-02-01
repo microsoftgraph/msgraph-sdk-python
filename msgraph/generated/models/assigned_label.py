@@ -60,7 +60,7 @@ class AssignedLabel(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. The display name of the label. Read-only.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -70,8 +70,8 @@ class AssignedLabel(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "label_id": lambda n : setattr(self, 'label_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "labelId": lambda n : setattr(self, 'label_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -89,7 +89,7 @@ class AssignedLabel(AdditionalDataHolder, Parsable):
         """
         Sets the labelId property value. The unique identifier of the label.
         Args:
-            value: Value to set for the labelId property.
+            value: Value to set for the label_id property.
         """
         self._label_id = value
     
@@ -106,7 +106,7 @@ class AssignedLabel(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

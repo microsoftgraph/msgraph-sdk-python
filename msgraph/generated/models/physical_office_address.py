@@ -73,7 +73,7 @@ class PhysicalOfficeAddress(AdditionalDataHolder, Parsable):
         """
         Sets the countryOrRegion property value. The country or region. It's a free-format string value, for example, 'United States'.
         Args:
-            value: Value to set for the countryOrRegion property.
+            value: Value to set for the country_or_region property.
         """
         self._country_or_region = value
     
@@ -96,10 +96,10 @@ class PhysicalOfficeAddress(AdditionalDataHolder, Parsable):
         """
         fields = {
             "city": lambda n : setattr(self, 'city', n.get_str_value()),
-            "country_or_region": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
+            "countryOrRegion": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "office_location": lambda n : setattr(self, 'office_location', n.get_str_value()),
-            "postal_code": lambda n : setattr(self, 'postal_code', n.get_str_value()),
+            "officeLocation": lambda n : setattr(self, 'office_location', n.get_str_value()),
+            "postalCode": lambda n : setattr(self, 'postal_code', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
             "street": lambda n : setattr(self, 'street', n.get_str_value()),
         }
@@ -118,7 +118,7 @@ class PhysicalOfficeAddress(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -135,7 +135,7 @@ class PhysicalOfficeAddress(AdditionalDataHolder, Parsable):
         """
         Sets the officeLocation property value. Office location such as building and office number for an organizational contact.
         Args:
-            value: Value to set for the officeLocation property.
+            value: Value to set for the office_location property.
         """
         self._office_location = value
     
@@ -152,7 +152,7 @@ class PhysicalOfficeAddress(AdditionalDataHolder, Parsable):
         """
         Sets the postalCode property value. The postal code.
         Args:
-            value: Value to set for the postalCode property.
+            value: Value to set for the postal_code property.
         """
         self._postal_code = value
     

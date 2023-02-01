@@ -37,7 +37,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
         """
         Sets the allowMultipleValues property value. Specifies whether the column will allow more than one value.
         Args:
-            value: Value to set for the allowMultipleValues property.
+            value: Value to set for the allow_multiple_values property.
         """
         self._allow_multiple_values = value
     
@@ -77,11 +77,11 @@ class TermColumn(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_multiple_values": lambda n : setattr(self, 'allow_multiple_values', n.get_bool_value()),
+            "allowMultipleValues": lambda n : setattr(self, 'allow_multiple_values', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "parent_term": lambda n : setattr(self, 'parent_term', n.get_object_value(term.Term)),
-            "show_fully_qualified_name": lambda n : setattr(self, 'show_fully_qualified_name', n.get_bool_value()),
-            "term_set": lambda n : setattr(self, 'term_set', n.get_object_value(set.Set)),
+            "parentTerm": lambda n : setattr(self, 'parent_term', n.get_object_value(term.Term)),
+            "showFullyQualifiedName": lambda n : setattr(self, 'show_fully_qualified_name', n.get_bool_value()),
+            "termSet": lambda n : setattr(self, 'term_set', n.get_object_value(set.Set)),
         }
         return fields
     
@@ -98,7 +98,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -115,7 +115,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
         """
         Sets the parentTerm property value. The parentTerm property
         Args:
-            value: Value to set for the parentTerm property.
+            value: Value to set for the parent_term property.
         """
         self._parent_term = value
     
@@ -147,7 +147,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
         """
         Sets the showFullyQualifiedName property value. Specifies whether to display the entire term path or only the term label.
         Args:
-            value: Value to set for the showFullyQualifiedName property.
+            value: Value to set for the show_fully_qualified_name property.
         """
         self._show_fully_qualified_name = value
     
@@ -164,7 +164,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
         """
         Sets the termSet property value. The termSet property
         Args:
-            value: Value to set for the termSet property.
+            value: Value to set for the term_set property.
         """
         self._term_set = value
     

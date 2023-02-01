@@ -69,7 +69,7 @@ class BaseCollectionPaginationCountResponse(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.count property value. The OdataCount property
         Args:
-            value: Value to set for the OdataCount property.
+            value: Value to set for the odata_count property.
         """
         self._odata_count = value
     
@@ -86,7 +86,7 @@ class BaseCollectionPaginationCountResponse(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.nextLink property value. The OdataNextLink property
         Args:
-            value: Value to set for the OdataNextLink property.
+            value: Value to set for the odata_next_link property.
         """
         self._odata_next_link = value
     

@@ -37,7 +37,7 @@ class BitlockerRecoveryKey(entity.Entity):
         """
         Sets the createdDateTime property value. The date and time when the key was originally backed up to Azure Active Directory. Not nullable.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -66,7 +66,7 @@ class BitlockerRecoveryKey(entity.Entity):
         """
         Sets the deviceId property value. Identifier of the device the BitLocker key is originally backed up from. Supports $filter (eq).
         Args:
-            value: Value to set for the deviceId property.
+            value: Value to set for the device_id property.
         """
         self._device_id = value
     
@@ -76,10 +76,10 @@ class BitlockerRecoveryKey(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "device_id": lambda n : setattr(self, 'device_id', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
             "key": lambda n : setattr(self, 'key', n.get_str_value()),
-            "volume_type": lambda n : setattr(self, 'volume_type', n.get_enum_value(volume_type.VolumeType)),
+            "volumeType": lambda n : setattr(self, 'volume_type', n.get_enum_value(volume_type.VolumeType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -129,7 +129,7 @@ class BitlockerRecoveryKey(entity.Entity):
         """
         Sets the volumeType property value. Indicates the type of volume the BitLocker key is associated with. The possible values are: 1 (for operatingSystemVolume), 2 (for fixedDataVolume), 3 (for removableDataVolume), and 4 (for unknownFutureValue).
         Args:
-            value: Value to set for the volumeType property.
+            value: Value to set for the volume_type property.
         """
         self._volume_type = value
     

@@ -44,7 +44,7 @@ class EducationAssignmentResource(entity.Entity):
         """
         Sets the distributeForStudentWork property value. Indicates whether this resource should be copied to each student submission for modification and submission. Required
         Args:
-            value: Value to set for the distributeForStudentWork property.
+            value: Value to set for the distribute_for_student_work property.
         """
         self._distribute_for_student_work = value
     
@@ -54,7 +54,7 @@ class EducationAssignmentResource(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "distribute_for_student_work": lambda n : setattr(self, 'distribute_for_student_work', n.get_bool_value()),
+            "distributeForStudentWork": lambda n : setattr(self, 'distribute_for_student_work', n.get_bool_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(education_resource.EducationResource)),
         }
         super_fields = super().get_field_deserializers()

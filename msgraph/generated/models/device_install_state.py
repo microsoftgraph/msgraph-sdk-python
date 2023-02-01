@@ -60,7 +60,7 @@ class DeviceInstallState(entity.Entity):
         """
         Sets the deviceId property value. Device Id.
         Args:
-            value: Value to set for the deviceId property.
+            value: Value to set for the device_id property.
         """
         self._device_id = value
     
@@ -77,7 +77,7 @@ class DeviceInstallState(entity.Entity):
         """
         Sets the deviceName property value. Device name.
         Args:
-            value: Value to set for the deviceName property.
+            value: Value to set for the device_name property.
         """
         self._device_name = value
     
@@ -94,7 +94,7 @@ class DeviceInstallState(entity.Entity):
         """
         Sets the errorCode property value. The error code for install failures.
         Args:
-            value: Value to set for the errorCode property.
+            value: Value to set for the error_code property.
         """
         self._error_code = value
     
@@ -104,14 +104,14 @@ class DeviceInstallState(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_id": lambda n : setattr(self, 'device_id', n.get_str_value()),
-            "device_name": lambda n : setattr(self, 'device_name', n.get_str_value()),
-            "error_code": lambda n : setattr(self, 'error_code', n.get_str_value()),
-            "install_state": lambda n : setattr(self, 'install_state', n.get_enum_value(install_state.InstallState)),
-            "last_sync_date_time": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
-            "os_description": lambda n : setattr(self, 'os_description', n.get_str_value()),
-            "os_version": lambda n : setattr(self, 'os_version', n.get_str_value()),
-            "user_name": lambda n : setattr(self, 'user_name', n.get_str_value()),
+            "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
+            "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
+            "errorCode": lambda n : setattr(self, 'error_code', n.get_str_value()),
+            "installState": lambda n : setattr(self, 'install_state', n.get_enum_value(install_state.InstallState)),
+            "lastSyncDateTime": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
+            "osDescription": lambda n : setattr(self, 'os_description', n.get_str_value()),
+            "osVersion": lambda n : setattr(self, 'os_version', n.get_str_value()),
+            "userName": lambda n : setattr(self, 'user_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -130,7 +130,7 @@ class DeviceInstallState(entity.Entity):
         """
         Sets the installState property value. Possible values for install state.
         Args:
-            value: Value to set for the installState property.
+            value: Value to set for the install_state property.
         """
         self._install_state = value
     
@@ -147,7 +147,7 @@ class DeviceInstallState(entity.Entity):
         """
         Sets the lastSyncDateTime property value. Last sync date and time.
         Args:
-            value: Value to set for the lastSyncDateTime property.
+            value: Value to set for the last_sync_date_time property.
         """
         self._last_sync_date_time = value
     
@@ -164,7 +164,7 @@ class DeviceInstallState(entity.Entity):
         """
         Sets the osDescription property value. OS Description.
         Args:
-            value: Value to set for the osDescription property.
+            value: Value to set for the os_description property.
         """
         self._os_description = value
     
@@ -181,7 +181,7 @@ class DeviceInstallState(entity.Entity):
         """
         Sets the osVersion property value. OS Version.
         Args:
-            value: Value to set for the osVersion property.
+            value: Value to set for the os_version property.
         """
         self._os_version = value
     
@@ -216,7 +216,7 @@ class DeviceInstallState(entity.Entity):
         """
         Sets the userName property value. Device User Name.
         Args:
-            value: Value to set for the userName property.
+            value: Value to set for the user_name property.
         """
         self._user_name = value
     

@@ -54,7 +54,7 @@ class EducationFeedbackOutcome(education_outcome.EducationOutcome):
         """
         fields = {
             "feedback": lambda n : setattr(self, 'feedback', n.get_object_value(education_feedback.EducationFeedback)),
-            "published_feedback": lambda n : setattr(self, 'published_feedback', n.get_object_value(education_feedback.EducationFeedback)),
+            "publishedFeedback": lambda n : setattr(self, 'published_feedback', n.get_object_value(education_feedback.EducationFeedback)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -73,7 +73,7 @@ class EducationFeedbackOutcome(education_outcome.EducationOutcome):
         """
         Sets the publishedFeedback property value. A copy of the feedback property that is made when the grade is released to the student.
         Args:
-            value: Value to set for the publishedFeedback property.
+            value: Value to set for the published_feedback property.
         """
         self._published_feedback = value
     

@@ -69,7 +69,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         """
         Sets the dayOccurrence property value. Represents the nth occurrence of the day of week that the transition from daylight saving time to standard time occurs.
         Args:
-            value: Value to set for the dayOccurrence property.
+            value: Value to set for the day_occurrence property.
         """
         self._day_occurrence = value
     
@@ -86,7 +86,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         """
         Sets the dayOfWeek property value. Represents the day of the week when the transition from daylight saving time to standard time.
         Args:
-            value: Value to set for the dayOfWeek property.
+            value: Value to set for the day_of_week property.
         """
         self._day_of_week = value
     
@@ -96,8 +96,8 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "day_occurrence": lambda n : setattr(self, 'day_occurrence', n.get_int_value()),
-            "day_of_week": lambda n : setattr(self, 'day_of_week', n.get_enum_value(day_of_week.DayOfWeek)),
+            "dayOccurrence": lambda n : setattr(self, 'day_occurrence', n.get_int_value()),
+            "dayOfWeek": lambda n : setattr(self, 'day_of_week', n.get_enum_value(day_of_week.DayOfWeek)),
             "month": lambda n : setattr(self, 'month', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "time": lambda n : setattr(self, 'time', n.get_object_value(Time)),
@@ -135,7 +135,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

@@ -77,7 +77,7 @@ class SimulationEvent(AdditionalDataHolder, Parsable):
         """
         Sets the eventName property value. Name of the simulation event in an attack simulation and training campaign.
         Args:
-            value: Value to set for the eventName property.
+            value: Value to set for the event_name property.
         """
         self._event_name = value
     
@@ -88,7 +88,7 @@ class SimulationEvent(AdditionalDataHolder, Parsable):
         """
         fields = {
             "count": lambda n : setattr(self, 'count', n.get_int_value()),
-            "event_name": lambda n : setattr(self, 'event_name', n.get_str_value()),
+            "eventName": lambda n : setattr(self, 'event_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -106,7 +106,7 @@ class SimulationEvent(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

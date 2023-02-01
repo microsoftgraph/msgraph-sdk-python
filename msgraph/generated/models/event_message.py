@@ -64,7 +64,7 @@ class EventMessage(message.Message):
         """
         Sets the endDateTime property value. The endDateTime property
         Args:
-            value: Value to set for the endDateTime property.
+            value: Value to set for the end_date_time property.
         """
         self._end_date_time = value
     
@@ -91,15 +91,15 @@ class EventMessage(message.Message):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "event": lambda n : setattr(self, 'event', n.get_object_value(event.Event)),
-            "is_all_day": lambda n : setattr(self, 'is_all_day', n.get_bool_value()),
-            "is_delegated": lambda n : setattr(self, 'is_delegated', n.get_bool_value()),
-            "is_out_of_date": lambda n : setattr(self, 'is_out_of_date', n.get_bool_value()),
+            "isAllDay": lambda n : setattr(self, 'is_all_day', n.get_bool_value()),
+            "isDelegated": lambda n : setattr(self, 'is_delegated', n.get_bool_value()),
+            "isOutOfDate": lambda n : setattr(self, 'is_out_of_date', n.get_bool_value()),
             "location": lambda n : setattr(self, 'location', n.get_object_value(location.Location)),
-            "meeting_message_type": lambda n : setattr(self, 'meeting_message_type', n.get_enum_value(meeting_message_type.MeetingMessageType)),
+            "meetingMessageType": lambda n : setattr(self, 'meeting_message_type', n.get_enum_value(meeting_message_type.MeetingMessageType)),
             "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(patterned_recurrence.PatternedRecurrence)),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(event_type.EventType)),
         }
         super_fields = super().get_field_deserializers()
@@ -119,7 +119,7 @@ class EventMessage(message.Message):
         """
         Sets the isAllDay property value. The isAllDay property
         Args:
-            value: Value to set for the isAllDay property.
+            value: Value to set for the is_all_day property.
         """
         self._is_all_day = value
     
@@ -136,7 +136,7 @@ class EventMessage(message.Message):
         """
         Sets the isDelegated property value. The isDelegated property
         Args:
-            value: Value to set for the isDelegated property.
+            value: Value to set for the is_delegated property.
         """
         self._is_delegated = value
     
@@ -153,7 +153,7 @@ class EventMessage(message.Message):
         """
         Sets the isOutOfDate property value. The isOutOfDate property
         Args:
-            value: Value to set for the isOutOfDate property.
+            value: Value to set for the is_out_of_date property.
         """
         self._is_out_of_date = value
     
@@ -187,7 +187,7 @@ class EventMessage(message.Message):
         """
         Sets the meetingMessageType property value. The meetingMessageType property
         Args:
-            value: Value to set for the meetingMessageType property.
+            value: Value to set for the meeting_message_type property.
         """
         self._meeting_message_type = value
     
@@ -241,7 +241,7 @@ class EventMessage(message.Message):
         """
         Sets the startDateTime property value. The startDateTime property
         Args:
-            value: Value to set for the startDateTime property.
+            value: Value to set for the start_date_time property.
         """
         self._start_date_time = value
     

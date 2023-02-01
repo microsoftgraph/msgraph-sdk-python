@@ -22,7 +22,7 @@ class IosUpdateDeviceStatus(entity.Entity):
         """
         Sets the complianceGracePeriodExpirationDateTime property value. The DateTime when device compliance grace period expires
         Args:
-            value: Value to set for the complianceGracePeriodExpirationDateTime property.
+            value: Value to set for the compliance_grace_period_expiration_date_time property.
         """
         self._compliance_grace_period_expiration_date_time = value
     
@@ -81,7 +81,7 @@ class IosUpdateDeviceStatus(entity.Entity):
         """
         Sets the deviceDisplayName property value. Device name of the DevicePolicyStatus.
         Args:
-            value: Value to set for the deviceDisplayName property.
+            value: Value to set for the device_display_name property.
         """
         self._device_display_name = value
     
@@ -98,7 +98,7 @@ class IosUpdateDeviceStatus(entity.Entity):
         """
         Sets the deviceId property value. The device id that is being reported.
         Args:
-            value: Value to set for the deviceId property.
+            value: Value to set for the device_id property.
         """
         self._device_id = value
     
@@ -115,7 +115,7 @@ class IosUpdateDeviceStatus(entity.Entity):
         """
         Sets the deviceModel property value. The device model that is being reported
         Args:
-            value: Value to set for the deviceModel property.
+            value: Value to set for the device_model property.
         """
         self._device_model = value
     
@@ -125,17 +125,17 @@ class IosUpdateDeviceStatus(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "compliance_grace_period_expiration_date_time": lambda n : setattr(self, 'compliance_grace_period_expiration_date_time', n.get_datetime_value()),
-            "device_display_name": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
-            "device_id": lambda n : setattr(self, 'device_id', n.get_str_value()),
-            "device_model": lambda n : setattr(self, 'device_model', n.get_str_value()),
-            "install_status": lambda n : setattr(self, 'install_status', n.get_enum_value(ios_updates_install_status.IosUpdatesInstallStatus)),
-            "last_reported_date_time": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
-            "os_version": lambda n : setattr(self, 'os_version', n.get_str_value()),
+            "complianceGracePeriodExpirationDateTime": lambda n : setattr(self, 'compliance_grace_period_expiration_date_time', n.get_datetime_value()),
+            "deviceDisplayName": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
+            "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
+            "deviceModel": lambda n : setattr(self, 'device_model', n.get_str_value()),
+            "installStatus": lambda n : setattr(self, 'install_status', n.get_enum_value(ios_updates_install_status.IosUpdatesInstallStatus)),
+            "lastReportedDateTime": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
+            "osVersion": lambda n : setattr(self, 'os_version', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(compliance_status.ComplianceStatus)),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
-            "user_name": lambda n : setattr(self, 'user_name', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userName": lambda n : setattr(self, 'user_name', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -154,7 +154,7 @@ class IosUpdateDeviceStatus(entity.Entity):
         """
         Sets the installStatus property value. The installStatus property
         Args:
-            value: Value to set for the installStatus property.
+            value: Value to set for the install_status property.
         """
         self._install_status = value
     
@@ -171,7 +171,7 @@ class IosUpdateDeviceStatus(entity.Entity):
         """
         Sets the lastReportedDateTime property value. Last modified date time of the policy report.
         Args:
-            value: Value to set for the lastReportedDateTime property.
+            value: Value to set for the last_reported_date_time property.
         """
         self._last_reported_date_time = value
     
@@ -188,7 +188,7 @@ class IosUpdateDeviceStatus(entity.Entity):
         """
         Sets the osVersion property value. The device version that is being reported.
         Args:
-            value: Value to set for the osVersion property.
+            value: Value to set for the os_version property.
         """
         self._os_version = value
     
@@ -243,7 +243,7 @@ class IosUpdateDeviceStatus(entity.Entity):
         """
         Sets the userId property value. The User id that is being reported.
         Args:
-            value: Value to set for the userId property.
+            value: Value to set for the user_id property.
         """
         self._user_id = value
     
@@ -260,7 +260,7 @@ class IosUpdateDeviceStatus(entity.Entity):
         """
         Sets the userName property value. The User Name that is being reported
         Args:
-            value: Value to set for the userName property.
+            value: Value to set for the user_name property.
         """
         self._user_name = value
     
@@ -277,7 +277,7 @@ class IosUpdateDeviceStatus(entity.Entity):
         """
         Sets the userPrincipalName property value. UserPrincipalName.
         Args:
-            value: Value to set for the userPrincipalName property.
+            value: Value to set for the user_principal_name property.
         """
         self._user_principal_name = value
     

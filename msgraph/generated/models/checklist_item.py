@@ -20,7 +20,7 @@ class ChecklistItem(entity.Entity):
         """
         Sets the checkedDateTime property value. The date and time when the checklistItem was finished.
         Args:
-            value: Value to set for the checkedDateTime property.
+            value: Value to set for the checked_date_time property.
         """
         self._checked_date_time = value
     
@@ -53,7 +53,7 @@ class ChecklistItem(entity.Entity):
         """
         Sets the createdDateTime property value. The date and time when the checklistItem was created.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -82,7 +82,7 @@ class ChecklistItem(entity.Entity):
         """
         Sets the displayName property value. Field indicating the title of checklistItem.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -92,10 +92,10 @@ class ChecklistItem(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "checked_date_time": lambda n : setattr(self, 'checked_date_time', n.get_datetime_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_checked": lambda n : setattr(self, 'is_checked', n.get_bool_value()),
+            "checkedDateTime": lambda n : setattr(self, 'checked_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isChecked": lambda n : setattr(self, 'is_checked', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -114,7 +114,7 @@ class ChecklistItem(entity.Entity):
         """
         Sets the isChecked property value. State indicating whether the item is checked off or not.
         Args:
-            value: Value to set for the isChecked property.
+            value: Value to set for the is_checked property.
         """
         self._is_checked = value
     

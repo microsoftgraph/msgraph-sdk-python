@@ -20,7 +20,7 @@ class WorkbookRangeView(entity.Entity):
         """
         Sets the cellAddresses property value. Represents the cell addresses
         Args:
-            value: Value to set for the cellAddresses property.
+            value: Value to set for the cell_addresses property.
         """
         self._cell_addresses = value
     
@@ -37,7 +37,7 @@ class WorkbookRangeView(entity.Entity):
         """
         Sets the columnCount property value. Returns the number of visible columns. Read-only.
         Args:
-            value: Value to set for the columnCount property.
+            value: Value to set for the column_count property.
         """
         self._column_count = value
     
@@ -68,10 +68,10 @@ class WorkbookRangeView(entity.Entity):
         self._rows: Optional[List[workbook_range_view.WorkbookRangeView]] = None
         # Text values of the specified range. The Text value will not depend on the cell width. The # sign substitution that happens in Excel UI will not affect the text value returned by the API. Read-only.
         self._text: Optional[json.Json] = None
-        # Represents the raw values of the specified range view. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
-        self._values: Optional[json.Json] = None
         # Represents the type of data of each cell. Read-only. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error.
         self._value_types: Optional[json.Json] = None
+        # Represents the raw values of the specified range view. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
+        self._values: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookRangeView:
@@ -115,7 +115,7 @@ class WorkbookRangeView(entity.Entity):
         """
         Sets the formulasLocal property value. Represents the formula in A1-style notation, in the user's language and number-formatting locale. For example, the English '=SUM(A1, 1.5)' formula would become '=SUMME(A1; 1,5)' in German.
         Args:
-            value: Value to set for the formulasLocal property.
+            value: Value to set for the formulas_local property.
         """
         self._formulas_local = value
     
@@ -132,7 +132,7 @@ class WorkbookRangeView(entity.Entity):
         """
         Sets the formulasR1C1 property value. Represents the formula in R1C1-style notation.
         Args:
-            value: Value to set for the formulasR1C1 property.
+            value: Value to set for the formulas_r1_c1 property.
         """
         self._formulas_r1_c1 = value
     
@@ -142,18 +142,18 @@ class WorkbookRangeView(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "cell_addresses": lambda n : setattr(self, 'cell_addresses', n.get_object_value(json.Json)),
-            "column_count": lambda n : setattr(self, 'column_count', n.get_int_value()),
+            "cellAddresses": lambda n : setattr(self, 'cell_addresses', n.get_object_value(json.Json)),
+            "columnCount": lambda n : setattr(self, 'column_count', n.get_int_value()),
             "formulas": lambda n : setattr(self, 'formulas', n.get_object_value(json.Json)),
-            "formulas_local": lambda n : setattr(self, 'formulas_local', n.get_object_value(json.Json)),
-            "formulas_r1_c1": lambda n : setattr(self, 'formulas_r1_c1', n.get_object_value(json.Json)),
+            "formulasLocal": lambda n : setattr(self, 'formulas_local', n.get_object_value(json.Json)),
+            "formulasR1C1": lambda n : setattr(self, 'formulas_r1_c1', n.get_object_value(json.Json)),
             "index": lambda n : setattr(self, 'index', n.get_int_value()),
-            "number_format": lambda n : setattr(self, 'number_format', n.get_object_value(json.Json)),
-            "row_count": lambda n : setattr(self, 'row_count', n.get_int_value()),
+            "numberFormat": lambda n : setattr(self, 'number_format', n.get_object_value(json.Json)),
             "rows": lambda n : setattr(self, 'rows', n.get_collection_of_object_values(workbook_range_view.WorkbookRangeView)),
+            "rowCount": lambda n : setattr(self, 'row_count', n.get_int_value()),
             "text": lambda n : setattr(self, 'text', n.get_object_value(json.Json)),
             "values": lambda n : setattr(self, 'values', n.get_object_value(json.Json)),
-            "value_types": lambda n : setattr(self, 'value_types', n.get_object_value(json.Json)),
+            "valueTypes": lambda n : setattr(self, 'value_types', n.get_object_value(json.Json)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -189,7 +189,7 @@ class WorkbookRangeView(entity.Entity):
         """
         Sets the numberFormat property value. Represents Excel's number format code for the given cell. Read-only.
         Args:
-            value: Value to set for the numberFormat property.
+            value: Value to set for the number_format property.
         """
         self._number_format = value
     
@@ -206,7 +206,7 @@ class WorkbookRangeView(entity.Entity):
         """
         Sets the rowCount property value. Returns the number of visible rows. Read-only.
         Args:
-            value: Value to set for the rowCount property.
+            value: Value to set for the row_count property.
         """
         self._row_count = value
     
@@ -243,8 +243,8 @@ class WorkbookRangeView(entity.Entity):
         writer.write_object_value("formulasR1C1", self.formulas_r1_c1)
         writer.write_int_value("index", self.index)
         writer.write_object_value("numberFormat", self.number_format)
-        writer.write_int_value("rowCount", self.row_count)
         writer.write_collection_of_object_values("rows", self.rows)
+        writer.write_int_value("rowCount", self.row_count)
         writer.write_object_value("text", self.text)
         writer.write_object_value("values", self.values)
         writer.write_object_value("valueTypes", self.value_types)
@@ -267,6 +267,23 @@ class WorkbookRangeView(entity.Entity):
         self._text = value
     
     @property
+    def value_types(self,) -> Optional[json.Json]:
+        """
+        Gets the valueTypes property value. Represents the type of data of each cell. Read-only. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error.
+        Returns: Optional[json.Json]
+        """
+        return self._value_types
+    
+    @value_types.setter
+    def value_types(self,value: Optional[json.Json] = None) -> None:
+        """
+        Sets the valueTypes property value. Represents the type of data of each cell. Read-only. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error.
+        Args:
+            value: Value to set for the value_types property.
+        """
+        self._value_types = value
+    
+    @property
     def values(self,) -> Optional[json.Json]:
         """
         Gets the values property value. Represents the raw values of the specified range view. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
@@ -282,22 +299,5 @@ class WorkbookRangeView(entity.Entity):
             value: Value to set for the values property.
         """
         self._values = value
-    
-    @property
-    def value_types(self,) -> Optional[json.Json]:
-        """
-        Gets the valueTypes property value. Represents the type of data of each cell. Read-only. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error.
-        Returns: Optional[json.Json]
-        """
-        return self._value_types
-    
-    @value_types.setter
-    def value_types(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the valueTypes property value. Represents the type of data of each cell. Read-only. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error.
-        Args:
-            value: Value to set for the valueTypes property.
-        """
-        self._value_types = value
     
 

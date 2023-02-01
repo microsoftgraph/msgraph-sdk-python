@@ -64,7 +64,7 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
         """
         Sets the defaultValue property value. Default value for the setting.
         Args:
-            value: Value to set for the defaultValue property.
+            value: Value to set for the default_value property.
         """
         self._default_value = value
     
@@ -91,7 +91,7 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "default_value": lambda n : setattr(self, 'default_value', n.get_str_value()),
+            "defaultValue": lambda n : setattr(self, 'default_value', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -129,7 +129,7 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

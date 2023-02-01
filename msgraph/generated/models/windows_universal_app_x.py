@@ -23,7 +23,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         """
         Sets the applicableArchitectures property value. Contains properties for Windows architecture.
         Args:
-            value: Value to set for the applicableArchitectures property.
+            value: Value to set for the applicable_architectures property.
         """
         self._applicable_architectures = value
     
@@ -40,7 +40,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         """
         Sets the applicableDeviceTypes property value. Contains properties for Windows device type.
         Args:
-            value: Value to set for the applicableDeviceTypes property.
+            value: Value to set for the applicable_device_types property.
         """
         self._applicable_device_types = value
     
@@ -57,7 +57,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         """
         Sets the committedContainedApps property value. The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app.
         Args:
-            value: Value to set for the committedContainedApps property.
+            value: Value to set for the committed_contained_apps property.
         """
         self._committed_contained_apps = value
     
@@ -104,15 +104,15 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "applicable_architectures": lambda n : setattr(self, 'applicable_architectures', n.get_enum_value(windows_architecture.WindowsArchitecture)),
-            "applicable_device_types": lambda n : setattr(self, 'applicable_device_types', n.get_enum_value(windows_device_type.WindowsDeviceType)),
-            "committed_contained_apps": lambda n : setattr(self, 'committed_contained_apps', n.get_collection_of_object_values(mobile_contained_app.MobileContainedApp)),
-            "identity_name": lambda n : setattr(self, 'identity_name', n.get_str_value()),
-            "identity_publisher_hash": lambda n : setattr(self, 'identity_publisher_hash', n.get_str_value()),
-            "identity_resource_identifier": lambda n : setattr(self, 'identity_resource_identifier', n.get_str_value()),
-            "identity_version": lambda n : setattr(self, 'identity_version', n.get_str_value()),
-            "is_bundle": lambda n : setattr(self, 'is_bundle', n.get_bool_value()),
-            "minimum_supported_operating_system": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(windows_minimum_operating_system.WindowsMinimumOperatingSystem)),
+            "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_enum_value(windows_architecture.WindowsArchitecture)),
+            "applicableDeviceTypes": lambda n : setattr(self, 'applicable_device_types', n.get_enum_value(windows_device_type.WindowsDeviceType)),
+            "committedContainedApps": lambda n : setattr(self, 'committed_contained_apps', n.get_collection_of_object_values(mobile_contained_app.MobileContainedApp)),
+            "identityName": lambda n : setattr(self, 'identity_name', n.get_str_value()),
+            "identityPublisherHash": lambda n : setattr(self, 'identity_publisher_hash', n.get_str_value()),
+            "identityResourceIdentifier": lambda n : setattr(self, 'identity_resource_identifier', n.get_str_value()),
+            "identityVersion": lambda n : setattr(self, 'identity_version', n.get_str_value()),
+            "isBundle": lambda n : setattr(self, 'is_bundle', n.get_bool_value()),
+            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(windows_minimum_operating_system.WindowsMinimumOperatingSystem)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -131,7 +131,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         """
         Sets the identityName property value. The Identity Name.
         Args:
-            value: Value to set for the identityName property.
+            value: Value to set for the identity_name property.
         """
         self._identity_name = value
     
@@ -148,7 +148,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         """
         Sets the identityPublisherHash property value. The Identity Publisher Hash.
         Args:
-            value: Value to set for the identityPublisherHash property.
+            value: Value to set for the identity_publisher_hash property.
         """
         self._identity_publisher_hash = value
     
@@ -165,7 +165,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         """
         Sets the identityResourceIdentifier property value. The Identity Resource Identifier.
         Args:
-            value: Value to set for the identityResourceIdentifier property.
+            value: Value to set for the identity_resource_identifier property.
         """
         self._identity_resource_identifier = value
     
@@ -182,7 +182,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         """
         Sets the identityVersion property value. The identity version.
         Args:
-            value: Value to set for the identityVersion property.
+            value: Value to set for the identity_version property.
         """
         self._identity_version = value
     
@@ -199,7 +199,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         """
         Sets the isBundle property value. Whether or not the app is a bundle.
         Args:
-            value: Value to set for the isBundle property.
+            value: Value to set for the is_bundle property.
         """
         self._is_bundle = value
     
@@ -216,7 +216,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         """
         Sets the minimumSupportedOperatingSystem property value. The minimum operating system required for a Windows mobile app.
         Args:
-            value: Value to set for the minimumSupportedOperatingSystem property.
+            value: Value to set for the minimum_supported_operating_system property.
         """
         self._minimum_supported_operating_system = value
     

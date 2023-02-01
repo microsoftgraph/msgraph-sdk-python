@@ -14,7 +14,7 @@ attachment = lazy_import('msgraph.generated.models.attachment')
 attachment_collection_response = lazy_import('msgraph.generated.models.attachment_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.users.item.calendar_groups.item.calendars.item.events.item.instances.item.attachments.count.count_request_builder')
-create_upload_session_request_builder = lazy_import('msgraph.generated.users.item.calendar_groups.item.calendars.item.events.item.instances.item.attachments.create_upload_session.create_upload_session_request_builder')
+create_upload_session_request_builder = lazy_import('msgraph.generated.users.item.calendar_groups.item.calendars.item.events.item.instances.item.attachments.microsoft_graph_create_upload_session.create_upload_session_request_builder')
 
 class AttachmentsRequestBuilder():
     """
@@ -28,7 +28,7 @@ class AttachmentsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def create_upload_session(self) -> create_upload_session_request_builder.CreateUploadSessionRequestBuilder:
+    def microsoft_graph_create_upload_session(self) -> create_upload_session_request_builder.CreateUploadSessionRequestBuilder:
         """
         Provides operations to call the createUploadSession method.
         """

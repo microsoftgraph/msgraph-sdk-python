@@ -77,10 +77,10 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
         """
         fields = {
             "address": lambda n : setattr(self, 'address', n.get_str_value()),
-            "item_id": lambda n : setattr(self, 'item_id', n.get_str_value()),
+            "itemId": lambda n : setattr(self, 'item_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "relevance_score": lambda n : setattr(self, 'relevance_score', n.get_float_value()),
-            "selection_likelihood": lambda n : setattr(self, 'selection_likelihood', n.get_enum_value(selection_likelihood_info.SelectionLikelihoodInfo)),
+            "relevanceScore": lambda n : setattr(self, 'relevance_score', n.get_float_value()),
+            "selectionLikelihood": lambda n : setattr(self, 'selection_likelihood', n.get_enum_value(selection_likelihood_info.SelectionLikelihoodInfo)),
         }
         return fields
     
@@ -97,7 +97,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
         """
         Sets the itemId property value. The itemId property
         Args:
-            value: Value to set for the itemId property.
+            value: Value to set for the item_id property.
         """
         self._item_id = value
     
@@ -114,7 +114,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -131,7 +131,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
         """
         Sets the relevanceScore property value. The relevance score of the email address. A relevance score is used as a sort key, in relation to the other returned results. A higher relevance score value corresponds to a more relevant result. Relevance is determined by the user’s communication and collaboration patterns and business relationships.
         Args:
-            value: Value to set for the relevanceScore property.
+            value: Value to set for the relevance_score property.
         """
         self._relevance_score = value
     
@@ -148,7 +148,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
         """
         Sets the selectionLikelihood property value. The selectionLikelihood property
         Args:
-            value: Value to set for the selectionLikelihood property.
+            value: Value to set for the selection_likelihood property.
         """
         self._selection_likelihood = value
     

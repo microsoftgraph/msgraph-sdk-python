@@ -56,7 +56,7 @@ class ProxiedDomain(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "ip_address_or_f_q_d_n": lambda n : setattr(self, 'ip_address_or_f_q_d_n', n.get_str_value()),
+            "ipAddressOrFQDN": lambda n : setattr(self, 'ip_address_or_f_q_d_n', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "proxy": lambda n : setattr(self, 'proxy', n.get_str_value()),
         }
@@ -75,7 +75,7 @@ class ProxiedDomain(AdditionalDataHolder, Parsable):
         """
         Sets the ipAddressOrFQDN property value. The IP address or FQDN
         Args:
-            value: Value to set for the ipAddressOrFQDN property.
+            value: Value to set for the ip_address_or_f_q_d_n property.
         """
         self._ip_address_or_f_q_d_n = value
     
@@ -92,7 +92,7 @@ class ProxiedDomain(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

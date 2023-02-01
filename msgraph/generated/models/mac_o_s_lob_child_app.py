@@ -37,7 +37,7 @@ class MacOSLobChildApp(AdditionalDataHolder, Parsable):
         """
         Sets the buildNumber property value. The build number of the app.
         Args:
-            value: Value to set for the buildNumber property.
+            value: Value to set for the build_number property.
         """
         self._build_number = value
     
@@ -54,7 +54,7 @@ class MacOSLobChildApp(AdditionalDataHolder, Parsable):
         """
         Sets the bundleId property value. The bundleId of the app.
         Args:
-            value: Value to set for the bundleId property.
+            value: Value to set for the bundle_id property.
         """
         self._bundle_id = value
     
@@ -92,10 +92,10 @@ class MacOSLobChildApp(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "build_number": lambda n : setattr(self, 'build_number', n.get_str_value()),
-            "bundle_id": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
+            "buildNumber": lambda n : setattr(self, 'build_number', n.get_str_value()),
+            "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "version_number": lambda n : setattr(self, 'version_number', n.get_str_value()),
+            "versionNumber": lambda n : setattr(self, 'version_number', n.get_str_value()),
         }
         return fields
     
@@ -112,7 +112,7 @@ class MacOSLobChildApp(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -143,7 +143,7 @@ class MacOSLobChildApp(AdditionalDataHolder, Parsable):
         """
         Sets the versionNumber property value. The version number of the app.
         Args:
-            value: Value to set for the versionNumber property.
+            value: Value to set for the version_number property.
         """
         self._version_number = value
     

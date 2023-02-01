@@ -36,7 +36,7 @@ class Team(entity.Entity):
         """
         Sets the allChannels property value. List of channels either hosted in or shared with the team (incoming channels).
         Args:
-            value: Value to set for the allChannels property.
+            value: Value to set for the all_channels property.
         """
         self._all_channels = value
     
@@ -105,10 +105,10 @@ class Team(entity.Entity):
         self._internal_id: Optional[str] = None
         # Whether this team is in read-only mode.
         self._is_archived: Optional[bool] = None
-        # Members and owners of the team.
-        self._members: Optional[List[conversation_member.ConversationMember]] = None
         # Settings to configure whether members can perform certain actions, for example, create channels and add bots, in the team.
         self._member_settings: Optional[team_member_settings.TeamMemberSettings] = None
+        # Members and owners of the team.
+        self._members: Optional[List[conversation_member.ConversationMember]] = None
         # Settings to configure messaging and mentions in the team.
         self._messaging_settings: Optional[team_messaging_settings.TeamMessagingSettings] = None
         # The OdataType property
@@ -149,7 +149,7 @@ class Team(entity.Entity):
         """
         Sets the createdDateTime property value. Timestamp at which the team was created.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -195,7 +195,7 @@ class Team(entity.Entity):
         """
         Sets the displayName property value. The name of the team.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -212,7 +212,7 @@ class Team(entity.Entity):
         """
         Sets the funSettings property value. Settings to configure use of Giphy, memes, and stickers in the team.
         Args:
-            value: Value to set for the funSettings property.
+            value: Value to set for the fun_settings property.
         """
         self._fun_settings = value
     
@@ -222,33 +222,33 @@ class Team(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "all_channels": lambda n : setattr(self, 'all_channels', n.get_collection_of_object_values(channel.Channel)),
+            "allChannels": lambda n : setattr(self, 'all_channels', n.get_collection_of_object_values(channel.Channel)),
             "channels": lambda n : setattr(self, 'channels', n.get_collection_of_object_values(channel.Channel)),
             "classification": lambda n : setattr(self, 'classification', n.get_str_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "fun_settings": lambda n : setattr(self, 'fun_settings', n.get_object_value(team_fun_settings.TeamFunSettings)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "funSettings": lambda n : setattr(self, 'fun_settings', n.get_object_value(team_fun_settings.TeamFunSettings)),
             "group": lambda n : setattr(self, 'group', n.get_object_value(group.Group)),
-            "guest_settings": lambda n : setattr(self, 'guest_settings', n.get_object_value(team_guest_settings.TeamGuestSettings)),
-            "incoming_channels": lambda n : setattr(self, 'incoming_channels', n.get_collection_of_object_values(channel.Channel)),
-            "installed_apps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(teams_app_installation.TeamsAppInstallation)),
-            "internal_id": lambda n : setattr(self, 'internal_id', n.get_str_value()),
-            "is_archived": lambda n : setattr(self, 'is_archived', n.get_bool_value()),
+            "guestSettings": lambda n : setattr(self, 'guest_settings', n.get_object_value(team_guest_settings.TeamGuestSettings)),
+            "incomingChannels": lambda n : setattr(self, 'incoming_channels', n.get_collection_of_object_values(channel.Channel)),
+            "installedApps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(teams_app_installation.TeamsAppInstallation)),
+            "internalId": lambda n : setattr(self, 'internal_id', n.get_str_value()),
+            "isArchived": lambda n : setattr(self, 'is_archived', n.get_bool_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(conversation_member.ConversationMember)),
-            "member_settings": lambda n : setattr(self, 'member_settings', n.get_object_value(team_member_settings.TeamMemberSettings)),
-            "messaging_settings": lambda n : setattr(self, 'messaging_settings', n.get_object_value(team_messaging_settings.TeamMessagingSettings)),
+            "memberSettings": lambda n : setattr(self, 'member_settings', n.get_object_value(team_member_settings.TeamMemberSettings)),
+            "messagingSettings": lambda n : setattr(self, 'messaging_settings', n.get_object_value(team_messaging_settings.TeamMessagingSettings)),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(teams_async_operation.TeamsAsyncOperation)),
             "photo": lambda n : setattr(self, 'photo', n.get_object_value(profile_photo.ProfilePhoto)),
-            "primary_channel": lambda n : setattr(self, 'primary_channel', n.get_object_value(channel.Channel)),
+            "primaryChannel": lambda n : setattr(self, 'primary_channel', n.get_object_value(channel.Channel)),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(schedule.Schedule)),
             "specialization": lambda n : setattr(self, 'specialization', n.get_enum_value(team_specialization.TeamSpecialization)),
             "summary": lambda n : setattr(self, 'summary', n.get_object_value(team_summary.TeamSummary)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_object_values(teamwork_tag.TeamworkTag)),
             "template": lambda n : setattr(self, 'template', n.get_object_value(teams_template.TeamsTemplate)),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
             "visibility": lambda n : setattr(self, 'visibility', n.get_enum_value(team_visibility_type.TeamVisibilityType)),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -284,7 +284,7 @@ class Team(entity.Entity):
         """
         Sets the guestSettings property value. Settings to configure whether guests can create, update, or delete channels in the team.
         Args:
-            value: Value to set for the guestSettings property.
+            value: Value to set for the guest_settings property.
         """
         self._guest_settings = value
     
@@ -301,7 +301,7 @@ class Team(entity.Entity):
         """
         Sets the incomingChannels property value. List of channels shared with the team.
         Args:
-            value: Value to set for the incomingChannels property.
+            value: Value to set for the incoming_channels property.
         """
         self._incoming_channels = value
     
@@ -318,7 +318,7 @@ class Team(entity.Entity):
         """
         Sets the installedApps property value. The apps installed in this team.
         Args:
-            value: Value to set for the installedApps property.
+            value: Value to set for the installed_apps property.
         """
         self._installed_apps = value
     
@@ -335,7 +335,7 @@ class Team(entity.Entity):
         """
         Sets the internalId property value. A unique ID for the team that has been used in a few places such as the audit log/Office 365 Management Activity API.
         Args:
-            value: Value to set for the internalId property.
+            value: Value to set for the internal_id property.
         """
         self._internal_id = value
     
@@ -352,9 +352,26 @@ class Team(entity.Entity):
         """
         Sets the isArchived property value. Whether this team is in read-only mode.
         Args:
-            value: Value to set for the isArchived property.
+            value: Value to set for the is_archived property.
         """
         self._is_archived = value
+    
+    @property
+    def member_settings(self,) -> Optional[team_member_settings.TeamMemberSettings]:
+        """
+        Gets the memberSettings property value. Settings to configure whether members can perform certain actions, for example, create channels and add bots, in the team.
+        Returns: Optional[team_member_settings.TeamMemberSettings]
+        """
+        return self._member_settings
+    
+    @member_settings.setter
+    def member_settings(self,value: Optional[team_member_settings.TeamMemberSettings] = None) -> None:
+        """
+        Sets the memberSettings property value. Settings to configure whether members can perform certain actions, for example, create channels and add bots, in the team.
+        Args:
+            value: Value to set for the member_settings property.
+        """
+        self._member_settings = value
     
     @property
     def members(self,) -> Optional[List[conversation_member.ConversationMember]]:
@@ -374,23 +391,6 @@ class Team(entity.Entity):
         self._members = value
     
     @property
-    def member_settings(self,) -> Optional[team_member_settings.TeamMemberSettings]:
-        """
-        Gets the memberSettings property value. Settings to configure whether members can perform certain actions, for example, create channels and add bots, in the team.
-        Returns: Optional[team_member_settings.TeamMemberSettings]
-        """
-        return self._member_settings
-    
-    @member_settings.setter
-    def member_settings(self,value: Optional[team_member_settings.TeamMemberSettings] = None) -> None:
-        """
-        Sets the memberSettings property value. Settings to configure whether members can perform certain actions, for example, create channels and add bots, in the team.
-        Args:
-            value: Value to set for the memberSettings property.
-        """
-        self._member_settings = value
-    
-    @property
     def messaging_settings(self,) -> Optional[team_messaging_settings.TeamMessagingSettings]:
         """
         Gets the messagingSettings property value. Settings to configure messaging and mentions in the team.
@@ -403,7 +403,7 @@ class Team(entity.Entity):
         """
         Sets the messagingSettings property value. Settings to configure messaging and mentions in the team.
         Args:
-            value: Value to set for the messagingSettings property.
+            value: Value to set for the messaging_settings property.
         """
         self._messaging_settings = value
     
@@ -454,7 +454,7 @@ class Team(entity.Entity):
         """
         Sets the primaryChannel property value. The general channel for the team.
         Args:
-            value: Value to set for the primaryChannel property.
+            value: Value to set for the primary_channel property.
         """
         self._primary_channel = value
     
@@ -593,7 +593,7 @@ class Team(entity.Entity):
         """
         Sets the tenantId property value. The ID of the Azure Active Directory tenant.
         Args:
-            value: Value to set for the tenantId property.
+            value: Value to set for the tenant_id property.
         """
         self._tenant_id = value
     
@@ -627,7 +627,7 @@ class Team(entity.Entity):
         """
         Sets the webUrl property value. A hyperlink that will go to the team in the Microsoft Teams client. This is the URL that you get when you right-click a team in the Microsoft Teams client and select Get link to team. This URL should be treated as an opaque blob, and not parsed.
         Args:
-            value: Value to set for the webUrl property.
+            value: Value to set for the web_url property.
         """
         self._web_url = value
     

@@ -36,7 +36,7 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
         """
         Sets the alteredHighlightedQueryString property value. Defines the altered highlighted query string with spelling correction. The annotation around the corrected segment is: /ue000, /ue001.
         Args:
-            value: Value to set for the alteredHighlightedQueryString property.
+            value: Value to set for the altered_highlighted_query_string property.
         """
         self._altered_highlighted_query_string = value
     
@@ -53,7 +53,7 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
         """
         Sets the alteredQueryString property value. Defines the altered query string with spelling correction.
         Args:
-            value: Value to set for the alteredQueryString property.
+            value: Value to set for the altered_query_string property.
         """
         self._altered_query_string = value
     
@@ -70,7 +70,7 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
         """
         Sets the alteredQueryTokens property value. Represents changed segments related to an original user query.
         Args:
-            value: Value to set for the alteredQueryTokens property.
+            value: Value to set for the altered_query_tokens property.
         """
         self._altered_query_tokens = value
     
@@ -108,9 +108,9 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "altered_highlighted_query_string": lambda n : setattr(self, 'altered_highlighted_query_string', n.get_str_value()),
-            "altered_query_string": lambda n : setattr(self, 'altered_query_string', n.get_str_value()),
-            "altered_query_tokens": lambda n : setattr(self, 'altered_query_tokens', n.get_collection_of_object_values(altered_query_token.AlteredQueryToken)),
+            "alteredHighlightedQueryString": lambda n : setattr(self, 'altered_highlighted_query_string', n.get_str_value()),
+            "alteredQueryString": lambda n : setattr(self, 'altered_query_string', n.get_str_value()),
+            "alteredQueryTokens": lambda n : setattr(self, 'altered_query_tokens', n.get_collection_of_object_values(altered_query_token.AlteredQueryToken)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -128,7 +128,7 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

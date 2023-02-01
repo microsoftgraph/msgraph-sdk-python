@@ -55,7 +55,7 @@ class ParticipantLeftNotification(entity.Entity):
         """
         fields = {
             "call": lambda n : setattr(self, 'call', n.get_object_value(call.Call)),
-            "participant_id": lambda n : setattr(self, 'participant_id', n.get_str_value()),
+            "participantId": lambda n : setattr(self, 'participant_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -74,7 +74,7 @@ class ParticipantLeftNotification(entity.Entity):
         """
         Sets the participantId property value. ID of the participant under the policy who has left the meeting.
         Args:
-            value: Value to set for the participantId property.
+            value: Value to set for the participant_id property.
         """
         self._participant_id = value
     

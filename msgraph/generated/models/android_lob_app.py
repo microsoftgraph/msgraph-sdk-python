@@ -40,10 +40,10 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "minimum_supported_operating_system": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(android_minimum_operating_system.AndroidMinimumOperatingSystem)),
-            "package_id": lambda n : setattr(self, 'package_id', n.get_str_value()),
-            "version_code": lambda n : setattr(self, 'version_code', n.get_str_value()),
-            "version_name": lambda n : setattr(self, 'version_name', n.get_str_value()),
+            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(android_minimum_operating_system.AndroidMinimumOperatingSystem)),
+            "packageId": lambda n : setattr(self, 'package_id', n.get_str_value()),
+            "versionCode": lambda n : setattr(self, 'version_code', n.get_str_value()),
+            "versionName": lambda n : setattr(self, 'version_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -62,7 +62,7 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the minimumSupportedOperatingSystem property value. The value for the minimum applicable operating system.
         Args:
-            value: Value to set for the minimumSupportedOperatingSystem property.
+            value: Value to set for the minimum_supported_operating_system property.
         """
         self._minimum_supported_operating_system = value
     
@@ -79,7 +79,7 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the packageId property value. The package identifier.
         Args:
-            value: Value to set for the packageId property.
+            value: Value to set for the package_id property.
         """
         self._package_id = value
     
@@ -110,7 +110,7 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the versionCode property value. The version code of Android Line of Business (LoB) app.
         Args:
-            value: Value to set for the versionCode property.
+            value: Value to set for the version_code property.
         """
         self._version_code = value
     
@@ -127,7 +127,7 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the versionName property value. The version name of Android Line of Business (LoB) app.
         Args:
-            value: Value to set for the versionName property.
+            value: Value to set for the version_name property.
         """
         self._version_name = value
     

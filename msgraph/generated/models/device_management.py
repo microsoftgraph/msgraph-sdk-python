@@ -54,7 +54,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the applePushNotificationCertificate property value. Apple push notification certificate.
         Args:
-            value: Value to set for the applePushNotificationCertificate property.
+            value: Value to set for the apple_push_notification_certificate property.
         """
         self._apple_push_notification_certificate = value
     
@@ -71,7 +71,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the auditEvents property value. The Audit Events
         Args:
-            value: Value to set for the auditEvents property.
+            value: Value to set for the audit_events property.
         """
         self._audit_events = value
     
@@ -88,7 +88,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the complianceManagementPartners property value. The list of Compliance Management Partners configured by the tenant.
         Args:
-            value: Value to set for the complianceManagementPartners property.
+            value: Value to set for the compliance_management_partners property.
         """
         self._compliance_management_partners = value
     
@@ -105,7 +105,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the conditionalAccessSettings property value. The Exchange on premises conditional access settings. On premises conditional access will require devices to be both enrolled and compliant for mail access
         Args:
-            value: Value to set for the conditionalAccessSettings property.
+            value: Value to set for the conditional_access_settings property.
         """
         self._conditional_access_settings = value
     
@@ -214,7 +214,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the detectedApps property value. The list of detected apps associated with a device.
         Args:
-            value: Value to set for the detectedApps property.
+            value: Value to set for the detected_apps property.
         """
         self._detected_apps = value
     
@@ -231,7 +231,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the deviceCategories property value. The list of device categories with the tenant.
         Args:
-            value: Value to set for the deviceCategories property.
+            value: Value to set for the device_categories property.
         """
         self._device_categories = value
     
@@ -248,7 +248,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the deviceCompliancePolicies property value. The device compliance policies.
         Args:
-            value: Value to set for the deviceCompliancePolicies property.
+            value: Value to set for the device_compliance_policies property.
         """
         self._device_compliance_policies = value
     
@@ -265,7 +265,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the deviceCompliancePolicyDeviceStateSummary property value. The device compliance state summary for this account.
         Args:
-            value: Value to set for the deviceCompliancePolicyDeviceStateSummary property.
+            value: Value to set for the device_compliance_policy_device_state_summary property.
         """
         self._device_compliance_policy_device_state_summary = value
     
@@ -282,7 +282,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the deviceCompliancePolicySettingStateSummaries property value. The summary states of compliance policy settings for this account.
         Args:
-            value: Value to set for the deviceCompliancePolicySettingStateSummaries property.
+            value: Value to set for the device_compliance_policy_setting_state_summaries property.
         """
         self._device_compliance_policy_setting_state_summaries = value
     
@@ -299,7 +299,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the deviceConfigurationDeviceStateSummaries property value. The device configuration device state summary for this account.
         Args:
-            value: Value to set for the deviceConfigurationDeviceStateSummaries property.
+            value: Value to set for the device_configuration_device_state_summaries property.
         """
         self._device_configuration_device_state_summaries = value
     
@@ -316,7 +316,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the deviceConfigurations property value. The device configurations.
         Args:
-            value: Value to set for the deviceConfigurations property.
+            value: Value to set for the device_configurations property.
         """
         self._device_configurations = value
     
@@ -333,7 +333,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the deviceEnrollmentConfigurations property value. The list of device enrollment configurations
         Args:
-            value: Value to set for the deviceEnrollmentConfigurations property.
+            value: Value to set for the device_enrollment_configurations property.
         """
         self._device_enrollment_configurations = value
     
@@ -350,7 +350,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the deviceManagementPartners property value. The list of Device Management Partners configured by the tenant.
         Args:
-            value: Value to set for the deviceManagementPartners property.
+            value: Value to set for the device_management_partners property.
         """
         self._device_management_partners = value
     
@@ -367,7 +367,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the exchangeConnectors property value. The list of Exchange Connectors configured by the tenant.
         Args:
-            value: Value to set for the exchangeConnectors property.
+            value: Value to set for the exchange_connectors property.
         """
         self._exchange_connectors = value
     
@@ -377,42 +377,42 @@ class DeviceManagement(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "apple_push_notification_certificate": lambda n : setattr(self, 'apple_push_notification_certificate', n.get_object_value(apple_push_notification_certificate.ApplePushNotificationCertificate)),
-            "audit_events": lambda n : setattr(self, 'audit_events', n.get_collection_of_object_values(audit_event.AuditEvent)),
-            "compliance_management_partners": lambda n : setattr(self, 'compliance_management_partners', n.get_collection_of_object_values(compliance_management_partner.ComplianceManagementPartner)),
-            "conditional_access_settings": lambda n : setattr(self, 'conditional_access_settings', n.get_object_value(on_premises_conditional_access_settings.OnPremisesConditionalAccessSettings)),
-            "detected_apps": lambda n : setattr(self, 'detected_apps', n.get_collection_of_object_values(detected_app.DetectedApp)),
-            "device_categories": lambda n : setattr(self, 'device_categories', n.get_collection_of_object_values(device_category.DeviceCategory)),
-            "device_compliance_policies": lambda n : setattr(self, 'device_compliance_policies', n.get_collection_of_object_values(device_compliance_policy.DeviceCompliancePolicy)),
-            "device_compliance_policy_device_state_summary": lambda n : setattr(self, 'device_compliance_policy_device_state_summary', n.get_object_value(device_compliance_policy_device_state_summary.DeviceCompliancePolicyDeviceStateSummary)),
-            "device_compliance_policy_setting_state_summaries": lambda n : setattr(self, 'device_compliance_policy_setting_state_summaries', n.get_collection_of_object_values(device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary)),
-            "device_configuration_device_state_summaries": lambda n : setattr(self, 'device_configuration_device_state_summaries', n.get_object_value(device_configuration_device_state_summary.DeviceConfigurationDeviceStateSummary)),
-            "device_configurations": lambda n : setattr(self, 'device_configurations', n.get_collection_of_object_values(device_configuration.DeviceConfiguration)),
-            "device_enrollment_configurations": lambda n : setattr(self, 'device_enrollment_configurations', n.get_collection_of_object_values(device_enrollment_configuration.DeviceEnrollmentConfiguration)),
-            "device_management_partners": lambda n : setattr(self, 'device_management_partners', n.get_collection_of_object_values(device_management_partner.DeviceManagementPartner)),
-            "exchange_connectors": lambda n : setattr(self, 'exchange_connectors', n.get_collection_of_object_values(device_management_exchange_connector.DeviceManagementExchangeConnector)),
-            "imported_windows_autopilot_device_identities": lambda n : setattr(self, 'imported_windows_autopilot_device_identities', n.get_collection_of_object_values(imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity)),
-            "intune_account_id": lambda n : setattr(self, 'intune_account_id', n.get_object_value(Guid)),
-            "intune_brand": lambda n : setattr(self, 'intune_brand', n.get_object_value(intune_brand.IntuneBrand)),
-            "ios_update_statuses": lambda n : setattr(self, 'ios_update_statuses', n.get_collection_of_object_values(ios_update_device_status.IosUpdateDeviceStatus)),
-            "managed_device_overview": lambda n : setattr(self, 'managed_device_overview', n.get_object_value(managed_device_overview.ManagedDeviceOverview)),
-            "managed_devices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(managed_device.ManagedDevice)),
-            "mobile_threat_defense_connectors": lambda n : setattr(self, 'mobile_threat_defense_connectors', n.get_collection_of_object_values(mobile_threat_defense_connector.MobileThreatDefenseConnector)),
-            "notification_message_templates": lambda n : setattr(self, 'notification_message_templates', n.get_collection_of_object_values(notification_message_template.NotificationMessageTemplate)),
-            "remote_assistance_partners": lambda n : setattr(self, 'remote_assistance_partners', n.get_collection_of_object_values(remote_assistance_partner.RemoteAssistancePartner)),
+            "applePushNotificationCertificate": lambda n : setattr(self, 'apple_push_notification_certificate', n.get_object_value(apple_push_notification_certificate.ApplePushNotificationCertificate)),
+            "auditEvents": lambda n : setattr(self, 'audit_events', n.get_collection_of_object_values(audit_event.AuditEvent)),
+            "complianceManagementPartners": lambda n : setattr(self, 'compliance_management_partners', n.get_collection_of_object_values(compliance_management_partner.ComplianceManagementPartner)),
+            "conditionalAccessSettings": lambda n : setattr(self, 'conditional_access_settings', n.get_object_value(on_premises_conditional_access_settings.OnPremisesConditionalAccessSettings)),
+            "detectedApps": lambda n : setattr(self, 'detected_apps', n.get_collection_of_object_values(detected_app.DetectedApp)),
+            "deviceCategories": lambda n : setattr(self, 'device_categories', n.get_collection_of_object_values(device_category.DeviceCategory)),
+            "deviceCompliancePolicies": lambda n : setattr(self, 'device_compliance_policies', n.get_collection_of_object_values(device_compliance_policy.DeviceCompliancePolicy)),
+            "deviceCompliancePolicyDeviceStateSummary": lambda n : setattr(self, 'device_compliance_policy_device_state_summary', n.get_object_value(device_compliance_policy_device_state_summary.DeviceCompliancePolicyDeviceStateSummary)),
+            "deviceCompliancePolicySettingStateSummaries": lambda n : setattr(self, 'device_compliance_policy_setting_state_summaries', n.get_collection_of_object_values(device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary)),
+            "deviceConfigurations": lambda n : setattr(self, 'device_configurations', n.get_collection_of_object_values(device_configuration.DeviceConfiguration)),
+            "deviceConfigurationDeviceStateSummaries": lambda n : setattr(self, 'device_configuration_device_state_summaries', n.get_object_value(device_configuration_device_state_summary.DeviceConfigurationDeviceStateSummary)),
+            "deviceEnrollmentConfigurations": lambda n : setattr(self, 'device_enrollment_configurations', n.get_collection_of_object_values(device_enrollment_configuration.DeviceEnrollmentConfiguration)),
+            "deviceManagementPartners": lambda n : setattr(self, 'device_management_partners', n.get_collection_of_object_values(device_management_partner.DeviceManagementPartner)),
+            "exchangeConnectors": lambda n : setattr(self, 'exchange_connectors', n.get_collection_of_object_values(device_management_exchange_connector.DeviceManagementExchangeConnector)),
+            "importedWindowsAutopilotDeviceIdentities": lambda n : setattr(self, 'imported_windows_autopilot_device_identities', n.get_collection_of_object_values(imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity)),
+            "intuneAccountId": lambda n : setattr(self, 'intune_account_id', n.get_object_value(Guid)),
+            "intuneBrand": lambda n : setattr(self, 'intune_brand', n.get_object_value(intune_brand.IntuneBrand)),
+            "iosUpdateStatuses": lambda n : setattr(self, 'ios_update_statuses', n.get_collection_of_object_values(ios_update_device_status.IosUpdateDeviceStatus)),
+            "managedDevices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(managed_device.ManagedDevice)),
+            "managedDeviceOverview": lambda n : setattr(self, 'managed_device_overview', n.get_object_value(managed_device_overview.ManagedDeviceOverview)),
+            "mobileThreatDefenseConnectors": lambda n : setattr(self, 'mobile_threat_defense_connectors', n.get_collection_of_object_values(mobile_threat_defense_connector.MobileThreatDefenseConnector)),
+            "notificationMessageTemplates": lambda n : setattr(self, 'notification_message_templates', n.get_collection_of_object_values(notification_message_template.NotificationMessageTemplate)),
+            "remoteAssistancePartners": lambda n : setattr(self, 'remote_assistance_partners', n.get_collection_of_object_values(remote_assistance_partner.RemoteAssistancePartner)),
             "reports": lambda n : setattr(self, 'reports', n.get_object_value(device_management_reports.DeviceManagementReports)),
-            "resource_operations": lambda n : setattr(self, 'resource_operations', n.get_collection_of_object_values(resource_operation.ResourceOperation)),
-            "role_assignments": lambda n : setattr(self, 'role_assignments', n.get_collection_of_object_values(device_and_app_management_role_assignment.DeviceAndAppManagementRoleAssignment)),
-            "role_definitions": lambda n : setattr(self, 'role_definitions', n.get_collection_of_object_values(role_definition.RoleDefinition)),
+            "resourceOperations": lambda n : setattr(self, 'resource_operations', n.get_collection_of_object_values(resource_operation.ResourceOperation)),
+            "roleAssignments": lambda n : setattr(self, 'role_assignments', n.get_collection_of_object_values(device_and_app_management_role_assignment.DeviceAndAppManagementRoleAssignment)),
+            "roleDefinitions": lambda n : setattr(self, 'role_definitions', n.get_collection_of_object_values(role_definition.RoleDefinition)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(device_management_settings.DeviceManagementSettings)),
-            "software_update_status_summary": lambda n : setattr(self, 'software_update_status_summary', n.get_object_value(software_update_status_summary.SoftwareUpdateStatusSummary)),
-            "subscription_state": lambda n : setattr(self, 'subscription_state', n.get_enum_value(device_management_subscription_state.DeviceManagementSubscriptionState)),
-            "telecom_expense_management_partners": lambda n : setattr(self, 'telecom_expense_management_partners', n.get_collection_of_object_values(telecom_expense_management_partner.TelecomExpenseManagementPartner)),
-            "terms_and_conditions": lambda n : setattr(self, 'terms_and_conditions', n.get_collection_of_object_values(terms_and_conditions.TermsAndConditions)),
-            "troubleshooting_events": lambda n : setattr(self, 'troubleshooting_events', n.get_collection_of_object_values(device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent)),
-            "windows_autopilot_device_identities": lambda n : setattr(self, 'windows_autopilot_device_identities', n.get_collection_of_object_values(windows_autopilot_device_identity.WindowsAutopilotDeviceIdentity)),
-            "windows_information_protection_app_learning_summaries": lambda n : setattr(self, 'windows_information_protection_app_learning_summaries', n.get_collection_of_object_values(windows_information_protection_app_learning_summary.WindowsInformationProtectionAppLearningSummary)),
-            "windows_information_protection_network_learning_summaries": lambda n : setattr(self, 'windows_information_protection_network_learning_summaries', n.get_collection_of_object_values(windows_information_protection_network_learning_summary.WindowsInformationProtectionNetworkLearningSummary)),
+            "softwareUpdateStatusSummary": lambda n : setattr(self, 'software_update_status_summary', n.get_object_value(software_update_status_summary.SoftwareUpdateStatusSummary)),
+            "subscriptionState": lambda n : setattr(self, 'subscription_state', n.get_enum_value(device_management_subscription_state.DeviceManagementSubscriptionState)),
+            "telecomExpenseManagementPartners": lambda n : setattr(self, 'telecom_expense_management_partners', n.get_collection_of_object_values(telecom_expense_management_partner.TelecomExpenseManagementPartner)),
+            "termsAndConditions": lambda n : setattr(self, 'terms_and_conditions', n.get_collection_of_object_values(terms_and_conditions.TermsAndConditions)),
+            "troubleshootingEvents": lambda n : setattr(self, 'troubleshooting_events', n.get_collection_of_object_values(device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent)),
+            "windowsAutopilotDeviceIdentities": lambda n : setattr(self, 'windows_autopilot_device_identities', n.get_collection_of_object_values(windows_autopilot_device_identity.WindowsAutopilotDeviceIdentity)),
+            "windowsInformationProtectionAppLearningSummaries": lambda n : setattr(self, 'windows_information_protection_app_learning_summaries', n.get_collection_of_object_values(windows_information_protection_app_learning_summary.WindowsInformationProtectionAppLearningSummary)),
+            "windowsInformationProtectionNetworkLearningSummaries": lambda n : setattr(self, 'windows_information_protection_network_learning_summaries', n.get_collection_of_object_values(windows_information_protection_network_learning_summary.WindowsInformationProtectionNetworkLearningSummary)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -431,7 +431,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the importedWindowsAutopilotDeviceIdentities property value. Collection of imported Windows autopilot devices.
         Args:
-            value: Value to set for the importedWindowsAutopilotDeviceIdentities property.
+            value: Value to set for the imported_windows_autopilot_device_identities property.
         """
         self._imported_windows_autopilot_device_identities = value
     
@@ -448,7 +448,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the intuneAccountId property value. Intune Account Id for given tenant
         Args:
-            value: Value to set for the intuneAccountId property.
+            value: Value to set for the intune_account_id property.
         """
         self._intune_account_id = value
     
@@ -465,7 +465,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the intuneBrand property value. intuneBrand contains data which is used in customizing the appearance of the Company Portal applications as well as the end user web portal.
         Args:
-            value: Value to set for the intuneBrand property.
+            value: Value to set for the intune_brand property.
         """
         self._intune_brand = value
     
@@ -482,7 +482,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the iosUpdateStatuses property value. The IOS software update installation statuses for this account.
         Args:
-            value: Value to set for the iosUpdateStatuses property.
+            value: Value to set for the ios_update_statuses property.
         """
         self._ios_update_statuses = value
     
@@ -499,7 +499,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the managedDeviceOverview property value. Device overview
         Args:
-            value: Value to set for the managedDeviceOverview property.
+            value: Value to set for the managed_device_overview property.
         """
         self._managed_device_overview = value
     
@@ -516,7 +516,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the managedDevices property value. The list of managed devices.
         Args:
-            value: Value to set for the managedDevices property.
+            value: Value to set for the managed_devices property.
         """
         self._managed_devices = value
     
@@ -533,7 +533,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the mobileThreatDefenseConnectors property value. The list of Mobile threat Defense connectors configured by the tenant.
         Args:
-            value: Value to set for the mobileThreatDefenseConnectors property.
+            value: Value to set for the mobile_threat_defense_connectors property.
         """
         self._mobile_threat_defense_connectors = value
     
@@ -550,7 +550,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the notificationMessageTemplates property value. The Notification Message Templates.
         Args:
-            value: Value to set for the notificationMessageTemplates property.
+            value: Value to set for the notification_message_templates property.
         """
         self._notification_message_templates = value
     
@@ -567,7 +567,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the remoteAssistancePartners property value. The remote assist partners.
         Args:
-            value: Value to set for the remoteAssistancePartners property.
+            value: Value to set for the remote_assistance_partners property.
         """
         self._remote_assistance_partners = value
     
@@ -601,7 +601,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the resourceOperations property value. The Resource Operations.
         Args:
-            value: Value to set for the resourceOperations property.
+            value: Value to set for the resource_operations property.
         """
         self._resource_operations = value
     
@@ -618,7 +618,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the roleAssignments property value. The Role Assignments.
         Args:
-            value: Value to set for the roleAssignments property.
+            value: Value to set for the role_assignments property.
         """
         self._role_assignments = value
     
@@ -635,7 +635,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the roleDefinitions property value. The Role Definitions.
         Args:
-            value: Value to set for the roleDefinitions property.
+            value: Value to set for the role_definitions property.
         """
         self._role_definitions = value
     
@@ -657,8 +657,8 @@ class DeviceManagement(entity.Entity):
         writer.write_collection_of_object_values("deviceCompliancePolicies", self.device_compliance_policies)
         writer.write_object_value("deviceCompliancePolicyDeviceStateSummary", self.device_compliance_policy_device_state_summary)
         writer.write_collection_of_object_values("deviceCompliancePolicySettingStateSummaries", self.device_compliance_policy_setting_state_summaries)
-        writer.write_object_value("deviceConfigurationDeviceStateSummaries", self.device_configuration_device_state_summaries)
         writer.write_collection_of_object_values("deviceConfigurations", self.device_configurations)
+        writer.write_object_value("deviceConfigurationDeviceStateSummaries", self.device_configuration_device_state_summaries)
         writer.write_collection_of_object_values("deviceEnrollmentConfigurations", self.device_enrollment_configurations)
         writer.write_collection_of_object_values("deviceManagementPartners", self.device_management_partners)
         writer.write_collection_of_object_values("exchangeConnectors", self.exchange_connectors)
@@ -666,8 +666,8 @@ class DeviceManagement(entity.Entity):
         writer.write_object_value("intuneAccountId", self.intune_account_id)
         writer.write_object_value("intuneBrand", self.intune_brand)
         writer.write_collection_of_object_values("iosUpdateStatuses", self.ios_update_statuses)
-        writer.write_object_value("managedDeviceOverview", self.managed_device_overview)
         writer.write_collection_of_object_values("managedDevices", self.managed_devices)
+        writer.write_object_value("managedDeviceOverview", self.managed_device_overview)
         writer.write_collection_of_object_values("mobileThreatDefenseConnectors", self.mobile_threat_defense_connectors)
         writer.write_collection_of_object_values("notificationMessageTemplates", self.notification_message_templates)
         writer.write_collection_of_object_values("remoteAssistancePartners", self.remote_assistance_partners)
@@ -715,7 +715,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the softwareUpdateStatusSummary property value. The software update status summary.
         Args:
-            value: Value to set for the softwareUpdateStatusSummary property.
+            value: Value to set for the software_update_status_summary property.
         """
         self._software_update_status_summary = value
     
@@ -732,7 +732,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the subscriptionState property value. Tenant mobile device management subscription state.
         Args:
-            value: Value to set for the subscriptionState property.
+            value: Value to set for the subscription_state property.
         """
         self._subscription_state = value
     
@@ -749,7 +749,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the telecomExpenseManagementPartners property value. The telecom expense management partners.
         Args:
-            value: Value to set for the telecomExpenseManagementPartners property.
+            value: Value to set for the telecom_expense_management_partners property.
         """
         self._telecom_expense_management_partners = value
     
@@ -766,7 +766,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the termsAndConditions property value. The terms and conditions associated with device management of the company.
         Args:
-            value: Value to set for the termsAndConditions property.
+            value: Value to set for the terms_and_conditions property.
         """
         self._terms_and_conditions = value
     
@@ -783,7 +783,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the troubleshootingEvents property value. The list of troubleshooting events for the tenant.
         Args:
-            value: Value to set for the troubleshootingEvents property.
+            value: Value to set for the troubleshooting_events property.
         """
         self._troubleshooting_events = value
     
@@ -800,7 +800,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the windowsAutopilotDeviceIdentities property value. The Windows autopilot device identities contained collection.
         Args:
-            value: Value to set for the windowsAutopilotDeviceIdentities property.
+            value: Value to set for the windows_autopilot_device_identities property.
         """
         self._windows_autopilot_device_identities = value
     
@@ -817,7 +817,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the windowsInformationProtectionAppLearningSummaries property value. The windows information protection app learning summaries.
         Args:
-            value: Value to set for the windowsInformationProtectionAppLearningSummaries property.
+            value: Value to set for the windows_information_protection_app_learning_summaries property.
         """
         self._windows_information_protection_app_learning_summaries = value
     
@@ -834,7 +834,7 @@ class DeviceManagement(entity.Entity):
         """
         Sets the windowsInformationProtectionNetworkLearningSummaries property value. The windows information protection network learning summaries.
         Args:
-            value: Value to set for the windowsInformationProtectionNetworkLearningSummaries property.
+            value: Value to set for the windows_information_protection_network_learning_summaries property.
         """
         self._windows_information_protection_network_learning_summaries = value
     

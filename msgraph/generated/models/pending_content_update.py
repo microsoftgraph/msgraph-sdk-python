@@ -53,7 +53,7 @@ class PendingContentUpdate(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "queued_date_time": lambda n : setattr(self, 'queued_date_time', n.get_datetime_value()),
+            "queuedDateTime": lambda n : setattr(self, 'queued_date_time', n.get_datetime_value()),
         }
         return fields
     
@@ -70,7 +70,7 @@ class PendingContentUpdate(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -87,7 +87,7 @@ class PendingContentUpdate(AdditionalDataHolder, Parsable):
         """
         Sets the queuedDateTime property value. Date and time the pending binary operation was queued in UTC time. Read-only.
         Args:
-            value: Value to set for the queuedDateTime property.
+            value: Value to set for the queued_date_time property.
         """
         self._queued_date_time = value
     

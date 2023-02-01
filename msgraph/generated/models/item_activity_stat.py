@@ -148,7 +148,7 @@ class ItemActivityStat(entity.Entity):
         """
         Sets the endDateTime property value. When the interval ends. Read-only.
         Args:
-            value: Value to set for the endDateTime property.
+            value: Value to set for the end_date_time property.
         """
         self._end_date_time = value
     
@@ -163,11 +163,11 @@ class ItemActivityStat(entity.Entity):
             "create": lambda n : setattr(self, 'create', n.get_object_value(item_action_stat.ItemActionStat)),
             "delete": lambda n : setattr(self, 'delete', n.get_object_value(item_action_stat.ItemActionStat)),
             "edit": lambda n : setattr(self, 'edit', n.get_object_value(item_action_stat.ItemActionStat)),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "incomplete_data": lambda n : setattr(self, 'incomplete_data', n.get_object_value(incomplete_data.IncompleteData)),
-            "is_trending": lambda n : setattr(self, 'is_trending', n.get_bool_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "incompleteData": lambda n : setattr(self, 'incomplete_data', n.get_object_value(incomplete_data.IncompleteData)),
+            "isTrending": lambda n : setattr(self, 'is_trending', n.get_bool_value()),
             "move": lambda n : setattr(self, 'move', n.get_object_value(item_action_stat.ItemActionStat)),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -186,7 +186,7 @@ class ItemActivityStat(entity.Entity):
         """
         Sets the incompleteData property value. Indicates that the statistics in this interval are based on incomplete data. Read-only.
         Args:
-            value: Value to set for the incompleteData property.
+            value: Value to set for the incomplete_data property.
         """
         self._incomplete_data = value
     
@@ -203,7 +203,7 @@ class ItemActivityStat(entity.Entity):
         """
         Sets the isTrending property value. Indicates whether the item is 'trending.' Read-only.
         Args:
-            value: Value to set for the isTrending property.
+            value: Value to set for the is_trending property.
         """
         self._is_trending = value
     
@@ -257,7 +257,7 @@ class ItemActivityStat(entity.Entity):
         """
         Sets the startDateTime property value. When the interval starts. Read-only.
         Args:
-            value: Value to set for the startDateTime property.
+            value: Value to set for the start_date_time property.
         """
         self._start_date_time = value
     

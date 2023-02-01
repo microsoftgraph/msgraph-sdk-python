@@ -12,57 +12,58 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 resource_specific_permission_grant = lazy_import('msgraph.generated.models.resource_specific_permission_grant')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-check_member_groups_request_builder = lazy_import('msgraph.generated.permission_grants.item.check_member_groups.check_member_groups_request_builder')
-check_member_objects_request_builder = lazy_import('msgraph.generated.permission_grants.item.check_member_objects.check_member_objects_request_builder')
-get_member_groups_request_builder = lazy_import('msgraph.generated.permission_grants.item.get_member_groups.get_member_groups_request_builder')
-get_member_objects_request_builder = lazy_import('msgraph.generated.permission_grants.item.get_member_objects.get_member_objects_request_builder')
-restore_request_builder = lazy_import('msgraph.generated.permission_grants.item.restore.restore_request_builder')
+check_member_groups_request_builder = lazy_import('msgraph.generated.permission_grants.item.microsoft_graph_check_member_groups.check_member_groups_request_builder')
+check_member_objects_request_builder = lazy_import('msgraph.generated.permission_grants.item.microsoft_graph_check_member_objects.check_member_objects_request_builder')
+get_member_groups_request_builder = lazy_import('msgraph.generated.permission_grants.item.microsoft_graph_get_member_groups.get_member_groups_request_builder')
+get_member_objects_request_builder = lazy_import('msgraph.generated.permission_grants.item.microsoft_graph_get_member_objects.get_member_objects_request_builder')
+restore_request_builder = lazy_import('msgraph.generated.permission_grants.item.microsoft_graph_restore.restore_request_builder')
 
 class ResourceSpecificPermissionGrantItemRequestBuilder():
     """
     Provides operations to manage the collection of resourceSpecificPermissionGrant entities.
     """
     @property
-    def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
+    def microsoft_graph_check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
         """
         Provides operations to call the checkMemberGroups method.
         """
         return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
+    def microsoft_graph_check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
         """
         Provides operations to call the checkMemberObjects method.
         """
         return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
+    def microsoft_graph_get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
         """
         Provides operations to call the getMemberGroups method.
         """
         return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
+    def microsoft_graph_get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
         """
         Provides operations to call the getMemberObjects method.
         """
         return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def restore(self) -> restore_request_builder.RestoreRequestBuilder:
+    def microsoft_graph_restore(self) -> restore_request_builder.RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
         return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, resource_specific_permission_grant_id: Optional[str] = None) -> None:
         """
         Instantiates a new ResourceSpecificPermissionGrantItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            resourceSpecificPermissionGrantId: key: id of resourceSpecificPermissionGrant
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -72,12 +73,13 @@ class ResourceSpecificPermissionGrantItemRequestBuilder():
         self.url_template: str = "{+baseurl}/permissionGrants/{resourceSpecificPermissionGrant%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["resourceSpecificPermissionGrant%2Did"] = resourceSpecificPermissionGrantId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
     async def delete(self,request_configuration: Optional[ResourceSpecificPermissionGrantItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete entity from permissionGrants by key (id)
+        Delete entity from permissionGrants
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -94,7 +96,7 @@ class ResourceSpecificPermissionGrantItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ResourceSpecificPermissionGrantItemRequestBuilderGetRequestConfiguration] = None) -> Optional[resource_specific_permission_grant.ResourceSpecificPermissionGrant]:
         """
-        Get entity from permissionGrants by key (id)
+        Get entity from permissionGrants by key
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[resource_specific_permission_grant.ResourceSpecificPermissionGrant]
@@ -112,7 +114,7 @@ class ResourceSpecificPermissionGrantItemRequestBuilder():
     
     async def patch(self,body: Optional[resource_specific_permission_grant.ResourceSpecificPermissionGrant] = None, request_configuration: Optional[ResourceSpecificPermissionGrantItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[resource_specific_permission_grant.ResourceSpecificPermissionGrant]:
         """
-        Update entity in permissionGrants by key (id)
+        Update entity in permissionGrants
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -133,7 +135,7 @@ class ResourceSpecificPermissionGrantItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ResourceSpecificPermissionGrantItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete entity from permissionGrants by key (id)
+        Delete entity from permissionGrants
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -149,7 +151,7 @@ class ResourceSpecificPermissionGrantItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ResourceSpecificPermissionGrantItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get entity from permissionGrants by key (id)
+        Get entity from permissionGrants by key
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -167,7 +169,7 @@ class ResourceSpecificPermissionGrantItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[resource_specific_permission_grant.ResourceSpecificPermissionGrant] = None, request_configuration: Optional[ResourceSpecificPermissionGrantItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update entity in permissionGrants by key (id)
+        Update entity in permissionGrants
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -201,7 +203,7 @@ class ResourceSpecificPermissionGrantItemRequestBuilder():
     @dataclass
     class ResourceSpecificPermissionGrantItemRequestBuilderGetQueryParameters():
         """
-        Get entity from permissionGrants by key (id)
+        Get entity from permissionGrants by key
         """
         # Expand related entities
         expand: Optional[List[str]] = None

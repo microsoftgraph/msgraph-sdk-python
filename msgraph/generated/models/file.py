@@ -58,9 +58,9 @@ class File(AdditionalDataHolder, Parsable):
         """
         fields = {
             "hashes": lambda n : setattr(self, 'hashes', n.get_object_value(hashes.Hashes)),
-            "mime_type": lambda n : setattr(self, 'mime_type', n.get_str_value()),
+            "mimeType": lambda n : setattr(self, 'mime_type', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "processing_metadata": lambda n : setattr(self, 'processing_metadata', n.get_bool_value()),
+            "processingMetadata": lambda n : setattr(self, 'processing_metadata', n.get_bool_value()),
         }
         return fields
     
@@ -94,7 +94,7 @@ class File(AdditionalDataHolder, Parsable):
         """
         Sets the mimeType property value. The MIME type for the file. This is determined by logic on the server and might not be the value provided when the file was uploaded. Read-only.
         Args:
-            value: Value to set for the mimeType property.
+            value: Value to set for the mime_type property.
         """
         self._mime_type = value
     
@@ -111,7 +111,7 @@ class File(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -128,7 +128,7 @@ class File(AdditionalDataHolder, Parsable):
         """
         Sets the processingMetadata property value. The processingMetadata property
         Args:
-            value: Value to set for the processingMetadata property.
+            value: Value to set for the processing_metadata property.
         """
         self._processing_metadata = value
     

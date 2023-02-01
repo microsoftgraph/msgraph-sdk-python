@@ -14,7 +14,7 @@ call_records_request_builder = lazy_import('msgraph.generated.communications.cal
 call_record_item_request_builder = lazy_import('msgraph.generated.communications.call_records.item.call_record_item_request_builder')
 calls_request_builder = lazy_import('msgraph.generated.communications.calls.calls_request_builder')
 call_item_request_builder = lazy_import('msgraph.generated.communications.calls.item.call_item_request_builder')
-get_presences_by_user_id_request_builder = lazy_import('msgraph.generated.communications.get_presences_by_user_id.get_presences_by_user_id_request_builder')
+get_presences_by_user_id_request_builder = lazy_import('msgraph.generated.communications.microsoft_graph_get_presences_by_user_id.get_presences_by_user_id_request_builder')
 online_meetings_request_builder = lazy_import('msgraph.generated.communications.online_meetings.online_meetings_request_builder')
 online_meeting_item_request_builder = lazy_import('msgraph.generated.communications.online_meetings.item.online_meeting_item_request_builder')
 presences_request_builder = lazy_import('msgraph.generated.communications.presences.presences_request_builder')
@@ -41,7 +41,7 @@ class CommunicationsRequestBuilder():
         return calls_request_builder.CallsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_presences_by_user_id(self) -> get_presences_by_user_id_request_builder.GetPresencesByUserIdRequestBuilder:
+    def microsoft_graph_get_presences_by_user_id(self) -> get_presences_by_user_id_request_builder.GetPresencesByUserIdRequestBuilder:
         """
         Provides operations to call the getPresencesByUserId method.
         """

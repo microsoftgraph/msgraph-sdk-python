@@ -88,7 +88,7 @@ class ColumnDefinition(entity.Entity):
         """
         Sets the columnGroup property value. For site columns, the name of the group this column belongs to. Helps organize related columns.
         Args:
-            value: Value to set for the columnGroup property.
+            value: Value to set for the column_group property.
         """
         self._column_group = value
     
@@ -177,7 +177,7 @@ class ColumnDefinition(entity.Entity):
         """
         Sets the contentApprovalStatus property value. This column stores content approval status.
         Args:
-            value: Value to set for the contentApprovalStatus property.
+            value: Value to set for the content_approval_status property.
         """
         self._content_approval_status = value
     
@@ -223,7 +223,7 @@ class ColumnDefinition(entity.Entity):
         """
         Sets the dateTime property value. This column stores DateTime values.
         Args:
-            value: Value to set for the dateTime property.
+            value: Value to set for the date_time property.
         """
         self._date_time = value
     
@@ -240,7 +240,7 @@ class ColumnDefinition(entity.Entity):
         """
         Sets the defaultValue property value. The default value for this column.
         Args:
-            value: Value to set for the defaultValue property.
+            value: Value to set for the default_value property.
         """
         self._default_value = value
     
@@ -274,7 +274,7 @@ class ColumnDefinition(entity.Entity):
         """
         Sets the displayName property value. The user-facing name of the column.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -291,7 +291,7 @@ class ColumnDefinition(entity.Entity):
         """
         Sets the enforceUniqueValues property value. If true, no two list items may have the same value for this column.
         Args:
-            value: Value to set for the enforceUniqueValues property.
+            value: Value to set for the enforce_unique_values property.
         """
         self._enforce_unique_values = value
     
@@ -321,30 +321,30 @@ class ColumnDefinition(entity.Entity):
             "boolean": lambda n : setattr(self, 'boolean', n.get_object_value(boolean_column.BooleanColumn)),
             "calculated": lambda n : setattr(self, 'calculated', n.get_object_value(calculated_column.CalculatedColumn)),
             "choice": lambda n : setattr(self, 'choice', n.get_object_value(choice_column.ChoiceColumn)),
-            "column_group": lambda n : setattr(self, 'column_group', n.get_str_value()),
-            "content_approval_status": lambda n : setattr(self, 'content_approval_status', n.get_object_value(content_approval_status_column.ContentApprovalStatusColumn)),
+            "columnGroup": lambda n : setattr(self, 'column_group', n.get_str_value()),
+            "contentApprovalStatus": lambda n : setattr(self, 'content_approval_status', n.get_object_value(content_approval_status_column.ContentApprovalStatusColumn)),
             "currency": lambda n : setattr(self, 'currency', n.get_object_value(currency_column.CurrencyColumn)),
-            "date_time": lambda n : setattr(self, 'date_time', n.get_object_value(date_time_column.DateTimeColumn)),
-            "default_value": lambda n : setattr(self, 'default_value', n.get_object_value(default_column_value.DefaultColumnValue)),
+            "dateTime": lambda n : setattr(self, 'date_time', n.get_object_value(date_time_column.DateTimeColumn)),
+            "defaultValue": lambda n : setattr(self, 'default_value', n.get_object_value(default_column_value.DefaultColumnValue)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "enforce_unique_values": lambda n : setattr(self, 'enforce_unique_values', n.get_bool_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "enforceUniqueValues": lambda n : setattr(self, 'enforce_unique_values', n.get_bool_value()),
             "geolocation": lambda n : setattr(self, 'geolocation', n.get_object_value(geolocation_column.GeolocationColumn)),
             "hidden": lambda n : setattr(self, 'hidden', n.get_bool_value()),
-            "hyperlink_or_picture": lambda n : setattr(self, 'hyperlink_or_picture', n.get_object_value(hyperlink_or_picture_column.HyperlinkOrPictureColumn)),
+            "hyperlinkOrPicture": lambda n : setattr(self, 'hyperlink_or_picture', n.get_object_value(hyperlink_or_picture_column.HyperlinkOrPictureColumn)),
             "indexed": lambda n : setattr(self, 'indexed', n.get_bool_value()),
-            "is_deletable": lambda n : setattr(self, 'is_deletable', n.get_bool_value()),
-            "is_reorderable": lambda n : setattr(self, 'is_reorderable', n.get_bool_value()),
-            "is_sealed": lambda n : setattr(self, 'is_sealed', n.get_bool_value()),
+            "isDeletable": lambda n : setattr(self, 'is_deletable', n.get_bool_value()),
+            "isReorderable": lambda n : setattr(self, 'is_reorderable', n.get_bool_value()),
+            "isSealed": lambda n : setattr(self, 'is_sealed', n.get_bool_value()),
             "lookup": lambda n : setattr(self, 'lookup', n.get_object_value(lookup_column.LookupColumn)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "number": lambda n : setattr(self, 'number', n.get_object_value(number_column.NumberColumn)),
-            "person_or_group": lambda n : setattr(self, 'person_or_group', n.get_object_value(person_or_group_column.PersonOrGroupColumn)),
-            "propagate_changes": lambda n : setattr(self, 'propagate_changes', n.get_bool_value()),
-            "read_only": lambda n : setattr(self, 'read_only', n.get_bool_value()),
+            "personOrGroup": lambda n : setattr(self, 'person_or_group', n.get_object_value(person_or_group_column.PersonOrGroupColumn)),
+            "propagateChanges": lambda n : setattr(self, 'propagate_changes', n.get_bool_value()),
+            "readOnly": lambda n : setattr(self, 'read_only', n.get_bool_value()),
             "required": lambda n : setattr(self, 'required', n.get_bool_value()),
-            "source_column": lambda n : setattr(self, 'source_column', n.get_object_value(ColumnDefinition)),
-            "source_content_type": lambda n : setattr(self, 'source_content_type', n.get_object_value(content_type_info.ContentTypeInfo)),
+            "sourceColumn": lambda n : setattr(self, 'source_column', n.get_object_value(ColumnDefinition)),
+            "sourceContentType": lambda n : setattr(self, 'source_content_type', n.get_object_value(content_type_info.ContentTypeInfo)),
             "term": lambda n : setattr(self, 'term', n.get_object_value(term_column.TermColumn)),
             "text": lambda n : setattr(self, 'text', n.get_object_value(text_column.TextColumn)),
             "thumbnail": lambda n : setattr(self, 'thumbnail', n.get_object_value(thumbnail_column.ThumbnailColumn)),
@@ -385,7 +385,7 @@ class ColumnDefinition(entity.Entity):
         """
         Sets the hyperlinkOrPicture property value. This column stores hyperlink or picture values.
         Args:
-            value: Value to set for the hyperlinkOrPicture property.
+            value: Value to set for the hyperlink_or_picture property.
         """
         self._hyperlink_or_picture = value
     
@@ -419,7 +419,7 @@ class ColumnDefinition(entity.Entity):
         """
         Sets the isDeletable property value. Indicates whether this column can be deleted.
         Args:
-            value: Value to set for the isDeletable property.
+            value: Value to set for the is_deletable property.
         """
         self._is_deletable = value
     
@@ -436,7 +436,7 @@ class ColumnDefinition(entity.Entity):
         """
         Sets the isReorderable property value. Indicates whether values in the column can be reordered. Read-only.
         Args:
-            value: Value to set for the isReorderable property.
+            value: Value to set for the is_reorderable property.
         """
         self._is_reorderable = value
     
@@ -453,7 +453,7 @@ class ColumnDefinition(entity.Entity):
         """
         Sets the isSealed property value. Specifies whether the column can be changed.
         Args:
-            value: Value to set for the isSealed property.
+            value: Value to set for the is_sealed property.
         """
         self._is_sealed = value
     
@@ -521,7 +521,7 @@ class ColumnDefinition(entity.Entity):
         """
         Sets the personOrGroup property value. This column stores Person or Group values.
         Args:
-            value: Value to set for the personOrGroup property.
+            value: Value to set for the person_or_group property.
         """
         self._person_or_group = value
     
@@ -538,7 +538,7 @@ class ColumnDefinition(entity.Entity):
         """
         Sets the propagateChanges property value. If 'true', changes to this column will be propagated to lists that implement the column.
         Args:
-            value: Value to set for the propagateChanges property.
+            value: Value to set for the propagate_changes property.
         """
         self._propagate_changes = value
     
@@ -555,7 +555,7 @@ class ColumnDefinition(entity.Entity):
         """
         Sets the readOnly property value. Specifies whether the column values can be modified.
         Args:
-            value: Value to set for the readOnly property.
+            value: Value to set for the read_only property.
         """
         self._read_only = value
     
@@ -631,7 +631,7 @@ class ColumnDefinition(entity.Entity):
         """
         Sets the sourceColumn property value. The source column for the content type column.
         Args:
-            value: Value to set for the sourceColumn property.
+            value: Value to set for the source_column property.
         """
         self._source_column = value
     
@@ -648,7 +648,7 @@ class ColumnDefinition(entity.Entity):
         """
         Sets the sourceContentType property value. ContentType from which this column is inherited from. Present only in contentTypes columns response. Read-only.
         Args:
-            value: Value to set for the sourceContentType property.
+            value: Value to set for the source_content_type property.
         """
         self._source_content_type = value
     

@@ -20,7 +20,7 @@ class Schema(entity.Entity):
         """
         Sets the baseType property value. Must be set to microsoft.graph.externalConnector.externalItem. Required.
         Args:
-            value: Value to set for the baseType property.
+            value: Value to set for the base_type property.
         """
         self._base_type = value
     
@@ -54,7 +54,7 @@ class Schema(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "base_type": lambda n : setattr(self, 'base_type', n.get_str_value()),
+            "baseType": lambda n : setattr(self, 'base_type', n.get_str_value()),
             "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(property_.Property_)),
         }
         super_fields = super().get_field_deserializers()

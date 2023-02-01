@@ -72,7 +72,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         """
         Sets the decisionsThatWillMoveToNextStage property value. Indicate which decisions will go to the next stage. Can be a sub-set of Approve, Deny, Recommendation, or NotReviewed. If not provided, all decisions will go to the next stage. Optional.
         Args:
-            value: Value to set for the decisionsThatWillMoveToNextStage property.
+            value: Value to set for the decisions_that_will_move_to_next_stage property.
         """
         self._decisions_that_will_move_to_next_stage = value
     
@@ -89,7 +89,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         """
         Sets the dependsOn property value. Defines the sequential or parallel order of the stages and depends on the stageId. Only sequential stages are currently supported. For example, if stageId is 2, then dependsOn must be 1. If stageId is 1, do not specify dependsOn. Required if stageId is not 1.
         Args:
-            value: Value to set for the dependsOn property.
+            value: Value to set for the depends_on property.
         """
         self._depends_on = value
     
@@ -106,7 +106,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         """
         Sets the durationInDays property value. The duration of the stage. Required.  NOTE: The cumulative value of this property across all stages  1. Will override the instanceDurationInDays setting on the accessReviewScheduleDefinition object. 2. Cannot exceed the length of one recurrence. That is, if the review recurs weekly, the cumulative durationInDays cannot exceed 7.
         Args:
-            value: Value to set for the durationInDays property.
+            value: Value to set for the duration_in_days property.
         """
         self._duration_in_days = value
     
@@ -123,7 +123,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         """
         Sets the fallbackReviewers property value. If provided, the fallback reviewers are asked to complete a review if the primary reviewers do not exist. For example, if managers are selected as reviewers and a principal under review does not have a manager in Azure AD, the fallback reviewers are asked to review that principal. NOTE: The value of this property will override the corresponding setting on the accessReviewScheduleDefinition object.
         Args:
-            value: Value to set for the fallbackReviewers property.
+            value: Value to set for the fallback_reviewers property.
         """
         self._fallback_reviewers = value
     
@@ -133,14 +133,14 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "decisions_that_will_move_to_next_stage": lambda n : setattr(self, 'decisions_that_will_move_to_next_stage', n.get_collection_of_primitive_values(str)),
-            "depends_on": lambda n : setattr(self, 'depends_on', n.get_collection_of_primitive_values(str)),
-            "duration_in_days": lambda n : setattr(self, 'duration_in_days', n.get_int_value()),
-            "fallback_reviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(access_review_reviewer_scope.AccessReviewReviewerScope)),
+            "decisionsThatWillMoveToNextStage": lambda n : setattr(self, 'decisions_that_will_move_to_next_stage', n.get_collection_of_primitive_values(str)),
+            "dependsOn": lambda n : setattr(self, 'depends_on', n.get_collection_of_primitive_values(str)),
+            "durationInDays": lambda n : setattr(self, 'duration_in_days', n.get_int_value()),
+            "fallbackReviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(access_review_reviewer_scope.AccessReviewReviewerScope)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recommendations_enabled": lambda n : setattr(self, 'recommendations_enabled', n.get_bool_value()),
+            "recommendationsEnabled": lambda n : setattr(self, 'recommendations_enabled', n.get_bool_value()),
             "reviewers": lambda n : setattr(self, 'reviewers', n.get_collection_of_object_values(access_review_reviewer_scope.AccessReviewReviewerScope)),
-            "stage_id": lambda n : setattr(self, 'stage_id', n.get_str_value()),
+            "stageId": lambda n : setattr(self, 'stage_id', n.get_str_value()),
         }
         return fields
     
@@ -157,7 +157,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -174,7 +174,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         """
         Sets the recommendationsEnabled property value. Indicates whether showing recommendations to reviewers is enabled. Required. NOTE: The value of this property will override override the corresponding setting on the accessReviewScheduleDefinition object.
         Args:
-            value: Value to set for the recommendationsEnabled property.
+            value: Value to set for the recommendations_enabled property.
         """
         self._recommendations_enabled = value
     
@@ -226,7 +226,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         """
         Sets the stageId property value. Unique identifier of the accessReviewStageSettings object. The stageId will be used by the dependsOn property to indicate the order of the stages. Required.
         Args:
-            value: Value to set for the stageId property.
+            value: Value to set for the stage_id property.
         """
         self._stage_id = value
     

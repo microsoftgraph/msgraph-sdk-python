@@ -34,7 +34,7 @@ class Contract(directory_object.DirectoryObject):
         """
         Sets the contractType property value. Type of contract. Possible values are:  SyndicationPartner, BreadthPartner, ResellerPartner. See more in the table below.
         Args:
-            value: Value to set for the contractType property.
+            value: Value to set for the contract_type property.
         """
         self._contract_type = value
     
@@ -63,7 +63,7 @@ class Contract(directory_object.DirectoryObject):
         """
         Sets the customerId property value. The unique identifier for the customer tenant referenced by this partnership. Corresponds to the id property of the customer tenant's organization resource.
         Args:
-            value: Value to set for the customerId property.
+            value: Value to set for the customer_id property.
         """
         self._customer_id = value
     
@@ -80,7 +80,7 @@ class Contract(directory_object.DirectoryObject):
         """
         Sets the defaultDomainName property value. A copy of the customer tenant's default domain name. The copy is made when the partnership with the customer is established. It is not automatically updated if the customer tenant's default domain name changes.
         Args:
-            value: Value to set for the defaultDomainName property.
+            value: Value to set for the default_domain_name property.
         """
         self._default_domain_name = value
     
@@ -97,7 +97,7 @@ class Contract(directory_object.DirectoryObject):
         """
         Sets the displayName property value. A copy of the customer tenant's display name. The copy is made when the partnership with the customer is established. It is not automatically updated if the customer tenant's display name changes.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -107,10 +107,10 @@ class Contract(directory_object.DirectoryObject):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "contract_type": lambda n : setattr(self, 'contract_type', n.get_str_value()),
-            "customer_id": lambda n : setattr(self, 'customer_id', n.get_object_value(Guid)),
-            "default_domain_name": lambda n : setattr(self, 'default_domain_name', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "contractType": lambda n : setattr(self, 'contract_type', n.get_str_value()),
+            "customerId": lambda n : setattr(self, 'customer_id', n.get_object_value(Guid)),
+            "defaultDomainName": lambda n : setattr(self, 'default_domain_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

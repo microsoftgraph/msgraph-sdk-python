@@ -58,7 +58,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
         """
         Sets the contentSource property value. The name of the content source that the externalItem is part of.
         Args:
-            value: Value to set for the contentSource property.
+            value: Value to set for the content_source property.
         """
         self._content_source = value
     
@@ -80,12 +80,12 @@ class SearchHit(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "content_source": lambda n : setattr(self, 'content_source', n.get_str_value()),
-            "hit_id": lambda n : setattr(self, 'hit_id', n.get_str_value()),
+            "contentSource": lambda n : setattr(self, 'content_source', n.get_str_value()),
+            "hitId": lambda n : setattr(self, 'hit_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "rank": lambda n : setattr(self, 'rank', n.get_int_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(entity.Entity)),
-            "result_template_id": lambda n : setattr(self, 'result_template_id', n.get_str_value()),
+            "resultTemplateId": lambda n : setattr(self, 'result_template_id', n.get_str_value()),
             "summary": lambda n : setattr(self, 'summary', n.get_str_value()),
         }
         return fields
@@ -103,7 +103,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
         """
         Sets the hitId property value. The internal identifier for the item. The format of the identifier varies based on the entity type. For details, see hitId format.
         Args:
-            value: Value to set for the hitId property.
+            value: Value to set for the hit_id property.
         """
         self._hit_id = value
     
@@ -120,7 +120,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -171,7 +171,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
         """
         Sets the resultTemplateId property value. ID of the result template used to render the search result. This ID must map to a display layout in the resultTemplates dictionary that is also included in the searchResponse.
         Args:
-            value: Value to set for the resultTemplateId property.
+            value: Value to set for the result_template_id property.
         """
         self._result_template_id = value
     

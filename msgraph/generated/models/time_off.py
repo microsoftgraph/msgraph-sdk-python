@@ -45,7 +45,7 @@ class TimeOff(change_tracked_entity.ChangeTrackedEntity):
         """
         Sets the draftTimeOff property value. The draft version of this timeOff that is viewable by managers. Required.
         Args:
-            value: Value to set for the draftTimeOff property.
+            value: Value to set for the draft_time_off property.
         """
         self._draft_time_off = value
     
@@ -55,9 +55,9 @@ class TimeOff(change_tracked_entity.ChangeTrackedEntity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "draft_time_off": lambda n : setattr(self, 'draft_time_off', n.get_object_value(time_off_item.TimeOffItem)),
-            "shared_time_off": lambda n : setattr(self, 'shared_time_off', n.get_object_value(time_off_item.TimeOffItem)),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "draftTimeOff": lambda n : setattr(self, 'draft_time_off', n.get_object_value(time_off_item.TimeOffItem)),
+            "sharedTimeOff": lambda n : setattr(self, 'shared_time_off', n.get_object_value(time_off_item.TimeOffItem)),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -89,7 +89,7 @@ class TimeOff(change_tracked_entity.ChangeTrackedEntity):
         """
         Sets the sharedTimeOff property value. The shared version of this timeOff that is viewable by both employees and managers. Required.
         Args:
-            value: Value to set for the sharedTimeOff property.
+            value: Value to set for the shared_time_off property.
         """
         self._shared_time_off = value
     
@@ -106,7 +106,7 @@ class TimeOff(change_tracked_entity.ChangeTrackedEntity):
         """
         Sets the userId property value. ID of the user assigned to the timeOff. Required.
         Args:
-            value: Value to set for the userId property.
+            value: Value to set for the user_id property.
         """
         self._user_id = value
     

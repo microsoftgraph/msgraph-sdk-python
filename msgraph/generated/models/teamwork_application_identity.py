@@ -20,7 +20,7 @@ class TeamworkApplicationIdentity(identity.Identity):
         """
         Sets the applicationIdentityType property value. Type of application that is referenced. Possible values are: aadApplication, bot, tenantBot, office365Connector, outgoingWebhook, and unknownFutureValue.
         Args:
-            value: Value to set for the applicationIdentityType property.
+            value: Value to set for the application_identity_type property.
         """
         self._application_identity_type = value
     
@@ -51,7 +51,7 @@ class TeamworkApplicationIdentity(identity.Identity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "application_identity_type": lambda n : setattr(self, 'application_identity_type', n.get_enum_value(teamwork_application_identity_type.TeamworkApplicationIdentityType)),
+            "applicationIdentityType": lambda n : setattr(self, 'application_identity_type', n.get_enum_value(teamwork_application_identity_type.TeamworkApplicationIdentityType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

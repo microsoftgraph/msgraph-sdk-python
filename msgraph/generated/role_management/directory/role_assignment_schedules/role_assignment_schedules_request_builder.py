@@ -14,7 +14,7 @@ unified_role_assignment_schedule = lazy_import('msgraph.generated.models.unified
 unified_role_assignment_schedule_collection_response = lazy_import('msgraph.generated.models.unified_role_assignment_schedule_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.role_management.directory.role_assignment_schedules.count.count_request_builder')
-filter_by_current_user_with_on_request_builder = lazy_import('msgraph.generated.role_management.directory.role_assignment_schedules.filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder')
+filter_by_current_user_with_on_request_builder = lazy_import('msgraph.generated.role_management.directory.role_assignment_schedules.microsoft_graph_filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder')
 
 class RoleAssignmentSchedulesRequestBuilder():
     """
@@ -45,17 +45,6 @@ class RoleAssignmentSchedulesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
-        """
-        Provides operations to call the filterByCurrentUser method.
-        Args:
-            on: Usage: on='{on}'
-        Returns: filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder
-        """
-        if on is None:
-            raise Exception("on cannot be undefined")
-        return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
-    
     async def get(self,request_configuration: Optional[RoleAssignmentSchedulesRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_assignment_schedule_collection_response.UnifiedRoleAssignmentScheduleCollectionResponse]:
         """
         Get the schedules for active role assignment operations.
@@ -73,6 +62,17 @@ class RoleAssignmentSchedulesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, unified_role_assignment_schedule_collection_response.UnifiedRoleAssignmentScheduleCollectionResponse, error_mapping)
+    
+    def microsoft_graph_filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
+        """
+        Provides operations to call the filterByCurrentUser method.
+        Args:
+            on: Usage: on='{on}'
+        Returns: filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder
+        """
+        if on is None:
+            raise Exception("on cannot be undefined")
+        return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
     async def post(self,body: Optional[unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule] = None, request_configuration: Optional[RoleAssignmentSchedulesRequestBuilderPostRequestConfiguration] = None) -> Optional[unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule]:
         """

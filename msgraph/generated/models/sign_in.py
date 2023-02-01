@@ -29,7 +29,7 @@ class SignIn(entity.Entity):
         """
         Sets the appDisplayName property value. App name displayed in the Azure Portal. Supports $filter (eq and startsWith operators only).
         Args:
-            value: Value to set for the appDisplayName property.
+            value: Value to set for the app_display_name property.
         """
         self._app_display_name = value
     
@@ -46,7 +46,7 @@ class SignIn(entity.Entity):
         """
         Sets the appId property value. Unique GUID representing the app ID in the Azure Active Directory. Supports $filter (eq operator only).
         Args:
-            value: Value to set for the appId property.
+            value: Value to set for the app_id property.
         """
         self._app_id = value
     
@@ -63,7 +63,7 @@ class SignIn(entity.Entity):
         """
         Sets the appliedConditionalAccessPolicies property value. Provides a list of conditional access policies that are triggered by the corresponding sign-in activity.
         Args:
-            value: Value to set for the appliedConditionalAccessPolicies property.
+            value: Value to set for the applied_conditional_access_policies property.
         """
         self._applied_conditional_access_policies = value
     
@@ -80,7 +80,7 @@ class SignIn(entity.Entity):
         """
         Sets the clientAppUsed property value. Identifies the client used for the sign-in activity. Modern authentication clients include Browser and modern clients. Legacy authentication clients include Exchange ActiveSync, IMAP, MAPI, SMTP, POP, and other clients. Supports $filter (eq operator only).
         Args:
-            value: Value to set for the clientAppUsed property.
+            value: Value to set for the client_app_used property.
         """
         self._client_app_used = value
     
@@ -97,7 +97,7 @@ class SignIn(entity.Entity):
         """
         Sets the conditionalAccessStatus property value. Reports status of an activated conditional access policy. Possible values are: success, failure, notApplied, and unknownFutureValue. Supports $filter (eq operator only).
         Args:
-            value: Value to set for the conditionalAccessStatus property.
+            value: Value to set for the conditional_access_status property.
         """
         self._conditional_access_status = value
     
@@ -168,7 +168,7 @@ class SignIn(entity.Entity):
         """
         Sets the correlationId property value. The request ID sent from the client when the sign-in is initiated; used to troubleshoot sign-in activity. Supports $filter (eq operator only).
         Args:
-            value: Value to set for the correlationId property.
+            value: Value to set for the correlation_id property.
         """
         self._correlation_id = value
     
@@ -185,7 +185,7 @@ class SignIn(entity.Entity):
         """
         Sets the createdDateTime property value. Date and time (UTC) the sign-in was initiated. Example: midnight on Jan 1, 2014 is reported as 2014-01-01T00:00:00Z. Supports $orderby and $filter (eq, le, and ge operators only).
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -214,7 +214,7 @@ class SignIn(entity.Entity):
         """
         Sets the deviceDetail property value. Device information from where the sign-in occurred; includes device ID, operating system, and browser. Supports $filter (eq and startsWith operators only) on browser and operatingSytem properties.
         Args:
-            value: Value to set for the deviceDetail property.
+            value: Value to set for the device_detail property.
         """
         self._device_detail = value
     
@@ -224,29 +224,29 @@ class SignIn(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_display_name": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "applied_conditional_access_policies": lambda n : setattr(self, 'applied_conditional_access_policies', n.get_collection_of_object_values(applied_conditional_access_policy.AppliedConditionalAccessPolicy)),
-            "client_app_used": lambda n : setattr(self, 'client_app_used', n.get_str_value()),
-            "conditional_access_status": lambda n : setattr(self, 'conditional_access_status', n.get_enum_value(conditional_access_status.ConditionalAccessStatus)),
-            "correlation_id": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "device_detail": lambda n : setattr(self, 'device_detail', n.get_object_value(device_detail.DeviceDetail)),
-            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
-            "is_interactive": lambda n : setattr(self, 'is_interactive', n.get_bool_value()),
+            "appliedConditionalAccessPolicies": lambda n : setattr(self, 'applied_conditional_access_policies', n.get_collection_of_object_values(applied_conditional_access_policy.AppliedConditionalAccessPolicy)),
+            "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "clientAppUsed": lambda n : setattr(self, 'client_app_used', n.get_str_value()),
+            "conditionalAccessStatus": lambda n : setattr(self, 'conditional_access_status', n.get_enum_value(conditional_access_status.ConditionalAccessStatus)),
+            "correlationId": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "deviceDetail": lambda n : setattr(self, 'device_detail', n.get_object_value(device_detail.DeviceDetail)),
+            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "isInteractive": lambda n : setattr(self, 'is_interactive', n.get_bool_value()),
             "location": lambda n : setattr(self, 'location', n.get_object_value(sign_in_location.SignInLocation)),
-            "resource_display_name": lambda n : setattr(self, 'resource_display_name', n.get_str_value()),
-            "resource_id": lambda n : setattr(self, 'resource_id', n.get_str_value()),
-            "risk_detail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(risk_detail.RiskDetail)),
-            "risk_event_types": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_enum_values(risk_event_type.RiskEventType)),
-            "risk_event_types_v2": lambda n : setattr(self, 'risk_event_types_v2', n.get_collection_of_primitive_values(str)),
-            "risk_level_aggregated": lambda n : setattr(self, 'risk_level_aggregated', n.get_enum_value(risk_level.RiskLevel)),
-            "risk_level_during_sign_in": lambda n : setattr(self, 'risk_level_during_sign_in', n.get_enum_value(risk_level.RiskLevel)),
-            "risk_state": lambda n : setattr(self, 'risk_state', n.get_enum_value(risk_state.RiskState)),
+            "resourceDisplayName": lambda n : setattr(self, 'resource_display_name', n.get_str_value()),
+            "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
+            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(risk_detail.RiskDetail)),
+            "riskEventTypes": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_enum_values(risk_event_type.RiskEventType)),
+            "riskEventTypes_v2": lambda n : setattr(self, 'risk_event_types_v2', n.get_collection_of_primitive_values(str)),
+            "riskLevelAggregated": lambda n : setattr(self, 'risk_level_aggregated', n.get_enum_value(risk_level.RiskLevel)),
+            "riskLevelDuringSignIn": lambda n : setattr(self, 'risk_level_during_sign_in', n.get_enum_value(risk_level.RiskLevel)),
+            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(risk_state.RiskState)),
             "status": lambda n : setattr(self, 'status', n.get_object_value(sign_in_status.SignInStatus)),
-            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -265,7 +265,7 @@ class SignIn(entity.Entity):
         """
         Sets the ipAddress property value. IP address of the client used to sign in. Supports $filter (eq and startsWith operators only).
         Args:
-            value: Value to set for the ipAddress property.
+            value: Value to set for the ip_address property.
         """
         self._ip_address = value
     
@@ -282,7 +282,7 @@ class SignIn(entity.Entity):
         """
         Sets the isInteractive property value. Indicates if a sign-in is interactive or not.
         Args:
-            value: Value to set for the isInteractive property.
+            value: Value to set for the is_interactive property.
         """
         self._is_interactive = value
     
@@ -316,7 +316,7 @@ class SignIn(entity.Entity):
         """
         Sets the resourceDisplayName property value. Name of the resource the user signed into. Supports $filter (eq operator only).
         Args:
-            value: Value to set for the resourceDisplayName property.
+            value: Value to set for the resource_display_name property.
         """
         self._resource_display_name = value
     
@@ -333,7 +333,7 @@ class SignIn(entity.Entity):
         """
         Sets the resourceId property value. ID of the resource that the user signed into. Supports $filter (eq operator only).
         Args:
-            value: Value to set for the resourceId property.
+            value: Value to set for the resource_id property.
         """
         self._resource_id = value
     
@@ -350,7 +350,7 @@ class SignIn(entity.Entity):
         """
         Sets the riskDetail property value. Provides the 'reason' behind a specific state of a risky user, sign-in or a risk event. The possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, unknownFutureValue. The value none means that no action has been performed on the user or sign-in so far.  Supports $filter (eq operator only).Note: Details for this property require an Azure AD Premium P2 license. Other licenses return the value hidden.
         Args:
-            value: Value to set for the riskDetail property.
+            value: Value to set for the risk_detail property.
         """
         self._risk_detail = value
     
@@ -367,7 +367,7 @@ class SignIn(entity.Entity):
         """
         Sets the riskEventTypes property value. Risk event types associated with the sign-in. The possible values are: unlikelyTravel, anonymizedIPAddress, maliciousIPAddress, unfamiliarFeatures, malwareInfectedIPAddress, suspiciousIPAddress, leakedCredentials, investigationsThreatIntelligence,  generic, and unknownFutureValue. Supports $filter (eq operator only).
         Args:
-            value: Value to set for the riskEventTypes property.
+            value: Value to set for the risk_event_types property.
         """
         self._risk_event_types = value
     
@@ -384,7 +384,7 @@ class SignIn(entity.Entity):
         """
         Sets the riskEventTypes_v2 property value. The list of risk event types associated with the sign-in. Possible values: unlikelyTravel, anonymizedIPAddress, maliciousIPAddress, unfamiliarFeatures, malwareInfectedIPAddress, suspiciousIPAddress, leakedCredentials, investigationsThreatIntelligence,  generic, or unknownFutureValue. Supports $filter (eq and startsWith operators only).
         Args:
-            value: Value to set for the riskEventTypes_v2 property.
+            value: Value to set for the risk_event_types_v2 property.
         """
         self._risk_event_types_v2 = value
     
@@ -401,7 +401,7 @@ class SignIn(entity.Entity):
         """
         Sets the riskLevelAggregated property value. Aggregated risk level. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in was not enabled for Azure AD Identity Protection. Supports $filter (eq operator only).  Note: Details for this property are only available for Azure AD Premium P2 customers. All other customers will be returned hidden.
         Args:
-            value: Value to set for the riskLevelAggregated property.
+            value: Value to set for the risk_level_aggregated property.
         """
         self._risk_level_aggregated = value
     
@@ -418,7 +418,7 @@ class SignIn(entity.Entity):
         """
         Sets the riskLevelDuringSignIn property value. Risk level during sign-in. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in was not enabled for Azure AD Identity Protection.  Supports $filter (eq operator only). Note: Details for this property are only available for Azure AD Premium P2 customers. All other customers will be returned hidden.
         Args:
-            value: Value to set for the riskLevelDuringSignIn property.
+            value: Value to set for the risk_level_during_sign_in property.
         """
         self._risk_level_during_sign_in = value
     
@@ -435,7 +435,7 @@ class SignIn(entity.Entity):
         """
         Sets the riskState property value. Reports status of the risky user, sign-in, or a risk event. The possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue. Supports $filter (eq operator only).
         Args:
-            value: Value to set for the riskState property.
+            value: Value to set for the risk_state property.
         """
         self._risk_state = value
     
@@ -448,9 +448,9 @@ class SignIn(entity.Entity):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
+        writer.write_collection_of_object_values("appliedConditionalAccessPolicies", self.applied_conditional_access_policies)
         writer.write_str_value("appDisplayName", self.app_display_name)
         writer.write_str_value("appId", self.app_id)
-        writer.write_collection_of_object_values("appliedConditionalAccessPolicies", self.applied_conditional_access_policies)
         writer.write_str_value("clientAppUsed", self.client_app_used)
         writer.write_enum_value("conditionalAccessStatus", self.conditional_access_status)
         writer.write_str_value("correlationId", self.correlation_id)
@@ -502,7 +502,7 @@ class SignIn(entity.Entity):
         """
         Sets the userDisplayName property value. Display name of the user that initiated the sign-in. Supports $filter (eq and startsWith operators only).
         Args:
-            value: Value to set for the userDisplayName property.
+            value: Value to set for the user_display_name property.
         """
         self._user_display_name = value
     
@@ -519,7 +519,7 @@ class SignIn(entity.Entity):
         """
         Sets the userId property value. ID of the user that initiated the sign-in. Supports $filter (eq operator only).
         Args:
-            value: Value to set for the userId property.
+            value: Value to set for the user_id property.
         """
         self._user_id = value
     
@@ -536,7 +536,7 @@ class SignIn(entity.Entity):
         """
         Sets the userPrincipalName property value. User principal name of the user that initiated the sign-in. Supports $filter (eq and startsWith operators only).
         Args:
-            value: Value to set for the userPrincipalName property.
+            value: Value to set for the user_principal_name property.
         """
         self._user_principal_name = value
     

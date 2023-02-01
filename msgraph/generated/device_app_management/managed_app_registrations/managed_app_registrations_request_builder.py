@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.device_app_management.managed_app_registrations.count.count_request_builder')
-get_user_ids_with_flagged_app_registration_request_builder = lazy_import('msgraph.generated.device_app_management.managed_app_registrations.get_user_ids_with_flagged_app_registration.get_user_ids_with_flagged_app_registration_request_builder')
+get_user_ids_with_flagged_app_registration_request_builder = lazy_import('msgraph.generated.device_app_management.managed_app_registrations.microsoft_graph_get_user_ids_with_flagged_app_registration.get_user_ids_with_flagged_app_registration_request_builder')
 managed_app_registration = lazy_import('msgraph.generated.models.managed_app_registration')
 managed_app_registration_collection_response = lazy_import('msgraph.generated.models.managed_app_registration_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -26,6 +26,13 @@ class ManagedAppRegistrationsRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_get_user_ids_with_flagged_app_registration(self) -> get_user_ids_with_flagged_app_registration_request_builder.GetUserIdsWithFlaggedAppRegistrationRequestBuilder:
+        """
+        Provides operations to call the getUserIdsWithFlaggedAppRegistration method.
+        """
+        return get_user_ids_with_flagged_app_registration_request_builder.GetUserIdsWithFlaggedAppRegistrationRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -62,13 +69,6 @@ class ManagedAppRegistrationsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, managed_app_registration_collection_response.ManagedAppRegistrationCollectionResponse, error_mapping)
-    
-    def get_user_ids_with_flagged_app_registration(self,) -> get_user_ids_with_flagged_app_registration_request_builder.GetUserIdsWithFlaggedAppRegistrationRequestBuilder:
-        """
-        Provides operations to call the getUserIdsWithFlaggedAppRegistration method.
-        Returns: get_user_ids_with_flagged_app_registration_request_builder.GetUserIdsWithFlaggedAppRegistrationRequestBuilder
-        """
-        return get_user_ids_with_flagged_app_registration_request_builder.GetUserIdsWithFlaggedAppRegistrationRequestBuilder(self.request_adapter, self.path_parameters)
     
     async def post(self,body: Optional[managed_app_registration.ManagedAppRegistration] = None, request_configuration: Optional[ManagedAppRegistrationsRequestBuilderPostRequestConfiguration] = None) -> Optional[managed_app_registration.ManagedAppRegistration]:
         """

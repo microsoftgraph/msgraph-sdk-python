@@ -60,7 +60,7 @@ class AssignedLicense(AdditionalDataHolder, Parsable):
         """
         Sets the disabledPlans property value. A collection of the unique identifiers for plans that have been disabled.
         Args:
-            value: Value to set for the disabledPlans property.
+            value: Value to set for the disabled_plans property.
         """
         self._disabled_plans = value
     
@@ -70,9 +70,9 @@ class AssignedLicense(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "disabled_plans": lambda n : setattr(self, 'disabled_plans', n.get_collection_of_primitive_values(guid)),
+            "disabledPlans": lambda n : setattr(self, 'disabled_plans', n.get_collection_of_primitive_values(guid)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "sku_id": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
+            "skuId": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
         }
         return fields
     
@@ -89,7 +89,7 @@ class AssignedLicense(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -119,7 +119,7 @@ class AssignedLicense(AdditionalDataHolder, Parsable):
         """
         Sets the skuId property value. The unique identifier for the SKU.
         Args:
-            value: Value to set for the skuId property.
+            value: Value to set for the sku_id property.
         """
         self._sku_id = value
     

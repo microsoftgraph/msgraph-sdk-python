@@ -20,7 +20,7 @@ class ChannelUnsetAsFavoriteByDefaultEventMessageDetail(event_message_detail.Eve
         """
         Sets the channelId property value. Unique identifier of the channel.
         Args:
-            value: Value to set for the channelId property.
+            value: Value to set for the channel_id property.
         """
         self._channel_id = value
     
@@ -53,7 +53,7 @@ class ChannelUnsetAsFavoriteByDefaultEventMessageDetail(event_message_detail.Eve
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "channel_id": lambda n : setattr(self, 'channel_id', n.get_str_value()),
+            "channelId": lambda n : setattr(self, 'channel_id', n.get_str_value()),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
         }
         super_fields = super().get_field_deserializers()

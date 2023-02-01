@@ -74,12 +74,13 @@ class SharedDriveItemItemRequestBuilder():
         """
         return site_request_builder.SiteRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, shared_drive_item_id: Optional[str] = None) -> None:
         """
         Instantiates a new SharedDriveItemItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            sharedDriveItemId: key: id of sharedDriveItem
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -89,12 +90,13 @@ class SharedDriveItemItemRequestBuilder():
         self.url_template: str = "{+baseurl}/shares/{sharedDriveItem%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["sharedDriveItem%2Did"] = sharedDriveItemId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
     async def delete(self,request_configuration: Optional[SharedDriveItemItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete entity from shares by key (id)
+        Delete entity from shares
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -142,7 +144,7 @@ class SharedDriveItemItemRequestBuilder():
     
     async def patch(self,body: Optional[shared_drive_item.SharedDriveItem] = None, request_configuration: Optional[SharedDriveItemItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[shared_drive_item.SharedDriveItem]:
         """
-        Update entity in shares by key (id)
+        Update entity in shares
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -163,7 +165,7 @@ class SharedDriveItemItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[SharedDriveItemItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete entity from shares by key (id)
+        Delete entity from shares
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -197,7 +199,7 @@ class SharedDriveItemItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[shared_drive_item.SharedDriveItem] = None, request_configuration: Optional[SharedDriveItemItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update entity in shares by key (id)
+        Update entity in shares
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

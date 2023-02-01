@@ -12,14 +12,14 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 cross_tenant_access_policy_configuration_default = lazy_import('msgraph.generated.models.cross_tenant_access_policy_configuration_default')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-reset_to_system_default_request_builder = lazy_import('msgraph.generated.policies.cross_tenant_access_policy.default.reset_to_system_default.reset_to_system_default_request_builder')
+reset_to_system_default_request_builder = lazy_import('msgraph.generated.policies.cross_tenant_access_policy.default.microsoft_graph_reset_to_system_default.reset_to_system_default_request_builder')
 
 class DefaultRequestBuilder():
     """
     Provides operations to manage the default property of the microsoft.graph.crossTenantAccessPolicy entity.
     """
     @property
-    def reset_to_system_default(self) -> reset_to_system_default_request_builder.ResetToSystemDefaultRequestBuilder:
+    def microsoft_graph_reset_to_system_default(self) -> reset_to_system_default_request_builder.ResetToSystemDefaultRequestBuilder:
         """
         Provides operations to call the resetToSystemDefault method.
         """

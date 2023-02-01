@@ -79,7 +79,7 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
         """
         Sets the createdBy property value. The createdBy property
         Args:
-            value: Value to set for the createdBy property.
+            value: Value to set for the created_by property.
         """
         self._created_by = value
     
@@ -96,7 +96,7 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
         """
         Sets the createdByIdentity property value. The createdByIdentity property
         Args:
-            value: Value to set for the createdByIdentity property.
+            value: Value to set for the created_by_identity property.
         """
         self._created_by_identity = value
     
@@ -113,7 +113,7 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
         """
         Sets the createdTime property value. The createdTime property
         Args:
-            value: Value to set for the createdTime property.
+            value: Value to set for the created_time property.
         """
         self._created_time = value
     
@@ -135,22 +135,22 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_by": lambda n : setattr(self, 'created_by', n.get_str_value()),
-            "created_by_identity": lambda n : setattr(self, 'created_by_identity', n.get_object_value(identity_set.IdentitySet)),
-            "created_time": lambda n : setattr(self, 'created_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_str_value()),
+            "createdByIdentity": lambda n : setattr(self, 'created_by_identity', n.get_object_value(identity_set.IdentitySet)),
+            "createdTime": lambda n : setattr(self, 'created_time', n.get_datetime_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
-            "is_shared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
-            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_str_value()),
-            "last_modified_by_identity": lambda n : setattr(self, 'last_modified_by_identity', n.get_object_value(identity_set.IdentitySet)),
-            "last_modified_time": lambda n : setattr(self, 'last_modified_time', n.get_datetime_value()),
+            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "isShared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_str_value()),
+            "lastModifiedByIdentity": lambda n : setattr(self, 'last_modified_by_identity', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedTime": lambda n : setattr(self, 'last_modified_time', n.get_datetime_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(notebook_links.NotebookLinks)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "section_groups_url": lambda n : setattr(self, 'section_groups_url', n.get_str_value()),
-            "sections_url": lambda n : setattr(self, 'sections_url', n.get_str_value()),
+            "sectionsUrl": lambda n : setattr(self, 'sections_url', n.get_str_value()),
+            "sectionGroupsUrl": lambda n : setattr(self, 'section_groups_url', n.get_str_value()),
             "self": lambda n : setattr(self, 'self', n.get_str_value()),
-            "user_role": lambda n : setattr(self, 'user_role', n.get_enum_value(onenote_user_role.OnenoteUserRole)),
+            "userRole": lambda n : setattr(self, 'user_role', n.get_enum_value(onenote_user_role.OnenoteUserRole)),
         }
         return fields
     
@@ -184,7 +184,7 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
         """
         Sets the isDefault property value. The isDefault property
         Args:
-            value: Value to set for the isDefault property.
+            value: Value to set for the is_default property.
         """
         self._is_default = value
     
@@ -201,7 +201,7 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
         """
         Sets the isShared property value. The isShared property
         Args:
-            value: Value to set for the isShared property.
+            value: Value to set for the is_shared property.
         """
         self._is_shared = value
     
@@ -218,7 +218,7 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
         """
         Sets the lastModifiedBy property value. The lastModifiedBy property
         Args:
-            value: Value to set for the lastModifiedBy property.
+            value: Value to set for the last_modified_by property.
         """
         self._last_modified_by = value
     
@@ -235,7 +235,7 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
         """
         Sets the lastModifiedByIdentity property value. The lastModifiedByIdentity property
         Args:
-            value: Value to set for the lastModifiedByIdentity property.
+            value: Value to set for the last_modified_by_identity property.
         """
         self._last_modified_by_identity = value
     
@@ -252,7 +252,7 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
         """
         Sets the lastModifiedTime property value. The lastModifiedTime property
         Args:
-            value: Value to set for the lastModifiedTime property.
+            value: Value to set for the last_modified_time property.
         """
         self._last_modified_time = value
     
@@ -303,7 +303,7 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -320,7 +320,7 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
         """
         Sets the sectionGroupsUrl property value. The sectionGroupsUrl property
         Args:
-            value: Value to set for the sectionGroupsUrl property.
+            value: Value to set for the section_groups_url property.
         """
         self._section_groups_url = value
     
@@ -337,7 +337,7 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
         """
         Sets the sectionsUrl property value. The sectionsUrl property
         Args:
-            value: Value to set for the sectionsUrl property.
+            value: Value to set for the sections_url property.
         """
         self._sections_url = value
     
@@ -378,8 +378,8 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
         writer.write_object_value("links", self.links)
         writer.write_str_value("name", self.name)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_str_value("sectionGroupsUrl", self.section_groups_url)
         writer.write_str_value("sectionsUrl", self.sections_url)
+        writer.write_str_value("sectionGroupsUrl", self.section_groups_url)
         writer.write_str_value("self", self.self)
         writer.write_enum_value("userRole", self.user_role)
         writer.write_additional_data_value(self.additional_data)
@@ -397,7 +397,7 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
         """
         Sets the userRole property value. The userRole property
         Args:
-            value: Value to set for the userRole property.
+            value: Value to set for the user_role property.
         """
         self._user_role = value
     

@@ -77,9 +77,9 @@ class ConditionalAccessPolicyDetail(AdditionalDataHolder, Parsable):
         """
         fields = {
             "conditions": lambda n : setattr(self, 'conditions', n.get_object_value(conditional_access_condition_set.ConditionalAccessConditionSet)),
-            "grant_controls": lambda n : setattr(self, 'grant_controls', n.get_object_value(conditional_access_grant_controls.ConditionalAccessGrantControls)),
+            "grantControls": lambda n : setattr(self, 'grant_controls', n.get_object_value(conditional_access_grant_controls.ConditionalAccessGrantControls)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "session_controls": lambda n : setattr(self, 'session_controls', n.get_object_value(conditional_access_session_controls.ConditionalAccessSessionControls)),
+            "sessionControls": lambda n : setattr(self, 'session_controls', n.get_object_value(conditional_access_session_controls.ConditionalAccessSessionControls)),
         }
         return fields
     
@@ -96,7 +96,7 @@ class ConditionalAccessPolicyDetail(AdditionalDataHolder, Parsable):
         """
         Sets the grantControls property value. Represents grant controls that must be fulfilled for the policy.
         Args:
-            value: Value to set for the grantControls property.
+            value: Value to set for the grant_controls property.
         """
         self._grant_controls = value
     
@@ -113,7 +113,7 @@ class ConditionalAccessPolicyDetail(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -144,7 +144,7 @@ class ConditionalAccessPolicyDetail(AdditionalDataHolder, Parsable):
         """
         Sets the sessionControls property value. Represents a complex type of session controls that is enforced after sign-in.
         Args:
-            value: Value to set for the sessionControls property.
+            value: Value to set for the session_controls property.
         """
         self._session_controls = value
     

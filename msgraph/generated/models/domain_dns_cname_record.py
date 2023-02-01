@@ -19,7 +19,7 @@ class DomainDnsCnameRecord(domain_dns_record.DomainDnsRecord):
         """
         Sets the canonicalName property value. The canonical name of the CNAME record. Used to configure the CNAME record at the DNS host.
         Args:
-            value: Value to set for the canonicalName property.
+            value: Value to set for the canonical_name property.
         """
         self._canonical_name = value
     
@@ -51,7 +51,7 @@ class DomainDnsCnameRecord(domain_dns_record.DomainDnsRecord):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "canonical_name": lambda n : setattr(self, 'canonical_name', n.get_str_value()),
+            "canonicalName": lambda n : setattr(self, 'canonical_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

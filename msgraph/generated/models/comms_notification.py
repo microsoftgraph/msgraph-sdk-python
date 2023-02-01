@@ -36,7 +36,7 @@ class CommsNotification(AdditionalDataHolder, Parsable):
         """
         Sets the changeType property value. The changeType property
         Args:
-            value: Value to set for the changeType property.
+            value: Value to set for the change_type property.
         """
         self._change_type = value
     
@@ -72,9 +72,9 @@ class CommsNotification(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "change_type": lambda n : setattr(self, 'change_type', n.get_enum_value(change_type.ChangeType)),
+            "changeType": lambda n : setattr(self, 'change_type', n.get_enum_value(change_type.ChangeType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "resource_url": lambda n : setattr(self, 'resource_url', n.get_str_value()),
+            "resourceUrl": lambda n : setattr(self, 'resource_url', n.get_str_value()),
         }
         return fields
     
@@ -91,7 +91,7 @@ class CommsNotification(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -108,7 +108,7 @@ class CommsNotification(AdditionalDataHolder, Parsable):
         """
         Sets the resourceUrl property value. URI of the resource that was changed.
         Args:
-            value: Value to set for the resourceUrl property.
+            value: Value to set for the resource_url property.
         """
         self._resource_url = value
     

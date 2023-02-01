@@ -53,7 +53,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         """
         Sets the answerInputType property value. The expected answer type. The possible values are: text, radioButton, unknownFutureValue.
         Args:
-            value: Value to set for the answerInputType property.
+            value: Value to set for the answer_input_type property.
         """
         self._answer_input_type = value
     
@@ -70,7 +70,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         """
         Sets the answerOptions property value. In case the answerInputType is radioButton, this will consists of a list of possible answer values.
         Args:
-            value: Value to set for the answerOptions property.
+            value: Value to set for the answer_options property.
         """
         self._answer_options = value
     
@@ -117,13 +117,13 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         """
         fields = {
             "answer": lambda n : setattr(self, 'answer', n.get_str_value()),
-            "answer_input_type": lambda n : setattr(self, 'answer_input_type', n.get_enum_value(answer_input_type.AnswerInputType)),
-            "answer_options": lambda n : setattr(self, 'answer_options', n.get_collection_of_primitive_values(str)),
-            "is_required": lambda n : setattr(self, 'is_required', n.get_bool_value()),
+            "answerInputType": lambda n : setattr(self, 'answer_input_type', n.get_enum_value(answer_input_type.AnswerInputType)),
+            "answerOptions": lambda n : setattr(self, 'answer_options', n.get_collection_of_primitive_values(str)),
+            "isRequired": lambda n : setattr(self, 'is_required', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "question": lambda n : setattr(self, 'question', n.get_str_value()),
-            "question_id": lambda n : setattr(self, 'question_id', n.get_str_value()),
-            "selected_options": lambda n : setattr(self, 'selected_options', n.get_collection_of_primitive_values(str)),
+            "questionId": lambda n : setattr(self, 'question_id', n.get_str_value()),
+            "selectedOptions": lambda n : setattr(self, 'selected_options', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -140,7 +140,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         """
         Sets the isRequired property value. Indicates whether it is mandatory to answer the custom question.
         Args:
-            value: Value to set for the isRequired property.
+            value: Value to set for the is_required property.
         """
         self._is_required = value
     
@@ -157,7 +157,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -191,7 +191,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         """
         Sets the questionId property value. The ID of the custom question.
         Args:
-            value: Value to set for the questionId property.
+            value: Value to set for the question_id property.
         """
         self._question_id = value
     
@@ -208,7 +208,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         """
         Sets the selectedOptions property value. The answers selected by the user.
         Args:
-            value: Value to set for the selectedOptions property.
+            value: Value to set for the selected_options property.
         """
         self._selected_options = value
     

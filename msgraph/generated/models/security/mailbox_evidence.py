@@ -46,7 +46,7 @@ class MailboxEvidence(alert_evidence.AlertEvidence):
         """
         Sets the displayName property value. The name associated with the mailbox.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -56,9 +56,9 @@ class MailboxEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "primary_address": lambda n : setattr(self, 'primary_address', n.get_str_value()),
-            "user_account": lambda n : setattr(self, 'user_account', n.get_object_value(user_account.UserAccount)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "primaryAddress": lambda n : setattr(self, 'primary_address', n.get_str_value()),
+            "userAccount": lambda n : setattr(self, 'user_account', n.get_object_value(user_account.UserAccount)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -77,7 +77,7 @@ class MailboxEvidence(alert_evidence.AlertEvidence):
         """
         Sets the primaryAddress property value. The primary email address of the mailbox.
         Args:
-            value: Value to set for the primaryAddress property.
+            value: Value to set for the primary_address property.
         """
         self._primary_address = value
     
@@ -107,7 +107,7 @@ class MailboxEvidence(alert_evidence.AlertEvidence):
         """
         Sets the userAccount property value. The user account of the mailbox.
         Args:
-            value: Value to set for the userAccount property.
+            value: Value to set for the user_account property.
         """
         self._user_account = value
     

@@ -34,7 +34,7 @@ class AuthorizationInfo(AdditionalDataHolder, Parsable):
         """
         Sets the certificateUserIds property value. The certificateUserIds property
         Args:
-            value: Value to set for the certificateUserIds property.
+            value: Value to set for the certificate_user_ids property.
         """
         self._certificate_user_ids = value
     
@@ -68,7 +68,7 @@ class AuthorizationInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "certificate_user_ids": lambda n : setattr(self, 'certificate_user_ids', n.get_collection_of_primitive_values(str)),
+            "certificateUserIds": lambda n : setattr(self, 'certificate_user_ids', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -86,7 +86,7 @@ class AuthorizationInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

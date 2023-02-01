@@ -10,14 +10,14 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-application_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.application.application_request_builder')
-check_member_groups_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.check_member_groups.check_member_groups_request_builder')
-check_member_objects_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.check_member_objects.check_member_objects_request_builder')
-get_member_groups_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.get_member_groups.get_member_groups_request_builder')
-get_member_objects_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.get_member_objects.get_member_objects_request_builder')
-group_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.group.group_request_builder')
-restore_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.restore.restore_request_builder')
-user_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.user.user_request_builder')
+application_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.microsoft_graph_application.application_request_builder')
+check_member_groups_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.microsoft_graph_check_member_groups.check_member_groups_request_builder')
+check_member_objects_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.microsoft_graph_check_member_objects.check_member_objects_request_builder')
+get_member_groups_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.microsoft_graph_get_member_groups.get_member_groups_request_builder')
+get_member_objects_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.microsoft_graph_get_member_objects.get_member_objects_request_builder')
+group_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.microsoft_graph_group.group_request_builder')
+restore_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.microsoft_graph_restore.restore_request_builder')
+user_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.microsoft_graph_user.user_request_builder')
 directory_object = lazy_import('msgraph.generated.models.directory_object')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -26,65 +26,66 @@ class DirectoryObjectItemRequestBuilder():
     Provides operations to manage the deletedItems property of the microsoft.graph.directory entity.
     """
     @property
-    def application(self) -> application_request_builder.ApplicationRequestBuilder:
+    def microsoft_graph_application(self) -> application_request_builder.ApplicationRequestBuilder:
         """
         Casts the previous resource to application.
         """
         return application_request_builder.ApplicationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
+    def microsoft_graph_check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
         """
         Provides operations to call the checkMemberGroups method.
         """
         return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
+    def microsoft_graph_check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
         """
         Provides operations to call the checkMemberObjects method.
         """
         return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
+    def microsoft_graph_get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
         """
         Provides operations to call the getMemberGroups method.
         """
         return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
+    def microsoft_graph_get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
         """
         Provides operations to call the getMemberObjects method.
         """
         return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def group(self) -> group_request_builder.GroupRequestBuilder:
+    def microsoft_graph_group(self) -> group_request_builder.GroupRequestBuilder:
         """
         Casts the previous resource to group.
         """
         return group_request_builder.GroupRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def restore(self) -> restore_request_builder.RestoreRequestBuilder:
+    def microsoft_graph_restore(self) -> restore_request_builder.RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
         return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def user(self) -> user_request_builder.UserRequestBuilder:
+    def microsoft_graph_user(self) -> user_request_builder.UserRequestBuilder:
         """
         Casts the previous resource to user.
         """
         return user_request_builder.UserRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, directory_object_id: Optional[str] = None) -> None:
         """
         Instantiates a new DirectoryObjectItemRequestBuilder and sets the default values.
         Args:
+            directoryObjectId: key: id of directoryObject
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -96,6 +97,7 @@ class DirectoryObjectItemRequestBuilder():
         self.url_template: str = "{+baseurl}/directory/deletedItems/{directoryObject%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["directoryObject%2Did"] = directoryObjectId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

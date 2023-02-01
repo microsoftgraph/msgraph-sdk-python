@@ -57,8 +57,8 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
         """
         fields = {
             "activity": lambda n : setattr(self, 'activity', n.get_object_value(risk_user_activity.RiskUserActivity)),
-            "initiated_by": lambda n : setattr(self, 'initiated_by', n.get_str_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "initiatedBy": lambda n : setattr(self, 'initiated_by', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -77,7 +77,7 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
         """
         Sets the initiatedBy property value. The ID of actor that does the operation.
         Args:
-            value: Value to set for the initiatedBy property.
+            value: Value to set for the initiated_by property.
         """
         self._initiated_by = value
     
@@ -107,7 +107,7 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
         """
         Sets the userId property value. The ID of the user.
         Args:
-            value: Value to set for the userId property.
+            value: Value to set for the user_id property.
         """
         self._user_id = value
     

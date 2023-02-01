@@ -12,11 +12,11 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 apps_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.apps.apps_request_builder')
 managed_mobile_app_item_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.apps.item.managed_mobile_app_item_request_builder')
-assign_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.assign.assign_request_builder')
 assignments_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.assignments.assignments_request_builder')
 targeted_managed_app_policy_assignment_item_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.assignments.item.targeted_managed_app_policy_assignment_item_request_builder')
 deployment_summary_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.deployment_summary.deployment_summary_request_builder')
-target_apps_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.target_apps.target_apps_request_builder')
+assign_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.microsoft_graph_assign.assign_request_builder')
+target_apps_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.microsoft_graph_target_apps.target_apps_request_builder')
 targeted_managed_app_configuration = lazy_import('msgraph.generated.models.targeted_managed_app_configuration')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -30,13 +30,6 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         Provides operations to manage the apps property of the microsoft.graph.targetedManagedAppConfiguration entity.
         """
         return apps_request_builder.AppsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def assign(self) -> assign_request_builder.AssignRequestBuilder:
-        """
-        Provides operations to call the assign method.
-        """
-        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
@@ -53,7 +46,14 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         return deployment_summary_request_builder.DeploymentSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def target_apps(self) -> target_apps_request_builder.TargetAppsRequestBuilder:
+    def microsoft_graph_assign(self) -> assign_request_builder.AssignRequestBuilder:
+        """
+        Provides operations to call the assign method.
+        """
+        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_target_apps(self) -> target_apps_request_builder.TargetAppsRequestBuilder:
         """
         Provides operations to call the targetApps method.
         """
@@ -85,12 +85,13 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         url_tpl_params["targetedManagedAppPolicyAssignment%2Did"] = id
         return targeted_managed_app_policy_assignment_item_request_builder.TargetedManagedAppPolicyAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, targeted_managed_app_configuration_id: Optional[str] = None) -> None:
         """
         Instantiates a new TargetedManagedAppConfigurationItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            targetedManagedAppConfigurationId: key: id of targetedManagedAppConfiguration
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -100,6 +101,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceAppManagement/targetedManagedAppConfigurations/{targetedManagedAppConfiguration%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["targetedManagedAppConfiguration%2Did"] = targetedManagedAppConfigurationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

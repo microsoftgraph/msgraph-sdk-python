@@ -36,7 +36,7 @@ class RegistrationEnforcement(AdditionalDataHolder, Parsable):
         """
         Sets the authenticationMethodsRegistrationCampaign property value. Run campaigns to remind users to set up targeted authentication methods.
         Args:
-            value: Value to set for the authenticationMethodsRegistrationCampaign property.
+            value: Value to set for the authentication_methods_registration_campaign property.
         """
         self._authentication_methods_registration_campaign = value
     
@@ -70,7 +70,7 @@ class RegistrationEnforcement(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "authentication_methods_registration_campaign": lambda n : setattr(self, 'authentication_methods_registration_campaign', n.get_object_value(authentication_methods_registration_campaign.AuthenticationMethodsRegistrationCampaign)),
+            "authenticationMethodsRegistrationCampaign": lambda n : setattr(self, 'authentication_methods_registration_campaign', n.get_object_value(authentication_methods_registration_campaign.AuthenticationMethodsRegistrationCampaign)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -88,7 +88,7 @@ class RegistrationEnforcement(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

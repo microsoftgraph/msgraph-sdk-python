@@ -50,7 +50,7 @@ class ListInfo(AdditionalDataHolder, Parsable):
         """
         Sets the contentTypesEnabled property value. If true, indicates that content types are enabled for this list.
         Args:
-            value: Value to set for the contentTypesEnabled property.
+            value: Value to set for the content_types_enabled property.
         """
         self._content_types_enabled = value
     
@@ -72,7 +72,7 @@ class ListInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "content_types_enabled": lambda n : setattr(self, 'content_types_enabled', n.get_bool_value()),
+            "contentTypesEnabled": lambda n : setattr(self, 'content_types_enabled', n.get_bool_value()),
             "hidden": lambda n : setattr(self, 'hidden', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "template": lambda n : setattr(self, 'template', n.get_str_value()),
@@ -109,7 +109,7 @@ class ListInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

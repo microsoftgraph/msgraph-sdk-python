@@ -62,12 +62,12 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_descending": lambda n : setattr(self, 'is_descending', n.get_bool_value()),
-            "minimum_count": lambda n : setattr(self, 'minimum_count', n.get_int_value()),
+            "isDescending": lambda n : setattr(self, 'is_descending', n.get_bool_value()),
+            "minimumCount": lambda n : setattr(self, 'minimum_count', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "prefix_filter": lambda n : setattr(self, 'prefix_filter', n.get_str_value()),
+            "prefixFilter": lambda n : setattr(self, 'prefix_filter', n.get_str_value()),
             "ranges": lambda n : setattr(self, 'ranges', n.get_collection_of_object_values(bucket_aggregation_range.BucketAggregationRange)),
-            "sort_by": lambda n : setattr(self, 'sort_by', n.get_enum_value(bucket_aggregation_sort_property.BucketAggregationSortProperty)),
+            "sortBy": lambda n : setattr(self, 'sort_by', n.get_enum_value(bucket_aggregation_sort_property.BucketAggregationSortProperty)),
         }
         return fields
     
@@ -84,7 +84,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         """
         Sets the isDescending property value. True to specify the sort order as descending. The default is false, with the sort order as ascending. Optional.
         Args:
-            value: Value to set for the isDescending property.
+            value: Value to set for the is_descending property.
         """
         self._is_descending = value
     
@@ -101,7 +101,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         """
         Sets the minimumCount property value. The minimum number of items that should be present in the aggregation to be returned in a bucket. Optional.
         Args:
-            value: Value to set for the minimumCount property.
+            value: Value to set for the minimum_count property.
         """
         self._minimum_count = value
     
@@ -118,7 +118,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -135,7 +135,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         """
         Sets the prefixFilter property value. A filter to define a matching criteria. The key should start with the specified prefix to be returned in the response. Optional.
         Args:
-            value: Value to set for the prefixFilter property.
+            value: Value to set for the prefix_filter property.
         """
         self._prefix_filter = value
     
@@ -185,7 +185,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         """
         Sets the sortBy property value. The sortBy property
         Args:
-            value: Value to set for the sortBy property.
+            value: Value to set for the sort_by property.
         """
         self._sort_by = value
     

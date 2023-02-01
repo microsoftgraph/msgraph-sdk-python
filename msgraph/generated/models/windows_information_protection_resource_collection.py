@@ -63,7 +63,7 @@ class WindowsInformationProtectionResourceCollection(AdditionalDataHolder, Parsa
         """
         Sets the displayName property value. Display name
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -73,7 +73,7 @@ class WindowsInformationProtectionResourceCollection(AdditionalDataHolder, Parsa
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_primitive_values(str)),
         }
@@ -92,7 +92,7 @@ class WindowsInformationProtectionResourceCollection(AdditionalDataHolder, Parsa
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

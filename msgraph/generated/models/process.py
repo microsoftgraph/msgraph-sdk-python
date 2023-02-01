@@ -21,7 +21,7 @@ class Process(AdditionalDataHolder, Parsable):
         """
         Sets the accountName property value. User account identifier (user account context the process ran under) for example, AccountName, SID, and so on.
         Args:
-            value: Value to set for the accountName property.
+            value: Value to set for the account_name property.
         """
         self._account_name = value
     
@@ -55,7 +55,7 @@ class Process(AdditionalDataHolder, Parsable):
         """
         Sets the commandLine property value. The full process invocation commandline including all parameters.
         Args:
-            value: Value to set for the commandLine property.
+            value: Value to set for the command_line property.
         """
         self._command_line = value
     
@@ -106,7 +106,7 @@ class Process(AdditionalDataHolder, Parsable):
         """
         Sets the createdDateTime property value. Time at which the process was started. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -135,7 +135,7 @@ class Process(AdditionalDataHolder, Parsable):
         """
         Sets the fileHash property value. Complex type containing file hashes (cryptographic and location-sensitive).
         Args:
-            value: Value to set for the fileHash property.
+            value: Value to set for the file_hash property.
         """
         self._file_hash = value
     
@@ -145,19 +145,19 @@ class Process(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "account_name": lambda n : setattr(self, 'account_name', n.get_str_value()),
-            "command_line": lambda n : setattr(self, 'command_line', n.get_str_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "file_hash": lambda n : setattr(self, 'file_hash', n.get_object_value(file_hash.FileHash)),
-            "integrity_level": lambda n : setattr(self, 'integrity_level', n.get_enum_value(process_integrity_level.ProcessIntegrityLevel)),
-            "is_elevated": lambda n : setattr(self, 'is_elevated', n.get_bool_value()),
+            "accountName": lambda n : setattr(self, 'account_name', n.get_str_value()),
+            "commandLine": lambda n : setattr(self, 'command_line', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "fileHash": lambda n : setattr(self, 'file_hash', n.get_object_value(file_hash.FileHash)),
+            "integrityLevel": lambda n : setattr(self, 'integrity_level', n.get_enum_value(process_integrity_level.ProcessIntegrityLevel)),
+            "isElevated": lambda n : setattr(self, 'is_elevated', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "parent_process_created_date_time": lambda n : setattr(self, 'parent_process_created_date_time', n.get_datetime_value()),
-            "parent_process_id": lambda n : setattr(self, 'parent_process_id', n.get_int_value()),
-            "parent_process_name": lambda n : setattr(self, 'parent_process_name', n.get_str_value()),
+            "parentProcessCreatedDateTime": lambda n : setattr(self, 'parent_process_created_date_time', n.get_datetime_value()),
+            "parentProcessId": lambda n : setattr(self, 'parent_process_id', n.get_int_value()),
+            "parentProcessName": lambda n : setattr(self, 'parent_process_name', n.get_str_value()),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),
-            "process_id": lambda n : setattr(self, 'process_id', n.get_int_value()),
+            "processId": lambda n : setattr(self, 'process_id', n.get_int_value()),
         }
         return fields
     
@@ -174,7 +174,7 @@ class Process(AdditionalDataHolder, Parsable):
         """
         Sets the integrityLevel property value. The integrity level of the process. Possible values are: unknown, untrusted, low, medium, high, system.
         Args:
-            value: Value to set for the integrityLevel property.
+            value: Value to set for the integrity_level property.
         """
         self._integrity_level = value
     
@@ -191,7 +191,7 @@ class Process(AdditionalDataHolder, Parsable):
         """
         Sets the isElevated property value. True if the process is elevated.
         Args:
-            value: Value to set for the isElevated property.
+            value: Value to set for the is_elevated property.
         """
         self._is_elevated = value
     
@@ -225,7 +225,7 @@ class Process(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -242,7 +242,7 @@ class Process(AdditionalDataHolder, Parsable):
         """
         Sets the parentProcessCreatedDateTime property value. DateTime at which the parent process was started. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the parentProcessCreatedDateTime property.
+            value: Value to set for the parent_process_created_date_time property.
         """
         self._parent_process_created_date_time = value
     
@@ -259,7 +259,7 @@ class Process(AdditionalDataHolder, Parsable):
         """
         Sets the parentProcessId property value. The Process ID (PID) of the parent process.
         Args:
-            value: Value to set for the parentProcessId property.
+            value: Value to set for the parent_process_id property.
         """
         self._parent_process_id = value
     
@@ -276,7 +276,7 @@ class Process(AdditionalDataHolder, Parsable):
         """
         Sets the parentProcessName property value. The name of the image file of the parent process.
         Args:
-            value: Value to set for the parentProcessName property.
+            value: Value to set for the parent_process_name property.
         """
         self._parent_process_name = value
     
@@ -310,7 +310,7 @@ class Process(AdditionalDataHolder, Parsable):
         """
         Sets the processId property value. The Process ID (PID) of the process.
         Args:
-            value: Value to set for the processId property.
+            value: Value to set for the process_id property.
         """
         self._process_id = value
     

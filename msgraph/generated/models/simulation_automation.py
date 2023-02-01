@@ -51,7 +51,7 @@ class SimulationAutomation(entity.Entity):
         """
         Sets the createdBy property value. Identity of the user who created the attack simulation automation.
         Args:
-            value: Value to set for the createdBy property.
+            value: Value to set for the created_by property.
         """
         self._created_by = value
     
@@ -68,7 +68,7 @@ class SimulationAutomation(entity.Entity):
         """
         Sets the createdDateTime property value. Date and time when the attack simulation automation was created.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -114,7 +114,7 @@ class SimulationAutomation(entity.Entity):
         """
         Sets the displayName property value. Display name of the attack simulation automation. Supports $filter and $orderby.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -124,14 +124,14 @@ class SimulationAutomation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(email_identity.EmailIdentity)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(email_identity.EmailIdentity)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(email_identity.EmailIdentity)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "last_run_date_time": lambda n : setattr(self, 'last_run_date_time', n.get_datetime_value()),
-            "next_run_date_time": lambda n : setattr(self, 'next_run_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(email_identity.EmailIdentity)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "lastRunDateTime": lambda n : setattr(self, 'last_run_date_time', n.get_datetime_value()),
+            "nextRunDateTime": lambda n : setattr(self, 'next_run_date_time', n.get_datetime_value()),
             "runs": lambda n : setattr(self, 'runs', n.get_collection_of_object_values(simulation_automation_run.SimulationAutomationRun)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(simulation_automation_status.SimulationAutomationStatus)),
         }
@@ -152,7 +152,7 @@ class SimulationAutomation(entity.Entity):
         """
         Sets the lastModifiedBy property value. Identity of the user who most recently modified the attack simulation automation.
         Args:
-            value: Value to set for the lastModifiedBy property.
+            value: Value to set for the last_modified_by property.
         """
         self._last_modified_by = value
     
@@ -169,7 +169,7 @@ class SimulationAutomation(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. Date and time when the attack simulation automation was most recently modified.
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     
@@ -186,7 +186,7 @@ class SimulationAutomation(entity.Entity):
         """
         Sets the lastRunDateTime property value. Date and time of the latest run of the attack simulation automation.
         Args:
-            value: Value to set for the lastRunDateTime property.
+            value: Value to set for the last_run_date_time property.
         """
         self._last_run_date_time = value
     
@@ -203,7 +203,7 @@ class SimulationAutomation(entity.Entity):
         """
         Sets the nextRunDateTime property value. Date and time of the upcoming run of the attack simulation automation.
         Args:
-            value: Value to set for the nextRunDateTime property.
+            value: Value to set for the next_run_date_time property.
         """
         self._next_run_date_time = value
     

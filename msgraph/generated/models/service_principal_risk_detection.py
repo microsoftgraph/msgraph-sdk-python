@@ -44,7 +44,7 @@ class ServicePrincipalRiskDetection(entity.Entity):
         """
         Sets the activityDateTime property value. Date and time when the risky activity occurred. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the activityDateTime property.
+            value: Value to set for the activity_date_time property.
         """
         self._activity_date_time = value
     
@@ -61,7 +61,7 @@ class ServicePrincipalRiskDetection(entity.Entity):
         """
         Sets the additionalInfo property value. Additional information associated with the risk detection. This string value is represented as a JSON object with the quotations escaped.
         Args:
-            value: Value to set for the additionalInfo property.
+            value: Value to set for the additional_info property.
         """
         self._additional_info = value
     
@@ -78,13 +78,13 @@ class ServicePrincipalRiskDetection(entity.Entity):
         """
         Sets the appId property value. The unique identifier for the associated application.
         Args:
-            value: Value to set for the appId property.
+            value: Value to set for the app_id property.
         """
         self._app_id = value
     
     def __init__(self,) -> None:
         """
-        Instantiates a new servicePrincipalRiskDetection and sets the default values.
+        Instantiates a new ServicePrincipalRiskDetection and sets the default values.
         """
         super().__init__()
         # Indicates the activity type the detected risk is linked to.  The possible values are: signin, servicePrincipal. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: servicePrincipal.
@@ -143,7 +143,7 @@ class ServicePrincipalRiskDetection(entity.Entity):
         """
         Sets the correlationId property value. Correlation ID of the sign-in activity associated with the risk detection. This property is null if the risk detection is not associated with a sign-in activity.
         Args:
-            value: Value to set for the correlationId property.
+            value: Value to set for the correlation_id property.
         """
         self._correlation_id = value
     
@@ -172,7 +172,7 @@ class ServicePrincipalRiskDetection(entity.Entity):
         """
         Sets the detectedDateTime property value. Date and time when the risk was detected. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the detectedDateTime property.
+            value: Value to set for the detected_date_time property.
         """
         self._detected_date_time = value
     
@@ -189,7 +189,7 @@ class ServicePrincipalRiskDetection(entity.Entity):
         """
         Sets the detectionTimingType property value. Timing of the detected risk , whether real-time or offline. The possible values are: notDefined, realtime, nearRealtime, offline, unknownFutureValue.
         Args:
-            value: Value to set for the detectionTimingType property.
+            value: Value to set for the detection_timing_type property.
         """
         self._detection_timing_type = value
     
@@ -200,25 +200,25 @@ class ServicePrincipalRiskDetection(entity.Entity):
         """
         fields = {
             "activity": lambda n : setattr(self, 'activity', n.get_enum_value(activity_type.ActivityType)),
-            "activity_date_time": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
-            "additional_info": lambda n : setattr(self, 'additional_info', n.get_str_value()),
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "correlation_id": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
-            "detected_date_time": lambda n : setattr(self, 'detected_date_time', n.get_datetime_value()),
-            "detection_timing_type": lambda n : setattr(self, 'detection_timing_type', n.get_enum_value(risk_detection_timing_type.RiskDetectionTimingType)),
-            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
-            "key_ids": lambda n : setattr(self, 'key_ids', n.get_collection_of_primitive_values(str)),
-            "last_updated_date_time": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
+            "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
+            "additionalInfo": lambda n : setattr(self, 'additional_info', n.get_str_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "correlationId": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
+            "detectedDateTime": lambda n : setattr(self, 'detected_date_time', n.get_datetime_value()),
+            "detectionTimingType": lambda n : setattr(self, 'detection_timing_type', n.get_enum_value(risk_detection_timing_type.RiskDetectionTimingType)),
+            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "keyIds": lambda n : setattr(self, 'key_ids', n.get_collection_of_primitive_values(str)),
+            "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
             "location": lambda n : setattr(self, 'location', n.get_object_value(sign_in_location.SignInLocation)),
-            "request_id": lambda n : setattr(self, 'request_id', n.get_str_value()),
-            "risk_detail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(risk_detail.RiskDetail)),
-            "risk_event_type": lambda n : setattr(self, 'risk_event_type', n.get_str_value()),
-            "risk_level": lambda n : setattr(self, 'risk_level', n.get_enum_value(risk_level.RiskLevel)),
-            "risk_state": lambda n : setattr(self, 'risk_state', n.get_enum_value(risk_state.RiskState)),
-            "service_principal_display_name": lambda n : setattr(self, 'service_principal_display_name', n.get_str_value()),
-            "service_principal_id": lambda n : setattr(self, 'service_principal_id', n.get_str_value()),
+            "requestId": lambda n : setattr(self, 'request_id', n.get_str_value()),
+            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(risk_detail.RiskDetail)),
+            "riskEventType": lambda n : setattr(self, 'risk_event_type', n.get_str_value()),
+            "riskLevel": lambda n : setattr(self, 'risk_level', n.get_enum_value(risk_level.RiskLevel)),
+            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(risk_state.RiskState)),
+            "servicePrincipalDisplayName": lambda n : setattr(self, 'service_principal_display_name', n.get_str_value()),
+            "servicePrincipalId": lambda n : setattr(self, 'service_principal_id', n.get_str_value()),
             "source": lambda n : setattr(self, 'source', n.get_str_value()),
-            "token_issuer_type": lambda n : setattr(self, 'token_issuer_type', n.get_enum_value(token_issuer_type.TokenIssuerType)),
+            "tokenIssuerType": lambda n : setattr(self, 'token_issuer_type', n.get_enum_value(token_issuer_type.TokenIssuerType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -237,7 +237,7 @@ class ServicePrincipalRiskDetection(entity.Entity):
         """
         Sets the ipAddress property value. Provides the IP address of the client from where the risk occurred.
         Args:
-            value: Value to set for the ipAddress property.
+            value: Value to set for the ip_address property.
         """
         self._ip_address = value
     
@@ -254,7 +254,7 @@ class ServicePrincipalRiskDetection(entity.Entity):
         """
         Sets the keyIds property value. The unique identifier for the key credential associated with the risk detection.
         Args:
-            value: Value to set for the keyIds property.
+            value: Value to set for the key_ids property.
         """
         self._key_ids = value
     
@@ -271,7 +271,7 @@ class ServicePrincipalRiskDetection(entity.Entity):
         """
         Sets the lastUpdatedDateTime property value. Date and time when the risk detection was last updated.
         Args:
-            value: Value to set for the lastUpdatedDateTime property.
+            value: Value to set for the last_updated_date_time property.
         """
         self._last_updated_date_time = value
     
@@ -305,7 +305,7 @@ class ServicePrincipalRiskDetection(entity.Entity):
         """
         Sets the requestId property value. Request identifier of the sign-in activity associated with the risk detection. This property is null if the risk detection is not associated with a sign-in activity. Supports $filter (eq).
         Args:
-            value: Value to set for the requestId property.
+            value: Value to set for the request_id property.
         """
         self._request_id = value
     
@@ -322,7 +322,7 @@ class ServicePrincipalRiskDetection(entity.Entity):
         """
         Sets the riskDetail property value. Details of the detected risk. Note: Details for this property are only available for Workload Identities Premium customers. Events in tenants without this license will be returned hidden. The possible values are: none, hidden, adminConfirmedServicePrincipalCompromised, adminDismissedAllRiskForServicePrincipal. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: adminConfirmedServicePrincipalCompromised , adminDismissedAllRiskForServicePrincipal.
         Args:
-            value: Value to set for the riskDetail property.
+            value: Value to set for the risk_detail property.
         """
         self._risk_detail = value
     
@@ -339,7 +339,7 @@ class ServicePrincipalRiskDetection(entity.Entity):
         """
         Sets the riskEventType property value. The type of risk event detected. The possible values are: investigationsThreatIntelligence, generic, adminConfirmedServicePrincipalCompromised, suspiciousSignins, leakedCredentials, anomalousServicePrincipalActivity, maliciousApplication, suspiciousApplication.
         Args:
-            value: Value to set for the riskEventType property.
+            value: Value to set for the risk_event_type property.
         """
         self._risk_event_type = value
     
@@ -356,7 +356,7 @@ class ServicePrincipalRiskDetection(entity.Entity):
         """
         Sets the riskLevel property value. Level of the detected risk. Note: Details for this property are only available for Workload Identities Premium customers. Events in tenants without this license will be returned hidden. The possible values are: low, medium, high, hidden, none.
         Args:
-            value: Value to set for the riskLevel property.
+            value: Value to set for the risk_level property.
         """
         self._risk_level = value
     
@@ -373,7 +373,7 @@ class ServicePrincipalRiskDetection(entity.Entity):
         """
         Sets the riskState property value. The state of a detected risky service principal or sign-in activity. The possible values are: none, dismissed, atRisk, confirmedCompromised.
         Args:
-            value: Value to set for the riskState property.
+            value: Value to set for the risk_state property.
         """
         self._risk_state = value
     
@@ -420,7 +420,7 @@ class ServicePrincipalRiskDetection(entity.Entity):
         """
         Sets the servicePrincipalDisplayName property value. The display name for the service principal.
         Args:
-            value: Value to set for the servicePrincipalDisplayName property.
+            value: Value to set for the service_principal_display_name property.
         """
         self._service_principal_display_name = value
     
@@ -437,7 +437,7 @@ class ServicePrincipalRiskDetection(entity.Entity):
         """
         Sets the servicePrincipalId property value. The unique identifier for the service principal. Supports $filter (eq).
         Args:
-            value: Value to set for the servicePrincipalId property.
+            value: Value to set for the service_principal_id property.
         """
         self._service_principal_id = value
     
@@ -471,7 +471,7 @@ class ServicePrincipalRiskDetection(entity.Entity):
         """
         Sets the tokenIssuerType property value. Indicates the type of token issuer for the detected sign-in risk. The possible values are: AzureAD.
         Args:
-            value: Value to set for the tokenIssuerType property.
+            value: Value to set for the token_issuer_type property.
         """
         self._token_issuer_type = value
     

@@ -42,7 +42,7 @@ class DirectoryObject(entity.Entity):
         """
         Sets the deletedDateTime property value. Date and time when this object was deleted. Always null when the object hasn't been deleted.
         Args:
-            value: Value to set for the deletedDateTime property.
+            value: Value to set for the deleted_date_time property.
         """
         self._deleted_date_time = value
     
@@ -52,7 +52,7 @@ class DirectoryObject(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "deleted_date_time": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
+            "deletedDateTime": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -17,10 +17,11 @@ class DirectoryAuditItemRequestBuilder():
     """
     Provides operations to manage the directoryAudits property of the microsoft.graph.auditLogRoot entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, directory_audit_id: Optional[str] = None) -> None:
         """
         Instantiates a new DirectoryAuditItemRequestBuilder and sets the default values.
         Args:
+            directoryAuditId: key: id of directoryAudit
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class DirectoryAuditItemRequestBuilder():
         self.url_template: str = "{+baseurl}/auditLogs/directoryAudits/{directoryAudit%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["directoryAudit%2Did"] = directoryAuditId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

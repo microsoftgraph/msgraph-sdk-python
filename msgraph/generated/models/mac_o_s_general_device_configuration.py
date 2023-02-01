@@ -22,7 +22,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the compliantAppListType property value. Possible values of the compliance app list.
         Args:
-            value: Value to set for the compliantAppListType property.
+            value: Value to set for the compliant_app_list_type property.
         """
         self._compliant_app_list_type = value
     
@@ -39,7 +39,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the compliantAppsList property value. List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
         Args:
-            value: Value to set for the compliantAppsList property.
+            value: Value to set for the compliant_apps_list property.
         """
         self._compliant_apps_list = value
     
@@ -99,7 +99,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the emailInDomainSuffixes property value. An email address lacking a suffix that matches any of these strings will be considered out-of-domain.
         Args:
-            value: Value to set for the emailInDomainSuffixes property.
+            value: Value to set for the email_in_domain_suffixes property.
         """
         self._email_in_domain_suffixes = value
     
@@ -109,18 +109,18 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "compliant_app_list_type": lambda n : setattr(self, 'compliant_app_list_type', n.get_enum_value(app_list_type.AppListType)),
-            "compliant_apps_list": lambda n : setattr(self, 'compliant_apps_list', n.get_collection_of_object_values(app_list_item.AppListItem)),
-            "email_in_domain_suffixes": lambda n : setattr(self, 'email_in_domain_suffixes', n.get_collection_of_primitive_values(str)),
-            "password_block_simple": lambda n : setattr(self, 'password_block_simple', n.get_bool_value()),
-            "password_expiration_days": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
-            "password_minimum_character_set_count": lambda n : setattr(self, 'password_minimum_character_set_count', n.get_int_value()),
-            "password_minimum_length": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
-            "password_minutes_of_inactivity_before_lock": lambda n : setattr(self, 'password_minutes_of_inactivity_before_lock', n.get_int_value()),
-            "password_minutes_of_inactivity_before_screen_timeout": lambda n : setattr(self, 'password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
-            "password_previous_password_block_count": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
-            "password_required": lambda n : setattr(self, 'password_required', n.get_bool_value()),
-            "password_required_type": lambda n : setattr(self, 'password_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
+            "compliantAppsList": lambda n : setattr(self, 'compliant_apps_list', n.get_collection_of_object_values(app_list_item.AppListItem)),
+            "compliantAppListType": lambda n : setattr(self, 'compliant_app_list_type', n.get_enum_value(app_list_type.AppListType)),
+            "emailInDomainSuffixes": lambda n : setattr(self, 'email_in_domain_suffixes', n.get_collection_of_primitive_values(str)),
+            "passwordBlockSimple": lambda n : setattr(self, 'password_block_simple', n.get_bool_value()),
+            "passwordExpirationDays": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
+            "passwordMinimumCharacterSetCount": lambda n : setattr(self, 'password_minimum_character_set_count', n.get_int_value()),
+            "passwordMinimumLength": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
+            "passwordMinutesOfInactivityBeforeLock": lambda n : setattr(self, 'password_minutes_of_inactivity_before_lock', n.get_int_value()),
+            "passwordMinutesOfInactivityBeforeScreenTimeout": lambda n : setattr(self, 'password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
+            "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
+            "passwordRequired": lambda n : setattr(self, 'password_required', n.get_bool_value()),
+            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -139,7 +139,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the passwordBlockSimple property value. Block simple passwords.
         Args:
-            value: Value to set for the passwordBlockSimple property.
+            value: Value to set for the password_block_simple property.
         """
         self._password_block_simple = value
     
@@ -156,7 +156,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the passwordExpirationDays property value. Number of days before the password expires.
         Args:
-            value: Value to set for the passwordExpirationDays property.
+            value: Value to set for the password_expiration_days property.
         """
         self._password_expiration_days = value
     
@@ -173,7 +173,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the passwordMinimumCharacterSetCount property value. Number of character sets a password must contain. Valid values 0 to 4
         Args:
-            value: Value to set for the passwordMinimumCharacterSetCount property.
+            value: Value to set for the password_minimum_character_set_count property.
         """
         self._password_minimum_character_set_count = value
     
@@ -190,7 +190,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the passwordMinimumLength property value. Minimum length of passwords.
         Args:
-            value: Value to set for the passwordMinimumLength property.
+            value: Value to set for the password_minimum_length property.
         """
         self._password_minimum_length = value
     
@@ -207,7 +207,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the passwordMinutesOfInactivityBeforeLock property value. Minutes of inactivity required before a password is required.
         Args:
-            value: Value to set for the passwordMinutesOfInactivityBeforeLock property.
+            value: Value to set for the password_minutes_of_inactivity_before_lock property.
         """
         self._password_minutes_of_inactivity_before_lock = value
     
@@ -224,7 +224,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the passwordMinutesOfInactivityBeforeScreenTimeout property value. Minutes of inactivity required before the screen times out.
         Args:
-            value: Value to set for the passwordMinutesOfInactivityBeforeScreenTimeout property.
+            value: Value to set for the password_minutes_of_inactivity_before_screen_timeout property.
         """
         self._password_minutes_of_inactivity_before_screen_timeout = value
     
@@ -241,7 +241,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the passwordPreviousPasswordBlockCount property value. Number of previous passwords to block.
         Args:
-            value: Value to set for the passwordPreviousPasswordBlockCount property.
+            value: Value to set for the password_previous_password_block_count property.
         """
         self._password_previous_password_block_count = value
     
@@ -258,7 +258,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the passwordRequired property value. Whether or not to require a password.
         Args:
-            value: Value to set for the passwordRequired property.
+            value: Value to set for the password_required property.
         """
         self._password_required = value
     
@@ -275,7 +275,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the passwordRequiredType property value. Possible values of required passwords.
         Args:
-            value: Value to set for the passwordRequiredType property.
+            value: Value to set for the password_required_type property.
         """
         self._password_required_type = value
     
@@ -288,8 +288,8 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-        writer.write_enum_value("compliantAppListType", self.compliant_app_list_type)
         writer.write_collection_of_object_values("compliantAppsList", self.compliant_apps_list)
+        writer.write_enum_value("compliantAppListType", self.compliant_app_list_type)
         writer.write_collection_of_primitive_values("emailInDomainSuffixes", self.email_in_domain_suffixes)
         writer.write_bool_value("passwordBlockSimple", self.password_block_simple)
         writer.write_int_value("passwordExpirationDays", self.password_expiration_days)

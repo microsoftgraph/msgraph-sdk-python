@@ -40,7 +40,7 @@ class EdgeSearchEngineCustom(edge_search_engine_base.EdgeSearchEngineBase):
         """
         Sets the edgeSearchEngineOpenSearchXmlUrl property value. Points to a https link containing the OpenSearch xml file that contains, at minimum, the short name and the URL to the search Engine.
         Args:
-            value: Value to set for the edgeSearchEngineOpenSearchXmlUrl property.
+            value: Value to set for the edge_search_engine_open_search_xml_url property.
         """
         self._edge_search_engine_open_search_xml_url = value
     
@@ -50,7 +50,7 @@ class EdgeSearchEngineCustom(edge_search_engine_base.EdgeSearchEngineBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "edge_search_engine_open_search_xml_url": lambda n : setattr(self, 'edge_search_engine_open_search_xml_url', n.get_str_value()),
+            "edgeSearchEngineOpenSearchXmlUrl": lambda n : setattr(self, 'edge_search_engine_open_search_xml_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

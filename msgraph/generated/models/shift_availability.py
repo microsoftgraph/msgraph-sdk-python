@@ -60,8 +60,8 @@ class ShiftAvailability(AdditionalDataHolder, Parsable):
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(patterned_recurrence.PatternedRecurrence)),
-            "time_slots": lambda n : setattr(self, 'time_slots', n.get_collection_of_object_values(time_range.TimeRange)),
-            "time_zone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
+            "timeSlots": lambda n : setattr(self, 'time_slots', n.get_collection_of_object_values(time_range.TimeRange)),
+            "timeZone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
         }
         return fields
     
@@ -78,7 +78,7 @@ class ShiftAvailability(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -126,7 +126,7 @@ class ShiftAvailability(AdditionalDataHolder, Parsable):
         """
         Sets the timeSlots property value. The time slot(s) preferred by the user.
         Args:
-            value: Value to set for the timeSlots property.
+            value: Value to set for the time_slots property.
         """
         self._time_slots = value
     
@@ -143,7 +143,7 @@ class ShiftAvailability(AdditionalDataHolder, Parsable):
         """
         Sets the timeZone property value. Specifies the time zone for the indicated time.
         Args:
-            value: Value to set for the timeZone property.
+            value: Value to set for the time_zone property.
         """
         self._time_zone = value
     

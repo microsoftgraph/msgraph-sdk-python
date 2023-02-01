@@ -19,7 +19,7 @@ class ConnectedOrganizationMembers(subject_set.SubjectSet):
         """
         Sets the connectedOrganizationId property value. The ID of the connected organization in entitlement management.
         Args:
-            value: Value to set for the connectedOrganizationId property.
+            value: Value to set for the connected_organization_id property.
         """
         self._connected_organization_id = value
     
@@ -69,7 +69,7 @@ class ConnectedOrganizationMembers(subject_set.SubjectSet):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "connected_organization_id": lambda n : setattr(self, 'connected_organization_id', n.get_str_value()),
+            "connectedOrganizationId": lambda n : setattr(self, 'connected_organization_id', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

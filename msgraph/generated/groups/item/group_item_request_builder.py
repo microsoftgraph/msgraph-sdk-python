@@ -12,16 +12,11 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 accepted_senders_request_builder = lazy_import('msgraph.generated.groups.item.accepted_senders.accepted_senders_request_builder')
 directory_object_item_request_builder = lazy_import('msgraph.generated.groups.item.accepted_senders.item.directory_object_item_request_builder')
-add_favorite_request_builder = lazy_import('msgraph.generated.groups.item.add_favorite.add_favorite_request_builder')
 app_role_assignments_request_builder = lazy_import('msgraph.generated.groups.item.app_role_assignments.app_role_assignments_request_builder')
 app_role_assignment_item_request_builder = lazy_import('msgraph.generated.groups.item.app_role_assignments.item.app_role_assignment_item_request_builder')
-assign_license_request_builder = lazy_import('msgraph.generated.groups.item.assign_license.assign_license_request_builder')
 calendar_request_builder = lazy_import('msgraph.generated.groups.item.calendar.calendar_request_builder')
 calendar_view_request_builder = lazy_import('msgraph.generated.groups.item.calendar_view.calendar_view_request_builder')
 event_item_request_builder = lazy_import('msgraph.generated.groups.item.calendar_view.item.event_item_request_builder')
-check_granted_permissions_for_app_request_builder = lazy_import('msgraph.generated.groups.item.check_granted_permissions_for_app.check_granted_permissions_for_app_request_builder')
-check_member_groups_request_builder = lazy_import('msgraph.generated.groups.item.check_member_groups.check_member_groups_request_builder')
-check_member_objects_request_builder = lazy_import('msgraph.generated.groups.item.check_member_objects.check_member_objects_request_builder')
 conversations_request_builder = lazy_import('msgraph.generated.groups.item.conversations.conversations_request_builder')
 conversation_item_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.conversation_item_request_builder')
 created_on_behalf_of_request_builder = lazy_import('msgraph.generated.groups.item.created_on_behalf_of.created_on_behalf_of_request_builder')
@@ -32,8 +27,6 @@ events_request_builder = lazy_import('msgraph.generated.groups.item.events.event
 event_item_request_builder = lazy_import('msgraph.generated.groups.item.events.item.event_item_request_builder')
 extensions_request_builder = lazy_import('msgraph.generated.groups.item.extensions.extensions_request_builder')
 extension_item_request_builder = lazy_import('msgraph.generated.groups.item.extensions.item.extension_item_request_builder')
-get_member_groups_request_builder = lazy_import('msgraph.generated.groups.item.get_member_groups.get_member_groups_request_builder')
-get_member_objects_request_builder = lazy_import('msgraph.generated.groups.item.get_member_objects.get_member_objects_request_builder')
 group_lifecycle_policies_request_builder = lazy_import('msgraph.generated.groups.item.group_lifecycle_policies.group_lifecycle_policies_request_builder')
 group_lifecycle_policy_item_request_builder = lazy_import('msgraph.generated.groups.item.group_lifecycle_policies.item.group_lifecycle_policy_item_request_builder')
 member_of_request_builder = lazy_import('msgraph.generated.groups.item.member_of.member_of_request_builder')
@@ -42,6 +35,20 @@ members_request_builder = lazy_import('msgraph.generated.groups.item.members.mem
 directory_object_item_request_builder = lazy_import('msgraph.generated.groups.item.members.item.directory_object_item_request_builder')
 members_with_license_errors_request_builder = lazy_import('msgraph.generated.groups.item.members_with_license_errors.members_with_license_errors_request_builder')
 directory_object_item_request_builder = lazy_import('msgraph.generated.groups.item.members_with_license_errors.item.directory_object_item_request_builder')
+add_favorite_request_builder = lazy_import('msgraph.generated.groups.item.microsoft_graph_add_favorite.add_favorite_request_builder')
+assign_license_request_builder = lazy_import('msgraph.generated.groups.item.microsoft_graph_assign_license.assign_license_request_builder')
+check_granted_permissions_for_app_request_builder = lazy_import('msgraph.generated.groups.item.microsoft_graph_check_granted_permissions_for_app.check_granted_permissions_for_app_request_builder')
+check_member_groups_request_builder = lazy_import('msgraph.generated.groups.item.microsoft_graph_check_member_groups.check_member_groups_request_builder')
+check_member_objects_request_builder = lazy_import('msgraph.generated.groups.item.microsoft_graph_check_member_objects.check_member_objects_request_builder')
+get_member_groups_request_builder = lazy_import('msgraph.generated.groups.item.microsoft_graph_get_member_groups.get_member_groups_request_builder')
+get_member_objects_request_builder = lazy_import('msgraph.generated.groups.item.microsoft_graph_get_member_objects.get_member_objects_request_builder')
+remove_favorite_request_builder = lazy_import('msgraph.generated.groups.item.microsoft_graph_remove_favorite.remove_favorite_request_builder')
+renew_request_builder = lazy_import('msgraph.generated.groups.item.microsoft_graph_renew.renew_request_builder')
+reset_unseen_count_request_builder = lazy_import('msgraph.generated.groups.item.microsoft_graph_reset_unseen_count.reset_unseen_count_request_builder')
+restore_request_builder = lazy_import('msgraph.generated.groups.item.microsoft_graph_restore.restore_request_builder')
+subscribe_by_mail_request_builder = lazy_import('msgraph.generated.groups.item.microsoft_graph_subscribe_by_mail.subscribe_by_mail_request_builder')
+unsubscribe_by_mail_request_builder = lazy_import('msgraph.generated.groups.item.microsoft_graph_unsubscribe_by_mail.unsubscribe_by_mail_request_builder')
+validate_properties_request_builder = lazy_import('msgraph.generated.groups.item.microsoft_graph_validate_properties.validate_properties_request_builder')
 onenote_request_builder = lazy_import('msgraph.generated.groups.item.onenote.onenote_request_builder')
 owners_request_builder = lazy_import('msgraph.generated.groups.item.owners.owners_request_builder')
 directory_object_item_request_builder = lazy_import('msgraph.generated.groups.item.owners.item.directory_object_item_request_builder')
@@ -53,15 +60,10 @@ profile_photo_item_request_builder = lazy_import('msgraph.generated.groups.item.
 planner_request_builder = lazy_import('msgraph.generated.groups.item.planner.planner_request_builder')
 rejected_senders_request_builder = lazy_import('msgraph.generated.groups.item.rejected_senders.rejected_senders_request_builder')
 directory_object_item_request_builder = lazy_import('msgraph.generated.groups.item.rejected_senders.item.directory_object_item_request_builder')
-remove_favorite_request_builder = lazy_import('msgraph.generated.groups.item.remove_favorite.remove_favorite_request_builder')
-renew_request_builder = lazy_import('msgraph.generated.groups.item.renew.renew_request_builder')
-reset_unseen_count_request_builder = lazy_import('msgraph.generated.groups.item.reset_unseen_count.reset_unseen_count_request_builder')
-restore_request_builder = lazy_import('msgraph.generated.groups.item.restore.restore_request_builder')
 settings_request_builder = lazy_import('msgraph.generated.groups.item.settings.settings_request_builder')
 group_setting_item_request_builder = lazy_import('msgraph.generated.groups.item.settings.item.group_setting_item_request_builder')
 sites_request_builder = lazy_import('msgraph.generated.groups.item.sites.sites_request_builder')
 site_item_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.site_item_request_builder')
-subscribe_by_mail_request_builder = lazy_import('msgraph.generated.groups.item.subscribe_by_mail.subscribe_by_mail_request_builder')
 team_request_builder = lazy_import('msgraph.generated.groups.item.team.team_request_builder')
 threads_request_builder = lazy_import('msgraph.generated.groups.item.threads.threads_request_builder')
 conversation_thread_item_request_builder = lazy_import('msgraph.generated.groups.item.threads.item.conversation_thread_item_request_builder')
@@ -69,8 +71,6 @@ transitive_member_of_request_builder = lazy_import('msgraph.generated.groups.ite
 directory_object_item_request_builder = lazy_import('msgraph.generated.groups.item.transitive_member_of.item.directory_object_item_request_builder')
 transitive_members_request_builder = lazy_import('msgraph.generated.groups.item.transitive_members.transitive_members_request_builder')
 directory_object_item_request_builder = lazy_import('msgraph.generated.groups.item.transitive_members.item.directory_object_item_request_builder')
-unsubscribe_by_mail_request_builder = lazy_import('msgraph.generated.groups.item.unsubscribe_by_mail.unsubscribe_by_mail_request_builder')
-validate_properties_request_builder = lazy_import('msgraph.generated.groups.item.validate_properties.validate_properties_request_builder')
 group = lazy_import('msgraph.generated.models.group')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -86,25 +86,11 @@ class GroupItemRequestBuilder():
         return accepted_senders_request_builder.AcceptedSendersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def add_favorite(self) -> add_favorite_request_builder.AddFavoriteRequestBuilder:
-        """
-        Provides operations to call the addFavorite method.
-        """
-        return add_favorite_request_builder.AddFavoriteRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def app_role_assignments(self) -> app_role_assignments_request_builder.AppRoleAssignmentsRequestBuilder:
         """
         Provides operations to manage the appRoleAssignments property of the microsoft.graph.group entity.
         """
         return app_role_assignments_request_builder.AppRoleAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def assign_license(self) -> assign_license_request_builder.AssignLicenseRequestBuilder:
-        """
-        Provides operations to call the assignLicense method.
-        """
-        return assign_license_request_builder.AssignLicenseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def calendar(self) -> calendar_request_builder.CalendarRequestBuilder:
@@ -119,27 +105,6 @@ class GroupItemRequestBuilder():
         Provides operations to manage the calendarView property of the microsoft.graph.group entity.
         """
         return calendar_view_request_builder.CalendarViewRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def check_granted_permissions_for_app(self) -> check_granted_permissions_for_app_request_builder.CheckGrantedPermissionsForAppRequestBuilder:
-        """
-        Provides operations to call the checkGrantedPermissionsForApp method.
-        """
-        return check_granted_permissions_for_app_request_builder.CheckGrantedPermissionsForAppRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
-        """
-        Provides operations to call the checkMemberGroups method.
-        """
-        return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
-        """
-        Provides operations to call the checkMemberObjects method.
-        """
-        return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def conversations(self) -> conversations_request_builder.ConversationsRequestBuilder:
@@ -184,20 +149,6 @@ class GroupItemRequestBuilder():
         return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
-        """
-        Provides operations to call the getMemberGroups method.
-        """
-        return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
-        """
-        Provides operations to call the getMemberObjects method.
-        """
-        return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def group_lifecycle_policies(self) -> group_lifecycle_policies_request_builder.GroupLifecyclePoliciesRequestBuilder:
         """
         Provides operations to manage the groupLifecyclePolicies property of the microsoft.graph.group entity.
@@ -224,6 +175,104 @@ class GroupItemRequestBuilder():
         Provides operations to manage the membersWithLicenseErrors property of the microsoft.graph.group entity.
         """
         return members_with_license_errors_request_builder.MembersWithLicenseErrorsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_add_favorite(self) -> add_favorite_request_builder.AddFavoriteRequestBuilder:
+        """
+        Provides operations to call the addFavorite method.
+        """
+        return add_favorite_request_builder.AddFavoriteRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_assign_license(self) -> assign_license_request_builder.AssignLicenseRequestBuilder:
+        """
+        Provides operations to call the assignLicense method.
+        """
+        return assign_license_request_builder.AssignLicenseRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_check_granted_permissions_for_app(self) -> check_granted_permissions_for_app_request_builder.CheckGrantedPermissionsForAppRequestBuilder:
+        """
+        Provides operations to call the checkGrantedPermissionsForApp method.
+        """
+        return check_granted_permissions_for_app_request_builder.CheckGrantedPermissionsForAppRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
+        """
+        Provides operations to call the checkMemberGroups method.
+        """
+        return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
+        """
+        Provides operations to call the checkMemberObjects method.
+        """
+        return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
+        """
+        Provides operations to call the getMemberGroups method.
+        """
+        return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
+        """
+        Provides operations to call the getMemberObjects method.
+        """
+        return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_remove_favorite(self) -> remove_favorite_request_builder.RemoveFavoriteRequestBuilder:
+        """
+        Provides operations to call the removeFavorite method.
+        """
+        return remove_favorite_request_builder.RemoveFavoriteRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_renew(self) -> renew_request_builder.RenewRequestBuilder:
+        """
+        Provides operations to call the renew method.
+        """
+        return renew_request_builder.RenewRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_reset_unseen_count(self) -> reset_unseen_count_request_builder.ResetUnseenCountRequestBuilder:
+        """
+        Provides operations to call the resetUnseenCount method.
+        """
+        return reset_unseen_count_request_builder.ResetUnseenCountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_restore(self) -> restore_request_builder.RestoreRequestBuilder:
+        """
+        Provides operations to call the restore method.
+        """
+        return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_subscribe_by_mail(self) -> subscribe_by_mail_request_builder.SubscribeByMailRequestBuilder:
+        """
+        Provides operations to call the subscribeByMail method.
+        """
+        return subscribe_by_mail_request_builder.SubscribeByMailRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_unsubscribe_by_mail(self) -> unsubscribe_by_mail_request_builder.UnsubscribeByMailRequestBuilder:
+        """
+        Provides operations to call the unsubscribeByMail method.
+        """
+        return unsubscribe_by_mail_request_builder.UnsubscribeByMailRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
+        """
+        Provides operations to call the validateProperties method.
+        """
+        return validate_properties_request_builder.ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def onenote(self) -> onenote_request_builder.OnenoteRequestBuilder:
@@ -275,34 +324,6 @@ class GroupItemRequestBuilder():
         return rejected_senders_request_builder.RejectedSendersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def remove_favorite(self) -> remove_favorite_request_builder.RemoveFavoriteRequestBuilder:
-        """
-        Provides operations to call the removeFavorite method.
-        """
-        return remove_favorite_request_builder.RemoveFavoriteRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def renew(self) -> renew_request_builder.RenewRequestBuilder:
-        """
-        Provides operations to call the renew method.
-        """
-        return renew_request_builder.RenewRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def reset_unseen_count(self) -> reset_unseen_count_request_builder.ResetUnseenCountRequestBuilder:
-        """
-        Provides operations to call the resetUnseenCount method.
-        """
-        return reset_unseen_count_request_builder.ResetUnseenCountRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def restore(self) -> restore_request_builder.RestoreRequestBuilder:
-        """
-        Provides operations to call the restore method.
-        """
-        return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def settings(self) -> settings_request_builder.SettingsRequestBuilder:
         """
         Provides operations to manage the settings property of the microsoft.graph.group entity.
@@ -315,13 +336,6 @@ class GroupItemRequestBuilder():
         Provides operations to manage the sites property of the microsoft.graph.group entity.
         """
         return sites_request_builder.SitesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def subscribe_by_mail(self) -> subscribe_by_mail_request_builder.SubscribeByMailRequestBuilder:
-        """
-        Provides operations to call the subscribeByMail method.
-        """
-        return subscribe_by_mail_request_builder.SubscribeByMailRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def team(self) -> team_request_builder.TeamRequestBuilder:
@@ -350,20 +364,6 @@ class GroupItemRequestBuilder():
         Provides operations to manage the transitiveMembers property of the microsoft.graph.group entity.
         """
         return transitive_members_request_builder.TransitiveMembersRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def unsubscribe_by_mail(self) -> unsubscribe_by_mail_request_builder.UnsubscribeByMailRequestBuilder:
-        """
-        Provides operations to call the unsubscribeByMail method.
-        """
-        return unsubscribe_by_mail_request_builder.UnsubscribeByMailRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
-        """
-        Provides operations to call the validateProperties method.
-        """
-        return validate_properties_request_builder.ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     def accepted_senders_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
         """
@@ -404,10 +404,11 @@ class GroupItemRequestBuilder():
         url_tpl_params["event%2Did"] = id
         return event_item_request_builder.EventItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, group_id: Optional[str] = None) -> None:
         """
         Instantiates a new GroupItemRequestBuilder and sets the default values.
         Args:
+            groupId: key: id of group
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -419,6 +420,7 @@ class GroupItemRequestBuilder():
         self.url_template: str = "{+baseurl}/groups/{group%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["group%2Did"] = groupId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

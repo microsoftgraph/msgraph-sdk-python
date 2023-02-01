@@ -58,7 +58,7 @@ class X509CertificateAuthenticationModeConfiguration(AdditionalDataHolder, Parsa
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "rules": lambda n : setattr(self, 'rules', n.get_collection_of_object_values(x509_certificate_rule.X509CertificateRule)),
-            "x509_certificate_authentication_default_mode": lambda n : setattr(self, 'x509_certificate_authentication_default_mode', n.get_enum_value(x509_certificate_authentication_mode.X509CertificateAuthenticationMode)),
+            "x509CertificateAuthenticationDefaultMode": lambda n : setattr(self, 'x509_certificate_authentication_default_mode', n.get_enum_value(x509_certificate_authentication_mode.X509CertificateAuthenticationMode)),
         }
         return fields
     
@@ -75,7 +75,7 @@ class X509CertificateAuthenticationModeConfiguration(AdditionalDataHolder, Parsa
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -122,7 +122,7 @@ class X509CertificateAuthenticationModeConfiguration(AdditionalDataHolder, Parsa
         """
         Sets the x509CertificateAuthenticationDefaultMode property value. The type of strong authentication mode. The possible values are: x509CertificateSingleFactor, x509CertificateMultiFactor, unknownFutureValue.
         Args:
-            value: Value to set for the x509CertificateAuthenticationDefaultMode property.
+            value: Value to set for the x509_certificate_authentication_default_mode property.
         """
         self._x509_certificate_authentication_default_mode = value
     

@@ -19,7 +19,7 @@ class SocialIdentityProvider(identity_provider_base.IdentityProviderBase):
         """
         Sets the clientId property value. The identifier for the client application obtained when registering the application with the identity provider. Required.
         Args:
-            value: Value to set for the clientId property.
+            value: Value to set for the client_id property.
         """
         self._client_id = value
     
@@ -36,7 +36,7 @@ class SocialIdentityProvider(identity_provider_base.IdentityProviderBase):
         """
         Sets the clientSecret property value. The client secret for the application that is obtained when the application is registered with the identity provider. This is write-only. A read operation returns ****. Required.
         Args:
-            value: Value to set for the clientSecret property.
+            value: Value to set for the client_secret property.
         """
         self._client_secret = value
     
@@ -71,9 +71,9 @@ class SocialIdentityProvider(identity_provider_base.IdentityProviderBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "client_id": lambda n : setattr(self, 'client_id', n.get_str_value()),
-            "client_secret": lambda n : setattr(self, 'client_secret', n.get_str_value()),
-            "identity_provider_type": lambda n : setattr(self, 'identity_provider_type', n.get_str_value()),
+            "clientId": lambda n : setattr(self, 'client_id', n.get_str_value()),
+            "clientSecret": lambda n : setattr(self, 'client_secret', n.get_str_value()),
+            "identityProviderType": lambda n : setattr(self, 'identity_provider_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -92,7 +92,7 @@ class SocialIdentityProvider(identity_provider_base.IdentityProviderBase):
         """
         Sets the identityProviderType property value. For a B2B scenario, possible values: Google, Facebook. For a B2C scenario, possible values: Microsoft, Google, Amazon, LinkedIn, Facebook, GitHub, Twitter, Weibo, QQ, WeChat. Required.
         Args:
-            value: Value to set for the identityProviderType property.
+            value: Value to set for the identity_provider_type property.
         """
         self._identity_provider_type = value
     

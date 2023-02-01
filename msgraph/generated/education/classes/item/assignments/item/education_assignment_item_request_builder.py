@@ -12,12 +12,12 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 categories_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.categories.categories_request_builder')
 education_category_item_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.categories.item.education_category_item_request_builder')
-publish_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.publish.publish_request_builder')
+publish_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.microsoft_graph_publish.publish_request_builder')
+set_up_feedback_resources_folder_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.microsoft_graph_set_up_feedback_resources_folder.set_up_feedback_resources_folder_request_builder')
+set_up_resources_folder_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.microsoft_graph_set_up_resources_folder.set_up_resources_folder_request_builder')
 resources_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.resources.resources_request_builder')
 education_assignment_resource_item_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.resources.item.education_assignment_resource_item_request_builder')
 rubric_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.rubric.rubric_request_builder')
-set_up_feedback_resources_folder_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.set_up_feedback_resources_folder.set_up_feedback_resources_folder_request_builder')
-set_up_resources_folder_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.set_up_resources_folder.set_up_resources_folder_request_builder')
 submissions_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.submissions.submissions_request_builder')
 education_submission_item_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.submissions.item.education_submission_item_request_builder')
 education_assignment = lazy_import('msgraph.generated.models.education_assignment')
@@ -35,11 +35,25 @@ class EducationAssignmentItemRequestBuilder():
         return categories_request_builder.CategoriesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def publish(self) -> publish_request_builder.PublishRequestBuilder:
+    def microsoft_graph_publish(self) -> publish_request_builder.PublishRequestBuilder:
         """
         Provides operations to call the publish method.
         """
         return publish_request_builder.PublishRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_set_up_feedback_resources_folder(self) -> set_up_feedback_resources_folder_request_builder.SetUpFeedbackResourcesFolderRequestBuilder:
+        """
+        Provides operations to call the setUpFeedbackResourcesFolder method.
+        """
+        return set_up_feedback_resources_folder_request_builder.SetUpFeedbackResourcesFolderRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_set_up_resources_folder(self) -> set_up_resources_folder_request_builder.SetUpResourcesFolderRequestBuilder:
+        """
+        Provides operations to call the setUpResourcesFolder method.
+        """
+        return set_up_resources_folder_request_builder.SetUpResourcesFolderRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def resources(self) -> resources_request_builder.ResourcesRequestBuilder:
@@ -54,20 +68,6 @@ class EducationAssignmentItemRequestBuilder():
         Provides operations to manage the rubric property of the microsoft.graph.educationAssignment entity.
         """
         return rubric_request_builder.RubricRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def set_up_feedback_resources_folder(self) -> set_up_feedback_resources_folder_request_builder.SetUpFeedbackResourcesFolderRequestBuilder:
-        """
-        Provides operations to call the setUpFeedbackResourcesFolder method.
-        """
-        return set_up_feedback_resources_folder_request_builder.SetUpFeedbackResourcesFolderRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def set_up_resources_folder(self) -> set_up_resources_folder_request_builder.SetUpResourcesFolderRequestBuilder:
-        """
-        Provides operations to call the setUpResourcesFolder method.
-        """
-        return set_up_resources_folder_request_builder.SetUpResourcesFolderRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def submissions(self) -> submissions_request_builder.SubmissionsRequestBuilder:
@@ -89,10 +89,11 @@ class EducationAssignmentItemRequestBuilder():
         url_tpl_params["educationCategory%2Did"] = id
         return education_category_item_request_builder.EducationCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, education_assignment_id: Optional[str] = None) -> None:
         """
         Instantiates a new EducationAssignmentItemRequestBuilder and sets the default values.
         Args:
+            educationAssignmentId: key: id of educationAssignment
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -104,6 +105,7 @@ class EducationAssignmentItemRequestBuilder():
         self.url_template: str = "{+baseurl}/education/classes/{educationClass%2Did}/assignments/{educationAssignment%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["educationAssignment%2Did"] = educationAssignmentId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

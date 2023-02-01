@@ -12,12 +12,12 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 child_folders_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.child_folders.child_folders_request_builder')
 mail_folder_item_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.child_folders.item.mail_folder_item_request_builder')
-copy_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.copy.copy_request_builder')
 message_rules_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.message_rules.message_rules_request_builder')
 message_rule_item_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.message_rules.item.message_rule_item_request_builder')
 messages_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.messages.messages_request_builder')
 message_item_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.messages.item.message_item_request_builder')
-move_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.move.move_request_builder')
+copy_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.microsoft_graph_copy.copy_request_builder')
+move_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.microsoft_graph_move.move_request_builder')
 multi_value_extended_properties_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.multi_value_extended_properties.multi_value_extended_properties_request_builder')
 multi_value_legacy_extended_property_item_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.multi_value_extended_properties.item.multi_value_legacy_extended_property_item_request_builder')
 single_value_extended_properties_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.single_value_extended_properties.single_value_extended_properties_request_builder')
@@ -37,13 +37,6 @@ class MailFolderItemRequestBuilder():
         return child_folders_request_builder.ChildFoldersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def copy(self) -> copy_request_builder.CopyRequestBuilder:
-        """
-        Provides operations to call the copy method.
-        """
-        return copy_request_builder.CopyRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def message_rules(self) -> message_rules_request_builder.MessageRulesRequestBuilder:
         """
         Provides operations to manage the messageRules property of the microsoft.graph.mailFolder entity.
@@ -58,7 +51,14 @@ class MailFolderItemRequestBuilder():
         return messages_request_builder.MessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def move(self) -> move_request_builder.MoveRequestBuilder:
+    def microsoft_graph_copy(self) -> copy_request_builder.CopyRequestBuilder:
+        """
+        Provides operations to call the copy method.
+        """
+        return copy_request_builder.CopyRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_move(self) -> move_request_builder.MoveRequestBuilder:
         """
         Provides operations to call the move method.
         """
@@ -91,10 +91,11 @@ class MailFolderItemRequestBuilder():
         url_tpl_params["mailFolder%2Did1"] = id
         return MailFolderItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, mail_folder_id: Optional[str] = None) -> None:
         """
         Instantiates a new MailFolderItemRequestBuilder and sets the default values.
         Args:
+            mailFolderId: key: id of mailFolder
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -106,6 +107,7 @@ class MailFolderItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/mailFolders/{mailFolder%2Did}{?%24select}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["mailFolder%2Did"] = mailFolderId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

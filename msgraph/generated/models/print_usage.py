@@ -20,7 +20,7 @@ class PrintUsage(entity.Entity):
         """
         Sets the completedBlackAndWhiteJobCount property value. The completedBlackAndWhiteJobCount property
         Args:
-            value: Value to set for the completedBlackAndWhiteJobCount property.
+            value: Value to set for the completed_black_and_white_job_count property.
         """
         self._completed_black_and_white_job_count = value
     
@@ -37,7 +37,7 @@ class PrintUsage(entity.Entity):
         """
         Sets the completedColorJobCount property value. The completedColorJobCount property
         Args:
-            value: Value to set for the completedColorJobCount property.
+            value: Value to set for the completed_color_job_count property.
         """
         self._completed_color_job_count = value
     
@@ -75,10 +75,10 @@ class PrintUsage(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "completed_black_and_white_job_count": lambda n : setattr(self, 'completed_black_and_white_job_count', n.get_int_value()),
-            "completed_color_job_count": lambda n : setattr(self, 'completed_color_job_count', n.get_int_value()),
-            "incomplete_job_count": lambda n : setattr(self, 'incomplete_job_count', n.get_int_value()),
-            "usage_date": lambda n : setattr(self, 'usage_date', n.get_object_value(Date)),
+            "completedBlackAndWhiteJobCount": lambda n : setattr(self, 'completed_black_and_white_job_count', n.get_int_value()),
+            "completedColorJobCount": lambda n : setattr(self, 'completed_color_job_count', n.get_int_value()),
+            "incompleteJobCount": lambda n : setattr(self, 'incomplete_job_count', n.get_int_value()),
+            "usageDate": lambda n : setattr(self, 'usage_date', n.get_object_value(Date)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -97,7 +97,7 @@ class PrintUsage(entity.Entity):
         """
         Sets the incompleteJobCount property value. The incompleteJobCount property
         Args:
-            value: Value to set for the incompleteJobCount property.
+            value: Value to set for the incomplete_job_count property.
         """
         self._incomplete_job_count = value
     
@@ -128,7 +128,7 @@ class PrintUsage(entity.Entity):
         """
         Sets the usageDate property value. The usageDate property
         Args:
-            value: Value to set for the usageDate property.
+            value: Value to set for the usage_date property.
         """
         self._usage_date = value
     

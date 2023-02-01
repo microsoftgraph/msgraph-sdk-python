@@ -10,7 +10,6 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-drive = lazy_import('msgraph.generated.models.drive')
 drive_collection_response = lazy_import('msgraph.generated.models.drive_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.users.item.drives.count.count_request_builder')
@@ -62,27 +61,6 @@ class DrivesRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, drive_collection_response.DriveCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[drive.Drive] = None, request_configuration: Optional[DrivesRequestBuilderPostRequestConfiguration] = None) -> Optional[drive.Drive]:
-        """
-        Create new navigation property to drives for users
-        Args:
-            body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[drive.Drive]
-        """
-        if body is None:
-            raise Exception("body cannot be undefined")
-        request_info = self.to_post_request_information(
-            body, request_configuration
-        )
-        error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, drive.Drive, error_mapping)
-    
     def to_get_request_information(self,request_configuration: Optional[DrivesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the list of Drive resources available for a target User, Group, or Site.
@@ -99,27 +77,6 @@ class DrivesRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
-        return request_info
-    
-    def to_post_request_information(self,body: Optional[drive.Drive] = None, request_configuration: Optional[DrivesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
-        """
-        Create new navigation property to drives for users
-        Args:
-            body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        if body is None:
-            raise Exception("body cannot be undefined")
-        request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
     @dataclass
@@ -192,18 +149,6 @@ class DrivesRequestBuilder():
 
         # Request query parameters
         query_parameters: Optional[DrivesRequestBuilder.DrivesRequestBuilderGetQueryParameters] = None
-
-    
-    @dataclass
-    class DrivesRequestBuilderPostRequestConfiguration():
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request headers
-        headers: Optional[Dict[str, str]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
 
     
 

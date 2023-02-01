@@ -57,11 +57,11 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "max_words": lambda n : setattr(self, 'max_words', n.get_int_value()),
-            "min_words": lambda n : setattr(self, 'min_words', n.get_int_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "maxWords": lambda n : setattr(self, 'max_words', n.get_int_value()),
+            "minWords": lambda n : setattr(self, 'min_words', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "similarity_threshold": lambda n : setattr(self, 'similarity_threshold', n.get_int_value()),
+            "similarityThreshold": lambda n : setattr(self, 'similarity_threshold', n.get_int_value()),
         }
         return fields
     
@@ -78,7 +78,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
         """
         Sets the isEnabled property value. Indicates whether email threading and near duplicate detection are enabled.
         Args:
-            value: Value to set for the isEnabled property.
+            value: Value to set for the is_enabled property.
         """
         self._is_enabled = value
     
@@ -95,7 +95,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
         """
         Sets the maxWords property value. Specifies the maximum number of words used for email threading and near duplicate detection. To learn more, see Minimum/maximum number of words.
         Args:
-            value: Value to set for the maxWords property.
+            value: Value to set for the max_words property.
         """
         self._max_words = value
     
@@ -112,7 +112,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
         """
         Sets the minWords property value. Specifies the minimum number of words used for email threading and near duplicate detection. To learn more, see Minimum/maximum number of words.
         Args:
-            value: Value to set for the minWords property.
+            value: Value to set for the min_words property.
         """
         self._min_words = value
     
@@ -129,7 +129,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -161,7 +161,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
         """
         Sets the similarityThreshold property value. Specifies the similarity level for documents to be put in the same near duplicate set. To learn more, see Document and email similarity threshold.
         Args:
-            value: Value to set for the similarityThreshold property.
+            value: Value to set for the similarity_threshold property.
         """
         self._similarity_threshold = value
     

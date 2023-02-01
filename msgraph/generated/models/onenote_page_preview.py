@@ -57,7 +57,7 @@ class OnenotePagePreview(AdditionalDataHolder, Parsable):
         fields = {
             "links": lambda n : setattr(self, 'links', n.get_object_value(onenote_page_preview_links.OnenotePagePreviewLinks)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "preview_text": lambda n : setattr(self, 'preview_text', n.get_str_value()),
+            "previewText": lambda n : setattr(self, 'preview_text', n.get_str_value()),
         }
         return fields
     
@@ -91,7 +91,7 @@ class OnenotePagePreview(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -108,7 +108,7 @@ class OnenotePagePreview(AdditionalDataHolder, Parsable):
         """
         Sets the previewText property value. The previewText property
         Args:
-            value: Value to set for the previewText property.
+            value: Value to set for the preview_text property.
         """
         self._preview_text = value
     

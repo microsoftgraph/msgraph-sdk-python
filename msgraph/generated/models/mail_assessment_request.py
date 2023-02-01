@@ -45,7 +45,7 @@ class MailAssessmentRequest(threat_assessment_request.ThreatAssessmentRequest):
         """
         Sets the destinationRoutingReason property value. The reason for mail routed to its destination. Possible values are: none, mailFlowRule, safeSender, blockedSender, advancedSpamFiltering, domainAllowList, domainBlockList, notInAddressBook, firstTimeSender, autoPurgeToInbox, autoPurgeToJunk, autoPurgeToDeleted, outbound, notJunk, junk.
         Args:
-            value: Value to set for the destinationRoutingReason property.
+            value: Value to set for the destination_routing_reason property.
         """
         self._destination_routing_reason = value
     
@@ -55,9 +55,9 @@ class MailAssessmentRequest(threat_assessment_request.ThreatAssessmentRequest):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "destination_routing_reason": lambda n : setattr(self, 'destination_routing_reason', n.get_enum_value(mail_destination_routing_reason.MailDestinationRoutingReason)),
-            "message_uri": lambda n : setattr(self, 'message_uri', n.get_str_value()),
-            "recipient_email": lambda n : setattr(self, 'recipient_email', n.get_str_value()),
+            "destinationRoutingReason": lambda n : setattr(self, 'destination_routing_reason', n.get_enum_value(mail_destination_routing_reason.MailDestinationRoutingReason)),
+            "messageUri": lambda n : setattr(self, 'message_uri', n.get_str_value()),
+            "recipientEmail": lambda n : setattr(self, 'recipient_email', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -76,7 +76,7 @@ class MailAssessmentRequest(threat_assessment_request.ThreatAssessmentRequest):
         """
         Sets the messageUri property value. The resource URI of the mail message for assessment.
         Args:
-            value: Value to set for the messageUri property.
+            value: Value to set for the message_uri property.
         """
         self._message_uri = value
     
@@ -93,7 +93,7 @@ class MailAssessmentRequest(threat_assessment_request.ThreatAssessmentRequest):
         """
         Sets the recipientEmail property value. The mail recipient whose policies are used to assess the mail.
         Args:
-            value: Value to set for the recipientEmail property.
+            value: Value to set for the recipient_email property.
         """
         self._recipient_email = value
     

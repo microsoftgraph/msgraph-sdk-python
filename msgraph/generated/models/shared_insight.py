@@ -47,12 +47,12 @@ class SharedInsight(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "last_shared": lambda n : setattr(self, 'last_shared', n.get_object_value(sharing_detail.SharingDetail)),
-            "last_shared_method": lambda n : setattr(self, 'last_shared_method', n.get_object_value(entity.Entity)),
+            "lastShared": lambda n : setattr(self, 'last_shared', n.get_object_value(sharing_detail.SharingDetail)),
+            "lastSharedMethod": lambda n : setattr(self, 'last_shared_method', n.get_object_value(entity.Entity)),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(entity.Entity)),
-            "resource_reference": lambda n : setattr(self, 'resource_reference', n.get_object_value(resource_reference.ResourceReference)),
-            "resource_visualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(resource_visualization.ResourceVisualization)),
-            "sharing_history": lambda n : setattr(self, 'sharing_history', n.get_collection_of_object_values(sharing_detail.SharingDetail)),
+            "resourceReference": lambda n : setattr(self, 'resource_reference', n.get_object_value(resource_reference.ResourceReference)),
+            "resourceVisualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(resource_visualization.ResourceVisualization)),
+            "sharingHistory": lambda n : setattr(self, 'sharing_history', n.get_collection_of_object_values(sharing_detail.SharingDetail)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -71,7 +71,7 @@ class SharedInsight(entity.Entity):
         """
         Sets the lastShared property value. Details about the shared item. Read only.
         Args:
-            value: Value to set for the lastShared property.
+            value: Value to set for the last_shared property.
         """
         self._last_shared = value
     
@@ -88,7 +88,7 @@ class SharedInsight(entity.Entity):
         """
         Sets the lastSharedMethod property value. The lastSharedMethod property
         Args:
-            value: Value to set for the lastSharedMethod property.
+            value: Value to set for the last_shared_method property.
         """
         self._last_shared_method = value
     
@@ -122,7 +122,7 @@ class SharedInsight(entity.Entity):
         """
         Sets the resourceReference property value. Reference properties of the shared document, such as the url and type of the document. Read-only
         Args:
-            value: Value to set for the resourceReference property.
+            value: Value to set for the resource_reference property.
         """
         self._resource_reference = value
     
@@ -139,7 +139,7 @@ class SharedInsight(entity.Entity):
         """
         Sets the resourceVisualization property value. Properties that you can use to visualize the document in your experience. Read-only
         Args:
-            value: Value to set for the resourceVisualization property.
+            value: Value to set for the resource_visualization property.
         """
         self._resource_visualization = value
     
@@ -170,7 +170,7 @@ class SharedInsight(entity.Entity):
         """
         Sets the sharingHistory property value. The sharingHistory property
         Args:
-            value: Value to set for the sharingHistory property.
+            value: Value to set for the sharing_history property.
         """
         self._sharing_history = value
     

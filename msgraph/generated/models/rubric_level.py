@@ -84,7 +84,7 @@ class RubricLevel(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. The name of this rubric level.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -95,9 +95,9 @@ class RubricLevel(AdditionalDataHolder, Parsable):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_object_value(education_item_body.EducationItemBody)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "grading": lambda n : setattr(self, 'grading', n.get_object_value(education_assignment_grade_type.EducationAssignmentGradeType)),
-            "level_id": lambda n : setattr(self, 'level_id', n.get_str_value()),
+            "levelId": lambda n : setattr(self, 'level_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -132,7 +132,7 @@ class RubricLevel(AdditionalDataHolder, Parsable):
         """
         Sets the levelId property value. The ID of this resource.
         Args:
-            value: Value to set for the levelId property.
+            value: Value to set for the level_id property.
         """
         self._level_id = value
     
@@ -149,7 +149,7 @@ class RubricLevel(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

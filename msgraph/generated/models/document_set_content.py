@@ -52,7 +52,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
         """
         Sets the contentType property value. Content type information of the file.
         Args:
-            value: Value to set for the contentType property.
+            value: Value to set for the content_type property.
         """
         self._content_type = value
     
@@ -81,7 +81,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
         """
         Sets the fileName property value. Name of the file in resource folder that should be added as a default content or a template in the document set.
         Args:
-            value: Value to set for the fileName property.
+            value: Value to set for the file_name property.
         """
         self._file_name = value
     
@@ -98,7 +98,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
         """
         Sets the folderName property value. Folder name in which the file will be placed when a new document set is created in the library.
         Args:
-            value: Value to set for the folderName property.
+            value: Value to set for the folder_name property.
         """
         self._folder_name = value
     
@@ -108,9 +108,9 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "content_type": lambda n : setattr(self, 'content_type', n.get_object_value(content_type_info.ContentTypeInfo)),
-            "file_name": lambda n : setattr(self, 'file_name', n.get_str_value()),
-            "folder_name": lambda n : setattr(self, 'folder_name', n.get_str_value()),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_object_value(content_type_info.ContentTypeInfo)),
+            "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
+            "folderName": lambda n : setattr(self, 'folder_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -128,7 +128,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

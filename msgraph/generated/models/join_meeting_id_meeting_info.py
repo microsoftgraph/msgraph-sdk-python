@@ -35,7 +35,7 @@ class JoinMeetingIdMeetingInfo(meeting_info.MeetingInfo):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "join_meeting_id": lambda n : setattr(self, 'join_meeting_id', n.get_str_value()),
+            "joinMeetingId": lambda n : setattr(self, 'join_meeting_id', n.get_str_value()),
             "passcode": lambda n : setattr(self, 'passcode', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -55,7 +55,7 @@ class JoinMeetingIdMeetingInfo(meeting_info.MeetingInfo):
         """
         Sets the joinMeetingId property value. The ID used to join the meeting.
         Args:
-            value: Value to set for the joinMeetingId property.
+            value: Value to set for the join_meeting_id property.
         """
         self._join_meeting_id = value
     

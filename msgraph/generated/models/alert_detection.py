@@ -62,7 +62,7 @@ class AlertDetection(AdditionalDataHolder, Parsable):
         """
         Sets the detectionType property value. The detectionType property
         Args:
-            value: Value to set for the detectionType property.
+            value: Value to set for the detection_type property.
         """
         self._detection_type = value
     
@@ -72,7 +72,7 @@ class AlertDetection(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "detection_type": lambda n : setattr(self, 'detection_type', n.get_str_value()),
+            "detectionType": lambda n : setattr(self, 'detection_type', n.get_str_value()),
             "method": lambda n : setattr(self, 'method', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -126,7 +126,7 @@ class AlertDetection(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

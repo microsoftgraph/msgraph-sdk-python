@@ -19,7 +19,7 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(acce
         """
         Sets the accessPackageDisplayName property value. Display name of the access package to which access has been granted.
         Args:
-            value: Value to set for the accessPackageDisplayName property.
+            value: Value to set for the access_package_display_name property.
         """
         self._access_package_display_name = value
     
@@ -36,7 +36,7 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(acce
         """
         Sets the accessPackageId property value. Identifier of the access package to which access has been granted.
         Args:
-            value: Value to set for the accessPackageId property.
+            value: Value to set for the access_package_id property.
         """
         self._access_package_id = value
     
@@ -69,8 +69,8 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(acce
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_package_display_name": lambda n : setattr(self, 'access_package_display_name', n.get_str_value()),
-            "access_package_id": lambda n : setattr(self, 'access_package_id', n.get_str_value()),
+            "accessPackageDisplayName": lambda n : setattr(self, 'access_package_display_name', n.get_str_value()),
+            "accessPackageId": lambda n : setattr(self, 'access_package_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

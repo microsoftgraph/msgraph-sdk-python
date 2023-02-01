@@ -56,9 +56,9 @@ class FolderView(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "sort_by": lambda n : setattr(self, 'sort_by', n.get_str_value()),
-            "sort_order": lambda n : setattr(self, 'sort_order', n.get_str_value()),
-            "view_type": lambda n : setattr(self, 'view_type', n.get_str_value()),
+            "sortBy": lambda n : setattr(self, 'sort_by', n.get_str_value()),
+            "sortOrder": lambda n : setattr(self, 'sort_order', n.get_str_value()),
+            "viewType": lambda n : setattr(self, 'view_type', n.get_str_value()),
         }
         return fields
     
@@ -75,7 +75,7 @@ class FolderView(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -106,7 +106,7 @@ class FolderView(AdditionalDataHolder, Parsable):
         """
         Sets the sortBy property value. The method by which the folder should be sorted.
         Args:
-            value: Value to set for the sortBy property.
+            value: Value to set for the sort_by property.
         """
         self._sort_by = value
     
@@ -123,7 +123,7 @@ class FolderView(AdditionalDataHolder, Parsable):
         """
         Sets the sortOrder property value. If true, indicates that items should be sorted in descending order. Otherwise, items should be sorted ascending.
         Args:
-            value: Value to set for the sortOrder property.
+            value: Value to set for the sort_order property.
         """
         self._sort_order = value
     
@@ -140,7 +140,7 @@ class FolderView(AdditionalDataHolder, Parsable):
         """
         Sets the viewType property value. The type of view that should be used to represent the folder.
         Args:
-            value: Value to set for the viewType property.
+            value: Value to set for the view_type property.
         """
         self._view_type = value
     

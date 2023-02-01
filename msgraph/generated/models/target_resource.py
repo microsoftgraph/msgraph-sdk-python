@@ -71,7 +71,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. Indicates the visible name defined for the resource. Typically specified when the resource is created.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -81,13 +81,13 @@ class TargetResource(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "group_type": lambda n : setattr(self, 'group_type', n.get_enum_value(group_type.GroupType)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "groupType": lambda n : setattr(self, 'group_type', n.get_enum_value(group_type.GroupType)),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "modified_properties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(modified_property.ModifiedProperty)),
+            "modifiedProperties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(modified_property.ModifiedProperty)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
     
@@ -104,7 +104,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
         """
         Sets the groupType property value. When type is set to Group, this indicates the group type. Possible values are: unifiedGroups, azureAD, and unknownFutureValue
         Args:
-            value: Value to set for the groupType property.
+            value: Value to set for the group_type property.
         """
         self._group_type = value
     
@@ -138,7 +138,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
         """
         Sets the modifiedProperties property value. Indicates name, old value and new value of each attribute that changed. Property values depend on the operation type.
         Args:
-            value: Value to set for the modifiedProperties property.
+            value: Value to set for the modified_properties property.
         """
         self._modified_properties = value
     
@@ -155,7 +155,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -206,7 +206,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
         """
         Sets the userPrincipalName property value. When type is set to User, this includes the user name that initiated the action; null for other types.
         Args:
-            value: Value to set for the userPrincipalName property.
+            value: Value to set for the user_principal_name property.
         """
         self._user_principal_name = value
     

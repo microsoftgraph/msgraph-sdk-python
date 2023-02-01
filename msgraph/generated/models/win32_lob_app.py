@@ -24,7 +24,7 @@ class Win32LobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the applicableArchitectures property value. Contains properties for Windows architecture.
         Args:
-            value: Value to set for the applicableArchitectures property.
+            value: Value to set for the applicable_architectures property.
         """
         self._applicable_architectures = value
     
@@ -79,19 +79,19 @@ class Win32LobApp(mobile_lob_app.MobileLobApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "applicable_architectures": lambda n : setattr(self, 'applicable_architectures', n.get_enum_value(windows_architecture.WindowsArchitecture)),
-            "install_command_line": lambda n : setattr(self, 'install_command_line', n.get_str_value()),
-            "install_experience": lambda n : setattr(self, 'install_experience', n.get_object_value(win32_lob_app_install_experience.Win32LobAppInstallExperience)),
-            "minimum_cpu_speed_in_m_hz": lambda n : setattr(self, 'minimum_cpu_speed_in_m_hz', n.get_int_value()),
-            "minimum_free_disk_space_in_m_b": lambda n : setattr(self, 'minimum_free_disk_space_in_m_b', n.get_int_value()),
-            "minimum_memory_in_m_b": lambda n : setattr(self, 'minimum_memory_in_m_b', n.get_int_value()),
-            "minimum_number_of_processors": lambda n : setattr(self, 'minimum_number_of_processors', n.get_int_value()),
-            "minimum_supported_windows_release": lambda n : setattr(self, 'minimum_supported_windows_release', n.get_str_value()),
-            "msi_information": lambda n : setattr(self, 'msi_information', n.get_object_value(win32_lob_app_msi_information.Win32LobAppMsiInformation)),
-            "return_codes": lambda n : setattr(self, 'return_codes', n.get_collection_of_object_values(win32_lob_app_return_code.Win32LobAppReturnCode)),
+            "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_enum_value(windows_architecture.WindowsArchitecture)),
+            "installCommandLine": lambda n : setattr(self, 'install_command_line', n.get_str_value()),
+            "installExperience": lambda n : setattr(self, 'install_experience', n.get_object_value(win32_lob_app_install_experience.Win32LobAppInstallExperience)),
+            "minimumCpuSpeedInMHz": lambda n : setattr(self, 'minimum_cpu_speed_in_m_hz', n.get_int_value()),
+            "minimumFreeDiskSpaceInMB": lambda n : setattr(self, 'minimum_free_disk_space_in_m_b', n.get_int_value()),
+            "minimumMemoryInMB": lambda n : setattr(self, 'minimum_memory_in_m_b', n.get_int_value()),
+            "minimumNumberOfProcessors": lambda n : setattr(self, 'minimum_number_of_processors', n.get_int_value()),
+            "minimumSupportedWindowsRelease": lambda n : setattr(self, 'minimum_supported_windows_release', n.get_str_value()),
+            "msiInformation": lambda n : setattr(self, 'msi_information', n.get_object_value(win32_lob_app_msi_information.Win32LobAppMsiInformation)),
+            "returnCodes": lambda n : setattr(self, 'return_codes', n.get_collection_of_object_values(win32_lob_app_return_code.Win32LobAppReturnCode)),
             "rules": lambda n : setattr(self, 'rules', n.get_collection_of_object_values(win32_lob_app_rule.Win32LobAppRule)),
-            "setup_file_path": lambda n : setattr(self, 'setup_file_path', n.get_str_value()),
-            "uninstall_command_line": lambda n : setattr(self, 'uninstall_command_line', n.get_str_value()),
+            "setupFilePath": lambda n : setattr(self, 'setup_file_path', n.get_str_value()),
+            "uninstallCommandLine": lambda n : setattr(self, 'uninstall_command_line', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -110,7 +110,7 @@ class Win32LobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the installCommandLine property value. The command line to install this app
         Args:
-            value: Value to set for the installCommandLine property.
+            value: Value to set for the install_command_line property.
         """
         self._install_command_line = value
     
@@ -127,7 +127,7 @@ class Win32LobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the installExperience property value. The install experience for this app.
         Args:
-            value: Value to set for the installExperience property.
+            value: Value to set for the install_experience property.
         """
         self._install_experience = value
     
@@ -144,7 +144,7 @@ class Win32LobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the minimumCpuSpeedInMHz property value. The value for the minimum CPU speed which is required to install this app.
         Args:
-            value: Value to set for the minimumCpuSpeedInMHz property.
+            value: Value to set for the minimum_cpu_speed_in_m_hz property.
         """
         self._minimum_cpu_speed_in_m_hz = value
     
@@ -161,7 +161,7 @@ class Win32LobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the minimumFreeDiskSpaceInMB property value. The value for the minimum free disk space which is required to install this app.
         Args:
-            value: Value to set for the minimumFreeDiskSpaceInMB property.
+            value: Value to set for the minimum_free_disk_space_in_m_b property.
         """
         self._minimum_free_disk_space_in_m_b = value
     
@@ -178,7 +178,7 @@ class Win32LobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the minimumMemoryInMB property value. The value for the minimum physical memory which is required to install this app.
         Args:
-            value: Value to set for the minimumMemoryInMB property.
+            value: Value to set for the minimum_memory_in_m_b property.
         """
         self._minimum_memory_in_m_b = value
     
@@ -195,7 +195,7 @@ class Win32LobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the minimumNumberOfProcessors property value. The value for the minimum number of processors which is required to install this app.
         Args:
-            value: Value to set for the minimumNumberOfProcessors property.
+            value: Value to set for the minimum_number_of_processors property.
         """
         self._minimum_number_of_processors = value
     
@@ -212,7 +212,7 @@ class Win32LobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the minimumSupportedWindowsRelease property value. The value for the minimum supported windows release.
         Args:
-            value: Value to set for the minimumSupportedWindowsRelease property.
+            value: Value to set for the minimum_supported_windows_release property.
         """
         self._minimum_supported_windows_release = value
     
@@ -229,7 +229,7 @@ class Win32LobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the msiInformation property value. The MSI details if this Win32 app is an MSI app.
         Args:
-            value: Value to set for the msiInformation property.
+            value: Value to set for the msi_information property.
         """
         self._msi_information = value
     
@@ -246,7 +246,7 @@ class Win32LobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the returnCodes property value. The return codes for post installation behavior.
         Args:
-            value: Value to set for the returnCodes property.
+            value: Value to set for the return_codes property.
         """
         self._return_codes = value
     
@@ -303,7 +303,7 @@ class Win32LobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the setupFilePath property value. The relative path of the setup file in the encrypted Win32LobApp package.
         Args:
-            value: Value to set for the setupFilePath property.
+            value: Value to set for the setup_file_path property.
         """
         self._setup_file_path = value
     
@@ -320,7 +320,7 @@ class Win32LobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the uninstallCommandLine property value. The command line to uninstall this app
         Args:
-            value: Value to set for the uninstallCommandLine property.
+            value: Value to set for the uninstall_command_line property.
         """
         self._uninstall_command_line = value
     

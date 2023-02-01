@@ -81,7 +81,7 @@ class Website(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. The display name of the web site.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -92,7 +92,7 @@ class Website(AdditionalDataHolder, Parsable):
         """
         fields = {
             "address": lambda n : setattr(self, 'address', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(website_type.WebsiteType)),
         }
@@ -111,7 +111,7 @@ class Website(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

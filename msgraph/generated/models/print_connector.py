@@ -21,13 +21,13 @@ class PrintConnector(entity.Entity):
         """
         Sets the appVersion property value. The connector's version.
         Args:
-            value: Value to set for the appVersion property.
+            value: Value to set for the app_version property.
         """
         self._app_version = value
     
     def __init__(self,) -> None:
         """
-        Instantiates a new PrintConnector and sets the default values.
+        Instantiates a new printConnector and sets the default values.
         """
         super().__init__()
         # The connector's version.
@@ -70,7 +70,7 @@ class PrintConnector(entity.Entity):
         """
         Sets the displayName property value. The name of the connector.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -87,7 +87,7 @@ class PrintConnector(entity.Entity):
         """
         Sets the fullyQualifiedDomainName property value. The connector machine's hostname.
         Args:
-            value: Value to set for the fullyQualifiedDomainName property.
+            value: Value to set for the fully_qualified_domain_name property.
         """
         self._fully_qualified_domain_name = value
     
@@ -97,12 +97,12 @@ class PrintConnector(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_version": lambda n : setattr(self, 'app_version', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "fully_qualified_domain_name": lambda n : setattr(self, 'fully_qualified_domain_name', n.get_str_value()),
+            "appVersion": lambda n : setattr(self, 'app_version', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "fullyQualifiedDomainName": lambda n : setattr(self, 'fully_qualified_domain_name', n.get_str_value()),
             "location": lambda n : setattr(self, 'location', n.get_object_value(printer_location.PrinterLocation)),
-            "operating_system": lambda n : setattr(self, 'operating_system', n.get_str_value()),
-            "registered_date_time": lambda n : setattr(self, 'registered_date_time', n.get_datetime_value()),
+            "operatingSystem": lambda n : setattr(self, 'operating_system', n.get_str_value()),
+            "registeredDateTime": lambda n : setattr(self, 'registered_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -138,7 +138,7 @@ class PrintConnector(entity.Entity):
         """
         Sets the operatingSystem property value. The connector machine's operating system version.
         Args:
-            value: Value to set for the operatingSystem property.
+            value: Value to set for the operating_system property.
         """
         self._operating_system = value
     
@@ -155,7 +155,7 @@ class PrintConnector(entity.Entity):
         """
         Sets the registeredDateTime property value. The DateTimeOffset when the connector was registered.
         Args:
-            value: Value to set for the registeredDateTime property.
+            value: Value to set for the registered_date_time property.
         """
         self._registered_date_time = value
     

@@ -36,7 +36,7 @@ class ComplianceInformation(AdditionalDataHolder, Parsable):
         """
         Sets the certificationControls property value. Collection of the certification controls associated with certification
         Args:
-            value: Value to set for the certificationControls property.
+            value: Value to set for the certification_controls property.
         """
         self._certification_controls = value
     
@@ -53,7 +53,7 @@ class ComplianceInformation(AdditionalDataHolder, Parsable):
         """
         Sets the certificationName property value. Compliance certification name (for example, ISO 27018:2014, GDPR, FedRAMP, NIST 800-171)
         Args:
-            value: Value to set for the certificationName property.
+            value: Value to set for the certification_name property.
         """
         self._certification_name = value
     
@@ -89,8 +89,8 @@ class ComplianceInformation(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "certification_controls": lambda n : setattr(self, 'certification_controls', n.get_collection_of_object_values(certification_control.CertificationControl)),
-            "certification_name": lambda n : setattr(self, 'certification_name', n.get_str_value()),
+            "certificationControls": lambda n : setattr(self, 'certification_controls', n.get_collection_of_object_values(certification_control.CertificationControl)),
+            "certificationName": lambda n : setattr(self, 'certification_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -108,7 +108,7 @@ class ComplianceInformation(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

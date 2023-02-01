@@ -38,8 +38,8 @@ class AttackSimulationRoot(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "simulation_automations": lambda n : setattr(self, 'simulation_automations', n.get_collection_of_object_values(simulation_automation.SimulationAutomation)),
             "simulations": lambda n : setattr(self, 'simulations', n.get_collection_of_object_values(simulation.Simulation)),
+            "simulationAutomations": lambda n : setattr(self, 'simulation_automations', n.get_collection_of_object_values(simulation_automation.SimulationAutomation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,8 +54,8 @@ class AttackSimulationRoot(entity.Entity):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-        writer.write_collection_of_object_values("simulationAutomations", self.simulation_automations)
         writer.write_collection_of_object_values("simulations", self.simulations)
+        writer.write_collection_of_object_values("simulationAutomations", self.simulation_automations)
     
     @property
     def simulation_automations(self,) -> Optional[List[simulation_automation.SimulationAutomation]]:
@@ -70,7 +70,7 @@ class AttackSimulationRoot(entity.Entity):
         """
         Sets the simulationAutomations property value. Represents simulation automation created to run on a tenant.
         Args:
-            value: Value to set for the simulationAutomations property.
+            value: Value to set for the simulation_automations property.
         """
         self._simulation_automations = value
     

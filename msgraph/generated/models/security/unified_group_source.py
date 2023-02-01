@@ -38,7 +38,7 @@ class UnifiedGroupSource(data_source.DataSource):
         """
         fields = {
             "group": lambda n : setattr(self, 'group', n.get_object_value(group.Group)),
-            "included_sources": lambda n : setattr(self, 'included_sources', n.get_enum_value(source_type.SourceType)),
+            "includedSources": lambda n : setattr(self, 'included_sources', n.get_enum_value(source_type.SourceType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -74,7 +74,7 @@ class UnifiedGroupSource(data_source.DataSource):
         """
         Sets the includedSources property value. Specifies which sources are included in this group. Possible values are: mailbox, site.
         Args:
-            value: Value to set for the includedSources property.
+            value: Value to set for the included_sources property.
         """
         self._included_sources = value
     

@@ -22,7 +22,7 @@ class ConversationThread(entity.Entity):
         """
         Sets the ccRecipients property value. The Cc: recipients for the thread. Returned only on $select.
         Args:
-            value: Value to set for the ccRecipients property.
+            value: Value to set for the cc_recipients property.
         """
         self._cc_recipients = value
     
@@ -45,10 +45,10 @@ class ConversationThread(entity.Entity):
         self._posts: Optional[List[post.Post]] = None
         # A short summary from the body of the latest post in this conversation. Returned by default.
         self._preview: Optional[str] = None
-        # The topic of the conversation. This property can be set when the conversation is created, but it cannot be updated. Returned by default.
-        self._topic: Optional[str] = None
         # The To: recipients for the thread. Returned only on $select.
         self._to_recipients: Optional[List[recipient.Recipient]] = None
+        # The topic of the conversation. This property can be set when the conversation is created, but it cannot be updated. Returned by default.
+        self._topic: Optional[str] = None
         # All the users that sent a message to this thread. Returned by default.
         self._unique_senders: Optional[List[str]] = None
     
@@ -70,15 +70,15 @@ class ConversationThread(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "cc_recipients": lambda n : setattr(self, 'cc_recipients', n.get_collection_of_object_values(recipient.Recipient)),
-            "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
-            "is_locked": lambda n : setattr(self, 'is_locked', n.get_bool_value()),
-            "last_delivered_date_time": lambda n : setattr(self, 'last_delivered_date_time', n.get_datetime_value()),
+            "ccRecipients": lambda n : setattr(self, 'cc_recipients', n.get_collection_of_object_values(recipient.Recipient)),
+            "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
+            "isLocked": lambda n : setattr(self, 'is_locked', n.get_bool_value()),
+            "lastDeliveredDateTime": lambda n : setattr(self, 'last_delivered_date_time', n.get_datetime_value()),
             "posts": lambda n : setattr(self, 'posts', n.get_collection_of_object_values(post.Post)),
             "preview": lambda n : setattr(self, 'preview', n.get_str_value()),
             "topic": lambda n : setattr(self, 'topic', n.get_str_value()),
-            "to_recipients": lambda n : setattr(self, 'to_recipients', n.get_collection_of_object_values(recipient.Recipient)),
-            "unique_senders": lambda n : setattr(self, 'unique_senders', n.get_collection_of_primitive_values(str)),
+            "toRecipients": lambda n : setattr(self, 'to_recipients', n.get_collection_of_object_values(recipient.Recipient)),
+            "uniqueSenders": lambda n : setattr(self, 'unique_senders', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -97,7 +97,7 @@ class ConversationThread(entity.Entity):
         """
         Sets the hasAttachments property value. Indicates whether any of the posts within this thread has at least one attachment. Returned by default.
         Args:
-            value: Value to set for the hasAttachments property.
+            value: Value to set for the has_attachments property.
         """
         self._has_attachments = value
     
@@ -114,7 +114,7 @@ class ConversationThread(entity.Entity):
         """
         Sets the isLocked property value. Indicates if the thread is locked. Returned by default.
         Args:
-            value: Value to set for the isLocked property.
+            value: Value to set for the is_locked property.
         """
         self._is_locked = value
     
@@ -131,7 +131,7 @@ class ConversationThread(entity.Entity):
         """
         Sets the lastDeliveredDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.Returned by default.
         Args:
-            value: Value to set for the lastDeliveredDateTime property.
+            value: Value to set for the last_delivered_date_time property.
         """
         self._last_delivered_date_time = value
     
@@ -189,6 +189,23 @@ class ConversationThread(entity.Entity):
         writer.write_collection_of_primitive_values("uniqueSenders", self.unique_senders)
     
     @property
+    def to_recipients(self,) -> Optional[List[recipient.Recipient]]:
+        """
+        Gets the toRecipients property value. The To: recipients for the thread. Returned only on $select.
+        Returns: Optional[List[recipient.Recipient]]
+        """
+        return self._to_recipients
+    
+    @to_recipients.setter
+    def to_recipients(self,value: Optional[List[recipient.Recipient]] = None) -> None:
+        """
+        Sets the toRecipients property value. The To: recipients for the thread. Returned only on $select.
+        Args:
+            value: Value to set for the to_recipients property.
+        """
+        self._to_recipients = value
+    
+    @property
     def topic(self,) -> Optional[str]:
         """
         Gets the topic property value. The topic of the conversation. This property can be set when the conversation is created, but it cannot be updated. Returned by default.
@@ -206,23 +223,6 @@ class ConversationThread(entity.Entity):
         self._topic = value
     
     @property
-    def to_recipients(self,) -> Optional[List[recipient.Recipient]]:
-        """
-        Gets the toRecipients property value. The To: recipients for the thread. Returned only on $select.
-        Returns: Optional[List[recipient.Recipient]]
-        """
-        return self._to_recipients
-    
-    @to_recipients.setter
-    def to_recipients(self,value: Optional[List[recipient.Recipient]] = None) -> None:
-        """
-        Sets the toRecipients property value. The To: recipients for the thread. Returned only on $select.
-        Args:
-            value: Value to set for the toRecipients property.
-        """
-        self._to_recipients = value
-    
-    @property
     def unique_senders(self,) -> Optional[List[str]]:
         """
         Gets the uniqueSenders property value. All the users that sent a message to this thread. Returned by default.
@@ -235,7 +235,7 @@ class ConversationThread(entity.Entity):
         """
         Sets the uniqueSenders property value. All the users that sent a message to this thread. Returned by default.
         Args:
-            value: Value to set for the uniqueSenders property.
+            value: Value to set for the unique_senders property.
         """
         self._unique_senders = value
     

@@ -17,7 +17,7 @@ class UserAccount(AdditionalDataHolder, Parsable):
         """
         Sets the accountName property value. The user account's displayed name.
         Args:
-            value: Value to set for the accountName property.
+            value: Value to set for the account_name property.
         """
         self._account_name = value
     
@@ -51,7 +51,7 @@ class UserAccount(AdditionalDataHolder, Parsable):
         """
         Sets the azureAdUserId property value. The user object identifier in Azure AD.
         Args:
-            value: Value to set for the azureAdUserId property.
+            value: Value to set for the azure_ad_user_id property.
         """
         self._azure_ad_user_id = value
     
@@ -100,7 +100,7 @@ class UserAccount(AdditionalDataHolder, Parsable):
         """
         Sets the domainName property value. The name of the Active Directory domain of which the user is a member.
         Args:
-            value: Value to set for the domainName property.
+            value: Value to set for the domain_name property.
         """
         self._domain_name = value
     
@@ -110,12 +110,12 @@ class UserAccount(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "account_name": lambda n : setattr(self, 'account_name', n.get_str_value()),
-            "azure_ad_user_id": lambda n : setattr(self, 'azure_ad_user_id', n.get_str_value()),
-            "domain_name": lambda n : setattr(self, 'domain_name', n.get_str_value()),
+            "accountName": lambda n : setattr(self, 'account_name', n.get_str_value()),
+            "azureAdUserId": lambda n : setattr(self, 'azure_ad_user_id', n.get_str_value()),
+            "domainName": lambda n : setattr(self, 'domain_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
-            "user_sid": lambda n : setattr(self, 'user_sid', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userSid": lambda n : setattr(self, 'user_sid', n.get_str_value()),
         }
         return fields
     
@@ -132,7 +132,7 @@ class UserAccount(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -165,7 +165,7 @@ class UserAccount(AdditionalDataHolder, Parsable):
         """
         Sets the userPrincipalName property value. The user principal name of the account in Azure AD.
         Args:
-            value: Value to set for the userPrincipalName property.
+            value: Value to set for the user_principal_name property.
         """
         self._user_principal_name = value
     
@@ -182,7 +182,7 @@ class UserAccount(AdditionalDataHolder, Parsable):
         """
         Sets the userSid property value. The local security identifier of the user account.
         Args:
-            value: Value to set for the userSid property.
+            value: Value to set for the user_sid property.
         """
         self._user_sid = value
     

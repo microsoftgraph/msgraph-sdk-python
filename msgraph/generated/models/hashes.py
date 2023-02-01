@@ -52,7 +52,7 @@ class Hashes(AdditionalDataHolder, Parsable):
         """
         Sets the crc32Hash property value. The CRC32 value of the file in little endian (if available). Read-only.
         Args:
-            value: Value to set for the crc32Hash property.
+            value: Value to set for the crc32_hash property.
         """
         self._crc32_hash = value
     
@@ -74,11 +74,11 @@ class Hashes(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "crc32_hash": lambda n : setattr(self, 'crc32_hash', n.get_str_value()),
+            "crc32Hash": lambda n : setattr(self, 'crc32_hash', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "quick_xor_hash": lambda n : setattr(self, 'quick_xor_hash', n.get_str_value()),
-            "sha1_hash": lambda n : setattr(self, 'sha1_hash', n.get_str_value()),
-            "sha256_hash": lambda n : setattr(self, 'sha256_hash', n.get_str_value()),
+            "quickXorHash": lambda n : setattr(self, 'quick_xor_hash', n.get_str_value()),
+            "sha1Hash": lambda n : setattr(self, 'sha1_hash', n.get_str_value()),
+            "sha256Hash": lambda n : setattr(self, 'sha256_hash', n.get_str_value()),
         }
         return fields
     
@@ -95,7 +95,7 @@ class Hashes(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -112,7 +112,7 @@ class Hashes(AdditionalDataHolder, Parsable):
         """
         Sets the quickXorHash property value. A proprietary hash of the file that can be used to determine if the contents of the file have changed (if available). Read-only.
         Args:
-            value: Value to set for the quickXorHash property.
+            value: Value to set for the quick_xor_hash property.
         """
         self._quick_xor_hash = value
     
@@ -144,7 +144,7 @@ class Hashes(AdditionalDataHolder, Parsable):
         """
         Sets the sha1Hash property value. SHA1 hash for the contents of the file (if available). Read-only.
         Args:
-            value: Value to set for the sha1Hash property.
+            value: Value to set for the sha1_hash property.
         """
         self._sha1_hash = value
     
@@ -161,7 +161,7 @@ class Hashes(AdditionalDataHolder, Parsable):
         """
         Sets the sha256Hash property value. SHA256 hash for the contents of the file (if available). Read-only.
         Args:
-            value: Value to set for the sha256Hash property.
+            value: Value to set for the sha256_hash property.
         """
         self._sha256_hash = value
     

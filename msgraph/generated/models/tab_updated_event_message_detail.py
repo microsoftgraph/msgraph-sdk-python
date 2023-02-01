@@ -37,7 +37,7 @@ class TabUpdatedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         fields = {
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
-            "tab_id": lambda n : setattr(self, 'tab_id', n.get_str_value()),
+            "tabId": lambda n : setattr(self, 'tab_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -85,7 +85,7 @@ class TabUpdatedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the tabId property value. Unique identifier of the tab.
         Args:
-            value: Value to set for the tabId property.
+            value: Value to set for the tab_id property.
         """
         self._tab_id = value
     

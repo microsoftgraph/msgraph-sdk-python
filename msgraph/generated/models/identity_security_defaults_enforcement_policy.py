@@ -33,7 +33,7 @@ class IdentitySecurityDefaultsEnforcementPolicy(policy_base.PolicyBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -52,7 +52,7 @@ class IdentitySecurityDefaultsEnforcementPolicy(policy_base.PolicyBase):
         """
         Sets the isEnabled property value. If set to true, Azure Active Directory security defaults is enabled for the tenant.
         Args:
-            value: Value to set for the isEnabled property.
+            value: Value to set for the is_enabled property.
         """
         self._is_enabled = value
     

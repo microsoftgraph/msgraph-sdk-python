@@ -59,10 +59,10 @@ class IncomingContext(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "observed_participant_id": lambda n : setattr(self, 'observed_participant_id', n.get_str_value()),
+            "observedParticipantId": lambda n : setattr(self, 'observed_participant_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "on_behalf_of": lambda n : setattr(self, 'on_behalf_of', n.get_object_value(identity_set.IdentitySet)),
-            "source_participant_id": lambda n : setattr(self, 'source_participant_id', n.get_str_value()),
+            "onBehalfOf": lambda n : setattr(self, 'on_behalf_of', n.get_object_value(identity_set.IdentitySet)),
+            "sourceParticipantId": lambda n : setattr(self, 'source_participant_id', n.get_str_value()),
             "transferor": lambda n : setattr(self, 'transferor', n.get_object_value(identity_set.IdentitySet)),
         }
         return fields
@@ -80,7 +80,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
         """
         Sets the observedParticipantId property value. The ID of the participant that is under observation. Read-only.
         Args:
-            value: Value to set for the observedParticipantId property.
+            value: Value to set for the observed_participant_id property.
         """
         self._observed_participant_id = value
     
@@ -97,7 +97,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -114,7 +114,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
         """
         Sets the onBehalfOf property value. The identity that the call is happening on behalf of.
         Args:
-            value: Value to set for the onBehalfOf property.
+            value: Value to set for the on_behalf_of property.
         """
         self._on_behalf_of = value
     
@@ -146,7 +146,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
         """
         Sets the sourceParticipantId property value. The ID of the participant that triggered the incoming call. Read-only.
         Args:
-            value: Value to set for the sourceParticipantId property.
+            value: Value to set for the source_participant_id property.
         """
         self._source_participant_id = value
     

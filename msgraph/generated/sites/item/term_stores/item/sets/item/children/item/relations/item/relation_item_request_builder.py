@@ -41,11 +41,12 @@ class RelationItemRequestBuilder():
         """
         return to_term_request_builder.ToTermRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, relation_id: Optional[str] = None) -> None:
         """
         Instantiates a new RelationItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
+            relationId: key: id of relation
             requestAdapter: The request adapter to use to execute the requests.
         """
         if path_parameters is None:
@@ -56,6 +57,7 @@ class RelationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/sites/{site%2Did}/termStores/{store%2Did}/sets/{set%2Did}/children/{term%2Did}/relations/{relation%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["relation%2Did"] = relationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

@@ -34,7 +34,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         """
         Sets the allowAutoFilter property value. Represents the worksheet protection option of allowing using auto filter feature.
         Args:
-            value: Value to set for the allowAutoFilter property.
+            value: Value to set for the allow_auto_filter property.
         """
         self._allow_auto_filter = value
     
@@ -51,7 +51,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         """
         Sets the allowDeleteColumns property value. Represents the worksheet protection option of allowing deleting columns.
         Args:
-            value: Value to set for the allowDeleteColumns property.
+            value: Value to set for the allow_delete_columns property.
         """
         self._allow_delete_columns = value
     
@@ -68,7 +68,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         """
         Sets the allowDeleteRows property value. Represents the worksheet protection option of allowing deleting rows.
         Args:
-            value: Value to set for the allowDeleteRows property.
+            value: Value to set for the allow_delete_rows property.
         """
         self._allow_delete_rows = value
     
@@ -85,7 +85,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         """
         Sets the allowFormatCells property value. Represents the worksheet protection option of allowing formatting cells.
         Args:
-            value: Value to set for the allowFormatCells property.
+            value: Value to set for the allow_format_cells property.
         """
         self._allow_format_cells = value
     
@@ -102,7 +102,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         """
         Sets the allowFormatColumns property value. Represents the worksheet protection option of allowing formatting columns.
         Args:
-            value: Value to set for the allowFormatColumns property.
+            value: Value to set for the allow_format_columns property.
         """
         self._allow_format_columns = value
     
@@ -119,7 +119,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         """
         Sets the allowFormatRows property value. Represents the worksheet protection option of allowing formatting rows.
         Args:
-            value: Value to set for the allowFormatRows property.
+            value: Value to set for the allow_format_rows property.
         """
         self._allow_format_rows = value
     
@@ -136,7 +136,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         """
         Sets the allowInsertColumns property value. Represents the worksheet protection option of allowing inserting columns.
         Args:
-            value: Value to set for the allowInsertColumns property.
+            value: Value to set for the allow_insert_columns property.
         """
         self._allow_insert_columns = value
     
@@ -153,7 +153,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         """
         Sets the allowInsertHyperlinks property value. Represents the worksheet protection option of allowing inserting hyperlinks.
         Args:
-            value: Value to set for the allowInsertHyperlinks property.
+            value: Value to set for the allow_insert_hyperlinks property.
         """
         self._allow_insert_hyperlinks = value
     
@@ -170,7 +170,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         """
         Sets the allowInsertRows property value. Represents the worksheet protection option of allowing inserting rows.
         Args:
-            value: Value to set for the allowInsertRows property.
+            value: Value to set for the allow_insert_rows property.
         """
         self._allow_insert_rows = value
     
@@ -187,7 +187,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         """
         Sets the allowPivotTables property value. Represents the worksheet protection option of allowing using pivot table feature.
         Args:
-            value: Value to set for the allowPivotTables property.
+            value: Value to set for the allow_pivot_tables property.
         """
         self._allow_pivot_tables = value
     
@@ -204,7 +204,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         """
         Sets the allowSort property value. Represents the worksheet protection option of allowing using sort feature.
         Args:
-            value: Value to set for the allowSort property.
+            value: Value to set for the allow_sort property.
         """
         self._allow_sort = value
     
@@ -258,17 +258,17 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_auto_filter": lambda n : setattr(self, 'allow_auto_filter', n.get_bool_value()),
-            "allow_delete_columns": lambda n : setattr(self, 'allow_delete_columns', n.get_bool_value()),
-            "allow_delete_rows": lambda n : setattr(self, 'allow_delete_rows', n.get_bool_value()),
-            "allow_format_cells": lambda n : setattr(self, 'allow_format_cells', n.get_bool_value()),
-            "allow_format_columns": lambda n : setattr(self, 'allow_format_columns', n.get_bool_value()),
-            "allow_format_rows": lambda n : setattr(self, 'allow_format_rows', n.get_bool_value()),
-            "allow_insert_columns": lambda n : setattr(self, 'allow_insert_columns', n.get_bool_value()),
-            "allow_insert_hyperlinks": lambda n : setattr(self, 'allow_insert_hyperlinks', n.get_bool_value()),
-            "allow_insert_rows": lambda n : setattr(self, 'allow_insert_rows', n.get_bool_value()),
-            "allow_pivot_tables": lambda n : setattr(self, 'allow_pivot_tables', n.get_bool_value()),
-            "allow_sort": lambda n : setattr(self, 'allow_sort', n.get_bool_value()),
+            "allowAutoFilter": lambda n : setattr(self, 'allow_auto_filter', n.get_bool_value()),
+            "allowDeleteColumns": lambda n : setattr(self, 'allow_delete_columns', n.get_bool_value()),
+            "allowDeleteRows": lambda n : setattr(self, 'allow_delete_rows', n.get_bool_value()),
+            "allowFormatCells": lambda n : setattr(self, 'allow_format_cells', n.get_bool_value()),
+            "allowFormatColumns": lambda n : setattr(self, 'allow_format_columns', n.get_bool_value()),
+            "allowFormatRows": lambda n : setattr(self, 'allow_format_rows', n.get_bool_value()),
+            "allowInsertColumns": lambda n : setattr(self, 'allow_insert_columns', n.get_bool_value()),
+            "allowInsertHyperlinks": lambda n : setattr(self, 'allow_insert_hyperlinks', n.get_bool_value()),
+            "allowInsertRows": lambda n : setattr(self, 'allow_insert_rows', n.get_bool_value()),
+            "allowPivotTables": lambda n : setattr(self, 'allow_pivot_tables', n.get_bool_value()),
+            "allowSort": lambda n : setattr(self, 'allow_sort', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -286,7 +286,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

@@ -25,7 +25,7 @@ class ApplicationTemplate(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new applicationTemplate and sets the default values.
+        Instantiates a new ApplicationTemplate and sets the default values.
         """
         super().__init__()
         # The list of categories for the application. Supported values can be: Collaboration, Business Management, Consumer, Content management, CRM, Data services, Developer services, E-commerce, Education, ERP, Finance, Health, Human resources, IT infrastructure, Mail, Management, Marketing, Media, Productivity, Project management, Telecommunications, Tools, Travel, and Web design & hosting.
@@ -89,7 +89,7 @@ class ApplicationTemplate(entity.Entity):
         """
         Sets the displayName property value. The name of the application.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -101,12 +101,12 @@ class ApplicationTemplate(entity.Entity):
         fields = {
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_primitive_values(str)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "home_page_url": lambda n : setattr(self, 'home_page_url', n.get_str_value()),
-            "logo_url": lambda n : setattr(self, 'logo_url', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "homePageUrl": lambda n : setattr(self, 'home_page_url', n.get_str_value()),
+            "logoUrl": lambda n : setattr(self, 'logo_url', n.get_str_value()),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
-            "supported_provisioning_types": lambda n : setattr(self, 'supported_provisioning_types', n.get_collection_of_primitive_values(str)),
-            "supported_single_sign_on_modes": lambda n : setattr(self, 'supported_single_sign_on_modes', n.get_collection_of_primitive_values(str)),
+            "supportedProvisioningTypes": lambda n : setattr(self, 'supported_provisioning_types', n.get_collection_of_primitive_values(str)),
+            "supportedSingleSignOnModes": lambda n : setattr(self, 'supported_single_sign_on_modes', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -125,7 +125,7 @@ class ApplicationTemplate(entity.Entity):
         """
         Sets the homePageUrl property value. The home page URL of the application.
         Args:
-            value: Value to set for the homePageUrl property.
+            value: Value to set for the home_page_url property.
         """
         self._home_page_url = value
     
@@ -142,7 +142,7 @@ class ApplicationTemplate(entity.Entity):
         """
         Sets the logoUrl property value. The URL to get the logo for this application.
         Args:
-            value: Value to set for the logoUrl property.
+            value: Value to set for the logo_url property.
         """
         self._logo_url = value
     
@@ -194,7 +194,7 @@ class ApplicationTemplate(entity.Entity):
         """
         Sets the supportedProvisioningTypes property value. The list of provisioning modes supported by this application. The only valid value is sync.
         Args:
-            value: Value to set for the supportedProvisioningTypes property.
+            value: Value to set for the supported_provisioning_types property.
         """
         self._supported_provisioning_types = value
     
@@ -211,7 +211,7 @@ class ApplicationTemplate(entity.Entity):
         """
         Sets the supportedSingleSignOnModes property value. The list of single sign-on modes supported by this application. The supported values are oidc, password, saml, and notSupported.
         Args:
-            value: Value to set for the supportedSingleSignOnModes property.
+            value: Value to set for the supported_single_sign_on_modes property.
         """
         self._supported_single_sign_on_modes = value
     

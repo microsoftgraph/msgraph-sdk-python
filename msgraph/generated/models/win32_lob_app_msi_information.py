@@ -69,13 +69,13 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "package_type": lambda n : setattr(self, 'package_type', n.get_enum_value(win32_lob_app_msi_package_type.Win32LobAppMsiPackageType)),
-            "product_code": lambda n : setattr(self, 'product_code', n.get_str_value()),
-            "product_name": lambda n : setattr(self, 'product_name', n.get_str_value()),
-            "product_version": lambda n : setattr(self, 'product_version', n.get_str_value()),
+            "packageType": lambda n : setattr(self, 'package_type', n.get_enum_value(win32_lob_app_msi_package_type.Win32LobAppMsiPackageType)),
+            "productCode": lambda n : setattr(self, 'product_code', n.get_str_value()),
+            "productName": lambda n : setattr(self, 'product_name', n.get_str_value()),
+            "productVersion": lambda n : setattr(self, 'product_version', n.get_str_value()),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
-            "requires_reboot": lambda n : setattr(self, 'requires_reboot', n.get_bool_value()),
-            "upgrade_code": lambda n : setattr(self, 'upgrade_code', n.get_str_value()),
+            "requiresReboot": lambda n : setattr(self, 'requires_reboot', n.get_bool_value()),
+            "upgradeCode": lambda n : setattr(self, 'upgrade_code', n.get_str_value()),
         }
         return fields
     
@@ -92,7 +92,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -109,7 +109,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         """
         Sets the packageType property value. Indicates the package type of an MSI Win32LobApp.
         Args:
-            value: Value to set for the packageType property.
+            value: Value to set for the package_type property.
         """
         self._package_type = value
     
@@ -126,7 +126,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         """
         Sets the productCode property value. The MSI product code.
         Args:
-            value: Value to set for the productCode property.
+            value: Value to set for the product_code property.
         """
         self._product_code = value
     
@@ -143,7 +143,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         """
         Sets the productName property value. The MSI product name.
         Args:
-            value: Value to set for the productName property.
+            value: Value to set for the product_name property.
         """
         self._product_name = value
     
@@ -160,7 +160,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         """
         Sets the productVersion property value. The MSI product version.
         Args:
-            value: Value to set for the productVersion property.
+            value: Value to set for the product_version property.
         """
         self._product_version = value
     
@@ -194,7 +194,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         """
         Sets the requiresReboot property value. Whether the MSI app requires the machine to reboot to complete installation.
         Args:
-            value: Value to set for the requiresReboot property.
+            value: Value to set for the requires_reboot property.
         """
         self._requires_reboot = value
     
@@ -229,7 +229,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         """
         Sets the upgradeCode property value. The MSI upgrade code.
         Args:
-            value: Value to set for the upgradeCode property.
+            value: Value to set for the upgrade_code property.
         """
         self._upgrade_code = value
     

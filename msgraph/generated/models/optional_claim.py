@@ -34,7 +34,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
         """
         Sets the additionalProperties property value. Additional properties of the claim. If a property exists in this collection, it modifies the behavior of the optional claim specified in the name property.
         Args:
-            value: Value to set for the additionalProperties property.
+            value: Value to set for the additional_properties property.
         """
         self._additional_properties = value
     
@@ -91,7 +91,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "additional_properties": lambda n : setattr(self, 'additional_properties', n.get_collection_of_primitive_values(str)),
+            "additionalProperties": lambda n : setattr(self, 'additional_properties', n.get_collection_of_primitive_values(str)),
             "essential": lambda n : setattr(self, 'essential', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -129,7 +129,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

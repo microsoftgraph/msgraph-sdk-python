@@ -39,9 +39,9 @@ class LicenseDetails(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "service_plans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(service_plan_info.ServicePlanInfo)),
-            "sku_id": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
-            "sku_part_number": lambda n : setattr(self, 'sku_part_number', n.get_str_value()),
+            "servicePlans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(service_plan_info.ServicePlanInfo)),
+            "skuId": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
+            "skuPartNumber": lambda n : setattr(self, 'sku_part_number', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -73,7 +73,7 @@ class LicenseDetails(entity.Entity):
         """
         Sets the servicePlans property value. Information about the service plans assigned with the license. Read-only, Not nullable
         Args:
-            value: Value to set for the servicePlans property.
+            value: Value to set for the service_plans property.
         """
         self._service_plans = value
     
@@ -90,7 +90,7 @@ class LicenseDetails(entity.Entity):
         """
         Sets the skuId property value. Unique identifier (GUID) for the service SKU. Equal to the skuId property on the related SubscribedSku object. Read-only
         Args:
-            value: Value to set for the skuId property.
+            value: Value to set for the sku_id property.
         """
         self._sku_id = value
     
@@ -107,7 +107,7 @@ class LicenseDetails(entity.Entity):
         """
         Sets the skuPartNumber property value. Unique SKU display name. Equal to the skuPartNumber on the related SubscribedSku object; for example: 'AAD_Premium'. Read-only
         Args:
-            value: Value to set for the skuPartNumber property.
+            value: Value to set for the sku_part_number property.
         """
         self._sku_part_number = value
     

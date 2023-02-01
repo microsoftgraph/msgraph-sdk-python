@@ -88,7 +88,7 @@ class ShiftActivity(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. The name of the shiftActivity. Required.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -105,7 +105,7 @@ class ShiftActivity(AdditionalDataHolder, Parsable):
         """
         Sets the endDateTime property value. The end date and time for the shiftActivity. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Required.
         Args:
-            value: Value to set for the endDateTime property.
+            value: Value to set for the end_date_time property.
         """
         self._end_date_time = value
     
@@ -116,11 +116,11 @@ class ShiftActivity(AdditionalDataHolder, Parsable):
         """
         fields = {
             "code": lambda n : setattr(self, 'code', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "is_paid": lambda n : setattr(self, 'is_paid', n.get_bool_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "isPaid": lambda n : setattr(self, 'is_paid', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "theme": lambda n : setattr(self, 'theme', n.get_enum_value(schedule_entity_theme.ScheduleEntityTheme)),
         }
         return fields
@@ -138,7 +138,7 @@ class ShiftActivity(AdditionalDataHolder, Parsable):
         """
         Sets the isPaid property value. Indicates whether the microsoft.graph.user should be paid for the activity during their shift. Required.
         Args:
-            value: Value to set for the isPaid property.
+            value: Value to set for the is_paid property.
         """
         self._is_paid = value
     
@@ -155,7 +155,7 @@ class ShiftActivity(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -189,7 +189,7 @@ class ShiftActivity(AdditionalDataHolder, Parsable):
         """
         Sets the startDateTime property value. The start date and time for the shiftActivity. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Required.
         Args:
-            value: Value to set for the startDateTime property.
+            value: Value to set for the start_date_time property.
         """
         self._start_date_time = value
     

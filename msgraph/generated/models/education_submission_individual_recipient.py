@@ -33,7 +33,7 @@ class EducationSubmissionIndividualRecipient(education_submission_recipient.Educ
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,7 +63,7 @@ class EducationSubmissionIndividualRecipient(education_submission_recipient.Educ
         """
         Sets the userId property value. User ID of the user to whom the submission is assigned.
         Args:
-            value: Value to set for the userId property.
+            value: Value to set for the user_id property.
         """
         self._user_id = value
     

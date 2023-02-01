@@ -60,7 +60,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         """
         Sets the containerDisplayName property value. A string describing where the item is stored. For example, the name of a SharePoint site or the user name identifying the owner of the OneDrive storing the item.
         Args:
-            value: Value to set for the containerDisplayName property.
+            value: Value to set for the container_display_name property.
         """
         self._container_display_name = value
     
@@ -77,7 +77,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         """
         Sets the containerType property value. Can be used for filtering by the type of container in which the file is stored. Such as Site or OneDriveBusiness.
         Args:
-            value: Value to set for the containerType property.
+            value: Value to set for the container_type property.
         """
         self._container_type = value
     
@@ -94,7 +94,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         """
         Sets the containerWebUrl property value. A path leading to the folder in which the item is stored.
         Args:
-            value: Value to set for the containerWebUrl property.
+            value: Value to set for the container_web_url property.
         """
         self._container_web_url = value
     
@@ -116,13 +116,13 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "container_display_name": lambda n : setattr(self, 'container_display_name', n.get_str_value()),
-            "container_type": lambda n : setattr(self, 'container_type', n.get_str_value()),
-            "container_web_url": lambda n : setattr(self, 'container_web_url', n.get_str_value()),
-            "media_type": lambda n : setattr(self, 'media_type', n.get_str_value()),
+            "containerDisplayName": lambda n : setattr(self, 'container_display_name', n.get_str_value()),
+            "containerType": lambda n : setattr(self, 'container_type', n.get_str_value()),
+            "containerWebUrl": lambda n : setattr(self, 'container_web_url', n.get_str_value()),
+            "mediaType": lambda n : setattr(self, 'media_type', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "preview_image_url": lambda n : setattr(self, 'preview_image_url', n.get_str_value()),
-            "preview_text": lambda n : setattr(self, 'preview_text', n.get_str_value()),
+            "previewImageUrl": lambda n : setattr(self, 'preview_image_url', n.get_str_value()),
+            "previewText": lambda n : setattr(self, 'preview_text', n.get_str_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
         }
@@ -141,7 +141,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         """
         Sets the mediaType property value. The item's media type. Can be used for filtering for a specific type of file based on supported IANA Media Mime Types. Note that not all Media Mime Types are supported.
         Args:
-            value: Value to set for the mediaType property.
+            value: Value to set for the media_type property.
         """
         self._media_type = value
     
@@ -158,7 +158,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -175,7 +175,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         """
         Sets the previewImageUrl property value. A URL leading to the preview image for the item.
         Args:
-            value: Value to set for the previewImageUrl property.
+            value: Value to set for the preview_image_url property.
         """
         self._preview_image_url = value
     
@@ -192,7 +192,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         """
         Sets the previewText property value. A preview text for the item.
         Args:
-            value: Value to set for the previewText property.
+            value: Value to set for the preview_text property.
         """
         self._preview_text = value
     

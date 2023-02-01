@@ -59,8 +59,8 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
         """
         fields = {
             "error": lambda n : setattr(self, 'error', n.get_object_value(public_error.PublicError)),
-            "percentage_complete": lambda n : setattr(self, 'percentage_complete', n.get_int_value()),
-            "resource_id": lambda n : setattr(self, 'resource_id', n.get_str_value()),
+            "percentageComplete": lambda n : setattr(self, 'percentage_complete', n.get_int_value()),
+            "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -80,7 +80,7 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
         """
         Sets the percentageComplete property value. A value between 0 and 100 that indicates the progress of the operation.
         Args:
-            value: Value to set for the percentageComplete property.
+            value: Value to set for the percentage_complete property.
         """
         self._percentage_complete = value
     
@@ -97,7 +97,7 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
         """
         Sets the resourceId property value. The unique identifier for the result.
         Args:
-            value: Value to set for the resourceId property.
+            value: Value to set for the resource_id property.
         """
         self._resource_id = value
     

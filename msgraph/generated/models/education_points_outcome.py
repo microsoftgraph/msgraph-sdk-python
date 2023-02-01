@@ -37,7 +37,7 @@ class EducationPointsOutcome(education_outcome.EducationOutcome):
         """
         fields = {
             "points": lambda n : setattr(self, 'points', n.get_object_value(education_assignment_points_grade.EducationAssignmentPointsGrade)),
-            "published_points": lambda n : setattr(self, 'published_points', n.get_object_value(education_assignment_points_grade.EducationAssignmentPointsGrade)),
+            "publishedPoints": lambda n : setattr(self, 'published_points', n.get_object_value(education_assignment_points_grade.EducationAssignmentPointsGrade)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -73,7 +73,7 @@ class EducationPointsOutcome(education_outcome.EducationOutcome):
         """
         Sets the publishedPoints property value. A copy of the points property that is made when the grade is released to the student.
         Args:
-            value: Value to set for the publishedPoints property.
+            value: Value to set for the published_points property.
         """
         self._published_points = value
     

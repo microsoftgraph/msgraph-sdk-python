@@ -34,7 +34,7 @@ class ChatMessagePolicyViolationPolicyTip(AdditionalDataHolder, Parsable):
         """
         Sets the complianceUrl property value. The URL a user can visit to read about the data loss prevention policies for the organization. (ie, policies about what users shouldn't say in chats)
         Args:
-            value: Value to set for the complianceUrl property.
+            value: Value to set for the compliance_url property.
         """
         self._compliance_url = value
     
@@ -79,7 +79,7 @@ class ChatMessagePolicyViolationPolicyTip(AdditionalDataHolder, Parsable):
         """
         Sets the generalText property value. Explanatory text shown to the sender of the message.
         Args:
-            value: Value to set for the generalText property.
+            value: Value to set for the general_text property.
         """
         self._general_text = value
     
@@ -89,9 +89,9 @@ class ChatMessagePolicyViolationPolicyTip(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "compliance_url": lambda n : setattr(self, 'compliance_url', n.get_str_value()),
-            "general_text": lambda n : setattr(self, 'general_text', n.get_str_value()),
-            "matched_condition_descriptions": lambda n : setattr(self, 'matched_condition_descriptions', n.get_collection_of_primitive_values(str)),
+            "complianceUrl": lambda n : setattr(self, 'compliance_url', n.get_str_value()),
+            "generalText": lambda n : setattr(self, 'general_text', n.get_str_value()),
+            "matchedConditionDescriptions": lambda n : setattr(self, 'matched_condition_descriptions', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -109,7 +109,7 @@ class ChatMessagePolicyViolationPolicyTip(AdditionalDataHolder, Parsable):
         """
         Sets the matchedConditionDescriptions property value. The list of improper data in the message that was detected by the data loss prevention app. Each DLP app defines its own conditions, examples include 'Credit Card Number' and 'Social Security Number'.
         Args:
-            value: Value to set for the matchedConditionDescriptions property.
+            value: Value to set for the matched_condition_descriptions property.
         """
         self._matched_condition_descriptions = value
     
@@ -126,7 +126,7 @@ class ChatMessagePolicyViolationPolicyTip(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

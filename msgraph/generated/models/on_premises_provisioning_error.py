@@ -76,9 +76,9 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         """
         fields = {
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
-            "occurred_date_time": lambda n : setattr(self, 'occurred_date_time', n.get_datetime_value()),
+            "occurredDateTime": lambda n : setattr(self, 'occurred_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "property_causing_error": lambda n : setattr(self, 'property_causing_error', n.get_str_value()),
+            "propertyCausingError": lambda n : setattr(self, 'property_causing_error', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
         }
         return fields
@@ -96,7 +96,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         """
         Sets the occurredDateTime property value. The date and time at which the error occurred.
         Args:
-            value: Value to set for the occurredDateTime property.
+            value: Value to set for the occurred_date_time property.
         """
         self._occurred_date_time = value
     
@@ -113,7 +113,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -130,7 +130,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         """
         Sets the propertyCausingError property value. Name of the directory property causing the error. Current possible values: UserPrincipalName or ProxyAddress
         Args:
-            value: Value to set for the propertyCausingError property.
+            value: Value to set for the property_causing_error property.
         """
         self._property_causing_error = value
     

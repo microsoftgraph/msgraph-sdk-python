@@ -20,7 +20,7 @@ class CertificateBasedAuthConfiguration(entity.Entity):
         """
         Sets the certificateAuthorities property value. Collection of certificate authorities which creates a trusted certificate chain.
         Args:
-            value: Value to set for the certificateAuthorities property.
+            value: Value to set for the certificate_authorities property.
         """
         self._certificate_authorities = value
     
@@ -52,7 +52,7 @@ class CertificateBasedAuthConfiguration(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "certificate_authorities": lambda n : setattr(self, 'certificate_authorities', n.get_collection_of_object_values(certificate_authority.CertificateAuthority)),
+            "certificateAuthorities": lambda n : setattr(self, 'certificate_authorities', n.get_collection_of_object_values(certificate_authority.CertificateAuthority)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

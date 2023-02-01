@@ -35,7 +35,7 @@ class DeviceManagementTroubleshootingEvent(entity.Entity):
         """
         Sets the correlationId property value. Id used for tracing the failure in the service.
         Args:
-            value: Value to set for the correlationId property.
+            value: Value to set for the correlation_id property.
         """
         self._correlation_id = value
     
@@ -64,7 +64,7 @@ class DeviceManagementTroubleshootingEvent(entity.Entity):
         """
         Sets the eventDateTime property value. Time when the event occurred .
         Args:
-            value: Value to set for the eventDateTime property.
+            value: Value to set for the event_date_time property.
         """
         self._event_date_time = value
     
@@ -74,8 +74,8 @@ class DeviceManagementTroubleshootingEvent(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "correlation_id": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
-            "event_date_time": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
+            "correlationId": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
+            "eventDateTime": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

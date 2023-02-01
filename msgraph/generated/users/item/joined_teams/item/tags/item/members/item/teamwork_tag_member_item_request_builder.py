@@ -17,12 +17,13 @@ class TeamworkTagMemberItemRequestBuilder():
     """
     Provides operations to manage the members property of the microsoft.graph.teamworkTag entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, teamwork_tag_member_id: Optional[str] = None) -> None:
         """
         Instantiates a new TeamworkTagMemberItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            teamworkTagMemberId: key: id of teamworkTagMember
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -32,6 +33,7 @@ class TeamworkTagMemberItemRequestBuilder():
         self.url_template: str = "{+baseurl}/users/{user%2Did}/joinedTeams/{team%2Did}/tags/{teamworkTag%2Did}/members/{teamworkTagMember%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["teamworkTagMember%2Did"] = teamworkTagMemberId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

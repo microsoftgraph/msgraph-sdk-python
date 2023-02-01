@@ -54,7 +54,7 @@ class VisualInfo(AdditionalDataHolder, Parsable):
         """
         Sets the backgroundColor property value. Optional. Background color used to render the activity in the UI - brand color for the application source of the activity. Must be a valid hex color
         Args:
-            value: Value to set for the backgroundColor property.
+            value: Value to set for the background_color property.
         """
         self._background_color = value
     
@@ -137,7 +137,7 @@ class VisualInfo(AdditionalDataHolder, Parsable):
         """
         Sets the displayText property value. Required. Short text description of the user's unique activity (for example, document name in cases where an activity refers to document creation)
         Args:
-            value: Value to set for the displayText property.
+            value: Value to set for the display_text property.
         """
         self._display_text = value
     
@@ -148,10 +148,10 @@ class VisualInfo(AdditionalDataHolder, Parsable):
         """
         fields = {
             "attribution": lambda n : setattr(self, 'attribution', n.get_object_value(image_info.ImageInfo)),
-            "background_color": lambda n : setattr(self, 'background_color', n.get_str_value()),
+            "backgroundColor": lambda n : setattr(self, 'background_color', n.get_str_value()),
             "content": lambda n : setattr(self, 'content', n.get_object_value(json.Json)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_text": lambda n : setattr(self, 'display_text', n.get_str_value()),
+            "displayText": lambda n : setattr(self, 'display_text', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -169,7 +169,7 @@ class VisualInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

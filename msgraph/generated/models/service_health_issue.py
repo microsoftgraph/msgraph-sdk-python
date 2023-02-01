@@ -94,7 +94,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         """
         Sets the featureGroup property value. The feature group name of the service issue.
         Args:
-            value: Value to set for the featureGroup property.
+            value: Value to set for the feature_group property.
         """
         self._feature_group = value
     
@@ -106,9 +106,9 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         fields = {
             "classification": lambda n : setattr(self, 'classification', n.get_enum_value(service_health_classification_type.ServiceHealthClassificationType)),
             "feature": lambda n : setattr(self, 'feature', n.get_str_value()),
-            "feature_group": lambda n : setattr(self, 'feature_group', n.get_str_value()),
-            "impact_description": lambda n : setattr(self, 'impact_description', n.get_str_value()),
-            "is_resolved": lambda n : setattr(self, 'is_resolved', n.get_bool_value()),
+            "featureGroup": lambda n : setattr(self, 'feature_group', n.get_str_value()),
+            "impactDescription": lambda n : setattr(self, 'impact_description', n.get_str_value()),
+            "isResolved": lambda n : setattr(self, 'is_resolved', n.get_bool_value()),
             "origin": lambda n : setattr(self, 'origin', n.get_enum_value(service_health_origin.ServiceHealthOrigin)),
             "posts": lambda n : setattr(self, 'posts', n.get_collection_of_object_values(service_health_issue_post.ServiceHealthIssuePost)),
             "service": lambda n : setattr(self, 'service', n.get_str_value()),
@@ -131,7 +131,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         """
         Sets the impactDescription property value. The description of the service issue impact.
         Args:
-            value: Value to set for the impactDescription property.
+            value: Value to set for the impact_description property.
         """
         self._impact_description = value
     
@@ -148,7 +148,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         """
         Sets the isResolved property value. Indicates whether the issue is resolved.
         Args:
-            value: Value to set for the isResolved property.
+            value: Value to set for the is_resolved property.
         """
         self._is_resolved = value
     

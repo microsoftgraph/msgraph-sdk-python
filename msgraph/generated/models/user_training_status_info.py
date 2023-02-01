@@ -37,7 +37,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         """
         Sets the assignedDateTime property value. Date and time of assignment of the training to the user.
         Args:
-            value: Value to set for the assignedDateTime property.
+            value: Value to set for the assigned_date_time property.
         """
         self._assigned_date_time = value
     
@@ -54,7 +54,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         """
         Sets the completionDateTime property value. Date and time of completion of the training by the user.
         Args:
-            value: Value to set for the completionDateTime property.
+            value: Value to set for the completion_date_time property.
         """
         self._completion_date_time = value
     
@@ -101,7 +101,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. Display name of the assigned training.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -111,11 +111,11 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assigned_date_time": lambda n : setattr(self, 'assigned_date_time', n.get_datetime_value()),
-            "completion_date_time": lambda n : setattr(self, 'completion_date_time', n.get_datetime_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "assignedDateTime": lambda n : setattr(self, 'assigned_date_time', n.get_datetime_value()),
+            "completionDateTime": lambda n : setattr(self, 'completion_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "training_status": lambda n : setattr(self, 'training_status', n.get_enum_value(training_status.TrainingStatus)),
+            "trainingStatus": lambda n : setattr(self, 'training_status', n.get_enum_value(training_status.TrainingStatus)),
         }
         return fields
     
@@ -132,7 +132,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -164,7 +164,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         """
         Sets the trainingStatus property value. The status of the training assigned to the user. Possible values are: unknown, assigned, inProgress, completed, overdue, unknownFutureValue.
         Args:
-            value: Value to set for the trainingStatus property.
+            value: Value to set for the training_status property.
         """
         self._training_status = value
     

@@ -20,7 +20,7 @@ class ChannelDeletedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the channelDisplayName property value. Display name of the channel.
         Args:
-            value: Value to set for the channelDisplayName property.
+            value: Value to set for the channel_display_name property.
         """
         self._channel_display_name = value
     
@@ -37,7 +37,7 @@ class ChannelDeletedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the channelId property value. Unique identifier of the channel.
         Args:
-            value: Value to set for the channelId property.
+            value: Value to set for the channel_id property.
         """
         self._channel_id = value
     
@@ -72,8 +72,8 @@ class ChannelDeletedEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "channel_display_name": lambda n : setattr(self, 'channel_display_name', n.get_str_value()),
-            "channel_id": lambda n : setattr(self, 'channel_id', n.get_str_value()),
+            "channelDisplayName": lambda n : setattr(self, 'channel_display_name', n.get_str_value()),
+            "channelId": lambda n : setattr(self, 'channel_id', n.get_str_value()),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
         }
         super_fields = super().get_field_deserializers()

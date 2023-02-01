@@ -54,7 +54,7 @@ class Endpoint(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "user_agent": lambda n : setattr(self, 'user_agent', n.get_object_value(user_agent.UserAgent)),
+            "userAgent": lambda n : setattr(self, 'user_agent', n.get_object_value(user_agent.UserAgent)),
         }
         return fields
     
@@ -71,7 +71,7 @@ class Endpoint(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -100,7 +100,7 @@ class Endpoint(AdditionalDataHolder, Parsable):
         """
         Sets the userAgent property value. User-agent reported by this endpoint.
         Args:
-            value: Value to set for the userAgent property.
+            value: Value to set for the user_agent property.
         """
         self._user_agent = value
     

@@ -75,7 +75,7 @@ class ApplicationServicePrincipal(AdditionalDataHolder, Parsable):
         fields = {
             "application": lambda n : setattr(self, 'application', n.get_object_value(application.Application)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "service_principal": lambda n : setattr(self, 'service_principal', n.get_object_value(service_principal.ServicePrincipal)),
+            "servicePrincipal": lambda n : setattr(self, 'service_principal', n.get_object_value(service_principal.ServicePrincipal)),
         }
         return fields
     
@@ -92,7 +92,7 @@ class ApplicationServicePrincipal(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -122,7 +122,7 @@ class ApplicationServicePrincipal(AdditionalDataHolder, Parsable):
         """
         Sets the servicePrincipal property value. The servicePrincipal property
         Args:
-            value: Value to set for the servicePrincipal property.
+            value: Value to set for the service_principal property.
         """
         self._service_principal = value
     

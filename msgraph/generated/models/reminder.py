@@ -37,7 +37,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         """
         Sets the changeKey property value. Identifies the version of the reminder. Every time the reminder is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object.
         Args:
-            value: Value to set for the changeKey property.
+            value: Value to set for the change_key property.
         """
         self._change_key = value
     
@@ -92,7 +92,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         """
         Sets the eventEndTime property value. The date, time and time zone that the event ends.
         Args:
-            value: Value to set for the eventEndTime property.
+            value: Value to set for the event_end_time property.
         """
         self._event_end_time = value
     
@@ -109,7 +109,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         """
         Sets the eventId property value. The unique ID of the event. Read only.
         Args:
-            value: Value to set for the eventId property.
+            value: Value to set for the event_id property.
         """
         self._event_id = value
     
@@ -126,7 +126,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         """
         Sets the eventLocation property value. The location of the event.
         Args:
-            value: Value to set for the eventLocation property.
+            value: Value to set for the event_location property.
         """
         self._event_location = value
     
@@ -143,7 +143,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         """
         Sets the eventStartTime property value. The date, time, and time zone that the event starts.
         Args:
-            value: Value to set for the eventStartTime property.
+            value: Value to set for the event_start_time property.
         """
         self._event_start_time = value
     
@@ -160,7 +160,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         """
         Sets the eventSubject property value. The text of the event's subject line.
         Args:
-            value: Value to set for the eventSubject property.
+            value: Value to set for the event_subject property.
         """
         self._event_subject = value
     
@@ -177,7 +177,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         """
         Sets the eventWebLink property value. The URL to open the event in Outlook on the web.The event will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.
         Args:
-            value: Value to set for the eventWebLink property.
+            value: Value to set for the event_web_link property.
         """
         self._event_web_link = value
     
@@ -187,15 +187,15 @@ class Reminder(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "change_key": lambda n : setattr(self, 'change_key', n.get_str_value()),
-            "event_end_time": lambda n : setattr(self, 'event_end_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "event_id": lambda n : setattr(self, 'event_id', n.get_str_value()),
-            "event_location": lambda n : setattr(self, 'event_location', n.get_object_value(location.Location)),
-            "event_start_time": lambda n : setattr(self, 'event_start_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "event_subject": lambda n : setattr(self, 'event_subject', n.get_str_value()),
-            "event_web_link": lambda n : setattr(self, 'event_web_link', n.get_str_value()),
+            "changeKey": lambda n : setattr(self, 'change_key', n.get_str_value()),
+            "eventEndTime": lambda n : setattr(self, 'event_end_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "eventId": lambda n : setattr(self, 'event_id', n.get_str_value()),
+            "eventLocation": lambda n : setattr(self, 'event_location', n.get_object_value(location.Location)),
+            "eventStartTime": lambda n : setattr(self, 'event_start_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "eventSubject": lambda n : setattr(self, 'event_subject', n.get_str_value()),
+            "eventWebLink": lambda n : setattr(self, 'event_web_link', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "reminder_fire_time": lambda n : setattr(self, 'reminder_fire_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "reminderFireTime": lambda n : setattr(self, 'reminder_fire_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
         }
         return fields
     
@@ -212,7 +212,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -229,7 +229,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         """
         Sets the reminderFireTime property value. The date, time, and time zone that the reminder is set to occur.
         Args:
-            value: Value to set for the reminderFireTime property.
+            value: Value to set for the reminder_fire_time property.
         """
         self._reminder_fire_time = value
     

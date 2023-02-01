@@ -23,7 +23,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         """
         Sets the assignedUserPrincipalName property value. UPN of the user the device will be assigned
         Args:
-            value: Value to set for the assignedUserPrincipalName property.
+            value: Value to set for the assigned_user_principal_name property.
         """
         self._assigned_user_principal_name = value
     
@@ -67,12 +67,12 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assigned_user_principal_name": lambda n : setattr(self, 'assigned_user_principal_name', n.get_str_value()),
-            "group_tag": lambda n : setattr(self, 'group_tag', n.get_str_value()),
-            "hardware_identifier": lambda n : setattr(self, 'hardware_identifier', n.get_bytes_value()),
-            "import_id": lambda n : setattr(self, 'import_id', n.get_str_value()),
-            "product_key": lambda n : setattr(self, 'product_key', n.get_str_value()),
-            "serial_number": lambda n : setattr(self, 'serial_number', n.get_str_value()),
+            "assignedUserPrincipalName": lambda n : setattr(self, 'assigned_user_principal_name', n.get_str_value()),
+            "groupTag": lambda n : setattr(self, 'group_tag', n.get_str_value()),
+            "hardwareIdentifier": lambda n : setattr(self, 'hardware_identifier', n.get_bytes_value()),
+            "importId": lambda n : setattr(self, 'import_id', n.get_str_value()),
+            "productKey": lambda n : setattr(self, 'product_key', n.get_str_value()),
+            "serialNumber": lambda n : setattr(self, 'serial_number', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_object_value(imported_windows_autopilot_device_identity_state.ImportedWindowsAutopilotDeviceIdentityState)),
         }
         super_fields = super().get_field_deserializers()
@@ -92,7 +92,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         """
         Sets the groupTag property value. Group Tag of the Windows autopilot device.
         Args:
-            value: Value to set for the groupTag property.
+            value: Value to set for the group_tag property.
         """
         self._group_tag = value
     
@@ -109,7 +109,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         """
         Sets the hardwareIdentifier property value. Hardware Blob of the Windows autopilot device.
         Args:
-            value: Value to set for the hardwareIdentifier property.
+            value: Value to set for the hardware_identifier property.
         """
         self._hardware_identifier = value
     
@@ -126,7 +126,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         """
         Sets the importId property value. The Import Id of the Windows autopilot device.
         Args:
-            value: Value to set for the importId property.
+            value: Value to set for the import_id property.
         """
         self._import_id = value
     
@@ -143,9 +143,26 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         """
         Sets the productKey property value. Product Key of the Windows autopilot device.
         Args:
-            value: Value to set for the productKey property.
+            value: Value to set for the product_key property.
         """
         self._product_key = value
+    
+    @property
+    def serial_number(self,) -> Optional[str]:
+        """
+        Gets the serialNumber property value. Serial number of the Windows autopilot device.
+        Returns: Optional[str]
+        """
+        return self._serial_number
+    
+    @serial_number.setter
+    def serial_number(self,value: Optional[str] = None) -> None:
+        """
+        Sets the serialNumber property value. Serial number of the Windows autopilot device.
+        Args:
+            value: Value to set for the serial_number property.
+        """
+        self._serial_number = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """
@@ -163,23 +180,6 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         writer.write_str_value("productKey", self.product_key)
         writer.write_str_value("serialNumber", self.serial_number)
         writer.write_object_value("state", self.state)
-    
-    @property
-    def serial_number(self,) -> Optional[str]:
-        """
-        Gets the serialNumber property value. Serial number of the Windows autopilot device.
-        Returns: Optional[str]
-        """
-        return self._serial_number
-    
-    @serial_number.setter
-    def serial_number(self,value: Optional[str] = None) -> None:
-        """
-        Sets the serialNumber property value. Serial number of the Windows autopilot device.
-        Args:
-            value: Value to set for the serialNumber property.
-        """
-        self._serial_number = value
     
     @property
     def state(self,) -> Optional[imported_windows_autopilot_device_identity_state.ImportedWindowsAutopilotDeviceIdentityState]:

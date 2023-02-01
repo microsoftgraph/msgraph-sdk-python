@@ -40,7 +40,7 @@ class EducationExcelResource(education_resource.EducationResource):
         """
         Sets the fileUrl property value. Pointer to the Excel file object.
         Args:
-            value: Value to set for the fileUrl property.
+            value: Value to set for the file_url property.
         """
         self._file_url = value
     
@@ -50,7 +50,7 @@ class EducationExcelResource(education_resource.EducationResource):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "file_url": lambda n : setattr(self, 'file_url', n.get_str_value()),
+            "fileUrl": lambda n : setattr(self, 'file_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

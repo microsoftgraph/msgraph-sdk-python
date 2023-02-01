@@ -54,7 +54,7 @@ class Privacy(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "subject_rights_requests": lambda n : setattr(self, 'subject_rights_requests', n.get_collection_of_object_values(subject_rights_request.SubjectRightsRequest)),
+            "subjectRightsRequests": lambda n : setattr(self, 'subject_rights_requests', n.get_collection_of_object_values(subject_rights_request.SubjectRightsRequest)),
         }
         return fields
     
@@ -71,7 +71,7 @@ class Privacy(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -100,7 +100,7 @@ class Privacy(AdditionalDataHolder, Parsable):
         """
         Sets the subjectRightsRequests property value. The subjectRightsRequests property
         Args:
-            value: Value to set for the subjectRightsRequests property.
+            value: Value to set for the subject_rights_requests property.
         """
         self._subject_rights_requests = value
     

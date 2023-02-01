@@ -23,7 +23,7 @@ class PrinterShare(printer_base.PrinterBase):
         """
         Sets the allowAllUsers property value. If true, all users and groups will be granted access to this printer share. This supersedes the allow lists defined by the allowedUsers and allowedGroups navigation properties.
         Args:
-            value: Value to set for the allowAllUsers property.
+            value: Value to set for the allow_all_users property.
         """
         self._allow_all_users = value
     
@@ -40,7 +40,7 @@ class PrinterShare(printer_base.PrinterBase):
         """
         Sets the allowedGroups property value. The groups whose users have access to print using the printer.
         Args:
-            value: Value to set for the allowedGroups property.
+            value: Value to set for the allowed_groups property.
         """
         self._allowed_groups = value
     
@@ -57,7 +57,7 @@ class PrinterShare(printer_base.PrinterBase):
         """
         Sets the allowedUsers property value. The users who have access to print using the printer.
         Args:
-            value: Value to set for the allowedUsers property.
+            value: Value to set for the allowed_users property.
         """
         self._allowed_users = value
     
@@ -91,7 +91,7 @@ class PrinterShare(printer_base.PrinterBase):
         """
         Sets the createdDateTime property value. The DateTimeOffset when the printer share was created. Read-only.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -113,10 +113,10 @@ class PrinterShare(printer_base.PrinterBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_all_users": lambda n : setattr(self, 'allow_all_users', n.get_bool_value()),
-            "allowed_groups": lambda n : setattr(self, 'allowed_groups', n.get_collection_of_object_values(group.Group)),
-            "allowed_users": lambda n : setattr(self, 'allowed_users', n.get_collection_of_object_values(user.User)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "allowedGroups": lambda n : setattr(self, 'allowed_groups', n.get_collection_of_object_values(group.Group)),
+            "allowedUsers": lambda n : setattr(self, 'allowed_users', n.get_collection_of_object_values(user.User)),
+            "allowAllUsers": lambda n : setattr(self, 'allow_all_users', n.get_bool_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "printer": lambda n : setattr(self, 'printer', n.get_object_value(printer.Printer)),
         }
         super_fields = super().get_field_deserializers()
@@ -149,9 +149,9 @@ class PrinterShare(printer_base.PrinterBase):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-        writer.write_bool_value("allowAllUsers", self.allow_all_users)
         writer.write_collection_of_object_values("allowedGroups", self.allowed_groups)
         writer.write_collection_of_object_values("allowedUsers", self.allowed_users)
+        writer.write_bool_value("allowAllUsers", self.allow_all_users)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("printer", self.printer)
     

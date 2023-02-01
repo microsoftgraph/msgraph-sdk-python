@@ -14,7 +14,7 @@ online_meeting = lazy_import('msgraph.generated.models.online_meeting')
 online_meeting_collection_response = lazy_import('msgraph.generated.models.online_meeting_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.users.item.online_meetings.count.count_request_builder')
-create_or_get_request_builder = lazy_import('msgraph.generated.users.item.online_meetings.create_or_get.create_or_get_request_builder')
+create_or_get_request_builder = lazy_import('msgraph.generated.users.item.online_meetings.microsoft_graph_create_or_get.create_or_get_request_builder')
 
 class OnlineMeetingsRequestBuilder():
     """
@@ -28,7 +28,7 @@ class OnlineMeetingsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def create_or_get(self) -> create_or_get_request_builder.CreateOrGetRequestBuilder:
+    def microsoft_graph_create_or_get(self) -> create_or_get_request_builder.CreateOrGetRequestBuilder:
         """
         Provides operations to call the createOrGet method.
         """

@@ -54,7 +54,7 @@ class ServiceHealthIssuePost(AdditionalDataHolder, Parsable):
         """
         Sets the createdDateTime property value. The published time of the post.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -93,10 +93,10 @@ class ServiceHealthIssuePost(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_object_value(item_body.ItemBody)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "post_type": lambda n : setattr(self, 'post_type', n.get_enum_value(post_type.PostType)),
+            "postType": lambda n : setattr(self, 'post_type', n.get_enum_value(post_type.PostType)),
         }
         return fields
     
@@ -113,7 +113,7 @@ class ServiceHealthIssuePost(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -130,7 +130,7 @@ class ServiceHealthIssuePost(AdditionalDataHolder, Parsable):
         """
         Sets the postType property value. The post type of the service issue historical post. Possible values are: regular, quick, strategic, unknownFutureValue.
         Args:
-            value: Value to set for the postType property.
+            value: Value to set for the post_type property.
         """
         self._post_type = value
     

@@ -21,7 +21,7 @@ class TermsOfUseContainer(entity.Entity):
         """
         Sets the agreementAcceptances property value. Represents the current status of a user's response to a company's customizable terms of use agreement.
         Args:
-            value: Value to set for the agreementAcceptances property.
+            value: Value to set for the agreement_acceptances property.
         """
         self._agreement_acceptances = value
     
@@ -72,8 +72,8 @@ class TermsOfUseContainer(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "agreement_acceptances": lambda n : setattr(self, 'agreement_acceptances', n.get_collection_of_object_values(agreement_acceptance.AgreementAcceptance)),
             "agreements": lambda n : setattr(self, 'agreements', n.get_collection_of_object_values(agreement.Agreement)),
+            "agreementAcceptances": lambda n : setattr(self, 'agreement_acceptances', n.get_collection_of_object_values(agreement_acceptance.AgreementAcceptance)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -88,7 +88,7 @@ class TermsOfUseContainer(entity.Entity):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-        writer.write_collection_of_object_values("agreementAcceptances", self.agreement_acceptances)
         writer.write_collection_of_object_values("agreements", self.agreements)
+        writer.write_collection_of_object_values("agreementAcceptances", self.agreement_acceptances)
     
 

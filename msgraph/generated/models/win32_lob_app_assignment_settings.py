@@ -50,7 +50,7 @@ class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         """
         Sets the deliveryOptimizationPriority property value. Contains value for delivery optimization priority.
         Args:
-            value: Value to set for the deliveryOptimizationPriority property.
+            value: Value to set for the delivery_optimization_priority property.
         """
         self._delivery_optimization_priority = value
     
@@ -60,10 +60,10 @@ class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "delivery_optimization_priority": lambda n : setattr(self, 'delivery_optimization_priority', n.get_enum_value(win32_lob_app_delivery_optimization_priority.Win32LobAppDeliveryOptimizationPriority)),
-            "install_time_settings": lambda n : setattr(self, 'install_time_settings', n.get_object_value(mobile_app_install_time_settings.MobileAppInstallTimeSettings)),
+            "deliveryOptimizationPriority": lambda n : setattr(self, 'delivery_optimization_priority', n.get_enum_value(win32_lob_app_delivery_optimization_priority.Win32LobAppDeliveryOptimizationPriority)),
+            "installTimeSettings": lambda n : setattr(self, 'install_time_settings', n.get_object_value(mobile_app_install_time_settings.MobileAppInstallTimeSettings)),
             "notifications": lambda n : setattr(self, 'notifications', n.get_enum_value(win32_lob_app_notification.Win32LobAppNotification)),
-            "restart_settings": lambda n : setattr(self, 'restart_settings', n.get_object_value(win32_lob_app_restart_settings.Win32LobAppRestartSettings)),
+            "restartSettings": lambda n : setattr(self, 'restart_settings', n.get_object_value(win32_lob_app_restart_settings.Win32LobAppRestartSettings)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -82,7 +82,7 @@ class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         """
         Sets the installTimeSettings property value. The install time settings to apply for this app assignment.
         Args:
-            value: Value to set for the installTimeSettings property.
+            value: Value to set for the install_time_settings property.
         """
         self._install_time_settings = value
     
@@ -116,7 +116,7 @@ class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         """
         Sets the restartSettings property value. The reboot settings to apply for this app assignment.
         Args:
-            value: Value to set for the restartSettings property.
+            value: Value to set for the restart_settings property.
         """
         self._restart_settings = value
     

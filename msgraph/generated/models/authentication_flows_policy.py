@@ -63,7 +63,7 @@ class AuthenticationFlowsPolicy(entity.Entity):
         """
         Sets the displayName property value. Inherited property. The human-readable name of the policy. Optional. Read-only.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -74,8 +74,8 @@ class AuthenticationFlowsPolicy(entity.Entity):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "self_service_sign_up": lambda n : setattr(self, 'self_service_sign_up', n.get_object_value(self_service_sign_up_authentication_flow_configuration.SelfServiceSignUpAuthenticationFlowConfiguration)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "selfServiceSignUp": lambda n : setattr(self, 'self_service_sign_up', n.get_object_value(self_service_sign_up_authentication_flow_configuration.SelfServiceSignUpAuthenticationFlowConfiguration)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -94,7 +94,7 @@ class AuthenticationFlowsPolicy(entity.Entity):
         """
         Sets the selfServiceSignUp property value. Contains selfServiceSignUpAuthenticationFlowConfiguration settings that convey whether self-service sign-up is enabled or disabled. Optional. Read-only.
         Args:
-            value: Value to set for the selfServiceSignUp property.
+            value: Value to set for the self_service_sign_up property.
         """
         self._self_service_sign_up = value
     

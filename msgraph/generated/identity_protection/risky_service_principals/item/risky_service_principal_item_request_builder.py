@@ -26,12 +26,13 @@ class RiskyServicePrincipalItemRequestBuilder():
         """
         return history_request_builder.HistoryRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, risky_service_principal_id: Optional[str] = None) -> None:
         """
         Instantiates a new RiskyServicePrincipalItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            riskyServicePrincipalId: key: id of riskyServicePrincipal
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -41,6 +42,7 @@ class RiskyServicePrincipalItemRequestBuilder():
         self.url_template: str = "{+baseurl}/identityProtection/riskyServicePrincipals/{riskyServicePrincipal%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["riskyServicePrincipal%2Did"] = riskyServicePrincipalId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

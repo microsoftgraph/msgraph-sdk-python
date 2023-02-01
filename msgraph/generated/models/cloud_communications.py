@@ -23,7 +23,7 @@ class CloudCommunications(entity.Entity):
         """
         Sets the callRecords property value. The callRecords property
         Args:
-            value: Value to set for the callRecords property.
+            value: Value to set for the call_records property.
         """
         self._call_records = value
     
@@ -78,9 +78,9 @@ class CloudCommunications(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "call_records": lambda n : setattr(self, 'call_records', n.get_collection_of_object_values(call_record.CallRecord)),
             "calls": lambda n : setattr(self, 'calls', n.get_collection_of_object_values(call.Call)),
-            "online_meetings": lambda n : setattr(self, 'online_meetings', n.get_collection_of_object_values(online_meeting.OnlineMeeting)),
+            "callRecords": lambda n : setattr(self, 'call_records', n.get_collection_of_object_values(call_record.CallRecord)),
+            "onlineMeetings": lambda n : setattr(self, 'online_meetings', n.get_collection_of_object_values(online_meeting.OnlineMeeting)),
             "presences": lambda n : setattr(self, 'presences', n.get_collection_of_object_values(presence.Presence)),
         }
         super_fields = super().get_field_deserializers()
@@ -100,7 +100,7 @@ class CloudCommunications(entity.Entity):
         """
         Sets the onlineMeetings property value. The onlineMeetings property
         Args:
-            value: Value to set for the onlineMeetings property.
+            value: Value to set for the online_meetings property.
         """
         self._online_meetings = value
     
@@ -130,8 +130,8 @@ class CloudCommunications(entity.Entity):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-        writer.write_collection_of_object_values("callRecords", self.call_records)
         writer.write_collection_of_object_values("calls", self.calls)
+        writer.write_collection_of_object_values("callRecords", self.call_records)
         writer.write_collection_of_object_values("onlineMeetings", self.online_meetings)
         writer.write_collection_of_object_values("presences", self.presences)
     

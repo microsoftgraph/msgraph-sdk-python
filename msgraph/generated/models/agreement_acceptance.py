@@ -21,7 +21,7 @@ class AgreementAcceptance(entity.Entity):
         """
         Sets the agreementFileId property value. The identifier of the agreement file accepted by the user.
         Args:
-            value: Value to set for the agreementFileId property.
+            value: Value to set for the agreement_file_id property.
         """
         self._agreement_file_id = value
     
@@ -38,7 +38,7 @@ class AgreementAcceptance(entity.Entity):
         """
         Sets the agreementId property value. The identifier of the agreement.
         Args:
-            value: Value to set for the agreementId property.
+            value: Value to set for the agreement_id property.
         """
         self._agreement_id = value
     
@@ -101,7 +101,7 @@ class AgreementAcceptance(entity.Entity):
         """
         Sets the deviceDisplayName property value. The display name of the device used for accepting the agreement.
         Args:
-            value: Value to set for the deviceDisplayName property.
+            value: Value to set for the device_display_name property.
         """
         self._device_display_name = value
     
@@ -118,7 +118,7 @@ class AgreementAcceptance(entity.Entity):
         """
         Sets the deviceId property value. The unique identifier of the device used for accepting the agreement. Supports $filter (eq) and eq for null values.
         Args:
-            value: Value to set for the deviceId property.
+            value: Value to set for the device_id property.
         """
         self._device_id = value
     
@@ -135,7 +135,7 @@ class AgreementAcceptance(entity.Entity):
         """
         Sets the deviceOSType property value. The operating system used to accept the agreement.
         Args:
-            value: Value to set for the deviceOSType property.
+            value: Value to set for the device_o_s_type property.
         """
         self._device_o_s_type = value
     
@@ -152,7 +152,7 @@ class AgreementAcceptance(entity.Entity):
         """
         Sets the deviceOSVersion property value. The operating system version of the device used to accept the agreement.
         Args:
-            value: Value to set for the deviceOSVersion property.
+            value: Value to set for the device_o_s_version property.
         """
         self._device_o_s_version = value
     
@@ -169,7 +169,7 @@ class AgreementAcceptance(entity.Entity):
         """
         Sets the expirationDateTime property value. The expiration date time of the acceptance. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Supports $filter (eq, ge, le) and eq for null values.
         Args:
-            value: Value to set for the expirationDateTime property.
+            value: Value to set for the expiration_date_time property.
         """
         self._expiration_date_time = value
     
@@ -179,19 +179,19 @@ class AgreementAcceptance(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "agreement_file_id": lambda n : setattr(self, 'agreement_file_id', n.get_str_value()),
-            "agreement_id": lambda n : setattr(self, 'agreement_id', n.get_str_value()),
-            "device_display_name": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
-            "device_id": lambda n : setattr(self, 'device_id', n.get_str_value()),
-            "device_o_s_type": lambda n : setattr(self, 'device_o_s_type', n.get_str_value()),
-            "device_o_s_version": lambda n : setattr(self, 'device_o_s_version', n.get_str_value()),
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "recorded_date_time": lambda n : setattr(self, 'recorded_date_time', n.get_datetime_value()),
+            "agreementFileId": lambda n : setattr(self, 'agreement_file_id', n.get_str_value()),
+            "agreementId": lambda n : setattr(self, 'agreement_id', n.get_str_value()),
+            "deviceDisplayName": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
+            "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
+            "deviceOSType": lambda n : setattr(self, 'device_o_s_type', n.get_str_value()),
+            "deviceOSVersion": lambda n : setattr(self, 'device_o_s_version', n.get_str_value()),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "recordedDateTime": lambda n : setattr(self, 'recorded_date_time', n.get_datetime_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(agreement_acceptance_state.AgreementAcceptanceState)),
-            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "user_email": lambda n : setattr(self, 'user_email', n.get_str_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "userEmail": lambda n : setattr(self, 'user_email', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -210,7 +210,7 @@ class AgreementAcceptance(entity.Entity):
         """
         Sets the recordedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the recordedDateTime property.
+            value: Value to set for the recorded_date_time property.
         """
         self._recorded_date_time = value
     
@@ -267,7 +267,7 @@ class AgreementAcceptance(entity.Entity):
         """
         Sets the userDisplayName property value. Display name of the user when the acceptance was recorded.
         Args:
-            value: Value to set for the userDisplayName property.
+            value: Value to set for the user_display_name property.
         """
         self._user_display_name = value
     
@@ -284,7 +284,7 @@ class AgreementAcceptance(entity.Entity):
         """
         Sets the userEmail property value. Email of the user when the acceptance was recorded.
         Args:
-            value: Value to set for the userEmail property.
+            value: Value to set for the user_email property.
         """
         self._user_email = value
     
@@ -301,7 +301,7 @@ class AgreementAcceptance(entity.Entity):
         """
         Sets the userId property value. The identifier of the user who accepted the agreement. Supports $filter (eq).
         Args:
-            value: Value to set for the userId property.
+            value: Value to set for the user_id property.
         """
         self._user_id = value
     
@@ -318,7 +318,7 @@ class AgreementAcceptance(entity.Entity):
         """
         Sets the userPrincipalName property value. UPN of the user when the acceptance was recorded.
         Args:
-            value: Value to set for the userPrincipalName property.
+            value: Value to set for the user_principal_name property.
         """
         self._user_principal_name = value
     

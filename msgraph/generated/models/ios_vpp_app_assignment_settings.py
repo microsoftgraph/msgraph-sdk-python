@@ -35,8 +35,8 @@ class IosVppAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssign
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "use_device_licensing": lambda n : setattr(self, 'use_device_licensing', n.get_bool_value()),
-            "vpn_configuration_id": lambda n : setattr(self, 'vpn_configuration_id', n.get_str_value()),
+            "useDeviceLicensing": lambda n : setattr(self, 'use_device_licensing', n.get_bool_value()),
+            "vpnConfigurationId": lambda n : setattr(self, 'vpn_configuration_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -67,7 +67,7 @@ class IosVppAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssign
         """
         Sets the useDeviceLicensing property value. Whether or not to use device licensing.
         Args:
-            value: Value to set for the useDeviceLicensing property.
+            value: Value to set for the use_device_licensing property.
         """
         self._use_device_licensing = value
     
@@ -84,7 +84,7 @@ class IosVppAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssign
         """
         Sets the vpnConfigurationId property value. The VPN Configuration Id to apply for this app.
         Args:
-            value: Value to set for the vpnConfigurationId property.
+            value: Value to set for the vpn_configuration_id property.
         """
         self._vpn_configuration_id = value
     

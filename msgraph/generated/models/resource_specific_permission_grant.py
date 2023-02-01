@@ -19,7 +19,7 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
         """
         Sets the clientAppId property value. ID of the service principal of the Azure AD app that has been granted access. Read-only.
         Args:
-            value: Value to set for the clientAppId property.
+            value: Value to set for the client_app_id property.
         """
         self._client_app_id = value
     
@@ -36,7 +36,7 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
         """
         Sets the clientId property value. ID of the Azure AD app that has been granted access. Read-only.
         Args:
-            value: Value to set for the clientId property.
+            value: Value to set for the client_id property.
         """
         self._client_id = value
     
@@ -75,11 +75,11 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "client_app_id": lambda n : setattr(self, 'client_app_id', n.get_str_value()),
-            "client_id": lambda n : setattr(self, 'client_id', n.get_str_value()),
+            "clientAppId": lambda n : setattr(self, 'client_app_id', n.get_str_value()),
+            "clientId": lambda n : setattr(self, 'client_id', n.get_str_value()),
             "permission": lambda n : setattr(self, 'permission', n.get_str_value()),
-            "permission_type": lambda n : setattr(self, 'permission_type', n.get_str_value()),
-            "resource_app_id": lambda n : setattr(self, 'resource_app_id', n.get_str_value()),
+            "permissionType": lambda n : setattr(self, 'permission_type', n.get_str_value()),
+            "resourceAppId": lambda n : setattr(self, 'resource_app_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -115,7 +115,7 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
         """
         Sets the permissionType property value. The type of permission. Possible values are: Application, Delegated. Read-only.
         Args:
-            value: Value to set for the permissionType property.
+            value: Value to set for the permission_type property.
         """
         self._permission_type = value
     
@@ -132,7 +132,7 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
         """
         Sets the resourceAppId property value. ID of the Azure AD app that is hosting the resource. Read-only.
         Args:
-            value: Value to set for the resourceAppId property.
+            value: Value to set for the resource_app_id property.
         """
         self._resource_app_id = value
     

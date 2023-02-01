@@ -43,7 +43,7 @@ class AgreementFileProperties(entity.Entity):
         """
         Sets the createdDateTime property value. The date time representing when the file was created.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -72,7 +72,7 @@ class AgreementFileProperties(entity.Entity):
         """
         Sets the displayName property value. Localized display name of the policy file of an agreement. The localized display name is shown to end users who view the agreement.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -89,7 +89,7 @@ class AgreementFileProperties(entity.Entity):
         """
         Sets the fileData property value. Data that represents the terms of use PDF document. Read-only.
         Args:
-            value: Value to set for the fileData property.
+            value: Value to set for the file_data property.
         """
         self._file_data = value
     
@@ -106,7 +106,7 @@ class AgreementFileProperties(entity.Entity):
         """
         Sets the fileName property value. Name of the agreement file (for example, TOU.pdf). Read-only.
         Args:
-            value: Value to set for the fileName property.
+            value: Value to set for the file_name property.
         """
         self._file_name = value
     
@@ -116,12 +116,12 @@ class AgreementFileProperties(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "file_data": lambda n : setattr(self, 'file_data', n.get_object_value(agreement_file_data.AgreementFileData)),
-            "file_name": lambda n : setattr(self, 'file_name', n.get_str_value()),
-            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
-            "is_major_version": lambda n : setattr(self, 'is_major_version', n.get_bool_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "fileData": lambda n : setattr(self, 'file_data', n.get_object_value(agreement_file_data.AgreementFileData)),
+            "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
+            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "isMajorVersion": lambda n : setattr(self, 'is_major_version', n.get_bool_value()),
             "language": lambda n : setattr(self, 'language', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -141,7 +141,7 @@ class AgreementFileProperties(entity.Entity):
         """
         Sets the isDefault property value. If none of the languages matches the client preference, indicates whether this is the default agreement file . If none of the files are marked as default, the first one is treated as the default. Read-only.
         Args:
-            value: Value to set for the isDefault property.
+            value: Value to set for the is_default property.
         """
         self._is_default = value
     
@@ -158,7 +158,7 @@ class AgreementFileProperties(entity.Entity):
         """
         Sets the isMajorVersion property value. Indicates whether the agreement file is a major version update. Major version updates invalidate the agreement's acceptances on the corresponding language.
         Args:
-            value: Value to set for the isMajorVersion property.
+            value: Value to set for the is_major_version property.
         """
         self._is_major_version = value
     

@@ -26,10 +26,11 @@ class CallRecordItemRequestBuilder():
         """
         return sessions_request_builder.SessionsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, call_record_id: Optional[str] = None) -> None:
         """
         Instantiates a new CallRecordItemRequestBuilder and sets the default values.
         Args:
+            callRecordId: key: id of callRecord
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -41,6 +42,7 @@ class CallRecordItemRequestBuilder():
         self.url_template: str = "{+baseurl}/communications/callRecords/{callRecord%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["callRecord%2Did"] = callRecordId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

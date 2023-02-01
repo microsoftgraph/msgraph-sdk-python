@@ -48,7 +48,7 @@ class WorkbookCommentReply(entity.Entity):
         """
         Sets the contentType property value. Indicates the type for the comment reply.
         Args:
-            value: Value to set for the contentType property.
+            value: Value to set for the content_type property.
         """
         self._content_type = value
     
@@ -71,7 +71,7 @@ class WorkbookCommentReply(entity.Entity):
         """
         fields = {
             "content": lambda n : setattr(self, 'content', n.get_str_value()),
-            "content_type": lambda n : setattr(self, 'content_type', n.get_str_value()),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

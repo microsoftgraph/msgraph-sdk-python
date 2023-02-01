@@ -19,7 +19,7 @@ class TeleconferenceDeviceVideoQuality(teleconference_device_media_quality.Telec
         """
         Sets the averageInboundBitRate property value. The average inbound stream video bit rate per second.
         Args:
-            value: Value to set for the averageInboundBitRate property.
+            value: Value to set for the average_inbound_bit_rate property.
         """
         self._average_inbound_bit_rate = value
     
@@ -36,7 +36,7 @@ class TeleconferenceDeviceVideoQuality(teleconference_device_media_quality.Telec
         """
         Sets the averageInboundFrameRate property value. The average inbound stream video frame rate per second.
         Args:
-            value: Value to set for the averageInboundFrameRate property.
+            value: Value to set for the average_inbound_frame_rate property.
         """
         self._average_inbound_frame_rate = value
     
@@ -53,7 +53,7 @@ class TeleconferenceDeviceVideoQuality(teleconference_device_media_quality.Telec
         """
         Sets the averageOutboundBitRate property value. The average outbound stream video bit rate per second.
         Args:
-            value: Value to set for the averageOutboundBitRate property.
+            value: Value to set for the average_outbound_bit_rate property.
         """
         self._average_outbound_bit_rate = value
     
@@ -70,7 +70,7 @@ class TeleconferenceDeviceVideoQuality(teleconference_device_media_quality.Telec
         """
         Sets the averageOutboundFrameRate property value. The average outbound stream video frame rate per second.
         Args:
-            value: Value to set for the averageOutboundFrameRate property.
+            value: Value to set for the average_outbound_frame_rate property.
         """
         self._average_outbound_frame_rate = value
     
@@ -107,10 +107,10 @@ class TeleconferenceDeviceVideoQuality(teleconference_device_media_quality.Telec
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "average_inbound_bit_rate": lambda n : setattr(self, 'average_inbound_bit_rate', n.get_float_value()),
-            "average_inbound_frame_rate": lambda n : setattr(self, 'average_inbound_frame_rate', n.get_float_value()),
-            "average_outbound_bit_rate": lambda n : setattr(self, 'average_outbound_bit_rate', n.get_float_value()),
-            "average_outbound_frame_rate": lambda n : setattr(self, 'average_outbound_frame_rate', n.get_float_value()),
+            "averageInboundBitRate": lambda n : setattr(self, 'average_inbound_bit_rate', n.get_float_value()),
+            "averageInboundFrameRate": lambda n : setattr(self, 'average_inbound_frame_rate', n.get_float_value()),
+            "averageOutboundBitRate": lambda n : setattr(self, 'average_outbound_bit_rate', n.get_float_value()),
+            "averageOutboundFrameRate": lambda n : setattr(self, 'average_outbound_frame_rate', n.get_float_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

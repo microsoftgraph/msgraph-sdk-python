@@ -68,7 +68,7 @@ class PrintJob(entity.Entity):
         """
         Sets the createdBy property value. The createdBy property
         Args:
-            value: Value to set for the createdBy property.
+            value: Value to set for the created_by property.
         """
         self._created_by = value
     
@@ -85,7 +85,7 @@ class PrintJob(entity.Entity):
         """
         Sets the createdDateTime property value. The DateTimeOffset when the job was created. Read-only.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -125,12 +125,12 @@ class PrintJob(entity.Entity):
         """
         fields = {
             "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(print_job_configuration.PrintJobConfiguration)),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(user_identity.UserIdentity)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(user_identity.UserIdentity)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "documents": lambda n : setattr(self, 'documents', n.get_collection_of_object_values(print_document.PrintDocument)),
-            "is_fetchable": lambda n : setattr(self, 'is_fetchable', n.get_bool_value()),
-            "redirected_from": lambda n : setattr(self, 'redirected_from', n.get_str_value()),
-            "redirected_to": lambda n : setattr(self, 'redirected_to', n.get_str_value()),
+            "isFetchable": lambda n : setattr(self, 'is_fetchable', n.get_bool_value()),
+            "redirectedFrom": lambda n : setattr(self, 'redirected_from', n.get_str_value()),
+            "redirectedTo": lambda n : setattr(self, 'redirected_to', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_object_value(print_job_status.PrintJobStatus)),
             "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(print_task.PrintTask)),
         }
@@ -151,7 +151,7 @@ class PrintJob(entity.Entity):
         """
         Sets the isFetchable property value. If true, document can be fetched by printer.
         Args:
-            value: Value to set for the isFetchable property.
+            value: Value to set for the is_fetchable property.
         """
         self._is_fetchable = value
     
@@ -168,7 +168,7 @@ class PrintJob(entity.Entity):
         """
         Sets the redirectedFrom property value. Contains the source job URL, if the job has been redirected from another printer.
         Args:
-            value: Value to set for the redirectedFrom property.
+            value: Value to set for the redirected_from property.
         """
         self._redirected_from = value
     
@@ -185,7 +185,7 @@ class PrintJob(entity.Entity):
         """
         Sets the redirectedTo property value. Contains the destination job URL, if the job has been redirected to another printer.
         Args:
-            value: Value to set for the redirectedTo property.
+            value: Value to set for the redirected_to property.
         """
         self._redirected_to = value
     

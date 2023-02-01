@@ -39,7 +39,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         """
         Sets the applicationName property value. Name of the application managing the network connection (for example, Facebook or SMTP).
         Args:
-            value: Value to set for the applicationName property.
+            value: Value to set for the application_name property.
         """
         self._application_name = value
     
@@ -118,7 +118,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         """
         Sets the destinationAddress property value. Destination IP address (of the network connection).
         Args:
-            value: Value to set for the destinationAddress property.
+            value: Value to set for the destination_address property.
         """
         self._destination_address = value
     
@@ -135,7 +135,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         """
         Sets the destinationDomain property value. Destination domain portion of the destination URL. (for example 'www.contoso.com').
         Args:
-            value: Value to set for the destinationDomain property.
+            value: Value to set for the destination_domain property.
         """
         self._destination_domain = value
     
@@ -152,7 +152,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         """
         Sets the destinationLocation property value. Location (by IP address mapping) associated with the destination of a network connection.
         Args:
-            value: Value to set for the destinationLocation property.
+            value: Value to set for the destination_location property.
         """
         self._destination_location = value
     
@@ -169,7 +169,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         """
         Sets the destinationPort property value. Destination port (of the network connection).
         Args:
-            value: Value to set for the destinationPort property.
+            value: Value to set for the destination_port property.
         """
         self._destination_port = value
     
@@ -186,7 +186,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         """
         Sets the destinationUrl property value. Network connection URL/URI string - excluding parameters. (for example 'www.contoso.com/products/default.html')
         Args:
-            value: Value to set for the destinationUrl property.
+            value: Value to set for the destination_url property.
         """
         self._destination_url = value
     
@@ -220,7 +220,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         """
         Sets the domainRegisteredDateTime property value. Date when the destination domain was registered. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the domainRegisteredDateTime property.
+            value: Value to set for the domain_registered_date_time property.
         """
         self._domain_registered_date_time = value
     
@@ -230,27 +230,27 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "application_name": lambda n : setattr(self, 'application_name', n.get_str_value()),
-            "destination_address": lambda n : setattr(self, 'destination_address', n.get_str_value()),
-            "destination_domain": lambda n : setattr(self, 'destination_domain', n.get_str_value()),
-            "destination_location": lambda n : setattr(self, 'destination_location', n.get_str_value()),
-            "destination_port": lambda n : setattr(self, 'destination_port', n.get_str_value()),
-            "destination_url": lambda n : setattr(self, 'destination_url', n.get_str_value()),
+            "applicationName": lambda n : setattr(self, 'application_name', n.get_str_value()),
+            "destinationAddress": lambda n : setattr(self, 'destination_address', n.get_str_value()),
+            "destinationDomain": lambda n : setattr(self, 'destination_domain', n.get_str_value()),
+            "destinationLocation": lambda n : setattr(self, 'destination_location', n.get_str_value()),
+            "destinationPort": lambda n : setattr(self, 'destination_port', n.get_str_value()),
+            "destinationUrl": lambda n : setattr(self, 'destination_url', n.get_str_value()),
             "direction": lambda n : setattr(self, 'direction', n.get_enum_value(connection_direction.ConnectionDirection)),
-            "domain_registered_date_time": lambda n : setattr(self, 'domain_registered_date_time', n.get_datetime_value()),
-            "local_dns_name": lambda n : setattr(self, 'local_dns_name', n.get_str_value()),
-            "nat_destination_address": lambda n : setattr(self, 'nat_destination_address', n.get_str_value()),
-            "nat_destination_port": lambda n : setattr(self, 'nat_destination_port', n.get_str_value()),
-            "nat_source_address": lambda n : setattr(self, 'nat_source_address', n.get_str_value()),
-            "nat_source_port": lambda n : setattr(self, 'nat_source_port', n.get_str_value()),
+            "domainRegisteredDateTime": lambda n : setattr(self, 'domain_registered_date_time', n.get_datetime_value()),
+            "localDnsName": lambda n : setattr(self, 'local_dns_name', n.get_str_value()),
+            "natDestinationAddress": lambda n : setattr(self, 'nat_destination_address', n.get_str_value()),
+            "natDestinationPort": lambda n : setattr(self, 'nat_destination_port', n.get_str_value()),
+            "natSourceAddress": lambda n : setattr(self, 'nat_source_address', n.get_str_value()),
+            "natSourcePort": lambda n : setattr(self, 'nat_source_port', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "protocol": lambda n : setattr(self, 'protocol', n.get_enum_value(security_network_protocol.SecurityNetworkProtocol)),
-            "risk_score": lambda n : setattr(self, 'risk_score', n.get_str_value()),
-            "source_address": lambda n : setattr(self, 'source_address', n.get_str_value()),
-            "source_location": lambda n : setattr(self, 'source_location', n.get_str_value()),
-            "source_port": lambda n : setattr(self, 'source_port', n.get_str_value()),
+            "riskScore": lambda n : setattr(self, 'risk_score', n.get_str_value()),
+            "sourceAddress": lambda n : setattr(self, 'source_address', n.get_str_value()),
+            "sourceLocation": lambda n : setattr(self, 'source_location', n.get_str_value()),
+            "sourcePort": lambda n : setattr(self, 'source_port', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(connection_status.ConnectionStatus)),
-            "url_parameters": lambda n : setattr(self, 'url_parameters', n.get_str_value()),
+            "urlParameters": lambda n : setattr(self, 'url_parameters', n.get_str_value()),
         }
         return fields
     
@@ -267,7 +267,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         """
         Sets the localDnsName property value. The local DNS name resolution as it appears in the host's local DNS cache (for example, in case the 'hosts' file was tampered with).
         Args:
-            value: Value to set for the localDnsName property.
+            value: Value to set for the local_dns_name property.
         """
         self._local_dns_name = value
     
@@ -284,7 +284,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         """
         Sets the natDestinationAddress property value. Network Address Translation destination IP address.
         Args:
-            value: Value to set for the natDestinationAddress property.
+            value: Value to set for the nat_destination_address property.
         """
         self._nat_destination_address = value
     
@@ -301,7 +301,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         """
         Sets the natDestinationPort property value. Network Address Translation destination port.
         Args:
-            value: Value to set for the natDestinationPort property.
+            value: Value to set for the nat_destination_port property.
         """
         self._nat_destination_port = value
     
@@ -318,7 +318,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         """
         Sets the natSourceAddress property value. Network Address Translation source IP address.
         Args:
-            value: Value to set for the natSourceAddress property.
+            value: Value to set for the nat_source_address property.
         """
         self._nat_source_address = value
     
@@ -335,7 +335,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         """
         Sets the natSourcePort property value. Network Address Translation source port.
         Args:
-            value: Value to set for the natSourcePort property.
+            value: Value to set for the nat_source_port property.
         """
         self._nat_source_port = value
     
@@ -352,7 +352,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -386,7 +386,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         """
         Sets the riskScore property value. Provider generated/calculated risk score of the network connection. Recommended value range of 0-1, which equates to a percentage.
         Args:
-            value: Value to set for the riskScore property.
+            value: Value to set for the risk_score property.
         """
         self._risk_score = value
     
@@ -434,7 +434,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         """
         Sets the sourceAddress property value. Source (i.e. origin) IP address (of the network connection).
         Args:
-            value: Value to set for the sourceAddress property.
+            value: Value to set for the source_address property.
         """
         self._source_address = value
     
@@ -451,7 +451,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         """
         Sets the sourceLocation property value. Location (by IP address mapping) associated with the source of a network connection.
         Args:
-            value: Value to set for the sourceLocation property.
+            value: Value to set for the source_location property.
         """
         self._source_location = value
     
@@ -468,7 +468,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         """
         Sets the sourcePort property value. Source (i.e. origin) IP port (of the network connection).
         Args:
-            value: Value to set for the sourcePort property.
+            value: Value to set for the source_port property.
         """
         self._source_port = value
     
@@ -502,7 +502,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         """
         Sets the urlParameters property value. Parameters (suffix) of the destination URL.
         Args:
-            value: Value to set for the urlParameters property.
+            value: Value to set for the url_parameters property.
         """
         self._url_parameters = value
     

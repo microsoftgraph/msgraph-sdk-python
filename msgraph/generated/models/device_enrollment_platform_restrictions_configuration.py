@@ -20,7 +20,7 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
         """
         Sets the androidRestriction property value. Android restrictions based on platform, platform operating system version, and device ownership
         Args:
-            value: Value to set for the androidRestriction property.
+            value: Value to set for the android_restriction property.
         """
         self._android_restriction = value
     
@@ -59,11 +59,11 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "android_restriction": lambda n : setattr(self, 'android_restriction', n.get_object_value(device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction)),
-            "ios_restriction": lambda n : setattr(self, 'ios_restriction', n.get_object_value(device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction)),
-            "mac_o_s_restriction": lambda n : setattr(self, 'mac_o_s_restriction', n.get_object_value(device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction)),
-            "windows_mobile_restriction": lambda n : setattr(self, 'windows_mobile_restriction', n.get_object_value(device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction)),
-            "windows_restriction": lambda n : setattr(self, 'windows_restriction', n.get_object_value(device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction)),
+            "androidRestriction": lambda n : setattr(self, 'android_restriction', n.get_object_value(device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction)),
+            "iosRestriction": lambda n : setattr(self, 'ios_restriction', n.get_object_value(device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction)),
+            "macOSRestriction": lambda n : setattr(self, 'mac_o_s_restriction', n.get_object_value(device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction)),
+            "windowsMobileRestriction": lambda n : setattr(self, 'windows_mobile_restriction', n.get_object_value(device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction)),
+            "windowsRestriction": lambda n : setattr(self, 'windows_restriction', n.get_object_value(device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -82,7 +82,7 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
         """
         Sets the iosRestriction property value. Ios restrictions based on platform, platform operating system version, and device ownership
         Args:
-            value: Value to set for the iosRestriction property.
+            value: Value to set for the ios_restriction property.
         """
         self._ios_restriction = value
     
@@ -99,7 +99,7 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
         """
         Sets the macOSRestriction property value. Mac restrictions based on platform, platform operating system version, and device ownership
         Args:
-            value: Value to set for the macOSRestriction property.
+            value: Value to set for the mac_o_s_restriction property.
         """
         self._mac_o_s_restriction = value
     
@@ -131,7 +131,7 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
         """
         Sets the windowsMobileRestriction property value. Windows mobile restrictions based on platform, platform operating system version, and device ownership
         Args:
-            value: Value to set for the windowsMobileRestriction property.
+            value: Value to set for the windows_mobile_restriction property.
         """
         self._windows_mobile_restriction = value
     
@@ -148,7 +148,7 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
         """
         Sets the windowsRestriction property value. Windows restrictions based on platform, platform operating system version, and device ownership
         Args:
-            value: Value to set for the windowsRestriction property.
+            value: Value to set for the windows_restriction property.
         """
         self._windows_restriction = value
     

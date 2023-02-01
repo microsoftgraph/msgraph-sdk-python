@@ -63,14 +63,14 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "list_id": lambda n : setattr(self, 'list_id', n.get_str_value()),
-            "list_item_id": lambda n : setattr(self, 'list_item_id', n.get_str_value()),
-            "list_item_unique_id": lambda n : setattr(self, 'list_item_unique_id', n.get_str_value()),
+            "listId": lambda n : setattr(self, 'list_id', n.get_str_value()),
+            "listItemId": lambda n : setattr(self, 'list_item_id', n.get_str_value()),
+            "listItemUniqueId": lambda n : setattr(self, 'list_item_unique_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "site_id": lambda n : setattr(self, 'site_id', n.get_str_value()),
-            "site_url": lambda n : setattr(self, 'site_url', n.get_str_value()),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
-            "web_id": lambda n : setattr(self, 'web_id', n.get_str_value()),
+            "siteId": lambda n : setattr(self, 'site_id', n.get_str_value()),
+            "siteUrl": lambda n : setattr(self, 'site_url', n.get_str_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "webId": lambda n : setattr(self, 'web_id', n.get_str_value()),
         }
         return fields
     
@@ -87,7 +87,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         """
         Sets the listId property value. The unique identifier (guid) for the item's list in SharePoint.
         Args:
-            value: Value to set for the listId property.
+            value: Value to set for the list_id property.
         """
         self._list_id = value
     
@@ -104,7 +104,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         """
         Sets the listItemId property value. An integer identifier for the item within the containing list.
         Args:
-            value: Value to set for the listItemId property.
+            value: Value to set for the list_item_id property.
         """
         self._list_item_id = value
     
@@ -121,7 +121,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         """
         Sets the listItemUniqueId property value. The unique identifier (guid) for the item within OneDrive for Business or a SharePoint site.
         Args:
-            value: Value to set for the listItemUniqueId property.
+            value: Value to set for the list_item_unique_id property.
         """
         self._list_item_unique_id = value
     
@@ -138,7 +138,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -173,7 +173,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         """
         Sets the siteId property value. The unique identifier (guid) for the item's site collection (SPSite).
         Args:
-            value: Value to set for the siteId property.
+            value: Value to set for the site_id property.
         """
         self._site_id = value
     
@@ -190,7 +190,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         """
         Sets the siteUrl property value. The SharePoint URL for the site that contains the item.
         Args:
-            value: Value to set for the siteUrl property.
+            value: Value to set for the site_url property.
         """
         self._site_url = value
     
@@ -207,7 +207,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         """
         Sets the tenantId property value. The unique identifier (guid) for the tenancy.
         Args:
-            value: Value to set for the tenantId property.
+            value: Value to set for the tenant_id property.
         """
         self._tenant_id = value
     
@@ -224,7 +224,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         """
         Sets the webId property value. The unique identifier (guid) for the item's site (SPWeb).
         Args:
-            value: Value to set for the webId property.
+            value: Value to set for the web_id property.
         """
         self._web_id = value
     

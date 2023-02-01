@@ -17,10 +17,11 @@ class CertificateBasedAuthConfigurationItemRequestBuilder():
     """
     Provides operations to manage the collection of certificateBasedAuthConfiguration entities.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, certificate_based_auth_configuration_id: Optional[str] = None) -> None:
         """
         Instantiates a new CertificateBasedAuthConfigurationItemRequestBuilder and sets the default values.
         Args:
+            certificateBasedAuthConfigurationId: key: id of certificateBasedAuthConfiguration
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,12 +33,13 @@ class CertificateBasedAuthConfigurationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/certificateBasedAuthConfiguration/{certificateBasedAuthConfiguration%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["certificateBasedAuthConfiguration%2Did"] = certificateBasedAuthConfigurationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
     async def delete(self,request_configuration: Optional[CertificateBasedAuthConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete entity from certificateBasedAuthConfiguration by key (id)
+        Delete entity from certificateBasedAuthConfiguration
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -54,7 +56,7 @@ class CertificateBasedAuthConfigurationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[CertificateBasedAuthConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[certificate_based_auth_configuration.CertificateBasedAuthConfiguration]:
         """
-        Get entity from certificateBasedAuthConfiguration by key (id)
+        Get entity from certificateBasedAuthConfiguration by key
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[certificate_based_auth_configuration.CertificateBasedAuthConfiguration]
@@ -72,7 +74,7 @@ class CertificateBasedAuthConfigurationItemRequestBuilder():
     
     async def patch(self,body: Optional[certificate_based_auth_configuration.CertificateBasedAuthConfiguration] = None, request_configuration: Optional[CertificateBasedAuthConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[certificate_based_auth_configuration.CertificateBasedAuthConfiguration]:
         """
-        Update entity in certificateBasedAuthConfiguration by key (id)
+        Update entity in certificateBasedAuthConfiguration
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -93,7 +95,7 @@ class CertificateBasedAuthConfigurationItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[CertificateBasedAuthConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete entity from certificateBasedAuthConfiguration by key (id)
+        Delete entity from certificateBasedAuthConfiguration
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -109,7 +111,7 @@ class CertificateBasedAuthConfigurationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CertificateBasedAuthConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get entity from certificateBasedAuthConfiguration by key (id)
+        Get entity from certificateBasedAuthConfiguration by key
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -127,7 +129,7 @@ class CertificateBasedAuthConfigurationItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[certificate_based_auth_configuration.CertificateBasedAuthConfiguration] = None, request_configuration: Optional[CertificateBasedAuthConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update entity in certificateBasedAuthConfiguration by key (id)
+        Update entity in certificateBasedAuthConfiguration
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +163,7 @@ class CertificateBasedAuthConfigurationItemRequestBuilder():
     @dataclass
     class CertificateBasedAuthConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Get entity from certificateBasedAuthConfiguration by key (id)
+        Get entity from certificateBasedAuthConfiguration by key
         """
         # Expand related entities
         expand: Optional[List[str]] = None

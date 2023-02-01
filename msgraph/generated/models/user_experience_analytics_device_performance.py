@@ -21,7 +21,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         """
         Sets the averageBlueScreens property value. Average (mean) number of Blue Screens per device in the last 30 days. Valid values 0 to 9999999
         Args:
-            value: Value to set for the averageBlueScreens property.
+            value: Value to set for the average_blue_screens property.
         """
         self._average_blue_screens = value
     
@@ -38,7 +38,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         """
         Sets the averageRestarts property value. Average (mean) number of Restarts per device in the last 30 days. Valid values 0 to 9999999
         Args:
-            value: Value to set for the averageRestarts property.
+            value: Value to set for the average_restarts property.
         """
         self._average_restarts = value
     
@@ -55,7 +55,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         """
         Sets the blueScreenCount property value. Number of Blue Screens in the last 30 days. Valid values 0 to 9999999
         Args:
-            value: Value to set for the blueScreenCount property.
+            value: Value to set for the blue_screen_count property.
         """
         self._blue_screen_count = value
     
@@ -72,7 +72,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         """
         Sets the bootScore property value. The user experience analytics device boot score.
         Args:
-            value: Value to set for the bootScore property.
+            value: Value to set for the boot_score property.
         """
         self._boot_score = value
     
@@ -137,7 +137,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         """
         Sets the coreBootTimeInMs property value. The user experience analytics device core boot time in milliseconds.
         Args:
-            value: Value to set for the coreBootTimeInMs property.
+            value: Value to set for the core_boot_time_in_ms property.
         """
         self._core_boot_time_in_ms = value
     
@@ -154,7 +154,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         """
         Sets the coreLoginTimeInMs property value. The user experience analytics device core login time in milliseconds.
         Args:
-            value: Value to set for the coreLoginTimeInMs property.
+            value: Value to set for the core_login_time_in_ms property.
         """
         self._core_login_time_in_ms = value
     
@@ -183,7 +183,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         """
         Sets the deviceCount property value. User experience analytics summarized device count.
         Args:
-            value: Value to set for the deviceCount property.
+            value: Value to set for the device_count property.
         """
         self._device_count = value
     
@@ -200,7 +200,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         """
         Sets the deviceName property value. The user experience analytics device name.
         Args:
-            value: Value to set for the deviceName property.
+            value: Value to set for the device_name property.
         """
         self._device_name = value
     
@@ -217,7 +217,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         """
         Sets the diskType property value. The diskType property
         Args:
-            value: Value to set for the diskType property.
+            value: Value to set for the disk_type property.
         """
         self._disk_type = value
     
@@ -227,26 +227,26 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "average_blue_screens": lambda n : setattr(self, 'average_blue_screens', n.get_float_value()),
-            "average_restarts": lambda n : setattr(self, 'average_restarts', n.get_float_value()),
-            "blue_screen_count": lambda n : setattr(self, 'blue_screen_count', n.get_int_value()),
-            "boot_score": lambda n : setattr(self, 'boot_score', n.get_int_value()),
-            "core_boot_time_in_ms": lambda n : setattr(self, 'core_boot_time_in_ms', n.get_int_value()),
-            "core_login_time_in_ms": lambda n : setattr(self, 'core_login_time_in_ms', n.get_int_value()),
-            "device_count": lambda n : setattr(self, 'device_count', n.get_int_value()),
-            "device_name": lambda n : setattr(self, 'device_name', n.get_str_value()),
-            "disk_type": lambda n : setattr(self, 'disk_type', n.get_enum_value(disk_type.DiskType)),
-            "group_policy_boot_time_in_ms": lambda n : setattr(self, 'group_policy_boot_time_in_ms', n.get_int_value()),
-            "group_policy_login_time_in_ms": lambda n : setattr(self, 'group_policy_login_time_in_ms', n.get_int_value()),
-            "health_status": lambda n : setattr(self, 'health_status', n.get_enum_value(user_experience_analytics_health_state.UserExperienceAnalyticsHealthState)),
-            "login_score": lambda n : setattr(self, 'login_score', n.get_int_value()),
+            "averageBlueScreens": lambda n : setattr(self, 'average_blue_screens', n.get_float_value()),
+            "averageRestarts": lambda n : setattr(self, 'average_restarts', n.get_float_value()),
+            "blueScreenCount": lambda n : setattr(self, 'blue_screen_count', n.get_int_value()),
+            "bootScore": lambda n : setattr(self, 'boot_score', n.get_int_value()),
+            "coreBootTimeInMs": lambda n : setattr(self, 'core_boot_time_in_ms', n.get_int_value()),
+            "coreLoginTimeInMs": lambda n : setattr(self, 'core_login_time_in_ms', n.get_int_value()),
+            "deviceCount": lambda n : setattr(self, 'device_count', n.get_int_value()),
+            "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
+            "diskType": lambda n : setattr(self, 'disk_type', n.get_enum_value(disk_type.DiskType)),
+            "groupPolicyBootTimeInMs": lambda n : setattr(self, 'group_policy_boot_time_in_ms', n.get_int_value()),
+            "groupPolicyLoginTimeInMs": lambda n : setattr(self, 'group_policy_login_time_in_ms', n.get_int_value()),
+            "healthStatus": lambda n : setattr(self, 'health_status', n.get_enum_value(user_experience_analytics_health_state.UserExperienceAnalyticsHealthState)),
+            "loginScore": lambda n : setattr(self, 'login_score', n.get_int_value()),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
-            "model_startup_performance_score": lambda n : setattr(self, 'model_startup_performance_score', n.get_float_value()),
-            "operating_system_version": lambda n : setattr(self, 'operating_system_version', n.get_str_value()),
-            "responsive_desktop_time_in_ms": lambda n : setattr(self, 'responsive_desktop_time_in_ms', n.get_int_value()),
-            "restart_count": lambda n : setattr(self, 'restart_count', n.get_int_value()),
-            "startup_performance_score": lambda n : setattr(self, 'startup_performance_score', n.get_float_value()),
+            "modelStartupPerformanceScore": lambda n : setattr(self, 'model_startup_performance_score', n.get_float_value()),
+            "operatingSystemVersion": lambda n : setattr(self, 'operating_system_version', n.get_str_value()),
+            "responsiveDesktopTimeInMs": lambda n : setattr(self, 'responsive_desktop_time_in_ms', n.get_int_value()),
+            "restartCount": lambda n : setattr(self, 'restart_count', n.get_int_value()),
+            "startupPerformanceScore": lambda n : setattr(self, 'startup_performance_score', n.get_float_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -265,7 +265,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         """
         Sets the groupPolicyBootTimeInMs property value. The user experience analytics device group policy boot time in milliseconds.
         Args:
-            value: Value to set for the groupPolicyBootTimeInMs property.
+            value: Value to set for the group_policy_boot_time_in_ms property.
         """
         self._group_policy_boot_time_in_ms = value
     
@@ -282,7 +282,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         """
         Sets the groupPolicyLoginTimeInMs property value. The user experience analytics device group policy login time in milliseconds.
         Args:
-            value: Value to set for the groupPolicyLoginTimeInMs property.
+            value: Value to set for the group_policy_login_time_in_ms property.
         """
         self._group_policy_login_time_in_ms = value
     
@@ -299,7 +299,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         """
         Sets the healthStatus property value. The healthStatus property
         Args:
-            value: Value to set for the healthStatus property.
+            value: Value to set for the health_status property.
         """
         self._health_status = value
     
@@ -316,7 +316,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         """
         Sets the loginScore property value. The user experience analytics device login score.
         Args:
-            value: Value to set for the loginScore property.
+            value: Value to set for the login_score property.
         """
         self._login_score = value
     
@@ -367,7 +367,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         """
         Sets the modelStartupPerformanceScore property value. The user experience analytics model level startup performance score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
         Args:
-            value: Value to set for the modelStartupPerformanceScore property.
+            value: Value to set for the model_startup_performance_score property.
         """
         self._model_startup_performance_score = value
     
@@ -384,7 +384,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         """
         Sets the operatingSystemVersion property value. The user experience analytics device Operating System version.
         Args:
-            value: Value to set for the operatingSystemVersion property.
+            value: Value to set for the operating_system_version property.
         """
         self._operating_system_version = value
     
@@ -401,7 +401,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         """
         Sets the responsiveDesktopTimeInMs property value. The user experience analytics responsive desktop time in milliseconds.
         Args:
-            value: Value to set for the responsiveDesktopTimeInMs property.
+            value: Value to set for the responsive_desktop_time_in_ms property.
         """
         self._responsive_desktop_time_in_ms = value
     
@@ -418,7 +418,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         """
         Sets the restartCount property value. Number of Restarts in the last 30 days. Valid values 0 to 9999999
         Args:
-            value: Value to set for the restartCount property.
+            value: Value to set for the restart_count property.
         """
         self._restart_count = value
     
@@ -465,7 +465,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         """
         Sets the startupPerformanceScore property value. The user experience analytics device startup performance score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
         Args:
-            value: Value to set for the startupPerformanceScore property.
+            value: Value to set for the startup_performance_score property.
         """
         self._startup_performance_score = value
     

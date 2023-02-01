@@ -23,7 +23,7 @@ class DefaultManagedAppProtection(managed_app_protection.ManagedAppProtection):
         """
         Sets the appDataEncryptionType property value. Represents the level to which app data is encrypted for managed apps
         Args:
-            value: Value to set for the appDataEncryptionType property.
+            value: Value to set for the app_data_encryption_type property.
         """
         self._app_data_encryption_type = value
     
@@ -100,7 +100,7 @@ class DefaultManagedAppProtection(managed_app_protection.ManagedAppProtection):
         """
         Sets the customSettings property value. A set of string key and string value pairs to be sent to the affected users, unalterned by this service
         Args:
-            value: Value to set for the customSettings property.
+            value: Value to set for the custom_settings property.
         """
         self._custom_settings = value
     
@@ -117,7 +117,7 @@ class DefaultManagedAppProtection(managed_app_protection.ManagedAppProtection):
         """
         Sets the deployedAppCount property value. Count of apps to which the current policy is deployed.
         Args:
-            value: Value to set for the deployedAppCount property.
+            value: Value to set for the deployed_app_count property.
         """
         self._deployed_app_count = value
     
@@ -134,7 +134,7 @@ class DefaultManagedAppProtection(managed_app_protection.ManagedAppProtection):
         """
         Sets the deploymentSummary property value. Navigation property to deployment summary of the configuration.
         Args:
-            value: Value to set for the deploymentSummary property.
+            value: Value to set for the deployment_summary property.
         """
         self._deployment_summary = value
     
@@ -151,7 +151,7 @@ class DefaultManagedAppProtection(managed_app_protection.ManagedAppProtection):
         """
         Sets the disableAppEncryptionIfDeviceEncryptionIsEnabled property value. When this setting is enabled, app level encryption is disabled if device level encryption is enabled. (Android only)
         Args:
-            value: Value to set for the disableAppEncryptionIfDeviceEncryptionIsEnabled property.
+            value: Value to set for the disable_app_encryption_if_device_encryption_is_enabled property.
         """
         self._disable_app_encryption_if_device_encryption_is_enabled = value
     
@@ -168,7 +168,7 @@ class DefaultManagedAppProtection(managed_app_protection.ManagedAppProtection):
         """
         Sets the encryptAppData property value. Indicates whether managed-app data should be encrypted. (Android only)
         Args:
-            value: Value to set for the encryptAppData property.
+            value: Value to set for the encrypt_app_data property.
         """
         self._encrypt_app_data = value
     
@@ -185,7 +185,7 @@ class DefaultManagedAppProtection(managed_app_protection.ManagedAppProtection):
         """
         Sets the faceIdBlocked property value. Indicates whether use of the FaceID is allowed in place of a pin if PinRequired is set to True. (iOS Only)
         Args:
-            value: Value to set for the faceIdBlocked property.
+            value: Value to set for the face_id_blocked property.
         """
         self._face_id_blocked = value
     
@@ -195,18 +195,18 @@ class DefaultManagedAppProtection(managed_app_protection.ManagedAppProtection):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_data_encryption_type": lambda n : setattr(self, 'app_data_encryption_type', n.get_enum_value(managed_app_data_encryption_type.ManagedAppDataEncryptionType)),
             "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(managed_mobile_app.ManagedMobileApp)),
-            "custom_settings": lambda n : setattr(self, 'custom_settings', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
-            "deployed_app_count": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
-            "deployment_summary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary)),
-            "disable_app_encryption_if_device_encryption_is_enabled": lambda n : setattr(self, 'disable_app_encryption_if_device_encryption_is_enabled', n.get_bool_value()),
-            "encrypt_app_data": lambda n : setattr(self, 'encrypt_app_data', n.get_bool_value()),
-            "face_id_blocked": lambda n : setattr(self, 'face_id_blocked', n.get_bool_value()),
-            "minimum_required_patch_version": lambda n : setattr(self, 'minimum_required_patch_version', n.get_str_value()),
-            "minimum_required_sdk_version": lambda n : setattr(self, 'minimum_required_sdk_version', n.get_str_value()),
-            "minimum_warning_patch_version": lambda n : setattr(self, 'minimum_warning_patch_version', n.get_str_value()),
-            "screen_capture_blocked": lambda n : setattr(self, 'screen_capture_blocked', n.get_bool_value()),
+            "appDataEncryptionType": lambda n : setattr(self, 'app_data_encryption_type', n.get_enum_value(managed_app_data_encryption_type.ManagedAppDataEncryptionType)),
+            "customSettings": lambda n : setattr(self, 'custom_settings', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
+            "deployedAppCount": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
+            "deploymentSummary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary)),
+            "disableAppEncryptionIfDeviceEncryptionIsEnabled": lambda n : setattr(self, 'disable_app_encryption_if_device_encryption_is_enabled', n.get_bool_value()),
+            "encryptAppData": lambda n : setattr(self, 'encrypt_app_data', n.get_bool_value()),
+            "faceIdBlocked": lambda n : setattr(self, 'face_id_blocked', n.get_bool_value()),
+            "minimumRequiredPatchVersion": lambda n : setattr(self, 'minimum_required_patch_version', n.get_str_value()),
+            "minimumRequiredSdkVersion": lambda n : setattr(self, 'minimum_required_sdk_version', n.get_str_value()),
+            "minimumWarningPatchVersion": lambda n : setattr(self, 'minimum_warning_patch_version', n.get_str_value()),
+            "screenCaptureBlocked": lambda n : setattr(self, 'screen_capture_blocked', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -225,7 +225,7 @@ class DefaultManagedAppProtection(managed_app_protection.ManagedAppProtection):
         """
         Sets the minimumRequiredPatchVersion property value. Define the oldest required Android security patch level a user can have to gain secure access to the app. (Android only)
         Args:
-            value: Value to set for the minimumRequiredPatchVersion property.
+            value: Value to set for the minimum_required_patch_version property.
         """
         self._minimum_required_patch_version = value
     
@@ -242,7 +242,7 @@ class DefaultManagedAppProtection(managed_app_protection.ManagedAppProtection):
         """
         Sets the minimumRequiredSdkVersion property value. Versions less than the specified version will block the managed app from accessing company data. (iOS Only)
         Args:
-            value: Value to set for the minimumRequiredSdkVersion property.
+            value: Value to set for the minimum_required_sdk_version property.
         """
         self._minimum_required_sdk_version = value
     
@@ -259,7 +259,7 @@ class DefaultManagedAppProtection(managed_app_protection.ManagedAppProtection):
         """
         Sets the minimumWarningPatchVersion property value. Define the oldest recommended Android security patch level a user can have for secure access to the app. (Android only)
         Args:
-            value: Value to set for the minimumWarningPatchVersion property.
+            value: Value to set for the minimum_warning_patch_version property.
         """
         self._minimum_warning_patch_version = value
     
@@ -276,7 +276,7 @@ class DefaultManagedAppProtection(managed_app_protection.ManagedAppProtection):
         """
         Sets the screenCaptureBlocked property value. Indicates whether screen capture is blocked. (Android only)
         Args:
-            value: Value to set for the screenCaptureBlocked property.
+            value: Value to set for the screen_capture_blocked property.
         """
         self._screen_capture_blocked = value
     
@@ -289,8 +289,8 @@ class DefaultManagedAppProtection(managed_app_protection.ManagedAppProtection):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-        writer.write_enum_value("appDataEncryptionType", self.app_data_encryption_type)
         writer.write_collection_of_object_values("apps", self.apps)
+        writer.write_enum_value("appDataEncryptionType", self.app_data_encryption_type)
         writer.write_collection_of_object_values("customSettings", self.custom_settings)
         writer.write_int_value("deployedAppCount", self.deployed_app_count)
         writer.write_object_value("deploymentSummary", self.deployment_summary)

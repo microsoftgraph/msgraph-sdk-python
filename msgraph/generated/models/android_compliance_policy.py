@@ -82,7 +82,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the deviceThreatProtectionEnabled property value. Require that devices have enabled device threat protection.
         Args:
-            value: Value to set for the deviceThreatProtectionEnabled property.
+            value: Value to set for the device_threat_protection_enabled property.
         """
         self._device_threat_protection_enabled = value
     
@@ -99,7 +99,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the deviceThreatProtectionRequiredSecurityLevel property value. Device threat protection levels for the Device Threat Protection API.
         Args:
-            value: Value to set for the deviceThreatProtectionRequiredSecurityLevel property.
+            value: Value to set for the device_threat_protection_required_security_level property.
         """
         self._device_threat_protection_required_security_level = value
     
@@ -109,27 +109,27 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_threat_protection_enabled": lambda n : setattr(self, 'device_threat_protection_enabled', n.get_bool_value()),
-            "device_threat_protection_required_security_level": lambda n : setattr(self, 'device_threat_protection_required_security_level', n.get_enum_value(device_threat_protection_level.DeviceThreatProtectionLevel)),
-            "min_android_security_patch_level": lambda n : setattr(self, 'min_android_security_patch_level', n.get_str_value()),
-            "os_maximum_version": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
-            "os_minimum_version": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
-            "password_expiration_days": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
-            "password_minimum_length": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
-            "password_minutes_of_inactivity_before_lock": lambda n : setattr(self, 'password_minutes_of_inactivity_before_lock', n.get_int_value()),
-            "password_previous_password_block_count": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
-            "password_required": lambda n : setattr(self, 'password_required', n.get_bool_value()),
-            "password_required_type": lambda n : setattr(self, 'password_required_type', n.get_enum_value(android_required_password_type.AndroidRequiredPasswordType)),
-            "security_block_jailbroken_devices": lambda n : setattr(self, 'security_block_jailbroken_devices', n.get_bool_value()),
-            "security_disable_usb_debugging": lambda n : setattr(self, 'security_disable_usb_debugging', n.get_bool_value()),
-            "security_prevent_install_apps_from_unknown_sources": lambda n : setattr(self, 'security_prevent_install_apps_from_unknown_sources', n.get_bool_value()),
-            "security_require_company_portal_app_integrity": lambda n : setattr(self, 'security_require_company_portal_app_integrity', n.get_bool_value()),
-            "security_require_google_play_services": lambda n : setattr(self, 'security_require_google_play_services', n.get_bool_value()),
-            "security_require_safety_net_attestation_basic_integrity": lambda n : setattr(self, 'security_require_safety_net_attestation_basic_integrity', n.get_bool_value()),
-            "security_require_safety_net_attestation_certified_device": lambda n : setattr(self, 'security_require_safety_net_attestation_certified_device', n.get_bool_value()),
-            "security_require_up_to_date_security_providers": lambda n : setattr(self, 'security_require_up_to_date_security_providers', n.get_bool_value()),
-            "security_require_verify_apps": lambda n : setattr(self, 'security_require_verify_apps', n.get_bool_value()),
-            "storage_require_encryption": lambda n : setattr(self, 'storage_require_encryption', n.get_bool_value()),
+            "deviceThreatProtectionEnabled": lambda n : setattr(self, 'device_threat_protection_enabled', n.get_bool_value()),
+            "deviceThreatProtectionRequiredSecurityLevel": lambda n : setattr(self, 'device_threat_protection_required_security_level', n.get_enum_value(device_threat_protection_level.DeviceThreatProtectionLevel)),
+            "minAndroidSecurityPatchLevel": lambda n : setattr(self, 'min_android_security_patch_level', n.get_str_value()),
+            "osMaximumVersion": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
+            "osMinimumVersion": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
+            "passwordExpirationDays": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
+            "passwordMinimumLength": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
+            "passwordMinutesOfInactivityBeforeLock": lambda n : setattr(self, 'password_minutes_of_inactivity_before_lock', n.get_int_value()),
+            "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
+            "passwordRequired": lambda n : setattr(self, 'password_required', n.get_bool_value()),
+            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(android_required_password_type.AndroidRequiredPasswordType)),
+            "securityBlockJailbrokenDevices": lambda n : setattr(self, 'security_block_jailbroken_devices', n.get_bool_value()),
+            "securityDisableUsbDebugging": lambda n : setattr(self, 'security_disable_usb_debugging', n.get_bool_value()),
+            "securityPreventInstallAppsFromUnknownSources": lambda n : setattr(self, 'security_prevent_install_apps_from_unknown_sources', n.get_bool_value()),
+            "securityRequireCompanyPortalAppIntegrity": lambda n : setattr(self, 'security_require_company_portal_app_integrity', n.get_bool_value()),
+            "securityRequireGooglePlayServices": lambda n : setattr(self, 'security_require_google_play_services', n.get_bool_value()),
+            "securityRequireSafetyNetAttestationBasicIntegrity": lambda n : setattr(self, 'security_require_safety_net_attestation_basic_integrity', n.get_bool_value()),
+            "securityRequireSafetyNetAttestationCertifiedDevice": lambda n : setattr(self, 'security_require_safety_net_attestation_certified_device', n.get_bool_value()),
+            "securityRequireUpToDateSecurityProviders": lambda n : setattr(self, 'security_require_up_to_date_security_providers', n.get_bool_value()),
+            "securityRequireVerifyApps": lambda n : setattr(self, 'security_require_verify_apps', n.get_bool_value()),
+            "storageRequireEncryption": lambda n : setattr(self, 'storage_require_encryption', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -148,7 +148,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the minAndroidSecurityPatchLevel property value. Minimum Android security patch level.
         Args:
-            value: Value to set for the minAndroidSecurityPatchLevel property.
+            value: Value to set for the min_android_security_patch_level property.
         """
         self._min_android_security_patch_level = value
     
@@ -165,7 +165,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the osMaximumVersion property value. Maximum Android version.
         Args:
-            value: Value to set for the osMaximumVersion property.
+            value: Value to set for the os_maximum_version property.
         """
         self._os_maximum_version = value
     
@@ -182,7 +182,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the osMinimumVersion property value. Minimum Android version.
         Args:
-            value: Value to set for the osMinimumVersion property.
+            value: Value to set for the os_minimum_version property.
         """
         self._os_minimum_version = value
     
@@ -199,7 +199,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the passwordExpirationDays property value. Number of days before the password expires. Valid values 1 to 365
         Args:
-            value: Value to set for the passwordExpirationDays property.
+            value: Value to set for the password_expiration_days property.
         """
         self._password_expiration_days = value
     
@@ -216,7 +216,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the passwordMinimumLength property value. Minimum password length. Valid values 4 to 16
         Args:
-            value: Value to set for the passwordMinimumLength property.
+            value: Value to set for the password_minimum_length property.
         """
         self._password_minimum_length = value
     
@@ -233,7 +233,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the passwordMinutesOfInactivityBeforeLock property value. Minutes of inactivity before a password is required.
         Args:
-            value: Value to set for the passwordMinutesOfInactivityBeforeLock property.
+            value: Value to set for the password_minutes_of_inactivity_before_lock property.
         """
         self._password_minutes_of_inactivity_before_lock = value
     
@@ -250,7 +250,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the passwordPreviousPasswordBlockCount property value. Number of previous passwords to block. Valid values 1 to 24
         Args:
-            value: Value to set for the passwordPreviousPasswordBlockCount property.
+            value: Value to set for the password_previous_password_block_count property.
         """
         self._password_previous_password_block_count = value
     
@@ -267,7 +267,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the passwordRequired property value. Require a password to unlock device.
         Args:
-            value: Value to set for the passwordRequired property.
+            value: Value to set for the password_required property.
         """
         self._password_required = value
     
@@ -284,7 +284,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the passwordRequiredType property value. Android required password type.
         Args:
-            value: Value to set for the passwordRequiredType property.
+            value: Value to set for the password_required_type property.
         """
         self._password_required_type = value
     
@@ -301,7 +301,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the securityBlockJailbrokenDevices property value. Devices must not be jailbroken or rooted.
         Args:
-            value: Value to set for the securityBlockJailbrokenDevices property.
+            value: Value to set for the security_block_jailbroken_devices property.
         """
         self._security_block_jailbroken_devices = value
     
@@ -318,7 +318,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the securityDisableUsbDebugging property value. Disable USB debugging on Android devices.
         Args:
-            value: Value to set for the securityDisableUsbDebugging property.
+            value: Value to set for the security_disable_usb_debugging property.
         """
         self._security_disable_usb_debugging = value
     
@@ -335,7 +335,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the securityPreventInstallAppsFromUnknownSources property value. Require that devices disallow installation of apps from unknown sources.
         Args:
-            value: Value to set for the securityPreventInstallAppsFromUnknownSources property.
+            value: Value to set for the security_prevent_install_apps_from_unknown_sources property.
         """
         self._security_prevent_install_apps_from_unknown_sources = value
     
@@ -352,7 +352,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the securityRequireCompanyPortalAppIntegrity property value. Require the device to pass the Company Portal client app runtime integrity check.
         Args:
-            value: Value to set for the securityRequireCompanyPortalAppIntegrity property.
+            value: Value to set for the security_require_company_portal_app_integrity property.
         """
         self._security_require_company_portal_app_integrity = value
     
@@ -369,7 +369,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the securityRequireGooglePlayServices property value. Require Google Play Services to be installed and enabled on the device.
         Args:
-            value: Value to set for the securityRequireGooglePlayServices property.
+            value: Value to set for the security_require_google_play_services property.
         """
         self._security_require_google_play_services = value
     
@@ -386,7 +386,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the securityRequireSafetyNetAttestationBasicIntegrity property value. Require the device to pass the SafetyNet basic integrity check.
         Args:
-            value: Value to set for the securityRequireSafetyNetAttestationBasicIntegrity property.
+            value: Value to set for the security_require_safety_net_attestation_basic_integrity property.
         """
         self._security_require_safety_net_attestation_basic_integrity = value
     
@@ -403,7 +403,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the securityRequireSafetyNetAttestationCertifiedDevice property value. Require the device to pass the SafetyNet certified device check.
         Args:
-            value: Value to set for the securityRequireSafetyNetAttestationCertifiedDevice property.
+            value: Value to set for the security_require_safety_net_attestation_certified_device property.
         """
         self._security_require_safety_net_attestation_certified_device = value
     
@@ -420,7 +420,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the securityRequireUpToDateSecurityProviders property value. Require the device to have up to date security providers. The device will require Google Play Services to be enabled and up to date.
         Args:
-            value: Value to set for the securityRequireUpToDateSecurityProviders property.
+            value: Value to set for the security_require_up_to_date_security_providers property.
         """
         self._security_require_up_to_date_security_providers = value
     
@@ -437,7 +437,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the securityRequireVerifyApps property value. Require the Android Verify apps feature is turned on.
         Args:
-            value: Value to set for the securityRequireVerifyApps property.
+            value: Value to set for the security_require_verify_apps property.
         """
         self._security_require_verify_apps = value
     
@@ -485,7 +485,7 @@ class AndroidCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the storageRequireEncryption property value. Require encryption on Android devices.
         Args:
-            value: Value to set for the storageRequireEncryption property.
+            value: Value to set for the storage_require_encryption property.
         """
         self._storage_require_encryption = value
     

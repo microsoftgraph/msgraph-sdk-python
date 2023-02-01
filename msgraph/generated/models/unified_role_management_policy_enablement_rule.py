@@ -40,7 +40,7 @@ class UnifiedRoleManagementPolicyEnablementRule(unified_role_management_policy_r
         """
         Sets the enabledRules property value. The collection of rules that are enabled for this policy rule. For example, MultiFactorAuthentication, Ticketing, and Justification.
         Args:
-            value: Value to set for the enabledRules property.
+            value: Value to set for the enabled_rules property.
         """
         self._enabled_rules = value
     
@@ -50,7 +50,7 @@ class UnifiedRoleManagementPolicyEnablementRule(unified_role_management_policy_r
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "enabled_rules": lambda n : setattr(self, 'enabled_rules', n.get_collection_of_primitive_values(str)),
+            "enabledRules": lambda n : setattr(self, 'enabled_rules', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

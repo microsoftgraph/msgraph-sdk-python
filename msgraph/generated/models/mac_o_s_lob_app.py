@@ -21,7 +21,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the buildNumber property value. The build number of the package. This should match the package CFBundleShortVersionString of the .pkg file.
         Args:
-            value: Value to set for the buildNumber property.
+            value: Value to set for the build_number property.
         """
         self._build_number = value
     
@@ -38,7 +38,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the bundleId property value. The primary bundleId of the package.
         Args:
-            value: Value to set for the bundleId property.
+            value: Value to set for the bundle_id property.
         """
         self._bundle_id = value
     
@@ -55,7 +55,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the childApps property value. List of ComplexType macOSLobChildApp objects. Represents the apps expected to be installed by the package.
         Args:
-            value: Value to set for the childApps property.
+            value: Value to set for the child_apps property.
         """
         self._child_apps = value
     
@@ -102,15 +102,15 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "build_number": lambda n : setattr(self, 'build_number', n.get_str_value()),
-            "bundle_id": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
-            "child_apps": lambda n : setattr(self, 'child_apps', n.get_collection_of_object_values(mac_o_s_lob_child_app.MacOSLobChildApp)),
-            "ignore_version_detection": lambda n : setattr(self, 'ignore_version_detection', n.get_bool_value()),
-            "install_as_managed": lambda n : setattr(self, 'install_as_managed', n.get_bool_value()),
-            "md5_hash": lambda n : setattr(self, 'md5_hash', n.get_collection_of_primitive_values(str)),
-            "md5_hash_chunk_size": lambda n : setattr(self, 'md5_hash_chunk_size', n.get_int_value()),
-            "minimum_supported_operating_system": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(mac_o_s_minimum_operating_system.MacOSMinimumOperatingSystem)),
-            "version_number": lambda n : setattr(self, 'version_number', n.get_str_value()),
+            "buildNumber": lambda n : setattr(self, 'build_number', n.get_str_value()),
+            "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
+            "childApps": lambda n : setattr(self, 'child_apps', n.get_collection_of_object_values(mac_o_s_lob_child_app.MacOSLobChildApp)),
+            "ignoreVersionDetection": lambda n : setattr(self, 'ignore_version_detection', n.get_bool_value()),
+            "installAsManaged": lambda n : setattr(self, 'install_as_managed', n.get_bool_value()),
+            "md5Hash": lambda n : setattr(self, 'md5_hash', n.get_collection_of_primitive_values(str)),
+            "md5HashChunkSize": lambda n : setattr(self, 'md5_hash_chunk_size', n.get_int_value()),
+            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(mac_o_s_minimum_operating_system.MacOSMinimumOperatingSystem)),
+            "versionNumber": lambda n : setattr(self, 'version_number', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -129,7 +129,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the ignoreVersionDetection property value. When TRUE, indicates that the app's version will NOT be used to detect if the app is installed on a device. When FALSE, indicates that the app's version will be used to detect if the app is installed on a device. Set this to true for apps that use a self update feature.
         Args:
-            value: Value to set for the ignoreVersionDetection property.
+            value: Value to set for the ignore_version_detection property.
         """
         self._ignore_version_detection = value
     
@@ -146,7 +146,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the installAsManaged property value. When TRUE, indicates that the app will be installed as managed (requires macOS 11.0 and other managed package restrictions). When FALSE, indicates that the app will be installed as unmanaged.
         Args:
-            value: Value to set for the installAsManaged property.
+            value: Value to set for the install_as_managed property.
         """
         self._install_as_managed = value
     
@@ -163,7 +163,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the md5Hash property value. The MD5 hash codes. This is empty if the package was uploaded directly. If the Intune App Wrapping Tool is used to create a .intunemac, this value can be found inside the Detection.xml file.
         Args:
-            value: Value to set for the md5Hash property.
+            value: Value to set for the md5_hash property.
         """
         self._md5_hash = value
     
@@ -180,7 +180,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the md5HashChunkSize property value. The chunk size for MD5 hash. This is '0' or empty if the package was uploaded directly. If the Intune App Wrapping Tool is used to create a .intunemac, this value can be found inside the Detection.xml file.
         Args:
-            value: Value to set for the md5HashChunkSize property.
+            value: Value to set for the md5_hash_chunk_size property.
         """
         self._md5_hash_chunk_size = value
     
@@ -197,7 +197,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the minimumSupportedOperatingSystem property value. ComplexType macOSMinimumOperatingSystem that indicates the minimum operating system applicable for the application.
         Args:
-            value: Value to set for the minimumSupportedOperatingSystem property.
+            value: Value to set for the minimum_supported_operating_system property.
         """
         self._minimum_supported_operating_system = value
     
@@ -233,7 +233,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         """
         Sets the versionNumber property value. The version number of the package. This should match the package CFBundleVersion in the packageinfo file.
         Args:
-            value: Value to set for the versionNumber property.
+            value: Value to set for the version_number property.
         """
         self._version_number = value
     

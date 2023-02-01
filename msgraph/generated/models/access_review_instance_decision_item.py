@@ -23,7 +23,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         """
         Sets the accessReviewId property value. The identifier of the accessReviewInstance parent. Supports $select. Read-only.
         Args:
-            value: Value to set for the accessReviewId property.
+            value: Value to set for the access_review_id property.
         """
         self._access_review_id = value
     
@@ -40,7 +40,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         """
         Sets the appliedBy property value. The identifier of the user who applied the decision. Read-only.
         Args:
-            value: Value to set for the appliedBy property.
+            value: Value to set for the applied_by property.
         """
         self._applied_by = value
     
@@ -57,7 +57,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         """
         Sets the appliedDateTime property value. The timestamp when the approval decision was applied.00000000-0000-0000-0000-000000000000 if the assigned reviewer hasn't applied the decision or it was automatically applied. The DatetimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.  Supports $select. Read-only.
         Args:
-            value: Value to set for the appliedDateTime property.
+            value: Value to set for the applied_date_time property.
         """
         self._applied_date_time = value
     
@@ -74,7 +74,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         """
         Sets the applyResult property value. The result of applying the decision. Possible values: New, AppliedSuccessfully, AppliedWithUnknownFailure, AppliedSuccessfullyButObjectNotFound and ApplyNotSupported. Supports $select, $orderby, and $filter (eq only). Read-only.
         Args:
-            value: Value to set for the applyResult property.
+            value: Value to set for the apply_result property.
         """
         self._apply_result = value
     
@@ -147,19 +147,19 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_review_id": lambda n : setattr(self, 'access_review_id', n.get_str_value()),
-            "applied_by": lambda n : setattr(self, 'applied_by', n.get_object_value(user_identity.UserIdentity)),
-            "applied_date_time": lambda n : setattr(self, 'applied_date_time', n.get_datetime_value()),
-            "apply_result": lambda n : setattr(self, 'apply_result', n.get_str_value()),
+            "accessReviewId": lambda n : setattr(self, 'access_review_id', n.get_str_value()),
+            "appliedBy": lambda n : setattr(self, 'applied_by', n.get_object_value(user_identity.UserIdentity)),
+            "appliedDateTime": lambda n : setattr(self, 'applied_date_time', n.get_datetime_value()),
+            "applyResult": lambda n : setattr(self, 'apply_result', n.get_str_value()),
             "decision": lambda n : setattr(self, 'decision', n.get_str_value()),
             "justification": lambda n : setattr(self, 'justification', n.get_str_value()),
             "principal": lambda n : setattr(self, 'principal', n.get_object_value(identity.Identity)),
-            "principal_link": lambda n : setattr(self, 'principal_link', n.get_str_value()),
+            "principalLink": lambda n : setattr(self, 'principal_link', n.get_str_value()),
             "recommendation": lambda n : setattr(self, 'recommendation', n.get_str_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(access_review_instance_decision_item_resource.AccessReviewInstanceDecisionItemResource)),
-            "resource_link": lambda n : setattr(self, 'resource_link', n.get_str_value()),
-            "reviewed_by": lambda n : setattr(self, 'reviewed_by', n.get_object_value(user_identity.UserIdentity)),
-            "reviewed_date_time": lambda n : setattr(self, 'reviewed_date_time', n.get_datetime_value()),
+            "resourceLink": lambda n : setattr(self, 'resource_link', n.get_str_value()),
+            "reviewedBy": lambda n : setattr(self, 'reviewed_by', n.get_object_value(user_identity.UserIdentity)),
+            "reviewedDateTime": lambda n : setattr(self, 'reviewed_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -212,7 +212,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         """
         Sets the principalLink property value. A link to the principal object. For example, https://graph.microsoft.com/v1.0/users/a6c7aecb-cbfd-4763-87ef-e91b4bd509d9. Read-only.
         Args:
-            value: Value to set for the principalLink property.
+            value: Value to set for the principal_link property.
         """
         self._principal_link = value
     
@@ -263,7 +263,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         """
         Sets the resourceLink property value. A link to the resource. For example, https://graph.microsoft.com/v1.0/servicePrincipals/c86300f3-8695-4320-9f6e-32a2555f5ff8. Supports $select. Read-only.
         Args:
-            value: Value to set for the resourceLink property.
+            value: Value to set for the resource_link property.
         """
         self._resource_link = value
     
@@ -280,7 +280,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         """
         Sets the reviewedBy property value. The identifier of the reviewer.00000000-0000-0000-0000-000000000000 if the assigned reviewer hasn't reviewed. Supports $select. Read-only.
         Args:
-            value: Value to set for the reviewedBy property.
+            value: Value to set for the reviewed_by property.
         """
         self._reviewed_by = value
     
@@ -297,7 +297,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         """
         Sets the reviewedDateTime property value. The timestamp when the review decision occurred. Supports $select. Read-only.
         Args:
-            value: Value to set for the reviewedDateTime property.
+            value: Value to set for the reviewed_date_time property.
         """
         self._reviewed_date_time = value
     

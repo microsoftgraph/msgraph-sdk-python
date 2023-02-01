@@ -23,7 +23,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the accountsBlockAddingNonMicrosoftAccountEmail property value. Indicates whether or not to Block the user from adding email accounts to the device that are not associated with a Microsoft account.
         Args:
-            value: Value to set for the accountsBlockAddingNonMicrosoftAccountEmail property.
+            value: Value to set for the accounts_block_adding_non_microsoft_account_email property.
         """
         self._accounts_block_adding_non_microsoft_account_email = value
     
@@ -40,7 +40,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the applyOnlyToWindows81 property value. Value indicating whether this policy only applies to Windows 8.1. This property is read-only.
         Args:
-            value: Value to set for the applyOnlyToWindows81 property.
+            value: Value to set for the apply_only_to_windows81 property.
         """
         self._apply_only_to_windows81 = value
     
@@ -57,7 +57,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the browserBlockAutofill property value. Indicates whether or not to block auto fill.
         Args:
-            value: Value to set for the browserBlockAutofill property.
+            value: Value to set for the browser_block_autofill property.
         """
         self._browser_block_autofill = value
     
@@ -74,7 +74,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the browserBlockAutomaticDetectionOfIntranetSites property value. Indicates whether or not to block automatic detection of Intranet sites.
         Args:
-            value: Value to set for the browserBlockAutomaticDetectionOfIntranetSites property.
+            value: Value to set for the browser_block_automatic_detection_of_intranet_sites property.
         """
         self._browser_block_automatic_detection_of_intranet_sites = value
     
@@ -91,7 +91,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the browserBlockEnterpriseModeAccess property value. Indicates whether or not to block enterprise mode access.
         Args:
-            value: Value to set for the browserBlockEnterpriseModeAccess property.
+            value: Value to set for the browser_block_enterprise_mode_access property.
         """
         self._browser_block_enterprise_mode_access = value
     
@@ -108,7 +108,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the browserBlockJavaScript property value. Indicates whether or not to Block the user from using JavaScript.
         Args:
-            value: Value to set for the browserBlockJavaScript property.
+            value: Value to set for the browser_block_java_script property.
         """
         self._browser_block_java_script = value
     
@@ -125,7 +125,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the browserBlockPlugins property value. Indicates whether or not to block plug-ins.
         Args:
-            value: Value to set for the browserBlockPlugins property.
+            value: Value to set for the browser_block_plugins property.
         """
         self._browser_block_plugins = value
     
@@ -142,7 +142,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the browserBlockPopups property value. Indicates whether or not to block popups.
         Args:
-            value: Value to set for the browserBlockPopups property.
+            value: Value to set for the browser_block_popups property.
         """
         self._browser_block_popups = value
     
@@ -159,7 +159,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the browserBlockSendingDoNotTrackHeader property value. Indicates whether or not to Block the user from sending the do not track header.
         Args:
-            value: Value to set for the browserBlockSendingDoNotTrackHeader property.
+            value: Value to set for the browser_block_sending_do_not_track_header property.
         """
         self._browser_block_sending_do_not_track_header = value
     
@@ -176,7 +176,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the browserBlockSingleWordEntryOnIntranetSites property value. Indicates whether or not to block a single word entry on Intranet sites.
         Args:
-            value: Value to set for the browserBlockSingleWordEntryOnIntranetSites property.
+            value: Value to set for the browser_block_single_word_entry_on_intranet_sites property.
         """
         self._browser_block_single_word_entry_on_intranet_sites = value
     
@@ -193,7 +193,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the browserEnterpriseModeSiteListLocation property value. The enterprise mode site list location. Could be a local file, local network or http location.
         Args:
-            value: Value to set for the browserEnterpriseModeSiteListLocation property.
+            value: Value to set for the browser_enterprise_mode_site_list_location property.
         """
         self._browser_enterprise_mode_site_list_location = value
     
@@ -210,7 +210,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the browserInternetSecurityLevel property value. Possible values for internet site security level.
         Args:
-            value: Value to set for the browserInternetSecurityLevel property.
+            value: Value to set for the browser_internet_security_level property.
         """
         self._browser_internet_security_level = value
     
@@ -227,7 +227,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the browserIntranetSecurityLevel property value. Possible values for site security level.
         Args:
-            value: Value to set for the browserIntranetSecurityLevel property.
+            value: Value to set for the browser_intranet_security_level property.
         """
         self._browser_intranet_security_level = value
     
@@ -244,7 +244,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the browserLoggingReportLocation property value. The logging report location.
         Args:
-            value: Value to set for the browserLoggingReportLocation property.
+            value: Value to set for the browser_logging_report_location property.
         """
         self._browser_logging_report_location = value
     
@@ -261,7 +261,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the browserRequireFirewall property value. Indicates whether or not to require a firewall.
         Args:
-            value: Value to set for the browserRequireFirewall property.
+            value: Value to set for the browser_require_firewall property.
         """
         self._browser_require_firewall = value
     
@@ -278,7 +278,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the browserRequireFraudWarning property value. Indicates whether or not to require fraud warning.
         Args:
-            value: Value to set for the browserRequireFraudWarning property.
+            value: Value to set for the browser_require_fraud_warning property.
         """
         self._browser_require_fraud_warning = value
     
@@ -295,7 +295,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the browserRequireHighSecurityForRestrictedSites property value. Indicates whether or not to require high security for restricted sites.
         Args:
-            value: Value to set for the browserRequireHighSecurityForRestrictedSites property.
+            value: Value to set for the browser_require_high_security_for_restricted_sites property.
         """
         self._browser_require_high_security_for_restricted_sites = value
     
@@ -312,7 +312,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the browserRequireSmartScreen property value. Indicates whether or not to require the user to use the smart screen filter.
         Args:
-            value: Value to set for the browserRequireSmartScreen property.
+            value: Value to set for the browser_require_smart_screen property.
         """
         self._browser_require_smart_screen = value
     
@@ -329,7 +329,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the browserTrustedSitesSecurityLevel property value. Possible values for site security level.
         Args:
-            value: Value to set for the browserTrustedSitesSecurityLevel property.
+            value: Value to set for the browser_trusted_sites_security_level property.
         """
         self._browser_trusted_sites_security_level = value
     
@@ -346,7 +346,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the cellularBlockDataRoaming property value. Indicates whether or not to block data roaming.
         Args:
-            value: Value to set for the cellularBlockDataRoaming property.
+            value: Value to set for the cellular_block_data_roaming property.
         """
         self._cellular_block_data_roaming = value
     
@@ -448,7 +448,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the diagnosticsBlockDataSubmission property value. Indicates whether or not to block diagnostic data submission.
         Args:
-            value: Value to set for the diagnosticsBlockDataSubmission property.
+            value: Value to set for the diagnostics_block_data_submission property.
         """
         self._diagnostics_block_data_submission = value
     
@@ -458,39 +458,39 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "accounts_block_adding_non_microsoft_account_email": lambda n : setattr(self, 'accounts_block_adding_non_microsoft_account_email', n.get_bool_value()),
-            "apply_only_to_windows81": lambda n : setattr(self, 'apply_only_to_windows81', n.get_bool_value()),
-            "browser_block_autofill": lambda n : setattr(self, 'browser_block_autofill', n.get_bool_value()),
-            "browser_block_automatic_detection_of_intranet_sites": lambda n : setattr(self, 'browser_block_automatic_detection_of_intranet_sites', n.get_bool_value()),
-            "browser_block_enterprise_mode_access": lambda n : setattr(self, 'browser_block_enterprise_mode_access', n.get_bool_value()),
-            "browser_block_java_script": lambda n : setattr(self, 'browser_block_java_script', n.get_bool_value()),
-            "browser_block_plugins": lambda n : setattr(self, 'browser_block_plugins', n.get_bool_value()),
-            "browser_block_popups": lambda n : setattr(self, 'browser_block_popups', n.get_bool_value()),
-            "browser_block_sending_do_not_track_header": lambda n : setattr(self, 'browser_block_sending_do_not_track_header', n.get_bool_value()),
-            "browser_block_single_word_entry_on_intranet_sites": lambda n : setattr(self, 'browser_block_single_word_entry_on_intranet_sites', n.get_bool_value()),
-            "browser_enterprise_mode_site_list_location": lambda n : setattr(self, 'browser_enterprise_mode_site_list_location', n.get_str_value()),
-            "browser_internet_security_level": lambda n : setattr(self, 'browser_internet_security_level', n.get_enum_value(internet_site_security_level.InternetSiteSecurityLevel)),
-            "browser_intranet_security_level": lambda n : setattr(self, 'browser_intranet_security_level', n.get_enum_value(site_security_level.SiteSecurityLevel)),
-            "browser_logging_report_location": lambda n : setattr(self, 'browser_logging_report_location', n.get_str_value()),
-            "browser_require_firewall": lambda n : setattr(self, 'browser_require_firewall', n.get_bool_value()),
-            "browser_require_fraud_warning": lambda n : setattr(self, 'browser_require_fraud_warning', n.get_bool_value()),
-            "browser_require_high_security_for_restricted_sites": lambda n : setattr(self, 'browser_require_high_security_for_restricted_sites', n.get_bool_value()),
-            "browser_require_smart_screen": lambda n : setattr(self, 'browser_require_smart_screen', n.get_bool_value()),
-            "browser_trusted_sites_security_level": lambda n : setattr(self, 'browser_trusted_sites_security_level', n.get_enum_value(site_security_level.SiteSecurityLevel)),
-            "cellular_block_data_roaming": lambda n : setattr(self, 'cellular_block_data_roaming', n.get_bool_value()),
-            "diagnostics_block_data_submission": lambda n : setattr(self, 'diagnostics_block_data_submission', n.get_bool_value()),
-            "password_block_picture_password_and_pin": lambda n : setattr(self, 'password_block_picture_password_and_pin', n.get_bool_value()),
-            "password_expiration_days": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
-            "password_minimum_character_set_count": lambda n : setattr(self, 'password_minimum_character_set_count', n.get_int_value()),
-            "password_minimum_length": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
-            "password_minutes_of_inactivity_before_screen_timeout": lambda n : setattr(self, 'password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
-            "password_previous_password_block_count": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
-            "password_required_type": lambda n : setattr(self, 'password_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
-            "password_sign_in_failure_count_before_factory_reset": lambda n : setattr(self, 'password_sign_in_failure_count_before_factory_reset', n.get_int_value()),
-            "storage_require_device_encryption": lambda n : setattr(self, 'storage_require_device_encryption', n.get_bool_value()),
-            "updates_require_automatic_updates": lambda n : setattr(self, 'updates_require_automatic_updates', n.get_bool_value()),
-            "user_account_control_settings": lambda n : setattr(self, 'user_account_control_settings', n.get_enum_value(windows_user_account_control_settings.WindowsUserAccountControlSettings)),
-            "work_folders_url": lambda n : setattr(self, 'work_folders_url', n.get_str_value()),
+            "accountsBlockAddingNonMicrosoftAccountEmail": lambda n : setattr(self, 'accounts_block_adding_non_microsoft_account_email', n.get_bool_value()),
+            "applyOnlyToWindows81": lambda n : setattr(self, 'apply_only_to_windows81', n.get_bool_value()),
+            "browserBlockAutofill": lambda n : setattr(self, 'browser_block_autofill', n.get_bool_value()),
+            "browserBlockAutomaticDetectionOfIntranetSites": lambda n : setattr(self, 'browser_block_automatic_detection_of_intranet_sites', n.get_bool_value()),
+            "browserBlockEnterpriseModeAccess": lambda n : setattr(self, 'browser_block_enterprise_mode_access', n.get_bool_value()),
+            "browserBlockJavaScript": lambda n : setattr(self, 'browser_block_java_script', n.get_bool_value()),
+            "browserBlockPlugins": lambda n : setattr(self, 'browser_block_plugins', n.get_bool_value()),
+            "browserBlockPopups": lambda n : setattr(self, 'browser_block_popups', n.get_bool_value()),
+            "browserBlockSendingDoNotTrackHeader": lambda n : setattr(self, 'browser_block_sending_do_not_track_header', n.get_bool_value()),
+            "browserBlockSingleWordEntryOnIntranetSites": lambda n : setattr(self, 'browser_block_single_word_entry_on_intranet_sites', n.get_bool_value()),
+            "browserEnterpriseModeSiteListLocation": lambda n : setattr(self, 'browser_enterprise_mode_site_list_location', n.get_str_value()),
+            "browserInternetSecurityLevel": lambda n : setattr(self, 'browser_internet_security_level', n.get_enum_value(internet_site_security_level.InternetSiteSecurityLevel)),
+            "browserIntranetSecurityLevel": lambda n : setattr(self, 'browser_intranet_security_level', n.get_enum_value(site_security_level.SiteSecurityLevel)),
+            "browserLoggingReportLocation": lambda n : setattr(self, 'browser_logging_report_location', n.get_str_value()),
+            "browserRequireFirewall": lambda n : setattr(self, 'browser_require_firewall', n.get_bool_value()),
+            "browserRequireFraudWarning": lambda n : setattr(self, 'browser_require_fraud_warning', n.get_bool_value()),
+            "browserRequireHighSecurityForRestrictedSites": lambda n : setattr(self, 'browser_require_high_security_for_restricted_sites', n.get_bool_value()),
+            "browserRequireSmartScreen": lambda n : setattr(self, 'browser_require_smart_screen', n.get_bool_value()),
+            "browserTrustedSitesSecurityLevel": lambda n : setattr(self, 'browser_trusted_sites_security_level', n.get_enum_value(site_security_level.SiteSecurityLevel)),
+            "cellularBlockDataRoaming": lambda n : setattr(self, 'cellular_block_data_roaming', n.get_bool_value()),
+            "diagnosticsBlockDataSubmission": lambda n : setattr(self, 'diagnostics_block_data_submission', n.get_bool_value()),
+            "passwordBlockPicturePasswordAndPin": lambda n : setattr(self, 'password_block_picture_password_and_pin', n.get_bool_value()),
+            "passwordExpirationDays": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
+            "passwordMinimumCharacterSetCount": lambda n : setattr(self, 'password_minimum_character_set_count', n.get_int_value()),
+            "passwordMinimumLength": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
+            "passwordMinutesOfInactivityBeforeScreenTimeout": lambda n : setattr(self, 'password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
+            "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
+            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
+            "passwordSignInFailureCountBeforeFactoryReset": lambda n : setattr(self, 'password_sign_in_failure_count_before_factory_reset', n.get_int_value()),
+            "storageRequireDeviceEncryption": lambda n : setattr(self, 'storage_require_device_encryption', n.get_bool_value()),
+            "updatesRequireAutomaticUpdates": lambda n : setattr(self, 'updates_require_automatic_updates', n.get_bool_value()),
+            "userAccountControlSettings": lambda n : setattr(self, 'user_account_control_settings', n.get_enum_value(windows_user_account_control_settings.WindowsUserAccountControlSettings)),
+            "workFoldersUrl": lambda n : setattr(self, 'work_folders_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -509,7 +509,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the passwordBlockPicturePasswordAndPin property value. Indicates whether or not to Block the user from using a pictures password and pin.
         Args:
-            value: Value to set for the passwordBlockPicturePasswordAndPin property.
+            value: Value to set for the password_block_picture_password_and_pin property.
         """
         self._password_block_picture_password_and_pin = value
     
@@ -526,7 +526,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the passwordExpirationDays property value. Password expiration in days.
         Args:
-            value: Value to set for the passwordExpirationDays property.
+            value: Value to set for the password_expiration_days property.
         """
         self._password_expiration_days = value
     
@@ -543,7 +543,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the passwordMinimumCharacterSetCount property value. The number of character sets required in the password.
         Args:
-            value: Value to set for the passwordMinimumCharacterSetCount property.
+            value: Value to set for the password_minimum_character_set_count property.
         """
         self._password_minimum_character_set_count = value
     
@@ -560,7 +560,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the passwordMinimumLength property value. The minimum password length.
         Args:
-            value: Value to set for the passwordMinimumLength property.
+            value: Value to set for the password_minimum_length property.
         """
         self._password_minimum_length = value
     
@@ -577,7 +577,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the passwordMinutesOfInactivityBeforeScreenTimeout property value. The minutes of inactivity before the screen times out.
         Args:
-            value: Value to set for the passwordMinutesOfInactivityBeforeScreenTimeout property.
+            value: Value to set for the password_minutes_of_inactivity_before_screen_timeout property.
         """
         self._password_minutes_of_inactivity_before_screen_timeout = value
     
@@ -594,7 +594,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the passwordPreviousPasswordBlockCount property value. The number of previous passwords to prevent re-use of. Valid values 0 to 24
         Args:
-            value: Value to set for the passwordPreviousPasswordBlockCount property.
+            value: Value to set for the password_previous_password_block_count property.
         """
         self._password_previous_password_block_count = value
     
@@ -611,7 +611,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the passwordRequiredType property value. Possible values of required passwords.
         Args:
-            value: Value to set for the passwordRequiredType property.
+            value: Value to set for the password_required_type property.
         """
         self._password_required_type = value
     
@@ -628,7 +628,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the passwordSignInFailureCountBeforeFactoryReset property value. The number of sign in failures before factory reset.
         Args:
-            value: Value to set for the passwordSignInFailureCountBeforeFactoryReset property.
+            value: Value to set for the password_sign_in_failure_count_before_factory_reset property.
         """
         self._password_sign_in_failure_count_before_factory_reset = value
     
@@ -687,7 +687,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the storageRequireDeviceEncryption property value. Indicates whether or not to require encryption on a mobile device.
         Args:
-            value: Value to set for the storageRequireDeviceEncryption property.
+            value: Value to set for the storage_require_device_encryption property.
         """
         self._storage_require_device_encryption = value
     
@@ -704,7 +704,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the updatesRequireAutomaticUpdates property value. Indicates whether or not to require automatic updates.
         Args:
-            value: Value to set for the updatesRequireAutomaticUpdates property.
+            value: Value to set for the updates_require_automatic_updates property.
         """
         self._updates_require_automatic_updates = value
     
@@ -721,7 +721,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the userAccountControlSettings property value. Possible values for Windows user account control settings.
         Args:
-            value: Value to set for the userAccountControlSettings property.
+            value: Value to set for the user_account_control_settings property.
         """
         self._user_account_control_settings = value
     
@@ -738,7 +738,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the workFoldersUrl property value. The work folders url.
         Args:
-            value: Value to set for the workFoldersUrl property.
+            value: Value to set for the work_folders_url property.
         """
         self._work_folders_url = value
     

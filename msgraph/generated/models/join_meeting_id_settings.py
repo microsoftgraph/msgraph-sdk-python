@@ -55,8 +55,8 @@ class JoinMeetingIdSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_passcode_required": lambda n : setattr(self, 'is_passcode_required', n.get_bool_value()),
-            "join_meeting_id": lambda n : setattr(self, 'join_meeting_id', n.get_str_value()),
+            "isPasscodeRequired": lambda n : setattr(self, 'is_passcode_required', n.get_bool_value()),
+            "joinMeetingId": lambda n : setattr(self, 'join_meeting_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "passcode": lambda n : setattr(self, 'passcode', n.get_str_value()),
         }
@@ -75,7 +75,7 @@ class JoinMeetingIdSettings(AdditionalDataHolder, Parsable):
         """
         Sets the isPasscodeRequired property value. Indicates whether a passcode is required to join a meeting when using joinMeetingId. Optional.
         Args:
-            value: Value to set for the isPasscodeRequired property.
+            value: Value to set for the is_passcode_required property.
         """
         self._is_passcode_required = value
     
@@ -92,7 +92,7 @@ class JoinMeetingIdSettings(AdditionalDataHolder, Parsable):
         """
         Sets the joinMeetingId property value. The meeting ID to be used to join a meeting. Optional. Read-only.
         Args:
-            value: Value to set for the joinMeetingId property.
+            value: Value to set for the join_meeting_id property.
         """
         self._join_meeting_id = value
     
@@ -109,7 +109,7 @@ class JoinMeetingIdSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

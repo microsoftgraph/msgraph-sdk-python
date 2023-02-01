@@ -21,7 +21,7 @@ class PlannerPlanDetails(entity.Entity):
         """
         Sets the categoryDescriptions property value. An object that specifies the descriptions of the 25 categories that can be associated with tasks in the plan.
         Args:
-            value: Value to set for the categoryDescriptions property.
+            value: Value to set for the category_descriptions property.
         """
         self._category_descriptions = value
     
@@ -55,8 +55,8 @@ class PlannerPlanDetails(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "category_descriptions": lambda n : setattr(self, 'category_descriptions', n.get_object_value(planner_category_descriptions.PlannerCategoryDescriptions)),
-            "shared_with": lambda n : setattr(self, 'shared_with', n.get_object_value(planner_user_ids.PlannerUserIds)),
+            "categoryDescriptions": lambda n : setattr(self, 'category_descriptions', n.get_object_value(planner_category_descriptions.PlannerCategoryDescriptions)),
+            "sharedWith": lambda n : setattr(self, 'shared_with', n.get_object_value(planner_user_ids.PlannerUserIds)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -87,7 +87,7 @@ class PlannerPlanDetails(entity.Entity):
         """
         Sets the sharedWith property value. Set of user IDs that this plan is shared with. If you are leveraging Microsoft 365 groups, use the Groups API to manage group membership to share the group's plan. You can also add existing members of the group to this collection, although it is not required for them to access the plan owned by the group.
         Args:
-            value: Value to set for the sharedWith property.
+            value: Value to set for the shared_with property.
         """
         self._shared_with = value
     

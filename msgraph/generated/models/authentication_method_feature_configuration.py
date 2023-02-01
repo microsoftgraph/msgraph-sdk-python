@@ -65,7 +65,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
         """
         Sets the excludeTarget property value. A single entity that is excluded from this feature.
         Args:
-            value: Value to set for the excludeTarget property.
+            value: Value to set for the exclude_target property.
         """
         self._exclude_target = value
     
@@ -75,8 +75,8 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "exclude_target": lambda n : setattr(self, 'exclude_target', n.get_object_value(feature_target.FeatureTarget)),
-            "include_target": lambda n : setattr(self, 'include_target', n.get_object_value(feature_target.FeatureTarget)),
+            "excludeTarget": lambda n : setattr(self, 'exclude_target', n.get_object_value(feature_target.FeatureTarget)),
+            "includeTarget": lambda n : setattr(self, 'include_target', n.get_object_value(feature_target.FeatureTarget)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(advanced_config_state.AdvancedConfigState)),
         }
@@ -95,7 +95,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
         """
         Sets the includeTarget property value. A single entity that is included in this feature.
         Args:
-            value: Value to set for the includeTarget property.
+            value: Value to set for the include_target property.
         """
         self._include_target = value
     
@@ -112,7 +112,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

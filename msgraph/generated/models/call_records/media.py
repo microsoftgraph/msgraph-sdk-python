@@ -38,7 +38,7 @@ class Media(AdditionalDataHolder, Parsable):
         """
         Sets the calleeDevice property value. Device information associated with the callee endpoint of this media.
         Args:
-            value: Value to set for the calleeDevice property.
+            value: Value to set for the callee_device property.
         """
         self._callee_device = value
     
@@ -55,7 +55,7 @@ class Media(AdditionalDataHolder, Parsable):
         """
         Sets the calleeNetwork property value. Network information associated with the callee endpoint of this media.
         Args:
-            value: Value to set for the calleeNetwork property.
+            value: Value to set for the callee_network property.
         """
         self._callee_network = value
     
@@ -72,7 +72,7 @@ class Media(AdditionalDataHolder, Parsable):
         """
         Sets the callerDevice property value. Device information associated with the caller endpoint of this media.
         Args:
-            value: Value to set for the callerDevice property.
+            value: Value to set for the caller_device property.
         """
         self._caller_device = value
     
@@ -89,7 +89,7 @@ class Media(AdditionalDataHolder, Parsable):
         """
         Sets the callerNetwork property value. Network information associated with the caller endpoint of this media.
         Args:
-            value: Value to set for the callerNetwork property.
+            value: Value to set for the caller_network property.
         """
         self._caller_network = value
     
@@ -133,10 +133,10 @@ class Media(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "callee_device": lambda n : setattr(self, 'callee_device', n.get_object_value(device_info.DeviceInfo)),
-            "callee_network": lambda n : setattr(self, 'callee_network', n.get_object_value(network_info.NetworkInfo)),
-            "caller_device": lambda n : setattr(self, 'caller_device', n.get_object_value(device_info.DeviceInfo)),
-            "caller_network": lambda n : setattr(self, 'caller_network', n.get_object_value(network_info.NetworkInfo)),
+            "calleeDevice": lambda n : setattr(self, 'callee_device', n.get_object_value(device_info.DeviceInfo)),
+            "calleeNetwork": lambda n : setattr(self, 'callee_network', n.get_object_value(network_info.NetworkInfo)),
+            "callerDevice": lambda n : setattr(self, 'caller_device', n.get_object_value(device_info.DeviceInfo)),
+            "callerNetwork": lambda n : setattr(self, 'caller_network', n.get_object_value(network_info.NetworkInfo)),
             "label": lambda n : setattr(self, 'label', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "streams": lambda n : setattr(self, 'streams', n.get_collection_of_object_values(media_stream.MediaStream)),
@@ -173,7 +173,7 @@ class Media(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

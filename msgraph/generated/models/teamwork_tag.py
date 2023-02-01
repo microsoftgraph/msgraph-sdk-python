@@ -70,7 +70,7 @@ class TeamworkTag(entity.Entity):
         """
         Sets the displayName property value. The name of the tag as it will appear to the user in Microsoft Teams.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -81,11 +81,11 @@ class TeamworkTag(entity.Entity):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "member_count": lambda n : setattr(self, 'member_count', n.get_int_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(teamwork_tag_member.TeamworkTagMember)),
-            "tag_type": lambda n : setattr(self, 'tag_type', n.get_enum_value(teamwork_tag_type.TeamworkTagType)),
-            "team_id": lambda n : setattr(self, 'team_id', n.get_str_value()),
+            "memberCount": lambda n : setattr(self, 'member_count', n.get_int_value()),
+            "tagType": lambda n : setattr(self, 'tag_type', n.get_enum_value(teamwork_tag_type.TeamworkTagType)),
+            "teamId": lambda n : setattr(self, 'team_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -104,7 +104,7 @@ class TeamworkTag(entity.Entity):
         """
         Sets the memberCount property value. The number of users assigned to the tag.
         Args:
-            value: Value to set for the memberCount property.
+            value: Value to set for the member_count property.
         """
         self._member_count = value
     
@@ -136,8 +136,8 @@ class TeamworkTag(entity.Entity):
         super().serialize(writer)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_int_value("memberCount", self.member_count)
         writer.write_collection_of_object_values("members", self.members)
+        writer.write_int_value("memberCount", self.member_count)
         writer.write_enum_value("tagType", self.tag_type)
         writer.write_str_value("teamId", self.team_id)
     
@@ -154,7 +154,7 @@ class TeamworkTag(entity.Entity):
         """
         Sets the tagType property value. The type of the tag. Default is standard.
         Args:
-            value: Value to set for the tagType property.
+            value: Value to set for the tag_type property.
         """
         self._tag_type = value
     
@@ -171,7 +171,7 @@ class TeamworkTag(entity.Entity):
         """
         Sets the teamId property value. ID of the team in which the tag is defined.
         Args:
-            value: Value to set for the teamId property.
+            value: Value to set for the team_id property.
         """
         self._team_id = value
     

@@ -37,7 +37,7 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         """
         Sets the attackSimulationUser property value. User in an attack simulation and training campaign.
         Args:
-            value: Value to set for the attackSimulationUser property.
+            value: Value to set for the attack_simulation_user property.
         """
         self._attack_simulation_user = value
     
@@ -54,7 +54,7 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         """
         Sets the clickCount property value. Number of link clicks in the received payloads by the user in attack simulation and training campaigns.
         Args:
-            value: Value to set for the clickCount property.
+            value: Value to set for the click_count property.
         """
         self._click_count = value
     
@@ -71,7 +71,7 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         """
         Sets the compromisedCount property value. Number of compromising actions by the user in attack simulation and training campaigns.
         Args:
-            value: Value to set for the compromisedCount property.
+            value: Value to set for the compromised_count property.
         """
         self._compromised_count = value
     
@@ -113,12 +113,12 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "attack_simulation_user": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
-            "click_count": lambda n : setattr(self, 'click_count', n.get_int_value()),
-            "compromised_count": lambda n : setattr(self, 'compromised_count', n.get_int_value()),
-            "latest_simulation_date_time": lambda n : setattr(self, 'latest_simulation_date_time', n.get_datetime_value()),
+            "attackSimulationUser": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
+            "clickCount": lambda n : setattr(self, 'click_count', n.get_int_value()),
+            "compromisedCount": lambda n : setattr(self, 'compromised_count', n.get_int_value()),
+            "latestSimulationDateTime": lambda n : setattr(self, 'latest_simulation_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "simulation_count": lambda n : setattr(self, 'simulation_count', n.get_int_value()),
+            "simulationCount": lambda n : setattr(self, 'simulation_count', n.get_int_value()),
         }
         return fields
     
@@ -135,7 +135,7 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         """
         Sets the latestSimulationDateTime property value. Date and time of the latest attack simulation and training campaign that the user was included in.
         Args:
-            value: Value to set for the latestSimulationDateTime property.
+            value: Value to set for the latest_simulation_date_time property.
         """
         self._latest_simulation_date_time = value
     
@@ -152,7 +152,7 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -185,7 +185,7 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         """
         Sets the simulationCount property value. Number of attack simulation and training campaigns that the user was included in.
         Args:
-            value: Value to set for the simulationCount property.
+            value: Value to set for the simulation_count property.
         """
         self._simulation_count = value
     

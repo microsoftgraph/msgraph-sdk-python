@@ -23,7 +23,7 @@ class BookingCustomQuestion(entity.Entity):
         """
         Sets the answerInputType property value. The expected answer type. The possible values are: text, radioButton, unknownFutureValue.
         Args:
-            value: Value to set for the answerInputType property.
+            value: Value to set for the answer_input_type property.
         """
         self._answer_input_type = value
     
@@ -40,7 +40,7 @@ class BookingCustomQuestion(entity.Entity):
         """
         Sets the answerOptions property value. List of possible answer values.
         Args:
-            value: Value to set for the answerOptions property.
+            value: Value to set for the answer_options property.
         """
         self._answer_options = value
     
@@ -83,7 +83,7 @@ class BookingCustomQuestion(entity.Entity):
         """
         Sets the displayName property value. The question.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -93,9 +93,9 @@ class BookingCustomQuestion(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "answer_input_type": lambda n : setattr(self, 'answer_input_type', n.get_enum_value(answer_input_type.AnswerInputType)),
-            "answer_options": lambda n : setattr(self, 'answer_options', n.get_collection_of_primitive_values(str)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "answerInputType": lambda n : setattr(self, 'answer_input_type', n.get_enum_value(answer_input_type.AnswerInputType)),
+            "answerOptions": lambda n : setattr(self, 'answer_options', n.get_collection_of_primitive_values(str)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

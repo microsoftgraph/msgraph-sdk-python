@@ -39,7 +39,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         """
         Sets the attendeeAvailability property value. An array that shows the availability status of each attendee for this meeting suggestion.
         Args:
-            value: Value to set for the attendeeAvailability property.
+            value: Value to set for the attendee_availability property.
         """
         self._attendee_availability = value
     
@@ -102,14 +102,14 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "attendee_availability": lambda n : setattr(self, 'attendee_availability', n.get_collection_of_object_values(attendee_availability.AttendeeAvailability)),
+            "attendeeAvailability": lambda n : setattr(self, 'attendee_availability', n.get_collection_of_object_values(attendee_availability.AttendeeAvailability)),
             "confidence": lambda n : setattr(self, 'confidence', n.get_float_value()),
             "locations": lambda n : setattr(self, 'locations', n.get_collection_of_object_values(location.Location)),
-            "meeting_time_slot": lambda n : setattr(self, 'meeting_time_slot', n.get_object_value(time_slot.TimeSlot)),
+            "meetingTimeSlot": lambda n : setattr(self, 'meeting_time_slot', n.get_object_value(time_slot.TimeSlot)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "order": lambda n : setattr(self, 'order', n.get_int_value()),
-            "organizer_availability": lambda n : setattr(self, 'organizer_availability', n.get_enum_value(free_busy_status.FreeBusyStatus)),
-            "suggestion_reason": lambda n : setattr(self, 'suggestion_reason', n.get_str_value()),
+            "organizerAvailability": lambda n : setattr(self, 'organizer_availability', n.get_enum_value(free_busy_status.FreeBusyStatus)),
+            "suggestionReason": lambda n : setattr(self, 'suggestion_reason', n.get_str_value()),
         }
         return fields
     
@@ -143,7 +143,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         """
         Sets the meetingTimeSlot property value. A time period suggested for the meeting.
         Args:
-            value: Value to set for the meetingTimeSlot property.
+            value: Value to set for the meeting_time_slot property.
         """
         self._meeting_time_slot = value
     
@@ -160,7 +160,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -194,7 +194,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         """
         Sets the organizerAvailability property value. Availability of the meeting organizer for this meeting suggestion. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
         Args:
-            value: Value to set for the organizerAvailability property.
+            value: Value to set for the organizer_availability property.
         """
         self._organizer_availability = value
     
@@ -229,7 +229,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         """
         Sets the suggestionReason property value. Reason for suggesting the meeting time.
         Args:
-            value: Value to set for the suggestionReason property.
+            value: Value to set for the suggestion_reason property.
         """
         self._suggestion_reason = value
     

@@ -13,8 +13,8 @@ from typing import Any, Callable, Dict, List, Optional, Union
 unified_role_eligibility_schedule_request = lazy_import('msgraph.generated.models.unified_role_eligibility_schedule_request')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 app_scope_request_builder = lazy_import('msgraph.generated.role_management.entitlement_management.role_eligibility_schedule_requests.item.app_scope.app_scope_request_builder')
-cancel_request_builder = lazy_import('msgraph.generated.role_management.entitlement_management.role_eligibility_schedule_requests.item.cancel.cancel_request_builder')
 directory_scope_request_builder = lazy_import('msgraph.generated.role_management.entitlement_management.role_eligibility_schedule_requests.item.directory_scope.directory_scope_request_builder')
+cancel_request_builder = lazy_import('msgraph.generated.role_management.entitlement_management.role_eligibility_schedule_requests.item.microsoft_graph_cancel.cancel_request_builder')
 principal_request_builder = lazy_import('msgraph.generated.role_management.entitlement_management.role_eligibility_schedule_requests.item.principal.principal_request_builder')
 role_definition_request_builder = lazy_import('msgraph.generated.role_management.entitlement_management.role_eligibility_schedule_requests.item.role_definition.role_definition_request_builder')
 target_schedule_request_builder = lazy_import('msgraph.generated.role_management.entitlement_management.role_eligibility_schedule_requests.item.target_schedule.target_schedule_request_builder')
@@ -31,18 +31,18 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder():
         return app_scope_request_builder.AppScopeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def cancel(self) -> cancel_request_builder.CancelRequestBuilder:
-        """
-        Provides operations to call the cancel method.
-        """
-        return cancel_request_builder.CancelRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def directory_scope(self) -> directory_scope_request_builder.DirectoryScopeRequestBuilder:
         """
         Provides operations to manage the directoryScope property of the microsoft.graph.unifiedRoleEligibilityScheduleRequest entity.
         """
         return directory_scope_request_builder.DirectoryScopeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_cancel(self) -> cancel_request_builder.CancelRequestBuilder:
+        """
+        Provides operations to call the cancel method.
+        """
+        return cancel_request_builder.CancelRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def principal(self) -> principal_request_builder.PrincipalRequestBuilder:
@@ -65,12 +65,13 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder():
         """
         return target_schedule_request_builder.TargetScheduleRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, unified_role_eligibility_schedule_request_id: Optional[str] = None) -> None:
         """
         Instantiates a new UnifiedRoleEligibilityScheduleRequestItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            unifiedRoleEligibilityScheduleRequestId: key: id of unifiedRoleEligibilityScheduleRequest
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -80,6 +81,7 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder():
         self.url_template: str = "{+baseurl}/roleManagement/entitlementManagement/roleEligibilityScheduleRequests/{unifiedRoleEligibilityScheduleRequest%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["unifiedRoleEligibilityScheduleRequest%2Did"] = unifiedRoleEligibilityScheduleRequestId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

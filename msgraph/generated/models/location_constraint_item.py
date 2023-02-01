@@ -33,7 +33,7 @@ class LocationConstraintItem(location.Location):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "resolve_availability": lambda n : setattr(self, 'resolve_availability', n.get_bool_value()),
+            "resolveAvailability": lambda n : setattr(self, 'resolve_availability', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -52,7 +52,7 @@ class LocationConstraintItem(location.Location):
         """
         Sets the resolveAvailability property value. If set to true and the specified resource is busy, findMeetingTimes looks for another resource that is free. If set to false and the specified resource is busy, findMeetingTimes returns the resource best ranked in the user's cache without checking if it's free. Default is true.
         Args:
-            value: Value to set for the resolveAvailability property.
+            value: Value to set for the resolve_availability property.
         """
         self._resolve_availability = value
     

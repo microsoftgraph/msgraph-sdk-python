@@ -55,8 +55,8 @@ class FileHash(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "hash_type": lambda n : setattr(self, 'hash_type', n.get_enum_value(file_hash_type.FileHashType)),
-            "hash_value": lambda n : setattr(self, 'hash_value', n.get_str_value()),
+            "hashType": lambda n : setattr(self, 'hash_type', n.get_enum_value(file_hash_type.FileHashType)),
+            "hashValue": lambda n : setattr(self, 'hash_value', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -74,7 +74,7 @@ class FileHash(AdditionalDataHolder, Parsable):
         """
         Sets the hashType property value. File hash type. Possible values are: unknown, sha1, sha256, md5, authenticodeHash256, lsHash, ctph, peSha1, peSha256.
         Args:
-            value: Value to set for the hashType property.
+            value: Value to set for the hash_type property.
         """
         self._hash_type = value
     
@@ -91,7 +91,7 @@ class FileHash(AdditionalDataHolder, Parsable):
         """
         Sets the hashValue property value. Value of the file hash.
         Args:
-            value: Value to set for the hashValue property.
+            value: Value to set for the hash_value property.
         """
         self._hash_value = value
     
@@ -108,7 +108,7 @@ class FileHash(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

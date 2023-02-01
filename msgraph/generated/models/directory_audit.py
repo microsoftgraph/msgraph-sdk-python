@@ -24,7 +24,7 @@ class DirectoryAudit(entity.Entity):
         """
         Sets the activityDateTime property value. Indicates the date and time the activity was performed. The Timestamp type is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the activityDateTime property.
+            value: Value to set for the activity_date_time property.
         """
         self._activity_date_time = value
     
@@ -41,7 +41,7 @@ class DirectoryAudit(entity.Entity):
         """
         Sets the activityDisplayName property value. Indicates the activity name or the operation name (examples: 'Create User' and 'Add member to group'). For full list, see Azure AD activity list.
         Args:
-            value: Value to set for the activityDisplayName property.
+            value: Value to set for the activity_display_name property.
         """
         self._activity_display_name = value
     
@@ -58,7 +58,7 @@ class DirectoryAudit(entity.Entity):
         """
         Sets the additionalDetails property value. Indicates additional details on the activity.
         Args:
-            value: Value to set for the additionalDetails property.
+            value: Value to set for the additional_details property.
         """
         self._additional_details = value
     
@@ -122,7 +122,7 @@ class DirectoryAudit(entity.Entity):
         """
         Sets the correlationId property value. Indicates a unique ID that helps correlate activities that span across various services. Can be used to trace logs across services.
         Args:
-            value: Value to set for the correlationId property.
+            value: Value to set for the correlation_id property.
         """
         self._correlation_id = value
     
@@ -144,17 +144,17 @@ class DirectoryAudit(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "activity_date_time": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
-            "activity_display_name": lambda n : setattr(self, 'activity_display_name', n.get_str_value()),
-            "additional_details": lambda n : setattr(self, 'additional_details', n.get_collection_of_object_values(key_value.KeyValue)),
+            "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
+            "activityDisplayName": lambda n : setattr(self, 'activity_display_name', n.get_str_value()),
+            "additionalDetails": lambda n : setattr(self, 'additional_details', n.get_collection_of_object_values(key_value.KeyValue)),
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
-            "correlation_id": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
-            "initiated_by": lambda n : setattr(self, 'initiated_by', n.get_object_value(audit_activity_initiator.AuditActivityInitiator)),
-            "logged_by_service": lambda n : setattr(self, 'logged_by_service', n.get_str_value()),
-            "operation_type": lambda n : setattr(self, 'operation_type', n.get_str_value()),
+            "correlationId": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
+            "initiatedBy": lambda n : setattr(self, 'initiated_by', n.get_object_value(audit_activity_initiator.AuditActivityInitiator)),
+            "loggedByService": lambda n : setattr(self, 'logged_by_service', n.get_str_value()),
+            "operationType": lambda n : setattr(self, 'operation_type', n.get_str_value()),
             "result": lambda n : setattr(self, 'result', n.get_enum_value(operation_result.OperationResult)),
-            "result_reason": lambda n : setattr(self, 'result_reason', n.get_str_value()),
-            "target_resources": lambda n : setattr(self, 'target_resources', n.get_collection_of_object_values(target_resource.TargetResource)),
+            "resultReason": lambda n : setattr(self, 'result_reason', n.get_str_value()),
+            "targetResources": lambda n : setattr(self, 'target_resources', n.get_collection_of_object_values(target_resource.TargetResource)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -173,7 +173,7 @@ class DirectoryAudit(entity.Entity):
         """
         Sets the initiatedBy property value. The initiatedBy property
         Args:
-            value: Value to set for the initiatedBy property.
+            value: Value to set for the initiated_by property.
         """
         self._initiated_by = value
     
@@ -190,7 +190,7 @@ class DirectoryAudit(entity.Entity):
         """
         Sets the loggedByService property value. Indicates information on which service initiated the activity (For example: Self-service Password Management, Core Directory, B2C, Invited Users, Microsoft Identity Manager, Privileged Identity Management.
         Args:
-            value: Value to set for the loggedByService property.
+            value: Value to set for the logged_by_service property.
         """
         self._logged_by_service = value
     
@@ -207,7 +207,7 @@ class DirectoryAudit(entity.Entity):
         """
         Sets the operationType property value. Indicates the type of operation that was performed. The possible values include but are not limited to the following: Add, Assign, Update, Unassign, and Delete.
         Args:
-            value: Value to set for the operationType property.
+            value: Value to set for the operation_type property.
         """
         self._operation_type = value
     
@@ -241,7 +241,7 @@ class DirectoryAudit(entity.Entity):
         """
         Sets the resultReason property value. Indicates the reason for failure if the result is failure or timeout.
         Args:
-            value: Value to set for the resultReason property.
+            value: Value to set for the result_reason property.
         """
         self._result_reason = value
     
@@ -279,7 +279,7 @@ class DirectoryAudit(entity.Entity):
         """
         Sets the targetResources property value. Indicates information on which resource was changed due to the activity. Target Resource Type can be User, Device, Directory, App, Role, Group, Policy or Other.
         Args:
-            value: Value to set for the targetResources property.
+            value: Value to set for the target_resources property.
         """
         self._target_resources = value
     

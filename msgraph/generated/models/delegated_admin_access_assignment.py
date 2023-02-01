@@ -23,7 +23,7 @@ class DelegatedAdminAccessAssignment(entity.Entity):
         """
         Sets the accessContainer property value. The accessContainer property
         Args:
-            value: Value to set for the accessContainer property.
+            value: Value to set for the access_container property.
         """
         self._access_container = value
     
@@ -40,7 +40,7 @@ class DelegatedAdminAccessAssignment(entity.Entity):
         """
         Sets the accessDetails property value. The accessDetails property
         Args:
-            value: Value to set for the accessDetails property.
+            value: Value to set for the access_details property.
         """
         self._access_details = value
     
@@ -75,7 +75,7 @@ class DelegatedAdminAccessAssignment(entity.Entity):
         """
         Sets the createdDateTime property value. The createdDateTime property
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -97,10 +97,10 @@ class DelegatedAdminAccessAssignment(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_container": lambda n : setattr(self, 'access_container', n.get_object_value(delegated_admin_access_container.DelegatedAdminAccessContainer)),
-            "access_details": lambda n : setattr(self, 'access_details', n.get_object_value(delegated_admin_access_details.DelegatedAdminAccessDetails)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "accessContainer": lambda n : setattr(self, 'access_container', n.get_object_value(delegated_admin_access_container.DelegatedAdminAccessContainer)),
+            "accessDetails": lambda n : setattr(self, 'access_details', n.get_object_value(delegated_admin_access_details.DelegatedAdminAccessDetails)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(delegated_admin_access_assignment_status.DelegatedAdminAccessAssignmentStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -120,7 +120,7 @@ class DelegatedAdminAccessAssignment(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. The lastModifiedDateTime property
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     

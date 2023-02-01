@@ -34,7 +34,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         """
         Sets the allowMultipleValues property value. Indicates whether multiple values can be selected from the source.
         Args:
-            value: Value to set for the allowMultipleValues property.
+            value: Value to set for the allow_multiple_values property.
         """
         self._allow_multiple_values = value
     
@@ -51,7 +51,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         """
         Sets the allowUnlimitedLength property value. Indicates whether values in the column should be able to exceed the standard limit of 255 characters.
         Args:
-            value: Value to set for the allowUnlimitedLength property.
+            value: Value to set for the allow_unlimited_length property.
         """
         self._allow_unlimited_length = value
     
@@ -68,7 +68,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         """
         Sets the columnName property value. The name of the lookup source column.
         Args:
-            value: Value to set for the columnName property.
+            value: Value to set for the column_name property.
         """
         self._column_name = value
     
@@ -110,12 +110,12 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_multiple_values": lambda n : setattr(self, 'allow_multiple_values', n.get_bool_value()),
-            "allow_unlimited_length": lambda n : setattr(self, 'allow_unlimited_length', n.get_bool_value()),
-            "column_name": lambda n : setattr(self, 'column_name', n.get_str_value()),
-            "list_id": lambda n : setattr(self, 'list_id', n.get_str_value()),
+            "allowMultipleValues": lambda n : setattr(self, 'allow_multiple_values', n.get_bool_value()),
+            "allowUnlimitedLength": lambda n : setattr(self, 'allow_unlimited_length', n.get_bool_value()),
+            "columnName": lambda n : setattr(self, 'column_name', n.get_str_value()),
+            "listId": lambda n : setattr(self, 'list_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "primary_lookup_column_id": lambda n : setattr(self, 'primary_lookup_column_id', n.get_str_value()),
+            "primaryLookupColumnId": lambda n : setattr(self, 'primary_lookup_column_id', n.get_str_value()),
         }
         return fields
     
@@ -132,7 +132,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         """
         Sets the listId property value. The unique identifier of the lookup source list.
         Args:
-            value: Value to set for the listId property.
+            value: Value to set for the list_id property.
         """
         self._list_id = value
     
@@ -149,7 +149,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -166,7 +166,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         """
         Sets the primaryLookupColumnId property value. If specified, this column is a secondary lookup, pulling an additional field from the list item looked up by the primary lookup. Use the list item looked up by the primary as the source for the column named here.
         Args:
-            value: Value to set for the primaryLookupColumnId property.
+            value: Value to set for the primary_lookup_column_id property.
         """
         self._primary_lookup_column_id = value
     

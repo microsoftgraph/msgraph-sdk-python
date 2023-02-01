@@ -60,8 +60,8 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
         fields = {
             "identifier": lambda n : setattr(self, 'identifier', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "x509_certificate_authentication_mode": lambda n : setattr(self, 'x509_certificate_authentication_mode', n.get_enum_value(x509_certificate_authentication_mode.X509CertificateAuthenticationMode)),
-            "x509_certificate_rule_type": lambda n : setattr(self, 'x509_certificate_rule_type', n.get_enum_value(x509_certificate_rule_type.X509CertificateRuleType)),
+            "x509CertificateAuthenticationMode": lambda n : setattr(self, 'x509_certificate_authentication_mode', n.get_enum_value(x509_certificate_authentication_mode.X509CertificateAuthenticationMode)),
+            "x509CertificateRuleType": lambda n : setattr(self, 'x509_certificate_rule_type', n.get_enum_value(x509_certificate_rule_type.X509CertificateRuleType)),
         }
         return fields
     
@@ -95,7 +95,7 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -126,7 +126,7 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
         """
         Sets the x509CertificateAuthenticationMode property value. The type of strong authentication mode. The possible values are: x509CertificateSingleFactor, x509CertificateMultiFactor, unknownFutureValue. Required.
         Args:
-            value: Value to set for the x509CertificateAuthenticationMode property.
+            value: Value to set for the x509_certificate_authentication_mode property.
         """
         self._x509_certificate_authentication_mode = value
     
@@ -143,7 +143,7 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
         """
         Sets the x509CertificateRuleType property value. The type of the X.509 certificate mode configuration rule. The possible values are: issuerSubject, policyOID, unknownFutureValue. Required.
         Args:
-            value: Value to set for the x509CertificateRuleType property.
+            value: Value to set for the x509_certificate_rule_type property.
         """
         self._x509_certificate_rule_type = value
     

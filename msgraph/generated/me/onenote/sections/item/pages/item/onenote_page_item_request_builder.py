@@ -11,11 +11,11 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 content_request_builder = lazy_import('msgraph.generated.me.onenote.sections.item.pages.item.content.content_request_builder')
-copy_to_section_request_builder = lazy_import('msgraph.generated.me.onenote.sections.item.pages.item.copy_to_section.copy_to_section_request_builder')
-onenote_patch_content_request_builder = lazy_import('msgraph.generated.me.onenote.sections.item.pages.item.onenote_patch_content.onenote_patch_content_request_builder')
+copy_to_section_request_builder = lazy_import('msgraph.generated.me.onenote.sections.item.pages.item.microsoft_graph_copy_to_section.copy_to_section_request_builder')
+onenote_patch_content_request_builder = lazy_import('msgraph.generated.me.onenote.sections.item.pages.item.microsoft_graph_onenote_patch_content.onenote_patch_content_request_builder')
+preview_request_builder = lazy_import('msgraph.generated.me.onenote.sections.item.pages.item.microsoft_graph_preview.preview_request_builder')
 parent_notebook_request_builder = lazy_import('msgraph.generated.me.onenote.sections.item.pages.item.parent_notebook.parent_notebook_request_builder')
 parent_section_request_builder = lazy_import('msgraph.generated.me.onenote.sections.item.pages.item.parent_section.parent_section_request_builder')
-preview_request_builder = lazy_import('msgraph.generated.me.onenote.sections.item.pages.item.preview.preview_request_builder')
 onenote_page = lazy_import('msgraph.generated.models.onenote_page')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -31,18 +31,25 @@ class OnenotePageItemRequestBuilder():
         return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def copy_to_section(self) -> copy_to_section_request_builder.CopyToSectionRequestBuilder:
+    def microsoft_graph_copy_to_section(self) -> copy_to_section_request_builder.CopyToSectionRequestBuilder:
         """
         Provides operations to call the copyToSection method.
         """
         return copy_to_section_request_builder.CopyToSectionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def onenote_patch_content(self) -> onenote_patch_content_request_builder.OnenotePatchContentRequestBuilder:
+    def microsoft_graph_onenote_patch_content(self) -> onenote_patch_content_request_builder.OnenotePatchContentRequestBuilder:
         """
         Provides operations to call the onenotePatchContent method.
         """
         return onenote_patch_content_request_builder.OnenotePatchContentRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_preview(self) -> preview_request_builder.PreviewRequestBuilder:
+        """
+        Provides operations to call the preview method.
+        """
+        return preview_request_builder.PreviewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def parent_notebook(self) -> parent_notebook_request_builder.ParentNotebookRequestBuilder:
@@ -58,10 +65,11 @@ class OnenotePageItemRequestBuilder():
         """
         return parent_section_request_builder.ParentSectionRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, onenote_page_id: Optional[str] = None) -> None:
         """
         Instantiates a new OnenotePageItemRequestBuilder and sets the default values.
         Args:
+            onenotePageId: key: id of onenotePage
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -73,6 +81,7 @@ class OnenotePageItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/onenote/sections/{onenoteSection%2Did}/pages/{onenotePage%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["onenotePage%2Did"] = onenotePageId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -131,13 +140,6 @@ class OnenotePageItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, onenote_page.OnenotePage, error_mapping)
-    
-    def preview(self,) -> preview_request_builder.PreviewRequestBuilder:
-        """
-        Provides operations to call the preview method.
-        Returns: preview_request_builder.PreviewRequestBuilder
-        """
-        return preview_request_builder.PreviewRequestBuilder(self.request_adapter, self.path_parameters)
     
     def to_delete_request_information(self,request_configuration: Optional[OnenotePageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

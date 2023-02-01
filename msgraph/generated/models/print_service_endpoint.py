@@ -43,7 +43,7 @@ class PrintServiceEndpoint(entity.Entity):
         """
         Sets the displayName property value. A human-readable display name for the endpoint.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -53,7 +53,7 @@ class PrintServiceEndpoint(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "uri": lambda n : setattr(self, 'uri', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

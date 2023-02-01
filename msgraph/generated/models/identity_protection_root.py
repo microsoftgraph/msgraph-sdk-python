@@ -63,10 +63,10 @@ class IdentityProtectionRoot(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "risk_detections": lambda n : setattr(self, 'risk_detections', n.get_collection_of_object_values(risk_detection.RiskDetection)),
-            "risky_service_principals": lambda n : setattr(self, 'risky_service_principals', n.get_collection_of_object_values(risky_service_principal.RiskyServicePrincipal)),
-            "risky_users": lambda n : setattr(self, 'risky_users', n.get_collection_of_object_values(risky_user.RiskyUser)),
-            "service_principal_risk_detections": lambda n : setattr(self, 'service_principal_risk_detections', n.get_collection_of_object_values(service_principal_risk_detection.ServicePrincipalRiskDetection)),
+            "riskyServicePrincipals": lambda n : setattr(self, 'risky_service_principals', n.get_collection_of_object_values(risky_service_principal.RiskyServicePrincipal)),
+            "riskyUsers": lambda n : setattr(self, 'risky_users', n.get_collection_of_object_values(risky_user.RiskyUser)),
+            "riskDetections": lambda n : setattr(self, 'risk_detections', n.get_collection_of_object_values(risk_detection.RiskDetection)),
+            "servicePrincipalRiskDetections": lambda n : setattr(self, 'service_principal_risk_detections', n.get_collection_of_object_values(service_principal_risk_detection.ServicePrincipalRiskDetection)),
         }
         return fields
     
@@ -83,7 +83,7 @@ class IdentityProtectionRoot(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -100,7 +100,7 @@ class IdentityProtectionRoot(AdditionalDataHolder, Parsable):
         """
         Sets the riskDetections property value. Risk detection in Azure AD Identity Protection and the associated information about the detection.
         Args:
-            value: Value to set for the riskDetections property.
+            value: Value to set for the risk_detections property.
         """
         self._risk_detections = value
     
@@ -117,7 +117,7 @@ class IdentityProtectionRoot(AdditionalDataHolder, Parsable):
         """
         Sets the riskyServicePrincipals property value. Azure AD service principals that are at risk.
         Args:
-            value: Value to set for the riskyServicePrincipals property.
+            value: Value to set for the risky_service_principals property.
         """
         self._risky_service_principals = value
     
@@ -134,7 +134,7 @@ class IdentityProtectionRoot(AdditionalDataHolder, Parsable):
         """
         Sets the riskyUsers property value. Users that are flagged as at-risk by Azure AD Identity Protection.
         Args:
-            value: Value to set for the riskyUsers property.
+            value: Value to set for the risky_users property.
         """
         self._risky_users = value
     
@@ -147,9 +147,9 @@ class IdentityProtectionRoot(AdditionalDataHolder, Parsable):
         if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_collection_of_object_values("riskDetections", self.risk_detections)
         writer.write_collection_of_object_values("riskyServicePrincipals", self.risky_service_principals)
         writer.write_collection_of_object_values("riskyUsers", self.risky_users)
+        writer.write_collection_of_object_values("riskDetections", self.risk_detections)
         writer.write_collection_of_object_values("servicePrincipalRiskDetections", self.service_principal_risk_detections)
         writer.write_additional_data_value(self.additional_data)
     
@@ -166,7 +166,7 @@ class IdentityProtectionRoot(AdditionalDataHolder, Parsable):
         """
         Sets the servicePrincipalRiskDetections property value. Represents information about detected at-risk service principals in an Azure AD tenant.
         Args:
-            value: Value to set for the servicePrincipalRiskDetections property.
+            value: Value to set for the service_principal_risk_detections property.
         """
         self._service_principal_risk_detections = value
     

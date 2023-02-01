@@ -61,10 +61,10 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, Parsable):
         """
         fields = {
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
-            "message_language": lambda n : setattr(self, 'message_language', n.get_object_value(locale_info.LocaleInfo)),
+            "messageLanguage": lambda n : setattr(self, 'message_language', n.get_object_value(locale_info.LocaleInfo)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "scheduled_end_time": lambda n : setattr(self, 'scheduled_end_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "scheduled_start_time": lambda n : setattr(self, 'scheduled_start_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "scheduledEndTime": lambda n : setattr(self, 'scheduled_end_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "scheduledStartTime": lambda n : setattr(self, 'scheduled_start_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
         }
         return fields
     
@@ -98,7 +98,7 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, Parsable):
         """
         Sets the messageLanguage property value. The language that the automatic reply message is in.
         Args:
-            value: Value to set for the messageLanguage property.
+            value: Value to set for the message_language property.
         """
         self._message_language = value
     
@@ -115,7 +115,7 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -132,7 +132,7 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, Parsable):
         """
         Sets the scheduledEndTime property value. The date and time that automatic replies are set to end.
         Args:
-            value: Value to set for the scheduledEndTime property.
+            value: Value to set for the scheduled_end_time property.
         """
         self._scheduled_end_time = value
     
@@ -149,7 +149,7 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, Parsable):
         """
         Sets the scheduledStartTime property value. The date and time that automatic replies are set to begin.
         Args:
-            value: Value to set for the scheduledStartTime property.
+            value: Value to set for the scheduled_start_time property.
         """
         self._scheduled_start_time = value
     

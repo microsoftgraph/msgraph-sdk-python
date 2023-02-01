@@ -91,7 +91,7 @@ class MessageRule(entity.Entity):
         """
         Sets the displayName property value. The display name of the rule.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -120,11 +120,11 @@ class MessageRule(entity.Entity):
         fields = {
             "actions": lambda n : setattr(self, 'actions', n.get_object_value(message_rule_actions.MessageRuleActions)),
             "conditions": lambda n : setattr(self, 'conditions', n.get_object_value(message_rule_predicates.MessageRulePredicates)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "exceptions": lambda n : setattr(self, 'exceptions', n.get_object_value(message_rule_predicates.MessageRulePredicates)),
-            "has_error": lambda n : setattr(self, 'has_error', n.get_bool_value()),
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "is_read_only": lambda n : setattr(self, 'is_read_only', n.get_bool_value()),
+            "hasError": lambda n : setattr(self, 'has_error', n.get_bool_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "isReadOnly": lambda n : setattr(self, 'is_read_only', n.get_bool_value()),
             "sequence": lambda n : setattr(self, 'sequence', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -144,7 +144,7 @@ class MessageRule(entity.Entity):
         """
         Sets the hasError property value. Indicates whether the rule is in an error condition. Read-only.
         Args:
-            value: Value to set for the hasError property.
+            value: Value to set for the has_error property.
         """
         self._has_error = value
     
@@ -161,7 +161,7 @@ class MessageRule(entity.Entity):
         """
         Sets the isEnabled property value. Indicates whether the rule is enabled to be applied to messages.
         Args:
-            value: Value to set for the isEnabled property.
+            value: Value to set for the is_enabled property.
         """
         self._is_enabled = value
     
@@ -178,7 +178,7 @@ class MessageRule(entity.Entity):
         """
         Sets the isReadOnly property value. Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
         Args:
-            value: Value to set for the isReadOnly property.
+            value: Value to set for the is_read_only property.
         """
         self._is_read_only = value
     

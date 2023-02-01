@@ -35,7 +35,7 @@ class Operation(entity.Entity):
         """
         Sets the createdDateTime property value. The start time of the operation.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -57,8 +57,8 @@ class Operation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "last_action_date_time": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "lastActionDateTime": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(operation_status.OperationStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -78,7 +78,7 @@ class Operation(entity.Entity):
         """
         Sets the lastActionDateTime property value. The time of the last action of the operation.
         Args:
-            value: Value to set for the lastActionDateTime property.
+            value: Value to set for the last_action_date_time property.
         """
         self._last_action_date_time = value
     

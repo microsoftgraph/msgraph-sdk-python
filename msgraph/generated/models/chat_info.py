@@ -55,10 +55,10 @@ class ChatInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "message_id": lambda n : setattr(self, 'message_id', n.get_str_value()),
+            "messageId": lambda n : setattr(self, 'message_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "reply_chain_message_id": lambda n : setattr(self, 'reply_chain_message_id', n.get_str_value()),
-            "thread_id": lambda n : setattr(self, 'thread_id', n.get_str_value()),
+            "replyChainMessageId": lambda n : setattr(self, 'reply_chain_message_id', n.get_str_value()),
+            "threadId": lambda n : setattr(self, 'thread_id', n.get_str_value()),
         }
         return fields
     
@@ -75,7 +75,7 @@ class ChatInfo(AdditionalDataHolder, Parsable):
         """
         Sets the messageId property value. The unique identifier of a message in a Microsoft Teams channel.
         Args:
-            value: Value to set for the messageId property.
+            value: Value to set for the message_id property.
         """
         self._message_id = value
     
@@ -92,7 +92,7 @@ class ChatInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -109,7 +109,7 @@ class ChatInfo(AdditionalDataHolder, Parsable):
         """
         Sets the replyChainMessageId property value. The ID of the reply message.
         Args:
-            value: Value to set for the replyChainMessageId property.
+            value: Value to set for the reply_chain_message_id property.
         """
         self._reply_chain_message_id = value
     
@@ -140,7 +140,7 @@ class ChatInfo(AdditionalDataHolder, Parsable):
         """
         Sets the threadId property value. The unique identifier for a thread in Microsoft Teams.
         Args:
-            value: Value to set for the threadId property.
+            value: Value to set for the thread_id property.
         """
         self._thread_id = value
     

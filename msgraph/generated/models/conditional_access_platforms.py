@@ -62,7 +62,7 @@ class ConditionalAccessPlatforms(AdditionalDataHolder, Parsable):
         """
         Sets the excludePlatforms property value. Possible values are: android, iOS, windows, windowsPhone, macOS, linux, all, unknownFutureValue.
         Args:
-            value: Value to set for the excludePlatforms property.
+            value: Value to set for the exclude_platforms property.
         """
         self._exclude_platforms = value
     
@@ -72,8 +72,8 @@ class ConditionalAccessPlatforms(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "exclude_platforms": lambda n : setattr(self, 'exclude_platforms', n.get_collection_of_enum_values(conditional_access_device_platform.ConditionalAccessDevicePlatform)),
-            "include_platforms": lambda n : setattr(self, 'include_platforms', n.get_collection_of_enum_values(conditional_access_device_platform.ConditionalAccessDevicePlatform)),
+            "excludePlatforms": lambda n : setattr(self, 'exclude_platforms', n.get_collection_of_enum_values(conditional_access_device_platform.ConditionalAccessDevicePlatform)),
+            "includePlatforms": lambda n : setattr(self, 'include_platforms', n.get_collection_of_enum_values(conditional_access_device_platform.ConditionalAccessDevicePlatform)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -91,7 +91,7 @@ class ConditionalAccessPlatforms(AdditionalDataHolder, Parsable):
         """
         Sets the includePlatforms property value. Possible values are: android, iOS, windows, windowsPhone, macOS, linux, all, unknownFutureValue.
         Args:
-            value: Value to set for the includePlatforms property.
+            value: Value to set for the include_platforms property.
         """
         self._include_platforms = value
     
@@ -108,7 +108,7 @@ class ConditionalAccessPlatforms(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

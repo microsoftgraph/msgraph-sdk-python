@@ -10,13 +10,13 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-check_member_groups_request_builder = lazy_import('msgraph.generated.directory_roles.item.check_member_groups.check_member_groups_request_builder')
-check_member_objects_request_builder = lazy_import('msgraph.generated.directory_roles.item.check_member_objects.check_member_objects_request_builder')
-get_member_groups_request_builder = lazy_import('msgraph.generated.directory_roles.item.get_member_groups.get_member_groups_request_builder')
-get_member_objects_request_builder = lazy_import('msgraph.generated.directory_roles.item.get_member_objects.get_member_objects_request_builder')
 members_request_builder = lazy_import('msgraph.generated.directory_roles.item.members.members_request_builder')
 directory_object_item_request_builder = lazy_import('msgraph.generated.directory_roles.item.members.item.directory_object_item_request_builder')
-restore_request_builder = lazy_import('msgraph.generated.directory_roles.item.restore.restore_request_builder')
+check_member_groups_request_builder = lazy_import('msgraph.generated.directory_roles.item.microsoft_graph_check_member_groups.check_member_groups_request_builder')
+check_member_objects_request_builder = lazy_import('msgraph.generated.directory_roles.item.microsoft_graph_check_member_objects.check_member_objects_request_builder')
+get_member_groups_request_builder = lazy_import('msgraph.generated.directory_roles.item.microsoft_graph_get_member_groups.get_member_groups_request_builder')
+get_member_objects_request_builder = lazy_import('msgraph.generated.directory_roles.item.microsoft_graph_get_member_objects.get_member_objects_request_builder')
+restore_request_builder = lazy_import('msgraph.generated.directory_roles.item.microsoft_graph_restore.restore_request_builder')
 scoped_members_request_builder = lazy_import('msgraph.generated.directory_roles.item.scoped_members.scoped_members_request_builder')
 scoped_role_membership_item_request_builder = lazy_import('msgraph.generated.directory_roles.item.scoped_members.item.scoped_role_membership_item_request_builder')
 directory_role = lazy_import('msgraph.generated.models.directory_role')
@@ -27,34 +27,6 @@ class DirectoryRoleItemRequestBuilder():
     Provides operations to manage the collection of directoryRole entities.
     """
     @property
-    def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
-        """
-        Provides operations to call the checkMemberGroups method.
-        """
-        return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
-        """
-        Provides operations to call the checkMemberObjects method.
-        """
-        return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
-        """
-        Provides operations to call the getMemberGroups method.
-        """
-        return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
-        """
-        Provides operations to call the getMemberObjects method.
-        """
-        return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def members(self) -> members_request_builder.MembersRequestBuilder:
         """
         Provides operations to manage the members property of the microsoft.graph.directoryRole entity.
@@ -62,7 +34,35 @@ class DirectoryRoleItemRequestBuilder():
         return members_request_builder.MembersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def restore(self) -> restore_request_builder.RestoreRequestBuilder:
+    def microsoft_graph_check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
+        """
+        Provides operations to call the checkMemberGroups method.
+        """
+        return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
+        """
+        Provides operations to call the checkMemberObjects method.
+        """
+        return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
+        """
+        Provides operations to call the getMemberGroups method.
+        """
+        return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
+        """
+        Provides operations to call the getMemberObjects method.
+        """
+        return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_restore(self) -> restore_request_builder.RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
@@ -75,10 +75,11 @@ class DirectoryRoleItemRequestBuilder():
         """
         return scoped_members_request_builder.ScopedMembersRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, directory_role_id: Optional[str] = None) -> None:
         """
         Instantiates a new DirectoryRoleItemRequestBuilder and sets the default values.
         Args:
+            directoryRoleId: key: id of directoryRole
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -90,12 +91,13 @@ class DirectoryRoleItemRequestBuilder():
         self.url_template: str = "{+baseurl}/directoryRoles/{directoryRole%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["directoryRole%2Did"] = directoryRoleId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
     async def delete(self,request_configuration: Optional[DirectoryRoleItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete entity from directoryRoles by key (id)
+        Delete entity from directoryRoles
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -143,7 +145,7 @@ class DirectoryRoleItemRequestBuilder():
     
     async def patch(self,body: Optional[directory_role.DirectoryRole] = None, request_configuration: Optional[DirectoryRoleItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[directory_role.DirectoryRole]:
         """
-        Update entity in directoryRoles by key (id)
+        Update entity in directoryRoles
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -177,7 +179,7 @@ class DirectoryRoleItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[DirectoryRoleItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete entity from directoryRoles by key (id)
+        Delete entity from directoryRoles
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -211,7 +213,7 @@ class DirectoryRoleItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[directory_role.DirectoryRole] = None, request_configuration: Optional[DirectoryRoleItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update entity in directoryRoles by key (id)
+        Update entity in directoryRoles
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

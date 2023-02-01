@@ -75,7 +75,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         """
         Sets the durationBeforeAutomaticDenial property value. The number of days that a request can be pending a response before it is automatically denied.
         Args:
-            value: Value to set for the durationBeforeAutomaticDenial property.
+            value: Value to set for the duration_before_automatic_denial property.
         """
         self._duration_before_automatic_denial = value
     
@@ -92,7 +92,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         """
         Sets the durationBeforeEscalation property value. If escalation is required, the time a request can be pending a response from a primary approver.
         Args:
-            value: Value to set for the durationBeforeEscalation property.
+            value: Value to set for the duration_before_escalation property.
         """
         self._duration_before_escalation = value
     
@@ -109,7 +109,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         """
         Sets the escalationApprovers property value. If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests.
         Args:
-            value: Value to set for the escalationApprovers property.
+            value: Value to set for the escalation_approvers property.
         """
         self._escalation_approvers = value
     
@@ -126,7 +126,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         """
         Sets the fallbackEscalationApprovers property value. The subjects, typically users, who are the fallback escalation approvers.
         Args:
-            value: Value to set for the fallbackEscalationApprovers property.
+            value: Value to set for the fallback_escalation_approvers property.
         """
         self._fallback_escalation_approvers = value
     
@@ -143,7 +143,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         """
         Sets the fallbackPrimaryApprovers property value. The subjects, typically users, who are the fallback primary approvers.
         Args:
-            value: Value to set for the fallbackPrimaryApprovers property.
+            value: Value to set for the fallback_primary_approvers property.
         """
         self._fallback_primary_approvers = value
     
@@ -153,15 +153,15 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "duration_before_automatic_denial": lambda n : setattr(self, 'duration_before_automatic_denial', n.get_object_value(Timedelta)),
-            "duration_before_escalation": lambda n : setattr(self, 'duration_before_escalation', n.get_object_value(Timedelta)),
-            "escalation_approvers": lambda n : setattr(self, 'escalation_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
-            "fallback_escalation_approvers": lambda n : setattr(self, 'fallback_escalation_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
-            "fallback_primary_approvers": lambda n : setattr(self, 'fallback_primary_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
-            "is_approver_justification_required": lambda n : setattr(self, 'is_approver_justification_required', n.get_bool_value()),
-            "is_escalation_enabled": lambda n : setattr(self, 'is_escalation_enabled', n.get_bool_value()),
+            "durationBeforeAutomaticDenial": lambda n : setattr(self, 'duration_before_automatic_denial', n.get_object_value(Timedelta)),
+            "durationBeforeEscalation": lambda n : setattr(self, 'duration_before_escalation', n.get_object_value(Timedelta)),
+            "escalationApprovers": lambda n : setattr(self, 'escalation_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "fallbackEscalationApprovers": lambda n : setattr(self, 'fallback_escalation_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "fallbackPrimaryApprovers": lambda n : setattr(self, 'fallback_primary_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "isApproverJustificationRequired": lambda n : setattr(self, 'is_approver_justification_required', n.get_bool_value()),
+            "isEscalationEnabled": lambda n : setattr(self, 'is_escalation_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "primary_approvers": lambda n : setattr(self, 'primary_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "primaryApprovers": lambda n : setattr(self, 'primary_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
         }
         return fields
     
@@ -178,7 +178,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         """
         Sets the isApproverJustificationRequired property value. Indicates whether the approver is required to provide a justification for approving a request.
         Args:
-            value: Value to set for the isApproverJustificationRequired property.
+            value: Value to set for the is_approver_justification_required property.
         """
         self._is_approver_justification_required = value
     
@@ -195,7 +195,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         """
         Sets the isEscalationEnabled property value. If true, then one or more escalationApprovers are configured in this approval stage.
         Args:
-            value: Value to set for the isEscalationEnabled property.
+            value: Value to set for the is_escalation_enabled property.
         """
         self._is_escalation_enabled = value
     
@@ -212,7 +212,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -229,7 +229,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         """
         Sets the primaryApprovers property value. The subjects, typically users, who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors or externalSponsors.
         Args:
-            value: Value to set for the primaryApprovers property.
+            value: Value to set for the primary_approvers property.
         """
         self._primary_approvers = value
     

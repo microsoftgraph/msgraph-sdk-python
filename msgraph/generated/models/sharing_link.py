@@ -82,11 +82,11 @@ class SharingLink(AdditionalDataHolder, Parsable):
         fields = {
             "application": lambda n : setattr(self, 'application', n.get_object_value(identity.Identity)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "prevents_download": lambda n : setattr(self, 'prevents_download', n.get_bool_value()),
+            "preventsDownload": lambda n : setattr(self, 'prevents_download', n.get_bool_value()),
             "scope": lambda n : setattr(self, 'scope', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
-            "web_html": lambda n : setattr(self, 'web_html', n.get_str_value()),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "webHtml": lambda n : setattr(self, 'web_html', n.get_str_value()),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         return fields
     
@@ -103,7 +103,7 @@ class SharingLink(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -120,7 +120,7 @@ class SharingLink(AdditionalDataHolder, Parsable):
         """
         Sets the preventsDownload property value. If true then the user can only use this link to view the item on the web, and cannot use it to download the contents of the item. Only for OneDrive for Business and SharePoint.
         Args:
-            value: Value to set for the preventsDownload property.
+            value: Value to set for the prevents_download property.
         """
         self._prevents_download = value
     
@@ -188,7 +188,7 @@ class SharingLink(AdditionalDataHolder, Parsable):
         """
         Sets the webHtml property value. For embed links, this property contains the HTML code for an <iframe> element that will embed the item in a webpage.
         Args:
-            value: Value to set for the webHtml property.
+            value: Value to set for the web_html property.
         """
         self._web_html = value
     
@@ -205,7 +205,7 @@ class SharingLink(AdditionalDataHolder, Parsable):
         """
         Sets the webUrl property value. A URL that opens the item in the browser on the OneDrive website.
         Args:
-            value: Value to set for the webUrl property.
+            value: Value to set for the web_url property.
         """
         self._web_url = value
     

@@ -77,8 +77,8 @@ class VerifiedDomain(AdditionalDataHolder, Parsable):
         """
         fields = {
             "capabilities": lambda n : setattr(self, 'capabilities', n.get_str_value()),
-            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
-            "is_initial": lambda n : setattr(self, 'is_initial', n.get_bool_value()),
+            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "isInitial": lambda n : setattr(self, 'is_initial', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
@@ -98,7 +98,7 @@ class VerifiedDomain(AdditionalDataHolder, Parsable):
         """
         Sets the isDefault property value. true if this is the default domain associated with the tenant; otherwise, false.
         Args:
-            value: Value to set for the isDefault property.
+            value: Value to set for the is_default property.
         """
         self._is_default = value
     
@@ -115,7 +115,7 @@ class VerifiedDomain(AdditionalDataHolder, Parsable):
         """
         Sets the isInitial property value. true if this is the initial domain associated with the tenant; otherwise, false.
         Args:
-            value: Value to set for the isInitial property.
+            value: Value to set for the is_initial property.
         """
         self._is_initial = value
     
@@ -149,7 +149,7 @@ class VerifiedDomain(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

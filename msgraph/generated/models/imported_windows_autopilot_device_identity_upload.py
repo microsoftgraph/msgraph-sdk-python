@@ -36,7 +36,7 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(entity.Entity):
         """
         Sets the createdDateTimeUtc property value. DateTime when the entity is created.
         Args:
-            value: Value to set for the createdDateTimeUtc property.
+            value: Value to set for the created_date_time_utc property.
         """
         self._created_date_time_utc = value
     
@@ -65,7 +65,7 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(entity.Entity):
         """
         Sets the deviceIdentities property value. Collection of all Autopilot devices as a part of this upload.
         Args:
-            value: Value to set for the deviceIdentities property.
+            value: Value to set for the device_identities property.
         """
         self._device_identities = value
     
@@ -75,8 +75,8 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time_utc": lambda n : setattr(self, 'created_date_time_utc', n.get_datetime_value()),
-            "device_identities": lambda n : setattr(self, 'device_identities', n.get_collection_of_object_values(imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity)),
+            "createdDateTimeUtc": lambda n : setattr(self, 'created_date_time_utc', n.get_datetime_value()),
+            "deviceIdentities": lambda n : setattr(self, 'device_identities', n.get_collection_of_object_values(imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(imported_windows_autopilot_device_identity_upload_status.ImportedWindowsAutopilotDeviceIdentityUploadStatus)),
         }
         super_fields = super().get_field_deserializers()

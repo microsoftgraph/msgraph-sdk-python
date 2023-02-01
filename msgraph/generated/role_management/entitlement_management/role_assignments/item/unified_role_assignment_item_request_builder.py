@@ -49,12 +49,13 @@ class UnifiedRoleAssignmentItemRequestBuilder():
         """
         return role_definition_request_builder.RoleDefinitionRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, unified_role_assignment_id: Optional[str] = None) -> None:
         """
         Instantiates a new UnifiedRoleAssignmentItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            unifiedRoleAssignmentId: key: id of unifiedRoleAssignment
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -64,6 +65,7 @@ class UnifiedRoleAssignmentItemRequestBuilder():
         self.url_template: str = "{+baseurl}/roleManagement/entitlementManagement/roleAssignments/{unifiedRoleAssignment%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["unifiedRoleAssignment%2Did"] = unifiedRoleAssignmentId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

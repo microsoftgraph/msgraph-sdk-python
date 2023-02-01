@@ -79,7 +79,7 @@ class ManagedEBook(entity.Entity):
         """
         Sets the createdDateTime property value. The date and time when the eBook file was created.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -125,7 +125,7 @@ class ManagedEBook(entity.Entity):
         """
         Sets the deviceStates property value. The list of installation states for this eBook.
         Args:
-            value: Value to set for the deviceStates property.
+            value: Value to set for the device_states property.
         """
         self._device_states = value
     
@@ -142,7 +142,7 @@ class ManagedEBook(entity.Entity):
         """
         Sets the displayName property value. Name of the eBook.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -153,18 +153,18 @@ class ManagedEBook(entity.Entity):
         """
         fields = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(managed_e_book_assignment.ManagedEBookAssignment)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "device_states": lambda n : setattr(self, 'device_states', n.get_collection_of_object_values(device_install_state.DeviceInstallState)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "information_url": lambda n : setattr(self, 'information_url', n.get_str_value()),
-            "install_summary": lambda n : setattr(self, 'install_summary', n.get_object_value(e_book_install_summary.EBookInstallSummary)),
-            "large_cover": lambda n : setattr(self, 'large_cover', n.get_object_value(mime_content.MimeContent)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "privacy_information_url": lambda n : setattr(self, 'privacy_information_url', n.get_str_value()),
-            "published_date_time": lambda n : setattr(self, 'published_date_time', n.get_datetime_value()),
+            "deviceStates": lambda n : setattr(self, 'device_states', n.get_collection_of_object_values(device_install_state.DeviceInstallState)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "informationUrl": lambda n : setattr(self, 'information_url', n.get_str_value()),
+            "installSummary": lambda n : setattr(self, 'install_summary', n.get_object_value(e_book_install_summary.EBookInstallSummary)),
+            "largeCover": lambda n : setattr(self, 'large_cover', n.get_object_value(mime_content.MimeContent)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "privacyInformationUrl": lambda n : setattr(self, 'privacy_information_url', n.get_str_value()),
+            "publishedDateTime": lambda n : setattr(self, 'published_date_time', n.get_datetime_value()),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
-            "user_state_summary": lambda n : setattr(self, 'user_state_summary', n.get_collection_of_object_values(user_install_state_summary.UserInstallStateSummary)),
+            "userStateSummary": lambda n : setattr(self, 'user_state_summary', n.get_collection_of_object_values(user_install_state_summary.UserInstallStateSummary)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -183,7 +183,7 @@ class ManagedEBook(entity.Entity):
         """
         Sets the informationUrl property value. The more information Url.
         Args:
-            value: Value to set for the informationUrl property.
+            value: Value to set for the information_url property.
         """
         self._information_url = value
     
@@ -200,7 +200,7 @@ class ManagedEBook(entity.Entity):
         """
         Sets the installSummary property value. Mobile App Install Summary.
         Args:
-            value: Value to set for the installSummary property.
+            value: Value to set for the install_summary property.
         """
         self._install_summary = value
     
@@ -217,7 +217,7 @@ class ManagedEBook(entity.Entity):
         """
         Sets the largeCover property value. Book cover.
         Args:
-            value: Value to set for the largeCover property.
+            value: Value to set for the large_cover property.
         """
         self._large_cover = value
     
@@ -234,7 +234,7 @@ class ManagedEBook(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. The date and time when the eBook was last modified.
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     
@@ -251,7 +251,7 @@ class ManagedEBook(entity.Entity):
         """
         Sets the privacyInformationUrl property value. The privacy statement Url.
         Args:
-            value: Value to set for the privacyInformationUrl property.
+            value: Value to set for the privacy_information_url property.
         """
         self._privacy_information_url = value
     
@@ -268,7 +268,7 @@ class ManagedEBook(entity.Entity):
         """
         Sets the publishedDateTime property value. The date and time when the eBook was published.
         Args:
-            value: Value to set for the publishedDateTime property.
+            value: Value to set for the published_date_time property.
         """
         self._published_date_time = value
     
@@ -325,7 +325,7 @@ class ManagedEBook(entity.Entity):
         """
         Sets the userStateSummary property value. The list of installation states for this eBook.
         Args:
-            value: Value to set for the userStateSummary property.
+            value: Value to set for the user_state_summary property.
         """
         self._user_state_summary = value
     

@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-add_copy_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.add_copy.add_copy_request_builder')
-add_copy_from_content_type_hub_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.add_copy_from_content_type_hub.add_copy_from_content_type_hub_request_builder')
 count_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.count.count_request_builder')
-get_compatible_hub_content_types_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.get_compatible_hub_content_types.get_compatible_hub_content_types_request_builder')
+add_copy_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.microsoft_graph_add_copy.add_copy_request_builder')
+add_copy_from_content_type_hub_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.microsoft_graph_add_copy_from_content_type_hub.add_copy_from_content_type_hub_request_builder')
+get_compatible_hub_content_types_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.microsoft_graph_get_compatible_hub_content_types.get_compatible_hub_content_types_request_builder')
 content_type = lazy_import('msgraph.generated.models.content_type')
 content_type_collection_response = lazy_import('msgraph.generated.models.content_type_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -23,25 +23,32 @@ class ContentTypesRequestBuilder():
     Provides operations to manage the contentTypes property of the microsoft.graph.list entity.
     """
     @property
-    def add_copy(self) -> add_copy_request_builder.AddCopyRequestBuilder:
+    def count(self) -> count_request_builder.CountRequestBuilder:
+        """
+        Provides operations to count the resources in the collection.
+        """
+        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_add_copy(self) -> add_copy_request_builder.AddCopyRequestBuilder:
         """
         Provides operations to call the addCopy method.
         """
         return add_copy_request_builder.AddCopyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def add_copy_from_content_type_hub(self) -> add_copy_from_content_type_hub_request_builder.AddCopyFromContentTypeHubRequestBuilder:
+    def microsoft_graph_add_copy_from_content_type_hub(self) -> add_copy_from_content_type_hub_request_builder.AddCopyFromContentTypeHubRequestBuilder:
         """
         Provides operations to call the addCopyFromContentTypeHub method.
         """
         return add_copy_from_content_type_hub_request_builder.AddCopyFromContentTypeHubRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
+    def microsoft_graph_get_compatible_hub_content_types(self) -> get_compatible_hub_content_types_request_builder.GetCompatibleHubContentTypesRequestBuilder:
         """
-        Provides operations to count the resources in the collection.
+        Provides operations to call the getCompatibleHubContentTypes method.
         """
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return get_compatible_hub_content_types_request_builder.GetCompatibleHubContentTypesRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -78,13 +85,6 @@ class ContentTypesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, content_type_collection_response.ContentTypeCollectionResponse, error_mapping)
-    
-    def get_compatible_hub_content_types(self,) -> get_compatible_hub_content_types_request_builder.GetCompatibleHubContentTypesRequestBuilder:
-        """
-        Provides operations to call the getCompatibleHubContentTypes method.
-        Returns: get_compatible_hub_content_types_request_builder.GetCompatibleHubContentTypesRequestBuilder
-        """
-        return get_compatible_hub_content_types_request_builder.GetCompatibleHubContentTypesRequestBuilder(self.request_adapter, self.path_parameters)
     
     async def post(self,body: Optional[content_type.ContentType] = None, request_configuration: Optional[ContentTypesRequestBuilderPostRequestConfiguration] = None) -> Optional[content_type.ContentType]:
         """

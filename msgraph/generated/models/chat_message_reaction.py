@@ -53,7 +53,7 @@ class ChatMessageReaction(AdditionalDataHolder, Parsable):
         """
         Sets the createdDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -75,9 +75,9 @@ class ChatMessageReaction(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "reaction_type": lambda n : setattr(self, 'reaction_type', n.get_str_value()),
+            "reactionType": lambda n : setattr(self, 'reaction_type', n.get_str_value()),
             "user": lambda n : setattr(self, 'user', n.get_object_value(chat_message_reaction_identity_set.ChatMessageReactionIdentitySet)),
         }
         return fields
@@ -95,7 +95,7 @@ class ChatMessageReaction(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -112,7 +112,7 @@ class ChatMessageReaction(AdditionalDataHolder, Parsable):
         """
         Sets the reactionType property value. Supported values are like, angry, sad, laugh, heart, surprised.
         Args:
-            value: Value to set for the reactionType property.
+            value: Value to set for the reaction_type property.
         """
         self._reaction_type = value
     

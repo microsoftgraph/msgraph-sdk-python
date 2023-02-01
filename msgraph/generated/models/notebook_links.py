@@ -56,8 +56,8 @@ class NotebookLinks(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "one_note_client_url": lambda n : setattr(self, 'one_note_client_url', n.get_object_value(external_link.ExternalLink)),
-            "one_note_web_url": lambda n : setattr(self, 'one_note_web_url', n.get_object_value(external_link.ExternalLink)),
+            "oneNoteClientUrl": lambda n : setattr(self, 'one_note_client_url', n.get_object_value(external_link.ExternalLink)),
+            "oneNoteWebUrl": lambda n : setattr(self, 'one_note_web_url', n.get_object_value(external_link.ExternalLink)),
         }
         return fields
     
@@ -74,7 +74,7 @@ class NotebookLinks(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -91,7 +91,7 @@ class NotebookLinks(AdditionalDataHolder, Parsable):
         """
         Sets the oneNoteClientUrl property value. Opens the notebook in the OneNote native client if it's installed.
         Args:
-            value: Value to set for the oneNoteClientUrl property.
+            value: Value to set for the one_note_client_url property.
         """
         self._one_note_client_url = value
     
@@ -108,7 +108,7 @@ class NotebookLinks(AdditionalDataHolder, Parsable):
         """
         Sets the oneNoteWebUrl property value. Opens the notebook in OneNote on the web.
         Args:
-            value: Value to set for the oneNoteWebUrl property.
+            value: Value to set for the one_note_web_url property.
         """
         self._one_note_web_url = value
     

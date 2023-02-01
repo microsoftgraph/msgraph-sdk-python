@@ -22,7 +22,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         """
         Sets the accountDeletionPolicy property value. Possible values for when accounts are deleted on a shared PC.
         Args:
-            value: Value to set for the accountDeletionPolicy property.
+            value: Value to set for the account_deletion_policy property.
         """
         self._account_deletion_policy = value
     
@@ -56,7 +56,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         """
         Sets the cacheAccountsAboveDiskFreePercentage property value. Sets the percentage of available disk space a PC should have before it stops deleting cached shared PC accounts. Only applies when AccountDeletionPolicy is DiskSpaceThreshold or DiskSpaceThresholdOrInactiveThreshold. Valid values 0 to 100
         Args:
-            value: Value to set for the cacheAccountsAboveDiskFreePercentage property.
+            value: Value to set for the cache_accounts_above_disk_free_percentage property.
         """
         self._cache_accounts_above_disk_free_percentage = value
     
@@ -96,11 +96,11 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "account_deletion_policy": lambda n : setattr(self, 'account_deletion_policy', n.get_enum_value(shared_p_c_account_deletion_policy_type.SharedPCAccountDeletionPolicyType)),
-            "cache_accounts_above_disk_free_percentage": lambda n : setattr(self, 'cache_accounts_above_disk_free_percentage', n.get_int_value()),
-            "inactive_threshold_days": lambda n : setattr(self, 'inactive_threshold_days', n.get_int_value()),
+            "accountDeletionPolicy": lambda n : setattr(self, 'account_deletion_policy', n.get_enum_value(shared_p_c_account_deletion_policy_type.SharedPCAccountDeletionPolicyType)),
+            "cacheAccountsAboveDiskFreePercentage": lambda n : setattr(self, 'cache_accounts_above_disk_free_percentage', n.get_int_value()),
+            "inactiveThresholdDays": lambda n : setattr(self, 'inactive_threshold_days', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "remove_accounts_below_disk_free_percentage": lambda n : setattr(self, 'remove_accounts_below_disk_free_percentage', n.get_int_value()),
+            "removeAccountsBelowDiskFreePercentage": lambda n : setattr(self, 'remove_accounts_below_disk_free_percentage', n.get_int_value()),
         }
         return fields
     
@@ -117,7 +117,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         """
         Sets the inactiveThresholdDays property value. Specifies when the accounts will start being deleted when they have not been logged on during the specified period, given as number of days. Only applies when AccountDeletionPolicy is DiskSpaceThreshold or DiskSpaceThresholdOrInactiveThreshold.
         Args:
-            value: Value to set for the inactiveThresholdDays property.
+            value: Value to set for the inactive_threshold_days property.
         """
         self._inactive_threshold_days = value
     
@@ -134,7 +134,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -151,7 +151,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         """
         Sets the removeAccountsBelowDiskFreePercentage property value. Sets the percentage of disk space remaining on a PC before cached accounts will be deleted to free disk space. Accounts that have been inactive the longest will be deleted first. Only applies when AccountDeletionPolicy is DiskSpaceThresholdOrInactiveThreshold. Valid values 0 to 100
         Args:
-            value: Value to set for the removeAccountsBelowDiskFreePercentage property.
+            value: Value to set for the remove_accounts_below_disk_free_percentage property.
         """
         self._remove_accounts_below_disk_free_percentage = value
     

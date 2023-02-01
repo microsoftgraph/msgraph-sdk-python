@@ -68,7 +68,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         """
         Sets the daysOfWeek property value. The days of the week on which the user works.
         Args:
-            value: Value to set for the daysOfWeek property.
+            value: Value to set for the days_of_week property.
         """
         self._days_of_week = value
     
@@ -85,7 +85,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         """
         Sets the endTime property value. The time of the day that the user stops working.
         Args:
-            value: Value to set for the endTime property.
+            value: Value to set for the end_time property.
         """
         self._end_time = value
     
@@ -95,11 +95,11 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "days_of_week": lambda n : setattr(self, 'days_of_week', n.get_collection_of_enum_values(day_of_week.DayOfWeek)),
-            "end_time": lambda n : setattr(self, 'end_time', n.get_object_value(Time)),
+            "daysOfWeek": lambda n : setattr(self, 'days_of_week', n.get_collection_of_enum_values(day_of_week.DayOfWeek)),
+            "endTime": lambda n : setattr(self, 'end_time', n.get_object_value(Time)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "start_time": lambda n : setattr(self, 'start_time', n.get_object_value(Time)),
-            "time_zone": lambda n : setattr(self, 'time_zone', n.get_object_value(time_zone_base.TimeZoneBase)),
+            "startTime": lambda n : setattr(self, 'start_time', n.get_object_value(Time)),
+            "timeZone": lambda n : setattr(self, 'time_zone', n.get_object_value(time_zone_base.TimeZoneBase)),
         }
         return fields
     
@@ -116,7 +116,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -148,7 +148,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         """
         Sets the startTime property value. The time of the day that the user starts working.
         Args:
-            value: Value to set for the startTime property.
+            value: Value to set for the start_time property.
         """
         self._start_time = value
     
@@ -165,7 +165,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         """
         Sets the timeZone property value. The time zone to which the working hours apply.
         Args:
-            value: Value to set for the timeZone property.
+            value: Value to set for the time_zone property.
         """
         self._time_zone = value
     

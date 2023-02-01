@@ -51,7 +51,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         """
         Sets the certificateRevocationListUrl property value. The URL of the certificate revocation list.
         Args:
-            value: Value to set for the certificateRevocationListUrl property.
+            value: Value to set for the certificate_revocation_list_url property.
         """
         self._certificate_revocation_list_url = value
     
@@ -102,7 +102,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         """
         Sets the deltaCertificateRevocationListUrl property value. The URL contains the list of all revoked certificates since the last time a full certificate revocaton list was created.
         Args:
-            value: Value to set for the deltaCertificateRevocationListUrl property.
+            value: Value to set for the delta_certificate_revocation_list_url property.
         """
         self._delta_certificate_revocation_list_url = value
     
@@ -113,11 +113,11 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         """
         fields = {
             "certificate": lambda n : setattr(self, 'certificate', n.get_bytes_value()),
-            "certificate_revocation_list_url": lambda n : setattr(self, 'certificate_revocation_list_url', n.get_str_value()),
-            "delta_certificate_revocation_list_url": lambda n : setattr(self, 'delta_certificate_revocation_list_url', n.get_str_value()),
-            "is_root_authority": lambda n : setattr(self, 'is_root_authority', n.get_bool_value()),
+            "certificateRevocationListUrl": lambda n : setattr(self, 'certificate_revocation_list_url', n.get_str_value()),
+            "deltaCertificateRevocationListUrl": lambda n : setattr(self, 'delta_certificate_revocation_list_url', n.get_str_value()),
             "issuer": lambda n : setattr(self, 'issuer', n.get_str_value()),
-            "issuer_ski": lambda n : setattr(self, 'issuer_ski', n.get_str_value()),
+            "issuerSki": lambda n : setattr(self, 'issuer_ski', n.get_str_value()),
+            "isRootAuthority": lambda n : setattr(self, 'is_root_authority', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -135,7 +135,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         """
         Sets the isRootAuthority property value. Required. true if the trusted certificate is a root authority, false if the trusted certificate is an intermediate authority.
         Args:
-            value: Value to set for the isRootAuthority property.
+            value: Value to set for the is_root_authority property.
         """
         self._is_root_authority = value
     
@@ -169,7 +169,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         """
         Sets the issuerSki property value. The subject key identifier of the certificate, calculated from the certificate value. Read-only.
         Args:
-            value: Value to set for the issuerSki property.
+            value: Value to set for the issuer_ski property.
         """
         self._issuer_ski = value
     
@@ -186,7 +186,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -201,9 +201,9 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         writer.write_object_value("certificate", self.certificate)
         writer.write_str_value("certificateRevocationListUrl", self.certificate_revocation_list_url)
         writer.write_str_value("deltaCertificateRevocationListUrl", self.delta_certificate_revocation_list_url)
-        writer.write_bool_value("isRootAuthority", self.is_root_authority)
         writer.write_str_value("issuer", self.issuer)
         writer.write_str_value("issuerSki", self.issuer_ski)
+        writer.write_bool_value("isRootAuthority", self.is_root_authority)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

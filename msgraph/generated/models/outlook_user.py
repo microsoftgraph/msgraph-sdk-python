@@ -35,7 +35,7 @@ class OutlookUser(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "master_categories": lambda n : setattr(self, 'master_categories', n.get_collection_of_object_values(outlook_category.OutlookCategory)),
+            "masterCategories": lambda n : setattr(self, 'master_categories', n.get_collection_of_object_values(outlook_category.OutlookCategory)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,7 +54,7 @@ class OutlookUser(entity.Entity):
         """
         Sets the masterCategories property value. A list of categories defined for the user.
         Args:
-            value: Value to set for the masterCategories property.
+            value: Value to set for the master_categories property.
         """
         self._master_categories = value
     

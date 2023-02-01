@@ -56,10 +56,10 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "hop_count": lambda n : setattr(self, 'hop_count', n.get_int_value()),
-            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "hopCount": lambda n : setattr(self, 'hop_count', n.get_int_value()),
+            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "round_trip_time": lambda n : setattr(self, 'round_trip_time', n.get_object_value(Timedelta)),
+            "roundTripTime": lambda n : setattr(self, 'round_trip_time', n.get_object_value(Timedelta)),
         }
         return fields
     
@@ -76,7 +76,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         """
         Sets the hopCount property value. The network path count of this hop that was used to compute the RTT.
         Args:
-            value: Value to set for the hopCount property.
+            value: Value to set for the hop_count property.
         """
         self._hop_count = value
     
@@ -93,7 +93,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         """
         Sets the ipAddress property value. IP address used for this hop in the network trace.
         Args:
-            value: Value to set for the ipAddress property.
+            value: Value to set for the ip_address property.
         """
         self._ip_address = value
     
@@ -110,7 +110,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -127,7 +127,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         """
         Sets the roundTripTime property value. The time from when the trace route packet was sent from the client to this hop and back to the client, denoted in [ISO 8601][] format. For example, 1 second is denoted as PT1S, where P is the duration designator, T is the time designator, and S is the second designator.
         Args:
-            value: Value to set for the roundTripTime property.
+            value: Value to set for the round_trip_time property.
         """
         self._round_trip_time = value
     

@@ -102,7 +102,7 @@ class WindowsInformationProtectionDataRecoveryCertificate(AdditionalDataHolder, 
         """
         Sets the expirationDateTime property value. Data recovery Certificate expiration datetime
         Args:
-            value: Value to set for the expirationDateTime property.
+            value: Value to set for the expiration_date_time property.
         """
         self._expiration_date_time = value
     
@@ -114,9 +114,9 @@ class WindowsInformationProtectionDataRecoveryCertificate(AdditionalDataHolder, 
         fields = {
             "certificate": lambda n : setattr(self, 'certificate', n.get_bytes_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "subject_name": lambda n : setattr(self, 'subject_name', n.get_str_value()),
+            "subjectName": lambda n : setattr(self, 'subject_name', n.get_str_value()),
         }
         return fields
     
@@ -133,7 +133,7 @@ class WindowsInformationProtectionDataRecoveryCertificate(AdditionalDataHolder, 
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -165,7 +165,7 @@ class WindowsInformationProtectionDataRecoveryCertificate(AdditionalDataHolder, 
         """
         Sets the subjectName property value. Data recovery Certificate subject name
         Args:
-            value: Value to set for the subjectName property.
+            value: Value to set for the subject_name property.
         """
         self._subject_name = value
     

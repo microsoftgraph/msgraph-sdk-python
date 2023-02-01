@@ -21,7 +21,7 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
         """
         Sets the apiVersion property value. API version for the call back URL. Start with 1.
         Args:
-            value: Value to set for the apiVersion property.
+            value: Value to set for the api_version property.
         """
         self._api_version = value
     
@@ -69,7 +69,7 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
         """
         Sets the displayName property value. Name of the workforce integration.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -96,11 +96,11 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "api_version": lambda n : setattr(self, 'api_version', n.get_int_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "apiVersion": lambda n : setattr(self, 'api_version', n.get_int_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "encryption": lambda n : setattr(self, 'encryption', n.get_object_value(workforce_integration_encryption.WorkforceIntegrationEncryption)),
-            "is_active": lambda n : setattr(self, 'is_active', n.get_bool_value()),
-            "supported_entities": lambda n : setattr(self, 'supported_entities', n.get_enum_value(workforce_integration_supported_entities.WorkforceIntegrationSupportedEntities)),
+            "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
+            "supportedEntities": lambda n : setattr(self, 'supported_entities', n.get_enum_value(workforce_integration_supported_entities.WorkforceIntegrationSupportedEntities)),
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -120,7 +120,7 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
         """
         Sets the isActive property value. Indicates whether this workforce integration is currently active and available.
         Args:
-            value: Value to set for the isActive property.
+            value: Value to set for the is_active property.
         """
         self._is_active = value
     
@@ -153,7 +153,7 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
         """
         Sets the supportedEntities property value. The Shifts entities supported for synchronous change notifications. Shifts will make a call back to the url provided on client changes on those entities added here. By default, no entities are supported for change notifications. Possible values are: none, shift, swapRequest, userShiftPreferences, openshift, openShiftRequest, offerShiftRequest, unknownFutureValue.
         Args:
-            value: Value to set for the supportedEntities property.
+            value: Value to set for the supported_entities property.
         """
         self._supported_entities = value
     

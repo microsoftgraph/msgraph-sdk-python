@@ -19,7 +19,7 @@ class OauthApplicationEvidence(alert_evidence.AlertEvidence):
         """
         Sets the appId property value. Unique identifier of the application.
         Args:
-            value: Value to set for the appId property.
+            value: Value to set for the app_id property.
         """
         self._app_id = value
     
@@ -64,7 +64,7 @@ class OauthApplicationEvidence(alert_evidence.AlertEvidence):
         """
         Sets the displayName property value. Name of the application.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -74,9 +74,9 @@ class OauthApplicationEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "object_id": lambda n : setattr(self, 'object_id', n.get_str_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "objectId": lambda n : setattr(self, 'object_id', n.get_str_value()),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -96,7 +96,7 @@ class OauthApplicationEvidence(alert_evidence.AlertEvidence):
         """
         Sets the objectId property value. The unique identifier of the application object in Azure AD.
         Args:
-            value: Value to set for the objectId property.
+            value: Value to set for the object_id property.
         """
         self._object_id = value
     

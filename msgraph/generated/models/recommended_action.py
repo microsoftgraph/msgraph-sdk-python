@@ -17,7 +17,7 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
         """
         Sets the actionWebUrl property value. Web URL to the recommended action.
         Args:
-            value: Value to set for the actionWebUrl property.
+            value: Value to set for the action_web_url property.
         """
         self._action_web_url = value
     
@@ -72,9 +72,9 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "action_web_url": lambda n : setattr(self, 'action_web_url', n.get_str_value()),
+            "actionWebUrl": lambda n : setattr(self, 'action_web_url', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "potential_score_impact": lambda n : setattr(self, 'potential_score_impact', n.get_float_value()),
+            "potentialScoreImpact": lambda n : setattr(self, 'potential_score_impact', n.get_float_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
         }
         return fields
@@ -92,7 +92,7 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -109,7 +109,7 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
         """
         Sets the potentialScoreImpact property value. Potential improvement in the tenant security score from the recommended action.
         Args:
-            value: Value to set for the potentialScoreImpact property.
+            value: Value to set for the potential_score_impact property.
         """
         self._potential_score_impact = value
     

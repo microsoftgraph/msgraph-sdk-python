@@ -36,7 +36,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
         """
         Sets the attachmentType property value. The type of attachment. Possible values are: file, item, reference. Required.
         Args:
-            value: Value to set for the attachmentType property.
+            value: Value to set for the attachment_type property.
         """
         self._attachment_type = value
     
@@ -75,7 +75,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
         """
         Sets the contentId property value. The CID or Content-Id of the attachment for referencing in case of in-line attachments using <img src='cid:contentId'> tag in HTML messages. Optional.
         Args:
-            value: Value to set for the contentId property.
+            value: Value to set for the content_id property.
         """
         self._content_id = value
     
@@ -92,7 +92,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
         """
         Sets the contentType property value. The nature of the data in the attachment. Optional.
         Args:
-            value: Value to set for the contentType property.
+            value: Value to set for the content_type property.
         """
         self._content_type = value
     
@@ -114,10 +114,10 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "attachment_type": lambda n : setattr(self, 'attachment_type', n.get_enum_value(attachment_type.AttachmentType)),
-            "content_id": lambda n : setattr(self, 'content_id', n.get_str_value()),
-            "content_type": lambda n : setattr(self, 'content_type', n.get_str_value()),
-            "is_inline": lambda n : setattr(self, 'is_inline', n.get_bool_value()),
+            "attachmentType": lambda n : setattr(self, 'attachment_type', n.get_enum_value(attachment_type.AttachmentType)),
+            "contentId": lambda n : setattr(self, 'content_id', n.get_str_value()),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
+            "isInline": lambda n : setattr(self, 'is_inline', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
@@ -137,7 +137,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
         """
         Sets the isInline property value. true if the attachment is an inline attachment; otherwise, false. Optional.
         Args:
-            value: Value to set for the isInline property.
+            value: Value to set for the is_inline property.
         """
         self._is_inline = value
     
@@ -171,7 +171,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

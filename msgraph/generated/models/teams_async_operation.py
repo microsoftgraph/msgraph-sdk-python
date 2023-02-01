@@ -23,7 +23,7 @@ class TeamsAsyncOperation(entity.Entity):
         """
         Sets the attemptsCount property value. Number of times the operation was attempted before being marked successful or failed.
         Args:
-            value: Value to set for the attemptsCount property.
+            value: Value to set for the attempts_count property.
         """
         self._attempts_count = value
     
@@ -64,7 +64,7 @@ class TeamsAsyncOperation(entity.Entity):
         """
         Sets the createdDateTime property value. Time when the operation was created.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -103,14 +103,14 @@ class TeamsAsyncOperation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "attempts_count": lambda n : setattr(self, 'attempts_count', n.get_int_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "attemptsCount": lambda n : setattr(self, 'attempts_count', n.get_int_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "error": lambda n : setattr(self, 'error', n.get_object_value(operation_error.OperationError)),
-            "last_action_date_time": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
-            "operation_type": lambda n : setattr(self, 'operation_type', n.get_enum_value(teams_async_operation_type.TeamsAsyncOperationType)),
+            "lastActionDateTime": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
+            "operationType": lambda n : setattr(self, 'operation_type', n.get_enum_value(teams_async_operation_type.TeamsAsyncOperationType)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(teams_async_operation_status.TeamsAsyncOperationStatus)),
-            "target_resource_id": lambda n : setattr(self, 'target_resource_id', n.get_str_value()),
-            "target_resource_location": lambda n : setattr(self, 'target_resource_location', n.get_str_value()),
+            "targetResourceId": lambda n : setattr(self, 'target_resource_id', n.get_str_value()),
+            "targetResourceLocation": lambda n : setattr(self, 'target_resource_location', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -129,7 +129,7 @@ class TeamsAsyncOperation(entity.Entity):
         """
         Sets the lastActionDateTime property value. Time when the async operation was last updated.
         Args:
-            value: Value to set for the lastActionDateTime property.
+            value: Value to set for the last_action_date_time property.
         """
         self._last_action_date_time = value
     
@@ -146,7 +146,7 @@ class TeamsAsyncOperation(entity.Entity):
         """
         Sets the operationType property value. The operationType property
         Args:
-            value: Value to set for the operationType property.
+            value: Value to set for the operation_type property.
         """
         self._operation_type = value
     
@@ -198,7 +198,7 @@ class TeamsAsyncOperation(entity.Entity):
         """
         Sets the targetResourceId property value. The ID of the object that's created or modified as result of this async operation, typically a team.
         Args:
-            value: Value to set for the targetResourceId property.
+            value: Value to set for the target_resource_id property.
         """
         self._target_resource_id = value
     
@@ -215,7 +215,7 @@ class TeamsAsyncOperation(entity.Entity):
         """
         Sets the targetResourceLocation property value. The location of the object that's created or modified as result of this async operation. This URL should be treated as an opaque value and not parsed into its component paths.
         Args:
-            value: Value to set for the targetResourceLocation property.
+            value: Value to set for the target_resource_location property.
         """
         self._target_resource_location = value
     

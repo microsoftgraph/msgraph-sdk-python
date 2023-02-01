@@ -55,7 +55,7 @@ class AlternativeSecurityId(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "identity_provider": lambda n : setattr(self, 'identity_provider', n.get_str_value()),
+            "identityProvider": lambda n : setattr(self, 'identity_provider', n.get_str_value()),
             "key": lambda n : setattr(self, 'key', n.get_bytes_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_int_value()),
@@ -75,7 +75,7 @@ class AlternativeSecurityId(AdditionalDataHolder, Parsable):
         """
         Sets the identityProvider property value. For internal use only
         Args:
-            value: Value to set for the identityProvider property.
+            value: Value to set for the identity_provider property.
         """
         self._identity_provider = value
     
@@ -109,7 +109,7 @@ class AlternativeSecurityId(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

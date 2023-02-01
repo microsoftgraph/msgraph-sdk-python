@@ -34,7 +34,7 @@ class TeamGuestSettings(AdditionalDataHolder, Parsable):
         """
         Sets the allowCreateUpdateChannels property value. If set to true, guests can add and update channels.
         Args:
-            value: Value to set for the allowCreateUpdateChannels property.
+            value: Value to set for the allow_create_update_channels property.
         """
         self._allow_create_update_channels = value
     
@@ -51,7 +51,7 @@ class TeamGuestSettings(AdditionalDataHolder, Parsable):
         """
         Sets the allowDeleteChannels property value. If set to true, guests can delete channels.
         Args:
-            value: Value to set for the allowDeleteChannels property.
+            value: Value to set for the allow_delete_channels property.
         """
         self._allow_delete_channels = value
     
@@ -87,8 +87,8 @@ class TeamGuestSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_create_update_channels": lambda n : setattr(self, 'allow_create_update_channels', n.get_bool_value()),
-            "allow_delete_channels": lambda n : setattr(self, 'allow_delete_channels', n.get_bool_value()),
+            "allowCreateUpdateChannels": lambda n : setattr(self, 'allow_create_update_channels', n.get_bool_value()),
+            "allowDeleteChannels": lambda n : setattr(self, 'allow_delete_channels', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -106,7 +106,7 @@ class TeamGuestSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

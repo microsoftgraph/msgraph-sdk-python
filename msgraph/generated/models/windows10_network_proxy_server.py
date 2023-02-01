@@ -95,7 +95,7 @@ class Windows10NetworkProxyServer(AdditionalDataHolder, Parsable):
             "address": lambda n : setattr(self, 'address', n.get_str_value()),
             "exceptions": lambda n : setattr(self, 'exceptions', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "use_for_local_addresses": lambda n : setattr(self, 'use_for_local_addresses', n.get_bool_value()),
+            "useForLocalAddresses": lambda n : setattr(self, 'use_for_local_addresses', n.get_bool_value()),
         }
         return fields
     
@@ -112,7 +112,7 @@ class Windows10NetworkProxyServer(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -143,7 +143,7 @@ class Windows10NetworkProxyServer(AdditionalDataHolder, Parsable):
         """
         Sets the useForLocalAddresses property value. Specifies whether the proxy server should be used for local (intranet) addresses.
         Args:
-            value: Value to set for the useForLocalAddresses property.
+            value: Value to set for the use_for_local_addresses property.
         """
         self._use_for_local_addresses = value
     

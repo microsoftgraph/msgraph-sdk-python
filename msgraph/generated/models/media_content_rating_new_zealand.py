@@ -56,9 +56,9 @@ class MediaContentRatingNewZealand(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "movie_rating": lambda n : setattr(self, 'movie_rating', n.get_enum_value(rating_new_zealand_movies_type.RatingNewZealandMoviesType)),
+            "movieRating": lambda n : setattr(self, 'movie_rating', n.get_enum_value(rating_new_zealand_movies_type.RatingNewZealandMoviesType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "tv_rating": lambda n : setattr(self, 'tv_rating', n.get_enum_value(rating_new_zealand_television_type.RatingNewZealandTelevisionType)),
+            "tvRating": lambda n : setattr(self, 'tv_rating', n.get_enum_value(rating_new_zealand_television_type.RatingNewZealandTelevisionType)),
         }
         return fields
     
@@ -75,7 +75,7 @@ class MediaContentRatingNewZealand(AdditionalDataHolder, Parsable):
         """
         Sets the movieRating property value. Movies rating labels in New Zealand
         Args:
-            value: Value to set for the movieRating property.
+            value: Value to set for the movie_rating property.
         """
         self._movie_rating = value
     
@@ -92,7 +92,7 @@ class MediaContentRatingNewZealand(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -122,7 +122,7 @@ class MediaContentRatingNewZealand(AdditionalDataHolder, Parsable):
         """
         Sets the tvRating property value. TV content rating labels in New Zealand
         Args:
-            value: Value to set for the tvRating property.
+            value: Value to set for the tv_rating property.
         """
         self._tv_rating = value
     

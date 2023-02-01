@@ -72,7 +72,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         """
         Sets the externalAudience property value. The set of audience external to the signed-in user's organization who will receive the ExternalReplyMessage, if Status is AlwaysEnabled or Scheduled. The possible values are: none, contactsOnly, all.
         Args:
-            value: Value to set for the externalAudience property.
+            value: Value to set for the external_audience property.
         """
         self._external_audience = value
     
@@ -89,7 +89,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         """
         Sets the externalReplyMessage property value. The automatic reply to send to the specified external audience, if Status is AlwaysEnabled or Scheduled.
         Args:
-            value: Value to set for the externalReplyMessage property.
+            value: Value to set for the external_reply_message property.
         """
         self._external_reply_message = value
     
@@ -99,12 +99,12 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "external_audience": lambda n : setattr(self, 'external_audience', n.get_enum_value(external_audience_scope.ExternalAudienceScope)),
-            "external_reply_message": lambda n : setattr(self, 'external_reply_message', n.get_str_value()),
-            "internal_reply_message": lambda n : setattr(self, 'internal_reply_message', n.get_str_value()),
+            "externalAudience": lambda n : setattr(self, 'external_audience', n.get_enum_value(external_audience_scope.ExternalAudienceScope)),
+            "externalReplyMessage": lambda n : setattr(self, 'external_reply_message', n.get_str_value()),
+            "internalReplyMessage": lambda n : setattr(self, 'internal_reply_message', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "scheduled_end_date_time": lambda n : setattr(self, 'scheduled_end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "scheduled_start_date_time": lambda n : setattr(self, 'scheduled_start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "scheduledEndDateTime": lambda n : setattr(self, 'scheduled_end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "scheduledStartDateTime": lambda n : setattr(self, 'scheduled_start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(automatic_replies_status.AutomaticRepliesStatus)),
         }
         return fields
@@ -122,7 +122,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         """
         Sets the internalReplyMessage property value. The automatic reply to send to the audience internal to the signed-in user's organization, if Status is AlwaysEnabled or Scheduled.
         Args:
-            value: Value to set for the internalReplyMessage property.
+            value: Value to set for the internal_reply_message property.
         """
         self._internal_reply_message = value
     
@@ -139,7 +139,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -156,7 +156,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         """
         Sets the scheduledEndDateTime property value. The date and time that automatic replies are set to end, if Status is set to Scheduled.
         Args:
-            value: Value to set for the scheduledEndDateTime property.
+            value: Value to set for the scheduled_end_date_time property.
         """
         self._scheduled_end_date_time = value
     
@@ -173,7 +173,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         """
         Sets the scheduledStartDateTime property value. The date and time that automatic replies are set to begin, if Status is set to Scheduled.
         Args:
-            value: Value to set for the scheduledStartDateTime property.
+            value: Value to set for the scheduled_start_date_time property.
         """
         self._scheduled_start_date_time = value
     

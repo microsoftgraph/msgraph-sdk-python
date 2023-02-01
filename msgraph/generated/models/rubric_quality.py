@@ -103,7 +103,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. The name of this rubric quality.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -115,9 +115,9 @@ class RubricQuality(AdditionalDataHolder, Parsable):
         fields = {
             "criteria": lambda n : setattr(self, 'criteria', n.get_collection_of_object_values(rubric_criterion.RubricCriterion)),
             "description": lambda n : setattr(self, 'description', n.get_object_value(education_item_body.EducationItemBody)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "quality_id": lambda n : setattr(self, 'quality_id', n.get_str_value()),
+            "qualityId": lambda n : setattr(self, 'quality_id', n.get_str_value()),
             "weight": lambda n : setattr(self, 'weight', n.get_float_value()),
         }
         return fields
@@ -135,7 +135,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -152,7 +152,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
         """
         Sets the qualityId property value. The ID of this resource.
         Args:
-            value: Value to set for the qualityId property.
+            value: Value to set for the quality_id property.
         """
         self._quality_id = value
     

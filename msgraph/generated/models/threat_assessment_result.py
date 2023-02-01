@@ -35,7 +35,7 @@ class ThreatAssessmentResult(entity.Entity):
         """
         Sets the createdDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -57,9 +57,9 @@ class ThreatAssessmentResult(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
-            "result_type": lambda n : setattr(self, 'result_type', n.get_enum_value(threat_assessment_result_type.ThreatAssessmentResultType)),
+            "resultType": lambda n : setattr(self, 'result_type', n.get_enum_value(threat_assessment_result_type.ThreatAssessmentResultType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -95,7 +95,7 @@ class ThreatAssessmentResult(entity.Entity):
         """
         Sets the resultType property value. The threat assessment result type. Possible values are: checkPolicy, rescan.
         Args:
-            value: Value to set for the resultType property.
+            value: Value to set for the result_type property.
         """
         self._result_type = value
     

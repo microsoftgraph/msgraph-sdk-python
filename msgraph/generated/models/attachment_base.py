@@ -12,21 +12,21 @@ class AttachmentBase(entity.Entity):
         Instantiates a new attachmentBase and sets the default values.
         """
         super().__init__()
-        # The contentType property
+        # The MIME type.
         self._content_type: Optional[str] = None
-        # The lastModifiedDateTime property
+        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._last_modified_date_time: Optional[datetime] = None
-        # The name property
+        # The display name of the attachment. This does not need to be the actual file name.
         self._name: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-        # The size property
+        # The length of the attachment in bytes.
         self._size: Optional[int] = None
     
     @property
     def content_type(self,) -> Optional[str]:
         """
-        Gets the contentType property value. The contentType property
+        Gets the contentType property value. The MIME type.
         Returns: Optional[str]
         """
         return self._content_type
@@ -34,9 +34,9 @@ class AttachmentBase(entity.Entity):
     @content_type.setter
     def content_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the contentType property value. The contentType property
+        Sets the contentType property value. The MIME type.
         Args:
-            value: Value to set for the contentType property.
+            value: Value to set for the content_type property.
         """
         self._content_type = value
     
@@ -58,8 +58,8 @@ class AttachmentBase(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "content_type": lambda n : setattr(self, 'content_type', n.get_str_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
         }
@@ -70,7 +70,7 @@ class AttachmentBase(entity.Entity):
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
-        Gets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Gets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
@@ -78,16 +78,16 @@ class AttachmentBase(entity.Entity):
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Sets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     
     @property
     def name(self,) -> Optional[str]:
         """
-        Gets the name property value. The name property
+        Gets the name property value. The display name of the attachment. This does not need to be the actual file name.
         Returns: Optional[str]
         """
         return self._name
@@ -95,7 +95,7 @@ class AttachmentBase(entity.Entity):
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
-        Sets the name property value. The name property
+        Sets the name property value. The display name of the attachment. This does not need to be the actual file name.
         Args:
             value: Value to set for the name property.
         """
@@ -118,7 +118,7 @@ class AttachmentBase(entity.Entity):
     @property
     def size(self,) -> Optional[int]:
         """
-        Gets the size property value. The size property
+        Gets the size property value. The length of the attachment in bytes.
         Returns: Optional[int]
         """
         return self._size
@@ -126,7 +126,7 @@ class AttachmentBase(entity.Entity):
     @size.setter
     def size(self,value: Optional[int] = None) -> None:
         """
-        Sets the size property value. The size property
+        Sets the size property value. The length of the attachment in bytes.
         Args:
             value: Value to set for the size property.
         """

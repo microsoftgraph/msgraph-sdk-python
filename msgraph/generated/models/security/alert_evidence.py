@@ -61,7 +61,7 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
         """
         Sets the createdDateTime property value. The time the evidence was created and added to the alert.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -83,10 +83,10 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "remediation_status": lambda n : setattr(self, 'remediation_status', n.get_enum_value(evidence_remediation_status.EvidenceRemediationStatus)),
-            "remediation_status_details": lambda n : setattr(self, 'remediation_status_details', n.get_str_value()),
+            "remediationStatus": lambda n : setattr(self, 'remediation_status', n.get_enum_value(evidence_remediation_status.EvidenceRemediationStatus)),
+            "remediationStatusDetails": lambda n : setattr(self, 'remediation_status_details', n.get_str_value()),
             "roles": lambda n : setattr(self, 'roles', n.get_collection_of_enum_values(evidence_role.EvidenceRole)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
             "verdict": lambda n : setattr(self, 'verdict', n.get_enum_value(evidence_verdict.EvidenceVerdict)),
@@ -106,7 +106,7 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -123,7 +123,7 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
         """
         Sets the remediationStatus property value. The remediationStatus property
         Args:
-            value: Value to set for the remediationStatus property.
+            value: Value to set for the remediation_status property.
         """
         self._remediation_status = value
     
@@ -140,7 +140,7 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
         """
         Sets the remediationStatusDetails property value. Details about the remediation status.
         Args:
-            value: Value to set for the remediationStatusDetails property.
+            value: Value to set for the remediation_status_details property.
         """
         self._remediation_status_details = value
     

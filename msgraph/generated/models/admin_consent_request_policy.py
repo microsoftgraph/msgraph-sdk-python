@@ -45,10 +45,10 @@ class AdminConsentRequestPolicy(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "notify_reviewers": lambda n : setattr(self, 'notify_reviewers', n.get_bool_value()),
-            "reminders_enabled": lambda n : setattr(self, 'reminders_enabled', n.get_bool_value()),
-            "request_duration_in_days": lambda n : setattr(self, 'request_duration_in_days', n.get_int_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "notifyReviewers": lambda n : setattr(self, 'notify_reviewers', n.get_bool_value()),
+            "remindersEnabled": lambda n : setattr(self, 'reminders_enabled', n.get_bool_value()),
+            "requestDurationInDays": lambda n : setattr(self, 'request_duration_in_days', n.get_int_value()),
             "reviewers": lambda n : setattr(self, 'reviewers', n.get_collection_of_object_values(access_review_reviewer_scope.AccessReviewReviewerScope)),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
         }
@@ -69,7 +69,7 @@ class AdminConsentRequestPolicy(entity.Entity):
         """
         Sets the isEnabled property value. Specifies whether the admin consent request feature is enabled or disabled. Required.
         Args:
-            value: Value to set for the isEnabled property.
+            value: Value to set for the is_enabled property.
         """
         self._is_enabled = value
     
@@ -86,7 +86,7 @@ class AdminConsentRequestPolicy(entity.Entity):
         """
         Sets the notifyReviewers property value. Specifies whether reviewers will receive notifications. Required.
         Args:
-            value: Value to set for the notifyReviewers property.
+            value: Value to set for the notify_reviewers property.
         """
         self._notify_reviewers = value
     
@@ -103,7 +103,7 @@ class AdminConsentRequestPolicy(entity.Entity):
         """
         Sets the remindersEnabled property value. Specifies whether reviewers will receive reminder emails. Required.
         Args:
-            value: Value to set for the remindersEnabled property.
+            value: Value to set for the reminders_enabled property.
         """
         self._reminders_enabled = value
     
@@ -120,7 +120,7 @@ class AdminConsentRequestPolicy(entity.Entity):
         """
         Sets the requestDurationInDays property value. Specifies the duration the request is active before it automatically expires if no decision is applied.
         Args:
-            value: Value to set for the requestDurationInDays property.
+            value: Value to set for the request_duration_in_days property.
         """
         self._request_duration_in_days = value
     

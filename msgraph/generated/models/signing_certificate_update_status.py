@@ -35,7 +35,7 @@ class SigningCertificateUpdateStatus(AdditionalDataHolder, Parsable):
         """
         Sets the certificateUpdateResult property value. Status of the last certificate update. Read-only. For a list of statuses, see certificateUpdateResult status.
         Args:
-            value: Value to set for the certificateUpdateResult property.
+            value: Value to set for the certificate_update_result property.
         """
         self._certificate_update_result = value
     
@@ -71,8 +71,8 @@ class SigningCertificateUpdateStatus(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "certificate_update_result": lambda n : setattr(self, 'certificate_update_result', n.get_str_value()),
-            "last_run_date_time": lambda n : setattr(self, 'last_run_date_time', n.get_datetime_value()),
+            "certificateUpdateResult": lambda n : setattr(self, 'certificate_update_result', n.get_str_value()),
+            "lastRunDateTime": lambda n : setattr(self, 'last_run_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -90,7 +90,7 @@ class SigningCertificateUpdateStatus(AdditionalDataHolder, Parsable):
         """
         Sets the lastRunDateTime property value. Date and time in ISO 8601 format and in UTC time when the certificate was last updated. Read-only.
         Args:
-            value: Value to set for the lastRunDateTime property.
+            value: Value to set for the last_run_date_time property.
         """
         self._last_run_date_time = value
     
@@ -107,7 +107,7 @@ class SigningCertificateUpdateStatus(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

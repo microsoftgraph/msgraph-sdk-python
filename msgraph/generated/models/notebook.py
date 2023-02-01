@@ -51,14 +51,14 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
-            "is_shared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
+            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "isShared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(notebook_links.NotebookLinks)),
-            "section_groups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(section_group.SectionGroup)),
-            "section_groups_url": lambda n : setattr(self, 'section_groups_url', n.get_str_value()),
             "sections": lambda n : setattr(self, 'sections', n.get_collection_of_object_values(onenote_section.OnenoteSection)),
-            "sections_url": lambda n : setattr(self, 'sections_url', n.get_str_value()),
-            "user_role": lambda n : setattr(self, 'user_role', n.get_enum_value(onenote_user_role.OnenoteUserRole)),
+            "sectionsUrl": lambda n : setattr(self, 'sections_url', n.get_str_value()),
+            "sectionGroups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(section_group.SectionGroup)),
+            "sectionGroupsUrl": lambda n : setattr(self, 'section_groups_url', n.get_str_value()),
+            "userRole": lambda n : setattr(self, 'user_role', n.get_enum_value(onenote_user_role.OnenoteUserRole)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -77,7 +77,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         """
         Sets the isDefault property value. Indicates whether this is the user's default notebook. Read-only.
         Args:
-            value: Value to set for the isDefault property.
+            value: Value to set for the is_default property.
         """
         self._is_default = value
     
@@ -94,7 +94,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         """
         Sets the isShared property value. Indicates whether the notebook is shared. If true, the contents of the notebook can be seen by people other than the owner. Read-only.
         Args:
-            value: Value to set for the isShared property.
+            value: Value to set for the is_shared property.
         """
         self._is_shared = value
     
@@ -128,7 +128,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         """
         Sets the sectionGroups property value. The section groups in the notebook. Read-only. Nullable.
         Args:
-            value: Value to set for the sectionGroups property.
+            value: Value to set for the section_groups property.
         """
         self._section_groups = value
     
@@ -145,7 +145,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         """
         Sets the sectionGroupsUrl property value. The URL for the sectionGroups navigation property, which returns all the section groups in the notebook. Read-only.
         Args:
-            value: Value to set for the sectionGroupsUrl property.
+            value: Value to set for the section_groups_url property.
         """
         self._section_groups_url = value
     
@@ -179,7 +179,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         """
         Sets the sectionsUrl property value. The URL for the sections navigation property, which returns all the sections in the notebook. Read-only.
         Args:
-            value: Value to set for the sectionsUrl property.
+            value: Value to set for the sections_url property.
         """
         self._sections_url = value
     
@@ -195,10 +195,10 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         writer.write_bool_value("isDefault", self.is_default)
         writer.write_bool_value("isShared", self.is_shared)
         writer.write_object_value("links", self.links)
-        writer.write_collection_of_object_values("sectionGroups", self.section_groups)
-        writer.write_str_value("sectionGroupsUrl", self.section_groups_url)
         writer.write_collection_of_object_values("sections", self.sections)
         writer.write_str_value("sectionsUrl", self.sections_url)
+        writer.write_collection_of_object_values("sectionGroups", self.section_groups)
+        writer.write_str_value("sectionGroupsUrl", self.section_groups_url)
         writer.write_enum_value("userRole", self.user_role)
     
     @property
@@ -214,7 +214,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         """
         Sets the userRole property value. Possible values are: Owner, Contributor, Reader, None. Owner represents owner-level access to the notebook. Contributor represents read/write access to the notebook. Reader represents read-only access to the notebook. Read-only.
         Args:
-            value: Value to set for the userRole property.
+            value: Value to set for the user_role property.
         """
         self._user_role = value
     

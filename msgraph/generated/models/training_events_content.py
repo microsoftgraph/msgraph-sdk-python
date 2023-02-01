@@ -36,7 +36,7 @@ class TrainingEventsContent(AdditionalDataHolder, Parsable):
         """
         Sets the assignedTrainingsInfos property value. List of assigned trainings and their information in an attack simulation and training campaign.
         Args:
-            value: Value to set for the assignedTrainingsInfos property.
+            value: Value to set for the assigned_trainings_infos property.
         """
         self._assigned_trainings_infos = value
     
@@ -72,9 +72,9 @@ class TrainingEventsContent(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assigned_trainings_infos": lambda n : setattr(self, 'assigned_trainings_infos', n.get_collection_of_object_values(assigned_training_info.AssignedTrainingInfo)),
+            "assignedTrainingsInfos": lambda n : setattr(self, 'assigned_trainings_infos', n.get_collection_of_object_values(assigned_training_info.AssignedTrainingInfo)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "trainings_assigned_user_count": lambda n : setattr(self, 'trainings_assigned_user_count', n.get_int_value()),
+            "trainingsAssignedUserCount": lambda n : setattr(self, 'trainings_assigned_user_count', n.get_int_value()),
         }
         return fields
     
@@ -91,7 +91,7 @@ class TrainingEventsContent(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -121,7 +121,7 @@ class TrainingEventsContent(AdditionalDataHolder, Parsable):
         """
         Sets the trainingsAssignedUserCount property value. Number of users who were assigned trainings in an attack simulation and training campaign.
         Args:
-            value: Value to set for the trainingsAssignedUserCount property.
+            value: Value to set for the trainings_assigned_user_count property.
         """
         self._trainings_assigned_user_count = value
     

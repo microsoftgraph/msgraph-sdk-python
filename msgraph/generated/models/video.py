@@ -34,7 +34,7 @@ class Video(AdditionalDataHolder, Parsable):
         """
         Sets the audioBitsPerSample property value. Number of audio bits per sample.
         Args:
-            value: Value to set for the audioBitsPerSample property.
+            value: Value to set for the audio_bits_per_sample property.
         """
         self._audio_bits_per_sample = value
     
@@ -51,7 +51,7 @@ class Video(AdditionalDataHolder, Parsable):
         """
         Sets the audioChannels property value. Number of audio channels.
         Args:
-            value: Value to set for the audioChannels property.
+            value: Value to set for the audio_channels property.
         """
         self._audio_channels = value
     
@@ -68,7 +68,7 @@ class Video(AdditionalDataHolder, Parsable):
         """
         Sets the audioFormat property value. Name of the audio format (AAC, MP3, etc.).
         Args:
-            value: Value to set for the audioFormat property.
+            value: Value to set for the audio_format property.
         """
         self._audio_format = value
     
@@ -85,7 +85,7 @@ class Video(AdditionalDataHolder, Parsable):
         """
         Sets the audioSamplesPerSecond property value. Number of audio samples per second.
         Args:
-            value: Value to set for the audioSamplesPerSecond property.
+            value: Value to set for the audio_samples_per_second property.
         """
         self._audio_samples_per_second = value
     
@@ -178,7 +178,7 @@ class Video(AdditionalDataHolder, Parsable):
         """
         Sets the fourCC property value. 'Four character code' name of the video format.
         Args:
-            value: Value to set for the fourCC property.
+            value: Value to set for the four_c_c property.
         """
         self._four_c_c = value
     
@@ -195,7 +195,7 @@ class Video(AdditionalDataHolder, Parsable):
         """
         Sets the frameRate property value. Frame rate of the video.
         Args:
-            value: Value to set for the frameRate property.
+            value: Value to set for the frame_rate property.
         """
         self._frame_rate = value
     
@@ -205,14 +205,14 @@ class Video(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "audio_bits_per_sample": lambda n : setattr(self, 'audio_bits_per_sample', n.get_int_value()),
-            "audio_channels": lambda n : setattr(self, 'audio_channels', n.get_int_value()),
-            "audio_format": lambda n : setattr(self, 'audio_format', n.get_str_value()),
-            "audio_samples_per_second": lambda n : setattr(self, 'audio_samples_per_second', n.get_int_value()),
+            "audioBitsPerSample": lambda n : setattr(self, 'audio_bits_per_sample', n.get_int_value()),
+            "audioChannels": lambda n : setattr(self, 'audio_channels', n.get_int_value()),
+            "audioFormat": lambda n : setattr(self, 'audio_format', n.get_str_value()),
+            "audioSamplesPerSecond": lambda n : setattr(self, 'audio_samples_per_second', n.get_int_value()),
             "bitrate": lambda n : setattr(self, 'bitrate', n.get_int_value()),
             "duration": lambda n : setattr(self, 'duration', n.get_int_value()),
-            "four_c_c": lambda n : setattr(self, 'four_c_c', n.get_str_value()),
-            "frame_rate": lambda n : setattr(self, 'frame_rate', n.get_float_value()),
+            "fourCC": lambda n : setattr(self, 'four_c_c', n.get_str_value()),
+            "frameRate": lambda n : setattr(self, 'frame_rate', n.get_float_value()),
             "height": lambda n : setattr(self, 'height', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "width": lambda n : setattr(self, 'width', n.get_int_value()),
@@ -249,7 +249,7 @@ class Video(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

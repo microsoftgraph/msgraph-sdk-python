@@ -28,7 +28,7 @@ class ProvisioningObjectSummary(entity.Entity):
         """
         Sets the activityDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the activityDateTime property.
+            value: Value to set for the activity_date_time property.
         """
         self._activity_date_time = value
     
@@ -45,7 +45,7 @@ class ProvisioningObjectSummary(entity.Entity):
         """
         Sets the changeId property value. Unique ID of this change in this cycle.
         Args:
-            value: Value to set for the changeId property.
+            value: Value to set for the change_id property.
         """
         self._change_id = value
     
@@ -114,7 +114,7 @@ class ProvisioningObjectSummary(entity.Entity):
         """
         Sets the cycleId property value. Unique ID per job iteration.
         Args:
-            value: Value to set for the cycleId property.
+            value: Value to set for the cycle_id property.
         """
         self._cycle_id = value
     
@@ -131,7 +131,7 @@ class ProvisioningObjectSummary(entity.Entity):
         """
         Sets the durationInMilliseconds property value. Indicates how long this provisioning action took to finish. Measured in milliseconds.
         Args:
-            value: Value to set for the durationInMilliseconds property.
+            value: Value to set for the duration_in_milliseconds property.
         """
         self._duration_in_milliseconds = value
     
@@ -141,22 +141,22 @@ class ProvisioningObjectSummary(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "activity_date_time": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
-            "change_id": lambda n : setattr(self, 'change_id', n.get_str_value()),
-            "cycle_id": lambda n : setattr(self, 'cycle_id', n.get_str_value()),
-            "duration_in_milliseconds": lambda n : setattr(self, 'duration_in_milliseconds', n.get_int_value()),
-            "initiated_by": lambda n : setattr(self, 'initiated_by', n.get_object_value(initiator.Initiator)),
-            "job_id": lambda n : setattr(self, 'job_id', n.get_str_value()),
-            "modified_properties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(modified_property.ModifiedProperty)),
-            "provisioning_action": lambda n : setattr(self, 'provisioning_action', n.get_enum_value(provisioning_action.ProvisioningAction)),
-            "provisioning_status_info": lambda n : setattr(self, 'provisioning_status_info', n.get_object_value(provisioning_status_info.ProvisioningStatusInfo)),
-            "provisioning_steps": lambda n : setattr(self, 'provisioning_steps', n.get_collection_of_object_values(provisioning_step.ProvisioningStep)),
-            "service_principal": lambda n : setattr(self, 'service_principal', n.get_object_value(provisioning_service_principal.ProvisioningServicePrincipal)),
-            "source_identity": lambda n : setattr(self, 'source_identity', n.get_object_value(provisioned_identity.ProvisionedIdentity)),
-            "source_system": lambda n : setattr(self, 'source_system', n.get_object_value(provisioning_system.ProvisioningSystem)),
-            "target_identity": lambda n : setattr(self, 'target_identity', n.get_object_value(provisioned_identity.ProvisionedIdentity)),
-            "target_system": lambda n : setattr(self, 'target_system', n.get_object_value(provisioning_system.ProvisioningSystem)),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
+            "changeId": lambda n : setattr(self, 'change_id', n.get_str_value()),
+            "cycleId": lambda n : setattr(self, 'cycle_id', n.get_str_value()),
+            "durationInMilliseconds": lambda n : setattr(self, 'duration_in_milliseconds', n.get_int_value()),
+            "initiatedBy": lambda n : setattr(self, 'initiated_by', n.get_object_value(initiator.Initiator)),
+            "jobId": lambda n : setattr(self, 'job_id', n.get_str_value()),
+            "modifiedProperties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(modified_property.ModifiedProperty)),
+            "provisioningAction": lambda n : setattr(self, 'provisioning_action', n.get_enum_value(provisioning_action.ProvisioningAction)),
+            "provisioningStatusInfo": lambda n : setattr(self, 'provisioning_status_info', n.get_object_value(provisioning_status_info.ProvisioningStatusInfo)),
+            "provisioningSteps": lambda n : setattr(self, 'provisioning_steps', n.get_collection_of_object_values(provisioning_step.ProvisioningStep)),
+            "servicePrincipal": lambda n : setattr(self, 'service_principal', n.get_object_value(provisioning_service_principal.ProvisioningServicePrincipal)),
+            "sourceIdentity": lambda n : setattr(self, 'source_identity', n.get_object_value(provisioned_identity.ProvisionedIdentity)),
+            "sourceSystem": lambda n : setattr(self, 'source_system', n.get_object_value(provisioning_system.ProvisioningSystem)),
+            "targetIdentity": lambda n : setattr(self, 'target_identity', n.get_object_value(provisioned_identity.ProvisionedIdentity)),
+            "targetSystem": lambda n : setattr(self, 'target_system', n.get_object_value(provisioning_system.ProvisioningSystem)),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -175,7 +175,7 @@ class ProvisioningObjectSummary(entity.Entity):
         """
         Sets the initiatedBy property value. Details of who initiated this provisioning.
         Args:
-            value: Value to set for the initiatedBy property.
+            value: Value to set for the initiated_by property.
         """
         self._initiated_by = value
     
@@ -192,7 +192,7 @@ class ProvisioningObjectSummary(entity.Entity):
         """
         Sets the jobId property value. The unique ID for the whole provisioning job.
         Args:
-            value: Value to set for the jobId property.
+            value: Value to set for the job_id property.
         """
         self._job_id = value
     
@@ -209,7 +209,7 @@ class ProvisioningObjectSummary(entity.Entity):
         """
         Sets the modifiedProperties property value. Details of each property that was modified in this provisioning action on this object.
         Args:
-            value: Value to set for the modifiedProperties property.
+            value: Value to set for the modified_properties property.
         """
         self._modified_properties = value
     
@@ -226,7 +226,7 @@ class ProvisioningObjectSummary(entity.Entity):
         """
         Sets the provisioningAction property value. Indicates the activity name or the operation name. Possible values are: create, update, delete, stageddelete, disable, other and unknownFutureValue. For a list of activities logged, refer to Azure AD activity list.
         Args:
-            value: Value to set for the provisioningAction property.
+            value: Value to set for the provisioning_action property.
         """
         self._provisioning_action = value
     
@@ -243,7 +243,7 @@ class ProvisioningObjectSummary(entity.Entity):
         """
         Sets the provisioningStatusInfo property value. Details of provisioning status.
         Args:
-            value: Value to set for the provisioningStatusInfo property.
+            value: Value to set for the provisioning_status_info property.
         """
         self._provisioning_status_info = value
     
@@ -260,7 +260,7 @@ class ProvisioningObjectSummary(entity.Entity):
         """
         Sets the provisioningSteps property value. Details of each step in provisioning.
         Args:
-            value: Value to set for the provisioningSteps property.
+            value: Value to set for the provisioning_steps property.
         """
         self._provisioning_steps = value
     
@@ -303,7 +303,7 @@ class ProvisioningObjectSummary(entity.Entity):
         """
         Sets the servicePrincipal property value. Represents the service principal used for provisioning.
         Args:
-            value: Value to set for the servicePrincipal property.
+            value: Value to set for the service_principal property.
         """
         self._service_principal = value
     
@@ -320,7 +320,7 @@ class ProvisioningObjectSummary(entity.Entity):
         """
         Sets the sourceIdentity property value. Details of source object being provisioned.
         Args:
-            value: Value to set for the sourceIdentity property.
+            value: Value to set for the source_identity property.
         """
         self._source_identity = value
     
@@ -337,7 +337,7 @@ class ProvisioningObjectSummary(entity.Entity):
         """
         Sets the sourceSystem property value. Details of source system of the object being provisioned.
         Args:
-            value: Value to set for the sourceSystem property.
+            value: Value to set for the source_system property.
         """
         self._source_system = value
     
@@ -354,7 +354,7 @@ class ProvisioningObjectSummary(entity.Entity):
         """
         Sets the targetIdentity property value. Details of target object being provisioned.
         Args:
-            value: Value to set for the targetIdentity property.
+            value: Value to set for the target_identity property.
         """
         self._target_identity = value
     
@@ -371,7 +371,7 @@ class ProvisioningObjectSummary(entity.Entity):
         """
         Sets the targetSystem property value. Details of target system of the object being provisioned.
         Args:
-            value: Value to set for the targetSystem property.
+            value: Value to set for the target_system property.
         """
         self._target_system = value
     
@@ -388,7 +388,7 @@ class ProvisioningObjectSummary(entity.Entity):
         """
         Sets the tenantId property value. Unique Azure AD tenant ID.
         Args:
-            value: Value to set for the tenantId property.
+            value: Value to set for the tenant_id property.
         """
         self._tenant_id = value
     

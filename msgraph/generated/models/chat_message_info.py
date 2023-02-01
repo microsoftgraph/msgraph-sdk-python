@@ -61,7 +61,7 @@ class ChatMessageInfo(entity.Entity):
         """
         Sets the createdDateTime property value. Date time object representing the time at which message was created.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -90,7 +90,7 @@ class ChatMessageInfo(entity.Entity):
         """
         Sets the eventDetail property value. Read-only.  If present, represents details of an event that happened in a chat, a channel, or a team, for example, members were added, and so on. For event messages, the messageType property will be set to systemEventMessage.
         Args:
-            value: Value to set for the eventDetail property.
+            value: Value to set for the event_detail property.
         """
         self._event_detail = value
     
@@ -118,11 +118,11 @@ class ChatMessageInfo(entity.Entity):
         """
         fields = {
             "body": lambda n : setattr(self, 'body', n.get_object_value(item_body.ItemBody)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "event_detail": lambda n : setattr(self, 'event_detail', n.get_object_value(event_message_detail.EventMessageDetail)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "eventDetail": lambda n : setattr(self, 'event_detail', n.get_object_value(event_message_detail.EventMessageDetail)),
             "from": lambda n : setattr(self, 'from_', n.get_object_value(chat_message_from_identity_set.ChatMessageFromIdentitySet)),
-            "is_deleted": lambda n : setattr(self, 'is_deleted', n.get_bool_value()),
-            "message_type": lambda n : setattr(self, 'message_type', n.get_enum_value(chat_message_type.ChatMessageType)),
+            "isDeleted": lambda n : setattr(self, 'is_deleted', n.get_bool_value()),
+            "messageType": lambda n : setattr(self, 'message_type', n.get_enum_value(chat_message_type.ChatMessageType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -141,7 +141,7 @@ class ChatMessageInfo(entity.Entity):
         """
         Sets the isDeleted property value. If set to true, the original message has been deleted.
         Args:
-            value: Value to set for the isDeleted property.
+            value: Value to set for the is_deleted property.
         """
         self._is_deleted = value
     
@@ -158,7 +158,7 @@ class ChatMessageInfo(entity.Entity):
         """
         Sets the messageType property value. The messageType property
         Args:
-            value: Value to set for the messageType property.
+            value: Value to set for the message_type property.
         """
         self._message_type = value
     

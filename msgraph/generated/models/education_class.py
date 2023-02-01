@@ -30,7 +30,7 @@ class EducationClass(entity.Entity):
         """
         Sets the assignmentCategories property value. All categories associated with this class. Nullable.
         Args:
-            value: Value to set for the assignmentCategories property.
+            value: Value to set for the assignment_categories property.
         """
         self._assignment_categories = value
     
@@ -47,9 +47,26 @@ class EducationClass(entity.Entity):
         """
         Sets the assignmentDefaults property value. Specifies class-level defaults respected by new assignments created in the class.
         Args:
-            value: Value to set for the assignmentDefaults property.
+            value: Value to set for the assignment_defaults property.
         """
         self._assignment_defaults = value
+    
+    @property
+    def assignment_settings(self,) -> Optional[education_assignment_settings.EducationAssignmentSettings]:
+        """
+        Gets the assignmentSettings property value. Specifies class-level assignments settings.
+        Returns: Optional[education_assignment_settings.EducationAssignmentSettings]
+        """
+        return self._assignment_settings
+    
+    @assignment_settings.setter
+    def assignment_settings(self,value: Optional[education_assignment_settings.EducationAssignmentSettings] = None) -> None:
+        """
+        Sets the assignmentSettings property value. Specifies class-level assignments settings.
+        Args:
+            value: Value to set for the assignment_settings property.
+        """
+        self._assignment_settings = value
     
     @property
     def assignments(self,) -> Optional[List[education_assignment.EducationAssignment]]:
@@ -69,23 +86,6 @@ class EducationClass(entity.Entity):
         self._assignments = value
     
     @property
-    def assignment_settings(self,) -> Optional[education_assignment_settings.EducationAssignmentSettings]:
-        """
-        Gets the assignmentSettings property value. Specifies class-level assignments settings.
-        Returns: Optional[education_assignment_settings.EducationAssignmentSettings]
-        """
-        return self._assignment_settings
-    
-    @assignment_settings.setter
-    def assignment_settings(self,value: Optional[education_assignment_settings.EducationAssignmentSettings] = None) -> None:
-        """
-        Sets the assignmentSettings property value. Specifies class-level assignments settings.
-        Args:
-            value: Value to set for the assignmentSettings property.
-        """
-        self._assignment_settings = value
-    
-    @property
     def class_code(self,) -> Optional[str]:
         """
         Gets the classCode property value. Class code used by the school to identify the class.
@@ -98,23 +98,23 @@ class EducationClass(entity.Entity):
         """
         Sets the classCode property value. Class code used by the school to identify the class.
         Args:
-            value: Value to set for the classCode property.
+            value: Value to set for the class_code property.
         """
         self._class_code = value
     
     def __init__(self,) -> None:
         """
-        Instantiates a new EducationClass and sets the default values.
+        Instantiates a new educationClass and sets the default values.
         """
         super().__init__()
         # All categories associated with this class. Nullable.
         self._assignment_categories: Optional[List[education_category.EducationCategory]] = None
         # Specifies class-level defaults respected by new assignments created in the class.
         self._assignment_defaults: Optional[education_assignment_defaults.EducationAssignmentDefaults] = None
-        # All assignments associated with this class. Nullable.
-        self._assignments: Optional[List[education_assignment.EducationAssignment]] = None
         # Specifies class-level assignments settings.
         self._assignment_settings: Optional[education_assignment_settings.EducationAssignmentSettings] = None
+        # All assignments associated with this class. Nullable.
+        self._assignments: Optional[List[education_assignment.EducationAssignment]] = None
         # Class code used by the school to identify the class.
         self._class_code: Optional[str] = None
         # The course property
@@ -180,7 +180,7 @@ class EducationClass(entity.Entity):
         """
         Sets the createdBy property value. Entity who created the class
         Args:
-            value: Value to set for the createdBy property.
+            value: Value to set for the created_by property.
         """
         self._created_by = value
     
@@ -226,7 +226,7 @@ class EducationClass(entity.Entity):
         """
         Sets the displayName property value. Name of the class.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -243,7 +243,7 @@ class EducationClass(entity.Entity):
         """
         Sets the externalId property value. ID of the class from the syncing system.
         Args:
-            value: Value to set for the externalId property.
+            value: Value to set for the external_id property.
         """
         self._external_id = value
     
@@ -260,7 +260,7 @@ class EducationClass(entity.Entity):
         """
         Sets the externalName property value. Name of the class in the syncing system.
         Args:
-            value: Value to set for the externalName property.
+            value: Value to set for the external_name property.
         """
         self._external_name = value
     
@@ -277,7 +277,7 @@ class EducationClass(entity.Entity):
         """
         Sets the externalSource property value. How this class was created. Possible values are: sis, manual.
         Args:
-            value: Value to set for the externalSource property.
+            value: Value to set for the external_source property.
         """
         self._external_source = value
     
@@ -294,7 +294,7 @@ class EducationClass(entity.Entity):
         """
         Sets the externalSourceDetail property value. The name of the external source this resources was generated from.
         Args:
-            value: Value to set for the externalSourceDetail property.
+            value: Value to set for the external_source_detail property.
         """
         self._external_source_detail = value
     
@@ -304,22 +304,22 @@ class EducationClass(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assignment_categories": lambda n : setattr(self, 'assignment_categories', n.get_collection_of_object_values(education_category.EducationCategory)),
-            "assignment_defaults": lambda n : setattr(self, 'assignment_defaults', n.get_object_value(education_assignment_defaults.EducationAssignmentDefaults)),
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(education_assignment.EducationAssignment)),
-            "assignment_settings": lambda n : setattr(self, 'assignment_settings', n.get_object_value(education_assignment_settings.EducationAssignmentSettings)),
-            "class_code": lambda n : setattr(self, 'class_code', n.get_str_value()),
+            "assignmentCategories": lambda n : setattr(self, 'assignment_categories', n.get_collection_of_object_values(education_category.EducationCategory)),
+            "assignmentDefaults": lambda n : setattr(self, 'assignment_defaults', n.get_object_value(education_assignment_defaults.EducationAssignmentDefaults)),
+            "assignmentSettings": lambda n : setattr(self, 'assignment_settings', n.get_object_value(education_assignment_settings.EducationAssignmentSettings)),
+            "classCode": lambda n : setattr(self, 'class_code', n.get_str_value()),
             "course": lambda n : setattr(self, 'course', n.get_object_value(education_course.EducationCourse)),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
-            "external_name": lambda n : setattr(self, 'external_name', n.get_str_value()),
-            "external_source": lambda n : setattr(self, 'external_source', n.get_enum_value(education_external_source.EducationExternalSource)),
-            "external_source_detail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "externalName": lambda n : setattr(self, 'external_name', n.get_str_value()),
+            "externalSource": lambda n : setattr(self, 'external_source', n.get_enum_value(education_external_source.EducationExternalSource)),
+            "externalSourceDetail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
             "grade": lambda n : setattr(self, 'grade', n.get_str_value()),
             "group": lambda n : setattr(self, 'group', n.get_object_value(group.Group)),
-            "mail_nickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
+            "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(education_user.EducationUser)),
             "schools": lambda n : setattr(self, 'schools', n.get_collection_of_object_values(education_school.EducationSchool)),
             "teachers": lambda n : setattr(self, 'teachers', n.get_collection_of_object_values(education_user.EducationUser)),
@@ -376,7 +376,7 @@ class EducationClass(entity.Entity):
         """
         Sets the mailNickname property value. Mail name for sending email to all members, if this is enabled.
         Args:
-            value: Value to set for the mailNickname property.
+            value: Value to set for the mail_nickname property.
         """
         self._mail_nickname = value
     
@@ -423,9 +423,9 @@ class EducationClass(entity.Entity):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
+        writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_collection_of_object_values("assignmentCategories", self.assignment_categories)
         writer.write_object_value("assignmentDefaults", self.assignment_defaults)
-        writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_object_value("assignmentSettings", self.assignment_settings)
         writer.write_str_value("classCode", self.class_code)
         writer.write_object_value("course", self.course)

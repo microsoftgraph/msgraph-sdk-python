@@ -36,8 +36,8 @@ class RegistryKeyEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "registry_hive": lambda n : setattr(self, 'registry_hive', n.get_str_value()),
-            "registry_key": lambda n : setattr(self, 'registry_key', n.get_str_value()),
+            "registryHive": lambda n : setattr(self, 'registry_hive', n.get_str_value()),
+            "registryKey": lambda n : setattr(self, 'registry_key', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -56,7 +56,7 @@ class RegistryKeyEvidence(alert_evidence.AlertEvidence):
         """
         Sets the registryHive property value. Registry hive of the key that the recorded action was applied to.
         Args:
-            value: Value to set for the registryHive property.
+            value: Value to set for the registry_hive property.
         """
         self._registry_hive = value
     
@@ -73,7 +73,7 @@ class RegistryKeyEvidence(alert_evidence.AlertEvidence):
         """
         Sets the registryKey property value. Registry key that the recorded action was applied to.
         Args:
-            value: Value to set for the registryKey property.
+            value: Value to set for the registry_key property.
         """
         self._registry_key = value
     

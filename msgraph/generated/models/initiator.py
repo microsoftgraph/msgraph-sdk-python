@@ -34,7 +34,7 @@ class Initiator(identity.Identity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "initiator_type": lambda n : setattr(self, 'initiator_type', n.get_enum_value(initiator_type.InitiatorType)),
+            "initiatorType": lambda n : setattr(self, 'initiator_type', n.get_enum_value(initiator_type.InitiatorType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -53,7 +53,7 @@ class Initiator(identity.Identity):
         """
         Sets the initiatorType property value. Type of initiator. Possible values are: user, application, system, unknownFutureValue.
         Args:
-            value: Value to set for the initiatorType property.
+            value: Value to set for the initiator_type property.
         """
         self._initiator_type = value
     

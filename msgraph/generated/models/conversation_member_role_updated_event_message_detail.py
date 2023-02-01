@@ -34,7 +34,7 @@ class ConversationMemberRoleUpdatedEventMessageDetail(event_message_detail.Event
         """
         Sets the conversationMemberRoles property value. Roles for the coversation member user.
         Args:
-            value: Value to set for the conversationMemberRoles property.
+            value: Value to set for the conversation_member_roles property.
         """
         self._conversation_member_roles = value
     
@@ -51,7 +51,7 @@ class ConversationMemberRoleUpdatedEventMessageDetail(event_message_detail.Event
         """
         Sets the conversationMemberUser property value. Identity of the conversation member user.
         Args:
-            value: Value to set for the conversationMemberUser property.
+            value: Value to set for the conversation_member_user property.
         """
         self._conversation_member_user = value
     
@@ -73,8 +73,8 @@ class ConversationMemberRoleUpdatedEventMessageDetail(event_message_detail.Event
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "conversation_member_roles": lambda n : setattr(self, 'conversation_member_roles', n.get_collection_of_primitive_values(str)),
-            "conversation_member_user": lambda n : setattr(self, 'conversation_member_user', n.get_object_value(teamwork_user_identity.TeamworkUserIdentity)),
+            "conversationMemberRoles": lambda n : setattr(self, 'conversation_member_roles', n.get_collection_of_primitive_values(str)),
+            "conversationMemberUser": lambda n : setattr(self, 'conversation_member_user', n.get_object_value(teamwork_user_identity.TeamworkUserIdentity)),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
         }
         super_fields = super().get_field_deserializers()

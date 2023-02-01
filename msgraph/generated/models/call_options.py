@@ -53,8 +53,8 @@ class CallOptions(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "hide_bot_after_escalation": lambda n : setattr(self, 'hide_bot_after_escalation', n.get_bool_value()),
-            "is_content_sharing_notification_enabled": lambda n : setattr(self, 'is_content_sharing_notification_enabled', n.get_bool_value()),
+            "hideBotAfterEscalation": lambda n : setattr(self, 'hide_bot_after_escalation', n.get_bool_value()),
+            "isContentSharingNotificationEnabled": lambda n : setattr(self, 'is_content_sharing_notification_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -72,7 +72,7 @@ class CallOptions(AdditionalDataHolder, Parsable):
         """
         Sets the hideBotAfterEscalation property value. Indicates whether to hide the app after the call is escalated.
         Args:
-            value: Value to set for the hideBotAfterEscalation property.
+            value: Value to set for the hide_bot_after_escalation property.
         """
         self._hide_bot_after_escalation = value
     
@@ -89,7 +89,7 @@ class CallOptions(AdditionalDataHolder, Parsable):
         """
         Sets the isContentSharingNotificationEnabled property value. Indicates whether content sharing notifications should be enabled for the call.
         Args:
-            value: Value to set for the isContentSharingNotificationEnabled property.
+            value: Value to set for the is_content_sharing_notification_enabled property.
         """
         self._is_content_sharing_notification_enabled = value
     
@@ -106,7 +106,7 @@ class CallOptions(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

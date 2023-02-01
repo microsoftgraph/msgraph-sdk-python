@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
+reply_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.microsoft_graph_reply.reply_request_builder')
 posts_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.posts_request_builder')
 post_item_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.post_item_request_builder')
-reply_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.reply.reply_request_builder')
 conversation_thread = lazy_import('msgraph.generated.models.conversation_thread')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -21,23 +21,24 @@ class ConversationThreadItemRequestBuilder():
     Provides operations to manage the threads property of the microsoft.graph.conversation entity.
     """
     @property
+    def microsoft_graph_reply(self) -> reply_request_builder.ReplyRequestBuilder:
+        """
+        Provides operations to call the reply method.
+        """
+        return reply_request_builder.ReplyRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def posts(self) -> posts_request_builder.PostsRequestBuilder:
         """
         Provides operations to manage the posts property of the microsoft.graph.conversationThread entity.
         """
         return posts_request_builder.PostsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    @property
-    def reply(self) -> reply_request_builder.ReplyRequestBuilder:
-        """
-        Provides operations to call the reply method.
-        """
-        return reply_request_builder.ReplyRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, conversation_thread_id: Optional[str] = None) -> None:
         """
         Instantiates a new ConversationThreadItemRequestBuilder and sets the default values.
         Args:
+            conversationThreadId: key: id of conversationThread
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -49,6 +50,7 @@ class ConversationThreadItemRequestBuilder():
         self.url_template: str = "{+baseurl}/groups/{group%2Did}/conversations/{conversation%2Did}/threads/{conversationThread%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["conversationThread%2Did"] = conversationThreadId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

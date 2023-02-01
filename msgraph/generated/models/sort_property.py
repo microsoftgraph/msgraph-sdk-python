@@ -53,7 +53,7 @@ class SortProperty(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_descending": lambda n : setattr(self, 'is_descending', n.get_bool_value()),
+            "isDescending": lambda n : setattr(self, 'is_descending', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
@@ -72,7 +72,7 @@ class SortProperty(AdditionalDataHolder, Parsable):
         """
         Sets the isDescending property value. True if the sort order is descending. Default is false, with the sort order as ascending. Optional.
         Args:
-            value: Value to set for the isDescending property.
+            value: Value to set for the is_descending property.
         """
         self._is_descending = value
     
@@ -106,7 +106,7 @@ class SortProperty(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

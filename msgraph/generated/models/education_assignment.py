@@ -19,23 +19,6 @@ identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class EducationAssignment(entity.Entity):
     @property
-    def added_student_action(self,) -> Optional[education_added_student_action.EducationAddedStudentAction]:
-        """
-        Gets the addedStudentAction property value. Optional field to control the assignment behavior for students who are added after the assignment is published. If not specified, defaults to none. Supported values are: none, assignIfOpen. For example, a teacher can use assignIfOpen to indicate that an assignment should be assigned to any new student who joins the class while the assignment is still open, and none to indicate that an assignment should not be assigned to new students.
-        Returns: Optional[education_added_student_action.EducationAddedStudentAction]
-        """
-        return self._added_student_action
-    
-    @added_student_action.setter
-    def added_student_action(self,value: Optional[education_added_student_action.EducationAddedStudentAction] = None) -> None:
-        """
-        Sets the addedStudentAction property value. Optional field to control the assignment behavior for students who are added after the assignment is published. If not specified, defaults to none. Supported values are: none, assignIfOpen. For example, a teacher can use assignIfOpen to indicate that an assignment should be assigned to any new student who joins the class while the assignment is still open, and none to indicate that an assignment should not be assigned to new students.
-        Args:
-            value: Value to set for the addedStudentAction property.
-        """
-        self._added_student_action = value
-    
-    @property
     def add_to_calendar_action(self,) -> Optional[education_add_to_calendar_options.EducationAddToCalendarOptions]:
         """
         Gets the addToCalendarAction property value. Optional field to control the assignment behavior  for adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
@@ -48,9 +31,26 @@ class EducationAssignment(entity.Entity):
         """
         Sets the addToCalendarAction property value. Optional field to control the assignment behavior  for adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
         Args:
-            value: Value to set for the addToCalendarAction property.
+            value: Value to set for the add_to_calendar_action property.
         """
         self._add_to_calendar_action = value
+    
+    @property
+    def added_student_action(self,) -> Optional[education_added_student_action.EducationAddedStudentAction]:
+        """
+        Gets the addedStudentAction property value. Optional field to control the assignment behavior for students who are added after the assignment is published. If not specified, defaults to none. Supported values are: none, assignIfOpen. For example, a teacher can use assignIfOpen to indicate that an assignment should be assigned to any new student who joins the class while the assignment is still open, and none to indicate that an assignment should not be assigned to new students.
+        Returns: Optional[education_added_student_action.EducationAddedStudentAction]
+        """
+        return self._added_student_action
+    
+    @added_student_action.setter
+    def added_student_action(self,value: Optional[education_added_student_action.EducationAddedStudentAction] = None) -> None:
+        """
+        Sets the addedStudentAction property value. Optional field to control the assignment behavior for students who are added after the assignment is published. If not specified, defaults to none. Supported values are: none, assignIfOpen. For example, a teacher can use assignIfOpen to indicate that an assignment should be assigned to any new student who joins the class while the assignment is still open, and none to indicate that an assignment should not be assigned to new students.
+        Args:
+            value: Value to set for the added_student_action property.
+        """
+        self._added_student_action = value
     
     @property
     def allow_late_submissions(self,) -> Optional[bool]:
@@ -65,7 +65,7 @@ class EducationAssignment(entity.Entity):
         """
         Sets the allowLateSubmissions property value. Identifies whether students can submit after the due date. If this property isn't specified during create, it defaults to true.
         Args:
-            value: Value to set for the allowLateSubmissions property.
+            value: Value to set for the allow_late_submissions property.
         """
         self._allow_late_submissions = value
     
@@ -82,7 +82,7 @@ class EducationAssignment(entity.Entity):
         """
         Sets the allowStudentsToAddResourcesToSubmission property value. Identifies whether students can add their own resources to a submission or if they can only modify resources added by the teacher.
         Args:
-            value: Value to set for the allowStudentsToAddResourcesToSubmission property.
+            value: Value to set for the allow_students_to_add_resources_to_submission property.
         """
         self._allow_students_to_add_resources_to_submission = value
     
@@ -99,26 +99,9 @@ class EducationAssignment(entity.Entity):
         """
         Sets the assignDateTime property value. The date when the assignment should become active.  If in the future, the assignment isn't shown to the student until this date.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the assignDateTime property.
+            value: Value to set for the assign_date_time property.
         """
         self._assign_date_time = value
-    
-    @property
-    def assigned_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the assignedDateTime property value. The moment that the assignment was published to students and the assignment shows up on the students timeline.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        Returns: Optional[datetime]
-        """
-        return self._assigned_date_time
-    
-    @assigned_date_time.setter
-    def assigned_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the assignedDateTime property value. The moment that the assignment was published to students and the assignment shows up on the students timeline.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        Args:
-            value: Value to set for the assignedDateTime property.
-        """
-        self._assigned_date_time = value
     
     @property
     def assign_to(self,) -> Optional[education_assignment_recipient.EducationAssignmentRecipient]:
@@ -133,9 +116,26 @@ class EducationAssignment(entity.Entity):
         """
         Sets the assignTo property value. Which users, or whole class should receive a submission object once the assignment is published.
         Args:
-            value: Value to set for the assignTo property.
+            value: Value to set for the assign_to property.
         """
         self._assign_to = value
+    
+    @property
+    def assigned_date_time(self,) -> Optional[datetime]:
+        """
+        Gets the assignedDateTime property value. The moment that the assignment was published to students and the assignment shows up on the students timeline.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        Returns: Optional[datetime]
+        """
+        return self._assigned_date_time
+    
+    @assigned_date_time.setter
+    def assigned_date_time(self,value: Optional[datetime] = None) -> None:
+        """
+        Sets the assignedDateTime property value. The moment that the assignment was published to students and the assignment shows up on the students timeline.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        Args:
+            value: Value to set for the assigned_date_time property.
+        """
+        self._assigned_date_time = value
     
     @property
     def categories(self,) -> Optional[List[education_category.EducationCategory]]:
@@ -167,7 +167,7 @@ class EducationAssignment(entity.Entity):
         """
         Sets the classId property value. Class which this assignment belongs.
         Args:
-            value: Value to set for the classId property.
+            value: Value to set for the class_id property.
         """
         self._class_id = value
     
@@ -184,29 +184,29 @@ class EducationAssignment(entity.Entity):
         """
         Sets the closeDateTime property value. Date when the assignment will be closed for submissions. This is an optional field that can be null if the assignment does not allowLateSubmissions or when the closeDateTime is the same as the dueDateTime. But if specified, then the closeDateTime must be greater than or equal to the dueDateTime. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the closeDateTime property.
+            value: Value to set for the close_date_time property.
         """
         self._close_date_time = value
     
     def __init__(self,) -> None:
         """
-        Instantiates a new EducationAssignment and sets the default values.
+        Instantiates a new educationAssignment and sets the default values.
         """
         super().__init__()
-        # Optional field to control the assignment behavior for students who are added after the assignment is published. If not specified, defaults to none. Supported values are: none, assignIfOpen. For example, a teacher can use assignIfOpen to indicate that an assignment should be assigned to any new student who joins the class while the assignment is still open, and none to indicate that an assignment should not be assigned to new students.
-        self._added_student_action: Optional[education_added_student_action.EducationAddedStudentAction] = None
         # Optional field to control the assignment behavior  for adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
         self._add_to_calendar_action: Optional[education_add_to_calendar_options.EducationAddToCalendarOptions] = None
+        # Optional field to control the assignment behavior for students who are added after the assignment is published. If not specified, defaults to none. Supported values are: none, assignIfOpen. For example, a teacher can use assignIfOpen to indicate that an assignment should be assigned to any new student who joins the class while the assignment is still open, and none to indicate that an assignment should not be assigned to new students.
+        self._added_student_action: Optional[education_added_student_action.EducationAddedStudentAction] = None
         # Identifies whether students can submit after the due date. If this property isn't specified during create, it defaults to true.
         self._allow_late_submissions: Optional[bool] = None
         # Identifies whether students can add their own resources to a submission or if they can only modify resources added by the teacher.
         self._allow_students_to_add_resources_to_submission: Optional[bool] = None
         # The date when the assignment should become active.  If in the future, the assignment isn't shown to the student until this date.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         self._assign_date_time: Optional[datetime] = None
-        # The moment that the assignment was published to students and the assignment shows up on the students timeline.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._assigned_date_time: Optional[datetime] = None
         # Which users, or whole class should receive a submission object once the assignment is published.
         self._assign_to: Optional[education_assignment_recipient.EducationAssignmentRecipient] = None
+        # The moment that the assignment was published to students and the assignment shows up on the students timeline.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._assigned_date_time: Optional[datetime] = None
         # When set, enables users to easily find assignments of a given type.  Read-only. Nullable.
         self._categories: Optional[List[education_category.EducationCategory]] = None
         # Class which this assignment belongs.
@@ -261,7 +261,7 @@ class EducationAssignment(entity.Entity):
         """
         Sets the createdBy property value. Who created the assignment.
         Args:
-            value: Value to set for the createdBy property.
+            value: Value to set for the created_by property.
         """
         self._created_by = value
     
@@ -278,7 +278,7 @@ class EducationAssignment(entity.Entity):
         """
         Sets the createdDateTime property value. Moment when the assignment was created.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -307,7 +307,7 @@ class EducationAssignment(entity.Entity):
         """
         Sets the displayName property value. Name of the assignment.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -324,7 +324,7 @@ class EducationAssignment(entity.Entity):
         """
         Sets the dueDateTime property value. Date when the students assignment is due.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the dueDateTime property.
+            value: Value to set for the due_date_time property.
         """
         self._due_date_time = value
     
@@ -341,7 +341,7 @@ class EducationAssignment(entity.Entity):
         """
         Sets the feedbackResourcesFolderUrl property value. Folder URL where all the feedback file resources for this assignment are stored.
         Args:
-            value: Value to set for the feedbackResourcesFolderUrl property.
+            value: Value to set for the feedback_resources_folder_url property.
         """
         self._feedback_resources_folder_url = value
     
@@ -351,32 +351,32 @@ class EducationAssignment(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "added_student_action": lambda n : setattr(self, 'added_student_action', n.get_enum_value(education_added_student_action.EducationAddedStudentAction)),
-            "add_to_calendar_action": lambda n : setattr(self, 'add_to_calendar_action', n.get_enum_value(education_add_to_calendar_options.EducationAddToCalendarOptions)),
-            "allow_late_submissions": lambda n : setattr(self, 'allow_late_submissions', n.get_bool_value()),
-            "allow_students_to_add_resources_to_submission": lambda n : setattr(self, 'allow_students_to_add_resources_to_submission', n.get_bool_value()),
-            "assign_date_time": lambda n : setattr(self, 'assign_date_time', n.get_datetime_value()),
-            "assigned_date_time": lambda n : setattr(self, 'assigned_date_time', n.get_datetime_value()),
-            "assign_to": lambda n : setattr(self, 'assign_to', n.get_object_value(education_assignment_recipient.EducationAssignmentRecipient)),
+            "addedStudentAction": lambda n : setattr(self, 'added_student_action', n.get_enum_value(education_added_student_action.EducationAddedStudentAction)),
+            "addToCalendarAction": lambda n : setattr(self, 'add_to_calendar_action', n.get_enum_value(education_add_to_calendar_options.EducationAddToCalendarOptions)),
+            "allowLateSubmissions": lambda n : setattr(self, 'allow_late_submissions', n.get_bool_value()),
+            "allowStudentsToAddResourcesToSubmission": lambda n : setattr(self, 'allow_students_to_add_resources_to_submission', n.get_bool_value()),
+            "assignedDateTime": lambda n : setattr(self, 'assigned_date_time', n.get_datetime_value()),
+            "assignDateTime": lambda n : setattr(self, 'assign_date_time', n.get_datetime_value()),
+            "assignTo": lambda n : setattr(self, 'assign_to', n.get_object_value(education_assignment_recipient.EducationAssignmentRecipient)),
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_object_values(education_category.EducationCategory)),
-            "class_id": lambda n : setattr(self, 'class_id', n.get_str_value()),
-            "close_date_time": lambda n : setattr(self, 'close_date_time', n.get_datetime_value()),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "due_date_time": lambda n : setattr(self, 'due_date_time', n.get_datetime_value()),
-            "feedback_resources_folder_url": lambda n : setattr(self, 'feedback_resources_folder_url', n.get_str_value()),
+            "classId": lambda n : setattr(self, 'class_id', n.get_str_value()),
+            "closeDateTime": lambda n : setattr(self, 'close_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "dueDateTime": lambda n : setattr(self, 'due_date_time', n.get_datetime_value()),
+            "feedbackResourcesFolderUrl": lambda n : setattr(self, 'feedback_resources_folder_url', n.get_str_value()),
             "grading": lambda n : setattr(self, 'grading', n.get_object_value(education_assignment_grade_type.EducationAssignmentGradeType)),
             "instructions": lambda n : setattr(self, 'instructions', n.get_object_value(education_item_body.EducationItemBody)),
-            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "notification_channel_url": lambda n : setattr(self, 'notification_channel_url', n.get_str_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "notificationChannelUrl": lambda n : setattr(self, 'notification_channel_url', n.get_str_value()),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(education_assignment_resource.EducationAssignmentResource)),
-            "resources_folder_url": lambda n : setattr(self, 'resources_folder_url', n.get_str_value()),
+            "resourcesFolderUrl": lambda n : setattr(self, 'resources_folder_url', n.get_str_value()),
             "rubric": lambda n : setattr(self, 'rubric', n.get_object_value(education_rubric.EducationRubric)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(education_assignment_status.EducationAssignmentStatus)),
             "submissions": lambda n : setattr(self, 'submissions', n.get_collection_of_object_values(education_submission.EducationSubmission)),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -429,7 +429,7 @@ class EducationAssignment(entity.Entity):
         """
         Sets the lastModifiedBy property value. Who last modified the assignment.
         Args:
-            value: Value to set for the lastModifiedBy property.
+            value: Value to set for the last_modified_by property.
         """
         self._last_modified_by = value
     
@@ -446,7 +446,7 @@ class EducationAssignment(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. Moment when the assignment was last modified.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     
@@ -463,7 +463,7 @@ class EducationAssignment(entity.Entity):
         """
         Sets the notificationChannelUrl property value. Optional field to specify the URL of the channel to post the assignment publish notification. If not specified or null, defaults to the General channel. This field only applies to assignments where the assignTo value is educationAssignmentClassRecipient. Updating the notificationChannelUrl isn't allowed after the assignment has been published.
         Args:
-            value: Value to set for the notificationChannelUrl property.
+            value: Value to set for the notification_channel_url property.
         """
         self._notification_channel_url = value
     
@@ -497,7 +497,7 @@ class EducationAssignment(entity.Entity):
         """
         Sets the resourcesFolderUrl property value. Folder URL where all the file resources for this assignment are stored.
         Args:
-            value: Value to set for the resourcesFolderUrl property.
+            value: Value to set for the resources_folder_url property.
         """
         self._resources_folder_url = value
     
@@ -591,7 +591,7 @@ class EducationAssignment(entity.Entity):
         """
         Sets the webUrl property value. The deep link URL for the given assignment.
         Args:
-            value: Value to set for the webUrl property.
+            value: Value to set for the web_url property.
         """
         self._web_url = value
     

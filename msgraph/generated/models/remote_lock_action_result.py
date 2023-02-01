@@ -34,7 +34,7 @@ class RemoteLockActionResult(device_action_result.DeviceActionResult):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "unlock_pin": lambda n : setattr(self, 'unlock_pin', n.get_str_value()),
+            "unlockPin": lambda n : setattr(self, 'unlock_pin', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -64,7 +64,7 @@ class RemoteLockActionResult(device_action_result.DeviceActionResult):
         """
         Sets the unlockPin property value. Pin to unlock the client
         Args:
-            value: Value to set for the unlockPin property.
+            value: Value to set for the unlock_pin property.
         """
         self._unlock_pin = value
     

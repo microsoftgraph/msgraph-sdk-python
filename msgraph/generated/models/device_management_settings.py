@@ -62,7 +62,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
         """
         Sets the deviceComplianceCheckinThresholdDays property value. The number of days a device is allowed to go without checking in to remain compliant.
         Args:
-            value: Value to set for the deviceComplianceCheckinThresholdDays property.
+            value: Value to set for the device_compliance_checkin_threshold_days property.
         """
         self._device_compliance_checkin_threshold_days = value
     
@@ -72,10 +72,10 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_compliance_checkin_threshold_days": lambda n : setattr(self, 'device_compliance_checkin_threshold_days', n.get_int_value()),
-            "is_scheduled_action_enabled": lambda n : setattr(self, 'is_scheduled_action_enabled', n.get_bool_value()),
+            "deviceComplianceCheckinThresholdDays": lambda n : setattr(self, 'device_compliance_checkin_threshold_days', n.get_int_value()),
+            "isScheduledActionEnabled": lambda n : setattr(self, 'is_scheduled_action_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "secure_by_default": lambda n : setattr(self, 'secure_by_default', n.get_bool_value()),
+            "secureByDefault": lambda n : setattr(self, 'secure_by_default', n.get_bool_value()),
         }
         return fields
     
@@ -92,7 +92,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
         """
         Sets the isScheduledActionEnabled property value. Is feature enabled or not for scheduled action for rule.
         Args:
-            value: Value to set for the isScheduledActionEnabled property.
+            value: Value to set for the is_scheduled_action_enabled property.
         """
         self._is_scheduled_action_enabled = value
     
@@ -109,7 +109,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -126,7 +126,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
         """
         Sets the secureByDefault property value. Device should be noncompliant when there is no compliance policy targeted when this is true
         Args:
-            value: Value to set for the secureByDefault property.
+            value: Value to set for the secure_by_default property.
         """
         self._secure_by_default = value
     

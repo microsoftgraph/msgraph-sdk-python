@@ -37,9 +37,9 @@ class IosLobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssign
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_removable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),
-            "uninstall_on_device_removal": lambda n : setattr(self, 'uninstall_on_device_removal', n.get_bool_value()),
-            "vpn_configuration_id": lambda n : setattr(self, 'vpn_configuration_id', n.get_str_value()),
+            "isRemovable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),
+            "uninstallOnDeviceRemoval": lambda n : setattr(self, 'uninstall_on_device_removal', n.get_bool_value()),
+            "vpnConfigurationId": lambda n : setattr(self, 'vpn_configuration_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -58,7 +58,7 @@ class IosLobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssign
         """
         Sets the isRemovable property value. When TRUE, indicates that the app can be uninstalled by the user. When FALSE, indicates that the app cannot be uninstalled by the user. By default, this property is set to null which internally is treated as TRUE.
         Args:
-            value: Value to set for the isRemovable property.
+            value: Value to set for the is_removable property.
         """
         self._is_removable = value
     
@@ -88,7 +88,7 @@ class IosLobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssign
         """
         Sets the uninstallOnDeviceRemoval property value. When TRUE, indicates that the app should be uninstalled when the device is removed from Intune. When FALSE, indicates that the app will not be uninstalled when the device is removed from Intune. By default, property is set to null which internally is treated as TRUE.
         Args:
-            value: Value to set for the uninstallOnDeviceRemoval property.
+            value: Value to set for the uninstall_on_device_removal property.
         """
         self._uninstall_on_device_removal = value
     
@@ -105,7 +105,7 @@ class IosLobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssign
         """
         Sets the vpnConfigurationId property value. This is the unique identifier (Id) of the VPN Configuration to apply to the app.
         Args:
-            value: Value to set for the vpnConfigurationId property.
+            value: Value to set for the vpn_configuration_id property.
         """
         self._vpn_configuration_id = value
     

@@ -34,7 +34,7 @@ class CountryNamedLocation(named_location.NamedLocation):
         """
         Sets the countriesAndRegions property value. List of countries and/or regions in two-letter format specified by ISO 3166-2. Required.
         Args:
-            value: Value to set for the countriesAndRegions property.
+            value: Value to set for the countries_and_regions property.
         """
         self._countries_and_regions = value
     
@@ -51,7 +51,7 @@ class CountryNamedLocation(named_location.NamedLocation):
         """
         Sets the countryLookupMethod property value. Determines what method is used to decide which country the user is located in. Possible values are clientIpAddress(default) and authenticatorAppGps. Note: authenticatorAppGps is not yet supported in the Microsoft Cloud for US Government.
         Args:
-            value: Value to set for the countryLookupMethod property.
+            value: Value to set for the country_lookup_method property.
         """
         self._country_lookup_method = value
     
@@ -73,9 +73,9 @@ class CountryNamedLocation(named_location.NamedLocation):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "countries_and_regions": lambda n : setattr(self, 'countries_and_regions', n.get_collection_of_primitive_values(str)),
-            "country_lookup_method": lambda n : setattr(self, 'country_lookup_method', n.get_enum_value(country_lookup_method_type.CountryLookupMethodType)),
-            "include_unknown_countries_and_regions": lambda n : setattr(self, 'include_unknown_countries_and_regions', n.get_bool_value()),
+            "countriesAndRegions": lambda n : setattr(self, 'countries_and_regions', n.get_collection_of_primitive_values(str)),
+            "countryLookupMethod": lambda n : setattr(self, 'country_lookup_method', n.get_enum_value(country_lookup_method_type.CountryLookupMethodType)),
+            "includeUnknownCountriesAndRegions": lambda n : setattr(self, 'include_unknown_countries_and_regions', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -94,7 +94,7 @@ class CountryNamedLocation(named_location.NamedLocation):
         """
         Sets the includeUnknownCountriesAndRegions property value. true if IP addresses that don't map to a country or region should be included in the named location. Optional. Default value is false.
         Args:
-            value: Value to set for the includeUnknownCountriesAndRegions property.
+            value: Value to set for the include_unknown_countries_and_regions property.
         """
         self._include_unknown_countries_and_regions = value
     

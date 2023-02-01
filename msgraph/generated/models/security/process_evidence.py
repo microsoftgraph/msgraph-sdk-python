@@ -63,7 +63,7 @@ class ProcessEvidence(alert_evidence.AlertEvidence):
         """
         Sets the detectionStatus property value. The status of the detection.The possible values are: detected, blocked, prevented, unknownFutureValue.
         Args:
-            value: Value to set for the detectionStatus property.
+            value: Value to set for the detection_status property.
         """
         self._detection_status = value
     
@@ -73,16 +73,16 @@ class ProcessEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "detection_status": lambda n : setattr(self, 'detection_status', n.get_enum_value(detection_status.DetectionStatus)),
-            "image_file": lambda n : setattr(self, 'image_file', n.get_object_value(file_details.FileDetails)),
-            "mde_device_id": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
-            "parent_process_creation_date_time": lambda n : setattr(self, 'parent_process_creation_date_time', n.get_datetime_value()),
-            "parent_process_id": lambda n : setattr(self, 'parent_process_id', n.get_int_value()),
-            "parent_process_image_file": lambda n : setattr(self, 'parent_process_image_file', n.get_object_value(file_details.FileDetails)),
-            "process_command_line": lambda n : setattr(self, 'process_command_line', n.get_str_value()),
-            "process_creation_date_time": lambda n : setattr(self, 'process_creation_date_time', n.get_datetime_value()),
-            "process_id": lambda n : setattr(self, 'process_id', n.get_int_value()),
-            "user_account": lambda n : setattr(self, 'user_account', n.get_object_value(user_account.UserAccount)),
+            "detectionStatus": lambda n : setattr(self, 'detection_status', n.get_enum_value(detection_status.DetectionStatus)),
+            "imageFile": lambda n : setattr(self, 'image_file', n.get_object_value(file_details.FileDetails)),
+            "mdeDeviceId": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
+            "parentProcessCreationDateTime": lambda n : setattr(self, 'parent_process_creation_date_time', n.get_datetime_value()),
+            "parentProcessId": lambda n : setattr(self, 'parent_process_id', n.get_int_value()),
+            "parentProcessImageFile": lambda n : setattr(self, 'parent_process_image_file', n.get_object_value(file_details.FileDetails)),
+            "processCommandLine": lambda n : setattr(self, 'process_command_line', n.get_str_value()),
+            "processCreationDateTime": lambda n : setattr(self, 'process_creation_date_time', n.get_datetime_value()),
+            "processId": lambda n : setattr(self, 'process_id', n.get_int_value()),
+            "userAccount": lambda n : setattr(self, 'user_account', n.get_object_value(user_account.UserAccount)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -101,7 +101,7 @@ class ProcessEvidence(alert_evidence.AlertEvidence):
         """
         Sets the imageFile property value. Image file details.
         Args:
-            value: Value to set for the imageFile property.
+            value: Value to set for the image_file property.
         """
         self._image_file = value
     
@@ -118,7 +118,7 @@ class ProcessEvidence(alert_evidence.AlertEvidence):
         """
         Sets the mdeDeviceId property value. A unique identifier assigned to a device by Microsoft Defender for Endpoint.
         Args:
-            value: Value to set for the mdeDeviceId property.
+            value: Value to set for the mde_device_id property.
         """
         self._mde_device_id = value
     
@@ -135,7 +135,7 @@ class ProcessEvidence(alert_evidence.AlertEvidence):
         """
         Sets the parentProcessCreationDateTime property value. Date and time when the parent of the process was created.
         Args:
-            value: Value to set for the parentProcessCreationDateTime property.
+            value: Value to set for the parent_process_creation_date_time property.
         """
         self._parent_process_creation_date_time = value
     
@@ -152,7 +152,7 @@ class ProcessEvidence(alert_evidence.AlertEvidence):
         """
         Sets the parentProcessId property value. Process ID (PID) of the parent process that spawned the process.
         Args:
-            value: Value to set for the parentProcessId property.
+            value: Value to set for the parent_process_id property.
         """
         self._parent_process_id = value
     
@@ -169,7 +169,7 @@ class ProcessEvidence(alert_evidence.AlertEvidence):
         """
         Sets the parentProcessImageFile property value. Parent process image file details.
         Args:
-            value: Value to set for the parentProcessImageFile property.
+            value: Value to set for the parent_process_image_file property.
         """
         self._parent_process_image_file = value
     
@@ -186,7 +186,7 @@ class ProcessEvidence(alert_evidence.AlertEvidence):
         """
         Sets the processCommandLine property value. Command line used to create the new process.
         Args:
-            value: Value to set for the processCommandLine property.
+            value: Value to set for the process_command_line property.
         """
         self._process_command_line = value
     
@@ -203,7 +203,7 @@ class ProcessEvidence(alert_evidence.AlertEvidence):
         """
         Sets the processCreationDateTime property value. Date and time the process was created.
         Args:
-            value: Value to set for the processCreationDateTime property.
+            value: Value to set for the process_creation_date_time property.
         """
         self._process_creation_date_time = value
     
@@ -220,7 +220,7 @@ class ProcessEvidence(alert_evidence.AlertEvidence):
         """
         Sets the processId property value. Process ID (PID) of the newly created process.
         Args:
-            value: Value to set for the processId property.
+            value: Value to set for the process_id property.
         """
         self._process_id = value
     
@@ -257,7 +257,7 @@ class ProcessEvidence(alert_evidence.AlertEvidence):
         """
         Sets the userAccount property value. User details of the user that ran the process.
         Args:
-            value: Value to set for the userAccount property.
+            value: Value to set for the user_account property.
         """
         self._user_account = value
     

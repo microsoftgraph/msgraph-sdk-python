@@ -58,7 +58,7 @@ class WorkbookOperation(entity.Entity):
         """
         fields = {
             "error": lambda n : setattr(self, 'error', n.get_object_value(workbook_operation_error.WorkbookOperationError)),
-            "resource_location": lambda n : setattr(self, 'resource_location', n.get_str_value()),
+            "resourceLocation": lambda n : setattr(self, 'resource_location', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(workbook_operation_status.WorkbookOperationStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -78,7 +78,7 @@ class WorkbookOperation(entity.Entity):
         """
         Sets the resourceLocation property value. The resource URI for the result.
         Args:
-            value: Value to set for the resourceLocation property.
+            value: Value to set for the resource_location property.
         """
         self._resource_location = value
     

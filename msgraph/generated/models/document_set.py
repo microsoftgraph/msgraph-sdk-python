@@ -38,7 +38,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         """
         Sets the allowedContentTypes property value. Content types allowed in document set.
         Args:
-            value: Value to set for the allowedContentTypes property.
+            value: Value to set for the allowed_content_types property.
         """
         self._allowed_content_types = value
     
@@ -91,7 +91,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         """
         Sets the defaultContents property value. Default contents of document set.
         Args:
-            value: Value to set for the defaultContents property.
+            value: Value to set for the default_contents property.
         """
         self._default_contents = value
     
@@ -101,14 +101,14 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allowed_content_types": lambda n : setattr(self, 'allowed_content_types', n.get_collection_of_object_values(content_type_info.ContentTypeInfo)),
-            "default_contents": lambda n : setattr(self, 'default_contents', n.get_collection_of_object_values(document_set_content.DocumentSetContent)),
+            "allowedContentTypes": lambda n : setattr(self, 'allowed_content_types', n.get_collection_of_object_values(content_type_info.ContentTypeInfo)),
+            "defaultContents": lambda n : setattr(self, 'default_contents', n.get_collection_of_object_values(document_set_content.DocumentSetContent)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "propagate_welcome_page_changes": lambda n : setattr(self, 'propagate_welcome_page_changes', n.get_bool_value()),
-            "shared_columns": lambda n : setattr(self, 'shared_columns', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
-            "should_prefix_name_to_file": lambda n : setattr(self, 'should_prefix_name_to_file', n.get_bool_value()),
-            "welcome_page_columns": lambda n : setattr(self, 'welcome_page_columns', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
-            "welcome_page_url": lambda n : setattr(self, 'welcome_page_url', n.get_str_value()),
+            "propagateWelcomePageChanges": lambda n : setattr(self, 'propagate_welcome_page_changes', n.get_bool_value()),
+            "sharedColumns": lambda n : setattr(self, 'shared_columns', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
+            "shouldPrefixNameToFile": lambda n : setattr(self, 'should_prefix_name_to_file', n.get_bool_value()),
+            "welcomePageColumns": lambda n : setattr(self, 'welcome_page_columns', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
+            "welcomePageUrl": lambda n : setattr(self, 'welcome_page_url', n.get_str_value()),
         }
         return fields
     
@@ -125,7 +125,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -142,7 +142,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         """
         Sets the propagateWelcomePageChanges property value. Specifies whether to push welcome page changes to inherited content types.
         Args:
-            value: Value to set for the propagateWelcomePageChanges property.
+            value: Value to set for the propagate_welcome_page_changes property.
         """
         self._propagate_welcome_page_changes = value
     
@@ -177,7 +177,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         """
         Sets the sharedColumns property value. The sharedColumns property
         Args:
-            value: Value to set for the sharedColumns property.
+            value: Value to set for the shared_columns property.
         """
         self._shared_columns = value
     
@@ -194,7 +194,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         """
         Sets the shouldPrefixNameToFile property value. Indicates whether to add the name of the document set to each file name.
         Args:
-            value: Value to set for the shouldPrefixNameToFile property.
+            value: Value to set for the should_prefix_name_to_file property.
         """
         self._should_prefix_name_to_file = value
     
@@ -211,7 +211,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         """
         Sets the welcomePageColumns property value. The welcomePageColumns property
         Args:
-            value: Value to set for the welcomePageColumns property.
+            value: Value to set for the welcome_page_columns property.
         """
         self._welcome_page_columns = value
     
@@ -228,7 +228,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         """
         Sets the welcomePageUrl property value. Welcome page absolute URL.
         Args:
-            value: Value to set for the welcomePageUrl property.
+            value: Value to set for the welcome_page_url property.
         """
         self._welcome_page_url = value
     

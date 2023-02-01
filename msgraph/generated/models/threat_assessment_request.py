@@ -68,7 +68,7 @@ class ThreatAssessmentRequest(entity.Entity):
         """
         Sets the contentType property value. The content type of threat assessment. Possible values are: mail, url, file.
         Args:
-            value: Value to set for the contentType property.
+            value: Value to set for the content_type property.
         """
         self._content_type = value
     
@@ -85,7 +85,7 @@ class ThreatAssessmentRequest(entity.Entity):
         """
         Sets the createdBy property value. The threat assessment request creator.
         Args:
-            value: Value to set for the createdBy property.
+            value: Value to set for the created_by property.
         """
         self._created_by = value
     
@@ -102,7 +102,7 @@ class ThreatAssessmentRequest(entity.Entity):
         """
         Sets the createdDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -131,7 +131,7 @@ class ThreatAssessmentRequest(entity.Entity):
         """
         Sets the expectedAssessment property value. The expectedAssessment property
         Args:
-            value: Value to set for the expectedAssessment property.
+            value: Value to set for the expected_assessment property.
         """
         self._expected_assessment = value
     
@@ -142,11 +142,11 @@ class ThreatAssessmentRequest(entity.Entity):
         """
         fields = {
             "category": lambda n : setattr(self, 'category', n.get_enum_value(threat_category.ThreatCategory)),
-            "content_type": lambda n : setattr(self, 'content_type', n.get_enum_value(threat_assessment_content_type.ThreatAssessmentContentType)),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "expected_assessment": lambda n : setattr(self, 'expected_assessment', n.get_enum_value(threat_expected_assessment.ThreatExpectedAssessment)),
-            "request_source": lambda n : setattr(self, 'request_source', n.get_enum_value(threat_assessment_request_source.ThreatAssessmentRequestSource)),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_enum_value(threat_assessment_content_type.ThreatAssessmentContentType)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "expectedAssessment": lambda n : setattr(self, 'expected_assessment', n.get_enum_value(threat_expected_assessment.ThreatExpectedAssessment)),
+            "requestSource": lambda n : setattr(self, 'request_source', n.get_enum_value(threat_assessment_request_source.ThreatAssessmentRequestSource)),
             "results": lambda n : setattr(self, 'results', n.get_collection_of_object_values(threat_assessment_result.ThreatAssessmentResult)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(threat_assessment_status.ThreatAssessmentStatus)),
         }
@@ -167,7 +167,7 @@ class ThreatAssessmentRequest(entity.Entity):
         """
         Sets the requestSource property value. The source of the threat assessment request. Possible values are: administrator.
         Args:
-            value: Value to set for the requestSource property.
+            value: Value to set for the request_source property.
         """
         self._request_source = value
     

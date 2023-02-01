@@ -26,7 +26,7 @@ class VppToken(entity.Entity):
         """
         Sets the appleId property value. The apple Id associated with the given Apple Volume Purchase Program Token.
         Args:
-            value: Value to set for the appleId property.
+            value: Value to set for the apple_id property.
         """
         self._apple_id = value
     
@@ -43,7 +43,7 @@ class VppToken(entity.Entity):
         """
         Sets the automaticallyUpdateApps property value. Whether or not apps for the VPP token will be automatically updated.
         Args:
-            value: Value to set for the automaticallyUpdateApps property.
+            value: Value to set for the automatically_update_apps property.
         """
         self._automatically_update_apps = value
     
@@ -90,7 +90,7 @@ class VppToken(entity.Entity):
         """
         Sets the countryOrRegion property value. Whether or not apps for the VPP token will be automatically updated.
         Args:
-            value: Value to set for the countryOrRegion property.
+            value: Value to set for the country_or_region property.
         """
         self._country_or_region = value
     
@@ -119,7 +119,7 @@ class VppToken(entity.Entity):
         """
         Sets the expirationDateTime property value. The expiration date time of the Apple Volume Purchase Program Token.
         Args:
-            value: Value to set for the expirationDateTime property.
+            value: Value to set for the expiration_date_time property.
         """
         self._expiration_date_time = value
     
@@ -129,17 +129,17 @@ class VppToken(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "apple_id": lambda n : setattr(self, 'apple_id', n.get_str_value()),
-            "automatically_update_apps": lambda n : setattr(self, 'automatically_update_apps', n.get_bool_value()),
-            "country_or_region": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "last_sync_date_time": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
-            "last_sync_status": lambda n : setattr(self, 'last_sync_status', n.get_enum_value(vpp_token_sync_status.VppTokenSyncStatus)),
-            "organization_name": lambda n : setattr(self, 'organization_name', n.get_str_value()),
+            "appleId": lambda n : setattr(self, 'apple_id', n.get_str_value()),
+            "automaticallyUpdateApps": lambda n : setattr(self, 'automatically_update_apps', n.get_bool_value()),
+            "countryOrRegion": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "lastSyncDateTime": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
+            "lastSyncStatus": lambda n : setattr(self, 'last_sync_status', n.get_enum_value(vpp_token_sync_status.VppTokenSyncStatus)),
+            "organizationName": lambda n : setattr(self, 'organization_name', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(vpp_token_state.VppTokenState)),
             "token": lambda n : setattr(self, 'token', n.get_str_value()),
-            "vpp_token_account_type": lambda n : setattr(self, 'vpp_token_account_type', n.get_enum_value(vpp_token_account_type.VppTokenAccountType)),
+            "vppTokenAccountType": lambda n : setattr(self, 'vpp_token_account_type', n.get_enum_value(vpp_token_account_type.VppTokenAccountType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -158,7 +158,7 @@ class VppToken(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. Last modification date time associated with the Apple Volume Purchase Program Token.
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     
@@ -175,7 +175,7 @@ class VppToken(entity.Entity):
         """
         Sets the lastSyncDateTime property value. The last time when an application sync was done with the Apple volume purchase program service using the the Apple Volume Purchase Program Token.
         Args:
-            value: Value to set for the lastSyncDateTime property.
+            value: Value to set for the last_sync_date_time property.
         """
         self._last_sync_date_time = value
     
@@ -192,7 +192,7 @@ class VppToken(entity.Entity):
         """
         Sets the lastSyncStatus property value. Possible sync statuses associated with an Apple Volume Purchase Program token.
         Args:
-            value: Value to set for the lastSyncStatus property.
+            value: Value to set for the last_sync_status property.
         """
         self._last_sync_status = value
     
@@ -209,7 +209,7 @@ class VppToken(entity.Entity):
         """
         Sets the organizationName property value. The organization associated with the Apple Volume Purchase Program Token
         Args:
-            value: Value to set for the organizationName property.
+            value: Value to set for the organization_name property.
         """
         self._organization_name = value
     
@@ -281,7 +281,7 @@ class VppToken(entity.Entity):
         """
         Sets the vppTokenAccountType property value. Possible types of an Apple Volume Purchase Program token.
         Args:
-            value: Value to set for the vppTokenAccountType property.
+            value: Value to set for the vpp_token_account_type property.
         """
         self._vpp_token_account_type = value
     

@@ -55,7 +55,7 @@ class PublicationFacet(AdditionalDataHolder, Parsable):
         fields = {
             "level": lambda n : setattr(self, 'level', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "version_id": lambda n : setattr(self, 'version_id', n.get_str_value()),
+            "versionId": lambda n : setattr(self, 'version_id', n.get_str_value()),
         }
         return fields
     
@@ -89,7 +89,7 @@ class PublicationFacet(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -119,7 +119,7 @@ class PublicationFacet(AdditionalDataHolder, Parsable):
         """
         Sets the versionId property value. The unique identifier for the version that is visible to the current caller. Read-only.
         Args:
-            value: Value to set for the versionId property.
+            value: Value to set for the version_id property.
         """
         self._version_id = value
     

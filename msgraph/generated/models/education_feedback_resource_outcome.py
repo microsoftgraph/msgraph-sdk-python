@@ -44,7 +44,7 @@ class EducationFeedbackResourceOutcome(education_outcome.EducationOutcome):
         """
         Sets the feedbackResource property value. The actual feedback resource.
         Args:
-            value: Value to set for the feedbackResource property.
+            value: Value to set for the feedback_resource property.
         """
         self._feedback_resource = value
     
@@ -54,8 +54,8 @@ class EducationFeedbackResourceOutcome(education_outcome.EducationOutcome):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "feedback_resource": lambda n : setattr(self, 'feedback_resource', n.get_object_value(education_resource.EducationResource)),
-            "resource_status": lambda n : setattr(self, 'resource_status', n.get_enum_value(education_feedback_resource_outcome_status.EducationFeedbackResourceOutcomeStatus)),
+            "feedbackResource": lambda n : setattr(self, 'feedback_resource', n.get_object_value(education_resource.EducationResource)),
+            "resourceStatus": lambda n : setattr(self, 'resource_status', n.get_enum_value(education_feedback_resource_outcome_status.EducationFeedbackResourceOutcomeStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -74,7 +74,7 @@ class EducationFeedbackResourceOutcome(education_outcome.EducationOutcome):
         """
         Sets the resourceStatus property value. The status of the feedback resource. The possible values are: notPublished, pendingPublish, published, failedPublish, unknownFutureValue.
         Args:
-            value: Value to set for the resourceStatus property.
+            value: Value to set for the resource_status property.
         """
         self._resource_status = value
     

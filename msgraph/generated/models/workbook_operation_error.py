@@ -73,7 +73,7 @@ class WorkbookOperationError(AdditionalDataHolder, Parsable):
         """
         fields = {
             "code": lambda n : setattr(self, 'code', n.get_str_value()),
-            "inner_error": lambda n : setattr(self, 'inner_error', n.get_object_value(WorkbookOperationError)),
+            "innerError": lambda n : setattr(self, 'inner_error', n.get_object_value(WorkbookOperationError)),
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
@@ -92,7 +92,7 @@ class WorkbookOperationError(AdditionalDataHolder, Parsable):
         """
         Sets the innerError property value. The innerError property
         Args:
-            value: Value to set for the innerError property.
+            value: Value to set for the inner_error property.
         """
         self._inner_error = value
     
@@ -126,7 +126,7 @@ class WorkbookOperationError(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

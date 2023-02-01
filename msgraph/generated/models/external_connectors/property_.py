@@ -86,10 +86,10 @@ class Property_(AdditionalDataHolder, Parsable):
         """
         fields = {
             "aliases": lambda n : setattr(self, 'aliases', n.get_collection_of_primitive_values(str)),
-            "is_queryable": lambda n : setattr(self, 'is_queryable', n.get_bool_value()),
-            "is_refinable": lambda n : setattr(self, 'is_refinable', n.get_bool_value()),
-            "is_retrievable": lambda n : setattr(self, 'is_retrievable', n.get_bool_value()),
-            "is_searchable": lambda n : setattr(self, 'is_searchable', n.get_bool_value()),
+            "isQueryable": lambda n : setattr(self, 'is_queryable', n.get_bool_value()),
+            "isRefinable": lambda n : setattr(self, 'is_refinable', n.get_bool_value()),
+            "isRetrievable": lambda n : setattr(self, 'is_retrievable', n.get_bool_value()),
+            "isSearchable": lambda n : setattr(self, 'is_searchable', n.get_bool_value()),
             "labels": lambda n : setattr(self, 'labels', n.get_collection_of_enum_values(label.Label)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -110,7 +110,7 @@ class Property_(AdditionalDataHolder, Parsable):
         """
         Sets the isQueryable property value. Specifies if the property is queryable. Queryable properties can be used in Keyword Query Language (KQL) queries. Optional.
         Args:
-            value: Value to set for the isQueryable property.
+            value: Value to set for the is_queryable property.
         """
         self._is_queryable = value
     
@@ -127,7 +127,7 @@ class Property_(AdditionalDataHolder, Parsable):
         """
         Sets the isRefinable property value. Specifies if the property is refinable.  Refinable properties can be used to filter search results in the Search API and add a refiner control in the Microsoft Search user experience. Optional.
         Args:
-            value: Value to set for the isRefinable property.
+            value: Value to set for the is_refinable property.
         """
         self._is_refinable = value
     
@@ -144,7 +144,7 @@ class Property_(AdditionalDataHolder, Parsable):
         """
         Sets the isRetrievable property value. Specifies if the property is retrievable. Retrievable properties are returned in the result set when items are returned by the search API. Retrievable properties are also available to add to the display template used to render search results. Optional.
         Args:
-            value: Value to set for the isRetrievable property.
+            value: Value to set for the is_retrievable property.
         """
         self._is_retrievable = value
     
@@ -161,7 +161,7 @@ class Property_(AdditionalDataHolder, Parsable):
         """
         Sets the isSearchable property value. Specifies if the property is searchable. Only properties of type String or StringCollection can be searchable. Non-searchable properties are not added to the search index. Optional.
         Args:
-            value: Value to set for the isSearchable property.
+            value: Value to set for the is_searchable property.
         """
         self._is_searchable = value
     
@@ -212,7 +212,7 @@ class Property_(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

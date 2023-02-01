@@ -33,7 +33,7 @@ class AndroidMobileAppIdentifier(mobile_app_identifier.MobileAppIdentifier):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "package_id": lambda n : setattr(self, 'package_id', n.get_str_value()),
+            "packageId": lambda n : setattr(self, 'package_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -52,7 +52,7 @@ class AndroidMobileAppIdentifier(mobile_app_identifier.MobileAppIdentifier):
         """
         Sets the packageId property value. The identifier for an app, as specified in the play store.
         Args:
-            value: Value to set for the packageId property.
+            value: Value to set for the package_id property.
         """
         self._package_id = value
     

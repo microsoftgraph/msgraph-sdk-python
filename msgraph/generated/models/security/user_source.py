@@ -56,8 +56,8 @@ class UserSource(data_source.DataSource):
         """
         fields = {
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "included_sources": lambda n : setattr(self, 'included_sources', n.get_enum_value(source_type.SourceType)),
-            "site_web_url": lambda n : setattr(self, 'site_web_url', n.get_str_value()),
+            "includedSources": lambda n : setattr(self, 'included_sources', n.get_enum_value(source_type.SourceType)),
+            "siteWebUrl": lambda n : setattr(self, 'site_web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -76,7 +76,7 @@ class UserSource(data_source.DataSource):
         """
         Sets the includedSources property value. Specifies which sources are included in this group. Possible values are: mailbox, site.
         Args:
-            value: Value to set for the includedSources property.
+            value: Value to set for the included_sources property.
         """
         self._included_sources = value
     
@@ -106,7 +106,7 @@ class UserSource(data_source.DataSource):
         """
         Sets the siteWebUrl property value. The URL of the user's OneDrive for Business site. Read-only.
         Args:
-            value: Value to set for the siteWebUrl property.
+            value: Value to set for the site_web_url property.
         """
         self._site_web_url = value
     

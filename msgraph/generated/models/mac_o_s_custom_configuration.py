@@ -38,8 +38,8 @@ class MacOSCustomConfiguration(device_configuration.DeviceConfiguration):
         """
         fields = {
             "payload": lambda n : setattr(self, 'payload', n.get_bytes_value()),
-            "payload_file_name": lambda n : setattr(self, 'payload_file_name', n.get_str_value()),
-            "payload_name": lambda n : setattr(self, 'payload_name', n.get_str_value()),
+            "payloadFileName": lambda n : setattr(self, 'payload_file_name', n.get_str_value()),
+            "payloadName": lambda n : setattr(self, 'payload_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -75,7 +75,7 @@ class MacOSCustomConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the payloadFileName property value. Payload file name (.mobileconfig
         Args:
-            value: Value to set for the payloadFileName property.
+            value: Value to set for the payload_file_name property.
         """
         self._payload_file_name = value
     
@@ -92,7 +92,7 @@ class MacOSCustomConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the payloadName property value. Name that is displayed to the user.
         Args:
-            value: Value to set for the payloadName property.
+            value: Value to set for the payload_name property.
         """
         self._payload_name = value
     

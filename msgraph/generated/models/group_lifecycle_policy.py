@@ -19,7 +19,7 @@ class GroupLifecyclePolicy(entity.Entity):
         """
         Sets the alternateNotificationEmails property value. List of email address to send notifications for groups without owners. Multiple email address can be defined by separating email address with a semicolon.
         Args:
-            value: Value to set for the alternateNotificationEmails property.
+            value: Value to set for the alternate_notification_emails property.
         """
         self._alternate_notification_emails = value
     
@@ -55,9 +55,9 @@ class GroupLifecyclePolicy(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "alternate_notification_emails": lambda n : setattr(self, 'alternate_notification_emails', n.get_str_value()),
-            "group_lifetime_in_days": lambda n : setattr(self, 'group_lifetime_in_days', n.get_int_value()),
-            "managed_group_types": lambda n : setattr(self, 'managed_group_types', n.get_str_value()),
+            "alternateNotificationEmails": lambda n : setattr(self, 'alternate_notification_emails', n.get_str_value()),
+            "groupLifetimeInDays": lambda n : setattr(self, 'group_lifetime_in_days', n.get_int_value()),
+            "managedGroupTypes": lambda n : setattr(self, 'managed_group_types', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -76,7 +76,7 @@ class GroupLifecyclePolicy(entity.Entity):
         """
         Sets the groupLifetimeInDays property value. Number of days before a group expires and needs to be renewed. Once renewed, the group expiration is extended by the number of days defined.
         Args:
-            value: Value to set for the groupLifetimeInDays property.
+            value: Value to set for the group_lifetime_in_days property.
         """
         self._group_lifetime_in_days = value
     
@@ -93,7 +93,7 @@ class GroupLifecyclePolicy(entity.Entity):
         """
         Sets the managedGroupTypes property value. The group type for which the expiration policy applies. Possible values are All, Selected or None.
         Args:
-            value: Value to set for the managedGroupTypes property.
+            value: Value to set for the managed_group_types property.
         """
         self._managed_group_types = value
     

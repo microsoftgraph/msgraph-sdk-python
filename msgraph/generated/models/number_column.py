@@ -64,7 +64,7 @@ class NumberColumn(AdditionalDataHolder, Parsable):
         """
         Sets the decimalPlaces property value. How many decimal places to display. See below for information about the possible values.
         Args:
-            value: Value to set for the decimalPlaces property.
+            value: Value to set for the decimal_places property.
         """
         self._decimal_places = value
     
@@ -81,7 +81,7 @@ class NumberColumn(AdditionalDataHolder, Parsable):
         """
         Sets the displayAs property value. How the value should be presented in the UX. Must be one of number or percentage. If unspecified, treated as number.
         Args:
-            value: Value to set for the displayAs property.
+            value: Value to set for the display_as property.
         """
         self._display_as = value
     
@@ -91,8 +91,8 @@ class NumberColumn(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "decimal_places": lambda n : setattr(self, 'decimal_places', n.get_str_value()),
-            "display_as": lambda n : setattr(self, 'display_as', n.get_str_value()),
+            "decimalPlaces": lambda n : setattr(self, 'decimal_places', n.get_str_value()),
+            "displayAs": lambda n : setattr(self, 'display_as', n.get_str_value()),
             "maximum": lambda n : setattr(self, 'maximum', n.get_float_value()),
             "minimum": lambda n : setattr(self, 'minimum', n.get_float_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -146,7 +146,7 @@ class NumberColumn(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

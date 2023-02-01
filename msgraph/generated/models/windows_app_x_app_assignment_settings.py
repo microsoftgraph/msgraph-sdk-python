@@ -33,7 +33,7 @@ class WindowsAppXAppAssignmentSettings(mobile_app_assignment_settings.MobileAppA
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "use_device_context": lambda n : setattr(self, 'use_device_context', n.get_bool_value()),
+            "useDeviceContext": lambda n : setattr(self, 'use_device_context', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,7 +63,7 @@ class WindowsAppXAppAssignmentSettings(mobile_app_assignment_settings.MobileAppA
         """
         Sets the useDeviceContext property value. Whether or not to use device execution context for Windows AppX mobile app.
         Args:
-            value: Value to set for the useDeviceContext property.
+            value: Value to set for the use_device_context property.
         """
         self._use_device_context = value
     

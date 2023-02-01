@@ -9,6 +9,9 @@ audit_resource = lazy_import('msgraph.generated.models.audit_resource')
 entity = lazy_import('msgraph.generated.models.entity')
 
 class AuditEvent(entity.Entity):
+    """
+    A class containing the properties for Audit Event.
+    """
     @property
     def activity(self,) -> Optional[str]:
         """
@@ -39,7 +42,7 @@ class AuditEvent(entity.Entity):
         """
         Sets the activityDateTime property value. The date time in UTC when the activity was performed.
         Args:
-            value: Value to set for the activityDateTime property.
+            value: Value to set for the activity_date_time property.
         """
         self._activity_date_time = value
     
@@ -56,7 +59,7 @@ class AuditEvent(entity.Entity):
         """
         Sets the activityOperationType property value. The HTTP operation type of the activity.
         Args:
-            value: Value to set for the activityOperationType property.
+            value: Value to set for the activity_operation_type property.
         """
         self._activity_operation_type = value
     
@@ -73,7 +76,7 @@ class AuditEvent(entity.Entity):
         """
         Sets the activityResult property value. The result of the activity.
         Args:
-            value: Value to set for the activityResult property.
+            value: Value to set for the activity_result property.
         """
         self._activity_result = value
     
@@ -90,7 +93,7 @@ class AuditEvent(entity.Entity):
         """
         Sets the activityType property value. The type of activity that was being performed.
         Args:
-            value: Value to set for the activityType property.
+            value: Value to set for the activity_type property.
         """
         self._activity_type = value
     
@@ -141,13 +144,13 @@ class AuditEvent(entity.Entity):
         """
         Sets the componentName property value. Component name.
         Args:
-            value: Value to set for the componentName property.
+            value: Value to set for the component_name property.
         """
         self._component_name = value
     
     def __init__(self,) -> None:
         """
-        Instantiates a new AuditEvent and sets the default values.
+        Instantiates a new auditEvent and sets the default values.
         """
         super().__init__()
         # Friendly name of the activity.
@@ -188,7 +191,7 @@ class AuditEvent(entity.Entity):
         """
         Sets the correlationId property value. The client request Id that is used to correlate activity within the system.
         Args:
-            value: Value to set for the correlationId property.
+            value: Value to set for the correlation_id property.
         """
         self._correlation_id = value
     
@@ -217,7 +220,7 @@ class AuditEvent(entity.Entity):
         """
         Sets the displayName property value. Event display name.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -228,15 +231,15 @@ class AuditEvent(entity.Entity):
         """
         fields = {
             "activity": lambda n : setattr(self, 'activity', n.get_str_value()),
-            "activity_date_time": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
-            "activity_operation_type": lambda n : setattr(self, 'activity_operation_type', n.get_str_value()),
-            "activity_result": lambda n : setattr(self, 'activity_result', n.get_str_value()),
-            "activity_type": lambda n : setattr(self, 'activity_type', n.get_str_value()),
+            "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
+            "activityOperationType": lambda n : setattr(self, 'activity_operation_type', n.get_str_value()),
+            "activityResult": lambda n : setattr(self, 'activity_result', n.get_str_value()),
+            "activityType": lambda n : setattr(self, 'activity_type', n.get_str_value()),
             "actor": lambda n : setattr(self, 'actor', n.get_object_value(audit_actor.AuditActor)),
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
-            "component_name": lambda n : setattr(self, 'component_name', n.get_str_value()),
-            "correlation_id": lambda n : setattr(self, 'correlation_id', n.get_object_value(Guid)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "componentName": lambda n : setattr(self, 'component_name', n.get_str_value()),
+            "correlationId": lambda n : setattr(self, 'correlation_id', n.get_object_value(Guid)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(audit_resource.AuditResource)),
         }
         super_fields = super().get_field_deserializers()

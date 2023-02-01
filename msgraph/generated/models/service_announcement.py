@@ -41,7 +41,7 @@ class ServiceAnnouncement(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "health_overviews": lambda n : setattr(self, 'health_overviews', n.get_collection_of_object_values(service_health.ServiceHealth)),
+            "healthOverviews": lambda n : setattr(self, 'health_overviews', n.get_collection_of_object_values(service_health.ServiceHealth)),
             "issues": lambda n : setattr(self, 'issues', n.get_collection_of_object_values(service_health_issue.ServiceHealthIssue)),
             "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(service_update_message.ServiceUpdateMessage)),
         }
@@ -62,7 +62,7 @@ class ServiceAnnouncement(entity.Entity):
         """
         Sets the healthOverviews property value. A collection of service health information for tenant. This property is a contained navigation property, it is nullable and readonly.
         Args:
-            value: Value to set for the healthOverviews property.
+            value: Value to set for the health_overviews property.
         """
         self._health_overviews = value
     

@@ -65,7 +65,7 @@ class ConditionalAccessPolicy(entity.Entity):
         """
         Sets the createdDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Readonly.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -111,7 +111,7 @@ class ConditionalAccessPolicy(entity.Entity):
         """
         Sets the displayName property value. Specifies a display name for the conditionalAccessPolicy object.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -122,12 +122,12 @@ class ConditionalAccessPolicy(entity.Entity):
         """
         fields = {
             "conditions": lambda n : setattr(self, 'conditions', n.get_object_value(conditional_access_condition_set.ConditionalAccessConditionSet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "grant_controls": lambda n : setattr(self, 'grant_controls', n.get_object_value(conditional_access_grant_controls.ConditionalAccessGrantControls)),
-            "modified_date_time": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
-            "session_controls": lambda n : setattr(self, 'session_controls', n.get_object_value(conditional_access_session_controls.ConditionalAccessSessionControls)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "grantControls": lambda n : setattr(self, 'grant_controls', n.get_object_value(conditional_access_grant_controls.ConditionalAccessGrantControls)),
+            "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "sessionControls": lambda n : setattr(self, 'session_controls', n.get_object_value(conditional_access_session_controls.ConditionalAccessSessionControls)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(conditional_access_policy_state.ConditionalAccessPolicyState)),
         }
         super_fields = super().get_field_deserializers()
@@ -147,7 +147,7 @@ class ConditionalAccessPolicy(entity.Entity):
         """
         Sets the grantControls property value. Specifies the grant controls that must be fulfilled to pass the policy.
         Args:
-            value: Value to set for the grantControls property.
+            value: Value to set for the grant_controls property.
         """
         self._grant_controls = value
     
@@ -164,7 +164,7 @@ class ConditionalAccessPolicy(entity.Entity):
         """
         Sets the modifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Readonly.
         Args:
-            value: Value to set for the modifiedDateTime property.
+            value: Value to set for the modified_date_time property.
         """
         self._modified_date_time = value
     
@@ -199,7 +199,7 @@ class ConditionalAccessPolicy(entity.Entity):
         """
         Sets the sessionControls property value. Specifies the session controls that are enforced after sign-in.
         Args:
-            value: Value to set for the sessionControls property.
+            value: Value to set for the session_controls property.
         """
         self._session_controls = value
     

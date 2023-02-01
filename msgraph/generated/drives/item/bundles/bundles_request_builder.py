@@ -45,7 +45,7 @@ class BundlesRequestBuilder():
     
     async def get(self,request_configuration: Optional[BundlesRequestBuilderGetRequestConfiguration] = None) -> Optional[drive_item_collection_response.DriveItemCollectionResponse]:
         """
-        Get a list of all the [bundles][bundle] in a user's drive.
+        Collection of [bundles][bundle] (albums and multi-select-shared sets of items). Only in personal OneDrive.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[drive_item_collection_response.DriveItemCollectionResponse]
@@ -63,7 +63,7 @@ class BundlesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[BundlesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of all the [bundles][bundle] in a user's drive.
+        Collection of [bundles][bundle] (albums and multi-select-shared sets of items). Only in personal OneDrive.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -82,7 +82,7 @@ class BundlesRequestBuilder():
     @dataclass
     class BundlesRequestBuilderGetQueryParameters():
         """
-        Get a list of all the [bundles][bundle] in a user's drive.
+        Collection of [bundles][bundle] (albums and multi-select-shared sets of items). Only in personal OneDrive.
         """
         # Include count of items
         count: Optional[bool] = None

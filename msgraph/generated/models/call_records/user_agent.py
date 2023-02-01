@@ -34,7 +34,7 @@ class UserAgent(AdditionalDataHolder, Parsable):
         """
         Sets the applicationVersion property value. Identifies the version of application software used by this endpoint.
         Args:
-            value: Value to set for the applicationVersion property.
+            value: Value to set for the application_version property.
         """
         self._application_version = value
     
@@ -70,8 +70,8 @@ class UserAgent(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "application_version": lambda n : setattr(self, 'application_version', n.get_str_value()),
-            "header_value": lambda n : setattr(self, 'header_value', n.get_str_value()),
+            "applicationVersion": lambda n : setattr(self, 'application_version', n.get_str_value()),
+            "headerValue": lambda n : setattr(self, 'header_value', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -89,7 +89,7 @@ class UserAgent(AdditionalDataHolder, Parsable):
         """
         Sets the headerValue property value. User-agent header value reported by this endpoint.
         Args:
-            value: Value to set for the headerValue property.
+            value: Value to set for the header_value property.
         """
         self._header_value = value
     
@@ -106,7 +106,7 @@ class UserAgent(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

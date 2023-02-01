@@ -23,7 +23,7 @@ class SecureScore(entity.Entity):
         """
         Sets the activeUserCount property value. Active user count of the given tenant.
         Args:
-            value: Value to set for the activeUserCount property.
+            value: Value to set for the active_user_count property.
         """
         self._active_user_count = value
     
@@ -40,7 +40,7 @@ class SecureScore(entity.Entity):
         """
         Sets the averageComparativeScores property value. Average score by different scopes (for example, average by industry, average by seating) and control category (Identity, Data, Device, Apps, Infrastructure) within the scope.
         Args:
-            value: Value to set for the averageComparativeScores property.
+            value: Value to set for the average_comparative_scores property.
         """
         self._average_comparative_scores = value
     
@@ -57,7 +57,7 @@ class SecureScore(entity.Entity):
         """
         Sets the azureTenantId property value. GUID string for tenant ID.
         Args:
-            value: Value to set for the azureTenantId property.
+            value: Value to set for the azure_tenant_id property.
         """
         self._azure_tenant_id = value
     
@@ -102,7 +102,7 @@ class SecureScore(entity.Entity):
         """
         Sets the controlScores property value. Contains tenant scores for a set of controls.
         Args:
-            value: Value to set for the controlScores property.
+            value: Value to set for the control_scores property.
         """
         self._control_scores = value
     
@@ -119,7 +119,7 @@ class SecureScore(entity.Entity):
         """
         Sets the createdDateTime property value. The date when the entity is created.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -148,7 +148,7 @@ class SecureScore(entity.Entity):
         """
         Sets the currentScore property value. Tenant current attained score on specified date.
         Args:
-            value: Value to set for the currentScore property.
+            value: Value to set for the current_score property.
         """
         self._current_score = value
     
@@ -165,7 +165,7 @@ class SecureScore(entity.Entity):
         """
         Sets the enabledServices property value. Microsoft-provided services for the tenant (for example, Exchange online, Skype, Sharepoint).
         Args:
-            value: Value to set for the enabledServices property.
+            value: Value to set for the enabled_services property.
         """
         self._enabled_services = value
     
@@ -175,16 +175,16 @@ class SecureScore(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "active_user_count": lambda n : setattr(self, 'active_user_count', n.get_int_value()),
-            "average_comparative_scores": lambda n : setattr(self, 'average_comparative_scores', n.get_collection_of_object_values(average_comparative_score.AverageComparativeScore)),
-            "azure_tenant_id": lambda n : setattr(self, 'azure_tenant_id', n.get_str_value()),
-            "control_scores": lambda n : setattr(self, 'control_scores', n.get_collection_of_object_values(control_score.ControlScore)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "current_score": lambda n : setattr(self, 'current_score', n.get_float_value()),
-            "enabled_services": lambda n : setattr(self, 'enabled_services', n.get_collection_of_primitive_values(str)),
-            "licensed_user_count": lambda n : setattr(self, 'licensed_user_count', n.get_int_value()),
-            "max_score": lambda n : setattr(self, 'max_score', n.get_float_value()),
-            "vendor_information": lambda n : setattr(self, 'vendor_information', n.get_object_value(security_vendor_information.SecurityVendorInformation)),
+            "activeUserCount": lambda n : setattr(self, 'active_user_count', n.get_int_value()),
+            "averageComparativeScores": lambda n : setattr(self, 'average_comparative_scores', n.get_collection_of_object_values(average_comparative_score.AverageComparativeScore)),
+            "azureTenantId": lambda n : setattr(self, 'azure_tenant_id', n.get_str_value()),
+            "controlScores": lambda n : setattr(self, 'control_scores', n.get_collection_of_object_values(control_score.ControlScore)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "currentScore": lambda n : setattr(self, 'current_score', n.get_float_value()),
+            "enabledServices": lambda n : setattr(self, 'enabled_services', n.get_collection_of_primitive_values(str)),
+            "licensedUserCount": lambda n : setattr(self, 'licensed_user_count', n.get_int_value()),
+            "maxScore": lambda n : setattr(self, 'max_score', n.get_float_value()),
+            "vendorInformation": lambda n : setattr(self, 'vendor_information', n.get_object_value(security_vendor_information.SecurityVendorInformation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -203,7 +203,7 @@ class SecureScore(entity.Entity):
         """
         Sets the licensedUserCount property value. Licensed user count of the given tenant.
         Args:
-            value: Value to set for the licensedUserCount property.
+            value: Value to set for the licensed_user_count property.
         """
         self._licensed_user_count = value
     
@@ -220,7 +220,7 @@ class SecureScore(entity.Entity):
         """
         Sets the maxScore property value. Tenant maximum possible score on specified date.
         Args:
-            value: Value to set for the maxScore property.
+            value: Value to set for the max_score property.
         """
         self._max_score = value
     
@@ -257,7 +257,7 @@ class SecureScore(entity.Entity):
         """
         Sets the vendorInformation property value. Complex type containing details about the security product/service vendor, provider, and subprovider (for example, vendor=Microsoft; provider=SecureScore). Required.
         Args:
-            value: Value to set for the vendorInformation property.
+            value: Value to set for the vendor_information property.
         """
         self._vendor_information = value
     

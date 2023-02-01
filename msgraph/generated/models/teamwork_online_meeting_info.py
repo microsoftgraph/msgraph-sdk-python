@@ -36,7 +36,7 @@ class TeamworkOnlineMeetingInfo(AdditionalDataHolder, Parsable):
         """
         Sets the calendarEventId property value. The identifier of the calendar event associated with the meeting.
         Args:
-            value: Value to set for the calendarEventId property.
+            value: Value to set for the calendar_event_id property.
         """
         self._calendar_event_id = value
     
@@ -74,8 +74,8 @@ class TeamworkOnlineMeetingInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "calendar_event_id": lambda n : setattr(self, 'calendar_event_id', n.get_str_value()),
-            "join_web_url": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
+            "calendarEventId": lambda n : setattr(self, 'calendar_event_id', n.get_str_value()),
+            "joinWebUrl": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "organizer": lambda n : setattr(self, 'organizer', n.get_object_value(teamwork_user_identity.TeamworkUserIdentity)),
         }
@@ -94,7 +94,7 @@ class TeamworkOnlineMeetingInfo(AdditionalDataHolder, Parsable):
         """
         Sets the joinWebUrl property value. The URL that users click to join or uniquely identify the meeting.
         Args:
-            value: Value to set for the joinWebUrl property.
+            value: Value to set for the join_web_url property.
         """
         self._join_web_url = value
     
@@ -111,7 +111,7 @@ class TeamworkOnlineMeetingInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

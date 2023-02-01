@@ -15,8 +15,8 @@ document_set_versions_request_builder = lazy_import('msgraph.generated.groups.it
 document_set_version_item_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.items.item.document_set_versions.item.document_set_version_item_request_builder')
 drive_item_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.items.item.drive_item.drive_item_request_builder')
 fields_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.items.item.fields.fields_request_builder')
-get_activities_by_interval_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.items.item.get_activities_by_interval.get_activities_by_interval_request_builder')
-get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.items.item.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder')
+get_activities_by_interval_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.items.item.microsoft_graph_get_activities_by_interval.get_activities_by_interval_request_builder')
+get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.items.item.microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder')
 versions_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.items.item.versions.versions_request_builder')
 list_item_version_item_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.items.item.versions.item.list_item_version_item_request_builder')
 list_item = lazy_import('msgraph.generated.models.list_item')
@@ -55,16 +55,24 @@ class ListItemItemRequestBuilder():
         return fields_request_builder.FieldsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def microsoft_graph_get_activities_by_interval(self) -> get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder:
+        """
+        Provides operations to call the getActivitiesByInterval method.
+        """
+        return get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def versions(self) -> versions_request_builder.VersionsRequestBuilder:
         """
         Provides operations to manage the versions property of the microsoft.graph.listItem entity.
         """
         return versions_request_builder.VersionsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, list_item_id: Optional[str] = None) -> None:
         """
         Instantiates a new ListItemItemRequestBuilder and sets the default values.
         Args:
+            listItemId: key: id of listItem
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -76,6 +84,7 @@ class ListItemItemRequestBuilder():
         self.url_template: str = "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/lists/{list%2Did}/items/{listItem%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["listItem%2Did"] = listItemId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -127,14 +136,7 @@ class ListItemItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, list_item.ListItem, error_mapping)
     
-    def get_activities_by_interval(self,) -> get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder:
-        """
-        Provides operations to call the getActivitiesByInterval method.
-        Returns: get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder
-        """
-        return get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    def get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: Optional[str] = None, interval: Optional[str] = None, start_date_time: Optional[str] = None) -> get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
+    def microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: Optional[str] = None, interval: Optional[str] = None, start_date_time: Optional[str] = None) -> get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
         """
         Provides operations to call the getActivitiesByInterval method.
         Args:

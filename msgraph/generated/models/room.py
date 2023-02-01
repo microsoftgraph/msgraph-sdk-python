@@ -20,7 +20,7 @@ class Room(place.Place):
         """
         Sets the audioDeviceName property value. Specifies the name of the audio device in the room.
         Args:
-            value: Value to set for the audioDeviceName property.
+            value: Value to set for the audio_device_name property.
         """
         self._audio_device_name = value
     
@@ -37,7 +37,7 @@ class Room(place.Place):
         """
         Sets the bookingType property value. Type of room. Possible values are standard, and reserved.
         Args:
-            value: Value to set for the bookingType property.
+            value: Value to set for the booking_type property.
         """
         self._booking_type = value
     
@@ -133,7 +133,7 @@ class Room(place.Place):
         """
         Sets the displayDeviceName property value. Specifies the name of the display device in the room.
         Args:
-            value: Value to set for the displayDeviceName property.
+            value: Value to set for the display_device_name property.
         """
         self._display_device_name = value
     
@@ -150,7 +150,7 @@ class Room(place.Place):
         """
         Sets the emailAddress property value. Email address of the room.
         Args:
-            value: Value to set for the emailAddress property.
+            value: Value to set for the email_address property.
         """
         self._email_address = value
     
@@ -167,7 +167,7 @@ class Room(place.Place):
         """
         Sets the floorLabel property value. Specifies a descriptive label for the floor, for example, P.
         Args:
-            value: Value to set for the floorLabel property.
+            value: Value to set for the floor_label property.
         """
         self._floor_label = value
     
@@ -184,7 +184,7 @@ class Room(place.Place):
         """
         Sets the floorNumber property value. Specifies the floor number that the room is on.
         Args:
-            value: Value to set for the floorNumber property.
+            value: Value to set for the floor_number property.
         """
         self._floor_number = value
     
@@ -194,19 +194,19 @@ class Room(place.Place):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "audio_device_name": lambda n : setattr(self, 'audio_device_name', n.get_str_value()),
-            "booking_type": lambda n : setattr(self, 'booking_type', n.get_enum_value(booking_type.BookingType)),
+            "audioDeviceName": lambda n : setattr(self, 'audio_device_name', n.get_str_value()),
+            "bookingType": lambda n : setattr(self, 'booking_type', n.get_enum_value(booking_type.BookingType)),
             "building": lambda n : setattr(self, 'building', n.get_str_value()),
             "capacity": lambda n : setattr(self, 'capacity', n.get_int_value()),
-            "display_device_name": lambda n : setattr(self, 'display_device_name', n.get_str_value()),
-            "email_address": lambda n : setattr(self, 'email_address', n.get_str_value()),
-            "floor_label": lambda n : setattr(self, 'floor_label', n.get_str_value()),
-            "floor_number": lambda n : setattr(self, 'floor_number', n.get_int_value()),
-            "is_wheel_chair_accessible": lambda n : setattr(self, 'is_wheel_chair_accessible', n.get_bool_value()),
+            "displayDeviceName": lambda n : setattr(self, 'display_device_name', n.get_str_value()),
+            "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "floorLabel": lambda n : setattr(self, 'floor_label', n.get_str_value()),
+            "floorNumber": lambda n : setattr(self, 'floor_number', n.get_int_value()),
+            "isWheelChairAccessible": lambda n : setattr(self, 'is_wheel_chair_accessible', n.get_bool_value()),
             "label": lambda n : setattr(self, 'label', n.get_str_value()),
             "nickname": lambda n : setattr(self, 'nickname', n.get_str_value()),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
-            "video_device_name": lambda n : setattr(self, 'video_device_name', n.get_str_value()),
+            "videoDeviceName": lambda n : setattr(self, 'video_device_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -225,7 +225,7 @@ class Room(place.Place):
         """
         Sets the isWheelChairAccessible property value. Specifies whether the room is wheelchair accessible.
         Args:
-            value: Value to set for the isWheelChairAccessible property.
+            value: Value to set for the is_wheel_chair_accessible property.
         """
         self._is_wheel_chair_accessible = value
     
@@ -316,7 +316,7 @@ class Room(place.Place):
         """
         Sets the videoDeviceName property value. Specifies the name of the video device in the room.
         Args:
-            value: Value to set for the videoDeviceName property.
+            value: Value to set for the video_device_name property.
         """
         self._video_device_name = value
     

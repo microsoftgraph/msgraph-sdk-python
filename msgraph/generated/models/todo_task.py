@@ -18,23 +18,6 @@ task_status = lazy_import('msgraph.generated.models.task_status')
 
 class TodoTask(entity.Entity):
     @property
-    def attachments(self,) -> Optional[List[attachment_base.AttachmentBase]]:
-        """
-        Gets the attachments property value. The attachments property
-        Returns: Optional[List[attachment_base.AttachmentBase]]
-        """
-        return self._attachments
-    
-    @attachments.setter
-    def attachments(self,value: Optional[List[attachment_base.AttachmentBase]] = None) -> None:
-        """
-        Sets the attachments property value. The attachments property
-        Args:
-            value: Value to set for the attachments property.
-        """
-        self._attachments = value
-    
-    @property
     def attachment_sessions(self,) -> Optional[List[attachment_session.AttachmentSession]]:
         """
         Gets the attachmentSessions property value. The attachmentSessions property
@@ -47,9 +30,26 @@ class TodoTask(entity.Entity):
         """
         Sets the attachmentSessions property value. The attachmentSessions property
         Args:
-            value: Value to set for the attachmentSessions property.
+            value: Value to set for the attachment_sessions property.
         """
         self._attachment_sessions = value
+    
+    @property
+    def attachments(self,) -> Optional[List[attachment_base.AttachmentBase]]:
+        """
+        Gets the attachments property value. A collection of file attachments for the task.
+        Returns: Optional[List[attachment_base.AttachmentBase]]
+        """
+        return self._attachments
+    
+    @attachments.setter
+    def attachments(self,value: Optional[List[attachment_base.AttachmentBase]] = None) -> None:
+        """
+        Sets the attachments property value. A collection of file attachments for the task.
+        Args:
+            value: Value to set for the attachments property.
+        """
+        self._attachments = value
     
     @property
     def body(self,) -> Optional[item_body.ItemBody]:
@@ -81,7 +81,7 @@ class TodoTask(entity.Entity):
         """
         Sets the bodyLastModifiedDateTime property value. The date and time when the task body was last modified. By default, it is in UTC. You can provide a custom time zone in the request header. The property value uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2020 would look like this: '2020-01-01T00:00:00Z'.
         Args:
-            value: Value to set for the bodyLastModifiedDateTime property.
+            value: Value to set for the body_last_modified_date_time property.
         """
         self._body_last_modified_date_time = value
     
@@ -115,7 +115,7 @@ class TodoTask(entity.Entity):
         """
         Sets the checklistItems property value. A collection of checklistItems linked to a task.
         Args:
-            value: Value to set for the checklistItems property.
+            value: Value to set for the checklist_items property.
         """
         self._checklist_items = value
     
@@ -132,7 +132,7 @@ class TodoTask(entity.Entity):
         """
         Sets the completedDateTime property value. The date and time in the specified time zone that the task was finished.
         Args:
-            value: Value to set for the completedDateTime property.
+            value: Value to set for the completed_date_time property.
         """
         self._completed_date_time = value
     
@@ -141,10 +141,10 @@ class TodoTask(entity.Entity):
         Instantiates a new todoTask and sets the default values.
         """
         super().__init__()
-        # The attachments property
-        self._attachments: Optional[List[attachment_base.AttachmentBase]] = None
         # The attachmentSessions property
         self._attachment_sessions: Optional[List[attachment_session.AttachmentSession]] = None
+        # A collection of file attachments for the task.
+        self._attachments: Optional[List[attachment_base.AttachmentBase]] = None
         # The task body that typically contains information about the task.
         self._body: Optional[item_body.ItemBody] = None
         # The date and time when the task body was last modified. By default, it is in UTC. You can provide a custom time zone in the request header. The property value uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2020 would look like this: '2020-01-01T00:00:00Z'.
@@ -161,7 +161,7 @@ class TodoTask(entity.Entity):
         self._due_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
         # The collection of open extensions defined for the task. Nullable.
         self._extensions: Optional[List[extension.Extension]] = None
-        # The hasAttachments property
+        # Indicates whether the task has attachments.
         self._has_attachments: Optional[bool] = None
         # The importance property
         self._importance: Optional[importance.Importance] = None
@@ -177,7 +177,7 @@ class TodoTask(entity.Entity):
         self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
         # The date and time in the specified time zone for a reminder alert of the task to occur.
         self._reminder_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The startDateTime property
+        # The date and time in the specified time zone at which the task is scheduled to start.
         self._start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
         # The status property
         self._status: Optional[task_status.TaskStatus] = None
@@ -197,7 +197,7 @@ class TodoTask(entity.Entity):
         """
         Sets the createdDateTime property value. The date and time when the task was created. By default, it is in UTC. You can provide a custom time zone in the request header. The property value uses ISO 8601 format. For example, midnight UTC on Jan 1, 2020 would look like this: '2020-01-01T00:00:00Z'.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -226,7 +226,7 @@ class TodoTask(entity.Entity):
         """
         Sets the dueDateTime property value. The date and time in the specified time zone that the task is to be finished.
         Args:
-            value: Value to set for the dueDateTime property.
+            value: Value to set for the due_date_time property.
         """
         self._due_date_time = value
     
@@ -254,23 +254,23 @@ class TodoTask(entity.Entity):
         """
         fields = {
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(attachment_base.AttachmentBase)),
-            "attachment_sessions": lambda n : setattr(self, 'attachment_sessions', n.get_collection_of_object_values(attachment_session.AttachmentSession)),
+            "attachmentSessions": lambda n : setattr(self, 'attachment_sessions', n.get_collection_of_object_values(attachment_session.AttachmentSession)),
             "body": lambda n : setattr(self, 'body', n.get_object_value(item_body.ItemBody)),
-            "body_last_modified_date_time": lambda n : setattr(self, 'body_last_modified_date_time', n.get_datetime_value()),
+            "bodyLastModifiedDateTime": lambda n : setattr(self, 'body_last_modified_date_time', n.get_datetime_value()),
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_primitive_values(str)),
-            "checklist_items": lambda n : setattr(self, 'checklist_items', n.get_collection_of_object_values(checklist_item.ChecklistItem)),
-            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "due_date_time": lambda n : setattr(self, 'due_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "checklistItems": lambda n : setattr(self, 'checklist_items', n.get_collection_of_object_values(checklist_item.ChecklistItem)),
+            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "dueDateTime": lambda n : setattr(self, 'due_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
-            "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
+            "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
             "importance": lambda n : setattr(self, 'importance', n.get_enum_value(importance.Importance)),
-            "is_reminder_on": lambda n : setattr(self, 'is_reminder_on', n.get_bool_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "linked_resources": lambda n : setattr(self, 'linked_resources', n.get_collection_of_object_values(linked_resource.LinkedResource)),
+            "isReminderOn": lambda n : setattr(self, 'is_reminder_on', n.get_bool_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "linkedResources": lambda n : setattr(self, 'linked_resources', n.get_collection_of_object_values(linked_resource.LinkedResource)),
             "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(patterned_recurrence.PatternedRecurrence)),
-            "reminder_date_time": lambda n : setattr(self, 'reminder_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "reminderDateTime": lambda n : setattr(self, 'reminder_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(task_status.TaskStatus)),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
         }
@@ -281,7 +281,7 @@ class TodoTask(entity.Entity):
     @property
     def has_attachments(self,) -> Optional[bool]:
         """
-        Gets the hasAttachments property value. The hasAttachments property
+        Gets the hasAttachments property value. Indicates whether the task has attachments.
         Returns: Optional[bool]
         """
         return self._has_attachments
@@ -289,9 +289,9 @@ class TodoTask(entity.Entity):
     @has_attachments.setter
     def has_attachments(self,value: Optional[bool] = None) -> None:
         """
-        Sets the hasAttachments property value. The hasAttachments property
+        Sets the hasAttachments property value. Indicates whether the task has attachments.
         Args:
-            value: Value to set for the hasAttachments property.
+            value: Value to set for the has_attachments property.
         """
         self._has_attachments = value
     
@@ -325,7 +325,7 @@ class TodoTask(entity.Entity):
         """
         Sets the isReminderOn property value. Set to true if an alert is set to remind the user of the task.
         Args:
-            value: Value to set for the isReminderOn property.
+            value: Value to set for the is_reminder_on property.
         """
         self._is_reminder_on = value
     
@@ -342,7 +342,7 @@ class TodoTask(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. The date and time when the task was last modified. By default, it is in UTC. You can provide a custom time zone in the request header. The property value uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2020 would look like this: '2020-01-01T00:00:00Z'.
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     
@@ -359,7 +359,7 @@ class TodoTask(entity.Entity):
         """
         Sets the linkedResources property value. A collection of resources linked to the task.
         Args:
-            value: Value to set for the linkedResources property.
+            value: Value to set for the linked_resources property.
         """
         self._linked_resources = value
     
@@ -393,7 +393,7 @@ class TodoTask(entity.Entity):
         """
         Sets the reminderDateTime property value. The date and time in the specified time zone for a reminder alert of the task to occur.
         Args:
-            value: Value to set for the reminderDateTime property.
+            value: Value to set for the reminder_date_time property.
         """
         self._reminder_date_time = value
     
@@ -430,7 +430,7 @@ class TodoTask(entity.Entity):
     @property
     def start_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
-        Gets the startDateTime property value. The startDateTime property
+        Gets the startDateTime property value. The date and time in the specified time zone at which the task is scheduled to start.
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._start_date_time
@@ -438,9 +438,9 @@ class TodoTask(entity.Entity):
     @start_date_time.setter
     def start_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
-        Sets the startDateTime property value. The startDateTime property
+        Sets the startDateTime property value. The date and time in the specified time zone at which the task is scheduled to start.
         Args:
-            value: Value to set for the startDateTime property.
+            value: Value to set for the start_date_time property.
         """
         self._start_date_time = value
     

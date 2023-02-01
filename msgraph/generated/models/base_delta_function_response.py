@@ -69,7 +69,7 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.deltaLink property value. The OdataDeltaLink property
         Args:
-            value: Value to set for the OdataDeltaLink property.
+            value: Value to set for the odata_delta_link property.
         """
         self._odata_delta_link = value
     
@@ -86,7 +86,7 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.nextLink property value. The OdataNextLink property
         Args:
-            value: Value to set for the OdataNextLink property.
+            value: Value to set for the odata_next_link property.
         """
         self._odata_next_link = value
     

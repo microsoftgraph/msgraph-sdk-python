@@ -42,9 +42,9 @@ class EditionUpgradeConfiguration(device_configuration.DeviceConfiguration):
         """
         fields = {
             "license": lambda n : setattr(self, 'license', n.get_str_value()),
-            "license_type": lambda n : setattr(self, 'license_type', n.get_enum_value(edition_upgrade_license_type.EditionUpgradeLicenseType)),
-            "product_key": lambda n : setattr(self, 'product_key', n.get_str_value()),
-            "target_edition": lambda n : setattr(self, 'target_edition', n.get_enum_value(windows10_edition_type.Windows10EditionType)),
+            "licenseType": lambda n : setattr(self, 'license_type', n.get_enum_value(edition_upgrade_license_type.EditionUpgradeLicenseType)),
+            "productKey": lambda n : setattr(self, 'product_key', n.get_str_value()),
+            "targetEdition": lambda n : setattr(self, 'target_edition', n.get_enum_value(windows10_edition_type.Windows10EditionType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -80,7 +80,7 @@ class EditionUpgradeConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the licenseType property value. Edition Upgrade License type
         Args:
-            value: Value to set for the licenseType property.
+            value: Value to set for the license_type property.
         """
         self._license_type = value
     
@@ -97,7 +97,7 @@ class EditionUpgradeConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the productKey property value. Edition Upgrade Product Key.
         Args:
-            value: Value to set for the productKey property.
+            value: Value to set for the product_key property.
         """
         self._product_key = value
     
@@ -128,7 +128,7 @@ class EditionUpgradeConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the targetEdition property value. Windows 10 Edition type.
         Args:
-            value: Value to set for the targetEdition property.
+            value: Value to set for the target_edition property.
         """
         self._target_edition = value
     

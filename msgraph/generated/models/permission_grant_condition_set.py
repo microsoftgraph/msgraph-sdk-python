@@ -20,7 +20,7 @@ class PermissionGrantConditionSet(entity.Entity):
         """
         Sets the clientApplicationIds property value. A list of appId values for the client applications to match with, or a list with the single value all to match any client application. Default is the single value all.
         Args:
-            value: Value to set for the clientApplicationIds property.
+            value: Value to set for the client_application_ids property.
         """
         self._client_application_ids = value
     
@@ -37,26 +37,9 @@ class PermissionGrantConditionSet(entity.Entity):
         """
         Sets the clientApplicationPublisherIds property value. A list of Microsoft Partner Network (MPN) IDs for verified publishers of the client application, or a list with the single value all to match with client apps from any publisher. Default is the single value all.
         Args:
-            value: Value to set for the clientApplicationPublisherIds property.
+            value: Value to set for the client_application_publisher_ids property.
         """
         self._client_application_publisher_ids = value
-    
-    @property
-    def client_applications_from_verified_publisher_only(self,) -> Optional[bool]:
-        """
-        Gets the clientApplicationsFromVerifiedPublisherOnly property value. Set to true to only match on client applications with a verified publisher. Set to false to match on any client app, even if it does not have a verified publisher. Default is false.
-        Returns: Optional[bool]
-        """
-        return self._client_applications_from_verified_publisher_only
-    
-    @client_applications_from_verified_publisher_only.setter
-    def client_applications_from_verified_publisher_only(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the clientApplicationsFromVerifiedPublisherOnly property value. Set to true to only match on client applications with a verified publisher. Set to false to match on any client app, even if it does not have a verified publisher. Default is false.
-        Args:
-            value: Value to set for the clientApplicationsFromVerifiedPublisherOnly property.
-        """
-        self._client_applications_from_verified_publisher_only = value
     
     @property
     def client_application_tenant_ids(self,) -> Optional[List[str]]:
@@ -71,9 +54,26 @@ class PermissionGrantConditionSet(entity.Entity):
         """
         Sets the clientApplicationTenantIds property value. A list of Azure Active Directory tenant IDs in which the client application is registered, or a list with the single value all to match with client apps registered in any tenant. Default is the single value all.
         Args:
-            value: Value to set for the clientApplicationTenantIds property.
+            value: Value to set for the client_application_tenant_ids property.
         """
         self._client_application_tenant_ids = value
+    
+    @property
+    def client_applications_from_verified_publisher_only(self,) -> Optional[bool]:
+        """
+        Gets the clientApplicationsFromVerifiedPublisherOnly property value. Set to true to only match on client applications with a verified publisher. Set to false to match on any client app, even if it does not have a verified publisher. Default is false.
+        Returns: Optional[bool]
+        """
+        return self._client_applications_from_verified_publisher_only
+    
+    @client_applications_from_verified_publisher_only.setter
+    def client_applications_from_verified_publisher_only(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the clientApplicationsFromVerifiedPublisherOnly property value. Set to true to only match on client applications with a verified publisher. Set to false to match on any client app, even if it does not have a verified publisher. Default is false.
+        Args:
+            value: Value to set for the client_applications_from_verified_publisher_only property.
+        """
+        self._client_applications_from_verified_publisher_only = value
     
     def __init__(self,) -> None:
         """
@@ -84,18 +84,18 @@ class PermissionGrantConditionSet(entity.Entity):
         self._client_application_ids: Optional[List[str]] = None
         # A list of Microsoft Partner Network (MPN) IDs for verified publishers of the client application, or a list with the single value all to match with client apps from any publisher. Default is the single value all.
         self._client_application_publisher_ids: Optional[List[str]] = None
-        # Set to true to only match on client applications with a verified publisher. Set to false to match on any client app, even if it does not have a verified publisher. Default is false.
-        self._client_applications_from_verified_publisher_only: Optional[bool] = None
         # A list of Azure Active Directory tenant IDs in which the client application is registered, or a list with the single value all to match with client apps registered in any tenant. Default is the single value all.
         self._client_application_tenant_ids: Optional[List[str]] = None
+        # Set to true to only match on client applications with a verified publisher. Set to false to match on any client app, even if it does not have a verified publisher. Default is false.
+        self._client_applications_from_verified_publisher_only: Optional[bool] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
         # The permission classification for the permission being granted, or all to match with any permission classification (including permissions which are not classified). Default is all.
         self._permission_classification: Optional[str] = None
-        # The list of id values for the specific permissions to match with, or a list with the single value all to match with any permission. The id of delegated permissions can be found in the oauth2PermissionScopes property of the API's **servicePrincipal** object. The id of application permissions can be found in the appRoles property of the API's **servicePrincipal** object. The id of resource-specific application permissions can be found in the resourceSpecificApplicationPermissions property of the API's **servicePrincipal** object. Default is the single value all.
-        self._permissions: Optional[List[str]] = None
         # The permission type of the permission being granted. Possible values: application for application permissions (e.g. app roles), or delegated for delegated permissions. The value delegatedUserConsentable indicates delegated permissions which have not been configured by the API publisher to require admin consent—this value may be used in built-in permission grant policies, but cannot be used in custom permission grant policies. Required.
         self._permission_type: Optional[permission_type.PermissionType] = None
+        # The list of id values for the specific permissions to match with, or a list with the single value all to match with any permission. The id of delegated permissions can be found in the oauth2PermissionScopes property of the API's **servicePrincipal** object. The id of application permissions can be found in the appRoles property of the API's **servicePrincipal** object. The id of resource-specific application permissions can be found in the resourceSpecificApplicationPermissions property of the API's **servicePrincipal** object. Default is the single value all.
+        self._permissions: Optional[List[str]] = None
         # The appId of the resource application (e.g. the API) for which a permission is being granted, or any to match with any resource application or API. Default is any.
         self._resource_application: Optional[str] = None
     
@@ -117,14 +117,14 @@ class PermissionGrantConditionSet(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "client_application_ids": lambda n : setattr(self, 'client_application_ids', n.get_collection_of_primitive_values(str)),
-            "client_application_publisher_ids": lambda n : setattr(self, 'client_application_publisher_ids', n.get_collection_of_primitive_values(str)),
-            "client_applications_from_verified_publisher_only": lambda n : setattr(self, 'client_applications_from_verified_publisher_only', n.get_bool_value()),
-            "client_application_tenant_ids": lambda n : setattr(self, 'client_application_tenant_ids', n.get_collection_of_primitive_values(str)),
-            "permission_classification": lambda n : setattr(self, 'permission_classification', n.get_str_value()),
+            "clientApplicationsFromVerifiedPublisherOnly": lambda n : setattr(self, 'client_applications_from_verified_publisher_only', n.get_bool_value()),
+            "clientApplicationIds": lambda n : setattr(self, 'client_application_ids', n.get_collection_of_primitive_values(str)),
+            "clientApplicationPublisherIds": lambda n : setattr(self, 'client_application_publisher_ids', n.get_collection_of_primitive_values(str)),
+            "clientApplicationTenantIds": lambda n : setattr(self, 'client_application_tenant_ids', n.get_collection_of_primitive_values(str)),
             "permissions": lambda n : setattr(self, 'permissions', n.get_collection_of_primitive_values(str)),
-            "permission_type": lambda n : setattr(self, 'permission_type', n.get_enum_value(permission_type.PermissionType)),
-            "resource_application": lambda n : setattr(self, 'resource_application', n.get_str_value()),
+            "permissionClassification": lambda n : setattr(self, 'permission_classification', n.get_str_value()),
+            "permissionType": lambda n : setattr(self, 'permission_type', n.get_enum_value(permission_type.PermissionType)),
+            "resourceApplication": lambda n : setattr(self, 'resource_application', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -143,9 +143,26 @@ class PermissionGrantConditionSet(entity.Entity):
         """
         Sets the permissionClassification property value. The permission classification for the permission being granted, or all to match with any permission classification (including permissions which are not classified). Default is all.
         Args:
-            value: Value to set for the permissionClassification property.
+            value: Value to set for the permission_classification property.
         """
         self._permission_classification = value
+    
+    @property
+    def permission_type(self,) -> Optional[permission_type.PermissionType]:
+        """
+        Gets the permissionType property value. The permission type of the permission being granted. Possible values: application for application permissions (e.g. app roles), or delegated for delegated permissions. The value delegatedUserConsentable indicates delegated permissions which have not been configured by the API publisher to require admin consent—this value may be used in built-in permission grant policies, but cannot be used in custom permission grant policies. Required.
+        Returns: Optional[permission_type.PermissionType]
+        """
+        return self._permission_type
+    
+    @permission_type.setter
+    def permission_type(self,value: Optional[permission_type.PermissionType] = None) -> None:
+        """
+        Sets the permissionType property value. The permission type of the permission being granted. Possible values: application for application permissions (e.g. app roles), or delegated for delegated permissions. The value delegatedUserConsentable indicates delegated permissions which have not been configured by the API publisher to require admin consent—this value may be used in built-in permission grant policies, but cannot be used in custom permission grant policies. Required.
+        Args:
+            value: Value to set for the permission_type property.
+        """
+        self._permission_type = value
     
     @property
     def permissions(self,) -> Optional[List[str]]:
@@ -165,23 +182,6 @@ class PermissionGrantConditionSet(entity.Entity):
         self._permissions = value
     
     @property
-    def permission_type(self,) -> Optional[permission_type.PermissionType]:
-        """
-        Gets the permissionType property value. The permission type of the permission being granted. Possible values: application for application permissions (e.g. app roles), or delegated for delegated permissions. The value delegatedUserConsentable indicates delegated permissions which have not been configured by the API publisher to require admin consent—this value may be used in built-in permission grant policies, but cannot be used in custom permission grant policies. Required.
-        Returns: Optional[permission_type.PermissionType]
-        """
-        return self._permission_type
-    
-    @permission_type.setter
-    def permission_type(self,value: Optional[permission_type.PermissionType] = None) -> None:
-        """
-        Sets the permissionType property value. The permission type of the permission being granted. Possible values: application for application permissions (e.g. app roles), or delegated for delegated permissions. The value delegatedUserConsentable indicates delegated permissions which have not been configured by the API publisher to require admin consent—this value may be used in built-in permission grant policies, but cannot be used in custom permission grant policies. Required.
-        Args:
-            value: Value to set for the permissionType property.
-        """
-        self._permission_type = value
-    
-    @property
     def resource_application(self,) -> Optional[str]:
         """
         Gets the resourceApplication property value. The appId of the resource application (e.g. the API) for which a permission is being granted, or any to match with any resource application or API. Default is any.
@@ -194,7 +194,7 @@ class PermissionGrantConditionSet(entity.Entity):
         """
         Sets the resourceApplication property value. The appId of the resource application (e.g. the API) for which a permission is being granted, or any to match with any resource application or API. Default is any.
         Args:
-            value: Value to set for the resourceApplication property.
+            value: Value to set for the resource_application property.
         """
         self._resource_application = value
     
@@ -207,12 +207,12 @@ class PermissionGrantConditionSet(entity.Entity):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
+        writer.write_bool_value("clientApplicationsFromVerifiedPublisherOnly", self.client_applications_from_verified_publisher_only)
         writer.write_collection_of_primitive_values("clientApplicationIds", self.client_application_ids)
         writer.write_collection_of_primitive_values("clientApplicationPublisherIds", self.client_application_publisher_ids)
-        writer.write_bool_value("clientApplicationsFromVerifiedPublisherOnly", self.client_applications_from_verified_publisher_only)
         writer.write_collection_of_primitive_values("clientApplicationTenantIds", self.client_application_tenant_ids)
-        writer.write_str_value("permissionClassification", self.permission_classification)
         writer.write_collection_of_primitive_values("permissions", self.permissions)
+        writer.write_str_value("permissionClassification", self.permission_classification)
         writer.write_enum_value("permissionType", self.permission_type)
         writer.write_str_value("resourceApplication", self.resource_application)
     

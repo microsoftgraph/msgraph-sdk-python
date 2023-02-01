@@ -36,7 +36,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         """
         Sets the approvalStageTimeOutInDays property value. The number of days that a request can be pending a response before it is automatically denied.
         Args:
-            value: Value to set for the approvalStageTimeOutInDays property.
+            value: Value to set for the approval_stage_time_out_in_days property.
         """
         self._approval_stage_time_out_in_days = value
     
@@ -87,7 +87,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         """
         Sets the escalationApprovers property value. The escalation approvers for this stage when the primary approvers don't respond.
         Args:
-            value: Value to set for the escalationApprovers property.
+            value: Value to set for the escalation_approvers property.
         """
         self._escalation_approvers = value
     
@@ -104,7 +104,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         """
         Sets the escalationTimeInMinutes property value. The time a request can be pending a response from a primary approver before it can be escalated to the escalation approvers.
         Args:
-            value: Value to set for the escalationTimeInMinutes property.
+            value: Value to set for the escalation_time_in_minutes property.
         """
         self._escalation_time_in_minutes = value
     
@@ -114,13 +114,13 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "approval_stage_time_out_in_days": lambda n : setattr(self, 'approval_stage_time_out_in_days', n.get_int_value()),
-            "escalation_approvers": lambda n : setattr(self, 'escalation_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
-            "escalation_time_in_minutes": lambda n : setattr(self, 'escalation_time_in_minutes', n.get_int_value()),
-            "is_approver_justification_required": lambda n : setattr(self, 'is_approver_justification_required', n.get_bool_value()),
-            "is_escalation_enabled": lambda n : setattr(self, 'is_escalation_enabled', n.get_bool_value()),
+            "approvalStageTimeOutInDays": lambda n : setattr(self, 'approval_stage_time_out_in_days', n.get_int_value()),
+            "escalationApprovers": lambda n : setattr(self, 'escalation_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "escalationTimeInMinutes": lambda n : setattr(self, 'escalation_time_in_minutes', n.get_int_value()),
+            "isApproverJustificationRequired": lambda n : setattr(self, 'is_approver_justification_required', n.get_bool_value()),
+            "isEscalationEnabled": lambda n : setattr(self, 'is_escalation_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "primary_approvers": lambda n : setattr(self, 'primary_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "primaryApprovers": lambda n : setattr(self, 'primary_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
         }
         return fields
     
@@ -137,7 +137,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         """
         Sets the isApproverJustificationRequired property value. Indicates whether the approver must provide justification for their reponse.
         Args:
-            value: Value to set for the isApproverJustificationRequired property.
+            value: Value to set for the is_approver_justification_required property.
         """
         self._is_approver_justification_required = value
     
@@ -154,7 +154,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         """
         Sets the isEscalationEnabled property value. Indicates whether escalation if enabled.
         Args:
-            value: Value to set for the isEscalationEnabled property.
+            value: Value to set for the is_escalation_enabled property.
         """
         self._is_escalation_enabled = value
     
@@ -171,7 +171,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -188,7 +188,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         """
         Sets the primaryApprovers property value. The primary approvers of this stage.
         Args:
-            value: Value to set for the primaryApprovers property.
+            value: Value to set for the primary_approvers property.
         """
         self._primary_approvers = value
     

@@ -87,7 +87,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         """
         Sets the deviceId property value. Refers to the UniqueID of the device used for signing in.
         Args:
-            value: Value to set for the deviceId property.
+            value: Value to set for the device_id property.
         """
         self._device_id = value
     
@@ -104,7 +104,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. Refers to the name of the device used for signing in.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -115,13 +115,13 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         """
         fields = {
             "browser": lambda n : setattr(self, 'browser', n.get_str_value()),
-            "device_id": lambda n : setattr(self, 'device_id', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_compliant": lambda n : setattr(self, 'is_compliant', n.get_bool_value()),
-            "is_managed": lambda n : setattr(self, 'is_managed', n.get_bool_value()),
+            "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isCompliant": lambda n : setattr(self, 'is_compliant', n.get_bool_value()),
+            "isManaged": lambda n : setattr(self, 'is_managed', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "operating_system": lambda n : setattr(self, 'operating_system', n.get_str_value()),
-            "trust_type": lambda n : setattr(self, 'trust_type', n.get_str_value()),
+            "operatingSystem": lambda n : setattr(self, 'operating_system', n.get_str_value()),
+            "trustType": lambda n : setattr(self, 'trust_type', n.get_str_value()),
         }
         return fields
     
@@ -138,7 +138,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         """
         Sets the isCompliant property value. Indicates whether the device is compliant.
         Args:
-            value: Value to set for the isCompliant property.
+            value: Value to set for the is_compliant property.
         """
         self._is_compliant = value
     
@@ -155,7 +155,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         """
         Sets the isManaged property value. Indicates whether the device is managed.
         Args:
-            value: Value to set for the isManaged property.
+            value: Value to set for the is_managed property.
         """
         self._is_managed = value
     
@@ -172,7 +172,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -189,7 +189,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         """
         Sets the operatingSystem property value. Indicates the operating system name and version used for signing in.
         Args:
-            value: Value to set for the operatingSystem property.
+            value: Value to set for the operating_system property.
         """
         self._operating_system = value
     
@@ -224,7 +224,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         """
         Sets the trustType property value. Provides information about whether the signed-in device is Workplace Joined, AzureAD Joined, Domain Joined.
         Args:
-            value: Value to set for the trustType property.
+            value: Value to set for the trust_type property.
         """
         self._trust_type = value
     

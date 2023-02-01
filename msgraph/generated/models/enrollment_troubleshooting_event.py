@@ -57,7 +57,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         """
         Sets the deviceId property value. Azure AD device identifier.
         Args:
-            value: Value to set for the deviceId property.
+            value: Value to set for the device_id property.
         """
         self._device_id = value
     
@@ -74,7 +74,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         """
         Sets the enrollmentType property value. Possible ways of adding a mobile device to management.
         Args:
-            value: Value to set for the enrollmentType property.
+            value: Value to set for the enrollment_type property.
         """
         self._enrollment_type = value
     
@@ -91,7 +91,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         """
         Sets the failureCategory property value. Top level failure categories for enrollment.
         Args:
-            value: Value to set for the failureCategory property.
+            value: Value to set for the failure_category property.
         """
         self._failure_category = value
     
@@ -108,7 +108,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         """
         Sets the failureReason property value. Detailed failure reason.
         Args:
-            value: Value to set for the failureReason property.
+            value: Value to set for the failure_reason property.
         """
         self._failure_reason = value
     
@@ -118,14 +118,14 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_id": lambda n : setattr(self, 'device_id', n.get_str_value()),
-            "enrollment_type": lambda n : setattr(self, 'enrollment_type', n.get_enum_value(device_enrollment_type.DeviceEnrollmentType)),
-            "failure_category": lambda n : setattr(self, 'failure_category', n.get_enum_value(device_enrollment_failure_reason.DeviceEnrollmentFailureReason)),
-            "failure_reason": lambda n : setattr(self, 'failure_reason', n.get_str_value()),
-            "managed_device_identifier": lambda n : setattr(self, 'managed_device_identifier', n.get_str_value()),
-            "operating_system": lambda n : setattr(self, 'operating_system', n.get_str_value()),
-            "os_version": lambda n : setattr(self, 'os_version', n.get_str_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
+            "enrollmentType": lambda n : setattr(self, 'enrollment_type', n.get_enum_value(device_enrollment_type.DeviceEnrollmentType)),
+            "failureCategory": lambda n : setattr(self, 'failure_category', n.get_enum_value(device_enrollment_failure_reason.DeviceEnrollmentFailureReason)),
+            "failureReason": lambda n : setattr(self, 'failure_reason', n.get_str_value()),
+            "managedDeviceIdentifier": lambda n : setattr(self, 'managed_device_identifier', n.get_str_value()),
+            "operatingSystem": lambda n : setattr(self, 'operating_system', n.get_str_value()),
+            "osVersion": lambda n : setattr(self, 'os_version', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -144,7 +144,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         """
         Sets the managedDeviceIdentifier property value. Device identifier created or collected by Intune.
         Args:
-            value: Value to set for the managedDeviceIdentifier property.
+            value: Value to set for the managed_device_identifier property.
         """
         self._managed_device_identifier = value
     
@@ -161,7 +161,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         """
         Sets the operatingSystem property value. Operating System.
         Args:
-            value: Value to set for the operatingSystem property.
+            value: Value to set for the operating_system property.
         """
         self._operating_system = value
     
@@ -178,7 +178,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         """
         Sets the osVersion property value. OS Version.
         Args:
-            value: Value to set for the osVersion property.
+            value: Value to set for the os_version property.
         """
         self._os_version = value
     
@@ -213,7 +213,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         """
         Sets the userId property value. Identifier for the user that tried to enroll the device.
         Args:
-            value: Value to set for the userId property.
+            value: Value to set for the user_id property.
         """
         self._user_id = value
     

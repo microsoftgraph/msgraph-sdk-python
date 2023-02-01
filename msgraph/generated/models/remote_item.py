@@ -95,7 +95,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         """
         Sets the createdBy property value. Identity of the user, device, and application which created the item. Read-only.
         Args:
-            value: Value to set for the createdBy property.
+            value: Value to set for the created_by property.
         """
         self._created_by = value
     
@@ -112,7 +112,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         """
         Sets the createdDateTime property value. Date and time of item creation. Read-only.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -158,7 +158,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         """
         Sets the fileSystemInfo property value. Information about the remote item from the local file system. Read-only.
         Args:
-            value: Value to set for the fileSystemInfo property.
+            value: Value to set for the file_system_info property.
         """
         self._file_system_info = value
     
@@ -185,26 +185,26 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "file": lambda n : setattr(self, 'file', n.get_object_value(file.File)),
-            "file_system_info": lambda n : setattr(self, 'file_system_info', n.get_object_value(file_system_info.FileSystemInfo)),
+            "fileSystemInfo": lambda n : setattr(self, 'file_system_info', n.get_object_value(file_system_info.FileSystemInfo)),
             "folder": lambda n : setattr(self, 'folder', n.get_object_value(folder.Folder)),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "image": lambda n : setattr(self, 'image', n.get_object_value(image.Image)),
-            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "package": lambda n : setattr(self, 'package', n.get_object_value(package.Package)),
-            "parent_reference": lambda n : setattr(self, 'parent_reference', n.get_object_value(item_reference.ItemReference)),
+            "parentReference": lambda n : setattr(self, 'parent_reference', n.get_object_value(item_reference.ItemReference)),
             "shared": lambda n : setattr(self, 'shared', n.get_object_value(shared.Shared)),
-            "sharepoint_ids": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
+            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
-            "special_folder": lambda n : setattr(self, 'special_folder', n.get_object_value(special_folder.SpecialFolder)),
+            "specialFolder": lambda n : setattr(self, 'special_folder', n.get_object_value(special_folder.SpecialFolder)),
             "video": lambda n : setattr(self, 'video', n.get_object_value(video.Video)),
-            "web_dav_url": lambda n : setattr(self, 'web_dav_url', n.get_str_value()),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "webDavUrl": lambda n : setattr(self, 'web_dav_url', n.get_str_value()),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         return fields
     
@@ -255,7 +255,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         """
         Sets the lastModifiedBy property value. Identity of the user, device, and application which last modified the item. Read-only.
         Args:
-            value: Value to set for the lastModifiedBy property.
+            value: Value to set for the last_modified_by property.
         """
         self._last_modified_by = value
     
@@ -272,7 +272,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         """
         Sets the lastModifiedDateTime property value. Date and time the item was last modified. Read-only.
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     
@@ -306,7 +306,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -340,7 +340,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         """
         Sets the parentReference property value. Properties of the parent of the remote item. Read-only.
         Args:
-            value: Value to set for the parentReference property.
+            value: Value to set for the parent_reference property.
         """
         self._parent_reference = value
     
@@ -404,7 +404,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         """
         Sets the sharepointIds property value. Provides interop between items in OneDrive for Business and SharePoint with the full set of item identifiers. Read-only.
         Args:
-            value: Value to set for the sharepointIds property.
+            value: Value to set for the sharepoint_ids property.
         """
         self._sharepoint_ids = value
     
@@ -438,7 +438,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         """
         Sets the specialFolder property value. If the current item is also available as a special folder, this facet is returned. Read-only.
         Args:
-            value: Value to set for the specialFolder property.
+            value: Value to set for the special_folder property.
         """
         self._special_folder = value
     
@@ -472,7 +472,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         """
         Sets the webDavUrl property value. DAV compatible URL for the item.
         Args:
-            value: Value to set for the webDavUrl property.
+            value: Value to set for the web_dav_url property.
         """
         self._web_dav_url = value
     
@@ -489,7 +489,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         """
         Sets the webUrl property value. URL that displays the resource in the browser. Read-only.
         Args:
-            value: Value to set for the webUrl property.
+            value: Value to set for the web_url property.
         """
         self._web_url = value
     

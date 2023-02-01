@@ -45,7 +45,7 @@ class TimeOffReason(change_tracked_entity.ChangeTrackedEntity):
         """
         Sets the displayName property value. The name of the timeOffReason. Required.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -55,9 +55,9 @@ class TimeOffReason(change_tracked_entity.ChangeTrackedEntity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "icon_type": lambda n : setattr(self, 'icon_type', n.get_enum_value(time_off_reason_icon_type.TimeOffReasonIconType)),
-            "is_active": lambda n : setattr(self, 'is_active', n.get_bool_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "iconType": lambda n : setattr(self, 'icon_type', n.get_enum_value(time_off_reason_icon_type.TimeOffReasonIconType)),
+            "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -76,7 +76,7 @@ class TimeOffReason(change_tracked_entity.ChangeTrackedEntity):
         """
         Sets the iconType property value. Supported icon types are: none, car, calendar, running, plane, firstAid, doctor, notWorking, clock, juryDuty, globe, cup, phone, weather, umbrella, piggyBank, dog, cake, trafficCone, pin, sunny. Required.
         Args:
-            value: Value to set for the iconType property.
+            value: Value to set for the icon_type property.
         """
         self._icon_type = value
     
@@ -93,7 +93,7 @@ class TimeOffReason(change_tracked_entity.ChangeTrackedEntity):
         """
         Sets the isActive property value. Indicates whether the timeOffReason can be used when creating new entities or updating existing ones. Required.
         Args:
-            value: Value to set for the isActive property.
+            value: Value to set for the is_active property.
         """
         self._is_active = value
     

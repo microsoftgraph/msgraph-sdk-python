@@ -43,7 +43,7 @@ class WorkbookFormatProtection(entity.Entity):
         """
         Sets the formulaHidden property value. Indicates if Excel hides the formula for the cells in the range. A null value indicates that the entire range doesn't have uniform formula hidden setting.
         Args:
-            value: Value to set for the formulaHidden property.
+            value: Value to set for the formula_hidden property.
         """
         self._formula_hidden = value
     
@@ -53,7 +53,7 @@ class WorkbookFormatProtection(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "formula_hidden": lambda n : setattr(self, 'formula_hidden', n.get_bool_value()),
+            "formulaHidden": lambda n : setattr(self, 'formula_hidden', n.get_bool_value()),
             "locked": lambda n : setattr(self, 'locked', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

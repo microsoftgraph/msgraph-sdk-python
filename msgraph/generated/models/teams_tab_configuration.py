@@ -52,7 +52,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
         """
         Sets the contentUrl property value. Url used for rendering tab contents in Teams. Required.
         Args:
-            value: Value to set for the contentUrl property.
+            value: Value to set for the content_url property.
         """
         self._content_url = value
     
@@ -81,7 +81,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
         """
         Sets the entityId property value. Identifier for the entity hosted by the tab provider.
         Args:
-            value: Value to set for the entityId property.
+            value: Value to set for the entity_id property.
         """
         self._entity_id = value
     
@@ -91,11 +91,11 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "content_url": lambda n : setattr(self, 'content_url', n.get_str_value()),
-            "entity_id": lambda n : setattr(self, 'entity_id', n.get_str_value()),
+            "contentUrl": lambda n : setattr(self, 'content_url', n.get_str_value()),
+            "entityId": lambda n : setattr(self, 'entity_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "remove_url": lambda n : setattr(self, 'remove_url', n.get_str_value()),
-            "website_url": lambda n : setattr(self, 'website_url', n.get_str_value()),
+            "removeUrl": lambda n : setattr(self, 'remove_url', n.get_str_value()),
+            "websiteUrl": lambda n : setattr(self, 'website_url', n.get_str_value()),
         }
         return fields
     
@@ -112,7 +112,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -129,7 +129,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
         """
         Sets the removeUrl property value. Url called by Teams client when a Tab is removed using the Teams Client.
         Args:
-            value: Value to set for the removeUrl property.
+            value: Value to set for the remove_url property.
         """
         self._remove_url = value
     
@@ -161,7 +161,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
         """
         Sets the websiteUrl property value. Url for showing tab contents outside of Teams.
         Args:
-            value: Value to set for the websiteUrl property.
+            value: Value to set for the website_url property.
         """
         self._website_url = value
     

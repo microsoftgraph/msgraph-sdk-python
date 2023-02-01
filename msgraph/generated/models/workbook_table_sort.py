@@ -57,7 +57,7 @@ class WorkbookTableSort(entity.Entity):
         """
         fields = {
             "fields": lambda n : setattr(self, 'fields', n.get_collection_of_object_values(workbook_sort_field.WorkbookSortField)),
-            "match_case": lambda n : setattr(self, 'match_case', n.get_bool_value()),
+            "matchCase": lambda n : setattr(self, 'match_case', n.get_bool_value()),
             "method": lambda n : setattr(self, 'method', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -77,7 +77,7 @@ class WorkbookTableSort(entity.Entity):
         """
         Sets the matchCase property value. Represents whether the casing impacted the last sort of the table. Read-only.
         Args:
-            value: Value to set for the matchCase property.
+            value: Value to set for the match_case property.
         """
         self._match_case = value
     

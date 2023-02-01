@@ -21,7 +21,7 @@ class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the activeHoursEnd property value. Active Hours End (active hours mean the time window when updates install should not happen)
         Args:
-            value: Value to set for the activeHoursEnd property.
+            value: Value to set for the active_hours_end property.
         """
         self._active_hours_end = value
     
@@ -38,7 +38,7 @@ class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the activeHoursStart property value. Active Hours Start (active hours mean the time window when updates install should not happen)
         Args:
-            value: Value to set for the activeHoursStart property.
+            value: Value to set for the active_hours_start property.
         """
         self._active_hours_start = value
     
@@ -75,10 +75,10 @@ class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "active_hours_end": lambda n : setattr(self, 'active_hours_end', n.get_object_value(Time)),
-            "active_hours_start": lambda n : setattr(self, 'active_hours_start', n.get_object_value(Time)),
-            "scheduled_install_days": lambda n : setattr(self, 'scheduled_install_days', n.get_collection_of_enum_values(day_of_week.DayOfWeek)),
-            "utc_time_offset_in_minutes": lambda n : setattr(self, 'utc_time_offset_in_minutes', n.get_int_value()),
+            "activeHoursEnd": lambda n : setattr(self, 'active_hours_end', n.get_object_value(Time)),
+            "activeHoursStart": lambda n : setattr(self, 'active_hours_start', n.get_object_value(Time)),
+            "scheduledInstallDays": lambda n : setattr(self, 'scheduled_install_days', n.get_collection_of_enum_values(day_of_week.DayOfWeek)),
+            "utcTimeOffsetInMinutes": lambda n : setattr(self, 'utc_time_offset_in_minutes', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -97,7 +97,7 @@ class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the scheduledInstallDays property value. Days in week for which active hours are configured. This collection can contain a maximum of 7 elements.
         Args:
-            value: Value to set for the scheduledInstallDays property.
+            value: Value to set for the scheduled_install_days property.
         """
         self._scheduled_install_days = value
     
@@ -128,7 +128,7 @@ class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
         """
         Sets the utcTimeOffsetInMinutes property value. UTC Time Offset indicated in minutes
         Args:
-            value: Value to set for the utcTimeOffsetInMinutes property.
+            value: Value to set for the utc_time_offset_in_minutes property.
         """
         self._utc_time_offset_in_minutes = value
     

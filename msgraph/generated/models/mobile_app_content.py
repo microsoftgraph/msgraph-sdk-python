@@ -36,7 +36,7 @@ class MobileAppContent(entity.Entity):
         """
         Sets the containedApps property value. The collection of contained apps in a MobileLobApp acting as a package.
         Args:
-            value: Value to set for the containedApps property.
+            value: Value to set for the contained_apps property.
         """
         self._contained_apps = value
     
@@ -75,7 +75,7 @@ class MobileAppContent(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "contained_apps": lambda n : setattr(self, 'contained_apps', n.get_collection_of_object_values(mobile_contained_app.MobileContainedApp)),
+            "containedApps": lambda n : setattr(self, 'contained_apps', n.get_collection_of_object_values(mobile_contained_app.MobileContainedApp)),
             "files": lambda n : setattr(self, 'files', n.get_collection_of_object_values(mobile_app_content_file.MobileAppContentFile)),
         }
         super_fields = super().get_field_deserializers()

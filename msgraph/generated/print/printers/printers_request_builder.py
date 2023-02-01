@@ -14,7 +14,7 @@ printer = lazy_import('msgraph.generated.models.printer')
 printer_collection_response = lazy_import('msgraph.generated.models.printer_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.print.printers.count.count_request_builder')
-create_request_builder = lazy_import('msgraph.generated.print.printers.create.create_request_builder')
+create_request_builder = lazy_import('msgraph.generated.print.printers.microsoft_graph_create.create_request_builder')
 
 class PrintersRequestBuilder():
     """
@@ -28,7 +28,7 @@ class PrintersRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def create(self) -> create_request_builder.CreateRequestBuilder:
+    def microsoft_graph_create(self) -> create_request_builder.CreateRequestBuilder:
         """
         Provides operations to call the create method.
         """

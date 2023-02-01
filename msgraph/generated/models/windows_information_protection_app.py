@@ -103,7 +103,7 @@ class WindowsInformationProtectionApp(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. App display name.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -115,10 +115,10 @@ class WindowsInformationProtectionApp(AdditionalDataHolder, Parsable):
         fields = {
             "denied": lambda n : setattr(self, 'denied', n.get_bool_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "product_name": lambda n : setattr(self, 'product_name', n.get_str_value()),
-            "publisher_name": lambda n : setattr(self, 'publisher_name', n.get_str_value()),
+            "productName": lambda n : setattr(self, 'product_name', n.get_str_value()),
+            "publisherName": lambda n : setattr(self, 'publisher_name', n.get_str_value()),
         }
         return fields
     
@@ -135,7 +135,7 @@ class WindowsInformationProtectionApp(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -152,7 +152,7 @@ class WindowsInformationProtectionApp(AdditionalDataHolder, Parsable):
         """
         Sets the productName property value. The product name.
         Args:
-            value: Value to set for the productName property.
+            value: Value to set for the product_name property.
         """
         self._product_name = value
     
@@ -169,7 +169,7 @@ class WindowsInformationProtectionApp(AdditionalDataHolder, Parsable):
         """
         Sets the publisherName property value. The publisher name
         Args:
-            value: Value to set for the publisherName property.
+            value: Value to set for the publisher_name property.
         """
         self._publisher_name = value
     

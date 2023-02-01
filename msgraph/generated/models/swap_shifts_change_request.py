@@ -33,7 +33,7 @@ class SwapShiftsChangeRequest(offer_shift_request.OfferShiftRequest):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "recipient_shift_id": lambda n : setattr(self, 'recipient_shift_id', n.get_str_value()),
+            "recipientShiftId": lambda n : setattr(self, 'recipient_shift_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -52,7 +52,7 @@ class SwapShiftsChangeRequest(offer_shift_request.OfferShiftRequest):
         """
         Sets the recipientShiftId property value. ShiftId for the recipient user with whom the request is to swap.
         Args:
-            value: Value to set for the recipientShiftId property.
+            value: Value to set for the recipient_shift_id property.
         """
         self._recipient_shift_id = value
     

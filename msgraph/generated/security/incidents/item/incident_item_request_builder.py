@@ -39,10 +39,11 @@ class IncidentItemRequestBuilder():
         url_tpl_params["alert%2Did"] = id
         return alert_item_request_builder.AlertItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, incident_id: Optional[str] = None) -> None:
         """
         Instantiates a new IncidentItemRequestBuilder and sets the default values.
         Args:
+            incidentId: key: id of incident
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -54,6 +55,7 @@ class IncidentItemRequestBuilder():
         self.url_template: str = "{+baseurl}/security/incidents/{incident%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["incident%2Did"] = incidentId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

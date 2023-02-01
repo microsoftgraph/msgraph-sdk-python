@@ -62,7 +62,7 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the destinationServiceIp property value. Destination IP Address of the connection to the cloud application/service.
         Args:
-            value: Value to set for the destinationServiceIp property.
+            value: Value to set for the destination_service_ip property.
         """
         self._destination_service_ip = value
     
@@ -79,7 +79,7 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the destinationServiceName property value. Cloud application/service name (for example 'Salesforce', 'DropBox', etc.).
         Args:
-            value: Value to set for the destinationServiceName property.
+            value: Value to set for the destination_service_name property.
         """
         self._destination_service_name = value
     
@@ -89,10 +89,10 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "destination_service_ip": lambda n : setattr(self, 'destination_service_ip', n.get_str_value()),
-            "destination_service_name": lambda n : setattr(self, 'destination_service_name', n.get_str_value()),
+            "destinationServiceIp": lambda n : setattr(self, 'destination_service_ip', n.get_str_value()),
+            "destinationServiceName": lambda n : setattr(self, 'destination_service_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "risk_score": lambda n : setattr(self, 'risk_score', n.get_str_value()),
+            "riskScore": lambda n : setattr(self, 'risk_score', n.get_str_value()),
         }
         return fields
     
@@ -109,7 +109,7 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -126,7 +126,7 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the riskScore property value. Provider-generated/calculated risk score of the Cloud Application/Service. Recommended value range of 0-1, which equates to a percentage.
         Args:
-            value: Value to set for the riskScore property.
+            value: Value to set for the risk_score property.
         """
         self._risk_score = value
     

@@ -48,7 +48,7 @@ class UserFlowLanguageConfiguration(entity.Entity):
         """
         Sets the defaultPages property value. Collection of pages with the default content to display in a user flow for a specified language. This collection does not allow any kind of modification.
         Args:
-            value: Value to set for the defaultPages property.
+            value: Value to set for the default_pages property.
         """
         self._default_pages = value
     
@@ -65,7 +65,7 @@ class UserFlowLanguageConfiguration(entity.Entity):
         """
         Sets the displayName property value. The language name to display. This property is read-only.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -75,10 +75,10 @@ class UserFlowLanguageConfiguration(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "default_pages": lambda n : setattr(self, 'default_pages', n.get_collection_of_object_values(user_flow_language_page.UserFlowLanguagePage)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "overrides_pages": lambda n : setattr(self, 'overrides_pages', n.get_collection_of_object_values(user_flow_language_page.UserFlowLanguagePage)),
+            "defaultPages": lambda n : setattr(self, 'default_pages', n.get_collection_of_object_values(user_flow_language_page.UserFlowLanguagePage)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "overridesPages": lambda n : setattr(self, 'overrides_pages', n.get_collection_of_object_values(user_flow_language_page.UserFlowLanguagePage)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -97,7 +97,7 @@ class UserFlowLanguageConfiguration(entity.Entity):
         """
         Sets the isEnabled property value. Indicates whether the language is enabled within the user flow.
         Args:
-            value: Value to set for the isEnabled property.
+            value: Value to set for the is_enabled property.
         """
         self._is_enabled = value
     
@@ -114,7 +114,7 @@ class UserFlowLanguageConfiguration(entity.Entity):
         """
         Sets the overridesPages property value. Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows to modify the content of the page, any other modification is not allowed (creation or deletion of pages).
         Args:
-            value: Value to set for the overridesPages property.
+            value: Value to set for the overrides_pages property.
         """
         self._overrides_pages = value
     

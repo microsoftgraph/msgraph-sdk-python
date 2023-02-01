@@ -42,7 +42,7 @@ class CasesRoot(entity.Entity):
         """
         Sets the ediscoveryCases property value. The ediscoveryCases property
         Args:
-            value: Value to set for the ediscoveryCases property.
+            value: Value to set for the ediscovery_cases property.
         """
         self._ediscovery_cases = value
     
@@ -52,7 +52,7 @@ class CasesRoot(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "ediscovery_cases": lambda n : setattr(self, 'ediscovery_cases', n.get_collection_of_object_values(ediscovery_case.EdiscoveryCase)),
+            "ediscoveryCases": lambda n : setattr(self, 'ediscovery_cases', n.get_collection_of_object_values(ediscovery_case.EdiscoveryCase)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

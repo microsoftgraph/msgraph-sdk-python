@@ -72,7 +72,7 @@ class List(base_item.BaseItem):
         """
         Sets the contentTypes property value. The collection of content types present in this list.
         Args:
-            value: Value to set for the contentTypes property.
+            value: Value to set for the content_types property.
         """
         self._content_types = value
     
@@ -101,7 +101,7 @@ class List(base_item.BaseItem):
         """
         Sets the displayName property value. The displayable title of the list.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -129,13 +129,13 @@ class List(base_item.BaseItem):
         """
         fields = {
             "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
-            "content_types": lambda n : setattr(self, 'content_types', n.get_collection_of_object_values(content_type.ContentType)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "contentTypes": lambda n : setattr(self, 'content_types', n.get_collection_of_object_values(content_type.ContentType)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "drive": lambda n : setattr(self, 'drive', n.get_object_value(drive.Drive)),
             "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(list_item.ListItem)),
             "list": lambda n : setattr(self, 'list', n.get_object_value(list_info.ListInfo)),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(rich_long_running_operation.RichLongRunningOperation)),
-            "sharepoint_ids": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
+            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
             "subscriptions": lambda n : setattr(self, 'subscriptions', n.get_collection_of_object_values(subscription.Subscription)),
             "system": lambda n : setattr(self, 'system', n.get_object_value(system_facet.SystemFacet)),
         }
@@ -227,7 +227,7 @@ class List(base_item.BaseItem):
         """
         Sets the sharepointIds property value. Returns identifiers useful for SharePoint REST compatibility. Read-only.
         Args:
-            value: Value to set for the sharepointIds property.
+            value: Value to set for the sharepoint_ids property.
         """
         self._sharepoint_ids = value
     

@@ -23,23 +23,6 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         self._additional_data = value
     
     @property
-    def callee_number(self,) -> Optional[str]:
-        """
-        Gets the calleeNumber property value. Number of the user or bot who received the call. E.164 format, but may include additional data.
-        Returns: Optional[str]
-        """
-        return self._callee_number
-    
-    @callee_number.setter
-    def callee_number(self,value: Optional[str] = None) -> None:
-        """
-        Sets the calleeNumber property value. Number of the user or bot who received the call. E.164 format, but may include additional data.
-        Args:
-            value: Value to set for the calleeNumber property.
-        """
-        self._callee_number = value
-    
-    @property
     def call_end_sub_reason(self,) -> Optional[int]:
         """
         Gets the callEndSubReason property value. In addition to the SIP codes, Microsoft has own subcodes that indicate the specific issue.
@@ -52,26 +35,9 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         """
         Sets the callEndSubReason property value. In addition to the SIP codes, Microsoft has own subcodes that indicate the specific issue.
         Args:
-            value: Value to set for the callEndSubReason property.
+            value: Value to set for the call_end_sub_reason property.
         """
         self._call_end_sub_reason = value
-    
-    @property
-    def caller_number(self,) -> Optional[str]:
-        """
-        Gets the callerNumber property value. Number of the user or bot who made the call. E.164 format, but may include additional data.
-        Returns: Optional[str]
-        """
-        return self._caller_number
-    
-    @caller_number.setter
-    def caller_number(self,value: Optional[str] = None) -> None:
-        """
-        Sets the callerNumber property value. Number of the user or bot who made the call. E.164 format, but may include additional data.
-        Args:
-            value: Value to set for the callerNumber property.
-        """
-        self._caller_number = value
     
     @property
     def call_type(self,) -> Optional[str]:
@@ -86,9 +52,43 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         """
         Sets the callType property value. Call type and direction.
         Args:
-            value: Value to set for the callType property.
+            value: Value to set for the call_type property.
         """
         self._call_type = value
+    
+    @property
+    def callee_number(self,) -> Optional[str]:
+        """
+        Gets the calleeNumber property value. Number of the user or bot who received the call. E.164 format, but may include additional data.
+        Returns: Optional[str]
+        """
+        return self._callee_number
+    
+    @callee_number.setter
+    def callee_number(self,value: Optional[str] = None) -> None:
+        """
+        Sets the calleeNumber property value. Number of the user or bot who received the call. E.164 format, but may include additional data.
+        Args:
+            value: Value to set for the callee_number property.
+        """
+        self._callee_number = value
+    
+    @property
+    def caller_number(self,) -> Optional[str]:
+        """
+        Gets the callerNumber property value. Number of the user or bot who made the call. E.164 format, but may include additional data.
+        Returns: Optional[str]
+        """
+        return self._caller_number
+    
+    @caller_number.setter
+    def caller_number(self,value: Optional[str] = None) -> None:
+        """
+        Sets the callerNumber property value. Number of the user or bot who made the call. E.164 format, but may include additional data.
+        Args:
+            value: Value to set for the caller_number property.
+        """
+        self._caller_number = value
     
     def __init__(self,) -> None:
         """
@@ -97,14 +97,14 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # Number of the user or bot who received the call. E.164 format, but may include additional data.
-        self._callee_number: Optional[str] = None
         # In addition to the SIP codes, Microsoft has own subcodes that indicate the specific issue.
         self._call_end_sub_reason: Optional[int] = None
-        # Number of the user or bot who made the call. E.164 format, but may include additional data.
-        self._caller_number: Optional[str] = None
         # Call type and direction.
         self._call_type: Optional[str] = None
+        # Number of the user or bot who received the call. E.164 format, but may include additional data.
+        self._callee_number: Optional[str] = None
+        # Number of the user or bot who made the call. E.164 format, but may include additional data.
+        self._caller_number: Optional[str] = None
         # Identifier for the call that you can use when calling Microsoft Support. GUID.
         self._correlation_id: Optional[str] = None
         # Duration of the call in seconds.
@@ -155,7 +155,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         """
         Sets the correlationId property value. Identifier for the call that you can use when calling Microsoft Support. GUID.
         Args:
-            value: Value to set for the correlationId property.
+            value: Value to set for the correlation_id property.
         """
         self._correlation_id = value
     
@@ -201,7 +201,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         """
         Sets the endDateTime property value. Only exists for successful (fully established) calls. Time when call ended.
         Args:
-            value: Value to set for the endDateTime property.
+            value: Value to set for the end_date_time property.
         """
         self._end_date_time = value
     
@@ -218,7 +218,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         """
         Sets the failureDateTime property value. Only exists for failed (not fully established) calls.
         Args:
-            value: Value to set for the failureDateTime property.
+            value: Value to set for the failure_date_time property.
         """
         self._failure_date_time = value
     
@@ -235,7 +235,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         """
         Sets the finalSipCode property value. The code with which the call ended, RFC 3261.
         Args:
-            value: Value to set for the finalSipCode property.
+            value: Value to set for the final_sip_code property.
         """
         self._final_sip_code = value
     
@@ -252,7 +252,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         """
         Sets the finalSipCodePhrase property value. Description of the SIP code and Microsoft subcode.
         Args:
-            value: Value to set for the finalSipCodePhrase property.
+            value: Value to set for the final_sip_code_phrase property.
         """
         self._final_sip_code_phrase = value
     
@@ -262,28 +262,28 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "callee_number": lambda n : setattr(self, 'callee_number', n.get_str_value()),
-            "call_end_sub_reason": lambda n : setattr(self, 'call_end_sub_reason', n.get_int_value()),
-            "caller_number": lambda n : setattr(self, 'caller_number', n.get_str_value()),
-            "call_type": lambda n : setattr(self, 'call_type', n.get_str_value()),
-            "correlation_id": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
+            "calleeNumber": lambda n : setattr(self, 'callee_number', n.get_str_value()),
+            "callerNumber": lambda n : setattr(self, 'caller_number', n.get_str_value()),
+            "callEndSubReason": lambda n : setattr(self, 'call_end_sub_reason', n.get_int_value()),
+            "callType": lambda n : setattr(self, 'call_type', n.get_str_value()),
+            "correlationId": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
             "duration": lambda n : setattr(self, 'duration', n.get_int_value()),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "failure_date_time": lambda n : setattr(self, 'failure_date_time', n.get_datetime_value()),
-            "final_sip_code": lambda n : setattr(self, 'final_sip_code', n.get_int_value()),
-            "final_sip_code_phrase": lambda n : setattr(self, 'final_sip_code_phrase', n.get_str_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "failureDateTime": lambda n : setattr(self, 'failure_date_time', n.get_datetime_value()),
+            "finalSipCode": lambda n : setattr(self, 'final_sip_code', n.get_int_value()),
+            "finalSipCodePhrase": lambda n : setattr(self, 'final_sip_code_phrase', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
-            "invite_date_time": lambda n : setattr(self, 'invite_date_time', n.get_datetime_value()),
-            "media_bypass_enabled": lambda n : setattr(self, 'media_bypass_enabled', n.get_bool_value()),
-            "media_path_location": lambda n : setattr(self, 'media_path_location', n.get_str_value()),
+            "inviteDateTime": lambda n : setattr(self, 'invite_date_time', n.get_datetime_value()),
+            "mediaBypassEnabled": lambda n : setattr(self, 'media_bypass_enabled', n.get_bool_value()),
+            "mediaPathLocation": lambda n : setattr(self, 'media_path_location', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "signaling_location": lambda n : setattr(self, 'signaling_location', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
-            "successful_call": lambda n : setattr(self, 'successful_call', n.get_bool_value()),
-            "trunk_fully_qualified_domain_name": lambda n : setattr(self, 'trunk_fully_qualified_domain_name', n.get_str_value()),
-            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "signalingLocation": lambda n : setattr(self, 'signaling_location', n.get_str_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "successfulCall": lambda n : setattr(self, 'successful_call', n.get_bool_value()),
+            "trunkFullyQualifiedDomainName": lambda n : setattr(self, 'trunk_fully_qualified_domain_name', n.get_str_value()),
+            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
     
@@ -317,7 +317,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         """
         Sets the inviteDateTime property value. When the initial invite was sent.
         Args:
-            value: Value to set for the inviteDateTime property.
+            value: Value to set for the invite_date_time property.
         """
         self._invite_date_time = value
     
@@ -334,7 +334,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         """
         Sets the mediaBypassEnabled property value. Indicates if the trunk was enabled for media bypass or not.
         Args:
-            value: Value to set for the mediaBypassEnabled property.
+            value: Value to set for the media_bypass_enabled property.
         """
         self._media_bypass_enabled = value
     
@@ -351,7 +351,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         """
         Sets the mediaPathLocation property value. The datacenter used for media path in non-bypass call.
         Args:
-            value: Value to set for the mediaPathLocation property.
+            value: Value to set for the media_path_location property.
         """
         self._media_path_location = value
     
@@ -368,7 +368,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -381,8 +381,8 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("calleeNumber", self.callee_number)
-        writer.write_int_value("callEndSubReason", self.call_end_sub_reason)
         writer.write_str_value("callerNumber", self.caller_number)
+        writer.write_int_value("callEndSubReason", self.call_end_sub_reason)
         writer.write_str_value("callType", self.call_type)
         writer.write_str_value("correlationId", self.correlation_id)
         writer.write_int_value("duration", self.duration)
@@ -417,7 +417,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         """
         Sets the signalingLocation property value. The datacenter used for signaling for both bypass and non-bypass calls.
         Args:
-            value: Value to set for the signalingLocation property.
+            value: Value to set for the signaling_location property.
         """
         self._signaling_location = value
     
@@ -434,7 +434,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         """
         Sets the startDateTime property value. Call start time.For failed and unanswered calls, this can be equal to invite or failure time.
         Args:
-            value: Value to set for the startDateTime property.
+            value: Value to set for the start_date_time property.
         """
         self._start_date_time = value
     
@@ -451,7 +451,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         """
         Sets the successfulCall property value. Success or attempt.
         Args:
-            value: Value to set for the successfulCall property.
+            value: Value to set for the successful_call property.
         """
         self._successful_call = value
     
@@ -468,7 +468,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         """
         Sets the trunkFullyQualifiedDomainName property value. Fully qualified domain name of the session border controller.
         Args:
-            value: Value to set for the trunkFullyQualifiedDomainName property.
+            value: Value to set for the trunk_fully_qualified_domain_name property.
         """
         self._trunk_fully_qualified_domain_name = value
     
@@ -485,7 +485,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         """
         Sets the userDisplayName property value. Display name of the user.
         Args:
-            value: Value to set for the userDisplayName property.
+            value: Value to set for the user_display_name property.
         """
         self._user_display_name = value
     
@@ -502,7 +502,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         """
         Sets the userId property value. Calling user's ID in Graph. This and other user info will be null/empty for bot call types. GUID.
         Args:
-            value: Value to set for the userId property.
+            value: Value to set for the user_id property.
         """
         self._user_id = value
     
@@ -519,7 +519,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         """
         Sets the userPrincipalName property value. UserPrincipalName (sign-in name) in Azure Active Directory. This is usually the same as user's SIP Address, and can be same as user's e-mail address.
         Args:
-            value: Value to set for the userPrincipalName property.
+            value: Value to set for the user_principal_name property.
         """
         self._user_principal_name = value
     

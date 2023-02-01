@@ -20,7 +20,7 @@ class StsPolicy(policy_base.PolicyBase):
         """
         Sets the appliesTo property value. The appliesTo property
         Args:
-            value: Value to set for the appliesTo property.
+            value: Value to set for the applies_to property.
         """
         self._applies_to = value
     
@@ -72,9 +72,9 @@ class StsPolicy(policy_base.PolicyBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "applies_to": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "appliesTo": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "definition": lambda n : setattr(self, 'definition', n.get_collection_of_primitive_values(str)),
-            "is_organization_default": lambda n : setattr(self, 'is_organization_default', n.get_bool_value()),
+            "isOrganizationDefault": lambda n : setattr(self, 'is_organization_default', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -93,7 +93,7 @@ class StsPolicy(policy_base.PolicyBase):
         """
         Sets the isOrganizationDefault property value. If set to true, activates this policy. There can be many policies for the same policy type, but only one can be activated as the organization default. Optional, default value is false.
         Args:
-            value: Value to set for the isOrganizationDefault property.
+            value: Value to set for the is_organization_default property.
         """
         self._is_organization_default = value
     

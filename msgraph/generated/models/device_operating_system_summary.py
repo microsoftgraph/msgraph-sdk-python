@@ -37,7 +37,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         """
         Sets the androidCorporateWorkProfileCount property value. The count of Corporate work profile Android devices. Also known as Corporate Owned Personally Enabled (COPE). Valid values -1 to 2147483647
         Args:
-            value: Value to set for the androidCorporateWorkProfileCount property.
+            value: Value to set for the android_corporate_work_profile_count property.
         """
         self._android_corporate_work_profile_count = value
     
@@ -54,7 +54,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         """
         Sets the androidCount property value. Number of android device count.
         Args:
-            value: Value to set for the androidCount property.
+            value: Value to set for the android_count property.
         """
         self._android_count = value
     
@@ -71,7 +71,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         """
         Sets the androidDedicatedCount property value. Number of dedicated Android devices.
         Args:
-            value: Value to set for the androidDedicatedCount property.
+            value: Value to set for the android_dedicated_count property.
         """
         self._android_dedicated_count = value
     
@@ -88,7 +88,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         """
         Sets the androidDeviceAdminCount property value. Number of device admin Android devices.
         Args:
-            value: Value to set for the androidDeviceAdminCount property.
+            value: Value to set for the android_device_admin_count property.
         """
         self._android_device_admin_count = value
     
@@ -105,7 +105,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         """
         Sets the androidFullyManagedCount property value. Number of fully managed Android devices.
         Args:
-            value: Value to set for the androidFullyManagedCount property.
+            value: Value to set for the android_fully_managed_count property.
         """
         self._android_fully_managed_count = value
     
@@ -122,7 +122,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         """
         Sets the androidWorkProfileCount property value. Number of work profile Android devices.
         Args:
-            value: Value to set for the androidWorkProfileCount property.
+            value: Value to set for the android_work_profile_count property.
         """
         self._android_work_profile_count = value
     
@@ -139,7 +139,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         """
         Sets the configMgrDeviceCount property value. Number of ConfigMgr managed devices.
         Args:
-            value: Value to set for the configMgrDeviceCount property.
+            value: Value to set for the config_mgr_device_count property.
         """
         self._config_mgr_device_count = value
     
@@ -195,19 +195,19 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "android_corporate_work_profile_count": lambda n : setattr(self, 'android_corporate_work_profile_count', n.get_int_value()),
-            "android_count": lambda n : setattr(self, 'android_count', n.get_int_value()),
-            "android_dedicated_count": lambda n : setattr(self, 'android_dedicated_count', n.get_int_value()),
-            "android_device_admin_count": lambda n : setattr(self, 'android_device_admin_count', n.get_int_value()),
-            "android_fully_managed_count": lambda n : setattr(self, 'android_fully_managed_count', n.get_int_value()),
-            "android_work_profile_count": lambda n : setattr(self, 'android_work_profile_count', n.get_int_value()),
-            "config_mgr_device_count": lambda n : setattr(self, 'config_mgr_device_count', n.get_int_value()),
-            "ios_count": lambda n : setattr(self, 'ios_count', n.get_int_value()),
-            "mac_o_s_count": lambda n : setattr(self, 'mac_o_s_count', n.get_int_value()),
+            "androidCorporateWorkProfileCount": lambda n : setattr(self, 'android_corporate_work_profile_count', n.get_int_value()),
+            "androidCount": lambda n : setattr(self, 'android_count', n.get_int_value()),
+            "androidDedicatedCount": lambda n : setattr(self, 'android_dedicated_count', n.get_int_value()),
+            "androidDeviceAdminCount": lambda n : setattr(self, 'android_device_admin_count', n.get_int_value()),
+            "androidFullyManagedCount": lambda n : setattr(self, 'android_fully_managed_count', n.get_int_value()),
+            "androidWorkProfileCount": lambda n : setattr(self, 'android_work_profile_count', n.get_int_value()),
+            "configMgrDeviceCount": lambda n : setattr(self, 'config_mgr_device_count', n.get_int_value()),
+            "iosCount": lambda n : setattr(self, 'ios_count', n.get_int_value()),
+            "macOSCount": lambda n : setattr(self, 'mac_o_s_count', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "unknown_count": lambda n : setattr(self, 'unknown_count', n.get_int_value()),
-            "windows_count": lambda n : setattr(self, 'windows_count', n.get_int_value()),
-            "windows_mobile_count": lambda n : setattr(self, 'windows_mobile_count', n.get_int_value()),
+            "unknownCount": lambda n : setattr(self, 'unknown_count', n.get_int_value()),
+            "windowsCount": lambda n : setattr(self, 'windows_count', n.get_int_value()),
+            "windowsMobileCount": lambda n : setattr(self, 'windows_mobile_count', n.get_int_value()),
         }
         return fields
     
@@ -224,7 +224,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         """
         Sets the iosCount property value. Number of iOS device count.
         Args:
-            value: Value to set for the iosCount property.
+            value: Value to set for the ios_count property.
         """
         self._ios_count = value
     
@@ -241,7 +241,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         """
         Sets the macOSCount property value. Number of Mac OS X device count.
         Args:
-            value: Value to set for the macOSCount property.
+            value: Value to set for the mac_o_s_count property.
         """
         self._mac_o_s_count = value
     
@@ -258,7 +258,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -298,7 +298,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         """
         Sets the unknownCount property value. Number of unknown device count.
         Args:
-            value: Value to set for the unknownCount property.
+            value: Value to set for the unknown_count property.
         """
         self._unknown_count = value
     
@@ -315,7 +315,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         """
         Sets the windowsCount property value. Number of Windows device count.
         Args:
-            value: Value to set for the windowsCount property.
+            value: Value to set for the windows_count property.
         """
         self._windows_count = value
     
@@ -332,7 +332,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         """
         Sets the windowsMobileCount property value. Number of Windows mobile device count.
         Args:
-            value: Value to set for the windowsMobileCount property.
+            value: Value to set for the windows_mobile_count property.
         """
         self._windows_mobile_count = value
     

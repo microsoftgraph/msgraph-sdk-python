@@ -73,7 +73,7 @@ class WorkbookWorksheet(entity.Entity):
             "charts": lambda n : setattr(self, 'charts', n.get_collection_of_object_values(workbook_chart.WorkbookChart)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "names": lambda n : setattr(self, 'names', n.get_collection_of_object_values(workbook_named_item.WorkbookNamedItem)),
-            "pivot_tables": lambda n : setattr(self, 'pivot_tables', n.get_collection_of_object_values(workbook_pivot_table.WorkbookPivotTable)),
+            "pivotTables": lambda n : setattr(self, 'pivot_tables', n.get_collection_of_object_values(workbook_pivot_table.WorkbookPivotTable)),
             "position": lambda n : setattr(self, 'position', n.get_int_value()),
             "protection": lambda n : setattr(self, 'protection', n.get_object_value(workbook_worksheet_protection.WorkbookWorksheetProtection)),
             "tables": lambda n : setattr(self, 'tables', n.get_collection_of_object_values(workbook_table.WorkbookTable)),
@@ -130,7 +130,7 @@ class WorkbookWorksheet(entity.Entity):
         """
         Sets the pivotTables property value. Collection of PivotTables that are part of the worksheet.
         Args:
-            value: Value to set for the pivotTables property.
+            value: Value to set for the pivot_tables property.
         """
         self._pivot_tables = value
     

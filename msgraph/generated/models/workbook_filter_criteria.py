@@ -126,7 +126,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
         """
         Sets the dynamicCriteria property value. The dynamicCriteria property
         Args:
-            value: Value to set for the dynamicCriteria property.
+            value: Value to set for the dynamic_criteria property.
         """
         self._dynamic_criteria = value
     
@@ -143,7 +143,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
         """
         Sets the filterOn property value. The filterOn property
         Args:
-            value: Value to set for the filterOn property.
+            value: Value to set for the filter_on property.
         """
         self._filter_on = value
     
@@ -156,8 +156,8 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
             "color": lambda n : setattr(self, 'color', n.get_str_value()),
             "criterion1": lambda n : setattr(self, 'criterion1', n.get_str_value()),
             "criterion2": lambda n : setattr(self, 'criterion2', n.get_str_value()),
-            "dynamic_criteria": lambda n : setattr(self, 'dynamic_criteria', n.get_str_value()),
-            "filter_on": lambda n : setattr(self, 'filter_on', n.get_str_value()),
+            "dynamicCriteria": lambda n : setattr(self, 'dynamic_criteria', n.get_str_value()),
+            "filterOn": lambda n : setattr(self, 'filter_on', n.get_str_value()),
             "icon": lambda n : setattr(self, 'icon', n.get_object_value(workbook_icon.WorkbookIcon)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operator": lambda n : setattr(self, 'operator', n.get_str_value()),
@@ -195,7 +195,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

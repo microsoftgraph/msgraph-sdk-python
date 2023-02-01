@@ -23,7 +23,7 @@ class Domain(entity.Entity):
         """
         Sets the authenticationType property value. Indicates the configured authentication type for the domain. The value is either Managed or Federated. Managed indicates a cloud managed domain where Azure AD performs user authentication. Federated indicates authentication is federated with an identity provider such as the tenant's on-premises Active Directory via Active Directory Federation Services. This property is read-only and is not nullable.
         Args:
-            value: Value to set for the authenticationType property.
+            value: Value to set for the authentication_type property.
         """
         self._authentication_type = value
     
@@ -40,13 +40,13 @@ class Domain(entity.Entity):
         """
         Sets the availabilityStatus property value. This property is always null except when the verify action is used. When the verify action is used, a domain entity is returned in the response. The availabilityStatus property of the domain entity in the response is either AvailableImmediately or EmailVerifiedDomainTakeoverScheduled.
         Args:
-            value: Value to set for the availabilityStatus property.
+            value: Value to set for the availability_status property.
         """
         self._availability_status = value
     
     def __init__(self,) -> None:
         """
-        Instantiates a new Domain and sets the default values.
+        Instantiates a new domain and sets the default values.
         """
         super().__init__()
         # Indicates the configured authentication type for the domain. The value is either Managed or Federated. Managed indicates a cloud managed domain where Azure AD performs user authentication. Federated indicates authentication is federated with an identity provider such as the tenant's on-premises Active Directory via Active Directory Federation Services. This property is read-only and is not nullable.
@@ -111,7 +111,7 @@ class Domain(entity.Entity):
         """
         Sets the domainNameReferences property value. The objects such as users and groups that reference the domain ID. Read-only, Nullable. Supports $expand and $filter by the OData type of objects returned. For example /domains/{domainId}/domainNameReferences/microsoft.graph.user and /domains/{domainId}/domainNameReferences/microsoft.graph.group.
         Args:
-            value: Value to set for the domainNameReferences property.
+            value: Value to set for the domain_name_references property.
         """
         self._domain_name_references = value
     
@@ -128,7 +128,7 @@ class Domain(entity.Entity):
         """
         Sets the federationConfiguration property value. Domain settings configured by a customer when federated with Azure AD. Supports $expand.
         Args:
-            value: Value to set for the federationConfiguration property.
+            value: Value to set for the federation_configuration property.
         """
         self._federation_configuration = value
     
@@ -138,23 +138,23 @@ class Domain(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "authentication_type": lambda n : setattr(self, 'authentication_type', n.get_str_value()),
-            "availability_status": lambda n : setattr(self, 'availability_status', n.get_str_value()),
-            "domain_name_references": lambda n : setattr(self, 'domain_name_references', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "federation_configuration": lambda n : setattr(self, 'federation_configuration', n.get_collection_of_object_values(internal_domain_federation.InternalDomainFederation)),
-            "is_admin_managed": lambda n : setattr(self, 'is_admin_managed', n.get_bool_value()),
-            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
-            "is_initial": lambda n : setattr(self, 'is_initial', n.get_bool_value()),
-            "is_root": lambda n : setattr(self, 'is_root', n.get_bool_value()),
-            "is_verified": lambda n : setattr(self, 'is_verified', n.get_bool_value()),
+            "authenticationType": lambda n : setattr(self, 'authentication_type', n.get_str_value()),
+            "availabilityStatus": lambda n : setattr(self, 'availability_status', n.get_str_value()),
+            "domainNameReferences": lambda n : setattr(self, 'domain_name_references', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "federationConfiguration": lambda n : setattr(self, 'federation_configuration', n.get_collection_of_object_values(internal_domain_federation.InternalDomainFederation)),
+            "isAdminManaged": lambda n : setattr(self, 'is_admin_managed', n.get_bool_value()),
+            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "isInitial": lambda n : setattr(self, 'is_initial', n.get_bool_value()),
+            "isRoot": lambda n : setattr(self, 'is_root', n.get_bool_value()),
+            "isVerified": lambda n : setattr(self, 'is_verified', n.get_bool_value()),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
-            "password_notification_window_in_days": lambda n : setattr(self, 'password_notification_window_in_days', n.get_int_value()),
-            "password_validity_period_in_days": lambda n : setattr(self, 'password_validity_period_in_days', n.get_int_value()),
-            "service_configuration_records": lambda n : setattr(self, 'service_configuration_records', n.get_collection_of_object_values(domain_dns_record.DomainDnsRecord)),
+            "passwordNotificationWindowInDays": lambda n : setattr(self, 'password_notification_window_in_days', n.get_int_value()),
+            "passwordValidityPeriodInDays": lambda n : setattr(self, 'password_validity_period_in_days', n.get_int_value()),
+            "serviceConfigurationRecords": lambda n : setattr(self, 'service_configuration_records', n.get_collection_of_object_values(domain_dns_record.DomainDnsRecord)),
             "state": lambda n : setattr(self, 'state', n.get_object_value(domain_state.DomainState)),
-            "supported_services": lambda n : setattr(self, 'supported_services', n.get_collection_of_primitive_values(str)),
-            "verification_dns_records": lambda n : setattr(self, 'verification_dns_records', n.get_collection_of_object_values(domain_dns_record.DomainDnsRecord)),
+            "supportedServices": lambda n : setattr(self, 'supported_services', n.get_collection_of_primitive_values(str)),
+            "verificationDnsRecords": lambda n : setattr(self, 'verification_dns_records', n.get_collection_of_object_values(domain_dns_record.DomainDnsRecord)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -173,7 +173,7 @@ class Domain(entity.Entity):
         """
         Sets the isAdminManaged property value. The value of the property is false if the DNS record management of the domain has been delegated to Microsoft 365. Otherwise, the value is true. Not nullable
         Args:
-            value: Value to set for the isAdminManaged property.
+            value: Value to set for the is_admin_managed property.
         """
         self._is_admin_managed = value
     
@@ -190,7 +190,7 @@ class Domain(entity.Entity):
         """
         Sets the isDefault property value. true if this is the default domain that is used for user creation. There is only one default domain per company. Not nullable
         Args:
-            value: Value to set for the isDefault property.
+            value: Value to set for the is_default property.
         """
         self._is_default = value
     
@@ -207,7 +207,7 @@ class Domain(entity.Entity):
         """
         Sets the isInitial property value. true if this is the initial domain created by Microsoft Online Services (companyname.onmicrosoft.com). There is only one initial domain per company. Not nullable
         Args:
-            value: Value to set for the isInitial property.
+            value: Value to set for the is_initial property.
         """
         self._is_initial = value
     
@@ -224,7 +224,7 @@ class Domain(entity.Entity):
         """
         Sets the isRoot property value. true if the domain is a verified root domain. Otherwise, false if the domain is a subdomain or unverified. Not nullable
         Args:
-            value: Value to set for the isRoot property.
+            value: Value to set for the is_root property.
         """
         self._is_root = value
     
@@ -241,7 +241,7 @@ class Domain(entity.Entity):
         """
         Sets the isVerified property value. true if the domain has completed domain ownership verification. Not nullable
         Args:
-            value: Value to set for the isVerified property.
+            value: Value to set for the is_verified property.
         """
         self._is_verified = value
     
@@ -292,7 +292,7 @@ class Domain(entity.Entity):
         """
         Sets the passwordNotificationWindowInDays property value. Specifies the number of days before a user receives notification that their password will expire. If the property is not set, a default value of 14 days will be used.
         Args:
-            value: Value to set for the passwordNotificationWindowInDays property.
+            value: Value to set for the password_notification_window_in_days property.
         """
         self._password_notification_window_in_days = value
     
@@ -309,7 +309,7 @@ class Domain(entity.Entity):
         """
         Sets the passwordValidityPeriodInDays property value. Specifies the length of time that a password is valid before it must be changed. If the property is not set, a default value of 90 days will be used.
         Args:
-            value: Value to set for the passwordValidityPeriodInDays property.
+            value: Value to set for the password_validity_period_in_days property.
         """
         self._password_validity_period_in_days = value
     
@@ -353,7 +353,7 @@ class Domain(entity.Entity):
         """
         Sets the serviceConfigurationRecords property value. DNS records the customer adds to the DNS zone file of the domain before the domain can be used by Microsoft Online services. Read-only, Nullable. Supports $expand.
         Args:
-            value: Value to set for the serviceConfigurationRecords property.
+            value: Value to set for the service_configuration_records property.
         """
         self._service_configuration_records = value
     
@@ -387,7 +387,7 @@ class Domain(entity.Entity):
         """
         Sets the supportedServices property value. The capabilities assigned to the domain. Can include 0, 1 or more of following values: Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune. The values which you can add/remove using Graph API include: Email, OfficeCommunicationsOnline, Yammer. Not nullable.
         Args:
-            value: Value to set for the supportedServices property.
+            value: Value to set for the supported_services property.
         """
         self._supported_services = value
     
@@ -404,7 +404,7 @@ class Domain(entity.Entity):
         """
         Sets the verificationDnsRecords property value. DNS records that the customer adds to the DNS zone file of the domain before the customer can complete domain ownership verification with Azure AD. Read-only, Nullable. Supports $expand.
         Args:
-            value: Value to set for the verificationDnsRecords property.
+            value: Value to set for the verification_dns_records property.
         """
         self._verification_dns_records = value
     

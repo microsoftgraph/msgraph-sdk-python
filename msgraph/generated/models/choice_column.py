@@ -34,7 +34,7 @@ class ChoiceColumn(AdditionalDataHolder, Parsable):
         """
         Sets the allowTextEntry property value. If true, allows custom values that aren't in the configured choices.
         Args:
-            value: Value to set for the allowTextEntry property.
+            value: Value to set for the allow_text_entry property.
         """
         self._allow_text_entry = value
     
@@ -96,7 +96,7 @@ class ChoiceColumn(AdditionalDataHolder, Parsable):
         """
         Sets the displayAs property value. How the choices are to be presented in the UX. Must be one of checkBoxes, dropDownMenu, or radioButtons
         Args:
-            value: Value to set for the displayAs property.
+            value: Value to set for the display_as property.
         """
         self._display_as = value
     
@@ -106,9 +106,9 @@ class ChoiceColumn(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_text_entry": lambda n : setattr(self, 'allow_text_entry', n.get_bool_value()),
+            "allowTextEntry": lambda n : setattr(self, 'allow_text_entry', n.get_bool_value()),
             "choices": lambda n : setattr(self, 'choices', n.get_collection_of_primitive_values(str)),
-            "display_as": lambda n : setattr(self, 'display_as', n.get_str_value()),
+            "displayAs": lambda n : setattr(self, 'display_as', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -126,7 +126,7 @@ class ChoiceColumn(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

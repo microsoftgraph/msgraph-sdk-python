@@ -23,7 +23,7 @@ class DeviceComplianceActionItem(entity.Entity):
         """
         Sets the actionType property value. Scheduled Action Type Enum
         Args:
-            value: Value to set for the actionType property.
+            value: Value to set for the action_type property.
         """
         self._action_type = value
     
@@ -61,10 +61,10 @@ class DeviceComplianceActionItem(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "action_type": lambda n : setattr(self, 'action_type', n.get_enum_value(device_compliance_action_type.DeviceComplianceActionType)),
-            "grace_period_hours": lambda n : setattr(self, 'grace_period_hours', n.get_int_value()),
-            "notification_message_c_c_list": lambda n : setattr(self, 'notification_message_c_c_list', n.get_collection_of_primitive_values(str)),
-            "notification_template_id": lambda n : setattr(self, 'notification_template_id', n.get_str_value()),
+            "actionType": lambda n : setattr(self, 'action_type', n.get_enum_value(device_compliance_action_type.DeviceComplianceActionType)),
+            "gracePeriodHours": lambda n : setattr(self, 'grace_period_hours', n.get_int_value()),
+            "notificationMessageCCList": lambda n : setattr(self, 'notification_message_c_c_list', n.get_collection_of_primitive_values(str)),
+            "notificationTemplateId": lambda n : setattr(self, 'notification_template_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -83,7 +83,7 @@ class DeviceComplianceActionItem(entity.Entity):
         """
         Sets the gracePeriodHours property value. Number of hours to wait till the action will be enforced. Valid values 0 to 8760
         Args:
-            value: Value to set for the gracePeriodHours property.
+            value: Value to set for the grace_period_hours property.
         """
         self._grace_period_hours = value
     
@@ -100,7 +100,7 @@ class DeviceComplianceActionItem(entity.Entity):
         """
         Sets the notificationMessageCCList property value. A list of group IDs to speicify who to CC this notification message to.
         Args:
-            value: Value to set for the notificationMessageCCList property.
+            value: Value to set for the notification_message_c_c_list property.
         """
         self._notification_message_c_c_list = value
     
@@ -117,7 +117,7 @@ class DeviceComplianceActionItem(entity.Entity):
         """
         Sets the notificationTemplateId property value. What notification Message template to use
         Args:
-            value: Value to set for the notificationTemplateId property.
+            value: Value to set for the notification_template_id property.
         """
         self._notification_template_id = value
     

@@ -17,10 +17,11 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder():
     """
     Provides operations to manage the assignments property of the microsoft.graph.deviceEnrollmentConfiguration entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, enrollment_configuration_assignment_id: Optional[str] = None) -> None:
         """
         Instantiates a new EnrollmentConfigurationAssignmentItemRequestBuilder and sets the default values.
         Args:
+            enrollmentConfigurationAssignmentId: key: id of enrollmentConfigurationAssignment
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class EnrollmentConfigurationAssignmentItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceManagement/deviceEnrollmentConfigurations/{deviceEnrollmentConfiguration%2Did}/assignments/{enrollmentConfigurationAssignment%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["enrollmentConfigurationAssignment%2Did"] = enrollmentConfigurationAssignmentId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

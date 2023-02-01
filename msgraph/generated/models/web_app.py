@@ -19,7 +19,7 @@ class WebApp(mobile_app.MobileApp):
         """
         Sets the appUrl property value. The web app URL. This property cannot be PATCHed.
         Args:
-            value: Value to set for the appUrl property.
+            value: Value to set for the app_url property.
         """
         self._app_url = value
     
@@ -52,8 +52,8 @@ class WebApp(mobile_app.MobileApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_url": lambda n : setattr(self, 'app_url', n.get_str_value()),
-            "use_managed_browser": lambda n : setattr(self, 'use_managed_browser', n.get_bool_value()),
+            "appUrl": lambda n : setattr(self, 'app_url', n.get_str_value()),
+            "useManagedBrowser": lambda n : setattr(self, 'use_managed_browser', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -84,7 +84,7 @@ class WebApp(mobile_app.MobileApp):
         """
         Sets the useManagedBrowser property value. Whether or not to use managed browser. This property is only applicable for Android and IOS.
         Args:
-            value: Value to set for the useManagedBrowser property.
+            value: Value to set for the use_managed_browser property.
         """
         self._use_managed_browser = value
     

@@ -74,7 +74,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         """
         Sets the dayOfMonth property value. The day of the month on which the event occurs. Required if type is absoluteMonthly or absoluteYearly.
         Args:
-            value: Value to set for the dayOfMonth property.
+            value: Value to set for the day_of_month property.
         """
         self._day_of_month = value
     
@@ -91,7 +91,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         """
         Sets the daysOfWeek property value. A collection of the days of the week on which the event occurs. The possible values are: sunday, monday, tuesday, wednesday, thursday, friday, saturday. If type is relativeMonthly or relativeYearly, and daysOfWeek specifies more than one day, the event falls on the first day that satisfies the pattern.  Required if type is weekly, relativeMonthly, or relativeYearly.
         Args:
-            value: Value to set for the daysOfWeek property.
+            value: Value to set for the days_of_week property.
         """
         self._days_of_week = value
     
@@ -108,7 +108,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         """
         Sets the firstDayOfWeek property value. The first day of the week. The possible values are: sunday, monday, tuesday, wednesday, thursday, friday, saturday. Default is sunday. Required if type is weekly.
         Args:
-            value: Value to set for the firstDayOfWeek property.
+            value: Value to set for the first_day_of_week property.
         """
         self._first_day_of_week = value
     
@@ -118,9 +118,9 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "day_of_month": lambda n : setattr(self, 'day_of_month', n.get_int_value()),
-            "days_of_week": lambda n : setattr(self, 'days_of_week', n.get_collection_of_enum_values(day_of_week.DayOfWeek)),
-            "first_day_of_week": lambda n : setattr(self, 'first_day_of_week', n.get_enum_value(day_of_week.DayOfWeek)),
+            "daysOfWeek": lambda n : setattr(self, 'days_of_week', n.get_collection_of_enum_values(day_of_week.DayOfWeek)),
+            "dayOfMonth": lambda n : setattr(self, 'day_of_month', n.get_int_value()),
+            "firstDayOfWeek": lambda n : setattr(self, 'first_day_of_week', n.get_enum_value(day_of_week.DayOfWeek)),
             "index": lambda n : setattr(self, 'index', n.get_enum_value(week_index.WeekIndex)),
             "interval": lambda n : setattr(self, 'interval', n.get_int_value()),
             "month": lambda n : setattr(self, 'month', n.get_int_value()),
@@ -193,7 +193,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -205,8 +205,8 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        writer.write_int_value("dayOfMonth", self.day_of_month)
         writer.write_enum_value("daysOfWeek", self.days_of_week)
+        writer.write_int_value("dayOfMonth", self.day_of_month)
         writer.write_enum_value("firstDayOfWeek", self.first_day_of_week)
         writer.write_enum_value("index", self.index)
         writer.write_int_value("interval", self.interval)

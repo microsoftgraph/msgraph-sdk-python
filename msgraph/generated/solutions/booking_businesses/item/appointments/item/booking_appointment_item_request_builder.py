@@ -12,23 +12,24 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 booking_appointment = lazy_import('msgraph.generated.models.booking_appointment')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-cancel_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.appointments.item.cancel.cancel_request_builder')
+cancel_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.appointments.item.microsoft_graph_cancel.cancel_request_builder')
 
 class BookingAppointmentItemRequestBuilder():
     """
     Provides operations to manage the appointments property of the microsoft.graph.bookingBusiness entity.
     """
     @property
-    def cancel(self) -> cancel_request_builder.CancelRequestBuilder:
+    def microsoft_graph_cancel(self) -> cancel_request_builder.CancelRequestBuilder:
         """
         Provides operations to call the cancel method.
         """
         return cancel_request_builder.CancelRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, booking_appointment_id: Optional[str] = None) -> None:
         """
         Instantiates a new BookingAppointmentItemRequestBuilder and sets the default values.
         Args:
+            bookingAppointmentId: key: id of bookingAppointment
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -40,6 +41,7 @@ class BookingAppointmentItemRequestBuilder():
         self.url_template: str = "{+baseurl}/solutions/bookingBusinesses/{bookingBusiness%2Did}/appointments/{bookingAppointment%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["bookingAppointment%2Did"] = bookingAppointmentId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

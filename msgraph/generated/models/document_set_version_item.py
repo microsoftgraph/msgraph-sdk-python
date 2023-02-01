@@ -55,10 +55,10 @@ class DocumentSetVersionItem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "item_id": lambda n : setattr(self, 'item_id', n.get_str_value()),
+            "itemId": lambda n : setattr(self, 'item_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
-            "version_id": lambda n : setattr(self, 'version_id', n.get_str_value()),
+            "versionId": lambda n : setattr(self, 'version_id', n.get_str_value()),
         }
         return fields
     
@@ -75,7 +75,7 @@ class DocumentSetVersionItem(AdditionalDataHolder, Parsable):
         """
         Sets the itemId property value. The unique identifier for the item.
         Args:
-            value: Value to set for the itemId property.
+            value: Value to set for the item_id property.
         """
         self._item_id = value
     
@@ -92,7 +92,7 @@ class DocumentSetVersionItem(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -140,7 +140,7 @@ class DocumentSetVersionItem(AdditionalDataHolder, Parsable):
         """
         Sets the versionId property value. The version ID of the item.
         Args:
-            value: Value to set for the versionId property.
+            value: Value to set for the version_id property.
         """
         self._version_id = value
     

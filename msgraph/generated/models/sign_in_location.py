@@ -71,7 +71,7 @@ class SignInLocation(AdditionalDataHolder, Parsable):
         """
         Sets the countryOrRegion property value. Provides the country code info (2 letter code) where the sign-in originated.  This is calculated using latitude/longitude information from the sign-in activity.
         Args:
-            value: Value to set for the countryOrRegion property.
+            value: Value to set for the country_or_region property.
         """
         self._country_or_region = value
     
@@ -100,7 +100,7 @@ class SignInLocation(AdditionalDataHolder, Parsable):
         """
         Sets the geoCoordinates property value. Provides the latitude, longitude and altitude where the sign-in originated.
         Args:
-            value: Value to set for the geoCoordinates property.
+            value: Value to set for the geo_coordinates property.
         """
         self._geo_coordinates = value
     
@@ -111,8 +111,8 @@ class SignInLocation(AdditionalDataHolder, Parsable):
         """
         fields = {
             "city": lambda n : setattr(self, 'city', n.get_str_value()),
-            "country_or_region": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
-            "geo_coordinates": lambda n : setattr(self, 'geo_coordinates', n.get_object_value(geo_coordinates.GeoCoordinates)),
+            "countryOrRegion": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
+            "geoCoordinates": lambda n : setattr(self, 'geo_coordinates', n.get_object_value(geo_coordinates.GeoCoordinates)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
         }
@@ -131,7 +131,7 @@ class SignInLocation(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

@@ -41,8 +41,8 @@ class BaseItemVersion(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "publication": lambda n : setattr(self, 'publication', n.get_object_value(publication_facet.PublicationFacet)),
         }
         super_fields = super().get_field_deserializers()
@@ -62,7 +62,7 @@ class BaseItemVersion(entity.Entity):
         """
         Sets the lastModifiedBy property value. Identity of the user which last modified the version. Read-only.
         Args:
-            value: Value to set for the lastModifiedBy property.
+            value: Value to set for the last_modified_by property.
         """
         self._last_modified_by = value
     
@@ -79,7 +79,7 @@ class BaseItemVersion(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. Date and time the version was last modified. Read-only.
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     

@@ -9,23 +9,6 @@ mobile_app = lazy_import('msgraph.generated.models.mobile_app')
 
 class IosStoreApp(mobile_app.MobileApp):
     @property
-    def applicable_device_type(self,) -> Optional[ios_device_type.IosDeviceType]:
-        """
-        Gets the applicableDeviceType property value. Contains properties of the possible iOS device types the mobile app can run on.
-        Returns: Optional[ios_device_type.IosDeviceType]
-        """
-        return self._applicable_device_type
-    
-    @applicable_device_type.setter
-    def applicable_device_type(self,value: Optional[ios_device_type.IosDeviceType] = None) -> None:
-        """
-        Sets the applicableDeviceType property value. Contains properties of the possible iOS device types the mobile app can run on.
-        Args:
-            value: Value to set for the applicableDeviceType property.
-        """
-        self._applicable_device_type = value
-    
-    @property
     def app_store_url(self,) -> Optional[str]:
         """
         Gets the appStoreUrl property value. The Apple App Store URL
@@ -38,9 +21,26 @@ class IosStoreApp(mobile_app.MobileApp):
         """
         Sets the appStoreUrl property value. The Apple App Store URL
         Args:
-            value: Value to set for the appStoreUrl property.
+            value: Value to set for the app_store_url property.
         """
         self._app_store_url = value
+    
+    @property
+    def applicable_device_type(self,) -> Optional[ios_device_type.IosDeviceType]:
+        """
+        Gets the applicableDeviceType property value. Contains properties of the possible iOS device types the mobile app can run on.
+        Returns: Optional[ios_device_type.IosDeviceType]
+        """
+        return self._applicable_device_type
+    
+    @applicable_device_type.setter
+    def applicable_device_type(self,value: Optional[ios_device_type.IosDeviceType] = None) -> None:
+        """
+        Sets the applicableDeviceType property value. Contains properties of the possible iOS device types the mobile app can run on.
+        Args:
+            value: Value to set for the applicable_device_type property.
+        """
+        self._applicable_device_type = value
     
     @property
     def bundle_id(self,) -> Optional[str]:
@@ -55,7 +55,7 @@ class IosStoreApp(mobile_app.MobileApp):
         """
         Sets the bundleId property value. The Identity Name.
         Args:
-            value: Value to set for the bundleId property.
+            value: Value to set for the bundle_id property.
         """
         self._bundle_id = value
     
@@ -65,10 +65,10 @@ class IosStoreApp(mobile_app.MobileApp):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.iosStoreApp"
-        # Contains properties of the possible iOS device types the mobile app can run on.
-        self._applicable_device_type: Optional[ios_device_type.IosDeviceType] = None
         # The Apple App Store URL
         self._app_store_url: Optional[str] = None
+        # Contains properties of the possible iOS device types the mobile app can run on.
+        self._applicable_device_type: Optional[ios_device_type.IosDeviceType] = None
         # The Identity Name.
         self._bundle_id: Optional[str] = None
         # The value for the minimum applicable operating system.
@@ -92,10 +92,10 @@ class IosStoreApp(mobile_app.MobileApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "applicable_device_type": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(ios_device_type.IosDeviceType)),
-            "app_store_url": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
-            "bundle_id": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
-            "minimum_supported_operating_system": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(ios_minimum_operating_system.IosMinimumOperatingSystem)),
+            "applicableDeviceType": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(ios_device_type.IosDeviceType)),
+            "appStoreUrl": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
+            "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
+            "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(ios_minimum_operating_system.IosMinimumOperatingSystem)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -114,7 +114,7 @@ class IosStoreApp(mobile_app.MobileApp):
         """
         Sets the minimumSupportedOperatingSystem property value. The value for the minimum applicable operating system.
         Args:
-            value: Value to set for the minimumSupportedOperatingSystem property.
+            value: Value to set for the minimum_supported_operating_system property.
         """
         self._minimum_supported_operating_system = value
     

@@ -21,7 +21,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         """
         Sets the activatedUsing property value. If the request is from an eligible administrator to activate a role, this parameter will show the related eligible assignment for that activation. Otherwise, it is null. Supports $expand.
         Args:
-            value: Value to set for the activatedUsing property.
+            value: Value to set for the activated_using property.
         """
         self._activated_using = value
     
@@ -38,7 +38,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         """
         Sets the assignmentType property value. Type of the assignment which can either be Assigned or Activated. Supports $filter (eq, ne).
         Args:
-            value: Value to set for the assignmentType property.
+            value: Value to set for the assignment_type property.
         """
         self._assignment_type = value
     
@@ -89,7 +89,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         """
         Sets the endDateTime property value. The end date of the schedule instance.
         Args:
-            value: Value to set for the endDateTime property.
+            value: Value to set for the end_date_time property.
         """
         self._end_date_time = value
     
@@ -99,13 +99,13 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "activated_using": lambda n : setattr(self, 'activated_using', n.get_object_value(unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance)),
-            "assignment_type": lambda n : setattr(self, 'assignment_type', n.get_str_value()),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "member_type": lambda n : setattr(self, 'member_type', n.get_str_value()),
-            "role_assignment_origin_id": lambda n : setattr(self, 'role_assignment_origin_id', n.get_str_value()),
-            "role_assignment_schedule_id": lambda n : setattr(self, 'role_assignment_schedule_id', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "activatedUsing": lambda n : setattr(self, 'activated_using', n.get_object_value(unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance)),
+            "assignmentType": lambda n : setattr(self, 'assignment_type', n.get_str_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "memberType": lambda n : setattr(self, 'member_type', n.get_str_value()),
+            "roleAssignmentOriginId": lambda n : setattr(self, 'role_assignment_origin_id', n.get_str_value()),
+            "roleAssignmentScheduleId": lambda n : setattr(self, 'role_assignment_schedule_id', n.get_str_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -124,7 +124,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         """
         Sets the memberType property value. How the assignments is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleAssignmentSchedule can be managed by the caller. Supports $filter (eq, ne).
         Args:
-            value: Value to set for the memberType property.
+            value: Value to set for the member_type property.
         """
         self._member_type = value
     
@@ -141,7 +141,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         """
         Sets the roleAssignmentOriginId property value. The identifier of the role assignment in Azure AD. Supports $filter (eq, ne).
         Args:
-            value: Value to set for the roleAssignmentOriginId property.
+            value: Value to set for the role_assignment_origin_id property.
         """
         self._role_assignment_origin_id = value
     
@@ -158,7 +158,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         """
         Sets the roleAssignmentScheduleId property value. The identifier of the unifiedRoleAssignmentSchedule object from which this instance was created. Supports $filter (eq, ne).
         Args:
-            value: Value to set for the roleAssignmentScheduleId property.
+            value: Value to set for the role_assignment_schedule_id property.
         """
         self._role_assignment_schedule_id = value
     
@@ -192,7 +192,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         """
         Sets the startDateTime property value. When this instance starts.
         Args:
-            value: Value to set for the startDateTime property.
+            value: Value to set for the start_date_time property.
         """
         self._start_date_time = value
     

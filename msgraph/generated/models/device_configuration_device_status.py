@@ -21,7 +21,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
         """
         Sets the complianceGracePeriodExpirationDateTime property value. The DateTime when device compliance grace period expires
         Args:
-            value: Value to set for the complianceGracePeriodExpirationDateTime property.
+            value: Value to set for the compliance_grace_period_expiration_date_time property.
         """
         self._compliance_grace_period_expiration_date_time = value
     
@@ -72,7 +72,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
         """
         Sets the deviceDisplayName property value. Device name of the DevicePolicyStatus.
         Args:
-            value: Value to set for the deviceDisplayName property.
+            value: Value to set for the device_display_name property.
         """
         self._device_display_name = value
     
@@ -89,7 +89,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
         """
         Sets the deviceModel property value. The device model that is being reported
         Args:
-            value: Value to set for the deviceModel property.
+            value: Value to set for the device_model property.
         """
         self._device_model = value
     
@@ -99,13 +99,13 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "compliance_grace_period_expiration_date_time": lambda n : setattr(self, 'compliance_grace_period_expiration_date_time', n.get_datetime_value()),
-            "device_display_name": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
-            "device_model": lambda n : setattr(self, 'device_model', n.get_str_value()),
-            "last_reported_date_time": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
+            "complianceGracePeriodExpirationDateTime": lambda n : setattr(self, 'compliance_grace_period_expiration_date_time', n.get_datetime_value()),
+            "deviceDisplayName": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
+            "deviceModel": lambda n : setattr(self, 'device_model', n.get_str_value()),
+            "lastReportedDateTime": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(compliance_status.ComplianceStatus)),
-            "user_name": lambda n : setattr(self, 'user_name', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userName": lambda n : setattr(self, 'user_name', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -124,7 +124,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
         """
         Sets the lastReportedDateTime property value. Last modified date time of the policy report.
         Args:
-            value: Value to set for the lastReportedDateTime property.
+            value: Value to set for the last_reported_date_time property.
         """
         self._last_reported_date_time = value
     
@@ -175,7 +175,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
         """
         Sets the userName property value. The User Name that is being reported
         Args:
-            value: Value to set for the userName property.
+            value: Value to set for the user_name property.
         """
         self._user_name = value
     
@@ -192,7 +192,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
         """
         Sets the userPrincipalName property value. UserPrincipalName.
         Args:
-            value: Value to set for the userPrincipalName property.
+            value: Value to set for the user_principal_name property.
         """
         self._user_principal_name = value
     

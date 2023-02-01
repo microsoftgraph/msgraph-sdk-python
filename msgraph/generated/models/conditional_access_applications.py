@@ -64,7 +64,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         """
         Sets the excludeApplications property value. Can be one of the following:  The list of client IDs (appId) explicitly excluded from the policy. Office365 - For the list of apps included in Office365, see Conditional Access target apps: Office 365
         Args:
-            value: Value to set for the excludeApplications property.
+            value: Value to set for the exclude_applications property.
         """
         self._exclude_applications = value
     
@@ -74,10 +74,10 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "exclude_applications": lambda n : setattr(self, 'exclude_applications', n.get_collection_of_primitive_values(str)),
-            "include_applications": lambda n : setattr(self, 'include_applications', n.get_collection_of_primitive_values(str)),
-            "include_authentication_context_class_references": lambda n : setattr(self, 'include_authentication_context_class_references', n.get_collection_of_primitive_values(str)),
-            "include_user_actions": lambda n : setattr(self, 'include_user_actions', n.get_collection_of_primitive_values(str)),
+            "excludeApplications": lambda n : setattr(self, 'exclude_applications', n.get_collection_of_primitive_values(str)),
+            "includeApplications": lambda n : setattr(self, 'include_applications', n.get_collection_of_primitive_values(str)),
+            "includeAuthenticationContextClassReferences": lambda n : setattr(self, 'include_authentication_context_class_references', n.get_collection_of_primitive_values(str)),
+            "includeUserActions": lambda n : setattr(self, 'include_user_actions', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -95,7 +95,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         """
         Sets the includeApplications property value. Can be one of the following:  The list of client IDs (appId) the policy applies to, unless explicitly excluded (in excludeApplications)  All  Office365 - For the list of apps included in Office365, see Conditional Access target apps: Office 365
         Args:
-            value: Value to set for the includeApplications property.
+            value: Value to set for the include_applications property.
         """
         self._include_applications = value
     
@@ -112,7 +112,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         """
         Sets the includeAuthenticationContextClassReferences property value. The includeAuthenticationContextClassReferences property
         Args:
-            value: Value to set for the includeAuthenticationContextClassReferences property.
+            value: Value to set for the include_authentication_context_class_references property.
         """
         self._include_authentication_context_class_references = value
     
@@ -129,7 +129,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         """
         Sets the includeUserActions property value. User actions to include. Supported values are urn:user:registersecurityinfo and urn:user:registerdevice
         Args:
-            value: Value to set for the includeUserActions property.
+            value: Value to set for the include_user_actions property.
         """
         self._include_user_actions = value
     
@@ -146,7 +146,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

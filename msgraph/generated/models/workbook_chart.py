@@ -87,7 +87,7 @@ class WorkbookChart(entity.Entity):
         """
         Sets the dataLabels property value. Represents the datalabels on the chart. Read-only.
         Args:
-            value: Value to set for the dataLabels property.
+            value: Value to set for the data_labels property.
         """
         self._data_labels = value
     
@@ -115,7 +115,7 @@ class WorkbookChart(entity.Entity):
         """
         fields = {
             "axes": lambda n : setattr(self, 'axes', n.get_object_value(workbook_chart_axes.WorkbookChartAxes)),
-            "data_labels": lambda n : setattr(self, 'data_labels', n.get_object_value(workbook_chart_data_labels.WorkbookChartDataLabels)),
+            "dataLabels": lambda n : setattr(self, 'data_labels', n.get_object_value(workbook_chart_data_labels.WorkbookChartDataLabels)),
             "format": lambda n : setattr(self, 'format', n.get_object_value(workbook_chart_area_format.WorkbookChartAreaFormat)),
             "height": lambda n : setattr(self, 'height', n.get_float_value()),
             "left": lambda n : setattr(self, 'left', n.get_float_value()),

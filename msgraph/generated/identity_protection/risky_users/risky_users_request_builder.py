@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-confirm_compromised_request_builder = lazy_import('msgraph.generated.identity_protection.risky_users.confirm_compromised.confirm_compromised_request_builder')
 count_request_builder = lazy_import('msgraph.generated.identity_protection.risky_users.count.count_request_builder')
-dismiss_request_builder = lazy_import('msgraph.generated.identity_protection.risky_users.dismiss.dismiss_request_builder')
+confirm_compromised_request_builder = lazy_import('msgraph.generated.identity_protection.risky_users.microsoft_graph_confirm_compromised.confirm_compromised_request_builder')
+dismiss_request_builder = lazy_import('msgraph.generated.identity_protection.risky_users.microsoft_graph_dismiss.dismiss_request_builder')
 risky_user = lazy_import('msgraph.generated.models.risky_user')
 risky_user_collection_response = lazy_import('msgraph.generated.models.risky_user_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -22,13 +22,6 @@ class RiskyUsersRequestBuilder():
     Provides operations to manage the riskyUsers property of the microsoft.graph.identityProtectionRoot entity.
     """
     @property
-    def confirm_compromised(self) -> confirm_compromised_request_builder.ConfirmCompromisedRequestBuilder:
-        """
-        Provides operations to call the confirmCompromised method.
-        """
-        return confirm_compromised_request_builder.ConfirmCompromisedRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
@@ -36,7 +29,14 @@ class RiskyUsersRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def dismiss(self) -> dismiss_request_builder.DismissRequestBuilder:
+    def microsoft_graph_confirm_compromised(self) -> confirm_compromised_request_builder.ConfirmCompromisedRequestBuilder:
+        """
+        Provides operations to call the confirmCompromised method.
+        """
+        return confirm_compromised_request_builder.ConfirmCompromisedRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_dismiss(self) -> dismiss_request_builder.DismissRequestBuilder:
         """
         Provides operations to call the dismiss method.
         """

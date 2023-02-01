@@ -20,7 +20,7 @@ class ManagedApp(mobile_app.MobileApp):
         """
         Sets the appAvailability property value. A managed (MAM) application's availability.
         Args:
-            value: Value to set for the appAvailability property.
+            value: Value to set for the app_availability property.
         """
         self._app_availability = value
     
@@ -53,7 +53,7 @@ class ManagedApp(mobile_app.MobileApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_availability": lambda n : setattr(self, 'app_availability', n.get_enum_value(managed_app_availability.ManagedAppAvailability)),
+            "appAvailability": lambda n : setattr(self, 'app_availability', n.get_enum_value(managed_app_availability.ManagedAppAvailability)),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

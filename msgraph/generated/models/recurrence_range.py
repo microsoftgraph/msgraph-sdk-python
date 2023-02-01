@@ -69,7 +69,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         """
         Sets the endDate property value. The date to stop applying the recurrence pattern. Depending on the recurrence pattern of the event, the last occurrence of the meeting may not be this date. Required if type is endDate.
         Args:
-            value: Value to set for the endDate property.
+            value: Value to set for the end_date property.
         """
         self._end_date = value
     
@@ -79,11 +79,11 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "end_date": lambda n : setattr(self, 'end_date', n.get_object_value(Date)),
-            "number_of_occurrences": lambda n : setattr(self, 'number_of_occurrences', n.get_int_value()),
+            "endDate": lambda n : setattr(self, 'end_date', n.get_object_value(Date)),
+            "numberOfOccurrences": lambda n : setattr(self, 'number_of_occurrences', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recurrence_time_zone": lambda n : setattr(self, 'recurrence_time_zone', n.get_str_value()),
-            "start_date": lambda n : setattr(self, 'start_date', n.get_object_value(Date)),
+            "recurrenceTimeZone": lambda n : setattr(self, 'recurrence_time_zone', n.get_str_value()),
+            "startDate": lambda n : setattr(self, 'start_date', n.get_object_value(Date)),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(recurrence_range_type.RecurrenceRangeType)),
         }
         return fields
@@ -101,7 +101,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         """
         Sets the numberOfOccurrences property value. The number of times to repeat the event. Required and must be positive if type is numbered.
         Args:
-            value: Value to set for the numberOfOccurrences property.
+            value: Value to set for the number_of_occurrences property.
         """
         self._number_of_occurrences = value
     
@@ -118,7 +118,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -135,7 +135,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         """
         Sets the recurrenceTimeZone property value. Time zone for the startDate and endDate properties. Optional. If not specified, the time zone of the event is used.
         Args:
-            value: Value to set for the recurrenceTimeZone property.
+            value: Value to set for the recurrence_time_zone property.
         """
         self._recurrence_time_zone = value
     
@@ -168,7 +168,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         """
         Sets the startDate property value. The date to start applying the recurrence pattern. The first occurrence of the meeting may be this date or later, depending on the recurrence pattern of the event. Must be the same value as the start property of the recurring event. Required.
         Args:
-            value: Value to set for the startDate property.
+            value: Value to set for the start_date property.
         """
         self._start_date = value
     

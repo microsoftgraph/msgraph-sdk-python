@@ -13,21 +13,14 @@ from typing import Any, Callable, Dict, List, Optional, Union
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 ediscovery_noncustodial_data_source = lazy_import('msgraph.generated.models.security.ediscovery_noncustodial_data_source')
 ediscovery_noncustodial_data_source_collection_response = lazy_import('msgraph.generated.models.security.ediscovery_noncustodial_data_source_collection_response')
-apply_hold_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.apply_hold.apply_hold_request_builder')
 count_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.count.count_request_builder')
-remove_hold_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.remove_hold.remove_hold_request_builder')
+apply_hold_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.microsoft_graph_security_apply_hold.apply_hold_request_builder')
+remove_hold_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.microsoft_graph_security_remove_hold.remove_hold_request_builder')
 
 class NoncustodialDataSourcesRequestBuilder():
     """
     Provides operations to manage the noncustodialDataSources property of the microsoft.graph.security.ediscoveryCase entity.
     """
-    @property
-    def apply_hold(self) -> apply_hold_request_builder.ApplyHoldRequestBuilder:
-        """
-        Provides operations to call the applyHold method.
-        """
-        return apply_hold_request_builder.ApplyHoldRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
@@ -36,7 +29,14 @@ class NoncustodialDataSourcesRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def remove_hold(self) -> remove_hold_request_builder.RemoveHoldRequestBuilder:
+    def microsoft_graph_security_apply_hold(self) -> apply_hold_request_builder.ApplyHoldRequestBuilder:
+        """
+        Provides operations to call the applyHold method.
+        """
+        return apply_hold_request_builder.ApplyHoldRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_security_remove_hold(self) -> remove_hold_request_builder.RemoveHoldRequestBuilder:
         """
         Provides operations to call the removeHold method.
         """

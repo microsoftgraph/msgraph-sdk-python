@@ -34,7 +34,7 @@ class TeamMemberSettings(AdditionalDataHolder, Parsable):
         """
         Sets the allowAddRemoveApps property value. If set to true, members can add and remove apps.
         Args:
-            value: Value to set for the allowAddRemoveApps property.
+            value: Value to set for the allow_add_remove_apps property.
         """
         self._allow_add_remove_apps = value
     
@@ -51,7 +51,7 @@ class TeamMemberSettings(AdditionalDataHolder, Parsable):
         """
         Sets the allowCreatePrivateChannels property value. If set to true, members can add and update private channels.
         Args:
-            value: Value to set for the allowCreatePrivateChannels property.
+            value: Value to set for the allow_create_private_channels property.
         """
         self._allow_create_private_channels = value
     
@@ -68,7 +68,7 @@ class TeamMemberSettings(AdditionalDataHolder, Parsable):
         """
         Sets the allowCreateUpdateChannels property value. If set to true, members can add and update channels.
         Args:
-            value: Value to set for the allowCreateUpdateChannels property.
+            value: Value to set for the allow_create_update_channels property.
         """
         self._allow_create_update_channels = value
     
@@ -85,7 +85,7 @@ class TeamMemberSettings(AdditionalDataHolder, Parsable):
         """
         Sets the allowCreateUpdateRemoveConnectors property value. If set to true, members can add, update, and remove connectors.
         Args:
-            value: Value to set for the allowCreateUpdateRemoveConnectors property.
+            value: Value to set for the allow_create_update_remove_connectors property.
         """
         self._allow_create_update_remove_connectors = value
     
@@ -102,7 +102,7 @@ class TeamMemberSettings(AdditionalDataHolder, Parsable):
         """
         Sets the allowCreateUpdateRemoveTabs property value. If set to true, members can add, update, and remove tabs.
         Args:
-            value: Value to set for the allowCreateUpdateRemoveTabs property.
+            value: Value to set for the allow_create_update_remove_tabs property.
         """
         self._allow_create_update_remove_tabs = value
     
@@ -119,7 +119,7 @@ class TeamMemberSettings(AdditionalDataHolder, Parsable):
         """
         Sets the allowDeleteChannels property value. If set to true, members can delete channels.
         Args:
-            value: Value to set for the allowDeleteChannels property.
+            value: Value to set for the allow_delete_channels property.
         """
         self._allow_delete_channels = value
     
@@ -163,12 +163,12 @@ class TeamMemberSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_add_remove_apps": lambda n : setattr(self, 'allow_add_remove_apps', n.get_bool_value()),
-            "allow_create_private_channels": lambda n : setattr(self, 'allow_create_private_channels', n.get_bool_value()),
-            "allow_create_update_channels": lambda n : setattr(self, 'allow_create_update_channels', n.get_bool_value()),
-            "allow_create_update_remove_connectors": lambda n : setattr(self, 'allow_create_update_remove_connectors', n.get_bool_value()),
-            "allow_create_update_remove_tabs": lambda n : setattr(self, 'allow_create_update_remove_tabs', n.get_bool_value()),
-            "allow_delete_channels": lambda n : setattr(self, 'allow_delete_channels', n.get_bool_value()),
+            "allowAddRemoveApps": lambda n : setattr(self, 'allow_add_remove_apps', n.get_bool_value()),
+            "allowCreatePrivateChannels": lambda n : setattr(self, 'allow_create_private_channels', n.get_bool_value()),
+            "allowCreateUpdateChannels": lambda n : setattr(self, 'allow_create_update_channels', n.get_bool_value()),
+            "allowCreateUpdateRemoveConnectors": lambda n : setattr(self, 'allow_create_update_remove_connectors', n.get_bool_value()),
+            "allowCreateUpdateRemoveTabs": lambda n : setattr(self, 'allow_create_update_remove_tabs', n.get_bool_value()),
+            "allowDeleteChannels": lambda n : setattr(self, 'allow_delete_channels', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -186,7 +186,7 @@ class TeamMemberSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

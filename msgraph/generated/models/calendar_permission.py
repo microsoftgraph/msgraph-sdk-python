@@ -21,7 +21,7 @@ class CalendarPermission(entity.Entity):
         """
         Sets the allowedRoles property value. List of allowed sharing or delegating permission levels for the calendar. Possible values are: none, freeBusyRead, limitedRead, read, write, delegateWithoutPrivateEventAccess, delegateWithPrivateEventAccess, custom.
         Args:
-            value: Value to set for the allowedRoles property.
+            value: Value to set for the allowed_roles property.
         """
         self._allowed_roles = value
     
@@ -68,7 +68,7 @@ class CalendarPermission(entity.Entity):
         """
         Sets the emailAddress property value. Represents a sharee or delegate who has access to the calendar. For the 'My Organization' sharee, the address property is null. Read-only.
         Args:
-            value: Value to set for the emailAddress property.
+            value: Value to set for the email_address property.
         """
         self._email_address = value
     
@@ -78,10 +78,10 @@ class CalendarPermission(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allowed_roles": lambda n : setattr(self, 'allowed_roles', n.get_collection_of_enum_values(calendar_role_type.CalendarRoleType)),
-            "email_address": lambda n : setattr(self, 'email_address', n.get_object_value(email_address.EmailAddress)),
-            "is_inside_organization": lambda n : setattr(self, 'is_inside_organization', n.get_bool_value()),
-            "is_removable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),
+            "allowedRoles": lambda n : setattr(self, 'allowed_roles', n.get_collection_of_enum_values(calendar_role_type.CalendarRoleType)),
+            "emailAddress": lambda n : setattr(self, 'email_address', n.get_object_value(email_address.EmailAddress)),
+            "isInsideOrganization": lambda n : setattr(self, 'is_inside_organization', n.get_bool_value()),
+            "isRemovable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),
             "role": lambda n : setattr(self, 'role', n.get_enum_value(calendar_role_type.CalendarRoleType)),
         }
         super_fields = super().get_field_deserializers()
@@ -101,7 +101,7 @@ class CalendarPermission(entity.Entity):
         """
         Sets the isInsideOrganization property value. True if the user in context (sharee or delegate) is inside the same organization as the calendar owner.
         Args:
-            value: Value to set for the isInsideOrganization property.
+            value: Value to set for the is_inside_organization property.
         """
         self._is_inside_organization = value
     
@@ -118,7 +118,7 @@ class CalendarPermission(entity.Entity):
         """
         Sets the isRemovable property value. True if the user can be removed from the list of sharees or delegates for the specified calendar, false otherwise. The 'My organization' user determines the permissions other people within your organization have to the given calendar. You cannot remove 'My organization' as a sharee to a calendar.
         Args:
-            value: Value to set for the isRemovable property.
+            value: Value to set for the is_removable property.
         """
         self._is_removable = value
     

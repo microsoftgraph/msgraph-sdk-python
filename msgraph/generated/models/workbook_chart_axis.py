@@ -70,12 +70,12 @@ class WorkbookChartAxis(entity.Entity):
         """
         fields = {
             "format": lambda n : setattr(self, 'format', n.get_object_value(workbook_chart_axis_format.WorkbookChartAxisFormat)),
-            "major_gridlines": lambda n : setattr(self, 'major_gridlines', n.get_object_value(workbook_chart_gridlines.WorkbookChartGridlines)),
-            "major_unit": lambda n : setattr(self, 'major_unit', n.get_object_value(json.Json)),
+            "majorGridlines": lambda n : setattr(self, 'major_gridlines', n.get_object_value(workbook_chart_gridlines.WorkbookChartGridlines)),
+            "majorUnit": lambda n : setattr(self, 'major_unit', n.get_object_value(json.Json)),
             "maximum": lambda n : setattr(self, 'maximum', n.get_object_value(json.Json)),
             "minimum": lambda n : setattr(self, 'minimum', n.get_object_value(json.Json)),
-            "minor_gridlines": lambda n : setattr(self, 'minor_gridlines', n.get_object_value(workbook_chart_gridlines.WorkbookChartGridlines)),
-            "minor_unit": lambda n : setattr(self, 'minor_unit', n.get_object_value(json.Json)),
+            "minorGridlines": lambda n : setattr(self, 'minor_gridlines', n.get_object_value(workbook_chart_gridlines.WorkbookChartGridlines)),
+            "minorUnit": lambda n : setattr(self, 'minor_unit', n.get_object_value(json.Json)),
             "title": lambda n : setattr(self, 'title', n.get_object_value(workbook_chart_axis_title.WorkbookChartAxisTitle)),
         }
         super_fields = super().get_field_deserializers()
@@ -95,7 +95,7 @@ class WorkbookChartAxis(entity.Entity):
         """
         Sets the majorGridlines property value. Returns a gridlines object that represents the major gridlines for the specified axis. Read-only.
         Args:
-            value: Value to set for the majorGridlines property.
+            value: Value to set for the major_gridlines property.
         """
         self._major_gridlines = value
     
@@ -112,7 +112,7 @@ class WorkbookChartAxis(entity.Entity):
         """
         Sets the majorUnit property value. Represents the interval between two major tick marks. Can be set to a numeric value or an empty string.  The returned value is always a number.
         Args:
-            value: Value to set for the majorUnit property.
+            value: Value to set for the major_unit property.
         """
         self._major_unit = value
     
@@ -163,7 +163,7 @@ class WorkbookChartAxis(entity.Entity):
         """
         Sets the minorGridlines property value. Returns a Gridlines object that represents the minor gridlines for the specified axis. Read-only.
         Args:
-            value: Value to set for the minorGridlines property.
+            value: Value to set for the minor_gridlines property.
         """
         self._minor_gridlines = value
     
@@ -180,7 +180,7 @@ class WorkbookChartAxis(entity.Entity):
         """
         Sets the minorUnit property value. Represents the interval between two minor tick marks. 'Can be set to a numeric value or an empty string (for automatic axis values). The returned value is always a number.
         Args:
-            value: Value to set for the minorUnit property.
+            value: Value to set for the minor_unit property.
         """
         self._minor_unit = value
     

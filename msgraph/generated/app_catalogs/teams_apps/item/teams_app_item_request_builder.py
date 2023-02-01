@@ -39,12 +39,13 @@ class TeamsAppItemRequestBuilder():
         url_tpl_params["teamsAppDefinition%2Did"] = id
         return teams_app_definition_item_request_builder.TeamsAppDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, teams_app_id: Optional[str] = None) -> None:
         """
         Instantiates a new TeamsAppItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            teamsAppId: key: id of teamsApp
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -54,6 +55,7 @@ class TeamsAppItemRequestBuilder():
         self.url_template: str = "{+baseurl}/appCatalogs/teamsApps/{teamsApp%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["teamsApp%2Did"] = teamsAppId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

@@ -33,7 +33,7 @@ class Windows10EnterpriseModernAppManagementConfiguration(device_configuration.D
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "uninstall_built_in_apps": lambda n : setattr(self, 'uninstall_built_in_apps', n.get_bool_value()),
+            "uninstallBuiltInApps": lambda n : setattr(self, 'uninstall_built_in_apps', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,7 +63,7 @@ class Windows10EnterpriseModernAppManagementConfiguration(device_configuration.D
         """
         Sets the uninstallBuiltInApps property value. Indicates whether or not to uninstall a fixed list of built-in Windows apps.
         Args:
-            value: Value to set for the uninstallBuiltInApps property.
+            value: Value to set for the uninstall_built_in_apps property.
         """
         self._uninstall_built_in_apps = value
     

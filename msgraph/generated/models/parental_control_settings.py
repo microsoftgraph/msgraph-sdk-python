@@ -48,7 +48,7 @@ class ParentalControlSettings(AdditionalDataHolder, Parsable):
         """
         Sets the countriesBlockedForMinors property value. Specifies the two-letter ISO country codes. Access to the application will be blocked for minors from the countries specified in this list.
         Args:
-            value: Value to set for the countriesBlockedForMinors property.
+            value: Value to set for the countries_blocked_for_minors property.
         """
         self._countries_blocked_for_minors = value
     
@@ -70,8 +70,8 @@ class ParentalControlSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "countries_blocked_for_minors": lambda n : setattr(self, 'countries_blocked_for_minors', n.get_collection_of_primitive_values(str)),
-            "legal_age_group_rule": lambda n : setattr(self, 'legal_age_group_rule', n.get_str_value()),
+            "countriesBlockedForMinors": lambda n : setattr(self, 'countries_blocked_for_minors', n.get_collection_of_primitive_values(str)),
+            "legalAgeGroupRule": lambda n : setattr(self, 'legal_age_group_rule', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -89,7 +89,7 @@ class ParentalControlSettings(AdditionalDataHolder, Parsable):
         """
         Sets the legalAgeGroupRule property value. Specifies the legal age group rule that applies to users of the app. Can be set to one of the following values: ValueDescriptionAllowDefault. Enforces the legal minimum. This means parental consent is required for minors in the European Union and Korea.RequireConsentForPrivacyServicesEnforces the user to specify date of birth to comply with COPPA rules. RequireConsentForMinorsRequires parental consent for ages below 18, regardless of country minor rules.RequireConsentForKidsRequires parental consent for ages below 14, regardless of country minor rules.BlockMinorsBlocks minors from using the app.
         Args:
-            value: Value to set for the legalAgeGroupRule property.
+            value: Value to set for the legal_age_group_rule property.
         """
         self._legal_age_group_rule = value
     
@@ -106,7 +106,7 @@ class ParentalControlSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

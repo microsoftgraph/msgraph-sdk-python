@@ -60,7 +60,7 @@ class ConditionalAccessClientApplications(AdditionalDataHolder, Parsable):
         """
         Sets the excludeServicePrincipals property value. Service principal IDs excluded from the policy scope.
         Args:
-            value: Value to set for the excludeServicePrincipals property.
+            value: Value to set for the exclude_service_principals property.
         """
         self._exclude_service_principals = value
     
@@ -70,8 +70,8 @@ class ConditionalAccessClientApplications(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "exclude_service_principals": lambda n : setattr(self, 'exclude_service_principals', n.get_collection_of_primitive_values(str)),
-            "include_service_principals": lambda n : setattr(self, 'include_service_principals', n.get_collection_of_primitive_values(str)),
+            "excludeServicePrincipals": lambda n : setattr(self, 'exclude_service_principals', n.get_collection_of_primitive_values(str)),
+            "includeServicePrincipals": lambda n : setattr(self, 'include_service_principals', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -89,7 +89,7 @@ class ConditionalAccessClientApplications(AdditionalDataHolder, Parsable):
         """
         Sets the includeServicePrincipals property value. Service principal IDs included in the policy scope, or ServicePrincipalsInMyTenant.
         Args:
-            value: Value to set for the includeServicePrincipals property.
+            value: Value to set for the include_service_principals property.
         """
         self._include_service_principals = value
     
@@ -106,7 +106,7 @@ class ConditionalAccessClientApplications(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

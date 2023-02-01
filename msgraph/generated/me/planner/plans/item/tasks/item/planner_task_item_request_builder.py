@@ -49,11 +49,12 @@ class PlannerTaskItemRequestBuilder():
         """
         return progress_task_board_format_request_builder.ProgressTaskBoardFormatRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, planner_task_id: Optional[str] = None) -> None:
         """
         Instantiates a new PlannerTaskItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
+            plannerTaskId: key: id of plannerTask
             requestAdapter: The request adapter to use to execute the requests.
         """
         if path_parameters is None:
@@ -64,6 +65,7 @@ class PlannerTaskItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/planner/plans/{plannerPlan%2Did}/tasks/{plannerTask%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["plannerTask%2Did"] = plannerTaskId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

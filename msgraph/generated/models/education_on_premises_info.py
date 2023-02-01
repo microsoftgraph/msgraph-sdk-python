@@ -51,7 +51,7 @@ class EducationOnPremisesInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "immutable_id": lambda n : setattr(self, 'immutable_id', n.get_str_value()),
+            "immutableId": lambda n : setattr(self, 'immutable_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -69,7 +69,7 @@ class EducationOnPremisesInfo(AdditionalDataHolder, Parsable):
         """
         Sets the immutableId property value. Unique identifier for the user object in Active Directory.
         Args:
-            value: Value to set for the immutableId property.
+            value: Value to set for the immutable_id property.
         """
         self._immutable_id = value
     
@@ -86,7 +86,7 @@ class EducationOnPremisesInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

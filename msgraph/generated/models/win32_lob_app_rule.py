@@ -57,7 +57,7 @@ class Win32LobAppRule(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "rule_type": lambda n : setattr(self, 'rule_type', n.get_enum_value(win32_lob_app_rule_type.Win32LobAppRuleType)),
+            "ruleType": lambda n : setattr(self, 'rule_type', n.get_enum_value(win32_lob_app_rule_type.Win32LobAppRuleType)),
         }
         return fields
     
@@ -74,7 +74,7 @@ class Win32LobAppRule(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -91,7 +91,7 @@ class Win32LobAppRule(AdditionalDataHolder, Parsable):
         """
         Sets the ruleType property value. Contains rule types for Win32 LOB apps.
         Args:
-            value: Value to set for the ruleType property.
+            value: Value to set for the rule_type property.
         """
         self._rule_type = value
     

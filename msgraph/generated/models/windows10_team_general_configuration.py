@@ -22,7 +22,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         Sets the azureOperationalInsightsBlockTelemetry property value. Indicates whether or not to Block Azure Operational Insights.
         Args:
-            value: Value to set for the azureOperationalInsightsBlockTelemetry property.
+            value: Value to set for the azure_operational_insights_block_telemetry property.
         """
         self._azure_operational_insights_block_telemetry = value
     
@@ -39,7 +39,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         Sets the azureOperationalInsightsWorkspaceId property value. The Azure Operational Insights workspace id.
         Args:
-            value: Value to set for the azureOperationalInsightsWorkspaceId property.
+            value: Value to set for the azure_operational_insights_workspace_id property.
         """
         self._azure_operational_insights_workspace_id = value
     
@@ -56,7 +56,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         Sets the azureOperationalInsightsWorkspaceKey property value. The Azure Operational Insights Workspace key.
         Args:
-            value: Value to set for the azureOperationalInsightsWorkspaceKey property.
+            value: Value to set for the azure_operational_insights_workspace_key property.
         """
         self._azure_operational_insights_workspace_key = value
     
@@ -73,7 +73,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         Sets the connectAppBlockAutoLaunch property value. Specifies whether to automatically launch the Connect app whenever a projection is initiated.
         Args:
-            value: Value to set for the connectAppBlockAutoLaunch property.
+            value: Value to set for the connect_app_block_auto_launch property.
         """
         self._connect_app_block_auto_launch = value
     
@@ -142,26 +142,26 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "azure_operational_insights_block_telemetry": lambda n : setattr(self, 'azure_operational_insights_block_telemetry', n.get_bool_value()),
-            "azure_operational_insights_workspace_id": lambda n : setattr(self, 'azure_operational_insights_workspace_id', n.get_str_value()),
-            "azure_operational_insights_workspace_key": lambda n : setattr(self, 'azure_operational_insights_workspace_key', n.get_str_value()),
-            "connect_app_block_auto_launch": lambda n : setattr(self, 'connect_app_block_auto_launch', n.get_bool_value()),
-            "maintenance_window_blocked": lambda n : setattr(self, 'maintenance_window_blocked', n.get_bool_value()),
-            "maintenance_window_duration_in_hours": lambda n : setattr(self, 'maintenance_window_duration_in_hours', n.get_int_value()),
-            "maintenance_window_start_time": lambda n : setattr(self, 'maintenance_window_start_time', n.get_object_value(Time)),
-            "miracast_blocked": lambda n : setattr(self, 'miracast_blocked', n.get_bool_value()),
-            "miracast_channel": lambda n : setattr(self, 'miracast_channel', n.get_enum_value(miracast_channel.MiracastChannel)),
-            "miracast_require_pin": lambda n : setattr(self, 'miracast_require_pin', n.get_bool_value()),
-            "settings_block_my_meetings_and_files": lambda n : setattr(self, 'settings_block_my_meetings_and_files', n.get_bool_value()),
-            "settings_block_session_resume": lambda n : setattr(self, 'settings_block_session_resume', n.get_bool_value()),
-            "settings_block_signin_suggestions": lambda n : setattr(self, 'settings_block_signin_suggestions', n.get_bool_value()),
-            "settings_default_volume": lambda n : setattr(self, 'settings_default_volume', n.get_int_value()),
-            "settings_screen_timeout_in_minutes": lambda n : setattr(self, 'settings_screen_timeout_in_minutes', n.get_int_value()),
-            "settings_session_timeout_in_minutes": lambda n : setattr(self, 'settings_session_timeout_in_minutes', n.get_int_value()),
-            "settings_sleep_timeout_in_minutes": lambda n : setattr(self, 'settings_sleep_timeout_in_minutes', n.get_int_value()),
-            "welcome_screen_background_image_url": lambda n : setattr(self, 'welcome_screen_background_image_url', n.get_str_value()),
-            "welcome_screen_block_automatic_wake_up": lambda n : setattr(self, 'welcome_screen_block_automatic_wake_up', n.get_bool_value()),
-            "welcome_screen_meeting_information": lambda n : setattr(self, 'welcome_screen_meeting_information', n.get_enum_value(welcome_screen_meeting_information.WelcomeScreenMeetingInformation)),
+            "azureOperationalInsightsBlockTelemetry": lambda n : setattr(self, 'azure_operational_insights_block_telemetry', n.get_bool_value()),
+            "azureOperationalInsightsWorkspaceId": lambda n : setattr(self, 'azure_operational_insights_workspace_id', n.get_str_value()),
+            "azureOperationalInsightsWorkspaceKey": lambda n : setattr(self, 'azure_operational_insights_workspace_key', n.get_str_value()),
+            "connectAppBlockAutoLaunch": lambda n : setattr(self, 'connect_app_block_auto_launch', n.get_bool_value()),
+            "maintenanceWindowBlocked": lambda n : setattr(self, 'maintenance_window_blocked', n.get_bool_value()),
+            "maintenanceWindowDurationInHours": lambda n : setattr(self, 'maintenance_window_duration_in_hours', n.get_int_value()),
+            "maintenanceWindowStartTime": lambda n : setattr(self, 'maintenance_window_start_time', n.get_object_value(Time)),
+            "miracastBlocked": lambda n : setattr(self, 'miracast_blocked', n.get_bool_value()),
+            "miracastChannel": lambda n : setattr(self, 'miracast_channel', n.get_enum_value(miracast_channel.MiracastChannel)),
+            "miracastRequirePin": lambda n : setattr(self, 'miracast_require_pin', n.get_bool_value()),
+            "settingsBlockMyMeetingsAndFiles": lambda n : setattr(self, 'settings_block_my_meetings_and_files', n.get_bool_value()),
+            "settingsBlockSessionResume": lambda n : setattr(self, 'settings_block_session_resume', n.get_bool_value()),
+            "settingsBlockSigninSuggestions": lambda n : setattr(self, 'settings_block_signin_suggestions', n.get_bool_value()),
+            "settingsDefaultVolume": lambda n : setattr(self, 'settings_default_volume', n.get_int_value()),
+            "settingsScreenTimeoutInMinutes": lambda n : setattr(self, 'settings_screen_timeout_in_minutes', n.get_int_value()),
+            "settingsSessionTimeoutInMinutes": lambda n : setattr(self, 'settings_session_timeout_in_minutes', n.get_int_value()),
+            "settingsSleepTimeoutInMinutes": lambda n : setattr(self, 'settings_sleep_timeout_in_minutes', n.get_int_value()),
+            "welcomeScreenBackgroundImageUrl": lambda n : setattr(self, 'welcome_screen_background_image_url', n.get_str_value()),
+            "welcomeScreenBlockAutomaticWakeUp": lambda n : setattr(self, 'welcome_screen_block_automatic_wake_up', n.get_bool_value()),
+            "welcomeScreenMeetingInformation": lambda n : setattr(self, 'welcome_screen_meeting_information', n.get_enum_value(welcome_screen_meeting_information.WelcomeScreenMeetingInformation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -180,7 +180,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         Sets the maintenanceWindowBlocked property value. Indicates whether or not to Block setting a maintenance window for device updates.
         Args:
-            value: Value to set for the maintenanceWindowBlocked property.
+            value: Value to set for the maintenance_window_blocked property.
         """
         self._maintenance_window_blocked = value
     
@@ -197,7 +197,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         Sets the maintenanceWindowDurationInHours property value. Maintenance window duration for device updates. Valid values 0 to 5
         Args:
-            value: Value to set for the maintenanceWindowDurationInHours property.
+            value: Value to set for the maintenance_window_duration_in_hours property.
         """
         self._maintenance_window_duration_in_hours = value
     
@@ -214,7 +214,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         Sets the maintenanceWindowStartTime property value. Maintenance window start time for device updates.
         Args:
-            value: Value to set for the maintenanceWindowStartTime property.
+            value: Value to set for the maintenance_window_start_time property.
         """
         self._maintenance_window_start_time = value
     
@@ -231,7 +231,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         Sets the miracastBlocked property value. Indicates whether or not to Block wireless projection.
         Args:
-            value: Value to set for the miracastBlocked property.
+            value: Value to set for the miracast_blocked property.
         """
         self._miracast_blocked = value
     
@@ -248,7 +248,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         Sets the miracastChannel property value. Possible values for Miracast channel.
         Args:
-            value: Value to set for the miracastChannel property.
+            value: Value to set for the miracast_channel property.
         """
         self._miracast_channel = value
     
@@ -265,7 +265,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         Sets the miracastRequirePin property value. Indicates whether or not to require a pin for wireless projection.
         Args:
-            value: Value to set for the miracastRequirePin property.
+            value: Value to set for the miracast_require_pin property.
         """
         self._miracast_require_pin = value
     
@@ -312,7 +312,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         Sets the settingsBlockMyMeetingsAndFiles property value. Specifies whether to disable the 'My meetings and files' feature in the Start menu, which shows the signed-in user's meetings and files from Office 365.
         Args:
-            value: Value to set for the settingsBlockMyMeetingsAndFiles property.
+            value: Value to set for the settings_block_my_meetings_and_files property.
         """
         self._settings_block_my_meetings_and_files = value
     
@@ -329,7 +329,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         Sets the settingsBlockSessionResume property value. Specifies whether to allow the ability to resume a session when the session times out.
         Args:
-            value: Value to set for the settingsBlockSessionResume property.
+            value: Value to set for the settings_block_session_resume property.
         """
         self._settings_block_session_resume = value
     
@@ -346,7 +346,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         Sets the settingsBlockSigninSuggestions property value. Specifies whether to disable auto-populating of the sign-in dialog with invitees from scheduled meetings.
         Args:
-            value: Value to set for the settingsBlockSigninSuggestions property.
+            value: Value to set for the settings_block_signin_suggestions property.
         """
         self._settings_block_signin_suggestions = value
     
@@ -363,7 +363,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         Sets the settingsDefaultVolume property value. Specifies the default volume value for a new session. Permitted values are 0-100. The default is 45. Valid values 0 to 100
         Args:
-            value: Value to set for the settingsDefaultVolume property.
+            value: Value to set for the settings_default_volume property.
         """
         self._settings_default_volume = value
     
@@ -380,7 +380,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         Sets the settingsScreenTimeoutInMinutes property value. Specifies the number of minutes until the Hub screen turns off.
         Args:
-            value: Value to set for the settingsScreenTimeoutInMinutes property.
+            value: Value to set for the settings_screen_timeout_in_minutes property.
         """
         self._settings_screen_timeout_in_minutes = value
     
@@ -397,7 +397,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         Sets the settingsSessionTimeoutInMinutes property value. Specifies the number of minutes until the session times out.
         Args:
-            value: Value to set for the settingsSessionTimeoutInMinutes property.
+            value: Value to set for the settings_session_timeout_in_minutes property.
         """
         self._settings_session_timeout_in_minutes = value
     
@@ -414,7 +414,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         Sets the settingsSleepTimeoutInMinutes property value. Specifies the number of minutes until the Hub enters sleep mode.
         Args:
-            value: Value to set for the settingsSleepTimeoutInMinutes property.
+            value: Value to set for the settings_sleep_timeout_in_minutes property.
         """
         self._settings_sleep_timeout_in_minutes = value
     
@@ -431,7 +431,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         Sets the welcomeScreenBackgroundImageUrl property value. The welcome screen background image URL. The URL must use the HTTPS protocol and return a PNG image.
         Args:
-            value: Value to set for the welcomeScreenBackgroundImageUrl property.
+            value: Value to set for the welcome_screen_background_image_url property.
         """
         self._welcome_screen_background_image_url = value
     
@@ -448,7 +448,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         Sets the welcomeScreenBlockAutomaticWakeUp property value. Indicates whether or not to Block the welcome screen from waking up automatically when someone enters the room.
         Args:
-            value: Value to set for the welcomeScreenBlockAutomaticWakeUp property.
+            value: Value to set for the welcome_screen_block_automatic_wake_up property.
         """
         self._welcome_screen_block_automatic_wake_up = value
     
@@ -465,7 +465,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         Sets the welcomeScreenMeetingInformation property value. Possible values for welcome screen meeting information.
         Args:
-            value: Value to set for the welcomeScreenMeetingInformation property.
+            value: Value to set for the welcome_screen_meeting_information property.
         """
         self._welcome_screen_meeting_information = value
     

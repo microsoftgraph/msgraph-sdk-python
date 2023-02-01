@@ -52,7 +52,7 @@ class PublicClientApplication(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "redirect_uris": lambda n : setattr(self, 'redirect_uris', n.get_collection_of_primitive_values(str)),
+            "redirectUris": lambda n : setattr(self, 'redirect_uris', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -69,7 +69,7 @@ class PublicClientApplication(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -86,7 +86,7 @@ class PublicClientApplication(AdditionalDataHolder, Parsable):
         """
         Sets the redirectUris property value. Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
         Args:
-            value: Value to set for the redirectUris property.
+            value: Value to set for the redirect_uris property.
         """
         self._redirect_uris = value
     

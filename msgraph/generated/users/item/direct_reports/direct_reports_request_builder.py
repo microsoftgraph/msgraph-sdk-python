@@ -13,8 +13,8 @@ from typing import Any, Callable, Dict, List, Optional, Union
 directory_object_collection_response = lazy_import('msgraph.generated.models.directory_object_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.users.item.direct_reports.count.count_request_builder')
-org_contact_request_builder = lazy_import('msgraph.generated.users.item.direct_reports.org_contact.org_contact_request_builder')
-user_request_builder = lazy_import('msgraph.generated.users.item.direct_reports.user.user_request_builder')
+org_contact_request_builder = lazy_import('msgraph.generated.users.item.direct_reports.microsoft_graph_org_contact.org_contact_request_builder')
+user_request_builder = lazy_import('msgraph.generated.users.item.direct_reports.microsoft_graph_user.user_request_builder')
 
 class DirectReportsRequestBuilder():
     """
@@ -28,14 +28,14 @@ class DirectReportsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def org_contact(self) -> org_contact_request_builder.OrgContactRequestBuilder:
+    def microsoft_graph_org_contact(self) -> org_contact_request_builder.OrgContactRequestBuilder:
         """
         Casts the previous resource to orgContact.
         """
         return org_contact_request_builder.OrgContactRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def user(self) -> user_request_builder.UserRequestBuilder:
+    def microsoft_graph_user(self) -> user_request_builder.UserRequestBuilder:
         """
         Casts the previous resource to user.
         """

@@ -92,7 +92,7 @@ class CalculatedColumn(AdditionalDataHolder, Parsable):
             "format": lambda n : setattr(self, 'format', n.get_str_value()),
             "formula": lambda n : setattr(self, 'formula', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "output_type": lambda n : setattr(self, 'output_type', n.get_str_value()),
+            "outputType": lambda n : setattr(self, 'output_type', n.get_str_value()),
         }
         return fields
     
@@ -109,7 +109,7 @@ class CalculatedColumn(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -126,7 +126,7 @@ class CalculatedColumn(AdditionalDataHolder, Parsable):
         """
         Sets the outputType property value. The output type used to format values in this column. Must be one of boolean, currency, dateTime, number, or text.
         Args:
-            value: Value to set for the outputType property.
+            value: Value to set for the output_type property.
         """
         self._output_type = value
     

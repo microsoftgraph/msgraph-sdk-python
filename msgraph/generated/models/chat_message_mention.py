@@ -32,10 +32,10 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
 
         # Index of an entity being mentioned in the specified chatMessage. Matches the {index} value in the corresponding <at id='{index}'> tag in the message body.
         self._id: Optional[int] = None
-        # The entity (user, application, team, or channel) that was @mentioned.
-        self._mentioned: Optional[chat_message_mentioned_identity_set.ChatMessageMentionedIdentitySet] = None
         # String used to represent the mention. For example, a user's display name, a team name.
         self._mention_text: Optional[str] = None
+        # The entity (user, application, team, or channel) that was @mentioned.
+        self._mentioned: Optional[chat_message_mentioned_identity_set.ChatMessageMentionedIdentitySet] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
     
@@ -59,7 +59,7 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
         fields = {
             "id": lambda n : setattr(self, 'id', n.get_int_value()),
             "mentioned": lambda n : setattr(self, 'mentioned', n.get_object_value(chat_message_mentioned_identity_set.ChatMessageMentionedIdentitySet)),
-            "mention_text": lambda n : setattr(self, 'mention_text', n.get_str_value()),
+            "mentionText": lambda n : setattr(self, 'mention_text', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -82,6 +82,23 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
         self._id = value
     
     @property
+    def mention_text(self,) -> Optional[str]:
+        """
+        Gets the mentionText property value. String used to represent the mention. For example, a user's display name, a team name.
+        Returns: Optional[str]
+        """
+        return self._mention_text
+    
+    @mention_text.setter
+    def mention_text(self,value: Optional[str] = None) -> None:
+        """
+        Sets the mentionText property value. String used to represent the mention. For example, a user's display name, a team name.
+        Args:
+            value: Value to set for the mention_text property.
+        """
+        self._mention_text = value
+    
+    @property
     def mentioned(self,) -> Optional[chat_message_mentioned_identity_set.ChatMessageMentionedIdentitySet]:
         """
         Gets the mentioned property value. The entity (user, application, team, or channel) that was @mentioned.
@@ -99,23 +116,6 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
         self._mentioned = value
     
     @property
-    def mention_text(self,) -> Optional[str]:
-        """
-        Gets the mentionText property value. String used to represent the mention. For example, a user's display name, a team name.
-        Returns: Optional[str]
-        """
-        return self._mention_text
-    
-    @mention_text.setter
-    def mention_text(self,value: Optional[str] = None) -> None:
-        """
-        Sets the mentionText property value. String used to represent the mention. For example, a user's display name, a team name.
-        Args:
-            value: Value to set for the mentionText property.
-        """
-        self._mention_text = value
-    
-    @property
     def odata_type(self,) -> Optional[str]:
         """
         Gets the @odata.type property value. The OdataType property
@@ -128,7 +128,7 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

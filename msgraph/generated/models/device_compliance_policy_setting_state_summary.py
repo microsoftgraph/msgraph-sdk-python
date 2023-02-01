@@ -24,7 +24,7 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
         """
         Sets the compliantDeviceCount property value. Number of compliant devices
         Args:
-            value: Value to set for the compliantDeviceCount property.
+            value: Value to set for the compliant_device_count property.
         """
         self._compliant_device_count = value
     
@@ -41,7 +41,7 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
         """
         Sets the conflictDeviceCount property value. Number of conflict devices
         Args:
-            value: Value to set for the conflictDeviceCount property.
+            value: Value to set for the conflict_device_count property.
         """
         self._conflict_device_count = value
     
@@ -100,7 +100,7 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
         """
         Sets the deviceComplianceSettingStates property value. Not yet documented
         Args:
-            value: Value to set for the deviceComplianceSettingStates property.
+            value: Value to set for the device_compliance_setting_states property.
         """
         self._device_compliance_setting_states = value
     
@@ -117,7 +117,7 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
         """
         Sets the errorDeviceCount property value. Number of error devices
         Args:
-            value: Value to set for the errorDeviceCount property.
+            value: Value to set for the error_device_count property.
         """
         self._error_device_count = value
     
@@ -127,17 +127,17 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "compliant_device_count": lambda n : setattr(self, 'compliant_device_count', n.get_int_value()),
-            "conflict_device_count": lambda n : setattr(self, 'conflict_device_count', n.get_int_value()),
-            "device_compliance_setting_states": lambda n : setattr(self, 'device_compliance_setting_states', n.get_collection_of_object_values(device_compliance_setting_state.DeviceComplianceSettingState)),
-            "error_device_count": lambda n : setattr(self, 'error_device_count', n.get_int_value()),
-            "non_compliant_device_count": lambda n : setattr(self, 'non_compliant_device_count', n.get_int_value()),
-            "not_applicable_device_count": lambda n : setattr(self, 'not_applicable_device_count', n.get_int_value()),
-            "platform_type": lambda n : setattr(self, 'platform_type', n.get_enum_value(policy_platform_type.PolicyPlatformType)),
-            "remediated_device_count": lambda n : setattr(self, 'remediated_device_count', n.get_int_value()),
+            "compliantDeviceCount": lambda n : setattr(self, 'compliant_device_count', n.get_int_value()),
+            "conflictDeviceCount": lambda n : setattr(self, 'conflict_device_count', n.get_int_value()),
+            "deviceComplianceSettingStates": lambda n : setattr(self, 'device_compliance_setting_states', n.get_collection_of_object_values(device_compliance_setting_state.DeviceComplianceSettingState)),
+            "errorDeviceCount": lambda n : setattr(self, 'error_device_count', n.get_int_value()),
+            "nonCompliantDeviceCount": lambda n : setattr(self, 'non_compliant_device_count', n.get_int_value()),
+            "notApplicableDeviceCount": lambda n : setattr(self, 'not_applicable_device_count', n.get_int_value()),
+            "platformType": lambda n : setattr(self, 'platform_type', n.get_enum_value(policy_platform_type.PolicyPlatformType)),
+            "remediatedDeviceCount": lambda n : setattr(self, 'remediated_device_count', n.get_int_value()),
             "setting": lambda n : setattr(self, 'setting', n.get_str_value()),
-            "setting_name": lambda n : setattr(self, 'setting_name', n.get_str_value()),
-            "unknown_device_count": lambda n : setattr(self, 'unknown_device_count', n.get_int_value()),
+            "settingName": lambda n : setattr(self, 'setting_name', n.get_str_value()),
+            "unknownDeviceCount": lambda n : setattr(self, 'unknown_device_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -156,7 +156,7 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
         """
         Sets the nonCompliantDeviceCount property value. Number of NonCompliant devices
         Args:
-            value: Value to set for the nonCompliantDeviceCount property.
+            value: Value to set for the non_compliant_device_count property.
         """
         self._non_compliant_device_count = value
     
@@ -173,7 +173,7 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
         """
         Sets the notApplicableDeviceCount property value. Number of not applicable devices
         Args:
-            value: Value to set for the notApplicableDeviceCount property.
+            value: Value to set for the not_applicable_device_count property.
         """
         self._not_applicable_device_count = value
     
@@ -190,7 +190,7 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
         """
         Sets the platformType property value. Supported platform types for policies.
         Args:
-            value: Value to set for the platformType property.
+            value: Value to set for the platform_type property.
         """
         self._platform_type = value
     
@@ -207,7 +207,7 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
         """
         Sets the remediatedDeviceCount property value. Number of remediated devices
         Args:
-            value: Value to set for the remediatedDeviceCount property.
+            value: Value to set for the remediated_device_count property.
         """
         self._remediated_device_count = value
     
@@ -262,7 +262,7 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
         """
         Sets the settingName property value. Name of the setting.
         Args:
-            value: Value to set for the settingName property.
+            value: Value to set for the setting_name property.
         """
         self._setting_name = value
     
@@ -279,7 +279,7 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
         """
         Sets the unknownDeviceCount property value. Number of unknown devices
         Args:
-            value: Value to set for the unknownDeviceCount property.
+            value: Value to set for the unknown_device_count property.
         """
         self._unknown_device_count = value
     

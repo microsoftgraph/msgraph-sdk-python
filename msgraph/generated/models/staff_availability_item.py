@@ -36,7 +36,7 @@ class StaffAvailabilityItem(AdditionalDataHolder, Parsable):
         """
         Sets the availabilityItems property value. Each item in this collection indicates a slot and the status of the staff member.
         Args:
-            value: Value to set for the availabilityItems property.
+            value: Value to set for the availability_items property.
         """
         self._availability_items = value
     
@@ -72,9 +72,9 @@ class StaffAvailabilityItem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "availability_items": lambda n : setattr(self, 'availability_items', n.get_collection_of_object_values(availability_item.AvailabilityItem)),
+            "availabilityItems": lambda n : setattr(self, 'availability_items', n.get_collection_of_object_values(availability_item.AvailabilityItem)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "staff_id": lambda n : setattr(self, 'staff_id', n.get_str_value()),
+            "staffId": lambda n : setattr(self, 'staff_id', n.get_str_value()),
         }
         return fields
     
@@ -91,7 +91,7 @@ class StaffAvailabilityItem(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -121,7 +121,7 @@ class StaffAvailabilityItem(AdditionalDataHolder, Parsable):
         """
         Sets the staffId property value. The ID of the staff member.
         Args:
-            value: Value to set for the staffId property.
+            value: Value to set for the staff_id property.
         """
         self._staff_id = value
     

@@ -21,7 +21,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
         """
         Sets the aaGuid property value. Authenticator Attestation GUID, an identifier that indicates the type (e.g. make and model) of the authenticator.
         Args:
-            value: Value to set for the aaGuid property.
+            value: Value to set for the aa_guid property.
         """
         self._aa_guid = value
     
@@ -38,7 +38,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
         """
         Sets the attestationCertificates property value. The attestation certificate(s) attached to this security key.
         Args:
-            value: Value to set for the attestationCertificates property.
+            value: Value to set for the attestation_certificates property.
         """
         self._attestation_certificates = value
     
@@ -55,7 +55,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
         """
         Sets the attestationLevel property value. The attestation level of this FIDO2 security key. Possible values are: attested, or notAttested.
         Args:
-            value: Value to set for the attestationLevel property.
+            value: Value to set for the attestation_level property.
         """
         self._attestation_level = value
     
@@ -91,7 +91,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
         """
         Sets the createdDateTime property value. The timestamp when this key was registered to the user.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -120,7 +120,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
         """
         Sets the displayName property value. The display name of the key as given by the user.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -130,11 +130,11 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "aa_guid": lambda n : setattr(self, 'aa_guid', n.get_str_value()),
-            "attestation_certificates": lambda n : setattr(self, 'attestation_certificates', n.get_collection_of_primitive_values(str)),
-            "attestation_level": lambda n : setattr(self, 'attestation_level', n.get_enum_value(attestation_level.AttestationLevel)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "aaGuid": lambda n : setattr(self, 'aa_guid', n.get_str_value()),
+            "attestationCertificates": lambda n : setattr(self, 'attestation_certificates', n.get_collection_of_primitive_values(str)),
+            "attestationLevel": lambda n : setattr(self, 'attestation_level', n.get_enum_value(attestation_level.AttestationLevel)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "model": lambda n : setattr(self, 'model', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

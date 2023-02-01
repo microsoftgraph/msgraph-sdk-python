@@ -62,7 +62,7 @@ class ModifiedProperty(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. Indicates the property name of the target attribute that was changed.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -72,10 +72,10 @@ class ModifiedProperty(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "new_value": lambda n : setattr(self, 'new_value', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "newValue": lambda n : setattr(self, 'new_value', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "old_value": lambda n : setattr(self, 'old_value', n.get_str_value()),
+            "oldValue": lambda n : setattr(self, 'old_value', n.get_str_value()),
         }
         return fields
     
@@ -92,7 +92,7 @@ class ModifiedProperty(AdditionalDataHolder, Parsable):
         """
         Sets the newValue property value. Indicates the updated value for the propery.
         Args:
-            value: Value to set for the newValue property.
+            value: Value to set for the new_value property.
         """
         self._new_value = value
     
@@ -109,7 +109,7 @@ class ModifiedProperty(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -126,7 +126,7 @@ class ModifiedProperty(AdditionalDataHolder, Parsable):
         """
         Sets the oldValue property value. Indicates the previous value (before the update) for the property.
         Args:
-            value: Value to set for the oldValue property.
+            value: Value to set for the old_value property.
         """
         self._old_value = value
     

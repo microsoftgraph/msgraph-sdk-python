@@ -39,10 +39,11 @@ class FeatureRolloutPolicyItemRequestBuilder():
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, feature_rollout_policy_id: Optional[str] = None) -> None:
         """
         Instantiates a new FeatureRolloutPolicyItemRequestBuilder and sets the default values.
         Args:
+            featureRolloutPolicyId: key: id of featureRolloutPolicy
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -54,6 +55,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
         self.url_template: str = "{+baseurl}/policies/featureRolloutPolicies/{featureRolloutPolicy%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["featureRolloutPolicy%2Did"] = featureRolloutPolicyId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

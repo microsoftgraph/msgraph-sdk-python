@@ -92,7 +92,7 @@ class Session(entity.Entity):
         """
         Sets the endDateTime property value. UTC time when the last user left the session. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the endDateTime property.
+            value: Value to set for the end_date_time property.
         """
         self._end_date_time = value
     
@@ -109,7 +109,7 @@ class Session(entity.Entity):
         """
         Sets the failureInfo property value. Failure information associated with the session if the session failed.
         Args:
-            value: Value to set for the failureInfo property.
+            value: Value to set for the failure_info property.
         """
         self._failure_info = value
     
@@ -121,11 +121,11 @@ class Session(entity.Entity):
         fields = {
             "callee": lambda n : setattr(self, 'callee', n.get_object_value(endpoint.Endpoint)),
             "caller": lambda n : setattr(self, 'caller', n.get_object_value(endpoint.Endpoint)),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "failure_info": lambda n : setattr(self, 'failure_info', n.get_object_value(failure_info.FailureInfo)),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "failureInfo": lambda n : setattr(self, 'failure_info', n.get_object_value(failure_info.FailureInfo)),
             "modalities": lambda n : setattr(self, 'modalities', n.get_collection_of_enum_values(modality.Modality)),
             "segments": lambda n : setattr(self, 'segments', n.get_collection_of_object_values(segment.Segment)),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -195,7 +195,7 @@ class Session(entity.Entity):
         """
         Sets the startDateTime property value. UTC time when the first user joined the session. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the startDateTime property.
+            value: Value to set for the start_date_time property.
         """
         self._start_date_time = value
     

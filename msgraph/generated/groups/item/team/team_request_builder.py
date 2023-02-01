@@ -12,11 +12,8 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 all_channels_request_builder = lazy_import('msgraph.generated.groups.item.team.all_channels.all_channels_request_builder')
 channel_item_request_builder = lazy_import('msgraph.generated.groups.item.team.all_channels.item.channel_item_request_builder')
-archive_request_builder = lazy_import('msgraph.generated.groups.item.team.archive.archive_request_builder')
 channels_request_builder = lazy_import('msgraph.generated.groups.item.team.channels.channels_request_builder')
 channel_item_request_builder = lazy_import('msgraph.generated.groups.item.team.channels.item.channel_item_request_builder')
-clone_request_builder = lazy_import('msgraph.generated.groups.item.team.clone.clone_request_builder')
-complete_migration_request_builder = lazy_import('msgraph.generated.groups.item.team.complete_migration.complete_migration_request_builder')
 group_request_builder = lazy_import('msgraph.generated.groups.item.team.group.group_request_builder')
 incoming_channels_request_builder = lazy_import('msgraph.generated.groups.item.team.incoming_channels.incoming_channels_request_builder')
 channel_item_request_builder = lazy_import('msgraph.generated.groups.item.team.incoming_channels.item.channel_item_request_builder')
@@ -24,16 +21,19 @@ installed_apps_request_builder = lazy_import('msgraph.generated.groups.item.team
 teams_app_installation_item_request_builder = lazy_import('msgraph.generated.groups.item.team.installed_apps.item.teams_app_installation_item_request_builder')
 members_request_builder = lazy_import('msgraph.generated.groups.item.team.members.members_request_builder')
 conversation_member_item_request_builder = lazy_import('msgraph.generated.groups.item.team.members.item.conversation_member_item_request_builder')
+archive_request_builder = lazy_import('msgraph.generated.groups.item.team.microsoft_graph_archive.archive_request_builder')
+clone_request_builder = lazy_import('msgraph.generated.groups.item.team.microsoft_graph_clone.clone_request_builder')
+complete_migration_request_builder = lazy_import('msgraph.generated.groups.item.team.microsoft_graph_complete_migration.complete_migration_request_builder')
+send_activity_notification_request_builder = lazy_import('msgraph.generated.groups.item.team.microsoft_graph_send_activity_notification.send_activity_notification_request_builder')
+unarchive_request_builder = lazy_import('msgraph.generated.groups.item.team.microsoft_graph_unarchive.unarchive_request_builder')
 operations_request_builder = lazy_import('msgraph.generated.groups.item.team.operations.operations_request_builder')
 teams_async_operation_item_request_builder = lazy_import('msgraph.generated.groups.item.team.operations.item.teams_async_operation_item_request_builder')
 photo_request_builder = lazy_import('msgraph.generated.groups.item.team.photo.photo_request_builder')
 primary_channel_request_builder = lazy_import('msgraph.generated.groups.item.team.primary_channel.primary_channel_request_builder')
 schedule_request_builder = lazy_import('msgraph.generated.groups.item.team.schedule.schedule_request_builder')
-send_activity_notification_request_builder = lazy_import('msgraph.generated.groups.item.team.send_activity_notification.send_activity_notification_request_builder')
 tags_request_builder = lazy_import('msgraph.generated.groups.item.team.tags.tags_request_builder')
 teamwork_tag_item_request_builder = lazy_import('msgraph.generated.groups.item.team.tags.item.teamwork_tag_item_request_builder')
 template_request_builder = lazy_import('msgraph.generated.groups.item.team.template.template_request_builder')
-unarchive_request_builder = lazy_import('msgraph.generated.groups.item.team.unarchive.unarchive_request_builder')
 team = lazy_import('msgraph.generated.models.team')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -49,32 +49,11 @@ class TeamRequestBuilder():
         return all_channels_request_builder.AllChannelsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def archive(self) -> archive_request_builder.ArchiveRequestBuilder:
-        """
-        Provides operations to call the archive method.
-        """
-        return archive_request_builder.ArchiveRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def channels(self) -> channels_request_builder.ChannelsRequestBuilder:
         """
         Provides operations to manage the channels property of the microsoft.graph.team entity.
         """
         return channels_request_builder.ChannelsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def clone(self) -> clone_request_builder.CloneRequestBuilder:
-        """
-        Provides operations to call the clone method.
-        """
-        return clone_request_builder.CloneRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def complete_migration(self) -> complete_migration_request_builder.CompleteMigrationRequestBuilder:
-        """
-        Provides operations to call the completeMigration method.
-        """
-        return complete_migration_request_builder.CompleteMigrationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def group(self) -> group_request_builder.GroupRequestBuilder:
@@ -105,6 +84,41 @@ class TeamRequestBuilder():
         return members_request_builder.MembersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def microsoft_graph_archive(self) -> archive_request_builder.ArchiveRequestBuilder:
+        """
+        Provides operations to call the archive method.
+        """
+        return archive_request_builder.ArchiveRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_clone(self) -> clone_request_builder.CloneRequestBuilder:
+        """
+        Provides operations to call the clone method.
+        """
+        return clone_request_builder.CloneRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_complete_migration(self) -> complete_migration_request_builder.CompleteMigrationRequestBuilder:
+        """
+        Provides operations to call the completeMigration method.
+        """
+        return complete_migration_request_builder.CompleteMigrationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_send_activity_notification(self) -> send_activity_notification_request_builder.SendActivityNotificationRequestBuilder:
+        """
+        Provides operations to call the sendActivityNotification method.
+        """
+        return send_activity_notification_request_builder.SendActivityNotificationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_unarchive(self) -> unarchive_request_builder.UnarchiveRequestBuilder:
+        """
+        Provides operations to call the unarchive method.
+        """
+        return unarchive_request_builder.UnarchiveRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def operations(self) -> operations_request_builder.OperationsRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.team entity.
@@ -133,13 +147,6 @@ class TeamRequestBuilder():
         return schedule_request_builder.ScheduleRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def send_activity_notification(self) -> send_activity_notification_request_builder.SendActivityNotificationRequestBuilder:
-        """
-        Provides operations to call the sendActivityNotification method.
-        """
-        return send_activity_notification_request_builder.SendActivityNotificationRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def tags(self) -> tags_request_builder.TagsRequestBuilder:
         """
         Provides operations to manage the tags property of the microsoft.graph.team entity.
@@ -152,13 +159,6 @@ class TeamRequestBuilder():
         Provides operations to manage the template property of the microsoft.graph.team entity.
         """
         return template_request_builder.TemplateRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def unarchive(self) -> unarchive_request_builder.UnarchiveRequestBuilder:
-        """
-        Provides operations to call the unarchive method.
-        """
-        return unarchive_request_builder.UnarchiveRequestBuilder(self.request_adapter, self.path_parameters)
     
     def all_channels_by_id(self,id: str) -> channel_item_request_builder.ChannelItemRequestBuilder:
         """

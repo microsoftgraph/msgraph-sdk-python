@@ -36,7 +36,7 @@ class ContentRequestBuilder():
     
     async def get(self,request_configuration: Optional[ContentRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
-        Get content for the navigation property attachmentSessions from users
+        The content streams that are uploaded.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
@@ -54,7 +54,7 @@ class ContentRequestBuilder():
     
     async def put(self,body: bytes, request_configuration: Optional[ContentRequestBuilderPutRequestConfiguration] = None) -> None:
         """
-        Update content for the navigation property attachmentSessions in users
+        The content streams that are uploaded.
         Args:
             body: Binary request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -74,7 +74,7 @@ class ContentRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ContentRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get content for the navigation property attachmentSessions from users
+        The content streams that are uploaded.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -90,7 +90,7 @@ class ContentRequestBuilder():
     
     def to_put_request_information(self,body: bytes, request_configuration: Optional[ContentRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
-        Update content for the navigation property attachmentSessions in users
+        The content streams that are uploaded.
         Args:
             body: Binary request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

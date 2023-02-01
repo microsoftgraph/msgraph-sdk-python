@@ -71,7 +71,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         """
         Sets the dlpAction property value. The action taken by the DLP provider on the message with sensitive content. Supported values are: NoneNotifySender -- Inform the sender of the violation but allow readers to read the message.BlockAccess -- Block readers from reading the message.BlockAccessExternal -- Block users outside the organization from reading the message, while allowing users within the organization to read the message.
         Args:
-            value: Value to set for the dlpAction property.
+            value: Value to set for the dlp_action property.
         """
         self._dlp_action = value
     
@@ -81,12 +81,12 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "dlp_action": lambda n : setattr(self, 'dlp_action', n.get_enum_value(chat_message_policy_violation_dlp_action_types.ChatMessagePolicyViolationDlpActionTypes)),
-            "justification_text": lambda n : setattr(self, 'justification_text', n.get_str_value()),
+            "dlpAction": lambda n : setattr(self, 'dlp_action', n.get_enum_value(chat_message_policy_violation_dlp_action_types.ChatMessagePolicyViolationDlpActionTypes)),
+            "justificationText": lambda n : setattr(self, 'justification_text', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "policy_tip": lambda n : setattr(self, 'policy_tip', n.get_object_value(chat_message_policy_violation_policy_tip.ChatMessagePolicyViolationPolicyTip)),
-            "user_action": lambda n : setattr(self, 'user_action', n.get_enum_value(chat_message_policy_violation_user_action_types.ChatMessagePolicyViolationUserActionTypes)),
-            "verdict_details": lambda n : setattr(self, 'verdict_details', n.get_enum_value(chat_message_policy_violation_verdict_details_types.ChatMessagePolicyViolationVerdictDetailsTypes)),
+            "policyTip": lambda n : setattr(self, 'policy_tip', n.get_object_value(chat_message_policy_violation_policy_tip.ChatMessagePolicyViolationPolicyTip)),
+            "userAction": lambda n : setattr(self, 'user_action', n.get_enum_value(chat_message_policy_violation_user_action_types.ChatMessagePolicyViolationUserActionTypes)),
+            "verdictDetails": lambda n : setattr(self, 'verdict_details', n.get_enum_value(chat_message_policy_violation_verdict_details_types.ChatMessagePolicyViolationVerdictDetailsTypes)),
         }
         return fields
     
@@ -103,7 +103,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         """
         Sets the justificationText property value. Justification text provided by the sender of the message when overriding a policy violation.
         Args:
-            value: Value to set for the justificationText property.
+            value: Value to set for the justification_text property.
         """
         self._justification_text = value
     
@@ -120,7 +120,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -137,7 +137,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         """
         Sets the policyTip property value. Information to display to the message sender about why the message was flagged as a violation.
         Args:
-            value: Value to set for the policyTip property.
+            value: Value to set for the policy_tip property.
         """
         self._policy_tip = value
     
@@ -170,7 +170,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         """
         Sets the userAction property value. Indicates the action taken by the user on a message blocked by the DLP provider. Supported values are: NoneOverrideReportFalsePositiveWhen the DLP provider is updating the message for blocking sensitive content, userAction is not required.
         Args:
-            value: Value to set for the userAction property.
+            value: Value to set for the user_action property.
         """
         self._user_action = value
     
@@ -187,7 +187,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         """
         Sets the verdictDetails property value. Indicates what actions the sender may take in response to the policy violation. Supported values are: NoneAllowFalsePositiveOverride -- Allows the sender to declare the policyViolation to be an error in the DLP app and its rules, and allow readers to see the message again if the dlpAction had hidden it.AllowOverrideWithoutJustification -- Allows the sender to overriide the DLP violation and allow readers to see the message again if the dlpAction had hidden it, without needing to provide an explanation for doing so. AllowOverrideWithJustification -- Allows the sender to overriide the DLP violation and allow readers to see the message again if the dlpAction had hidden it, after providing an explanation for doing so.AllowOverrideWithoutJustification and AllowOverrideWithJustification are mutually exclusive.
         Args:
-            value: Value to set for the verdictDetails property.
+            value: Value to set for the verdict_details property.
         """
         self._verdict_details = value
     

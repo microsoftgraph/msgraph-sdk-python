@@ -37,8 +37,8 @@ class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "order_hints_by_assignee": lambda n : setattr(self, 'order_hints_by_assignee', n.get_object_value(planner_order_hints_by_assignee.PlannerOrderHintsByAssignee)),
-            "unassigned_order_hint": lambda n : setattr(self, 'unassigned_order_hint', n.get_str_value()),
+            "orderHintsByAssignee": lambda n : setattr(self, 'order_hints_by_assignee', n.get_object_value(planner_order_hints_by_assignee.PlannerOrderHintsByAssignee)),
+            "unassignedOrderHint": lambda n : setattr(self, 'unassigned_order_hint', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,7 +57,7 @@ class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
         """
         Sets the orderHintsByAssignee property value. Dictionary of hints used to order tasks on the AssignedTo view of the Task Board. The key of each entry is one of the users the task is assigned to and the value is the order hint. The format of each value is defined as outlined here.
         Args:
-            value: Value to set for the orderHintsByAssignee property.
+            value: Value to set for the order_hints_by_assignee property.
         """
         self._order_hints_by_assignee = value
     
@@ -86,7 +86,7 @@ class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
         """
         Sets the unassignedOrderHint property value. Hint value used to order the task on the AssignedTo view of the Task Board when the task is not assigned to anyone, or if the orderHintsByAssignee dictionary does not provide an order hint for the user the task is assigned to. The format is defined as outlined here.
         Args:
-            value: Value to set for the unassignedOrderHint property.
+            value: Value to set for the unassigned_order_hint property.
         """
         self._unassigned_order_hint = value
     

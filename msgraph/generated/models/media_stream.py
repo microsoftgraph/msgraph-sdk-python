@@ -81,10 +81,10 @@ class MediaStream(AdditionalDataHolder, Parsable):
         fields = {
             "direction": lambda n : setattr(self, 'direction', n.get_enum_value(media_direction.MediaDirection)),
             "label": lambda n : setattr(self, 'label', n.get_str_value()),
-            "media_type": lambda n : setattr(self, 'media_type', n.get_enum_value(modality.Modality)),
+            "mediaType": lambda n : setattr(self, 'media_type', n.get_enum_value(modality.Modality)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "server_muted": lambda n : setattr(self, 'server_muted', n.get_bool_value()),
-            "source_id": lambda n : setattr(self, 'source_id', n.get_str_value()),
+            "serverMuted": lambda n : setattr(self, 'server_muted', n.get_bool_value()),
+            "sourceId": lambda n : setattr(self, 'source_id', n.get_str_value()),
         }
         return fields
     
@@ -118,7 +118,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         """
         Sets the mediaType property value. The mediaType property
         Args:
-            value: Value to set for the mediaType property.
+            value: Value to set for the media_type property.
         """
         self._media_type = value
     
@@ -135,7 +135,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -168,7 +168,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         """
         Sets the serverMuted property value. If the media is muted by the server.
         Args:
-            value: Value to set for the serverMuted property.
+            value: Value to set for the server_muted property.
         """
         self._server_muted = value
     
@@ -185,7 +185,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         """
         Sets the sourceId property value. The source ID.
         Args:
-            value: Value to set for the sourceId property.
+            value: Value to set for the source_id property.
         """
         self._source_id = value
     

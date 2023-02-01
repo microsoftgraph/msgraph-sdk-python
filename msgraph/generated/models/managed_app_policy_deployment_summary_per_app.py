@@ -39,7 +39,7 @@ class ManagedAppPolicyDeploymentSummaryPerApp(AdditionalDataHolder, Parsable):
         """
         Sets the configurationAppliedUserCount property value. Number of users the policy is applied.
         Args:
-            value: Value to set for the configurationAppliedUserCount property.
+            value: Value to set for the configuration_applied_user_count property.
         """
         self._configuration_applied_user_count = value
     
@@ -75,8 +75,8 @@ class ManagedAppPolicyDeploymentSummaryPerApp(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "configuration_applied_user_count": lambda n : setattr(self, 'configuration_applied_user_count', n.get_int_value()),
-            "mobile_app_identifier": lambda n : setattr(self, 'mobile_app_identifier', n.get_object_value(mobile_app_identifier.MobileAppIdentifier)),
+            "configurationAppliedUserCount": lambda n : setattr(self, 'configuration_applied_user_count', n.get_int_value()),
+            "mobileAppIdentifier": lambda n : setattr(self, 'mobile_app_identifier', n.get_object_value(mobile_app_identifier.MobileAppIdentifier)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -94,7 +94,7 @@ class ManagedAppPolicyDeploymentSummaryPerApp(AdditionalDataHolder, Parsable):
         """
         Sets the mobileAppIdentifier property value. Deployment of an app.
         Args:
-            value: Value to set for the mobileAppIdentifier property.
+            value: Value to set for the mobile_app_identifier property.
         """
         self._mobile_app_identifier = value
     
@@ -111,7 +111,7 @@ class ManagedAppPolicyDeploymentSummaryPerApp(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

@@ -36,7 +36,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         """
         Sets the callChainId property value. A unique identifier for all  the participant calls in a conference or a unique identifier for two participant calls in P2P call. This needs to be copied over from Microsoft.Graph.Call.CallChainId.
         Args:
-            value: Value to set for the callChainId property.
+            value: Value to set for the call_chain_id property.
         """
         self._call_chain_id = value
     
@@ -53,7 +53,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         """
         Sets the cloudServiceDeploymentEnvironment property value. A geo-region where the service is deployed, such as ProdNoam.
         Args:
-            value: Value to set for the cloudServiceDeploymentEnvironment property.
+            value: Value to set for the cloud_service_deployment_environment property.
         """
         self._cloud_service_deployment_environment = value
     
@@ -70,7 +70,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         """
         Sets the cloudServiceDeploymentId property value. A unique deployment identifier assigned by Azure.
         Args:
-            value: Value to set for the cloudServiceDeploymentId property.
+            value: Value to set for the cloud_service_deployment_id property.
         """
         self._cloud_service_deployment_id = value
     
@@ -87,7 +87,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         """
         Sets the cloudServiceInstanceName property value. The Azure deployed cloud service instance name, such as FrontEnd_IN_3.
         Args:
-            value: Value to set for the cloudServiceInstanceName property.
+            value: Value to set for the cloud_service_instance_name property.
         """
         self._cloud_service_instance_name = value
     
@@ -104,7 +104,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         """
         Sets the cloudServiceName property value. The Azure deployed cloud service name, such as contoso.cloudapp.net.
         Args:
-            value: Value to set for the cloudServiceName property.
+            value: Value to set for the cloud_service_name property.
         """
         self._cloud_service_name = value
     
@@ -163,7 +163,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         """
         Sets the deviceDescription property value. Any additional description, such as VTC Bldg 30/21.
         Args:
-            value: Value to set for the deviceDescription property.
+            value: Value to set for the device_description property.
         """
         self._device_description = value
     
@@ -180,7 +180,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         """
         Sets the deviceName property value. The user media agent name, such as Cisco SX80.
         Args:
-            value: Value to set for the deviceName property.
+            value: Value to set for the device_name property.
         """
         self._device_name = value
     
@@ -190,17 +190,17 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "call_chain_id": lambda n : setattr(self, 'call_chain_id', n.get_object_value(Guid)),
-            "cloud_service_deployment_environment": lambda n : setattr(self, 'cloud_service_deployment_environment', n.get_str_value()),
-            "cloud_service_deployment_id": lambda n : setattr(self, 'cloud_service_deployment_id', n.get_str_value()),
-            "cloud_service_instance_name": lambda n : setattr(self, 'cloud_service_instance_name', n.get_str_value()),
-            "cloud_service_name": lambda n : setattr(self, 'cloud_service_name', n.get_str_value()),
-            "device_description": lambda n : setattr(self, 'device_description', n.get_str_value()),
-            "device_name": lambda n : setattr(self, 'device_name', n.get_str_value()),
-            "media_leg_id": lambda n : setattr(self, 'media_leg_id', n.get_object_value(Guid)),
-            "media_quality_list": lambda n : setattr(self, 'media_quality_list', n.get_collection_of_object_values(teleconference_device_media_quality.TeleconferenceDeviceMediaQuality)),
+            "callChainId": lambda n : setattr(self, 'call_chain_id', n.get_object_value(Guid)),
+            "cloudServiceDeploymentEnvironment": lambda n : setattr(self, 'cloud_service_deployment_environment', n.get_str_value()),
+            "cloudServiceDeploymentId": lambda n : setattr(self, 'cloud_service_deployment_id', n.get_str_value()),
+            "cloudServiceInstanceName": lambda n : setattr(self, 'cloud_service_instance_name', n.get_str_value()),
+            "cloudServiceName": lambda n : setattr(self, 'cloud_service_name', n.get_str_value()),
+            "deviceDescription": lambda n : setattr(self, 'device_description', n.get_str_value()),
+            "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
+            "mediaLegId": lambda n : setattr(self, 'media_leg_id', n.get_object_value(Guid)),
+            "mediaQualityList": lambda n : setattr(self, 'media_quality_list', n.get_collection_of_object_values(teleconference_device_media_quality.TeleconferenceDeviceMediaQuality)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "participant_id": lambda n : setattr(self, 'participant_id', n.get_object_value(Guid)),
+            "participantId": lambda n : setattr(self, 'participant_id', n.get_object_value(Guid)),
         }
         return fields
     
@@ -217,7 +217,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         """
         Sets the mediaLegId property value. A unique identifier for a specific media leg of a participant in a conference.  One participant can have multiple media leg identifiers if retargeting happens. CVI partner assigns this value.
         Args:
-            value: Value to set for the mediaLegId property.
+            value: Value to set for the media_leg_id property.
         """
         self._media_leg_id = value
     
@@ -234,7 +234,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         """
         Sets the mediaQualityList property value. The list of media qualities in a media session (call), such as audio quality, video quality, and/or screen sharing quality.
         Args:
-            value: Value to set for the mediaQualityList property.
+            value: Value to set for the media_quality_list property.
         """
         self._media_quality_list = value
     
@@ -251,7 +251,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -268,7 +268,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         """
         Sets the participantId property value. A unique identifier for a specific participant in a conference. The CVI partner needs to copy over Call.MyParticipantId to this property.
         Args:
-            value: Value to set for the participantId property.
+            value: Value to set for the participant_id property.
         """
         self._participant_id = value
     

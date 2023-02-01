@@ -9,7 +9,7 @@ entity = lazy_import('msgraph.generated.models.entity')
 class DelegatedAdminCustomer(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new DelegatedAdminCustomer and sets the default values.
+        Instantiates a new delegatedAdminCustomer and sets the default values.
         """
         super().__init__()
         # The displayName property
@@ -46,7 +46,7 @@ class DelegatedAdminCustomer(entity.Entity):
         """
         Sets the displayName property value. The displayName property
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -56,9 +56,9 @@ class DelegatedAdminCustomer(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "service_management_details": lambda n : setattr(self, 'service_management_details', n.get_collection_of_object_values(delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail)),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "serviceManagementDetails": lambda n : setattr(self, 'service_management_details', n.get_collection_of_object_values(delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail)),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -90,7 +90,7 @@ class DelegatedAdminCustomer(entity.Entity):
         """
         Sets the serviceManagementDetails property value. The serviceManagementDetails property
         Args:
-            value: Value to set for the serviceManagementDetails property.
+            value: Value to set for the service_management_details property.
         """
         self._service_management_details = value
     
@@ -107,7 +107,7 @@ class DelegatedAdminCustomer(entity.Entity):
         """
         Sets the tenantId property value. The tenantId property
         Args:
-            value: Value to set for the tenantId property.
+            value: Value to set for the tenant_id property.
         """
         self._tenant_id = value
     

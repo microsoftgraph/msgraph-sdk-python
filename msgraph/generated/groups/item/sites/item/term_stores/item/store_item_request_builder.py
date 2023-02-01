@@ -35,12 +35,13 @@ class StoreItemRequestBuilder():
         """
         return sets_request_builder.SetsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, store_id: Optional[str] = None) -> None:
         """
         Instantiates a new StoreItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            storeId: key: id of store
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -50,6 +51,7 @@ class StoreItemRequestBuilder():
         self.url_template: str = "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/termStores/{store%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["store%2Did"] = storeId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

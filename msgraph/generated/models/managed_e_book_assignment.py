@@ -41,7 +41,7 @@ class ManagedEBookAssignment(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "install_intent": lambda n : setattr(self, 'install_intent', n.get_enum_value(install_intent.InstallIntent)),
+            "installIntent": lambda n : setattr(self, 'install_intent', n.get_enum_value(install_intent.InstallIntent)),
             "target": lambda n : setattr(self, 'target', n.get_object_value(device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget)),
         }
         super_fields = super().get_field_deserializers()
@@ -61,7 +61,7 @@ class ManagedEBookAssignment(entity.Entity):
         """
         Sets the installIntent property value. Possible values for the install intent chosen by the admin.
         Args:
-            value: Value to set for the installIntent property.
+            value: Value to set for the install_intent property.
         """
         self._install_intent = value
     

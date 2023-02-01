@@ -27,7 +27,7 @@ class EntitlementManagement(entity.Entity):
         """
         Sets the accessPackageAssignmentApprovals property value. Approval stages for decisions associated with access package assignment requests.
         Args:
-            value: Value to set for the accessPackageAssignmentApprovals property.
+            value: Value to set for the access_package_assignment_approvals property.
         """
         self._access_package_assignment_approvals = value
     
@@ -44,7 +44,7 @@ class EntitlementManagement(entity.Entity):
         """
         Sets the accessPackages property value. Access packages define the collection of resource roles and the policies for which subjects can request or be assigned access to those resources.
         Args:
-            value: Value to set for the accessPackages property.
+            value: Value to set for the access_packages property.
         """
         self._access_packages = value
     
@@ -61,7 +61,7 @@ class EntitlementManagement(entity.Entity):
         """
         Sets the assignmentPolicies property value. Access package assignment policies govern which subjects can request or be assigned an access package via an access package assignment.
         Args:
-            value: Value to set for the assignmentPolicies property.
+            value: Value to set for the assignment_policies property.
         """
         self._assignment_policies = value
     
@@ -78,7 +78,7 @@ class EntitlementManagement(entity.Entity):
         """
         Sets the assignmentRequests property value. Access package assignment requests created by or on behalf of a subject.
         Args:
-            value: Value to set for the assignmentRequests property.
+            value: Value to set for the assignment_requests property.
         """
         self._assignment_requests = value
     
@@ -129,7 +129,7 @@ class EntitlementManagement(entity.Entity):
         """
         Sets the connectedOrganizations property value. References to a directory or domain of another organization whose users can request access.
         Args:
-            value: Value to set for the connectedOrganizations property.
+            value: Value to set for the connected_organizations property.
         """
         self._connected_organizations = value
     
@@ -175,13 +175,13 @@ class EntitlementManagement(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_package_assignment_approvals": lambda n : setattr(self, 'access_package_assignment_approvals', n.get_collection_of_object_values(approval.Approval)),
-            "access_packages": lambda n : setattr(self, 'access_packages', n.get_collection_of_object_values(access_package.AccessPackage)),
-            "assignment_policies": lambda n : setattr(self, 'assignment_policies', n.get_collection_of_object_values(access_package_assignment_policy.AccessPackageAssignmentPolicy)),
-            "assignment_requests": lambda n : setattr(self, 'assignment_requests', n.get_collection_of_object_values(access_package_assignment_request.AccessPackageAssignmentRequest)),
+            "accessPackages": lambda n : setattr(self, 'access_packages', n.get_collection_of_object_values(access_package.AccessPackage)),
+            "accessPackageAssignmentApprovals": lambda n : setattr(self, 'access_package_assignment_approvals', n.get_collection_of_object_values(approval.Approval)),
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(access_package_assignment.AccessPackageAssignment)),
+            "assignmentPolicies": lambda n : setattr(self, 'assignment_policies', n.get_collection_of_object_values(access_package_assignment_policy.AccessPackageAssignmentPolicy)),
+            "assignmentRequests": lambda n : setattr(self, 'assignment_requests', n.get_collection_of_object_values(access_package_assignment_request.AccessPackageAssignmentRequest)),
             "catalogs": lambda n : setattr(self, 'catalogs', n.get_collection_of_object_values(access_package_catalog.AccessPackageCatalog)),
-            "connected_organizations": lambda n : setattr(self, 'connected_organizations', n.get_collection_of_object_values(connected_organization.ConnectedOrganization)),
+            "connectedOrganizations": lambda n : setattr(self, 'connected_organizations', n.get_collection_of_object_values(connected_organization.ConnectedOrganization)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(entitlement_management_settings.EntitlementManagementSettings)),
         }
         super_fields = super().get_field_deserializers()
@@ -197,11 +197,11 @@ class EntitlementManagement(entity.Entity):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-        writer.write_collection_of_object_values("accessPackageAssignmentApprovals", self.access_package_assignment_approvals)
         writer.write_collection_of_object_values("accessPackages", self.access_packages)
+        writer.write_collection_of_object_values("accessPackageAssignmentApprovals", self.access_package_assignment_approvals)
+        writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_collection_of_object_values("assignmentPolicies", self.assignment_policies)
         writer.write_collection_of_object_values("assignmentRequests", self.assignment_requests)
-        writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_collection_of_object_values("catalogs", self.catalogs)
         writer.write_collection_of_object_values("connectedOrganizations", self.connected_organizations)
         writer.write_object_value("settings", self.settings)

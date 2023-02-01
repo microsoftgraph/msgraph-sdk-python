@@ -66,7 +66,7 @@ class EducationFeedback(AdditionalDataHolder, Parsable):
         """
         Sets the feedbackBy property value. User who created the feedback.
         Args:
-            value: Value to set for the feedbackBy property.
+            value: Value to set for the feedback_by property.
         """
         self._feedback_by = value
     
@@ -83,7 +83,7 @@ class EducationFeedback(AdditionalDataHolder, Parsable):
         """
         Sets the feedbackDateTime property value. Moment in time when the feedback was given. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the feedbackDateTime property.
+            value: Value to set for the feedback_date_time property.
         """
         self._feedback_date_time = value
     
@@ -93,8 +93,8 @@ class EducationFeedback(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "feedback_by": lambda n : setattr(self, 'feedback_by', n.get_object_value(identity_set.IdentitySet)),
-            "feedback_date_time": lambda n : setattr(self, 'feedback_date_time', n.get_datetime_value()),
+            "feedbackBy": lambda n : setattr(self, 'feedback_by', n.get_object_value(identity_set.IdentitySet)),
+            "feedbackDateTime": lambda n : setattr(self, 'feedback_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "text": lambda n : setattr(self, 'text', n.get_object_value(education_item_body.EducationItemBody)),
         }
@@ -113,7 +113,7 @@ class EducationFeedback(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

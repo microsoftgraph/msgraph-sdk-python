@@ -53,7 +53,7 @@ class BaseItem(entity.Entity):
         """
         Sets the createdBy property value. Identity of the user, device, or application which created the item. Read-only.
         Args:
-            value: Value to set for the createdBy property.
+            value: Value to set for the created_by property.
         """
         self._created_by = value
     
@@ -70,7 +70,7 @@ class BaseItem(entity.Entity):
         """
         Sets the createdByUser property value. Identity of the user who created the item. Read-only.
         Args:
-            value: Value to set for the createdByUser property.
+            value: Value to set for the created_by_user property.
         """
         self._created_by_user = value
     
@@ -87,7 +87,7 @@ class BaseItem(entity.Entity):
         """
         Sets the createdDateTime property value. Date and time of item creation. Read-only.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -133,7 +133,7 @@ class BaseItem(entity.Entity):
         """
         Sets the eTag property value. ETag for the item. Read-only.
         Args:
-            value: Value to set for the eTag property.
+            value: Value to set for the e_tag property.
         """
         self._e_tag = value
     
@@ -143,17 +143,17 @@ class BaseItem(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_by_user": lambda n : setattr(self, 'created_by_user', n.get_object_value(user.User)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdByUser": lambda n : setattr(self, 'created_by_user', n.get_object_value(user.User)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "e_tag": lambda n : setattr(self, 'e_tag', n.get_str_value()),
-            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
-            "last_modified_by_user": lambda n : setattr(self, 'last_modified_by_user', n.get_object_value(user.User)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "eTag": lambda n : setattr(self, 'e_tag', n.get_str_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedByUser": lambda n : setattr(self, 'last_modified_by_user', n.get_object_value(user.User)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "parent_reference": lambda n : setattr(self, 'parent_reference', n.get_object_value(item_reference.ItemReference)),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "parentReference": lambda n : setattr(self, 'parent_reference', n.get_object_value(item_reference.ItemReference)),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -172,7 +172,7 @@ class BaseItem(entity.Entity):
         """
         Sets the lastModifiedBy property value. Identity of the user, device, and application which last modified the item. Read-only.
         Args:
-            value: Value to set for the lastModifiedBy property.
+            value: Value to set for the last_modified_by property.
         """
         self._last_modified_by = value
     
@@ -189,7 +189,7 @@ class BaseItem(entity.Entity):
         """
         Sets the lastModifiedByUser property value. Identity of the user who last modified the item. Read-only.
         Args:
-            value: Value to set for the lastModifiedByUser property.
+            value: Value to set for the last_modified_by_user property.
         """
         self._last_modified_by_user = value
     
@@ -206,7 +206,7 @@ class BaseItem(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. Date and time the item was last modified. Read-only.
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     
@@ -240,7 +240,7 @@ class BaseItem(entity.Entity):
         """
         Sets the parentReference property value. Parent information, if the item has a parent. Read-write.
         Args:
-            value: Value to set for the parentReference property.
+            value: Value to set for the parent_reference property.
         """
         self._parent_reference = value
     
@@ -278,7 +278,7 @@ class BaseItem(entity.Entity):
         """
         Sets the webUrl property value. URL that displays the resource in the browser. Read-only.
         Args:
-            value: Value to set for the webUrl property.
+            value: Value to set for the web_url property.
         """
         self._web_url = value
     

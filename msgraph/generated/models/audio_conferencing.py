@@ -34,7 +34,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         """
         Sets the conferenceId property value. The conference id of the online meeting.
         Args:
-            value: Value to set for the conferenceId property.
+            value: Value to set for the conference_id property.
         """
         self._conference_id = value
     
@@ -85,7 +85,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         """
         Sets the dialinUrl property value. A URL to the externally-accessible web page that contains dial-in information.
         Args:
-            value: Value to set for the dialinUrl property.
+            value: Value to set for the dialin_url property.
         """
         self._dialin_url = value
     
@@ -95,13 +95,13 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "conference_id": lambda n : setattr(self, 'conference_id', n.get_str_value()),
-            "dialin_url": lambda n : setattr(self, 'dialin_url', n.get_str_value()),
+            "conferenceId": lambda n : setattr(self, 'conference_id', n.get_str_value()),
+            "dialinUrl": lambda n : setattr(self, 'dialin_url', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "toll_free_number": lambda n : setattr(self, 'toll_free_number', n.get_str_value()),
-            "toll_free_numbers": lambda n : setattr(self, 'toll_free_numbers', n.get_collection_of_primitive_values(str)),
-            "toll_number": lambda n : setattr(self, 'toll_number', n.get_str_value()),
-            "toll_numbers": lambda n : setattr(self, 'toll_numbers', n.get_collection_of_primitive_values(str)),
+            "tollFreeNumber": lambda n : setattr(self, 'toll_free_number', n.get_str_value()),
+            "tollFreeNumbers": lambda n : setattr(self, 'toll_free_numbers', n.get_collection_of_primitive_values(str)),
+            "tollNumber": lambda n : setattr(self, 'toll_number', n.get_str_value()),
+            "tollNumbers": lambda n : setattr(self, 'toll_numbers', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -118,7 +118,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -152,7 +152,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         """
         Sets the tollFreeNumber property value. The tollFreeNumber property
         Args:
-            value: Value to set for the tollFreeNumber property.
+            value: Value to set for the toll_free_number property.
         """
         self._toll_free_number = value
     
@@ -169,7 +169,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         """
         Sets the tollFreeNumbers property value. List of toll-free numbers that are displayed in the meeting invite.
         Args:
-            value: Value to set for the tollFreeNumbers property.
+            value: Value to set for the toll_free_numbers property.
         """
         self._toll_free_numbers = value
     
@@ -186,7 +186,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         """
         Sets the tollNumber property value. The tollNumber property
         Args:
-            value: Value to set for the tollNumber property.
+            value: Value to set for the toll_number property.
         """
         self._toll_number = value
     
@@ -203,7 +203,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         """
         Sets the tollNumbers property value. List of toll numbers that are displayed in the meeting invite.
         Args:
-            value: Value to set for the tollNumbers property.
+            value: Value to set for the toll_numbers property.
         """
         self._toll_numbers = value
     

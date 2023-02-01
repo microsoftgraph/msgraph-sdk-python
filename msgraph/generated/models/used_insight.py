@@ -43,10 +43,10 @@ class UsedInsight(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "last_used": lambda n : setattr(self, 'last_used', n.get_object_value(usage_details.UsageDetails)),
+            "lastUsed": lambda n : setattr(self, 'last_used', n.get_object_value(usage_details.UsageDetails)),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(entity.Entity)),
-            "resource_reference": lambda n : setattr(self, 'resource_reference', n.get_object_value(resource_reference.ResourceReference)),
-            "resource_visualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(resource_visualization.ResourceVisualization)),
+            "resourceReference": lambda n : setattr(self, 'resource_reference', n.get_object_value(resource_reference.ResourceReference)),
+            "resourceVisualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(resource_visualization.ResourceVisualization)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -65,7 +65,7 @@ class UsedInsight(entity.Entity):
         """
         Sets the lastUsed property value. Information about when the item was last viewed or modified by the user. Read only.
         Args:
-            value: Value to set for the lastUsed property.
+            value: Value to set for the last_used property.
         """
         self._last_used = value
     
@@ -99,7 +99,7 @@ class UsedInsight(entity.Entity):
         """
         Sets the resourceReference property value. Reference properties of the used document, such as the url and type of the document. Read-only
         Args:
-            value: Value to set for the resourceReference property.
+            value: Value to set for the resource_reference property.
         """
         self._resource_reference = value
     
@@ -116,7 +116,7 @@ class UsedInsight(entity.Entity):
         """
         Sets the resourceVisualization property value. Properties that you can use to visualize the document in your experience. Read-only
         Args:
-            value: Value to set for the resourceVisualization property.
+            value: Value to set for the resource_visualization property.
         """
         self._resource_visualization = value
     

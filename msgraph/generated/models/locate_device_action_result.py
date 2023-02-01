@@ -42,7 +42,7 @@ class LocateDeviceActionResult(device_action_result.DeviceActionResult):
         """
         Sets the deviceLocation property value. device location
         Args:
-            value: Value to set for the deviceLocation property.
+            value: Value to set for the device_location property.
         """
         self._device_location = value
     
@@ -52,7 +52,7 @@ class LocateDeviceActionResult(device_action_result.DeviceActionResult):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_location": lambda n : setattr(self, 'device_location', n.get_object_value(device_geo_location.DeviceGeoLocation)),
+            "deviceLocation": lambda n : setattr(self, 'device_location', n.get_object_value(device_geo_location.DeviceGeoLocation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

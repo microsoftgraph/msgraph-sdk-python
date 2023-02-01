@@ -37,7 +37,7 @@ class SolutionsRoot(AdditionalDataHolder, Parsable):
         """
         Sets the bookingBusinesses property value. The bookingBusinesses property
         Args:
-            value: Value to set for the bookingBusinesses property.
+            value: Value to set for the booking_businesses property.
         """
         self._booking_businesses = value
     
@@ -54,7 +54,7 @@ class SolutionsRoot(AdditionalDataHolder, Parsable):
         """
         Sets the bookingCurrencies property value. The bookingCurrencies property
         Args:
-            value: Value to set for the bookingCurrencies property.
+            value: Value to set for the booking_currencies property.
         """
         self._booking_currencies = value
     
@@ -90,8 +90,8 @@ class SolutionsRoot(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "booking_businesses": lambda n : setattr(self, 'booking_businesses', n.get_collection_of_object_values(booking_business.BookingBusiness)),
-            "booking_currencies": lambda n : setattr(self, 'booking_currencies', n.get_collection_of_object_values(booking_currency.BookingCurrency)),
+            "bookingBusinesses": lambda n : setattr(self, 'booking_businesses', n.get_collection_of_object_values(booking_business.BookingBusiness)),
+            "bookingCurrencies": lambda n : setattr(self, 'booking_currencies', n.get_collection_of_object_values(booking_currency.BookingCurrency)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -109,7 +109,7 @@ class SolutionsRoot(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

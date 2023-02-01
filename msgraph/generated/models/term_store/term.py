@@ -66,7 +66,7 @@ class Term(entity.Entity):
         """
         Sets the createdDateTime property value. Date and time of term creation. Read-only.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -106,10 +106,10 @@ class Term(entity.Entity):
         """
         fields = {
             "children": lambda n : setattr(self, 'children', n.get_collection_of_object_values(Term)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "descriptions": lambda n : setattr(self, 'descriptions', n.get_collection_of_object_values(localized_description.LocalizedDescription)),
             "labels": lambda n : setattr(self, 'labels', n.get_collection_of_object_values(localized_label.LocalizedLabel)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(key_value.KeyValue)),
             "relations": lambda n : setattr(self, 'relations', n.get_collection_of_object_values(relation.Relation)),
             "set": lambda n : setattr(self, 'set', n.get_object_value(set.Set)),
@@ -148,7 +148,7 @@ class Term(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. Last date and time of term modification. Read-only.
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     

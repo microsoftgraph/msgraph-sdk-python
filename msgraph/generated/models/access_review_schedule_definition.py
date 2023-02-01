@@ -27,7 +27,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         """
         Sets the additionalNotificationRecipients property value. Defines the list of additional users or group members to be notified of the access review progress.
         Args:
-            value: Value to set for the additionalNotificationRecipients property.
+            value: Value to set for the additional_notification_recipients property.
         """
         self._additional_notification_recipients = value
     
@@ -82,7 +82,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         """
         Sets the createdBy property value. User who created this review. Read-only.
         Args:
-            value: Value to set for the createdBy property.
+            value: Value to set for the created_by property.
         """
         self._created_by = value
     
@@ -99,7 +99,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         """
         Sets the createdDateTime property value. Timestamp when the access review series was created. Supports $select. Read-only.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -128,7 +128,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         """
         Sets the descriptionForAdmins property value. Description provided by review creators to provide more context of the review to admins. Supports $select.
         Args:
-            value: Value to set for the descriptionForAdmins property.
+            value: Value to set for the description_for_admins property.
         """
         self._description_for_admins = value
     
@@ -145,7 +145,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         """
         Sets the descriptionForReviewers property value. Description provided  by review creators to provide more context of the review to reviewers. Reviewers will see this description in the email sent to them requesting their review. Email notifications support up to 256 characters. Supports $select.
         Args:
-            value: Value to set for the descriptionForReviewers property.
+            value: Value to set for the description_for_reviewers property.
         """
         self._description_for_reviewers = value
     
@@ -162,7 +162,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         """
         Sets the displayName property value. Name of the access review series. Supports $select and $orderBy. Required on create.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -179,7 +179,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         """
         Sets the fallbackReviewers property value. This collection of reviewer scopes is used to define the list of fallback reviewers. These fallback reviewers will be notified to take action if no users are found from the list of reviewers specified. This could occur when either the group owner is specified as the reviewer but the group owner does not exist, or manager is specified as reviewer but a user's manager does not exist. See accessReviewReviewerScope. Replaces backupReviewers. Supports $select. NOTE: The value of this property will be ignored if fallback reviewers are assigned through the stageSettings property.
         Args:
-            value: Value to set for the fallbackReviewers property.
+            value: Value to set for the fallback_reviewers property.
         """
         self._fallback_reviewers = value
     
@@ -189,20 +189,20 @@ class AccessReviewScheduleDefinition(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "additional_notification_recipients": lambda n : setattr(self, 'additional_notification_recipients', n.get_collection_of_object_values(access_review_notification_recipient_item.AccessReviewNotificationRecipientItem)),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(user_identity.UserIdentity)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "description_for_admins": lambda n : setattr(self, 'description_for_admins', n.get_str_value()),
-            "description_for_reviewers": lambda n : setattr(self, 'description_for_reviewers', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "fallback_reviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(access_review_reviewer_scope.AccessReviewReviewerScope)),
-            "instance_enumeration_scope": lambda n : setattr(self, 'instance_enumeration_scope', n.get_object_value(access_review_scope.AccessReviewScope)),
+            "additionalNotificationRecipients": lambda n : setattr(self, 'additional_notification_recipients', n.get_collection_of_object_values(access_review_notification_recipient_item.AccessReviewNotificationRecipientItem)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(user_identity.UserIdentity)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "descriptionForAdmins": lambda n : setattr(self, 'description_for_admins', n.get_str_value()),
+            "descriptionForReviewers": lambda n : setattr(self, 'description_for_reviewers', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "fallbackReviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(access_review_reviewer_scope.AccessReviewReviewerScope)),
             "instances": lambda n : setattr(self, 'instances', n.get_collection_of_object_values(access_review_instance.AccessReviewInstance)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "instanceEnumerationScope": lambda n : setattr(self, 'instance_enumeration_scope', n.get_object_value(access_review_scope.AccessReviewScope)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "reviewers": lambda n : setattr(self, 'reviewers', n.get_collection_of_object_values(access_review_reviewer_scope.AccessReviewReviewerScope)),
             "scope": lambda n : setattr(self, 'scope', n.get_object_value(access_review_scope.AccessReviewScope)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(access_review_schedule_settings.AccessReviewScheduleSettings)),
-            "stage_settings": lambda n : setattr(self, 'stage_settings', n.get_collection_of_object_values(access_review_stage_settings.AccessReviewStageSettings)),
+            "stageSettings": lambda n : setattr(self, 'stage_settings', n.get_collection_of_object_values(access_review_stage_settings.AccessReviewStageSettings)),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -222,7 +222,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         """
         Sets the instanceEnumerationScope property value. This property is required when scoping a review to guest users' access across all Microsoft 365 groups and determines which Microsoft 365 groups are reviewed. Each group will become a unique accessReviewInstance of the access review series.  For supported scopes, see accessReviewScope. Supports $select. For examples of options for configuring instanceEnumerationScope, see Configure the scope of your access review definition using the Microsoft Graph API.
         Args:
-            value: Value to set for the instanceEnumerationScope property.
+            value: Value to set for the instance_enumeration_scope property.
         """
         self._instance_enumeration_scope = value
     
@@ -256,7 +256,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. Timestamp when the access review series was last modified. Supports $select. Read-only.
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     
@@ -310,8 +310,8 @@ class AccessReviewScheduleDefinition(entity.Entity):
         writer.write_str_value("descriptionForReviewers", self.description_for_reviewers)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("fallbackReviewers", self.fallback_reviewers)
-        writer.write_object_value("instanceEnumerationScope", self.instance_enumeration_scope)
         writer.write_collection_of_object_values("instances", self.instances)
+        writer.write_object_value("instanceEnumerationScope", self.instance_enumeration_scope)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_collection_of_object_values("reviewers", self.reviewers)
         writer.write_object_value("scope", self.scope)
@@ -349,7 +349,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         """
         Sets the stageSettings property value. Required only for a multi-stage access review to define the stages and their settings. You can break down each review instance into up to three sequential stages, where each stage can have a different set of reviewers, fallback reviewers, and settings. Stages will be created sequentially based on the dependsOn property. Optional.  When this property is defined, its settings are used instead of the corresponding settings in the accessReviewScheduleDefinition object and its settings, reviewers, and fallbackReviewers properties.
         Args:
-            value: Value to set for the stageSettings property.
+            value: Value to set for the stage_settings property.
         """
         self._stage_settings = value
     

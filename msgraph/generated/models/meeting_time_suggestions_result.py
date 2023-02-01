@@ -62,7 +62,7 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
         """
         Sets the emptySuggestionsReason property value. A reason for not returning any meeting suggestions. The possible values are: attendeesUnavailable, attendeesUnavailableOrUnknown, locationsUnavailable, organizerUnavailable, or unknown. This property is an empty string if the meetingTimeSuggestions property does include any meeting suggestions.
         Args:
-            value: Value to set for the emptySuggestionsReason property.
+            value: Value to set for the empty_suggestions_reason property.
         """
         self._empty_suggestions_reason = value
     
@@ -72,8 +72,8 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "empty_suggestions_reason": lambda n : setattr(self, 'empty_suggestions_reason', n.get_str_value()),
-            "meeting_time_suggestions": lambda n : setattr(self, 'meeting_time_suggestions', n.get_collection_of_object_values(meeting_time_suggestion.MeetingTimeSuggestion)),
+            "emptySuggestionsReason": lambda n : setattr(self, 'empty_suggestions_reason', n.get_str_value()),
+            "meetingTimeSuggestions": lambda n : setattr(self, 'meeting_time_suggestions', n.get_collection_of_object_values(meeting_time_suggestion.MeetingTimeSuggestion)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -91,7 +91,7 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
         """
         Sets the meetingTimeSuggestions property value. An array of meeting suggestions.
         Args:
-            value: Value to set for the meetingTimeSuggestions property.
+            value: Value to set for the meeting_time_suggestions property.
         """
         self._meeting_time_suggestions = value
     
@@ -108,7 +108,7 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

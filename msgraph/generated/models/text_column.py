@@ -34,7 +34,7 @@ class TextColumn(AdditionalDataHolder, Parsable):
         """
         Sets the allowMultipleLines property value. Whether to allow multiple lines of text.
         Args:
-            value: Value to set for the allowMultipleLines property.
+            value: Value to set for the allow_multiple_lines property.
         """
         self._allow_multiple_lines = value
     
@@ -51,7 +51,7 @@ class TextColumn(AdditionalDataHolder, Parsable):
         """
         Sets the appendChangesToExistingText property value. Whether updates to this column should replace existing text, or append to it.
         Args:
-            value: Value to set for the appendChangesToExistingText property.
+            value: Value to set for the append_changes_to_existing_text property.
         """
         self._append_changes_to_existing_text = value
     
@@ -93,12 +93,12 @@ class TextColumn(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_multiple_lines": lambda n : setattr(self, 'allow_multiple_lines', n.get_bool_value()),
-            "append_changes_to_existing_text": lambda n : setattr(self, 'append_changes_to_existing_text', n.get_bool_value()),
-            "lines_for_editing": lambda n : setattr(self, 'lines_for_editing', n.get_int_value()),
-            "max_length": lambda n : setattr(self, 'max_length', n.get_int_value()),
+            "allowMultipleLines": lambda n : setattr(self, 'allow_multiple_lines', n.get_bool_value()),
+            "appendChangesToExistingText": lambda n : setattr(self, 'append_changes_to_existing_text', n.get_bool_value()),
+            "linesForEditing": lambda n : setattr(self, 'lines_for_editing', n.get_int_value()),
+            "maxLength": lambda n : setattr(self, 'max_length', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "text_type": lambda n : setattr(self, 'text_type', n.get_str_value()),
+            "textType": lambda n : setattr(self, 'text_type', n.get_str_value()),
         }
         return fields
     
@@ -115,7 +115,7 @@ class TextColumn(AdditionalDataHolder, Parsable):
         """
         Sets the linesForEditing property value. The size of the text box.
         Args:
-            value: Value to set for the linesForEditing property.
+            value: Value to set for the lines_for_editing property.
         """
         self._lines_for_editing = value
     
@@ -132,7 +132,7 @@ class TextColumn(AdditionalDataHolder, Parsable):
         """
         Sets the maxLength property value. The maximum number of characters for the value.
         Args:
-            value: Value to set for the maxLength property.
+            value: Value to set for the max_length property.
         """
         self._max_length = value
     
@@ -149,7 +149,7 @@ class TextColumn(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -182,7 +182,7 @@ class TextColumn(AdditionalDataHolder, Parsable):
         """
         Sets the textType property value. The type of text being stored. Must be one of plain or richText
         Args:
-            value: Value to set for the textType property.
+            value: Value to set for the text_type property.
         """
         self._text_type = value
     

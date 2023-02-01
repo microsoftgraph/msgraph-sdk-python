@@ -46,7 +46,7 @@ class GroupSetting(entity.Entity):
         """
         Sets the displayName property value. Display name of this group of settings, which comes from the associated template.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -56,8 +56,8 @@ class GroupSetting(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "template_id": lambda n : setattr(self, 'template_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "templateId": lambda n : setattr(self, 'template_id', n.get_str_value()),
             "values": lambda n : setattr(self, 'values', n.get_collection_of_object_values(setting_value.SettingValue)),
         }
         super_fields = super().get_field_deserializers()
@@ -90,7 +90,7 @@ class GroupSetting(entity.Entity):
         """
         Sets the templateId property value. Unique identifier for the tenant-level groupSettingTemplates object that's been customized for this group-level settings object. Read-only.
         Args:
-            value: Value to set for the templateId property.
+            value: Value to set for the template_id property.
         """
         self._template_id = value
     

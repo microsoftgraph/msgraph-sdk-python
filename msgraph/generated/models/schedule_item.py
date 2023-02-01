@@ -82,7 +82,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         """
         fields = {
             "end": lambda n : setattr(self, 'end', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "is_private": lambda n : setattr(self, 'is_private', n.get_bool_value()),
+            "isPrivate": lambda n : setattr(self, 'is_private', n.get_bool_value()),
             "location": lambda n : setattr(self, 'location', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "start": lambda n : setattr(self, 'start', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
@@ -104,7 +104,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         """
         Sets the isPrivate property value. The sensitivity of the corresponding event. True if the event is marked private, false otherwise. Optional.
         Args:
-            value: Value to set for the isPrivate property.
+            value: Value to set for the is_private property.
         """
         self._is_private = value
     
@@ -138,7 +138,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

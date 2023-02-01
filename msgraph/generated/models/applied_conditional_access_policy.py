@@ -68,7 +68,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. Refers to the Name of the conditional access policy (example: 'Require MFA for Salesforce').
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -85,7 +85,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         """
         Sets the enforcedGrantControls property value. Refers to the grant controls enforced by the conditional access policy (example: 'Require multi-factor authentication').
         Args:
-            value: Value to set for the enforcedGrantControls property.
+            value: Value to set for the enforced_grant_controls property.
         """
         self._enforced_grant_controls = value
     
@@ -102,7 +102,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         """
         Sets the enforcedSessionControls property value. Refers to the session controls enforced by the conditional access policy (example: 'Require app enforced controls').
         Args:
-            value: Value to set for the enforcedSessionControls property.
+            value: Value to set for the enforced_session_controls property.
         """
         self._enforced_session_controls = value
     
@@ -112,9 +112,9 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "enforced_grant_controls": lambda n : setattr(self, 'enforced_grant_controls', n.get_collection_of_primitive_values(str)),
-            "enforced_session_controls": lambda n : setattr(self, 'enforced_session_controls', n.get_collection_of_primitive_values(str)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "enforcedGrantControls": lambda n : setattr(self, 'enforced_grant_controls', n.get_collection_of_primitive_values(str)),
+            "enforcedSessionControls": lambda n : setattr(self, 'enforced_session_controls', n.get_collection_of_primitive_values(str)),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "result": lambda n : setattr(self, 'result', n.get_enum_value(applied_conditional_access_policy_result.AppliedConditionalAccessPolicyResult)),
@@ -151,7 +151,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

@@ -74,7 +74,7 @@ class CrossTenantAccessPolicyB2BSetting(AdditionalDataHolder, Parsable):
         fields = {
             "applications": lambda n : setattr(self, 'applications', n.get_object_value(cross_tenant_access_policy_target_configuration.CrossTenantAccessPolicyTargetConfiguration)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "users_and_groups": lambda n : setattr(self, 'users_and_groups', n.get_object_value(cross_tenant_access_policy_target_configuration.CrossTenantAccessPolicyTargetConfiguration)),
+            "usersAndGroups": lambda n : setattr(self, 'users_and_groups', n.get_object_value(cross_tenant_access_policy_target_configuration.CrossTenantAccessPolicyTargetConfiguration)),
         }
         return fields
     
@@ -91,7 +91,7 @@ class CrossTenantAccessPolicyB2BSetting(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -121,7 +121,7 @@ class CrossTenantAccessPolicyB2BSetting(AdditionalDataHolder, Parsable):
         """
         Sets the usersAndGroups property value. The list of users and groups targeted with your cross-tenant access policy.
         Args:
-            value: Value to set for the usersAndGroups property.
+            value: Value to set for the users_and_groups property.
         """
         self._users_and_groups = value
     

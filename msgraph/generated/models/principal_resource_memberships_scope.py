@@ -35,8 +35,8 @@ class PrincipalResourceMembershipsScope(access_review_scope.AccessReviewScope):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "principal_scopes": lambda n : setattr(self, 'principal_scopes', n.get_collection_of_object_values(access_review_scope.AccessReviewScope)),
-            "resource_scopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_object_values(access_review_scope.AccessReviewScope)),
+            "principalScopes": lambda n : setattr(self, 'principal_scopes', n.get_collection_of_object_values(access_review_scope.AccessReviewScope)),
+            "resourceScopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_object_values(access_review_scope.AccessReviewScope)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -55,7 +55,7 @@ class PrincipalResourceMembershipsScope(access_review_scope.AccessReviewScope):
         """
         Sets the principalScopes property value. Defines the scopes of the principals whose access to resources are reviewed in the access review.
         Args:
-            value: Value to set for the principalScopes property.
+            value: Value to set for the principal_scopes property.
         """
         self._principal_scopes = value
     
@@ -72,7 +72,7 @@ class PrincipalResourceMembershipsScope(access_review_scope.AccessReviewScope):
         """
         Sets the resourceScopes property value. Defines the scopes of the resources for which access is reviewed.
         Args:
-            value: Value to set for the resourceScopes property.
+            value: Value to set for the resource_scopes property.
         """
         self._resource_scopes = value
     

@@ -17,7 +17,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
         """
         Sets the addImageQuery property value. Optional; parameter used to indicate the server is able to render image dynamically in response to parameterization. For example – a high contrast image
         Args:
-            value: Value to set for the addImageQuery property.
+            value: Value to set for the add_image_query property.
         """
         self._add_image_query = value
     
@@ -51,7 +51,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
         """
         Sets the alternateText property value. Optional; alt-text accessible content for the image
         Args:
-            value: Value to set for the alternateText property.
+            value: Value to set for the alternate_text property.
         """
         self._alternate_text = value
     
@@ -68,7 +68,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
         """
         Sets the alternativeText property value. The alternativeText property
         Args:
-            value: Value to set for the alternativeText property.
+            value: Value to set for the alternative_text property.
         """
         self._alternative_text = value
     
@@ -108,10 +108,10 @@ class ImageInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "add_image_query": lambda n : setattr(self, 'add_image_query', n.get_bool_value()),
-            "alternate_text": lambda n : setattr(self, 'alternate_text', n.get_str_value()),
-            "alternative_text": lambda n : setattr(self, 'alternative_text', n.get_str_value()),
-            "icon_url": lambda n : setattr(self, 'icon_url', n.get_str_value()),
+            "addImageQuery": lambda n : setattr(self, 'add_image_query', n.get_bool_value()),
+            "alternateText": lambda n : setattr(self, 'alternate_text', n.get_str_value()),
+            "alternativeText": lambda n : setattr(self, 'alternative_text', n.get_str_value()),
+            "iconUrl": lambda n : setattr(self, 'icon_url', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -129,7 +129,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
         """
         Sets the iconUrl property value. Optional; URI that points to an icon which represents the application used to generate the activity
         Args:
-            value: Value to set for the iconUrl property.
+            value: Value to set for the icon_url property.
         """
         self._icon_url = value
     
@@ -146,7 +146,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

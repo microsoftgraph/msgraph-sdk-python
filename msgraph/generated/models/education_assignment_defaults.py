@@ -10,23 +10,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 
 class EducationAssignmentDefaults(entity.Entity):
     @property
-    def added_student_action(self,) -> Optional[education_added_student_action.EducationAddedStudentAction]:
-        """
-        Gets the addedStudentAction property value. Class-level default behavior for handling students who are added after the assignment is published. Possible values are: none, assignIfOpen.
-        Returns: Optional[education_added_student_action.EducationAddedStudentAction]
-        """
-        return self._added_student_action
-    
-    @added_student_action.setter
-    def added_student_action(self,value: Optional[education_added_student_action.EducationAddedStudentAction] = None) -> None:
-        """
-        Sets the addedStudentAction property value. Class-level default behavior for handling students who are added after the assignment is published. Possible values are: none, assignIfOpen.
-        Args:
-            value: Value to set for the addedStudentAction property.
-        """
-        self._added_student_action = value
-    
-    @property
     def add_to_calendar_action(self,) -> Optional[education_add_to_calendar_options.EducationAddToCalendarOptions]:
         """
         Gets the addToCalendarAction property value. Optional field to control adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
@@ -39,19 +22,36 @@ class EducationAssignmentDefaults(entity.Entity):
         """
         Sets the addToCalendarAction property value. Optional field to control adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
         Args:
-            value: Value to set for the addToCalendarAction property.
+            value: Value to set for the add_to_calendar_action property.
         """
         self._add_to_calendar_action = value
     
+    @property
+    def added_student_action(self,) -> Optional[education_added_student_action.EducationAddedStudentAction]:
+        """
+        Gets the addedStudentAction property value. Class-level default behavior for handling students who are added after the assignment is published. Possible values are: none, assignIfOpen.
+        Returns: Optional[education_added_student_action.EducationAddedStudentAction]
+        """
+        return self._added_student_action
+    
+    @added_student_action.setter
+    def added_student_action(self,value: Optional[education_added_student_action.EducationAddedStudentAction] = None) -> None:
+        """
+        Sets the addedStudentAction property value. Class-level default behavior for handling students who are added after the assignment is published. Possible values are: none, assignIfOpen.
+        Args:
+            value: Value to set for the added_student_action property.
+        """
+        self._added_student_action = value
+    
     def __init__(self,) -> None:
         """
-        Instantiates a new EducationAssignmentDefaults and sets the default values.
+        Instantiates a new educationAssignmentDefaults and sets the default values.
         """
         super().__init__()
-        # Class-level default behavior for handling students who are added after the assignment is published. Possible values are: none, assignIfOpen.
-        self._added_student_action: Optional[education_added_student_action.EducationAddedStudentAction] = None
         # Optional field to control adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
         self._add_to_calendar_action: Optional[education_add_to_calendar_options.EducationAddToCalendarOptions] = None
+        # Class-level default behavior for handling students who are added after the assignment is published. Possible values are: none, assignIfOpen.
+        self._added_student_action: Optional[education_added_student_action.EducationAddedStudentAction] = None
         # Class-level default value for due time field. Default value is 23:59:00.
         self._due_time: Optional[Time] = None
         # Default Teams channel to which notifications will be sent. Default value is null.
@@ -84,7 +84,7 @@ class EducationAssignmentDefaults(entity.Entity):
         """
         Sets the dueTime property value. Class-level default value for due time field. Default value is 23:59:00.
         Args:
-            value: Value to set for the dueTime property.
+            value: Value to set for the due_time property.
         """
         self._due_time = value
     
@@ -94,10 +94,10 @@ class EducationAssignmentDefaults(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "added_student_action": lambda n : setattr(self, 'added_student_action', n.get_enum_value(education_added_student_action.EducationAddedStudentAction)),
-            "add_to_calendar_action": lambda n : setattr(self, 'add_to_calendar_action', n.get_enum_value(education_add_to_calendar_options.EducationAddToCalendarOptions)),
-            "due_time": lambda n : setattr(self, 'due_time', n.get_object_value(Time)),
-            "notification_channel_url": lambda n : setattr(self, 'notification_channel_url', n.get_str_value()),
+            "addedStudentAction": lambda n : setattr(self, 'added_student_action', n.get_enum_value(education_added_student_action.EducationAddedStudentAction)),
+            "addToCalendarAction": lambda n : setattr(self, 'add_to_calendar_action', n.get_enum_value(education_add_to_calendar_options.EducationAddToCalendarOptions)),
+            "dueTime": lambda n : setattr(self, 'due_time', n.get_object_value(Time)),
+            "notificationChannelUrl": lambda n : setattr(self, 'notification_channel_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -116,7 +116,7 @@ class EducationAssignmentDefaults(entity.Entity):
         """
         Sets the notificationChannelUrl property value. Default Teams channel to which notifications will be sent. Default value is null.
         Args:
-            value: Value to set for the notificationChannelUrl property.
+            value: Value to set for the notification_channel_url property.
         """
         self._notification_channel_url = value
     

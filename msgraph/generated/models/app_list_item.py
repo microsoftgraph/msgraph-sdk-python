@@ -37,7 +37,7 @@ class AppListItem(AdditionalDataHolder, Parsable):
         """
         Sets the appId property value. The application or bundle identifier of the application
         Args:
-            value: Value to set for the appId property.
+            value: Value to set for the app_id property.
         """
         self._app_id = value
     
@@ -54,7 +54,7 @@ class AppListItem(AdditionalDataHolder, Parsable):
         """
         Sets the appStoreUrl property value. The Store URL of the application
         Args:
-            value: Value to set for the appStoreUrl property.
+            value: Value to set for the app_store_url property.
         """
         self._app_store_url = value
     
@@ -94,8 +94,8 @@ class AppListItem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "app_store_url": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "appStoreUrl": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
@@ -132,7 +132,7 @@ class AppListItem(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

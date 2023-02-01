@@ -17,10 +17,11 @@ class GroupSettingItemRequestBuilder():
     """
     Provides operations to manage the collection of groupSetting entities.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, group_setting_id: Optional[str] = None) -> None:
         """
         Instantiates a new GroupSettingItemRequestBuilder and sets the default values.
         Args:
+            groupSettingId: key: id of groupSetting
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class GroupSettingItemRequestBuilder():
         self.url_template: str = "{+baseurl}/groupSettings/{groupSetting%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["groupSetting%2Did"] = groupSettingId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

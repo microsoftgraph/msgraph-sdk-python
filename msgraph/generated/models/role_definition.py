@@ -71,7 +71,7 @@ class RoleDefinition(entity.Entity):
         """
         Sets the displayName property value. Display Name of the Role definition.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -82,10 +82,10 @@ class RoleDefinition(entity.Entity):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_built_in": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
-            "role_assignments": lambda n : setattr(self, 'role_assignments', n.get_collection_of_object_values(role_assignment.RoleAssignment)),
-            "role_permissions": lambda n : setattr(self, 'role_permissions', n.get_collection_of_object_values(role_permission.RolePermission)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isBuiltIn": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
+            "roleAssignments": lambda n : setattr(self, 'role_assignments', n.get_collection_of_object_values(role_assignment.RoleAssignment)),
+            "rolePermissions": lambda n : setattr(self, 'role_permissions', n.get_collection_of_object_values(role_permission.RolePermission)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -104,7 +104,7 @@ class RoleDefinition(entity.Entity):
         """
         Sets the isBuiltIn property value. Type of Role. Set to True if it is built-in, or set to False if it is a custom role definition.
         Args:
-            value: Value to set for the isBuiltIn property.
+            value: Value to set for the is_built_in property.
         """
         self._is_built_in = value
     
@@ -121,7 +121,7 @@ class RoleDefinition(entity.Entity):
         """
         Sets the roleAssignments property value. List of Role assignments for this role definition.
         Args:
-            value: Value to set for the roleAssignments property.
+            value: Value to set for the role_assignments property.
         """
         self._role_assignments = value
     
@@ -138,7 +138,7 @@ class RoleDefinition(entity.Entity):
         """
         Sets the rolePermissions property value. List of Role Permissions this role is allowed to perform. These must match the actionName that is defined as part of the rolePermission.
         Args:
-            value: Value to set for the rolePermissions property.
+            value: Value to set for the role_permissions property.
         """
         self._role_permissions = value
     

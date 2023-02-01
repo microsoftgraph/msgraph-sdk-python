@@ -36,8 +36,8 @@ class RecordOperation(comms_operation.CommsOperation):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "recording_access_token": lambda n : setattr(self, 'recording_access_token', n.get_str_value()),
-            "recording_location": lambda n : setattr(self, 'recording_location', n.get_str_value()),
+            "recordingAccessToken": lambda n : setattr(self, 'recording_access_token', n.get_str_value()),
+            "recordingLocation": lambda n : setattr(self, 'recording_location', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -56,7 +56,7 @@ class RecordOperation(comms_operation.CommsOperation):
         """
         Sets the recordingAccessToken property value. The access token required to retrieve the recording.
         Args:
-            value: Value to set for the recordingAccessToken property.
+            value: Value to set for the recording_access_token property.
         """
         self._recording_access_token = value
     
@@ -73,7 +73,7 @@ class RecordOperation(comms_operation.CommsOperation):
         """
         Sets the recordingLocation property value. The location where the recording is located.
         Args:
-            value: Value to set for the recordingLocation property.
+            value: Value to set for the recording_location property.
         """
         self._recording_location = value
     

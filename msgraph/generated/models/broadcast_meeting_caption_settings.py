@@ -55,10 +55,10 @@ class BroadcastMeetingCaptionSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_caption_enabled": lambda n : setattr(self, 'is_caption_enabled', n.get_bool_value()),
+            "isCaptionEnabled": lambda n : setattr(self, 'is_caption_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "spoken_language": lambda n : setattr(self, 'spoken_language', n.get_str_value()),
-            "translation_languages": lambda n : setattr(self, 'translation_languages', n.get_collection_of_primitive_values(str)),
+            "spokenLanguage": lambda n : setattr(self, 'spoken_language', n.get_str_value()),
+            "translationLanguages": lambda n : setattr(self, 'translation_languages', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -75,7 +75,7 @@ class BroadcastMeetingCaptionSettings(AdditionalDataHolder, Parsable):
         """
         Sets the isCaptionEnabled property value. Indicates whether captions are enabled for this Teams live event.
         Args:
-            value: Value to set for the isCaptionEnabled property.
+            value: Value to set for the is_caption_enabled property.
         """
         self._is_caption_enabled = value
     
@@ -92,7 +92,7 @@ class BroadcastMeetingCaptionSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -123,7 +123,7 @@ class BroadcastMeetingCaptionSettings(AdditionalDataHolder, Parsable):
         """
         Sets the spokenLanguage property value. The spoken language.
         Args:
-            value: Value to set for the spokenLanguage property.
+            value: Value to set for the spoken_language property.
         """
         self._spoken_language = value
     
@@ -140,7 +140,7 @@ class BroadcastMeetingCaptionSettings(AdditionalDataHolder, Parsable):
         """
         Sets the translationLanguages property value. The translation languages (choose up to 6).
         Args:
-            value: Value to set for the translationLanguages property.
+            value: Value to set for the translation_languages property.
         """
         self._translation_languages = value
     

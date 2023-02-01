@@ -36,7 +36,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         """
         Sets the allowCustomAssignmentSchedule property value. Indicates whether the requestor is allowed to set a custom schedule.
         Args:
-            value: Value to set for the allowCustomAssignmentSchedule property.
+            value: Value to set for the allow_custom_assignment_schedule property.
         """
         self._allow_custom_assignment_schedule = value
     
@@ -82,13 +82,13 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_custom_assignment_schedule": lambda n : setattr(self, 'allow_custom_assignment_schedule', n.get_bool_value()),
-            "is_approval_required_for_add": lambda n : setattr(self, 'is_approval_required_for_add', n.get_bool_value()),
-            "is_approval_required_for_update": lambda n : setattr(self, 'is_approval_required_for_update', n.get_bool_value()),
+            "allowCustomAssignmentSchedule": lambda n : setattr(self, 'allow_custom_assignment_schedule', n.get_bool_value()),
+            "isApprovalRequiredForAdd": lambda n : setattr(self, 'is_approval_required_for_add', n.get_bool_value()),
+            "isApprovalRequiredForUpdate": lambda n : setattr(self, 'is_approval_required_for_update', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "policy_description": lambda n : setattr(self, 'policy_description', n.get_str_value()),
-            "policy_display_name": lambda n : setattr(self, 'policy_display_name', n.get_str_value()),
-            "policy_id": lambda n : setattr(self, 'policy_id', n.get_str_value()),
+            "policyDescription": lambda n : setattr(self, 'policy_description', n.get_str_value()),
+            "policyDisplayName": lambda n : setattr(self, 'policy_display_name', n.get_str_value()),
+            "policyId": lambda n : setattr(self, 'policy_id', n.get_str_value()),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(entitlement_management_schedule.EntitlementManagementSchedule)),
         }
         return fields
@@ -106,7 +106,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         """
         Sets the isApprovalRequiredForAdd property value. Indicates whether a request to add must be approved by an approver.
         Args:
-            value: Value to set for the isApprovalRequiredForAdd property.
+            value: Value to set for the is_approval_required_for_add property.
         """
         self._is_approval_required_for_add = value
     
@@ -123,7 +123,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         """
         Sets the isApprovalRequiredForUpdate property value. Indicates whether a request to update must be approved by an approver.
         Args:
-            value: Value to set for the isApprovalRequiredForUpdate property.
+            value: Value to set for the is_approval_required_for_update property.
         """
         self._is_approval_required_for_update = value
     
@@ -140,7 +140,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -157,7 +157,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         """
         Sets the policyDescription property value. The description of the policy that the user is trying to request access using.
         Args:
-            value: Value to set for the policyDescription property.
+            value: Value to set for the policy_description property.
         """
         self._policy_description = value
     
@@ -174,7 +174,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         """
         Sets the policyDisplayName property value. The display name of the policy that the user is trying to request access using.
         Args:
-            value: Value to set for the policyDisplayName property.
+            value: Value to set for the policy_display_name property.
         """
         self._policy_display_name = value
     
@@ -191,7 +191,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         """
         Sets the policyId property value. The identifier of the policy that these requirements are associated with. This identifier can be used when creating a new assignment request.
         Args:
-            value: Value to set for the policyId property.
+            value: Value to set for the policy_id property.
         """
         self._policy_id = value
     

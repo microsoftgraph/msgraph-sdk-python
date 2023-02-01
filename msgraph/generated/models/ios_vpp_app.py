@@ -11,23 +11,6 @@ vpp_token_account_type = lazy_import('msgraph.generated.models.vpp_token_account
 
 class IosVppApp(mobile_app.MobileApp):
     @property
-    def applicable_device_type(self,) -> Optional[ios_device_type.IosDeviceType]:
-        """
-        Gets the applicableDeviceType property value. The applicable iOS Device Type.
-        Returns: Optional[ios_device_type.IosDeviceType]
-        """
-        return self._applicable_device_type
-    
-    @applicable_device_type.setter
-    def applicable_device_type(self,value: Optional[ios_device_type.IosDeviceType] = None) -> None:
-        """
-        Sets the applicableDeviceType property value. The applicable iOS Device Type.
-        Args:
-            value: Value to set for the applicableDeviceType property.
-        """
-        self._applicable_device_type = value
-    
-    @property
     def app_store_url(self,) -> Optional[str]:
         """
         Gets the appStoreUrl property value. The store URL.
@@ -40,9 +23,26 @@ class IosVppApp(mobile_app.MobileApp):
         """
         Sets the appStoreUrl property value. The store URL.
         Args:
-            value: Value to set for the appStoreUrl property.
+            value: Value to set for the app_store_url property.
         """
         self._app_store_url = value
+    
+    @property
+    def applicable_device_type(self,) -> Optional[ios_device_type.IosDeviceType]:
+        """
+        Gets the applicableDeviceType property value. The applicable iOS Device Type.
+        Returns: Optional[ios_device_type.IosDeviceType]
+        """
+        return self._applicable_device_type
+    
+    @applicable_device_type.setter
+    def applicable_device_type(self,value: Optional[ios_device_type.IosDeviceType] = None) -> None:
+        """
+        Sets the applicableDeviceType property value. The applicable iOS Device Type.
+        Args:
+            value: Value to set for the applicable_device_type property.
+        """
+        self._applicable_device_type = value
     
     @property
     def bundle_id(self,) -> Optional[str]:
@@ -57,7 +57,7 @@ class IosVppApp(mobile_app.MobileApp):
         """
         Sets the bundleId property value. The Identity Name.
         Args:
-            value: Value to set for the bundleId property.
+            value: Value to set for the bundle_id property.
         """
         self._bundle_id = value
     
@@ -67,10 +67,10 @@ class IosVppApp(mobile_app.MobileApp):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.iosVppApp"
-        # The applicable iOS Device Type.
-        self._applicable_device_type: Optional[ios_device_type.IosDeviceType] = None
         # The store URL.
         self._app_store_url: Optional[str] = None
+        # The applicable iOS Device Type.
+        self._applicable_device_type: Optional[ios_device_type.IosDeviceType] = None
         # The Identity Name.
         self._bundle_id: Optional[str] = None
         # The supported License Type.
@@ -106,16 +106,16 @@ class IosVppApp(mobile_app.MobileApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "applicable_device_type": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(ios_device_type.IosDeviceType)),
-            "app_store_url": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
-            "bundle_id": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
-            "licensing_type": lambda n : setattr(self, 'licensing_type', n.get_object_value(vpp_licensing_type.VppLicensingType)),
-            "release_date_time": lambda n : setattr(self, 'release_date_time', n.get_datetime_value()),
-            "total_license_count": lambda n : setattr(self, 'total_license_count', n.get_int_value()),
-            "used_license_count": lambda n : setattr(self, 'used_license_count', n.get_int_value()),
-            "vpp_token_account_type": lambda n : setattr(self, 'vpp_token_account_type', n.get_enum_value(vpp_token_account_type.VppTokenAccountType)),
-            "vpp_token_apple_id": lambda n : setattr(self, 'vpp_token_apple_id', n.get_str_value()),
-            "vpp_token_organization_name": lambda n : setattr(self, 'vpp_token_organization_name', n.get_str_value()),
+            "applicableDeviceType": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(ios_device_type.IosDeviceType)),
+            "appStoreUrl": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
+            "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
+            "licensingType": lambda n : setattr(self, 'licensing_type', n.get_object_value(vpp_licensing_type.VppLicensingType)),
+            "releaseDateTime": lambda n : setattr(self, 'release_date_time', n.get_datetime_value()),
+            "totalLicenseCount": lambda n : setattr(self, 'total_license_count', n.get_int_value()),
+            "usedLicenseCount": lambda n : setattr(self, 'used_license_count', n.get_int_value()),
+            "vppTokenAccountType": lambda n : setattr(self, 'vpp_token_account_type', n.get_enum_value(vpp_token_account_type.VppTokenAccountType)),
+            "vppTokenAppleId": lambda n : setattr(self, 'vpp_token_apple_id', n.get_str_value()),
+            "vppTokenOrganizationName": lambda n : setattr(self, 'vpp_token_organization_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -134,7 +134,7 @@ class IosVppApp(mobile_app.MobileApp):
         """
         Sets the licensingType property value. The supported License Type.
         Args:
-            value: Value to set for the licensingType property.
+            value: Value to set for the licensing_type property.
         """
         self._licensing_type = value
     
@@ -151,7 +151,7 @@ class IosVppApp(mobile_app.MobileApp):
         """
         Sets the releaseDateTime property value. The VPP application release date and time.
         Args:
-            value: Value to set for the releaseDateTime property.
+            value: Value to set for the release_date_time property.
         """
         self._release_date_time = value
     
@@ -188,7 +188,7 @@ class IosVppApp(mobile_app.MobileApp):
         """
         Sets the totalLicenseCount property value. The total number of VPP licenses.
         Args:
-            value: Value to set for the totalLicenseCount property.
+            value: Value to set for the total_license_count property.
         """
         self._total_license_count = value
     
@@ -205,7 +205,7 @@ class IosVppApp(mobile_app.MobileApp):
         """
         Sets the usedLicenseCount property value. The number of VPP licenses in use.
         Args:
-            value: Value to set for the usedLicenseCount property.
+            value: Value to set for the used_license_count property.
         """
         self._used_license_count = value
     
@@ -222,7 +222,7 @@ class IosVppApp(mobile_app.MobileApp):
         """
         Sets the vppTokenAccountType property value. Possible types of an Apple Volume Purchase Program token.
         Args:
-            value: Value to set for the vppTokenAccountType property.
+            value: Value to set for the vpp_token_account_type property.
         """
         self._vpp_token_account_type = value
     
@@ -239,7 +239,7 @@ class IosVppApp(mobile_app.MobileApp):
         """
         Sets the vppTokenAppleId property value. The Apple Id associated with the given Apple Volume Purchase Program Token.
         Args:
-            value: Value to set for the vppTokenAppleId property.
+            value: Value to set for the vpp_token_apple_id property.
         """
         self._vpp_token_apple_id = value
     
@@ -256,7 +256,7 @@ class IosVppApp(mobile_app.MobileApp):
         """
         Sets the vppTokenOrganizationName property value. The organization associated with the Apple Volume Purchase Program Token
         Args:
-            value: Value to set for the vppTokenOrganizationName property.
+            value: Value to set for the vpp_token_organization_name property.
         """
         self._vpp_token_organization_name = value
     

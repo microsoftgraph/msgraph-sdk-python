@@ -60,7 +60,7 @@ class SearchAlterationOptions(AdditionalDataHolder, Parsable):
         """
         Sets the enableModification property value. Indicates whether spelling modifications are enabled. If enabled, the user will get the search results for the corrected query in case of no results for the original query with typos. The response will also include the spelling modification information in the queryAlterationResponse property. Optional.
         Args:
-            value: Value to set for the enableModification property.
+            value: Value to set for the enable_modification property.
         """
         self._enable_modification = value
     
@@ -77,7 +77,7 @@ class SearchAlterationOptions(AdditionalDataHolder, Parsable):
         """
         Sets the enableSuggestion property value. Indicates whether spelling suggestions are enabled. If enabled, the user will get the search results for the original search query and suggestions for spelling correction in the queryAlterationResponse property of the response for the typos in the query. Optional.
         Args:
-            value: Value to set for the enableSuggestion property.
+            value: Value to set for the enable_suggestion property.
         """
         self._enable_suggestion = value
     
@@ -87,8 +87,8 @@ class SearchAlterationOptions(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "enable_modification": lambda n : setattr(self, 'enable_modification', n.get_bool_value()),
-            "enable_suggestion": lambda n : setattr(self, 'enable_suggestion', n.get_bool_value()),
+            "enableModification": lambda n : setattr(self, 'enable_modification', n.get_bool_value()),
+            "enableSuggestion": lambda n : setattr(self, 'enable_suggestion', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -106,7 +106,7 @@ class SearchAlterationOptions(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

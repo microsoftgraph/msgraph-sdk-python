@@ -36,7 +36,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
         """
         Sets the ccRecipients property value. Additional recipients the invitation message should be sent to. Currently only 1 additional recipient is supported.
         Args:
-            value: Value to set for the ccRecipients property.
+            value: Value to set for the cc_recipients property.
         """
         self._cc_recipients = value
     
@@ -81,7 +81,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
         """
         Sets the customizedMessageBody property value. Customized message body you want to send if you don't want the default message.
         Args:
-            value: Value to set for the customizedMessageBody property.
+            value: Value to set for the customized_message_body property.
         """
         self._customized_message_body = value
     
@@ -91,9 +91,9 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "cc_recipients": lambda n : setattr(self, 'cc_recipients', n.get_collection_of_object_values(recipient.Recipient)),
-            "customized_message_body": lambda n : setattr(self, 'customized_message_body', n.get_str_value()),
-            "message_language": lambda n : setattr(self, 'message_language', n.get_str_value()),
+            "ccRecipients": lambda n : setattr(self, 'cc_recipients', n.get_collection_of_object_values(recipient.Recipient)),
+            "customizedMessageBody": lambda n : setattr(self, 'customized_message_body', n.get_str_value()),
+            "messageLanguage": lambda n : setattr(self, 'message_language', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -111,7 +111,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
         """
         Sets the messageLanguage property value. The language you want to send the default message in. If the customizedMessageBody is specified, this property is ignored, and the message is sent using the customizedMessageBody. The language format should be in ISO 639. The default is en-US.
         Args:
-            value: Value to set for the messageLanguage property.
+            value: Value to set for the message_language property.
         """
         self._message_language = value
     
@@ -128,7 +128,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

@@ -67,7 +67,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
         """
         Sets the endDateTime property value. The endDateTime property
         Args:
-            value: Value to set for the endDateTime property.
+            value: Value to set for the end_date_time property.
         """
         self._end_date_time = value
     
@@ -77,10 +77,10 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "service_id": lambda n : setattr(self, 'service_id', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "serviceId": lambda n : setattr(self, 'service_id', n.get_str_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(bookings_availability_status.BookingsAvailabilityStatus)),
         }
         return fields
@@ -98,7 +98,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -130,7 +130,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
         """
         Sets the serviceId property value. Indicates the service ID in case of 1:n appointments. If the appointment is of type 1:n, this field will be present, otherwise, null.
         Args:
-            value: Value to set for the serviceId property.
+            value: Value to set for the service_id property.
         """
         self._service_id = value
     
@@ -147,7 +147,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
         """
         Sets the startDateTime property value. The startDateTime property
         Args:
-            value: Value to set for the startDateTime property.
+            value: Value to set for the start_date_time property.
         """
         self._start_date_time = value
     

@@ -61,7 +61,7 @@ class TimeRange(AdditionalDataHolder, Parsable):
         """
         Sets the endTime property value. End time for the time range.
         Args:
-            value: Value to set for the endTime property.
+            value: Value to set for the end_time property.
         """
         self._end_time = value
     
@@ -71,9 +71,9 @@ class TimeRange(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "end_time": lambda n : setattr(self, 'end_time', n.get_object_value(Time)),
+            "endTime": lambda n : setattr(self, 'end_time', n.get_object_value(Time)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "start_time": lambda n : setattr(self, 'start_time', n.get_object_value(Time)),
+            "startTime": lambda n : setattr(self, 'start_time', n.get_object_value(Time)),
         }
         return fields
     
@@ -90,7 +90,7 @@ class TimeRange(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -120,7 +120,7 @@ class TimeRange(AdditionalDataHolder, Parsable):
         """
         Sets the startTime property value. Start time for the time range.
         Args:
-            value: Value to set for the startTime property.
+            value: Value to set for the start_time property.
         """
         self._start_time = value
     

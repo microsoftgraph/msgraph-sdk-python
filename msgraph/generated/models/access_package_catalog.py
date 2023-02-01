@@ -23,7 +23,7 @@ class AccessPackageCatalog(entity.Entity):
         """
         Sets the accessPackages property value. The access packages in this catalog. Read-only. Nullable.
         Args:
-            value: Value to set for the accessPackages property.
+            value: Value to set for the access_packages property.
         """
         self._access_packages = value
     
@@ -40,7 +40,7 @@ class AccessPackageCatalog(entity.Entity):
         """
         Sets the catalogType property value. Whether the catalog is created by a user or entitlement management. The possible values are: userManaged, serviceDefault, serviceManaged, unknownFutureValue.
         Args:
-            value: Value to set for the catalogType property.
+            value: Value to set for the catalog_type property.
         """
         self._catalog_type = value
     
@@ -81,7 +81,7 @@ class AccessPackageCatalog(entity.Entity):
         """
         Sets the createdDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -127,7 +127,7 @@ class AccessPackageCatalog(entity.Entity):
         """
         Sets the displayName property value. The display name of the access package catalog.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -137,13 +137,13 @@ class AccessPackageCatalog(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_packages": lambda n : setattr(self, 'access_packages', n.get_collection_of_object_values(access_package.AccessPackage)),
-            "catalog_type": lambda n : setattr(self, 'catalog_type', n.get_enum_value(access_package_catalog_type.AccessPackageCatalogType)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "accessPackages": lambda n : setattr(self, 'access_packages', n.get_collection_of_object_values(access_package.AccessPackage)),
+            "catalogType": lambda n : setattr(self, 'catalog_type', n.get_enum_value(access_package_catalog_type.AccessPackageCatalogType)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_externally_visible": lambda n : setattr(self, 'is_externally_visible', n.get_bool_value()),
-            "modified_date_time": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isExternallyVisible": lambda n : setattr(self, 'is_externally_visible', n.get_bool_value()),
+            "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(access_package_catalog_state.AccessPackageCatalogState)),
         }
         super_fields = super().get_field_deserializers()
@@ -163,7 +163,7 @@ class AccessPackageCatalog(entity.Entity):
         """
         Sets the isExternallyVisible property value. Whether the access packages in this catalog can be requested by users outside of the tenant.
         Args:
-            value: Value to set for the isExternallyVisible property.
+            value: Value to set for the is_externally_visible property.
         """
         self._is_externally_visible = value
     
@@ -180,7 +180,7 @@ class AccessPackageCatalog(entity.Entity):
         """
         Sets the modifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         Args:
-            value: Value to set for the modifiedDateTime property.
+            value: Value to set for the modified_date_time property.
         """
         self._modified_date_time = value
     

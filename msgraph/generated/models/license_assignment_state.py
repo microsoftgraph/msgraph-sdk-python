@@ -35,7 +35,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         """
         Sets the assignedByGroup property value. The assignedByGroup property
         Args:
-            value: Value to set for the assignedByGroup property.
+            value: Value to set for the assigned_by_group property.
         """
         self._assigned_by_group = value
     
@@ -86,7 +86,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         """
         Sets the disabledPlans property value. The disabledPlans property
         Args:
-            value: Value to set for the disabledPlans property.
+            value: Value to set for the disabled_plans property.
         """
         self._disabled_plans = value
     
@@ -113,12 +113,12 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assigned_by_group": lambda n : setattr(self, 'assigned_by_group', n.get_str_value()),
-            "disabled_plans": lambda n : setattr(self, 'disabled_plans', n.get_collection_of_primitive_values(guid)),
+            "assignedByGroup": lambda n : setattr(self, 'assigned_by_group', n.get_str_value()),
+            "disabledPlans": lambda n : setattr(self, 'disabled_plans', n.get_collection_of_primitive_values(guid)),
             "error": lambda n : setattr(self, 'error', n.get_str_value()),
-            "last_updated_date_time": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
+            "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "sku_id": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
+            "skuId": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
         }
         return fields
@@ -136,7 +136,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         """
         Sets the lastUpdatedDateTime property value. The lastUpdatedDateTime property
         Args:
-            value: Value to set for the lastUpdatedDateTime property.
+            value: Value to set for the last_updated_date_time property.
         """
         self._last_updated_date_time = value
     
@@ -153,7 +153,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -187,7 +187,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         """
         Sets the skuId property value. The skuId property
         Args:
-            value: Value to set for the skuId property.
+            value: Value to set for the sku_id property.
         """
         self._sku_id = value
     

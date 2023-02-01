@@ -34,7 +34,7 @@ class PersonOrGroupColumn(AdditionalDataHolder, Parsable):
         """
         Sets the allowMultipleSelection property value. Indicates whether multiple values can be selected from the source.
         Args:
-            value: Value to set for the allowMultipleSelection property.
+            value: Value to set for the allow_multiple_selection property.
         """
         self._allow_multiple_selection = value
     
@@ -51,7 +51,7 @@ class PersonOrGroupColumn(AdditionalDataHolder, Parsable):
         """
         Sets the chooseFromType property value. Whether to allow selection of people only, or people and groups. Must be one of peopleAndGroups or peopleOnly.
         Args:
-            value: Value to set for the chooseFromType property.
+            value: Value to set for the choose_from_type property.
         """
         self._choose_from_type = value
     
@@ -96,7 +96,7 @@ class PersonOrGroupColumn(AdditionalDataHolder, Parsable):
         """
         Sets the displayAs property value. How to display the information about the person or group chosen. See below.
         Args:
-            value: Value to set for the displayAs property.
+            value: Value to set for the display_as property.
         """
         self._display_as = value
     
@@ -106,9 +106,9 @@ class PersonOrGroupColumn(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_multiple_selection": lambda n : setattr(self, 'allow_multiple_selection', n.get_bool_value()),
-            "choose_from_type": lambda n : setattr(self, 'choose_from_type', n.get_str_value()),
-            "display_as": lambda n : setattr(self, 'display_as', n.get_str_value()),
+            "allowMultipleSelection": lambda n : setattr(self, 'allow_multiple_selection', n.get_bool_value()),
+            "chooseFromType": lambda n : setattr(self, 'choose_from_type', n.get_str_value()),
+            "displayAs": lambda n : setattr(self, 'display_as', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -126,7 +126,7 @@ class PersonOrGroupColumn(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

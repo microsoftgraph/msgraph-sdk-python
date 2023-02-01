@@ -33,7 +33,7 @@ class IosStoreAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "vpn_configuration_id": lambda n : setattr(self, 'vpn_configuration_id', n.get_str_value()),
+            "vpnConfigurationId": lambda n : setattr(self, 'vpn_configuration_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,7 +63,7 @@ class IosStoreAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         """
         Sets the vpnConfigurationId property value. The VPN Configuration Id to apply for this app.
         Args:
-            value: Value to set for the vpnConfigurationId property.
+            value: Value to set for the vpn_configuration_id property.
         """
         self._vpn_configuration_id = value
     

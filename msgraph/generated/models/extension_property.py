@@ -19,7 +19,7 @@ class ExtensionProperty(directory_object.DirectoryObject):
         """
         Sets the appDisplayName property value. Display name of the application object on which this extension property is defined. Read-only.
         Args:
-            value: Value to set for the appDisplayName property.
+            value: Value to set for the app_display_name property.
         """
         self._app_display_name = value
     
@@ -65,7 +65,7 @@ class ExtensionProperty(directory_object.DirectoryObject):
         """
         Sets the dataType property value. Specifies the data type of the value the extension property can hold. Following values are supported. Not nullable. Binary - 256 bytes maximumBooleanDateTime - Must be specified in ISO 8601 format. Will be stored in UTC.Integer - 32-bit value.LargeInteger - 64-bit value.String - 256 characters maximum
         Args:
-            value: Value to set for the dataType property.
+            value: Value to set for the data_type property.
         """
         self._data_type = value
     
@@ -75,11 +75,11 @@ class ExtensionProperty(directory_object.DirectoryObject):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_display_name": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
-            "data_type": lambda n : setattr(self, 'data_type', n.get_str_value()),
-            "is_synced_from_on_premises": lambda n : setattr(self, 'is_synced_from_on_premises', n.get_bool_value()),
+            "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
+            "dataType": lambda n : setattr(self, 'data_type', n.get_str_value()),
+            "isSyncedFromOnPremises": lambda n : setattr(self, 'is_synced_from_on_premises', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
-            "target_objects": lambda n : setattr(self, 'target_objects', n.get_collection_of_primitive_values(str)),
+            "targetObjects": lambda n : setattr(self, 'target_objects', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -98,7 +98,7 @@ class ExtensionProperty(directory_object.DirectoryObject):
         """
         Sets the isSyncedFromOnPremises property value. Indicates if this extension property was synced from on-premises active directory using Azure AD Connect. Read-only.
         Args:
-            value: Value to set for the isSyncedFromOnPremises property.
+            value: Value to set for the is_synced_from_on_premises property.
         """
         self._is_synced_from_on_premises = value
     
@@ -147,7 +147,7 @@ class ExtensionProperty(directory_object.DirectoryObject):
         """
         Sets the targetObjects property value. Following values are supported. Not nullable. UserGroupAdministrativeUnitApplicationDeviceOrganization
         Args:
-            value: Value to set for the targetObjects property.
+            value: Value to set for the target_objects property.
         """
         self._target_objects = value
     

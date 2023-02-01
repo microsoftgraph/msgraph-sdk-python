@@ -34,7 +34,7 @@ class SearchBucket(AdditionalDataHolder, Parsable):
         """
         Sets the aggregationFilterToken property value. A token containing the encoded filter to aggregate search matches by the specific key value. To use the filter, pass the token as part of the aggregationFilter property in a searchRequest object, in the format '{field}:/'{aggregationFilterToken}/''. See an example.
         Args:
-            value: Value to set for the aggregationFilterToken property.
+            value: Value to set for the aggregation_filter_token property.
         """
         self._aggregation_filter_token = value
     
@@ -89,7 +89,7 @@ class SearchBucket(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "aggregation_filter_token": lambda n : setattr(self, 'aggregation_filter_token', n.get_str_value()),
+            "aggregationFilterToken": lambda n : setattr(self, 'aggregation_filter_token', n.get_str_value()),
             "count": lambda n : setattr(self, 'count', n.get_int_value()),
             "key": lambda n : setattr(self, 'key', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -126,7 +126,7 @@ class SearchBucket(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

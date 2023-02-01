@@ -36,7 +36,7 @@ class AggregationOption(AdditionalDataHolder, Parsable):
         """
         Sets the bucketDefinition property value. The bucketDefinition property
         Args:
-            value: Value to set for the bucketDefinition property.
+            value: Value to set for the bucket_definition property.
         """
         self._bucket_definition = value
     
@@ -91,7 +91,7 @@ class AggregationOption(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "bucket_definition": lambda n : setattr(self, 'bucket_definition', n.get_object_value(bucket_aggregation_definition.BucketAggregationDefinition)),
+            "bucketDefinition": lambda n : setattr(self, 'bucket_definition', n.get_object_value(bucket_aggregation_definition.BucketAggregationDefinition)),
             "field": lambda n : setattr(self, 'field', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
@@ -111,7 +111,7 @@ class AggregationOption(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

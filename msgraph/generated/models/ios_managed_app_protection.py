@@ -22,7 +22,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         """
         Sets the appDataEncryptionType property value. Represents the level to which app data is encrypted for managed apps
         Args:
-            value: Value to set for the appDataEncryptionType property.
+            value: Value to set for the app_data_encryption_type property.
         """
         self._app_data_encryption_type = value
     
@@ -89,7 +89,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         """
         Sets the customBrowserProtocol property value. A custom browser protocol to open weblink on iOS. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
         Args:
-            value: Value to set for the customBrowserProtocol property.
+            value: Value to set for the custom_browser_protocol property.
         """
         self._custom_browser_protocol = value
     
@@ -106,7 +106,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         """
         Sets the deployedAppCount property value. Count of apps to which the current policy is deployed.
         Args:
-            value: Value to set for the deployedAppCount property.
+            value: Value to set for the deployed_app_count property.
         """
         self._deployed_app_count = value
     
@@ -123,7 +123,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         """
         Sets the deploymentSummary property value. Navigation property to deployment summary of the configuration.
         Args:
-            value: Value to set for the deploymentSummary property.
+            value: Value to set for the deployment_summary property.
         """
         self._deployment_summary = value
     
@@ -140,7 +140,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         """
         Sets the faceIdBlocked property value. Indicates whether use of the FaceID is allowed in place of a pin if PinRequired is set to True.
         Args:
-            value: Value to set for the faceIdBlocked property.
+            value: Value to set for the face_id_blocked property.
         """
         self._face_id_blocked = value
     
@@ -150,13 +150,13 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_data_encryption_type": lambda n : setattr(self, 'app_data_encryption_type', n.get_enum_value(managed_app_data_encryption_type.ManagedAppDataEncryptionType)),
             "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(managed_mobile_app.ManagedMobileApp)),
-            "custom_browser_protocol": lambda n : setattr(self, 'custom_browser_protocol', n.get_str_value()),
-            "deployed_app_count": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
-            "deployment_summary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary)),
-            "face_id_blocked": lambda n : setattr(self, 'face_id_blocked', n.get_bool_value()),
-            "minimum_required_sdk_version": lambda n : setattr(self, 'minimum_required_sdk_version', n.get_str_value()),
+            "appDataEncryptionType": lambda n : setattr(self, 'app_data_encryption_type', n.get_enum_value(managed_app_data_encryption_type.ManagedAppDataEncryptionType)),
+            "customBrowserProtocol": lambda n : setattr(self, 'custom_browser_protocol', n.get_str_value()),
+            "deployedAppCount": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
+            "deploymentSummary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary)),
+            "faceIdBlocked": lambda n : setattr(self, 'face_id_blocked', n.get_bool_value()),
+            "minimumRequiredSdkVersion": lambda n : setattr(self, 'minimum_required_sdk_version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -175,7 +175,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         """
         Sets the minimumRequiredSdkVersion property value. Versions less than the specified version will block the managed app from accessing company data.
         Args:
-            value: Value to set for the minimumRequiredSdkVersion property.
+            value: Value to set for the minimum_required_sdk_version property.
         """
         self._minimum_required_sdk_version = value
     
@@ -188,8 +188,8 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-        writer.write_enum_value("appDataEncryptionType", self.app_data_encryption_type)
         writer.write_collection_of_object_values("apps", self.apps)
+        writer.write_enum_value("appDataEncryptionType", self.app_data_encryption_type)
         writer.write_str_value("customBrowserProtocol", self.custom_browser_protocol)
         writer.write_int_value("deployedAppCount", self.deployed_app_count)
         writer.write_object_value("deploymentSummary", self.deployment_summary)

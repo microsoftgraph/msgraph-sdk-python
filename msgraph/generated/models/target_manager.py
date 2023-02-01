@@ -33,7 +33,7 @@ class TargetManager(subject_set.SubjectSet):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "manager_level": lambda n : setattr(self, 'manager_level', n.get_int_value()),
+            "managerLevel": lambda n : setattr(self, 'manager_level', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -52,7 +52,7 @@ class TargetManager(subject_set.SubjectSet):
         """
         Sets the managerLevel property value. Manager level, between 1 and 4. The direct manager is 1.
         Args:
-            value: Value to set for the managerLevel property.
+            value: Value to set for the manager_level property.
         """
         self._manager_level = value
     

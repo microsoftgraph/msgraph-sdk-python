@@ -57,8 +57,8 @@ class VppLicensingType(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "supports_device_licensing": lambda n : setattr(self, 'supports_device_licensing', n.get_bool_value()),
-            "supports_user_licensing": lambda n : setattr(self, 'supports_user_licensing', n.get_bool_value()),
+            "supportsDeviceLicensing": lambda n : setattr(self, 'supports_device_licensing', n.get_bool_value()),
+            "supportsUserLicensing": lambda n : setattr(self, 'supports_user_licensing', n.get_bool_value()),
         }
         return fields
     
@@ -75,7 +75,7 @@ class VppLicensingType(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -105,7 +105,7 @@ class VppLicensingType(AdditionalDataHolder, Parsable):
         """
         Sets the supportsDeviceLicensing property value. Whether the program supports the device licensing type.
         Args:
-            value: Value to set for the supportsDeviceLicensing property.
+            value: Value to set for the supports_device_licensing property.
         """
         self._supports_device_licensing = value
     
@@ -122,7 +122,7 @@ class VppLicensingType(AdditionalDataHolder, Parsable):
         """
         Sets the supportsUserLicensing property value. Whether the program supports the user licensing type.
         Args:
-            value: Value to set for the supportsUserLicensing property.
+            value: Value to set for the supports_user_licensing property.
         """
         self._supports_user_licensing = value
     

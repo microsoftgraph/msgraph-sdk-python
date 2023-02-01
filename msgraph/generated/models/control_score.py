@@ -52,7 +52,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
         """
         Sets the controlCategory property value. Control action category (Identity, Data, Device, Apps, Infrastructure).
         Args:
-            value: Value to set for the controlCategory property.
+            value: Value to set for the control_category property.
         """
         self._control_category = value
     
@@ -69,7 +69,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
         """
         Sets the controlName property value. Control unique name.
         Args:
-            value: Value to set for the controlName property.
+            value: Value to set for the control_name property.
         """
         self._control_name = value
     
@@ -108,8 +108,8 @@ class ControlScore(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "control_category": lambda n : setattr(self, 'control_category', n.get_str_value()),
-            "control_name": lambda n : setattr(self, 'control_name', n.get_str_value()),
+            "controlCategory": lambda n : setattr(self, 'control_category', n.get_str_value()),
+            "controlName": lambda n : setattr(self, 'control_name', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "score": lambda n : setattr(self, 'score', n.get_float_value()),
@@ -129,7 +129,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

@@ -59,8 +59,8 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "provider": lambda n : setattr(self, 'provider', n.get_str_value()),
-            "provider_version": lambda n : setattr(self, 'provider_version', n.get_str_value()),
-            "sub_provider": lambda n : setattr(self, 'sub_provider', n.get_str_value()),
+            "providerVersion": lambda n : setattr(self, 'provider_version', n.get_str_value()),
+            "subProvider": lambda n : setattr(self, 'sub_provider', n.get_str_value()),
             "vendor": lambda n : setattr(self, 'vendor', n.get_str_value()),
         }
         return fields
@@ -78,7 +78,7 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -112,7 +112,7 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
         """
         Sets the providerVersion property value. Version of the provider or subprovider, if it exists, that generated the alert. Required
         Args:
-            value: Value to set for the providerVersion property.
+            value: Value to set for the provider_version property.
         """
         self._provider_version = value
     
@@ -144,7 +144,7 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
         """
         Sets the subProvider property value. Specific subprovider (under aggregating provider); for example, WindowsDefenderATP.SmartScreen.
         Args:
-            value: Value to set for the subProvider property.
+            value: Value to set for the sub_provider property.
         """
         self._sub_provider = value
     

@@ -66,7 +66,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         """
         Sets the deviceErrorCode property value. Device error code reported by Device Directory Service(DDS).
         Args:
-            value: Value to set for the deviceErrorCode property.
+            value: Value to set for the device_error_code property.
         """
         self._device_error_code = value
     
@@ -83,7 +83,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         """
         Sets the deviceErrorName property value. Device error name reported by Device Directory Service(DDS).
         Args:
-            value: Value to set for the deviceErrorName property.
+            value: Value to set for the device_error_name property.
         """
         self._device_error_name = value
     
@@ -100,7 +100,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         """
         Sets the deviceImportStatus property value. The deviceImportStatus property
         Args:
-            value: Value to set for the deviceImportStatus property.
+            value: Value to set for the device_import_status property.
         """
         self._device_import_status = value
     
@@ -117,7 +117,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         """
         Sets the deviceRegistrationId property value. Device Registration ID for successfully added device reported by Device Directory Service(DDS).
         Args:
-            value: Value to set for the deviceRegistrationId property.
+            value: Value to set for the device_registration_id property.
         """
         self._device_registration_id = value
     
@@ -127,10 +127,10 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_error_code": lambda n : setattr(self, 'device_error_code', n.get_int_value()),
-            "device_error_name": lambda n : setattr(self, 'device_error_name', n.get_str_value()),
-            "device_import_status": lambda n : setattr(self, 'device_import_status', n.get_enum_value(imported_windows_autopilot_device_identity_import_status.ImportedWindowsAutopilotDeviceIdentityImportStatus)),
-            "device_registration_id": lambda n : setattr(self, 'device_registration_id', n.get_str_value()),
+            "deviceErrorCode": lambda n : setattr(self, 'device_error_code', n.get_int_value()),
+            "deviceErrorName": lambda n : setattr(self, 'device_error_name', n.get_str_value()),
+            "deviceImportStatus": lambda n : setattr(self, 'device_import_status', n.get_enum_value(imported_windows_autopilot_device_identity_import_status.ImportedWindowsAutopilotDeviceIdentityImportStatus)),
+            "deviceRegistrationId": lambda n : setattr(self, 'device_registration_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -148,7 +148,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

@@ -19,7 +19,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         """
         Sets the accessConsent property value. Indicates whether the user has been consented to access student data.
         Args:
-            value: Value to set for the accessConsent property.
+            value: Value to set for the access_consent property.
         """
         self._access_consent = value
     
@@ -85,7 +85,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. Name of the contact. Required.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -102,7 +102,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         """
         Sets the emailAddress property value. Primary email address of the contact. Required.
         Args:
-            value: Value to set for the emailAddress property.
+            value: Value to set for the email_address property.
         """
         self._email_address = value
     
@@ -112,10 +112,10 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_consent": lambda n : setattr(self, 'access_consent', n.get_bool_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "email_address": lambda n : setattr(self, 'email_address', n.get_str_value()),
-            "mobile_phone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
+            "accessConsent": lambda n : setattr(self, 'access_consent', n.get_bool_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "mobilePhone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "relationship": lambda n : setattr(self, 'relationship', n.get_enum_value(contact_relationship.ContactRelationship)),
         }
@@ -134,7 +134,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         """
         Sets the mobilePhone property value. Mobile phone number of the contact.
         Args:
-            value: Value to set for the mobilePhone property.
+            value: Value to set for the mobile_phone property.
         """
         self._mobile_phone = value
     
@@ -151,7 +151,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

@@ -76,14 +76,14 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
             "hive": lambda n : setattr(self, 'hive', n.get_enum_value(registry_hive.RegistryHive)),
             "key": lambda n : setattr(self, 'key', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "old_key": lambda n : setattr(self, 'old_key', n.get_str_value()),
-            "old_value_data": lambda n : setattr(self, 'old_value_data', n.get_str_value()),
-            "old_value_name": lambda n : setattr(self, 'old_value_name', n.get_str_value()),
+            "oldKey": lambda n : setattr(self, 'old_key', n.get_str_value()),
+            "oldValueData": lambda n : setattr(self, 'old_value_data', n.get_str_value()),
+            "oldValueName": lambda n : setattr(self, 'old_value_name', n.get_str_value()),
             "operation": lambda n : setattr(self, 'operation', n.get_enum_value(registry_operation.RegistryOperation)),
-            "process_id": lambda n : setattr(self, 'process_id', n.get_int_value()),
-            "value_data": lambda n : setattr(self, 'value_data', n.get_str_value()),
-            "value_name": lambda n : setattr(self, 'value_name', n.get_str_value()),
-            "value_type": lambda n : setattr(self, 'value_type', n.get_enum_value(registry_value_type.RegistryValueType)),
+            "processId": lambda n : setattr(self, 'process_id', n.get_int_value()),
+            "valueData": lambda n : setattr(self, 'value_data', n.get_str_value()),
+            "valueName": lambda n : setattr(self, 'value_name', n.get_str_value()),
+            "valueType": lambda n : setattr(self, 'value_type', n.get_enum_value(registry_value_type.RegistryValueType)),
         }
         return fields
     
@@ -134,7 +134,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -151,7 +151,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         """
         Sets the oldKey property value. Previous (i.e. before changed) registry key (excludes HIVE).
         Args:
-            value: Value to set for the oldKey property.
+            value: Value to set for the old_key property.
         """
         self._old_key = value
     
@@ -168,7 +168,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         """
         Sets the oldValueData property value. Previous (i.e. before changed) registry key value data (contents).
         Args:
-            value: Value to set for the oldValueData property.
+            value: Value to set for the old_value_data property.
         """
         self._old_value_data = value
     
@@ -185,7 +185,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         """
         Sets the oldValueName property value. Previous (i.e. before changed) registry key value name.
         Args:
-            value: Value to set for the oldValueName property.
+            value: Value to set for the old_value_name property.
         """
         self._old_value_name = value
     
@@ -219,7 +219,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         """
         Sets the processId property value. Process ID (PID) of the process that modified the registry key (process details will appear in the alert 'processes' collection).
         Args:
-            value: Value to set for the processId property.
+            value: Value to set for the process_id property.
         """
         self._process_id = value
     
@@ -257,7 +257,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         """
         Sets the valueData property value. Current (i.e. changed) registry key value data (contents).
         Args:
-            value: Value to set for the valueData property.
+            value: Value to set for the value_data property.
         """
         self._value_data = value
     
@@ -274,7 +274,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         """
         Sets the valueName property value. Current (i.e. changed) registry key value name
         Args:
-            value: Value to set for the valueName property.
+            value: Value to set for the value_name property.
         """
         self._value_name = value
     
@@ -291,7 +291,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         """
         Sets the valueType property value. Registry key value type REG_BINARY REG_DWORD REG_DWORD_LITTLE_ENDIAN REG_DWORD_BIG_ENDIANREG_EXPAND_SZ REG_LINK REG_MULTI_SZ REG_NONE REG_QWORD REG_QWORD_LITTLE_ENDIAN REG_SZ Possible values are: unknown, binary, dword, dwordLittleEndian, dwordBigEndian, expandSz, link, multiSz, none, qword, qwordlittleEndian, sz.
         Args:
-            value: Value to set for the valueType property.
+            value: Value to set for the value_type property.
         """
         self._value_type = value
     

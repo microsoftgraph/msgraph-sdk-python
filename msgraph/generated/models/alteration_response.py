@@ -59,9 +59,9 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "original_query_string": lambda n : setattr(self, 'original_query_string', n.get_str_value()),
-            "query_alteration": lambda n : setattr(self, 'query_alteration', n.get_object_value(search_alteration.SearchAlteration)),
-            "query_alteration_type": lambda n : setattr(self, 'query_alteration_type', n.get_enum_value(search_alteration_type.SearchAlterationType)),
+            "originalQueryString": lambda n : setattr(self, 'original_query_string', n.get_str_value()),
+            "queryAlteration": lambda n : setattr(self, 'query_alteration', n.get_object_value(search_alteration.SearchAlteration)),
+            "queryAlterationType": lambda n : setattr(self, 'query_alteration_type', n.get_enum_value(search_alteration_type.SearchAlterationType)),
         }
         return fields
     
@@ -78,7 +78,7 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -95,7 +95,7 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
         """
         Sets the originalQueryString property value. Defines the original user query string.
         Args:
-            value: Value to set for the originalQueryString property.
+            value: Value to set for the original_query_string property.
         """
         self._original_query_string = value
     
@@ -112,7 +112,7 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
         """
         Sets the queryAlteration property value. Defines the details of the alteration information for the spelling correction.
         Args:
-            value: Value to set for the queryAlteration property.
+            value: Value to set for the query_alteration property.
         """
         self._query_alteration = value
     
@@ -129,7 +129,7 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
         """
         Sets the queryAlterationType property value. Defines the type of the spelling correction. Possible values are: suggestion, modification.
         Args:
-            value: Value to set for the queryAlterationType property.
+            value: Value to set for the query_alteration_type property.
         """
         self._query_alteration_type = value
     

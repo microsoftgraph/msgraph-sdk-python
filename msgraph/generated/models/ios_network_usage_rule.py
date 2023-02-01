@@ -27,23 +27,6 @@ class IosNetworkUsageRule(AdditionalDataHolder, Parsable):
         self._additional_data = value
     
     @property
-    def cellular_data_blocked(self,) -> Optional[bool]:
-        """
-        Gets the cellularDataBlocked property value. If set to true, corresponding managed apps will not be allowed to use cellular data at any time.
-        Returns: Optional[bool]
-        """
-        return self._cellular_data_blocked
-    
-    @cellular_data_blocked.setter
-    def cellular_data_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the cellularDataBlocked property value. If set to true, corresponding managed apps will not be allowed to use cellular data at any time.
-        Args:
-            value: Value to set for the cellularDataBlocked property.
-        """
-        self._cellular_data_blocked = value
-    
-    @property
     def cellular_data_block_when_roaming(self,) -> Optional[bool]:
         """
         Gets the cellularDataBlockWhenRoaming property value. If set to true, corresponding managed apps will not be allowed to use cellular data when roaming.
@@ -56,9 +39,26 @@ class IosNetworkUsageRule(AdditionalDataHolder, Parsable):
         """
         Sets the cellularDataBlockWhenRoaming property value. If set to true, corresponding managed apps will not be allowed to use cellular data when roaming.
         Args:
-            value: Value to set for the cellularDataBlockWhenRoaming property.
+            value: Value to set for the cellular_data_block_when_roaming property.
         """
         self._cellular_data_block_when_roaming = value
+    
+    @property
+    def cellular_data_blocked(self,) -> Optional[bool]:
+        """
+        Gets the cellularDataBlocked property value. If set to true, corresponding managed apps will not be allowed to use cellular data at any time.
+        Returns: Optional[bool]
+        """
+        return self._cellular_data_blocked
+    
+    @cellular_data_blocked.setter
+    def cellular_data_blocked(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the cellularDataBlocked property value. If set to true, corresponding managed apps will not be allowed to use cellular data at any time.
+        Args:
+            value: Value to set for the cellular_data_blocked property.
+        """
+        self._cellular_data_blocked = value
     
     def __init__(self,) -> None:
         """
@@ -67,10 +67,10 @@ class IosNetworkUsageRule(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # If set to true, corresponding managed apps will not be allowed to use cellular data at any time.
-        self._cellular_data_blocked: Optional[bool] = None
         # If set to true, corresponding managed apps will not be allowed to use cellular data when roaming.
         self._cellular_data_block_when_roaming: Optional[bool] = None
+        # If set to true, corresponding managed apps will not be allowed to use cellular data at any time.
+        self._cellular_data_blocked: Optional[bool] = None
         # Information about the managed apps that this rule is going to apply to. This collection can contain a maximum of 500 elements.
         self._managed_apps: Optional[List[app_list_item.AppListItem]] = None
         # The OdataType property
@@ -94,9 +94,9 @@ class IosNetworkUsageRule(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "cellular_data_blocked": lambda n : setattr(self, 'cellular_data_blocked', n.get_bool_value()),
-            "cellular_data_block_when_roaming": lambda n : setattr(self, 'cellular_data_block_when_roaming', n.get_bool_value()),
-            "managed_apps": lambda n : setattr(self, 'managed_apps', n.get_collection_of_object_values(app_list_item.AppListItem)),
+            "cellularDataBlocked": lambda n : setattr(self, 'cellular_data_blocked', n.get_bool_value()),
+            "cellularDataBlockWhenRoaming": lambda n : setattr(self, 'cellular_data_block_when_roaming', n.get_bool_value()),
+            "managedApps": lambda n : setattr(self, 'managed_apps', n.get_collection_of_object_values(app_list_item.AppListItem)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -114,7 +114,7 @@ class IosNetworkUsageRule(AdditionalDataHolder, Parsable):
         """
         Sets the managedApps property value. Information about the managed apps that this rule is going to apply to. This collection can contain a maximum of 500 elements.
         Args:
-            value: Value to set for the managedApps property.
+            value: Value to set for the managed_apps property.
         """
         self._managed_apps = value
     
@@ -131,7 +131,7 @@ class IosNetworkUsageRule(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

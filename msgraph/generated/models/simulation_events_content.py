@@ -36,7 +36,7 @@ class SimulationEventsContent(AdditionalDataHolder, Parsable):
         """
         Sets the compromisedRate property value. Actual percentage of users who fell for the simulated attack in an attack simulation and training campaign.
         Args:
-            value: Value to set for the compromisedRate property.
+            value: Value to set for the compromised_rate property.
         """
         self._compromised_rate = value
     
@@ -89,7 +89,7 @@ class SimulationEventsContent(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "compromised_rate": lambda n : setattr(self, 'compromised_rate', n.get_float_value()),
+            "compromisedRate": lambda n : setattr(self, 'compromised_rate', n.get_float_value()),
             "events": lambda n : setattr(self, 'events', n.get_collection_of_object_values(simulation_event.SimulationEvent)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
@@ -108,7 +108,7 @@ class SimulationEventsContent(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

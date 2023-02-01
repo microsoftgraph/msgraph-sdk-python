@@ -19,7 +19,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         """
         Sets the compliantDeviceCount property value. Number of compliant devices.
         Args:
-            value: Value to set for the compliantDeviceCount property.
+            value: Value to set for the compliant_device_count property.
         """
         self._compliant_device_count = value
     
@@ -36,7 +36,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         """
         Sets the compliantUserCount property value. Number of compliant users.
         Args:
-            value: Value to set for the compliantUserCount property.
+            value: Value to set for the compliant_user_count property.
         """
         self._compliant_user_count = value
     
@@ -53,7 +53,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         """
         Sets the conflictDeviceCount property value. Number of conflict devices.
         Args:
-            value: Value to set for the conflictDeviceCount property.
+            value: Value to set for the conflict_device_count property.
         """
         self._conflict_device_count = value
     
@@ -70,7 +70,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         """
         Sets the conflictUserCount property value. Number of conflict users.
         Args:
-            value: Value to set for the conflictUserCount property.
+            value: Value to set for the conflict_user_count property.
         """
         self._conflict_user_count = value
     
@@ -137,7 +137,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         """
         Sets the displayName property value. The name of the policy.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -154,7 +154,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         """
         Sets the errorDeviceCount property value. Number of devices had error.
         Args:
-            value: Value to set for the errorDeviceCount property.
+            value: Value to set for the error_device_count property.
         """
         self._error_device_count = value
     
@@ -171,7 +171,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         """
         Sets the errorUserCount property value. Number of users had error.
         Args:
-            value: Value to set for the errorUserCount property.
+            value: Value to set for the error_user_count property.
         """
         self._error_user_count = value
     
@@ -181,21 +181,21 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "compliant_device_count": lambda n : setattr(self, 'compliant_device_count', n.get_int_value()),
-            "compliant_user_count": lambda n : setattr(self, 'compliant_user_count', n.get_int_value()),
-            "conflict_device_count": lambda n : setattr(self, 'conflict_device_count', n.get_int_value()),
-            "conflict_user_count": lambda n : setattr(self, 'conflict_user_count', n.get_int_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "error_device_count": lambda n : setattr(self, 'error_device_count', n.get_int_value()),
-            "error_user_count": lambda n : setattr(self, 'error_user_count', n.get_int_value()),
-            "non_compliant_device_count": lambda n : setattr(self, 'non_compliant_device_count', n.get_int_value()),
-            "non_compliant_user_count": lambda n : setattr(self, 'non_compliant_user_count', n.get_int_value()),
-            "not_applicable_device_count": lambda n : setattr(self, 'not_applicable_device_count', n.get_int_value()),
-            "not_applicable_user_count": lambda n : setattr(self, 'not_applicable_user_count', n.get_int_value()),
-            "remediated_device_count": lambda n : setattr(self, 'remediated_device_count', n.get_int_value()),
-            "remediated_user_count": lambda n : setattr(self, 'remediated_user_count', n.get_int_value()),
-            "unknown_device_count": lambda n : setattr(self, 'unknown_device_count', n.get_int_value()),
-            "unknown_user_count": lambda n : setattr(self, 'unknown_user_count', n.get_int_value()),
+            "compliantDeviceCount": lambda n : setattr(self, 'compliant_device_count', n.get_int_value()),
+            "compliantUserCount": lambda n : setattr(self, 'compliant_user_count', n.get_int_value()),
+            "conflictDeviceCount": lambda n : setattr(self, 'conflict_device_count', n.get_int_value()),
+            "conflictUserCount": lambda n : setattr(self, 'conflict_user_count', n.get_int_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "errorDeviceCount": lambda n : setattr(self, 'error_device_count', n.get_int_value()),
+            "errorUserCount": lambda n : setattr(self, 'error_user_count', n.get_int_value()),
+            "nonCompliantDeviceCount": lambda n : setattr(self, 'non_compliant_device_count', n.get_int_value()),
+            "nonCompliantUserCount": lambda n : setattr(self, 'non_compliant_user_count', n.get_int_value()),
+            "notApplicableDeviceCount": lambda n : setattr(self, 'not_applicable_device_count', n.get_int_value()),
+            "notApplicableUserCount": lambda n : setattr(self, 'not_applicable_user_count', n.get_int_value()),
+            "remediatedDeviceCount": lambda n : setattr(self, 'remediated_device_count', n.get_int_value()),
+            "remediatedUserCount": lambda n : setattr(self, 'remediated_user_count', n.get_int_value()),
+            "unknownDeviceCount": lambda n : setattr(self, 'unknown_device_count', n.get_int_value()),
+            "unknownUserCount": lambda n : setattr(self, 'unknown_user_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -214,7 +214,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         """
         Sets the nonCompliantDeviceCount property value. Number of non compliant devices.
         Args:
-            value: Value to set for the nonCompliantDeviceCount property.
+            value: Value to set for the non_compliant_device_count property.
         """
         self._non_compliant_device_count = value
     
@@ -231,7 +231,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         """
         Sets the nonCompliantUserCount property value. Number of non compliant users.
         Args:
-            value: Value to set for the nonCompliantUserCount property.
+            value: Value to set for the non_compliant_user_count property.
         """
         self._non_compliant_user_count = value
     
@@ -248,7 +248,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         """
         Sets the notApplicableDeviceCount property value. Number of not applicable devices.
         Args:
-            value: Value to set for the notApplicableDeviceCount property.
+            value: Value to set for the not_applicable_device_count property.
         """
         self._not_applicable_device_count = value
     
@@ -265,7 +265,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         """
         Sets the notApplicableUserCount property value. Number of not applicable users.
         Args:
-            value: Value to set for the notApplicableUserCount property.
+            value: Value to set for the not_applicable_user_count property.
         """
         self._not_applicable_user_count = value
     
@@ -282,7 +282,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         """
         Sets the remediatedDeviceCount property value. Number of remediated devices.
         Args:
-            value: Value to set for the remediatedDeviceCount property.
+            value: Value to set for the remediated_device_count property.
         """
         self._remediated_device_count = value
     
@@ -299,7 +299,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         """
         Sets the remediatedUserCount property value. Number of remediated users.
         Args:
-            value: Value to set for the remediatedUserCount property.
+            value: Value to set for the remediated_user_count property.
         """
         self._remediated_user_count = value
     
@@ -341,7 +341,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         """
         Sets the unknownDeviceCount property value. Number of unknown devices.
         Args:
-            value: Value to set for the unknownDeviceCount property.
+            value: Value to set for the unknown_device_count property.
         """
         self._unknown_device_count = value
     
@@ -358,7 +358,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         """
         Sets the unknownUserCount property value. Number of unknown users.
         Args:
-            value: Value to set for the unknownUserCount property.
+            value: Value to set for the unknown_user_count property.
         """
         self._unknown_user_count = value
     

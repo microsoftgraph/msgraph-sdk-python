@@ -19,7 +19,7 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
         """
         Sets the certificateData property value. The certificate data, which is a long string of text from the certificate. Can be null.
         Args:
-            value: Value to set for the certificateData property.
+            value: Value to set for the certificate_data property.
         """
         self._certificate_data = value
     
@@ -63,7 +63,7 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
         """
         Sets the developerId property value. The Apple developer identifier. Required.
         Args:
-            value: Value to set for the developerId property.
+            value: Value to set for the developer_id property.
         """
         self._developer_id = value
     
@@ -73,10 +73,10 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "certificate_data": lambda n : setattr(self, 'certificate_data', n.get_str_value()),
-            "developer_id": lambda n : setattr(self, 'developer_id', n.get_str_value()),
-            "key_id": lambda n : setattr(self, 'key_id', n.get_str_value()),
-            "service_id": lambda n : setattr(self, 'service_id', n.get_str_value()),
+            "certificateData": lambda n : setattr(self, 'certificate_data', n.get_str_value()),
+            "developerId": lambda n : setattr(self, 'developer_id', n.get_str_value()),
+            "keyId": lambda n : setattr(self, 'key_id', n.get_str_value()),
+            "serviceId": lambda n : setattr(self, 'service_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -95,7 +95,7 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
         """
         Sets the keyId property value. The Apple key identifier. Required.
         Args:
-            value: Value to set for the keyId property.
+            value: Value to set for the key_id property.
         """
         self._key_id = value
     
@@ -126,7 +126,7 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
         """
         Sets the serviceId property value. The Apple service identifier. Required.
         Args:
-            value: Value to set for the serviceId property.
+            value: Value to set for the service_id property.
         """
         self._service_id = value
     

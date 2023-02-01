@@ -79,7 +79,7 @@ class RoleManagement(AdditionalDataHolder, Parsable):
         """
         Sets the entitlementManagement property value. Container for roles and assignments for entitlement management resources.
         Args:
-            value: Value to set for the entitlementManagement property.
+            value: Value to set for the entitlement_management property.
         """
         self._entitlement_management = value
     
@@ -90,7 +90,7 @@ class RoleManagement(AdditionalDataHolder, Parsable):
         """
         fields = {
             "directory": lambda n : setattr(self, 'directory', n.get_object_value(rbac_application.RbacApplication)),
-            "entitlement_management": lambda n : setattr(self, 'entitlement_management', n.get_object_value(rbac_application.RbacApplication)),
+            "entitlementManagement": lambda n : setattr(self, 'entitlement_management', n.get_object_value(rbac_application.RbacApplication)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -108,7 +108,7 @@ class RoleManagement(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

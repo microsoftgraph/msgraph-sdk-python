@@ -111,7 +111,7 @@ class Site(base_item.BaseItem):
         """
         Sets the contentTypes property value. The collection of content types defined for this site.
         Args:
-            value: Value to set for the contentTypes property.
+            value: Value to set for the content_types property.
         """
         self._content_types = value
     
@@ -140,7 +140,7 @@ class Site(base_item.BaseItem):
         """
         Sets the displayName property value. The full title for the site. Read-only.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -208,7 +208,7 @@ class Site(base_item.BaseItem):
         """
         Sets the externalColumns property value. The externalColumns property
         Args:
-            value: Value to set for the externalColumns property.
+            value: Value to set for the external_columns property.
         """
         self._external_columns = value
     
@@ -220,23 +220,23 @@ class Site(base_item.BaseItem):
         fields = {
             "analytics": lambda n : setattr(self, 'analytics', n.get_object_value(item_analytics.ItemAnalytics)),
             "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
-            "content_types": lambda n : setattr(self, 'content_types', n.get_collection_of_object_values(content_type.ContentType)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "contentTypes": lambda n : setattr(self, 'content_types', n.get_collection_of_object_values(content_type.ContentType)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "drive": lambda n : setattr(self, 'drive', n.get_object_value(drive.Drive)),
             "drives": lambda n : setattr(self, 'drives', n.get_collection_of_object_values(drive.Drive)),
             "error": lambda n : setattr(self, 'error', n.get_object_value(public_error.PublicError)),
-            "external_columns": lambda n : setattr(self, 'external_columns', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
+            "externalColumns": lambda n : setattr(self, 'external_columns', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
             "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(base_item.BaseItem)),
             "lists": lambda n : setattr(self, 'lists', n.get_collection_of_object_values(list.List)),
             "onenote": lambda n : setattr(self, 'onenote', n.get_object_value(onenote.Onenote)),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(rich_long_running_operation.RichLongRunningOperation)),
             "permissions": lambda n : setattr(self, 'permissions', n.get_collection_of_object_values(permission.Permission)),
             "root": lambda n : setattr(self, 'root', n.get_object_value(root.Root)),
-            "sharepoint_ids": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
-            "site_collection": lambda n : setattr(self, 'site_collection', n.get_object_value(site_collection.SiteCollection)),
+            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
             "sites": lambda n : setattr(self, 'sites', n.get_collection_of_object_values(Site)),
-            "term_store": lambda n : setattr(self, 'term_store', n.get_object_value(store.Store)),
-            "term_stores": lambda n : setattr(self, 'term_stores', n.get_collection_of_object_values(store.Store)),
+            "siteCollection": lambda n : setattr(self, 'site_collection', n.get_object_value(site_collection.SiteCollection)),
+            "termStore": lambda n : setattr(self, 'term_store', n.get_object_value(store.Store)),
+            "termStores": lambda n : setattr(self, 'term_stores', n.get_collection_of_object_values(store.Store)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -368,8 +368,8 @@ class Site(base_item.BaseItem):
         writer.write_collection_of_object_values("permissions", self.permissions)
         writer.write_object_value("root", self.root)
         writer.write_object_value("sharepointIds", self.sharepoint_ids)
-        writer.write_object_value("siteCollection", self.site_collection)
         writer.write_collection_of_object_values("sites", self.sites)
+        writer.write_object_value("siteCollection", self.site_collection)
         writer.write_object_value("termStore", self.term_store)
         writer.write_collection_of_object_values("termStores", self.term_stores)
     
@@ -386,7 +386,7 @@ class Site(base_item.BaseItem):
         """
         Sets the sharepointIds property value. Returns identifiers useful for SharePoint REST compatibility. Read-only.
         Args:
-            value: Value to set for the sharepointIds property.
+            value: Value to set for the sharepoint_ids property.
         """
         self._sharepoint_ids = value
     
@@ -403,7 +403,7 @@ class Site(base_item.BaseItem):
         """
         Sets the siteCollection property value. Provides details about the site's site collection. Available only on the root site. Read-only.
         Args:
-            value: Value to set for the siteCollection property.
+            value: Value to set for the site_collection property.
         """
         self._site_collection = value
     
@@ -437,7 +437,7 @@ class Site(base_item.BaseItem):
         """
         Sets the termStore property value. The default termStore under this site.
         Args:
-            value: Value to set for the termStore property.
+            value: Value to set for the term_store property.
         """
         self._term_store = value
     
@@ -454,7 +454,7 @@ class Site(base_item.BaseItem):
         """
         Sets the termStores property value. The collection of termStores under this site.
         Args:
-            value: Value to set for the termStores property.
+            value: Value to set for the term_stores property.
         """
         self._term_stores = value
     

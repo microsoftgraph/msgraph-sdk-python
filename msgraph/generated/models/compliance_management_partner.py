@@ -25,7 +25,7 @@ class ComplianceManagementPartner(entity.Entity):
         """
         Sets the androidEnrollmentAssignments property value. User groups which enroll Android devices through partner.
         Args:
-            value: Value to set for the androidEnrollmentAssignments property.
+            value: Value to set for the android_enrollment_assignments property.
         """
         self._android_enrollment_assignments = value
     
@@ -42,7 +42,7 @@ class ComplianceManagementPartner(entity.Entity):
         """
         Sets the androidOnboarded property value. Partner onboarded for Android devices.
         Args:
-            value: Value to set for the androidOnboarded property.
+            value: Value to set for the android_onboarded property.
         """
         self._android_onboarded = value
     
@@ -97,7 +97,7 @@ class ComplianceManagementPartner(entity.Entity):
         """
         Sets the displayName property value. Partner display name
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -107,15 +107,15 @@ class ComplianceManagementPartner(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "android_enrollment_assignments": lambda n : setattr(self, 'android_enrollment_assignments', n.get_collection_of_object_values(compliance_management_partner_assignment.ComplianceManagementPartnerAssignment)),
-            "android_onboarded": lambda n : setattr(self, 'android_onboarded', n.get_bool_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "ios_enrollment_assignments": lambda n : setattr(self, 'ios_enrollment_assignments', n.get_collection_of_object_values(compliance_management_partner_assignment.ComplianceManagementPartnerAssignment)),
-            "ios_onboarded": lambda n : setattr(self, 'ios_onboarded', n.get_bool_value()),
-            "last_heartbeat_date_time": lambda n : setattr(self, 'last_heartbeat_date_time', n.get_datetime_value()),
-            "mac_os_enrollment_assignments": lambda n : setattr(self, 'mac_os_enrollment_assignments', n.get_collection_of_object_values(compliance_management_partner_assignment.ComplianceManagementPartnerAssignment)),
-            "mac_os_onboarded": lambda n : setattr(self, 'mac_os_onboarded', n.get_bool_value()),
-            "partner_state": lambda n : setattr(self, 'partner_state', n.get_enum_value(device_management_partner_tenant_state.DeviceManagementPartnerTenantState)),
+            "androidEnrollmentAssignments": lambda n : setattr(self, 'android_enrollment_assignments', n.get_collection_of_object_values(compliance_management_partner_assignment.ComplianceManagementPartnerAssignment)),
+            "androidOnboarded": lambda n : setattr(self, 'android_onboarded', n.get_bool_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "iosEnrollmentAssignments": lambda n : setattr(self, 'ios_enrollment_assignments', n.get_collection_of_object_values(compliance_management_partner_assignment.ComplianceManagementPartnerAssignment)),
+            "iosOnboarded": lambda n : setattr(self, 'ios_onboarded', n.get_bool_value()),
+            "lastHeartbeatDateTime": lambda n : setattr(self, 'last_heartbeat_date_time', n.get_datetime_value()),
+            "macOsEnrollmentAssignments": lambda n : setattr(self, 'mac_os_enrollment_assignments', n.get_collection_of_object_values(compliance_management_partner_assignment.ComplianceManagementPartnerAssignment)),
+            "macOsOnboarded": lambda n : setattr(self, 'mac_os_onboarded', n.get_bool_value()),
+            "partnerState": lambda n : setattr(self, 'partner_state', n.get_enum_value(device_management_partner_tenant_state.DeviceManagementPartnerTenantState)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -134,7 +134,7 @@ class ComplianceManagementPartner(entity.Entity):
         """
         Sets the iosEnrollmentAssignments property value. User groups which enroll ios devices through partner.
         Args:
-            value: Value to set for the iosEnrollmentAssignments property.
+            value: Value to set for the ios_enrollment_assignments property.
         """
         self._ios_enrollment_assignments = value
     
@@ -151,7 +151,7 @@ class ComplianceManagementPartner(entity.Entity):
         """
         Sets the iosOnboarded property value. Partner onboarded for ios devices.
         Args:
-            value: Value to set for the iosOnboarded property.
+            value: Value to set for the ios_onboarded property.
         """
         self._ios_onboarded = value
     
@@ -168,7 +168,7 @@ class ComplianceManagementPartner(entity.Entity):
         """
         Sets the lastHeartbeatDateTime property value. Timestamp of last heartbeat after admin onboarded to the compliance management partner
         Args:
-            value: Value to set for the lastHeartbeatDateTime property.
+            value: Value to set for the last_heartbeat_date_time property.
         """
         self._last_heartbeat_date_time = value
     
@@ -185,7 +185,7 @@ class ComplianceManagementPartner(entity.Entity):
         """
         Sets the macOsEnrollmentAssignments property value. User groups which enroll Mac devices through partner.
         Args:
-            value: Value to set for the macOsEnrollmentAssignments property.
+            value: Value to set for the mac_os_enrollment_assignments property.
         """
         self._mac_os_enrollment_assignments = value
     
@@ -202,7 +202,7 @@ class ComplianceManagementPartner(entity.Entity):
         """
         Sets the macOsOnboarded property value. Partner onboarded for Mac devices.
         Args:
-            value: Value to set for the macOsOnboarded property.
+            value: Value to set for the mac_os_onboarded property.
         """
         self._mac_os_onboarded = value
     
@@ -219,7 +219,7 @@ class ComplianceManagementPartner(entity.Entity):
         """
         Sets the partnerState property value. Partner state of this tenant.
         Args:
-            value: Value to set for the partnerState property.
+            value: Value to set for the partner_state property.
         """
         self._partner_state = value
     

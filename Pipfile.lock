@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c8c196308f9cbf481b39ba9b1739cd9108b192934f7c9035a075aefec7e04a80"
+            "sha256": "04d09bb9ae401c9e3e979f9c8a5c2172bf7b47ded18752c5eca7fe1485234b55"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -449,10 +449,10 @@
         },
         "msal": {
             "hashes": [
-                "sha256:78344cd4c91d6134a593b5e3e45541e666e37b747ff8a6316c3668dd1e6ab6b2",
-                "sha256:d2f1c26368ecdc28c8657d457352faa0b81b1845a7b889d8676787721ba86792"
+                "sha256:96b5c867830fd116e5f7d0ec8ef1b238b4cda4d1aea86d8fecf518260e136fbf",
+                "sha256:e8444617c1eccdff7bb73f5d4f94036002accea4a2c05f8f39c9efb5bd2b0c6a"
             ],
-            "version": "==1.20.0"
+            "version": "==1.21.0"
         },
         "msal-extensions": {
             "hashes": [
@@ -725,11 +725,11 @@
     "develop": {
         "astroid": {
             "hashes": [
-                "sha256:14c1603c41cc61aae731cad1884a073c4645e26f126d13ac8346113c95577f3b",
-                "sha256:6afc22718a48a689ca24a97981ad377ba7fb78c133f40335dfd16772f29bcfb1"
+                "sha256:23c718921acab5f08cbbbe9293967f1f8fec40c336d19cd75dc12a9ea31d2eb2",
+                "sha256:bd1aa4f9915c98e8aaebcd4e71930154d4e8c9aaf05d35ac0a63d1956091ae3f"
             ],
             "markers": "python_full_version >= '3.7.2'",
-            "version": "==2.13.3"
+            "version": "==2.14.1"
         },
         "build": {
             "hashes": [
@@ -905,11 +905,11 @@
         },
         "pylint": {
             "hashes": [
-                "sha256:9df0d07e8948a1c3ffa3b6e2d7e6e63d9fb457c5da5b961ed63106594780cc7e",
-                "sha256:b3dc5ef7d33858f297ac0d06cc73862f01e4f2e74025ec3eff347ce0bc60baf5"
+                "sha256:43ee36c9b690507ef9429ce1802bdc4dcde49454c3d665e39c23791567019c0a",
+                "sha256:55e5cf00601c4cfe2e9404355c743a14e63be85df7409da7e482ebde5f9f14a1"
             ],
             "index": "pypi",
-            "version": "==2.15.10"
+            "version": "==2.16.0"
         },
         "pyproject-hooks": {
             "hashes": [

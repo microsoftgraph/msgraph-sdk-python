@@ -19,7 +19,7 @@ class IosMobileAppIdentifier(mobile_app_identifier.MobileAppIdentifier):
         """
         Sets the bundleId property value. The identifier for an app, as specified in the app store.
         Args:
-            value: Value to set for the bundleId property.
+            value: Value to set for the bundle_id property.
         """
         self._bundle_id = value
     
@@ -50,7 +50,7 @@ class IosMobileAppIdentifier(mobile_app_identifier.MobileAppIdentifier):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "bundle_id": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
+            "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

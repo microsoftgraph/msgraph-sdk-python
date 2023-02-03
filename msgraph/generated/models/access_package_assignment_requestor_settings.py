@@ -36,7 +36,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         """
         Sets the allowCustomAssignmentSchedule property value. If false, the requestor is not permitted to include a schedule in their request.
         Args:
-            value: Value to set for the allowCustomAssignmentSchedule property.
+            value: Value to set for the allow_custom_assignment_schedule property.
         """
         self._allow_custom_assignment_schedule = value
     
@@ -91,7 +91,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         """
         Sets the enableOnBehalfRequestorsToAddAccess property value. If true, allows on-behalf-of requestors to create a request to add access for another principal.
         Args:
-            value: Value to set for the enableOnBehalfRequestorsToAddAccess property.
+            value: Value to set for the enable_on_behalf_requestors_to_add_access property.
         """
         self._enable_on_behalf_requestors_to_add_access = value
     
@@ -108,7 +108,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         """
         Sets the enableOnBehalfRequestorsToRemoveAccess property value. If true, allows on-behalf-of requestors to create a request to remove access for another principal.
         Args:
-            value: Value to set for the enableOnBehalfRequestorsToRemoveAccess property.
+            value: Value to set for the enable_on_behalf_requestors_to_remove_access property.
         """
         self._enable_on_behalf_requestors_to_remove_access = value
     
@@ -125,7 +125,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         """
         Sets the enableOnBehalfRequestorsToUpdateAccess property value. If true, allows on-behalf-of requestors to create a request to update access for another principal.
         Args:
-            value: Value to set for the enableOnBehalfRequestorsToUpdateAccess property.
+            value: Value to set for the enable_on_behalf_requestors_to_update_access property.
         """
         self._enable_on_behalf_requestors_to_update_access = value
     
@@ -142,7 +142,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         """
         Sets the enableTargetsToSelfAddAccess property value. If true, allows requestors to create a request to add access for themselves.
         Args:
-            value: Value to set for the enableTargetsToSelfAddAccess property.
+            value: Value to set for the enable_targets_to_self_add_access property.
         """
         self._enable_targets_to_self_add_access = value
     
@@ -159,7 +159,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         """
         Sets the enableTargetsToSelfRemoveAccess property value. If true, allows requestors to create a request to remove their access.
         Args:
-            value: Value to set for the enableTargetsToSelfRemoveAccess property.
+            value: Value to set for the enable_targets_to_self_remove_access property.
         """
         self._enable_targets_to_self_remove_access = value
     
@@ -176,7 +176,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         """
         Sets the enableTargetsToSelfUpdateAccess property value. If true, allows requestors to create a request to update their access.
         Args:
-            value: Value to set for the enableTargetsToSelfUpdateAccess property.
+            value: Value to set for the enable_targets_to_self_update_access property.
         """
         self._enable_targets_to_self_update_access = value
     
@@ -186,15 +186,15 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_custom_assignment_schedule": lambda n : setattr(self, 'allow_custom_assignment_schedule', n.get_bool_value()),
-            "enable_on_behalf_requestors_to_add_access": lambda n : setattr(self, 'enable_on_behalf_requestors_to_add_access', n.get_bool_value()),
-            "enable_on_behalf_requestors_to_remove_access": lambda n : setattr(self, 'enable_on_behalf_requestors_to_remove_access', n.get_bool_value()),
-            "enable_on_behalf_requestors_to_update_access": lambda n : setattr(self, 'enable_on_behalf_requestors_to_update_access', n.get_bool_value()),
-            "enable_targets_to_self_add_access": lambda n : setattr(self, 'enable_targets_to_self_add_access', n.get_bool_value()),
-            "enable_targets_to_self_remove_access": lambda n : setattr(self, 'enable_targets_to_self_remove_access', n.get_bool_value()),
-            "enable_targets_to_self_update_access": lambda n : setattr(self, 'enable_targets_to_self_update_access', n.get_bool_value()),
+            "allowCustomAssignmentSchedule": lambda n : setattr(self, 'allow_custom_assignment_schedule', n.get_bool_value()),
+            "enableOnBehalfRequestorsToAddAccess": lambda n : setattr(self, 'enable_on_behalf_requestors_to_add_access', n.get_bool_value()),
+            "enableOnBehalfRequestorsToRemoveAccess": lambda n : setattr(self, 'enable_on_behalf_requestors_to_remove_access', n.get_bool_value()),
+            "enableOnBehalfRequestorsToUpdateAccess": lambda n : setattr(self, 'enable_on_behalf_requestors_to_update_access', n.get_bool_value()),
+            "enableTargetsToSelfAddAccess": lambda n : setattr(self, 'enable_targets_to_self_add_access', n.get_bool_value()),
+            "enableTargetsToSelfRemoveAccess": lambda n : setattr(self, 'enable_targets_to_self_remove_access', n.get_bool_value()),
+            "enableTargetsToSelfUpdateAccess": lambda n : setattr(self, 'enable_targets_to_self_update_access', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "on_behalf_requestors": lambda n : setattr(self, 'on_behalf_requestors', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "onBehalfRequestors": lambda n : setattr(self, 'on_behalf_requestors', n.get_collection_of_object_values(subject_set.SubjectSet)),
         }
         return fields
     
@@ -211,7 +211,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -228,7 +228,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         """
         Sets the onBehalfRequestors property value. The principals who can request on-behalf-of others.
         Args:
-            value: Value to set for the onBehalfRequestors property.
+            value: Value to set for the on_behalf_requestors property.
         """
         self._on_behalf_requestors = value
     

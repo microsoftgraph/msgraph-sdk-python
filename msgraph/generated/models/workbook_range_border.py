@@ -58,7 +58,7 @@ class WorkbookRangeBorder(entity.Entity):
         """
         fields = {
             "color": lambda n : setattr(self, 'color', n.get_str_value()),
-            "side_index": lambda n : setattr(self, 'side_index', n.get_str_value()),
+            "sideIndex": lambda n : setattr(self, 'side_index', n.get_str_value()),
             "style": lambda n : setattr(self, 'style', n.get_str_value()),
             "weight": lambda n : setattr(self, 'weight', n.get_str_value()),
         }
@@ -93,7 +93,7 @@ class WorkbookRangeBorder(entity.Entity):
         """
         Sets the sideIndex property value. Constant value that indicates the specific side of the border. The possible values are: EdgeTop, EdgeBottom, EdgeLeft, EdgeRight, InsideVertical, InsideHorizontal, DiagonalDown, DiagonalUp. Read-only.
         Args:
-            value: Value to set for the sideIndex property.
+            value: Value to set for the side_index property.
         """
         self._side_index = value
     

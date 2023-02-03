@@ -22,7 +22,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the applyOnlyToWindowsPhone81 property value. Value indicating whether this policy only applies to Windows Phone 8.1. This property is read-only.
         Args:
-            value: Value to set for the applyOnlyToWindowsPhone81 property.
+            value: Value to set for the apply_only_to_windows_phone81 property.
         """
         self._apply_only_to_windows_phone81 = value
     
@@ -39,7 +39,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the appsBlockCopyPaste property value. Indicates whether or not to block copy paste.
         Args:
-            value: Value to set for the appsBlockCopyPaste property.
+            value: Value to set for the apps_block_copy_paste property.
         """
         self._apps_block_copy_paste = value
     
@@ -56,7 +56,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the bluetoothBlocked property value. Indicates whether or not to block bluetooth.
         Args:
-            value: Value to set for the bluetoothBlocked property.
+            value: Value to set for the bluetooth_blocked property.
         """
         self._bluetooth_blocked = value
     
@@ -73,7 +73,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the cameraBlocked property value. Indicates whether or not to block camera.
         Args:
-            value: Value to set for the cameraBlocked property.
+            value: Value to set for the camera_blocked property.
         """
         self._camera_blocked = value
     
@@ -90,7 +90,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the cellularBlockWifiTethering property value. Indicates whether or not to block Wi-Fi tethering. Has no impact if Wi-Fi is blocked.
         Args:
-            value: Value to set for the cellularBlockWifiTethering property.
+            value: Value to set for the cellular_block_wifi_tethering property.
         """
         self._cellular_block_wifi_tethering = value
     
@@ -107,7 +107,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the compliantAppListType property value. Possible values of the compliance app list.
         Args:
-            value: Value to set for the compliantAppListType property.
+            value: Value to set for the compliant_app_list_type property.
         """
         self._compliant_app_list_type = value
     
@@ -124,7 +124,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the compliantAppsList property value. List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
         Args:
-            value: Value to set for the compliantAppsList property.
+            value: Value to set for the compliant_apps_list property.
         """
         self._compliant_apps_list = value
     
@@ -186,10 +186,10 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         self._web_browser_blocked: Optional[bool] = None
         # Indicates whether or not to block automatically connecting to Wi-Fi hotspots. Has no impact if Wi-Fi is blocked.
         self._wifi_block_automatic_connect_hotspots: Optional[bool] = None
-        # Indicates whether or not to block Wi-Fi.
-        self._wifi_blocked: Optional[bool] = None
         # Indicates whether or not to block Wi-Fi hotspot reporting. Has no impact if Wi-Fi is blocked.
         self._wifi_block_hotspot_reporting: Optional[bool] = None
+        # Indicates whether or not to block Wi-Fi.
+        self._wifi_blocked: Optional[bool] = None
         # Indicates whether or not to block the Windows Store.
         self._windows_store_blocked: Optional[bool] = None
     
@@ -218,7 +218,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the diagnosticDataBlockSubmission property value. Indicates whether or not to block diagnostic data submission.
         Args:
-            value: Value to set for the diagnosticDataBlockSubmission property.
+            value: Value to set for the diagnostic_data_block_submission property.
         """
         self._diagnostic_data_block_submission = value
     
@@ -235,7 +235,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the emailBlockAddingAccounts property value. Indicates whether or not to block custom email accounts.
         Args:
-            value: Value to set for the emailBlockAddingAccounts property.
+            value: Value to set for the email_block_adding_accounts property.
         """
         self._email_block_adding_accounts = value
     
@@ -245,35 +245,35 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "apply_only_to_windows_phone81": lambda n : setattr(self, 'apply_only_to_windows_phone81', n.get_bool_value()),
-            "apps_block_copy_paste": lambda n : setattr(self, 'apps_block_copy_paste', n.get_bool_value()),
-            "bluetooth_blocked": lambda n : setattr(self, 'bluetooth_blocked', n.get_bool_value()),
-            "camera_blocked": lambda n : setattr(self, 'camera_blocked', n.get_bool_value()),
-            "cellular_block_wifi_tethering": lambda n : setattr(self, 'cellular_block_wifi_tethering', n.get_bool_value()),
-            "compliant_app_list_type": lambda n : setattr(self, 'compliant_app_list_type', n.get_enum_value(app_list_type.AppListType)),
-            "compliant_apps_list": lambda n : setattr(self, 'compliant_apps_list', n.get_collection_of_object_values(app_list_item.AppListItem)),
-            "diagnostic_data_block_submission": lambda n : setattr(self, 'diagnostic_data_block_submission', n.get_bool_value()),
-            "email_block_adding_accounts": lambda n : setattr(self, 'email_block_adding_accounts', n.get_bool_value()),
-            "location_services_blocked": lambda n : setattr(self, 'location_services_blocked', n.get_bool_value()),
-            "microsoft_account_blocked": lambda n : setattr(self, 'microsoft_account_blocked', n.get_bool_value()),
-            "nfc_blocked": lambda n : setattr(self, 'nfc_blocked', n.get_bool_value()),
-            "password_block_simple": lambda n : setattr(self, 'password_block_simple', n.get_bool_value()),
-            "password_expiration_days": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
-            "password_minimum_character_set_count": lambda n : setattr(self, 'password_minimum_character_set_count', n.get_int_value()),
-            "password_minimum_length": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
-            "password_minutes_of_inactivity_before_screen_timeout": lambda n : setattr(self, 'password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
-            "password_previous_password_block_count": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
-            "password_required": lambda n : setattr(self, 'password_required', n.get_bool_value()),
-            "password_required_type": lambda n : setattr(self, 'password_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
-            "password_sign_in_failure_count_before_factory_reset": lambda n : setattr(self, 'password_sign_in_failure_count_before_factory_reset', n.get_int_value()),
-            "screen_capture_blocked": lambda n : setattr(self, 'screen_capture_blocked', n.get_bool_value()),
-            "storage_block_removable_storage": lambda n : setattr(self, 'storage_block_removable_storage', n.get_bool_value()),
-            "storage_require_encryption": lambda n : setattr(self, 'storage_require_encryption', n.get_bool_value()),
-            "web_browser_blocked": lambda n : setattr(self, 'web_browser_blocked', n.get_bool_value()),
-            "wifi_block_automatic_connect_hotspots": lambda n : setattr(self, 'wifi_block_automatic_connect_hotspots', n.get_bool_value()),
-            "wifi_blocked": lambda n : setattr(self, 'wifi_blocked', n.get_bool_value()),
-            "wifi_block_hotspot_reporting": lambda n : setattr(self, 'wifi_block_hotspot_reporting', n.get_bool_value()),
-            "windows_store_blocked": lambda n : setattr(self, 'windows_store_blocked', n.get_bool_value()),
+            "applyOnlyToWindowsPhone81": lambda n : setattr(self, 'apply_only_to_windows_phone81', n.get_bool_value()),
+            "appsBlockCopyPaste": lambda n : setattr(self, 'apps_block_copy_paste', n.get_bool_value()),
+            "bluetoothBlocked": lambda n : setattr(self, 'bluetooth_blocked', n.get_bool_value()),
+            "cameraBlocked": lambda n : setattr(self, 'camera_blocked', n.get_bool_value()),
+            "cellularBlockWifiTethering": lambda n : setattr(self, 'cellular_block_wifi_tethering', n.get_bool_value()),
+            "compliantAppsList": lambda n : setattr(self, 'compliant_apps_list', n.get_collection_of_object_values(app_list_item.AppListItem)),
+            "compliantAppListType": lambda n : setattr(self, 'compliant_app_list_type', n.get_enum_value(app_list_type.AppListType)),
+            "diagnosticDataBlockSubmission": lambda n : setattr(self, 'diagnostic_data_block_submission', n.get_bool_value()),
+            "emailBlockAddingAccounts": lambda n : setattr(self, 'email_block_adding_accounts', n.get_bool_value()),
+            "locationServicesBlocked": lambda n : setattr(self, 'location_services_blocked', n.get_bool_value()),
+            "microsoftAccountBlocked": lambda n : setattr(self, 'microsoft_account_blocked', n.get_bool_value()),
+            "nfcBlocked": lambda n : setattr(self, 'nfc_blocked', n.get_bool_value()),
+            "passwordBlockSimple": lambda n : setattr(self, 'password_block_simple', n.get_bool_value()),
+            "passwordExpirationDays": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),
+            "passwordMinimumCharacterSetCount": lambda n : setattr(self, 'password_minimum_character_set_count', n.get_int_value()),
+            "passwordMinimumLength": lambda n : setattr(self, 'password_minimum_length', n.get_int_value()),
+            "passwordMinutesOfInactivityBeforeScreenTimeout": lambda n : setattr(self, 'password_minutes_of_inactivity_before_screen_timeout', n.get_int_value()),
+            "passwordPreviousPasswordBlockCount": lambda n : setattr(self, 'password_previous_password_block_count', n.get_int_value()),
+            "passwordRequired": lambda n : setattr(self, 'password_required', n.get_bool_value()),
+            "passwordRequiredType": lambda n : setattr(self, 'password_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
+            "passwordSignInFailureCountBeforeFactoryReset": lambda n : setattr(self, 'password_sign_in_failure_count_before_factory_reset', n.get_int_value()),
+            "screenCaptureBlocked": lambda n : setattr(self, 'screen_capture_blocked', n.get_bool_value()),
+            "storageBlockRemovableStorage": lambda n : setattr(self, 'storage_block_removable_storage', n.get_bool_value()),
+            "storageRequireEncryption": lambda n : setattr(self, 'storage_require_encryption', n.get_bool_value()),
+            "webBrowserBlocked": lambda n : setattr(self, 'web_browser_blocked', n.get_bool_value()),
+            "wifiBlocked": lambda n : setattr(self, 'wifi_blocked', n.get_bool_value()),
+            "wifiBlockAutomaticConnectHotspots": lambda n : setattr(self, 'wifi_block_automatic_connect_hotspots', n.get_bool_value()),
+            "wifiBlockHotspotReporting": lambda n : setattr(self, 'wifi_block_hotspot_reporting', n.get_bool_value()),
+            "windowsStoreBlocked": lambda n : setattr(self, 'windows_store_blocked', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -292,7 +292,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the locationServicesBlocked property value. Indicates whether or not to block location services.
         Args:
-            value: Value to set for the locationServicesBlocked property.
+            value: Value to set for the location_services_blocked property.
         """
         self._location_services_blocked = value
     
@@ -309,7 +309,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the microsoftAccountBlocked property value. Indicates whether or not to block using a Microsoft Account.
         Args:
-            value: Value to set for the microsoftAccountBlocked property.
+            value: Value to set for the microsoft_account_blocked property.
         """
         self._microsoft_account_blocked = value
     
@@ -326,7 +326,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the nfcBlocked property value. Indicates whether or not to block Near-Field Communication.
         Args:
-            value: Value to set for the nfcBlocked property.
+            value: Value to set for the nfc_blocked property.
         """
         self._nfc_blocked = value
     
@@ -343,7 +343,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the passwordBlockSimple property value. Indicates whether or not to block syncing the calendar.
         Args:
-            value: Value to set for the passwordBlockSimple property.
+            value: Value to set for the password_block_simple property.
         """
         self._password_block_simple = value
     
@@ -360,7 +360,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the passwordExpirationDays property value. Number of days before the password expires.
         Args:
-            value: Value to set for the passwordExpirationDays property.
+            value: Value to set for the password_expiration_days property.
         """
         self._password_expiration_days = value
     
@@ -377,7 +377,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the passwordMinimumCharacterSetCount property value. Number of character sets a password must contain.
         Args:
-            value: Value to set for the passwordMinimumCharacterSetCount property.
+            value: Value to set for the password_minimum_character_set_count property.
         """
         self._password_minimum_character_set_count = value
     
@@ -394,7 +394,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the passwordMinimumLength property value. Minimum length of passwords.
         Args:
-            value: Value to set for the passwordMinimumLength property.
+            value: Value to set for the password_minimum_length property.
         """
         self._password_minimum_length = value
     
@@ -411,7 +411,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the passwordMinutesOfInactivityBeforeScreenTimeout property value. Minutes of inactivity before screen timeout.
         Args:
-            value: Value to set for the passwordMinutesOfInactivityBeforeScreenTimeout property.
+            value: Value to set for the password_minutes_of_inactivity_before_screen_timeout property.
         """
         self._password_minutes_of_inactivity_before_screen_timeout = value
     
@@ -428,7 +428,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the passwordPreviousPasswordBlockCount property value. Number of previous passwords to block. Valid values 0 to 24
         Args:
-            value: Value to set for the passwordPreviousPasswordBlockCount property.
+            value: Value to set for the password_previous_password_block_count property.
         """
         self._password_previous_password_block_count = value
     
@@ -445,7 +445,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the passwordRequired property value. Indicates whether or not to require a password.
         Args:
-            value: Value to set for the passwordRequired property.
+            value: Value to set for the password_required property.
         """
         self._password_required = value
     
@@ -462,7 +462,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the passwordRequiredType property value. Possible values of required passwords.
         Args:
-            value: Value to set for the passwordRequiredType property.
+            value: Value to set for the password_required_type property.
         """
         self._password_required_type = value
     
@@ -479,7 +479,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the passwordSignInFailureCountBeforeFactoryReset property value. Number of sign in failures allowed before factory reset.
         Args:
-            value: Value to set for the passwordSignInFailureCountBeforeFactoryReset property.
+            value: Value to set for the password_sign_in_failure_count_before_factory_reset property.
         """
         self._password_sign_in_failure_count_before_factory_reset = value
     
@@ -496,7 +496,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the screenCaptureBlocked property value. Indicates whether or not to block screenshots.
         Args:
-            value: Value to set for the screenCaptureBlocked property.
+            value: Value to set for the screen_capture_blocked property.
         """
         self._screen_capture_blocked = value
     
@@ -513,8 +513,8 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         writer.write_bool_value("bluetoothBlocked", self.bluetooth_blocked)
         writer.write_bool_value("cameraBlocked", self.camera_blocked)
         writer.write_bool_value("cellularBlockWifiTethering", self.cellular_block_wifi_tethering)
-        writer.write_enum_value("compliantAppListType", self.compliant_app_list_type)
         writer.write_collection_of_object_values("compliantAppsList", self.compliant_apps_list)
+        writer.write_enum_value("compliantAppListType", self.compliant_app_list_type)
         writer.write_bool_value("diagnosticDataBlockSubmission", self.diagnostic_data_block_submission)
         writer.write_bool_value("emailBlockAddingAccounts", self.email_block_adding_accounts)
         writer.write_bool_value("locationServicesBlocked", self.location_services_blocked)
@@ -533,8 +533,8 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         writer.write_bool_value("storageBlockRemovableStorage", self.storage_block_removable_storage)
         writer.write_bool_value("storageRequireEncryption", self.storage_require_encryption)
         writer.write_bool_value("webBrowserBlocked", self.web_browser_blocked)
-        writer.write_bool_value("wifiBlockAutomaticConnectHotspots", self.wifi_block_automatic_connect_hotspots)
         writer.write_bool_value("wifiBlocked", self.wifi_blocked)
+        writer.write_bool_value("wifiBlockAutomaticConnectHotspots", self.wifi_block_automatic_connect_hotspots)
         writer.write_bool_value("wifiBlockHotspotReporting", self.wifi_block_hotspot_reporting)
         writer.write_bool_value("windowsStoreBlocked", self.windows_store_blocked)
     
@@ -551,7 +551,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the storageBlockRemovableStorage property value. Indicates whether or not to block removable storage.
         Args:
-            value: Value to set for the storageBlockRemovableStorage property.
+            value: Value to set for the storage_block_removable_storage property.
         """
         self._storage_block_removable_storage = value
     
@@ -568,7 +568,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the storageRequireEncryption property value. Indicates whether or not to require encryption.
         Args:
-            value: Value to set for the storageRequireEncryption property.
+            value: Value to set for the storage_require_encryption property.
         """
         self._storage_require_encryption = value
     
@@ -585,7 +585,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the webBrowserBlocked property value. Indicates whether or not to block the web browser.
         Args:
-            value: Value to set for the webBrowserBlocked property.
+            value: Value to set for the web_browser_blocked property.
         """
         self._web_browser_blocked = value
     
@@ -602,26 +602,9 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the wifiBlockAutomaticConnectHotspots property value. Indicates whether or not to block automatically connecting to Wi-Fi hotspots. Has no impact if Wi-Fi is blocked.
         Args:
-            value: Value to set for the wifiBlockAutomaticConnectHotspots property.
+            value: Value to set for the wifi_block_automatic_connect_hotspots property.
         """
         self._wifi_block_automatic_connect_hotspots = value
-    
-    @property
-    def wifi_blocked(self,) -> Optional[bool]:
-        """
-        Gets the wifiBlocked property value. Indicates whether or not to block Wi-Fi.
-        Returns: Optional[bool]
-        """
-        return self._wifi_blocked
-    
-    @wifi_blocked.setter
-    def wifi_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the wifiBlocked property value. Indicates whether or not to block Wi-Fi.
-        Args:
-            value: Value to set for the wifiBlocked property.
-        """
-        self._wifi_blocked = value
     
     @property
     def wifi_block_hotspot_reporting(self,) -> Optional[bool]:
@@ -636,9 +619,26 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the wifiBlockHotspotReporting property value. Indicates whether or not to block Wi-Fi hotspot reporting. Has no impact if Wi-Fi is blocked.
         Args:
-            value: Value to set for the wifiBlockHotspotReporting property.
+            value: Value to set for the wifi_block_hotspot_reporting property.
         """
         self._wifi_block_hotspot_reporting = value
+    
+    @property
+    def wifi_blocked(self,) -> Optional[bool]:
+        """
+        Gets the wifiBlocked property value. Indicates whether or not to block Wi-Fi.
+        Returns: Optional[bool]
+        """
+        return self._wifi_blocked
+    
+    @wifi_blocked.setter
+    def wifi_blocked(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the wifiBlocked property value. Indicates whether or not to block Wi-Fi.
+        Args:
+            value: Value to set for the wifi_blocked property.
+        """
+        self._wifi_blocked = value
     
     @property
     def windows_store_blocked(self,) -> Optional[bool]:
@@ -653,7 +653,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         Sets the windowsStoreBlocked property value. Indicates whether or not to block the Windows Store.
         Args:
-            value: Value to set for the windowsStoreBlocked property.
+            value: Value to set for the windows_store_blocked property.
         """
         self._windows_store_blocked = value
     

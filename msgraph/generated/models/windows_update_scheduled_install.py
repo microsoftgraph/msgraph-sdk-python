@@ -37,8 +37,8 @@ class WindowsUpdateScheduledInstall(windows_update_install_schedule_type.Windows
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "scheduled_install_day": lambda n : setattr(self, 'scheduled_install_day', n.get_enum_value(weekly_schedule.WeeklySchedule)),
-            "scheduled_install_time": lambda n : setattr(self, 'scheduled_install_time', n.get_object_value(Time)),
+            "scheduledInstallDay": lambda n : setattr(self, 'scheduled_install_day', n.get_enum_value(weekly_schedule.WeeklySchedule)),
+            "scheduledInstallTime": lambda n : setattr(self, 'scheduled_install_time', n.get_object_value(Time)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,7 +57,7 @@ class WindowsUpdateScheduledInstall(windows_update_install_schedule_type.Windows
         """
         Sets the scheduledInstallDay property value. Possible values for a weekly schedule.
         Args:
-            value: Value to set for the scheduledInstallDay property.
+            value: Value to set for the scheduled_install_day property.
         """
         self._scheduled_install_day = value
     
@@ -74,7 +74,7 @@ class WindowsUpdateScheduledInstall(windows_update_install_schedule_type.Windows
         """
         Sets the scheduledInstallTime property value. Scheduled Install Time during day
         Args:
-            value: Value to set for the scheduledInstallTime property.
+            value: Value to set for the scheduled_install_time property.
         """
         self._scheduled_install_time = value
     

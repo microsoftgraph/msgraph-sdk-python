@@ -17,10 +17,11 @@ class AssociatedTeamInfoItemRequestBuilder():
     """
     Provides operations to manage the associatedTeams property of the microsoft.graph.userTeamwork entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, associated_team_info_id: Optional[str] = None) -> None:
         """
         Instantiates a new AssociatedTeamInfoItemRequestBuilder and sets the default values.
         Args:
+            associatedTeamInfoId: key: id of associatedTeamInfo
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class AssociatedTeamInfoItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/teamwork/associatedTeams/{associatedTeamInfo%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["associatedTeamInfo%2Did"] = associatedTeamInfoId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

@@ -44,7 +44,7 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "name_target": lambda n : setattr(self, 'name_target', n.get_str_value()),
+            "nameTarget": lambda n : setattr(self, 'name_target', n.get_str_value()),
             "port": lambda n : setattr(self, 'port', n.get_int_value()),
             "priority": lambda n : setattr(self, 'priority', n.get_int_value()),
             "protocol": lambda n : setattr(self, 'protocol', n.get_str_value()),
@@ -68,7 +68,7 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
         """
         Sets the nameTarget property value. Value to use when configuring the Target property of the SRV record at the DNS host.
         Args:
-            value: Value to set for the nameTarget property.
+            value: Value to set for the name_target property.
         """
         self._name_target = value
     

@@ -58,9 +58,9 @@ class AadUserConversationMember(conversation_member.ConversationMember):
         """
         fields = {
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
             "user": lambda n : setattr(self, 'user', n.get_object_value(user.User)),
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -93,7 +93,7 @@ class AadUserConversationMember(conversation_member.ConversationMember):
         """
         Sets the tenantId property value. TenantId which the Azure AD user belongs to.
         Args:
-            value: Value to set for the tenantId property.
+            value: Value to set for the tenant_id property.
         """
         self._tenant_id = value
     
@@ -127,7 +127,7 @@ class AadUserConversationMember(conversation_member.ConversationMember):
         """
         Sets the userId property value. The guid of the user.
         Args:
-            value: Value to set for the userId property.
+            value: Value to set for the user_id property.
         """
         self._user_id = value
     

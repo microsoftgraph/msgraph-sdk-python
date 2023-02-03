@@ -64,7 +64,7 @@ class SettingSource(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. Not yet documented
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -74,10 +74,10 @@ class SettingSource(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "source_type": lambda n : setattr(self, 'source_type', n.get_enum_value(setting_source_type.SettingSourceType)),
+            "sourceType": lambda n : setattr(self, 'source_type', n.get_enum_value(setting_source_type.SettingSourceType)),
         }
         return fields
     
@@ -111,7 +111,7 @@ class SettingSource(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -142,7 +142,7 @@ class SettingSource(AdditionalDataHolder, Parsable):
         """
         Sets the sourceType property value. The sourceType property
         Args:
-            value: Value to set for the sourceType property.
+            value: Value to set for the source_type property.
         """
         self._source_type = value
     

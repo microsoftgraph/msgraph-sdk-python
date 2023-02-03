@@ -66,7 +66,7 @@ class Place(entity.Entity):
         """
         Sets the displayName property value. The name associated with the place.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -83,7 +83,7 @@ class Place(entity.Entity):
         """
         Sets the geoCoordinates property value. Specifies the place location in latitude, longitude and (optionally) altitude coordinates.
         Args:
-            value: Value to set for the geoCoordinates property.
+            value: Value to set for the geo_coordinates property.
         """
         self._geo_coordinates = value
     
@@ -94,8 +94,8 @@ class Place(entity.Entity):
         """
         fields = {
             "address": lambda n : setattr(self, 'address', n.get_object_value(physical_address.PhysicalAddress)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "geo_coordinates": lambda n : setattr(self, 'geo_coordinates', n.get_object_value(outlook_geo_coordinates.OutlookGeoCoordinates)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "geoCoordinates": lambda n : setattr(self, 'geo_coordinates', n.get_object_value(outlook_geo_coordinates.OutlookGeoCoordinates)),
             "phone": lambda n : setattr(self, 'phone', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

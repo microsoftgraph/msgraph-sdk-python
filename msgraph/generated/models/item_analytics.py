@@ -20,7 +20,7 @@ class ItemAnalytics(entity.Entity):
         """
         Sets the allTime property value. The allTime property
         Args:
-            value: Value to set for the allTime property.
+            value: Value to set for the all_time property.
         """
         self._all_time = value
     
@@ -56,9 +56,9 @@ class ItemAnalytics(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "all_time": lambda n : setattr(self, 'all_time', n.get_object_value(item_activity_stat.ItemActivityStat)),
-            "item_activity_stats": lambda n : setattr(self, 'item_activity_stats', n.get_collection_of_object_values(item_activity_stat.ItemActivityStat)),
-            "last_seven_days": lambda n : setattr(self, 'last_seven_days', n.get_object_value(item_activity_stat.ItemActivityStat)),
+            "allTime": lambda n : setattr(self, 'all_time', n.get_object_value(item_activity_stat.ItemActivityStat)),
+            "itemActivityStats": lambda n : setattr(self, 'item_activity_stats', n.get_collection_of_object_values(item_activity_stat.ItemActivityStat)),
+            "lastSevenDays": lambda n : setattr(self, 'last_seven_days', n.get_object_value(item_activity_stat.ItemActivityStat)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -77,7 +77,7 @@ class ItemAnalytics(entity.Entity):
         """
         Sets the itemActivityStats property value. The itemActivityStats property
         Args:
-            value: Value to set for the itemActivityStats property.
+            value: Value to set for the item_activity_stats property.
         """
         self._item_activity_stats = value
     
@@ -94,7 +94,7 @@ class ItemAnalytics(entity.Entity):
         """
         Sets the lastSevenDays property value. The lastSevenDays property
         Args:
-            value: Value to set for the lastSevenDays property.
+            value: Value to set for the last_seven_days property.
         """
         self._last_seven_days = value
     

@@ -54,7 +54,7 @@ class ProvisionedIdentity(identity.Identity):
         """
         fields = {
             "details": lambda n : setattr(self, 'details', n.get_object_value(details_info.DetailsInfo)),
-            "identity_type": lambda n : setattr(self, 'identity_type', n.get_str_value()),
+            "identityType": lambda n : setattr(self, 'identity_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -73,7 +73,7 @@ class ProvisionedIdentity(identity.Identity):
         """
         Sets the identityType property value. Type of identity that has been provisioned, such as 'user' or 'group'.
         Args:
-            value: Value to set for the identityType property.
+            value: Value to set for the identity_type property.
         """
         self._identity_type = value
     

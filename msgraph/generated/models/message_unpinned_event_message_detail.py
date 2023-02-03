@@ -44,7 +44,7 @@ class MessageUnpinnedEventMessageDetail(event_message_detail.EventMessageDetail)
         """
         Sets the eventDateTime property value. Date and time when the event occurred.
         Args:
-            value: Value to set for the eventDateTime property.
+            value: Value to set for the event_date_time property.
         """
         self._event_date_time = value
     
@@ -54,7 +54,7 @@ class MessageUnpinnedEventMessageDetail(event_message_detail.EventMessageDetail)
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "event_date_time": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
+            "eventDateTime": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
         }
         super_fields = super().get_field_deserializers()

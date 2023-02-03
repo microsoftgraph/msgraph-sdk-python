@@ -17,10 +17,11 @@ class ManagedEBookAssignmentItemRequestBuilder():
     """
     Provides operations to manage the assignments property of the microsoft.graph.managedEBook entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, managed_e_book_assignment_id: Optional[str] = None) -> None:
         """
         Instantiates a new ManagedEBookAssignmentItemRequestBuilder and sets the default values.
         Args:
+            managedEBookAssignmentId: key: id of managedEBookAssignment
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class ManagedEBookAssignmentItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceAppManagement/managedEBooks/{managedEBook%2Did}/assignments/{managedEBookAssignment%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["managedEBookAssignment%2Did"] = managedEBookAssignmentId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

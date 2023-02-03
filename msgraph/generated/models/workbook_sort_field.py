@@ -104,7 +104,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         """
         Sets the dataOption property value. Represents additional sorting options for this field. The possible values are: Normal, TextAsNumber.
         Args:
-            value: Value to set for the dataOption property.
+            value: Value to set for the data_option property.
         """
         self._data_option = value
     
@@ -116,11 +116,11 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         fields = {
             "ascending": lambda n : setattr(self, 'ascending', n.get_bool_value()),
             "color": lambda n : setattr(self, 'color', n.get_str_value()),
-            "data_option": lambda n : setattr(self, 'data_option', n.get_str_value()),
+            "dataOption": lambda n : setattr(self, 'data_option', n.get_str_value()),
             "icon": lambda n : setattr(self, 'icon', n.get_object_value(workbook_icon.WorkbookIcon)),
             "key": lambda n : setattr(self, 'key', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "sort_on": lambda n : setattr(self, 'sort_on', n.get_str_value()),
+            "sortOn": lambda n : setattr(self, 'sort_on', n.get_str_value()),
         }
         return fields
     
@@ -171,7 +171,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -205,7 +205,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         """
         Sets the sortOn property value. Represents the type of sorting of this condition. The possible values are: Value, CellColor, FontColor, Icon.
         Args:
-            value: Value to set for the sortOn property.
+            value: Value to set for the sort_on property.
         """
         self._sort_on = value
     

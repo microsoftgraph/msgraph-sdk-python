@@ -10,12 +10,12 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-assign_request_builder = lazy_import('msgraph.generated.device_app_management.managed_e_books.item.assign.assign_request_builder')
 assignments_request_builder = lazy_import('msgraph.generated.device_app_management.managed_e_books.item.assignments.assignments_request_builder')
 managed_e_book_assignment_item_request_builder = lazy_import('msgraph.generated.device_app_management.managed_e_books.item.assignments.item.managed_e_book_assignment_item_request_builder')
 device_states_request_builder = lazy_import('msgraph.generated.device_app_management.managed_e_books.item.device_states.device_states_request_builder')
 device_install_state_item_request_builder = lazy_import('msgraph.generated.device_app_management.managed_e_books.item.device_states.item.device_install_state_item_request_builder')
 install_summary_request_builder = lazy_import('msgraph.generated.device_app_management.managed_e_books.item.install_summary.install_summary_request_builder')
+assign_request_builder = lazy_import('msgraph.generated.device_app_management.managed_e_books.item.microsoft_graph_assign.assign_request_builder')
 user_state_summary_request_builder = lazy_import('msgraph.generated.device_app_management.managed_e_books.item.user_state_summary.user_state_summary_request_builder')
 user_install_state_summary_item_request_builder = lazy_import('msgraph.generated.device_app_management.managed_e_books.item.user_state_summary.item.user_install_state_summary_item_request_builder')
 managed_e_book = lazy_import('msgraph.generated.models.managed_e_book')
@@ -25,13 +25,6 @@ class ManagedEBookItemRequestBuilder():
     """
     Provides operations to manage the managedEBooks property of the microsoft.graph.deviceAppManagement entity.
     """
-    @property
-    def assign(self) -> assign_request_builder.AssignRequestBuilder:
-        """
-        Provides operations to call the assign method.
-        """
-        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @property
     def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
         """
@@ -54,6 +47,13 @@ class ManagedEBookItemRequestBuilder():
         return install_summary_request_builder.InstallSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def microsoft_graph_assign(self) -> assign_request_builder.AssignRequestBuilder:
+        """
+        Provides operations to call the assign method.
+        """
+        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def user_state_summary(self) -> user_state_summary_request_builder.UserStateSummaryRequestBuilder:
         """
         Provides operations to manage the userStateSummary property of the microsoft.graph.managedEBook entity.
@@ -73,10 +73,11 @@ class ManagedEBookItemRequestBuilder():
         url_tpl_params["managedEBookAssignment%2Did"] = id
         return managed_e_book_assignment_item_request_builder.ManagedEBookAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, managed_e_book_id: Optional[str] = None) -> None:
         """
         Instantiates a new ManagedEBookItemRequestBuilder and sets the default values.
         Args:
+            managedEBookId: key: id of managedEBook
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -88,6 +89,7 @@ class ManagedEBookItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceAppManagement/managedEBooks/{managedEBook%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["managedEBook%2Did"] = managedEBookId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

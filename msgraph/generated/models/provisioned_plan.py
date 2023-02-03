@@ -34,7 +34,7 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
         """
         Sets the capabilityStatus property value. For example, 'Enabled'.
         Args:
-            value: Value to set for the capabilityStatus property.
+            value: Value to set for the capability_status property.
         """
         self._capability_status = value
     
@@ -72,9 +72,9 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "capability_status": lambda n : setattr(self, 'capability_status', n.get_str_value()),
+            "capabilityStatus": lambda n : setattr(self, 'capability_status', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "provisioning_status": lambda n : setattr(self, 'provisioning_status', n.get_str_value()),
+            "provisioningStatus": lambda n : setattr(self, 'provisioning_status', n.get_str_value()),
             "service": lambda n : setattr(self, 'service', n.get_str_value()),
         }
         return fields
@@ -92,7 +92,7 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -109,7 +109,7 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
         """
         Sets the provisioningStatus property value. For example, 'Success'.
         Args:
-            value: Value to set for the provisioningStatus property.
+            value: Value to set for the provisioning_status property.
         """
         self._provisioning_status = value
     

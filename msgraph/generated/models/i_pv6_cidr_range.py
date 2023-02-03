@@ -19,7 +19,7 @@ class IPv6CidrRange(ip_range.IpRange):
         """
         Sets the cidrAddress property value. IPv6 address in CIDR notation. Not nullable.
         Args:
-            value: Value to set for the cidrAddress property.
+            value: Value to set for the cidr_address property.
         """
         self._cidr_address = value
     
@@ -50,7 +50,7 @@ class IPv6CidrRange(ip_range.IpRange):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "cidr_address": lambda n : setattr(self, 'cidr_address', n.get_str_value()),
+            "cidrAddress": lambda n : setattr(self, 'cidr_address', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -42,11 +42,11 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "issuer_uri": lambda n : setattr(self, 'issuer_uri', n.get_str_value()),
-            "metadata_exchange_uri": lambda n : setattr(self, 'metadata_exchange_uri', n.get_str_value()),
-            "passive_sign_in_uri": lambda n : setattr(self, 'passive_sign_in_uri', n.get_str_value()),
-            "preferred_authentication_protocol": lambda n : setattr(self, 'preferred_authentication_protocol', n.get_enum_value(authentication_protocol.AuthenticationProtocol)),
-            "signing_certificate": lambda n : setattr(self, 'signing_certificate', n.get_str_value()),
+            "issuerUri": lambda n : setattr(self, 'issuer_uri', n.get_str_value()),
+            "metadataExchangeUri": lambda n : setattr(self, 'metadata_exchange_uri', n.get_str_value()),
+            "passiveSignInUri": lambda n : setattr(self, 'passive_sign_in_uri', n.get_str_value()),
+            "preferredAuthenticationProtocol": lambda n : setattr(self, 'preferred_authentication_protocol', n.get_enum_value(authentication_protocol.AuthenticationProtocol)),
+            "signingCertificate": lambda n : setattr(self, 'signing_certificate', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -65,7 +65,7 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
         """
         Sets the issuerUri property value. Issuer URI of the federation server.
         Args:
-            value: Value to set for the issuerUri property.
+            value: Value to set for the issuer_uri property.
         """
         self._issuer_uri = value
     
@@ -82,7 +82,7 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
         """
         Sets the metadataExchangeUri property value. URI of the metadata exchange endpoint used for authentication from rich client applications.
         Args:
-            value: Value to set for the metadataExchangeUri property.
+            value: Value to set for the metadata_exchange_uri property.
         """
         self._metadata_exchange_uri = value
     
@@ -99,7 +99,7 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
         """
         Sets the passiveSignInUri property value. URI that web-based clients are directed to when signing in to Azure Active Directory (Azure AD) services.
         Args:
-            value: Value to set for the passiveSignInUri property.
+            value: Value to set for the passive_sign_in_uri property.
         """
         self._passive_sign_in_uri = value
     
@@ -116,7 +116,7 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
         """
         Sets the preferredAuthenticationProtocol property value. Preferred authentication protocol. The possible values are: wsFed, saml, unknownFutureValue.
         Args:
-            value: Value to set for the preferredAuthenticationProtocol property.
+            value: Value to set for the preferred_authentication_protocol property.
         """
         self._preferred_authentication_protocol = value
     
@@ -148,7 +148,7 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
         """
         Sets the signingCertificate property value. Current certificate used to sign tokens passed to the Microsoft identity platform. The certificate is formatted as a Base64 encoded string of the public portion of the federated IdP's token signing certificate and must be compatible with the X509Certificate2 class.   This property is used in the following scenarios:  if a rollover is required outside of the autorollover update a new federation service is being set up  if the new token signing certificate isn't present in the federation properties after the federation service certificate has been updated.   Azure AD updates certificates via an autorollover process in which it attempts to retrieve a new certificate from the federation service metadata, 30 days before expiry of the current certificate. If a new certificate isn't available, Azure AD monitors the metadata daily and will update the federation settings for the domain when a new certificate is available.
         Args:
-            value: Value to set for the signingCertificate property.
+            value: Value to set for the signing_certificate property.
         """
         self._signing_certificate = value
     

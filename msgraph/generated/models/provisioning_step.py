@@ -101,7 +101,7 @@ class ProvisioningStep(AdditionalDataHolder, Parsable):
             "details": lambda n : setattr(self, 'details', n.get_object_value(details_info.DetailsInfo)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "provisioning_step_type": lambda n : setattr(self, 'provisioning_step_type', n.get_enum_value(provisioning_step_type.ProvisioningStepType)),
+            "provisioningStepType": lambda n : setattr(self, 'provisioning_step_type', n.get_enum_value(provisioning_step_type.ProvisioningStepType)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(provisioning_result.ProvisioningResult)),
         }
         return fields
@@ -136,7 +136,7 @@ class ProvisioningStep(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -153,7 +153,7 @@ class ProvisioningStep(AdditionalDataHolder, Parsable):
         """
         Sets the provisioningStepType property value. Type of step. Possible values are: import, scoping, matching, processing, referenceResolution, export, unknownFutureValue.
         Args:
-            value: Value to set for the provisioningStepType property.
+            value: Value to set for the provisioning_step_type property.
         """
         self._provisioning_step_type = value
     

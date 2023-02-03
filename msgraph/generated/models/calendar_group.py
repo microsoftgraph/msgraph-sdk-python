@@ -37,7 +37,7 @@ class CalendarGroup(entity.Entity):
         """
         Sets the changeKey property value. Identifies the version of the calendar group. Every time the calendar group is changed, ChangeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.
         Args:
-            value: Value to set for the changeKey property.
+            value: Value to set for the change_key property.
         """
         self._change_key = value
     
@@ -54,7 +54,7 @@ class CalendarGroup(entity.Entity):
         """
         Sets the classId property value. The class identifier. Read-only.
         Args:
-            value: Value to set for the classId property.
+            value: Value to set for the class_id property.
         """
         self._class_id = value
     
@@ -93,8 +93,8 @@ class CalendarGroup(entity.Entity):
         """
         fields = {
             "calendars": lambda n : setattr(self, 'calendars', n.get_collection_of_object_values(calendar.Calendar)),
-            "change_key": lambda n : setattr(self, 'change_key', n.get_str_value()),
-            "class_id": lambda n : setattr(self, 'class_id', n.get_object_value(Guid)),
+            "changeKey": lambda n : setattr(self, 'change_key', n.get_str_value()),
+            "classId": lambda n : setattr(self, 'class_id', n.get_object_value(Guid)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

@@ -20,7 +20,7 @@ class WindowsUpdateActiveHoursInstall(windows_update_install_schedule_type.Windo
         """
         Sets the activeHoursEnd property value. Active Hours End
         Args:
-            value: Value to set for the activeHoursEnd property.
+            value: Value to set for the active_hours_end property.
         """
         self._active_hours_end = value
     
@@ -37,7 +37,7 @@ class WindowsUpdateActiveHoursInstall(windows_update_install_schedule_type.Windo
         """
         Sets the activeHoursStart property value. Active Hours Start
         Args:
-            value: Value to set for the activeHoursStart property.
+            value: Value to set for the active_hours_start property.
         """
         self._active_hours_start = value
     
@@ -70,8 +70,8 @@ class WindowsUpdateActiveHoursInstall(windows_update_install_schedule_type.Windo
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "active_hours_end": lambda n : setattr(self, 'active_hours_end', n.get_object_value(Time)),
-            "active_hours_start": lambda n : setattr(self, 'active_hours_start', n.get_object_value(Time)),
+            "activeHoursEnd": lambda n : setattr(self, 'active_hours_end', n.get_object_value(Time)),
+            "activeHoursStart": lambda n : setattr(self, 'active_hours_start', n.get_object_value(Time)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

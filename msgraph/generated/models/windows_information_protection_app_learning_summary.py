@@ -23,7 +23,7 @@ class WindowsInformationProtectionAppLearningSummary(entity.Entity):
         """
         Sets the applicationName property value. Application Name
         Args:
-            value: Value to set for the applicationName property.
+            value: Value to set for the application_name property.
         """
         self._application_name = value
     
@@ -40,7 +40,7 @@ class WindowsInformationProtectionAppLearningSummary(entity.Entity):
         """
         Sets the applicationType property value. Possible types of Application
         Args:
-            value: Value to set for the applicationType property.
+            value: Value to set for the application_type property.
         """
         self._application_type = value
     
@@ -83,7 +83,7 @@ class WindowsInformationProtectionAppLearningSummary(entity.Entity):
         """
         Sets the deviceCount property value. Device Count
         Args:
-            value: Value to set for the deviceCount property.
+            value: Value to set for the device_count property.
         """
         self._device_count = value
     
@@ -93,9 +93,9 @@ class WindowsInformationProtectionAppLearningSummary(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "application_name": lambda n : setattr(self, 'application_name', n.get_str_value()),
-            "application_type": lambda n : setattr(self, 'application_type', n.get_enum_value(application_type.ApplicationType)),
-            "device_count": lambda n : setattr(self, 'device_count', n.get_int_value()),
+            "applicationName": lambda n : setattr(self, 'application_name', n.get_str_value()),
+            "applicationType": lambda n : setattr(self, 'application_type', n.get_enum_value(application_type.ApplicationType)),
+            "deviceCount": lambda n : setattr(self, 'device_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

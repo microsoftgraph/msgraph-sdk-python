@@ -19,7 +19,7 @@ class LinkedResource(entity.Entity):
         """
         Sets the applicationName property value. Field indicating the app name of the source that is sending the linkedResource.
         Args:
-            value: Value to set for the applicationName property.
+            value: Value to set for the application_name property.
         """
         self._application_name = value
     
@@ -64,7 +64,7 @@ class LinkedResource(entity.Entity):
         """
         Sets the displayName property value. Field indicating the title of the linkedResource.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -81,7 +81,7 @@ class LinkedResource(entity.Entity):
         """
         Sets the externalId property value. Id of the object that is associated with this task on the third-party/partner system.
         Args:
-            value: Value to set for the externalId property.
+            value: Value to set for the external_id property.
         """
         self._external_id = value
     
@@ -91,10 +91,10 @@ class LinkedResource(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "application_name": lambda n : setattr(self, 'application_name', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "applicationName": lambda n : setattr(self, 'application_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -127,7 +127,7 @@ class LinkedResource(entity.Entity):
         """
         Sets the webUrl property value. Deep link to the linkedResource.
         Args:
-            value: Value to set for the webUrl property.
+            value: Value to set for the web_url property.
         """
         self._web_url = value
     

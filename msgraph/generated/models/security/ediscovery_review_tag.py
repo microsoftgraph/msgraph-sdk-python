@@ -20,7 +20,7 @@ class EdiscoveryReviewTag(tag.Tag):
         """
         Sets the childSelectability property value. Indicates whether a single or multiple child tags can be associated with a document. Possible values are: One, Many.  This value controls whether the UX presents the tags as checkboxes or a radio button group.
         Args:
-            value: Value to set for the childSelectability property.
+            value: Value to set for the child_selectability property.
         """
         self._child_selectability = value
     
@@ -37,7 +37,7 @@ class EdiscoveryReviewTag(tag.Tag):
         """
         Sets the childTags property value. Returns the tags that are a child of a tag.
         Args:
-            value: Value to set for the childTags property.
+            value: Value to set for the child_tags property.
         """
         self._child_tags = value
     
@@ -72,8 +72,8 @@ class EdiscoveryReviewTag(tag.Tag):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "child_selectability": lambda n : setattr(self, 'child_selectability', n.get_enum_value(child_selectability.ChildSelectability)),
-            "child_tags": lambda n : setattr(self, 'child_tags', n.get_collection_of_object_values(ediscovery_review_tag.EdiscoveryReviewTag)),
+            "childSelectability": lambda n : setattr(self, 'child_selectability', n.get_enum_value(child_selectability.ChildSelectability)),
+            "childTags": lambda n : setattr(self, 'child_tags', n.get_collection_of_object_values(ediscovery_review_tag.EdiscoveryReviewTag)),
             "parent": lambda n : setattr(self, 'parent', n.get_object_value(ediscovery_review_tag.EdiscoveryReviewTag)),
         }
         super_fields = super().get_field_deserializers()

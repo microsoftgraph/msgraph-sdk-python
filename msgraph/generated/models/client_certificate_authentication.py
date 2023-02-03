@@ -20,7 +20,7 @@ class ClientCertificateAuthentication(api_authentication_configuration_base.ApiA
         """
         Sets the certificateList property value. The list of certificates uploaded for this API connector.
         Args:
-            value: Value to set for the certificateList property.
+            value: Value to set for the certificate_list property.
         """
         self._certificate_list = value
     
@@ -51,7 +51,7 @@ class ClientCertificateAuthentication(api_authentication_configuration_base.ApiA
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "certificate_list": lambda n : setattr(self, 'certificate_list', n.get_collection_of_object_values(pkcs12_certificate_information.Pkcs12CertificateInformation)),
+            "certificateList": lambda n : setattr(self, 'certificate_list', n.get_collection_of_object_values(pkcs12_certificate_information.Pkcs12CertificateInformation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

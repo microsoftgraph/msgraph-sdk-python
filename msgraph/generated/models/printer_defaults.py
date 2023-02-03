@@ -42,7 +42,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         """
         Sets the colorMode property value. The default color mode to use when printing the document. Valid values are described in the following table.
         Args:
-            value: Value to set for the colorMode property.
+            value: Value to set for the color_mode property.
         """
         self._color_mode = value
     
@@ -103,7 +103,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         """
         Sets the contentType property value. The default content (MIME) type to use when processing documents.
         Args:
-            value: Value to set for the contentType property.
+            value: Value to set for the content_type property.
         """
         self._content_type = value
     
@@ -120,7 +120,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         """
         Sets the copiesPerJob property value. The default number of copies printed per job.
         Args:
-            value: Value to set for the copiesPerJob property.
+            value: Value to set for the copies_per_job property.
         """
         self._copies_per_job = value
     
@@ -166,7 +166,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         """
         Sets the duplexMode property value. The default duplex (double-sided) configuration to use when printing a document. Valid values are described in the following table.
         Args:
-            value: Value to set for the duplexMode property.
+            value: Value to set for the duplex_mode property.
         """
         self._duplex_mode = value
     
@@ -200,7 +200,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         """
         Sets the fitPdfToPage property value. The default fitPdfToPage setting. True to fit each page of a PDF document to a physical sheet of media; false to let the printer decide how to lay out impressions.
         Args:
-            value: Value to set for the fitPdfToPage property.
+            value: Value to set for the fit_pdf_to_page property.
         """
         self._fit_pdf_to_page = value
     
@@ -210,22 +210,22 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "color_mode": lambda n : setattr(self, 'color_mode', n.get_enum_value(print_color_mode.PrintColorMode)),
-            "content_type": lambda n : setattr(self, 'content_type', n.get_str_value()),
-            "copies_per_job": lambda n : setattr(self, 'copies_per_job', n.get_int_value()),
+            "colorMode": lambda n : setattr(self, 'color_mode', n.get_enum_value(print_color_mode.PrintColorMode)),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
+            "copiesPerJob": lambda n : setattr(self, 'copies_per_job', n.get_int_value()),
             "dpi": lambda n : setattr(self, 'dpi', n.get_int_value()),
-            "duplex_mode": lambda n : setattr(self, 'duplex_mode', n.get_enum_value(print_duplex_mode.PrintDuplexMode)),
+            "duplexMode": lambda n : setattr(self, 'duplex_mode', n.get_enum_value(print_duplex_mode.PrintDuplexMode)),
             "finishings": lambda n : setattr(self, 'finishings', n.get_collection_of_enum_values(print_finishing.PrintFinishing)),
-            "fit_pdf_to_page": lambda n : setattr(self, 'fit_pdf_to_page', n.get_bool_value()),
-            "input_bin": lambda n : setattr(self, 'input_bin', n.get_str_value()),
-            "media_color": lambda n : setattr(self, 'media_color', n.get_str_value()),
-            "media_size": lambda n : setattr(self, 'media_size', n.get_str_value()),
-            "media_type": lambda n : setattr(self, 'media_type', n.get_str_value()),
-            "multipage_layout": lambda n : setattr(self, 'multipage_layout', n.get_enum_value(print_multipage_layout.PrintMultipageLayout)),
+            "fitPdfToPage": lambda n : setattr(self, 'fit_pdf_to_page', n.get_bool_value()),
+            "inputBin": lambda n : setattr(self, 'input_bin', n.get_str_value()),
+            "mediaColor": lambda n : setattr(self, 'media_color', n.get_str_value()),
+            "mediaSize": lambda n : setattr(self, 'media_size', n.get_str_value()),
+            "mediaType": lambda n : setattr(self, 'media_type', n.get_str_value()),
+            "multipageLayout": lambda n : setattr(self, 'multipage_layout', n.get_enum_value(print_multipage_layout.PrintMultipageLayout)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "orientation": lambda n : setattr(self, 'orientation', n.get_enum_value(print_orientation.PrintOrientation)),
-            "output_bin": lambda n : setattr(self, 'output_bin', n.get_str_value()),
-            "pages_per_sheet": lambda n : setattr(self, 'pages_per_sheet', n.get_int_value()),
+            "outputBin": lambda n : setattr(self, 'output_bin', n.get_str_value()),
+            "pagesPerSheet": lambda n : setattr(self, 'pages_per_sheet', n.get_int_value()),
             "quality": lambda n : setattr(self, 'quality', n.get_enum_value(print_quality.PrintQuality)),
             "scaling": lambda n : setattr(self, 'scaling', n.get_enum_value(print_scaling.PrintScaling)),
         }
@@ -244,7 +244,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         """
         Sets the inputBin property value. The inputBin property
         Args:
-            value: Value to set for the inputBin property.
+            value: Value to set for the input_bin property.
         """
         self._input_bin = value
     
@@ -261,7 +261,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         """
         Sets the mediaColor property value. The default media (such as paper) color to print the document on.
         Args:
-            value: Value to set for the mediaColor property.
+            value: Value to set for the media_color property.
         """
         self._media_color = value
     
@@ -278,7 +278,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         """
         Sets the mediaSize property value. The default media size to use. Supports standard size names for ISO and ANSI media sizes. Valid values are listed in the printerCapabilities topic.
         Args:
-            value: Value to set for the mediaSize property.
+            value: Value to set for the media_size property.
         """
         self._media_size = value
     
@@ -295,7 +295,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         """
         Sets the mediaType property value. The default media (such as paper) type to print the document on.
         Args:
-            value: Value to set for the mediaType property.
+            value: Value to set for the media_type property.
         """
         self._media_type = value
     
@@ -312,7 +312,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         """
         Sets the multipageLayout property value. The default direction to lay out pages when multiple pages are being printed per sheet. Valid values are described in the following table.
         Args:
-            value: Value to set for the multipageLayout property.
+            value: Value to set for the multipage_layout property.
         """
         self._multipage_layout = value
     
@@ -329,7 +329,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -363,7 +363,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         """
         Sets the outputBin property value. The default output bin to place completed prints into. See the printer's capabilities for a list of supported output bins.
         Args:
-            value: Value to set for the outputBin property.
+            value: Value to set for the output_bin property.
         """
         self._output_bin = value
     
@@ -380,7 +380,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         """
         Sets the pagesPerSheet property value. The default number of document pages to print on each sheet.
         Args:
-            value: Value to set for the pagesPerSheet property.
+            value: Value to set for the pages_per_sheet property.
         """
         self._pages_per_sheet = value
     

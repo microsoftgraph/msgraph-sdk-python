@@ -79,7 +79,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         fields = {
             "aggregations": lambda n : setattr(self, 'aggregations', n.get_collection_of_object_values(search_aggregation.SearchAggregation)),
             "hits": lambda n : setattr(self, 'hits', n.get_collection_of_object_values(search_hit.SearchHit)),
-            "more_results_available": lambda n : setattr(self, 'more_results_available', n.get_bool_value()),
+            "moreResultsAvailable": lambda n : setattr(self, 'more_results_available', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "total": lambda n : setattr(self, 'total', n.get_int_value()),
         }
@@ -115,7 +115,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         """
         Sets the moreResultsAvailable property value. Provides information if more results are available. Based on this information, you can adjust the from and size properties of the searchRequest accordingly.
         Args:
-            value: Value to set for the moreResultsAvailable property.
+            value: Value to set for the more_results_available property.
         """
         self._more_results_available = value
     
@@ -132,7 +132,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

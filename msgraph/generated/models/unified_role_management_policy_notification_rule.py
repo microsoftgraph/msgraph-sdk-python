@@ -41,11 +41,11 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_default_recipients_enabled": lambda n : setattr(self, 'is_default_recipients_enabled', n.get_bool_value()),
-            "notification_level": lambda n : setattr(self, 'notification_level', n.get_str_value()),
-            "notification_recipients": lambda n : setattr(self, 'notification_recipients', n.get_collection_of_primitive_values(str)),
-            "notification_type": lambda n : setattr(self, 'notification_type', n.get_str_value()),
-            "recipient_type": lambda n : setattr(self, 'recipient_type', n.get_str_value()),
+            "isDefaultRecipientsEnabled": lambda n : setattr(self, 'is_default_recipients_enabled', n.get_bool_value()),
+            "notificationLevel": lambda n : setattr(self, 'notification_level', n.get_str_value()),
+            "notificationRecipients": lambda n : setattr(self, 'notification_recipients', n.get_collection_of_primitive_values(str)),
+            "notificationType": lambda n : setattr(self, 'notification_type', n.get_str_value()),
+            "recipientType": lambda n : setattr(self, 'recipient_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -64,7 +64,7 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
         """
         Sets the isDefaultRecipientsEnabled property value. Indicates whether a default recipient will receive the notification email.
         Args:
-            value: Value to set for the isDefaultRecipientsEnabled property.
+            value: Value to set for the is_default_recipients_enabled property.
         """
         self._is_default_recipients_enabled = value
     
@@ -81,7 +81,7 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
         """
         Sets the notificationLevel property value. The level of notification. The possible values are None, Critical, All.
         Args:
-            value: Value to set for the notificationLevel property.
+            value: Value to set for the notification_level property.
         """
         self._notification_level = value
     
@@ -98,7 +98,7 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
         """
         Sets the notificationRecipients property value. The list of recipients of the email notifications.
         Args:
-            value: Value to set for the notificationRecipients property.
+            value: Value to set for the notification_recipients property.
         """
         self._notification_recipients = value
     
@@ -115,7 +115,7 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
         """
         Sets the notificationType property value. The type of notification. Only Email is supported.
         Args:
-            value: Value to set for the notificationType property.
+            value: Value to set for the notification_type property.
         """
         self._notification_type = value
     
@@ -132,7 +132,7 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
         """
         Sets the recipientType property value. The type of recipient of the notification. The possible values are Requestor, Approver, Admin.
         Args:
-            value: Value to set for the recipientType property.
+            value: Value to set for the recipient_type property.
         """
         self._recipient_type = value
     

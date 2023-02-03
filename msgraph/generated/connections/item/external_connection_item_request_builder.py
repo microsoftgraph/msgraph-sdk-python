@@ -52,10 +52,11 @@ class ExternalConnectionItemRequestBuilder():
         """
         return schema_request_builder.SchemaRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, external_connection_id: Optional[str] = None) -> None:
         """
         Instantiates a new ExternalConnectionItemRequestBuilder and sets the default values.
         Args:
+            externalConnectionId: key: id of externalConnection
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -67,12 +68,13 @@ class ExternalConnectionItemRequestBuilder():
         self.url_template: str = "{+baseurl}/connections/{externalConnection%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["externalConnection%2Did"] = externalConnectionId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
     async def delete(self,request_configuration: Optional[ExternalConnectionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete entity from connections by key (id)
+        Delete entity from connections
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -89,7 +91,7 @@ class ExternalConnectionItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ExternalConnectionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[external_connection.ExternalConnection]:
         """
-        Get entity from connections by key (id)
+        Get entity from connections by key
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[external_connection.ExternalConnection]
@@ -146,7 +148,7 @@ class ExternalConnectionItemRequestBuilder():
     
     async def patch(self,body: Optional[external_connection.ExternalConnection] = None, request_configuration: Optional[ExternalConnectionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[external_connection.ExternalConnection]:
         """
-        Update entity in connections by key (id)
+        Update entity in connections
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -167,7 +169,7 @@ class ExternalConnectionItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ExternalConnectionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete entity from connections by key (id)
+        Delete entity from connections
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -183,7 +185,7 @@ class ExternalConnectionItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ExternalConnectionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get entity from connections by key (id)
+        Get entity from connections by key
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -201,7 +203,7 @@ class ExternalConnectionItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[external_connection.ExternalConnection] = None, request_configuration: Optional[ExternalConnectionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update entity in connections by key (id)
+        Update entity in connections
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -235,7 +237,7 @@ class ExternalConnectionItemRequestBuilder():
     @dataclass
     class ExternalConnectionItemRequestBuilderGetQueryParameters():
         """
-        Get entity from connections by key (id)
+        Get entity from connections by key
         """
         # Expand related entities
         expand: Optional[List[str]] = None

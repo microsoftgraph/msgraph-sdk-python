@@ -33,7 +33,7 @@ class SkypeUserConversationMember(conversation_member.ConversationMember):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "skype_id": lambda n : setattr(self, 'skype_id', n.get_str_value()),
+            "skypeId": lambda n : setattr(self, 'skype_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,7 +63,7 @@ class SkypeUserConversationMember(conversation_member.ConversationMember):
         """
         Sets the skypeId property value. The skypeId property
         Args:
-            value: Value to set for the skypeId property.
+            value: Value to set for the skype_id property.
         """
         self._skype_id = value
     

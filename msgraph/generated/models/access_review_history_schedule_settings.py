@@ -57,7 +57,7 @@ class AccessReviewHistoryScheduleSettings(AdditionalDataHolder, Parsable):
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(patterned_recurrence.PatternedRecurrence)),
-            "report_range": lambda n : setattr(self, 'report_range', n.get_str_value()),
+            "reportRange": lambda n : setattr(self, 'report_range', n.get_str_value()),
         }
         return fields
     
@@ -74,7 +74,7 @@ class AccessReviewHistoryScheduleSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -108,7 +108,7 @@ class AccessReviewHistoryScheduleSettings(AdditionalDataHolder, Parsable):
         """
         Sets the reportRange property value. A duration string in ISO 8601 duration format specifying the lookback period of the generated review history data. For example, if a history definition is scheduled to run on the 1st of every month, the reportRange is P1M. In this case, on the first of every month, access review history data will be collected containing only the previous month's review data. Note: Only years, months, and days ISO 8601 properties are supported. Required.
         Args:
-            value: Value to set for the reportRange property.
+            value: Value to set for the report_range property.
         """
         self._report_range = value
     

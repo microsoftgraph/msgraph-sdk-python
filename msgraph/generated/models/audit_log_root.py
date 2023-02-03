@@ -48,7 +48,7 @@ class AuditLogRoot(entity.Entity):
         """
         Sets the directoryAudits property value. The directoryAudits property
         Args:
-            value: Value to set for the directoryAudits property.
+            value: Value to set for the directory_audits property.
         """
         self._directory_audits = value
     
@@ -58,9 +58,9 @@ class AuditLogRoot(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "directory_audits": lambda n : setattr(self, 'directory_audits', n.get_collection_of_object_values(directory_audit.DirectoryAudit)),
+            "directoryAudits": lambda n : setattr(self, 'directory_audits', n.get_collection_of_object_values(directory_audit.DirectoryAudit)),
             "provisioning": lambda n : setattr(self, 'provisioning', n.get_collection_of_object_values(provisioning_object_summary.ProvisioningObjectSummary)),
-            "sign_ins": lambda n : setattr(self, 'sign_ins', n.get_collection_of_object_values(sign_in.SignIn)),
+            "signIns": lambda n : setattr(self, 'sign_ins', n.get_collection_of_object_values(sign_in.SignIn)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -109,7 +109,7 @@ class AuditLogRoot(entity.Entity):
         """
         Sets the signIns property value. The signIns property
         Args:
-            value: Value to set for the signIns property.
+            value: Value to set for the sign_ins property.
         """
         self._sign_ins = value
     

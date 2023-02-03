@@ -16,7 +16,7 @@ associated_teams_request_builder = lazy_import('msgraph.generated.users.item.tea
 associated_team_info_item_request_builder = lazy_import('msgraph.generated.users.item.teamwork.associated_teams.item.associated_team_info_item_request_builder')
 installed_apps_request_builder = lazy_import('msgraph.generated.users.item.teamwork.installed_apps.installed_apps_request_builder')
 user_scope_teams_app_installation_item_request_builder = lazy_import('msgraph.generated.users.item.teamwork.installed_apps.item.user_scope_teams_app_installation_item_request_builder')
-send_activity_notification_request_builder = lazy_import('msgraph.generated.users.item.teamwork.send_activity_notification.send_activity_notification_request_builder')
+send_activity_notification_request_builder = lazy_import('msgraph.generated.users.item.teamwork.microsoft_graph_send_activity_notification.send_activity_notification_request_builder')
 
 class TeamworkRequestBuilder():
     """
@@ -37,7 +37,7 @@ class TeamworkRequestBuilder():
         return installed_apps_request_builder.InstalledAppsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def send_activity_notification(self) -> send_activity_notification_request_builder.SendActivityNotificationRequestBuilder:
+    def microsoft_graph_send_activity_notification(self) -> send_activity_notification_request_builder.SendActivityNotificationRequestBuilder:
         """
         Provides operations to call the sendActivityNotification method.
         """

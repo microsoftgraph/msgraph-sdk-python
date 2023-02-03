@@ -53,7 +53,7 @@ class UserInstallStateSummary(entity.Entity):
         """
         Sets the deviceStates property value. The install state of the eBook.
         Args:
-            value: Value to set for the deviceStates property.
+            value: Value to set for the device_states property.
         """
         self._device_states = value
     
@@ -70,7 +70,7 @@ class UserInstallStateSummary(entity.Entity):
         """
         Sets the failedDeviceCount property value. Failed Device Count.
         Args:
-            value: Value to set for the failedDeviceCount property.
+            value: Value to set for the failed_device_count property.
         """
         self._failed_device_count = value
     
@@ -80,11 +80,11 @@ class UserInstallStateSummary(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_states": lambda n : setattr(self, 'device_states', n.get_collection_of_object_values(device_install_state.DeviceInstallState)),
-            "failed_device_count": lambda n : setattr(self, 'failed_device_count', n.get_int_value()),
-            "installed_device_count": lambda n : setattr(self, 'installed_device_count', n.get_int_value()),
-            "not_installed_device_count": lambda n : setattr(self, 'not_installed_device_count', n.get_int_value()),
-            "user_name": lambda n : setattr(self, 'user_name', n.get_str_value()),
+            "deviceStates": lambda n : setattr(self, 'device_states', n.get_collection_of_object_values(device_install_state.DeviceInstallState)),
+            "failedDeviceCount": lambda n : setattr(self, 'failed_device_count', n.get_int_value()),
+            "installedDeviceCount": lambda n : setattr(self, 'installed_device_count', n.get_int_value()),
+            "notInstalledDeviceCount": lambda n : setattr(self, 'not_installed_device_count', n.get_int_value()),
+            "userName": lambda n : setattr(self, 'user_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -103,7 +103,7 @@ class UserInstallStateSummary(entity.Entity):
         """
         Sets the installedDeviceCount property value. Installed Device Count.
         Args:
-            value: Value to set for the installedDeviceCount property.
+            value: Value to set for the installed_device_count property.
         """
         self._installed_device_count = value
     
@@ -120,7 +120,7 @@ class UserInstallStateSummary(entity.Entity):
         """
         Sets the notInstalledDeviceCount property value. Not installed device count.
         Args:
-            value: Value to set for the notInstalledDeviceCount property.
+            value: Value to set for the not_installed_device_count property.
         """
         self._not_installed_device_count = value
     
@@ -152,7 +152,7 @@ class UserInstallStateSummary(entity.Entity):
         """
         Sets the userName property value. User name.
         Args:
-            value: Value to set for the userName property.
+            value: Value to set for the user_name property.
         """
         self._user_name = value
     

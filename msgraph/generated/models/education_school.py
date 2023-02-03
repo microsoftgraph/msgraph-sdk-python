@@ -41,7 +41,7 @@ class EducationSchool(education_organization.EducationOrganization):
         """
         Sets the administrativeUnit property value. The underlying administrativeUnit for this school.
         Args:
-            value: Value to set for the administrativeUnit property.
+            value: Value to set for the administrative_unit property.
         """
         self._administrative_unit = value
     
@@ -110,7 +110,7 @@ class EducationSchool(education_organization.EducationOrganization):
         """
         Sets the createdBy property value. Entity who created the school.
         Args:
-            value: Value to set for the createdBy property.
+            value: Value to set for the created_by property.
         """
         self._created_by = value
     
@@ -139,7 +139,7 @@ class EducationSchool(education_organization.EducationOrganization):
         """
         Sets the externalId property value. ID of school in syncing system.
         Args:
-            value: Value to set for the externalId property.
+            value: Value to set for the external_id property.
         """
         self._external_id = value
     
@@ -156,7 +156,7 @@ class EducationSchool(education_organization.EducationOrganization):
         """
         Sets the externalPrincipalId property value. ID of principal in syncing system.
         Args:
-            value: Value to set for the externalPrincipalId property.
+            value: Value to set for the external_principal_id property.
         """
         self._external_principal_id = value
     
@@ -184,18 +184,18 @@ class EducationSchool(education_organization.EducationOrganization):
         """
         fields = {
             "address": lambda n : setattr(self, 'address', n.get_object_value(physical_address.PhysicalAddress)),
-            "administrative_unit": lambda n : setattr(self, 'administrative_unit', n.get_object_value(administrative_unit.AdministrativeUnit)),
+            "administrativeUnit": lambda n : setattr(self, 'administrative_unit', n.get_object_value(administrative_unit.AdministrativeUnit)),
             "classes": lambda n : setattr(self, 'classes', n.get_collection_of_object_values(education_class.EducationClass)),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
-            "external_principal_id": lambda n : setattr(self, 'external_principal_id', n.get_str_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "externalPrincipalId": lambda n : setattr(self, 'external_principal_id', n.get_str_value()),
             "fax": lambda n : setattr(self, 'fax', n.get_str_value()),
-            "highest_grade": lambda n : setattr(self, 'highest_grade', n.get_str_value()),
-            "lowest_grade": lambda n : setattr(self, 'lowest_grade', n.get_str_value()),
+            "highestGrade": lambda n : setattr(self, 'highest_grade', n.get_str_value()),
+            "lowestGrade": lambda n : setattr(self, 'lowest_grade', n.get_str_value()),
             "phone": lambda n : setattr(self, 'phone', n.get_str_value()),
-            "principal_email": lambda n : setattr(self, 'principal_email', n.get_str_value()),
-            "principal_name": lambda n : setattr(self, 'principal_name', n.get_str_value()),
-            "school_number": lambda n : setattr(self, 'school_number', n.get_str_value()),
+            "principalEmail": lambda n : setattr(self, 'principal_email', n.get_str_value()),
+            "principalName": lambda n : setattr(self, 'principal_name', n.get_str_value()),
+            "schoolNumber": lambda n : setattr(self, 'school_number', n.get_str_value()),
             "users": lambda n : setattr(self, 'users', n.get_collection_of_object_values(education_user.EducationUser)),
         }
         super_fields = super().get_field_deserializers()
@@ -215,7 +215,7 @@ class EducationSchool(education_organization.EducationOrganization):
         """
         Sets the highestGrade property value. Highest grade taught.
         Args:
-            value: Value to set for the highestGrade property.
+            value: Value to set for the highest_grade property.
         """
         self._highest_grade = value
     
@@ -232,7 +232,7 @@ class EducationSchool(education_organization.EducationOrganization):
         """
         Sets the lowestGrade property value. Lowest grade taught.
         Args:
-            value: Value to set for the lowestGrade property.
+            value: Value to set for the lowest_grade property.
         """
         self._lowest_grade = value
     
@@ -266,7 +266,7 @@ class EducationSchool(education_organization.EducationOrganization):
         """
         Sets the principalEmail property value. Email address of the principal.
         Args:
-            value: Value to set for the principalEmail property.
+            value: Value to set for the principal_email property.
         """
         self._principal_email = value
     
@@ -283,7 +283,7 @@ class EducationSchool(education_organization.EducationOrganization):
         """
         Sets the principalName property value. Name of the principal.
         Args:
-            value: Value to set for the principalName property.
+            value: Value to set for the principal_name property.
         """
         self._principal_name = value
     
@@ -300,7 +300,7 @@ class EducationSchool(education_organization.EducationOrganization):
         """
         Sets the schoolNumber property value. School Number.
         Args:
-            value: Value to set for the schoolNumber property.
+            value: Value to set for the school_number property.
         """
         self._school_number = value
     

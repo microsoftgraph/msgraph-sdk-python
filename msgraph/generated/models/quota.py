@@ -84,7 +84,7 @@ class Quota(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "remaining": lambda n : setattr(self, 'remaining', n.get_int_value()),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
-            "storage_plan_information": lambda n : setattr(self, 'storage_plan_information', n.get_object_value(storage_plan_information.StoragePlanInformation)),
+            "storagePlanInformation": lambda n : setattr(self, 'storage_plan_information', n.get_object_value(storage_plan_information.StoragePlanInformation)),
             "total": lambda n : setattr(self, 'total', n.get_int_value()),
             "used": lambda n : setattr(self, 'used', n.get_int_value()),
         }
@@ -103,7 +103,7 @@ class Quota(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -171,7 +171,7 @@ class Quota(AdditionalDataHolder, Parsable):
         """
         Sets the storagePlanInformation property value. Information about the drive's storage quota plans. Only in Personal OneDrive.
         Args:
-            value: Value to set for the storagePlanInformation property.
+            value: Value to set for the storage_plan_information property.
         """
         self._storage_plan_information = value
     

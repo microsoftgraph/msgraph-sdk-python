@@ -12,7 +12,7 @@ class OpenTypeExtension(extension.Extension):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.openTypeExtension"
-        # A unique text identifier for an open type data extension. Required.
+        # A unique text identifier for an open type data extension. Optional.
         self._extension_name: Optional[str] = None
     
     @staticmethod
@@ -30,7 +30,7 @@ class OpenTypeExtension(extension.Extension):
     @property
     def extension_name(self,) -> Optional[str]:
         """
-        Gets the extensionName property value. A unique text identifier for an open type data extension. Required.
+        Gets the extensionName property value. A unique text identifier for an open type data extension. Optional.
         Returns: Optional[str]
         """
         return self._extension_name
@@ -38,9 +38,9 @@ class OpenTypeExtension(extension.Extension):
     @extension_name.setter
     def extension_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the extensionName property value. A unique text identifier for an open type data extension. Required.
+        Sets the extensionName property value. A unique text identifier for an open type data extension. Optional.
         Args:
-            value: Value to set for the extensionName property.
+            value: Value to set for the extension_name property.
         """
         self._extension_name = value
     
@@ -50,7 +50,7 @@ class OpenTypeExtension(extension.Extension):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "extension_name": lambda n : setattr(self, 'extension_name', n.get_str_value()),
+            "extensionName": lambda n : setattr(self, 'extension_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -54,7 +54,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         """
         Sets the displayName property value. The display name of the identityUserFlowAttribute within a user flow.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -64,12 +64,12 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_optional": lambda n : setattr(self, 'is_optional', n.get_bool_value()),
-            "requires_verification": lambda n : setattr(self, 'requires_verification', n.get_bool_value()),
-            "user_attribute": lambda n : setattr(self, 'user_attribute', n.get_object_value(identity_user_flow_attribute.IdentityUserFlowAttribute)),
-            "user_attribute_values": lambda n : setattr(self, 'user_attribute_values', n.get_collection_of_object_values(user_attribute_values_item.UserAttributeValuesItem)),
-            "user_input_type": lambda n : setattr(self, 'user_input_type', n.get_enum_value(identity_user_flow_attribute_input_type.IdentityUserFlowAttributeInputType)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isOptional": lambda n : setattr(self, 'is_optional', n.get_bool_value()),
+            "requiresVerification": lambda n : setattr(self, 'requires_verification', n.get_bool_value()),
+            "userAttribute": lambda n : setattr(self, 'user_attribute', n.get_object_value(identity_user_flow_attribute.IdentityUserFlowAttribute)),
+            "userAttributeValues": lambda n : setattr(self, 'user_attribute_values', n.get_collection_of_object_values(user_attribute_values_item.UserAttributeValuesItem)),
+            "userInputType": lambda n : setattr(self, 'user_input_type', n.get_enum_value(identity_user_flow_attribute_input_type.IdentityUserFlowAttributeInputType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -88,7 +88,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         """
         Sets the isOptional property value. Determines whether the identityUserFlowAttribute is optional. true means the user doesn't have to provide a value. false means the user cannot complete sign-up without providing a value.
         Args:
-            value: Value to set for the isOptional property.
+            value: Value to set for the is_optional property.
         """
         self._is_optional = value
     
@@ -105,7 +105,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         """
         Sets the requiresVerification property value. Determines whether the identityUserFlowAttribute requires verification. This is only used for verifying the user's phone number or email address.
         Args:
-            value: Value to set for the requiresVerification property.
+            value: Value to set for the requires_verification property.
         """
         self._requires_verification = value
     
@@ -138,7 +138,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         """
         Sets the userAttribute property value. The user attribute that you want to add to your user flow.
         Args:
-            value: Value to set for the userAttribute property.
+            value: Value to set for the user_attribute property.
         """
         self._user_attribute = value
     
@@ -155,7 +155,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         """
         Sets the userAttributeValues property value. The input options for the user flow attribute. Only applicable when the userInputType is radioSingleSelect, dropdownSingleSelect, or checkboxMultiSelect.
         Args:
-            value: Value to set for the userAttributeValues property.
+            value: Value to set for the user_attribute_values property.
         """
         self._user_attribute_values = value
     
@@ -172,7 +172,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         """
         Sets the userInputType property value. The userInputType property
         Args:
-            value: Value to set for the userInputType property.
+            value: Value to set for the user_input_type property.
         """
         self._user_input_type = value
     

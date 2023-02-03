@@ -43,7 +43,7 @@ class UnifiedRoleEligibilityScheduleRequest(request.Request):
         """
         Sets the appScope property value. Read-only property with details of the app-specific scope when the role eligibility is scoped to an app. Nullable. Supports $expand.
         Args:
-            value: Value to set for the appScope property.
+            value: Value to set for the app_scope property.
         """
         self._app_scope = value
     
@@ -60,7 +60,7 @@ class UnifiedRoleEligibilityScheduleRequest(request.Request):
         """
         Sets the appScopeId property value. Identifier of the app-specific scope when the role eligibility is scoped to an app. The scope of a role eligibility determines the set of resources for which the principal is eligible to access. App scopes are scopes that are defined and understood by this application only. Use / for tenant-wide app scopes. Use directoryScopeId to limit the scope to particular directory objects, for example, administrative units. Supports $filter (eq, ne, and on null values).
         Args:
-            value: Value to set for the appScopeId property.
+            value: Value to set for the app_scope_id property.
         """
         self._app_scope_id = value
     
@@ -127,7 +127,7 @@ class UnifiedRoleEligibilityScheduleRequest(request.Request):
         """
         Sets the directoryScope property value. The directory object that is the scope of the role eligibility. Read-only. Supports $expand.
         Args:
-            value: Value to set for the directoryScope property.
+            value: Value to set for the directory_scope property.
         """
         self._directory_scope = value
     
@@ -144,7 +144,7 @@ class UnifiedRoleEligibilityScheduleRequest(request.Request):
         """
         Sets the directoryScopeId property value. Identifier of the directory object representing the scope of the role eligibility. The scope of a role eligibility determines the set of resources for which the principal has been granted access. Directory scopes are shared scopes stored in the directory that are understood by multiple applications. Use / for tenant-wide scope. Use appScopeId to limit the scope to an application only. Supports $filter (eq, ne, and on null values).
         Args:
-            value: Value to set for the directoryScopeId property.
+            value: Value to set for the directory_scope_id property.
         """
         self._directory_scope_id = value
     
@@ -155,20 +155,20 @@ class UnifiedRoleEligibilityScheduleRequest(request.Request):
         """
         fields = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(unified_role_schedule_request_actions.UnifiedRoleScheduleRequestActions)),
-            "app_scope": lambda n : setattr(self, 'app_scope', n.get_object_value(app_scope.AppScope)),
-            "app_scope_id": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
-            "directory_scope": lambda n : setattr(self, 'directory_scope', n.get_object_value(directory_object.DirectoryObject)),
-            "directory_scope_id": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
-            "is_validation_only": lambda n : setattr(self, 'is_validation_only', n.get_bool_value()),
+            "appScope": lambda n : setattr(self, 'app_scope', n.get_object_value(app_scope.AppScope)),
+            "appScopeId": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
+            "directoryScope": lambda n : setattr(self, 'directory_scope', n.get_object_value(directory_object.DirectoryObject)),
+            "directoryScopeId": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
+            "isValidationOnly": lambda n : setattr(self, 'is_validation_only', n.get_bool_value()),
             "justification": lambda n : setattr(self, 'justification', n.get_str_value()),
             "principal": lambda n : setattr(self, 'principal', n.get_object_value(directory_object.DirectoryObject)),
-            "principal_id": lambda n : setattr(self, 'principal_id', n.get_str_value()),
-            "role_definition": lambda n : setattr(self, 'role_definition', n.get_object_value(unified_role_definition.UnifiedRoleDefinition)),
-            "role_definition_id": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
-            "schedule_info": lambda n : setattr(self, 'schedule_info', n.get_object_value(request_schedule.RequestSchedule)),
-            "target_schedule": lambda n : setattr(self, 'target_schedule', n.get_object_value(unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule)),
-            "target_schedule_id": lambda n : setattr(self, 'target_schedule_id', n.get_str_value()),
-            "ticket_info": lambda n : setattr(self, 'ticket_info', n.get_object_value(ticket_info.TicketInfo)),
+            "principalId": lambda n : setattr(self, 'principal_id', n.get_str_value()),
+            "roleDefinition": lambda n : setattr(self, 'role_definition', n.get_object_value(unified_role_definition.UnifiedRoleDefinition)),
+            "roleDefinitionId": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
+            "scheduleInfo": lambda n : setattr(self, 'schedule_info', n.get_object_value(request_schedule.RequestSchedule)),
+            "targetSchedule": lambda n : setattr(self, 'target_schedule', n.get_object_value(unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule)),
+            "targetScheduleId": lambda n : setattr(self, 'target_schedule_id', n.get_str_value()),
+            "ticketInfo": lambda n : setattr(self, 'ticket_info', n.get_object_value(ticket_info.TicketInfo)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -187,7 +187,7 @@ class UnifiedRoleEligibilityScheduleRequest(request.Request):
         """
         Sets the isValidationOnly property value. Determines whether the call is a validation or an actual call. Only set this property if you want to check whether an activation is subject to additional rules like MFA before actually submitting the request.
         Args:
-            value: Value to set for the isValidationOnly property.
+            value: Value to set for the is_validation_only property.
         """
         self._is_validation_only = value
     
@@ -238,7 +238,7 @@ class UnifiedRoleEligibilityScheduleRequest(request.Request):
         """
         Sets the principalId property value. Identifier of the principal that has been granted the role eligibility. Can be a user or a role-assignable group. You can grant only active assignments service principals.Supports $filter (eq, ne).
         Args:
-            value: Value to set for the principalId property.
+            value: Value to set for the principal_id property.
         """
         self._principal_id = value
     
@@ -255,7 +255,7 @@ class UnifiedRoleEligibilityScheduleRequest(request.Request):
         """
         Sets the roleDefinition property value. Detailed information for the unifiedRoleDefinition object that is referenced through the roleDefinitionId property. Supports $expand.
         Args:
-            value: Value to set for the roleDefinition property.
+            value: Value to set for the role_definition property.
         """
         self._role_definition = value
     
@@ -272,7 +272,7 @@ class UnifiedRoleEligibilityScheduleRequest(request.Request):
         """
         Sets the roleDefinitionId property value. Identifier of the unifiedRoleDefinition object that is being assigned to the principal. Supports $filter (eq, ne).
         Args:
-            value: Value to set for the roleDefinitionId property.
+            value: Value to set for the role_definition_id property.
         """
         self._role_definition_id = value
     
@@ -289,7 +289,7 @@ class UnifiedRoleEligibilityScheduleRequest(request.Request):
         """
         Sets the scheduleInfo property value. The period of the role eligibility. Recurring schedules are currently unsupported.
         Args:
-            value: Value to set for the scheduleInfo property.
+            value: Value to set for the schedule_info property.
         """
         self._schedule_info = value
     
@@ -331,7 +331,7 @@ class UnifiedRoleEligibilityScheduleRequest(request.Request):
         """
         Sets the targetSchedule property value. The schedule for a role eligibility that is referenced through the targetScheduleId property. Supports $expand.
         Args:
-            value: Value to set for the targetSchedule property.
+            value: Value to set for the target_schedule property.
         """
         self._target_schedule = value
     
@@ -348,7 +348,7 @@ class UnifiedRoleEligibilityScheduleRequest(request.Request):
         """
         Sets the targetScheduleId property value. Identifier of the schedule object that's linked to the eligibility request. Supports $filter (eq, ne).
         Args:
-            value: Value to set for the targetScheduleId property.
+            value: Value to set for the target_schedule_id property.
         """
         self._target_schedule_id = value
     
@@ -365,7 +365,7 @@ class UnifiedRoleEligibilityScheduleRequest(request.Request):
         """
         Sets the ticketInfo property value. Ticket details linked to the role eligibility request including details of the ticket number and ticket system. Optional.
         Args:
-            value: Value to set for the ticketInfo property.
+            value: Value to set for the ticket_info property.
         """
         self._ticket_info = value
     

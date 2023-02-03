@@ -77,7 +77,7 @@ class Agreement(entity.Entity):
         """
         Sets the displayName property value. Display name of the agreement. The display name is used for internal tracking of the agreement but is not shown to end users who view the agreement. Supports $filter (eq).
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -122,13 +122,13 @@ class Agreement(entity.Entity):
         """
         fields = {
             "acceptances": lambda n : setattr(self, 'acceptances', n.get_collection_of_object_values(agreement_acceptance.AgreementAcceptance)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "file": lambda n : setattr(self, 'file', n.get_object_value(agreement_file.AgreementFile)),
             "files": lambda n : setattr(self, 'files', n.get_collection_of_object_values(agreement_file_localization.AgreementFileLocalization)),
-            "is_per_device_acceptance_required": lambda n : setattr(self, 'is_per_device_acceptance_required', n.get_bool_value()),
-            "is_viewing_before_acceptance_required": lambda n : setattr(self, 'is_viewing_before_acceptance_required', n.get_bool_value()),
-            "terms_expiration": lambda n : setattr(self, 'terms_expiration', n.get_object_value(terms_expiration.TermsExpiration)),
-            "user_reaccept_required_frequency": lambda n : setattr(self, 'user_reaccept_required_frequency', n.get_object_value(Timedelta)),
+            "isPerDeviceAcceptanceRequired": lambda n : setattr(self, 'is_per_device_acceptance_required', n.get_bool_value()),
+            "isViewingBeforeAcceptanceRequired": lambda n : setattr(self, 'is_viewing_before_acceptance_required', n.get_bool_value()),
+            "termsExpiration": lambda n : setattr(self, 'terms_expiration', n.get_object_value(terms_expiration.TermsExpiration)),
+            "userReacceptRequiredFrequency": lambda n : setattr(self, 'user_reaccept_required_frequency', n.get_object_value(Timedelta)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -147,7 +147,7 @@ class Agreement(entity.Entity):
         """
         Sets the isPerDeviceAcceptanceRequired property value. Indicates whether end users are required to accept this agreement on every device that they access it from. The end user is required to register their device in Azure AD, if they haven't already done so. Supports $filter (eq).
         Args:
-            value: Value to set for the isPerDeviceAcceptanceRequired property.
+            value: Value to set for the is_per_device_acceptance_required property.
         """
         self._is_per_device_acceptance_required = value
     
@@ -164,7 +164,7 @@ class Agreement(entity.Entity):
         """
         Sets the isViewingBeforeAcceptanceRequired property value. Indicates whether the user has to expand the agreement before accepting. Supports $filter (eq).
         Args:
-            value: Value to set for the isViewingBeforeAcceptanceRequired property.
+            value: Value to set for the is_viewing_before_acceptance_required property.
         """
         self._is_viewing_before_acceptance_required = value
     
@@ -199,7 +199,7 @@ class Agreement(entity.Entity):
         """
         Sets the termsExpiration property value. Expiration schedule and frequency of agreement for all users. Supports $filter (eq).
         Args:
-            value: Value to set for the termsExpiration property.
+            value: Value to set for the terms_expiration property.
         """
         self._terms_expiration = value
     
@@ -216,7 +216,7 @@ class Agreement(entity.Entity):
         """
         Sets the userReacceptRequiredFrequency property value. The duration after which the user must re-accept the terms of use. The value is represented in ISO 8601 format for durations. Supports $filter (eq).
         Args:
-            value: Value to set for the userReacceptRequiredFrequency property.
+            value: Value to set for the user_reaccept_required_frequency property.
         """
         self._user_reaccept_required_frequency = value
     

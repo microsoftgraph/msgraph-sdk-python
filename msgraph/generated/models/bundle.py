@@ -53,7 +53,7 @@ class Bundle(AdditionalDataHolder, Parsable):
         """
         Sets the childCount property value. Number of children contained immediately within this container.
         Args:
-            value: Value to set for the childCount property.
+            value: Value to set for the child_count property.
         """
         self._child_count = value
     
@@ -90,7 +90,7 @@ class Bundle(AdditionalDataHolder, Parsable):
         """
         fields = {
             "album": lambda n : setattr(self, 'album', n.get_object_value(album.Album)),
-            "child_count": lambda n : setattr(self, 'child_count', n.get_int_value()),
+            "childCount": lambda n : setattr(self, 'child_count', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -108,7 +108,7 @@ class Bundle(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

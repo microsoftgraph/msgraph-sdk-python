@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.catalogs.item.access_packages.count.count_request_builder')
-filter_by_current_user_with_on_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.catalogs.item.access_packages.filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder')
+filter_by_current_user_with_on_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.catalogs.item.access_packages.microsoft_graph_filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder')
 access_package = lazy_import('msgraph.generated.models.access_package')
 access_package_collection_response = lazy_import('msgraph.generated.models.access_package_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -45,17 +45,6 @@ class AccessPackagesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
-        """
-        Provides operations to call the filterByCurrentUser method.
-        Args:
-            on: Usage: on='{on}'
-        Returns: filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder
-        """
-        if on is None:
-            raise Exception("on cannot be undefined")
-        return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
-    
     async def get(self,request_configuration: Optional[AccessPackagesRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_collection_response.AccessPackageCollectionResponse]:
         """
         The access packages in this catalog. Read-only. Nullable.
@@ -73,6 +62,17 @@ class AccessPackagesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_package_collection_response.AccessPackageCollectionResponse, error_mapping)
+    
+    def microsoft_graph_filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
+        """
+        Provides operations to call the filterByCurrentUser method.
+        Args:
+            on: Usage: on='{on}'
+        Returns: filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder
+        """
+        if on is None:
+            raise Exception("on cannot be undefined")
+        return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
     async def post(self,body: Optional[access_package.AccessPackage] = None, request_configuration: Optional[AccessPackagesRequestBuilderPostRequestConfiguration] = None) -> Optional[access_package.AccessPackage]:
         """

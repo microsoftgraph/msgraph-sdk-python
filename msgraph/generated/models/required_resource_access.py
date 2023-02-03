@@ -56,8 +56,8 @@ class RequiredResourceAccess(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "resource_access": lambda n : setattr(self, 'resource_access', n.get_collection_of_object_values(resource_access.ResourceAccess)),
-            "resource_app_id": lambda n : setattr(self, 'resource_app_id', n.get_str_value()),
+            "resourceAccess": lambda n : setattr(self, 'resource_access', n.get_collection_of_object_values(resource_access.ResourceAccess)),
+            "resourceAppId": lambda n : setattr(self, 'resource_app_id', n.get_str_value()),
         }
         return fields
     
@@ -74,7 +74,7 @@ class RequiredResourceAccess(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -91,7 +91,7 @@ class RequiredResourceAccess(AdditionalDataHolder, Parsable):
         """
         Sets the resourceAccess property value. The list of OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
         Args:
-            value: Value to set for the resourceAccess property.
+            value: Value to set for the resource_access property.
         """
         self._resource_access = value
     
@@ -108,7 +108,7 @@ class RequiredResourceAccess(AdditionalDataHolder, Parsable):
         """
         Sets the resourceAppId property value. The unique identifier for the resource that the application requires access to. This should be equal to the appId declared on the target resource application.
         Args:
-            value: Value to set for the resourceAppId property.
+            value: Value to set for the resource_app_id property.
         """
         self._resource_app_id = value
     

@@ -14,10 +14,10 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.bookingCustomerInformation"
-        # The ID of the bookingCustomer for this appointment. If no ID is specified when an appointment is created, then a new bookingCustomer object is created. Once set, you should consider the customerId immutable.
-        self._customer_id: Optional[str] = None
         # It consists of the list of custom questions and answers given by the customer as part of the appointment
         self._custom_question_answers: Optional[List[booking_question_answer.BookingQuestionAnswer]] = None
+        # The ID of the bookingCustomer for this appointment. If no ID is specified when an appointment is created, then a new bookingCustomer object is created. Once set, you should consider the customerId immutable.
+        self._customer_id: Optional[str] = None
         # The SMTP address of the bookingCustomer who is booking the appointment
         self._email_address: Optional[str] = None
         # Represents location information for the bookingCustomer who is booking the appointment.
@@ -44,23 +44,6 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
         return BookingCustomerInformation()
     
     @property
-    def customer_id(self,) -> Optional[str]:
-        """
-        Gets the customerId property value. The ID of the bookingCustomer for this appointment. If no ID is specified when an appointment is created, then a new bookingCustomer object is created. Once set, you should consider the customerId immutable.
-        Returns: Optional[str]
-        """
-        return self._customer_id
-    
-    @customer_id.setter
-    def customer_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the customerId property value. The ID of the bookingCustomer for this appointment. If no ID is specified when an appointment is created, then a new bookingCustomer object is created. Once set, you should consider the customerId immutable.
-        Args:
-            value: Value to set for the customerId property.
-        """
-        self._customer_id = value
-    
-    @property
     def custom_question_answers(self,) -> Optional[List[booking_question_answer.BookingQuestionAnswer]]:
         """
         Gets the customQuestionAnswers property value. It consists of the list of custom questions and answers given by the customer as part of the appointment
@@ -73,9 +56,26 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
         """
         Sets the customQuestionAnswers property value. It consists of the list of custom questions and answers given by the customer as part of the appointment
         Args:
-            value: Value to set for the customQuestionAnswers property.
+            value: Value to set for the custom_question_answers property.
         """
         self._custom_question_answers = value
+    
+    @property
+    def customer_id(self,) -> Optional[str]:
+        """
+        Gets the customerId property value. The ID of the bookingCustomer for this appointment. If no ID is specified when an appointment is created, then a new bookingCustomer object is created. Once set, you should consider the customerId immutable.
+        Returns: Optional[str]
+        """
+        return self._customer_id
+    
+    @customer_id.setter
+    def customer_id(self,value: Optional[str] = None) -> None:
+        """
+        Sets the customerId property value. The ID of the bookingCustomer for this appointment. If no ID is specified when an appointment is created, then a new bookingCustomer object is created. Once set, you should consider the customerId immutable.
+        Args:
+            value: Value to set for the customer_id property.
+        """
+        self._customer_id = value
     
     @property
     def email_address(self,) -> Optional[str]:
@@ -90,7 +90,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
         """
         Sets the emailAddress property value. The SMTP address of the bookingCustomer who is booking the appointment
         Args:
-            value: Value to set for the emailAddress property.
+            value: Value to set for the email_address property.
         """
         self._email_address = value
     
@@ -100,14 +100,14 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "customer_id": lambda n : setattr(self, 'customer_id', n.get_str_value()),
-            "custom_question_answers": lambda n : setattr(self, 'custom_question_answers', n.get_collection_of_object_values(booking_question_answer.BookingQuestionAnswer)),
-            "email_address": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "customerId": lambda n : setattr(self, 'customer_id', n.get_str_value()),
+            "customQuestionAnswers": lambda n : setattr(self, 'custom_question_answers', n.get_collection_of_object_values(booking_question_answer.BookingQuestionAnswer)),
+            "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
             "location": lambda n : setattr(self, 'location', n.get_object_value(location.Location)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
             "phone": lambda n : setattr(self, 'phone', n.get_str_value()),
-            "time_zone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
+            "timeZone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -212,7 +212,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
         """
         Sets the timeZone property value. The time zone of the customer. For a list of possible values, see dateTimeTimeZone.
         Args:
-            value: Value to set for the timeZone property.
+            value: Value to set for the time_zone property.
         """
         self._time_zone = value
     

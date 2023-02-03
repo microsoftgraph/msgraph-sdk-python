@@ -23,7 +23,7 @@ class ConditionalAccessRoot(entity.Entity):
         """
         Sets the authenticationContextClassReferences property value. Read-only. Nullable. Returns a collection of the specified authentication context class references.
         Args:
-            value: Value to set for the authenticationContextClassReferences property.
+            value: Value to set for the authentication_context_class_references property.
         """
         self._authentication_context_class_references = value
     
@@ -61,8 +61,8 @@ class ConditionalAccessRoot(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "authentication_context_class_references": lambda n : setattr(self, 'authentication_context_class_references', n.get_collection_of_object_values(authentication_context_class_reference.AuthenticationContextClassReference)),
-            "named_locations": lambda n : setattr(self, 'named_locations', n.get_collection_of_object_values(named_location.NamedLocation)),
+            "authenticationContextClassReferences": lambda n : setattr(self, 'authentication_context_class_references', n.get_collection_of_object_values(authentication_context_class_reference.AuthenticationContextClassReference)),
+            "namedLocations": lambda n : setattr(self, 'named_locations', n.get_collection_of_object_values(named_location.NamedLocation)),
             "policies": lambda n : setattr(self, 'policies', n.get_collection_of_object_values(conditional_access_policy.ConditionalAccessPolicy)),
             "templates": lambda n : setattr(self, 'templates', n.get_collection_of_object_values(conditional_access_template.ConditionalAccessTemplate)),
         }
@@ -83,7 +83,7 @@ class ConditionalAccessRoot(entity.Entity):
         """
         Sets the namedLocations property value. Read-only. Nullable. Returns a collection of the specified named locations.
         Args:
-            value: Value to set for the namedLocations property.
+            value: Value to set for the named_locations property.
         """
         self._named_locations = value
     

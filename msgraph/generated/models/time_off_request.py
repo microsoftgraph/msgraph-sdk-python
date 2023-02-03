@@ -45,7 +45,7 @@ class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
         """
         Sets the endDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the endDateTime property.
+            value: Value to set for the end_date_time property.
         """
         self._end_date_time = value
     
@@ -55,9 +55,9 @@ class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
-            "time_off_reason_id": lambda n : setattr(self, 'time_off_reason_id', n.get_str_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "timeOffReasonId": lambda n : setattr(self, 'time_off_reason_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -89,7 +89,7 @@ class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
         """
         Sets the startDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the startDateTime property.
+            value: Value to set for the start_date_time property.
         """
         self._start_date_time = value
     
@@ -106,7 +106,7 @@ class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
         """
         Sets the timeOffReasonId property value. The reason for the time off.
         Args:
-            value: Value to set for the timeOffReasonId property.
+            value: Value to set for the time_off_reason_id property.
         """
         self._time_off_reason_id = value
     

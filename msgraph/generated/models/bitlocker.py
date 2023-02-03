@@ -35,7 +35,7 @@ class Bitlocker(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "recovery_keys": lambda n : setattr(self, 'recovery_keys', n.get_collection_of_object_values(bitlocker_recovery_key.BitlockerRecoveryKey)),
+            "recoveryKeys": lambda n : setattr(self, 'recovery_keys', n.get_collection_of_object_values(bitlocker_recovery_key.BitlockerRecoveryKey)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -54,7 +54,7 @@ class Bitlocker(entity.Entity):
         """
         Sets the recoveryKeys property value. The recovery keys associated with the bitlocker entity.
         Args:
-            value: Value to set for the recoveryKeys property.
+            value: Value to set for the recovery_keys property.
         """
         self._recovery_keys = value
     

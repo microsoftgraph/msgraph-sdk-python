@@ -44,7 +44,7 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
         """
         Sets the featureSettings property value. A collection of Microsoft Authenticator settings such as application context and location context, and whether they are enabled for all users or specific users only.
         Args:
-            value: Value to set for the featureSettings property.
+            value: Value to set for the feature_settings property.
         """
         self._feature_settings = value
     
@@ -54,8 +54,8 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "feature_settings": lambda n : setattr(self, 'feature_settings', n.get_object_value(microsoft_authenticator_feature_settings.MicrosoftAuthenticatorFeatureSettings)),
-            "include_targets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget)),
+            "featureSettings": lambda n : setattr(self, 'feature_settings', n.get_object_value(microsoft_authenticator_feature_settings.MicrosoftAuthenticatorFeatureSettings)),
+            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -74,7 +74,7 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
         """
         Sets the includeTargets property value. A collection of groups that are enabled to use the authentication method. Expanded by default.
         Args:
-            value: Value to set for the includeTargets property.
+            value: Value to set for the include_targets property.
         """
         self._include_targets = value
     

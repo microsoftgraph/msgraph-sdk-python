@@ -57,8 +57,8 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_approval_required_for_add": lambda n : setattr(self, 'is_approval_required_for_add', n.get_bool_value()),
-            "is_approval_required_for_update": lambda n : setattr(self, 'is_approval_required_for_update', n.get_bool_value()),
+            "isApprovalRequiredForAdd": lambda n : setattr(self, 'is_approval_required_for_add', n.get_bool_value()),
+            "isApprovalRequiredForUpdate": lambda n : setattr(self, 'is_approval_required_for_update', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "stages": lambda n : setattr(self, 'stages', n.get_collection_of_object_values(access_package_approval_stage.AccessPackageApprovalStage)),
         }
@@ -77,7 +77,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
         """
         Sets the isApprovalRequiredForAdd property value. If false, then approval is not required for new requests in this policy.
         Args:
-            value: Value to set for the isApprovalRequiredForAdd property.
+            value: Value to set for the is_approval_required_for_add property.
         """
         self._is_approval_required_for_add = value
     
@@ -94,7 +94,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
         """
         Sets the isApprovalRequiredForUpdate property value. If false, then approval is not required for updates to requests in this policy.
         Args:
-            value: Value to set for the isApprovalRequiredForUpdate property.
+            value: Value to set for the is_approval_required_for_update property.
         """
         self._is_approval_required_for_update = value
     
@@ -111,7 +111,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

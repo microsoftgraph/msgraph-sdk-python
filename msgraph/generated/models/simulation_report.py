@@ -58,7 +58,7 @@ class SimulationReport(AdditionalDataHolder, Parsable):
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "overview": lambda n : setattr(self, 'overview', n.get_object_value(simulation_report_overview.SimulationReportOverview)),
-            "simulation_users": lambda n : setattr(self, 'simulation_users', n.get_collection_of_object_values(user_simulation_details.UserSimulationDetails)),
+            "simulationUsers": lambda n : setattr(self, 'simulation_users', n.get_collection_of_object_values(user_simulation_details.UserSimulationDetails)),
         }
         return fields
     
@@ -75,7 +75,7 @@ class SimulationReport(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -122,7 +122,7 @@ class SimulationReport(AdditionalDataHolder, Parsable):
         """
         Sets the simulationUsers property value. The tenant users and their online actions in an attack simulation and training campaign.
         Args:
-            value: Value to set for the simulationUsers property.
+            value: Value to set for the simulation_users property.
         """
         self._simulation_users = value
     

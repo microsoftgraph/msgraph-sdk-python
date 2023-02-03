@@ -77,7 +77,7 @@ class TimeZoneInformation(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. A display string that represents the time zone.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -88,7 +88,7 @@ class TimeZoneInformation(AdditionalDataHolder, Parsable):
         """
         fields = {
             "alias": lambda n : setattr(self, 'alias', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -106,7 +106,7 @@ class TimeZoneInformation(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

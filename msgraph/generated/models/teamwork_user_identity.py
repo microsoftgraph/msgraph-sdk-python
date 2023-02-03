@@ -34,7 +34,7 @@ class TeamworkUserIdentity(identity.Identity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "user_identity_type": lambda n : setattr(self, 'user_identity_type', n.get_enum_value(teamwork_user_identity_type.TeamworkUserIdentityType)),
+            "userIdentityType": lambda n : setattr(self, 'user_identity_type', n.get_enum_value(teamwork_user_identity_type.TeamworkUserIdentityType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -64,7 +64,7 @@ class TeamworkUserIdentity(identity.Identity):
         """
         Sets the userIdentityType property value. Type of user. Possible values are: aadUser, onPremiseAadUser, anonymousGuest, federatedUser, personalMicrosoftAccountUser, skypeUser, phoneUser, unknownFutureValue and emailUser.
         Args:
-            value: Value to set for the userIdentityType property.
+            value: Value to set for the user_identity_type property.
         """
         self._user_identity_type = value
     

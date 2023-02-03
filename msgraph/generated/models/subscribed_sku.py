@@ -21,7 +21,7 @@ class SubscribedSku(entity.Entity):
         """
         Sets the appliesTo property value. For example, 'User' or 'Company'.
         Args:
-            value: Value to set for the appliesTo property.
+            value: Value to set for the applies_to property.
         """
         self._applies_to = value
     
@@ -38,7 +38,7 @@ class SubscribedSku(entity.Entity):
         """
         Sets the capabilityStatus property value. Possible values are: Enabled, Warning, Suspended, Deleted, LockedOut. The capabilityStatus is Enabled if the prepaidUnits property has at least 1 unit that is enabled, and LockedOut if the customer cancelled their subscription.
         Args:
-            value: Value to set for the capabilityStatus property.
+            value: Value to set for the capability_status property.
         """
         self._capability_status = value
     
@@ -77,7 +77,7 @@ class SubscribedSku(entity.Entity):
         """
         Sets the consumedUnits property value. The number of licenses that have been assigned.
         Args:
-            value: Value to set for the consumedUnits property.
+            value: Value to set for the consumed_units property.
         """
         self._consumed_units = value
     
@@ -99,13 +99,13 @@ class SubscribedSku(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "applies_to": lambda n : setattr(self, 'applies_to', n.get_str_value()),
-            "capability_status": lambda n : setattr(self, 'capability_status', n.get_str_value()),
-            "consumed_units": lambda n : setattr(self, 'consumed_units', n.get_int_value()),
-            "prepaid_units": lambda n : setattr(self, 'prepaid_units', n.get_object_value(license_units_detail.LicenseUnitsDetail)),
-            "service_plans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(service_plan_info.ServicePlanInfo)),
-            "sku_id": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
-            "sku_part_number": lambda n : setattr(self, 'sku_part_number', n.get_str_value()),
+            "appliesTo": lambda n : setattr(self, 'applies_to', n.get_str_value()),
+            "capabilityStatus": lambda n : setattr(self, 'capability_status', n.get_str_value()),
+            "consumedUnits": lambda n : setattr(self, 'consumed_units', n.get_int_value()),
+            "prepaidUnits": lambda n : setattr(self, 'prepaid_units', n.get_object_value(license_units_detail.LicenseUnitsDetail)),
+            "servicePlans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(service_plan_info.ServicePlanInfo)),
+            "skuId": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
+            "skuPartNumber": lambda n : setattr(self, 'sku_part_number', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -124,7 +124,7 @@ class SubscribedSku(entity.Entity):
         """
         Sets the prepaidUnits property value. Information about the number and status of prepaid licenses.
         Args:
-            value: Value to set for the prepaidUnits property.
+            value: Value to set for the prepaid_units property.
         """
         self._prepaid_units = value
     
@@ -158,7 +158,7 @@ class SubscribedSku(entity.Entity):
         """
         Sets the servicePlans property value. Information about the service plans that are available with the SKU. Not nullable
         Args:
-            value: Value to set for the servicePlans property.
+            value: Value to set for the service_plans property.
         """
         self._service_plans = value
     
@@ -175,7 +175,7 @@ class SubscribedSku(entity.Entity):
         """
         Sets the skuId property value. The unique identifier (GUID) for the service SKU.
         Args:
-            value: Value to set for the skuId property.
+            value: Value to set for the sku_id property.
         """
         self._sku_id = value
     
@@ -192,7 +192,7 @@ class SubscribedSku(entity.Entity):
         """
         Sets the skuPartNumber property value. The SKU part number; for example: 'AAD_PREMIUM' or 'RMSBASIC'. To get a list of commercial subscriptions that an organization has acquired, see List subscribedSkus.
         Args:
-            value: Value to set for the skuPartNumber property.
+            value: Value to set for the sku_part_number property.
         """
         self._sku_part_number = value
     

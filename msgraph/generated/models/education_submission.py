@@ -67,19 +67,19 @@ class EducationSubmission(entity.Entity):
         """
         fields = {
             "outcomes": lambda n : setattr(self, 'outcomes', n.get_collection_of_object_values(education_outcome.EducationOutcome)),
-            "reassigned_by": lambda n : setattr(self, 'reassigned_by', n.get_object_value(identity_set.IdentitySet)),
-            "reassigned_date_time": lambda n : setattr(self, 'reassigned_date_time', n.get_datetime_value()),
+            "reassignedBy": lambda n : setattr(self, 'reassigned_by', n.get_object_value(identity_set.IdentitySet)),
+            "reassignedDateTime": lambda n : setattr(self, 'reassigned_date_time', n.get_datetime_value()),
             "recipient": lambda n : setattr(self, 'recipient', n.get_object_value(education_submission_recipient.EducationSubmissionRecipient)),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(education_submission_resource.EducationSubmissionResource)),
-            "resources_folder_url": lambda n : setattr(self, 'resources_folder_url', n.get_str_value()),
-            "returned_by": lambda n : setattr(self, 'returned_by', n.get_object_value(identity_set.IdentitySet)),
-            "returned_date_time": lambda n : setattr(self, 'returned_date_time', n.get_datetime_value()),
+            "resourcesFolderUrl": lambda n : setattr(self, 'resources_folder_url', n.get_str_value()),
+            "returnedBy": lambda n : setattr(self, 'returned_by', n.get_object_value(identity_set.IdentitySet)),
+            "returnedDateTime": lambda n : setattr(self, 'returned_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(education_submission_status.EducationSubmissionStatus)),
-            "submitted_by": lambda n : setattr(self, 'submitted_by', n.get_object_value(identity_set.IdentitySet)),
-            "submitted_date_time": lambda n : setattr(self, 'submitted_date_time', n.get_datetime_value()),
-            "submitted_resources": lambda n : setattr(self, 'submitted_resources', n.get_collection_of_object_values(education_submission_resource.EducationSubmissionResource)),
-            "unsubmitted_by": lambda n : setattr(self, 'unsubmitted_by', n.get_object_value(identity_set.IdentitySet)),
-            "unsubmitted_date_time": lambda n : setattr(self, 'unsubmitted_date_time', n.get_datetime_value()),
+            "submittedBy": lambda n : setattr(self, 'submitted_by', n.get_object_value(identity_set.IdentitySet)),
+            "submittedDateTime": lambda n : setattr(self, 'submitted_date_time', n.get_datetime_value()),
+            "submittedResources": lambda n : setattr(self, 'submitted_resources', n.get_collection_of_object_values(education_submission_resource.EducationSubmissionResource)),
+            "unsubmittedBy": lambda n : setattr(self, 'unsubmitted_by', n.get_object_value(identity_set.IdentitySet)),
+            "unsubmittedDateTime": lambda n : setattr(self, 'unsubmitted_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -115,7 +115,7 @@ class EducationSubmission(entity.Entity):
         """
         Sets the reassignedBy property value. User who moved the status of this submission to reassigned.
         Args:
-            value: Value to set for the reassignedBy property.
+            value: Value to set for the reassigned_by property.
         """
         self._reassigned_by = value
     
@@ -132,7 +132,7 @@ class EducationSubmission(entity.Entity):
         """
         Sets the reassignedDateTime property value. Moment in time when the submission was reassigned. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the reassignedDateTime property.
+            value: Value to set for the reassigned_date_time property.
         """
         self._reassigned_date_time = value
     
@@ -183,7 +183,7 @@ class EducationSubmission(entity.Entity):
         """
         Sets the resourcesFolderUrl property value. Folder where all file resources for this submission need to be stored.
         Args:
-            value: Value to set for the resourcesFolderUrl property.
+            value: Value to set for the resources_folder_url property.
         """
         self._resources_folder_url = value
     
@@ -200,7 +200,7 @@ class EducationSubmission(entity.Entity):
         """
         Sets the returnedBy property value. User who moved the status of this submission to returned.
         Args:
-            value: Value to set for the returnedBy property.
+            value: Value to set for the returned_by property.
         """
         self._returned_by = value
     
@@ -217,7 +217,7 @@ class EducationSubmission(entity.Entity):
         """
         Sets the returnedDateTime property value. Moment in time when the submission was returned. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the returnedDateTime property.
+            value: Value to set for the returned_date_time property.
         """
         self._returned_date_time = value
     
@@ -265,7 +265,7 @@ class EducationSubmission(entity.Entity):
         """
         Sets the submittedBy property value. User who moved the resource into the submitted state.
         Args:
-            value: Value to set for the submittedBy property.
+            value: Value to set for the submitted_by property.
         """
         self._submitted_by = value
     
@@ -282,7 +282,7 @@ class EducationSubmission(entity.Entity):
         """
         Sets the submittedDateTime property value. Moment in time when the submission was moved into the submitted state. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the submittedDateTime property.
+            value: Value to set for the submitted_date_time property.
         """
         self._submitted_date_time = value
     
@@ -299,7 +299,7 @@ class EducationSubmission(entity.Entity):
         """
         Sets the submittedResources property value. The submittedResources property
         Args:
-            value: Value to set for the submittedResources property.
+            value: Value to set for the submitted_resources property.
         """
         self._submitted_resources = value
     
@@ -316,7 +316,7 @@ class EducationSubmission(entity.Entity):
         """
         Sets the unsubmittedBy property value. User who moved the resource from submitted into the working state.
         Args:
-            value: Value to set for the unsubmittedBy property.
+            value: Value to set for the unsubmitted_by property.
         """
         self._unsubmitted_by = value
     
@@ -333,7 +333,7 @@ class EducationSubmission(entity.Entity):
         """
         Sets the unsubmittedDateTime property value. Moment in time when the submission was moved from submitted into the working state. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the unsubmittedDateTime property.
+            value: Value to set for the unsubmitted_date_time property.
         """
         self._unsubmitted_date_time = value
     

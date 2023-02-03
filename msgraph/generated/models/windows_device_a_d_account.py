@@ -42,7 +42,7 @@ class WindowsDeviceADAccount(windows_device_account.WindowsDeviceAccount):
         """
         Sets the domainName property value. Not yet documented
         Args:
-            value: Value to set for the domainName property.
+            value: Value to set for the domain_name property.
         """
         self._domain_name = value
     
@@ -52,8 +52,8 @@ class WindowsDeviceADAccount(windows_device_account.WindowsDeviceAccount):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "domain_name": lambda n : setattr(self, 'domain_name', n.get_str_value()),
-            "user_name": lambda n : setattr(self, 'user_name', n.get_str_value()),
+            "domainName": lambda n : setattr(self, 'domain_name', n.get_str_value()),
+            "userName": lambda n : setattr(self, 'user_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -84,7 +84,7 @@ class WindowsDeviceADAccount(windows_device_account.WindowsDeviceAccount):
         """
         Sets the userName property value. Not yet documented
         Args:
-            value: Value to set for the userName property.
+            value: Value to set for the user_name property.
         """
         self._user_name = value
     

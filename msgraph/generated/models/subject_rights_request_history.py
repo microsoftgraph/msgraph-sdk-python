@@ -39,7 +39,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
         """
         Sets the changedBy property value. Identity of the user who changed the  subject rights request.
         Args:
-            value: Value to set for the changedBy property.
+            value: Value to set for the changed_by property.
         """
         self._changed_by = value
     
@@ -88,7 +88,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
         """
         Sets the eventDateTime property value. Data and time when the entity was changed.
         Args:
-            value: Value to set for the eventDateTime property.
+            value: Value to set for the event_date_time property.
         """
         self._event_date_time = value
     
@@ -98,11 +98,11 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "changed_by": lambda n : setattr(self, 'changed_by', n.get_object_value(identity_set.IdentitySet)),
-            "event_date_time": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
+            "changedBy": lambda n : setattr(self, 'changed_by', n.get_object_value(identity_set.IdentitySet)),
+            "eventDateTime": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "stage": lambda n : setattr(self, 'stage', n.get_enum_value(subject_rights_request_stage.SubjectRightsRequestStage)),
-            "stage_status": lambda n : setattr(self, 'stage_status', n.get_enum_value(subject_rights_request_stage_status.SubjectRightsRequestStageStatus)),
+            "stageStatus": lambda n : setattr(self, 'stage_status', n.get_enum_value(subject_rights_request_stage_status.SubjectRightsRequestStageStatus)),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
         }
         return fields
@@ -120,7 +120,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -170,7 +170,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
         """
         Sets the stageStatus property value. The status of the stage when the entity was changed. Possible values are: notStarted, current, completed, failed, unknownFutureValue.
         Args:
-            value: Value to set for the stageStatus property.
+            value: Value to set for the stage_status property.
         """
         self._stage_status = value
     

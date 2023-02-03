@@ -22,7 +22,7 @@ class Directory(entity.Entity):
         """
         Sets the administrativeUnits property value. Conceptual container for user and group directory objects.
         Args:
-            value: Value to set for the administrativeUnits property.
+            value: Value to set for the administrative_units property.
         """
         self._administrative_units = value
     
@@ -65,7 +65,7 @@ class Directory(entity.Entity):
         """
         Sets the deletedItems property value. Recently deleted items. Read-only. Nullable.
         Args:
-            value: Value to set for the deletedItems property.
+            value: Value to set for the deleted_items property.
         """
         self._deleted_items = value
     
@@ -82,7 +82,7 @@ class Directory(entity.Entity):
         """
         Sets the federationConfigurations property value. Configure domain federation with organizations whose identity provider (IdP) supports either the SAML or WS-Fed protocol.
         Args:
-            value: Value to set for the federationConfigurations property.
+            value: Value to set for the federation_configurations property.
         """
         self._federation_configurations = value
     
@@ -92,9 +92,9 @@ class Directory(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "administrative_units": lambda n : setattr(self, 'administrative_units', n.get_collection_of_object_values(administrative_unit.AdministrativeUnit)),
-            "deleted_items": lambda n : setattr(self, 'deleted_items', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "federation_configurations": lambda n : setattr(self, 'federation_configurations', n.get_collection_of_object_values(identity_provider_base.IdentityProviderBase)),
+            "administrativeUnits": lambda n : setattr(self, 'administrative_units', n.get_collection_of_object_values(administrative_unit.AdministrativeUnit)),
+            "deletedItems": lambda n : setattr(self, 'deleted_items', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "federationConfigurations": lambda n : setattr(self, 'federation_configurations', n.get_collection_of_object_values(identity_provider_base.IdentityProviderBase)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

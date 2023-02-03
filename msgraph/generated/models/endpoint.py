@@ -59,9 +59,9 @@ class Endpoint(directory_object.DirectoryObject):
         """
         fields = {
             "capability": lambda n : setattr(self, 'capability', n.get_str_value()),
-            "provider_id": lambda n : setattr(self, 'provider_id', n.get_str_value()),
-            "provider_name": lambda n : setattr(self, 'provider_name', n.get_str_value()),
-            "provider_resource_id": lambda n : setattr(self, 'provider_resource_id', n.get_str_value()),
+            "providerId": lambda n : setattr(self, 'provider_id', n.get_str_value()),
+            "providerName": lambda n : setattr(self, 'provider_name', n.get_str_value()),
+            "providerResourceId": lambda n : setattr(self, 'provider_resource_id', n.get_str_value()),
             "uri": lambda n : setattr(self, 'uri', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -81,7 +81,7 @@ class Endpoint(directory_object.DirectoryObject):
         """
         Sets the providerId property value. The providerId property
         Args:
-            value: Value to set for the providerId property.
+            value: Value to set for the provider_id property.
         """
         self._provider_id = value
     
@@ -98,7 +98,7 @@ class Endpoint(directory_object.DirectoryObject):
         """
         Sets the providerName property value. The providerName property
         Args:
-            value: Value to set for the providerName property.
+            value: Value to set for the provider_name property.
         """
         self._provider_name = value
     
@@ -115,7 +115,7 @@ class Endpoint(directory_object.DirectoryObject):
         """
         Sets the providerResourceId property value. The providerResourceId property
         Args:
-            value: Value to set for the providerResourceId property.
+            value: Value to set for the provider_resource_id property.
         """
         self._provider_resource_id = value
     

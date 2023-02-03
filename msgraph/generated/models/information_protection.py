@@ -75,7 +75,7 @@ class InformationProtection(AdditionalDataHolder, Parsable):
         fields = {
             "bitlocker": lambda n : setattr(self, 'bitlocker', n.get_object_value(bitlocker.Bitlocker)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "threat_assessment_requests": lambda n : setattr(self, 'threat_assessment_requests', n.get_collection_of_object_values(threat_assessment_request.ThreatAssessmentRequest)),
+            "threatAssessmentRequests": lambda n : setattr(self, 'threat_assessment_requests', n.get_collection_of_object_values(threat_assessment_request.ThreatAssessmentRequest)),
         }
         return fields
     
@@ -92,7 +92,7 @@ class InformationProtection(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -122,7 +122,7 @@ class InformationProtection(AdditionalDataHolder, Parsable):
         """
         Sets the threatAssessmentRequests property value. The threatAssessmentRequests property
         Args:
-            value: Value to set for the threatAssessmentRequests property.
+            value: Value to set for the threat_assessment_requests property.
         """
         self._threat_assessment_requests = value
     

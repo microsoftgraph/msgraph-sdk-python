@@ -38,26 +38,9 @@ class Call(entity.Entity):
         """
         Sets the audioRoutingGroups property value. The audioRoutingGroups property
         Args:
-            value: Value to set for the audioRoutingGroups property.
+            value: Value to set for the audio_routing_groups property.
         """
         self._audio_routing_groups = value
-    
-    @property
-    def callback_uri(self,) -> Optional[str]:
-        """
-        Gets the callbackUri property value. The callback URL on which callbacks will be delivered. Must be https.
-        Returns: Optional[str]
-        """
-        return self._callback_uri
-    
-    @callback_uri.setter
-    def callback_uri(self,value: Optional[str] = None) -> None:
-        """
-        Sets the callbackUri property value. The callback URL on which callbacks will be delivered. Must be https.
-        Args:
-            value: Value to set for the callbackUri property.
-        """
-        self._callback_uri = value
     
     @property
     def call_chain_id(self,) -> Optional[str]:
@@ -72,7 +55,7 @@ class Call(entity.Entity):
         """
         Sets the callChainId property value. A unique identifier for all the participant calls in a conference or a unique identifier for two participant calls in a P2P call.  This needs to be copied over from Microsoft.Graph.Call.CallChainId.
         Args:
-            value: Value to set for the callChainId property.
+            value: Value to set for the call_chain_id property.
         """
         self._call_chain_id = value
     
@@ -89,7 +72,7 @@ class Call(entity.Entity):
         """
         Sets the callOptions property value. Contains the optional features for the call.
         Args:
-            value: Value to set for the callOptions property.
+            value: Value to set for the call_options property.
         """
         self._call_options = value
     
@@ -106,9 +89,26 @@ class Call(entity.Entity):
         """
         Sets the callRoutes property value. The routing information on how the call was retargeted. Read-only.
         Args:
-            value: Value to set for the callRoutes property.
+            value: Value to set for the call_routes property.
         """
         self._call_routes = value
+    
+    @property
+    def callback_uri(self,) -> Optional[str]:
+        """
+        Gets the callbackUri property value. The callback URL on which callbacks will be delivered. Must be https.
+        Returns: Optional[str]
+        """
+        return self._callback_uri
+    
+    @callback_uri.setter
+    def callback_uri(self,value: Optional[str] = None) -> None:
+        """
+        Sets the callbackUri property value. The callback URL on which callbacks will be delivered. Must be https.
+        Args:
+            value: Value to set for the callback_uri property.
+        """
+        self._callback_uri = value
     
     @property
     def chat_info(self,) -> Optional[chat_info.ChatInfo]:
@@ -123,7 +123,7 @@ class Call(entity.Entity):
         """
         Sets the chatInfo property value. The chat information. Required information for joining a meeting.
         Args:
-            value: Value to set for the chatInfo property.
+            value: Value to set for the chat_info property.
         """
         self._chat_info = value
     
@@ -134,14 +134,14 @@ class Call(entity.Entity):
         super().__init__()
         # The audioRoutingGroups property
         self._audio_routing_groups: Optional[List[audio_routing_group.AudioRoutingGroup]] = None
-        # The callback URL on which callbacks will be delivered. Must be https.
-        self._callback_uri: Optional[str] = None
         # A unique identifier for all the participant calls in a conference or a unique identifier for two participant calls in a P2P call.  This needs to be copied over from Microsoft.Graph.Call.CallChainId.
         self._call_chain_id: Optional[str] = None
         # Contains the optional features for the call.
         self._call_options: Optional[call_options.CallOptions] = None
         # The routing information on how the call was retargeted. Read-only.
         self._call_routes: Optional[List[call_route.CallRoute]] = None
+        # The callback URL on which callbacks will be delivered. Must be https.
+        self._callback_uri: Optional[str] = None
         # The chat information. Required information for joining a meeting.
         self._chat_info: Optional[chat_info.ChatInfo] = None
         # The contentSharingSessions property
@@ -196,7 +196,7 @@ class Call(entity.Entity):
         """
         Sets the contentSharingSessions property value. The contentSharingSessions property
         Args:
-            value: Value to set for the contentSharingSessions property.
+            value: Value to set for the content_sharing_sessions property.
         """
         self._content_sharing_sessions = value
     
@@ -235,29 +235,29 @@ class Call(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "audio_routing_groups": lambda n : setattr(self, 'audio_routing_groups', n.get_collection_of_object_values(audio_routing_group.AudioRoutingGroup)),
-            "callback_uri": lambda n : setattr(self, 'callback_uri', n.get_str_value()),
-            "call_chain_id": lambda n : setattr(self, 'call_chain_id', n.get_str_value()),
-            "call_options": lambda n : setattr(self, 'call_options', n.get_object_value(call_options.CallOptions)),
-            "call_routes": lambda n : setattr(self, 'call_routes', n.get_collection_of_object_values(call_route.CallRoute)),
-            "chat_info": lambda n : setattr(self, 'chat_info', n.get_object_value(chat_info.ChatInfo)),
-            "content_sharing_sessions": lambda n : setattr(self, 'content_sharing_sessions', n.get_collection_of_object_values(content_sharing_session.ContentSharingSession)),
+            "audioRoutingGroups": lambda n : setattr(self, 'audio_routing_groups', n.get_collection_of_object_values(audio_routing_group.AudioRoutingGroup)),
+            "callbackUri": lambda n : setattr(self, 'callback_uri', n.get_str_value()),
+            "callChainId": lambda n : setattr(self, 'call_chain_id', n.get_str_value()),
+            "callOptions": lambda n : setattr(self, 'call_options', n.get_object_value(call_options.CallOptions)),
+            "callRoutes": lambda n : setattr(self, 'call_routes', n.get_collection_of_object_values(call_route.CallRoute)),
+            "chatInfo": lambda n : setattr(self, 'chat_info', n.get_object_value(chat_info.ChatInfo)),
+            "contentSharingSessions": lambda n : setattr(self, 'content_sharing_sessions', n.get_collection_of_object_values(content_sharing_session.ContentSharingSession)),
             "direction": lambda n : setattr(self, 'direction', n.get_enum_value(call_direction.CallDirection)),
-            "incoming_context": lambda n : setattr(self, 'incoming_context', n.get_object_value(incoming_context.IncomingContext)),
-            "media_config": lambda n : setattr(self, 'media_config', n.get_object_value(media_config.MediaConfig)),
-            "media_state": lambda n : setattr(self, 'media_state', n.get_object_value(call_media_state.CallMediaState)),
-            "meeting_info": lambda n : setattr(self, 'meeting_info', n.get_object_value(meeting_info.MeetingInfo)),
-            "my_participant_id": lambda n : setattr(self, 'my_participant_id', n.get_str_value()),
+            "incomingContext": lambda n : setattr(self, 'incoming_context', n.get_object_value(incoming_context.IncomingContext)),
+            "mediaConfig": lambda n : setattr(self, 'media_config', n.get_object_value(media_config.MediaConfig)),
+            "mediaState": lambda n : setattr(self, 'media_state', n.get_object_value(call_media_state.CallMediaState)),
+            "meetingInfo": lambda n : setattr(self, 'meeting_info', n.get_object_value(meeting_info.MeetingInfo)),
+            "myParticipantId": lambda n : setattr(self, 'my_participant_id', n.get_str_value()),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(comms_operation.CommsOperation)),
             "participants": lambda n : setattr(self, 'participants', n.get_collection_of_object_values(participant.Participant)),
-            "requested_modalities": lambda n : setattr(self, 'requested_modalities', n.get_collection_of_enum_values(modality.Modality)),
-            "result_info": lambda n : setattr(self, 'result_info', n.get_object_value(result_info.ResultInfo)),
+            "requestedModalities": lambda n : setattr(self, 'requested_modalities', n.get_collection_of_enum_values(modality.Modality)),
+            "resultInfo": lambda n : setattr(self, 'result_info', n.get_object_value(result_info.ResultInfo)),
             "source": lambda n : setattr(self, 'source', n.get_object_value(participant_info.ParticipantInfo)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(call_state.CallState)),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
             "targets": lambda n : setattr(self, 'targets', n.get_collection_of_object_values(invitation_participant_info.InvitationParticipantInfo)),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
-            "tone_info": lambda n : setattr(self, 'tone_info', n.get_object_value(tone_info.ToneInfo)),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "toneInfo": lambda n : setattr(self, 'tone_info', n.get_object_value(tone_info.ToneInfo)),
             "transcription": lambda n : setattr(self, 'transcription', n.get_object_value(call_transcription_info.CallTranscriptionInfo)),
         }
         super_fields = super().get_field_deserializers()
@@ -277,7 +277,7 @@ class Call(entity.Entity):
         """
         Sets the incomingContext property value. Call context associated with an incoming call.
         Args:
-            value: Value to set for the incomingContext property.
+            value: Value to set for the incoming_context property.
         """
         self._incoming_context = value
     
@@ -294,7 +294,7 @@ class Call(entity.Entity):
         """
         Sets the mediaConfig property value. The media configuration. Required.
         Args:
-            value: Value to set for the mediaConfig property.
+            value: Value to set for the media_config property.
         """
         self._media_config = value
     
@@ -311,7 +311,7 @@ class Call(entity.Entity):
         """
         Sets the mediaState property value. Read-only. The call media state.
         Args:
-            value: Value to set for the mediaState property.
+            value: Value to set for the media_state property.
         """
         self._media_state = value
     
@@ -328,7 +328,7 @@ class Call(entity.Entity):
         """
         Sets the meetingInfo property value. The meeting information. Required information for meeting scenarios.
         Args:
-            value: Value to set for the meetingInfo property.
+            value: Value to set for the meeting_info property.
         """
         self._meeting_info = value
     
@@ -345,7 +345,7 @@ class Call(entity.Entity):
         """
         Sets the myParticipantId property value. The myParticipantId property
         Args:
-            value: Value to set for the myParticipantId property.
+            value: Value to set for the my_participant_id property.
         """
         self._my_participant_id = value
     
@@ -396,7 +396,7 @@ class Call(entity.Entity):
         """
         Sets the requestedModalities property value. The list of requested modalities. Possible values are: unknown, audio, video, videoBasedScreenSharing, data.
         Args:
-            value: Value to set for the requestedModalities property.
+            value: Value to set for the requested_modalities property.
         """
         self._requested_modalities = value
     
@@ -413,7 +413,7 @@ class Call(entity.Entity):
         """
         Sets the resultInfo property value. The result information. For example can hold termination reason. Read-only.
         Args:
-            value: Value to set for the resultInfo property.
+            value: Value to set for the result_info property.
         """
         self._result_info = value
     
@@ -532,7 +532,7 @@ class Call(entity.Entity):
         """
         Sets the tenantId property value. The tenantId property
         Args:
-            value: Value to set for the tenantId property.
+            value: Value to set for the tenant_id property.
         """
         self._tenant_id = value
     
@@ -549,7 +549,7 @@ class Call(entity.Entity):
         """
         Sets the toneInfo property value. The toneInfo property
         Args:
-            value: Value to set for the toneInfo property.
+            value: Value to set for the tone_info property.
         """
         self._tone_info = value
     

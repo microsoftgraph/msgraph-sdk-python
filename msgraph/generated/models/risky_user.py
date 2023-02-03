@@ -56,14 +56,14 @@ class RiskyUser(entity.Entity):
         """
         fields = {
             "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(risky_user_history_item.RiskyUserHistoryItem)),
-            "is_deleted": lambda n : setattr(self, 'is_deleted', n.get_bool_value()),
-            "is_processing": lambda n : setattr(self, 'is_processing', n.get_bool_value()),
-            "risk_detail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(risk_detail.RiskDetail)),
-            "risk_last_updated_date_time": lambda n : setattr(self, 'risk_last_updated_date_time', n.get_datetime_value()),
-            "risk_level": lambda n : setattr(self, 'risk_level', n.get_enum_value(risk_level.RiskLevel)),
-            "risk_state": lambda n : setattr(self, 'risk_state', n.get_enum_value(risk_state.RiskState)),
-            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "isDeleted": lambda n : setattr(self, 'is_deleted', n.get_bool_value()),
+            "isProcessing": lambda n : setattr(self, 'is_processing', n.get_bool_value()),
+            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(risk_detail.RiskDetail)),
+            "riskLastUpdatedDateTime": lambda n : setattr(self, 'risk_last_updated_date_time', n.get_datetime_value()),
+            "riskLevel": lambda n : setattr(self, 'risk_level', n.get_enum_value(risk_level.RiskLevel)),
+            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(risk_state.RiskState)),
+            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -99,7 +99,7 @@ class RiskyUser(entity.Entity):
         """
         Sets the isDeleted property value. Indicates whether the user is deleted. Possible values are: true, false.
         Args:
-            value: Value to set for the isDeleted property.
+            value: Value to set for the is_deleted property.
         """
         self._is_deleted = value
     
@@ -116,7 +116,7 @@ class RiskyUser(entity.Entity):
         """
         Sets the isProcessing property value. Indicates whether a user's risky state is being processed by the backend.
         Args:
-            value: Value to set for the isProcessing property.
+            value: Value to set for the is_processing property.
         """
         self._is_processing = value
     
@@ -133,7 +133,7 @@ class RiskyUser(entity.Entity):
         """
         Sets the riskDetail property value. Details of the detected risk. Possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue.
         Args:
-            value: Value to set for the riskDetail property.
+            value: Value to set for the risk_detail property.
         """
         self._risk_detail = value
     
@@ -150,7 +150,7 @@ class RiskyUser(entity.Entity):
         """
         Sets the riskLastUpdatedDateTime property value. The date and time that the risky user was last updated.  The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the riskLastUpdatedDateTime property.
+            value: Value to set for the risk_last_updated_date_time property.
         """
         self._risk_last_updated_date_time = value
     
@@ -167,7 +167,7 @@ class RiskyUser(entity.Entity):
         """
         Sets the riskLevel property value. Level of the detected risky user. Possible values are: low, medium, high, hidden, none, unknownFutureValue.
         Args:
-            value: Value to set for the riskLevel property.
+            value: Value to set for the risk_level property.
         """
         self._risk_level = value
     
@@ -184,7 +184,7 @@ class RiskyUser(entity.Entity):
         """
         Sets the riskState property value. State of the user's risk. Possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
         Args:
-            value: Value to set for the riskState property.
+            value: Value to set for the risk_state property.
         """
         self._risk_state = value
     
@@ -220,7 +220,7 @@ class RiskyUser(entity.Entity):
         """
         Sets the userDisplayName property value. Risky user display name.
         Args:
-            value: Value to set for the userDisplayName property.
+            value: Value to set for the user_display_name property.
         """
         self._user_display_name = value
     
@@ -237,7 +237,7 @@ class RiskyUser(entity.Entity):
         """
         Sets the userPrincipalName property value. Risky user principal name.
         Args:
-            value: Value to set for the userPrincipalName property.
+            value: Value to set for the user_principal_name property.
         """
         self._user_principal_name = value
     

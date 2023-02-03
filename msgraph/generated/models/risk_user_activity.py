@@ -74,7 +74,7 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
         fields = {
             "detail": lambda n : setattr(self, 'detail', n.get_enum_value(risk_detail.RiskDetail)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "risk_event_types": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_primitive_values(str)),
+            "riskEventTypes": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -91,7 +91,7 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -108,7 +108,7 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
         """
         Sets the riskEventTypes property value. The type of risk event detected.
         Args:
-            value: Value to set for the riskEventTypes property.
+            value: Value to set for the risk_event_types property.
         """
         self._risk_event_types = value
     

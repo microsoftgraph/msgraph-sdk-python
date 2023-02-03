@@ -41,10 +41,10 @@ class EducationRubricOutcome(education_outcome.EducationOutcome):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "published_rubric_quality_feedback": lambda n : setattr(self, 'published_rubric_quality_feedback', n.get_collection_of_object_values(rubric_quality_feedback_model.RubricQualityFeedbackModel)),
-            "published_rubric_quality_selected_levels": lambda n : setattr(self, 'published_rubric_quality_selected_levels', n.get_collection_of_object_values(rubric_quality_selected_column_model.RubricQualitySelectedColumnModel)),
-            "rubric_quality_feedback": lambda n : setattr(self, 'rubric_quality_feedback', n.get_collection_of_object_values(rubric_quality_feedback_model.RubricQualityFeedbackModel)),
-            "rubric_quality_selected_levels": lambda n : setattr(self, 'rubric_quality_selected_levels', n.get_collection_of_object_values(rubric_quality_selected_column_model.RubricQualitySelectedColumnModel)),
+            "publishedRubricQualityFeedback": lambda n : setattr(self, 'published_rubric_quality_feedback', n.get_collection_of_object_values(rubric_quality_feedback_model.RubricQualityFeedbackModel)),
+            "publishedRubricQualitySelectedLevels": lambda n : setattr(self, 'published_rubric_quality_selected_levels', n.get_collection_of_object_values(rubric_quality_selected_column_model.RubricQualitySelectedColumnModel)),
+            "rubricQualityFeedback": lambda n : setattr(self, 'rubric_quality_feedback', n.get_collection_of_object_values(rubric_quality_feedback_model.RubricQualityFeedbackModel)),
+            "rubricQualitySelectedLevels": lambda n : setattr(self, 'rubric_quality_selected_levels', n.get_collection_of_object_values(rubric_quality_selected_column_model.RubricQualitySelectedColumnModel)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,7 +63,7 @@ class EducationRubricOutcome(education_outcome.EducationOutcome):
         """
         Sets the publishedRubricQualityFeedback property value. A copy of the rubricQualityFeedback property that is made when the grade is released to the student.
         Args:
-            value: Value to set for the publishedRubricQualityFeedback property.
+            value: Value to set for the published_rubric_quality_feedback property.
         """
         self._published_rubric_quality_feedback = value
     
@@ -80,7 +80,7 @@ class EducationRubricOutcome(education_outcome.EducationOutcome):
         """
         Sets the publishedRubricQualitySelectedLevels property value. A copy of the rubricQualitySelectedLevels property that is made when the grade is released to the student.
         Args:
-            value: Value to set for the publishedRubricQualitySelectedLevels property.
+            value: Value to set for the published_rubric_quality_selected_levels property.
         """
         self._published_rubric_quality_selected_levels = value
     
@@ -97,7 +97,7 @@ class EducationRubricOutcome(education_outcome.EducationOutcome):
         """
         Sets the rubricQualityFeedback property value. A collection of specific feedback for each quality of this rubric.
         Args:
-            value: Value to set for the rubricQualityFeedback property.
+            value: Value to set for the rubric_quality_feedback property.
         """
         self._rubric_quality_feedback = value
     
@@ -114,7 +114,7 @@ class EducationRubricOutcome(education_outcome.EducationOutcome):
         """
         Sets the rubricQualitySelectedLevels property value. The level that the teacher has selected for each quality while grading this assignment.
         Args:
-            value: Value to set for the rubricQualitySelectedLevels property.
+            value: Value to set for the rubric_quality_selected_levels property.
         """
         self._rubric_quality_selected_levels = value
     

@@ -64,7 +64,7 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         """
         Sets the excludedGroups property value. User groups that will be exempt by on premises conditional access. All users in these groups will be exempt from the conditional access policy.
         Args:
-            value: Value to set for the excludedGroups property.
+            value: Value to set for the excluded_groups property.
         """
         self._excluded_groups = value
     
@@ -75,9 +75,9 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         """
         fields = {
             "enabled": lambda n : setattr(self, 'enabled', n.get_bool_value()),
-            "excluded_groups": lambda n : setattr(self, 'excluded_groups', n.get_collection_of_primitive_values(guid)),
-            "included_groups": lambda n : setattr(self, 'included_groups', n.get_collection_of_primitive_values(guid)),
-            "override_default_rule": lambda n : setattr(self, 'override_default_rule', n.get_bool_value()),
+            "excludedGroups": lambda n : setattr(self, 'excluded_groups', n.get_collection_of_primitive_values(guid)),
+            "includedGroups": lambda n : setattr(self, 'included_groups', n.get_collection_of_primitive_values(guid)),
+            "overrideDefaultRule": lambda n : setattr(self, 'override_default_rule', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -96,7 +96,7 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         """
         Sets the includedGroups property value. User groups that will be targeted by on premises conditional access. All users in these groups will be required to have mobile device managed and compliant for mail access.
         Args:
-            value: Value to set for the includedGroups property.
+            value: Value to set for the included_groups property.
         """
         self._included_groups = value
     
@@ -113,7 +113,7 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         """
         Sets the overrideDefaultRule property value. Override the default access rule when allowing a device to ensure access is granted.
         Args:
-            value: Value to set for the overrideDefaultRule property.
+            value: Value to set for the override_default_rule property.
         """
         self._override_default_rule = value
     

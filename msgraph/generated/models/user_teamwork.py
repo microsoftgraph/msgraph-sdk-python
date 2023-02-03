@@ -21,7 +21,7 @@ class UserTeamwork(entity.Entity):
         """
         Sets the associatedTeams property value. The list of associatedTeamInfo objects that a user is associated with.
         Args:
-            value: Value to set for the associatedTeams property.
+            value: Value to set for the associated_teams property.
         """
         self._associated_teams = value
     
@@ -55,8 +55,8 @@ class UserTeamwork(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "associated_teams": lambda n : setattr(self, 'associated_teams', n.get_collection_of_object_values(associated_team_info.AssociatedTeamInfo)),
-            "installed_apps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(user_scope_teams_app_installation.UserScopeTeamsAppInstallation)),
+            "associatedTeams": lambda n : setattr(self, 'associated_teams', n.get_collection_of_object_values(associated_team_info.AssociatedTeamInfo)),
+            "installedApps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(user_scope_teams_app_installation.UserScopeTeamsAppInstallation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -75,7 +75,7 @@ class UserTeamwork(entity.Entity):
         """
         Sets the installedApps property value. The apps installed in the personal scope of this user.
         Args:
-            value: Value to set for the installedApps property.
+            value: Value to set for the installed_apps property.
         """
         self._installed_apps = value
     

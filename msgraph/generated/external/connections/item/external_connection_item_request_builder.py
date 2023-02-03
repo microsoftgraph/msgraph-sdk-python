@@ -52,10 +52,11 @@ class ExternalConnectionItemRequestBuilder():
         """
         return schema_request_builder.SchemaRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, external_connection_id: Optional[str] = None) -> None:
         """
         Instantiates a new ExternalConnectionItemRequestBuilder and sets the default values.
         Args:
+            externalConnectionId: key: id of externalConnection
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -67,6 +68,7 @@ class ExternalConnectionItemRequestBuilder():
         self.url_template: str = "{+baseurl}/external/connections/{externalConnection%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["externalConnection%2Did"] = externalConnectionId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

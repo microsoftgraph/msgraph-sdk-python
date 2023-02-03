@@ -13,8 +13,8 @@ from typing import Any, Callable, Dict, List, Optional, Union
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 ediscovery_review_tag = lazy_import('msgraph.generated.models.security.ediscovery_review_tag')
 ediscovery_review_tag_collection_response = lazy_import('msgraph.generated.models.security.ediscovery_review_tag_collection_response')
-as_hierarchy_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.tags.as_hierarchy.as_hierarchy_request_builder')
 count_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.tags.count.count_request_builder')
+as_hierarchy_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.tags.microsoft_graph_security_as_hierarchy.as_hierarchy_request_builder')
 
 class TagsRequestBuilder():
     """
@@ -27,10 +27,10 @@ class TagsRequestBuilder():
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def as_hierarchy(self,) -> as_hierarchy_request_builder.AsHierarchyRequestBuilder:
+    @property
+    def microsoft_graph_security_as_hierarchy(self) -> as_hierarchy_request_builder.AsHierarchyRequestBuilder:
         """
         Provides operations to call the asHierarchy method.
-        Returns: as_hierarchy_request_builder.AsHierarchyRequestBuilder
         """
         return as_hierarchy_request_builder.AsHierarchyRequestBuilder(self.request_adapter, self.path_parameters)
     

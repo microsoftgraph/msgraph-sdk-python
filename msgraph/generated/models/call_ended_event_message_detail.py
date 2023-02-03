@@ -23,7 +23,7 @@ class CallEndedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the callDuration property value. Duration of the call.
         Args:
-            value: Value to set for the callDuration property.
+            value: Value to set for the call_duration property.
         """
         self._call_duration = value
     
@@ -40,7 +40,7 @@ class CallEndedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the callEventType property value. Represents the call event type. Possible values are: call, meeting, screenShare, unknownFutureValue.
         Args:
-            value: Value to set for the callEventType property.
+            value: Value to set for the call_event_type property.
         """
         self._call_event_type = value
     
@@ -57,7 +57,7 @@ class CallEndedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the callId property value. Unique identifier of the call.
         Args:
-            value: Value to set for the callId property.
+            value: Value to set for the call_id property.
         """
         self._call_id = value
     
@@ -74,7 +74,7 @@ class CallEndedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the callParticipants property value. List of call participants.
         Args:
-            value: Value to set for the callParticipants property.
+            value: Value to set for the call_participants property.
         """
         self._call_participants = value
     
@@ -113,10 +113,10 @@ class CallEndedEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "call_duration": lambda n : setattr(self, 'call_duration', n.get_object_value(Timedelta)),
-            "call_event_type": lambda n : setattr(self, 'call_event_type', n.get_enum_value(teamwork_call_event_type.TeamworkCallEventType)),
-            "call_id": lambda n : setattr(self, 'call_id', n.get_str_value()),
-            "call_participants": lambda n : setattr(self, 'call_participants', n.get_collection_of_object_values(call_participant_info.CallParticipantInfo)),
+            "callDuration": lambda n : setattr(self, 'call_duration', n.get_object_value(Timedelta)),
+            "callEventType": lambda n : setattr(self, 'call_event_type', n.get_enum_value(teamwork_call_event_type.TeamworkCallEventType)),
+            "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
+            "callParticipants": lambda n : setattr(self, 'call_participants', n.get_collection_of_object_values(call_participant_info.CallParticipantInfo)),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
         }
         super_fields = super().get_field_deserializers()

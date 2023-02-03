@@ -19,7 +19,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         """
         Sets the backgroundColor property value. Color that will appear in place of the background image in low-bandwidth connections. We recommend that you use the primary color of your banner logo or your organization color. Specify this in hexadecimal format, for example, white is #FFFFFF.
         Args:
-            value: Value to set for the backgroundColor property.
+            value: Value to set for the background_color property.
         """
         self._background_color = value
     
@@ -36,7 +36,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         """
         Sets the backgroundImage property value. Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
         Args:
-            value: Value to set for the backgroundImage property.
+            value: Value to set for the background_image property.
         """
         self._background_image = value
     
@@ -53,7 +53,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         """
         Sets the backgroundImageRelativeUrl property value. A relative URL for the backgroundImage property that is combined with a CDN base URL from the cdnList to provide the version served by a CDN. Read-only.
         Args:
-            value: Value to set for the backgroundImageRelativeUrl property.
+            value: Value to set for the background_image_relative_url property.
         """
         self._background_image_relative_url = value
     
@@ -70,7 +70,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         """
         Sets the bannerLogo property value. A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
         Args:
-            value: Value to set for the bannerLogo property.
+            value: Value to set for the banner_logo property.
         """
         self._banner_logo = value
     
@@ -87,7 +87,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         """
         Sets the bannerLogoRelativeUrl property value. A relative url for the bannerLogo property that is combined with a CDN base URL from the cdnList to provide the read-only version served by a CDN. Read-only.
         Args:
-            value: Value to set for the bannerLogoRelativeUrl property.
+            value: Value to set for the banner_logo_relative_url property.
         """
         self._banner_logo_relative_url = value
     
@@ -104,7 +104,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         """
         Sets the cdnList property value. A list of base URLs for all available CDN providers that are serving the assets of the current resource. Several CDN providers are used at the same time for high availability of read requests. Read-only.
         Args:
-            value: Value to set for the cdnList property.
+            value: Value to set for the cdn_list property.
         """
         self._cdn_list = value
     
@@ -154,16 +154,16 @@ class OrganizationalBrandingProperties(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "background_color": lambda n : setattr(self, 'background_color', n.get_str_value()),
-            "background_image": lambda n : setattr(self, 'background_image', n.get_bytes_value()),
-            "background_image_relative_url": lambda n : setattr(self, 'background_image_relative_url', n.get_str_value()),
-            "banner_logo": lambda n : setattr(self, 'banner_logo', n.get_bytes_value()),
-            "banner_logo_relative_url": lambda n : setattr(self, 'banner_logo_relative_url', n.get_str_value()),
-            "cdn_list": lambda n : setattr(self, 'cdn_list', n.get_collection_of_primitive_values(str)),
-            "sign_in_page_text": lambda n : setattr(self, 'sign_in_page_text', n.get_str_value()),
-            "square_logo": lambda n : setattr(self, 'square_logo', n.get_bytes_value()),
-            "square_logo_relative_url": lambda n : setattr(self, 'square_logo_relative_url', n.get_str_value()),
-            "username_hint_text": lambda n : setattr(self, 'username_hint_text', n.get_str_value()),
+            "backgroundColor": lambda n : setattr(self, 'background_color', n.get_str_value()),
+            "backgroundImage": lambda n : setattr(self, 'background_image', n.get_bytes_value()),
+            "backgroundImageRelativeUrl": lambda n : setattr(self, 'background_image_relative_url', n.get_str_value()),
+            "bannerLogo": lambda n : setattr(self, 'banner_logo', n.get_bytes_value()),
+            "bannerLogoRelativeUrl": lambda n : setattr(self, 'banner_logo_relative_url', n.get_str_value()),
+            "cdnList": lambda n : setattr(self, 'cdn_list', n.get_collection_of_primitive_values(str)),
+            "signInPageText": lambda n : setattr(self, 'sign_in_page_text', n.get_str_value()),
+            "squareLogo": lambda n : setattr(self, 'square_logo', n.get_bytes_value()),
+            "squareLogoRelativeUrl": lambda n : setattr(self, 'square_logo_relative_url', n.get_str_value()),
+            "usernameHintText": lambda n : setattr(self, 'username_hint_text', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -202,7 +202,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         """
         Sets the signInPageText property value. Text that appears at the bottom of the sign-in box. You can use this to communicate additional information, such as the phone number to your help desk or a legal statement. This text must be Unicode and not exceed 1024 characters.
         Args:
-            value: Value to set for the signInPageText property.
+            value: Value to set for the sign_in_page_text property.
         """
         self._sign_in_page_text = value
     
@@ -219,7 +219,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         """
         Sets the squareLogo property value. A square version of your company logo that appears in Windows 10 out-of-box experiences (OOBE) and when Windows Autopilot is enabled for deployment. Allowed types are PNG or JPEG no larger than 240 x 240 pixels and no more than 10 KB in size. We recommend using a transparent image with no padding around the logo.
         Args:
-            value: Value to set for the squareLogo property.
+            value: Value to set for the square_logo property.
         """
         self._square_logo = value
     
@@ -236,7 +236,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         """
         Sets the squareLogoRelativeUrl property value. A relative url for the squareLogo property that is combined with a CDN base URL from the cdnList to provide the version served by a CDN. Read-only.
         Args:
-            value: Value to set for the squareLogoRelativeUrl property.
+            value: Value to set for the square_logo_relative_url property.
         """
         self._square_logo_relative_url = value
     
@@ -253,7 +253,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         """
         Sets the usernameHintText property value. String that shows as the hint in the username textbox on the sign-in screen. This text must be a Unicode, without links or code, and can't exceed 64 characters.
         Args:
-            value: Value to set for the usernameHintText property.
+            value: Value to set for the username_hint_text property.
         """
         self._username_hint_text = value
     

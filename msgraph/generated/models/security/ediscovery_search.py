@@ -12,23 +12,6 @@ search = lazy_import('msgraph.generated.models.security.search')
 
 class EdiscoverySearch(search.Search):
     @property
-    def additional_sources(self,) -> Optional[List[data_source.DataSource]]:
-        """
-        Gets the additionalSources property value. Adds an additional source to the eDiscovery search.
-        Returns: Optional[List[data_source.DataSource]]
-        """
-        return self._additional_sources
-    
-    @additional_sources.setter
-    def additional_sources(self,value: Optional[List[data_source.DataSource]] = None) -> None:
-        """
-        Sets the additionalSources property value. Adds an additional source to the eDiscovery search.
-        Args:
-            value: Value to set for the additionalSources property.
-        """
-        self._additional_sources = value
-    
-    @property
     def add_to_review_set_operation(self,) -> Optional[ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation]:
         """
         Gets the addToReviewSetOperation property value. Adds the results of the eDiscovery search to the specified reviewSet.
@@ -41,9 +24,26 @@ class EdiscoverySearch(search.Search):
         """
         Sets the addToReviewSetOperation property value. Adds the results of the eDiscovery search to the specified reviewSet.
         Args:
-            value: Value to set for the addToReviewSetOperation property.
+            value: Value to set for the add_to_review_set_operation property.
         """
         self._add_to_review_set_operation = value
+    
+    @property
+    def additional_sources(self,) -> Optional[List[data_source.DataSource]]:
+        """
+        Gets the additionalSources property value. Adds an additional source to the eDiscovery search.
+        Returns: Optional[List[data_source.DataSource]]
+        """
+        return self._additional_sources
+    
+    @additional_sources.setter
+    def additional_sources(self,value: Optional[List[data_source.DataSource]] = None) -> None:
+        """
+        Sets the additionalSources property value. Adds an additional source to the eDiscovery search.
+        Args:
+            value: Value to set for the additional_sources property.
+        """
+        self._additional_sources = value
     
     def __init__(self,) -> None:
         """
@@ -51,10 +51,10 @@ class EdiscoverySearch(search.Search):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.security.ediscoverySearch"
-        # Adds an additional source to the eDiscovery search.
-        self._additional_sources: Optional[List[data_source.DataSource]] = None
         # Adds the results of the eDiscovery search to the specified reviewSet.
         self._add_to_review_set_operation: Optional[ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation] = None
+        # Adds an additional source to the eDiscovery search.
+        self._additional_sources: Optional[List[data_source.DataSource]] = None
         # Custodian sources that are included in the eDiscovery search.
         self._custodian_sources: Optional[List[data_source.DataSource]] = None
         # When specified, the collection will span across a service for an entire workload. Possible values are: none, allTenantMailboxes, allTenantSites, allCaseCustodians, allCaseNoncustodialDataSources.
@@ -89,7 +89,7 @@ class EdiscoverySearch(search.Search):
         """
         Sets the custodianSources property value. Custodian sources that are included in the eDiscovery search.
         Args:
-            value: Value to set for the custodianSources property.
+            value: Value to set for the custodian_sources property.
         """
         self._custodian_sources = value
     
@@ -106,7 +106,7 @@ class EdiscoverySearch(search.Search):
         """
         Sets the dataSourceScopes property value. When specified, the collection will span across a service for an entire workload. Possible values are: none, allTenantMailboxes, allTenantSites, allCaseCustodians, allCaseNoncustodialDataSources.
         Args:
-            value: Value to set for the dataSourceScopes property.
+            value: Value to set for the data_source_scopes property.
         """
         self._data_source_scopes = value
     
@@ -116,12 +116,12 @@ class EdiscoverySearch(search.Search):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "additional_sources": lambda n : setattr(self, 'additional_sources', n.get_collection_of_object_values(data_source.DataSource)),
-            "add_to_review_set_operation": lambda n : setattr(self, 'add_to_review_set_operation', n.get_object_value(ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation)),
-            "custodian_sources": lambda n : setattr(self, 'custodian_sources', n.get_collection_of_object_values(data_source.DataSource)),
-            "data_source_scopes": lambda n : setattr(self, 'data_source_scopes', n.get_enum_value(data_source_scopes.DataSourceScopes)),
-            "last_estimate_statistics_operation": lambda n : setattr(self, 'last_estimate_statistics_operation', n.get_object_value(ediscovery_estimate_operation.EdiscoveryEstimateOperation)),
-            "noncustodial_sources": lambda n : setattr(self, 'noncustodial_sources', n.get_collection_of_object_values(ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource)),
+            "additionalSources": lambda n : setattr(self, 'additional_sources', n.get_collection_of_object_values(data_source.DataSource)),
+            "addToReviewSetOperation": lambda n : setattr(self, 'add_to_review_set_operation', n.get_object_value(ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation)),
+            "custodianSources": lambda n : setattr(self, 'custodian_sources', n.get_collection_of_object_values(data_source.DataSource)),
+            "dataSourceScopes": lambda n : setattr(self, 'data_source_scopes', n.get_enum_value(data_source_scopes.DataSourceScopes)),
+            "lastEstimateStatisticsOperation": lambda n : setattr(self, 'last_estimate_statistics_operation', n.get_object_value(ediscovery_estimate_operation.EdiscoveryEstimateOperation)),
+            "noncustodialSources": lambda n : setattr(self, 'noncustodial_sources', n.get_collection_of_object_values(ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -140,7 +140,7 @@ class EdiscoverySearch(search.Search):
         """
         Sets the lastEstimateStatisticsOperation property value. The last estimate operation associated with the eDiscovery search.
         Args:
-            value: Value to set for the lastEstimateStatisticsOperation property.
+            value: Value to set for the last_estimate_statistics_operation property.
         """
         self._last_estimate_statistics_operation = value
     
@@ -157,7 +157,7 @@ class EdiscoverySearch(search.Search):
         """
         Sets the noncustodialSources property value. noncustodialDataSource sources that are included in the eDiscovery search
         Args:
-            value: Value to set for the noncustodialSources property.
+            value: Value to set for the noncustodial_sources property.
         """
         self._noncustodial_sources = value
     

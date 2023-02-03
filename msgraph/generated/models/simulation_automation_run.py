@@ -49,7 +49,7 @@ class SimulationAutomationRun(entity.Entity):
         """
         Sets the endDateTime property value. Date and time when the run ends in an attack simulation automation.
         Args:
-            value: Value to set for the endDateTime property.
+            value: Value to set for the end_date_time property.
         """
         self._end_date_time = value
     
@@ -59,9 +59,9 @@ class SimulationAutomationRun(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "simulation_id": lambda n : setattr(self, 'simulation_id', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "simulationId": lambda n : setattr(self, 'simulation_id', n.get_str_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(simulation_automation_run_status.SimulationAutomationRunStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -95,7 +95,7 @@ class SimulationAutomationRun(entity.Entity):
         """
         Sets the simulationId property value. Unique identifier for the attack simulation campaign initiated in the attack simulation automation run.
         Args:
-            value: Value to set for the simulationId property.
+            value: Value to set for the simulation_id property.
         """
         self._simulation_id = value
     
@@ -112,7 +112,7 @@ class SimulationAutomationRun(entity.Entity):
         """
         Sets the startDateTime property value. Date and time when the run starts in an attack simulation automation.
         Args:
-            value: Value to set for the startDateTime property.
+            value: Value to set for the start_date_time property.
         """
         self._start_date_time = value
     

@@ -20,7 +20,7 @@ class Acl(AdditionalDataHolder, Parsable):
         """
         Sets the accessType property value. The accessType property
         Args:
-            value: Value to set for the accessType property.
+            value: Value to set for the access_type property.
         """
         self._access_type = value
     
@@ -75,7 +75,7 @@ class Acl(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_type": lambda n : setattr(self, 'access_type', n.get_enum_value(access_type.AccessType)),
+            "accessType": lambda n : setattr(self, 'access_type', n.get_enum_value(access_type.AccessType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(acl_type.AclType)),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
@@ -95,7 +95,7 @@ class Acl(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

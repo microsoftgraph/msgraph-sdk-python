@@ -20,13 +20,13 @@ class IdentityApiConnector(entity.Entity):
         """
         Sets the authenticationConfiguration property value. The object which describes the authentication configuration details for calling the API. Basic and PKCS 12 client certificate are supported.
         Args:
-            value: Value to set for the authenticationConfiguration property.
+            value: Value to set for the authentication_configuration property.
         """
         self._authentication_configuration = value
     
     def __init__(self,) -> None:
         """
-        Instantiates a new IdentityApiConnector and sets the default values.
+        Instantiates a new identityApiConnector and sets the default values.
         """
         super().__init__()
         # The object which describes the authentication configuration details for calling the API. Basic and PKCS 12 client certificate are supported.
@@ -63,7 +63,7 @@ class IdentityApiConnector(entity.Entity):
         """
         Sets the displayName property value. The name of the API connector.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -73,9 +73,9 @@ class IdentityApiConnector(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "authentication_configuration": lambda n : setattr(self, 'authentication_configuration', n.get_object_value(api_authentication_configuration_base.ApiAuthenticationConfigurationBase)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "target_url": lambda n : setattr(self, 'target_url', n.get_str_value()),
+            "authenticationConfiguration": lambda n : setattr(self, 'authentication_configuration', n.get_object_value(api_authentication_configuration_base.ApiAuthenticationConfigurationBase)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "targetUrl": lambda n : setattr(self, 'target_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -107,7 +107,7 @@ class IdentityApiConnector(entity.Entity):
         """
         Sets the targetUrl property value. The URL of the API endpoint to call.
         Args:
-            value: Value to set for the targetUrl property.
+            value: Value to set for the target_url property.
         """
         self._target_url = value
     

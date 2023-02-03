@@ -51,7 +51,7 @@ class Audio(AdditionalDataHolder, Parsable):
         """
         Sets the albumArtist property value. The artist named on the album for the audio file.
         Args:
-            value: Value to set for the albumArtist property.
+            value: Value to set for the album_artist property.
         """
         self._album_artist = value
     
@@ -207,7 +207,7 @@ class Audio(AdditionalDataHolder, Parsable):
         """
         Sets the discCount property value. The total number of discs in this album.
         Args:
-            value: Value to set for the discCount property.
+            value: Value to set for the disc_count property.
         """
         self._disc_count = value
     
@@ -252,21 +252,21 @@ class Audio(AdditionalDataHolder, Parsable):
         """
         fields = {
             "album": lambda n : setattr(self, 'album', n.get_str_value()),
-            "album_artist": lambda n : setattr(self, 'album_artist', n.get_str_value()),
+            "albumArtist": lambda n : setattr(self, 'album_artist', n.get_str_value()),
             "artist": lambda n : setattr(self, 'artist', n.get_str_value()),
             "bitrate": lambda n : setattr(self, 'bitrate', n.get_int_value()),
             "composers": lambda n : setattr(self, 'composers', n.get_str_value()),
             "copyright": lambda n : setattr(self, 'copyright', n.get_str_value()),
             "disc": lambda n : setattr(self, 'disc', n.get_int_value()),
-            "disc_count": lambda n : setattr(self, 'disc_count', n.get_int_value()),
+            "discCount": lambda n : setattr(self, 'disc_count', n.get_int_value()),
             "duration": lambda n : setattr(self, 'duration', n.get_int_value()),
             "genre": lambda n : setattr(self, 'genre', n.get_str_value()),
-            "has_drm": lambda n : setattr(self, 'has_drm', n.get_bool_value()),
-            "is_variable_bitrate": lambda n : setattr(self, 'is_variable_bitrate', n.get_bool_value()),
+            "hasDrm": lambda n : setattr(self, 'has_drm', n.get_bool_value()),
+            "isVariableBitrate": lambda n : setattr(self, 'is_variable_bitrate', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
             "track": lambda n : setattr(self, 'track', n.get_int_value()),
-            "track_count": lambda n : setattr(self, 'track_count', n.get_int_value()),
+            "trackCount": lambda n : setattr(self, 'track_count', n.get_int_value()),
             "year": lambda n : setattr(self, 'year', n.get_int_value()),
         }
         return fields
@@ -284,7 +284,7 @@ class Audio(AdditionalDataHolder, Parsable):
         """
         Sets the hasDrm property value. Indicates if the file is protected with digital rights management.
         Args:
-            value: Value to set for the hasDrm property.
+            value: Value to set for the has_drm property.
         """
         self._has_drm = value
     
@@ -301,7 +301,7 @@ class Audio(AdditionalDataHolder, Parsable):
         """
         Sets the isVariableBitrate property value. Indicates if the file is encoded with a variable bitrate.
         Args:
-            value: Value to set for the isVariableBitrate property.
+            value: Value to set for the is_variable_bitrate property.
         """
         self._is_variable_bitrate = value
     
@@ -318,7 +318,7 @@ class Audio(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -396,7 +396,7 @@ class Audio(AdditionalDataHolder, Parsable):
         """
         Sets the trackCount property value. The total number of tracks on the original disc for this audio file.
         Args:
-            value: Value to set for the trackCount property.
+            value: Value to set for the track_count property.
         """
         self._track_count = value
     

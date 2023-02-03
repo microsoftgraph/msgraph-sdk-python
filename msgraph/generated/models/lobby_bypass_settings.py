@@ -55,7 +55,7 @@ class LobbyBypassSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_dial_in_bypass_enabled": lambda n : setattr(self, 'is_dial_in_bypass_enabled', n.get_bool_value()),
+            "isDialInBypassEnabled": lambda n : setattr(self, 'is_dial_in_bypass_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "scope": lambda n : setattr(self, 'scope', n.get_enum_value(lobby_bypass_scope.LobbyBypassScope)),
         }
@@ -74,7 +74,7 @@ class LobbyBypassSettings(AdditionalDataHolder, Parsable):
         """
         Sets the isDialInBypassEnabled property value. Specifies whether or not to always let dial-in callers bypass the lobby. Optional.
         Args:
-            value: Value to set for the isDialInBypassEnabled property.
+            value: Value to set for the is_dial_in_bypass_enabled property.
         """
         self._is_dial_in_bypass_enabled = value
     
@@ -91,7 +91,7 @@ class LobbyBypassSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

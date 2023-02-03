@@ -57,7 +57,7 @@ class FeatureTarget(AdditionalDataHolder, Parsable):
         fields = {
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "target_type": lambda n : setattr(self, 'target_type', n.get_enum_value(feature_target_type.FeatureTargetType)),
+            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(feature_target_type.FeatureTargetType)),
         }
         return fields
     
@@ -91,7 +91,7 @@ class FeatureTarget(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -121,7 +121,7 @@ class FeatureTarget(AdditionalDataHolder, Parsable):
         """
         Sets the targetType property value. The kind of entity that's targeted. The possible values are: group, administrativeUnit, role, unknownFutureValue.
         Args:
-            value: Value to set for the targetType property.
+            value: Value to set for the target_type property.
         """
         self._target_type = value
     

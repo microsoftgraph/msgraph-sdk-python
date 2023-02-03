@@ -21,7 +21,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         """
         Sets the availabilityIsAffectedByPersonalCalendar property value. True means that if the staff member is a Microsoft 365 user, the Bookings API would verify the staff member's availability in their personal calendar in Microsoft 365, before making a booking.
         Args:
-            value: Value to set for the availabilityIsAffectedByPersonalCalendar property.
+            value: Value to set for the availability_is_affected_by_personal_calendar property.
         """
         self._availability_is_affected_by_personal_calendar = value
     
@@ -73,7 +73,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         """
         Sets the displayName property value. The name of the staff member, as displayed to customers. Required.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -90,7 +90,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         """
         Sets the emailAddress property value. The email address of the staff member. This can be in the same Microsoft 365 tenant as the business, or in a different email domain. This email address can be used if the sendConfirmationsToOwner property is set to true in the scheduling policy of the business. Required.
         Args:
-            value: Value to set for the emailAddress property.
+            value: Value to set for the email_address property.
         """
         self._email_address = value
     
@@ -100,14 +100,14 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "availability_is_affected_by_personal_calendar": lambda n : setattr(self, 'availability_is_affected_by_personal_calendar', n.get_bool_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "email_address": lambda n : setattr(self, 'email_address', n.get_str_value()),
-            "is_email_notification_enabled": lambda n : setattr(self, 'is_email_notification_enabled', n.get_bool_value()),
+            "availabilityIsAffectedByPersonalCalendar": lambda n : setattr(self, 'availability_is_affected_by_personal_calendar', n.get_bool_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "isEmailNotificationEnabled": lambda n : setattr(self, 'is_email_notification_enabled', n.get_bool_value()),
             "role": lambda n : setattr(self, 'role', n.get_enum_value(booking_staff_role.BookingStaffRole)),
-            "time_zone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
-            "use_business_hours": lambda n : setattr(self, 'use_business_hours', n.get_bool_value()),
-            "working_hours": lambda n : setattr(self, 'working_hours', n.get_collection_of_object_values(booking_work_hours.BookingWorkHours)),
+            "timeZone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
+            "useBusinessHours": lambda n : setattr(self, 'use_business_hours', n.get_bool_value()),
+            "workingHours": lambda n : setattr(self, 'working_hours', n.get_collection_of_object_values(booking_work_hours.BookingWorkHours)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -126,7 +126,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         """
         Sets the isEmailNotificationEnabled property value. True indicates that a staff member will be notified via email when a booking assigned to them is created or changed.
         Args:
-            value: Value to set for the isEmailNotificationEnabled property.
+            value: Value to set for the is_email_notification_enabled property.
         """
         self._is_email_notification_enabled = value
     
@@ -178,7 +178,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         """
         Sets the timeZone property value. The time zone of the staff member. For a list of possible values, see dateTimeTimeZone.
         Args:
-            value: Value to set for the timeZone property.
+            value: Value to set for the time_zone property.
         """
         self._time_zone = value
     
@@ -195,7 +195,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         """
         Sets the useBusinessHours property value. True means the staff member's availability is as specified in the businessHours property of the business. False means the availability is determined by the staff member's workingHours property setting.
         Args:
-            value: Value to set for the useBusinessHours property.
+            value: Value to set for the use_business_hours property.
         """
         self._use_business_hours = value
     
@@ -212,7 +212,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         """
         Sets the workingHours property value. The range of hours each day of the week that the staff member is available for booking. By default, they are initialized to be the same as the businessHours property of the business.
         Args:
-            value: Value to set for the workingHours property.
+            value: Value to set for the working_hours property.
         """
         self._working_hours = value
     

@@ -20,7 +20,7 @@ class CalendarSharingMessage(message.Message):
         """
         Sets the canAccept property value. The canAccept property
         Args:
-            value: Value to set for the canAccept property.
+            value: Value to set for the can_accept property.
         """
         self._can_accept = value
     
@@ -57,10 +57,10 @@ class CalendarSharingMessage(message.Message):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "can_accept": lambda n : setattr(self, 'can_accept', n.get_bool_value()),
-            "sharing_message_action": lambda n : setattr(self, 'sharing_message_action', n.get_object_value(calendar_sharing_message_action.CalendarSharingMessageAction)),
-            "sharing_message_actions": lambda n : setattr(self, 'sharing_message_actions', n.get_collection_of_object_values(calendar_sharing_message_action.CalendarSharingMessageAction)),
-            "suggested_calendar_name": lambda n : setattr(self, 'suggested_calendar_name', n.get_str_value()),
+            "canAccept": lambda n : setattr(self, 'can_accept', n.get_bool_value()),
+            "sharingMessageAction": lambda n : setattr(self, 'sharing_message_action', n.get_object_value(calendar_sharing_message_action.CalendarSharingMessageAction)),
+            "sharingMessageActions": lambda n : setattr(self, 'sharing_message_actions', n.get_collection_of_object_values(calendar_sharing_message_action.CalendarSharingMessageAction)),
+            "suggestedCalendarName": lambda n : setattr(self, 'suggested_calendar_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -93,7 +93,7 @@ class CalendarSharingMessage(message.Message):
         """
         Sets the sharingMessageAction property value. The sharingMessageAction property
         Args:
-            value: Value to set for the sharingMessageAction property.
+            value: Value to set for the sharing_message_action property.
         """
         self._sharing_message_action = value
     
@@ -110,7 +110,7 @@ class CalendarSharingMessage(message.Message):
         """
         Sets the sharingMessageActions property value. The sharingMessageActions property
         Args:
-            value: Value to set for the sharingMessageActions property.
+            value: Value to set for the sharing_message_actions property.
         """
         self._sharing_message_actions = value
     
@@ -127,7 +127,7 @@ class CalendarSharingMessage(message.Message):
         """
         Sets the suggestedCalendarName property value. The suggestedCalendarName property
         Args:
-            value: Value to set for the suggestedCalendarName property.
+            value: Value to set for the suggested_calendar_name property.
         """
         self._suggested_calendar_name = value
     

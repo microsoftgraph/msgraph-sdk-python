@@ -63,7 +63,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
         """
         Sets the expirationDateTime property value. The date and time in UTC that the upload session will expire. The complete file must be uploaded before this expiration time is reached.
         Args:
-            value: Value to set for the expirationDateTime property.
+            value: Value to set for the expiration_date_time property.
         """
         self._expiration_date_time = value
     
@@ -73,10 +73,10 @@ class UploadSession(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "next_expected_ranges": lambda n : setattr(self, 'next_expected_ranges', n.get_collection_of_primitive_values(str)),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "nextExpectedRanges": lambda n : setattr(self, 'next_expected_ranges', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "upload_url": lambda n : setattr(self, 'upload_url', n.get_str_value()),
+            "uploadUrl": lambda n : setattr(self, 'upload_url', n.get_str_value()),
         }
         return fields
     
@@ -93,7 +93,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
         """
         Sets the nextExpectedRanges property value. A collection of byte ranges that the server is missing for the file. These ranges are zero indexed and of the format 'start-end' (e.g. '0-26' to indicate the first 27 bytes of the file). When uploading files as Outlook attachments, instead of a collection of ranges, this property always indicates a single value '{start}', the location in the file where the next upload should begin.
         Args:
-            value: Value to set for the nextExpectedRanges property.
+            value: Value to set for the next_expected_ranges property.
         """
         self._next_expected_ranges = value
     
@@ -110,7 +110,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -141,7 +141,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
         """
         Sets the uploadUrl property value. The URL endpoint that accepts PUT requests for byte ranges of the file.
         Args:
-            value: Value to set for the uploadUrl property.
+            value: Value to set for the upload_url property.
         """
         self._upload_url = value
     

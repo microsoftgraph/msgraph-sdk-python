@@ -54,7 +54,7 @@ class TodoTaskList(entity.Entity):
         """
         Sets the displayName property value. The name of the task list.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -81,12 +81,12 @@ class TodoTaskList(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
-            "is_owner": lambda n : setattr(self, 'is_owner', n.get_bool_value()),
-            "is_shared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
+            "isOwner": lambda n : setattr(self, 'is_owner', n.get_bool_value()),
+            "isShared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
             "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(todo_task.TodoTask)),
-            "wellknown_list_name": lambda n : setattr(self, 'wellknown_list_name', n.get_enum_value(wellknown_list_name.WellknownListName)),
+            "wellknownListName": lambda n : setattr(self, 'wellknown_list_name', n.get_enum_value(wellknown_list_name.WellknownListName)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -105,7 +105,7 @@ class TodoTaskList(entity.Entity):
         """
         Sets the isOwner property value. True if the user is owner of the given task list.
         Args:
-            value: Value to set for the isOwner property.
+            value: Value to set for the is_owner property.
         """
         self._is_owner = value
     
@@ -122,7 +122,7 @@ class TodoTaskList(entity.Entity):
         """
         Sets the isShared property value. True if the task list is shared with other users
         Args:
-            value: Value to set for the isShared property.
+            value: Value to set for the is_shared property.
         """
         self._is_shared = value
     
@@ -172,7 +172,7 @@ class TodoTaskList(entity.Entity):
         """
         Sets the wellknownListName property value. The wellknownListName property
         Args:
-            value: Value to set for the wellknownListName property.
+            value: Value to set for the wellknown_list_name property.
         """
         self._wellknown_list_name = value
     

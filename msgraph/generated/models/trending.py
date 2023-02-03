@@ -45,10 +45,10 @@ class Trending(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(entity.Entity)),
-            "resource_reference": lambda n : setattr(self, 'resource_reference', n.get_object_value(resource_reference.ResourceReference)),
-            "resource_visualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(resource_visualization.ResourceVisualization)),
+            "resourceReference": lambda n : setattr(self, 'resource_reference', n.get_object_value(resource_reference.ResourceReference)),
+            "resourceVisualization": lambda n : setattr(self, 'resource_visualization', n.get_object_value(resource_visualization.ResourceVisualization)),
             "weight": lambda n : setattr(self, 'weight', n.get_float_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -68,7 +68,7 @@ class Trending(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. The lastModifiedDateTime property
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     
@@ -102,7 +102,7 @@ class Trending(entity.Entity):
         """
         Sets the resourceReference property value. Reference properties of the trending document, such as the url and type of the document.
         Args:
-            value: Value to set for the resourceReference property.
+            value: Value to set for the resource_reference property.
         """
         self._resource_reference = value
     
@@ -119,7 +119,7 @@ class Trending(entity.Entity):
         """
         Sets the resourceVisualization property value. Properties that you can use to visualize the document in your experience.
         Args:
-            value: Value to set for the resourceVisualization property.
+            value: Value to set for the resource_visualization property.
         """
         self._resource_visualization = value
     

@@ -42,7 +42,7 @@ class DeviceManagementReports(entity.Entity):
         """
         Sets the exportJobs property value. Entity representing a job to export a report
         Args:
-            value: Value to set for the exportJobs property.
+            value: Value to set for the export_jobs property.
         """
         self._export_jobs = value
     
@@ -52,7 +52,7 @@ class DeviceManagementReports(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "export_jobs": lambda n : setattr(self, 'export_jobs', n.get_collection_of_object_values(device_management_export_job.DeviceManagementExportJob)),
+            "exportJobs": lambda n : setattr(self, 'export_jobs', n.get_collection_of_object_values(device_management_export_job.DeviceManagementExportJob)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

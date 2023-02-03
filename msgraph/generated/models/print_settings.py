@@ -58,7 +58,7 @@ class PrintSettings(AdditionalDataHolder, Parsable):
         """
         Sets the documentConversionEnabled property value. Specifies whether document conversion is enabled for the tenant. If document conversion is enabled, Universal Print service will automatically convert documents into a format compatible with the printer (xps to pdf) when needed.
         Args:
-            value: Value to set for the documentConversionEnabled property.
+            value: Value to set for the document_conversion_enabled property.
         """
         self._document_conversion_enabled = value
     
@@ -68,7 +68,7 @@ class PrintSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "document_conversion_enabled": lambda n : setattr(self, 'document_conversion_enabled', n.get_bool_value()),
+            "documentConversionEnabled": lambda n : setattr(self, 'document_conversion_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -86,7 +86,7 @@ class PrintSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

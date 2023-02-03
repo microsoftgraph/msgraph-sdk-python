@@ -83,7 +83,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
         """
         Sets the fileSize property value. Provides an expected file size to perform a quota check prior to upload. Only on OneDrive Personal.
         Args:
-            value: Value to set for the fileSize property.
+            value: Value to set for the file_size property.
         """
         self._file_size = value
     
@@ -100,7 +100,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
         """
         Sets the fileSystemInfo property value. File system information on client. Read-write.
         Args:
-            value: Value to set for the fileSystemInfo property.
+            value: Value to set for the file_system_info property.
         """
         self._file_system_info = value
     
@@ -111,8 +111,8 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "file_size": lambda n : setattr(self, 'file_size', n.get_int_value()),
-            "file_system_info": lambda n : setattr(self, 'file_system_info', n.get_object_value(file_system_info.FileSystemInfo)),
+            "fileSize": lambda n : setattr(self, 'file_size', n.get_int_value()),
+            "fileSystemInfo": lambda n : setattr(self, 'file_system_info', n.get_object_value(file_system_info.FileSystemInfo)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
@@ -148,7 +148,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

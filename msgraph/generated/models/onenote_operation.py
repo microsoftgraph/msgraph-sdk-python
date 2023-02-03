@@ -59,9 +59,9 @@ class OnenoteOperation(operation.Operation):
         """
         fields = {
             "error": lambda n : setattr(self, 'error', n.get_object_value(onenote_operation_error.OnenoteOperationError)),
-            "percent_complete": lambda n : setattr(self, 'percent_complete', n.get_str_value()),
-            "resource_id": lambda n : setattr(self, 'resource_id', n.get_str_value()),
-            "resource_location": lambda n : setattr(self, 'resource_location', n.get_str_value()),
+            "percentComplete": lambda n : setattr(self, 'percent_complete', n.get_str_value()),
+            "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
+            "resourceLocation": lambda n : setattr(self, 'resource_location', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -80,7 +80,7 @@ class OnenoteOperation(operation.Operation):
         """
         Sets the percentComplete property value. The operation percent complete if the operation is still in running status.
         Args:
-            value: Value to set for the percentComplete property.
+            value: Value to set for the percent_complete property.
         """
         self._percent_complete = value
     
@@ -97,7 +97,7 @@ class OnenoteOperation(operation.Operation):
         """
         Sets the resourceId property value. The resource id.
         Args:
-            value: Value to set for the resourceId property.
+            value: Value to set for the resource_id property.
         """
         self._resource_id = value
     
@@ -114,7 +114,7 @@ class OnenoteOperation(operation.Operation):
         """
         Sets the resourceLocation property value. The resource URI for the object. For example, the resource URI for a copied page or section.
         Args:
-            value: Value to set for the resourceLocation property.
+            value: Value to set for the resource_location property.
         """
         self._resource_location = value
     

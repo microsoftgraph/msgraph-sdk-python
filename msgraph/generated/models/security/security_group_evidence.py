@@ -43,7 +43,7 @@ class SecurityGroupEvidence(alert_evidence.AlertEvidence):
         """
         Sets the displayName property value. The name of the security group.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -53,8 +53,8 @@ class SecurityGroupEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "security_group_id": lambda n : setattr(self, 'security_group_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "securityGroupId": lambda n : setattr(self, 'security_group_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -73,7 +73,7 @@ class SecurityGroupEvidence(alert_evidence.AlertEvidence):
         """
         Sets the securityGroupId property value. Unique identifier of the security group.
         Args:
-            value: Value to set for the securityGroupId property.
+            value: Value to set for the security_group_id property.
         """
         self._security_group_id = value
     

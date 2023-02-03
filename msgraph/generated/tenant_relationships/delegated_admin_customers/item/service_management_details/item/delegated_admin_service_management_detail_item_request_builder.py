@@ -17,10 +17,11 @@ class DelegatedAdminServiceManagementDetailItemRequestBuilder():
     """
     Provides operations to manage the serviceManagementDetails property of the microsoft.graph.delegatedAdminCustomer entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, delegated_admin_service_management_detail_id: Optional[str] = None) -> None:
         """
         Instantiates a new DelegatedAdminServiceManagementDetailItemRequestBuilder and sets the default values.
         Args:
+            delegatedAdminServiceManagementDetailId: key: id of delegatedAdminServiceManagementDetail
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class DelegatedAdminServiceManagementDetailItemRequestBuilder():
         self.url_template: str = "{+baseurl}/tenantRelationships/delegatedAdminCustomers/{delegatedAdminCustomer%2Did}/serviceManagementDetails/{delegatedAdminServiceManagementDetail%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["delegatedAdminServiceManagementDetail%2Did"] = delegatedAdminServiceManagementDetailId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

@@ -65,7 +65,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the aboutMe property value. A freeform text entry field for the user to describe themselves. Returned only on $select.
         Args:
-            value: Value to set for the aboutMe property.
+            value: Value to set for the about_me property.
         """
         self._about_me = value
     
@@ -82,7 +82,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the accountEnabled property value. true if the account is enabled; otherwise, false. This property is required when a user is created. Returned only on $select. Supports $filter (eq, ne, not, and in).
         Args:
-            value: Value to set for the accountEnabled property.
+            value: Value to set for the account_enabled property.
         """
         self._account_enabled = value
     
@@ -116,7 +116,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the ageGroup property value. Sets the age group of the user. Allowed values: null, Minor, NotAdult and Adult. Refer to the legal age group property definitions for further information. Returned only on $select. Supports $filter (eq, ne, not, and in).
         Args:
-            value: Value to set for the ageGroup property.
+            value: Value to set for the age_group property.
         """
         self._age_group = value
     
@@ -133,7 +133,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the agreementAcceptances property value. The user's terms of use acceptance statuses. Read-only. Nullable.
         Args:
-            value: Value to set for the agreementAcceptances property.
+            value: Value to set for the agreement_acceptances property.
         """
         self._agreement_acceptances = value
     
@@ -150,7 +150,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the appRoleAssignments property value. Represents the app roles a user has been granted for an application. Supports $expand.
         Args:
-            value: Value to set for the appRoleAssignments property.
+            value: Value to set for the app_role_assignments property.
         """
         self._app_role_assignments = value
     
@@ -167,7 +167,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the assignedLicenses property value. The licenses that are assigned to the user, including inherited (group-based) licenses. This property doesn't differentiate directly-assigned and inherited licenses. Use the licenseAssignmentStates property to identify the directly-assigned and inherited licenses.  Not nullable. Returned only on $select. Supports $filter (eq, not, /$count eq 0, /$count ne 0).
         Args:
-            value: Value to set for the assignedLicenses property.
+            value: Value to set for the assigned_licenses property.
         """
         self._assigned_licenses = value
     
@@ -184,7 +184,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the assignedPlans property value. The plans that are assigned to the user. Read-only. Not nullable. Returned only on $select. Supports $filter (eq and not).
         Args:
-            value: Value to set for the assignedPlans property.
+            value: Value to set for the assigned_plans property.
         """
         self._assigned_plans = value
     
@@ -218,7 +218,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the authorizationInfo property value. The authorizationInfo property
         Args:
-            value: Value to set for the authorizationInfo property.
+            value: Value to set for the authorization_info property.
         """
         self._authorization_info = value
     
@@ -252,7 +252,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the businessPhones property value. The telephone numbers for the user. NOTE: Although this is a string collection, only one number can be set for this property. Read-only for users synced from on-premises directory. Returned by default. Supports $filter (eq, not, ge, le, startsWith).
         Args:
-            value: Value to set for the businessPhones property.
+            value: Value to set for the business_phones property.
         """
         self._business_phones = value
     
@@ -286,9 +286,26 @@ class User(directory_object.DirectoryObject):
         """
         Sets the calendarGroups property value. The user's calendar groups. Read-only. Nullable.
         Args:
-            value: Value to set for the calendarGroups property.
+            value: Value to set for the calendar_groups property.
         """
         self._calendar_groups = value
+    
+    @property
+    def calendar_view(self,) -> Optional[List[event.Event]]:
+        """
+        Gets the calendarView property value. The calendar view for the calendar. Read-only. Nullable.
+        Returns: Optional[List[event.Event]]
+        """
+        return self._calendar_view
+    
+    @calendar_view.setter
+    def calendar_view(self,value: Optional[List[event.Event]] = None) -> None:
+        """
+        Sets the calendarView property value. The calendar view for the calendar. Read-only. Nullable.
+        Args:
+            value: Value to set for the calendar_view property.
+        """
+        self._calendar_view = value
     
     @property
     def calendars(self,) -> Optional[List[calendar.Calendar]]:
@@ -306,23 +323,6 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the calendars property.
         """
         self._calendars = value
-    
-    @property
-    def calendar_view(self,) -> Optional[List[event.Event]]:
-        """
-        Gets the calendarView property value. The calendar view for the calendar. Read-only. Nullable.
-        Returns: Optional[List[event.Event]]
-        """
-        return self._calendar_view
-    
-    @calendar_view.setter
-    def calendar_view(self,value: Optional[List[event.Event]] = None) -> None:
-        """
-        Sets the calendarView property value. The calendar view for the calendar. Read-only. Nullable.
-        Args:
-            value: Value to set for the calendarView property.
-        """
-        self._calendar_view = value
     
     @property
     def chats(self,) -> Optional[List[chat.Chat]]:
@@ -371,7 +371,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the companyName property value. The company name which the user is associated. This property can be useful for describing the company that an external user comes from. The maximum length is 64 characters.Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
         Args:
-            value: Value to set for the companyName property.
+            value: Value to set for the company_name property.
         """
         self._company_name = value
     
@@ -388,7 +388,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the consentProvidedForMinor property value. Sets whether consent has been obtained for minors. Allowed values: null, Granted, Denied and NotRequired. Refer to the legal age group property definitions for further information. Returned only on $select. Supports $filter (eq, ne, not, and in).
         Args:
-            value: Value to set for the consentProvidedForMinor property.
+            value: Value to set for the consent_provided_for_minor property.
         """
         self._consent_provided_for_minor = value
     
@@ -426,10 +426,10 @@ class User(directory_object.DirectoryObject):
         self._calendar: Optional[calendar.Calendar] = None
         # The user's calendar groups. Read-only. Nullable.
         self._calendar_groups: Optional[List[calendar_group.CalendarGroup]] = None
-        # The user's calendars. Read-only. Nullable.
-        self._calendars: Optional[List[calendar.Calendar]] = None
         # The calendar view for the calendar. Read-only. Nullable.
         self._calendar_view: Optional[List[event.Event]] = None
+        # The user's calendars. Read-only. Nullable.
+        self._calendars: Optional[List[calendar.Calendar]] = None
         # The chats property
         self._chats: Optional[List[chat.Chat]] = None
         # The city in which the user is located. Maximum length is 128 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
@@ -514,12 +514,12 @@ class User(directory_object.DirectoryObject):
         self._license_details: Optional[List[license_details.LicenseDetails]] = None
         # The SMTP address for the user, for example, jeff@contoso.onmicrosoft.com. Changes to this property will also update the user's proxyAddresses collection to include the value as an SMTP address. This property cannot contain accent characters.  NOTE: We do not recommend updating this property for Azure AD B2C user profiles. Use the otherMails property instead. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, endsWith, and eq on null values).
         self._mail: Optional[str] = None
-        # Settings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale and time zone. Returned only on $select.
-        self._mailbox_settings: Optional[mailbox_settings.MailboxSettings] = None
         # The user's mail folders. Read-only. Nullable.
         self._mail_folders: Optional[List[mail_folder.MailFolder]] = None
         # The mail alias for the user. This property must be specified when a user is created. Maximum length is 64 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
         self._mail_nickname: Optional[str] = None
+        # Settings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale and time zone. Returned only on $select.
+        self._mailbox_settings: Optional[mailbox_settings.MailboxSettings] = None
         # Zero or more managed app registrations that belong to the user.
         self._managed_app_registrations: Optional[List[managed_app_registration.ManagedAppRegistration]] = None
         # The managed devices associated with the user.
@@ -538,10 +538,6 @@ class User(directory_object.DirectoryObject):
         self._oauth2_permission_grants: Optional[List[o_auth2_permission_grant.OAuth2PermissionGrant]] = None
         # The office location in the user's place of business. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
         self._office_location: Optional[str] = None
-        # The onenote property
-        self._onenote: Optional[onenote.Onenote] = None
-        # The onlineMeetings property
-        self._online_meetings: Optional[List[online_meeting.OnlineMeeting]] = None
         # Contains the on-premises Active Directory distinguished name or DN. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select.
         self._on_premises_distinguished_name: Optional[str] = None
         # Contains the on-premises domainFQDN, also called dnsDomainName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select.
@@ -562,6 +558,10 @@ class User(directory_object.DirectoryObject):
         self._on_premises_sync_enabled: Optional[bool] = None
         # Contains the on-premises userPrincipalName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith).
         self._on_premises_user_principal_name: Optional[str] = None
+        # The onenote property
+        self._onenote: Optional[onenote.Onenote] = None
+        # The onlineMeetings property
+        self._online_meetings: Optional[List[online_meeting.OnlineMeeting]] = None
         # A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com']. NOTE: This property cannot contain accent characters. Returned only on $select. Supports $filter (eq, not, ge, le, in, startsWith, endsWith, /$count eq 0, /$count ne 0).
         self._other_mails: Optional[List[str]] = None
         # The outlook property
@@ -648,7 +648,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the contactFolders property value. The user's contacts folders. Read-only. Nullable.
         Args:
-            value: Value to set for the contactFolders property.
+            value: Value to set for the contact_folders property.
         """
         self._contact_folders = value
     
@@ -699,7 +699,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the createdDateTime property value. The date and time the user was created, in ISO 8601 format and in UTC time. The value cannot be modified and is automatically populated when the entity is created. Nullable. For on-premises users, the value represents when they were first created in Azure AD. Property is null for some users created before June 2018 and on-premises users that were synced to Azure AD before June 2018. Read-only.  Read-only. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in).
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -716,7 +716,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the createdObjects property value. Directory objects that were created by the user. Read-only. Nullable.
         Args:
-            value: Value to set for the createdObjects property.
+            value: Value to set for the created_objects property.
         """
         self._created_objects = value
     
@@ -745,7 +745,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the creationType property value. Indicates whether the user account was created through one of the following methods:  As a regular school or work account (null). As an external account (Invitation). As a local account for an Azure Active Directory B2C tenant (LocalAccount). Through self-service sign-up by an internal user using email verification (EmailVerified). Through self-service sign-up by an external user signing up through a link that is part of a user flow (SelfServiceSignUp). Read-only.Returned only on $select. Supports $filter (eq, ne, not, in).
         Args:
-            value: Value to set for the creationType property.
+            value: Value to set for the creation_type property.
         """
         self._creation_type = value
     
@@ -779,7 +779,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the deviceEnrollmentLimit property value. The limit on the maximum number of devices that the user is permitted to enroll. Allowed values are 5 or 1000.
         Args:
-            value: Value to set for the deviceEnrollmentLimit property.
+            value: Value to set for the device_enrollment_limit property.
         """
         self._device_enrollment_limit = value
     
@@ -796,7 +796,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the deviceManagementTroubleshootingEvents property value. The list of troubleshooting events for this user.
         Args:
-            value: Value to set for the deviceManagementTroubleshootingEvents property.
+            value: Value to set for the device_management_troubleshooting_events property.
         """
         self._device_management_troubleshooting_events = value
     
@@ -813,7 +813,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the directReports property value. The users and contacts that report to the user. (The users and contacts that have their manager property set to this user.) Read-only. Nullable. Supports $expand.
         Args:
-            value: Value to set for the directReports property.
+            value: Value to set for the direct_reports property.
         """
         self._direct_reports = value
     
@@ -830,7 +830,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the displayName property value. The name displayed in the address book for the user. This is usually the combination of the user's first name, middle initial and last name. This property is required when a user is created and it cannot be cleared during updates. Maximum length is 256 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values), $orderBy, and $search.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -881,7 +881,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the employeeHireDate property value. The date and time when the user was hired or will start work in case of a future hire. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in).
         Args:
-            value: Value to set for the employeeHireDate property.
+            value: Value to set for the employee_hire_date property.
         """
         self._employee_hire_date = value
     
@@ -898,7 +898,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the employeeId property value. The employee identifier assigned to the user by the organization. The maximum length is 16 characters. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).
         Args:
-            value: Value to set for the employeeId property.
+            value: Value to set for the employee_id property.
         """
         self._employee_id = value
     
@@ -915,7 +915,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the employeeOrgData property value. Represents organization data (e.g. division and costCenter) associated with a user. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in).
         Args:
-            value: Value to set for the employeeOrgData property.
+            value: Value to set for the employee_org_data property.
         """
         self._employee_org_data = value
     
@@ -932,7 +932,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the employeeType property value. Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in, startsWith).
         Args:
-            value: Value to set for the employeeType property.
+            value: Value to set for the employee_type property.
         """
         self._employee_type = value
     
@@ -983,7 +983,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the externalUserState property value. For an external user invited to the tenant using the invitation API, this property represents the invited user's invitation status. For invited users, the state can be PendingAcceptance or Accepted, or null for all other users. Returned only on $select. Supports $filter (eq, ne, not , in).
         Args:
-            value: Value to set for the externalUserState property.
+            value: Value to set for the external_user_state property.
         """
         self._external_user_state = value
     
@@ -1000,7 +1000,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the externalUserStateChangeDateTime property value. Shows the timestamp for the latest change to the externalUserState property. Returned only on $select. Supports $filter (eq, ne, not , in).
         Args:
-            value: Value to set for the externalUserStateChangeDateTime property.
+            value: Value to set for the external_user_state_change_date_time property.
         """
         self._external_user_state_change_date_time = value
     
@@ -1017,7 +1017,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the faxNumber property value. The fax number of the user. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).
         Args:
-            value: Value to set for the faxNumber property.
+            value: Value to set for the fax_number property.
         """
         self._fax_number = value
     
@@ -1034,7 +1034,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the followedSites property value. The followedSites property
         Args:
-            value: Value to set for the followedSites property.
+            value: Value to set for the followed_sites property.
         """
         self._followed_sites = value
     
@@ -1044,124 +1044,124 @@ class User(directory_object.DirectoryObject):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "about_me": lambda n : setattr(self, 'about_me', n.get_str_value()),
-            "account_enabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
+            "aboutMe": lambda n : setattr(self, 'about_me', n.get_str_value()),
+            "accountEnabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
             "activities": lambda n : setattr(self, 'activities', n.get_collection_of_object_values(user_activity.UserActivity)),
-            "age_group": lambda n : setattr(self, 'age_group', n.get_str_value()),
-            "agreement_acceptances": lambda n : setattr(self, 'agreement_acceptances', n.get_collection_of_object_values(agreement_acceptance.AgreementAcceptance)),
-            "app_role_assignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
-            "assigned_licenses": lambda n : setattr(self, 'assigned_licenses', n.get_collection_of_object_values(assigned_license.AssignedLicense)),
-            "assigned_plans": lambda n : setattr(self, 'assigned_plans', n.get_collection_of_object_values(assigned_plan.AssignedPlan)),
+            "ageGroup": lambda n : setattr(self, 'age_group', n.get_str_value()),
+            "agreementAcceptances": lambda n : setattr(self, 'agreement_acceptances', n.get_collection_of_object_values(agreement_acceptance.AgreementAcceptance)),
+            "appRoleAssignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
+            "assignedLicenses": lambda n : setattr(self, 'assigned_licenses', n.get_collection_of_object_values(assigned_license.AssignedLicense)),
+            "assignedPlans": lambda n : setattr(self, 'assigned_plans', n.get_collection_of_object_values(assigned_plan.AssignedPlan)),
             "authentication": lambda n : setattr(self, 'authentication', n.get_object_value(authentication.Authentication)),
-            "authorization_info": lambda n : setattr(self, 'authorization_info', n.get_object_value(authorization_info.AuthorizationInfo)),
+            "authorizationInfo": lambda n : setattr(self, 'authorization_info', n.get_object_value(authorization_info.AuthorizationInfo)),
             "birthday": lambda n : setattr(self, 'birthday', n.get_datetime_value()),
-            "business_phones": lambda n : setattr(self, 'business_phones', n.get_collection_of_primitive_values(str)),
+            "businessPhones": lambda n : setattr(self, 'business_phones', n.get_collection_of_primitive_values(str)),
             "calendar": lambda n : setattr(self, 'calendar', n.get_object_value(calendar.Calendar)),
-            "calendar_groups": lambda n : setattr(self, 'calendar_groups', n.get_collection_of_object_values(calendar_group.CalendarGroup)),
             "calendars": lambda n : setattr(self, 'calendars', n.get_collection_of_object_values(calendar.Calendar)),
-            "calendar_view": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(event.Event)),
+            "calendarGroups": lambda n : setattr(self, 'calendar_groups', n.get_collection_of_object_values(calendar_group.CalendarGroup)),
+            "calendarView": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(event.Event)),
             "chats": lambda n : setattr(self, 'chats', n.get_collection_of_object_values(chat.Chat)),
             "city": lambda n : setattr(self, 'city', n.get_str_value()),
-            "company_name": lambda n : setattr(self, 'company_name', n.get_str_value()),
-            "consent_provided_for_minor": lambda n : setattr(self, 'consent_provided_for_minor', n.get_str_value()),
-            "contact_folders": lambda n : setattr(self, 'contact_folders', n.get_collection_of_object_values(contact_folder.ContactFolder)),
+            "companyName": lambda n : setattr(self, 'company_name', n.get_str_value()),
+            "consentProvidedForMinor": lambda n : setattr(self, 'consent_provided_for_minor', n.get_str_value()),
             "contacts": lambda n : setattr(self, 'contacts', n.get_collection_of_object_values(contact.Contact)),
+            "contactFolders": lambda n : setattr(self, 'contact_folders', n.get_collection_of_object_values(contact_folder.ContactFolder)),
             "country": lambda n : setattr(self, 'country', n.get_str_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "created_objects": lambda n : setattr(self, 'created_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "creation_type": lambda n : setattr(self, 'creation_type', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdObjects": lambda n : setattr(self, 'created_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "creationType": lambda n : setattr(self, 'creation_type', n.get_str_value()),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),
-            "device_enrollment_limit": lambda n : setattr(self, 'device_enrollment_limit', n.get_int_value()),
-            "device_management_troubleshooting_events": lambda n : setattr(self, 'device_management_troubleshooting_events', n.get_collection_of_object_values(device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent)),
-            "direct_reports": lambda n : setattr(self, 'direct_reports', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "deviceEnrollmentLimit": lambda n : setattr(self, 'device_enrollment_limit', n.get_int_value()),
+            "deviceManagementTroubleshootingEvents": lambda n : setattr(self, 'device_management_troubleshooting_events', n.get_collection_of_object_values(device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent)),
+            "directReports": lambda n : setattr(self, 'direct_reports', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "drive": lambda n : setattr(self, 'drive', n.get_object_value(drive.Drive)),
             "drives": lambda n : setattr(self, 'drives', n.get_collection_of_object_values(drive.Drive)),
-            "employee_hire_date": lambda n : setattr(self, 'employee_hire_date', n.get_datetime_value()),
-            "employee_id": lambda n : setattr(self, 'employee_id', n.get_str_value()),
-            "employee_org_data": lambda n : setattr(self, 'employee_org_data', n.get_object_value(employee_org_data.EmployeeOrgData)),
-            "employee_type": lambda n : setattr(self, 'employee_type', n.get_str_value()),
+            "employeeHireDate": lambda n : setattr(self, 'employee_hire_date', n.get_datetime_value()),
+            "employeeId": lambda n : setattr(self, 'employee_id', n.get_str_value()),
+            "employeeOrgData": lambda n : setattr(self, 'employee_org_data', n.get_object_value(employee_org_data.EmployeeOrgData)),
+            "employeeType": lambda n : setattr(self, 'employee_type', n.get_str_value()),
             "events": lambda n : setattr(self, 'events', n.get_collection_of_object_values(event.Event)),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
-            "external_user_state": lambda n : setattr(self, 'external_user_state', n.get_str_value()),
-            "external_user_state_change_date_time": lambda n : setattr(self, 'external_user_state_change_date_time', n.get_datetime_value()),
-            "fax_number": lambda n : setattr(self, 'fax_number', n.get_str_value()),
-            "followed_sites": lambda n : setattr(self, 'followed_sites', n.get_collection_of_object_values(site.Site)),
-            "given_name": lambda n : setattr(self, 'given_name', n.get_str_value()),
-            "hire_date": lambda n : setattr(self, 'hire_date', n.get_datetime_value()),
+            "externalUserState": lambda n : setattr(self, 'external_user_state', n.get_str_value()),
+            "externalUserStateChangeDateTime": lambda n : setattr(self, 'external_user_state_change_date_time', n.get_datetime_value()),
+            "faxNumber": lambda n : setattr(self, 'fax_number', n.get_str_value()),
+            "followedSites": lambda n : setattr(self, 'followed_sites', n.get_collection_of_object_values(site.Site)),
+            "givenName": lambda n : setattr(self, 'given_name', n.get_str_value()),
+            "hireDate": lambda n : setattr(self, 'hire_date', n.get_datetime_value()),
             "identities": lambda n : setattr(self, 'identities', n.get_collection_of_object_values(object_identity.ObjectIdentity)),
-            "im_addresses": lambda n : setattr(self, 'im_addresses', n.get_collection_of_primitive_values(str)),
-            "inference_classification": lambda n : setattr(self, 'inference_classification', n.get_object_value(inference_classification.InferenceClassification)),
+            "imAddresses": lambda n : setattr(self, 'im_addresses', n.get_collection_of_primitive_values(str)),
+            "inferenceClassification": lambda n : setattr(self, 'inference_classification', n.get_object_value(inference_classification.InferenceClassification)),
             "insights": lambda n : setattr(self, 'insights', n.get_object_value(office_graph_insights.OfficeGraphInsights)),
             "interests": lambda n : setattr(self, 'interests', n.get_collection_of_primitive_values(str)),
-            "is_resource_account": lambda n : setattr(self, 'is_resource_account', n.get_bool_value()),
-            "job_title": lambda n : setattr(self, 'job_title', n.get_str_value()),
-            "joined_teams": lambda n : setattr(self, 'joined_teams', n.get_collection_of_object_values(team.Team)),
-            "last_password_change_date_time": lambda n : setattr(self, 'last_password_change_date_time', n.get_datetime_value()),
-            "legal_age_group_classification": lambda n : setattr(self, 'legal_age_group_classification', n.get_str_value()),
-            "license_assignment_states": lambda n : setattr(self, 'license_assignment_states', n.get_collection_of_object_values(license_assignment_state.LicenseAssignmentState)),
-            "license_details": lambda n : setattr(self, 'license_details', n.get_collection_of_object_values(license_details.LicenseDetails)),
+            "isResourceAccount": lambda n : setattr(self, 'is_resource_account', n.get_bool_value()),
+            "jobTitle": lambda n : setattr(self, 'job_title', n.get_str_value()),
+            "joinedTeams": lambda n : setattr(self, 'joined_teams', n.get_collection_of_object_values(team.Team)),
+            "lastPasswordChangeDateTime": lambda n : setattr(self, 'last_password_change_date_time', n.get_datetime_value()),
+            "legalAgeGroupClassification": lambda n : setattr(self, 'legal_age_group_classification', n.get_str_value()),
+            "licenseAssignmentStates": lambda n : setattr(self, 'license_assignment_states', n.get_collection_of_object_values(license_assignment_state.LicenseAssignmentState)),
+            "licenseDetails": lambda n : setattr(self, 'license_details', n.get_collection_of_object_values(license_details.LicenseDetails)),
             "mail": lambda n : setattr(self, 'mail', n.get_str_value()),
-            "mailbox_settings": lambda n : setattr(self, 'mailbox_settings', n.get_object_value(mailbox_settings.MailboxSettings)),
-            "mail_folders": lambda n : setattr(self, 'mail_folders', n.get_collection_of_object_values(mail_folder.MailFolder)),
-            "mail_nickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
-            "managed_app_registrations": lambda n : setattr(self, 'managed_app_registrations', n.get_collection_of_object_values(managed_app_registration.ManagedAppRegistration)),
-            "managed_devices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(managed_device.ManagedDevice)),
+            "mailboxSettings": lambda n : setattr(self, 'mailbox_settings', n.get_object_value(mailbox_settings.MailboxSettings)),
+            "mailFolders": lambda n : setattr(self, 'mail_folders', n.get_collection_of_object_values(mail_folder.MailFolder)),
+            "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
+            "managedAppRegistrations": lambda n : setattr(self, 'managed_app_registrations', n.get_collection_of_object_values(managed_app_registration.ManagedAppRegistration)),
+            "managedDevices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(managed_device.ManagedDevice)),
             "manager": lambda n : setattr(self, 'manager', n.get_object_value(directory_object.DirectoryObject)),
-            "member_of": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "memberOf": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(message.Message)),
-            "mobile_phone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
-            "my_site": lambda n : setattr(self, 'my_site', n.get_str_value()),
-            "oauth2_permission_grants": lambda n : setattr(self, 'oauth2_permission_grants', n.get_collection_of_object_values(o_auth2_permission_grant.OAuth2PermissionGrant)),
-            "office_location": lambda n : setattr(self, 'office_location', n.get_str_value()),
+            "mobilePhone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
+            "mySite": lambda n : setattr(self, 'my_site', n.get_str_value()),
+            "oauth2PermissionGrants": lambda n : setattr(self, 'oauth2_permission_grants', n.get_collection_of_object_values(o_auth2_permission_grant.OAuth2PermissionGrant)),
+            "officeLocation": lambda n : setattr(self, 'office_location', n.get_str_value()),
             "onenote": lambda n : setattr(self, 'onenote', n.get_object_value(onenote.Onenote)),
-            "online_meetings": lambda n : setattr(self, 'online_meetings', n.get_collection_of_object_values(online_meeting.OnlineMeeting)),
-            "on_premises_distinguished_name": lambda n : setattr(self, 'on_premises_distinguished_name', n.get_str_value()),
-            "on_premises_domain_name": lambda n : setattr(self, 'on_premises_domain_name', n.get_str_value()),
-            "on_premises_extension_attributes": lambda n : setattr(self, 'on_premises_extension_attributes', n.get_object_value(on_premises_extension_attributes.OnPremisesExtensionAttributes)),
-            "on_premises_immutable_id": lambda n : setattr(self, 'on_premises_immutable_id', n.get_str_value()),
-            "on_premises_last_sync_date_time": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
-            "on_premises_provisioning_errors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(on_premises_provisioning_error.OnPremisesProvisioningError)),
-            "on_premises_sam_account_name": lambda n : setattr(self, 'on_premises_sam_account_name', n.get_str_value()),
-            "on_premises_security_identifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
-            "on_premises_sync_enabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
-            "on_premises_user_principal_name": lambda n : setattr(self, 'on_premises_user_principal_name', n.get_str_value()),
-            "other_mails": lambda n : setattr(self, 'other_mails', n.get_collection_of_primitive_values(str)),
+            "onlineMeetings": lambda n : setattr(self, 'online_meetings', n.get_collection_of_object_values(online_meeting.OnlineMeeting)),
+            "onPremisesDistinguishedName": lambda n : setattr(self, 'on_premises_distinguished_name', n.get_str_value()),
+            "onPremisesDomainName": lambda n : setattr(self, 'on_premises_domain_name', n.get_str_value()),
+            "onPremisesExtensionAttributes": lambda n : setattr(self, 'on_premises_extension_attributes', n.get_object_value(on_premises_extension_attributes.OnPremisesExtensionAttributes)),
+            "onPremisesImmutableId": lambda n : setattr(self, 'on_premises_immutable_id', n.get_str_value()),
+            "onPremisesLastSyncDateTime": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
+            "onPremisesProvisioningErrors": lambda n : setattr(self, 'on_premises_provisioning_errors', n.get_collection_of_object_values(on_premises_provisioning_error.OnPremisesProvisioningError)),
+            "onPremisesSamAccountName": lambda n : setattr(self, 'on_premises_sam_account_name', n.get_str_value()),
+            "onPremisesSecurityIdentifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
+            "onPremisesSyncEnabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
+            "onPremisesUserPrincipalName": lambda n : setattr(self, 'on_premises_user_principal_name', n.get_str_value()),
+            "otherMails": lambda n : setattr(self, 'other_mails', n.get_collection_of_primitive_values(str)),
             "outlook": lambda n : setattr(self, 'outlook', n.get_object_value(outlook_user.OutlookUser)),
-            "owned_devices": lambda n : setattr(self, 'owned_devices', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "owned_objects": lambda n : setattr(self, 'owned_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "password_policies": lambda n : setattr(self, 'password_policies', n.get_str_value()),
-            "password_profile": lambda n : setattr(self, 'password_profile', n.get_object_value(password_profile.PasswordProfile)),
-            "past_projects": lambda n : setattr(self, 'past_projects', n.get_collection_of_primitive_values(str)),
+            "ownedDevices": lambda n : setattr(self, 'owned_devices', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "ownedObjects": lambda n : setattr(self, 'owned_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "passwordPolicies": lambda n : setattr(self, 'password_policies', n.get_str_value()),
+            "passwordProfile": lambda n : setattr(self, 'password_profile', n.get_object_value(password_profile.PasswordProfile)),
+            "pastProjects": lambda n : setattr(self, 'past_projects', n.get_collection_of_primitive_values(str)),
             "people": lambda n : setattr(self, 'people', n.get_collection_of_object_values(person.Person)),
             "photo": lambda n : setattr(self, 'photo', n.get_object_value(profile_photo.ProfilePhoto)),
             "photos": lambda n : setattr(self, 'photos', n.get_collection_of_object_values(profile_photo.ProfilePhoto)),
             "planner": lambda n : setattr(self, 'planner', n.get_object_value(planner_user.PlannerUser)),
-            "postal_code": lambda n : setattr(self, 'postal_code', n.get_str_value()),
-            "preferred_data_location": lambda n : setattr(self, 'preferred_data_location', n.get_str_value()),
-            "preferred_language": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
-            "preferred_name": lambda n : setattr(self, 'preferred_name', n.get_str_value()),
+            "postalCode": lambda n : setattr(self, 'postal_code', n.get_str_value()),
+            "preferredDataLocation": lambda n : setattr(self, 'preferred_data_location', n.get_str_value()),
+            "preferredLanguage": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
+            "preferredName": lambda n : setattr(self, 'preferred_name', n.get_str_value()),
             "presence": lambda n : setattr(self, 'presence', n.get_object_value(presence.Presence)),
-            "provisioned_plans": lambda n : setattr(self, 'provisioned_plans', n.get_collection_of_object_values(provisioned_plan.ProvisionedPlan)),
-            "proxy_addresses": lambda n : setattr(self, 'proxy_addresses', n.get_collection_of_primitive_values(str)),
-            "registered_devices": lambda n : setattr(self, 'registered_devices', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "provisionedPlans": lambda n : setattr(self, 'provisioned_plans', n.get_collection_of_object_values(provisioned_plan.ProvisionedPlan)),
+            "proxyAddresses": lambda n : setattr(self, 'proxy_addresses', n.get_collection_of_primitive_values(str)),
+            "registeredDevices": lambda n : setattr(self, 'registered_devices', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "responsibilities": lambda n : setattr(self, 'responsibilities', n.get_collection_of_primitive_values(str)),
             "schools": lambda n : setattr(self, 'schools', n.get_collection_of_primitive_values(str)),
-            "scoped_role_member_of": lambda n : setattr(self, 'scoped_role_member_of', n.get_collection_of_object_values(scoped_role_membership.ScopedRoleMembership)),
-            "security_identifier": lambda n : setattr(self, 'security_identifier', n.get_str_value()),
+            "scopedRoleMemberOf": lambda n : setattr(self, 'scoped_role_member_of', n.get_collection_of_object_values(scoped_role_membership.ScopedRoleMembership)),
+            "securityIdentifier": lambda n : setattr(self, 'security_identifier', n.get_str_value()),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(user_settings.UserSettings)),
-            "show_in_address_list": lambda n : setattr(self, 'show_in_address_list', n.get_bool_value()),
-            "sign_in_sessions_valid_from_date_time": lambda n : setattr(self, 'sign_in_sessions_valid_from_date_time', n.get_datetime_value()),
+            "showInAddressList": lambda n : setattr(self, 'show_in_address_list', n.get_bool_value()),
+            "signInSessionsValidFromDateTime": lambda n : setattr(self, 'sign_in_sessions_valid_from_date_time', n.get_datetime_value()),
             "skills": lambda n : setattr(self, 'skills', n.get_collection_of_primitive_values(str)),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
-            "street_address": lambda n : setattr(self, 'street_address', n.get_str_value()),
+            "streetAddress": lambda n : setattr(self, 'street_address', n.get_str_value()),
             "surname": lambda n : setattr(self, 'surname', n.get_str_value()),
             "teamwork": lambda n : setattr(self, 'teamwork', n.get_object_value(user_teamwork.UserTeamwork)),
             "todo": lambda n : setattr(self, 'todo', n.get_object_value(todo.Todo)),
-            "transitive_member_of": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "usage_location": lambda n : setattr(self, 'usage_location', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
-            "user_type": lambda n : setattr(self, 'user_type', n.get_str_value()),
+            "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "usageLocation": lambda n : setattr(self, 'usage_location', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userType": lambda n : setattr(self, 'user_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -1180,7 +1180,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the givenName property value. The given name (first name) of the user. Maximum length is 64 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).
         Args:
-            value: Value to set for the givenName property.
+            value: Value to set for the given_name property.
         """
         self._given_name = value
     
@@ -1197,7 +1197,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the hireDate property value. The hire date of the user. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned only on $select.  Note: This property is specific to SharePoint Online. We recommend using the native employeeHireDate property to set and update hire date values using Microsoft Graph APIs.
         Args:
-            value: Value to set for the hireDate property.
+            value: Value to set for the hire_date property.
         """
         self._hire_date = value
     
@@ -1231,7 +1231,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the imAddresses property value. The instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user. Read-only. Returned only on $select. Supports $filter (eq, not, ge, le, startsWith).
         Args:
-            value: Value to set for the imAddresses property.
+            value: Value to set for the im_addresses property.
         """
         self._im_addresses = value
     
@@ -1248,7 +1248,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the inferenceClassification property value. Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
         Args:
-            value: Value to set for the inferenceClassification property.
+            value: Value to set for the inference_classification property.
         """
         self._inference_classification = value
     
@@ -1299,7 +1299,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the isResourceAccount property value. Do not use – reserved for future use.
         Args:
-            value: Value to set for the isResourceAccount property.
+            value: Value to set for the is_resource_account property.
         """
         self._is_resource_account = value
     
@@ -1316,7 +1316,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the jobTitle property value. The user's job title. Maximum length is 128 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).
         Args:
-            value: Value to set for the jobTitle property.
+            value: Value to set for the job_title property.
         """
         self._job_title = value
     
@@ -1333,7 +1333,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the joinedTeams property value. The joinedTeams property
         Args:
-            value: Value to set for the joinedTeams property.
+            value: Value to set for the joined_teams property.
         """
         self._joined_teams = value
     
@@ -1350,7 +1350,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the lastPasswordChangeDateTime property value. The time when this Azure AD user last changed their password or when their password was created, whichever date the latest action was performed. The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned only on $select.
         Args:
-            value: Value to set for the lastPasswordChangeDateTime property.
+            value: Value to set for the last_password_change_date_time property.
         """
         self._last_password_change_date_time = value
     
@@ -1367,7 +1367,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the legalAgeGroupClassification property value. Used by enterprise applications to determine the legal age group of the user. This property is read-only and calculated based on ageGroup and consentProvidedForMinor properties. Allowed values: null, MinorWithOutParentalConsent, MinorWithParentalConsent, MinorNoParentalConsentRequired, NotAdult and Adult. Refer to the legal age group property definitions for further information. Returned only on $select.
         Args:
-            value: Value to set for the legalAgeGroupClassification property.
+            value: Value to set for the legal_age_group_classification property.
         """
         self._legal_age_group_classification = value
     
@@ -1384,7 +1384,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the licenseAssignmentStates property value. State of license assignments for this user. Also indicates licenses that are directly-assigned and those that the user has inherited through group memberships. Read-only. Returned only on $select.
         Args:
-            value: Value to set for the licenseAssignmentStates property.
+            value: Value to set for the license_assignment_states property.
         """
         self._license_assignment_states = value
     
@@ -1401,7 +1401,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the licenseDetails property value. A collection of this user's license details. Read-only.
         Args:
-            value: Value to set for the licenseDetails property.
+            value: Value to set for the license_details property.
         """
         self._license_details = value
     
@@ -1423,23 +1423,6 @@ class User(directory_object.DirectoryObject):
         self._mail = value
     
     @property
-    def mailbox_settings(self,) -> Optional[mailbox_settings.MailboxSettings]:
-        """
-        Gets the mailboxSettings property value. Settings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale and time zone. Returned only on $select.
-        Returns: Optional[mailbox_settings.MailboxSettings]
-        """
-        return self._mailbox_settings
-    
-    @mailbox_settings.setter
-    def mailbox_settings(self,value: Optional[mailbox_settings.MailboxSettings] = None) -> None:
-        """
-        Sets the mailboxSettings property value. Settings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale and time zone. Returned only on $select.
-        Args:
-            value: Value to set for the mailboxSettings property.
-        """
-        self._mailbox_settings = value
-    
-    @property
     def mail_folders(self,) -> Optional[List[mail_folder.MailFolder]]:
         """
         Gets the mailFolders property value. The user's mail folders. Read-only. Nullable.
@@ -1452,7 +1435,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the mailFolders property value. The user's mail folders. Read-only. Nullable.
         Args:
-            value: Value to set for the mailFolders property.
+            value: Value to set for the mail_folders property.
         """
         self._mail_folders = value
     
@@ -1469,9 +1452,26 @@ class User(directory_object.DirectoryObject):
         """
         Sets the mailNickname property value. The mail alias for the user. This property must be specified when a user is created. Maximum length is 64 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
         Args:
-            value: Value to set for the mailNickname property.
+            value: Value to set for the mail_nickname property.
         """
         self._mail_nickname = value
+    
+    @property
+    def mailbox_settings(self,) -> Optional[mailbox_settings.MailboxSettings]:
+        """
+        Gets the mailboxSettings property value. Settings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale and time zone. Returned only on $select.
+        Returns: Optional[mailbox_settings.MailboxSettings]
+        """
+        return self._mailbox_settings
+    
+    @mailbox_settings.setter
+    def mailbox_settings(self,value: Optional[mailbox_settings.MailboxSettings] = None) -> None:
+        """
+        Sets the mailboxSettings property value. Settings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale and time zone. Returned only on $select.
+        Args:
+            value: Value to set for the mailbox_settings property.
+        """
+        self._mailbox_settings = value
     
     @property
     def managed_app_registrations(self,) -> Optional[List[managed_app_registration.ManagedAppRegistration]]:
@@ -1486,7 +1486,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the managedAppRegistrations property value. Zero or more managed app registrations that belong to the user.
         Args:
-            value: Value to set for the managedAppRegistrations property.
+            value: Value to set for the managed_app_registrations property.
         """
         self._managed_app_registrations = value
     
@@ -1503,7 +1503,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the managedDevices property value. The managed devices associated with the user.
         Args:
-            value: Value to set for the managedDevices property.
+            value: Value to set for the managed_devices property.
         """
         self._managed_devices = value
     
@@ -1537,7 +1537,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the memberOf property value. The groups and directory roles that the user is a member of. Read-only. Nullable. Supports $expand.
         Args:
-            value: Value to set for the memberOf property.
+            value: Value to set for the member_of property.
         """
         self._member_of = value
     
@@ -1571,7 +1571,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the mobilePhone property value. The primary cellular telephone number for the user. Read-only for users synced from on-premises directory. Maximum length is 64 characters. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
         Args:
-            value: Value to set for the mobilePhone property.
+            value: Value to set for the mobile_phone property.
         """
         self._mobile_phone = value
     
@@ -1588,7 +1588,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the mySite property value. The URL for the user's personal site. Returned only on $select.
         Args:
-            value: Value to set for the mySite property.
+            value: Value to set for the my_site property.
         """
         self._my_site = value
     
@@ -1605,7 +1605,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the oauth2PermissionGrants property value. The oauth2PermissionGrants property
         Args:
-            value: Value to set for the oauth2PermissionGrants property.
+            value: Value to set for the oauth2_permission_grants property.
         """
         self._oauth2_permission_grants = value
     
@@ -1622,9 +1622,179 @@ class User(directory_object.DirectoryObject):
         """
         Sets the officeLocation property value. The office location in the user's place of business. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
         Args:
-            value: Value to set for the officeLocation property.
+            value: Value to set for the office_location property.
         """
         self._office_location = value
+    
+    @property
+    def on_premises_distinguished_name(self,) -> Optional[str]:
+        """
+        Gets the onPremisesDistinguishedName property value. Contains the on-premises Active Directory distinguished name or DN. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select.
+        Returns: Optional[str]
+        """
+        return self._on_premises_distinguished_name
+    
+    @on_premises_distinguished_name.setter
+    def on_premises_distinguished_name(self,value: Optional[str] = None) -> None:
+        """
+        Sets the onPremisesDistinguishedName property value. Contains the on-premises Active Directory distinguished name or DN. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select.
+        Args:
+            value: Value to set for the on_premises_distinguished_name property.
+        """
+        self._on_premises_distinguished_name = value
+    
+    @property
+    def on_premises_domain_name(self,) -> Optional[str]:
+        """
+        Gets the onPremisesDomainName property value. Contains the on-premises domainFQDN, also called dnsDomainName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select.
+        Returns: Optional[str]
+        """
+        return self._on_premises_domain_name
+    
+    @on_premises_domain_name.setter
+    def on_premises_domain_name(self,value: Optional[str] = None) -> None:
+        """
+        Sets the onPremisesDomainName property value. Contains the on-premises domainFQDN, also called dnsDomainName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select.
+        Args:
+            value: Value to set for the on_premises_domain_name property.
+        """
+        self._on_premises_domain_name = value
+    
+    @property
+    def on_premises_extension_attributes(self,) -> Optional[on_premises_extension_attributes.OnPremisesExtensionAttributes]:
+        """
+        Gets the onPremisesExtensionAttributes property value. Contains extensionAttributes1-15 for the user. These extension attributes are also known as Exchange custom attributes 1-15. For an onPremisesSyncEnabled user, the source of authority for this set of properties is the on-premises and is read-only. For a cloud-only user (where onPremisesSyncEnabled is false), these properties can be set during creation or update of a user object.  For a cloud-only user previously synced from on-premises Active Directory, these properties are read-only in Microsoft Graph but can be fully managed through the Exchange Admin Center or the Exchange Online V2 module in PowerShell. Returned only on $select. Supports $filter (eq, ne, not, in).
+        Returns: Optional[on_premises_extension_attributes.OnPremisesExtensionAttributes]
+        """
+        return self._on_premises_extension_attributes
+    
+    @on_premises_extension_attributes.setter
+    def on_premises_extension_attributes(self,value: Optional[on_premises_extension_attributes.OnPremisesExtensionAttributes] = None) -> None:
+        """
+        Sets the onPremisesExtensionAttributes property value. Contains extensionAttributes1-15 for the user. These extension attributes are also known as Exchange custom attributes 1-15. For an onPremisesSyncEnabled user, the source of authority for this set of properties is the on-premises and is read-only. For a cloud-only user (where onPremisesSyncEnabled is false), these properties can be set during creation or update of a user object.  For a cloud-only user previously synced from on-premises Active Directory, these properties are read-only in Microsoft Graph but can be fully managed through the Exchange Admin Center or the Exchange Online V2 module in PowerShell. Returned only on $select. Supports $filter (eq, ne, not, in).
+        Args:
+            value: Value to set for the on_premises_extension_attributes property.
+        """
+        self._on_premises_extension_attributes = value
+    
+    @property
+    def on_premises_immutable_id(self,) -> Optional[str]:
+        """
+        Gets the onPremisesImmutableId property value. This property is used to associate an on-premises Active Directory user account to their Azure AD user object. This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user's userPrincipalName (UPN) property. NOTE: The $ and _ characters cannot be used when specifying this property. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in)..
+        Returns: Optional[str]
+        """
+        return self._on_premises_immutable_id
+    
+    @on_premises_immutable_id.setter
+    def on_premises_immutable_id(self,value: Optional[str] = None) -> None:
+        """
+        Sets the onPremisesImmutableId property value. This property is used to associate an on-premises Active Directory user account to their Azure AD user object. This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user's userPrincipalName (UPN) property. NOTE: The $ and _ characters cannot be used when specifying this property. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in)..
+        Args:
+            value: Value to set for the on_premises_immutable_id property.
+        """
+        self._on_premises_immutable_id = value
+    
+    @property
+    def on_premises_last_sync_date_time(self,) -> Optional[datetime]:
+        """
+        Gets the onPremisesLastSyncDateTime property value. Indicates the last time at which the object was synced with the on-premises directory; for example: 2013-02-16T03:04:54Z. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in).
+        Returns: Optional[datetime]
+        """
+        return self._on_premises_last_sync_date_time
+    
+    @on_premises_last_sync_date_time.setter
+    def on_premises_last_sync_date_time(self,value: Optional[datetime] = None) -> None:
+        """
+        Sets the onPremisesLastSyncDateTime property value. Indicates the last time at which the object was synced with the on-premises directory; for example: 2013-02-16T03:04:54Z. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in).
+        Args:
+            value: Value to set for the on_premises_last_sync_date_time property.
+        """
+        self._on_premises_last_sync_date_time = value
+    
+    @property
+    def on_premises_provisioning_errors(self,) -> Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]]:
+        """
+        Gets the onPremisesProvisioningErrors property value. Errors when using Microsoft synchronization product during provisioning. Returned only on $select. Supports $filter (eq, not, ge, le).
+        Returns: Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]]
+        """
+        return self._on_premises_provisioning_errors
+    
+    @on_premises_provisioning_errors.setter
+    def on_premises_provisioning_errors(self,value: Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]] = None) -> None:
+        """
+        Sets the onPremisesProvisioningErrors property value. Errors when using Microsoft synchronization product during provisioning. Returned only on $select. Supports $filter (eq, not, ge, le).
+        Args:
+            value: Value to set for the on_premises_provisioning_errors property.
+        """
+        self._on_premises_provisioning_errors = value
+    
+    @property
+    def on_premises_sam_account_name(self,) -> Optional[str]:
+        """
+        Gets the onPremisesSamAccountName property value. Contains the on-premises samAccountName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith).
+        Returns: Optional[str]
+        """
+        return self._on_premises_sam_account_name
+    
+    @on_premises_sam_account_name.setter
+    def on_premises_sam_account_name(self,value: Optional[str] = None) -> None:
+        """
+        Sets the onPremisesSamAccountName property value. Contains the on-premises samAccountName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith).
+        Args:
+            value: Value to set for the on_premises_sam_account_name property.
+        """
+        self._on_premises_sam_account_name = value
+    
+    @property
+    def on_premises_security_identifier(self,) -> Optional[str]:
+        """
+        Gets the onPremisesSecurityIdentifier property value. Contains the on-premises security identifier (SID) for the user that was synchronized from on-premises to the cloud. Read-only. Returned only on $select.  Supports $filter (eq including on null values).
+        Returns: Optional[str]
+        """
+        return self._on_premises_security_identifier
+    
+    @on_premises_security_identifier.setter
+    def on_premises_security_identifier(self,value: Optional[str] = None) -> None:
+        """
+        Sets the onPremisesSecurityIdentifier property value. Contains the on-premises security identifier (SID) for the user that was synchronized from on-premises to the cloud. Read-only. Returned only on $select.  Supports $filter (eq including on null values).
+        Args:
+            value: Value to set for the on_premises_security_identifier property.
+        """
+        self._on_premises_security_identifier = value
+    
+    @property
+    def on_premises_sync_enabled(self,) -> Optional[bool]:
+        """
+        Gets the onPremisesSyncEnabled property value. true if this user object is currently being synced from an on-premises Active Directory (AD); otherwise the user isn't being synced and can be managed in Azure Active Directory (Azure AD). Read-only. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values).
+        Returns: Optional[bool]
+        """
+        return self._on_premises_sync_enabled
+    
+    @on_premises_sync_enabled.setter
+    def on_premises_sync_enabled(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the onPremisesSyncEnabled property value. true if this user object is currently being synced from an on-premises Active Directory (AD); otherwise the user isn't being synced and can be managed in Azure Active Directory (Azure AD). Read-only. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values).
+        Args:
+            value: Value to set for the on_premises_sync_enabled property.
+        """
+        self._on_premises_sync_enabled = value
+    
+    @property
+    def on_premises_user_principal_name(self,) -> Optional[str]:
+        """
+        Gets the onPremisesUserPrincipalName property value. Contains the on-premises userPrincipalName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith).
+        Returns: Optional[str]
+        """
+        return self._on_premises_user_principal_name
+    
+    @on_premises_user_principal_name.setter
+    def on_premises_user_principal_name(self,value: Optional[str] = None) -> None:
+        """
+        Sets the onPremisesUserPrincipalName property value. Contains the on-premises userPrincipalName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith).
+        Args:
+            value: Value to set for the on_premises_user_principal_name property.
+        """
+        self._on_premises_user_principal_name = value
     
     @property
     def onenote(self,) -> Optional[onenote.Onenote]:
@@ -1656,179 +1826,9 @@ class User(directory_object.DirectoryObject):
         """
         Sets the onlineMeetings property value. The onlineMeetings property
         Args:
-            value: Value to set for the onlineMeetings property.
+            value: Value to set for the online_meetings property.
         """
         self._online_meetings = value
-    
-    @property
-    def on_premises_distinguished_name(self,) -> Optional[str]:
-        """
-        Gets the onPremisesDistinguishedName property value. Contains the on-premises Active Directory distinguished name or DN. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select.
-        Returns: Optional[str]
-        """
-        return self._on_premises_distinguished_name
-    
-    @on_premises_distinguished_name.setter
-    def on_premises_distinguished_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the onPremisesDistinguishedName property value. Contains the on-premises Active Directory distinguished name or DN. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select.
-        Args:
-            value: Value to set for the onPremisesDistinguishedName property.
-        """
-        self._on_premises_distinguished_name = value
-    
-    @property
-    def on_premises_domain_name(self,) -> Optional[str]:
-        """
-        Gets the onPremisesDomainName property value. Contains the on-premises domainFQDN, also called dnsDomainName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select.
-        Returns: Optional[str]
-        """
-        return self._on_premises_domain_name
-    
-    @on_premises_domain_name.setter
-    def on_premises_domain_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the onPremisesDomainName property value. Contains the on-premises domainFQDN, also called dnsDomainName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select.
-        Args:
-            value: Value to set for the onPremisesDomainName property.
-        """
-        self._on_premises_domain_name = value
-    
-    @property
-    def on_premises_extension_attributes(self,) -> Optional[on_premises_extension_attributes.OnPremisesExtensionAttributes]:
-        """
-        Gets the onPremisesExtensionAttributes property value. Contains extensionAttributes1-15 for the user. These extension attributes are also known as Exchange custom attributes 1-15. For an onPremisesSyncEnabled user, the source of authority for this set of properties is the on-premises and is read-only. For a cloud-only user (where onPremisesSyncEnabled is false), these properties can be set during creation or update of a user object.  For a cloud-only user previously synced from on-premises Active Directory, these properties are read-only in Microsoft Graph but can be fully managed through the Exchange Admin Center or the Exchange Online V2 module in PowerShell. Returned only on $select. Supports $filter (eq, ne, not, in).
-        Returns: Optional[on_premises_extension_attributes.OnPremisesExtensionAttributes]
-        """
-        return self._on_premises_extension_attributes
-    
-    @on_premises_extension_attributes.setter
-    def on_premises_extension_attributes(self,value: Optional[on_premises_extension_attributes.OnPremisesExtensionAttributes] = None) -> None:
-        """
-        Sets the onPremisesExtensionAttributes property value. Contains extensionAttributes1-15 for the user. These extension attributes are also known as Exchange custom attributes 1-15. For an onPremisesSyncEnabled user, the source of authority for this set of properties is the on-premises and is read-only. For a cloud-only user (where onPremisesSyncEnabled is false), these properties can be set during creation or update of a user object.  For a cloud-only user previously synced from on-premises Active Directory, these properties are read-only in Microsoft Graph but can be fully managed through the Exchange Admin Center or the Exchange Online V2 module in PowerShell. Returned only on $select. Supports $filter (eq, ne, not, in).
-        Args:
-            value: Value to set for the onPremisesExtensionAttributes property.
-        """
-        self._on_premises_extension_attributes = value
-    
-    @property
-    def on_premises_immutable_id(self,) -> Optional[str]:
-        """
-        Gets the onPremisesImmutableId property value. This property is used to associate an on-premises Active Directory user account to their Azure AD user object. This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user's userPrincipalName (UPN) property. NOTE: The $ and _ characters cannot be used when specifying this property. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in)..
-        Returns: Optional[str]
-        """
-        return self._on_premises_immutable_id
-    
-    @on_premises_immutable_id.setter
-    def on_premises_immutable_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the onPremisesImmutableId property value. This property is used to associate an on-premises Active Directory user account to their Azure AD user object. This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user's userPrincipalName (UPN) property. NOTE: The $ and _ characters cannot be used when specifying this property. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in)..
-        Args:
-            value: Value to set for the onPremisesImmutableId property.
-        """
-        self._on_premises_immutable_id = value
-    
-    @property
-    def on_premises_last_sync_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the onPremisesLastSyncDateTime property value. Indicates the last time at which the object was synced with the on-premises directory; for example: 2013-02-16T03:04:54Z. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in).
-        Returns: Optional[datetime]
-        """
-        return self._on_premises_last_sync_date_time
-    
-    @on_premises_last_sync_date_time.setter
-    def on_premises_last_sync_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the onPremisesLastSyncDateTime property value. Indicates the last time at which the object was synced with the on-premises directory; for example: 2013-02-16T03:04:54Z. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in).
-        Args:
-            value: Value to set for the onPremisesLastSyncDateTime property.
-        """
-        self._on_premises_last_sync_date_time = value
-    
-    @property
-    def on_premises_provisioning_errors(self,) -> Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]]:
-        """
-        Gets the onPremisesProvisioningErrors property value. Errors when using Microsoft synchronization product during provisioning. Returned only on $select. Supports $filter (eq, not, ge, le).
-        Returns: Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]]
-        """
-        return self._on_premises_provisioning_errors
-    
-    @on_premises_provisioning_errors.setter
-    def on_premises_provisioning_errors(self,value: Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]] = None) -> None:
-        """
-        Sets the onPremisesProvisioningErrors property value. Errors when using Microsoft synchronization product during provisioning. Returned only on $select. Supports $filter (eq, not, ge, le).
-        Args:
-            value: Value to set for the onPremisesProvisioningErrors property.
-        """
-        self._on_premises_provisioning_errors = value
-    
-    @property
-    def on_premises_sam_account_name(self,) -> Optional[str]:
-        """
-        Gets the onPremisesSamAccountName property value. Contains the on-premises samAccountName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith).
-        Returns: Optional[str]
-        """
-        return self._on_premises_sam_account_name
-    
-    @on_premises_sam_account_name.setter
-    def on_premises_sam_account_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the onPremisesSamAccountName property value. Contains the on-premises samAccountName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith).
-        Args:
-            value: Value to set for the onPremisesSamAccountName property.
-        """
-        self._on_premises_sam_account_name = value
-    
-    @property
-    def on_premises_security_identifier(self,) -> Optional[str]:
-        """
-        Gets the onPremisesSecurityIdentifier property value. Contains the on-premises security identifier (SID) for the user that was synchronized from on-premises to the cloud. Read-only. Returned only on $select.  Supports $filter (eq including on null values).
-        Returns: Optional[str]
-        """
-        return self._on_premises_security_identifier
-    
-    @on_premises_security_identifier.setter
-    def on_premises_security_identifier(self,value: Optional[str] = None) -> None:
-        """
-        Sets the onPremisesSecurityIdentifier property value. Contains the on-premises security identifier (SID) for the user that was synchronized from on-premises to the cloud. Read-only. Returned only on $select.  Supports $filter (eq including on null values).
-        Args:
-            value: Value to set for the onPremisesSecurityIdentifier property.
-        """
-        self._on_premises_security_identifier = value
-    
-    @property
-    def on_premises_sync_enabled(self,) -> Optional[bool]:
-        """
-        Gets the onPremisesSyncEnabled property value. true if this user object is currently being synced from an on-premises Active Directory (AD); otherwise the user isn't being synced and can be managed in Azure Active Directory (Azure AD). Read-only. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values).
-        Returns: Optional[bool]
-        """
-        return self._on_premises_sync_enabled
-    
-    @on_premises_sync_enabled.setter
-    def on_premises_sync_enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the onPremisesSyncEnabled property value. true if this user object is currently being synced from an on-premises Active Directory (AD); otherwise the user isn't being synced and can be managed in Azure Active Directory (Azure AD). Read-only. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values).
-        Args:
-            value: Value to set for the onPremisesSyncEnabled property.
-        """
-        self._on_premises_sync_enabled = value
-    
-    @property
-    def on_premises_user_principal_name(self,) -> Optional[str]:
-        """
-        Gets the onPremisesUserPrincipalName property value. Contains the on-premises userPrincipalName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith).
-        Returns: Optional[str]
-        """
-        return self._on_premises_user_principal_name
-    
-    @on_premises_user_principal_name.setter
-    def on_premises_user_principal_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the onPremisesUserPrincipalName property value. Contains the on-premises userPrincipalName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith).
-        Args:
-            value: Value to set for the onPremisesUserPrincipalName property.
-        """
-        self._on_premises_user_principal_name = value
     
     @property
     def other_mails(self,) -> Optional[List[str]]:
@@ -1843,7 +1843,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the otherMails property value. A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com']. NOTE: This property cannot contain accent characters. Returned only on $select. Supports $filter (eq, not, ge, le, in, startsWith, endsWith, /$count eq 0, /$count ne 0).
         Args:
-            value: Value to set for the otherMails property.
+            value: Value to set for the other_mails property.
         """
         self._other_mails = value
     
@@ -1877,7 +1877,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the ownedDevices property value. Devices that are owned by the user. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
         Args:
-            value: Value to set for the ownedDevices property.
+            value: Value to set for the owned_devices property.
         """
         self._owned_devices = value
     
@@ -1894,7 +1894,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the ownedObjects property value. Directory objects that are owned by the user. Read-only. Nullable. Supports $expand.
         Args:
-            value: Value to set for the ownedObjects property.
+            value: Value to set for the owned_objects property.
         """
         self._owned_objects = value
     
@@ -1911,7 +1911,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the passwordPolicies property value. Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified. The two may be specified together; for example: DisablePasswordExpiration, DisableStrongPassword. Returned only on $select. For more information on the default password policies, see Azure AD pasword policies. Supports $filter (ne, not, and eq on null values).
         Args:
-            value: Value to set for the passwordPolicies property.
+            value: Value to set for the password_policies property.
         """
         self._password_policies = value
     
@@ -1928,7 +1928,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the passwordProfile property value. Specifies the password profile for the user. The profile contains the user’s password. This property is required when a user is created. The password in the profile must satisfy minimum requirements as specified by the passwordPolicies property. By default, a strong password is required. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values).
         Args:
-            value: Value to set for the passwordProfile property.
+            value: Value to set for the password_profile property.
         """
         self._password_profile = value
     
@@ -1945,7 +1945,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the pastProjects property value. A list for the user to enumerate their past projects. Returned only on $select.
         Args:
-            value: Value to set for the pastProjects property.
+            value: Value to set for the past_projects property.
         """
         self._past_projects = value
     
@@ -2030,7 +2030,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the postalCode property value. The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code. Maximum length is 40 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
         Args:
-            value: Value to set for the postalCode property.
+            value: Value to set for the postal_code property.
         """
         self._postal_code = value
     
@@ -2047,7 +2047,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the preferredDataLocation property value. The preferred data location for the user. For more information, see OneDrive Online Multi-Geo.
         Args:
-            value: Value to set for the preferredDataLocation property.
+            value: Value to set for the preferred_data_location property.
         """
         self._preferred_data_location = value
     
@@ -2064,7 +2064,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the preferredLanguage property value. The preferred language for the user. Should follow ISO 639-1 Code; for example en-US. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values)
         Args:
-            value: Value to set for the preferredLanguage property.
+            value: Value to set for the preferred_language property.
         """
         self._preferred_language = value
     
@@ -2081,7 +2081,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the preferredName property value. The preferred name for the user. Not Supported. This attribute returns an empty string.Returned only on $select.
         Args:
-            value: Value to set for the preferredName property.
+            value: Value to set for the preferred_name property.
         """
         self._preferred_name = value
     
@@ -2115,7 +2115,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the provisionedPlans property value. The plans that are provisioned for the user. Read-only. Not nullable. Returned only on $select. Supports $filter (eq, not, ge, le).
         Args:
-            value: Value to set for the provisionedPlans property.
+            value: Value to set for the provisioned_plans property.
         """
         self._provisioned_plans = value
     
@@ -2132,7 +2132,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the proxyAddresses property value. For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. Changes to the mail property will also update this collection to include the value as an SMTP address. For more information, see mail and proxyAddresses properties. The proxy address prefixed with SMTP (capitalized) is the primary proxy address while those prefixed with smtp are the secondary proxy addresses. For Azure AD B2C accounts, this property has a limit of ten unique addresses. Read-only in Microsoft Graph; you can update this property only through the Microsoft 365 admin center. Not nullable. Returned only on $select. Supports $filter (eq, not, ge, le, startsWith, endsWith, /$count eq 0, /$count ne 0).
         Args:
-            value: Value to set for the proxyAddresses property.
+            value: Value to set for the proxy_addresses property.
         """
         self._proxy_addresses = value
     
@@ -2149,7 +2149,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the registeredDevices property value. Devices that are registered for the user. Read-only. Nullable. Supports $expand.
         Args:
-            value: Value to set for the registeredDevices property.
+            value: Value to set for the registered_devices property.
         """
         self._registered_devices = value
     
@@ -2200,7 +2200,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the scopedRoleMemberOf property value. The scopedRoleMemberOf property
         Args:
-            value: Value to set for the scopedRoleMemberOf property.
+            value: Value to set for the scoped_role_member_of property.
         """
         self._scoped_role_member_of = value
     
@@ -2217,7 +2217,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the securityIdentifier property value. Security identifier (SID) of the user, used in Windows scenarios. Read-only. Returned by default. Supports $select and $filter (eq, not, ge, le, startsWith).
         Args:
-            value: Value to set for the securityIdentifier property.
+            value: Value to set for the security_identifier property.
         """
         self._security_identifier = value
     
@@ -2243,15 +2243,15 @@ class User(directory_object.DirectoryObject):
         writer.write_datetime_value("birthday", self.birthday)
         writer.write_collection_of_primitive_values("businessPhones", self.business_phones)
         writer.write_object_value("calendar", self.calendar)
-        writer.write_collection_of_object_values("calendarGroups", self.calendar_groups)
         writer.write_collection_of_object_values("calendars", self.calendars)
+        writer.write_collection_of_object_values("calendarGroups", self.calendar_groups)
         writer.write_collection_of_object_values("calendarView", self.calendar_view)
         writer.write_collection_of_object_values("chats", self.chats)
         writer.write_str_value("city", self.city)
         writer.write_str_value("companyName", self.company_name)
         writer.write_str_value("consentProvidedForMinor", self.consent_provided_for_minor)
-        writer.write_collection_of_object_values("contactFolders", self.contact_folders)
         writer.write_collection_of_object_values("contacts", self.contacts)
+        writer.write_collection_of_object_values("contactFolders", self.contact_folders)
         writer.write_str_value("country", self.country)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_object_values("createdObjects", self.created_objects)
@@ -2379,7 +2379,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the showInAddressList property value. Do not use in Microsoft Graph. Manage this property through the Microsoft 365 admin center instead. Represents whether the user should be included in the Outlook global address list. See Known issue.
         Args:
-            value: Value to set for the showInAddressList property.
+            value: Value to set for the show_in_address_list property.
         """
         self._show_in_address_list = value
     
@@ -2396,7 +2396,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the signInSessionsValidFromDateTime property value. Any refresh tokens or sessions tokens (session cookies) issued before this time are invalid, and applications will get an error when using an invalid refresh or sessions token to acquire a delegated access token (to access APIs such as Microsoft Graph).  If this happens, the application will need to acquire a new refresh token by making a request to the authorize endpoint. Read-only. Use revokeSignInSessions to reset. Returned only on $select.
         Args:
-            value: Value to set for the signInSessionsValidFromDateTime property.
+            value: Value to set for the sign_in_sessions_valid_from_date_time property.
         """
         self._sign_in_sessions_valid_from_date_time = value
     
@@ -2447,7 +2447,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the streetAddress property value. The street address of the user's place of business. Maximum length is 1024 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
         Args:
-            value: Value to set for the streetAddress property.
+            value: Value to set for the street_address property.
         """
         self._street_address = value
     
@@ -2515,7 +2515,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the transitiveMemberOf property value. The groups, including nested groups, and directory roles that a user is a member of. Nullable.
         Args:
-            value: Value to set for the transitiveMemberOf property.
+            value: Value to set for the transitive_member_of property.
         """
         self._transitive_member_of = value
     
@@ -2532,7 +2532,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the usageLocation property value. A two letter country code (ISO standard 3166). Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries.  Examples include: US, JP, and GB. Not nullable. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
         Args:
-            value: Value to set for the usageLocation property.
+            value: Value to set for the usage_location property.
         """
         self._usage_location = value
     
@@ -2549,7 +2549,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the userPrincipalName property value. The user principal name (UPN) of the user. The UPN is an Internet-style login name for the user based on the Internet standard RFC 822. By convention, this should map to the user's email name. The general format is alias@domain, where domain must be present in the tenant's collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of organization.NOTE: This property cannot contain accent characters. Only the following characters are allowed A - Z, a - z, 0 - 9, ' . - _ ! # ^ ~. For the complete list of allowed characters, see username policies. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, endsWith) and $orderBy.
         Args:
-            value: Value to set for the userPrincipalName property.
+            value: Value to set for the user_principal_name property.
         """
         self._user_principal_name = value
     
@@ -2566,7 +2566,7 @@ class User(directory_object.DirectoryObject):
         """
         Sets the userType property value. A string value that can be used to classify user types in your directory, such as Member and Guest. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values). NOTE: For more information about the permissions for member and guest users, see What are the default user permissions in Azure Active Directory?
         Args:
-            value: Value to set for the userType property.
+            value: Value to set for the user_type property.
         """
         self._user_type = value
     

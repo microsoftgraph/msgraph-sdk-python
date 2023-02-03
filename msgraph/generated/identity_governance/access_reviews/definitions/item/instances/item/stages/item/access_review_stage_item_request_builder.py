@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 decisions_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.stages.item.decisions.decisions_request_builder')
 access_review_instance_decision_item_item_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.stages.item.decisions.item.access_review_instance_decision_item_item_request_builder')
-stop_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.stages.item.stop.stop_request_builder')
+stop_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.stages.item.microsoft_graph_stop.stop_request_builder')
 access_review_stage = lazy_import('msgraph.generated.models.access_review_stage')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -28,16 +28,17 @@ class AccessReviewStageItemRequestBuilder():
         return decisions_request_builder.DecisionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def stop(self) -> stop_request_builder.StopRequestBuilder:
+    def microsoft_graph_stop(self) -> stop_request_builder.StopRequestBuilder:
         """
         Provides operations to call the stop method.
         """
         return stop_request_builder.StopRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, access_review_stage_id: Optional[str] = None) -> None:
         """
         Instantiates a new AccessReviewStageItemRequestBuilder and sets the default values.
         Args:
+            accessReviewStageId: key: id of accessReviewStage
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -49,6 +50,7 @@ class AccessReviewStageItemRequestBuilder():
         self.url_template: str = "{+baseurl}/identityGovernance/accessReviews/definitions/{accessReviewScheduleDefinition%2Did}/instances/{accessReviewInstance%2Did}/stages/{accessReviewStage%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["accessReviewStage%2Did"] = accessReviewStageId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

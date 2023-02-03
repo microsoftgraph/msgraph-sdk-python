@@ -36,7 +36,7 @@ class Pkcs12Certificate(api_authentication_configuration_base.ApiAuthenticationC
         """
         fields = {
             "password": lambda n : setattr(self, 'password', n.get_str_value()),
-            "pkcs12_value": lambda n : setattr(self, 'pkcs12_value', n.get_str_value()),
+            "pkcs12Value": lambda n : setattr(self, 'pkcs12_value', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -72,7 +72,7 @@ class Pkcs12Certificate(api_authentication_configuration_base.ApiAuthenticationC
         """
         Sets the pkcs12Value property value. Represents the pfx content that is sent. The value should be a base-64 encoded version of the actual certificate content. Required.
         Args:
-            value: Value to set for the pkcs12Value property.
+            value: Value to set for the pkcs12_value property.
         """
         self._pkcs12_value = value
     

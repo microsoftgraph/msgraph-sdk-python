@@ -17,10 +17,11 @@ class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder():
     """
     Provides operations to manage the partners property of the microsoft.graph.crossTenantAccessPolicy entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, cross_tenant_access_policy_configuration_partner_tenant_id: Optional[str] = None) -> None:
         """
         Instantiates a new CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder and sets the default values.
         Args:
+            crossTenantAccessPolicyConfigurationPartnerTenantId: key: tenantId of crossTenantAccessPolicyConfigurationPartner
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder():
         self.url_template: str = "{+baseurl}/policies/crossTenantAccessPolicy/partners/{crossTenantAccessPolicyConfigurationPartner%2DtenantId}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["crossTenantAccessPolicyConfigurationPartner%2DtenantId"] = crossTenantAccessPolicyConfigurationPartnerTenantId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

@@ -23,7 +23,7 @@ class SecureScoreControlProfile(entity.Entity):
         """
         Sets the actionType property value. Control action type (Config, Review, Behavior).
         Args:
-            value: Value to set for the actionType property.
+            value: Value to set for the action_type property.
         """
         self._action_type = value
     
@@ -40,7 +40,7 @@ class SecureScoreControlProfile(entity.Entity):
         """
         Sets the actionUrl property value. URL to where the control can be actioned.
         Args:
-            value: Value to set for the actionUrl property.
+            value: Value to set for the action_url property.
         """
         self._action_url = value
     
@@ -57,7 +57,7 @@ class SecureScoreControlProfile(entity.Entity):
         """
         Sets the azureTenantId property value. GUID string for tenant ID.
         Args:
-            value: Value to set for the azureTenantId property.
+            value: Value to set for the azure_tenant_id property.
         """
         self._azure_tenant_id = value
     
@@ -74,7 +74,7 @@ class SecureScoreControlProfile(entity.Entity):
         """
         Sets the complianceInformation property value. The collection of compliance information associated with secure score control
         Args:
-            value: Value to set for the complianceInformation property.
+            value: Value to set for the compliance_information property.
         """
         self._compliance_information = value
     
@@ -137,7 +137,7 @@ class SecureScoreControlProfile(entity.Entity):
         """
         Sets the controlCategory property value. Control action category (Identity, Data, Device, Apps, Infrastructure).
         Args:
-            value: Value to set for the controlCategory property.
+            value: Value to set for the control_category property.
         """
         self._control_category = value
     
@@ -154,7 +154,7 @@ class SecureScoreControlProfile(entity.Entity):
         """
         Sets the controlStateUpdates property value. Flag to indicate where the tenant has marked a control (ignored, thirdParty, reviewed) (supports update).
         Args:
-            value: Value to set for the controlStateUpdates property.
+            value: Value to set for the control_state_updates property.
         """
         self._control_state_updates = value
     
@@ -193,25 +193,25 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "action_type": lambda n : setattr(self, 'action_type', n.get_str_value()),
-            "action_url": lambda n : setattr(self, 'action_url', n.get_str_value()),
-            "azure_tenant_id": lambda n : setattr(self, 'azure_tenant_id', n.get_str_value()),
-            "compliance_information": lambda n : setattr(self, 'compliance_information', n.get_collection_of_object_values(compliance_information.ComplianceInformation)),
-            "control_category": lambda n : setattr(self, 'control_category', n.get_str_value()),
-            "control_state_updates": lambda n : setattr(self, 'control_state_updates', n.get_collection_of_object_values(secure_score_control_state_update.SecureScoreControlStateUpdate)),
+            "actionType": lambda n : setattr(self, 'action_type', n.get_str_value()),
+            "actionUrl": lambda n : setattr(self, 'action_url', n.get_str_value()),
+            "azureTenantId": lambda n : setattr(self, 'azure_tenant_id', n.get_str_value()),
+            "complianceInformation": lambda n : setattr(self, 'compliance_information', n.get_collection_of_object_values(compliance_information.ComplianceInformation)),
+            "controlCategory": lambda n : setattr(self, 'control_category', n.get_str_value()),
+            "controlStateUpdates": lambda n : setattr(self, 'control_state_updates', n.get_collection_of_object_values(secure_score_control_state_update.SecureScoreControlStateUpdate)),
             "deprecated": lambda n : setattr(self, 'deprecated', n.get_bool_value()),
-            "implementation_cost": lambda n : setattr(self, 'implementation_cost', n.get_str_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "max_score": lambda n : setattr(self, 'max_score', n.get_float_value()),
+            "implementationCost": lambda n : setattr(self, 'implementation_cost', n.get_str_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "maxScore": lambda n : setattr(self, 'max_score', n.get_float_value()),
             "rank": lambda n : setattr(self, 'rank', n.get_int_value()),
             "remediation": lambda n : setattr(self, 'remediation', n.get_str_value()),
-            "remediation_impact": lambda n : setattr(self, 'remediation_impact', n.get_str_value()),
+            "remediationImpact": lambda n : setattr(self, 'remediation_impact', n.get_str_value()),
             "service": lambda n : setattr(self, 'service', n.get_str_value()),
             "threats": lambda n : setattr(self, 'threats', n.get_collection_of_primitive_values(str)),
             "tier": lambda n : setattr(self, 'tier', n.get_str_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
-            "user_impact": lambda n : setattr(self, 'user_impact', n.get_str_value()),
-            "vendor_information": lambda n : setattr(self, 'vendor_information', n.get_object_value(security_vendor_information.SecurityVendorInformation)),
+            "userImpact": lambda n : setattr(self, 'user_impact', n.get_str_value()),
+            "vendorInformation": lambda n : setattr(self, 'vendor_information', n.get_object_value(security_vendor_information.SecurityVendorInformation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -230,7 +230,7 @@ class SecureScoreControlProfile(entity.Entity):
         """
         Sets the implementationCost property value. Resource cost of implemmentating control (low, moderate, high).
         Args:
-            value: Value to set for the implementationCost property.
+            value: Value to set for the implementation_cost property.
         """
         self._implementation_cost = value
     
@@ -247,7 +247,7 @@ class SecureScoreControlProfile(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. Time at which the control profile entity was last modified. The Timestamp type represents date and time
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     
@@ -264,7 +264,7 @@ class SecureScoreControlProfile(entity.Entity):
         """
         Sets the maxScore property value. max attainable score for the control.
         Args:
-            value: Value to set for the maxScore property.
+            value: Value to set for the max_score property.
         """
         self._max_score = value
     
@@ -315,7 +315,7 @@ class SecureScoreControlProfile(entity.Entity):
         """
         Sets the remediationImpact property value. Description of the impact on users of the remediation.
         Args:
-            value: Value to set for the remediationImpact property.
+            value: Value to set for the remediation_impact property.
         """
         self._remediation_impact = value
     
@@ -429,7 +429,7 @@ class SecureScoreControlProfile(entity.Entity):
         """
         Sets the userImpact property value. The userImpact property
         Args:
-            value: Value to set for the userImpact property.
+            value: Value to set for the user_impact property.
         """
         self._user_impact = value
     
@@ -446,7 +446,7 @@ class SecureScoreControlProfile(entity.Entity):
         """
         Sets the vendorInformation property value. The vendorInformation property
         Args:
-            value: Value to set for the vendorInformation property.
+            value: Value to set for the vendor_information property.
         """
         self._vendor_information = value
     

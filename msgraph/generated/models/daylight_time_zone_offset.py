@@ -40,7 +40,7 @@ class DaylightTimeZoneOffset(standard_time_zone_offset.StandardTimeZoneOffset):
         """
         Sets the daylightBias property value. The time offset from Coordinated Universal Time (UTC) for daylight saving time. This value is in minutes.
         Args:
-            value: Value to set for the daylightBias property.
+            value: Value to set for the daylight_bias property.
         """
         self._daylight_bias = value
     
@@ -50,7 +50,7 @@ class DaylightTimeZoneOffset(standard_time_zone_offset.StandardTimeZoneOffset):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "daylight_bias": lambda n : setattr(self, 'daylight_bias', n.get_int_value()),
+            "daylightBias": lambda n : setattr(self, 'daylight_bias', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

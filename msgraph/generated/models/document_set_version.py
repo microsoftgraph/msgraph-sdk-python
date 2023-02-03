@@ -56,7 +56,7 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
         """
         Sets the createdBy property value. User who captured the version.
         Args:
-            value: Value to set for the createdBy property.
+            value: Value to set for the created_by property.
         """
         self._created_by = value
     
@@ -73,7 +73,7 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
         """
         Sets the createdDateTime property value. Date and time when this version was created.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -96,10 +96,10 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
         """
         fields = {
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(document_set_version_item.DocumentSetVersionItem)),
-            "should_capture_minor_version": lambda n : setattr(self, 'should_capture_minor_version', n.get_bool_value()),
+            "shouldCaptureMinorVersion": lambda n : setattr(self, 'should_capture_minor_version', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -150,7 +150,7 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
         """
         Sets the shouldCaptureMinorVersion property value. If true, minor versions of items are also captured; otherwise, only major versions will be captured. Default value is false.
         Args:
-            value: Value to set for the shouldCaptureMinorVersion property.
+            value: Value to set for the should_capture_minor_version property.
         """
         self._should_capture_minor_version = value
     

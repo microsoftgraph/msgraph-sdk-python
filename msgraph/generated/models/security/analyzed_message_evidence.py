@@ -21,7 +21,7 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
         """
         Sets the antiSpamDirection property value. Direction of the email relative to your network. The possible values are: inbound, outbound or intraorg.
         Args:
-            value: Value to set for the antiSpamDirection property.
+            value: Value to set for the anti_spam_direction property.
         """
         self._anti_spam_direction = value
     
@@ -38,7 +38,7 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
         """
         Sets the attachmentsCount property value. Number of attachments in the email.
         Args:
-            value: Value to set for the attachmentsCount property.
+            value: Value to set for the attachments_count property.
         """
         self._attachments_count = value
     
@@ -111,7 +111,7 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
         """
         Sets the deliveryAction property value. Delivery action of the email. The possible values are: delivered, deliveredAsSpam, junked, blocked, or replaced.
         Args:
-            value: Value to set for the deliveryAction property.
+            value: Value to set for the delivery_action property.
         """
         self._delivery_action = value
     
@@ -128,7 +128,7 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
         """
         Sets the deliveryLocation property value. Location where the email was delivered. The possible values are: inbox, external, junkFolder, quarantine, failed, dropped, deletedFolder or forwarded.
         Args:
-            value: Value to set for the deliveryLocation property.
+            value: Value to set for the delivery_location property.
         """
         self._delivery_location = value
     
@@ -138,23 +138,23 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "anti_spam_direction": lambda n : setattr(self, 'anti_spam_direction', n.get_str_value()),
-            "attachments_count": lambda n : setattr(self, 'attachments_count', n.get_int_value()),
-            "delivery_action": lambda n : setattr(self, 'delivery_action', n.get_str_value()),
-            "delivery_location": lambda n : setattr(self, 'delivery_location', n.get_str_value()),
-            "internet_message_id": lambda n : setattr(self, 'internet_message_id', n.get_str_value()),
+            "antiSpamDirection": lambda n : setattr(self, 'anti_spam_direction', n.get_str_value()),
+            "attachmentsCount": lambda n : setattr(self, 'attachments_count', n.get_int_value()),
+            "deliveryAction": lambda n : setattr(self, 'delivery_action', n.get_str_value()),
+            "deliveryLocation": lambda n : setattr(self, 'delivery_location', n.get_str_value()),
+            "internetMessageId": lambda n : setattr(self, 'internet_message_id', n.get_str_value()),
             "language": lambda n : setattr(self, 'language', n.get_str_value()),
-            "network_message_id": lambda n : setattr(self, 'network_message_id', n.get_str_value()),
-            "p1_sender": lambda n : setattr(self, 'p1_sender', n.get_object_value(email_sender.EmailSender)),
-            "p2_sender": lambda n : setattr(self, 'p2_sender', n.get_object_value(email_sender.EmailSender)),
-            "received_date_time": lambda n : setattr(self, 'received_date_time', n.get_datetime_value()),
-            "recipient_email_address": lambda n : setattr(self, 'recipient_email_address', n.get_str_value()),
-            "sender_ip": lambda n : setattr(self, 'sender_ip', n.get_str_value()),
+            "networkMessageId": lambda n : setattr(self, 'network_message_id', n.get_str_value()),
+            "p1Sender": lambda n : setattr(self, 'p1_sender', n.get_object_value(email_sender.EmailSender)),
+            "p2Sender": lambda n : setattr(self, 'p2_sender', n.get_object_value(email_sender.EmailSender)),
+            "receivedDateTime": lambda n : setattr(self, 'received_date_time', n.get_datetime_value()),
+            "recipientEmailAddress": lambda n : setattr(self, 'recipient_email_address', n.get_str_value()),
+            "senderIp": lambda n : setattr(self, 'sender_ip', n.get_str_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
-            "threat_detection_methods": lambda n : setattr(self, 'threat_detection_methods', n.get_collection_of_primitive_values(str)),
             "threats": lambda n : setattr(self, 'threats', n.get_collection_of_primitive_values(str)),
-            "url_count": lambda n : setattr(self, 'url_count', n.get_int_value()),
+            "threatDetectionMethods": lambda n : setattr(self, 'threat_detection_methods', n.get_collection_of_primitive_values(str)),
             "urls": lambda n : setattr(self, 'urls', n.get_collection_of_primitive_values(str)),
+            "urlCount": lambda n : setattr(self, 'url_count', n.get_int_value()),
             "urn": lambda n : setattr(self, 'urn', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -174,7 +174,7 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
         """
         Sets the internetMessageId property value. Public-facing identifier for the email that is set by the sending email system.
         Args:
-            value: Value to set for the internetMessageId property.
+            value: Value to set for the internet_message_id property.
         """
         self._internet_message_id = value
     
@@ -208,7 +208,7 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
         """
         Sets the networkMessageId property value. Unique identifier for the email, generated by Microsoft 365.
         Args:
-            value: Value to set for the networkMessageId property.
+            value: Value to set for the network_message_id property.
         """
         self._network_message_id = value
     
@@ -225,7 +225,7 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
         """
         Sets the p1Sender property value. The P1 sender.
         Args:
-            value: Value to set for the p1Sender property.
+            value: Value to set for the p1_sender property.
         """
         self._p1_sender = value
     
@@ -242,7 +242,7 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
         """
         Sets the p2Sender property value. The P2 sender.
         Args:
-            value: Value to set for the p2Sender property.
+            value: Value to set for the p2_sender property.
         """
         self._p2_sender = value
     
@@ -259,7 +259,7 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
         """
         Sets the receivedDateTime property value. Date and time when the email was received.
         Args:
-            value: Value to set for the receivedDateTime property.
+            value: Value to set for the received_date_time property.
         """
         self._received_date_time = value
     
@@ -276,7 +276,7 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
         """
         Sets the recipientEmailAddress property value. Email address of the recipient, or email address of the recipient after distribution list expansion.
         Args:
-            value: Value to set for the recipientEmailAddress property.
+            value: Value to set for the recipient_email_address property.
         """
         self._recipient_email_address = value
     
@@ -293,7 +293,7 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
         """
         Sets the senderIp property value. IP address of the last detected mail server that relayed the message.
         Args:
-            value: Value to set for the senderIp property.
+            value: Value to set for the sender_ip property.
         """
         self._sender_ip = value
     
@@ -319,10 +319,10 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
         writer.write_str_value("recipientEmailAddress", self.recipient_email_address)
         writer.write_str_value("senderIp", self.sender_ip)
         writer.write_str_value("subject", self.subject)
-        writer.write_collection_of_primitive_values("threatDetectionMethods", self.threat_detection_methods)
         writer.write_collection_of_primitive_values("threats", self.threats)
-        writer.write_int_value("urlCount", self.url_count)
+        writer.write_collection_of_primitive_values("threatDetectionMethods", self.threat_detection_methods)
         writer.write_collection_of_primitive_values("urls", self.urls)
+        writer.write_int_value("urlCount", self.url_count)
         writer.write_str_value("urn", self.urn)
     
     @property
@@ -355,7 +355,7 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
         """
         Sets the threatDetectionMethods property value. Collection of methods used to detect malware, phishing, or other threats found in the email.
         Args:
-            value: Value to set for the threatDetectionMethods property.
+            value: Value to set for the threat_detection_methods property.
         """
         self._threat_detection_methods = value
     
@@ -389,7 +389,7 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
         """
         Sets the urlCount property value. Number of embedded URLs in the email.
         Args:
-            value: Value to set for the urlCount property.
+            value: Value to set for the url_count property.
         """
         self._url_count = value
     

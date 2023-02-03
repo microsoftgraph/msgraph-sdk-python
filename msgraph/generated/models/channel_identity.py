@@ -34,7 +34,7 @@ class ChannelIdentity(AdditionalDataHolder, Parsable):
         """
         Sets the channelId property value. The identity of the channel in which the message was posted.
         Args:
-            value: Value to set for the channelId property.
+            value: Value to set for the channel_id property.
         """
         self._channel_id = value
     
@@ -70,9 +70,9 @@ class ChannelIdentity(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "channel_id": lambda n : setattr(self, 'channel_id', n.get_str_value()),
+            "channelId": lambda n : setattr(self, 'channel_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "team_id": lambda n : setattr(self, 'team_id', n.get_str_value()),
+            "teamId": lambda n : setattr(self, 'team_id', n.get_str_value()),
         }
         return fields
     
@@ -89,7 +89,7 @@ class ChannelIdentity(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -119,7 +119,7 @@ class ChannelIdentity(AdditionalDataHolder, Parsable):
         """
         Sets the teamId property value. The identity of the team in which the message was posted.
         Args:
-            value: Value to set for the teamId property.
+            value: Value to set for the team_id property.
         """
         self._team_id = value
     

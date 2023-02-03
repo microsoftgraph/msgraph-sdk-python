@@ -76,7 +76,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         """
         Sets the expirationBehavior property value. The default decision to apply if the access is not reviewed. The possible values are: keepAccess, removeAccess, acceptAccessRecommendation, unknownFutureValue.
         Args:
-            value: Value to set for the expirationBehavior property.
+            value: Value to set for the expiration_behavior property.
         """
         self._expiration_behavior = value
     
@@ -93,7 +93,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         """
         Sets the fallbackReviewers property value. This collection specifies the users who will be the fallback reviewers when the primary reviewers don't respond.
         Args:
-            value: Value to set for the fallbackReviewers property.
+            value: Value to set for the fallback_reviewers property.
         """
         self._fallback_reviewers = value
     
@@ -103,14 +103,14 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "expiration_behavior": lambda n : setattr(self, 'expiration_behavior', n.get_enum_value(access_review_expiration_behavior.AccessReviewExpirationBehavior)),
-            "fallback_reviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(subject_set.SubjectSet)),
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "is_recommendation_enabled": lambda n : setattr(self, 'is_recommendation_enabled', n.get_bool_value()),
-            "is_reviewer_justification_required": lambda n : setattr(self, 'is_reviewer_justification_required', n.get_bool_value()),
-            "is_self_review": lambda n : setattr(self, 'is_self_review', n.get_bool_value()),
+            "expirationBehavior": lambda n : setattr(self, 'expiration_behavior', n.get_enum_value(access_review_expiration_behavior.AccessReviewExpirationBehavior)),
+            "fallbackReviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "isRecommendationEnabled": lambda n : setattr(self, 'is_recommendation_enabled', n.get_bool_value()),
+            "isReviewerJustificationRequired": lambda n : setattr(self, 'is_reviewer_justification_required', n.get_bool_value()),
+            "isSelfReview": lambda n : setattr(self, 'is_self_review', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "primary_reviewers": lambda n : setattr(self, 'primary_reviewers', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "primaryReviewers": lambda n : setattr(self, 'primary_reviewers', n.get_collection_of_object_values(subject_set.SubjectSet)),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(entitlement_management_schedule.EntitlementManagementSchedule)),
         }
         return fields
@@ -128,7 +128,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         """
         Sets the isEnabled property value. If true, access reviews are required for assignments through this policy.
         Args:
-            value: Value to set for the isEnabled property.
+            value: Value to set for the is_enabled property.
         """
         self._is_enabled = value
     
@@ -145,7 +145,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         """
         Sets the isRecommendationEnabled property value. Specifies whether to display recommendations to the reviewer. The default value is true.
         Args:
-            value: Value to set for the isRecommendationEnabled property.
+            value: Value to set for the is_recommendation_enabled property.
         """
         self._is_recommendation_enabled = value
     
@@ -162,7 +162,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         """
         Sets the isReviewerJustificationRequired property value. Specifies whether the reviewer must provide justification for the approval. The default value is true.
         Args:
-            value: Value to set for the isReviewerJustificationRequired property.
+            value: Value to set for the is_reviewer_justification_required property.
         """
         self._is_reviewer_justification_required = value
     
@@ -179,7 +179,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         """
         Sets the isSelfReview property value. Specifies whether the principals can review their own assignments.
         Args:
-            value: Value to set for the isSelfReview property.
+            value: Value to set for the is_self_review property.
         """
         self._is_self_review = value
     
@@ -196,7 +196,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -213,7 +213,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         """
         Sets the primaryReviewers property value. This collection specifies the users or group of users who will review the access package assignments.
         Args:
-            value: Value to set for the primaryReviewers property.
+            value: Value to set for the primary_reviewers property.
         """
         self._primary_reviewers = value
     

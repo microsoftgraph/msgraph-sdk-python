@@ -20,7 +20,7 @@ class MicrosoftAuthenticatorAuthenticationMethodTarget(authentication_method_tar
         """
         Sets the authenticationMode property value. The authenticationMode property
         Args:
-            value: Value to set for the authenticationMode property.
+            value: Value to set for the authentication_mode property.
         """
         self._authentication_mode = value
     
@@ -52,7 +52,7 @@ class MicrosoftAuthenticatorAuthenticationMethodTarget(authentication_method_tar
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "authentication_mode": lambda n : setattr(self, 'authentication_mode', n.get_enum_value(microsoft_authenticator_authentication_mode.MicrosoftAuthenticatorAuthenticationMode)),
+            "authenticationMode": lambda n : setattr(self, 'authentication_mode', n.get_enum_value(microsoft_authenticator_authentication_mode.MicrosoftAuthenticatorAuthenticationMode)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

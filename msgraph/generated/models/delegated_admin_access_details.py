@@ -54,7 +54,7 @@ class DelegatedAdminAccessDetails(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "unified_roles": lambda n : setattr(self, 'unified_roles', n.get_collection_of_object_values(unified_role.UnifiedRole)),
+            "unifiedRoles": lambda n : setattr(self, 'unified_roles', n.get_collection_of_object_values(unified_role.UnifiedRole)),
         }
         return fields
     
@@ -71,7 +71,7 @@ class DelegatedAdminAccessDetails(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -100,7 +100,7 @@ class DelegatedAdminAccessDetails(AdditionalDataHolder, Parsable):
         """
         Sets the unifiedRoles property value. The unifiedRoles property
         Args:
-            value: Value to set for the unifiedRoles property.
+            value: Value to set for the unified_roles property.
         """
         self._unified_roles = value
     

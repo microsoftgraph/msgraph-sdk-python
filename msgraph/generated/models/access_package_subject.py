@@ -21,7 +21,7 @@ class AccessPackageSubject(entity.Entity):
         """
         Sets the connectedOrganization property value. The connected organization of the subject. Read-only. Nullable.
         Args:
-            value: Value to set for the connectedOrganization property.
+            value: Value to set for the connected_organization property.
         """
         self._connected_organization = value
     
@@ -72,7 +72,7 @@ class AccessPackageSubject(entity.Entity):
         """
         Sets the displayName property value. The display name of the subject.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -99,13 +99,13 @@ class AccessPackageSubject(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "connected_organization": lambda n : setattr(self, 'connected_organization', n.get_object_value(connected_organization.ConnectedOrganization)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "connectedOrganization": lambda n : setattr(self, 'connected_organization', n.get_object_value(connected_organization.ConnectedOrganization)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "object_id": lambda n : setattr(self, 'object_id', n.get_str_value()),
-            "on_premises_security_identifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
-            "principal_name": lambda n : setattr(self, 'principal_name', n.get_str_value()),
-            "subject_type": lambda n : setattr(self, 'subject_type', n.get_enum_value(access_package_subject_type.AccessPackageSubjectType)),
+            "objectId": lambda n : setattr(self, 'object_id', n.get_str_value()),
+            "onPremisesSecurityIdentifier": lambda n : setattr(self, 'on_premises_security_identifier', n.get_str_value()),
+            "principalName": lambda n : setattr(self, 'principal_name', n.get_str_value()),
+            "subjectType": lambda n : setattr(self, 'subject_type', n.get_enum_value(access_package_subject_type.AccessPackageSubjectType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -124,7 +124,7 @@ class AccessPackageSubject(entity.Entity):
         """
         Sets the objectId property value. The object identifier of the subject. null if the subject is not yet a user in the tenant.
         Args:
-            value: Value to set for the objectId property.
+            value: Value to set for the object_id property.
         """
         self._object_id = value
     
@@ -141,7 +141,7 @@ class AccessPackageSubject(entity.Entity):
         """
         Sets the onPremisesSecurityIdentifier property value. A string representation of the principal's security identifier, if known, or null if the subject does not have a security identifier.
         Args:
-            value: Value to set for the onPremisesSecurityIdentifier property.
+            value: Value to set for the on_premises_security_identifier property.
         """
         self._on_premises_security_identifier = value
     
@@ -158,7 +158,7 @@ class AccessPackageSubject(entity.Entity):
         """
         Sets the principalName property value. The principal name, if known, of the subject.
         Args:
-            value: Value to set for the principalName property.
+            value: Value to set for the principal_name property.
         """
         self._principal_name = value
     
@@ -192,7 +192,7 @@ class AccessPackageSubject(entity.Entity):
         """
         Sets the subjectType property value. The resource type of the subject. The possible values are: notSpecified, user, servicePrincipal, unknownFutureValue.
         Args:
-            value: Value to set for the subjectType property.
+            value: Value to set for the subject_type property.
         """
         self._subject_type = value
     

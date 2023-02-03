@@ -35,7 +35,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the attestationIdentityKey property value. TWhen an Attestation Identity Key (AIK) is present on a device, it indicates that the device has an endorsement key (EK) certificate.
         Args:
-            value: Value to set for the attestationIdentityKey property.
+            value: Value to set for the attestation_identity_key property.
         """
         self._attestation_identity_key = value
     
@@ -52,7 +52,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the bitLockerStatus property value. On or Off of BitLocker Drive Encryption
         Args:
-            value: Value to set for the bitLockerStatus property.
+            value: Value to set for the bit_locker_status property.
         """
         self._bit_locker_status = value
     
@@ -69,7 +69,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the bootAppSecurityVersion property value. The security version number of the Boot Application
         Args:
-            value: Value to set for the bootAppSecurityVersion property.
+            value: Value to set for the boot_app_security_version property.
         """
         self._boot_app_security_version = value
     
@@ -86,7 +86,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the bootDebugging property value. When bootDebugging is enabled, the device is used in development and testing
         Args:
-            value: Value to set for the bootDebugging property.
+            value: Value to set for the boot_debugging property.
         """
         self._boot_debugging = value
     
@@ -103,7 +103,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the bootManagerSecurityVersion property value. The security version number of the Boot Application
         Args:
-            value: Value to set for the bootManagerSecurityVersion property.
+            value: Value to set for the boot_manager_security_version property.
         """
         self._boot_manager_security_version = value
     
@@ -120,7 +120,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the bootManagerVersion property value. The version of the Boot Manager
         Args:
-            value: Value to set for the bootManagerVersion property.
+            value: Value to set for the boot_manager_version property.
         """
         self._boot_manager_version = value
     
@@ -137,7 +137,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the bootRevisionListInfo property value. The Boot Revision List that was loaded during initial boot on the attested device
         Args:
-            value: Value to set for the bootRevisionListInfo property.
+            value: Value to set for the boot_revision_list_info property.
         """
         self._boot_revision_list_info = value
     
@@ -154,7 +154,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the codeIntegrity property value. When code integrity is enabled, code execution is restricted to integrity verified code
         Args:
-            value: Value to set for the codeIntegrity property.
+            value: Value to set for the code_integrity property.
         """
         self._code_integrity = value
     
@@ -171,7 +171,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the codeIntegrityCheckVersion property value. The version of the Boot Manager
         Args:
-            value: Value to set for the codeIntegrityCheckVersion property.
+            value: Value to set for the code_integrity_check_version property.
         """
         self._code_integrity_check_version = value
     
@@ -188,7 +188,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the codeIntegrityPolicy property value. The Code Integrity policy that is controlling the security of the boot environment
         Args:
-            value: Value to set for the codeIntegrityPolicy property.
+            value: Value to set for the code_integrity_policy property.
         """
         self._code_integrity_policy = value
     
@@ -243,10 +243,10 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         self._operating_system_kernel_debugging: Optional[str] = None
         # The Operating System Revision List that was loaded during initial boot on the attested device
         self._operating_system_rev_list_info: Optional[str] = None
-        # The measurement that is captured in PCR[0]
-        self._pcr0: Optional[str] = None
         # Informational attribute that identifies the HASH algorithm that was used by TPM
         self._pcr_hash_algorithm: Optional[str] = None
+        # The measurement that is captured in PCR[0]
+        self._pcr0: Optional[str] = None
         # The number of times a PC device has hibernated or resumed
         self._reset_count: Optional[int] = None
         # The number of times a PC device has rebooted
@@ -279,7 +279,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the contentNamespaceUrl property value. The DHA report version. (Namespace version)
         Args:
-            value: Value to set for the contentNamespaceUrl property.
+            value: Value to set for the content_namespace_url property.
         """
         self._content_namespace_url = value
     
@@ -296,7 +296,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the contentVersion property value. The HealthAttestation state schema version
         Args:
-            value: Value to set for the contentVersion property.
+            value: Value to set for the content_version property.
         """
         self._content_version = value
     
@@ -325,7 +325,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the dataExcutionPolicy property value. DEP Policy defines a set of hardware and software technologies that perform additional checks on memory
         Args:
-            value: Value to set for the dataExcutionPolicy property.
+            value: Value to set for the data_excution_policy property.
         """
         self._data_excution_policy = value
     
@@ -342,7 +342,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the deviceHealthAttestationStatus property value. The DHA report version. (Namespace version)
         Args:
-            value: Value to set for the deviceHealthAttestationStatus property.
+            value: Value to set for the device_health_attestation_status property.
         """
         self._device_health_attestation_status = value
     
@@ -359,7 +359,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the earlyLaunchAntiMalwareDriverProtection property value. ELAM provides protection for the computers in your network when they start up
         Args:
-            value: Value to set for the earlyLaunchAntiMalwareDriverProtection property.
+            value: Value to set for the early_launch_anti_malware_driver_protection property.
         """
         self._early_launch_anti_malware_driver_protection = value
     
@@ -369,39 +369,39 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "attestation_identity_key": lambda n : setattr(self, 'attestation_identity_key', n.get_str_value()),
-            "bit_locker_status": lambda n : setattr(self, 'bit_locker_status', n.get_str_value()),
-            "boot_app_security_version": lambda n : setattr(self, 'boot_app_security_version', n.get_str_value()),
-            "boot_debugging": lambda n : setattr(self, 'boot_debugging', n.get_str_value()),
-            "boot_manager_security_version": lambda n : setattr(self, 'boot_manager_security_version', n.get_str_value()),
-            "boot_manager_version": lambda n : setattr(self, 'boot_manager_version', n.get_str_value()),
-            "boot_revision_list_info": lambda n : setattr(self, 'boot_revision_list_info', n.get_str_value()),
-            "code_integrity": lambda n : setattr(self, 'code_integrity', n.get_str_value()),
-            "code_integrity_check_version": lambda n : setattr(self, 'code_integrity_check_version', n.get_str_value()),
-            "code_integrity_policy": lambda n : setattr(self, 'code_integrity_policy', n.get_str_value()),
-            "content_namespace_url": lambda n : setattr(self, 'content_namespace_url', n.get_str_value()),
-            "content_version": lambda n : setattr(self, 'content_version', n.get_str_value()),
-            "data_excution_policy": lambda n : setattr(self, 'data_excution_policy', n.get_str_value()),
-            "device_health_attestation_status": lambda n : setattr(self, 'device_health_attestation_status', n.get_str_value()),
-            "early_launch_anti_malware_driver_protection": lambda n : setattr(self, 'early_launch_anti_malware_driver_protection', n.get_str_value()),
-            "health_attestation_supported_status": lambda n : setattr(self, 'health_attestation_supported_status', n.get_str_value()),
-            "health_status_mismatch_info": lambda n : setattr(self, 'health_status_mismatch_info', n.get_str_value()),
-            "issued_date_time": lambda n : setattr(self, 'issued_date_time', n.get_datetime_value()),
-            "last_update_date_time": lambda n : setattr(self, 'last_update_date_time', n.get_str_value()),
+            "attestationIdentityKey": lambda n : setattr(self, 'attestation_identity_key', n.get_str_value()),
+            "bitLockerStatus": lambda n : setattr(self, 'bit_locker_status', n.get_str_value()),
+            "bootAppSecurityVersion": lambda n : setattr(self, 'boot_app_security_version', n.get_str_value()),
+            "bootDebugging": lambda n : setattr(self, 'boot_debugging', n.get_str_value()),
+            "bootManagerSecurityVersion": lambda n : setattr(self, 'boot_manager_security_version', n.get_str_value()),
+            "bootManagerVersion": lambda n : setattr(self, 'boot_manager_version', n.get_str_value()),
+            "bootRevisionListInfo": lambda n : setattr(self, 'boot_revision_list_info', n.get_str_value()),
+            "codeIntegrity": lambda n : setattr(self, 'code_integrity', n.get_str_value()),
+            "codeIntegrityCheckVersion": lambda n : setattr(self, 'code_integrity_check_version', n.get_str_value()),
+            "codeIntegrityPolicy": lambda n : setattr(self, 'code_integrity_policy', n.get_str_value()),
+            "contentNamespaceUrl": lambda n : setattr(self, 'content_namespace_url', n.get_str_value()),
+            "contentVersion": lambda n : setattr(self, 'content_version', n.get_str_value()),
+            "dataExcutionPolicy": lambda n : setattr(self, 'data_excution_policy', n.get_str_value()),
+            "deviceHealthAttestationStatus": lambda n : setattr(self, 'device_health_attestation_status', n.get_str_value()),
+            "earlyLaunchAntiMalwareDriverProtection": lambda n : setattr(self, 'early_launch_anti_malware_driver_protection', n.get_str_value()),
+            "healthAttestationSupportedStatus": lambda n : setattr(self, 'health_attestation_supported_status', n.get_str_value()),
+            "healthStatusMismatchInfo": lambda n : setattr(self, 'health_status_mismatch_info', n.get_str_value()),
+            "issuedDateTime": lambda n : setattr(self, 'issued_date_time', n.get_datetime_value()),
+            "lastUpdateDateTime": lambda n : setattr(self, 'last_update_date_time', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "operating_system_kernel_debugging": lambda n : setattr(self, 'operating_system_kernel_debugging', n.get_str_value()),
-            "operating_system_rev_list_info": lambda n : setattr(self, 'operating_system_rev_list_info', n.get_str_value()),
+            "operatingSystemKernelDebugging": lambda n : setattr(self, 'operating_system_kernel_debugging', n.get_str_value()),
+            "operatingSystemRevListInfo": lambda n : setattr(self, 'operating_system_rev_list_info', n.get_str_value()),
             "pcr0": lambda n : setattr(self, 'pcr0', n.get_str_value()),
-            "pcr_hash_algorithm": lambda n : setattr(self, 'pcr_hash_algorithm', n.get_str_value()),
-            "reset_count": lambda n : setattr(self, 'reset_count', n.get_int_value()),
-            "restart_count": lambda n : setattr(self, 'restart_count', n.get_int_value()),
-            "safe_mode": lambda n : setattr(self, 'safe_mode', n.get_str_value()),
-            "secure_boot": lambda n : setattr(self, 'secure_boot', n.get_str_value()),
-            "secure_boot_configuration_policy_finger_print": lambda n : setattr(self, 'secure_boot_configuration_policy_finger_print', n.get_str_value()),
-            "test_signing": lambda n : setattr(self, 'test_signing', n.get_str_value()),
-            "tpm_version": lambda n : setattr(self, 'tpm_version', n.get_str_value()),
-            "virtual_secure_mode": lambda n : setattr(self, 'virtual_secure_mode', n.get_str_value()),
-            "windows_p_e": lambda n : setattr(self, 'windows_p_e', n.get_str_value()),
+            "pcrHashAlgorithm": lambda n : setattr(self, 'pcr_hash_algorithm', n.get_str_value()),
+            "resetCount": lambda n : setattr(self, 'reset_count', n.get_int_value()),
+            "restartCount": lambda n : setattr(self, 'restart_count', n.get_int_value()),
+            "safeMode": lambda n : setattr(self, 'safe_mode', n.get_str_value()),
+            "secureBoot": lambda n : setattr(self, 'secure_boot', n.get_str_value()),
+            "secureBootConfigurationPolicyFingerPrint": lambda n : setattr(self, 'secure_boot_configuration_policy_finger_print', n.get_str_value()),
+            "testSigning": lambda n : setattr(self, 'test_signing', n.get_str_value()),
+            "tpmVersion": lambda n : setattr(self, 'tpm_version', n.get_str_value()),
+            "virtualSecureMode": lambda n : setattr(self, 'virtual_secure_mode', n.get_str_value()),
+            "windowsPE": lambda n : setattr(self, 'windows_p_e', n.get_str_value()),
         }
         return fields
     
@@ -418,7 +418,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the healthAttestationSupportedStatus property value. This attribute indicates if DHA is supported for the device
         Args:
-            value: Value to set for the healthAttestationSupportedStatus property.
+            value: Value to set for the health_attestation_supported_status property.
         """
         self._health_attestation_supported_status = value
     
@@ -435,7 +435,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the healthStatusMismatchInfo property value. This attribute appears if DHA-Service detects an integrity issue
         Args:
-            value: Value to set for the healthStatusMismatchInfo property.
+            value: Value to set for the health_status_mismatch_info property.
         """
         self._health_status_mismatch_info = value
     
@@ -452,7 +452,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the issuedDateTime property value. The DateTime when device was evaluated or issued to MDM
         Args:
-            value: Value to set for the issuedDateTime property.
+            value: Value to set for the issued_date_time property.
         """
         self._issued_date_time = value
     
@@ -469,7 +469,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the lastUpdateDateTime property value. The Timestamp of the last update.
         Args:
-            value: Value to set for the lastUpdateDateTime property.
+            value: Value to set for the last_update_date_time property.
         """
         self._last_update_date_time = value
     
@@ -486,7 +486,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -503,7 +503,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the operatingSystemKernelDebugging property value. When operatingSystemKernelDebugging is enabled, the device is used in development and testing
         Args:
-            value: Value to set for the operatingSystemKernelDebugging property.
+            value: Value to set for the operating_system_kernel_debugging property.
         """
         self._operating_system_kernel_debugging = value
     
@@ -520,9 +520,26 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the operatingSystemRevListInfo property value. The Operating System Revision List that was loaded during initial boot on the attested device
         Args:
-            value: Value to set for the operatingSystemRevListInfo property.
+            value: Value to set for the operating_system_rev_list_info property.
         """
         self._operating_system_rev_list_info = value
+    
+    @property
+    def pcr_hash_algorithm(self,) -> Optional[str]:
+        """
+        Gets the pcrHashAlgorithm property value. Informational attribute that identifies the HASH algorithm that was used by TPM
+        Returns: Optional[str]
+        """
+        return self._pcr_hash_algorithm
+    
+    @pcr_hash_algorithm.setter
+    def pcr_hash_algorithm(self,value: Optional[str] = None) -> None:
+        """
+        Sets the pcrHashAlgorithm property value. Informational attribute that identifies the HASH algorithm that was used by TPM
+        Args:
+            value: Value to set for the pcr_hash_algorithm property.
+        """
+        self._pcr_hash_algorithm = value
     
     @property
     def pcr0(self,) -> Optional[str]:
@@ -542,23 +559,6 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         self._pcr0 = value
     
     @property
-    def pcr_hash_algorithm(self,) -> Optional[str]:
-        """
-        Gets the pcrHashAlgorithm property value. Informational attribute that identifies the HASH algorithm that was used by TPM
-        Returns: Optional[str]
-        """
-        return self._pcr_hash_algorithm
-    
-    @pcr_hash_algorithm.setter
-    def pcr_hash_algorithm(self,value: Optional[str] = None) -> None:
-        """
-        Sets the pcrHashAlgorithm property value. Informational attribute that identifies the HASH algorithm that was used by TPM
-        Args:
-            value: Value to set for the pcrHashAlgorithm property.
-        """
-        self._pcr_hash_algorithm = value
-    
-    @property
     def reset_count(self,) -> Optional[int]:
         """
         Gets the resetCount property value. The number of times a PC device has hibernated or resumed
@@ -571,7 +571,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the resetCount property value. The number of times a PC device has hibernated or resumed
         Args:
-            value: Value to set for the resetCount property.
+            value: Value to set for the reset_count property.
         """
         self._reset_count = value
     
@@ -588,7 +588,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the restartCount property value. The number of times a PC device has rebooted
         Args:
-            value: Value to set for the restartCount property.
+            value: Value to set for the restart_count property.
         """
         self._restart_count = value
     
@@ -605,7 +605,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the safeMode property value. Safe mode is a troubleshooting option for Windows that starts your computer in a limited state
         Args:
-            value: Value to set for the safeMode property.
+            value: Value to set for the safe_mode property.
         """
         self._safe_mode = value
     
@@ -622,7 +622,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the secureBoot property value. When Secure Boot is enabled, the core components must have the correct cryptographic signatures
         Args:
-            value: Value to set for the secureBoot property.
+            value: Value to set for the secure_boot property.
         """
         self._secure_boot = value
     
@@ -639,7 +639,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the secureBootConfigurationPolicyFingerPrint property value. Fingerprint of the Custom Secure Boot Configuration Policy
         Args:
-            value: Value to set for the secureBootConfigurationPolicyFingerPrint property.
+            value: Value to set for the secure_boot_configuration_policy_finger_print property.
         """
         self._secure_boot_configuration_policy_finger_print = value
     
@@ -699,7 +699,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the testSigning property value. When test signing is allowed, the device does not enforce signature validation during boot
         Args:
-            value: Value to set for the testSigning property.
+            value: Value to set for the test_signing property.
         """
         self._test_signing = value
     
@@ -716,7 +716,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the tpmVersion property value. The security version number of the Boot Application
         Args:
-            value: Value to set for the tpmVersion property.
+            value: Value to set for the tpm_version property.
         """
         self._tpm_version = value
     
@@ -733,7 +733,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the virtualSecureMode property value. VSM is a container that protects high value assets from a compromised kernel
         Args:
-            value: Value to set for the virtualSecureMode property.
+            value: Value to set for the virtual_secure_mode property.
         """
         self._virtual_secure_mode = value
     
@@ -750,7 +750,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         Sets the windowsPE property value. Operating system running with limited services that is used to prepare a computer for Windows
         Args:
-            value: Value to set for the windowsPE property.
+            value: Value to set for the windows_p_e property.
         """
         self._windows_p_e = value
     

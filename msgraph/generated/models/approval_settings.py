@@ -36,7 +36,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         """
         Sets the approvalMode property value. One of SingleStage, Serial, Parallel, NoApproval (default). NoApproval is used when isApprovalRequired is false.
         Args:
-            value: Value to set for the approvalMode property.
+            value: Value to set for the approval_mode property.
         """
         self._approval_mode = value
     
@@ -53,7 +53,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         """
         Sets the approvalStages property value. If approval is required, the one or two elements of this collection define each of the stages of approval. An empty array if no approval is required.
         Args:
-            value: Value to set for the approvalStages property.
+            value: Value to set for the approval_stages property.
         """
         self._approval_stages = value
     
@@ -95,11 +95,11 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "approval_mode": lambda n : setattr(self, 'approval_mode', n.get_str_value()),
-            "approval_stages": lambda n : setattr(self, 'approval_stages', n.get_collection_of_object_values(unified_approval_stage.UnifiedApprovalStage)),
-            "is_approval_required": lambda n : setattr(self, 'is_approval_required', n.get_bool_value()),
-            "is_approval_required_for_extension": lambda n : setattr(self, 'is_approval_required_for_extension', n.get_bool_value()),
-            "is_requestor_justification_required": lambda n : setattr(self, 'is_requestor_justification_required', n.get_bool_value()),
+            "approvalMode": lambda n : setattr(self, 'approval_mode', n.get_str_value()),
+            "approvalStages": lambda n : setattr(self, 'approval_stages', n.get_collection_of_object_values(unified_approval_stage.UnifiedApprovalStage)),
+            "isApprovalRequired": lambda n : setattr(self, 'is_approval_required', n.get_bool_value()),
+            "isApprovalRequiredForExtension": lambda n : setattr(self, 'is_approval_required_for_extension', n.get_bool_value()),
+            "isRequestorJustificationRequired": lambda n : setattr(self, 'is_requestor_justification_required', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -117,7 +117,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         """
         Sets the isApprovalRequired property value. Indicates whether approval is required for requests in this policy.
         Args:
-            value: Value to set for the isApprovalRequired property.
+            value: Value to set for the is_approval_required property.
         """
         self._is_approval_required = value
     
@@ -134,7 +134,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         """
         Sets the isApprovalRequiredForExtension property value. Indicates whether approval is required for a user to extend their assignment.
         Args:
-            value: Value to set for the isApprovalRequiredForExtension property.
+            value: Value to set for the is_approval_required_for_extension property.
         """
         self._is_approval_required_for_extension = value
     
@@ -151,7 +151,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         """
         Sets the isRequestorJustificationRequired property value. Indicates whether the requestor is required to supply a justification in their request.
         Args:
-            value: Value to set for the isRequestorJustificationRequired property.
+            value: Value to set for the is_requestor_justification_required property.
         """
         self._is_requestor_justification_required = value
     
@@ -168,7 +168,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

@@ -36,7 +36,7 @@ class VmMetadata(AdditionalDataHolder, Parsable):
         """
         Sets the cloudProvider property value. The cloudProvider property
         Args:
-            value: Value to set for the cloudProvider property.
+            value: Value to set for the cloud_provider property.
         """
         self._cloud_provider = value
     
@@ -76,11 +76,11 @@ class VmMetadata(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "cloud_provider": lambda n : setattr(self, 'cloud_provider', n.get_enum_value(vm_cloud_provider.VmCloudProvider)),
+            "cloudProvider": lambda n : setattr(self, 'cloud_provider', n.get_enum_value(vm_cloud_provider.VmCloudProvider)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "resource_id": lambda n : setattr(self, 'resource_id', n.get_str_value()),
-            "subscription_id": lambda n : setattr(self, 'subscription_id', n.get_str_value()),
-            "vm_id": lambda n : setattr(self, 'vm_id', n.get_str_value()),
+            "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
+            "subscriptionId": lambda n : setattr(self, 'subscription_id', n.get_str_value()),
+            "vmId": lambda n : setattr(self, 'vm_id', n.get_str_value()),
         }
         return fields
     
@@ -97,7 +97,7 @@ class VmMetadata(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -114,7 +114,7 @@ class VmMetadata(AdditionalDataHolder, Parsable):
         """
         Sets the resourceId property value. Unique identifier of the Azure resource.
         Args:
-            value: Value to set for the resourceId property.
+            value: Value to set for the resource_id property.
         """
         self._resource_id = value
     
@@ -146,7 +146,7 @@ class VmMetadata(AdditionalDataHolder, Parsable):
         """
         Sets the subscriptionId property value. Unique identifier of the Azure subscription the customer tenant belongs to.
         Args:
-            value: Value to set for the subscriptionId property.
+            value: Value to set for the subscription_id property.
         """
         self._subscription_id = value
     
@@ -163,7 +163,7 @@ class VmMetadata(AdditionalDataHolder, Parsable):
         """
         Sets the vmId property value. Unique identifier of the virtual machine instance.
         Args:
-            value: Value to set for the vmId property.
+            value: Value to set for the vm_id property.
         """
         self._vm_id = value
     

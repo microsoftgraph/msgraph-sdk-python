@@ -35,7 +35,7 @@ class Certification(AdditionalDataHolder, Parsable):
         """
         Sets the certificationDetailsUrl property value. URL that shows certification details for the application.
         Args:
-            value: Value to set for the certificationDetailsUrl property.
+            value: Value to set for the certification_details_url property.
         """
         self._certification_details_url = value
     
@@ -52,7 +52,7 @@ class Certification(AdditionalDataHolder, Parsable):
         """
         Sets the certificationExpirationDateTime property value. The timestamp when the current certification for the application will expire.
         Args:
-            value: Value to set for the certificationExpirationDateTime property.
+            value: Value to set for the certification_expiration_date_time property.
         """
         self._certification_expiration_date_time = value
     
@@ -94,11 +94,11 @@ class Certification(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "certification_details_url": lambda n : setattr(self, 'certification_details_url', n.get_str_value()),
-            "certification_expiration_date_time": lambda n : setattr(self, 'certification_expiration_date_time', n.get_datetime_value()),
-            "is_certified_by_microsoft": lambda n : setattr(self, 'is_certified_by_microsoft', n.get_bool_value()),
-            "is_publisher_attested": lambda n : setattr(self, 'is_publisher_attested', n.get_bool_value()),
-            "last_certification_date_time": lambda n : setattr(self, 'last_certification_date_time', n.get_datetime_value()),
+            "certificationDetailsUrl": lambda n : setattr(self, 'certification_details_url', n.get_str_value()),
+            "certificationExpirationDateTime": lambda n : setattr(self, 'certification_expiration_date_time', n.get_datetime_value()),
+            "isCertifiedByMicrosoft": lambda n : setattr(self, 'is_certified_by_microsoft', n.get_bool_value()),
+            "isPublisherAttested": lambda n : setattr(self, 'is_publisher_attested', n.get_bool_value()),
+            "lastCertificationDateTime": lambda n : setattr(self, 'last_certification_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -116,7 +116,7 @@ class Certification(AdditionalDataHolder, Parsable):
         """
         Sets the isCertifiedByMicrosoft property value. Indicates whether the application is certified by Microsoft.
         Args:
-            value: Value to set for the isCertifiedByMicrosoft property.
+            value: Value to set for the is_certified_by_microsoft property.
         """
         self._is_certified_by_microsoft = value
     
@@ -133,7 +133,7 @@ class Certification(AdditionalDataHolder, Parsable):
         """
         Sets the isPublisherAttested property value. Indicates whether the application has been self-attested by the application developer or the publisher.
         Args:
-            value: Value to set for the isPublisherAttested property.
+            value: Value to set for the is_publisher_attested property.
         """
         self._is_publisher_attested = value
     
@@ -150,7 +150,7 @@ class Certification(AdditionalDataHolder, Parsable):
         """
         Sets the lastCertificationDateTime property value. The timestamp when the certification for the application was most recently added or updated.
         Args:
-            value: Value to set for the lastCertificationDateTime property.
+            value: Value to set for the last_certification_date_time property.
         """
         self._last_certification_date_time = value
     
@@ -167,7 +167,7 @@ class Certification(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

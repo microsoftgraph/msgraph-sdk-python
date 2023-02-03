@@ -96,7 +96,7 @@ class PrinterBase(entity.Entity):
         """
         Sets the displayName property value. The name of the printer/printerShare.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -108,8 +108,8 @@ class PrinterBase(entity.Entity):
         fields = {
             "capabilities": lambda n : setattr(self, 'capabilities', n.get_object_value(printer_capabilities.PrinterCapabilities)),
             "defaults": lambda n : setattr(self, 'defaults', n.get_object_value(printer_defaults.PrinterDefaults)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_accepting_jobs": lambda n : setattr(self, 'is_accepting_jobs', n.get_bool_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isAcceptingJobs": lambda n : setattr(self, 'is_accepting_jobs', n.get_bool_value()),
             "jobs": lambda n : setattr(self, 'jobs', n.get_collection_of_object_values(print_job.PrintJob)),
             "location": lambda n : setattr(self, 'location', n.get_object_value(printer_location.PrinterLocation)),
             "manufacturer": lambda n : setattr(self, 'manufacturer', n.get_str_value()),
@@ -133,7 +133,7 @@ class PrinterBase(entity.Entity):
         """
         Sets the isAcceptingJobs property value. Whether the printer/printerShare is currently accepting new print jobs.
         Args:
-            value: Value to set for the isAcceptingJobs property.
+            value: Value to set for the is_accepting_jobs property.
         """
         self._is_accepting_jobs = value
     

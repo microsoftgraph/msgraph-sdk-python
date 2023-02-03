@@ -34,7 +34,7 @@ class TimeOffItem(schedule_entity.ScheduleEntity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "time_off_reason_id": lambda n : setattr(self, 'time_off_reason_id', n.get_str_value()),
+            "timeOffReasonId": lambda n : setattr(self, 'time_off_reason_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -64,7 +64,7 @@ class TimeOffItem(schedule_entity.ScheduleEntity):
         """
         Sets the timeOffReasonId property value. ID of the timeOffReason for this timeOffItem. Required.
         Args:
-            value: Value to set for the timeOffReasonId property.
+            value: Value to set for the time_off_reason_id property.
         """
         self._time_off_reason_id = value
     

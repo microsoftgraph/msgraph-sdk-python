@@ -11,10 +11,10 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.internal_sponsors.count.count_request_builder')
-get_available_extension_properties_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.internal_sponsors.get_available_extension_properties.get_available_extension_properties_request_builder')
-get_by_ids_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.internal_sponsors.get_by_ids.get_by_ids_request_builder')
+get_available_extension_properties_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.internal_sponsors.microsoft_graph_get_available_extension_properties.get_available_extension_properties_request_builder')
+get_by_ids_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.internal_sponsors.microsoft_graph_get_by_ids.get_by_ids_request_builder')
+validate_properties_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.internal_sponsors.microsoft_graph_validate_properties.validate_properties_request_builder')
 ref_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.internal_sponsors.ref.ref_request_builder')
-validate_properties_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.internal_sponsors.validate_properties.validate_properties_request_builder')
 directory_object = lazy_import('msgraph.generated.models.directory_object')
 directory_object_collection_response = lazy_import('msgraph.generated.models.directory_object_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -31,18 +31,25 @@ class InternalSponsorsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
+    def microsoft_graph_get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
         """
         Provides operations to call the getAvailableExtensionProperties method.
         """
         return get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
+    def microsoft_graph_get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
         """
         Provides operations to call the getByIds method.
         """
         return get_by_ids_request_builder.GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
+        """
+        Provides operations to call the validateProperties method.
+        """
+        return validate_properties_request_builder.ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def ref(self) -> ref_request_builder.RefRequestBuilder:
@@ -50,13 +57,6 @@ class InternalSponsorsRequestBuilder():
         Provides operations to manage the collection of identityGovernance entities.
         """
         return ref_request_builder.RefRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
-        """
-        Provides operations to call the validateProperties method.
-        """
-        return validate_properties_request_builder.ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

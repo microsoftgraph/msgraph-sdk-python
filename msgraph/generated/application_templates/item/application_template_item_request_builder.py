@@ -10,7 +10,7 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-instantiate_request_builder = lazy_import('msgraph.generated.application_templates.item.instantiate.instantiate_request_builder')
+instantiate_request_builder = lazy_import('msgraph.generated.application_templates.item.microsoft_graph_instantiate.instantiate_request_builder')
 application_template = lazy_import('msgraph.generated.models.application_template')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -19,16 +19,17 @@ class ApplicationTemplateItemRequestBuilder():
     Provides operations to manage the collection of applicationTemplate entities.
     """
     @property
-    def instantiate(self) -> instantiate_request_builder.InstantiateRequestBuilder:
+    def microsoft_graph_instantiate(self) -> instantiate_request_builder.InstantiateRequestBuilder:
         """
         Provides operations to call the instantiate method.
         """
         return instantiate_request_builder.InstantiateRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, application_template_id: Optional[str] = None) -> None:
         """
         Instantiates a new ApplicationTemplateItemRequestBuilder and sets the default values.
         Args:
+            applicationTemplateId: key: id of applicationTemplate
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -40,12 +41,13 @@ class ApplicationTemplateItemRequestBuilder():
         self.url_template: str = "{+baseurl}/applicationTemplates/{applicationTemplate%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["applicationTemplate%2Did"] = applicationTemplateId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
     async def delete(self,request_configuration: Optional[ApplicationTemplateItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete entity from applicationTemplates by key (id)
+        Delete entity from applicationTemplates
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -80,7 +82,7 @@ class ApplicationTemplateItemRequestBuilder():
     
     async def patch(self,body: Optional[application_template.ApplicationTemplate] = None, request_configuration: Optional[ApplicationTemplateItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[application_template.ApplicationTemplate]:
         """
-        Update entity in applicationTemplates by key (id)
+        Update entity in applicationTemplates
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +103,7 @@ class ApplicationTemplateItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ApplicationTemplateItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete entity from applicationTemplates by key (id)
+        Delete entity from applicationTemplates
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,7 +137,7 @@ class ApplicationTemplateItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[application_template.ApplicationTemplate] = None, request_configuration: Optional[ApplicationTemplateItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update entity in applicationTemplates by key (id)
+        Update entity in applicationTemplates
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

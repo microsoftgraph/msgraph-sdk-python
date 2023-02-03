@@ -41,7 +41,7 @@ class Person(entity.Entity):
         """
         Sets the companyName property value. The name of the person's company.
         Args:
-            value: Value to set for the companyName property.
+            value: Value to set for the company_name property.
         """
         self._company_name = value
     
@@ -133,7 +133,7 @@ class Person(entity.Entity):
         """
         Sets the displayName property value. The person's display name.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -144,24 +144,24 @@ class Person(entity.Entity):
         """
         fields = {
             "birthday": lambda n : setattr(self, 'birthday', n.get_str_value()),
-            "company_name": lambda n : setattr(self, 'company_name', n.get_str_value()),
+            "companyName": lambda n : setattr(self, 'company_name', n.get_str_value()),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "given_name": lambda n : setattr(self, 'given_name', n.get_str_value()),
-            "im_address": lambda n : setattr(self, 'im_address', n.get_str_value()),
-            "is_favorite": lambda n : setattr(self, 'is_favorite', n.get_bool_value()),
-            "job_title": lambda n : setattr(self, 'job_title', n.get_str_value()),
-            "office_location": lambda n : setattr(self, 'office_location', n.get_str_value()),
-            "person_notes": lambda n : setattr(self, 'person_notes', n.get_str_value()),
-            "person_type": lambda n : setattr(self, 'person_type', n.get_object_value(person_type.PersonType)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "givenName": lambda n : setattr(self, 'given_name', n.get_str_value()),
+            "imAddress": lambda n : setattr(self, 'im_address', n.get_str_value()),
+            "isFavorite": lambda n : setattr(self, 'is_favorite', n.get_bool_value()),
+            "jobTitle": lambda n : setattr(self, 'job_title', n.get_str_value()),
+            "officeLocation": lambda n : setattr(self, 'office_location', n.get_str_value()),
+            "personNotes": lambda n : setattr(self, 'person_notes', n.get_str_value()),
+            "personType": lambda n : setattr(self, 'person_type', n.get_object_value(person_type.PersonType)),
             "phones": lambda n : setattr(self, 'phones', n.get_collection_of_object_values(phone.Phone)),
-            "postal_addresses": lambda n : setattr(self, 'postal_addresses', n.get_collection_of_object_values(location.Location)),
+            "postalAddresses": lambda n : setattr(self, 'postal_addresses', n.get_collection_of_object_values(location.Location)),
             "profession": lambda n : setattr(self, 'profession', n.get_str_value()),
-            "scored_email_addresses": lambda n : setattr(self, 'scored_email_addresses', n.get_collection_of_object_values(scored_email_address.ScoredEmailAddress)),
+            "scoredEmailAddresses": lambda n : setattr(self, 'scored_email_addresses', n.get_collection_of_object_values(scored_email_address.ScoredEmailAddress)),
             "surname": lambda n : setattr(self, 'surname', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
             "websites": lambda n : setattr(self, 'websites', n.get_collection_of_object_values(website.Website)),
-            "yomi_company": lambda n : setattr(self, 'yomi_company', n.get_str_value()),
+            "yomiCompany": lambda n : setattr(self, 'yomi_company', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -180,7 +180,7 @@ class Person(entity.Entity):
         """
         Sets the givenName property value. The person's given name.
         Args:
-            value: Value to set for the givenName property.
+            value: Value to set for the given_name property.
         """
         self._given_name = value
     
@@ -197,7 +197,7 @@ class Person(entity.Entity):
         """
         Sets the imAddress property value. The instant message voice over IP (VOIP) session initiation protocol (SIP) address for the user. Read-only.
         Args:
-            value: Value to set for the imAddress property.
+            value: Value to set for the im_address property.
         """
         self._im_address = value
     
@@ -214,7 +214,7 @@ class Person(entity.Entity):
         """
         Sets the isFavorite property value. true if the user has flagged this person as a favorite.
         Args:
-            value: Value to set for the isFavorite property.
+            value: Value to set for the is_favorite property.
         """
         self._is_favorite = value
     
@@ -231,7 +231,7 @@ class Person(entity.Entity):
         """
         Sets the jobTitle property value. The person's job title.
         Args:
-            value: Value to set for the jobTitle property.
+            value: Value to set for the job_title property.
         """
         self._job_title = value
     
@@ -248,7 +248,7 @@ class Person(entity.Entity):
         """
         Sets the officeLocation property value. The location of the person's office.
         Args:
-            value: Value to set for the officeLocation property.
+            value: Value to set for the office_location property.
         """
         self._office_location = value
     
@@ -265,7 +265,7 @@ class Person(entity.Entity):
         """
         Sets the personNotes property value. Free-form notes that the user has taken about this person.
         Args:
-            value: Value to set for the personNotes property.
+            value: Value to set for the person_notes property.
         """
         self._person_notes = value
     
@@ -282,7 +282,7 @@ class Person(entity.Entity):
         """
         Sets the personType property value. The type of person.
         Args:
-            value: Value to set for the personType property.
+            value: Value to set for the person_type property.
         """
         self._person_type = value
     
@@ -316,7 +316,7 @@ class Person(entity.Entity):
         """
         Sets the postalAddresses property value. The person's addresses.
         Args:
-            value: Value to set for the postalAddresses property.
+            value: Value to set for the postal_addresses property.
         """
         self._postal_addresses = value
     
@@ -350,7 +350,7 @@ class Person(entity.Entity):
         """
         Sets the scoredEmailAddresses property value. The person's email addresses.
         Args:
-            value: Value to set for the scoredEmailAddresses property.
+            value: Value to set for the scored_email_addresses property.
         """
         self._scored_email_addresses = value
     
@@ -413,7 +413,7 @@ class Person(entity.Entity):
         """
         Sets the userPrincipalName property value. The user principal name (UPN) of the person. The UPN is an Internet-style login name for the person based on the Internet standard RFC 822. By convention, this should map to the person's email name. The general format is alias@domain.
         Args:
-            value: Value to set for the userPrincipalName property.
+            value: Value to set for the user_principal_name property.
         """
         self._user_principal_name = value
     
@@ -447,7 +447,7 @@ class Person(entity.Entity):
         """
         Sets the yomiCompany property value. The phonetic Japanese name of the person's company.
         Args:
-            value: Value to set for the yomiCompany property.
+            value: Value to set for the yomi_company property.
         """
         self._yomi_company = value
     

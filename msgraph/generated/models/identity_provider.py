@@ -19,7 +19,7 @@ class IdentityProvider(entity.Entity):
         """
         Sets the clientId property value. The client ID for the application. This is the client ID obtained when registering the application with the identity provider. Required. Not nullable.
         Args:
-            value: Value to set for the clientId property.
+            value: Value to set for the client_id property.
         """
         self._client_id = value
     
@@ -36,7 +36,7 @@ class IdentityProvider(entity.Entity):
         """
         Sets the clientSecret property value. The client secret for the application. This is the client secret obtained when registering the application with the identity provider. This is write-only. A read operation will return ****.  Required. Not nullable.
         Args:
-            value: Value to set for the clientSecret property.
+            value: Value to set for the client_secret property.
         """
         self._client_secret = value
     
@@ -74,8 +74,8 @@ class IdentityProvider(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "client_id": lambda n : setattr(self, 'client_id', n.get_str_value()),
-            "client_secret": lambda n : setattr(self, 'client_secret', n.get_str_value()),
+            "clientId": lambda n : setattr(self, 'client_id', n.get_str_value()),
+            "clientSecret": lambda n : setattr(self, 'client_secret', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
         }

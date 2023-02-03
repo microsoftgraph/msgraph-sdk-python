@@ -9,14 +9,14 @@ extension_schema_property = lazy_import('msgraph.generated.models.extension_sche
 class SchemaExtension(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new schemaExtension and sets the default values.
+        Instantiates a new SchemaExtension and sets the default values.
         """
         super().__init__()
         # Description for the schema extension. Supports $filter (eq).
         self._description: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-        # The appId of the application that is the owner of the schema extension. This property can be supplied on creation, to set the owner.  If not supplied, then the calling application's appId will be set as the owner. In either case, the signed-in user must be the owner of the application. So, for example, if creating a new schema extension definition using Graph Explorer, you must supply the owner property. Once set, this property is read-only and cannot be changed. Supports $filter (eq).
+        # The appId of the application that is the owner of the schema extension. The owner of the schema definition must be explicitly specified during the Create and Update operations, or it will be implied and auto-assigned by Azure AD as follows: In delegated access: The signed-in user must be the owner of the app that calls Microsoft Graph to create the schema extension definition.  If the signed-in user isn't the owner of the calling app, they must explicitly specify the owner property, and assign it the appId of an app that they own. In app-only access:  The owner property isn't required in the request body. Instead, the calling app is assigned ownership of the schema extension. So, for example, if creating a new schema extension definition using Graph Explorer, you must supply the owner property. Once set, this property is read-only and cannot be changed. Supports $filter (eq).
         self._owner: Optional[str] = None
         # The collection of property names and types that make up the schema extension definition.
         self._properties: Optional[List[extension_schema_property.ExtensionSchemaProperty]] = None
@@ -64,7 +64,7 @@ class SchemaExtension(entity.Entity):
             "owner": lambda n : setattr(self, 'owner', n.get_str_value()),
             "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(extension_schema_property.ExtensionSchemaProperty)),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
-            "target_types": lambda n : setattr(self, 'target_types', n.get_collection_of_primitive_values(str)),
+            "targetTypes": lambda n : setattr(self, 'target_types', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -73,7 +73,7 @@ class SchemaExtension(entity.Entity):
     @property
     def owner(self,) -> Optional[str]:
         """
-        Gets the owner property value. The appId of the application that is the owner of the schema extension. This property can be supplied on creation, to set the owner.  If not supplied, then the calling application's appId will be set as the owner. In either case, the signed-in user must be the owner of the application. So, for example, if creating a new schema extension definition using Graph Explorer, you must supply the owner property. Once set, this property is read-only and cannot be changed. Supports $filter (eq).
+        Gets the owner property value. The appId of the application that is the owner of the schema extension. The owner of the schema definition must be explicitly specified during the Create and Update operations, or it will be implied and auto-assigned by Azure AD as follows: In delegated access: The signed-in user must be the owner of the app that calls Microsoft Graph to create the schema extension definition.  If the signed-in user isn't the owner of the calling app, they must explicitly specify the owner property, and assign it the appId of an app that they own. In app-only access:  The owner property isn't required in the request body. Instead, the calling app is assigned ownership of the schema extension. So, for example, if creating a new schema extension definition using Graph Explorer, you must supply the owner property. Once set, this property is read-only and cannot be changed. Supports $filter (eq).
         Returns: Optional[str]
         """
         return self._owner
@@ -81,7 +81,7 @@ class SchemaExtension(entity.Entity):
     @owner.setter
     def owner(self,value: Optional[str] = None) -> None:
         """
-        Sets the owner property value. The appId of the application that is the owner of the schema extension. This property can be supplied on creation, to set the owner.  If not supplied, then the calling application's appId will be set as the owner. In either case, the signed-in user must be the owner of the application. So, for example, if creating a new schema extension definition using Graph Explorer, you must supply the owner property. Once set, this property is read-only and cannot be changed. Supports $filter (eq).
+        Sets the owner property value. The appId of the application that is the owner of the schema extension. The owner of the schema definition must be explicitly specified during the Create and Update operations, or it will be implied and auto-assigned by Azure AD as follows: In delegated access: The signed-in user must be the owner of the app that calls Microsoft Graph to create the schema extension definition.  If the signed-in user isn't the owner of the calling app, they must explicitly specify the owner property, and assign it the appId of an app that they own. In app-only access:  The owner property isn't required in the request body. Instead, the calling app is assigned ownership of the schema extension. So, for example, if creating a new schema extension definition using Graph Explorer, you must supply the owner property. Once set, this property is read-only and cannot be changed. Supports $filter (eq).
         Args:
             value: Value to set for the owner property.
         """
@@ -149,7 +149,7 @@ class SchemaExtension(entity.Entity):
         """
         Sets the targetTypes property value. Set of Microsoft Graph types (that can support extensions) that the schema extension can be applied to. Select from administrativeUnit, contact, device, event, group, message, organization, post, todoTask, todoTaskList, or user.
         Args:
-            value: Value to set for the targetTypes property.
+            value: Value to set for the target_types property.
         """
         self._target_types = value
     

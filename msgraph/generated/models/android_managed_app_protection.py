@@ -77,7 +77,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         """
         Sets the customBrowserDisplayName property value. Friendly name of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
         Args:
-            value: Value to set for the customBrowserDisplayName property.
+            value: Value to set for the custom_browser_display_name property.
         """
         self._custom_browser_display_name = value
     
@@ -94,7 +94,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         """
         Sets the customBrowserPackageId property value. Unique identifier of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
         Args:
-            value: Value to set for the customBrowserPackageId property.
+            value: Value to set for the custom_browser_package_id property.
         """
         self._custom_browser_package_id = value
     
@@ -111,7 +111,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         """
         Sets the deployedAppCount property value. Count of apps to which the current policy is deployed.
         Args:
-            value: Value to set for the deployedAppCount property.
+            value: Value to set for the deployed_app_count property.
         """
         self._deployed_app_count = value
     
@@ -128,7 +128,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         """
         Sets the deploymentSummary property value. Navigation property to deployment summary of the configuration.
         Args:
-            value: Value to set for the deploymentSummary property.
+            value: Value to set for the deployment_summary property.
         """
         self._deployment_summary = value
     
@@ -145,7 +145,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         """
         Sets the disableAppEncryptionIfDeviceEncryptionIsEnabled property value. When this setting is enabled, app level encryption is disabled if device level encryption is enabled
         Args:
-            value: Value to set for the disableAppEncryptionIfDeviceEncryptionIsEnabled property.
+            value: Value to set for the disable_app_encryption_if_device_encryption_is_enabled property.
         """
         self._disable_app_encryption_if_device_encryption_is_enabled = value
     
@@ -162,7 +162,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         """
         Sets the encryptAppData property value. Indicates whether application data for managed apps should be encrypted
         Args:
-            value: Value to set for the encryptAppData property.
+            value: Value to set for the encrypt_app_data property.
         """
         self._encrypt_app_data = value
     
@@ -173,15 +173,15 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         """
         fields = {
             "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(managed_mobile_app.ManagedMobileApp)),
-            "custom_browser_display_name": lambda n : setattr(self, 'custom_browser_display_name', n.get_str_value()),
-            "custom_browser_package_id": lambda n : setattr(self, 'custom_browser_package_id', n.get_str_value()),
-            "deployed_app_count": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
-            "deployment_summary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary)),
-            "disable_app_encryption_if_device_encryption_is_enabled": lambda n : setattr(self, 'disable_app_encryption_if_device_encryption_is_enabled', n.get_bool_value()),
-            "encrypt_app_data": lambda n : setattr(self, 'encrypt_app_data', n.get_bool_value()),
-            "minimum_required_patch_version": lambda n : setattr(self, 'minimum_required_patch_version', n.get_str_value()),
-            "minimum_warning_patch_version": lambda n : setattr(self, 'minimum_warning_patch_version', n.get_str_value()),
-            "screen_capture_blocked": lambda n : setattr(self, 'screen_capture_blocked', n.get_bool_value()),
+            "customBrowserDisplayName": lambda n : setattr(self, 'custom_browser_display_name', n.get_str_value()),
+            "customBrowserPackageId": lambda n : setattr(self, 'custom_browser_package_id', n.get_str_value()),
+            "deployedAppCount": lambda n : setattr(self, 'deployed_app_count', n.get_int_value()),
+            "deploymentSummary": lambda n : setattr(self, 'deployment_summary', n.get_object_value(managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary)),
+            "disableAppEncryptionIfDeviceEncryptionIsEnabled": lambda n : setattr(self, 'disable_app_encryption_if_device_encryption_is_enabled', n.get_bool_value()),
+            "encryptAppData": lambda n : setattr(self, 'encrypt_app_data', n.get_bool_value()),
+            "minimumRequiredPatchVersion": lambda n : setattr(self, 'minimum_required_patch_version', n.get_str_value()),
+            "minimumWarningPatchVersion": lambda n : setattr(self, 'minimum_warning_patch_version', n.get_str_value()),
+            "screenCaptureBlocked": lambda n : setattr(self, 'screen_capture_blocked', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -200,7 +200,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         """
         Sets the minimumRequiredPatchVersion property value. Define the oldest required Android security patch level a user can have to gain secure access to the app.
         Args:
-            value: Value to set for the minimumRequiredPatchVersion property.
+            value: Value to set for the minimum_required_patch_version property.
         """
         self._minimum_required_patch_version = value
     
@@ -217,7 +217,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         """
         Sets the minimumWarningPatchVersion property value. Define the oldest recommended Android security patch level a user can have for secure access to the app.
         Args:
-            value: Value to set for the minimumWarningPatchVersion property.
+            value: Value to set for the minimum_warning_patch_version property.
         """
         self._minimum_warning_patch_version = value
     
@@ -234,7 +234,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         """
         Sets the screenCaptureBlocked property value. Indicates whether a managed user can take screen captures of managed apps
         Args:
-            value: Value to set for the screenCaptureBlocked property.
+            value: Value to set for the screen_capture_blocked property.
         """
         self._screen_capture_blocked = value
     

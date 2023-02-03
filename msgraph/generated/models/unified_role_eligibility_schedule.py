@@ -37,8 +37,8 @@ class UnifiedRoleEligibilitySchedule(unified_role_schedule_base.UnifiedRoleSched
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "member_type": lambda n : setattr(self, 'member_type', n.get_str_value()),
-            "schedule_info": lambda n : setattr(self, 'schedule_info', n.get_object_value(request_schedule.RequestSchedule)),
+            "memberType": lambda n : setattr(self, 'member_type', n.get_str_value()),
+            "scheduleInfo": lambda n : setattr(self, 'schedule_info', n.get_object_value(request_schedule.RequestSchedule)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,7 +57,7 @@ class UnifiedRoleEligibilitySchedule(unified_role_schedule_base.UnifiedRoleSched
         """
         Sets the memberType property value. How the role eligibility is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleEligibilitySchedule can be managed by the caller. Supports $filter (eq, ne).
         Args:
-            value: Value to set for the memberType property.
+            value: Value to set for the member_type property.
         """
         self._member_type = value
     
@@ -74,7 +74,7 @@ class UnifiedRoleEligibilitySchedule(unified_role_schedule_base.UnifiedRoleSched
         """
         Sets the scheduleInfo property value. The period of the role eligibility.
         Args:
-            value: Value to set for the scheduleInfo property.
+            value: Value to set for the schedule_info property.
         """
         self._schedule_info = value
     

@@ -34,7 +34,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         """
         Sets the allowChannelMentions property value. If set to true, @channel mentions are allowed.
         Args:
-            value: Value to set for the allowChannelMentions property.
+            value: Value to set for the allow_channel_mentions property.
         """
         self._allow_channel_mentions = value
     
@@ -51,7 +51,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         """
         Sets the allowOwnerDeleteMessages property value. If set to true, owners can delete any message.
         Args:
-            value: Value to set for the allowOwnerDeleteMessages property.
+            value: Value to set for the allow_owner_delete_messages property.
         """
         self._allow_owner_delete_messages = value
     
@@ -68,7 +68,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         """
         Sets the allowTeamMentions property value. If set to true, @team mentions are allowed.
         Args:
-            value: Value to set for the allowTeamMentions property.
+            value: Value to set for the allow_team_mentions property.
         """
         self._allow_team_mentions = value
     
@@ -85,7 +85,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         """
         Sets the allowUserDeleteMessages property value. If set to true, users can delete their messages.
         Args:
-            value: Value to set for the allowUserDeleteMessages property.
+            value: Value to set for the allow_user_delete_messages property.
         """
         self._allow_user_delete_messages = value
     
@@ -102,7 +102,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         """
         Sets the allowUserEditMessages property value. If set to true, users can edit their messages.
         Args:
-            value: Value to set for the allowUserEditMessages property.
+            value: Value to set for the allow_user_edit_messages property.
         """
         self._allow_user_edit_messages = value
     
@@ -144,11 +144,11 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_channel_mentions": lambda n : setattr(self, 'allow_channel_mentions', n.get_bool_value()),
-            "allow_owner_delete_messages": lambda n : setattr(self, 'allow_owner_delete_messages', n.get_bool_value()),
-            "allow_team_mentions": lambda n : setattr(self, 'allow_team_mentions', n.get_bool_value()),
-            "allow_user_delete_messages": lambda n : setattr(self, 'allow_user_delete_messages', n.get_bool_value()),
-            "allow_user_edit_messages": lambda n : setattr(self, 'allow_user_edit_messages', n.get_bool_value()),
+            "allowChannelMentions": lambda n : setattr(self, 'allow_channel_mentions', n.get_bool_value()),
+            "allowOwnerDeleteMessages": lambda n : setattr(self, 'allow_owner_delete_messages', n.get_bool_value()),
+            "allowTeamMentions": lambda n : setattr(self, 'allow_team_mentions', n.get_bool_value()),
+            "allowUserDeleteMessages": lambda n : setattr(self, 'allow_user_delete_messages', n.get_bool_value()),
+            "allowUserEditMessages": lambda n : setattr(self, 'allow_user_edit_messages', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -166,7 +166,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

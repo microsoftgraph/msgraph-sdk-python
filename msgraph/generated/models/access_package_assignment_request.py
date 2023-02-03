@@ -26,7 +26,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
         """
         Sets the accessPackage property value. The access package associated with the accessPackageAssignmentRequest. An access package defines the collections of resource roles and the policies for how one or more users can get access to those resources. Read-only. Nullable.  Supports $expand.
         Args:
-            value: Value to set for the accessPackage property.
+            value: Value to set for the access_package property.
         """
         self._access_package = value
     
@@ -60,7 +60,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
         """
         Sets the completedDateTime property value. The date of the end of processing, either successful or failure, of a request. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         Args:
-            value: Value to set for the completedDateTime property.
+            value: Value to set for the completed_date_time property.
         """
         self._completed_date_time = value
     
@@ -79,10 +79,10 @@ class AccessPackageAssignmentRequest(entity.Entity):
         self._created_date_time: Optional[datetime] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-        # The subject who requested or, if a direct assignment, was assigned. Read-only. Nullable. Supports $expand.
-        self._requestor: Optional[access_package_subject.AccessPackageSubject] = None
         # The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd (not supported), unknownFutureValue. A request from the user themselves would have requestType of userAdd, userUpdate or userRemove. This property cannot be changed once set.
         self._request_type: Optional[access_package_request_type.AccessPackageRequestType] = None
+        # The subject who requested or, if a direct assignment, was assigned. Read-only. Nullable. Supports $expand.
+        self._requestor: Optional[access_package_subject.AccessPackageSubject] = None
         # The range of dates that access is to be assigned to the requestor. This property cannot be changed once set.
         self._schedule: Optional[entitlement_management_schedule.EntitlementManagementSchedule] = None
         # The state of the request. The possible values are: submitted, pendingApproval, delivering, delivered, deliveryFailed, denied, scheduled, canceled, partiallyDelivered, unknownFutureValue. Read-only. Supports $filter (eq).
@@ -103,7 +103,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
         """
         Sets the createdDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -125,12 +125,12 @@ class AccessPackageAssignmentRequest(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_package": lambda n : setattr(self, 'access_package', n.get_object_value(access_package.AccessPackage)),
+            "accessPackage": lambda n : setattr(self, 'access_package', n.get_object_value(access_package.AccessPackage)),
             "assignment": lambda n : setattr(self, 'assignment', n.get_object_value(access_package_assignment.AccessPackageAssignment)),
-            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "requestor": lambda n : setattr(self, 'requestor', n.get_object_value(access_package_subject.AccessPackageSubject)),
-            "request_type": lambda n : setattr(self, 'request_type', n.get_enum_value(access_package_request_type.AccessPackageRequestType)),
+            "requestType": lambda n : setattr(self, 'request_type', n.get_enum_value(access_package_request_type.AccessPackageRequestType)),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(entitlement_management_schedule.EntitlementManagementSchedule)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(access_package_request_state.AccessPackageRequestState)),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
@@ -138,6 +138,23 @@ class AccessPackageAssignmentRequest(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
+    
+    @property
+    def request_type(self,) -> Optional[access_package_request_type.AccessPackageRequestType]:
+        """
+        Gets the requestType property value. The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd (not supported), unknownFutureValue. A request from the user themselves would have requestType of userAdd, userUpdate or userRemove. This property cannot be changed once set.
+        Returns: Optional[access_package_request_type.AccessPackageRequestType]
+        """
+        return self._request_type
+    
+    @request_type.setter
+    def request_type(self,value: Optional[access_package_request_type.AccessPackageRequestType] = None) -> None:
+        """
+        Sets the requestType property value. The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd (not supported), unknownFutureValue. A request from the user themselves would have requestType of userAdd, userUpdate or userRemove. This property cannot be changed once set.
+        Args:
+            value: Value to set for the request_type property.
+        """
+        self._request_type = value
     
     @property
     def requestor(self,) -> Optional[access_package_subject.AccessPackageSubject]:
@@ -155,23 +172,6 @@ class AccessPackageAssignmentRequest(entity.Entity):
             value: Value to set for the requestor property.
         """
         self._requestor = value
-    
-    @property
-    def request_type(self,) -> Optional[access_package_request_type.AccessPackageRequestType]:
-        """
-        Gets the requestType property value. The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd (not supported), unknownFutureValue. A request from the user themselves would have requestType of userAdd, userUpdate or userRemove. This property cannot be changed once set.
-        Returns: Optional[access_package_request_type.AccessPackageRequestType]
-        """
-        return self._request_type
-    
-    @request_type.setter
-    def request_type(self,value: Optional[access_package_request_type.AccessPackageRequestType] = None) -> None:
-        """
-        Sets the requestType property value. The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd (not supported), unknownFutureValue. A request from the user themselves would have requestType of userAdd, userUpdate or userRemove. This property cannot be changed once set.
-        Args:
-            value: Value to set for the requestType property.
-        """
-        self._request_type = value
     
     @property
     def schedule(self,) -> Optional[entitlement_management_schedule.EntitlementManagementSchedule]:

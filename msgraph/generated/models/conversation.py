@@ -46,12 +46,12 @@ class Conversation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
-            "last_delivered_date_time": lambda n : setattr(self, 'last_delivered_date_time', n.get_datetime_value()),
+            "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
+            "lastDeliveredDateTime": lambda n : setattr(self, 'last_delivered_date_time', n.get_datetime_value()),
             "preview": lambda n : setattr(self, 'preview', n.get_str_value()),
             "threads": lambda n : setattr(self, 'threads', n.get_collection_of_object_values(conversation_thread.ConversationThread)),
             "topic": lambda n : setattr(self, 'topic', n.get_str_value()),
-            "unique_senders": lambda n : setattr(self, 'unique_senders', n.get_collection_of_primitive_values(str)),
+            "uniqueSenders": lambda n : setattr(self, 'unique_senders', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -70,7 +70,7 @@ class Conversation(entity.Entity):
         """
         Sets the hasAttachments property value. Indicates whether any of the posts within this Conversation has at least one attachment. Supports $filter (eq, ne) and $search.
         Args:
-            value: Value to set for the hasAttachments property.
+            value: Value to set for the has_attachments property.
         """
         self._has_attachments = value
     
@@ -87,7 +87,7 @@ class Conversation(entity.Entity):
         """
         Sets the lastDeliveredDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the lastDeliveredDateTime property.
+            value: Value to set for the last_delivered_date_time property.
         """
         self._last_delivered_date_time = value
     
@@ -171,7 +171,7 @@ class Conversation(entity.Entity):
         """
         Sets the uniqueSenders property value. All the users that sent a message to this Conversation.
         Args:
-            value: Value to set for the uniqueSenders property.
+            value: Value to set for the unique_senders property.
         """
         self._unique_senders = value
     

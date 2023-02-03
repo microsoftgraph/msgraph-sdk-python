@@ -67,7 +67,7 @@ class EducationItemBody(AdditionalDataHolder, Parsable):
         """
         Sets the contentType property value. The contentType property
         Args:
-            value: Value to set for the contentType property.
+            value: Value to set for the content_type property.
         """
         self._content_type = value
     
@@ -90,7 +90,7 @@ class EducationItemBody(AdditionalDataHolder, Parsable):
         """
         fields = {
             "content": lambda n : setattr(self, 'content', n.get_str_value()),
-            "content_type": lambda n : setattr(self, 'content_type', n.get_enum_value(body_type.BodyType)),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_enum_value(body_type.BodyType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -108,7 +108,7 @@ class EducationItemBody(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

@@ -24,7 +24,7 @@ class RiskyServicePrincipal(entity.Entity):
         """
         Sets the appId property value. The globally unique identifier for the associated application (its appId property), if any.
         Args:
-            value: Value to set for the appId property.
+            value: Value to set for the app_id property.
         """
         self._app_id = value
     
@@ -81,7 +81,7 @@ class RiskyServicePrincipal(entity.Entity):
         """
         Sets the displayName property value. The display name for the service principal.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -91,16 +91,16 @@ class RiskyServicePrincipal(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(risky_service_principal_history_item.RiskyServicePrincipalHistoryItem)),
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "is_processing": lambda n : setattr(self, 'is_processing', n.get_bool_value()),
-            "risk_detail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(risk_detail.RiskDetail)),
-            "risk_last_updated_date_time": lambda n : setattr(self, 'risk_last_updated_date_time', n.get_datetime_value()),
-            "risk_level": lambda n : setattr(self, 'risk_level', n.get_enum_value(risk_level.RiskLevel)),
-            "risk_state": lambda n : setattr(self, 'risk_state', n.get_enum_value(risk_state.RiskState)),
-            "service_principal_type": lambda n : setattr(self, 'service_principal_type', n.get_str_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "isProcessing": lambda n : setattr(self, 'is_processing', n.get_bool_value()),
+            "riskDetail": lambda n : setattr(self, 'risk_detail', n.get_enum_value(risk_detail.RiskDetail)),
+            "riskLastUpdatedDateTime": lambda n : setattr(self, 'risk_last_updated_date_time', n.get_datetime_value()),
+            "riskLevel": lambda n : setattr(self, 'risk_level', n.get_enum_value(risk_level.RiskLevel)),
+            "riskState": lambda n : setattr(self, 'risk_state', n.get_enum_value(risk_state.RiskState)),
+            "servicePrincipalType": lambda n : setattr(self, 'service_principal_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -136,7 +136,7 @@ class RiskyServicePrincipal(entity.Entity):
         """
         Sets the isEnabled property value. true if the service principal account is enabled; otherwise, false.
         Args:
-            value: Value to set for the isEnabled property.
+            value: Value to set for the is_enabled property.
         """
         self._is_enabled = value
     
@@ -153,7 +153,7 @@ class RiskyServicePrincipal(entity.Entity):
         """
         Sets the isProcessing property value. Indicates whether Azure AD is currently processing the service principal's risky state.
         Args:
-            value: Value to set for the isProcessing property.
+            value: Value to set for the is_processing property.
         """
         self._is_processing = value
     
@@ -170,7 +170,7 @@ class RiskyServicePrincipal(entity.Entity):
         """
         Sets the riskDetail property value. Details of the detected risk. Note: Details for this property are only available for Workload Identities Premium customers. Events in tenants without this license will be returned hidden. The possible values are: none, hidden,  unknownFutureValue, adminConfirmedServicePrincipalCompromised, adminDismissedAllRiskForServicePrincipal. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: adminConfirmedServicePrincipalCompromised , adminDismissedAllRiskForServicePrincipal.
         Args:
-            value: Value to set for the riskDetail property.
+            value: Value to set for the risk_detail property.
         """
         self._risk_detail = value
     
@@ -187,7 +187,7 @@ class RiskyServicePrincipal(entity.Entity):
         """
         Sets the riskLastUpdatedDateTime property value. The date and time that the risk state was last updated. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2021 is 2021-01-01T00:00:00Z. Supports $filter (eq).
         Args:
-            value: Value to set for the riskLastUpdatedDateTime property.
+            value: Value to set for the risk_last_updated_date_time property.
         """
         self._risk_last_updated_date_time = value
     
@@ -204,7 +204,7 @@ class RiskyServicePrincipal(entity.Entity):
         """
         Sets the riskLevel property value. Level of the detected risky workload identity. The possible values are: low, medium, high, hidden, none, unknownFutureValue. Supports $filter (eq).
         Args:
-            value: Value to set for the riskLevel property.
+            value: Value to set for the risk_level property.
         """
         self._risk_level = value
     
@@ -221,7 +221,7 @@ class RiskyServicePrincipal(entity.Entity):
         """
         Sets the riskState property value. State of the service principal's risk. The possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
         Args:
-            value: Value to set for the riskState property.
+            value: Value to set for the risk_state property.
         """
         self._risk_state = value
     
@@ -258,7 +258,7 @@ class RiskyServicePrincipal(entity.Entity):
         """
         Sets the servicePrincipalType property value. Identifies whether the service principal represents an Application, a ManagedIdentity, or a legacy application (socialIdp). This is set by Azure AD internally and is inherited from servicePrincipal.
         Args:
-            value: Value to set for the servicePrincipalType property.
+            value: Value to set for the service_principal_type property.
         """
         self._service_principal_type = value
     

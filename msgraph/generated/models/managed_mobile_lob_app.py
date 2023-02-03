@@ -20,7 +20,7 @@ class ManagedMobileLobApp(managed_app.ManagedApp):
         """
         Sets the committedContentVersion property value. The internal committed content version.
         Args:
-            value: Value to set for the committedContentVersion property.
+            value: Value to set for the committed_content_version property.
         """
         self._committed_content_version = value
     
@@ -52,7 +52,7 @@ class ManagedMobileLobApp(managed_app.ManagedApp):
         """
         Sets the contentVersions property value. The list of content versions for this app.
         Args:
-            value: Value to set for the contentVersions property.
+            value: Value to set for the content_versions property.
         """
         self._content_versions = value
     
@@ -81,7 +81,7 @@ class ManagedMobileLobApp(managed_app.ManagedApp):
         """
         Sets the fileName property value. The name of the main Lob application file.
         Args:
-            value: Value to set for the fileName property.
+            value: Value to set for the file_name property.
         """
         self._file_name = value
     
@@ -91,9 +91,9 @@ class ManagedMobileLobApp(managed_app.ManagedApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "committed_content_version": lambda n : setattr(self, 'committed_content_version', n.get_str_value()),
-            "content_versions": lambda n : setattr(self, 'content_versions', n.get_collection_of_object_values(mobile_app_content.MobileAppContent)),
-            "file_name": lambda n : setattr(self, 'file_name', n.get_str_value()),
+            "committedContentVersion": lambda n : setattr(self, 'committed_content_version', n.get_str_value()),
+            "contentVersions": lambda n : setattr(self, 'content_versions', n.get_collection_of_object_values(mobile_app_content.MobileAppContent)),
+            "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()

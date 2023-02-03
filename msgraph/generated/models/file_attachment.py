@@ -32,7 +32,7 @@ class FileAttachment(attachment.Attachment):
         """
         Sets the contentBytes property value. The base64-encoded contents of the file.
         Args:
-            value: Value to set for the contentBytes property.
+            value: Value to set for the content_bytes property.
         """
         self._content_bytes = value
     
@@ -49,7 +49,7 @@ class FileAttachment(attachment.Attachment):
         """
         Sets the contentId property value. The ID of the attachment in the Exchange store.
         Args:
-            value: Value to set for the contentId property.
+            value: Value to set for the content_id property.
         """
         self._content_id = value
     
@@ -66,7 +66,7 @@ class FileAttachment(attachment.Attachment):
         """
         Sets the contentLocation property value. Do not use this property as it is not supported.
         Args:
-            value: Value to set for the contentLocation property.
+            value: Value to set for the content_location property.
         """
         self._content_location = value
     
@@ -88,9 +88,9 @@ class FileAttachment(attachment.Attachment):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "content_bytes": lambda n : setattr(self, 'content_bytes', n.get_bytes_value()),
-            "content_id": lambda n : setattr(self, 'content_id', n.get_str_value()),
-            "content_location": lambda n : setattr(self, 'content_location', n.get_str_value()),
+            "contentBytes": lambda n : setattr(self, 'content_bytes', n.get_bytes_value()),
+            "contentId": lambda n : setattr(self, 'content_id', n.get_str_value()),
+            "contentLocation": lambda n : setattr(self, 'content_location', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

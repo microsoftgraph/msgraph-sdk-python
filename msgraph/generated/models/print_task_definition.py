@@ -35,7 +35,7 @@ class PrintTaskDefinition(entity.Entity):
         """
         Sets the createdBy property value. The createdBy property
         Args:
-            value: Value to set for the createdBy property.
+            value: Value to set for the created_by property.
         """
         self._created_by = value
     
@@ -64,7 +64,7 @@ class PrintTaskDefinition(entity.Entity):
         """
         Sets the displayName property value. The name of the printTaskDefinition.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -74,8 +74,8 @@ class PrintTaskDefinition(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(app_identity.AppIdentity)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(app_identity.AppIdentity)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(print_task.PrintTask)),
         }
         super_fields = super().get_field_deserializers()

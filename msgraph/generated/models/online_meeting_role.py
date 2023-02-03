@@ -5,4 +5,5 @@ class OnlineMeetingRole(Enum):
     Presenter = "presenter",
     UnknownFutureValue = "unknownFutureValue",
     Producer = "producer",
+    Coorganizer = "coorganizer",
 

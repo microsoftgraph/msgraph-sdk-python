@@ -26,10 +26,11 @@ class DetectedAppItemRequestBuilder():
         """
         return managed_devices_request_builder.ManagedDevicesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, detected_app_id: Optional[str] = None) -> None:
         """
         Instantiates a new DetectedAppItemRequestBuilder and sets the default values.
         Args:
+            detectedAppId: key: id of detectedApp
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -41,6 +42,7 @@ class DetectedAppItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceManagement/detectedApps/{detectedApp%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["detectedApp%2Did"] = detectedAppId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

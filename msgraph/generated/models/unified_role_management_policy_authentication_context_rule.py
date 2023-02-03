@@ -19,7 +19,7 @@ class UnifiedRoleManagementPolicyAuthenticationContextRule(unified_role_manageme
         """
         Sets the claimValue property value. The value of the authentication context claim.
         Args:
-            value: Value to set for the claimValue property.
+            value: Value to set for the claim_value property.
         """
         self._claim_value = value
     
@@ -52,8 +52,8 @@ class UnifiedRoleManagementPolicyAuthenticationContextRule(unified_role_manageme
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "claim_value": lambda n : setattr(self, 'claim_value', n.get_str_value()),
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "claimValue": lambda n : setattr(self, 'claim_value', n.get_str_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -72,7 +72,7 @@ class UnifiedRoleManagementPolicyAuthenticationContextRule(unified_role_manageme
         """
         Sets the isEnabled property value. Whether this rule is enabled.
         Args:
-            value: Value to set for the isEnabled property.
+            value: Value to set for the is_enabled property.
         """
         self._is_enabled = value
     

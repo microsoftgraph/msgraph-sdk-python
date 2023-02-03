@@ -54,7 +54,7 @@ class Admin(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "service_announcement": lambda n : setattr(self, 'service_announcement', n.get_object_value(service_announcement.ServiceAnnouncement)),
+            "serviceAnnouncement": lambda n : setattr(self, 'service_announcement', n.get_object_value(service_announcement.ServiceAnnouncement)),
         }
         return fields
     
@@ -71,7 +71,7 @@ class Admin(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -100,7 +100,7 @@ class Admin(AdditionalDataHolder, Parsable):
         """
         Sets the serviceAnnouncement property value. A container for service communications resources. Read-only.
         Args:
-            value: Value to set for the serviceAnnouncement property.
+            value: Value to set for the service_announcement property.
         """
         self._service_announcement = value
     

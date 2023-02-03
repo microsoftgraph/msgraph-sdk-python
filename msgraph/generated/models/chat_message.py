@@ -65,7 +65,7 @@ class ChatMessage(entity.Entity):
         """
         Sets the channelIdentity property value. If the message was sent in a channel, represents identity of the channel.
         Args:
-            value: Value to set for the channelIdentity property.
+            value: Value to set for the channel_identity property.
         """
         self._channel_identity = value
     
@@ -82,7 +82,7 @@ class ChatMessage(entity.Entity):
         """
         Sets the chatId property value. If the message was sent in a chat, represents the identity of the chat.
         Args:
-            value: Value to set for the chatId property.
+            value: Value to set for the chat_id property.
         """
         self._chat_id = value
     
@@ -153,7 +153,7 @@ class ChatMessage(entity.Entity):
         """
         Sets the createdDateTime property value. Timestamp of when the chat message was created.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -182,7 +182,7 @@ class ChatMessage(entity.Entity):
         """
         Sets the deletedDateTime property value. Read only. Timestamp at which the chat message was deleted, or null if not deleted.
         Args:
-            value: Value to set for the deletedDateTime property.
+            value: Value to set for the deleted_date_time property.
         """
         self._deleted_date_time = value
     
@@ -216,7 +216,7 @@ class ChatMessage(entity.Entity):
         """
         Sets the eventDetail property value. Read-only. If present, represents details of an event that happened in a chat, a channel, or a team, for example, adding new members. For event messages, the messageType property will be set to systemEventMessage.
         Args:
-            value: Value to set for the eventDetail property.
+            value: Value to set for the event_detail property.
         """
         self._event_detail = value
     
@@ -245,27 +245,27 @@ class ChatMessage(entity.Entity):
         fields = {
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(chat_message_attachment.ChatMessageAttachment)),
             "body": lambda n : setattr(self, 'body', n.get_object_value(item_body.ItemBody)),
-            "channel_identity": lambda n : setattr(self, 'channel_identity', n.get_object_value(channel_identity.ChannelIdentity)),
-            "chat_id": lambda n : setattr(self, 'chat_id', n.get_str_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "deleted_date_time": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
+            "channelIdentity": lambda n : setattr(self, 'channel_identity', n.get_object_value(channel_identity.ChannelIdentity)),
+            "chatId": lambda n : setattr(self, 'chat_id', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "deletedDateTime": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
             "etag": lambda n : setattr(self, 'etag', n.get_str_value()),
-            "event_detail": lambda n : setattr(self, 'event_detail', n.get_object_value(event_message_detail.EventMessageDetail)),
+            "eventDetail": lambda n : setattr(self, 'event_detail', n.get_object_value(event_message_detail.EventMessageDetail)),
             "from": lambda n : setattr(self, 'from_', n.get_object_value(chat_message_from_identity_set.ChatMessageFromIdentitySet)),
-            "hosted_contents": lambda n : setattr(self, 'hosted_contents', n.get_collection_of_object_values(chat_message_hosted_content.ChatMessageHostedContent)),
+            "hostedContents": lambda n : setattr(self, 'hosted_contents', n.get_collection_of_object_values(chat_message_hosted_content.ChatMessageHostedContent)),
             "importance": lambda n : setattr(self, 'importance', n.get_enum_value(chat_message_importance.ChatMessageImportance)),
-            "last_edited_date_time": lambda n : setattr(self, 'last_edited_date_time', n.get_datetime_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "lastEditedDateTime": lambda n : setattr(self, 'last_edited_date_time', n.get_datetime_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "locale": lambda n : setattr(self, 'locale', n.get_str_value()),
             "mentions": lambda n : setattr(self, 'mentions', n.get_collection_of_object_values(chat_message_mention.ChatMessageMention)),
-            "message_type": lambda n : setattr(self, 'message_type', n.get_enum_value(chat_message_type.ChatMessageType)),
-            "policy_violation": lambda n : setattr(self, 'policy_violation', n.get_object_value(chat_message_policy_violation.ChatMessagePolicyViolation)),
+            "messageType": lambda n : setattr(self, 'message_type', n.get_enum_value(chat_message_type.ChatMessageType)),
+            "policyViolation": lambda n : setattr(self, 'policy_violation', n.get_object_value(chat_message_policy_violation.ChatMessagePolicyViolation)),
             "reactions": lambda n : setattr(self, 'reactions', n.get_collection_of_object_values(chat_message_reaction.ChatMessageReaction)),
             "replies": lambda n : setattr(self, 'replies', n.get_collection_of_object_values(ChatMessage)),
-            "reply_to_id": lambda n : setattr(self, 'reply_to_id', n.get_str_value()),
+            "replyToId": lambda n : setattr(self, 'reply_to_id', n.get_str_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
             "summary": lambda n : setattr(self, 'summary', n.get_str_value()),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -284,7 +284,7 @@ class ChatMessage(entity.Entity):
         """
         Sets the hostedContents property value. Content in a message hosted by Microsoft Teams - for example, images or code snippets.
         Args:
-            value: Value to set for the hostedContents property.
+            value: Value to set for the hosted_contents property.
         """
         self._hosted_contents = value
     
@@ -318,7 +318,7 @@ class ChatMessage(entity.Entity):
         """
         Sets the lastEditedDateTime property value. Read only. Timestamp when edits to the chat message were made. Triggers an 'Edited' flag in the Teams UI. If no edits are made the value is null.
         Args:
-            value: Value to set for the lastEditedDateTime property.
+            value: Value to set for the last_edited_date_time property.
         """
         self._last_edited_date_time = value
     
@@ -335,7 +335,7 @@ class ChatMessage(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. Read only. Timestamp when the chat message is created (initial setting) or modified, including when a reaction is added or removed.
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     
@@ -386,7 +386,7 @@ class ChatMessage(entity.Entity):
         """
         Sets the messageType property value. The messageType property
         Args:
-            value: Value to set for the messageType property.
+            value: Value to set for the message_type property.
         """
         self._message_type = value
     
@@ -403,7 +403,7 @@ class ChatMessage(entity.Entity):
         """
         Sets the policyViolation property value. Defines the properties of a policy violation set by a data loss prevention (DLP) application.
         Args:
-            value: Value to set for the policyViolation property.
+            value: Value to set for the policy_violation property.
         """
         self._policy_violation = value
     
@@ -454,7 +454,7 @@ class ChatMessage(entity.Entity):
         """
         Sets the replyToId property value. Read-only. ID of the parent chat message or root chat message of the thread. (Only applies to chat messages in channels, not chats.)
         Args:
-            value: Value to set for the replyToId property.
+            value: Value to set for the reply_to_id property.
         """
         self._reply_to_id = value
     
@@ -538,7 +538,7 @@ class ChatMessage(entity.Entity):
         """
         Sets the webUrl property value. Read-only. Link to the message in Microsoft Teams.
         Args:
-            value: Value to set for the webUrl property.
+            value: Value to set for the web_url property.
         """
         self._web_url = value
     

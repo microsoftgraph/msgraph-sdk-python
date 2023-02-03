@@ -19,7 +19,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         """
         Sets the appleId property value. The Apple ID associated with Vpp token.
         Args:
-            value: Value to set for the appleId property.
+            value: Value to set for the apple_id property.
         """
         self._apple_id = value
     
@@ -81,14 +81,14 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "apple_id": lambda n : setattr(self, 'apple_id', n.get_str_value()),
+            "appleId": lambda n : setattr(self, 'apple_id', n.get_str_value()),
             "genres": lambda n : setattr(self, 'genres', n.get_collection_of_primitive_values(str)),
             "language": lambda n : setattr(self, 'language', n.get_str_value()),
             "seller": lambda n : setattr(self, 'seller', n.get_str_value()),
-            "total_license_count": lambda n : setattr(self, 'total_license_count', n.get_int_value()),
-            "used_license_count": lambda n : setattr(self, 'used_license_count', n.get_int_value()),
-            "vpp_organization_name": lambda n : setattr(self, 'vpp_organization_name', n.get_str_value()),
-            "vpp_token_id": lambda n : setattr(self, 'vpp_token_id', n.get_object_value(Guid)),
+            "totalLicenseCount": lambda n : setattr(self, 'total_license_count', n.get_int_value()),
+            "usedLicenseCount": lambda n : setattr(self, 'used_license_count', n.get_int_value()),
+            "vppOrganizationName": lambda n : setattr(self, 'vpp_organization_name', n.get_str_value()),
+            "vppTokenId": lambda n : setattr(self, 'vpp_token_id', n.get_object_value(Guid)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -159,7 +159,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         """
         Sets the totalLicenseCount property value. Total license count.
         Args:
-            value: Value to set for the totalLicenseCount property.
+            value: Value to set for the total_license_count property.
         """
         self._total_license_count = value
     
@@ -176,7 +176,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         """
         Sets the usedLicenseCount property value. Used license count.
         Args:
-            value: Value to set for the usedLicenseCount property.
+            value: Value to set for the used_license_count property.
         """
         self._used_license_count = value
     
@@ -193,7 +193,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         """
         Sets the vppOrganizationName property value. The Vpp token's organization name.
         Args:
-            value: Value to set for the vppOrganizationName property.
+            value: Value to set for the vpp_organization_name property.
         """
         self._vpp_organization_name = value
     
@@ -210,7 +210,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         """
         Sets the vppTokenId property value. The Vpp token ID.
         Args:
-            value: Value to set for the vppTokenId property.
+            value: Value to set for the vpp_token_id property.
         """
         self._vpp_token_id = value
     

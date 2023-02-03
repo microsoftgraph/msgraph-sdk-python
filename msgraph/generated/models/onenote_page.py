@@ -69,7 +69,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         """
         Sets the contentUrl property value. The URL for the page's HTML content.  Read-only.
         Args:
-            value: Value to set for the contentUrl property.
+            value: Value to set for the content_url property.
         """
         self._content_url = value
     
@@ -86,7 +86,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         """
         Sets the createdByAppId property value. The unique identifier of the application that created the page. Read-only.
         Args:
-            value: Value to set for the createdByAppId property.
+            value: Value to set for the created_by_app_id property.
         """
         self._created_by_app_id = value
     
@@ -109,16 +109,16 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         """
         fields = {
             "content": lambda n : setattr(self, 'content', n.get_bytes_value()),
-            "content_url": lambda n : setattr(self, 'content_url', n.get_str_value()),
-            "created_by_app_id": lambda n : setattr(self, 'created_by_app_id', n.get_str_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "contentUrl": lambda n : setattr(self, 'content_url', n.get_str_value()),
+            "createdByAppId": lambda n : setattr(self, 'created_by_app_id', n.get_str_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "level": lambda n : setattr(self, 'level', n.get_int_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(page_links.PageLinks)),
             "order": lambda n : setattr(self, 'order', n.get_int_value()),
-            "parent_notebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(notebook.Notebook)),
-            "parent_section": lambda n : setattr(self, 'parent_section', n.get_object_value(onenote_section.OnenoteSection)),
+            "parentNotebook": lambda n : setattr(self, 'parent_notebook', n.get_object_value(notebook.Notebook)),
+            "parentSection": lambda n : setattr(self, 'parent_section', n.get_object_value(onenote_section.OnenoteSection)),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
-            "user_tags": lambda n : setattr(self, 'user_tags', n.get_collection_of_primitive_values(str)),
+            "userTags": lambda n : setattr(self, 'user_tags', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -137,7 +137,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         """
         Sets the lastModifiedDateTime property value. The date and time when the page was last modified. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     
@@ -205,7 +205,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         """
         Sets the parentNotebook property value. The notebook that contains the page.  Read-only.
         Args:
-            value: Value to set for the parentNotebook property.
+            value: Value to set for the parent_notebook property.
         """
         self._parent_notebook = value
     
@@ -222,7 +222,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         """
         Sets the parentSection property value. The section that contains the page. Read-only.
         Args:
-            value: Value to set for the parentSection property.
+            value: Value to set for the parent_section property.
         """
         self._parent_section = value
     
@@ -277,7 +277,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         """
         Sets the userTags property value. The userTags property
         Args:
-            value: Value to set for the userTags property.
+            value: Value to set for the user_tags property.
         """
         self._user_tags = value
     

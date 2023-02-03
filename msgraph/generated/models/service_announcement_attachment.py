@@ -55,7 +55,7 @@ class ServiceAnnouncementAttachment(entity.Entity):
         """
         Sets the contentType property value. The contentType property
         Args:
-            value: Value to set for the contentType property.
+            value: Value to set for the content_type property.
         """
         self._content_type = value
     
@@ -78,8 +78,8 @@ class ServiceAnnouncementAttachment(entity.Entity):
         """
         fields = {
             "content": lambda n : setattr(self, 'content', n.get_bytes_value()),
-            "content_type": lambda n : setattr(self, 'content_type', n.get_str_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
         }
@@ -100,7 +100,7 @@ class ServiceAnnouncementAttachment(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. The lastModifiedDateTime property
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     

@@ -55,9 +55,9 @@ class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_compliant_device_accepted": lambda n : setattr(self, 'is_compliant_device_accepted', n.get_bool_value()),
-            "is_hybrid_azure_a_d_joined_device_accepted": lambda n : setattr(self, 'is_hybrid_azure_a_d_joined_device_accepted', n.get_bool_value()),
-            "is_mfa_accepted": lambda n : setattr(self, 'is_mfa_accepted', n.get_bool_value()),
+            "isCompliantDeviceAccepted": lambda n : setattr(self, 'is_compliant_device_accepted', n.get_bool_value()),
+            "isHybridAzureADJoinedDeviceAccepted": lambda n : setattr(self, 'is_hybrid_azure_a_d_joined_device_accepted', n.get_bool_value()),
+            "isMfaAccepted": lambda n : setattr(self, 'is_mfa_accepted', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -75,7 +75,7 @@ class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, Parsable):
         """
         Sets the isCompliantDeviceAccepted property value. Specifies whether compliant devices from external Azure AD organizations are trusted.
         Args:
-            value: Value to set for the isCompliantDeviceAccepted property.
+            value: Value to set for the is_compliant_device_accepted property.
         """
         self._is_compliant_device_accepted = value
     
@@ -92,7 +92,7 @@ class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, Parsable):
         """
         Sets the isHybridAzureADJoinedDeviceAccepted property value. Specifies whether hybrid Azure AD joined devices from external Azure AD organizations are trusted.
         Args:
-            value: Value to set for the isHybridAzureADJoinedDeviceAccepted property.
+            value: Value to set for the is_hybrid_azure_a_d_joined_device_accepted property.
         """
         self._is_hybrid_azure_a_d_joined_device_accepted = value
     
@@ -109,7 +109,7 @@ class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, Parsable):
         """
         Sets the isMfaAccepted property value. Specifies whether MFA from external Azure AD organizations is trusted.
         Args:
-            value: Value to set for the isMfaAccepted property.
+            value: Value to set for the is_mfa_accepted property.
         """
         self._is_mfa_accepted = value
     
@@ -126,7 +126,7 @@ class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

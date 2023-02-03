@@ -24,7 +24,7 @@ class MobileAppContentFile(entity.Entity):
         """
         Sets the azureStorageUri property value. The Azure Storage URI.
         Args:
-            value: Value to set for the azureStorageUri property.
+            value: Value to set for the azure_storage_uri property.
         """
         self._azure_storage_uri = value
     
@@ -41,7 +41,7 @@ class MobileAppContentFile(entity.Entity):
         """
         Sets the azureStorageUriExpirationDateTime property value. The time the Azure storage Uri expires.
         Args:
-            value: Value to set for the azureStorageUriExpirationDateTime property.
+            value: Value to set for the azure_storage_uri_expiration_date_time property.
         """
         self._azure_storage_uri_expiration_date_time = value
     
@@ -84,7 +84,7 @@ class MobileAppContentFile(entity.Entity):
         """
         Sets the createdDateTime property value. The time the file was created.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -106,15 +106,15 @@ class MobileAppContentFile(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "azure_storage_uri": lambda n : setattr(self, 'azure_storage_uri', n.get_str_value()),
-            "azure_storage_uri_expiration_date_time": lambda n : setattr(self, 'azure_storage_uri_expiration_date_time', n.get_datetime_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "is_committed": lambda n : setattr(self, 'is_committed', n.get_bool_value()),
+            "azureStorageUri": lambda n : setattr(self, 'azure_storage_uri', n.get_str_value()),
+            "azureStorageUriExpirationDateTime": lambda n : setattr(self, 'azure_storage_uri_expiration_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "isCommitted": lambda n : setattr(self, 'is_committed', n.get_bool_value()),
             "manifest": lambda n : setattr(self, 'manifest', n.get_bytes_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
-            "size_encrypted": lambda n : setattr(self, 'size_encrypted', n.get_int_value()),
-            "upload_state": lambda n : setattr(self, 'upload_state', n.get_enum_value(mobile_app_content_file_upload_state.MobileAppContentFileUploadState)),
+            "sizeEncrypted": lambda n : setattr(self, 'size_encrypted', n.get_int_value()),
+            "uploadState": lambda n : setattr(self, 'upload_state', n.get_enum_value(mobile_app_content_file_upload_state.MobileAppContentFileUploadState)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -133,7 +133,7 @@ class MobileAppContentFile(entity.Entity):
         """
         Sets the isCommitted property value. A value indicating whether the file is committed.
         Args:
-            value: Value to set for the isCommitted property.
+            value: Value to set for the is_committed property.
         """
         self._is_committed = value
     
@@ -220,7 +220,7 @@ class MobileAppContentFile(entity.Entity):
         """
         Sets the sizeEncrypted property value. The size of the file after encryption.
         Args:
-            value: Value to set for the sizeEncrypted property.
+            value: Value to set for the size_encrypted property.
         """
         self._size_encrypted = value
     
@@ -237,7 +237,7 @@ class MobileAppContentFile(entity.Entity):
         """
         Sets the uploadState property value. Contains properties for upload request states.
         Args:
-            value: Value to set for the uploadState property.
+            value: Value to set for the upload_state property.
         """
         self._upload_state = value
     

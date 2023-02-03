@@ -82,7 +82,7 @@ class OmaSetting(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. Display Name.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -93,9 +93,9 @@ class OmaSetting(AdditionalDataHolder, Parsable):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "oma_uri": lambda n : setattr(self, 'oma_uri', n.get_str_value()),
+            "omaUri": lambda n : setattr(self, 'oma_uri', n.get_str_value()),
         }
         return fields
     
@@ -112,7 +112,7 @@ class OmaSetting(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -129,7 +129,7 @@ class OmaSetting(AdditionalDataHolder, Parsable):
         """
         Sets the omaUri property value. OMA.
         Args:
-            value: Value to set for the omaUri property.
+            value: Value to set for the oma_uri property.
         """
         self._oma_uri = value
     

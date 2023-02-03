@@ -8,9 +8,6 @@ print_usage_by_user = lazy_import('msgraph.generated.models.print_usage_by_user'
 security_reports_root = lazy_import('msgraph.generated.models.security_reports_root')
 
 class ReportRoot(AdditionalDataHolder, Parsable):
-    """
-    The resource that represents an instance of Enrollment Failure Reports.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -73,7 +70,7 @@ class ReportRoot(AdditionalDataHolder, Parsable):
         """
         Sets the dailyPrintUsageByPrinter property value. The dailyPrintUsageByPrinter property
         Args:
-            value: Value to set for the dailyPrintUsageByPrinter property.
+            value: Value to set for the daily_print_usage_by_printer property.
         """
         self._daily_print_usage_by_printer = value
     
@@ -90,7 +87,7 @@ class ReportRoot(AdditionalDataHolder, Parsable):
         """
         Sets the dailyPrintUsageByUser property value. The dailyPrintUsageByUser property
         Args:
-            value: Value to set for the dailyPrintUsageByUser property.
+            value: Value to set for the daily_print_usage_by_user property.
         """
         self._daily_print_usage_by_user = value
     
@@ -100,10 +97,10 @@ class ReportRoot(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "daily_print_usage_by_printer": lambda n : setattr(self, 'daily_print_usage_by_printer', n.get_collection_of_object_values(print_usage_by_printer.PrintUsageByPrinter)),
-            "daily_print_usage_by_user": lambda n : setattr(self, 'daily_print_usage_by_user', n.get_collection_of_object_values(print_usage_by_user.PrintUsageByUser)),
-            "monthly_print_usage_by_printer": lambda n : setattr(self, 'monthly_print_usage_by_printer', n.get_collection_of_object_values(print_usage_by_printer.PrintUsageByPrinter)),
-            "monthly_print_usage_by_user": lambda n : setattr(self, 'monthly_print_usage_by_user', n.get_collection_of_object_values(print_usage_by_user.PrintUsageByUser)),
+            "dailyPrintUsageByPrinter": lambda n : setattr(self, 'daily_print_usage_by_printer', n.get_collection_of_object_values(print_usage_by_printer.PrintUsageByPrinter)),
+            "dailyPrintUsageByUser": lambda n : setattr(self, 'daily_print_usage_by_user', n.get_collection_of_object_values(print_usage_by_user.PrintUsageByUser)),
+            "monthlyPrintUsageByPrinter": lambda n : setattr(self, 'monthly_print_usage_by_printer', n.get_collection_of_object_values(print_usage_by_printer.PrintUsageByPrinter)),
+            "monthlyPrintUsageByUser": lambda n : setattr(self, 'monthly_print_usage_by_user', n.get_collection_of_object_values(print_usage_by_user.PrintUsageByUser)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "security": lambda n : setattr(self, 'security', n.get_object_value(security_reports_root.SecurityReportsRoot)),
         }
@@ -122,7 +119,7 @@ class ReportRoot(AdditionalDataHolder, Parsable):
         """
         Sets the monthlyPrintUsageByPrinter property value. The monthlyPrintUsageByPrinter property
         Args:
-            value: Value to set for the monthlyPrintUsageByPrinter property.
+            value: Value to set for the monthly_print_usage_by_printer property.
         """
         self._monthly_print_usage_by_printer = value
     
@@ -139,7 +136,7 @@ class ReportRoot(AdditionalDataHolder, Parsable):
         """
         Sets the monthlyPrintUsageByUser property value. The monthlyPrintUsageByUser property
         Args:
-            value: Value to set for the monthlyPrintUsageByUser property.
+            value: Value to set for the monthly_print_usage_by_user property.
         """
         self._monthly_print_usage_by_user = value
     
@@ -156,7 +153,7 @@ class ReportRoot(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

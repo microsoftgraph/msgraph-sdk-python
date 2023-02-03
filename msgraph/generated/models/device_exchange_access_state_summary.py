@@ -37,7 +37,7 @@ class DeviceExchangeAccessStateSummary(AdditionalDataHolder, Parsable):
         """
         Sets the allowedDeviceCount property value. Total count of devices with Exchange Access State: Allowed.
         Args:
-            value: Value to set for the allowedDeviceCount property.
+            value: Value to set for the allowed_device_count property.
         """
         self._allowed_device_count = value
     
@@ -54,7 +54,7 @@ class DeviceExchangeAccessStateSummary(AdditionalDataHolder, Parsable):
         """
         Sets the blockedDeviceCount property value. Total count of devices with Exchange Access State: Blocked.
         Args:
-            value: Value to set for the blockedDeviceCount property.
+            value: Value to set for the blocked_device_count property.
         """
         self._blocked_device_count = value
     
@@ -96,12 +96,12 @@ class DeviceExchangeAccessStateSummary(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allowed_device_count": lambda n : setattr(self, 'allowed_device_count', n.get_int_value()),
-            "blocked_device_count": lambda n : setattr(self, 'blocked_device_count', n.get_int_value()),
+            "allowedDeviceCount": lambda n : setattr(self, 'allowed_device_count', n.get_int_value()),
+            "blockedDeviceCount": lambda n : setattr(self, 'blocked_device_count', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "quarantined_device_count": lambda n : setattr(self, 'quarantined_device_count', n.get_int_value()),
-            "unavailable_device_count": lambda n : setattr(self, 'unavailable_device_count', n.get_int_value()),
-            "unknown_device_count": lambda n : setattr(self, 'unknown_device_count', n.get_int_value()),
+            "quarantinedDeviceCount": lambda n : setattr(self, 'quarantined_device_count', n.get_int_value()),
+            "unavailableDeviceCount": lambda n : setattr(self, 'unavailable_device_count', n.get_int_value()),
+            "unknownDeviceCount": lambda n : setattr(self, 'unknown_device_count', n.get_int_value()),
         }
         return fields
     
@@ -118,7 +118,7 @@ class DeviceExchangeAccessStateSummary(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -135,7 +135,7 @@ class DeviceExchangeAccessStateSummary(AdditionalDataHolder, Parsable):
         """
         Sets the quarantinedDeviceCount property value. Total count of devices with Exchange Access State: Quarantined.
         Args:
-            value: Value to set for the quarantinedDeviceCount property.
+            value: Value to set for the quarantined_device_count property.
         """
         self._quarantined_device_count = value
     
@@ -168,7 +168,7 @@ class DeviceExchangeAccessStateSummary(AdditionalDataHolder, Parsable):
         """
         Sets the unavailableDeviceCount property value. Total count of devices for which no Exchange Access State could be found.
         Args:
-            value: Value to set for the unavailableDeviceCount property.
+            value: Value to set for the unavailable_device_count property.
         """
         self._unavailable_device_count = value
     
@@ -185,7 +185,7 @@ class DeviceExchangeAccessStateSummary(AdditionalDataHolder, Parsable):
         """
         Sets the unknownDeviceCount property value. Total count of devices with Exchange Access State: Unknown.
         Args:
-            value: Value to set for the unknownDeviceCount property.
+            value: Value to set for the unknown_device_count property.
         """
         self._unknown_device_count = value
     

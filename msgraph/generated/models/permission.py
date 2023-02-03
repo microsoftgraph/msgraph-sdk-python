@@ -67,7 +67,7 @@ class Permission(entity.Entity):
         """
         Sets the expirationDateTime property value. A format of yyyy-MM-ddTHH:mm:ssZ of DateTimeOffset indicates the expiration time of the permission. DateTime.MinValue indicates there is no expiration set for this permission. Optional.
         Args:
-            value: Value to set for the expirationDateTime property.
+            value: Value to set for the expiration_date_time property.
         """
         self._expiration_date_time = value
     
@@ -77,17 +77,17 @@ class Permission(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "granted_to": lambda n : setattr(self, 'granted_to', n.get_object_value(identity_set.IdentitySet)),
-            "granted_to_identities": lambda n : setattr(self, 'granted_to_identities', n.get_collection_of_object_values(identity_set.IdentitySet)),
-            "granted_to_identities_v2": lambda n : setattr(self, 'granted_to_identities_v2', n.get_collection_of_object_values(share_point_identity_set.SharePointIdentitySet)),
-            "granted_to_v2": lambda n : setattr(self, 'granted_to_v2', n.get_object_value(share_point_identity_set.SharePointIdentitySet)),
-            "has_password": lambda n : setattr(self, 'has_password', n.get_bool_value()),
-            "inherited_from": lambda n : setattr(self, 'inherited_from', n.get_object_value(item_reference.ItemReference)),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "grantedTo": lambda n : setattr(self, 'granted_to', n.get_object_value(identity_set.IdentitySet)),
+            "grantedToIdentities": lambda n : setattr(self, 'granted_to_identities', n.get_collection_of_object_values(identity_set.IdentitySet)),
+            "grantedToIdentitiesV2": lambda n : setattr(self, 'granted_to_identities_v2', n.get_collection_of_object_values(share_point_identity_set.SharePointIdentitySet)),
+            "grantedToV2": lambda n : setattr(self, 'granted_to_v2', n.get_object_value(share_point_identity_set.SharePointIdentitySet)),
+            "hasPassword": lambda n : setattr(self, 'has_password', n.get_bool_value()),
+            "inheritedFrom": lambda n : setattr(self, 'inherited_from', n.get_object_value(item_reference.ItemReference)),
             "invitation": lambda n : setattr(self, 'invitation', n.get_object_value(sharing_invitation.SharingInvitation)),
             "link": lambda n : setattr(self, 'link', n.get_object_value(sharing_link.SharingLink)),
             "roles": lambda n : setattr(self, 'roles', n.get_collection_of_primitive_values(str)),
-            "share_id": lambda n : setattr(self, 'share_id', n.get_str_value()),
+            "shareId": lambda n : setattr(self, 'share_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -106,7 +106,7 @@ class Permission(entity.Entity):
         """
         Sets the grantedTo property value. The grantedTo property
         Args:
-            value: Value to set for the grantedTo property.
+            value: Value to set for the granted_to property.
         """
         self._granted_to = value
     
@@ -123,7 +123,7 @@ class Permission(entity.Entity):
         """
         Sets the grantedToIdentities property value. The grantedToIdentities property
         Args:
-            value: Value to set for the grantedToIdentities property.
+            value: Value to set for the granted_to_identities property.
         """
         self._granted_to_identities = value
     
@@ -140,7 +140,7 @@ class Permission(entity.Entity):
         """
         Sets the grantedToIdentitiesV2 property value. For link type permissions, the details of the users to whom permission was granted. Read-only.
         Args:
-            value: Value to set for the grantedToIdentitiesV2 property.
+            value: Value to set for the granted_to_identities_v2 property.
         """
         self._granted_to_identities_v2 = value
     
@@ -157,7 +157,7 @@ class Permission(entity.Entity):
         """
         Sets the grantedToV2 property value. For user type permissions, the details of the users and applications for this permission. Read-only.
         Args:
-            value: Value to set for the grantedToV2 property.
+            value: Value to set for the granted_to_v2 property.
         """
         self._granted_to_v2 = value
     
@@ -174,7 +174,7 @@ class Permission(entity.Entity):
         """
         Sets the hasPassword property value. Indicates whether the password is set for this permission. This property only appears in the response. Optional. Read-only. For OneDrive Personal only..
         Args:
-            value: Value to set for the hasPassword property.
+            value: Value to set for the has_password property.
         """
         self._has_password = value
     
@@ -191,7 +191,7 @@ class Permission(entity.Entity):
         """
         Sets the inheritedFrom property value. Provides a reference to the ancestor of the current permission, if it is inherited from an ancestor. Read-only.
         Args:
-            value: Value to set for the inheritedFrom property.
+            value: Value to set for the inherited_from property.
         """
         self._inherited_from = value
     
@@ -280,7 +280,7 @@ class Permission(entity.Entity):
         """
         Sets the shareId property value. A unique token that can be used to access this shared item via the **shares** API. Read-only.
         Args:
-            value: Value to set for the shareId property.
+            value: Value to set for the share_id property.
         """
         self._share_id = value
     

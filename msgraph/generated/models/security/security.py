@@ -60,7 +60,7 @@ class Security(entity.Entity):
         """
         Sets the attackSimulation property value. The attackSimulation property
         Args:
-            value: Value to set for the attackSimulation property.
+            value: Value to set for the attack_simulation property.
         """
         self._attack_simulation = value
     
@@ -123,11 +123,11 @@ class Security(entity.Entity):
         fields = {
             "alerts": lambda n : setattr(self, 'alerts', n.get_collection_of_object_values(alert.Alert)),
             "alerts_v2": lambda n : setattr(self, 'alerts_v2', n.get_collection_of_object_values(alert.Alert)),
-            "attack_simulation": lambda n : setattr(self, 'attack_simulation', n.get_object_value(attack_simulation_root.AttackSimulationRoot)),
+            "attackSimulation": lambda n : setattr(self, 'attack_simulation', n.get_object_value(attack_simulation_root.AttackSimulationRoot)),
             "cases": lambda n : setattr(self, 'cases', n.get_object_value(cases_root.CasesRoot)),
             "incidents": lambda n : setattr(self, 'incidents', n.get_collection_of_object_values(incident.Incident)),
-            "secure_score_control_profiles": lambda n : setattr(self, 'secure_score_control_profiles', n.get_collection_of_object_values(secure_score_control_profile.SecureScoreControlProfile)),
-            "secure_scores": lambda n : setattr(self, 'secure_scores', n.get_collection_of_object_values(secure_score.SecureScore)),
+            "secureScores": lambda n : setattr(self, 'secure_scores', n.get_collection_of_object_values(secure_score.SecureScore)),
+            "secureScoreControlProfiles": lambda n : setattr(self, 'secure_score_control_profiles', n.get_collection_of_object_values(secure_score_control_profile.SecureScoreControlProfile)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -163,7 +163,7 @@ class Security(entity.Entity):
         """
         Sets the secureScoreControlProfiles property value. The secureScoreControlProfiles property
         Args:
-            value: Value to set for the secureScoreControlProfiles property.
+            value: Value to set for the secure_score_control_profiles property.
         """
         self._secure_score_control_profiles = value
     
@@ -180,7 +180,7 @@ class Security(entity.Entity):
         """
         Sets the secureScores property value. The secureScores property
         Args:
-            value: Value to set for the secureScores property.
+            value: Value to set for the secure_scores property.
         """
         self._secure_scores = value
     
@@ -198,7 +198,7 @@ class Security(entity.Entity):
         writer.write_object_value("attackSimulation", self.attack_simulation)
         writer.write_object_value("cases", self.cases)
         writer.write_collection_of_object_values("incidents", self.incidents)
-        writer.write_collection_of_object_values("secureScoreControlProfiles", self.secure_score_control_profiles)
         writer.write_collection_of_object_values("secureScores", self.secure_scores)
+        writer.write_collection_of_object_values("secureScoreControlProfiles", self.secure_score_control_profiles)
     
 

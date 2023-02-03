@@ -84,7 +84,7 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
         """
         Sets the eventDateTime property value. Date and time of the simulation event by a user in an attack simulation and training campaign.
         Args:
-            value: Value to set for the eventDateTime property.
+            value: Value to set for the event_date_time property.
         """
         self._event_date_time = value
     
@@ -101,7 +101,7 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
         """
         Sets the eventName property value. Name of the simulation event by a user in an attack simulation and training campaign.
         Args:
-            value: Value to set for the eventName property.
+            value: Value to set for the event_name property.
         """
         self._event_name = value
     
@@ -112,11 +112,11 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
         """
         fields = {
             "browser": lambda n : setattr(self, 'browser', n.get_str_value()),
-            "event_date_time": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
-            "event_name": lambda n : setattr(self, 'event_name', n.get_str_value()),
-            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "eventDateTime": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
+            "eventName": lambda n : setattr(self, 'event_name', n.get_str_value()),
+            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "os_platform_device_details": lambda n : setattr(self, 'os_platform_device_details', n.get_str_value()),
+            "osPlatformDeviceDetails": lambda n : setattr(self, 'os_platform_device_details', n.get_str_value()),
         }
         return fields
     
@@ -133,7 +133,7 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
         """
         Sets the ipAddress property value. IP address from where the simulation event was initiated by a user in an attack simulation and training campaign.
         Args:
-            value: Value to set for the ipAddress property.
+            value: Value to set for the ip_address property.
         """
         self._ip_address = value
     
@@ -150,7 +150,7 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -167,7 +167,7 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
         """
         Sets the osPlatformDeviceDetails property value. The operating system, platform, and device details from where the simulation event was initiated by a user in an attack simulation and training campaign.
         Args:
-            value: Value to set for the osPlatformDeviceDetails property.
+            value: Value to set for the os_platform_device_details property.
         """
         self._os_platform_device_details = value
     

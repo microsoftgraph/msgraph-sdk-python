@@ -14,10 +14,10 @@ attachments_request_builder = lazy_import('msgraph.generated.groups.item.convers
 attachment_item_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.attachments.item.attachment_item_request_builder')
 extensions_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.extensions.extensions_request_builder')
 extension_item_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.extensions.item.extension_item_request_builder')
-forward_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.forward.forward_request_builder')
+forward_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.microsoft_graph_forward.forward_request_builder')
+reply_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.microsoft_graph_reply.reply_request_builder')
 multi_value_extended_properties_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.multi_value_extended_properties.multi_value_extended_properties_request_builder')
 multi_value_legacy_extended_property_item_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.multi_value_extended_properties.item.multi_value_legacy_extended_property_item_request_builder')
-reply_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.reply.reply_request_builder')
 single_value_extended_properties_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.single_value_extended_properties.single_value_extended_properties_request_builder')
 single_value_legacy_extended_property_item_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.single_value_extended_properties.item.single_value_legacy_extended_property_item_request_builder')
 post = lazy_import('msgraph.generated.models.post')
@@ -42,11 +42,18 @@ class InReplyToRequestBuilder():
         return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def forward(self) -> forward_request_builder.ForwardRequestBuilder:
+    def microsoft_graph_forward(self) -> forward_request_builder.ForwardRequestBuilder:
         """
         Provides operations to call the forward method.
         """
         return forward_request_builder.ForwardRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_reply(self) -> reply_request_builder.ReplyRequestBuilder:
+        """
+        Provides operations to call the reply method.
+        """
+        return reply_request_builder.ReplyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
@@ -54,13 +61,6 @@ class InReplyToRequestBuilder():
         Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.post entity.
         """
         return multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def reply(self) -> reply_request_builder.ReplyRequestBuilder:
-        """
-        Provides operations to call the reply method.
-        """
-        return reply_request_builder.ReplyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def single_value_extended_properties(self) -> single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder:

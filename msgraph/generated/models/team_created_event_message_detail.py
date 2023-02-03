@@ -41,9 +41,9 @@ class TeamCreatedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         fields = {
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
-            "team_description": lambda n : setattr(self, 'team_description', n.get_str_value()),
-            "team_display_name": lambda n : setattr(self, 'team_display_name', n.get_str_value()),
-            "team_id": lambda n : setattr(self, 'team_id', n.get_str_value()),
+            "teamDescription": lambda n : setattr(self, 'team_description', n.get_str_value()),
+            "teamDisplayName": lambda n : setattr(self, 'team_display_name', n.get_str_value()),
+            "teamId": lambda n : setattr(self, 'team_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -93,7 +93,7 @@ class TeamCreatedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the teamDescription property value. Description for the team.
         Args:
-            value: Value to set for the teamDescription property.
+            value: Value to set for the team_description property.
         """
         self._team_description = value
     
@@ -110,7 +110,7 @@ class TeamCreatedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the teamDisplayName property value. Display name of the team.
         Args:
-            value: Value to set for the teamDisplayName property.
+            value: Value to set for the team_display_name property.
         """
         self._team_display_name = value
     
@@ -127,7 +127,7 @@ class TeamCreatedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the teamId property value. Unique identifier of the team.
         Args:
-            value: Value to set for the teamId property.
+            value: Value to set for the team_id property.
         """
         self._team_id = value
     

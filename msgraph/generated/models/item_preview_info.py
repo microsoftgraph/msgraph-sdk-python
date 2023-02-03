@@ -49,19 +49,6 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
             raise Exception("parse_node cannot be undefined")
         return ItemPreviewInfo()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
-        """
-        The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
-        """
-        fields = {
-            "get_url": lambda n : setattr(self, 'get_url', n.get_str_value()),
-            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "post_parameters": lambda n : setattr(self, 'post_parameters', n.get_str_value()),
-            "post_url": lambda n : setattr(self, 'post_url', n.get_str_value()),
-        }
-        return fields
-    
     @property
     def get_url(self,) -> Optional[str]:
         """
@@ -75,9 +62,22 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
         """
         Sets the getUrl property value. The getUrl property
         Args:
-            value: Value to set for the getUrl property.
+            value: Value to set for the get_url property.
         """
         self._get_url = value
+    
+    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+        """
+        The deserialization information for the current model
+        Returns: Dict[str, Callable[[ParseNode], None]]
+        """
+        fields = {
+            "getUrl": lambda n : setattr(self, 'get_url', n.get_str_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "postParameters": lambda n : setattr(self, 'post_parameters', n.get_str_value()),
+            "postUrl": lambda n : setattr(self, 'post_url', n.get_str_value()),
+        }
+        return fields
     
     @property
     def odata_type(self,) -> Optional[str]:
@@ -92,7 +92,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -109,7 +109,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
         """
         Sets the postParameters property value. The postParameters property
         Args:
-            value: Value to set for the postParameters property.
+            value: Value to set for the post_parameters property.
         """
         self._post_parameters = value
     
@@ -126,7 +126,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
         """
         Sets the postUrl property value. The postUrl property
         Args:
-            value: Value to set for the postUrl property.
+            value: Value to set for the post_url property.
         """
         self._post_url = value
     

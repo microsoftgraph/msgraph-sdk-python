@@ -34,7 +34,7 @@ class DeleteUserFromSharedAppleDeviceActionResult(device_action_result.DeviceAct
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -64,7 +64,7 @@ class DeleteUserFromSharedAppleDeviceActionResult(device_action_result.DeviceAct
         """
         Sets the userPrincipalName property value. User principal name of the user to be deleted
         Args:
-            value: Value to set for the userPrincipalName property.
+            value: Value to set for the user_principal_name property.
         """
         self._user_principal_name = value
     

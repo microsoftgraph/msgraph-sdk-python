@@ -38,7 +38,7 @@ class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.Authentic
         """
         Sets the createdDateTime property value. The date and time that this app was registered. This property is null if the device is not registered for passwordless Phone Sign-In.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -84,7 +84,7 @@ class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.Authentic
         """
         Sets the deviceTag property value. Tags containing app metadata.
         Args:
-            value: Value to set for the deviceTag property.
+            value: Value to set for the device_tag property.
         """
         self._device_tag = value
     
@@ -101,7 +101,7 @@ class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.Authentic
         """
         Sets the displayName property value. The name of the device on which this app is registered.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -111,11 +111,11 @@ class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.Authentic
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "device": lambda n : setattr(self, 'device', n.get_object_value(device.Device)),
-            "device_tag": lambda n : setattr(self, 'device_tag', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "phone_app_version": lambda n : setattr(self, 'phone_app_version', n.get_str_value()),
+            "deviceTag": lambda n : setattr(self, 'device_tag', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "phoneAppVersion": lambda n : setattr(self, 'phone_app_version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -134,7 +134,7 @@ class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.Authentic
         """
         Sets the phoneAppVersion property value. Numerical version of this instance of the Authenticator app.
         Args:
-            value: Value to set for the phoneAppVersion property.
+            value: Value to set for the phone_app_version property.
         """
         self._phone_app_version = value
     

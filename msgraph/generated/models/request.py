@@ -21,7 +21,7 @@ class Request(entity.Entity):
         """
         Sets the approvalId property value. The identifier of the approval of the request.
         Args:
-            value: Value to set for the approvalId property.
+            value: Value to set for the approval_id property.
         """
         self._approval_id = value
     
@@ -38,7 +38,7 @@ class Request(entity.Entity):
         """
         Sets the completedDateTime property value. The request completion date time.
         Args:
-            value: Value to set for the completedDateTime property.
+            value: Value to set for the completed_date_time property.
         """
         self._completed_date_time = value
     
@@ -75,7 +75,7 @@ class Request(entity.Entity):
         """
         Sets the createdBy property value. The principal that created the request.
         Args:
-            value: Value to set for the createdBy property.
+            value: Value to set for the created_by property.
         """
         self._created_by = value
     
@@ -92,7 +92,7 @@ class Request(entity.Entity):
         """
         Sets the createdDateTime property value. The request creation date time.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -121,7 +121,7 @@ class Request(entity.Entity):
         """
         Sets the customData property value. Free text field to define any custom data for the request. Not used.
         Args:
-            value: Value to set for the customData property.
+            value: Value to set for the custom_data property.
         """
         self._custom_data = value
     
@@ -131,11 +131,11 @@ class Request(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "approval_id": lambda n : setattr(self, 'approval_id', n.get_str_value()),
-            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "custom_data": lambda n : setattr(self, 'custom_data', n.get_str_value()),
+            "approvalId": lambda n : setattr(self, 'approval_id', n.get_str_value()),
+            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "customData": lambda n : setattr(self, 'custom_data', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

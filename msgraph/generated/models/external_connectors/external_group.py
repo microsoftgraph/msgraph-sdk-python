@@ -63,7 +63,7 @@ class ExternalGroup(entity.Entity):
         """
         Sets the displayName property value. The friendly name of the external group. Optional.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -74,7 +74,7 @@ class ExternalGroup(entity.Entity):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(identity.Identity)),
         }
         super_fields = super().get_field_deserializers()

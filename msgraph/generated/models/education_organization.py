@@ -65,7 +65,7 @@ class EducationOrganization(entity.Entity):
         """
         Sets the displayName property value. Organization display name.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -82,7 +82,7 @@ class EducationOrganization(entity.Entity):
         """
         Sets the externalSource property value. Source where this organization was created from. Possible values are: sis, manual.
         Args:
-            value: Value to set for the externalSource property.
+            value: Value to set for the external_source property.
         """
         self._external_source = value
     
@@ -99,7 +99,7 @@ class EducationOrganization(entity.Entity):
         """
         Sets the externalSourceDetail property value. The name of the external source this resources was generated from.
         Args:
-            value: Value to set for the externalSourceDetail property.
+            value: Value to set for the external_source_detail property.
         """
         self._external_source_detail = value
     
@@ -110,9 +110,9 @@ class EducationOrganization(entity.Entity):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "external_source": lambda n : setattr(self, 'external_source', n.get_enum_value(education_external_source.EducationExternalSource)),
-            "external_source_detail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "externalSource": lambda n : setattr(self, 'external_source', n.get_enum_value(education_external_source.EducationExternalSource)),
+            "externalSourceDetail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

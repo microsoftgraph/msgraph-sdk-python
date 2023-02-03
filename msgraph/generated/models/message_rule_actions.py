@@ -37,7 +37,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         """
         Sets the assignCategories property value. A list of categories to be assigned to a message.
         Args:
-            value: Value to set for the assignCategories property.
+            value: Value to set for the assign_categories property.
         """
         self._assign_categories = value
     
@@ -86,7 +86,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         """
         Sets the copyToFolder property value. The ID of a folder that a message is to be copied to.
         Args:
-            value: Value to set for the copyToFolder property.
+            value: Value to set for the copy_to_folder property.
         """
         self._copy_to_folder = value
     
@@ -132,7 +132,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         """
         Sets the forwardAsAttachmentTo property value. The email addresses of the recipients to which a message should be forwarded as an attachment.
         Args:
-            value: Value to set for the forwardAsAttachmentTo property.
+            value: Value to set for the forward_as_attachment_to property.
         """
         self._forward_as_attachment_to = value
     
@@ -149,7 +149,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         """
         Sets the forwardTo property value. The email addresses of the recipients to which a message should be forwarded.
         Args:
-            value: Value to set for the forwardTo property.
+            value: Value to set for the forward_to property.
         """
         self._forward_to = value
     
@@ -159,18 +159,18 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assign_categories": lambda n : setattr(self, 'assign_categories', n.get_collection_of_primitive_values(str)),
-            "copy_to_folder": lambda n : setattr(self, 'copy_to_folder', n.get_str_value()),
+            "assignCategories": lambda n : setattr(self, 'assign_categories', n.get_collection_of_primitive_values(str)),
+            "copyToFolder": lambda n : setattr(self, 'copy_to_folder', n.get_str_value()),
             "delete": lambda n : setattr(self, 'delete', n.get_bool_value()),
-            "forward_as_attachment_to": lambda n : setattr(self, 'forward_as_attachment_to', n.get_collection_of_object_values(recipient.Recipient)),
-            "forward_to": lambda n : setattr(self, 'forward_to', n.get_collection_of_object_values(recipient.Recipient)),
-            "mark_as_read": lambda n : setattr(self, 'mark_as_read', n.get_bool_value()),
-            "mark_importance": lambda n : setattr(self, 'mark_importance', n.get_enum_value(importance.Importance)),
-            "move_to_folder": lambda n : setattr(self, 'move_to_folder', n.get_str_value()),
+            "forwardAsAttachmentTo": lambda n : setattr(self, 'forward_as_attachment_to', n.get_collection_of_object_values(recipient.Recipient)),
+            "forwardTo": lambda n : setattr(self, 'forward_to', n.get_collection_of_object_values(recipient.Recipient)),
+            "markAsRead": lambda n : setattr(self, 'mark_as_read', n.get_bool_value()),
+            "markImportance": lambda n : setattr(self, 'mark_importance', n.get_enum_value(importance.Importance)),
+            "moveToFolder": lambda n : setattr(self, 'move_to_folder', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "permanent_delete": lambda n : setattr(self, 'permanent_delete', n.get_bool_value()),
-            "redirect_to": lambda n : setattr(self, 'redirect_to', n.get_collection_of_object_values(recipient.Recipient)),
-            "stop_processing_rules": lambda n : setattr(self, 'stop_processing_rules', n.get_bool_value()),
+            "permanentDelete": lambda n : setattr(self, 'permanent_delete', n.get_bool_value()),
+            "redirectTo": lambda n : setattr(self, 'redirect_to', n.get_collection_of_object_values(recipient.Recipient)),
+            "stopProcessingRules": lambda n : setattr(self, 'stop_processing_rules', n.get_bool_value()),
         }
         return fields
     
@@ -187,7 +187,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         """
         Sets the markAsRead property value. Indicates whether a message should be marked as read.
         Args:
-            value: Value to set for the markAsRead property.
+            value: Value to set for the mark_as_read property.
         """
         self._mark_as_read = value
     
@@ -204,7 +204,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         """
         Sets the markImportance property value. Sets the importance of the message, which can be: low, normal, high.
         Args:
-            value: Value to set for the markImportance property.
+            value: Value to set for the mark_importance property.
         """
         self._mark_importance = value
     
@@ -221,7 +221,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         """
         Sets the moveToFolder property value. The ID of the folder that a message will be moved to.
         Args:
-            value: Value to set for the moveToFolder property.
+            value: Value to set for the move_to_folder property.
         """
         self._move_to_folder = value
     
@@ -238,7 +238,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -255,7 +255,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         """
         Sets the permanentDelete property value. Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
         Args:
-            value: Value to set for the permanentDelete property.
+            value: Value to set for the permanent_delete property.
         """
         self._permanent_delete = value
     
@@ -272,7 +272,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         """
         Sets the redirectTo property value. The email addresses to which a message should be redirected.
         Args:
-            value: Value to set for the redirectTo property.
+            value: Value to set for the redirect_to property.
         """
         self._redirect_to = value
     
@@ -311,7 +311,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         """
         Sets the stopProcessingRules property value. Indicates whether subsequent rules should be evaluated.
         Args:
-            value: Value to set for the stopProcessingRules property.
+            value: Value to set for the stop_processing_rules property.
         """
         self._stop_processing_rules = value
     

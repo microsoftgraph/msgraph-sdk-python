@@ -66,7 +66,7 @@ class TeamsAppDefinition(entity.Entity):
         """
         Sets the createdBy property value. The createdBy property
         Args:
-            value: Value to set for the createdBy property.
+            value: Value to set for the created_by property.
         """
         self._created_by = value
     
@@ -112,7 +112,7 @@ class TeamsAppDefinition(entity.Entity):
         """
         Sets the displayName property value. The name of the app provided by the app developer.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -123,13 +123,13 @@ class TeamsAppDefinition(entity.Entity):
         """
         fields = {
             "bot": lambda n : setattr(self, 'bot', n.get_object_value(teamwork_bot.TeamworkBot)),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "publishing_state": lambda n : setattr(self, 'publishing_state', n.get_enum_value(teams_app_publishing_state.TeamsAppPublishingState)),
-            "short_description": lambda n : setattr(self, 'short_description', n.get_str_value()),
-            "teams_app_id": lambda n : setattr(self, 'teams_app_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "publishingState": lambda n : setattr(self, 'publishing_state', n.get_enum_value(teams_app_publishing_state.TeamsAppPublishingState)),
+            "shortDescription": lambda n : setattr(self, 'short_description', n.get_str_value()),
+            "teamsAppId": lambda n : setattr(self, 'teams_app_id', n.get_str_value()),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -149,7 +149,7 @@ class TeamsAppDefinition(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. The lastModifiedDateTime property
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     
@@ -166,7 +166,7 @@ class TeamsAppDefinition(entity.Entity):
         """
         Sets the publishingState property value. The published status of a specific version of a Teams app. Possible values are:submitted — The specific version of the Teams app has been submitted and is under review. published  — The request to publish the specific version of the Teams app has been approved by the admin and the app is published.  rejected — The request to publish the specific version of the Teams app was rejected by the admin.
         Args:
-            value: Value to set for the publishingState property.
+            value: Value to set for the publishing_state property.
         """
         self._publishing_state = value
     
@@ -202,7 +202,7 @@ class TeamsAppDefinition(entity.Entity):
         """
         Sets the shortDescription property value. Short description of the application.
         Args:
-            value: Value to set for the shortDescription property.
+            value: Value to set for the short_description property.
         """
         self._short_description = value
     
@@ -219,7 +219,7 @@ class TeamsAppDefinition(entity.Entity):
         """
         Sets the teamsAppId property value. The ID from the Teams app manifest.
         Args:
-            value: Value to set for the teamsAppId property.
+            value: Value to set for the teams_app_id property.
         """
         self._teams_app_id = value
     

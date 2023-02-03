@@ -68,7 +68,7 @@ class ServiceAnnouncementBase(entity.Entity):
         """
         Sets the endDateTime property value. The end time of the service event.
         Args:
-            value: Value to set for the endDateTime property.
+            value: Value to set for the end_date_time property.
         """
         self._end_date_time = value
     
@@ -79,9 +79,9 @@ class ServiceAnnouncementBase(entity.Entity):
         """
         fields = {
             "details": lambda n : setattr(self, 'details', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -101,7 +101,7 @@ class ServiceAnnouncementBase(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. The last modified time of the service event.
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     
@@ -133,7 +133,7 @@ class ServiceAnnouncementBase(entity.Entity):
         """
         Sets the startDateTime property value. The start time of the service event.
         Args:
-            value: Value to set for the startDateTime property.
+            value: Value to set for the start_date_time property.
         """
         self._start_date_time = value
     

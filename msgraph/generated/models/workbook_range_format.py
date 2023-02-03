@@ -40,7 +40,7 @@ class WorkbookRangeFormat(entity.Entity):
         """
         Sets the columnWidth property value. Gets or sets the width of all colums within the range. If the column widths are not uniform, null will be returned.
         Args:
-            value: Value to set for the columnWidth property.
+            value: Value to set for the column_width property.
         """
         self._column_width = value
     
@@ -123,14 +123,14 @@ class WorkbookRangeFormat(entity.Entity):
         """
         fields = {
             "borders": lambda n : setattr(self, 'borders', n.get_collection_of_object_values(workbook_range_border.WorkbookRangeBorder)),
-            "column_width": lambda n : setattr(self, 'column_width', n.get_float_value()),
+            "columnWidth": lambda n : setattr(self, 'column_width', n.get_float_value()),
             "fill": lambda n : setattr(self, 'fill', n.get_object_value(workbook_range_fill.WorkbookRangeFill)),
             "font": lambda n : setattr(self, 'font', n.get_object_value(workbook_range_font.WorkbookRangeFont)),
-            "horizontal_alignment": lambda n : setattr(self, 'horizontal_alignment', n.get_str_value()),
+            "horizontalAlignment": lambda n : setattr(self, 'horizontal_alignment', n.get_str_value()),
             "protection": lambda n : setattr(self, 'protection', n.get_object_value(workbook_format_protection.WorkbookFormatProtection)),
-            "row_height": lambda n : setattr(self, 'row_height', n.get_float_value()),
-            "vertical_alignment": lambda n : setattr(self, 'vertical_alignment', n.get_str_value()),
-            "wrap_text": lambda n : setattr(self, 'wrap_text', n.get_bool_value()),
+            "rowHeight": lambda n : setattr(self, 'row_height', n.get_float_value()),
+            "verticalAlignment": lambda n : setattr(self, 'vertical_alignment', n.get_str_value()),
+            "wrapText": lambda n : setattr(self, 'wrap_text', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -149,7 +149,7 @@ class WorkbookRangeFormat(entity.Entity):
         """
         Sets the horizontalAlignment property value. Represents the horizontal alignment for the specified object. The possible values are: General, Left, Center, Right, Fill, Justify, CenterAcrossSelection, Distributed.
         Args:
-            value: Value to set for the horizontalAlignment property.
+            value: Value to set for the horizontal_alignment property.
         """
         self._horizontal_alignment = value
     
@@ -183,7 +183,7 @@ class WorkbookRangeFormat(entity.Entity):
         """
         Sets the rowHeight property value. Gets or sets the height of all rows in the range. If the row heights are not uniform null will be returned.
         Args:
-            value: Value to set for the rowHeight property.
+            value: Value to set for the row_height property.
         """
         self._row_height = value
     
@@ -219,7 +219,7 @@ class WorkbookRangeFormat(entity.Entity):
         """
         Sets the verticalAlignment property value. Represents the vertical alignment for the specified object. The possible values are: Top, Center, Bottom, Justify, Distributed.
         Args:
-            value: Value to set for the verticalAlignment property.
+            value: Value to set for the vertical_alignment property.
         """
         self._vertical_alignment = value
     
@@ -236,7 +236,7 @@ class WorkbookRangeFormat(entity.Entity):
         """
         Sets the wrapText property value. Indicates if Excel wraps the text in the object. A null value indicates that the entire range doesn't have uniform wrap setting
         Args:
-            value: Value to set for the wrapText property.
+            value: Value to set for the wrap_text property.
         """
         self._wrap_text = value
     

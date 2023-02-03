@@ -39,9 +39,9 @@ class PhoneAuthenticationMethod(authentication_method.AuthenticationMethod):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "phone_number": lambda n : setattr(self, 'phone_number', n.get_str_value()),
-            "phone_type": lambda n : setattr(self, 'phone_type', n.get_enum_value(authentication_phone_type.AuthenticationPhoneType)),
-            "sms_sign_in_state": lambda n : setattr(self, 'sms_sign_in_state', n.get_enum_value(authentication_method_sign_in_state.AuthenticationMethodSignInState)),
+            "phoneNumber": lambda n : setattr(self, 'phone_number', n.get_str_value()),
+            "phoneType": lambda n : setattr(self, 'phone_type', n.get_enum_value(authentication_phone_type.AuthenticationPhoneType)),
+            "smsSignInState": lambda n : setattr(self, 'sms_sign_in_state', n.get_enum_value(authentication_method_sign_in_state.AuthenticationMethodSignInState)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -60,7 +60,7 @@ class PhoneAuthenticationMethod(authentication_method.AuthenticationMethod):
         """
         Sets the phoneNumber property value. The phone number to text or call for authentication. Phone numbers use the format +{country code} {number}x{extension}, with extension optional. For example, +1 5555551234 or +1 5555551234x123 are valid. Numbers are rejected when creating or updating if they do not match the required format.
         Args:
-            value: Value to set for the phoneNumber property.
+            value: Value to set for the phone_number property.
         """
         self._phone_number = value
     
@@ -77,7 +77,7 @@ class PhoneAuthenticationMethod(authentication_method.AuthenticationMethod):
         """
         Sets the phoneType property value. The type of this phone. Possible values are: mobile, alternateMobile, or office.
         Args:
-            value: Value to set for the phoneType property.
+            value: Value to set for the phone_type property.
         """
         self._phone_type = value
     
@@ -107,7 +107,7 @@ class PhoneAuthenticationMethod(authentication_method.AuthenticationMethod):
         """
         Sets the smsSignInState property value. Whether a phone is ready to be used for SMS sign-in or not. Possible values are: notSupported, notAllowedByPolicy, notEnabled, phoneNumberNotUnique, ready, or notConfigured, unknownFutureValue.
         Args:
-            value: Value to set for the smsSignInState property.
+            value: Value to set for the sms_sign_in_state property.
         """
         self._sms_sign_in_state = value
     

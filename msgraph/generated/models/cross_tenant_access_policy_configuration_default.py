@@ -21,7 +21,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         """
         Sets the b2bCollaborationInbound property value. Defines your default configuration for users from other organizations accessing your resources via Azure AD B2B collaboration.
         Args:
-            value: Value to set for the b2bCollaborationInbound property.
+            value: Value to set for the b2b_collaboration_inbound property.
         """
         self._b2b_collaboration_inbound = value
     
@@ -38,7 +38,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         """
         Sets the b2bCollaborationOutbound property value. Defines your default configuration for users in your organization going outbound to access resources in another organization via Azure AD B2B collaboration.
         Args:
-            value: Value to set for the b2bCollaborationOutbound property.
+            value: Value to set for the b2b_collaboration_outbound property.
         """
         self._b2b_collaboration_outbound = value
     
@@ -55,7 +55,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         """
         Sets the b2bDirectConnectInbound property value. Defines your default configuration for users from other organizations accessing your resources via Azure AD B2B direct connect.
         Args:
-            value: Value to set for the b2bDirectConnectInbound property.
+            value: Value to set for the b2b_direct_connect_inbound property.
         """
         self._b2b_direct_connect_inbound = value
     
@@ -72,7 +72,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         """
         Sets the b2bDirectConnectOutbound property value. Defines your default configuration for users in your organization going outbound to access resources in another organization via Azure AD B2B direct connect.
         Args:
-            value: Value to set for the b2bDirectConnectOutbound property.
+            value: Value to set for the b2b_direct_connect_outbound property.
         """
         self._b2b_direct_connect_outbound = value
     
@@ -114,12 +114,12 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "b2b_collaboration_inbound": lambda n : setattr(self, 'b2b_collaboration_inbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
-            "b2b_collaboration_outbound": lambda n : setattr(self, 'b2b_collaboration_outbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
-            "b2b_direct_connect_inbound": lambda n : setattr(self, 'b2b_direct_connect_inbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
-            "b2b_direct_connect_outbound": lambda n : setattr(self, 'b2b_direct_connect_outbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
-            "inbound_trust": lambda n : setattr(self, 'inbound_trust', n.get_object_value(cross_tenant_access_policy_inbound_trust.CrossTenantAccessPolicyInboundTrust)),
-            "is_service_default": lambda n : setattr(self, 'is_service_default', n.get_bool_value()),
+            "b2bCollaborationInbound": lambda n : setattr(self, 'b2b_collaboration_inbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
+            "b2bCollaborationOutbound": lambda n : setattr(self, 'b2b_collaboration_outbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
+            "b2bDirectConnectInbound": lambda n : setattr(self, 'b2b_direct_connect_inbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
+            "b2bDirectConnectOutbound": lambda n : setattr(self, 'b2b_direct_connect_outbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
+            "inboundTrust": lambda n : setattr(self, 'inbound_trust', n.get_object_value(cross_tenant_access_policy_inbound_trust.CrossTenantAccessPolicyInboundTrust)),
+            "isServiceDefault": lambda n : setattr(self, 'is_service_default', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -138,7 +138,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         """
         Sets the inboundTrust property value. Determines the default configuration for trusting other Conditional Access claims from external Azure AD organizations.
         Args:
-            value: Value to set for the inboundTrust property.
+            value: Value to set for the inbound_trust property.
         """
         self._inbound_trust = value
     
@@ -155,7 +155,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         """
         Sets the isServiceDefault property value. If true, the default configuration is set to the system default configuration. If false, the default settings have been customized.
         Args:
-            value: Value to set for the isServiceDefault property.
+            value: Value to set for the is_service_default property.
         """
         self._is_service_default = value
     

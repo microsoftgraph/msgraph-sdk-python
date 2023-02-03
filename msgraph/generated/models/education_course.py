@@ -54,7 +54,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
         """
         Sets the courseNumber property value. Unique identifier for the course.
         Args:
-            value: Value to set for the courseNumber property.
+            value: Value to set for the course_number property.
         """
         self._course_number = value
     
@@ -100,7 +100,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. Name of the course.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -117,7 +117,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
         """
         Sets the externalId property value. ID of the course from the syncing system.
         Args:
-            value: Value to set for the externalId property.
+            value: Value to set for the external_id property.
         """
         self._external_id = value
     
@@ -127,10 +127,10 @@ class EducationCourse(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "course_number": lambda n : setattr(self, 'course_number', n.get_str_value()),
+            "courseNumber": lambda n : setattr(self, 'course_number', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
         }
@@ -149,7 +149,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

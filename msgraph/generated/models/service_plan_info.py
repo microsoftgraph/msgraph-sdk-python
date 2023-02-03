@@ -34,7 +34,7 @@ class ServicePlanInfo(AdditionalDataHolder, Parsable):
         """
         Sets the appliesTo property value. The object the service plan can be assigned to. The possible values are:User - service plan can be assigned to individual users.Company - service plan can be assigned to the entire tenant.
         Args:
-            value: Value to set for the appliesTo property.
+            value: Value to set for the applies_to property.
         """
         self._applies_to = value
     
@@ -74,11 +74,11 @@ class ServicePlanInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "applies_to": lambda n : setattr(self, 'applies_to', n.get_str_value()),
+            "appliesTo": lambda n : setattr(self, 'applies_to', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "provisioning_status": lambda n : setattr(self, 'provisioning_status', n.get_str_value()),
-            "service_plan_id": lambda n : setattr(self, 'service_plan_id', n.get_object_value(Guid)),
-            "service_plan_name": lambda n : setattr(self, 'service_plan_name', n.get_str_value()),
+            "provisioningStatus": lambda n : setattr(self, 'provisioning_status', n.get_str_value()),
+            "servicePlanId": lambda n : setattr(self, 'service_plan_id', n.get_object_value(Guid)),
+            "servicePlanName": lambda n : setattr(self, 'service_plan_name', n.get_str_value()),
         }
         return fields
     
@@ -95,7 +95,7 @@ class ServicePlanInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -112,7 +112,7 @@ class ServicePlanInfo(AdditionalDataHolder, Parsable):
         """
         Sets the provisioningStatus property value. The provisioning status of the service plan. The possible values are:Success - Service is fully provisioned.Disabled - Service has been disabled.ErrorStatus - The service plan has not been provisioned and is in an error state.PendingInput - Service is not yet provisioned; awaiting service confirmation.PendingActivation - Service is provisioned but requires explicit activation by administrator (for example, Intune_O365 service plan)PendingProvisioning - Microsoft has added a new service to the product SKU and it has not been activated in the tenant, yet.
         Args:
-            value: Value to set for the provisioningStatus property.
+            value: Value to set for the provisioning_status property.
         """
         self._provisioning_status = value
     
@@ -144,7 +144,7 @@ class ServicePlanInfo(AdditionalDataHolder, Parsable):
         """
         Sets the servicePlanId property value. The unique identifier of the service plan.
         Args:
-            value: Value to set for the servicePlanId property.
+            value: Value to set for the service_plan_id property.
         """
         self._service_plan_id = value
     
@@ -161,7 +161,7 @@ class ServicePlanInfo(AdditionalDataHolder, Parsable):
         """
         Sets the servicePlanName property value. The name of the service plan.
         Args:
-            value: Value to set for the servicePlanName property.
+            value: Value to set for the service_plan_name property.
         """
         self._service_plan_name = value
     

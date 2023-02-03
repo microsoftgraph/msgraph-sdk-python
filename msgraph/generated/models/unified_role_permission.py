@@ -34,7 +34,7 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
         """
         Sets the allowedResourceActions property value. Set of tasks that can be performed on a resource. Required.
         Args:
-            value: Value to set for the allowedResourceActions property.
+            value: Value to set for the allowed_resource_actions property.
         """
         self._allowed_resource_actions = value
     
@@ -96,7 +96,7 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
         """
         Sets the excludedResourceActions property value. Set of tasks that may not be performed on a resource. Not yet supported.
         Args:
-            value: Value to set for the excludedResourceActions property.
+            value: Value to set for the excluded_resource_actions property.
         """
         self._excluded_resource_actions = value
     
@@ -106,9 +106,9 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allowed_resource_actions": lambda n : setattr(self, 'allowed_resource_actions', n.get_collection_of_primitive_values(str)),
+            "allowedResourceActions": lambda n : setattr(self, 'allowed_resource_actions', n.get_collection_of_primitive_values(str)),
             "condition": lambda n : setattr(self, 'condition', n.get_str_value()),
-            "excluded_resource_actions": lambda n : setattr(self, 'excluded_resource_actions', n.get_collection_of_primitive_values(str)),
+            "excludedResourceActions": lambda n : setattr(self, 'excluded_resource_actions', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -126,7 +126,7 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

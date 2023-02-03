@@ -39,8 +39,8 @@ class TeamsAppUpgradedEventMessageDetail(event_message_detail.EventMessageDetail
         """
         fields = {
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
-            "teams_app_display_name": lambda n : setattr(self, 'teams_app_display_name', n.get_str_value()),
-            "teams_app_id": lambda n : setattr(self, 'teams_app_id', n.get_str_value()),
+            "teamsAppDisplayName": lambda n : setattr(self, 'teams_app_display_name', n.get_str_value()),
+            "teamsAppId": lambda n : setattr(self, 'teams_app_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -89,7 +89,7 @@ class TeamsAppUpgradedEventMessageDetail(event_message_detail.EventMessageDetail
         """
         Sets the teamsAppDisplayName property value. Display name of the teamsApp.
         Args:
-            value: Value to set for the teamsAppDisplayName property.
+            value: Value to set for the teams_app_display_name property.
         """
         self._teams_app_display_name = value
     
@@ -106,7 +106,7 @@ class TeamsAppUpgradedEventMessageDetail(event_message_detail.EventMessageDetail
         """
         Sets the teamsAppId property value. Unique identifier of the teamsApp.
         Args:
-            value: Value to set for the teamsAppId property.
+            value: Value to set for the teams_app_id property.
         """
         self._teams_app_id = value
     

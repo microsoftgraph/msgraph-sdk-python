@@ -53,7 +53,7 @@ class GroupMembers(subject_set.SubjectSet):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "group_id": lambda n : setattr(self, 'group_id', n.get_str_value()),
+            "groupId": lambda n : setattr(self, 'group_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -72,7 +72,7 @@ class GroupMembers(subject_set.SubjectSet):
         """
         Sets the groupId property value. The ID of the group in Azure AD.
         Args:
-            value: Value to set for the groupId property.
+            value: Value to set for the group_id property.
         """
         self._group_id = value
     

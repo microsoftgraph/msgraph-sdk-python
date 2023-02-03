@@ -19,7 +19,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
         """
         Sets the appIconWebUrl property value. URL that points to the icon of the app.
         Args:
-            value: Value to set for the appIconWebUrl property.
+            value: Value to set for the app_icon_web_url property.
         """
         self._app_icon_web_url = value
     
@@ -36,7 +36,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
         """
         Sets the appId property value. Teams app ID of the application.
         Args:
-            value: Value to set for the appId property.
+            value: Value to set for the app_id property.
         """
         self._app_id = value
     
@@ -73,10 +73,10 @@ class EducationTeamsAppResource(education_resource.EducationResource):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_icon_web_url": lambda n : setattr(self, 'app_icon_web_url', n.get_str_value()),
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "teams_embedded_content_url": lambda n : setattr(self, 'teams_embedded_content_url', n.get_str_value()),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "appIconWebUrl": lambda n : setattr(self, 'app_icon_web_url', n.get_str_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "teamsEmbeddedContentUrl": lambda n : setattr(self, 'teams_embedded_content_url', n.get_str_value()),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -109,7 +109,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
         """
         Sets the teamsEmbeddedContentUrl property value. URL for the app resource that will be opened by Teams.
         Args:
-            value: Value to set for the teamsEmbeddedContentUrl property.
+            value: Value to set for the teams_embedded_content_url property.
         """
         self._teams_embedded_content_url = value
     
@@ -126,7 +126,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
         """
         Sets the webUrl property value. URL for the app resource that can be opened in the browser.
         Args:
-            value: Value to set for the webUrl property.
+            value: Value to set for the web_url property.
         """
         self._web_url = value
     

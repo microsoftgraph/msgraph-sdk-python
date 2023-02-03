@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.groups.item.team.channels.count.count_request_builder')
-get_all_messages_request_builder = lazy_import('msgraph.generated.groups.item.team.channels.get_all_messages.get_all_messages_request_builder')
+get_all_messages_request_builder = lazy_import('msgraph.generated.groups.item.team.channels.microsoft_graph_get_all_messages.get_all_messages_request_builder')
 channel = lazy_import('msgraph.generated.models.channel')
 channel_collection_response = lazy_import('msgraph.generated.models.channel_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -26,6 +26,13 @@ class ChannelsRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_get_all_messages(self) -> get_all_messages_request_builder.GetAllMessagesRequestBuilder:
+        """
+        Provides operations to call the getAllMessages method.
+        """
+        return get_all_messages_request_builder.GetAllMessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -62,13 +69,6 @@ class ChannelsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, channel_collection_response.ChannelCollectionResponse, error_mapping)
-    
-    def get_all_messages(self,) -> get_all_messages_request_builder.GetAllMessagesRequestBuilder:
-        """
-        Provides operations to call the getAllMessages method.
-        Returns: get_all_messages_request_builder.GetAllMessagesRequestBuilder
-        """
-        return get_all_messages_request_builder.GetAllMessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     async def post(self,body: Optional[channel.Channel] = None, request_configuration: Optional[ChannelsRequestBuilderPostRequestConfiguration] = None) -> Optional[channel.Channel]:
         """

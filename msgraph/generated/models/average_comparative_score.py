@@ -34,7 +34,7 @@ class AverageComparativeScore(AdditionalDataHolder, Parsable):
         """
         Sets the averageScore property value. Average score within specified basis.
         Args:
-            value: Value to set for the averageScore property.
+            value: Value to set for the average_score property.
         """
         self._average_score = value
     
@@ -87,7 +87,7 @@ class AverageComparativeScore(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "average_score": lambda n : setattr(self, 'average_score', n.get_float_value()),
+            "averageScore": lambda n : setattr(self, 'average_score', n.get_float_value()),
             "basis": lambda n : setattr(self, 'basis', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
@@ -106,7 +106,7 @@ class AverageComparativeScore(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

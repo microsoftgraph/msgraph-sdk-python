@@ -9,4 +9,6 @@ class DeviceManagementExchangeConnectorStatus(Enum):
     Connected = "connected",
     # Disconnected from the Exchange Environment
     Disconnected = "disconnected",
+    # Evolvable enumeration sentinel value. Do not use.
+    UnknownFutureValue = "unknownFutureValue",
 

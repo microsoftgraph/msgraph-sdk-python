@@ -53,7 +53,7 @@ class Win32LobAppRestartSettings(AdditionalDataHolder, Parsable):
         """
         Sets the countdownDisplayBeforeRestartInMinutes property value. The number of minutes before the restart time to display the countdown dialog for pending restarts.
         Args:
-            value: Value to set for the countdownDisplayBeforeRestartInMinutes property.
+            value: Value to set for the countdown_display_before_restart_in_minutes property.
         """
         self._countdown_display_before_restart_in_minutes = value
     
@@ -75,10 +75,10 @@ class Win32LobAppRestartSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "countdown_display_before_restart_in_minutes": lambda n : setattr(self, 'countdown_display_before_restart_in_minutes', n.get_int_value()),
-            "grace_period_in_minutes": lambda n : setattr(self, 'grace_period_in_minutes', n.get_int_value()),
+            "countdownDisplayBeforeRestartInMinutes": lambda n : setattr(self, 'countdown_display_before_restart_in_minutes', n.get_int_value()),
+            "gracePeriodInMinutes": lambda n : setattr(self, 'grace_period_in_minutes', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "restart_notification_snooze_duration_in_minutes": lambda n : setattr(self, 'restart_notification_snooze_duration_in_minutes', n.get_int_value()),
+            "restartNotificationSnoozeDurationInMinutes": lambda n : setattr(self, 'restart_notification_snooze_duration_in_minutes', n.get_int_value()),
         }
         return fields
     
@@ -95,7 +95,7 @@ class Win32LobAppRestartSettings(AdditionalDataHolder, Parsable):
         """
         Sets the gracePeriodInMinutes property value. The number of minutes to wait before restarting the device after an app installation.
         Args:
-            value: Value to set for the gracePeriodInMinutes property.
+            value: Value to set for the grace_period_in_minutes property.
         """
         self._grace_period_in_minutes = value
     
@@ -112,7 +112,7 @@ class Win32LobAppRestartSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -129,7 +129,7 @@ class Win32LobAppRestartSettings(AdditionalDataHolder, Parsable):
         """
         Sets the restartNotificationSnoozeDurationInMinutes property value. The number of minutes to snooze the restart notification dialog when the snooze button is selected.
         Args:
-            value: Value to set for the restartNotificationSnoozeDurationInMinutes property.
+            value: Value to set for the restart_notification_snooze_duration_in_minutes property.
         """
         self._restart_notification_snooze_duration_in_minutes = value
     

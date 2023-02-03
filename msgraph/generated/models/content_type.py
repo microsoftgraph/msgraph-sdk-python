@@ -25,7 +25,7 @@ class ContentType(entity.Entity):
         """
         Sets the associatedHubsUrls property value. List of canonical URLs for hub sites with which this content type is associated to. This will contain all hub sites where this content type is queued to be enforced or is already enforced. Enforcing a content type means that the content type will be applied to the lists in the enforced sites.
         Args:
-            value: Value to set for the associatedHubsUrls property.
+            value: Value to set for the associated_hubs_urls property.
         """
         self._associated_hubs_urls = value
     
@@ -59,7 +59,7 @@ class ContentType(entity.Entity):
         """
         Sets the baseTypes property value. The collection of content types that are ancestors of this content type.
         Args:
-            value: Value to set for the baseTypes property.
+            value: Value to set for the base_types property.
         """
         self._base_types = value
     
@@ -76,7 +76,7 @@ class ContentType(entity.Entity):
         """
         Sets the columnLinks property value. The collection of columns that are required by this content type.
         Args:
-            value: Value to set for the columnLinks property.
+            value: Value to set for the column_links property.
         """
         self._column_links = value
     
@@ -93,7 +93,7 @@ class ContentType(entity.Entity):
         """
         Sets the columnPositions property value. Column order information in a content type.
         Args:
-            value: Value to set for the columnPositions property.
+            value: Value to set for the column_positions property.
         """
         self._column_positions = value
     
@@ -202,7 +202,7 @@ class ContentType(entity.Entity):
         """
         Sets the documentSet property value. Document Set metadata.
         Args:
-            value: Value to set for the documentSet property.
+            value: Value to set for the document_set property.
         """
         self._document_set = value
     
@@ -219,7 +219,7 @@ class ContentType(entity.Entity):
         """
         Sets the documentTemplate property value. Document template metadata. To make sure that documents have consistent content across a site and its subsites, you can associate a Word, Excel, or PowerPoint template with a site content type.
         Args:
-            value: Value to set for the documentTemplate property.
+            value: Value to set for the document_template property.
         """
         self._document_template = value
     
@@ -229,24 +229,24 @@ class ContentType(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "associated_hubs_urls": lambda n : setattr(self, 'associated_hubs_urls', n.get_collection_of_primitive_values(str)),
+            "associatedHubsUrls": lambda n : setattr(self, 'associated_hubs_urls', n.get_collection_of_primitive_values(str)),
             "base": lambda n : setattr(self, 'base', n.get_object_value(ContentType)),
-            "base_types": lambda n : setattr(self, 'base_types', n.get_collection_of_object_values(ContentType)),
-            "column_links": lambda n : setattr(self, 'column_links', n.get_collection_of_object_values(column_link.ColumnLink)),
-            "column_positions": lambda n : setattr(self, 'column_positions', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
+            "baseTypes": lambda n : setattr(self, 'base_types', n.get_collection_of_object_values(ContentType)),
             "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
+            "columnLinks": lambda n : setattr(self, 'column_links', n.get_collection_of_object_values(column_link.ColumnLink)),
+            "columnPositions": lambda n : setattr(self, 'column_positions', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "document_set": lambda n : setattr(self, 'document_set', n.get_object_value(document_set.DocumentSet)),
-            "document_template": lambda n : setattr(self, 'document_template', n.get_object_value(document_set_content.DocumentSetContent)),
+            "documentSet": lambda n : setattr(self, 'document_set', n.get_object_value(document_set.DocumentSet)),
+            "documentTemplate": lambda n : setattr(self, 'document_template', n.get_object_value(document_set_content.DocumentSetContent)),
             "group": lambda n : setattr(self, 'group', n.get_str_value()),
             "hidden": lambda n : setattr(self, 'hidden', n.get_bool_value()),
-            "inherited_from": lambda n : setattr(self, 'inherited_from', n.get_object_value(item_reference.ItemReference)),
-            "is_built_in": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
+            "inheritedFrom": lambda n : setattr(self, 'inherited_from', n.get_object_value(item_reference.ItemReference)),
+            "isBuiltIn": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "order": lambda n : setattr(self, 'order', n.get_object_value(content_type_order.ContentTypeOrder)),
-            "parent_id": lambda n : setattr(self, 'parent_id', n.get_str_value()),
-            "propagate_changes": lambda n : setattr(self, 'propagate_changes', n.get_bool_value()),
-            "read_only": lambda n : setattr(self, 'read_only', n.get_bool_value()),
+            "parentId": lambda n : setattr(self, 'parent_id', n.get_str_value()),
+            "propagateChanges": lambda n : setattr(self, 'propagate_changes', n.get_bool_value()),
+            "readOnly": lambda n : setattr(self, 'read_only', n.get_bool_value()),
             "sealed": lambda n : setattr(self, 'sealed', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -300,7 +300,7 @@ class ContentType(entity.Entity):
         """
         Sets the inheritedFrom property value. If this content type is inherited from another scope (like a site), provides a reference to the item where the content type is defined.
         Args:
-            value: Value to set for the inheritedFrom property.
+            value: Value to set for the inherited_from property.
         """
         self._inherited_from = value
     
@@ -317,7 +317,7 @@ class ContentType(entity.Entity):
         """
         Sets the isBuiltIn property value. Specifies if a content type is a built-in content type.
         Args:
-            value: Value to set for the isBuiltIn property.
+            value: Value to set for the is_built_in property.
         """
         self._is_built_in = value
     
@@ -368,7 +368,7 @@ class ContentType(entity.Entity):
         """
         Sets the parentId property value. The unique identifier of the content type.
         Args:
-            value: Value to set for the parentId property.
+            value: Value to set for the parent_id property.
         """
         self._parent_id = value
     
@@ -385,7 +385,7 @@ class ContentType(entity.Entity):
         """
         Sets the propagateChanges property value. If true, any changes made to the content type will be pushed to inherited content types and lists that implement the content type.
         Args:
-            value: Value to set for the propagateChanges property.
+            value: Value to set for the propagate_changes property.
         """
         self._propagate_changes = value
     
@@ -402,7 +402,7 @@ class ContentType(entity.Entity):
         """
         Sets the readOnly property value. If true, the content type can't be modified unless this value is first set to false.
         Args:
-            value: Value to set for the readOnly property.
+            value: Value to set for the read_only property.
         """
         self._read_only = value
     
@@ -435,9 +435,9 @@ class ContentType(entity.Entity):
         writer.write_collection_of_primitive_values("associatedHubsUrls", self.associated_hubs_urls)
         writer.write_object_value("base", self.base)
         writer.write_collection_of_object_values("baseTypes", self.base_types)
+        writer.write_collection_of_object_values("columns", self.columns)
         writer.write_collection_of_object_values("columnLinks", self.column_links)
         writer.write_collection_of_object_values("columnPositions", self.column_positions)
-        writer.write_collection_of_object_values("columns", self.columns)
         writer.write_str_value("description", self.description)
         writer.write_object_value("documentSet", self.document_set)
         writer.write_object_value("documentTemplate", self.document_template)

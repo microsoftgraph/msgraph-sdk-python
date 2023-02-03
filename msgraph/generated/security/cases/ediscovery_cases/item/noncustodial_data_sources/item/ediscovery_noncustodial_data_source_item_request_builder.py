@@ -12,24 +12,17 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 ediscovery_noncustodial_data_source = lazy_import('msgraph.generated.models.security.ediscovery_noncustodial_data_source')
-apply_hold_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.apply_hold.apply_hold_request_builder')
 data_source_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.data_source.data_source_request_builder')
 last_index_operation_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.last_index_operation.last_index_operation_request_builder')
-release_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.release.release_request_builder')
-remove_hold_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.remove_hold.remove_hold_request_builder')
-update_index_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.update_index.update_index_request_builder')
+apply_hold_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.microsoft_graph_security_apply_hold.apply_hold_request_builder')
+release_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.microsoft_graph_security_release.release_request_builder')
+remove_hold_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.microsoft_graph_security_remove_hold.remove_hold_request_builder')
+update_index_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.microsoft_graph_security_update_index.update_index_request_builder')
 
 class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
     """
     Provides operations to manage the noncustodialDataSources property of the microsoft.graph.security.ediscoveryCase entity.
     """
-    @property
-    def apply_hold(self) -> apply_hold_request_builder.ApplyHoldRequestBuilder:
-        """
-        Provides operations to call the applyHold method.
-        """
-        return apply_hold_request_builder.ApplyHoldRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @property
     def data_source(self) -> data_source_request_builder.DataSourceRequestBuilder:
         """
@@ -45,30 +38,38 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
         return last_index_operation_request_builder.LastIndexOperationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def release(self) -> release_request_builder.ReleaseRequestBuilder:
+    def microsoft_graph_security_apply_hold(self) -> apply_hold_request_builder.ApplyHoldRequestBuilder:
+        """
+        Provides operations to call the applyHold method.
+        """
+        return apply_hold_request_builder.ApplyHoldRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_security_release(self) -> release_request_builder.ReleaseRequestBuilder:
         """
         Provides operations to call the release method.
         """
         return release_request_builder.ReleaseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def remove_hold(self) -> remove_hold_request_builder.RemoveHoldRequestBuilder:
+    def microsoft_graph_security_remove_hold(self) -> remove_hold_request_builder.RemoveHoldRequestBuilder:
         """
         Provides operations to call the removeHold method.
         """
         return remove_hold_request_builder.RemoveHoldRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def update_index(self) -> update_index_request_builder.UpdateIndexRequestBuilder:
+    def microsoft_graph_security_update_index(self) -> update_index_request_builder.UpdateIndexRequestBuilder:
         """
         Provides operations to call the updateIndex method.
         """
         return update_index_request_builder.UpdateIndexRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, ediscovery_noncustodial_data_source_id: Optional[str] = None) -> None:
         """
         Instantiates a new EdiscoveryNoncustodialDataSourceItemRequestBuilder and sets the default values.
         Args:
+            ediscoveryNoncustodialDataSourceId: key: id of ediscoveryNoncustodialDataSource
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -80,6 +81,7 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
         self.url_template: str = "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}/noncustodialDataSources/{ediscoveryNoncustodialDataSource%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["ediscoveryNoncustodialDataSource%2Did"] = ediscoveryNoncustodialDataSourceId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

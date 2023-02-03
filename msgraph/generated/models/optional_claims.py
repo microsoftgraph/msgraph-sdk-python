@@ -19,7 +19,7 @@ class OptionalClaims(AdditionalDataHolder, Parsable):
         """
         Sets the accessToken property value. The optional claims returned in the JWT access token.
         Args:
-            value: Value to set for the accessToken property.
+            value: Value to set for the access_token property.
         """
         self._access_token = value
     
@@ -74,10 +74,10 @@ class OptionalClaims(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_token": lambda n : setattr(self, 'access_token', n.get_collection_of_object_values(optional_claim.OptionalClaim)),
-            "id_token": lambda n : setattr(self, 'id_token', n.get_collection_of_object_values(optional_claim.OptionalClaim)),
+            "accessToken": lambda n : setattr(self, 'access_token', n.get_collection_of_object_values(optional_claim.OptionalClaim)),
+            "idToken": lambda n : setattr(self, 'id_token', n.get_collection_of_object_values(optional_claim.OptionalClaim)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "saml2_token": lambda n : setattr(self, 'saml2_token', n.get_collection_of_object_values(optional_claim.OptionalClaim)),
+            "saml2Token": lambda n : setattr(self, 'saml2_token', n.get_collection_of_object_values(optional_claim.OptionalClaim)),
         }
         return fields
     
@@ -94,7 +94,7 @@ class OptionalClaims(AdditionalDataHolder, Parsable):
         """
         Sets the idToken property value. The optional claims returned in the JWT ID token.
         Args:
-            value: Value to set for the idToken property.
+            value: Value to set for the id_token property.
         """
         self._id_token = value
     
@@ -111,7 +111,7 @@ class OptionalClaims(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -128,7 +128,7 @@ class OptionalClaims(AdditionalDataHolder, Parsable):
         """
         Sets the saml2Token property value. The optional claims returned in the SAML token.
         Args:
-            value: Value to set for the saml2Token property.
+            value: Value to set for the saml2_token property.
         """
         self._saml2_token = value
     

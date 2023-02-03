@@ -23,7 +23,7 @@ class MailFolder(entity.Entity):
         """
         Sets the childFolderCount property value. The number of immediate child mailFolders in the current mailFolder.
         Args:
-            value: Value to set for the childFolderCount property.
+            value: Value to set for the child_folder_count property.
         """
         self._child_folder_count = value
     
@@ -40,7 +40,7 @@ class MailFolder(entity.Entity):
         """
         Sets the childFolders property value. The collection of child folders in the mailFolder.
         Args:
-            value: Value to set for the childFolders property.
+            value: Value to set for the child_folders property.
         """
         self._child_folders = value
     
@@ -99,7 +99,7 @@ class MailFolder(entity.Entity):
         """
         Sets the displayName property value. The mailFolder's display name.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -109,17 +109,17 @@ class MailFolder(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "child_folder_count": lambda n : setattr(self, 'child_folder_count', n.get_int_value()),
-            "child_folders": lambda n : setattr(self, 'child_folders', n.get_collection_of_object_values(MailFolder)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_hidden": lambda n : setattr(self, 'is_hidden', n.get_bool_value()),
-            "message_rules": lambda n : setattr(self, 'message_rules', n.get_collection_of_object_values(message_rule.MessageRule)),
+            "childFolders": lambda n : setattr(self, 'child_folders', n.get_collection_of_object_values(MailFolder)),
+            "childFolderCount": lambda n : setattr(self, 'child_folder_count', n.get_int_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isHidden": lambda n : setattr(self, 'is_hidden', n.get_bool_value()),
             "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(message.Message)),
-            "multi_value_extended_properties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty)),
-            "parent_folder_id": lambda n : setattr(self, 'parent_folder_id', n.get_str_value()),
-            "single_value_extended_properties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(single_value_legacy_extended_property.SingleValueLegacyExtendedProperty)),
-            "total_item_count": lambda n : setattr(self, 'total_item_count', n.get_int_value()),
-            "unread_item_count": lambda n : setattr(self, 'unread_item_count', n.get_int_value()),
+            "messageRules": lambda n : setattr(self, 'message_rules', n.get_collection_of_object_values(message_rule.MessageRule)),
+            "multiValueExtendedProperties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty)),
+            "parentFolderId": lambda n : setattr(self, 'parent_folder_id', n.get_str_value()),
+            "singleValueExtendedProperties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(single_value_legacy_extended_property.SingleValueLegacyExtendedProperty)),
+            "totalItemCount": lambda n : setattr(self, 'total_item_count', n.get_int_value()),
+            "unreadItemCount": lambda n : setattr(self, 'unread_item_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -138,7 +138,7 @@ class MailFolder(entity.Entity):
         """
         Sets the isHidden property value. Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.
         Args:
-            value: Value to set for the isHidden property.
+            value: Value to set for the is_hidden property.
         """
         self._is_hidden = value
     
@@ -155,7 +155,7 @@ class MailFolder(entity.Entity):
         """
         Sets the messageRules property value. The collection of rules that apply to the user's Inbox folder.
         Args:
-            value: Value to set for the messageRules property.
+            value: Value to set for the message_rules property.
         """
         self._message_rules = value
     
@@ -189,7 +189,7 @@ class MailFolder(entity.Entity):
         """
         Sets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
         Args:
-            value: Value to set for the multiValueExtendedProperties property.
+            value: Value to set for the multi_value_extended_properties property.
         """
         self._multi_value_extended_properties = value
     
@@ -206,7 +206,7 @@ class MailFolder(entity.Entity):
         """
         Sets the parentFolderId property value. The unique identifier for the mailFolder's parent mailFolder.
         Args:
-            value: Value to set for the parentFolderId property.
+            value: Value to set for the parent_folder_id property.
         """
         self._parent_folder_id = value
     
@@ -219,12 +219,12 @@ class MailFolder(entity.Entity):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-        writer.write_int_value("childFolderCount", self.child_folder_count)
         writer.write_collection_of_object_values("childFolders", self.child_folders)
+        writer.write_int_value("childFolderCount", self.child_folder_count)
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("isHidden", self.is_hidden)
-        writer.write_collection_of_object_values("messageRules", self.message_rules)
         writer.write_collection_of_object_values("messages", self.messages)
+        writer.write_collection_of_object_values("messageRules", self.message_rules)
         writer.write_collection_of_object_values("multiValueExtendedProperties", self.multi_value_extended_properties)
         writer.write_str_value("parentFolderId", self.parent_folder_id)
         writer.write_collection_of_object_values("singleValueExtendedProperties", self.single_value_extended_properties)
@@ -244,7 +244,7 @@ class MailFolder(entity.Entity):
         """
         Sets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
         Args:
-            value: Value to set for the singleValueExtendedProperties property.
+            value: Value to set for the single_value_extended_properties property.
         """
         self._single_value_extended_properties = value
     
@@ -261,7 +261,7 @@ class MailFolder(entity.Entity):
         """
         Sets the totalItemCount property value. The number of items in the mailFolder.
         Args:
-            value: Value to set for the totalItemCount property.
+            value: Value to set for the total_item_count property.
         """
         self._total_item_count = value
     
@@ -278,7 +278,7 @@ class MailFolder(entity.Entity):
         """
         Sets the unreadItemCount property value. The number of items in the mailFolder marked as unread.
         Args:
-            value: Value to set for the unreadItemCount property.
+            value: Value to set for the unread_item_count property.
         """
         self._unread_item_count = value
     

@@ -58,7 +58,7 @@ class ResultTemplateOption(AdditionalDataHolder, Parsable):
         """
         Sets the enableResultTemplate property value. Indicates whether search display layouts are enabled. If enabled, the user will get the result template to render the search results content in the resultTemplates property of the response. The result template is based on Adaptive Cards. Optional.
         Args:
-            value: Value to set for the enableResultTemplate property.
+            value: Value to set for the enable_result_template property.
         """
         self._enable_result_template = value
     
@@ -68,7 +68,7 @@ class ResultTemplateOption(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "enable_result_template": lambda n : setattr(self, 'enable_result_template', n.get_bool_value()),
+            "enableResultTemplate": lambda n : setattr(self, 'enable_result_template', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -86,7 +86,7 @@ class ResultTemplateOption(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

@@ -44,10 +44,10 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
         """
         fields = {
             "policy": lambda n : setattr(self, 'policy', n.get_object_value(unified_role_management_policy.UnifiedRoleManagementPolicy)),
-            "policy_id": lambda n : setattr(self, 'policy_id', n.get_str_value()),
-            "role_definition_id": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
-            "scope_id": lambda n : setattr(self, 'scope_id', n.get_str_value()),
-            "scope_type": lambda n : setattr(self, 'scope_type', n.get_str_value()),
+            "policyId": lambda n : setattr(self, 'policy_id', n.get_str_value()),
+            "roleDefinitionId": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
+            "scopeId": lambda n : setattr(self, 'scope_id', n.get_str_value()),
+            "scopeType": lambda n : setattr(self, 'scope_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -83,7 +83,7 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
         """
         Sets the policyId property value. The id of the policy. Inherited from entity.
         Args:
-            value: Value to set for the policyId property.
+            value: Value to set for the policy_id property.
         """
         self._policy_id = value
     
@@ -100,7 +100,7 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
         """
         Sets the roleDefinitionId property value. The identifier of the role definition object where the policy applies. If not specified, the policy applies to all roles. Supports $filter (eq).
         Args:
-            value: Value to set for the roleDefinitionId property.
+            value: Value to set for the role_definition_id property.
         """
         self._role_definition_id = value
     
@@ -117,7 +117,7 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
         """
         Sets the scopeId property value. The identifier of the scope where the policy is assigned.  Can be / for the tenant or a group ID. Required.
         Args:
-            value: Value to set for the scopeId property.
+            value: Value to set for the scope_id property.
         """
         self._scope_id = value
     
@@ -134,7 +134,7 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
         """
         Sets the scopeType property value. The type of the scope where the policy is assigned. One of Directory, DirectoryRole. Required.
         Args:
-            value: Value to set for the scopeType property.
+            value: Value to set for the scope_type property.
         """
         self._scope_type = value
     

@@ -20,13 +20,13 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         """
         Sets the appRoleId property value. The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application's service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.
         Args:
-            value: Value to set for the appRoleId property.
+            value: Value to set for the app_role_id property.
         """
         self._app_role_id = value
     
     def __init__(self,) -> None:
         """
-        Instantiates a new AppRoleAssignment and sets the default values.
+        Instantiates a new appRoleAssignment and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.appRoleAssignment"
@@ -58,7 +58,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         """
         Sets the createdDateTime property value. The time when the app role assignment was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -80,13 +80,13 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_role_id": lambda n : setattr(self, 'app_role_id', n.get_object_value(Guid)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "principal_display_name": lambda n : setattr(self, 'principal_display_name', n.get_str_value()),
-            "principal_id": lambda n : setattr(self, 'principal_id', n.get_object_value(Guid)),
-            "principal_type": lambda n : setattr(self, 'principal_type', n.get_str_value()),
-            "resource_display_name": lambda n : setattr(self, 'resource_display_name', n.get_str_value()),
-            "resource_id": lambda n : setattr(self, 'resource_id', n.get_object_value(Guid)),
+            "appRoleId": lambda n : setattr(self, 'app_role_id', n.get_object_value(Guid)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "principalDisplayName": lambda n : setattr(self, 'principal_display_name', n.get_str_value()),
+            "principalId": lambda n : setattr(self, 'principal_id', n.get_object_value(Guid)),
+            "principalType": lambda n : setattr(self, 'principal_type', n.get_str_value()),
+            "resourceDisplayName": lambda n : setattr(self, 'resource_display_name', n.get_str_value()),
+            "resourceId": lambda n : setattr(self, 'resource_id', n.get_object_value(Guid)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -105,7 +105,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         """
         Sets the principalDisplayName property value. The display name of the user, group, or service principal that was granted the app role assignment. Read-only. Supports $filter (eq and startswith).
         Args:
-            value: Value to set for the principalDisplayName property.
+            value: Value to set for the principal_display_name property.
         """
         self._principal_display_name = value
     
@@ -122,7 +122,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         """
         Sets the principalId property value. The unique identifier (id) for the user, security group, or service principal being granted the app role. Security groups with dynamic memberships are supported. Required on create.
         Args:
-            value: Value to set for the principalId property.
+            value: Value to set for the principal_id property.
         """
         self._principal_id = value
     
@@ -139,7 +139,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         """
         Sets the principalType property value. The type of the assigned principal. This can either be User, Group, or ServicePrincipal. Read-only.
         Args:
-            value: Value to set for the principalType property.
+            value: Value to set for the principal_type property.
         """
         self._principal_type = value
     
@@ -156,7 +156,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         """
         Sets the resourceDisplayName property value. The display name of the resource app's service principal to which the assignment is made.
         Args:
-            value: Value to set for the resourceDisplayName property.
+            value: Value to set for the resource_display_name property.
         """
         self._resource_display_name = value
     
@@ -173,7 +173,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         """
         Sets the resourceId property value. The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
         Args:
-            value: Value to set for the resourceId property.
+            value: Value to set for the resource_id property.
         """
         self._resource_id = value
     

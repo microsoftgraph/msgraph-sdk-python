@@ -14,7 +14,7 @@ place = lazy_import('msgraph.generated.models.place')
 place_collection_response = lazy_import('msgraph.generated.models.place_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.places.count.count_request_builder')
-room_request_builder = lazy_import('msgraph.generated.places.room.room_request_builder')
+room_request_builder = lazy_import('msgraph.generated.places.microsoft_graph_room.room_request_builder')
 
 class PlacesRequestBuilder():
     """
@@ -28,7 +28,7 @@ class PlacesRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def room(self) -> room_request_builder.RoomRequestBuilder:
+    def microsoft_graph_room(self) -> room_request_builder.RoomRequestBuilder:
         """
         Casts the previous resource to room.
         """

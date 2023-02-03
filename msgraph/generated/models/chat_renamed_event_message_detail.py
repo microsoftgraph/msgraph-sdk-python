@@ -20,7 +20,7 @@ class ChatRenamedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the chatDisplayName property value. The updated name of the chat.
         Args:
-            value: Value to set for the chatDisplayName property.
+            value: Value to set for the chat_display_name property.
         """
         self._chat_display_name = value
     
@@ -37,7 +37,7 @@ class ChatRenamedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the chatId property value. Unique identifier of the chat.
         Args:
-            value: Value to set for the chatId property.
+            value: Value to set for the chat_id property.
         """
         self._chat_id = value
     
@@ -72,8 +72,8 @@ class ChatRenamedEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "chat_display_name": lambda n : setattr(self, 'chat_display_name', n.get_str_value()),
-            "chat_id": lambda n : setattr(self, 'chat_id', n.get_str_value()),
+            "chatDisplayName": lambda n : setattr(self, 'chat_display_name', n.get_str_value()),
+            "chatId": lambda n : setattr(self, 'chat_id', n.get_str_value()),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
         }
         super_fields = super().get_field_deserializers()

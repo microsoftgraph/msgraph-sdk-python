@@ -21,7 +21,7 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
         """
         Sets the check32BitOn64System property value. A value indicating whether to search the 32-bit registry on 64-bit systems.
         Args:
-            value: Value to set for the check32BitOn64System property.
+            value: Value to set for the check32_bit_on64_system property.
         """
         self._check32_bit_on64_system = value
     
@@ -38,7 +38,7 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
         """
         Sets the comparisonValue property value. The registry comparison value.
         Args:
-            value: Value to set for the comparisonValue property.
+            value: Value to set for the comparison_value property.
         """
         self._comparison_value = value
     
@@ -79,12 +79,12 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "check32_bit_on64_system": lambda n : setattr(self, 'check32_bit_on64_system', n.get_bool_value()),
-            "comparison_value": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
-            "key_path": lambda n : setattr(self, 'key_path', n.get_str_value()),
-            "operation_type": lambda n : setattr(self, 'operation_type', n.get_enum_value(win32_lob_app_registry_rule_operation_type.Win32LobAppRegistryRuleOperationType)),
+            "check32BitOn64System": lambda n : setattr(self, 'check32_bit_on64_system', n.get_bool_value()),
+            "comparisonValue": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
+            "keyPath": lambda n : setattr(self, 'key_path', n.get_str_value()),
+            "operationType": lambda n : setattr(self, 'operation_type', n.get_enum_value(win32_lob_app_registry_rule_operation_type.Win32LobAppRegistryRuleOperationType)),
             "operator": lambda n : setattr(self, 'operator', n.get_enum_value(win32_lob_app_rule_operator.Win32LobAppRuleOperator)),
-            "value_name": lambda n : setattr(self, 'value_name', n.get_str_value()),
+            "valueName": lambda n : setattr(self, 'value_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -103,7 +103,7 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
         """
         Sets the keyPath property value. The full path of the registry entry containing the value to detect.
         Args:
-            value: Value to set for the keyPath property.
+            value: Value to set for the key_path property.
         """
         self._key_path = value
     
@@ -120,7 +120,7 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
         """
         Sets the operationType property value. Contains all supported registry data detection type.
         Args:
-            value: Value to set for the operationType property.
+            value: Value to set for the operation_type property.
         """
         self._operation_type = value
     
@@ -170,7 +170,7 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
         """
         Sets the valueName property value. The name of the registry value to detect.
         Args:
-            value: Value to set for the valueName property.
+            value: Value to set for the value_name property.
         """
         self._value_name = value
     

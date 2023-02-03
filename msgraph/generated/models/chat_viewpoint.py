@@ -54,8 +54,8 @@ class ChatViewpoint(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_hidden": lambda n : setattr(self, 'is_hidden', n.get_bool_value()),
-            "last_message_read_date_time": lambda n : setattr(self, 'last_message_read_date_time', n.get_datetime_value()),
+            "isHidden": lambda n : setattr(self, 'is_hidden', n.get_bool_value()),
+            "lastMessageReadDateTime": lambda n : setattr(self, 'last_message_read_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -73,7 +73,7 @@ class ChatViewpoint(AdditionalDataHolder, Parsable):
         """
         Sets the isHidden property value. Indicates whether the chat is hidden for the current user.
         Args:
-            value: Value to set for the isHidden property.
+            value: Value to set for the is_hidden property.
         """
         self._is_hidden = value
     
@@ -90,7 +90,7 @@ class ChatViewpoint(AdditionalDataHolder, Parsable):
         """
         Sets the lastMessageReadDateTime property value. Represents the dateTime up until which the current user has read chatMessages in a specific chat.
         Args:
-            value: Value to set for the lastMessageReadDateTime property.
+            value: Value to set for the last_message_read_date_time property.
         """
         self._last_message_read_date_time = value
     
@@ -107,7 +107,7 @@ class ChatViewpoint(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

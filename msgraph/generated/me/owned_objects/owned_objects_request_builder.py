@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-application_request_builder = lazy_import('msgraph.generated.me.owned_objects.application.application_request_builder')
 count_request_builder = lazy_import('msgraph.generated.me.owned_objects.count.count_request_builder')
-group_request_builder = lazy_import('msgraph.generated.me.owned_objects.group.group_request_builder')
-service_principal_request_builder = lazy_import('msgraph.generated.me.owned_objects.service_principal.service_principal_request_builder')
+application_request_builder = lazy_import('msgraph.generated.me.owned_objects.microsoft_graph_application.application_request_builder')
+group_request_builder = lazy_import('msgraph.generated.me.owned_objects.microsoft_graph_group.group_request_builder')
+service_principal_request_builder = lazy_import('msgraph.generated.me.owned_objects.microsoft_graph_service_principal.service_principal_request_builder')
 directory_object_collection_response = lazy_import('msgraph.generated.models.directory_object_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -22,13 +22,6 @@ class OwnedObjectsRequestBuilder():
     Provides operations to manage the ownedObjects property of the microsoft.graph.user entity.
     """
     @property
-    def application(self) -> application_request_builder.ApplicationRequestBuilder:
-        """
-        Casts the previous resource to application.
-        """
-        return application_request_builder.ApplicationRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
@@ -36,14 +29,21 @@ class OwnedObjectsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def group(self) -> group_request_builder.GroupRequestBuilder:
+    def microsoft_graph_application(self) -> application_request_builder.ApplicationRequestBuilder:
+        """
+        Casts the previous resource to application.
+        """
+        return application_request_builder.ApplicationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_group(self) -> group_request_builder.GroupRequestBuilder:
         """
         Casts the previous resource to group.
         """
         return group_request_builder.GroupRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def service_principal(self) -> service_principal_request_builder.ServicePrincipalRequestBuilder:
+    def microsoft_graph_service_principal(self) -> service_principal_request_builder.ServicePrincipalRequestBuilder:
         """
         Casts the previous resource to servicePrincipal.
         """

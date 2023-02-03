@@ -47,10 +47,11 @@ class OnlineMeetingItemRequestBuilder():
         url_tpl_params["meetingAttendanceReport%2Did"] = id
         return meeting_attendance_report_item_request_builder.MeetingAttendanceReportItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, online_meeting_id: Optional[str] = None) -> None:
         """
         Instantiates a new OnlineMeetingItemRequestBuilder and sets the default values.
         Args:
+            onlineMeetingId: key: id of onlineMeeting
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -62,6 +63,7 @@ class OnlineMeetingItemRequestBuilder():
         self.url_template: str = "{+baseurl}/communications/onlineMeetings/{onlineMeeting%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["onlineMeeting%2Did"] = onlineMeetingId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

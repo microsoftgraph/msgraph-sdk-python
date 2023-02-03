@@ -38,8 +38,8 @@ class TeamsAppInstallation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "teams_app": lambda n : setattr(self, 'teams_app', n.get_object_value(teams_app.TeamsApp)),
-            "teams_app_definition": lambda n : setattr(self, 'teams_app_definition', n.get_object_value(teams_app_definition.TeamsAppDefinition)),
+            "teamsApp": lambda n : setattr(self, 'teams_app', n.get_object_value(teams_app.TeamsApp)),
+            "teamsAppDefinition": lambda n : setattr(self, 'teams_app_definition', n.get_object_value(teams_app_definition.TeamsAppDefinition)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -70,7 +70,7 @@ class TeamsAppInstallation(entity.Entity):
         """
         Sets the teamsApp property value. The app that is installed.
         Args:
-            value: Value to set for the teamsApp property.
+            value: Value to set for the teams_app property.
         """
         self._teams_app = value
     
@@ -87,7 +87,7 @@ class TeamsAppInstallation(entity.Entity):
         """
         Sets the teamsAppDefinition property value. The details of this version of the app.
         Args:
-            value: Value to set for the teamsAppDefinition property.
+            value: Value to set for the teams_app_definition property.
         """
         self._teams_app_definition = value
     

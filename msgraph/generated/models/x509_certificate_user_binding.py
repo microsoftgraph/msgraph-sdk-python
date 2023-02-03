@@ -57,8 +57,8 @@ class X509CertificateUserBinding(AdditionalDataHolder, Parsable):
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "priority": lambda n : setattr(self, 'priority', n.get_int_value()),
-            "user_property": lambda n : setattr(self, 'user_property', n.get_str_value()),
-            "x509_certificate_field": lambda n : setattr(self, 'x509_certificate_field', n.get_str_value()),
+            "userProperty": lambda n : setattr(self, 'user_property', n.get_str_value()),
+            "x509CertificateField": lambda n : setattr(self, 'x509_certificate_field', n.get_str_value()),
         }
         return fields
     
@@ -75,7 +75,7 @@ class X509CertificateUserBinding(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -123,7 +123,7 @@ class X509CertificateUserBinding(AdditionalDataHolder, Parsable):
         """
         Sets the userProperty property value. Defines the Azure AD user property of the user object to use for the binding. The possible values are: userPrincipalName, onPremisesUserPrincipalName, certificateUserIds. Required.
         Args:
-            value: Value to set for the userProperty property.
+            value: Value to set for the user_property property.
         """
         self._user_property = value
     
@@ -140,7 +140,7 @@ class X509CertificateUserBinding(AdditionalDataHolder, Parsable):
         """
         Sets the x509CertificateField property value. The field on the X.509 certificate to use for the binding. The possible values are: PrincipalName, RFC822Name, SubjectKeyIdentifier, SHA1PublicKey.
         Args:
-            value: Value to set for the x509CertificateField property.
+            value: Value to set for the x509_certificate_field property.
         """
         self._x509_certificate_field = value
     

@@ -33,7 +33,7 @@ class TeamMembersNotificationRecipient(teamwork_notification_recipient.TeamworkN
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "team_id": lambda n : setattr(self, 'team_id', n.get_str_value()),
+            "teamId": lambda n : setattr(self, 'team_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,7 +63,7 @@ class TeamMembersNotificationRecipient(teamwork_notification_recipient.TeamworkN
         """
         Sets the teamId property value. The unique identifier for the team whose members should receive the notification.
         Args:
-            value: Value to set for the teamId property.
+            value: Value to set for the team_id property.
         """
         self._team_id = value
     

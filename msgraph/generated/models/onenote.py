@@ -54,8 +54,8 @@ class Onenote(entity.Entity):
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(onenote_operation.OnenoteOperation)),
             "pages": lambda n : setattr(self, 'pages', n.get_collection_of_object_values(onenote_page.OnenotePage)),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(onenote_resource.OnenoteResource)),
-            "section_groups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(section_group.SectionGroup)),
             "sections": lambda n : setattr(self, 'sections', n.get_collection_of_object_values(onenote_section.OnenoteSection)),
+            "sectionGroups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(section_group.SectionGroup)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -142,7 +142,7 @@ class Onenote(entity.Entity):
         """
         Sets the sectionGroups property value. The section groups in all OneNote notebooks that are owned by the user or group.  Read-only. Nullable.
         Args:
-            value: Value to set for the sectionGroups property.
+            value: Value to set for the section_groups property.
         """
         self._section_groups = value
     
@@ -176,7 +176,7 @@ class Onenote(entity.Entity):
         writer.write_collection_of_object_values("operations", self.operations)
         writer.write_collection_of_object_values("pages", self.pages)
         writer.write_collection_of_object_values("resources", self.resources)
-        writer.write_collection_of_object_values("sectionGroups", self.section_groups)
         writer.write_collection_of_object_values("sections", self.sections)
+        writer.write_collection_of_object_values("sectionGroups", self.section_groups)
     
 

@@ -75,7 +75,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
         """
         Sets the customKeyIdentifier property value. The customKeyIdentifier property
         Args:
-            value: Value to set for the customKeyIdentifier property.
+            value: Value to set for the custom_key_identifier property.
         """
         self._custom_key_identifier = value
     
@@ -92,7 +92,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. The displayName property
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -109,7 +109,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
         """
         Sets the endDateTime property value. The endDateTime property
         Args:
-            value: Value to set for the endDateTime property.
+            value: Value to set for the end_date_time property.
         """
         self._end_date_time = value
     
@@ -119,13 +119,13 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "custom_key_identifier": lambda n : setattr(self, 'custom_key_identifier', n.get_bytes_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "customKeyIdentifier": lambda n : setattr(self, 'custom_key_identifier', n.get_bytes_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "key": lambda n : setattr(self, 'key', n.get_bytes_value()),
-            "key_id": lambda n : setattr(self, 'key_id', n.get_object_value(Guid)),
+            "keyId": lambda n : setattr(self, 'key_id', n.get_object_value(Guid)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "thumbprint": lambda n : setattr(self, 'thumbprint', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
             "usage": lambda n : setattr(self, 'usage', n.get_str_value()),
@@ -162,7 +162,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
         """
         Sets the keyId property value. The keyId property
         Args:
-            value: Value to set for the keyId property.
+            value: Value to set for the key_id property.
         """
         self._key_id = value
     
@@ -179,7 +179,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -216,7 +216,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
         """
         Sets the startDateTime property value. The startDateTime property
         Args:
-            value: Value to set for the startDateTime property.
+            value: Value to set for the start_date_time property.
         """
         self._start_date_time = value
     

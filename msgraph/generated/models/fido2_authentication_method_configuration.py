@@ -41,10 +41,10 @@ class Fido2AuthenticationMethodConfiguration(authentication_method_configuration
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "include_targets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_method_target.AuthenticationMethodTarget)),
-            "is_attestation_enforced": lambda n : setattr(self, 'is_attestation_enforced', n.get_bool_value()),
-            "is_self_service_registration_allowed": lambda n : setattr(self, 'is_self_service_registration_allowed', n.get_bool_value()),
-            "key_restrictions": lambda n : setattr(self, 'key_restrictions', n.get_object_value(fido2_key_restrictions.Fido2KeyRestrictions)),
+            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_method_target.AuthenticationMethodTarget)),
+            "isAttestationEnforced": lambda n : setattr(self, 'is_attestation_enforced', n.get_bool_value()),
+            "isSelfServiceRegistrationAllowed": lambda n : setattr(self, 'is_self_service_registration_allowed', n.get_bool_value()),
+            "keyRestrictions": lambda n : setattr(self, 'key_restrictions', n.get_object_value(fido2_key_restrictions.Fido2KeyRestrictions)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,7 +63,7 @@ class Fido2AuthenticationMethodConfiguration(authentication_method_configuration
         """
         Sets the includeTargets property value. A collection of groups that are enabled to use the authentication method.
         Args:
-            value: Value to set for the includeTargets property.
+            value: Value to set for the include_targets property.
         """
         self._include_targets = value
     
@@ -80,7 +80,7 @@ class Fido2AuthenticationMethodConfiguration(authentication_method_configuration
         """
         Sets the isAttestationEnforced property value. Determines whether attestation must be enforced for FIDO2 security key registration.
         Args:
-            value: Value to set for the isAttestationEnforced property.
+            value: Value to set for the is_attestation_enforced property.
         """
         self._is_attestation_enforced = value
     
@@ -97,7 +97,7 @@ class Fido2AuthenticationMethodConfiguration(authentication_method_configuration
         """
         Sets the isSelfServiceRegistrationAllowed property value. Determines if users can register new FIDO2 security keys.
         Args:
-            value: Value to set for the isSelfServiceRegistrationAllowed property.
+            value: Value to set for the is_self_service_registration_allowed property.
         """
         self._is_self_service_registration_allowed = value
     
@@ -114,7 +114,7 @@ class Fido2AuthenticationMethodConfiguration(authentication_method_configuration
         """
         Sets the keyRestrictions property value. Controls whether key restrictions are enforced on FIDO2 security keys, either allowing or disallowing certain key types as defined by Authenticator Attestation GUID (AAGUID), an identifier that indicates the type (e.g. make and model) of the authenticator.
         Args:
-            value: Value to set for the keyRestrictions property.
+            value: Value to set for the key_restrictions property.
         """
         self._key_restrictions = value
     

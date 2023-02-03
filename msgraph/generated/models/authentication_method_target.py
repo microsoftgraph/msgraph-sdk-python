@@ -37,8 +37,8 @@ class AuthenticationMethodTarget(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_registration_required": lambda n : setattr(self, 'is_registration_required', n.get_bool_value()),
-            "target_type": lambda n : setattr(self, 'target_type', n.get_enum_value(authentication_method_target_type.AuthenticationMethodTargetType)),
+            "isRegistrationRequired": lambda n : setattr(self, 'is_registration_required', n.get_bool_value()),
+            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(authentication_method_target_type.AuthenticationMethodTargetType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -57,7 +57,7 @@ class AuthenticationMethodTarget(entity.Entity):
         """
         Sets the isRegistrationRequired property value. Determines if the user is enforced to register the authentication method.
         Args:
-            value: Value to set for the isRegistrationRequired property.
+            value: Value to set for the is_registration_required property.
         """
         self._is_registration_required = value
     
@@ -86,7 +86,7 @@ class AuthenticationMethodTarget(entity.Entity):
         """
         Sets the targetType property value. The targetType property
         Args:
-            value: Value to set for the targetType property.
+            value: Value to set for the target_type property.
         """
         self._target_type = value
     

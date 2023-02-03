@@ -44,7 +44,7 @@ class SchedulingGroup(change_tracked_entity.ChangeTrackedEntity):
         """
         Sets the displayName property value. The display name for the schedulingGroup. Required.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -54,9 +54,9 @@ class SchedulingGroup(change_tracked_entity.ChangeTrackedEntity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "is_active": lambda n : setattr(self, 'is_active', n.get_bool_value()),
-            "user_ids": lambda n : setattr(self, 'user_ids', n.get_collection_of_primitive_values(str)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
+            "userIds": lambda n : setattr(self, 'user_ids', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -75,7 +75,7 @@ class SchedulingGroup(change_tracked_entity.ChangeTrackedEntity):
         """
         Sets the isActive property value. Indicates whether the schedulingGroup can be used when creating new entities or updating existing ones. Required.
         Args:
-            value: Value to set for the isActive property.
+            value: Value to set for the is_active property.
         """
         self._is_active = value
     
@@ -104,7 +104,7 @@ class SchedulingGroup(change_tracked_entity.ChangeTrackedEntity):
         """
         Sets the userIds property value. The list of user IDs that are a member of the schedulingGroup. Required.
         Args:
-            value: Value to set for the userIds property.
+            value: Value to set for the user_ids property.
         """
         self._user_ids = value
     

@@ -19,7 +19,7 @@ class OAuth2PermissionGrant(entity.Entity):
         """
         Sets the clientId property value. The id of the client service principal for the application which is authorized to act on behalf of a signed-in user when accessing an API. Required. Supports $filter (eq only).
         Args:
-            value: Value to set for the clientId property.
+            value: Value to set for the client_id property.
         """
         self._client_id = value
     
@@ -36,7 +36,7 @@ class OAuth2PermissionGrant(entity.Entity):
         """
         Sets the consentType property value. Indicates if authorization is granted for the client application to impersonate all users or only a specific user. AllPrincipals indicates authorization to impersonate all users. Principal indicates authorization to impersonate a specific user. Consent on behalf of all users can be granted by an administrator. Non-admin users may be authorized to consent on behalf of themselves in some cases, for some delegated permissions. Required. Supports $filter (eq only).
         Args:
-            value: Value to set for the consentType property.
+            value: Value to set for the consent_type property.
         """
         self._consent_type = value
     
@@ -76,10 +76,10 @@ class OAuth2PermissionGrant(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "client_id": lambda n : setattr(self, 'client_id', n.get_str_value()),
-            "consent_type": lambda n : setattr(self, 'consent_type', n.get_str_value()),
-            "principal_id": lambda n : setattr(self, 'principal_id', n.get_str_value()),
-            "resource_id": lambda n : setattr(self, 'resource_id', n.get_str_value()),
+            "clientId": lambda n : setattr(self, 'client_id', n.get_str_value()),
+            "consentType": lambda n : setattr(self, 'consent_type', n.get_str_value()),
+            "principalId": lambda n : setattr(self, 'principal_id', n.get_str_value()),
+            "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),
             "scope": lambda n : setattr(self, 'scope', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -99,7 +99,7 @@ class OAuth2PermissionGrant(entity.Entity):
         """
         Sets the principalId property value. The id of the user on behalf of whom the client is authorized to access the resource, when consentType is Principal. If consentType is AllPrincipals this value is null. Required when consentType is Principal. Supports $filter (eq only).
         Args:
-            value: Value to set for the principalId property.
+            value: Value to set for the principal_id property.
         """
         self._principal_id = value
     
@@ -116,7 +116,7 @@ class OAuth2PermissionGrant(entity.Entity):
         """
         Sets the resourceId property value. The id of the resource service principal to which access is authorized. This identifies the API which the client is authorized to attempt to call on behalf of a signed-in user. Supports $filter (eq only).
         Args:
-            value: Value to set for the resourceId property.
+            value: Value to set for the resource_id property.
         """
         self._resource_id = value
     

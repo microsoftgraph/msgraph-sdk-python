@@ -23,7 +23,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         """
         Sets the actionName property value. Action name
         Args:
-            value: Value to set for the actionName property.
+            value: Value to set for the action_name property.
         """
         self._action_name = value
     
@@ -40,7 +40,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         """
         Sets the actionState property value. State of the action on the device
         Args:
-            value: Value to set for the actionState property.
+            value: Value to set for the action_state property.
         """
         self._action_state = value
     
@@ -97,11 +97,11 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "action_name": lambda n : setattr(self, 'action_name', n.get_str_value()),
-            "action_state": lambda n : setattr(self, 'action_state', n.get_enum_value(action_state.ActionState)),
-            "last_updated_date_time": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
+            "actionName": lambda n : setattr(self, 'action_name', n.get_str_value()),
+            "actionState": lambda n : setattr(self, 'action_state', n.get_enum_value(action_state.ActionState)),
+            "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         return fields
     
@@ -118,7 +118,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         """
         Sets the lastUpdatedDateTime property value. Time the action state was last updated
         Args:
-            value: Value to set for the lastUpdatedDateTime property.
+            value: Value to set for the last_updated_date_time property.
         """
         self._last_updated_date_time = value
     
@@ -135,7 +135,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -167,7 +167,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         """
         Sets the startDateTime property value. Time the action was initiated
         Args:
-            value: Value to set for the startDateTime property.
+            value: Value to set for the start_date_time property.
         """
         self._start_date_time = value
     

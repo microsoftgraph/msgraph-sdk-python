@@ -39,7 +39,7 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
         """
         Sets the appConfigKey property value. app configuration key.
         Args:
-            value: Value to set for the appConfigKey property.
+            value: Value to set for the app_config_key property.
         """
         self._app_config_key = value
     
@@ -56,7 +56,7 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
         """
         Sets the appConfigKeyType property value. App configuration key types.
         Args:
-            value: Value to set for the appConfigKeyType property.
+            value: Value to set for the app_config_key_type property.
         """
         self._app_config_key_type = value
     
@@ -73,7 +73,7 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
         """
         Sets the appConfigKeyValue property value. app configuration key value.
         Args:
-            value: Value to set for the appConfigKeyValue property.
+            value: Value to set for the app_config_key_value property.
         """
         self._app_config_key_value = value
     
@@ -111,9 +111,9 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_config_key": lambda n : setattr(self, 'app_config_key', n.get_str_value()),
-            "app_config_key_type": lambda n : setattr(self, 'app_config_key_type', n.get_enum_value(mdm_app_config_key_type.MdmAppConfigKeyType)),
-            "app_config_key_value": lambda n : setattr(self, 'app_config_key_value', n.get_str_value()),
+            "appConfigKey": lambda n : setattr(self, 'app_config_key', n.get_str_value()),
+            "appConfigKeyType": lambda n : setattr(self, 'app_config_key_type', n.get_enum_value(mdm_app_config_key_type.MdmAppConfigKeyType)),
+            "appConfigKeyValue": lambda n : setattr(self, 'app_config_key_value', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -131,7 +131,7 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

@@ -47,7 +47,7 @@ class OnenoteResource(onenote_entity_base_model.OnenoteEntityBaseModel):
         """
         Sets the contentUrl property value. The URL for downloading the content
         Args:
-            value: Value to set for the contentUrl property.
+            value: Value to set for the content_url property.
         """
         self._content_url = value
     
@@ -70,7 +70,7 @@ class OnenoteResource(onenote_entity_base_model.OnenoteEntityBaseModel):
         """
         fields = {
             "content": lambda n : setattr(self, 'content', n.get_bytes_value()),
-            "content_url": lambda n : setattr(self, 'content_url', n.get_str_value()),
+            "contentUrl": lambda n : setattr(self, 'content_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -68,7 +68,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         """
         Sets the excludeTargets property value. Users and groups of users that are excluded from being prompted to set up the authentication method.
         Args:
-            value: Value to set for the excludeTargets property.
+            value: Value to set for the exclude_targets property.
         """
         self._exclude_targets = value
     
@@ -78,10 +78,10 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "exclude_targets": lambda n : setattr(self, 'exclude_targets', n.get_collection_of_object_values(exclude_target.ExcludeTarget)),
-            "include_targets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget)),
+            "excludeTargets": lambda n : setattr(self, 'exclude_targets', n.get_collection_of_object_values(exclude_target.ExcludeTarget)),
+            "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "snooze_duration_in_days": lambda n : setattr(self, 'snooze_duration_in_days', n.get_int_value()),
+            "snoozeDurationInDays": lambda n : setattr(self, 'snooze_duration_in_days', n.get_int_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(advanced_config_state.AdvancedConfigState)),
         }
         return fields
@@ -99,7 +99,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         """
         Sets the includeTargets property value. Users and groups of users that are prompted to set up the authentication method.
         Args:
-            value: Value to set for the includeTargets property.
+            value: Value to set for the include_targets property.
         """
         self._include_targets = value
     
@@ -116,7 +116,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -148,7 +148,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         """
         Sets the snoozeDurationInDays property value. Specifies the number of days that the user sees a prompt again if they select 'Not now' and snoozes the prompt. Minimum: 0 days. Maximum: 14 days. If the value is '0', the user is prompted during every MFA attempt.
         Args:
-            value: Value to set for the snoozeDurationInDays property.
+            value: Value to set for the snooze_duration_in_days property.
         """
         self._snooze_duration_in_days = value
     

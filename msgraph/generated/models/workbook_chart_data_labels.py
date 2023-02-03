@@ -71,12 +71,12 @@ class WorkbookChartDataLabels(entity.Entity):
             "format": lambda n : setattr(self, 'format', n.get_object_value(workbook_chart_data_label_format.WorkbookChartDataLabelFormat)),
             "position": lambda n : setattr(self, 'position', n.get_str_value()),
             "separator": lambda n : setattr(self, 'separator', n.get_str_value()),
-            "show_bubble_size": lambda n : setattr(self, 'show_bubble_size', n.get_bool_value()),
-            "show_category_name": lambda n : setattr(self, 'show_category_name', n.get_bool_value()),
-            "show_legend_key": lambda n : setattr(self, 'show_legend_key', n.get_bool_value()),
-            "show_percentage": lambda n : setattr(self, 'show_percentage', n.get_bool_value()),
-            "show_series_name": lambda n : setattr(self, 'show_series_name', n.get_bool_value()),
-            "show_value": lambda n : setattr(self, 'show_value', n.get_bool_value()),
+            "showBubbleSize": lambda n : setattr(self, 'show_bubble_size', n.get_bool_value()),
+            "showCategoryName": lambda n : setattr(self, 'show_category_name', n.get_bool_value()),
+            "showLegendKey": lambda n : setattr(self, 'show_legend_key', n.get_bool_value()),
+            "showPercentage": lambda n : setattr(self, 'show_percentage', n.get_bool_value()),
+            "showSeriesName": lambda n : setattr(self, 'show_series_name', n.get_bool_value()),
+            "showValue": lambda n : setattr(self, 'show_value', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -148,7 +148,7 @@ class WorkbookChartDataLabels(entity.Entity):
         """
         Sets the showBubbleSize property value. Boolean value representing if the data label bubble size is visible or not.
         Args:
-            value: Value to set for the showBubbleSize property.
+            value: Value to set for the show_bubble_size property.
         """
         self._show_bubble_size = value
     
@@ -165,7 +165,7 @@ class WorkbookChartDataLabels(entity.Entity):
         """
         Sets the showCategoryName property value. Boolean value representing if the data label category name is visible or not.
         Args:
-            value: Value to set for the showCategoryName property.
+            value: Value to set for the show_category_name property.
         """
         self._show_category_name = value
     
@@ -182,7 +182,7 @@ class WorkbookChartDataLabels(entity.Entity):
         """
         Sets the showLegendKey property value. Boolean value representing if the data label legend key is visible or not.
         Args:
-            value: Value to set for the showLegendKey property.
+            value: Value to set for the show_legend_key property.
         """
         self._show_legend_key = value
     
@@ -199,7 +199,7 @@ class WorkbookChartDataLabels(entity.Entity):
         """
         Sets the showPercentage property value. Boolean value representing if the data label percentage is visible or not.
         Args:
-            value: Value to set for the showPercentage property.
+            value: Value to set for the show_percentage property.
         """
         self._show_percentage = value
     
@@ -216,7 +216,7 @@ class WorkbookChartDataLabels(entity.Entity):
         """
         Sets the showSeriesName property value. Boolean value representing if the data label series name is visible or not.
         Args:
-            value: Value to set for the showSeriesName property.
+            value: Value to set for the show_series_name property.
         """
         self._show_series_name = value
     
@@ -233,7 +233,7 @@ class WorkbookChartDataLabels(entity.Entity):
         """
         Sets the showValue property value. Boolean value representing if the data label value is visible or not.
         Args:
-            value: Value to set for the showValue property.
+            value: Value to set for the show_value property.
         """
         self._show_value = value
     

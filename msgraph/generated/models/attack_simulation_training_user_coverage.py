@@ -37,7 +37,7 @@ class AttackSimulationTrainingUserCoverage(AdditionalDataHolder, Parsable):
         """
         Sets the attackSimulationUser property value. User in an attack simulation and training campaign.
         Args:
-            value: Value to set for the attackSimulationUser property.
+            value: Value to set for the attack_simulation_user property.
         """
         self._attack_simulation_user = value
     
@@ -73,9 +73,9 @@ class AttackSimulationTrainingUserCoverage(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "attack_simulation_user": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
+            "attackSimulationUser": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "user_trainings": lambda n : setattr(self, 'user_trainings', n.get_collection_of_object_values(user_training_status_info.UserTrainingStatusInfo)),
+            "userTrainings": lambda n : setattr(self, 'user_trainings', n.get_collection_of_object_values(user_training_status_info.UserTrainingStatusInfo)),
         }
         return fields
     
@@ -92,7 +92,7 @@ class AttackSimulationTrainingUserCoverage(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -122,7 +122,7 @@ class AttackSimulationTrainingUserCoverage(AdditionalDataHolder, Parsable):
         """
         Sets the userTrainings property value. List of assigned trainings and their statuses for the user.
         Args:
-            value: Value to set for the userTrainings property.
+            value: Value to set for the user_trainings property.
         """
         self._user_trainings = value
     

@@ -46,7 +46,7 @@ class MailSearchFolder(mail_folder.MailFolder):
         """
         Sets the filterQuery property value. The OData query to filter the messages.
         Args:
-            value: Value to set for the filterQuery property.
+            value: Value to set for the filter_query property.
         """
         self._filter_query = value
     
@@ -56,10 +56,10 @@ class MailSearchFolder(mail_folder.MailFolder):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "filter_query": lambda n : setattr(self, 'filter_query', n.get_str_value()),
-            "include_nested_folders": lambda n : setattr(self, 'include_nested_folders', n.get_bool_value()),
-            "is_supported": lambda n : setattr(self, 'is_supported', n.get_bool_value()),
-            "source_folder_ids": lambda n : setattr(self, 'source_folder_ids', n.get_collection_of_primitive_values(str)),
+            "filterQuery": lambda n : setattr(self, 'filter_query', n.get_str_value()),
+            "includeNestedFolders": lambda n : setattr(self, 'include_nested_folders', n.get_bool_value()),
+            "isSupported": lambda n : setattr(self, 'is_supported', n.get_bool_value()),
+            "sourceFolderIds": lambda n : setattr(self, 'source_folder_ids', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -78,7 +78,7 @@ class MailSearchFolder(mail_folder.MailFolder):
         """
         Sets the includeNestedFolders property value. Indicates how the mailbox folder hierarchy should be traversed in the search. true means that a deep search should be done to include child folders in the hierarchy of each folder explicitly specified in sourceFolderIds. false means a shallow search of only each of the folders explicitly specified in sourceFolderIds.
         Args:
-            value: Value to set for the includeNestedFolders property.
+            value: Value to set for the include_nested_folders property.
         """
         self._include_nested_folders = value
     
@@ -95,7 +95,7 @@ class MailSearchFolder(mail_folder.MailFolder):
         """
         Sets the isSupported property value. Indicates whether a search folder is editable using REST APIs.
         Args:
-            value: Value to set for the isSupported property.
+            value: Value to set for the is_supported property.
         """
         self._is_supported = value
     
@@ -126,7 +126,7 @@ class MailSearchFolder(mail_folder.MailFolder):
         """
         Sets the sourceFolderIds property value. The mailbox folders that should be mined.
         Args:
-            value: Value to set for the sourceFolderIds property.
+            value: Value to set for the source_folder_ids property.
         """
         self._source_folder_ids = value
     

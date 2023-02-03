@@ -37,7 +37,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         """
         Sets the completedDateTime property value. The date and time that the follow-up was finished.
         Args:
-            value: Value to set for the completedDateTime property.
+            value: Value to set for the completed_date_time property.
         """
         self._completed_date_time = value
     
@@ -84,7 +84,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         """
         Sets the dueDateTime property value. The date and time that the follow up is to be finished. Note: To set the due date, you must also specify the startDateTime; otherwise, you will get a 400 Bad Request response.
         Args:
-            value: Value to set for the dueDateTime property.
+            value: Value to set for the due_date_time property.
         """
         self._due_date_time = value
     
@@ -101,7 +101,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         """
         Sets the flagStatus property value. The status for follow-up for an item. Possible values are notFlagged, complete, and flagged.
         Args:
-            value: Value to set for the flagStatus property.
+            value: Value to set for the flag_status property.
         """
         self._flag_status = value
     
@@ -111,11 +111,11 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "due_date_time": lambda n : setattr(self, 'due_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
-            "flag_status": lambda n : setattr(self, 'flag_status', n.get_enum_value(followup_flag_status.FollowupFlagStatus)),
+            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "dueDateTime": lambda n : setattr(self, 'due_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "flagStatus": lambda n : setattr(self, 'flag_status', n.get_enum_value(followup_flag_status.FollowupFlagStatus)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
         }
         return fields
     
@@ -132,7 +132,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -164,7 +164,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         """
         Sets the startDateTime property value. The date and time that the follow-up is to begin.
         Args:
-            value: Value to set for the startDateTime property.
+            value: Value to set for the start_date_time property.
         """
         self._start_date_time = value
     

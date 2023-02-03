@@ -71,7 +71,7 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
         """
         Sets the countryOrRegion property value. The country or region. It's a free-format string value, for example, 'United States'.
         Args:
-            value: Value to set for the countryOrRegion property.
+            value: Value to set for the country_or_region property.
         """
         self._country_or_region = value
     
@@ -94,9 +94,9 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
         """
         fields = {
             "city": lambda n : setattr(self, 'city', n.get_str_value()),
-            "country_or_region": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
+            "countryOrRegion": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "postal_code": lambda n : setattr(self, 'postal_code', n.get_str_value()),
+            "postalCode": lambda n : setattr(self, 'postal_code', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
             "street": lambda n : setattr(self, 'street', n.get_str_value()),
         }
@@ -115,7 +115,7 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -132,7 +132,7 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
         """
         Sets the postalCode property value. The postal code.
         Args:
-            value: Value to set for the postalCode property.
+            value: Value to set for the postal_code property.
         """
         self._postal_code = value
     

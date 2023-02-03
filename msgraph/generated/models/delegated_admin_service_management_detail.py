@@ -36,8 +36,8 @@ class DelegatedAdminServiceManagementDetail(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "service_management_url": lambda n : setattr(self, 'service_management_url', n.get_str_value()),
-            "service_name": lambda n : setattr(self, 'service_name', n.get_str_value()),
+            "serviceManagementUrl": lambda n : setattr(self, 'service_management_url', n.get_str_value()),
+            "serviceName": lambda n : setattr(self, 'service_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -68,7 +68,7 @@ class DelegatedAdminServiceManagementDetail(entity.Entity):
         """
         Sets the serviceManagementUrl property value. The serviceManagementUrl property
         Args:
-            value: Value to set for the serviceManagementUrl property.
+            value: Value to set for the service_management_url property.
         """
         self._service_management_url = value
     
@@ -85,7 +85,7 @@ class DelegatedAdminServiceManagementDetail(entity.Entity):
         """
         Sets the serviceName property value. The serviceName property
         Args:
-            value: Value to set for the serviceName property.
+            value: Value to set for the service_name property.
         """
         self._service_name = value
     

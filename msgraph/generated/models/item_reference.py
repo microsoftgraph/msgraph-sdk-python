@@ -74,7 +74,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
         """
         Sets the driveId property value. Unique identifier of the drive instance that contains the item. Read-only.
         Args:
-            value: Value to set for the driveId property.
+            value: Value to set for the drive_id property.
         """
         self._drive_id = value
     
@@ -91,7 +91,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
         """
         Sets the driveType property value. Identifies the type of drive. See [drive][] resource for values.
         Args:
-            value: Value to set for the driveType property.
+            value: Value to set for the drive_type property.
         """
         self._drive_type = value
     
@@ -101,15 +101,15 @@ class ItemReference(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "drive_id": lambda n : setattr(self, 'drive_id', n.get_str_value()),
-            "drive_type": lambda n : setattr(self, 'drive_type', n.get_str_value()),
+            "driveId": lambda n : setattr(self, 'drive_id', n.get_str_value()),
+            "driveType": lambda n : setattr(self, 'drive_type', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),
-            "share_id": lambda n : setattr(self, 'share_id', n.get_str_value()),
-            "sharepoint_ids": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
-            "site_id": lambda n : setattr(self, 'site_id', n.get_str_value()),
+            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
+            "shareId": lambda n : setattr(self, 'share_id', n.get_str_value()),
+            "siteId": lambda n : setattr(self, 'site_id', n.get_str_value()),
         }
         return fields
     
@@ -160,7 +160,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -195,8 +195,8 @@ class ItemReference(AdditionalDataHolder, Parsable):
         writer.write_str_value("name", self.name)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("path", self.path)
-        writer.write_str_value("shareId", self.share_id)
         writer.write_object_value("sharepointIds", self.sharepoint_ids)
+        writer.write_str_value("shareId", self.share_id)
         writer.write_str_value("siteId", self.site_id)
         writer.write_additional_data_value(self.additional_data)
     
@@ -213,7 +213,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
         """
         Sets the shareId property value. A unique identifier for a shared resource that can be accessed via the [Shares][] API.
         Args:
-            value: Value to set for the shareId property.
+            value: Value to set for the share_id property.
         """
         self._share_id = value
     
@@ -230,7 +230,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
         """
         Sets the sharepointIds property value. Returns identifiers useful for SharePoint REST compatibility. Read-only.
         Args:
-            value: Value to set for the sharepointIds property.
+            value: Value to set for the sharepoint_ids property.
         """
         self._sharepoint_ids = value
     
@@ -247,7 +247,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
         """
         Sets the siteId property value. For OneDrive for Business and SharePoint, this property represents the ID of the site that contains the parent document library of the driveItem resource. The value is the same as the id property of that [site][] resource. It is an opaque string that consists of three identifiers of the site. For OneDrive, this property is not populated.
         Args:
-            value: Value to set for the siteId property.
+            value: Value to set for the site_id property.
         """
         self._site_id = value
     

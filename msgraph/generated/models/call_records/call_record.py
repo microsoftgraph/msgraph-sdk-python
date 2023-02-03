@@ -64,7 +64,7 @@ class CallRecord(entity.Entity):
         """
         Sets the endDateTime property value. UTC time when the last user left the call. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the endDateTime property.
+            value: Value to set for the end_date_time property.
         """
         self._end_date_time = value
     
@@ -74,14 +74,14 @@ class CallRecord(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "join_web_url": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "joinWebUrl": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "modalities": lambda n : setattr(self, 'modalities', n.get_collection_of_enum_values(modality.Modality)),
             "organizer": lambda n : setattr(self, 'organizer', n.get_object_value(identity_set.IdentitySet)),
             "participants": lambda n : setattr(self, 'participants', n.get_collection_of_object_values(identity_set.IdentitySet)),
             "sessions": lambda n : setattr(self, 'sessions', n.get_collection_of_object_values(session.Session)),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(call_type.CallType)),
             "version": lambda n : setattr(self, 'version', n.get_int_value()),
         }
@@ -102,7 +102,7 @@ class CallRecord(entity.Entity):
         """
         Sets the joinWebUrl property value. Meeting URL associated to the call. May not be available for a peerToPeer call record type.
         Args:
-            value: Value to set for the joinWebUrl property.
+            value: Value to set for the join_web_url property.
         """
         self._join_web_url = value
     
@@ -119,7 +119,7 @@ class CallRecord(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. UTC time when the call record was created. The DatetimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     
@@ -224,7 +224,7 @@ class CallRecord(entity.Entity):
         """
         Sets the startDateTime property value. UTC time when the first user joined the call. The DatetimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the startDateTime property.
+            value: Value to set for the start_date_time property.
         """
         self._start_date_time = value
     

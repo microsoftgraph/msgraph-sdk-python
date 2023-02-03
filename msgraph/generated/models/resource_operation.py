@@ -22,7 +22,7 @@ class ResourceOperation(entity.Entity):
         """
         Sets the actionName property value. Type of action this operation is going to perform. The actionName should be concise and limited to as few words as possible.
         Args:
-            value: Value to set for the actionName property.
+            value: Value to set for the action_name property.
         """
         self._action_name = value
     
@@ -75,9 +75,9 @@ class ResourceOperation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "action_name": lambda n : setattr(self, 'action_name', n.get_str_value()),
+            "actionName": lambda n : setattr(self, 'action_name', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "resource_name": lambda n : setattr(self, 'resource_name', n.get_str_value()),
+            "resourceName": lambda n : setattr(self, 'resource_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -96,7 +96,7 @@ class ResourceOperation(entity.Entity):
         """
         Sets the resourceName property value. Name of the Resource this operation is performed on.
         Args:
-            value: Value to set for the resourceName property.
+            value: Value to set for the resource_name property.
         """
         self._resource_name = value
     

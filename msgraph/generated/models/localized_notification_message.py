@@ -46,10 +46,10 @@ class LocalizedNotificationMessage(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "locale": lambda n : setattr(self, 'locale', n.get_str_value()),
-            "message_template": lambda n : setattr(self, 'message_template', n.get_str_value()),
+            "messageTemplate": lambda n : setattr(self, 'message_template', n.get_str_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -69,7 +69,7 @@ class LocalizedNotificationMessage(entity.Entity):
         """
         Sets the isDefault property value. Flag to indicate whether or not this is the default locale for language fallback. This flag can only be set. To unset, set this property to true on another Localized Notification Message.
         Args:
-            value: Value to set for the isDefault property.
+            value: Value to set for the is_default property.
         """
         self._is_default = value
     
@@ -86,7 +86,7 @@ class LocalizedNotificationMessage(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. DateTime the object was last modified.
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     
@@ -120,7 +120,7 @@ class LocalizedNotificationMessage(entity.Entity):
         """
         Sets the messageTemplate property value. The Message Template content.
         Args:
-            value: Value to set for the messageTemplate property.
+            value: Value to set for the message_template property.
         """
         self._message_template = value
     

@@ -68,7 +68,7 @@ class AlertComment(AdditionalDataHolder, Parsable):
         """
         Sets the createdByDisplayName property value. The person or app name that submitted the comment.
         Args:
-            value: Value to set for the createdByDisplayName property.
+            value: Value to set for the created_by_display_name property.
         """
         self._created_by_display_name = value
     
@@ -85,7 +85,7 @@ class AlertComment(AdditionalDataHolder, Parsable):
         """
         Sets the createdDateTime property value. The time when the comment was submitted.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -108,8 +108,8 @@ class AlertComment(AdditionalDataHolder, Parsable):
         """
         fields = {
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
-            "created_by_display_name": lambda n : setattr(self, 'created_by_display_name', n.get_str_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdByDisplayName": lambda n : setattr(self, 'created_by_display_name', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -127,7 +127,7 @@ class AlertComment(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

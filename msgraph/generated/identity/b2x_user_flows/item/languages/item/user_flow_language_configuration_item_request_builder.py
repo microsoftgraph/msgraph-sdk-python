@@ -35,12 +35,13 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
         """
         return overrides_pages_request_builder.OverridesPagesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, user_flow_language_configuration_id: Optional[str] = None) -> None:
         """
         Instantiates a new UserFlowLanguageConfigurationItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            userFlowLanguageConfigurationId: key: id of userFlowLanguageConfiguration
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -50,6 +51,7 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/identity/b2xUserFlows/{b2xIdentityUserFlow%2Did}/languages/{userFlowLanguageConfiguration%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["userFlowLanguageConfiguration%2Did"] = userFlowLanguageConfigurationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

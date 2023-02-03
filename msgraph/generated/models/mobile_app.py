@@ -99,7 +99,7 @@ class MobileApp(entity.Entity):
         """
         Sets the createdDateTime property value. The date and time the app was created.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -162,7 +162,7 @@ class MobileApp(entity.Entity):
         """
         Sets the displayName property value. The admin provided or imported title of the app.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -174,19 +174,19 @@ class MobileApp(entity.Entity):
         fields = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(mobile_app_assignment.MobileAppAssignment)),
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_object_values(mobile_app_category.MobileAppCategory)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "developer": lambda n : setattr(self, 'developer', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "information_url": lambda n : setattr(self, 'information_url', n.get_str_value()),
-            "is_featured": lambda n : setattr(self, 'is_featured', n.get_bool_value()),
-            "large_icon": lambda n : setattr(self, 'large_icon', n.get_object_value(mime_content.MimeContent)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "informationUrl": lambda n : setattr(self, 'information_url', n.get_str_value()),
+            "isFeatured": lambda n : setattr(self, 'is_featured', n.get_bool_value()),
+            "largeIcon": lambda n : setattr(self, 'large_icon', n.get_object_value(mime_content.MimeContent)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
             "owner": lambda n : setattr(self, 'owner', n.get_str_value()),
-            "privacy_information_url": lambda n : setattr(self, 'privacy_information_url', n.get_str_value()),
+            "privacyInformationUrl": lambda n : setattr(self, 'privacy_information_url', n.get_str_value()),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
-            "publishing_state": lambda n : setattr(self, 'publishing_state', n.get_enum_value(mobile_app_publishing_state.MobileAppPublishingState)),
+            "publishingState": lambda n : setattr(self, 'publishing_state', n.get_enum_value(mobile_app_publishing_state.MobileAppPublishingState)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -205,7 +205,7 @@ class MobileApp(entity.Entity):
         """
         Sets the informationUrl property value. The more information Url.
         Args:
-            value: Value to set for the informationUrl property.
+            value: Value to set for the information_url property.
         """
         self._information_url = value
     
@@ -222,7 +222,7 @@ class MobileApp(entity.Entity):
         """
         Sets the isFeatured property value. The value indicating whether the app is marked as featured by the admin.
         Args:
-            value: Value to set for the isFeatured property.
+            value: Value to set for the is_featured property.
         """
         self._is_featured = value
     
@@ -239,7 +239,7 @@ class MobileApp(entity.Entity):
         """
         Sets the largeIcon property value. The large icon, to be displayed in the app details and used for upload of the icon.
         Args:
-            value: Value to set for the largeIcon property.
+            value: Value to set for the large_icon property.
         """
         self._large_icon = value
     
@@ -256,7 +256,7 @@ class MobileApp(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. The date and time the app was last modified.
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     
@@ -307,7 +307,7 @@ class MobileApp(entity.Entity):
         """
         Sets the privacyInformationUrl property value. The privacy statement Url.
         Args:
-            value: Value to set for the privacyInformationUrl property.
+            value: Value to set for the privacy_information_url property.
         """
         self._privacy_information_url = value
     
@@ -341,7 +341,7 @@ class MobileApp(entity.Entity):
         """
         Sets the publishingState property value. Indicates the publishing state of an app.
         Args:
-            value: Value to set for the publishingState property.
+            value: Value to set for the publishing_state property.
         """
         self._publishing_state = value
     

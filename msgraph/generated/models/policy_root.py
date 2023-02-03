@@ -35,7 +35,7 @@ class PolicyRoot(entity.Entity):
         """
         Sets the activityBasedTimeoutPolicies property value. The policy that controls the idle time out for web sessions for applications.
         Args:
-            value: Value to set for the activityBasedTimeoutPolicies property.
+            value: Value to set for the activity_based_timeout_policies property.
         """
         self._activity_based_timeout_policies = value
     
@@ -52,7 +52,7 @@ class PolicyRoot(entity.Entity):
         """
         Sets the adminConsentRequestPolicy property value. The policy by which consent requests are created and managed for the entire tenant.
         Args:
-            value: Value to set for the adminConsentRequestPolicy property.
+            value: Value to set for the admin_consent_request_policy property.
         """
         self._admin_consent_request_policy = value
     
@@ -69,7 +69,7 @@ class PolicyRoot(entity.Entity):
         """
         Sets the authenticationFlowsPolicy property value. The policy configuration of the self-service sign-up experience of external users.
         Args:
-            value: Value to set for the authenticationFlowsPolicy property.
+            value: Value to set for the authentication_flows_policy property.
         """
         self._authentication_flows_policy = value
     
@@ -86,7 +86,7 @@ class PolicyRoot(entity.Entity):
         """
         Sets the authenticationMethodsPolicy property value. The authentication methods and the users that are allowed to use them to sign in and perform multi-factor authentication (MFA) in Azure Active Directory (Azure AD).
         Args:
-            value: Value to set for the authenticationMethodsPolicy property.
+            value: Value to set for the authentication_methods_policy property.
         """
         self._authentication_methods_policy = value
     
@@ -103,7 +103,7 @@ class PolicyRoot(entity.Entity):
         """
         Sets the authorizationPolicy property value. The policy that controls Azure AD authorization settings.
         Args:
-            value: Value to set for the authorizationPolicy property.
+            value: Value to set for the authorization_policy property.
         """
         self._authorization_policy = value
     
@@ -120,7 +120,7 @@ class PolicyRoot(entity.Entity):
         """
         Sets the claimsMappingPolicies property value. The claim-mapping policies for WS-Fed, SAML, OAuth 2.0, and OpenID Connect protocols, for tokens issued to a specific application.
         Args:
-            value: Value to set for the claimsMappingPolicies property.
+            value: Value to set for the claims_mapping_policies property.
         """
         self._claims_mapping_policies = value
     
@@ -137,7 +137,7 @@ class PolicyRoot(entity.Entity):
         """
         Sets the conditionalAccessPolicies property value. The custom rules that define an access scenario.
         Args:
-            value: Value to set for the conditionalAccessPolicies property.
+            value: Value to set for the conditional_access_policies property.
         """
         self._conditional_access_policies = value
     
@@ -206,7 +206,7 @@ class PolicyRoot(entity.Entity):
         """
         Sets the crossTenantAccessPolicy property value. The custom rules that define an access scenario when interacting with external Azure AD tenants.
         Args:
-            value: Value to set for the crossTenantAccessPolicy property.
+            value: Value to set for the cross_tenant_access_policy property.
         """
         self._cross_tenant_access_policy = value
     
@@ -223,7 +223,7 @@ class PolicyRoot(entity.Entity):
         """
         Sets the featureRolloutPolicies property value. The feature rollout policy associated with a directory object.
         Args:
-            value: Value to set for the featureRolloutPolicies property.
+            value: Value to set for the feature_rollout_policies property.
         """
         self._feature_rollout_policies = value
     
@@ -233,22 +233,22 @@ class PolicyRoot(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "activity_based_timeout_policies": lambda n : setattr(self, 'activity_based_timeout_policies', n.get_collection_of_object_values(activity_based_timeout_policy.ActivityBasedTimeoutPolicy)),
-            "admin_consent_request_policy": lambda n : setattr(self, 'admin_consent_request_policy', n.get_object_value(admin_consent_request_policy.AdminConsentRequestPolicy)),
-            "authentication_flows_policy": lambda n : setattr(self, 'authentication_flows_policy', n.get_object_value(authentication_flows_policy.AuthenticationFlowsPolicy)),
-            "authentication_methods_policy": lambda n : setattr(self, 'authentication_methods_policy', n.get_object_value(authentication_methods_policy.AuthenticationMethodsPolicy)),
-            "authorization_policy": lambda n : setattr(self, 'authorization_policy', n.get_object_value(authorization_policy.AuthorizationPolicy)),
-            "claims_mapping_policies": lambda n : setattr(self, 'claims_mapping_policies', n.get_collection_of_object_values(claims_mapping_policy.ClaimsMappingPolicy)),
-            "conditional_access_policies": lambda n : setattr(self, 'conditional_access_policies', n.get_collection_of_object_values(conditional_access_policy.ConditionalAccessPolicy)),
-            "cross_tenant_access_policy": lambda n : setattr(self, 'cross_tenant_access_policy', n.get_object_value(cross_tenant_access_policy.CrossTenantAccessPolicy)),
-            "feature_rollout_policies": lambda n : setattr(self, 'feature_rollout_policies', n.get_collection_of_object_values(feature_rollout_policy.FeatureRolloutPolicy)),
-            "home_realm_discovery_policies": lambda n : setattr(self, 'home_realm_discovery_policies', n.get_collection_of_object_values(home_realm_discovery_policy.HomeRealmDiscoveryPolicy)),
-            "identity_security_defaults_enforcement_policy": lambda n : setattr(self, 'identity_security_defaults_enforcement_policy', n.get_object_value(identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy)),
-            "permission_grant_policies": lambda n : setattr(self, 'permission_grant_policies', n.get_collection_of_object_values(permission_grant_policy.PermissionGrantPolicy)),
-            "role_management_policies": lambda n : setattr(self, 'role_management_policies', n.get_collection_of_object_values(unified_role_management_policy.UnifiedRoleManagementPolicy)),
-            "role_management_policy_assignments": lambda n : setattr(self, 'role_management_policy_assignments', n.get_collection_of_object_values(unified_role_management_policy_assignment.UnifiedRoleManagementPolicyAssignment)),
-            "token_issuance_policies": lambda n : setattr(self, 'token_issuance_policies', n.get_collection_of_object_values(token_issuance_policy.TokenIssuancePolicy)),
-            "token_lifetime_policies": lambda n : setattr(self, 'token_lifetime_policies', n.get_collection_of_object_values(token_lifetime_policy.TokenLifetimePolicy)),
+            "activityBasedTimeoutPolicies": lambda n : setattr(self, 'activity_based_timeout_policies', n.get_collection_of_object_values(activity_based_timeout_policy.ActivityBasedTimeoutPolicy)),
+            "adminConsentRequestPolicy": lambda n : setattr(self, 'admin_consent_request_policy', n.get_object_value(admin_consent_request_policy.AdminConsentRequestPolicy)),
+            "authenticationFlowsPolicy": lambda n : setattr(self, 'authentication_flows_policy', n.get_object_value(authentication_flows_policy.AuthenticationFlowsPolicy)),
+            "authenticationMethodsPolicy": lambda n : setattr(self, 'authentication_methods_policy', n.get_object_value(authentication_methods_policy.AuthenticationMethodsPolicy)),
+            "authorizationPolicy": lambda n : setattr(self, 'authorization_policy', n.get_object_value(authorization_policy.AuthorizationPolicy)),
+            "claimsMappingPolicies": lambda n : setattr(self, 'claims_mapping_policies', n.get_collection_of_object_values(claims_mapping_policy.ClaimsMappingPolicy)),
+            "conditionalAccessPolicies": lambda n : setattr(self, 'conditional_access_policies', n.get_collection_of_object_values(conditional_access_policy.ConditionalAccessPolicy)),
+            "crossTenantAccessPolicy": lambda n : setattr(self, 'cross_tenant_access_policy', n.get_object_value(cross_tenant_access_policy.CrossTenantAccessPolicy)),
+            "featureRolloutPolicies": lambda n : setattr(self, 'feature_rollout_policies', n.get_collection_of_object_values(feature_rollout_policy.FeatureRolloutPolicy)),
+            "homeRealmDiscoveryPolicies": lambda n : setattr(self, 'home_realm_discovery_policies', n.get_collection_of_object_values(home_realm_discovery_policy.HomeRealmDiscoveryPolicy)),
+            "identitySecurityDefaultsEnforcementPolicy": lambda n : setattr(self, 'identity_security_defaults_enforcement_policy', n.get_object_value(identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy)),
+            "permissionGrantPolicies": lambda n : setattr(self, 'permission_grant_policies', n.get_collection_of_object_values(permission_grant_policy.PermissionGrantPolicy)),
+            "roleManagementPolicies": lambda n : setattr(self, 'role_management_policies', n.get_collection_of_object_values(unified_role_management_policy.UnifiedRoleManagementPolicy)),
+            "roleManagementPolicyAssignments": lambda n : setattr(self, 'role_management_policy_assignments', n.get_collection_of_object_values(unified_role_management_policy_assignment.UnifiedRoleManagementPolicyAssignment)),
+            "tokenIssuancePolicies": lambda n : setattr(self, 'token_issuance_policies', n.get_collection_of_object_values(token_issuance_policy.TokenIssuancePolicy)),
+            "tokenLifetimePolicies": lambda n : setattr(self, 'token_lifetime_policies', n.get_collection_of_object_values(token_lifetime_policy.TokenLifetimePolicy)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -267,7 +267,7 @@ class PolicyRoot(entity.Entity):
         """
         Sets the homeRealmDiscoveryPolicies property value. The policy to control Azure AD authentication behavior for federated users.
         Args:
-            value: Value to set for the homeRealmDiscoveryPolicies property.
+            value: Value to set for the home_realm_discovery_policies property.
         """
         self._home_realm_discovery_policies = value
     
@@ -284,7 +284,7 @@ class PolicyRoot(entity.Entity):
         """
         Sets the identitySecurityDefaultsEnforcementPolicy property value. The policy that represents the security defaults that protect against common attacks.
         Args:
-            value: Value to set for the identitySecurityDefaultsEnforcementPolicy property.
+            value: Value to set for the identity_security_defaults_enforcement_policy property.
         """
         self._identity_security_defaults_enforcement_policy = value
     
@@ -301,7 +301,7 @@ class PolicyRoot(entity.Entity):
         """
         Sets the permissionGrantPolicies property value. The policy that specifies the conditions under which consent can be granted.
         Args:
-            value: Value to set for the permissionGrantPolicies property.
+            value: Value to set for the permission_grant_policies property.
         """
         self._permission_grant_policies = value
     
@@ -318,7 +318,7 @@ class PolicyRoot(entity.Entity):
         """
         Sets the roleManagementPolicies property value. Specifies the various policies associated with scopes and roles.
         Args:
-            value: Value to set for the roleManagementPolicies property.
+            value: Value to set for the role_management_policies property.
         """
         self._role_management_policies = value
     
@@ -335,7 +335,7 @@ class PolicyRoot(entity.Entity):
         """
         Sets the roleManagementPolicyAssignments property value. The assignment of a role management policy to a role definition object.
         Args:
-            value: Value to set for the roleManagementPolicyAssignments property.
+            value: Value to set for the role_management_policy_assignments property.
         """
         self._role_management_policy_assignments = value
     
@@ -378,7 +378,7 @@ class PolicyRoot(entity.Entity):
         """
         Sets the tokenIssuancePolicies property value. The policy that specifies the characteristics of SAML tokens issued by Azure AD.
         Args:
-            value: Value to set for the tokenIssuancePolicies property.
+            value: Value to set for the token_issuance_policies property.
         """
         self._token_issuance_policies = value
     
@@ -395,7 +395,7 @@ class PolicyRoot(entity.Entity):
         """
         Sets the tokenLifetimePolicies property value. The policy that controls the lifetime of a JWT access token, an ID token, or a SAML 1.1/2.0 token issued by Azure AD.
         Args:
-            value: Value to set for the tokenLifetimePolicies property.
+            value: Value to set for the token_lifetime_policies property.
         """
         self._token_lifetime_policies = value
     

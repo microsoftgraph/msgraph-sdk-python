@@ -17,10 +17,11 @@ class MobileThreatDefenseConnectorItemRequestBuilder():
     """
     Provides operations to manage the mobileThreatDefenseConnectors property of the microsoft.graph.deviceManagement entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, mobile_threat_defense_connector_id: Optional[str] = None) -> None:
         """
         Instantiates a new MobileThreatDefenseConnectorItemRequestBuilder and sets the default values.
         Args:
+            mobileThreatDefenseConnectorId: key: id of mobileThreatDefenseConnector
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class MobileThreatDefenseConnectorItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceManagement/mobileThreatDefenseConnectors/{mobileThreatDefenseConnector%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["mobileThreatDefenseConnector%2Did"] = mobileThreatDefenseConnectorId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

@@ -62,10 +62,10 @@ class SimulationReportOverview(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "recommended_actions": lambda n : setattr(self, 'recommended_actions', n.get_collection_of_object_values(recommended_action.RecommendedAction)),
-            "resolved_targets_count": lambda n : setattr(self, 'resolved_targets_count', n.get_int_value()),
-            "simulation_events_content": lambda n : setattr(self, 'simulation_events_content', n.get_object_value(simulation_events_content.SimulationEventsContent)),
-            "training_events_content": lambda n : setattr(self, 'training_events_content', n.get_object_value(training_events_content.TrainingEventsContent)),
+            "recommendedActions": lambda n : setattr(self, 'recommended_actions', n.get_collection_of_object_values(recommended_action.RecommendedAction)),
+            "resolvedTargetsCount": lambda n : setattr(self, 'resolved_targets_count', n.get_int_value()),
+            "simulationEventsContent": lambda n : setattr(self, 'simulation_events_content', n.get_object_value(simulation_events_content.SimulationEventsContent)),
+            "trainingEventsContent": lambda n : setattr(self, 'training_events_content', n.get_object_value(training_events_content.TrainingEventsContent)),
         }
         return fields
     
@@ -82,7 +82,7 @@ class SimulationReportOverview(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -99,7 +99,7 @@ class SimulationReportOverview(AdditionalDataHolder, Parsable):
         """
         Sets the recommendedActions property value. List of recommended actions for a tenant to improve its security posture based on the attack simulation and training campaign attack type.
         Args:
-            value: Value to set for the recommendedActions property.
+            value: Value to set for the recommended_actions property.
         """
         self._recommended_actions = value
     
@@ -116,7 +116,7 @@ class SimulationReportOverview(AdditionalDataHolder, Parsable):
         """
         Sets the resolvedTargetsCount property value. Number of valid users in the attack simulation and training campaign.
         Args:
-            value: Value to set for the resolvedTargetsCount property.
+            value: Value to set for the resolved_targets_count property.
         """
         self._resolved_targets_count = value
     
@@ -148,7 +148,7 @@ class SimulationReportOverview(AdditionalDataHolder, Parsable):
         """
         Sets the simulationEventsContent property value. Summary of simulation events in the attack simulation and training campaign.
         Args:
-            value: Value to set for the simulationEventsContent property.
+            value: Value to set for the simulation_events_content property.
         """
         self._simulation_events_content = value
     
@@ -165,7 +165,7 @@ class SimulationReportOverview(AdditionalDataHolder, Parsable):
         """
         Sets the trainingEventsContent property value. Summary of assigned trainings in the attack simulation and training campaign.
         Args:
-            value: Value to set for the trainingEventsContent property.
+            value: Value to set for the training_events_content property.
         """
         self._training_events_content = value
     

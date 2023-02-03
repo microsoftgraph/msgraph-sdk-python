@@ -28,7 +28,7 @@ class Alert(entity.Entity):
         """
         Sets the actorDisplayName property value. The adversary or activity group that is associated with this alert.
         Args:
-            value: Value to set for the actorDisplayName property.
+            value: Value to set for the actor_display_name property.
         """
         self._actor_display_name = value
     
@@ -45,7 +45,7 @@ class Alert(entity.Entity):
         """
         Sets the alertWebUrl property value. URL for the alert page in the Microsoft 365 Defender portal.
         Args:
-            value: Value to set for the alertWebUrl property.
+            value: Value to set for the alert_web_url property.
         """
         self._alert_web_url = value
     
@@ -62,7 +62,7 @@ class Alert(entity.Entity):
         """
         Sets the assignedTo property value. Owner of the alert, or null if no owner is assigned.
         Args:
-            value: Value to set for the assignedTo property.
+            value: Value to set for the assigned_to property.
         """
         self._assigned_to = value
     
@@ -194,7 +194,7 @@ class Alert(entity.Entity):
         """
         Sets the createdDateTime property value. Time when Microsoft 365 Defender created the alert.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -240,7 +240,7 @@ class Alert(entity.Entity):
         """
         Sets the detectionSource property value. Detection technology or sensor that identified the notable component or activity.
         Args:
-            value: Value to set for the detectionSource property.
+            value: Value to set for the detection_source property.
         """
         self._detection_source = value
     
@@ -257,7 +257,7 @@ class Alert(entity.Entity):
         """
         Sets the detectorId property value. The ID of the detector that triggered the alert.
         Args:
-            value: Value to set for the detectorId property.
+            value: Value to set for the detector_id property.
         """
         self._detector_id = value
     
@@ -308,7 +308,7 @@ class Alert(entity.Entity):
         """
         Sets the firstActivityDateTime property value. The earliest activity associated with the alert.
         Args:
-            value: Value to set for the firstActivityDateTime property.
+            value: Value to set for the first_activity_date_time property.
         """
         self._first_activity_date_time = value
     
@@ -318,33 +318,33 @@ class Alert(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "actor_display_name": lambda n : setattr(self, 'actor_display_name', n.get_str_value()),
-            "alert_web_url": lambda n : setattr(self, 'alert_web_url', n.get_str_value()),
-            "assigned_to": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
+            "actorDisplayName": lambda n : setattr(self, 'actor_display_name', n.get_str_value()),
+            "alertWebUrl": lambda n : setattr(self, 'alert_web_url', n.get_str_value()),
+            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
             "classification": lambda n : setattr(self, 'classification', n.get_enum_value(alert_classification.AlertClassification)),
             "comments": lambda n : setattr(self, 'comments', n.get_collection_of_object_values(alert_comment.AlertComment)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "detection_source": lambda n : setattr(self, 'detection_source', n.get_enum_value(detection_source.DetectionSource)),
-            "detector_id": lambda n : setattr(self, 'detector_id', n.get_str_value()),
+            "detectionSource": lambda n : setattr(self, 'detection_source', n.get_enum_value(detection_source.DetectionSource)),
+            "detectorId": lambda n : setattr(self, 'detector_id', n.get_str_value()),
             "determination": lambda n : setattr(self, 'determination', n.get_enum_value(alert_determination.AlertDetermination)),
             "evidence": lambda n : setattr(self, 'evidence', n.get_collection_of_object_values(alert_evidence.AlertEvidence)),
-            "first_activity_date_time": lambda n : setattr(self, 'first_activity_date_time', n.get_datetime_value()),
-            "incident_id": lambda n : setattr(self, 'incident_id', n.get_str_value()),
-            "incident_web_url": lambda n : setattr(self, 'incident_web_url', n.get_str_value()),
-            "last_activity_date_time": lambda n : setattr(self, 'last_activity_date_time', n.get_datetime_value()),
-            "last_update_date_time": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
-            "mitre_techniques": lambda n : setattr(self, 'mitre_techniques', n.get_collection_of_primitive_values(str)),
-            "provider_alert_id": lambda n : setattr(self, 'provider_alert_id', n.get_str_value()),
-            "recommended_actions": lambda n : setattr(self, 'recommended_actions', n.get_str_value()),
-            "resolved_date_time": lambda n : setattr(self, 'resolved_date_time', n.get_datetime_value()),
-            "service_source": lambda n : setattr(self, 'service_source', n.get_enum_value(service_source.ServiceSource)),
+            "firstActivityDateTime": lambda n : setattr(self, 'first_activity_date_time', n.get_datetime_value()),
+            "incidentId": lambda n : setattr(self, 'incident_id', n.get_str_value()),
+            "incidentWebUrl": lambda n : setattr(self, 'incident_web_url', n.get_str_value()),
+            "lastActivityDateTime": lambda n : setattr(self, 'last_activity_date_time', n.get_datetime_value()),
+            "lastUpdateDateTime": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
+            "mitreTechniques": lambda n : setattr(self, 'mitre_techniques', n.get_collection_of_primitive_values(str)),
+            "providerAlertId": lambda n : setattr(self, 'provider_alert_id', n.get_str_value()),
+            "recommendedActions": lambda n : setattr(self, 'recommended_actions', n.get_str_value()),
+            "resolvedDateTime": lambda n : setattr(self, 'resolved_date_time', n.get_datetime_value()),
+            "serviceSource": lambda n : setattr(self, 'service_source', n.get_enum_value(service_source.ServiceSource)),
             "severity": lambda n : setattr(self, 'severity', n.get_enum_value(alert_severity.AlertSeverity)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(alert_status.AlertStatus)),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
-            "threat_display_name": lambda n : setattr(self, 'threat_display_name', n.get_str_value()),
-            "threat_family_name": lambda n : setattr(self, 'threat_family_name', n.get_str_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "threatDisplayName": lambda n : setattr(self, 'threat_display_name', n.get_str_value()),
+            "threatFamilyName": lambda n : setattr(self, 'threat_family_name', n.get_str_value()),
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -364,7 +364,7 @@ class Alert(entity.Entity):
         """
         Sets the incidentId property value. Unique identifier to represent the incident this alert resource is associated with.
         Args:
-            value: Value to set for the incidentId property.
+            value: Value to set for the incident_id property.
         """
         self._incident_id = value
     
@@ -381,7 +381,7 @@ class Alert(entity.Entity):
         """
         Sets the incidentWebUrl property value. URL for the incident page in the Microsoft 365 Defender portal.
         Args:
-            value: Value to set for the incidentWebUrl property.
+            value: Value to set for the incident_web_url property.
         """
         self._incident_web_url = value
     
@@ -398,7 +398,7 @@ class Alert(entity.Entity):
         """
         Sets the lastActivityDateTime property value. The oldest activity associated with the alert.
         Args:
-            value: Value to set for the lastActivityDateTime property.
+            value: Value to set for the last_activity_date_time property.
         """
         self._last_activity_date_time = value
     
@@ -415,7 +415,7 @@ class Alert(entity.Entity):
         """
         Sets the lastUpdateDateTime property value. Time when the alert was last updated at Microsoft 365 Defender.
         Args:
-            value: Value to set for the lastUpdateDateTime property.
+            value: Value to set for the last_update_date_time property.
         """
         self._last_update_date_time = value
     
@@ -432,7 +432,7 @@ class Alert(entity.Entity):
         """
         Sets the mitreTechniques property value. The attack techniques, as aligned with the MITRE ATT&CK framework.
         Args:
-            value: Value to set for the mitreTechniques property.
+            value: Value to set for the mitre_techniques property.
         """
         self._mitre_techniques = value
     
@@ -449,7 +449,7 @@ class Alert(entity.Entity):
         """
         Sets the providerAlertId property value. The ID of the alert as it appears in the security provider product that generated the alert.
         Args:
-            value: Value to set for the providerAlertId property.
+            value: Value to set for the provider_alert_id property.
         """
         self._provider_alert_id = value
     
@@ -466,7 +466,7 @@ class Alert(entity.Entity):
         """
         Sets the recommendedActions property value. Recommended response and remediation actions to take in the event this alert was generated.
         Args:
-            value: Value to set for the recommendedActions property.
+            value: Value to set for the recommended_actions property.
         """
         self._recommended_actions = value
     
@@ -483,7 +483,7 @@ class Alert(entity.Entity):
         """
         Sets the resolvedDateTime property value. Time when the alert was resolved.
         Args:
-            value: Value to set for the resolvedDateTime property.
+            value: Value to set for the resolved_date_time property.
         """
         self._resolved_date_time = value
     
@@ -538,7 +538,7 @@ class Alert(entity.Entity):
         """
         Sets the serviceSource property value. The serviceSource property
         Args:
-            value: Value to set for the serviceSource property.
+            value: Value to set for the service_source property.
         """
         self._service_source = value
     
@@ -589,7 +589,7 @@ class Alert(entity.Entity):
         """
         Sets the tenantId property value. The Azure Active Directory tenant the alert was created in.
         Args:
-            value: Value to set for the tenantId property.
+            value: Value to set for the tenant_id property.
         """
         self._tenant_id = value
     
@@ -606,7 +606,7 @@ class Alert(entity.Entity):
         """
         Sets the threatDisplayName property value. The threat associated with this alert.
         Args:
-            value: Value to set for the threatDisplayName property.
+            value: Value to set for the threat_display_name property.
         """
         self._threat_display_name = value
     
@@ -623,7 +623,7 @@ class Alert(entity.Entity):
         """
         Sets the threatFamilyName property value. Threat family associated with this alert.
         Args:
-            value: Value to set for the threatFamilyName property.
+            value: Value to set for the threat_family_name property.
         """
         self._threat_family_name = value
     

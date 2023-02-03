@@ -52,7 +52,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
         """
         Sets the containerId property value. The identifier of the resource that contains the plan. Optional.
         Args:
-            value: Value to set for the containerId property.
+            value: Value to set for the container_id property.
         """
         self._container_id = value
     
@@ -74,7 +74,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "container_id": lambda n : setattr(self, 'container_id', n.get_str_value()),
+            "containerId": lambda n : setattr(self, 'container_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(planner_container_type.PlannerContainerType)),
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
@@ -94,7 +94,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

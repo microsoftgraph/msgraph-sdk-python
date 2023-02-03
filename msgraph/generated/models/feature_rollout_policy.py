@@ -21,7 +21,7 @@ class FeatureRolloutPolicy(entity.Entity):
         """
         Sets the appliesTo property value. Nullable. Specifies a list of directoryObjects that feature is enabled for.
         Args:
-            value: Value to set for the appliesTo property.
+            value: Value to set for the applies_to property.
         """
         self._applies_to = value
     
@@ -87,7 +87,7 @@ class FeatureRolloutPolicy(entity.Entity):
         """
         Sets the displayName property value. The display name for this  feature rollout policy.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -114,12 +114,12 @@ class FeatureRolloutPolicy(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "applies_to": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "appliesTo": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "feature": lambda n : setattr(self, 'feature', n.get_enum_value(staged_feature_name.StagedFeatureName)),
-            "is_applied_to_organization": lambda n : setattr(self, 'is_applied_to_organization', n.get_bool_value()),
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "isAppliedToOrganization": lambda n : setattr(self, 'is_applied_to_organization', n.get_bool_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -138,7 +138,7 @@ class FeatureRolloutPolicy(entity.Entity):
         """
         Sets the isAppliedToOrganization property value. Indicates whether this feature rollout policy should be applied to the entire organization.
         Args:
-            value: Value to set for the isAppliedToOrganization property.
+            value: Value to set for the is_applied_to_organization property.
         """
         self._is_applied_to_organization = value
     
@@ -155,7 +155,7 @@ class FeatureRolloutPolicy(entity.Entity):
         """
         Sets the isEnabled property value. Indicates whether the feature rollout is enabled.
         Args:
-            value: Value to set for the isEnabled property.
+            value: Value to set for the is_enabled property.
         """
         self._is_enabled = value
     

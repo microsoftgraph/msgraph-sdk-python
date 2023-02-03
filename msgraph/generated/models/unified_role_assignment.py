@@ -22,7 +22,7 @@ class UnifiedRoleAssignment(entity.Entity):
         """
         Sets the appScope property value. Read-only property with details of the app specific scope when the assignment scope is app specific. Containment entity. Supports $expand.
         Args:
-            value: Value to set for the appScope property.
+            value: Value to set for the app_scope property.
         """
         self._app_scope = value
     
@@ -39,7 +39,7 @@ class UnifiedRoleAssignment(entity.Entity):
         """
         Sets the appScopeId property value. Identifier of the app-specific scope when the assignment scope is app-specific.  Either this property or directoryScopeId is required. App scopes are scopes that are defined and understood by this application only. Use / for tenant-wide app scopes. Use directoryScopeId to limit the scope to particular directory objects, for example, administrative units. Supports $filter (eq, in).
         Args:
-            value: Value to set for the appScopeId property.
+            value: Value to set for the app_scope_id property.
         """
         self._app_scope_id = value
     
@@ -111,7 +111,7 @@ class UnifiedRoleAssignment(entity.Entity):
         """
         Sets the directoryScope property value. The directory object that is the scope of the assignment. Read-only. Supports $expand.
         Args:
-            value: Value to set for the directoryScope property.
+            value: Value to set for the directory_scope property.
         """
         self._directory_scope = value
     
@@ -128,7 +128,7 @@ class UnifiedRoleAssignment(entity.Entity):
         """
         Sets the directoryScopeId property value. Identifier of the directory object representing the scope of the assignment.  Either this property or appScopeId is required. The scope of an assignment determines the set of resources for which the principal has been granted access. Directory scopes are shared scopes stored in the directory that are understood by multiple applications. Use / for tenant-wide scope. Use appScopeId to limit the scope to an application only. Supports $filter (eq, in).
         Args:
-            value: Value to set for the directoryScopeId property.
+            value: Value to set for the directory_scope_id property.
         """
         self._directory_scope_id = value
     
@@ -138,15 +138,15 @@ class UnifiedRoleAssignment(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_scope": lambda n : setattr(self, 'app_scope', n.get_object_value(app_scope.AppScope)),
-            "app_scope_id": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
+            "appScope": lambda n : setattr(self, 'app_scope', n.get_object_value(app_scope.AppScope)),
+            "appScopeId": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
             "condition": lambda n : setattr(self, 'condition', n.get_str_value()),
-            "directory_scope": lambda n : setattr(self, 'directory_scope', n.get_object_value(directory_object.DirectoryObject)),
-            "directory_scope_id": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
+            "directoryScope": lambda n : setattr(self, 'directory_scope', n.get_object_value(directory_object.DirectoryObject)),
+            "directoryScopeId": lambda n : setattr(self, 'directory_scope_id', n.get_str_value()),
             "principal": lambda n : setattr(self, 'principal', n.get_object_value(directory_object.DirectoryObject)),
-            "principal_id": lambda n : setattr(self, 'principal_id', n.get_str_value()),
-            "role_definition": lambda n : setattr(self, 'role_definition', n.get_object_value(unified_role_definition.UnifiedRoleDefinition)),
-            "role_definition_id": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
+            "principalId": lambda n : setattr(self, 'principal_id', n.get_str_value()),
+            "roleDefinition": lambda n : setattr(self, 'role_definition', n.get_object_value(unified_role_definition.UnifiedRoleDefinition)),
+            "roleDefinitionId": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -182,7 +182,7 @@ class UnifiedRoleAssignment(entity.Entity):
         """
         Sets the principalId property value. Identifier of the principal to which the assignment is granted. Supports $filter (eq, in).
         Args:
-            value: Value to set for the principalId property.
+            value: Value to set for the principal_id property.
         """
         self._principal_id = value
     
@@ -199,7 +199,7 @@ class UnifiedRoleAssignment(entity.Entity):
         """
         Sets the roleDefinition property value. The roleDefinition the assignment is for.  Supports $expand. roleDefinition.Id will be auto expanded.
         Args:
-            value: Value to set for the roleDefinition property.
+            value: Value to set for the role_definition property.
         """
         self._role_definition = value
     
@@ -216,7 +216,7 @@ class UnifiedRoleAssignment(entity.Entity):
         """
         Sets the roleDefinitionId property value. Identifier of the role definition the assignment is for. Read only. Supports $filter (eq, in).
         Args:
-            value: Value to set for the roleDefinitionId property.
+            value: Value to set for the role_definition_id property.
         """
         self._role_definition_id = value
     

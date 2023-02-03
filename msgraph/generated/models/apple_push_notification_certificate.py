@@ -20,7 +20,7 @@ class ApplePushNotificationCertificate(entity.Entity):
         """
         Sets the appleIdentifier property value. Apple Id of the account used to create the MDM push certificate.
         Args:
-            value: Value to set for the appleIdentifier property.
+            value: Value to set for the apple_identifier property.
         """
         self._apple_identifier = value
     
@@ -54,7 +54,7 @@ class ApplePushNotificationCertificate(entity.Entity):
         """
         Sets the certificateSerialNumber property value. Certificate serial number. This property is read-only.
         Args:
-            value: Value to set for the certificateSerialNumber property.
+            value: Value to set for the certificate_serial_number property.
         """
         self._certificate_serial_number = value
     
@@ -71,7 +71,7 @@ class ApplePushNotificationCertificate(entity.Entity):
         """
         Sets the certificateUploadFailureReason property value. The reason the certificate upload failed.
         Args:
-            value: Value to set for the certificateUploadFailureReason property.
+            value: Value to set for the certificate_upload_failure_reason property.
         """
         self._certificate_upload_failure_reason = value
     
@@ -88,7 +88,7 @@ class ApplePushNotificationCertificate(entity.Entity):
         """
         Sets the certificateUploadStatus property value. The certificate upload status.
         Args:
-            value: Value to set for the certificateUploadStatus property.
+            value: Value to set for the certificate_upload_status property.
         """
         self._certificate_upload_status = value
     
@@ -141,7 +141,7 @@ class ApplePushNotificationCertificate(entity.Entity):
         """
         Sets the expirationDateTime property value. The expiration date and time for Apple push notification certificate.
         Args:
-            value: Value to set for the expirationDateTime property.
+            value: Value to set for the expiration_date_time property.
         """
         self._expiration_date_time = value
     
@@ -151,14 +151,14 @@ class ApplePushNotificationCertificate(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "apple_identifier": lambda n : setattr(self, 'apple_identifier', n.get_str_value()),
+            "appleIdentifier": lambda n : setattr(self, 'apple_identifier', n.get_str_value()),
             "certificate": lambda n : setattr(self, 'certificate', n.get_str_value()),
-            "certificate_serial_number": lambda n : setattr(self, 'certificate_serial_number', n.get_str_value()),
-            "certificate_upload_failure_reason": lambda n : setattr(self, 'certificate_upload_failure_reason', n.get_str_value()),
-            "certificate_upload_status": lambda n : setattr(self, 'certificate_upload_status', n.get_str_value()),
-            "expiration_date_time": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
-            "topic_identifier": lambda n : setattr(self, 'topic_identifier', n.get_str_value()),
+            "certificateSerialNumber": lambda n : setattr(self, 'certificate_serial_number', n.get_str_value()),
+            "certificateUploadFailureReason": lambda n : setattr(self, 'certificate_upload_failure_reason', n.get_str_value()),
+            "certificateUploadStatus": lambda n : setattr(self, 'certificate_upload_status', n.get_str_value()),
+            "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "topicIdentifier": lambda n : setattr(self, 'topic_identifier', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -177,7 +177,7 @@ class ApplePushNotificationCertificate(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. Last modified date and time for Apple push notification certificate.
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     
@@ -211,7 +211,7 @@ class ApplePushNotificationCertificate(entity.Entity):
         """
         Sets the topicIdentifier property value. Topic Id.
         Args:
-            value: Value to set for the topicIdentifier property.
+            value: Value to set for the topic_identifier property.
         """
         self._topic_identifier = value
     

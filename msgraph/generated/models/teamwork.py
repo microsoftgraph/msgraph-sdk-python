@@ -35,7 +35,7 @@ class Teamwork(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "workforce_integrations": lambda n : setattr(self, 'workforce_integrations', n.get_collection_of_object_values(workforce_integration.WorkforceIntegration)),
+            "workforceIntegrations": lambda n : setattr(self, 'workforce_integrations', n.get_collection_of_object_values(workforce_integration.WorkforceIntegration)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -65,7 +65,7 @@ class Teamwork(entity.Entity):
         """
         Sets the workforceIntegrations property value. The workforceIntegrations property
         Args:
-            value: Value to set for the workforceIntegrations property.
+            value: Value to set for the workforce_integrations property.
         """
         self._workforce_integrations = value
     

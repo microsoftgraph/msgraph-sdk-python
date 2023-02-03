@@ -37,7 +37,7 @@ class Attendee(attendee_base.AttendeeBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "proposed_new_time": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(time_slot.TimeSlot)),
+            "proposedNewTime": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(time_slot.TimeSlot)),
             "status": lambda n : setattr(self, 'status', n.get_object_value(response_status.ResponseStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -57,7 +57,7 @@ class Attendee(attendee_base.AttendeeBase):
         """
         Sets the proposedNewTime property value. An alternate date/time proposed by the attendee for a meeting request to start and end. If the attendee hasn't proposed another time, then this property is not included in a response of a GET event.
         Args:
-            value: Value to set for the proposedNewTime property.
+            value: Value to set for the proposed_new_time property.
         """
         self._proposed_new_time = value
     

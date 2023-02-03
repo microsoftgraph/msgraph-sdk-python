@@ -55,7 +55,7 @@ class UserAttributeValuesItem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_default": lambda n : setattr(self, 'is_default', n.get_bool_value()),
+            "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
@@ -75,7 +75,7 @@ class UserAttributeValuesItem(AdditionalDataHolder, Parsable):
         """
         Sets the isDefault property value. Determines whether the value is set as the default.
         Args:
-            value: Value to set for the isDefault property.
+            value: Value to set for the is_default property.
         """
         self._is_default = value
     
@@ -109,7 +109,7 @@ class UserAttributeValuesItem(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

@@ -37,7 +37,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the accountEnabled property value. true if the service principal account is enabled; otherwise, false. If set to false, then no users will be able to sign in to this app, even if they are assigned to it. Supports $filter (eq, ne, not, in).
         Args:
-            value: Value to set for the accountEnabled property.
+            value: Value to set for the account_enabled property.
         """
         self._account_enabled = value
     
@@ -54,7 +54,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the addIns property value. Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This will let services like Microsoft 365 call the application in the context of a document the user is working on.
         Args:
-            value: Value to set for the addIns property.
+            value: Value to set for the add_ins property.
         """
         self._add_ins = value
     
@@ -71,7 +71,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the alternativeNames property value. Used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities. Supports $filter (eq, not, ge, le, startsWith).
         Args:
-            value: Value to set for the alternativeNames property.
+            value: Value to set for the alternative_names property.
         """
         self._alternative_names = value
     
@@ -88,7 +88,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the appDescription property value. The description exposed by the associated application.
         Args:
-            value: Value to set for the appDescription property.
+            value: Value to set for the app_description property.
         """
         self._app_description = value
     
@@ -105,7 +105,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the appDisplayName property value. The display name exposed by the associated application.
         Args:
-            value: Value to set for the appDisplayName property.
+            value: Value to set for the app_display_name property.
         """
         self._app_display_name = value
     
@@ -122,26 +122,9 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the appId property value. The unique identifier for the associated application (its appId property). Supports $filter (eq, ne, not, in, startsWith).
         Args:
-            value: Value to set for the appId property.
+            value: Value to set for the app_id property.
         """
         self._app_id = value
-    
-    @property
-    def application_template_id(self,) -> Optional[str]:
-        """
-        Gets the applicationTemplateId property value. Unique identifier of the applicationTemplate that the servicePrincipal was created from. Read-only. Supports $filter (eq, ne, NOT, startsWith).
-        Returns: Optional[str]
-        """
-        return self._application_template_id
-    
-    @application_template_id.setter
-    def application_template_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the applicationTemplateId property value. Unique identifier of the applicationTemplate that the servicePrincipal was created from. Read-only. Supports $filter (eq, ne, NOT, startsWith).
-        Args:
-            value: Value to set for the applicationTemplateId property.
-        """
-        self._application_template_id = value
     
     @property
     def app_owner_organization_id(self,) -> Optional[Guid]:
@@ -156,7 +139,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the appOwnerOrganizationId property value. Contains the tenant id where the application is registered. This is applicable only to service principals backed by applications. Supports $filter (eq, ne, NOT, ge, le).
         Args:
-            value: Value to set for the appOwnerOrganizationId property.
+            value: Value to set for the app_owner_organization_id property.
         """
         self._app_owner_organization_id = value
     
@@ -173,7 +156,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the appRoleAssignedTo property value. App role assignments for this app or service, granted to users, groups, and other service principals. Supports $expand.
         Args:
-            value: Value to set for the appRoleAssignedTo property.
+            value: Value to set for the app_role_assigned_to property.
         """
         self._app_role_assigned_to = value
     
@@ -190,7 +173,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the appRoleAssignmentRequired property value. Specifies whether users or other service principals need to be granted an app role assignment for this service principal before users can sign in or apps can get tokens. The default value is false. Not nullable. Supports $filter (eq, ne, NOT).
         Args:
-            value: Value to set for the appRoleAssignmentRequired property.
+            value: Value to set for the app_role_assignment_required property.
         """
         self._app_role_assignment_required = value
     
@@ -207,7 +190,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the appRoleAssignments property value. App role assignment for another app or service, granted to this service principal. Supports $expand.
         Args:
-            value: Value to set for the appRoleAssignments property.
+            value: Value to set for the app_role_assignments property.
         """
         self._app_role_assignments = value
     
@@ -224,9 +207,26 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the appRoles property value. The roles exposed by the application which this service principal represents. For more information see the appRoles property definition on the application entity. Not nullable.
         Args:
-            value: Value to set for the appRoles property.
+            value: Value to set for the app_roles property.
         """
         self._app_roles = value
+    
+    @property
+    def application_template_id(self,) -> Optional[str]:
+        """
+        Gets the applicationTemplateId property value. Unique identifier of the applicationTemplate that the servicePrincipal was created from. Read-only. Supports $filter (eq, ne, NOT, startsWith).
+        Returns: Optional[str]
+        """
+        return self._application_template_id
+    
+    @application_template_id.setter
+    def application_template_id(self,value: Optional[str] = None) -> None:
+        """
+        Sets the applicationTemplateId property value. Unique identifier of the applicationTemplate that the servicePrincipal was created from. Read-only. Supports $filter (eq, ne, NOT, startsWith).
+        Args:
+            value: Value to set for the application_template_id property.
+        """
+        self._application_template_id = value
     
     @property
     def claims_mapping_policies(self,) -> Optional[List[claims_mapping_policy.ClaimsMappingPolicy]]:
@@ -241,7 +241,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the claimsMappingPolicies property value. The claimsMappingPolicies assigned to this service principal. Supports $expand.
         Args:
-            value: Value to set for the claimsMappingPolicies property.
+            value: Value to set for the claims_mapping_policies property.
         """
         self._claims_mapping_policies = value
     
@@ -263,8 +263,6 @@ class ServicePrincipal(directory_object.DirectoryObject):
         self._app_display_name: Optional[str] = None
         # The unique identifier for the associated application (its appId property). Supports $filter (eq, ne, not, in, startsWith).
         self._app_id: Optional[str] = None
-        # Unique identifier of the applicationTemplate that the servicePrincipal was created from. Read-only. Supports $filter (eq, ne, NOT, startsWith).
-        self._application_template_id: Optional[str] = None
         # Contains the tenant id where the application is registered. This is applicable only to service principals backed by applications. Supports $filter (eq, ne, NOT, ge, le).
         self._app_owner_organization_id: Optional[Guid] = None
         # App role assignments for this app or service, granted to users, groups, and other service principals. Supports $expand.
@@ -275,6 +273,8 @@ class ServicePrincipal(directory_object.DirectoryObject):
         self._app_role_assignments: Optional[List[app_role_assignment.AppRoleAssignment]] = None
         # The roles exposed by the application which this service principal represents. For more information see the appRoles property definition on the application entity. Not nullable.
         self._app_roles: Optional[List[app_role.AppRole]] = None
+        # Unique identifier of the applicationTemplate that the servicePrincipal was created from. Read-only. Supports $filter (eq, ne, NOT, startsWith).
+        self._application_template_id: Optional[str] = None
         # The claimsMappingPolicies assigned to this service principal. Supports $expand.
         self._claims_mapping_policies: Optional[List[claims_mapping_policy.ClaimsMappingPolicy]] = None
         # Directory objects created by this service principal. Read-only. Nullable.
@@ -291,10 +291,10 @@ class ServicePrincipal(directory_object.DirectoryObject):
         self._endpoints: Optional[List[endpoint.Endpoint]] = None
         # Federated identities for a specific type of service principal - managed identity. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         self._federated_identity_credentials: Optional[List[federated_identity_credential.FederatedIdentityCredential]] = None
-        # Home page or landing page of the application.
-        self._homepage: Optional[str] = None
         # The homeRealmDiscoveryPolicies assigned to this service principal. Supports $expand.
         self._home_realm_discovery_policies: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]] = None
+        # Home page or landing page of the application.
+        self._homepage: Optional[str] = None
         # Basic profile information of the acquired application such as app's marketing, support, terms of service and privacy statement URLs. The terms of service and privacy statement are surfaced to users through the user consent experience. For more info, see How to: Add Terms of service and privacy statement for registered Azure AD apps. Supports $filter (eq, ne, not, ge, le, and eq on null values).
         self._info: Optional[informational_url.InformationalUrl] = None
         # The collection of key credentials associated with the service principal. Not nullable. Supports $filter (eq, not, ge, le).
@@ -361,7 +361,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the createdObjects property value. Directory objects created by this service principal. Read-only. Nullable.
         Args:
-            value: Value to set for the createdObjects property.
+            value: Value to set for the created_objects property.
         """
         self._created_objects = value
     
@@ -390,7 +390,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the delegatedPermissionClassifications property value. The delegatedPermissionClassifications property
         Args:
-            value: Value to set for the delegatedPermissionClassifications property.
+            value: Value to set for the delegated_permission_classifications property.
         """
         self._delegated_permission_classifications = value
     
@@ -424,7 +424,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the disabledByMicrosoftStatus property value. Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, not).
         Args:
-            value: Value to set for the disabledByMicrosoftStatus property.
+            value: Value to set for the disabled_by_microsoft_status property.
         """
         self._disabled_by_microsoft_status = value
     
@@ -441,7 +441,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the displayName property value. The display name for the service principal. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -475,7 +475,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the federatedIdentityCredentials property value. Federated identities for a specific type of service principal - managed identity. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         Args:
-            value: Value to set for the federatedIdentityCredentials property.
+            value: Value to set for the federated_identity_credentials property.
         """
         self._federated_identity_credentials = value
     
@@ -485,58 +485,75 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "account_enabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
-            "add_ins": lambda n : setattr(self, 'add_ins', n.get_collection_of_object_values(add_in.AddIn)),
-            "alternative_names": lambda n : setattr(self, 'alternative_names', n.get_collection_of_primitive_values(str)),
-            "app_description": lambda n : setattr(self, 'app_description', n.get_str_value()),
-            "app_display_name": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "application_template_id": lambda n : setattr(self, 'application_template_id', n.get_str_value()),
-            "app_owner_organization_id": lambda n : setattr(self, 'app_owner_organization_id', n.get_object_value(Guid)),
-            "app_role_assigned_to": lambda n : setattr(self, 'app_role_assigned_to', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
-            "app_role_assignment_required": lambda n : setattr(self, 'app_role_assignment_required', n.get_bool_value()),
-            "app_role_assignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
-            "app_roles": lambda n : setattr(self, 'app_roles', n.get_collection_of_object_values(app_role.AppRole)),
-            "claims_mapping_policies": lambda n : setattr(self, 'claims_mapping_policies', n.get_collection_of_object_values(claims_mapping_policy.ClaimsMappingPolicy)),
-            "created_objects": lambda n : setattr(self, 'created_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "delegated_permission_classifications": lambda n : setattr(self, 'delegated_permission_classifications', n.get_collection_of_object_values(delegated_permission_classification.DelegatedPermissionClassification)),
+            "accountEnabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
+            "addIns": lambda n : setattr(self, 'add_ins', n.get_collection_of_object_values(add_in.AddIn)),
+            "alternativeNames": lambda n : setattr(self, 'alternative_names', n.get_collection_of_primitive_values(str)),
+            "applicationTemplateId": lambda n : setattr(self, 'application_template_id', n.get_str_value()),
+            "appDescription": lambda n : setattr(self, 'app_description', n.get_str_value()),
+            "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "appOwnerOrganizationId": lambda n : setattr(self, 'app_owner_organization_id', n.get_object_value(Guid)),
+            "appRoles": lambda n : setattr(self, 'app_roles', n.get_collection_of_object_values(app_role.AppRole)),
+            "appRoleAssignedTo": lambda n : setattr(self, 'app_role_assigned_to', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
+            "appRoleAssignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
+            "appRoleAssignmentRequired": lambda n : setattr(self, 'app_role_assignment_required', n.get_bool_value()),
+            "claimsMappingPolicies": lambda n : setattr(self, 'claims_mapping_policies', n.get_collection_of_object_values(claims_mapping_policy.ClaimsMappingPolicy)),
+            "createdObjects": lambda n : setattr(self, 'created_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "delegatedPermissionClassifications": lambda n : setattr(self, 'delegated_permission_classifications', n.get_collection_of_object_values(delegated_permission_classification.DelegatedPermissionClassification)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "disabled_by_microsoft_status": lambda n : setattr(self, 'disabled_by_microsoft_status', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "disabledByMicrosoftStatus": lambda n : setattr(self, 'disabled_by_microsoft_status', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "endpoints": lambda n : setattr(self, 'endpoints', n.get_collection_of_object_values(endpoint.Endpoint)),
-            "federated_identity_credentials": lambda n : setattr(self, 'federated_identity_credentials', n.get_collection_of_object_values(federated_identity_credential.FederatedIdentityCredential)),
+            "federatedIdentityCredentials": lambda n : setattr(self, 'federated_identity_credentials', n.get_collection_of_object_values(federated_identity_credential.FederatedIdentityCredential)),
             "homepage": lambda n : setattr(self, 'homepage', n.get_str_value()),
-            "home_realm_discovery_policies": lambda n : setattr(self, 'home_realm_discovery_policies', n.get_collection_of_object_values(home_realm_discovery_policy.HomeRealmDiscoveryPolicy)),
+            "homeRealmDiscoveryPolicies": lambda n : setattr(self, 'home_realm_discovery_policies', n.get_collection_of_object_values(home_realm_discovery_policy.HomeRealmDiscoveryPolicy)),
             "info": lambda n : setattr(self, 'info', n.get_object_value(informational_url.InformationalUrl)),
-            "key_credentials": lambda n : setattr(self, 'key_credentials', n.get_collection_of_object_values(key_credential.KeyCredential)),
-            "login_url": lambda n : setattr(self, 'login_url', n.get_str_value()),
-            "logout_url": lambda n : setattr(self, 'logout_url', n.get_str_value()),
-            "member_of": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "keyCredentials": lambda n : setattr(self, 'key_credentials', n.get_collection_of_object_values(key_credential.KeyCredential)),
+            "loginUrl": lambda n : setattr(self, 'login_url', n.get_str_value()),
+            "logoutUrl": lambda n : setattr(self, 'logout_url', n.get_str_value()),
+            "memberOf": lambda n : setattr(self, 'member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
-            "notification_email_addresses": lambda n : setattr(self, 'notification_email_addresses', n.get_collection_of_primitive_values(str)),
-            "oauth2_permission_grants": lambda n : setattr(self, 'oauth2_permission_grants', n.get_collection_of_object_values(o_auth2_permission_grant.OAuth2PermissionGrant)),
-            "oauth2_permission_scopes": lambda n : setattr(self, 'oauth2_permission_scopes', n.get_collection_of_object_values(permission_scope.PermissionScope)),
-            "owned_objects": lambda n : setattr(self, 'owned_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "notificationEmailAddresses": lambda n : setattr(self, 'notification_email_addresses', n.get_collection_of_primitive_values(str)),
+            "oauth2PermissionGrants": lambda n : setattr(self, 'oauth2_permission_grants', n.get_collection_of_object_values(o_auth2_permission_grant.OAuth2PermissionGrant)),
+            "oauth2PermissionScopes": lambda n : setattr(self, 'oauth2_permission_scopes', n.get_collection_of_object_values(permission_scope.PermissionScope)),
+            "ownedObjects": lambda n : setattr(self, 'owned_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "owners": lambda n : setattr(self, 'owners', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "password_credentials": lambda n : setattr(self, 'password_credentials', n.get_collection_of_object_values(password_credential.PasswordCredential)),
-            "preferred_single_sign_on_mode": lambda n : setattr(self, 'preferred_single_sign_on_mode', n.get_str_value()),
-            "preferred_token_signing_key_thumbprint": lambda n : setattr(self, 'preferred_token_signing_key_thumbprint', n.get_str_value()),
-            "reply_urls": lambda n : setattr(self, 'reply_urls', n.get_collection_of_primitive_values(str)),
-            "resource_specific_application_permissions": lambda n : setattr(self, 'resource_specific_application_permissions', n.get_collection_of_object_values(resource_specific_permission.ResourceSpecificPermission)),
-            "saml_single_sign_on_settings": lambda n : setattr(self, 'saml_single_sign_on_settings', n.get_object_value(saml_single_sign_on_settings.SamlSingleSignOnSettings)),
-            "service_principal_names": lambda n : setattr(self, 'service_principal_names', n.get_collection_of_primitive_values(str)),
-            "service_principal_type": lambda n : setattr(self, 'service_principal_type', n.get_str_value()),
-            "sign_in_audience": lambda n : setattr(self, 'sign_in_audience', n.get_str_value()),
+            "passwordCredentials": lambda n : setattr(self, 'password_credentials', n.get_collection_of_object_values(password_credential.PasswordCredential)),
+            "preferredSingleSignOnMode": lambda n : setattr(self, 'preferred_single_sign_on_mode', n.get_str_value()),
+            "preferredTokenSigningKeyThumbprint": lambda n : setattr(self, 'preferred_token_signing_key_thumbprint', n.get_str_value()),
+            "replyUrls": lambda n : setattr(self, 'reply_urls', n.get_collection_of_primitive_values(str)),
+            "resourceSpecificApplicationPermissions": lambda n : setattr(self, 'resource_specific_application_permissions', n.get_collection_of_object_values(resource_specific_permission.ResourceSpecificPermission)),
+            "samlSingleSignOnSettings": lambda n : setattr(self, 'saml_single_sign_on_settings', n.get_object_value(saml_single_sign_on_settings.SamlSingleSignOnSettings)),
+            "servicePrincipalNames": lambda n : setattr(self, 'service_principal_names', n.get_collection_of_primitive_values(str)),
+            "servicePrincipalType": lambda n : setattr(self, 'service_principal_type', n.get_str_value()),
+            "signInAudience": lambda n : setattr(self, 'sign_in_audience', n.get_str_value()),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
-            "token_encryption_key_id": lambda n : setattr(self, 'token_encryption_key_id', n.get_object_value(Guid)),
-            "token_issuance_policies": lambda n : setattr(self, 'token_issuance_policies', n.get_collection_of_object_values(token_issuance_policy.TokenIssuancePolicy)),
-            "token_lifetime_policies": lambda n : setattr(self, 'token_lifetime_policies', n.get_collection_of_object_values(token_lifetime_policy.TokenLifetimePolicy)),
-            "transitive_member_of": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
-            "verified_publisher": lambda n : setattr(self, 'verified_publisher', n.get_object_value(verified_publisher.VerifiedPublisher)),
+            "tokenEncryptionKeyId": lambda n : setattr(self, 'token_encryption_key_id', n.get_object_value(Guid)),
+            "tokenIssuancePolicies": lambda n : setattr(self, 'token_issuance_policies', n.get_collection_of_object_values(token_issuance_policy.TokenIssuancePolicy)),
+            "tokenLifetimePolicies": lambda n : setattr(self, 'token_lifetime_policies', n.get_collection_of_object_values(token_lifetime_policy.TokenLifetimePolicy)),
+            "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "verifiedPublisher": lambda n : setattr(self, 'verified_publisher', n.get_object_value(verified_publisher.VerifiedPublisher)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
+    
+    @property
+    def home_realm_discovery_policies(self,) -> Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]]:
+        """
+        Gets the homeRealmDiscoveryPolicies property value. The homeRealmDiscoveryPolicies assigned to this service principal. Supports $expand.
+        Returns: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]]
+        """
+        return self._home_realm_discovery_policies
+    
+    @home_realm_discovery_policies.setter
+    def home_realm_discovery_policies(self,value: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]] = None) -> None:
+        """
+        Sets the homeRealmDiscoveryPolicies property value. The homeRealmDiscoveryPolicies assigned to this service principal. Supports $expand.
+        Args:
+            value: Value to set for the home_realm_discovery_policies property.
+        """
+        self._home_realm_discovery_policies = value
     
     @property
     def homepage(self,) -> Optional[str]:
@@ -554,23 +571,6 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the homepage property.
         """
         self._homepage = value
-    
-    @property
-    def home_realm_discovery_policies(self,) -> Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]]:
-        """
-        Gets the homeRealmDiscoveryPolicies property value. The homeRealmDiscoveryPolicies assigned to this service principal. Supports $expand.
-        Returns: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]]
-        """
-        return self._home_realm_discovery_policies
-    
-    @home_realm_discovery_policies.setter
-    def home_realm_discovery_policies(self,value: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]] = None) -> None:
-        """
-        Sets the homeRealmDiscoveryPolicies property value. The homeRealmDiscoveryPolicies assigned to this service principal. Supports $expand.
-        Args:
-            value: Value to set for the homeRealmDiscoveryPolicies property.
-        """
-        self._home_realm_discovery_policies = value
     
     @property
     def info(self,) -> Optional[informational_url.InformationalUrl]:
@@ -602,7 +602,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the keyCredentials property value. The collection of key credentials associated with the service principal. Not nullable. Supports $filter (eq, not, ge, le).
         Args:
-            value: Value to set for the keyCredentials property.
+            value: Value to set for the key_credentials property.
         """
         self._key_credentials = value
     
@@ -619,7 +619,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the loginUrl property value. Specifies the URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on. The user launches the application from Microsoft 365, the Azure AD My Apps, or the Azure AD SSO URL.
         Args:
-            value: Value to set for the loginUrl property.
+            value: Value to set for the login_url property.
         """
         self._login_url = value
     
@@ -636,7 +636,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the logoutUrl property value. Specifies the URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols.
         Args:
-            value: Value to set for the logoutUrl property.
+            value: Value to set for the logout_url property.
         """
         self._logout_url = value
     
@@ -653,7 +653,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the memberOf property value. Roles that this service principal is a member of. HTTP Methods: GET Read-only. Nullable. Supports $expand.
         Args:
-            value: Value to set for the memberOf property.
+            value: Value to set for the member_of property.
         """
         self._member_of = value
     
@@ -687,7 +687,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the notificationEmailAddresses property value. Specifies the list of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
         Args:
-            value: Value to set for the notificationEmailAddresses property.
+            value: Value to set for the notification_email_addresses property.
         """
         self._notification_email_addresses = value
     
@@ -704,7 +704,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the oauth2PermissionGrants property value. Delegated permission grants authorizing this service principal to access an API on behalf of a signed-in user. Read-only. Nullable.
         Args:
-            value: Value to set for the oauth2PermissionGrants property.
+            value: Value to set for the oauth2_permission_grants property.
         """
         self._oauth2_permission_grants = value
     
@@ -721,7 +721,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the oauth2PermissionScopes property value. The delegated permissions exposed by the application. For more information see the oauth2PermissionScopes property on the application entity's api property. Not nullable.
         Args:
-            value: Value to set for the oauth2PermissionScopes property.
+            value: Value to set for the oauth2_permission_scopes property.
         """
         self._oauth2_permission_scopes = value
     
@@ -738,7 +738,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the ownedObjects property value. Directory objects that are owned by this service principal. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
         Args:
-            value: Value to set for the ownedObjects property.
+            value: Value to set for the owned_objects property.
         """
         self._owned_objects = value
     
@@ -772,7 +772,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the passwordCredentials property value. The collection of password credentials associated with the application. Not nullable.
         Args:
-            value: Value to set for the passwordCredentials property.
+            value: Value to set for the password_credentials property.
         """
         self._password_credentials = value
     
@@ -789,7 +789,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the preferredSingleSignOnMode property value. Specifies the single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. The supported values are password, saml, notSupported, and oidc.
         Args:
-            value: Value to set for the preferredSingleSignOnMode property.
+            value: Value to set for the preferred_single_sign_on_mode property.
         """
         self._preferred_single_sign_on_mode = value
     
@@ -806,7 +806,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the preferredTokenSigningKeyThumbprint property value. Reserved for internal use only. Do not write or otherwise rely on this property. May be removed in future versions.
         Args:
-            value: Value to set for the preferredTokenSigningKeyThumbprint property.
+            value: Value to set for the preferred_token_signing_key_thumbprint property.
         """
         self._preferred_token_signing_key_thumbprint = value
     
@@ -823,7 +823,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the replyUrls property value. The URLs that user tokens are sent to for sign in with the associated application, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to for the associated application. Not nullable.
         Args:
-            value: Value to set for the replyUrls property.
+            value: Value to set for the reply_urls property.
         """
         self._reply_urls = value
     
@@ -840,7 +840,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the resourceSpecificApplicationPermissions property value. The resource-specific application permissions exposed by this application. Currently, resource-specific permissions are only supported for Teams apps accessing to specific chats and teams using Microsoft Graph. Read-only.
         Args:
-            value: Value to set for the resourceSpecificApplicationPermissions property.
+            value: Value to set for the resource_specific_application_permissions property.
         """
         self._resource_specific_application_permissions = value
     
@@ -857,7 +857,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the samlSingleSignOnSettings property value. The collection for settings related to saml single sign-on.
         Args:
-            value: Value to set for the samlSingleSignOnSettings property.
+            value: Value to set for the saml_single_sign_on_settings property.
         """
         self._saml_single_sign_on_settings = value
     
@@ -873,15 +873,15 @@ class ServicePrincipal(directory_object.DirectoryObject):
         writer.write_bool_value("accountEnabled", self.account_enabled)
         writer.write_collection_of_object_values("addIns", self.add_ins)
         writer.write_collection_of_primitive_values("alternativeNames", self.alternative_names)
+        writer.write_str_value("applicationTemplateId", self.application_template_id)
         writer.write_str_value("appDescription", self.app_description)
         writer.write_str_value("appDisplayName", self.app_display_name)
         writer.write_str_value("appId", self.app_id)
-        writer.write_str_value("applicationTemplateId", self.application_template_id)
         writer.write_object_value("appOwnerOrganizationId", self.app_owner_organization_id)
-        writer.write_collection_of_object_values("appRoleAssignedTo", self.app_role_assigned_to)
-        writer.write_bool_value("appRoleAssignmentRequired", self.app_role_assignment_required)
-        writer.write_collection_of_object_values("appRoleAssignments", self.app_role_assignments)
         writer.write_collection_of_object_values("appRoles", self.app_roles)
+        writer.write_collection_of_object_values("appRoleAssignedTo", self.app_role_assigned_to)
+        writer.write_collection_of_object_values("appRoleAssignments", self.app_role_assignments)
+        writer.write_bool_value("appRoleAssignmentRequired", self.app_role_assignment_required)
         writer.write_collection_of_object_values("claimsMappingPolicies", self.claims_mapping_policies)
         writer.write_collection_of_object_values("createdObjects", self.created_objects)
         writer.write_collection_of_object_values("delegatedPermissionClassifications", self.delegated_permission_classifications)
@@ -932,7 +932,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the servicePrincipalNames property value. Contains the list of identifiersUris, copied over from the associated application. Additional values can be added to hybrid applications. These values can be used to identify the permissions exposed by this app within Azure AD. For example,Client apps can specify a resource URI which is based on the values of this property to acquire an access token, which is the URI returned in the 'aud' claim.The any operator is required for filter expressions on multi-valued properties. Not nullable.  Supports $filter (eq, not, ge, le, startsWith).
         Args:
-            value: Value to set for the servicePrincipalNames property.
+            value: Value to set for the service_principal_names property.
         """
         self._service_principal_names = value
     
@@ -949,7 +949,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the servicePrincipalType property value. Identifies whether the service principal represents an application, a managed identity, or a legacy application. This is set by Azure AD internally. The servicePrincipalType property can be set to three different values: __Application - A service principal that represents an application or service. The appId property identifies the associated app registration, and matches the appId of an application, possibly from a different tenant. If the associated app registration is missing, tokens are not issued for the service principal.__ManagedIdentity - A service principal that represents a managed identity. Service principals representing managed identities can be granted access and permissions, but cannot be updated or modified directly.__Legacy - A service principal that represents an app created before app registrations, or through legacy experiences. Legacy service principal can have credentials, service principal names, reply URLs, and other properties which are editable by an authorized user, but does not have an associated app registration. The appId value does not associate the service principal with an app registration. The service principal can only be used in the tenant where it was created.__SocialIdp - For internal use.
         Args:
-            value: Value to set for the servicePrincipalType property.
+            value: Value to set for the service_principal_type property.
         """
         self._service_principal_type = value
     
@@ -966,7 +966,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the signInAudience property value. Specifies the Microsoft accounts that are supported for the current application. Read-only. Supported values are:AzureADMyOrg: Users with a Microsoft work or school account in my organization’s Azure AD tenant (single-tenant).AzureADMultipleOrgs: Users with a Microsoft work or school account in any organization’s Azure AD tenant (multi-tenant).AzureADandPersonalMicrosoftAccount: Users with a personal Microsoft account, or a work or school account in any organization’s Azure AD tenant.PersonalMicrosoftAccount: Users with a personal Microsoft account only.
         Args:
-            value: Value to set for the signInAudience property.
+            value: Value to set for the sign_in_audience property.
         """
         self._sign_in_audience = value
     
@@ -1000,7 +1000,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the tokenEncryptionKeyId property value. Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD issues tokens for this application encrypted using the key specified by this property. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
         Args:
-            value: Value to set for the tokenEncryptionKeyId property.
+            value: Value to set for the token_encryption_key_id property.
         """
         self._token_encryption_key_id = value
     
@@ -1017,7 +1017,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the tokenIssuancePolicies property value. The tokenIssuancePolicies assigned to this service principal.
         Args:
-            value: Value to set for the tokenIssuancePolicies property.
+            value: Value to set for the token_issuance_policies property.
         """
         self._token_issuance_policies = value
     
@@ -1034,7 +1034,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the tokenLifetimePolicies property value. The tokenLifetimePolicies assigned to this service principal.
         Args:
-            value: Value to set for the tokenLifetimePolicies property.
+            value: Value to set for the token_lifetime_policies property.
         """
         self._token_lifetime_policies = value
     
@@ -1051,7 +1051,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the transitiveMemberOf property value. The transitiveMemberOf property
         Args:
-            value: Value to set for the transitiveMemberOf property.
+            value: Value to set for the transitive_member_of property.
         """
         self._transitive_member_of = value
     
@@ -1068,7 +1068,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         """
         Sets the verifiedPublisher property value. Specifies the verified publisher of the application which this service principal represents.
         Args:
-            value: Value to set for the verifiedPublisher property.
+            value: Value to set for the verified_publisher property.
         """
         self._verified_publisher = value
     

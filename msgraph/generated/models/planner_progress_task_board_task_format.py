@@ -34,7 +34,7 @@ class PlannerProgressTaskBoardTaskFormat(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "order_hint": lambda n : setattr(self, 'order_hint', n.get_str_value()),
+            "orderHint": lambda n : setattr(self, 'order_hint', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -53,7 +53,7 @@ class PlannerProgressTaskBoardTaskFormat(entity.Entity):
         """
         Sets the orderHint property value. Hint value used to order the task on the progress view of the task board. For details about the supported format, see Using order hints in Planner.
         Args:
-            value: Value to set for the orderHint property.
+            value: Value to set for the order_hint property.
         """
         self._order_hint = value
     

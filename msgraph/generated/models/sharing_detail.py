@@ -64,11 +64,11 @@ class SharingDetail(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "shared_by": lambda n : setattr(self, 'shared_by', n.get_object_value(insight_identity.InsightIdentity)),
-            "shared_date_time": lambda n : setattr(self, 'shared_date_time', n.get_datetime_value()),
-            "sharing_reference": lambda n : setattr(self, 'sharing_reference', n.get_object_value(resource_reference.ResourceReference)),
-            "sharing_subject": lambda n : setattr(self, 'sharing_subject', n.get_str_value()),
-            "sharing_type": lambda n : setattr(self, 'sharing_type', n.get_str_value()),
+            "sharedBy": lambda n : setattr(self, 'shared_by', n.get_object_value(insight_identity.InsightIdentity)),
+            "sharedDateTime": lambda n : setattr(self, 'shared_date_time', n.get_datetime_value()),
+            "sharingReference": lambda n : setattr(self, 'sharing_reference', n.get_object_value(resource_reference.ResourceReference)),
+            "sharingSubject": lambda n : setattr(self, 'sharing_subject', n.get_str_value()),
+            "sharingType": lambda n : setattr(self, 'sharing_type', n.get_str_value()),
         }
         return fields
     
@@ -85,7 +85,7 @@ class SharingDetail(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -117,7 +117,7 @@ class SharingDetail(AdditionalDataHolder, Parsable):
         """
         Sets the sharedBy property value. The user who shared the document.
         Args:
-            value: Value to set for the sharedBy property.
+            value: Value to set for the shared_by property.
         """
         self._shared_by = value
     
@@ -134,7 +134,7 @@ class SharingDetail(AdditionalDataHolder, Parsable):
         """
         Sets the sharedDateTime property value. The date and time the file was last shared. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         Args:
-            value: Value to set for the sharedDateTime property.
+            value: Value to set for the shared_date_time property.
         """
         self._shared_date_time = value
     
@@ -151,7 +151,7 @@ class SharingDetail(AdditionalDataHolder, Parsable):
         """
         Sets the sharingReference property value. The sharingReference property
         Args:
-            value: Value to set for the sharingReference property.
+            value: Value to set for the sharing_reference property.
         """
         self._sharing_reference = value
     
@@ -168,7 +168,7 @@ class SharingDetail(AdditionalDataHolder, Parsable):
         """
         Sets the sharingSubject property value. The subject with which the document was shared.
         Args:
-            value: Value to set for the sharingSubject property.
+            value: Value to set for the sharing_subject property.
         """
         self._sharing_subject = value
     
@@ -185,7 +185,7 @@ class SharingDetail(AdditionalDataHolder, Parsable):
         """
         Sets the sharingType property value. Determines the way the document was shared, can be by a 'Link', 'Attachment', 'Group', 'Site'.
         Args:
-            value: Value to set for the sharingType property.
+            value: Value to set for the sharing_type property.
         """
         self._sharing_type = value
     

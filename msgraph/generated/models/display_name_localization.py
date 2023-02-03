@@ -60,7 +60,7 @@ class DisplayNameLocalization(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. If present, the value of this field contains the displayName string that has been set for the language present in the languageTag field.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -70,8 +70,8 @@ class DisplayNameLocalization(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "language_tag": lambda n : setattr(self, 'language_tag', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "languageTag": lambda n : setattr(self, 'language_tag', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -89,7 +89,7 @@ class DisplayNameLocalization(AdditionalDataHolder, Parsable):
         """
         Sets the languageTag property value. Provides the language culture-code and friendly name of the language that the displayName field has been provided in.
         Args:
-            value: Value to set for the languageTag property.
+            value: Value to set for the language_tag property.
         """
         self._language_tag = value
     
@@ -106,7 +106,7 @@ class DisplayNameLocalization(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

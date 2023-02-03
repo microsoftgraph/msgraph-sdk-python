@@ -17,10 +17,11 @@ class EducationOutcomeItemRequestBuilder():
     """
     Provides operations to manage the outcomes property of the microsoft.graph.educationSubmission entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, education_outcome_id: Optional[str] = None) -> None:
         """
         Instantiates a new EducationOutcomeItemRequestBuilder and sets the default values.
         Args:
+            educationOutcomeId: key: id of educationOutcome
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class EducationOutcomeItemRequestBuilder():
         self.url_template: str = "{+baseurl}/education/classes/{educationClass%2Did}/assignments/{educationAssignment%2Did}/submissions/{educationSubmission%2Did}/outcomes/{educationOutcome%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["educationOutcome%2Did"] = educationOutcomeId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

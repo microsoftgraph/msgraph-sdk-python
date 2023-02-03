@@ -39,7 +39,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         """
         Sets the assignedTrainingsCount property value. Number of trainings assigned to a user in an attack simulation and training campaign.
         Args:
-            value: Value to set for the assignedTrainingsCount property.
+            value: Value to set for the assigned_trainings_count property.
         """
         self._assigned_trainings_count = value
     
@@ -56,7 +56,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         """
         Sets the completedTrainingsCount property value. Number of trainings completed by a user in an attack simulation and training campaign.
         Args:
-            value: Value to set for the completedTrainingsCount property.
+            value: Value to set for the completed_trainings_count property.
         """
         self._completed_trainings_count = value
     
@@ -73,7 +73,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         """
         Sets the compromisedDateTime property value. Date and time of the compromising online action by a user in an attack simulation and training campaign.
         Args:
-            value: Value to set for the compromisedDateTime property.
+            value: Value to set for the compromised_date_time property.
         """
         self._compromised_date_time = value
     
@@ -123,16 +123,16 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assigned_trainings_count": lambda n : setattr(self, 'assigned_trainings_count', n.get_int_value()),
-            "completed_trainings_count": lambda n : setattr(self, 'completed_trainings_count', n.get_int_value()),
-            "compromised_date_time": lambda n : setattr(self, 'compromised_date_time', n.get_datetime_value()),
-            "in_progress_trainings_count": lambda n : setattr(self, 'in_progress_trainings_count', n.get_int_value()),
-            "is_compromised": lambda n : setattr(self, 'is_compromised', n.get_bool_value()),
+            "assignedTrainingsCount": lambda n : setattr(self, 'assigned_trainings_count', n.get_int_value()),
+            "completedTrainingsCount": lambda n : setattr(self, 'completed_trainings_count', n.get_int_value()),
+            "compromisedDateTime": lambda n : setattr(self, 'compromised_date_time', n.get_datetime_value()),
+            "inProgressTrainingsCount": lambda n : setattr(self, 'in_progress_trainings_count', n.get_int_value()),
+            "isCompromised": lambda n : setattr(self, 'is_compromised', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "reported_phish_date_time": lambda n : setattr(self, 'reported_phish_date_time', n.get_datetime_value()),
-            "simulation_events": lambda n : setattr(self, 'simulation_events', n.get_collection_of_object_values(user_simulation_event_info.UserSimulationEventInfo)),
-            "simulation_user": lambda n : setattr(self, 'simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
-            "training_events": lambda n : setattr(self, 'training_events', n.get_collection_of_object_values(user_training_event_info.UserTrainingEventInfo)),
+            "reportedPhishDateTime": lambda n : setattr(self, 'reported_phish_date_time', n.get_datetime_value()),
+            "simulationEvents": lambda n : setattr(self, 'simulation_events', n.get_collection_of_object_values(user_simulation_event_info.UserSimulationEventInfo)),
+            "simulationUser": lambda n : setattr(self, 'simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
+            "trainingEvents": lambda n : setattr(self, 'training_events', n.get_collection_of_object_values(user_training_event_info.UserTrainingEventInfo)),
         }
         return fields
     
@@ -149,7 +149,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         """
         Sets the inProgressTrainingsCount property value. Number of trainings in progress by a user in an attack simulation and training campaign.
         Args:
-            value: Value to set for the inProgressTrainingsCount property.
+            value: Value to set for the in_progress_trainings_count property.
         """
         self._in_progress_trainings_count = value
     
@@ -166,7 +166,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         """
         Sets the isCompromised property value. Indicates whether a user was compromised in an attack simulation and training campaign.
         Args:
-            value: Value to set for the isCompromised property.
+            value: Value to set for the is_compromised property.
         """
         self._is_compromised = value
     
@@ -183,7 +183,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -200,7 +200,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         """
         Sets the reportedPhishDateTime property value. Date and time when a user reported the delivered payload as phishing in the attack simulation and training campaign.
         Args:
-            value: Value to set for the reportedPhishDateTime property.
+            value: Value to set for the reported_phish_date_time property.
         """
         self._reported_phish_date_time = value
     
@@ -237,7 +237,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         """
         Sets the simulationEvents property value. List of simulation events of a user in the attack simulation and training campaign.
         Args:
-            value: Value to set for the simulationEvents property.
+            value: Value to set for the simulation_events property.
         """
         self._simulation_events = value
     
@@ -254,7 +254,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         """
         Sets the simulationUser property value. User in an attack simulation and training campaign.
         Args:
-            value: Value to set for the simulationUser property.
+            value: Value to set for the simulation_user property.
         """
         self._simulation_user = value
     
@@ -271,7 +271,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         """
         Sets the trainingEvents property value. List of training events of a user in the attack simulation and training campaign.
         Args:
-            value: Value to set for the trainingEvents property.
+            value: Value to set for the training_events property.
         """
         self._training_events = value
     

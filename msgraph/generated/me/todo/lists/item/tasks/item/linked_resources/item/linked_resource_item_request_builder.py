@@ -17,10 +17,11 @@ class LinkedResourceItemRequestBuilder():
     """
     Provides operations to manage the linkedResources property of the microsoft.graph.todoTask entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, linked_resource_id: Optional[str] = None) -> None:
         """
         Instantiates a new LinkedResourceItemRequestBuilder and sets the default values.
         Args:
+            linkedResourceId: key: id of linkedResource
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class LinkedResourceItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/todo/lists/{todoTaskList%2Did}/tasks/{todoTask%2Did}/linkedResources/{linkedResource%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["linkedResource%2Did"] = linkedResourceId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

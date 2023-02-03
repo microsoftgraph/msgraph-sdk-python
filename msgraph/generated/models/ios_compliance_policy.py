@@ -68,7 +68,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the deviceThreatProtectionEnabled property value. Require that devices have enabled device threat protection .
         Args:
-            value: Value to set for the deviceThreatProtectionEnabled property.
+            value: Value to set for the device_threat_protection_enabled property.
         """
         self._device_threat_protection_enabled = value
     
@@ -85,7 +85,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the deviceThreatProtectionRequiredSecurityLevel property value. Device threat protection levels for the Device Threat Protection API.
         Args:
-            value: Value to set for the deviceThreatProtectionRequiredSecurityLevel property.
+            value: Value to set for the device_threat_protection_required_security_level property.
         """
         self._device_threat_protection_required_security_level = value
     
@@ -95,20 +95,20 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_threat_protection_enabled": lambda n : setattr(self, 'device_threat_protection_enabled', n.get_bool_value()),
-            "device_threat_protection_required_security_level": lambda n : setattr(self, 'device_threat_protection_required_security_level', n.get_enum_value(device_threat_protection_level.DeviceThreatProtectionLevel)),
-            "managed_email_profile_required": lambda n : setattr(self, 'managed_email_profile_required', n.get_bool_value()),
-            "os_maximum_version": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
-            "os_minimum_version": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
-            "passcode_block_simple": lambda n : setattr(self, 'passcode_block_simple', n.get_bool_value()),
-            "passcode_expiration_days": lambda n : setattr(self, 'passcode_expiration_days', n.get_int_value()),
-            "passcode_minimum_character_set_count": lambda n : setattr(self, 'passcode_minimum_character_set_count', n.get_int_value()),
-            "passcode_minimum_length": lambda n : setattr(self, 'passcode_minimum_length', n.get_int_value()),
-            "passcode_minutes_of_inactivity_before_lock": lambda n : setattr(self, 'passcode_minutes_of_inactivity_before_lock', n.get_int_value()),
-            "passcode_previous_passcode_block_count": lambda n : setattr(self, 'passcode_previous_passcode_block_count', n.get_int_value()),
-            "passcode_required": lambda n : setattr(self, 'passcode_required', n.get_bool_value()),
-            "passcode_required_type": lambda n : setattr(self, 'passcode_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
-            "security_block_jailbroken_devices": lambda n : setattr(self, 'security_block_jailbroken_devices', n.get_bool_value()),
+            "deviceThreatProtectionEnabled": lambda n : setattr(self, 'device_threat_protection_enabled', n.get_bool_value()),
+            "deviceThreatProtectionRequiredSecurityLevel": lambda n : setattr(self, 'device_threat_protection_required_security_level', n.get_enum_value(device_threat_protection_level.DeviceThreatProtectionLevel)),
+            "managedEmailProfileRequired": lambda n : setattr(self, 'managed_email_profile_required', n.get_bool_value()),
+            "osMaximumVersion": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
+            "osMinimumVersion": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
+            "passcodeBlockSimple": lambda n : setattr(self, 'passcode_block_simple', n.get_bool_value()),
+            "passcodeExpirationDays": lambda n : setattr(self, 'passcode_expiration_days', n.get_int_value()),
+            "passcodeMinimumCharacterSetCount": lambda n : setattr(self, 'passcode_minimum_character_set_count', n.get_int_value()),
+            "passcodeMinimumLength": lambda n : setattr(self, 'passcode_minimum_length', n.get_int_value()),
+            "passcodeMinutesOfInactivityBeforeLock": lambda n : setattr(self, 'passcode_minutes_of_inactivity_before_lock', n.get_int_value()),
+            "passcodePreviousPasscodeBlockCount": lambda n : setattr(self, 'passcode_previous_passcode_block_count', n.get_int_value()),
+            "passcodeRequired": lambda n : setattr(self, 'passcode_required', n.get_bool_value()),
+            "passcodeRequiredType": lambda n : setattr(self, 'passcode_required_type', n.get_enum_value(required_password_type.RequiredPasswordType)),
+            "securityBlockJailbrokenDevices": lambda n : setattr(self, 'security_block_jailbroken_devices', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -127,7 +127,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the managedEmailProfileRequired property value. Indicates whether or not to require a managed email profile.
         Args:
-            value: Value to set for the managedEmailProfileRequired property.
+            value: Value to set for the managed_email_profile_required property.
         """
         self._managed_email_profile_required = value
     
@@ -144,7 +144,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the osMaximumVersion property value. Maximum IOS version.
         Args:
-            value: Value to set for the osMaximumVersion property.
+            value: Value to set for the os_maximum_version property.
         """
         self._os_maximum_version = value
     
@@ -161,7 +161,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the osMinimumVersion property value. Minimum IOS version.
         Args:
-            value: Value to set for the osMinimumVersion property.
+            value: Value to set for the os_minimum_version property.
         """
         self._os_minimum_version = value
     
@@ -178,7 +178,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the passcodeBlockSimple property value. Indicates whether or not to block simple passcodes.
         Args:
-            value: Value to set for the passcodeBlockSimple property.
+            value: Value to set for the passcode_block_simple property.
         """
         self._passcode_block_simple = value
     
@@ -195,7 +195,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the passcodeExpirationDays property value. Number of days before the passcode expires. Valid values 1 to 65535
         Args:
-            value: Value to set for the passcodeExpirationDays property.
+            value: Value to set for the passcode_expiration_days property.
         """
         self._passcode_expiration_days = value
     
@@ -212,7 +212,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the passcodeMinimumCharacterSetCount property value. The number of character sets required in the password.
         Args:
-            value: Value to set for the passcodeMinimumCharacterSetCount property.
+            value: Value to set for the passcode_minimum_character_set_count property.
         """
         self._passcode_minimum_character_set_count = value
     
@@ -229,7 +229,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the passcodeMinimumLength property value. Minimum length of passcode. Valid values 4 to 14
         Args:
-            value: Value to set for the passcodeMinimumLength property.
+            value: Value to set for the passcode_minimum_length property.
         """
         self._passcode_minimum_length = value
     
@@ -246,7 +246,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the passcodeMinutesOfInactivityBeforeLock property value. Minutes of inactivity before a passcode is required.
         Args:
-            value: Value to set for the passcodeMinutesOfInactivityBeforeLock property.
+            value: Value to set for the passcode_minutes_of_inactivity_before_lock property.
         """
         self._passcode_minutes_of_inactivity_before_lock = value
     
@@ -263,7 +263,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the passcodePreviousPasscodeBlockCount property value. Number of previous passcodes to block. Valid values 1 to 24
         Args:
-            value: Value to set for the passcodePreviousPasscodeBlockCount property.
+            value: Value to set for the passcode_previous_passcode_block_count property.
         """
         self._passcode_previous_passcode_block_count = value
     
@@ -280,7 +280,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the passcodeRequired property value. Indicates whether or not to require a passcode.
         Args:
-            value: Value to set for the passcodeRequired property.
+            value: Value to set for the passcode_required property.
         """
         self._passcode_required = value
     
@@ -297,7 +297,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the passcodeRequiredType property value. Possible values of required passwords.
         Args:
-            value: Value to set for the passcodeRequiredType property.
+            value: Value to set for the passcode_required_type property.
         """
         self._passcode_required_type = value
     
@@ -314,7 +314,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         """
         Sets the securityBlockJailbrokenDevices property value. Devices must not be jailbroken or rooted.
         Args:
-            value: Value to set for the securityBlockJailbrokenDevices property.
+            value: Value to set for the security_block_jailbroken_devices property.
         """
         self._security_block_jailbroken_devices = value
     

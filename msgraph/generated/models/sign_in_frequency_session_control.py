@@ -22,7 +22,7 @@ class SignInFrequencySessionControl(conditional_access_session_control.Condition
         """
         Sets the authenticationType property value. The possible values are primaryAndSecondaryAuthentication, secondaryAuthentication, unknownFutureValue.
         Args:
-            value: Value to set for the authenticationType property.
+            value: Value to set for the authentication_type property.
         """
         self._authentication_type = value
     
@@ -66,7 +66,7 @@ class SignInFrequencySessionControl(conditional_access_session_control.Condition
         """
         Sets the frequencyInterval property value. The possible values are timeBased, everyTime, unknownFutureValue.
         Args:
-            value: Value to set for the frequencyInterval property.
+            value: Value to set for the frequency_interval property.
         """
         self._frequency_interval = value
     
@@ -76,8 +76,8 @@ class SignInFrequencySessionControl(conditional_access_session_control.Condition
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "authentication_type": lambda n : setattr(self, 'authentication_type', n.get_enum_value(sign_in_frequency_authentication_type.SignInFrequencyAuthenticationType)),
-            "frequency_interval": lambda n : setattr(self, 'frequency_interval', n.get_enum_value(sign_in_frequency_interval.SignInFrequencyInterval)),
+            "authenticationType": lambda n : setattr(self, 'authentication_type', n.get_enum_value(sign_in_frequency_authentication_type.SignInFrequencyAuthenticationType)),
+            "frequencyInterval": lambda n : setattr(self, 'frequency_interval', n.get_enum_value(sign_in_frequency_interval.SignInFrequencyInterval)),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(signin_frequency_type.SigninFrequencyType)),
             "value": lambda n : setattr(self, 'value', n.get_int_value()),
         }

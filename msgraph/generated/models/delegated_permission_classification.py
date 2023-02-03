@@ -57,8 +57,8 @@ class DelegatedPermissionClassification(entity.Entity):
         """
         fields = {
             "classification": lambda n : setattr(self, 'classification', n.get_enum_value(permission_classification_type.PermissionClassificationType)),
-            "permission_id": lambda n : setattr(self, 'permission_id', n.get_str_value()),
-            "permission_name": lambda n : setattr(self, 'permission_name', n.get_str_value()),
+            "permissionId": lambda n : setattr(self, 'permission_id', n.get_str_value()),
+            "permissionName": lambda n : setattr(self, 'permission_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -77,7 +77,7 @@ class DelegatedPermissionClassification(entity.Entity):
         """
         Sets the permissionId property value. The unique identifier (id) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Required on create. Does not support $filter.
         Args:
-            value: Value to set for the permissionId property.
+            value: Value to set for the permission_id property.
         """
         self._permission_id = value
     
@@ -94,7 +94,7 @@ class DelegatedPermissionClassification(entity.Entity):
         """
         Sets the permissionName property value. The claim value (value) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Does not support $filter.
         Args:
-            value: Value to set for the permissionName property.
+            value: Value to set for the permission_name property.
         """
         self._permission_name = value
     

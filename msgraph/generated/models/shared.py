@@ -63,8 +63,8 @@ class Shared(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "owner": lambda n : setattr(self, 'owner', n.get_object_value(identity_set.IdentitySet)),
             "scope": lambda n : setattr(self, 'scope', n.get_str_value()),
-            "shared_by": lambda n : setattr(self, 'shared_by', n.get_object_value(identity_set.IdentitySet)),
-            "shared_date_time": lambda n : setattr(self, 'shared_date_time', n.get_datetime_value()),
+            "sharedBy": lambda n : setattr(self, 'shared_by', n.get_object_value(identity_set.IdentitySet)),
+            "sharedDateTime": lambda n : setattr(self, 'shared_date_time', n.get_datetime_value()),
         }
         return fields
     
@@ -81,7 +81,7 @@ class Shared(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -147,7 +147,7 @@ class Shared(AdditionalDataHolder, Parsable):
         """
         Sets the sharedBy property value. The identity of the user who shared the item. Read-only.
         Args:
-            value: Value to set for the sharedBy property.
+            value: Value to set for the shared_by property.
         """
         self._shared_by = value
     
@@ -164,7 +164,7 @@ class Shared(AdditionalDataHolder, Parsable):
         """
         Sets the sharedDateTime property value. The UTC date and time when the item was shared. Read-only.
         Args:
-            value: Value to set for the sharedDateTime property.
+            value: Value to set for the shared_date_time property.
         """
         self._shared_date_time = value
     

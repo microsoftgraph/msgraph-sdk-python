@@ -37,7 +37,7 @@ class WindowsHelloForBusinessAuthenticationMethod(authentication_method.Authenti
         """
         Sets the createdDateTime property value. The date and time that this Windows Hello for Business key was registered.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -83,7 +83,7 @@ class WindowsHelloForBusinessAuthenticationMethod(authentication_method.Authenti
         """
         Sets the displayName property value. The name of the device on which Windows Hello for Business is registered
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -93,10 +93,10 @@ class WindowsHelloForBusinessAuthenticationMethod(authentication_method.Authenti
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "device": lambda n : setattr(self, 'device', n.get_object_value(device.Device)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "key_strength": lambda n : setattr(self, 'key_strength', n.get_enum_value(authentication_method_key_strength.AuthenticationMethodKeyStrength)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "keyStrength": lambda n : setattr(self, 'key_strength', n.get_enum_value(authentication_method_key_strength.AuthenticationMethodKeyStrength)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -115,7 +115,7 @@ class WindowsHelloForBusinessAuthenticationMethod(authentication_method.Authenti
         """
         Sets the keyStrength property value. Key strength of this Windows Hello for Business key. Possible values are: normal, weak, unknown.
         Args:
-            value: Value to set for the keyStrength property.
+            value: Value to set for the key_strength property.
         """
         self._key_strength = value
     

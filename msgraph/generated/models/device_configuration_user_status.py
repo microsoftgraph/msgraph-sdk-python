@@ -51,7 +51,7 @@ class DeviceConfigurationUserStatus(entity.Entity):
         """
         Sets the devicesCount property value. Devices count for that user.
         Args:
-            value: Value to set for the devicesCount property.
+            value: Value to set for the devices_count property.
         """
         self._devices_count = value
     
@@ -61,11 +61,11 @@ class DeviceConfigurationUserStatus(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "devices_count": lambda n : setattr(self, 'devices_count', n.get_int_value()),
-            "last_reported_date_time": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
+            "devicesCount": lambda n : setattr(self, 'devices_count', n.get_int_value()),
+            "lastReportedDateTime": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(compliance_status.ComplianceStatus)),
-            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -84,7 +84,7 @@ class DeviceConfigurationUserStatus(entity.Entity):
         """
         Sets the lastReportedDateTime property value. Last modified date time of the policy report.
         Args:
-            value: Value to set for the lastReportedDateTime property.
+            value: Value to set for the last_reported_date_time property.
         """
         self._last_reported_date_time = value
     
@@ -133,7 +133,7 @@ class DeviceConfigurationUserStatus(entity.Entity):
         """
         Sets the userDisplayName property value. User name of the DevicePolicyStatus.
         Args:
-            value: Value to set for the userDisplayName property.
+            value: Value to set for the user_display_name property.
         """
         self._user_display_name = value
     
@@ -150,7 +150,7 @@ class DeviceConfigurationUserStatus(entity.Entity):
         """
         Sets the userPrincipalName property value. UserPrincipalName.
         Args:
-            value: Value to set for the userPrincipalName property.
+            value: Value to set for the user_principal_name property.
         """
         self._user_principal_name = value
     

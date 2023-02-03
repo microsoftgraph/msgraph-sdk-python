@@ -56,7 +56,7 @@ class ToneInfo(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "sequence_id": lambda n : setattr(self, 'sequence_id', n.get_int_value()),
+            "sequenceId": lambda n : setattr(self, 'sequence_id', n.get_int_value()),
             "tone": lambda n : setattr(self, 'tone', n.get_enum_value(tone.Tone)),
         }
         return fields
@@ -74,7 +74,7 @@ class ToneInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -91,7 +91,7 @@ class ToneInfo(AdditionalDataHolder, Parsable):
         """
         Sets the sequenceId property value. An incremental identifier used for ordering DTMF events.
         Args:
-            value: Value to set for the sequenceId property.
+            value: Value to set for the sequence_id property.
         """
         self._sequence_id = value
     

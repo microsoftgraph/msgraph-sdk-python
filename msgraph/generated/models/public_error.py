@@ -98,7 +98,7 @@ class PublicError(AdditionalDataHolder, Parsable):
         fields = {
             "code": lambda n : setattr(self, 'code', n.get_str_value()),
             "details": lambda n : setattr(self, 'details', n.get_collection_of_object_values(public_error_detail.PublicErrorDetail)),
-            "inner_error": lambda n : setattr(self, 'inner_error', n.get_object_value(public_inner_error.PublicInnerError)),
+            "innerError": lambda n : setattr(self, 'inner_error', n.get_object_value(public_inner_error.PublicInnerError)),
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "target": lambda n : setattr(self, 'target', n.get_str_value()),
@@ -118,7 +118,7 @@ class PublicError(AdditionalDataHolder, Parsable):
         """
         Sets the innerError property value. Details of the inner error.
         Args:
-            value: Value to set for the innerError property.
+            value: Value to set for the inner_error property.
         """
         self._inner_error = value
     
@@ -152,7 +152,7 @@ class PublicError(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

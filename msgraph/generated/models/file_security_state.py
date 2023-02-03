@@ -66,7 +66,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the fileHash property value. Complex type containing file hashes (cryptographic and location-sensitive).
         Args:
-            value: Value to set for the fileHash property.
+            value: Value to set for the file_hash property.
         """
         self._file_hash = value
     
@@ -76,11 +76,11 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "file_hash": lambda n : setattr(self, 'file_hash', n.get_object_value(file_hash.FileHash)),
+            "fileHash": lambda n : setattr(self, 'file_hash', n.get_object_value(file_hash.FileHash)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),
-            "risk_score": lambda n : setattr(self, 'risk_score', n.get_str_value()),
+            "riskScore": lambda n : setattr(self, 'risk_score', n.get_str_value()),
         }
         return fields
     
@@ -114,7 +114,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -148,7 +148,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the riskScore property value. Provider generated/calculated risk score of the alert file. Recommended value range of 0-1, which equates to a percentage.
         Args:
-            value: Value to set for the riskScore property.
+            value: Value to set for the risk_score property.
         """
         self._risk_score = value
     

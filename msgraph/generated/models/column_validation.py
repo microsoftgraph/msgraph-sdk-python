@@ -64,7 +64,7 @@ class ColumnValidation(AdditionalDataHolder, Parsable):
         """
         Sets the defaultLanguage property value. Default BCP 47 language tag for the description.
         Args:
-            value: Value to set for the defaultLanguage property.
+            value: Value to set for the default_language property.
         """
         self._default_language = value
     
@@ -108,7 +108,7 @@ class ColumnValidation(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "default_language": lambda n : setattr(self, 'default_language', n.get_str_value()),
+            "defaultLanguage": lambda n : setattr(self, 'default_language', n.get_str_value()),
             "descriptions": lambda n : setattr(self, 'descriptions', n.get_collection_of_object_values(display_name_localization.DisplayNameLocalization)),
             "formula": lambda n : setattr(self, 'formula', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -128,7 +128,7 @@ class ColumnValidation(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

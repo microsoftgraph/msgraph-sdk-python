@@ -75,7 +75,7 @@ class UnifiedRoleDefinition(entity.Entity):
         """
         Sets the displayName property value. The display name for the unifiedRoleDefinition. Read-only when isBuiltIn is true. Required.  Supports $filter (eq, in).
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -86,13 +86,13 @@ class UnifiedRoleDefinition(entity.Entity):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "inherits_permissions_from": lambda n : setattr(self, 'inherits_permissions_from', n.get_collection_of_object_values(UnifiedRoleDefinition)),
-            "is_built_in": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "resource_scopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_primitive_values(str)),
-            "role_permissions": lambda n : setattr(self, 'role_permissions', n.get_collection_of_object_values(unified_role_permission.UnifiedRolePermission)),
-            "template_id": lambda n : setattr(self, 'template_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "inheritsPermissionsFrom": lambda n : setattr(self, 'inherits_permissions_from', n.get_collection_of_object_values(UnifiedRoleDefinition)),
+            "isBuiltIn": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "resourceScopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_primitive_values(str)),
+            "rolePermissions": lambda n : setattr(self, 'role_permissions', n.get_collection_of_object_values(unified_role_permission.UnifiedRolePermission)),
+            "templateId": lambda n : setattr(self, 'template_id', n.get_str_value()),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -112,7 +112,7 @@ class UnifiedRoleDefinition(entity.Entity):
         """
         Sets the inheritsPermissionsFrom property value. Read-only collection of role definitions that the given role definition inherits from. Only Azure AD built-in roles (isBuiltIn is true) support this attribute. Supports $expand.
         Args:
-            value: Value to set for the inheritsPermissionsFrom property.
+            value: Value to set for the inherits_permissions_from property.
         """
         self._inherits_permissions_from = value
     
@@ -129,7 +129,7 @@ class UnifiedRoleDefinition(entity.Entity):
         """
         Sets the isBuiltIn property value. Flag indicating whether the role definition is part of the default set included in Azure Active Directory (Azure AD) or a custom definition. Read-only. Supports $filter (eq, in).
         Args:
-            value: Value to set for the isBuiltIn property.
+            value: Value to set for the is_built_in property.
         """
         self._is_built_in = value
     
@@ -146,7 +146,7 @@ class UnifiedRoleDefinition(entity.Entity):
         """
         Sets the isEnabled property value. Flag indicating whether the role is enabled for assignment. If false the role is not available for assignment. Read-only when isBuiltIn is true.
         Args:
-            value: Value to set for the isEnabled property.
+            value: Value to set for the is_enabled property.
         """
         self._is_enabled = value
     
@@ -163,7 +163,7 @@ class UnifiedRoleDefinition(entity.Entity):
         """
         Sets the resourceScopes property value. List of the scopes or permissions the role definition applies to. Currently only / is supported. Read-only when isBuiltIn is true. DO NOT USE. This will be deprecated soon. Attach scope to role assignment.
         Args:
-            value: Value to set for the resourceScopes property.
+            value: Value to set for the resource_scopes property.
         """
         self._resource_scopes = value
     
@@ -180,7 +180,7 @@ class UnifiedRoleDefinition(entity.Entity):
         """
         Sets the rolePermissions property value. List of permissions included in the role. Read-only when isBuiltIn is true. Required.
         Args:
-            value: Value to set for the rolePermissions property.
+            value: Value to set for the role_permissions property.
         """
         self._role_permissions = value
     
@@ -216,7 +216,7 @@ class UnifiedRoleDefinition(entity.Entity):
         """
         Sets the templateId property value. Custom template identifier that can be set when isBuiltIn is false but is read-only when isBuiltIn is true. This identifier is typically used if one needs an identifier to be the same across different directories.
         Args:
-            value: Value to set for the templateId property.
+            value: Value to set for the template_id property.
         """
         self._template_id = value
     

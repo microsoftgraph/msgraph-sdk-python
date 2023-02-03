@@ -48,7 +48,7 @@ class PrivacyProfile(AdditionalDataHolder, Parsable):
         """
         Sets the contactEmail property value. A valid smtp email address for the privacy statement contact. Not required.
         Args:
-            value: Value to set for the contactEmail property.
+            value: Value to set for the contact_email property.
         """
         self._contact_email = value
     
@@ -70,9 +70,9 @@ class PrivacyProfile(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "contact_email": lambda n : setattr(self, 'contact_email', n.get_str_value()),
+            "contactEmail": lambda n : setattr(self, 'contact_email', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "statement_url": lambda n : setattr(self, 'statement_url', n.get_str_value()),
+            "statementUrl": lambda n : setattr(self, 'statement_url', n.get_str_value()),
         }
         return fields
     
@@ -89,7 +89,7 @@ class PrivacyProfile(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -119,7 +119,7 @@ class PrivacyProfile(AdditionalDataHolder, Parsable):
         """
         Sets the statementUrl property value. A valid URL format that begins with http:// or https://. Maximum length is 255 characters. The URL that directs to the company's privacy statement. Not required.
         Args:
-            value: Value to set for the statementUrl property.
+            value: Value to set for the statement_url property.
         """
         self._statement_url = value
     

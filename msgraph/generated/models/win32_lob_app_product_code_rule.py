@@ -38,9 +38,9 @@ class Win32LobAppProductCodeRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "product_code": lambda n : setattr(self, 'product_code', n.get_str_value()),
-            "product_version": lambda n : setattr(self, 'product_version', n.get_str_value()),
-            "product_version_operator": lambda n : setattr(self, 'product_version_operator', n.get_enum_value(win32_lob_app_rule_operator.Win32LobAppRuleOperator)),
+            "productCode": lambda n : setattr(self, 'product_code', n.get_str_value()),
+            "productVersion": lambda n : setattr(self, 'product_version', n.get_str_value()),
+            "productVersionOperator": lambda n : setattr(self, 'product_version_operator', n.get_enum_value(win32_lob_app_rule_operator.Win32LobAppRuleOperator)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -59,7 +59,7 @@ class Win32LobAppProductCodeRule(win32_lob_app_rule.Win32LobAppRule):
         """
         Sets the productCode property value. The product code of the app.
         Args:
-            value: Value to set for the productCode property.
+            value: Value to set for the product_code property.
         """
         self._product_code = value
     
@@ -76,7 +76,7 @@ class Win32LobAppProductCodeRule(win32_lob_app_rule.Win32LobAppRule):
         """
         Sets the productVersion property value. The product version comparison value.
         Args:
-            value: Value to set for the productVersion property.
+            value: Value to set for the product_version property.
         """
         self._product_version = value
     
@@ -93,7 +93,7 @@ class Win32LobAppProductCodeRule(win32_lob_app_rule.Win32LobAppRule):
         """
         Sets the productVersionOperator property value. Contains properties for detection operator.
         Args:
-            value: Value to set for the productVersionOperator property.
+            value: Value to set for the product_version_operator property.
         """
         self._product_version_operator = value
     

@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-app_role_assignment_request_builder = lazy_import('msgraph.generated.me.registered_devices.app_role_assignment.app_role_assignment_request_builder')
 count_request_builder = lazy_import('msgraph.generated.me.registered_devices.count.count_request_builder')
-device_request_builder = lazy_import('msgraph.generated.me.registered_devices.device.device_request_builder')
-endpoint_request_builder = lazy_import('msgraph.generated.me.registered_devices.endpoint.endpoint_request_builder')
+app_role_assignment_request_builder = lazy_import('msgraph.generated.me.registered_devices.microsoft_graph_app_role_assignment.app_role_assignment_request_builder')
+device_request_builder = lazy_import('msgraph.generated.me.registered_devices.microsoft_graph_device.device_request_builder')
+endpoint_request_builder = lazy_import('msgraph.generated.me.registered_devices.microsoft_graph_endpoint.endpoint_request_builder')
 directory_object_collection_response = lazy_import('msgraph.generated.models.directory_object_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -22,13 +22,6 @@ class RegisteredDevicesRequestBuilder():
     Provides operations to manage the registeredDevices property of the microsoft.graph.user entity.
     """
     @property
-    def app_role_assignment(self) -> app_role_assignment_request_builder.AppRoleAssignmentRequestBuilder:
-        """
-        Casts the previous resource to appRoleAssignment.
-        """
-        return app_role_assignment_request_builder.AppRoleAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
@@ -36,14 +29,21 @@ class RegisteredDevicesRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def device(self) -> device_request_builder.DeviceRequestBuilder:
+    def microsoft_graph_app_role_assignment(self) -> app_role_assignment_request_builder.AppRoleAssignmentRequestBuilder:
+        """
+        Casts the previous resource to appRoleAssignment.
+        """
+        return app_role_assignment_request_builder.AppRoleAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_device(self) -> device_request_builder.DeviceRequestBuilder:
         """
         Casts the previous resource to device.
         """
         return device_request_builder.DeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def endpoint(self) -> endpoint_request_builder.EndpointRequestBuilder:
+    def microsoft_graph_endpoint(self) -> endpoint_request_builder.EndpointRequestBuilder:
         """
         Casts the previous resource to endpoint.
         """

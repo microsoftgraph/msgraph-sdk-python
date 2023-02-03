@@ -54,7 +54,7 @@ class TargetedManagedAppProtection(managed_app_protection.ManagedAppProtection):
         """
         fields = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment)),
-            "is_assigned": lambda n : setattr(self, 'is_assigned', n.get_bool_value()),
+            "isAssigned": lambda n : setattr(self, 'is_assigned', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -73,7 +73,7 @@ class TargetedManagedAppProtection(managed_app_protection.ManagedAppProtection):
         """
         Sets the isAssigned property value. Indicates if the policy is deployed to any inclusion groups or not.
         Args:
-            value: Value to set for the isAssigned property.
+            value: Value to set for the is_assigned property.
         """
         self._is_assigned = value
     

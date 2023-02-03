@@ -37,7 +37,7 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         """
         Sets the birthDate property value. Birth date of the student.
         Args:
-            value: Value to set for the birthDate property.
+            value: Value to set for the birth_date property.
         """
         self._birth_date = value
     
@@ -88,7 +88,7 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         """
         Sets the externalId property value. ID of the student in the source system.
         Args:
-            value: Value to set for the externalId property.
+            value: Value to set for the external_id property.
         """
         self._external_id = value
     
@@ -115,13 +115,13 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "birth_date": lambda n : setattr(self, 'birth_date', n.get_object_value(Date)),
-            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "birthDate": lambda n : setattr(self, 'birth_date', n.get_object_value(Date)),
+            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
             "gender": lambda n : setattr(self, 'gender', n.get_enum_value(education_gender.EducationGender)),
             "grade": lambda n : setattr(self, 'grade', n.get_str_value()),
-            "graduation_year": lambda n : setattr(self, 'graduation_year', n.get_str_value()),
+            "graduationYear": lambda n : setattr(self, 'graduation_year', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "student_number": lambda n : setattr(self, 'student_number', n.get_str_value()),
+            "studentNumber": lambda n : setattr(self, 'student_number', n.get_str_value()),
         }
         return fields
     
@@ -155,7 +155,7 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         """
         Sets the graduationYear property value. Year the student is graduating from the school.
         Args:
-            value: Value to set for the graduationYear property.
+            value: Value to set for the graduation_year property.
         """
         self._graduation_year = value
     
@@ -172,7 +172,7 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -206,7 +206,7 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         """
         Sets the studentNumber property value. Student Number.
         Args:
-            value: Value to set for the studentNumber property.
+            value: Value to set for the student_number property.
         """
         self._student_number = value
     

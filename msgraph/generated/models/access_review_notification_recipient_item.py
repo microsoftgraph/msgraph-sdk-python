@@ -55,8 +55,8 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "notification_recipient_scope": lambda n : setattr(self, 'notification_recipient_scope', n.get_object_value(access_review_notification_recipient_scope.AccessReviewNotificationRecipientScope)),
-            "notification_template_type": lambda n : setattr(self, 'notification_template_type', n.get_str_value()),
+            "notificationRecipientScope": lambda n : setattr(self, 'notification_recipient_scope', n.get_object_value(access_review_notification_recipient_scope.AccessReviewNotificationRecipientScope)),
+            "notificationTemplateType": lambda n : setattr(self, 'notification_template_type', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -74,7 +74,7 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
         """
         Sets the notificationRecipientScope property value. Determines the recipient of the notification email.
         Args:
-            value: Value to set for the notificationRecipientScope property.
+            value: Value to set for the notification_recipient_scope property.
         """
         self._notification_recipient_scope = value
     
@@ -91,7 +91,7 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
         """
         Sets the notificationTemplateType property value. Indicates the type of access review email to be sent. Supported template type is CompletedAdditionalRecipients, which sends review completion notifications to the recipients.
         Args:
-            value: Value to set for the notificationTemplateType property.
+            value: Value to set for the notification_template_type property.
         """
         self._notification_template_type = value
     
@@ -108,7 +108,7 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

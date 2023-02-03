@@ -93,7 +93,7 @@ class Post(outlook_item.OutlookItem):
         """
         Sets the conversationId property value. Unique ID of the conversation. Read-only.
         Args:
-            value: Value to set for the conversationId property.
+            value: Value to set for the conversation_id property.
         """
         self._conversation_id = value
     
@@ -110,7 +110,7 @@ class Post(outlook_item.OutlookItem):
         """
         Sets the conversationThreadId property value. Unique ID of the conversation thread. Read-only.
         Args:
-            value: Value to set for the conversationThreadId property.
+            value: Value to set for the conversation_thread_id property.
         """
         self._conversation_thread_id = value
     
@@ -168,17 +168,17 @@ class Post(outlook_item.OutlookItem):
         fields = {
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(attachment.Attachment)),
             "body": lambda n : setattr(self, 'body', n.get_object_value(item_body.ItemBody)),
-            "conversation_id": lambda n : setattr(self, 'conversation_id', n.get_str_value()),
-            "conversation_thread_id": lambda n : setattr(self, 'conversation_thread_id', n.get_str_value()),
+            "conversationId": lambda n : setattr(self, 'conversation_id', n.get_str_value()),
+            "conversationThreadId": lambda n : setattr(self, 'conversation_thread_id', n.get_str_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
             "from": lambda n : setattr(self, 'from_', n.get_object_value(recipient.Recipient)),
-            "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
-            "in_reply_to": lambda n : setattr(self, 'in_reply_to', n.get_object_value(post.Post)),
-            "multi_value_extended_properties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty)),
-            "new_participants": lambda n : setattr(self, 'new_participants', n.get_collection_of_object_values(recipient.Recipient)),
-            "received_date_time": lambda n : setattr(self, 'received_date_time', n.get_datetime_value()),
+            "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
+            "inReplyTo": lambda n : setattr(self, 'in_reply_to', n.get_object_value(post.Post)),
+            "multiValueExtendedProperties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty)),
+            "newParticipants": lambda n : setattr(self, 'new_participants', n.get_collection_of_object_values(recipient.Recipient)),
+            "receivedDateTime": lambda n : setattr(self, 'received_date_time', n.get_datetime_value()),
             "sender": lambda n : setattr(self, 'sender', n.get_object_value(recipient.Recipient)),
-            "single_value_extended_properties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(single_value_legacy_extended_property.SingleValueLegacyExtendedProperty)),
+            "singleValueExtendedProperties": lambda n : setattr(self, 'single_value_extended_properties', n.get_collection_of_object_values(single_value_legacy_extended_property.SingleValueLegacyExtendedProperty)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -197,7 +197,7 @@ class Post(outlook_item.OutlookItem):
         """
         Sets the hasAttachments property value. Indicates whether the post has at least one attachment. This is a default property.
         Args:
-            value: Value to set for the hasAttachments property.
+            value: Value to set for the has_attachments property.
         """
         self._has_attachments = value
     
@@ -214,7 +214,7 @@ class Post(outlook_item.OutlookItem):
         """
         Sets the inReplyTo property value. Read-only. Supports $expand.
         Args:
-            value: Value to set for the inReplyTo property.
+            value: Value to set for the in_reply_to property.
         """
         self._in_reply_to = value
     
@@ -231,7 +231,7 @@ class Post(outlook_item.OutlookItem):
         """
         Sets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the post. Read-only. Nullable.
         Args:
-            value: Value to set for the multiValueExtendedProperties property.
+            value: Value to set for the multi_value_extended_properties property.
         """
         self._multi_value_extended_properties = value
     
@@ -248,7 +248,7 @@ class Post(outlook_item.OutlookItem):
         """
         Sets the newParticipants property value. Conversation participants that were added to the thread as part of this post.
         Args:
-            value: Value to set for the newParticipants property.
+            value: Value to set for the new_participants property.
         """
         self._new_participants = value
     
@@ -265,7 +265,7 @@ class Post(outlook_item.OutlookItem):
         """
         Sets the receivedDateTime property value. Specifies when the post was received. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the receivedDateTime property.
+            value: Value to set for the received_date_time property.
         """
         self._received_date_time = value
     
@@ -322,7 +322,7 @@ class Post(outlook_item.OutlookItem):
         """
         Sets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the post. Read-only. Nullable.
         Args:
-            value: Value to set for the singleValueExtendedProperties property.
+            value: Value to set for the single_value_extended_properties property.
         """
         self._single_value_extended_properties = value
     

@@ -40,7 +40,7 @@ class AudioRoutingGroup(entity.Entity):
         """
         fields = {
             "receivers": lambda n : setattr(self, 'receivers', n.get_collection_of_primitive_values(str)),
-            "routing_mode": lambda n : setattr(self, 'routing_mode', n.get_enum_value(routing_mode.RoutingMode)),
+            "routingMode": lambda n : setattr(self, 'routing_mode', n.get_enum_value(routing_mode.RoutingMode)),
             "sources": lambda n : setattr(self, 'sources', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
@@ -77,7 +77,7 @@ class AudioRoutingGroup(entity.Entity):
         """
         Sets the routingMode property value. The routingMode property
         Args:
-            value: Value to set for the routingMode property.
+            value: Value to set for the routing_mode property.
         """
         self._routing_mode = value
     

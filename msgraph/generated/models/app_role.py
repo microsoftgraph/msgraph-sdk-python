@@ -34,7 +34,7 @@ class AppRole(AdditionalDataHolder, Parsable):
         """
         Sets the allowedMemberTypes property value. Specifies whether this app role can be assigned to users and groups (by setting to ['User']), to other application's (by setting to ['Application'], or both (by setting to ['User', 'Application']). App roles supporting assignment to other applications' service principals are also known as application permissions. The 'Application' value is only supported for app roles defined on application entities.
         Args:
-            value: Value to set for the allowedMemberTypes property.
+            value: Value to set for the allowed_member_types property.
         """
         self._allowed_member_types = value
     
@@ -104,7 +104,7 @@ class AppRole(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. Display name for the permission that appears in the app role assignment and consent experiences.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -114,11 +114,11 @@ class AppRole(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allowed_member_types": lambda n : setattr(self, 'allowed_member_types', n.get_collection_of_primitive_values(str)),
+            "allowedMemberTypes": lambda n : setattr(self, 'allowed_member_types', n.get_collection_of_primitive_values(str)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_object_value(Guid)),
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "origin": lambda n : setattr(self, 'origin', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
@@ -155,7 +155,7 @@ class AppRole(AdditionalDataHolder, Parsable):
         """
         Sets the isEnabled property value. When creating or updating an app role, this must be set to true (which is the default). To delete a role, this must first be set to false.  At that point, in a subsequent call, this role may be removed.
         Args:
-            value: Value to set for the isEnabled property.
+            value: Value to set for the is_enabled property.
         """
         self._is_enabled = value
     
@@ -172,7 +172,7 @@ class AppRole(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

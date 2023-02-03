@@ -25,7 +25,7 @@ class AccessPackageAssignment(entity.Entity):
         """
         Sets the accessPackage property value. Read-only. Nullable. Supports $filter (eq) on the id property and $expand query parameters.
         Args:
-            value: Value to set for the accessPackage property.
+            value: Value to set for the access_package property.
         """
         self._access_package = value
     
@@ -42,7 +42,7 @@ class AccessPackageAssignment(entity.Entity):
         """
         Sets the assignmentPolicy property value. Read-only. Supports $filter (eq) on the id property and $expand query parameters.
         Args:
-            value: Value to set for the assignmentPolicy property.
+            value: Value to set for the assignment_policy property.
         """
         self._assignment_policy = value
     
@@ -93,7 +93,7 @@ class AccessPackageAssignment(entity.Entity):
         """
         Sets the expiredDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         Args:
-            value: Value to set for the expiredDateTime property.
+            value: Value to set for the expired_date_time property.
         """
         self._expired_date_time = value
     
@@ -103,9 +103,9 @@ class AccessPackageAssignment(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_package": lambda n : setattr(self, 'access_package', n.get_object_value(access_package.AccessPackage)),
-            "assignment_policy": lambda n : setattr(self, 'assignment_policy', n.get_object_value(access_package_assignment_policy.AccessPackageAssignmentPolicy)),
-            "expired_date_time": lambda n : setattr(self, 'expired_date_time', n.get_datetime_value()),
+            "accessPackage": lambda n : setattr(self, 'access_package', n.get_object_value(access_package.AccessPackage)),
+            "assignmentPolicy": lambda n : setattr(self, 'assignment_policy', n.get_object_value(access_package_assignment_policy.AccessPackageAssignmentPolicy)),
+            "expiredDateTime": lambda n : setattr(self, 'expired_date_time', n.get_datetime_value()),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(entitlement_management_schedule.EntitlementManagementSchedule)),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(access_package_assignment_state.AccessPackageAssignmentState)),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),

@@ -17,10 +17,11 @@ class AgreementAcceptanceItemRequestBuilder():
     """
     Provides operations to manage the collection of agreementAcceptance entities.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, agreement_acceptance_id: Optional[str] = None) -> None:
         """
         Instantiates a new AgreementAcceptanceItemRequestBuilder and sets the default values.
         Args:
+            agreementAcceptanceId: key: id of agreementAcceptance
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,12 +33,13 @@ class AgreementAcceptanceItemRequestBuilder():
         self.url_template: str = "{+baseurl}/agreementAcceptances/{agreementAcceptance%2Did}{?%24select}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["agreementAcceptance%2Did"] = agreementAcceptanceId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
     async def delete(self,request_configuration: Optional[AgreementAcceptanceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete entity from agreementAcceptances by key (id)
+        Delete entity from agreementAcceptances
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -54,7 +56,7 @@ class AgreementAcceptanceItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[AgreementAcceptanceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[agreement_acceptance.AgreementAcceptance]:
         """
-        Get entity from agreementAcceptances by key (id)
+        Get entity from agreementAcceptances by key
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[agreement_acceptance.AgreementAcceptance]
@@ -72,7 +74,7 @@ class AgreementAcceptanceItemRequestBuilder():
     
     async def patch(self,body: Optional[agreement_acceptance.AgreementAcceptance] = None, request_configuration: Optional[AgreementAcceptanceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[agreement_acceptance.AgreementAcceptance]:
         """
-        Update entity in agreementAcceptances by key (id)
+        Update entity in agreementAcceptances
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -93,7 +95,7 @@ class AgreementAcceptanceItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[AgreementAcceptanceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete entity from agreementAcceptances by key (id)
+        Delete entity from agreementAcceptances
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -109,7 +111,7 @@ class AgreementAcceptanceItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AgreementAcceptanceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get entity from agreementAcceptances by key (id)
+        Get entity from agreementAcceptances by key
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -127,7 +129,7 @@ class AgreementAcceptanceItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[agreement_acceptance.AgreementAcceptance] = None, request_configuration: Optional[AgreementAcceptanceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update entity in agreementAcceptances by key (id)
+        Update entity in agreementAcceptances
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +163,7 @@ class AgreementAcceptanceItemRequestBuilder():
     @dataclass
     class AgreementAcceptanceItemRequestBuilderGetQueryParameters():
         """
-        Get entity from agreementAcceptances by key (id)
+        Get entity from agreementAcceptances by key
         """
         # Select properties to be returned
         select: Optional[List[str]] = None

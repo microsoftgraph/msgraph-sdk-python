@@ -21,7 +21,7 @@ class CommsOperation(entity.Entity):
         """
         Sets the clientContext property value. Unique Client Context string. Max limit is 256 chars.
         Args:
-            value: Value to set for the clientContext property.
+            value: Value to set for the client_context property.
         """
         self._client_context = value
     
@@ -57,8 +57,8 @@ class CommsOperation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "client_context": lambda n : setattr(self, 'client_context', n.get_str_value()),
-            "result_info": lambda n : setattr(self, 'result_info', n.get_object_value(result_info.ResultInfo)),
+            "clientContext": lambda n : setattr(self, 'client_context', n.get_str_value()),
+            "resultInfo": lambda n : setattr(self, 'result_info', n.get_object_value(result_info.ResultInfo)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(operation_status.OperationStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -78,7 +78,7 @@ class CommsOperation(entity.Entity):
         """
         Sets the resultInfo property value. The result information. Read-only.
         Args:
-            value: Value to set for the resultInfo property.
+            value: Value to set for the result_info property.
         """
         self._result_info = value
     

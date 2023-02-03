@@ -19,7 +19,7 @@ class CloudApplicationEvidence(alert_evidence.AlertEvidence):
         """
         Sets the appId property value. Unique identifier of the application.
         Args:
-            value: Value to set for the appId property.
+            value: Value to set for the app_id property.
         """
         self._app_id = value
     
@@ -66,7 +66,7 @@ class CloudApplicationEvidence(alert_evidence.AlertEvidence):
         """
         Sets the displayName property value. Name of the application.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -76,11 +76,11 @@ class CloudApplicationEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_id": lambda n : setattr(self, 'app_id', n.get_int_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "instance_id": lambda n : setattr(self, 'instance_id', n.get_int_value()),
-            "instance_name": lambda n : setattr(self, 'instance_name', n.get_str_value()),
-            "saas_app_id": lambda n : setattr(self, 'saas_app_id', n.get_int_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_int_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "instanceId": lambda n : setattr(self, 'instance_id', n.get_int_value()),
+            "instanceName": lambda n : setattr(self, 'instance_name', n.get_str_value()),
+            "saasAppId": lambda n : setattr(self, 'saas_app_id', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -99,7 +99,7 @@ class CloudApplicationEvidence(alert_evidence.AlertEvidence):
         """
         Sets the instanceId property value. Identifier of the instance of the Software as a Service (SaaS) application.
         Args:
-            value: Value to set for the instanceId property.
+            value: Value to set for the instance_id property.
         """
         self._instance_id = value
     
@@ -116,7 +116,7 @@ class CloudApplicationEvidence(alert_evidence.AlertEvidence):
         """
         Sets the instanceName property value. Name of the instance of the SaaS application.
         Args:
-            value: Value to set for the instanceName property.
+            value: Value to set for the instance_name property.
         """
         self._instance_name = value
     
@@ -133,7 +133,7 @@ class CloudApplicationEvidence(alert_evidence.AlertEvidence):
         """
         Sets the saasAppId property value. The identifier of the SaaS application.
         Args:
-            value: Value to set for the saasAppId property.
+            value: Value to set for the saas_app_id property.
         """
         self._saas_app_id = value
     

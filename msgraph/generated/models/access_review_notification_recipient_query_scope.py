@@ -38,8 +38,8 @@ class AccessReviewNotificationRecipientQueryScope(access_review_notification_rec
         """
         fields = {
             "query": lambda n : setattr(self, 'query', n.get_str_value()),
-            "query_root": lambda n : setattr(self, 'query_root', n.get_str_value()),
-            "query_type": lambda n : setattr(self, 'query_type', n.get_str_value()),
+            "queryRoot": lambda n : setattr(self, 'query_root', n.get_str_value()),
+            "queryType": lambda n : setattr(self, 'query_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -75,7 +75,7 @@ class AccessReviewNotificationRecipientQueryScope(access_review_notification_rec
         """
         Sets the queryRoot property value. In the scenario where reviewers need to be specified dynamically, indicates the relative source of the query. This property is only required if a relative query (that is, ./manager) is specified.
         Args:
-            value: Value to set for the queryRoot property.
+            value: Value to set for the query_root property.
         """
         self._query_root = value
     
@@ -92,7 +92,7 @@ class AccessReviewNotificationRecipientQueryScope(access_review_notification_rec
         """
         Sets the queryType property value. Indicates the type of query. Allowed value is MicrosoftGraph.
         Args:
-            value: Value to set for the queryType property.
+            value: Value to set for the query_type property.
         """
         self._query_type = value
     

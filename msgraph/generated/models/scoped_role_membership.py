@@ -20,7 +20,7 @@ class ScopedRoleMembership(entity.Entity):
         """
         Sets the administrativeUnitId property value. Unique identifier for the administrative unit that the directory role is scoped to
         Args:
-            value: Value to set for the administrativeUnitId property.
+            value: Value to set for the administrative_unit_id property.
         """
         self._administrative_unit_id = value
     
@@ -56,9 +56,9 @@ class ScopedRoleMembership(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "administrative_unit_id": lambda n : setattr(self, 'administrative_unit_id', n.get_str_value()),
-            "role_id": lambda n : setattr(self, 'role_id', n.get_str_value()),
-            "role_member_info": lambda n : setattr(self, 'role_member_info', n.get_object_value(identity.Identity)),
+            "administrativeUnitId": lambda n : setattr(self, 'administrative_unit_id', n.get_str_value()),
+            "roleId": lambda n : setattr(self, 'role_id', n.get_str_value()),
+            "roleMemberInfo": lambda n : setattr(self, 'role_member_info', n.get_object_value(identity.Identity)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -77,7 +77,7 @@ class ScopedRoleMembership(entity.Entity):
         """
         Sets the roleId property value. Unique identifier for the directory role that the member is in.
         Args:
-            value: Value to set for the roleId property.
+            value: Value to set for the role_id property.
         """
         self._role_id = value
     
@@ -94,7 +94,7 @@ class ScopedRoleMembership(entity.Entity):
         """
         Sets the roleMemberInfo property value. The roleMemberInfo property
         Args:
-            value: Value to set for the roleMemberInfo property.
+            value: Value to set for the role_member_info property.
         """
         self._role_member_info = value
     

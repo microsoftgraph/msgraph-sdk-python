@@ -66,7 +66,7 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
         """
         Sets the deviceRestartBehavior property value. Indicates the type of restart action.
         Args:
-            value: Value to set for the deviceRestartBehavior property.
+            value: Value to set for the device_restart_behavior property.
         """
         self._device_restart_behavior = value
     
@@ -76,9 +76,9 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_restart_behavior": lambda n : setattr(self, 'device_restart_behavior', n.get_enum_value(win32_lob_app_restart_behavior.Win32LobAppRestartBehavior)),
+            "deviceRestartBehavior": lambda n : setattr(self, 'device_restart_behavior', n.get_enum_value(win32_lob_app_restart_behavior.Win32LobAppRestartBehavior)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "run_as_account": lambda n : setattr(self, 'run_as_account', n.get_enum_value(run_as_account_type.RunAsAccountType)),
+            "runAsAccount": lambda n : setattr(self, 'run_as_account', n.get_enum_value(run_as_account_type.RunAsAccountType)),
         }
         return fields
     
@@ -95,7 +95,7 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -112,7 +112,7 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
         """
         Sets the runAsAccount property value. Indicates the type of execution context the app runs in.
         Args:
-            value: Value to set for the runAsAccount property.
+            value: Value to set for the run_as_account property.
         """
         self._run_as_account = value
     

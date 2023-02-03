@@ -60,7 +60,7 @@ class DateTimeColumn(AdditionalDataHolder, Parsable):
         """
         Sets the displayAs property value. How the value should be presented in the UX. Must be one of default, friendly, or standard. See below for more details. If unspecified, treated as default.
         Args:
-            value: Value to set for the displayAs property.
+            value: Value to set for the display_as property.
         """
         self._display_as = value
     
@@ -87,7 +87,7 @@ class DateTimeColumn(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_as": lambda n : setattr(self, 'display_as', n.get_str_value()),
+            "displayAs": lambda n : setattr(self, 'display_as', n.get_str_value()),
             "format": lambda n : setattr(self, 'format', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
@@ -106,7 +106,7 @@ class DateTimeColumn(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

@@ -17,12 +17,13 @@ class TimeOffItemRequestBuilder():
     """
     Provides operations to manage the timesOff property of the microsoft.graph.schedule entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, time_off_id: Optional[str] = None) -> None:
         """
         Instantiates a new TimeOffItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            timeOffId: key: id of timeOff
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -32,6 +33,7 @@ class TimeOffItemRequestBuilder():
         self.url_template: str = "{+baseurl}/users/{user%2Did}/joinedTeams/{team%2Did}/schedule/timesOff/{timeOff%2Did}{?%24select}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["timeOff%2Did"] = timeOffId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

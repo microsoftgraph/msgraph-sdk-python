@@ -40,7 +40,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         """
         Sets the archiveFolder property value. Folder ID of an archive folder for the user.
         Args:
-            value: Value to set for the archiveFolder property.
+            value: Value to set for the archive_folder property.
         """
         self._archive_folder = value
     
@@ -57,7 +57,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         """
         Sets the automaticRepliesSetting property value. Configuration settings to automatically notify the sender of an incoming email with a message from the signed-in user.
         Args:
-            value: Value to set for the automaticRepliesSetting property.
+            value: Value to set for the automatic_replies_setting property.
         """
         self._automatic_replies_setting = value
     
@@ -114,7 +114,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         """
         Sets the dateFormat property value. The date format for the user's mailbox.
         Args:
-            value: Value to set for the dateFormat property.
+            value: Value to set for the date_format property.
         """
         self._date_format = value
     
@@ -131,7 +131,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         """
         Sets the delegateMeetingMessageDeliveryOptions property value. If the user has a calendar delegate, this specifies whether the delegate, mailbox owner, or both receive meeting messages and meeting responses. Possible values are: sendToDelegateAndInformationToPrincipal, sendToDelegateAndPrincipal, sendToDelegateOnly.
         Args:
-            value: Value to set for the delegateMeetingMessageDeliveryOptions property.
+            value: Value to set for the delegate_meeting_message_delivery_options property.
         """
         self._delegate_meeting_message_delivery_options = value
     
@@ -141,16 +141,16 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "archive_folder": lambda n : setattr(self, 'archive_folder', n.get_str_value()),
-            "automatic_replies_setting": lambda n : setattr(self, 'automatic_replies_setting', n.get_object_value(automatic_replies_setting.AutomaticRepliesSetting)),
-            "date_format": lambda n : setattr(self, 'date_format', n.get_str_value()),
-            "delegate_meeting_message_delivery_options": lambda n : setattr(self, 'delegate_meeting_message_delivery_options', n.get_enum_value(delegate_meeting_message_delivery_options.DelegateMeetingMessageDeliveryOptions)),
+            "archiveFolder": lambda n : setattr(self, 'archive_folder', n.get_str_value()),
+            "automaticRepliesSetting": lambda n : setattr(self, 'automatic_replies_setting', n.get_object_value(automatic_replies_setting.AutomaticRepliesSetting)),
+            "dateFormat": lambda n : setattr(self, 'date_format', n.get_str_value()),
+            "delegateMeetingMessageDeliveryOptions": lambda n : setattr(self, 'delegate_meeting_message_delivery_options', n.get_enum_value(delegate_meeting_message_delivery_options.DelegateMeetingMessageDeliveryOptions)),
             "language": lambda n : setattr(self, 'language', n.get_object_value(locale_info.LocaleInfo)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "time_format": lambda n : setattr(self, 'time_format', n.get_str_value()),
-            "time_zone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
-            "user_purpose": lambda n : setattr(self, 'user_purpose', n.get_enum_value(user_purpose.UserPurpose)),
-            "working_hours": lambda n : setattr(self, 'working_hours', n.get_object_value(working_hours.WorkingHours)),
+            "timeFormat": lambda n : setattr(self, 'time_format', n.get_str_value()),
+            "timeZone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
+            "userPurpose": lambda n : setattr(self, 'user_purpose', n.get_enum_value(user_purpose.UserPurpose)),
+            "workingHours": lambda n : setattr(self, 'working_hours', n.get_object_value(working_hours.WorkingHours)),
         }
         return fields
     
@@ -184,7 +184,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -221,7 +221,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         """
         Sets the timeFormat property value. The time format for the user's mailbox.
         Args:
-            value: Value to set for the timeFormat property.
+            value: Value to set for the time_format property.
         """
         self._time_format = value
     
@@ -238,7 +238,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         """
         Sets the timeZone property value. The default time zone for the user's mailbox.
         Args:
-            value: Value to set for the timeZone property.
+            value: Value to set for the time_zone property.
         """
         self._time_zone = value
     
@@ -255,7 +255,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         """
         Sets the userPurpose property value. The userPurpose property
         Args:
-            value: Value to set for the userPurpose property.
+            value: Value to set for the user_purpose property.
         """
         self._user_purpose = value
     
@@ -272,7 +272,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         """
         Sets the workingHours property value. The days of the week and hours in a specific time zone that the user works.
         Args:
-            value: Value to set for the workingHours property.
+            value: Value to set for the working_hours property.
         """
         self._working_hours = value
     

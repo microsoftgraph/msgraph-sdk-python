@@ -41,7 +41,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         """
         Sets the aggregationFilters property value. The aggregationFilters property
         Args:
-            value: Value to set for the aggregationFilters property.
+            value: Value to set for the aggregation_filters property.
         """
         self._aggregation_filters = value
     
@@ -109,7 +109,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         """
         Sets the contentSources property value. The contentSources property
         Args:
-            value: Value to set for the contentSources property.
+            value: Value to set for the content_sources property.
         """
         self._content_sources = value
     
@@ -138,7 +138,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         """
         Sets the enableTopResults property value. The enableTopResults property
         Args:
-            value: Value to set for the enableTopResults property.
+            value: Value to set for the enable_top_results property.
         """
         self._enable_top_results = value
     
@@ -155,7 +155,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         """
         Sets the entityTypes property value. The entityTypes property
         Args:
-            value: Value to set for the entityTypes property.
+            value: Value to set for the entity_types property.
         """
         self._entity_types = value
     
@@ -199,19 +199,19 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "aggregation_filters": lambda n : setattr(self, 'aggregation_filters', n.get_collection_of_primitive_values(str)),
             "aggregations": lambda n : setattr(self, 'aggregations', n.get_collection_of_object_values(aggregation_option.AggregationOption)),
-            "content_sources": lambda n : setattr(self, 'content_sources', n.get_collection_of_primitive_values(str)),
-            "enable_top_results": lambda n : setattr(self, 'enable_top_results', n.get_bool_value()),
-            "entity_types": lambda n : setattr(self, 'entity_types', n.get_collection_of_enum_values(entity_type.EntityType)),
+            "aggregationFilters": lambda n : setattr(self, 'aggregation_filters', n.get_collection_of_primitive_values(str)),
+            "contentSources": lambda n : setattr(self, 'content_sources', n.get_collection_of_primitive_values(str)),
+            "enableTopResults": lambda n : setattr(self, 'enable_top_results', n.get_bool_value()),
+            "entityTypes": lambda n : setattr(self, 'entity_types', n.get_collection_of_enum_values(entity_type.EntityType)),
             "fields": lambda n : setattr(self, 'fields', n.get_collection_of_primitive_values(str)),
             "from": lambda n : setattr(self, 'from_', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "query": lambda n : setattr(self, 'query', n.get_object_value(search_query.SearchQuery)),
-            "query_alteration_options": lambda n : setattr(self, 'query_alteration_options', n.get_object_value(search_alteration_options.SearchAlterationOptions)),
-            "result_template_options": lambda n : setattr(self, 'result_template_options', n.get_object_value(result_template_option.ResultTemplateOption)),
+            "queryAlterationOptions": lambda n : setattr(self, 'query_alteration_options', n.get_object_value(search_alteration_options.SearchAlterationOptions)),
+            "resultTemplateOptions": lambda n : setattr(self, 'result_template_options', n.get_object_value(result_template_option.ResultTemplateOption)),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
-            "sort_properties": lambda n : setattr(self, 'sort_properties', n.get_collection_of_object_values(sort_property.SortProperty)),
+            "sortProperties": lambda n : setattr(self, 'sort_properties', n.get_collection_of_object_values(sort_property.SortProperty)),
         }
         return fields
     
@@ -228,7 +228,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -262,7 +262,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         """
         Sets the queryAlterationOptions property value. The queryAlterationOptions property
         Args:
-            value: Value to set for the queryAlterationOptions property.
+            value: Value to set for the query_alteration_options property.
         """
         self._query_alteration_options = value
     
@@ -279,7 +279,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         """
         Sets the resultTemplateOptions property value. The resultTemplateOptions property
         Args:
-            value: Value to set for the resultTemplateOptions property.
+            value: Value to set for the result_template_options property.
         """
         self._result_template_options = value
     
@@ -291,8 +291,8 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        writer.write_collection_of_primitive_values("aggregationFilters", self.aggregation_filters)
         writer.write_collection_of_object_values("aggregations", self.aggregations)
+        writer.write_collection_of_primitive_values("aggregationFilters", self.aggregation_filters)
         writer.write_collection_of_primitive_values("contentSources", self.content_sources)
         writer.write_bool_value("enableTopResults", self.enable_top_results)
         writer.write_enum_value("entityTypes", self.entity_types)
@@ -336,7 +336,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         """
         Sets the sortProperties property value. The sortProperties property
         Args:
-            value: Value to set for the sortProperties property.
+            value: Value to set for the sort_properties property.
         """
         self._sort_properties = value
     

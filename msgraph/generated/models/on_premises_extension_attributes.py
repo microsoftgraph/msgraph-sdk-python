@@ -86,7 +86,7 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
         """
         Sets the extensionAttribute1 property value. First customizable extension attribute.
         Args:
-            value: Value to set for the extensionAttribute1 property.
+            value: Value to set for the extension_attribute1 property.
         """
         self._extension_attribute1 = value
     
@@ -103,7 +103,7 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
         """
         Sets the extensionAttribute10 property value. Tenth customizable extension attribute.
         Args:
-            value: Value to set for the extensionAttribute10 property.
+            value: Value to set for the extension_attribute10 property.
         """
         self._extension_attribute10 = value
     
@@ -120,7 +120,7 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
         """
         Sets the extensionAttribute11 property value. Eleventh customizable extension attribute.
         Args:
-            value: Value to set for the extensionAttribute11 property.
+            value: Value to set for the extension_attribute11 property.
         """
         self._extension_attribute11 = value
     
@@ -137,7 +137,7 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
         """
         Sets the extensionAttribute12 property value. Twelfth customizable extension attribute.
         Args:
-            value: Value to set for the extensionAttribute12 property.
+            value: Value to set for the extension_attribute12 property.
         """
         self._extension_attribute12 = value
     
@@ -154,7 +154,7 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
         """
         Sets the extensionAttribute13 property value. Thirteenth customizable extension attribute.
         Args:
-            value: Value to set for the extensionAttribute13 property.
+            value: Value to set for the extension_attribute13 property.
         """
         self._extension_attribute13 = value
     
@@ -171,7 +171,7 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
         """
         Sets the extensionAttribute14 property value. Fourteenth customizable extension attribute.
         Args:
-            value: Value to set for the extensionAttribute14 property.
+            value: Value to set for the extension_attribute14 property.
         """
         self._extension_attribute14 = value
     
@@ -188,7 +188,7 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
         """
         Sets the extensionAttribute15 property value. Fifteenth customizable extension attribute.
         Args:
-            value: Value to set for the extensionAttribute15 property.
+            value: Value to set for the extension_attribute15 property.
         """
         self._extension_attribute15 = value
     
@@ -205,7 +205,7 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
         """
         Sets the extensionAttribute2 property value. Second customizable extension attribute.
         Args:
-            value: Value to set for the extensionAttribute2 property.
+            value: Value to set for the extension_attribute2 property.
         """
         self._extension_attribute2 = value
     
@@ -222,7 +222,7 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
         """
         Sets the extensionAttribute3 property value. Third customizable extension attribute.
         Args:
-            value: Value to set for the extensionAttribute3 property.
+            value: Value to set for the extension_attribute3 property.
         """
         self._extension_attribute3 = value
     
@@ -239,7 +239,7 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
         """
         Sets the extensionAttribute4 property value. Fourth customizable extension attribute.
         Args:
-            value: Value to set for the extensionAttribute4 property.
+            value: Value to set for the extension_attribute4 property.
         """
         self._extension_attribute4 = value
     
@@ -256,7 +256,7 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
         """
         Sets the extensionAttribute5 property value. Fifth customizable extension attribute.
         Args:
-            value: Value to set for the extensionAttribute5 property.
+            value: Value to set for the extension_attribute5 property.
         """
         self._extension_attribute5 = value
     
@@ -273,7 +273,7 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
         """
         Sets the extensionAttribute6 property value. Sixth customizable extension attribute.
         Args:
-            value: Value to set for the extensionAttribute6 property.
+            value: Value to set for the extension_attribute6 property.
         """
         self._extension_attribute6 = value
     
@@ -290,7 +290,7 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
         """
         Sets the extensionAttribute7 property value. Seventh customizable extension attribute.
         Args:
-            value: Value to set for the extensionAttribute7 property.
+            value: Value to set for the extension_attribute7 property.
         """
         self._extension_attribute7 = value
     
@@ -307,7 +307,7 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
         """
         Sets the extensionAttribute8 property value. Eighth customizable extension attribute.
         Args:
-            value: Value to set for the extensionAttribute8 property.
+            value: Value to set for the extension_attribute8 property.
         """
         self._extension_attribute8 = value
     
@@ -324,7 +324,7 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
         """
         Sets the extensionAttribute9 property value. Ninth customizable extension attribute.
         Args:
-            value: Value to set for the extensionAttribute9 property.
+            value: Value to set for the extension_attribute9 property.
         """
         self._extension_attribute9 = value
     
@@ -334,21 +334,21 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "extension_attribute1": lambda n : setattr(self, 'extension_attribute1', n.get_str_value()),
-            "extension_attribute10": lambda n : setattr(self, 'extension_attribute10', n.get_str_value()),
-            "extension_attribute11": lambda n : setattr(self, 'extension_attribute11', n.get_str_value()),
-            "extension_attribute12": lambda n : setattr(self, 'extension_attribute12', n.get_str_value()),
-            "extension_attribute13": lambda n : setattr(self, 'extension_attribute13', n.get_str_value()),
-            "extension_attribute14": lambda n : setattr(self, 'extension_attribute14', n.get_str_value()),
-            "extension_attribute15": lambda n : setattr(self, 'extension_attribute15', n.get_str_value()),
-            "extension_attribute2": lambda n : setattr(self, 'extension_attribute2', n.get_str_value()),
-            "extension_attribute3": lambda n : setattr(self, 'extension_attribute3', n.get_str_value()),
-            "extension_attribute4": lambda n : setattr(self, 'extension_attribute4', n.get_str_value()),
-            "extension_attribute5": lambda n : setattr(self, 'extension_attribute5', n.get_str_value()),
-            "extension_attribute6": lambda n : setattr(self, 'extension_attribute6', n.get_str_value()),
-            "extension_attribute7": lambda n : setattr(self, 'extension_attribute7', n.get_str_value()),
-            "extension_attribute8": lambda n : setattr(self, 'extension_attribute8', n.get_str_value()),
-            "extension_attribute9": lambda n : setattr(self, 'extension_attribute9', n.get_str_value()),
+            "extensionAttribute1": lambda n : setattr(self, 'extension_attribute1', n.get_str_value()),
+            "extensionAttribute10": lambda n : setattr(self, 'extension_attribute10', n.get_str_value()),
+            "extensionAttribute11": lambda n : setattr(self, 'extension_attribute11', n.get_str_value()),
+            "extensionAttribute12": lambda n : setattr(self, 'extension_attribute12', n.get_str_value()),
+            "extensionAttribute13": lambda n : setattr(self, 'extension_attribute13', n.get_str_value()),
+            "extensionAttribute14": lambda n : setattr(self, 'extension_attribute14', n.get_str_value()),
+            "extensionAttribute15": lambda n : setattr(self, 'extension_attribute15', n.get_str_value()),
+            "extensionAttribute2": lambda n : setattr(self, 'extension_attribute2', n.get_str_value()),
+            "extensionAttribute3": lambda n : setattr(self, 'extension_attribute3', n.get_str_value()),
+            "extensionAttribute4": lambda n : setattr(self, 'extension_attribute4', n.get_str_value()),
+            "extensionAttribute5": lambda n : setattr(self, 'extension_attribute5', n.get_str_value()),
+            "extensionAttribute6": lambda n : setattr(self, 'extension_attribute6', n.get_str_value()),
+            "extensionAttribute7": lambda n : setattr(self, 'extension_attribute7', n.get_str_value()),
+            "extensionAttribute8": lambda n : setattr(self, 'extension_attribute8', n.get_str_value()),
+            "extensionAttribute9": lambda n : setattr(self, 'extension_attribute9', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -366,7 +366,7 @@ class OnPremisesExtensionAttributes(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

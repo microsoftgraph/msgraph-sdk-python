@@ -17,10 +17,11 @@ class DeviceConfigurationUserStatusItemRequestBuilder():
     """
     Provides operations to manage the userStatuses property of the microsoft.graph.deviceConfiguration entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, device_configuration_user_status_id: Optional[str] = None) -> None:
         """
         Instantiates a new DeviceConfigurationUserStatusItemRequestBuilder and sets the default values.
         Args:
+            deviceConfigurationUserStatusId: key: id of deviceConfigurationUserStatus
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class DeviceConfigurationUserStatusItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceManagement/deviceConfigurations/{deviceConfiguration%2Did}/userStatuses/{deviceConfigurationUserStatus%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["deviceConfigurationUserStatus%2Did"] = deviceConfigurationUserStatusId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

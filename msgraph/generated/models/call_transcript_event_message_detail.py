@@ -20,7 +20,7 @@ class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the callId property value. Unique identifier of the call.
         Args:
-            value: Value to set for the callId property.
+            value: Value to set for the call_id property.
         """
         self._call_id = value
     
@@ -37,7 +37,7 @@ class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the callTranscriptICalUid property value. Unique identifier for a call transcript.
         Args:
-            value: Value to set for the callTranscriptICalUid property.
+            value: Value to set for the call_transcript_i_cal_uid property.
         """
         self._call_transcript_i_cal_uid = value
     
@@ -72,9 +72,9 @@ class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "call_id": lambda n : setattr(self, 'call_id', n.get_str_value()),
-            "call_transcript_i_cal_uid": lambda n : setattr(self, 'call_transcript_i_cal_uid', n.get_str_value()),
-            "meeting_organizer": lambda n : setattr(self, 'meeting_organizer', n.get_object_value(identity_set.IdentitySet)),
+            "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
+            "callTranscriptICalUid": lambda n : setattr(self, 'call_transcript_i_cal_uid', n.get_str_value()),
+            "meetingOrganizer": lambda n : setattr(self, 'meeting_organizer', n.get_object_value(identity_set.IdentitySet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -93,7 +93,7 @@ class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the meetingOrganizer property value. The organizer of the meeting.
         Args:
-            value: Value to set for the meetingOrganizer property.
+            value: Value to set for the meeting_organizer property.
         """
         self._meeting_organizer = value
     

@@ -34,7 +34,7 @@ class AppIdentity(AdditionalDataHolder, Parsable):
         """
         Sets the appId property value. Refers to the Unique GUID representing Application Id in the Azure Active Directory.
         Args:
-            value: Value to set for the appId property.
+            value: Value to set for the app_id property.
         """
         self._app_id = value
     
@@ -81,7 +81,7 @@ class AppIdentity(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. Refers to the Application Name displayed in the Azure Portal.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -91,11 +91,11 @@ class AppIdentity(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "service_principal_id": lambda n : setattr(self, 'service_principal_id', n.get_str_value()),
-            "service_principal_name": lambda n : setattr(self, 'service_principal_name', n.get_str_value()),
+            "servicePrincipalId": lambda n : setattr(self, 'service_principal_id', n.get_str_value()),
+            "servicePrincipalName": lambda n : setattr(self, 'service_principal_name', n.get_str_value()),
         }
         return fields
     
@@ -112,7 +112,7 @@ class AppIdentity(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -144,7 +144,7 @@ class AppIdentity(AdditionalDataHolder, Parsable):
         """
         Sets the servicePrincipalId property value. Refers to the Unique GUID indicating Service Principal Id in Azure Active Directory for the corresponding App.
         Args:
-            value: Value to set for the servicePrincipalId property.
+            value: Value to set for the service_principal_id property.
         """
         self._service_principal_id = value
     
@@ -161,7 +161,7 @@ class AppIdentity(AdditionalDataHolder, Parsable):
         """
         Sets the servicePrincipalName property value. Refers to the Service Principal Name is the Application name in the tenant.
         Args:
-            value: Value to set for the servicePrincipalName property.
+            value: Value to set for the service_principal_name property.
         """
         self._service_principal_name = value
     

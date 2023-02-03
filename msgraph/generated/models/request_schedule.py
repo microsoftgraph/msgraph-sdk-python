@@ -79,7 +79,7 @@ class RequestSchedule(AdditionalDataHolder, Parsable):
             "expiration": lambda n : setattr(self, 'expiration', n.get_object_value(expiration_pattern.ExpirationPattern)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(patterned_recurrence.PatternedRecurrence)),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         return fields
     
@@ -96,7 +96,7 @@ class RequestSchedule(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -144,7 +144,7 @@ class RequestSchedule(AdditionalDataHolder, Parsable):
         """
         Sets the startDateTime property value. When the  eligible or active assignment becomes active.
         Args:
-            value: Value to set for the startDateTime property.
+            value: Value to set for the start_date_time property.
         """
         self._start_date_time = value
     

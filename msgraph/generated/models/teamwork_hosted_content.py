@@ -31,7 +31,7 @@ class TeamworkHostedContent(entity.Entity):
         """
         Sets the contentBytes property value. Write only. Bytes for the hosted content (such as images).
         Args:
-            value: Value to set for the contentBytes property.
+            value: Value to set for the content_bytes property.
         """
         self._content_bytes = value
     
@@ -48,7 +48,7 @@ class TeamworkHostedContent(entity.Entity):
         """
         Sets the contentType property value. Write only. Content type. sicj as image/png, image/jpg.
         Args:
-            value: Value to set for the contentType property.
+            value: Value to set for the content_type property.
         """
         self._content_type = value
     
@@ -70,8 +70,8 @@ class TeamworkHostedContent(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "content_bytes": lambda n : setattr(self, 'content_bytes', n.get_bytes_value()),
-            "content_type": lambda n : setattr(self, 'content_type', n.get_str_value()),
+            "contentBytes": lambda n : setattr(self, 'content_bytes', n.get_bytes_value()),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

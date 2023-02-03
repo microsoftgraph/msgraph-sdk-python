@@ -17,12 +17,13 @@ class UserItemRequestBuilder():
         """
         return ref_request_builder.RefRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, user_id: Optional[str] = None) -> None:
         """
         Instantiates a new UserItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            userId: key: id of user
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -32,6 +33,7 @@ class UserItemRequestBuilder():
         self.url_template: str = "{+baseurl}/print/shares/{printerShare%2Did}/allowedUsers/{user%2Did}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["user%2Did"] = userId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

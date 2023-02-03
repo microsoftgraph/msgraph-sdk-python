@@ -44,7 +44,7 @@ class EdiscoveryNoncustodialDataSource(data_source_container.DataSourceContainer
         """
         Sets the dataSource property value. User source or SharePoint site data source as non-custodial data source.
         Args:
-            value: Value to set for the dataSource property.
+            value: Value to set for the data_source property.
         """
         self._data_source = value
     
@@ -54,8 +54,8 @@ class EdiscoveryNoncustodialDataSource(data_source_container.DataSourceContainer
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "data_source": lambda n : setattr(self, 'data_source', n.get_object_value(data_source.DataSource)),
-            "last_index_operation": lambda n : setattr(self, 'last_index_operation', n.get_object_value(ediscovery_index_operation.EdiscoveryIndexOperation)),
+            "dataSource": lambda n : setattr(self, 'data_source', n.get_object_value(data_source.DataSource)),
+            "lastIndexOperation": lambda n : setattr(self, 'last_index_operation', n.get_object_value(ediscovery_index_operation.EdiscoveryIndexOperation)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -74,7 +74,7 @@ class EdiscoveryNoncustodialDataSource(data_source_container.DataSourceContainer
         """
         Sets the lastIndexOperation property value. Operation entity that represents the latest indexing for the non-custodial data source.
         Args:
-            value: Value to set for the lastIndexOperation property.
+            value: Value to set for the last_index_operation property.
         """
         self._last_index_operation = value
     

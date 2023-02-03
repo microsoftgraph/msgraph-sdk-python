@@ -22,7 +22,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         """
         Sets the comparisonValue property value. The script output comparison value. Do not specify a value if the rule is used for detection.
         Args:
-            value: Value to set for the comparisonValue property.
+            value: Value to set for the comparison_value property.
         """
         self._comparison_value = value
     
@@ -42,10 +42,10 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         self._operation_type: Optional[win32_lob_app_power_shell_script_rule_operation_type.Win32LobAppPowerShellScriptRuleOperationType] = None
         # Contains properties for detection operator.
         self._operator: Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator] = None
-        # A value indicating whether the script should run as 32-bit.
-        self._run_as32_bit: Optional[bool] = None
         # The execution context of the script. Do not specify this value if the rule is used for detection. Script detection rules will run in the same context as the associated app install context. Possible values are: system, user.
         self._run_as_account: Optional[run_as_account_type.RunAsAccountType] = None
+        # A value indicating whether the script should run as 32-bit.
+        self._run_as32_bit: Optional[bool] = None
         # The base64-encoded script content.
         self._script_content: Optional[str] = None
     
@@ -74,7 +74,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         """
         Sets the displayName property value. The display name for the rule. Do not specify this value if the rule is used for detection.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -91,7 +91,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         """
         Sets the enforceSignatureCheck property value. A value indicating whether a signature check is enforced.
         Args:
-            value: Value to set for the enforceSignatureCheck property.
+            value: Value to set for the enforce_signature_check property.
         """
         self._enforce_signature_check = value
     
@@ -101,14 +101,14 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "comparison_value": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "enforce_signature_check": lambda n : setattr(self, 'enforce_signature_check', n.get_bool_value()),
-            "operation_type": lambda n : setattr(self, 'operation_type', n.get_enum_value(win32_lob_app_power_shell_script_rule_operation_type.Win32LobAppPowerShellScriptRuleOperationType)),
+            "comparisonValue": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "enforceSignatureCheck": lambda n : setattr(self, 'enforce_signature_check', n.get_bool_value()),
+            "operationType": lambda n : setattr(self, 'operation_type', n.get_enum_value(win32_lob_app_power_shell_script_rule_operation_type.Win32LobAppPowerShellScriptRuleOperationType)),
             "operator": lambda n : setattr(self, 'operator', n.get_enum_value(win32_lob_app_rule_operator.Win32LobAppRuleOperator)),
-            "run_as32_bit": lambda n : setattr(self, 'run_as32_bit', n.get_bool_value()),
-            "run_as_account": lambda n : setattr(self, 'run_as_account', n.get_enum_value(run_as_account_type.RunAsAccountType)),
-            "script_content": lambda n : setattr(self, 'script_content', n.get_str_value()),
+            "runAs32Bit": lambda n : setattr(self, 'run_as32_bit', n.get_bool_value()),
+            "runAsAccount": lambda n : setattr(self, 'run_as_account', n.get_enum_value(run_as_account_type.RunAsAccountType)),
+            "scriptContent": lambda n : setattr(self, 'script_content', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -127,7 +127,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         """
         Sets the operationType property value. Contains all supported Powershell Script output detection type.
         Args:
-            value: Value to set for the operationType property.
+            value: Value to set for the operation_type property.
         """
         self._operation_type = value
     
@@ -149,23 +149,6 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         self._operator = value
     
     @property
-    def run_as32_bit(self,) -> Optional[bool]:
-        """
-        Gets the runAs32Bit property value. A value indicating whether the script should run as 32-bit.
-        Returns: Optional[bool]
-        """
-        return self._run_as32_bit
-    
-    @run_as32_bit.setter
-    def run_as32_bit(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the runAs32Bit property value. A value indicating whether the script should run as 32-bit.
-        Args:
-            value: Value to set for the runAs32Bit property.
-        """
-        self._run_as32_bit = value
-    
-    @property
     def run_as_account(self,) -> Optional[run_as_account_type.RunAsAccountType]:
         """
         Gets the runAsAccount property value. The execution context of the script. Do not specify this value if the rule is used for detection. Script detection rules will run in the same context as the associated app install context. Possible values are: system, user.
@@ -178,9 +161,26 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         """
         Sets the runAsAccount property value. The execution context of the script. Do not specify this value if the rule is used for detection. Script detection rules will run in the same context as the associated app install context. Possible values are: system, user.
         Args:
-            value: Value to set for the runAsAccount property.
+            value: Value to set for the run_as_account property.
         """
         self._run_as_account = value
+    
+    @property
+    def run_as32_bit(self,) -> Optional[bool]:
+        """
+        Gets the runAs32Bit property value. A value indicating whether the script should run as 32-bit.
+        Returns: Optional[bool]
+        """
+        return self._run_as32_bit
+    
+    @run_as32_bit.setter
+    def run_as32_bit(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the runAs32Bit property value. A value indicating whether the script should run as 32-bit.
+        Args:
+            value: Value to set for the run_as32_bit property.
+        """
+        self._run_as32_bit = value
     
     @property
     def script_content(self,) -> Optional[str]:
@@ -195,7 +195,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         """
         Sets the scriptContent property value. The base64-encoded script content.
         Args:
-            value: Value to set for the scriptContent property.
+            value: Value to set for the script_content property.
         """
         self._script_content = value
     

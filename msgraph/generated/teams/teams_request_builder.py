@@ -14,7 +14,7 @@ team = lazy_import('msgraph.generated.models.team')
 team_collection_response = lazy_import('msgraph.generated.models.team_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.teams.count.count_request_builder')
-get_all_messages_request_builder = lazy_import('msgraph.generated.teams.get_all_messages.get_all_messages_request_builder')
+get_all_messages_request_builder = lazy_import('msgraph.generated.teams.microsoft_graph_get_all_messages.get_all_messages_request_builder')
 
 class TeamsRequestBuilder():
     """
@@ -26,6 +26,13 @@ class TeamsRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_get_all_messages(self) -> get_all_messages_request_builder.GetAllMessagesRequestBuilder:
+        """
+        Provides operations to call the getAllMessages method.
+        """
+        return get_all_messages_request_builder.GetAllMessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -62,13 +69,6 @@ class TeamsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, team_collection_response.TeamCollectionResponse, error_mapping)
-    
-    def get_all_messages(self,) -> get_all_messages_request_builder.GetAllMessagesRequestBuilder:
-        """
-        Provides operations to call the getAllMessages method.
-        Returns: get_all_messages_request_builder.GetAllMessagesRequestBuilder
-        """
-        return get_all_messages_request_builder.GetAllMessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     async def post(self,body: Optional[team.Team] = None, request_configuration: Optional[TeamsRequestBuilderPostRequestConfiguration] = None) -> Optional[team.Team]:
         """

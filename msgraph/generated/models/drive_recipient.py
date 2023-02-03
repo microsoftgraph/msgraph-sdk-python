@@ -91,7 +91,7 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
         fields = {
             "alias": lambda n : setattr(self, 'alias', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "object_id": lambda n : setattr(self, 'object_id', n.get_str_value()),
+            "objectId": lambda n : setattr(self, 'object_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -109,7 +109,7 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
         """
         Sets the objectId property value. The unique identifier for the recipient in the directory.
         Args:
-            value: Value to set for the objectId property.
+            value: Value to set for the object_id property.
         """
         self._object_id = value
     
@@ -126,7 +126,7 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

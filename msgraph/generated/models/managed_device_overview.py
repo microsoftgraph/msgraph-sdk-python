@@ -51,7 +51,7 @@ class ManagedDeviceOverview(entity.Entity):
         """
         Sets the deviceExchangeAccessStateSummary property value. Distribution of Exchange Access State in Intune
         Args:
-            value: Value to set for the deviceExchangeAccessStateSummary property.
+            value: Value to set for the device_exchange_access_state_summary property.
         """
         self._device_exchange_access_state_summary = value
     
@@ -68,7 +68,7 @@ class ManagedDeviceOverview(entity.Entity):
         """
         Sets the deviceOperatingSystemSummary property value. Device operating system summary.
         Args:
-            value: Value to set for the deviceOperatingSystemSummary property.
+            value: Value to set for the device_operating_system_summary property.
         """
         self._device_operating_system_summary = value
     
@@ -85,7 +85,7 @@ class ManagedDeviceOverview(entity.Entity):
         """
         Sets the dualEnrolledDeviceCount property value. The number of devices enrolled in both MDM and EAS
         Args:
-            value: Value to set for the dualEnrolledDeviceCount property.
+            value: Value to set for the dual_enrolled_device_count property.
         """
         self._dual_enrolled_device_count = value
     
@@ -102,7 +102,7 @@ class ManagedDeviceOverview(entity.Entity):
         """
         Sets the enrolledDeviceCount property value. Total enrolled device count. Does not include PC devices managed via Intune PC Agent
         Args:
-            value: Value to set for the enrolledDeviceCount property.
+            value: Value to set for the enrolled_device_count property.
         """
         self._enrolled_device_count = value
     
@@ -112,11 +112,11 @@ class ManagedDeviceOverview(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_exchange_access_state_summary": lambda n : setattr(self, 'device_exchange_access_state_summary', n.get_object_value(device_exchange_access_state_summary.DeviceExchangeAccessStateSummary)),
-            "device_operating_system_summary": lambda n : setattr(self, 'device_operating_system_summary', n.get_object_value(device_operating_system_summary.DeviceOperatingSystemSummary)),
-            "dual_enrolled_device_count": lambda n : setattr(self, 'dual_enrolled_device_count', n.get_int_value()),
-            "enrolled_device_count": lambda n : setattr(self, 'enrolled_device_count', n.get_int_value()),
-            "mdm_enrolled_count": lambda n : setattr(self, 'mdm_enrolled_count', n.get_int_value()),
+            "deviceExchangeAccessStateSummary": lambda n : setattr(self, 'device_exchange_access_state_summary', n.get_object_value(device_exchange_access_state_summary.DeviceExchangeAccessStateSummary)),
+            "deviceOperatingSystemSummary": lambda n : setattr(self, 'device_operating_system_summary', n.get_object_value(device_operating_system_summary.DeviceOperatingSystemSummary)),
+            "dualEnrolledDeviceCount": lambda n : setattr(self, 'dual_enrolled_device_count', n.get_int_value()),
+            "enrolledDeviceCount": lambda n : setattr(self, 'enrolled_device_count', n.get_int_value()),
+            "mdmEnrolledCount": lambda n : setattr(self, 'mdm_enrolled_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -135,7 +135,7 @@ class ManagedDeviceOverview(entity.Entity):
         """
         Sets the mdmEnrolledCount property value. The number of devices enrolled in MDM
         Args:
-            value: Value to set for the mdmEnrolledCount property.
+            value: Value to set for the mdm_enrolled_count property.
         """
         self._mdm_enrolled_count = value
     

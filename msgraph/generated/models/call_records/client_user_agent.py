@@ -21,7 +21,7 @@ class ClientUserAgent(user_agent.UserAgent):
         """
         Sets the azureADAppId property value. The unique identifier of the Azure AD application used by this endpoint.
         Args:
-            value: Value to set for the azureADAppId property.
+            value: Value to set for the azure_a_d_app_id property.
         """
         self._azure_a_d_app_id = value
     
@@ -38,7 +38,7 @@ class ClientUserAgent(user_agent.UserAgent):
         """
         Sets the communicationServiceId property value. Immutable resource identifier of the Azure Communication Service associated with this endpoint based on Communication Services APIs.
         Args:
-            value: Value to set for the communicationServiceId property.
+            value: Value to set for the communication_service_id property.
         """
         self._communication_service_id = value
     
@@ -75,10 +75,10 @@ class ClientUserAgent(user_agent.UserAgent):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "azure_a_d_app_id": lambda n : setattr(self, 'azure_a_d_app_id', n.get_str_value()),
-            "communication_service_id": lambda n : setattr(self, 'communication_service_id', n.get_str_value()),
+            "azureADAppId": lambda n : setattr(self, 'azure_a_d_app_id', n.get_str_value()),
+            "communicationServiceId": lambda n : setattr(self, 'communication_service_id', n.get_str_value()),
             "platform": lambda n : setattr(self, 'platform', n.get_enum_value(client_platform.ClientPlatform)),
-            "product_family": lambda n : setattr(self, 'product_family', n.get_enum_value(product_family.ProductFamily)),
+            "productFamily": lambda n : setattr(self, 'product_family', n.get_enum_value(product_family.ProductFamily)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -114,7 +114,7 @@ class ClientUserAgent(user_agent.UserAgent):
         """
         Sets the productFamily property value. The productFamily property
         Args:
-            value: Value to set for the productFamily property.
+            value: Value to set for the product_family property.
         """
         self._product_family = value
     

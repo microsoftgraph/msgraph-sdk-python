@@ -19,7 +19,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
         """
         Sets the aaGuids property value. A collection of Authenticator Attestation GUIDs. AADGUIDs define key types and manufacturers.
         Args:
-            value: Value to set for the aaGuids property.
+            value: Value to set for the aa_guids property.
         """
         self._aa_guids = value
     
@@ -81,7 +81,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
         """
         Sets the enforcementType property value. Enforcement type. Possible values are: allow, block.
         Args:
-            value: Value to set for the enforcementType property.
+            value: Value to set for the enforcement_type property.
         """
         self._enforcement_type = value
     
@@ -91,9 +91,9 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "aa_guids": lambda n : setattr(self, 'aa_guids', n.get_collection_of_primitive_values(str)),
-            "enforcement_type": lambda n : setattr(self, 'enforcement_type', n.get_enum_value(fido2_restriction_enforcement_type.Fido2RestrictionEnforcementType)),
-            "is_enforced": lambda n : setattr(self, 'is_enforced', n.get_bool_value()),
+            "aaGuids": lambda n : setattr(self, 'aa_guids', n.get_collection_of_primitive_values(str)),
+            "enforcementType": lambda n : setattr(self, 'enforcement_type', n.get_enum_value(fido2_restriction_enforcement_type.Fido2RestrictionEnforcementType)),
+            "isEnforced": lambda n : setattr(self, 'is_enforced', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -111,7 +111,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
         """
         Sets the isEnforced property value. Determines if the configured key enforcement is enabled.
         Args:
-            value: Value to set for the isEnforced property.
+            value: Value to set for the is_enforced property.
         """
         self._is_enforced = value
     
@@ -128,7 +128,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

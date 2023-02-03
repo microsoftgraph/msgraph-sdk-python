@@ -17,10 +17,11 @@ class ChatMessageHostedContentItemRequestBuilder():
     """
     Provides operations to manage the hostedContents property of the microsoft.graph.chatMessage entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, chat_message_hosted_content_id: Optional[str] = None) -> None:
         """
         Instantiates a new ChatMessageHostedContentItemRequestBuilder and sets the default values.
         Args:
+            chatMessageHostedContentId: key: id of chatMessageHostedContent
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class ChatMessageHostedContentItemRequestBuilder():
         self.url_template: str = "{+baseurl}/chats/{chat%2Did}/messages/{chatMessage%2Did}/replies/{chatMessage%2Did1}/hostedContents/{chatMessageHostedContent%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["chatMessageHostedContent%2Did"] = chatMessageHostedContentId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

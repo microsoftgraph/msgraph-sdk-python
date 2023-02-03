@@ -85,6 +85,23 @@ class DriveItem(base_item.BaseItem):
         self._bundle = value
     
     @property
+    def c_tag(self,) -> Optional[str]:
+        """
+        Gets the cTag property value. An eTag for the content of the item. This eTag is not changed if only the metadata is changed. Note This property is not returned if the item is a folder. Read-only.
+        Returns: Optional[str]
+        """
+        return self._c_tag
+    
+    @c_tag.setter
+    def c_tag(self,value: Optional[str] = None) -> None:
+        """
+        Sets the cTag property value. An eTag for the content of the item. This eTag is not changed if only the metadata is changed. Note This property is not returned if the item is a folder. Read-only.
+        Args:
+            value: Value to set for the c_tag property.
+        """
+        self._c_tag = value
+    
+    @property
     def children(self,) -> Optional[List[DriveItem]]:
         """
         Gets the children property value. Collection containing Item objects for the immediate children of Item. Only items representing folders have children. Read-only. Nullable.
@@ -113,12 +130,12 @@ class DriveItem(base_item.BaseItem):
         self._audio: Optional[audio.Audio] = None
         # Bundle metadata, if the item is a bundle. Read-only.
         self._bundle: Optional[bundle.Bundle] = None
+        # An eTag for the content of the item. This eTag is not changed if only the metadata is changed. Note This property is not returned if the item is a folder. Read-only.
+        self._c_tag: Optional[str] = None
         # Collection containing Item objects for the immediate children of Item. Only items representing folders have children. Read-only. Nullable.
         self._children: Optional[List[DriveItem]] = None
         # The content stream, if the item represents a file.
         self._content: Optional[bytes] = None
-        # An eTag for the content of the item. This eTag is not changed if only the metadata is changed. Note This property is not returned if the item is a folder. Read-only.
-        self._c_tag: Optional[str] = None
         # Information about the deleted state of the item. Read-only.
         self._deleted: Optional[deleted.Deleted] = None
         # File metadata, if the item is a file. Read-only.
@@ -202,23 +219,6 @@ class DriveItem(base_item.BaseItem):
         return DriveItem()
     
     @property
-    def c_tag(self,) -> Optional[str]:
-        """
-        Gets the cTag property value. An eTag for the content of the item. This eTag is not changed if only the metadata is changed. Note This property is not returned if the item is a folder. Read-only.
-        Returns: Optional[str]
-        """
-        return self._c_tag
-    
-    @c_tag.setter
-    def c_tag(self,value: Optional[str] = None) -> None:
-        """
-        Sets the cTag property value. An eTag for the content of the item. This eTag is not changed if only the metadata is changed. Note This property is not returned if the item is a folder. Read-only.
-        Args:
-            value: Value to set for the cTag property.
-        """
-        self._c_tag = value
-    
-    @property
     def deleted(self,) -> Optional[deleted.Deleted]:
         """
         Gets the deleted property value. Information about the deleted state of the item. Read-only.
@@ -265,7 +265,7 @@ class DriveItem(base_item.BaseItem):
         """
         Sets the fileSystemInfo property value. File system information on client. Read-write.
         Args:
-            value: Value to set for the fileSystemInfo property.
+            value: Value to set for the file_system_info property.
         """
         self._file_system_info = value
     
@@ -297,32 +297,32 @@ class DriveItem(base_item.BaseItem):
             "bundle": lambda n : setattr(self, 'bundle', n.get_object_value(bundle.Bundle)),
             "children": lambda n : setattr(self, 'children', n.get_collection_of_object_values(DriveItem)),
             "content": lambda n : setattr(self, 'content', n.get_bytes_value()),
-            "c_tag": lambda n : setattr(self, 'c_tag', n.get_str_value()),
+            "cTag": lambda n : setattr(self, 'c_tag', n.get_str_value()),
             "deleted": lambda n : setattr(self, 'deleted', n.get_object_value(deleted.Deleted)),
             "file": lambda n : setattr(self, 'file', n.get_object_value(file.File)),
-            "file_system_info": lambda n : setattr(self, 'file_system_info', n.get_object_value(file_system_info.FileSystemInfo)),
+            "fileSystemInfo": lambda n : setattr(self, 'file_system_info', n.get_object_value(file_system_info.FileSystemInfo)),
             "folder": lambda n : setattr(self, 'folder', n.get_object_value(folder.Folder)),
             "image": lambda n : setattr(self, 'image', n.get_object_value(image.Image)),
-            "list_item": lambda n : setattr(self, 'list_item', n.get_object_value(list_item.ListItem)),
+            "listItem": lambda n : setattr(self, 'list_item', n.get_object_value(list_item.ListItem)),
             "location": lambda n : setattr(self, 'location', n.get_object_value(geo_coordinates.GeoCoordinates)),
             "malware": lambda n : setattr(self, 'malware', n.get_object_value(malware.Malware)),
             "package": lambda n : setattr(self, 'package', n.get_object_value(package.Package)),
-            "pending_operations": lambda n : setattr(self, 'pending_operations', n.get_object_value(pending_operations.PendingOperations)),
+            "pendingOperations": lambda n : setattr(self, 'pending_operations', n.get_object_value(pending_operations.PendingOperations)),
             "permissions": lambda n : setattr(self, 'permissions', n.get_collection_of_object_values(permission.Permission)),
             "photo": lambda n : setattr(self, 'photo', n.get_object_value(photo.Photo)),
             "publication": lambda n : setattr(self, 'publication', n.get_object_value(publication_facet.PublicationFacet)),
-            "remote_item": lambda n : setattr(self, 'remote_item', n.get_object_value(remote_item.RemoteItem)),
+            "remoteItem": lambda n : setattr(self, 'remote_item', n.get_object_value(remote_item.RemoteItem)),
             "root": lambda n : setattr(self, 'root', n.get_object_value(root.Root)),
-            "search_result": lambda n : setattr(self, 'search_result', n.get_object_value(search_result.SearchResult)),
+            "searchResult": lambda n : setattr(self, 'search_result', n.get_object_value(search_result.SearchResult)),
             "shared": lambda n : setattr(self, 'shared', n.get_object_value(shared.Shared)),
-            "sharepoint_ids": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
+            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
-            "special_folder": lambda n : setattr(self, 'special_folder', n.get_object_value(special_folder.SpecialFolder)),
+            "specialFolder": lambda n : setattr(self, 'special_folder', n.get_object_value(special_folder.SpecialFolder)),
             "subscriptions": lambda n : setattr(self, 'subscriptions', n.get_collection_of_object_values(subscription.Subscription)),
             "thumbnails": lambda n : setattr(self, 'thumbnails', n.get_collection_of_object_values(thumbnail_set.ThumbnailSet)),
             "versions": lambda n : setattr(self, 'versions', n.get_collection_of_object_values(drive_item_version.DriveItemVersion)),
             "video": lambda n : setattr(self, 'video', n.get_object_value(video.Video)),
-            "web_dav_url": lambda n : setattr(self, 'web_dav_url', n.get_str_value()),
+            "webDavUrl": lambda n : setattr(self, 'web_dav_url', n.get_str_value()),
             "workbook": lambda n : setattr(self, 'workbook', n.get_object_value(workbook.Workbook)),
         }
         super_fields = super().get_field_deserializers()
@@ -359,7 +359,7 @@ class DriveItem(base_item.BaseItem):
         """
         Sets the listItem property value. For drives in SharePoint, the associated document library list item. Read-only. Nullable.
         Args:
-            value: Value to set for the listItem property.
+            value: Value to set for the list_item property.
         """
         self._list_item = value
     
@@ -427,7 +427,7 @@ class DriveItem(base_item.BaseItem):
         """
         Sets the pendingOperations property value. If present, indicates that one or more operations that might affect the state of the driveItem are pending completion. Read-only.
         Args:
-            value: Value to set for the pendingOperations property.
+            value: Value to set for the pending_operations property.
         """
         self._pending_operations = value
     
@@ -495,7 +495,7 @@ class DriveItem(base_item.BaseItem):
         """
         Sets the remoteItem property value. Remote item data, if the item is shared from a drive other than the one being accessed. Read-only.
         Args:
-            value: Value to set for the remoteItem property.
+            value: Value to set for the remote_item property.
         """
         self._remote_item = value
     
@@ -529,7 +529,7 @@ class DriveItem(base_item.BaseItem):
         """
         Sets the searchResult property value. Search metadata, if the item is from a search result. Read-only.
         Args:
-            value: Value to set for the searchResult property.
+            value: Value to set for the search_result property.
         """
         self._search_result = value
     
@@ -605,7 +605,7 @@ class DriveItem(base_item.BaseItem):
         """
         Sets the sharepointIds property value. Returns identifiers useful for SharePoint REST compatibility. Read-only.
         Args:
-            value: Value to set for the sharepointIds property.
+            value: Value to set for the sharepoint_ids property.
         """
         self._sharepoint_ids = value
     
@@ -639,7 +639,7 @@ class DriveItem(base_item.BaseItem):
         """
         Sets the specialFolder property value. If the current item is also available as a special folder, this facet is returned. Read-only.
         Args:
-            value: Value to set for the specialFolder property.
+            value: Value to set for the special_folder property.
         """
         self._special_folder = value
     
@@ -724,7 +724,7 @@ class DriveItem(base_item.BaseItem):
         """
         Sets the webDavUrl property value. WebDAV compatible URL for the item.
         Args:
-            value: Value to set for the webDavUrl property.
+            value: Value to set for the web_dav_url property.
         """
         self._web_dav_url = value
     

@@ -34,7 +34,7 @@ class WindowsDefenderScanActionResult(device_action_result.DeviceActionResult):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "scan_type": lambda n : setattr(self, 'scan_type', n.get_str_value()),
+            "scanType": lambda n : setattr(self, 'scan_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -53,7 +53,7 @@ class WindowsDefenderScanActionResult(device_action_result.DeviceActionResult):
         """
         Sets the scanType property value. Scan type either full scan or quick scan
         Args:
-            value: Value to set for the scanType property.
+            value: Value to set for the scan_type property.
         """
         self._scan_type = value
     

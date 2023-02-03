@@ -64,7 +64,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
         """
         Sets the dynamicallyAdjustTopicCount property value. Indicates whether the themes model should dynamically optimize the number of generated topics. To learn more, see Adjust maximum number of themes dynamically.
         Args:
-            value: Value to set for the dynamicallyAdjustTopicCount property.
+            value: Value to set for the dynamically_adjust_topic_count property.
         """
         self._dynamically_adjust_topic_count = value
     
@@ -74,11 +74,11 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "dynamically_adjust_topic_count": lambda n : setattr(self, 'dynamically_adjust_topic_count', n.get_bool_value()),
-            "ignore_numbers": lambda n : setattr(self, 'ignore_numbers', n.get_bool_value()),
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "dynamicallyAdjustTopicCount": lambda n : setattr(self, 'dynamically_adjust_topic_count', n.get_bool_value()),
+            "ignoreNumbers": lambda n : setattr(self, 'ignore_numbers', n.get_bool_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "topic_count": lambda n : setattr(self, 'topic_count', n.get_int_value()),
+            "topicCount": lambda n : setattr(self, 'topic_count', n.get_int_value()),
         }
         return fields
     
@@ -95,7 +95,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
         """
         Sets the ignoreNumbers property value. Indicates whether the themes model should exclude numbers while parsing document texts. To learn more, see Include numbers in themes.
         Args:
-            value: Value to set for the ignoreNumbers property.
+            value: Value to set for the ignore_numbers property.
         """
         self._ignore_numbers = value
     
@@ -112,7 +112,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
         """
         Sets the isEnabled property value. Indicates whether themes model is enabled for the case.
         Args:
-            value: Value to set for the isEnabled property.
+            value: Value to set for the is_enabled property.
         """
         self._is_enabled = value
     
@@ -129,7 +129,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -161,7 +161,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
         """
         Sets the topicCount property value. The total number of topics that the themes model will generate for a review set. To learn more, see Maximum number of themes.
         Args:
-            value: Value to set for the topicCount property.
+            value: Value to set for the topic_count property.
         """
         self._topic_count = value
     

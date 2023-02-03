@@ -36,7 +36,7 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, Parsable):
         """
         Sets the builtInControls property value. List of values of built-in controls required by the policy. Possible values: block, mfa, compliantDevice, domainJoinedDevice, approvedApplication, compliantApplication, passwordChange, unknownFutureValue.
         Args:
-            value: Value to set for the builtInControls property.
+            value: Value to set for the built_in_controls property.
         """
         self._built_in_controls = value
     
@@ -83,7 +83,7 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, Parsable):
         """
         Sets the customAuthenticationFactors property value. List of custom controls IDs required by the policy. For more information, see Custom controls.
         Args:
-            value: Value to set for the customAuthenticationFactors property.
+            value: Value to set for the custom_authentication_factors property.
         """
         self._custom_authentication_factors = value
     
@@ -93,11 +93,11 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "built_in_controls": lambda n : setattr(self, 'built_in_controls', n.get_collection_of_enum_values(conditional_access_grant_control.ConditionalAccessGrantControl)),
-            "custom_authentication_factors": lambda n : setattr(self, 'custom_authentication_factors', n.get_collection_of_primitive_values(str)),
+            "builtInControls": lambda n : setattr(self, 'built_in_controls', n.get_collection_of_enum_values(conditional_access_grant_control.ConditionalAccessGrantControl)),
+            "customAuthenticationFactors": lambda n : setattr(self, 'custom_authentication_factors', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operator": lambda n : setattr(self, 'operator', n.get_str_value()),
-            "terms_of_use": lambda n : setattr(self, 'terms_of_use', n.get_collection_of_primitive_values(str)),
+            "termsOfUse": lambda n : setattr(self, 'terms_of_use', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -114,7 +114,7 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -163,7 +163,7 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, Parsable):
         """
         Sets the termsOfUse property value. List of terms of use IDs required by the policy.
         Args:
-            value: Value to set for the termsOfUse property.
+            value: Value to set for the terms_of_use property.
         """
         self._terms_of_use = value
     

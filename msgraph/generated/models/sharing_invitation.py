@@ -77,10 +77,10 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
         """
         fields = {
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "invited_by": lambda n : setattr(self, 'invited_by', n.get_object_value(identity_set.IdentitySet)),
+            "invitedBy": lambda n : setattr(self, 'invited_by', n.get_object_value(identity_set.IdentitySet)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "redeemed_by": lambda n : setattr(self, 'redeemed_by', n.get_str_value()),
-            "sign_in_required": lambda n : setattr(self, 'sign_in_required', n.get_bool_value()),
+            "redeemedBy": lambda n : setattr(self, 'redeemed_by', n.get_str_value()),
+            "signInRequired": lambda n : setattr(self, 'sign_in_required', n.get_bool_value()),
         }
         return fields
     
@@ -97,7 +97,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
         """
         Sets the invitedBy property value. Provides information about who sent the invitation that created this permission, if that information is available. Read-only.
         Args:
-            value: Value to set for the invitedBy property.
+            value: Value to set for the invited_by property.
         """
         self._invited_by = value
     
@@ -114,7 +114,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -131,7 +131,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
         """
         Sets the redeemedBy property value. The redeemedBy property
         Args:
-            value: Value to set for the redeemedBy property.
+            value: Value to set for the redeemed_by property.
         """
         self._redeemed_by = value
     
@@ -163,7 +163,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
         """
         Sets the signInRequired property value. If true the recipient of the invitation needs to sign in in order to access the shared item. Read-only.
         Args:
-            value: Value to set for the signInRequired property.
+            value: Value to set for the sign_in_required property.
         """
         self._sign_in_required = value
     

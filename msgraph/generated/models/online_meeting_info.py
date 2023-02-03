@@ -36,7 +36,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         """
         Sets the conferenceId property value. The ID of the conference.
         Args:
-            value: Value to set for the conferenceId property.
+            value: Value to set for the conference_id property.
         """
         self._conference_id = value
     
@@ -80,13 +80,13 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "conference_id": lambda n : setattr(self, 'conference_id', n.get_str_value()),
-            "join_url": lambda n : setattr(self, 'join_url', n.get_str_value()),
+            "conferenceId": lambda n : setattr(self, 'conference_id', n.get_str_value()),
+            "joinUrl": lambda n : setattr(self, 'join_url', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "phones": lambda n : setattr(self, 'phones', n.get_collection_of_object_values(phone.Phone)),
-            "quick_dial": lambda n : setattr(self, 'quick_dial', n.get_str_value()),
-            "toll_free_numbers": lambda n : setattr(self, 'toll_free_numbers', n.get_collection_of_primitive_values(str)),
-            "toll_number": lambda n : setattr(self, 'toll_number', n.get_str_value()),
+            "quickDial": lambda n : setattr(self, 'quick_dial', n.get_str_value()),
+            "tollFreeNumbers": lambda n : setattr(self, 'toll_free_numbers', n.get_collection_of_primitive_values(str)),
+            "tollNumber": lambda n : setattr(self, 'toll_number', n.get_str_value()),
         }
         return fields
     
@@ -103,7 +103,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         """
         Sets the joinUrl property value. The external link that launches the online meeting. This is a URL that clients will launch into a browser and will redirect the user to join the meeting.
         Args:
-            value: Value to set for the joinUrl property.
+            value: Value to set for the join_url property.
         """
         self._join_url = value
     
@@ -120,7 +120,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -154,7 +154,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         """
         Sets the quickDial property value. The pre-formatted quickdial for this call.
         Args:
-            value: Value to set for the quickDial property.
+            value: Value to set for the quick_dial property.
         """
         self._quick_dial = value
     
@@ -188,7 +188,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         """
         Sets the tollFreeNumbers property value. The toll free numbers that can be used to join the conference.
         Args:
-            value: Value to set for the tollFreeNumbers property.
+            value: Value to set for the toll_free_numbers property.
         """
         self._toll_free_numbers = value
     
@@ -205,7 +205,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         """
         Sets the tollNumber property value. The toll number that can be used to join the conference.
         Args:
-            value: Value to set for the tollNumber property.
+            value: Value to set for the toll_number property.
         """
         self._toll_number = value
     

@@ -21,7 +21,7 @@ class AppConsentRequest(entity.Entity):
         """
         Sets the appDisplayName property value. The display name of the app for which consent is requested. Required. Supports $filter (eq only) and $orderby.
         Args:
-            value: Value to set for the appDisplayName property.
+            value: Value to set for the app_display_name property.
         """
         self._app_display_name = value
     
@@ -38,7 +38,7 @@ class AppConsentRequest(entity.Entity):
         """
         Sets the appId property value. The identifier of the application. Required. Supports $filter (eq only) and $orderby.
         Args:
-            value: Value to set for the appId property.
+            value: Value to set for the app_id property.
         """
         self._app_id = value
     
@@ -76,10 +76,10 @@ class AppConsentRequest(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_display_name": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "pending_scopes": lambda n : setattr(self, 'pending_scopes', n.get_collection_of_object_values(app_consent_request_scope.AppConsentRequestScope)),
-            "user_consent_requests": lambda n : setattr(self, 'user_consent_requests', n.get_collection_of_object_values(user_consent_request.UserConsentRequest)),
+            "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "pendingScopes": lambda n : setattr(self, 'pending_scopes', n.get_collection_of_object_values(app_consent_request_scope.AppConsentRequestScope)),
+            "userConsentRequests": lambda n : setattr(self, 'user_consent_requests', n.get_collection_of_object_values(user_consent_request.UserConsentRequest)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -98,7 +98,7 @@ class AppConsentRequest(entity.Entity):
         """
         Sets the pendingScopes property value. A list of pending scopes waiting for approval. Required.
         Args:
-            value: Value to set for the pendingScopes property.
+            value: Value to set for the pending_scopes property.
         """
         self._pending_scopes = value
     
@@ -129,7 +129,7 @@ class AppConsentRequest(entity.Entity):
         """
         Sets the userConsentRequests property value. A list of pending user consent requests. Supports $filter (eq).
         Args:
-            value: Value to set for the userConsentRequests property.
+            value: Value to set for the user_consent_requests property.
         """
         self._user_consent_requests = value
     

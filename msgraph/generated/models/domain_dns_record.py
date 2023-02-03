@@ -42,10 +42,10 @@ class DomainDnsRecord(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_optional": lambda n : setattr(self, 'is_optional', n.get_bool_value()),
+            "isOptional": lambda n : setattr(self, 'is_optional', n.get_bool_value()),
             "label": lambda n : setattr(self, 'label', n.get_str_value()),
-            "record_type": lambda n : setattr(self, 'record_type', n.get_str_value()),
-            "supported_service": lambda n : setattr(self, 'supported_service', n.get_str_value()),
+            "recordType": lambda n : setattr(self, 'record_type', n.get_str_value()),
+            "supportedService": lambda n : setattr(self, 'supported_service', n.get_str_value()),
             "ttl": lambda n : setattr(self, 'ttl', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -65,7 +65,7 @@ class DomainDnsRecord(entity.Entity):
         """
         Sets the isOptional property value. If false, this record must be configured by the customer at the DNS host for Microsoft Online Services to operate correctly with the domain.
         Args:
-            value: Value to set for the isOptional property.
+            value: Value to set for the is_optional property.
         """
         self._is_optional = value
     
@@ -99,7 +99,7 @@ class DomainDnsRecord(entity.Entity):
         """
         Sets the recordType property value. Indicates what type of DNS record this entity represents.The value can be one of the following: CName, Mx, Srv, Txt.
         Args:
-            value: Value to set for the recordType property.
+            value: Value to set for the record_type property.
         """
         self._record_type = value
     
@@ -131,7 +131,7 @@ class DomainDnsRecord(entity.Entity):
         """
         Sets the supportedService property value. Microsoft Online Service or feature that has a dependency on this DNS record.Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune.
         Args:
-            value: Value to set for the supportedService property.
+            value: Value to set for the supported_service property.
         """
         self._supported_service = value
     

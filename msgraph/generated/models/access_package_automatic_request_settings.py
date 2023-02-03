@@ -56,10 +56,10 @@ class AccessPackageAutomaticRequestSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "grace_period_before_access_removal": lambda n : setattr(self, 'grace_period_before_access_removal', n.get_object_value(Timedelta)),
+            "gracePeriodBeforeAccessRemoval": lambda n : setattr(self, 'grace_period_before_access_removal', n.get_object_value(Timedelta)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "remove_access_when_target_leaves_allowed_targets": lambda n : setattr(self, 'remove_access_when_target_leaves_allowed_targets', n.get_bool_value()),
-            "request_access_for_allowed_targets": lambda n : setattr(self, 'request_access_for_allowed_targets', n.get_bool_value()),
+            "removeAccessWhenTargetLeavesAllowedTargets": lambda n : setattr(self, 'remove_access_when_target_leaves_allowed_targets', n.get_bool_value()),
+            "requestAccessForAllowedTargets": lambda n : setattr(self, 'request_access_for_allowed_targets', n.get_bool_value()),
         }
         return fields
     
@@ -76,7 +76,7 @@ class AccessPackageAutomaticRequestSettings(AdditionalDataHolder, Parsable):
         """
         Sets the gracePeriodBeforeAccessRemoval property value. The gracePeriodBeforeAccessRemoval property
         Args:
-            value: Value to set for the gracePeriodBeforeAccessRemoval property.
+            value: Value to set for the grace_period_before_access_removal property.
         """
         self._grace_period_before_access_removal = value
     
@@ -93,7 +93,7 @@ class AccessPackageAutomaticRequestSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -110,7 +110,7 @@ class AccessPackageAutomaticRequestSettings(AdditionalDataHolder, Parsable):
         """
         Sets the removeAccessWhenTargetLeavesAllowedTargets property value. The removeAccessWhenTargetLeavesAllowedTargets property
         Args:
-            value: Value to set for the removeAccessWhenTargetLeavesAllowedTargets property.
+            value: Value to set for the remove_access_when_target_leaves_allowed_targets property.
         """
         self._remove_access_when_target_leaves_allowed_targets = value
     
@@ -127,7 +127,7 @@ class AccessPackageAutomaticRequestSettings(AdditionalDataHolder, Parsable):
         """
         Sets the requestAccessForAllowedTargets property value. If set to true, automatic assignments will be created for targets in the allowed target scope.
         Args:
-            value: Value to set for the requestAccessForAllowedTargets property.
+            value: Value to set for the request_access_for_allowed_targets property.
         """
         self._request_access_for_allowed_targets = value
     

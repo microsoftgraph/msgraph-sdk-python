@@ -21,7 +21,7 @@ class ApprovalStage(entity.Entity):
         """
         Sets the assignedToMe property value. Indicates whether the stage is assigned to the calling user to review. Read-only.
         Args:
-            value: Value to set for the assignedToMe property.
+            value: Value to set for the assigned_to_me property.
         """
         self._assigned_to_me = value
     
@@ -38,12 +38,12 @@ class ApprovalStage(entity.Entity):
         self._justification: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
+        # The result of this approval record. Possible values include: NotReviewed, Approved, Denied.
+        self._review_result: Optional[str] = None
         # The identifier of the reviewer. 00000000-0000-0000-0000-000000000000 if the assigned reviewer hasn't reviewed. Read-only.
         self._reviewed_by: Optional[identity.Identity] = None
         # The date and time when a decision was recorded. The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         self._reviewed_date_time: Optional[datetime] = None
-        # The result of this approval record. Possible values include: NotReviewed, Approved, Denied.
-        self._review_result: Optional[str] = None
         # The stage status. Possible values: InProgress, Initializing, Completed, Expired. Read-only.
         self._status: Optional[str] = None
     
@@ -72,7 +72,7 @@ class ApprovalStage(entity.Entity):
         """
         Sets the displayName property value. The label provided by the policy creator to identify an approval stage. Read-only.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -82,12 +82,12 @@ class ApprovalStage(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assigned_to_me": lambda n : setattr(self, 'assigned_to_me', n.get_bool_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "assignedToMe": lambda n : setattr(self, 'assigned_to_me', n.get_bool_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "justification": lambda n : setattr(self, 'justification', n.get_str_value()),
-            "reviewed_by": lambda n : setattr(self, 'reviewed_by', n.get_object_value(identity.Identity)),
-            "reviewed_date_time": lambda n : setattr(self, 'reviewed_date_time', n.get_datetime_value()),
-            "review_result": lambda n : setattr(self, 'review_result', n.get_str_value()),
+            "reviewedBy": lambda n : setattr(self, 'reviewed_by', n.get_object_value(identity.Identity)),
+            "reviewedDateTime": lambda n : setattr(self, 'reviewed_date_time', n.get_datetime_value()),
+            "reviewResult": lambda n : setattr(self, 'review_result', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -112,6 +112,23 @@ class ApprovalStage(entity.Entity):
         self._justification = value
     
     @property
+    def review_result(self,) -> Optional[str]:
+        """
+        Gets the reviewResult property value. The result of this approval record. Possible values include: NotReviewed, Approved, Denied.
+        Returns: Optional[str]
+        """
+        return self._review_result
+    
+    @review_result.setter
+    def review_result(self,value: Optional[str] = None) -> None:
+        """
+        Sets the reviewResult property value. The result of this approval record. Possible values include: NotReviewed, Approved, Denied.
+        Args:
+            value: Value to set for the review_result property.
+        """
+        self._review_result = value
+    
+    @property
     def reviewed_by(self,) -> Optional[identity.Identity]:
         """
         Gets the reviewedBy property value. The identifier of the reviewer. 00000000-0000-0000-0000-000000000000 if the assigned reviewer hasn't reviewed. Read-only.
@@ -124,7 +141,7 @@ class ApprovalStage(entity.Entity):
         """
         Sets the reviewedBy property value. The identifier of the reviewer. 00000000-0000-0000-0000-000000000000 if the assigned reviewer hasn't reviewed. Read-only.
         Args:
-            value: Value to set for the reviewedBy property.
+            value: Value to set for the reviewed_by property.
         """
         self._reviewed_by = value
     
@@ -141,26 +158,9 @@ class ApprovalStage(entity.Entity):
         """
         Sets the reviewedDateTime property value. The date and time when a decision was recorded. The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         Args:
-            value: Value to set for the reviewedDateTime property.
+            value: Value to set for the reviewed_date_time property.
         """
         self._reviewed_date_time = value
-    
-    @property
-    def review_result(self,) -> Optional[str]:
-        """
-        Gets the reviewResult property value. The result of this approval record. Possible values include: NotReviewed, Approved, Denied.
-        Returns: Optional[str]
-        """
-        return self._review_result
-    
-    @review_result.setter
-    def review_result(self,value: Optional[str] = None) -> None:
-        """
-        Sets the reviewResult property value. The result of this approval record. Possible values include: NotReviewed, Approved, Denied.
-        Args:
-            value: Value to set for the reviewResult property.
-        """
-        self._review_result = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

@@ -34,7 +34,7 @@ class Configuration(AdditionalDataHolder, Parsable):
         """
         Sets the authorizedAppIds property value. A collection of application IDs for registered Azure Active Directory apps that are allowed to manage the externalConnection and to index content in the externalConnection.
         Args:
-            value: Value to set for the authorizedAppIds property.
+            value: Value to set for the authorized_app_ids property.
         """
         self._authorized_app_ids = value
     
@@ -68,7 +68,7 @@ class Configuration(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "authorized_app_ids": lambda n : setattr(self, 'authorized_app_ids', n.get_collection_of_primitive_values(str)),
+            "authorizedAppIds": lambda n : setattr(self, 'authorized_app_ids', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -86,7 +86,7 @@ class Configuration(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

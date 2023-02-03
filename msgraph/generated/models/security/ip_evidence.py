@@ -31,7 +31,7 @@ class IpEvidence(alert_evidence.AlertEvidence):
         """
         Sets the countryLetterCode property value. The two-letter country code according to ISO 3166 format, for example: US, UK, CA, etc..).
         Args:
-            value: Value to set for the countryLetterCode property.
+            value: Value to set for the country_letter_code property.
         """
         self._country_letter_code = value
     
@@ -53,8 +53,8 @@ class IpEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "country_letter_code": lambda n : setattr(self, 'country_letter_code', n.get_str_value()),
-            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "countryLetterCode": lambda n : setattr(self, 'country_letter_code', n.get_str_value()),
+            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -73,7 +73,7 @@ class IpEvidence(alert_evidence.AlertEvidence):
         """
         Sets the ipAddress property value. The value of the IP Address, can be either in V4 address or V6 address format.
         Args:
-            value: Value to set for the ipAddress property.
+            value: Value to set for the ip_address property.
         """
         self._ip_address = value
     

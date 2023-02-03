@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.me.activities.count.count_request_builder')
-recent_request_builder = lazy_import('msgraph.generated.me.activities.recent.recent_request_builder')
+recent_request_builder = lazy_import('msgraph.generated.me.activities.microsoft_graph_recent.recent_request_builder')
 user_activity = lazy_import('msgraph.generated.models.user_activity')
 user_activity_collection_response = lazy_import('msgraph.generated.models.user_activity_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -26,6 +26,13 @@ class ActivitiesRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_recent(self) -> recent_request_builder.RecentRequestBuilder:
+        """
+        Provides operations to call the recent method.
+        """
+        return recent_request_builder.RecentRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -83,13 +90,6 @@ class ActivitiesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, user_activity.UserActivity, error_mapping)
-    
-    def recent(self,) -> recent_request_builder.RecentRequestBuilder:
-        """
-        Provides operations to call the recent method.
-        Returns: recent_request_builder.RecentRequestBuilder
-        """
-        return recent_request_builder.RecentRequestBuilder(self.request_adapter, self.path_parameters)
     
     def to_get_request_information(self,request_configuration: Optional[ActivitiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -21,7 +21,7 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
         """
         Sets the allowedCloudEndpoints property value. The allowedCloudEndpoints property
         Args:
-            value: Value to set for the allowedCloudEndpoints property.
+            value: Value to set for the allowed_cloud_endpoints property.
         """
         self._allowed_cloud_endpoints = value
     
@@ -73,7 +73,7 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allowed_cloud_endpoints": lambda n : setattr(self, 'allowed_cloud_endpoints', n.get_collection_of_primitive_values(str)),
+            "allowedCloudEndpoints": lambda n : setattr(self, 'allowed_cloud_endpoints', n.get_collection_of_primitive_values(str)),
             "default": lambda n : setattr(self, 'default', n.get_object_value(cross_tenant_access_policy_configuration_default.CrossTenantAccessPolicyConfigurationDefault)),
             "partners": lambda n : setattr(self, 'partners', n.get_collection_of_object_values(cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner)),
         }

@@ -35,7 +35,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the averageInboundJitter property value. The average inbound stream network jitter.
         Args:
-            value: Value to set for the averageInboundJitter property.
+            value: Value to set for the average_inbound_jitter property.
         """
         self._average_inbound_jitter = value
     
@@ -52,7 +52,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the averageInboundPacketLossRateInPercentage property value. The average inbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
         Args:
-            value: Value to set for the averageInboundPacketLossRateInPercentage property.
+            value: Value to set for the average_inbound_packet_loss_rate_in_percentage property.
         """
         self._average_inbound_packet_loss_rate_in_percentage = value
     
@@ -69,7 +69,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the averageInboundRoundTripDelay property value. The average inbound stream network round trip delay.
         Args:
-            value: Value to set for the averageInboundRoundTripDelay property.
+            value: Value to set for the average_inbound_round_trip_delay property.
         """
         self._average_inbound_round_trip_delay = value
     
@@ -86,7 +86,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the averageOutboundJitter property value. The average outbound stream network jitter.
         Args:
-            value: Value to set for the averageOutboundJitter property.
+            value: Value to set for the average_outbound_jitter property.
         """
         self._average_outbound_jitter = value
     
@@ -103,7 +103,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the averageOutboundPacketLossRateInPercentage property value. The average outbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
         Args:
-            value: Value to set for the averageOutboundPacketLossRateInPercentage property.
+            value: Value to set for the average_outbound_packet_loss_rate_in_percentage property.
         """
         self._average_outbound_packet_loss_rate_in_percentage = value
     
@@ -120,7 +120,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the averageOutboundRoundTripDelay property value. The average outbound stream network round trip delay.
         Args:
-            value: Value to set for the averageOutboundRoundTripDelay property.
+            value: Value to set for the average_outbound_round_trip_delay property.
         """
         self._average_outbound_round_trip_delay = value
     
@@ -137,7 +137,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the channelIndex property value. The channel index of media. Indexing begins with 1.  If a media session contains 3 video modalities, channel indexes will be 1, 2, and 3.
         Args:
-            value: Value to set for the channelIndex property.
+            value: Value to set for the channel_index property.
         """
         self._channel_index = value
     
@@ -211,28 +211,28 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "average_inbound_jitter": lambda n : setattr(self, 'average_inbound_jitter', n.get_object_value(Timedelta)),
-            "average_inbound_packet_loss_rate_in_percentage": lambda n : setattr(self, 'average_inbound_packet_loss_rate_in_percentage', n.get_float_value()),
-            "average_inbound_round_trip_delay": lambda n : setattr(self, 'average_inbound_round_trip_delay', n.get_object_value(Timedelta)),
-            "average_outbound_jitter": lambda n : setattr(self, 'average_outbound_jitter', n.get_object_value(Timedelta)),
-            "average_outbound_packet_loss_rate_in_percentage": lambda n : setattr(self, 'average_outbound_packet_loss_rate_in_percentage', n.get_float_value()),
-            "average_outbound_round_trip_delay": lambda n : setattr(self, 'average_outbound_round_trip_delay', n.get_object_value(Timedelta)),
-            "channel_index": lambda n : setattr(self, 'channel_index', n.get_int_value()),
-            "inbound_packets": lambda n : setattr(self, 'inbound_packets', n.get_int_value()),
-            "local_i_p_address": lambda n : setattr(self, 'local_i_p_address', n.get_str_value()),
-            "local_port": lambda n : setattr(self, 'local_port', n.get_int_value()),
-            "maximum_inbound_jitter": lambda n : setattr(self, 'maximum_inbound_jitter', n.get_object_value(Timedelta)),
-            "maximum_inbound_packet_loss_rate_in_percentage": lambda n : setattr(self, 'maximum_inbound_packet_loss_rate_in_percentage', n.get_float_value()),
-            "maximum_inbound_round_trip_delay": lambda n : setattr(self, 'maximum_inbound_round_trip_delay', n.get_object_value(Timedelta)),
-            "maximum_outbound_jitter": lambda n : setattr(self, 'maximum_outbound_jitter', n.get_object_value(Timedelta)),
-            "maximum_outbound_packet_loss_rate_in_percentage": lambda n : setattr(self, 'maximum_outbound_packet_loss_rate_in_percentage', n.get_float_value()),
-            "maximum_outbound_round_trip_delay": lambda n : setattr(self, 'maximum_outbound_round_trip_delay', n.get_object_value(Timedelta)),
-            "media_duration": lambda n : setattr(self, 'media_duration', n.get_object_value(Timedelta)),
-            "network_link_speed_in_bytes": lambda n : setattr(self, 'network_link_speed_in_bytes', n.get_int_value()),
+            "averageInboundJitter": lambda n : setattr(self, 'average_inbound_jitter', n.get_object_value(Timedelta)),
+            "averageInboundPacketLossRateInPercentage": lambda n : setattr(self, 'average_inbound_packet_loss_rate_in_percentage', n.get_float_value()),
+            "averageInboundRoundTripDelay": lambda n : setattr(self, 'average_inbound_round_trip_delay', n.get_object_value(Timedelta)),
+            "averageOutboundJitter": lambda n : setattr(self, 'average_outbound_jitter', n.get_object_value(Timedelta)),
+            "averageOutboundPacketLossRateInPercentage": lambda n : setattr(self, 'average_outbound_packet_loss_rate_in_percentage', n.get_float_value()),
+            "averageOutboundRoundTripDelay": lambda n : setattr(self, 'average_outbound_round_trip_delay', n.get_object_value(Timedelta)),
+            "channelIndex": lambda n : setattr(self, 'channel_index', n.get_int_value()),
+            "inboundPackets": lambda n : setattr(self, 'inbound_packets', n.get_int_value()),
+            "localIPAddress": lambda n : setattr(self, 'local_i_p_address', n.get_str_value()),
+            "localPort": lambda n : setattr(self, 'local_port', n.get_int_value()),
+            "maximumInboundJitter": lambda n : setattr(self, 'maximum_inbound_jitter', n.get_object_value(Timedelta)),
+            "maximumInboundPacketLossRateInPercentage": lambda n : setattr(self, 'maximum_inbound_packet_loss_rate_in_percentage', n.get_float_value()),
+            "maximumInboundRoundTripDelay": lambda n : setattr(self, 'maximum_inbound_round_trip_delay', n.get_object_value(Timedelta)),
+            "maximumOutboundJitter": lambda n : setattr(self, 'maximum_outbound_jitter', n.get_object_value(Timedelta)),
+            "maximumOutboundPacketLossRateInPercentage": lambda n : setattr(self, 'maximum_outbound_packet_loss_rate_in_percentage', n.get_float_value()),
+            "maximumOutboundRoundTripDelay": lambda n : setattr(self, 'maximum_outbound_round_trip_delay', n.get_object_value(Timedelta)),
+            "mediaDuration": lambda n : setattr(self, 'media_duration', n.get_object_value(Timedelta)),
+            "networkLinkSpeedInBytes": lambda n : setattr(self, 'network_link_speed_in_bytes', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "outbound_packets": lambda n : setattr(self, 'outbound_packets', n.get_int_value()),
-            "remote_i_p_address": lambda n : setattr(self, 'remote_i_p_address', n.get_str_value()),
-            "remote_port": lambda n : setattr(self, 'remote_port', n.get_int_value()),
+            "outboundPackets": lambda n : setattr(self, 'outbound_packets', n.get_int_value()),
+            "remoteIPAddress": lambda n : setattr(self, 'remote_i_p_address', n.get_str_value()),
+            "remotePort": lambda n : setattr(self, 'remote_port', n.get_int_value()),
         }
         return fields
     
@@ -249,7 +249,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the inboundPackets property value. The total number of the inbound packets.
         Args:
-            value: Value to set for the inboundPackets property.
+            value: Value to set for the inbound_packets property.
         """
         self._inbound_packets = value
     
@@ -266,7 +266,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the localIPAddress property value. the local IP address for the media session.
         Args:
-            value: Value to set for the localIPAddress property.
+            value: Value to set for the local_i_p_address property.
         """
         self._local_i_p_address = value
     
@@ -283,7 +283,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the localPort property value. The local media port.
         Args:
-            value: Value to set for the localPort property.
+            value: Value to set for the local_port property.
         """
         self._local_port = value
     
@@ -300,7 +300,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the maximumInboundJitter property value. The maximum inbound stream network jitter.
         Args:
-            value: Value to set for the maximumInboundJitter property.
+            value: Value to set for the maximum_inbound_jitter property.
         """
         self._maximum_inbound_jitter = value
     
@@ -317,7 +317,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the maximumInboundPacketLossRateInPercentage property value. The maximum inbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
         Args:
-            value: Value to set for the maximumInboundPacketLossRateInPercentage property.
+            value: Value to set for the maximum_inbound_packet_loss_rate_in_percentage property.
         """
         self._maximum_inbound_packet_loss_rate_in_percentage = value
     
@@ -334,7 +334,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the maximumInboundRoundTripDelay property value. The maximum inbound stream network round trip delay.
         Args:
-            value: Value to set for the maximumInboundRoundTripDelay property.
+            value: Value to set for the maximum_inbound_round_trip_delay property.
         """
         self._maximum_inbound_round_trip_delay = value
     
@@ -351,7 +351,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the maximumOutboundJitter property value. The maximum outbound stream network jitter.
         Args:
-            value: Value to set for the maximumOutboundJitter property.
+            value: Value to set for the maximum_outbound_jitter property.
         """
         self._maximum_outbound_jitter = value
     
@@ -368,7 +368,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the maximumOutboundPacketLossRateInPercentage property value. The maximum outbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
         Args:
-            value: Value to set for the maximumOutboundPacketLossRateInPercentage property.
+            value: Value to set for the maximum_outbound_packet_loss_rate_in_percentage property.
         """
         self._maximum_outbound_packet_loss_rate_in_percentage = value
     
@@ -385,7 +385,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the maximumOutboundRoundTripDelay property value. The maximum outbound stream network round trip delay.
         Args:
-            value: Value to set for the maximumOutboundRoundTripDelay property.
+            value: Value to set for the maximum_outbound_round_trip_delay property.
         """
         self._maximum_outbound_round_trip_delay = value
     
@@ -402,7 +402,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the mediaDuration property value. The total modality duration. If the media enabled and disabled multiple times, MediaDuration will the summation of all of the durations.
         Args:
-            value: Value to set for the mediaDuration property.
+            value: Value to set for the media_duration property.
         """
         self._media_duration = value
     
@@ -419,7 +419,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the networkLinkSpeedInBytes property value. The network link speed in bytes
         Args:
-            value: Value to set for the networkLinkSpeedInBytes property.
+            value: Value to set for the network_link_speed_in_bytes property.
         """
         self._network_link_speed_in_bytes = value
     
@@ -436,7 +436,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -453,7 +453,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the outboundPackets property value. The total number of the outbound packets.
         Args:
-            value: Value to set for the outboundPackets property.
+            value: Value to set for the outbound_packets property.
         """
         self._outbound_packets = value
     
@@ -470,7 +470,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the remoteIPAddress property value. The remote IP address for the media session.
         Args:
-            value: Value to set for the remoteIPAddress property.
+            value: Value to set for the remote_i_p_address property.
         """
         self._remote_i_p_address = value
     
@@ -487,7 +487,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         Sets the remotePort property value. The remote media port.
         Args:
-            value: Value to set for the remotePort property.
+            value: Value to set for the remote_port property.
         """
         self._remote_port = value
     

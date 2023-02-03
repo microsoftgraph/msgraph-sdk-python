@@ -22,7 +22,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         """
         Sets the activeSignInUri property value. URL of the endpoint used by active clients when authenticating with federated domains set up for single sign-on in Azure Active Directory (Azure AD). Corresponds to the ActiveLogOnUri property of the Set-MsolDomainFederationSettings MSOnline v1 PowerShell cmdlet.
         Args:
-            value: Value to set for the activeSignInUri property.
+            value: Value to set for the active_sign_in_uri property.
         """
         self._active_sign_in_uri = value
     
@@ -42,10 +42,10 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         self._next_signing_certificate: Optional[str] = None
         # Sets the preferred behavior for the sign-in prompt. The possible values are: translateToFreshPasswordAuthentication, nativeSupport, disabled, unknownFutureValue.
         self._prompt_login_behavior: Optional[prompt_login_behavior.PromptLoginBehavior] = None
-        # Provides status and timestamp of the last update of the signing certificate.
-        self._signing_certificate_update_status: Optional[signing_certificate_update_status.SigningCertificateUpdateStatus] = None
         # URI that clients are redirected to when they sign out of Azure AD services. Corresponds to the LogOffUri property of the Set-MsolDomainFederationSettings MSOnline v1 PowerShell cmdlet.
         self._sign_out_uri: Optional[str] = None
+        # Provides status and timestamp of the last update of the signing certificate.
+        self._signing_certificate_update_status: Optional[signing_certificate_update_status.SigningCertificateUpdateStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InternalDomainFederation:
@@ -72,7 +72,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         """
         Sets the federatedIdpMfaBehavior property value. Determines whether Azure AD accepts the MFA performed by the federated IdP when a federated user accesses an application that is governed by a conditional access policy that requires MFA. The possible values are: acceptIfMfaDoneByFederatedIdp, enforceMfaByFederatedIdp, rejectMfaByFederatedIdp, unknownFutureValue. For more information, see federatedIdpMfaBehavior values.
         Args:
-            value: Value to set for the federatedIdpMfaBehavior property.
+            value: Value to set for the federated_idp_mfa_behavior property.
         """
         self._federated_idp_mfa_behavior = value
     
@@ -82,13 +82,13 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "active_sign_in_uri": lambda n : setattr(self, 'active_sign_in_uri', n.get_str_value()),
-            "federated_idp_mfa_behavior": lambda n : setattr(self, 'federated_idp_mfa_behavior', n.get_enum_value(federated_idp_mfa_behavior.FederatedIdpMfaBehavior)),
-            "is_signed_authentication_request_required": lambda n : setattr(self, 'is_signed_authentication_request_required', n.get_bool_value()),
-            "next_signing_certificate": lambda n : setattr(self, 'next_signing_certificate', n.get_str_value()),
-            "prompt_login_behavior": lambda n : setattr(self, 'prompt_login_behavior', n.get_enum_value(prompt_login_behavior.PromptLoginBehavior)),
-            "signing_certificate_update_status": lambda n : setattr(self, 'signing_certificate_update_status', n.get_object_value(signing_certificate_update_status.SigningCertificateUpdateStatus)),
-            "sign_out_uri": lambda n : setattr(self, 'sign_out_uri', n.get_str_value()),
+            "activeSignInUri": lambda n : setattr(self, 'active_sign_in_uri', n.get_str_value()),
+            "federatedIdpMfaBehavior": lambda n : setattr(self, 'federated_idp_mfa_behavior', n.get_enum_value(federated_idp_mfa_behavior.FederatedIdpMfaBehavior)),
+            "isSignedAuthenticationRequestRequired": lambda n : setattr(self, 'is_signed_authentication_request_required', n.get_bool_value()),
+            "nextSigningCertificate": lambda n : setattr(self, 'next_signing_certificate', n.get_str_value()),
+            "promptLoginBehavior": lambda n : setattr(self, 'prompt_login_behavior', n.get_enum_value(prompt_login_behavior.PromptLoginBehavior)),
+            "signingCertificateUpdateStatus": lambda n : setattr(self, 'signing_certificate_update_status', n.get_object_value(signing_certificate_update_status.SigningCertificateUpdateStatus)),
+            "signOutUri": lambda n : setattr(self, 'sign_out_uri', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -107,7 +107,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         """
         Sets the isSignedAuthenticationRequestRequired property value. If true, when SAML authentication requests are sent to the federated SAML IdP, Azure AD will sign those requests using the OrgID signing key. If false (default), the SAML authentication requests sent to the federated IdP are not signed.
         Args:
-            value: Value to set for the isSignedAuthenticationRequestRequired property.
+            value: Value to set for the is_signed_authentication_request_required property.
         """
         self._is_signed_authentication_request_required = value
     
@@ -124,7 +124,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         """
         Sets the nextSigningCertificate property value. Fallback token signing certificate that is used to sign tokens when the primary signing certificate expires. Formatted as Base64 encoded strings of the public portion of the federated IdP's token signing certificate. Needs to be compatible with the X509Certificate2 class. Much like the signingCertificate, the nextSigningCertificate property is used if a rollover is required outside of the auto-rollover update, a new federation service is being set up, or if the new token signing certificate is not present in the federation properties after the federation service certificate has been updated.
         Args:
-            value: Value to set for the nextSigningCertificate property.
+            value: Value to set for the next_signing_certificate property.
         """
         self._next_signing_certificate = value
     
@@ -141,7 +141,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         """
         Sets the promptLoginBehavior property value. Sets the preferred behavior for the sign-in prompt. The possible values are: translateToFreshPasswordAuthentication, nativeSupport, disabled, unknownFutureValue.
         Args:
-            value: Value to set for the promptLoginBehavior property.
+            value: Value to set for the prompt_login_behavior property.
         """
         self._prompt_login_behavior = value
     
@@ -163,23 +163,6 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         writer.write_str_value("signOutUri", self.sign_out_uri)
     
     @property
-    def signing_certificate_update_status(self,) -> Optional[signing_certificate_update_status.SigningCertificateUpdateStatus]:
-        """
-        Gets the signingCertificateUpdateStatus property value. Provides status and timestamp of the last update of the signing certificate.
-        Returns: Optional[signing_certificate_update_status.SigningCertificateUpdateStatus]
-        """
-        return self._signing_certificate_update_status
-    
-    @signing_certificate_update_status.setter
-    def signing_certificate_update_status(self,value: Optional[signing_certificate_update_status.SigningCertificateUpdateStatus] = None) -> None:
-        """
-        Sets the signingCertificateUpdateStatus property value. Provides status and timestamp of the last update of the signing certificate.
-        Args:
-            value: Value to set for the signingCertificateUpdateStatus property.
-        """
-        self._signing_certificate_update_status = value
-    
-    @property
     def sign_out_uri(self,) -> Optional[str]:
         """
         Gets the signOutUri property value. URI that clients are redirected to when they sign out of Azure AD services. Corresponds to the LogOffUri property of the Set-MsolDomainFederationSettings MSOnline v1 PowerShell cmdlet.
@@ -192,8 +175,25 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         """
         Sets the signOutUri property value. URI that clients are redirected to when they sign out of Azure AD services. Corresponds to the LogOffUri property of the Set-MsolDomainFederationSettings MSOnline v1 PowerShell cmdlet.
         Args:
-            value: Value to set for the signOutUri property.
+            value: Value to set for the sign_out_uri property.
         """
         self._sign_out_uri = value
+    
+    @property
+    def signing_certificate_update_status(self,) -> Optional[signing_certificate_update_status.SigningCertificateUpdateStatus]:
+        """
+        Gets the signingCertificateUpdateStatus property value. Provides status and timestamp of the last update of the signing certificate.
+        Returns: Optional[signing_certificate_update_status.SigningCertificateUpdateStatus]
+        """
+        return self._signing_certificate_update_status
+    
+    @signing_certificate_update_status.setter
+    def signing_certificate_update_status(self,value: Optional[signing_certificate_update_status.SigningCertificateUpdateStatus] = None) -> None:
+        """
+        Sets the signingCertificateUpdateStatus property value. Provides status and timestamp of the last update of the signing certificate.
+        Args:
+            value: Value to set for the signing_certificate_update_status property.
+        """
+        self._signing_certificate_update_status = value
     
 

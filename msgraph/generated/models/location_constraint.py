@@ -57,10 +57,10 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_required": lambda n : setattr(self, 'is_required', n.get_bool_value()),
+            "isRequired": lambda n : setattr(self, 'is_required', n.get_bool_value()),
             "locations": lambda n : setattr(self, 'locations', n.get_collection_of_object_values(location_constraint_item.LocationConstraintItem)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "suggest_location": lambda n : setattr(self, 'suggest_location', n.get_bool_value()),
+            "suggestLocation": lambda n : setattr(self, 'suggest_location', n.get_bool_value()),
         }
         return fields
     
@@ -77,7 +77,7 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
         """
         Sets the isRequired property value. The client requests the service to include in the response a meeting location for the meeting. If this is true and all the resources are busy, findMeetingTimes will not return any meeting time suggestions. If this is false and all the resources are busy, findMeetingTimes would still look for meeting times without locations.
         Args:
-            value: Value to set for the isRequired property.
+            value: Value to set for the is_required property.
         """
         self._is_required = value
     
@@ -111,7 +111,7 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -142,7 +142,7 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
         """
         Sets the suggestLocation property value. The client requests the service to suggest one or more meeting locations.
         Args:
-            value: Value to set for the suggestLocation property.
+            value: Value to set for the suggest_location property.
         """
         self._suggest_location = value
     

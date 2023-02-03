@@ -26,10 +26,11 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder():
         """
         return scheduled_action_configurations_request_builder.ScheduledActionConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, device_compliance_scheduled_action_for_rule_id: Optional[str] = None) -> None:
         """
         Instantiates a new DeviceComplianceScheduledActionForRuleItemRequestBuilder and sets the default values.
         Args:
+            deviceComplianceScheduledActionForRuleId: key: id of deviceComplianceScheduledActionForRule
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -41,6 +42,7 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicy%2Did}/scheduledActionsForRule/{deviceComplianceScheduledActionForRule%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["deviceComplianceScheduledActionForRule%2Did"] = deviceComplianceScheduledActionForRuleId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

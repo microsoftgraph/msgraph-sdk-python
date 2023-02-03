@@ -36,7 +36,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         """
         Sets the calendarSyncEnabled property value. Not yet documented
         Args:
-            value: Value to set for the calendarSyncEnabled property.
+            value: Value to set for the calendar_sync_enabled property.
         """
         self._calendar_sync_enabled = value
     
@@ -87,7 +87,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         """
         Sets the deviceAccount property value. Not yet documented
         Args:
-            value: Value to set for the deviceAccount property.
+            value: Value to set for the device_account property.
         """
         self._device_account = value
     
@@ -104,7 +104,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         """
         Sets the deviceAccountEmail property value. Not yet documented
         Args:
-            value: Value to set for the deviceAccountEmail property.
+            value: Value to set for the device_account_email property.
         """
         self._device_account_email = value
     
@@ -121,7 +121,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         """
         Sets the exchangeServer property value. Not yet documented
         Args:
-            value: Value to set for the exchangeServer property.
+            value: Value to set for the exchange_server property.
         """
         self._exchange_server = value
     
@@ -131,13 +131,13 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "calendar_sync_enabled": lambda n : setattr(self, 'calendar_sync_enabled', n.get_bool_value()),
-            "device_account": lambda n : setattr(self, 'device_account', n.get_object_value(windows_device_account.WindowsDeviceAccount)),
-            "device_account_email": lambda n : setattr(self, 'device_account_email', n.get_str_value()),
-            "exchange_server": lambda n : setattr(self, 'exchange_server', n.get_str_value()),
+            "calendarSyncEnabled": lambda n : setattr(self, 'calendar_sync_enabled', n.get_bool_value()),
+            "deviceAccount": lambda n : setattr(self, 'device_account', n.get_object_value(windows_device_account.WindowsDeviceAccount)),
+            "deviceAccountEmail": lambda n : setattr(self, 'device_account_email', n.get_str_value()),
+            "exchangeServer": lambda n : setattr(self, 'exchange_server', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "password_rotation_enabled": lambda n : setattr(self, 'password_rotation_enabled', n.get_bool_value()),
-            "session_initiation_protocal_address": lambda n : setattr(self, 'session_initiation_protocal_address', n.get_str_value()),
+            "passwordRotationEnabled": lambda n : setattr(self, 'password_rotation_enabled', n.get_bool_value()),
+            "sessionInitiationProtocalAddress": lambda n : setattr(self, 'session_initiation_protocal_address', n.get_str_value()),
         }
         return fields
     
@@ -154,7 +154,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -171,7 +171,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         """
         Sets the passwordRotationEnabled property value. Not yet documented
         Args:
-            value: Value to set for the passwordRotationEnabled property.
+            value: Value to set for the password_rotation_enabled property.
         """
         self._password_rotation_enabled = value
     
@@ -205,7 +205,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         """
         Sets the sessionInitiationProtocalAddress property value. Not yet documented
         Args:
-            value: Value to set for the sessionInitiationProtocalAddress property.
+            value: Value to set for the session_initiation_protocal_address property.
         """
         self._session_initiation_protocal_address = value
     

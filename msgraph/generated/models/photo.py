@@ -35,7 +35,7 @@ class Photo(AdditionalDataHolder, Parsable):
         """
         Sets the cameraMake property value. Camera manufacturer. Read-only.
         Args:
-            value: Value to set for the cameraMake property.
+            value: Value to set for the camera_make property.
         """
         self._camera_make = value
     
@@ -52,7 +52,7 @@ class Photo(AdditionalDataHolder, Parsable):
         """
         Sets the cameraModel property value. Camera model. Read-only.
         Args:
-            value: Value to set for the cameraModel property.
+            value: Value to set for the camera_model property.
         """
         self._camera_model = value
     
@@ -109,7 +109,7 @@ class Photo(AdditionalDataHolder, Parsable):
         """
         Sets the exposureDenominator property value. The denominator for the exposure time fraction from the camera. Read-only.
         Args:
-            value: Value to set for the exposureDenominator property.
+            value: Value to set for the exposure_denominator property.
         """
         self._exposure_denominator = value
     
@@ -126,7 +126,7 @@ class Photo(AdditionalDataHolder, Parsable):
         """
         Sets the exposureNumerator property value. The numerator for the exposure time fraction from the camera. Read-only.
         Args:
-            value: Value to set for the exposureNumerator property.
+            value: Value to set for the exposure_numerator property.
         """
         self._exposure_numerator = value
     
@@ -143,7 +143,7 @@ class Photo(AdditionalDataHolder, Parsable):
         """
         Sets the fNumber property value. The F-stop value from the camera. Read-only.
         Args:
-            value: Value to set for the fNumber property.
+            value: Value to set for the f_number property.
         """
         self._f_number = value
     
@@ -160,7 +160,7 @@ class Photo(AdditionalDataHolder, Parsable):
         """
         Sets the focalLength property value. The focal length from the camera. Read-only.
         Args:
-            value: Value to set for the focalLength property.
+            value: Value to set for the focal_length property.
         """
         self._focal_length = value
     
@@ -170,16 +170,16 @@ class Photo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "camera_make": lambda n : setattr(self, 'camera_make', n.get_str_value()),
-            "camera_model": lambda n : setattr(self, 'camera_model', n.get_str_value()),
-            "exposure_denominator": lambda n : setattr(self, 'exposure_denominator', n.get_float_value()),
-            "exposure_numerator": lambda n : setattr(self, 'exposure_numerator', n.get_float_value()),
-            "f_number": lambda n : setattr(self, 'f_number', n.get_float_value()),
-            "focal_length": lambda n : setattr(self, 'focal_length', n.get_float_value()),
+            "cameraMake": lambda n : setattr(self, 'camera_make', n.get_str_value()),
+            "cameraModel": lambda n : setattr(self, 'camera_model', n.get_str_value()),
+            "exposureDenominator": lambda n : setattr(self, 'exposure_denominator', n.get_float_value()),
+            "exposureNumerator": lambda n : setattr(self, 'exposure_numerator', n.get_float_value()),
+            "focalLength": lambda n : setattr(self, 'focal_length', n.get_float_value()),
+            "fNumber": lambda n : setattr(self, 'f_number', n.get_float_value()),
             "iso": lambda n : setattr(self, 'iso', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "orientation": lambda n : setattr(self, 'orientation', n.get_int_value()),
-            "taken_date_time": lambda n : setattr(self, 'taken_date_time', n.get_datetime_value()),
+            "takenDateTime": lambda n : setattr(self, 'taken_date_time', n.get_datetime_value()),
         }
         return fields
     
@@ -213,7 +213,7 @@ class Photo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -246,8 +246,8 @@ class Photo(AdditionalDataHolder, Parsable):
         writer.write_str_value("cameraModel", self.camera_model)
         writer.write_float_value("exposureDenominator", self.exposure_denominator)
         writer.write_float_value("exposureNumerator", self.exposure_numerator)
-        writer.write_float_value("fNumber", self.f_number)
         writer.write_float_value("focalLength", self.focal_length)
+        writer.write_float_value("fNumber", self.f_number)
         writer.write_int_value("iso", self.iso)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("orientation", self.orientation)
@@ -267,7 +267,7 @@ class Photo(AdditionalDataHolder, Parsable):
         """
         Sets the takenDateTime property value. Represents the date and time the photo was taken. Read-only.
         Args:
-            value: Value to set for the takenDateTime property.
+            value: Value to set for the taken_date_time property.
         """
         self._taken_date_time = value
     

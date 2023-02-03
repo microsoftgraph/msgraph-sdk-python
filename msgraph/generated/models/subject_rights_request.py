@@ -31,7 +31,7 @@ class SubjectRightsRequest(entity.Entity):
         """
         Sets the assignedTo property value. Identity that the request is assigned to.
         Args:
-            value: Value to set for the assignedTo property.
+            value: Value to set for the assigned_to property.
         """
         self._assigned_to = value
     
@@ -48,7 +48,7 @@ class SubjectRightsRequest(entity.Entity):
         """
         Sets the closedDateTime property value. The date and time when the request was closed. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the closedDateTime property.
+            value: Value to set for the closed_date_time property.
         """
         self._closed_date_time = value
     
@@ -111,7 +111,7 @@ class SubjectRightsRequest(entity.Entity):
         """
         Sets the createdBy property value. Identity information for the entity that created the request.
         Args:
-            value: Value to set for the createdBy property.
+            value: Value to set for the created_by property.
         """
         self._created_by = value
     
@@ -128,7 +128,7 @@ class SubjectRightsRequest(entity.Entity):
         """
         Sets the createdDateTime property value. The date and time when the request was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -157,7 +157,7 @@ class SubjectRightsRequest(entity.Entity):
         """
         Sets the dataSubject property value. Information about the data subject.
         Args:
-            value: Value to set for the dataSubject property.
+            value: Value to set for the data_subject property.
         """
         self._data_subject = value
     
@@ -174,7 +174,7 @@ class SubjectRightsRequest(entity.Entity):
         """
         Sets the dataSubjectType property value. The type of the data subject. Possible values are: customer, currentEmployee, formerEmployee, prospectiveEmployee, student, teacher, faculty, other, unknownFutureValue.
         Args:
-            value: Value to set for the dataSubjectType property.
+            value: Value to set for the data_subject_type property.
         """
         self._data_subject_type = value
     
@@ -208,7 +208,7 @@ class SubjectRightsRequest(entity.Entity):
         """
         Sets the displayName property value. The name of the request.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -218,19 +218,19 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assigned_to": lambda n : setattr(self, 'assigned_to', n.get_object_value(identity.Identity)),
-            "closed_date_time": lambda n : setattr(self, 'closed_date_time', n.get_datetime_value()),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "data_subject": lambda n : setattr(self, 'data_subject', n.get_object_value(data_subject.DataSubject)),
-            "data_subject_type": lambda n : setattr(self, 'data_subject_type', n.get_enum_value(data_subject_type.DataSubjectType)),
+            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_object_value(identity.Identity)),
+            "closedDateTime": lambda n : setattr(self, 'closed_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "dataSubject": lambda n : setattr(self, 'data_subject', n.get_object_value(data_subject.DataSubject)),
+            "dataSubjectType": lambda n : setattr(self, 'data_subject_type', n.get_enum_value(data_subject_type.DataSubjectType)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(subject_rights_request_history.SubjectRightsRequestHistory)),
             "insight": lambda n : setattr(self, 'insight', n.get_object_value(subject_rights_request_detail.SubjectRightsRequestDetail)),
-            "internal_due_date_time": lambda n : setattr(self, 'internal_due_date_time', n.get_datetime_value()),
-            "last_modified_by": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "internalDueDateTime": lambda n : setattr(self, 'internal_due_date_time', n.get_datetime_value()),
+            "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_collection_of_object_values(authored_note.AuthoredNote)),
             "regulations": lambda n : setattr(self, 'regulations', n.get_collection_of_primitive_values(str)),
             "stages": lambda n : setattr(self, 'stages', n.get_collection_of_object_values(subject_rights_request_stage_detail.SubjectRightsRequestStageDetail)),
@@ -289,7 +289,7 @@ class SubjectRightsRequest(entity.Entity):
         """
         Sets the internalDueDateTime property value. The date and time when the request is internally due. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the internalDueDateTime property.
+            value: Value to set for the internal_due_date_time property.
         """
         self._internal_due_date_time = value
     
@@ -306,7 +306,7 @@ class SubjectRightsRequest(entity.Entity):
         """
         Sets the lastModifiedBy property value. Identity information for the entity that last modified the request.
         Args:
-            value: Value to set for the lastModifiedBy property.
+            value: Value to set for the last_modified_by property.
         """
         self._last_modified_by = value
     
@@ -323,7 +323,7 @@ class SubjectRightsRequest(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. The date and time when the request was last modified. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     

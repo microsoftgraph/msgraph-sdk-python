@@ -63,7 +63,7 @@ class ProvisioningStatusInfo(AdditionalDataHolder, Parsable):
         """
         Sets the errorInformation property value. The errorInformation property
         Args:
-            value: Value to set for the errorInformation property.
+            value: Value to set for the error_information property.
         """
         self._error_information = value
     
@@ -73,7 +73,7 @@ class ProvisioningStatusInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "error_information": lambda n : setattr(self, 'error_information', n.get_object_value(provisioning_error_info.ProvisioningErrorInfo)),
+            "errorInformation": lambda n : setattr(self, 'error_information', n.get_object_value(provisioning_error_info.ProvisioningErrorInfo)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(provisioning_result.ProvisioningResult)),
         }
@@ -92,7 +92,7 @@ class ProvisioningStatusInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

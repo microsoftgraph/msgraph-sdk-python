@@ -34,7 +34,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         """
         Sets the altitudeInMeters property value. The altitude, in meters, that the printer is located at.
         Args:
-            value: Value to set for the altitudeInMeters property.
+            value: Value to set for the altitude_in_meters property.
         """
         self._altitude_in_meters = value
     
@@ -129,7 +129,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         """
         Sets the countryOrRegion property value. The country or region that the printer is located in.
         Args:
-            value: Value to set for the countryOrRegion property.
+            value: Value to set for the country_or_region property.
         """
         self._country_or_region = value
     
@@ -175,7 +175,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         """
         Sets the floorDescription property value. The description of the floor that the printer is located on.
         Args:
-            value: Value to set for the floorDescription property.
+            value: Value to set for the floor_description property.
         """
         self._floor_description = value
     
@@ -185,22 +185,22 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "altitude_in_meters": lambda n : setattr(self, 'altitude_in_meters', n.get_int_value()),
+            "altitudeInMeters": lambda n : setattr(self, 'altitude_in_meters', n.get_int_value()),
             "building": lambda n : setattr(self, 'building', n.get_str_value()),
             "city": lambda n : setattr(self, 'city', n.get_str_value()),
-            "country_or_region": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
+            "countryOrRegion": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
             "floor": lambda n : setattr(self, 'floor', n.get_str_value()),
-            "floor_description": lambda n : setattr(self, 'floor_description', n.get_str_value()),
+            "floorDescription": lambda n : setattr(self, 'floor_description', n.get_str_value()),
             "latitude": lambda n : setattr(self, 'latitude', n.get_float_value()),
             "longitude": lambda n : setattr(self, 'longitude', n.get_float_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "organization": lambda n : setattr(self, 'organization', n.get_collection_of_primitive_values(str)),
-            "postal_code": lambda n : setattr(self, 'postal_code', n.get_str_value()),
-            "room_description": lambda n : setattr(self, 'room_description', n.get_str_value()),
-            "room_name": lambda n : setattr(self, 'room_name', n.get_str_value()),
+            "postalCode": lambda n : setattr(self, 'postal_code', n.get_str_value()),
+            "roomDescription": lambda n : setattr(self, 'room_description', n.get_str_value()),
+            "roomName": lambda n : setattr(self, 'room_name', n.get_str_value()),
             "site": lambda n : setattr(self, 'site', n.get_str_value()),
-            "state_or_province": lambda n : setattr(self, 'state_or_province', n.get_str_value()),
-            "street_address": lambda n : setattr(self, 'street_address', n.get_str_value()),
+            "stateOrProvince": lambda n : setattr(self, 'state_or_province', n.get_str_value()),
+            "streetAddress": lambda n : setattr(self, 'street_address', n.get_str_value()),
             "subdivision": lambda n : setattr(self, 'subdivision', n.get_collection_of_primitive_values(str)),
             "subunit": lambda n : setattr(self, 'subunit', n.get_collection_of_primitive_values(str)),
         }
@@ -253,7 +253,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -287,7 +287,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         """
         Sets the postalCode property value. The postal code that the printer is located in.
         Args:
-            value: Value to set for the postalCode property.
+            value: Value to set for the postal_code property.
         """
         self._postal_code = value
     
@@ -304,7 +304,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         """
         Sets the roomDescription property value. The description of the room that the printer is located in.
         Args:
-            value: Value to set for the roomDescription property.
+            value: Value to set for the room_description property.
         """
         self._room_description = value
     
@@ -321,7 +321,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         """
         Sets the roomName property value. The room that the printer is located in. Only numerical values are supported right now.
         Args:
-            value: Value to set for the roomName property.
+            value: Value to set for the room_name property.
         """
         self._room_name = value
     
@@ -383,7 +383,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         """
         Sets the stateOrProvince property value. The state or province that the printer is located in.
         Args:
-            value: Value to set for the stateOrProvince property.
+            value: Value to set for the state_or_province property.
         """
         self._state_or_province = value
     
@@ -400,7 +400,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         """
         Sets the streetAddress property value. The street address where the printer is located.
         Args:
-            value: Value to set for the streetAddress property.
+            value: Value to set for the street_address property.
         """
         self._street_address = value
     

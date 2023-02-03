@@ -57,7 +57,7 @@ class SecurityResource(AdditionalDataHolder, Parsable):
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_str_value()),
-            "resource_type": lambda n : setattr(self, 'resource_type', n.get_enum_value(security_resource_type.SecurityResourceType)),
+            "resourceType": lambda n : setattr(self, 'resource_type', n.get_enum_value(security_resource_type.SecurityResourceType)),
         }
         return fields
     
@@ -74,7 +74,7 @@ class SecurityResource(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -108,7 +108,7 @@ class SecurityResource(AdditionalDataHolder, Parsable):
         """
         Sets the resourceType property value. Represents type of security resources related to an alert. Possible values are: attacked, related.
         Args:
-            value: Value to set for the resourceType property.
+            value: Value to set for the resource_type property.
         """
         self._resource_type = value
     

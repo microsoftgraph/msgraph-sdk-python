@@ -54,7 +54,7 @@ class PendingOperations(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "pending_content_update": lambda n : setattr(self, 'pending_content_update', n.get_object_value(pending_content_update.PendingContentUpdate)),
+            "pendingContentUpdate": lambda n : setattr(self, 'pending_content_update', n.get_object_value(pending_content_update.PendingContentUpdate)),
         }
         return fields
     
@@ -71,7 +71,7 @@ class PendingOperations(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -88,7 +88,7 @@ class PendingOperations(AdditionalDataHolder, Parsable):
         """
         Sets the pendingContentUpdate property value. A property that indicates that an operation that might update the binary content of a file is pending completion.
         Args:
-            value: Value to set for the pendingContentUpdate property.
+            value: Value to set for the pending_content_update property.
         """
         self._pending_content_update = value
     

@@ -18,7 +18,7 @@ class VerifiedPublisher(AdditionalDataHolder, Parsable):
         """
         Sets the addedDateTime property value. The timestamp when the verified publisher was first added or most recently updated.
         Args:
-            value: Value to set for the addedDateTime property.
+            value: Value to set for the added_date_time property.
         """
         self._added_date_time = value
     
@@ -80,7 +80,7 @@ class VerifiedPublisher(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. The verified publisher name from the app publisher's Partner Center account.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -90,10 +90,10 @@ class VerifiedPublisher(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "added_date_time": lambda n : setattr(self, 'added_date_time', n.get_datetime_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "addedDateTime": lambda n : setattr(self, 'added_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "verified_publisher_id": lambda n : setattr(self, 'verified_publisher_id', n.get_str_value()),
+            "verifiedPublisherId": lambda n : setattr(self, 'verified_publisher_id', n.get_str_value()),
         }
         return fields
     
@@ -110,7 +110,7 @@ class VerifiedPublisher(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -141,7 +141,7 @@ class VerifiedPublisher(AdditionalDataHolder, Parsable):
         """
         Sets the verifiedPublisherId property value. The ID of the verified publisher from the app publisher's Partner Center account.
         Args:
-            value: Value to set for the verifiedPublisherId property.
+            value: Value to set for the verified_publisher_id property.
         """
         self._verified_publisher_id = value
     

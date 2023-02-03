@@ -17,10 +17,11 @@ class DataSourceItemRequestBuilder():
     """
     Provides operations to manage the additionalSources property of the microsoft.graph.security.ediscoverySearch entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, data_source_id: Optional[str] = None) -> None:
         """
         Instantiates a new DataSourceItemRequestBuilder and sets the default values.
         Args:
+            dataSourceId: key: id of dataSource
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,6 +33,7 @@ class DataSourceItemRequestBuilder():
         self.url_template: str = "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}/searches/{ediscoverySearch%2Did}/additionalSources/{dataSource%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["dataSource%2Did"] = dataSourceId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

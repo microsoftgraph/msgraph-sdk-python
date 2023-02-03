@@ -61,7 +61,7 @@ class PrintTask(entity.Entity):
         """
         fields = {
             "definition": lambda n : setattr(self, 'definition', n.get_object_value(print_task_definition.PrintTaskDefinition)),
-            "parent_url": lambda n : setattr(self, 'parent_url', n.get_str_value()),
+            "parentUrl": lambda n : setattr(self, 'parent_url', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_object_value(print_task_status.PrintTaskStatus)),
             "trigger": lambda n : setattr(self, 'trigger', n.get_object_value(print_task_trigger.PrintTaskTrigger)),
         }
@@ -82,7 +82,7 @@ class PrintTask(entity.Entity):
         """
         Sets the parentUrl property value. The URL for the print entity that triggered this task. For example, https://graph.microsoft.com/v1.0/print/printers/{printerId}/jobs/{jobId}. Read-only.
         Args:
-            value: Value to set for the parentUrl property.
+            value: Value to set for the parent_url property.
         """
         self._parent_url = value
     

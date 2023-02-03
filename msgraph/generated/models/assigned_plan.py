@@ -35,7 +35,7 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
         """
         Sets the assignedDateTime property value. The date and time at which the plan was assigned. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the assignedDateTime property.
+            value: Value to set for the assigned_date_time property.
         """
         self._assigned_date_time = value
     
@@ -52,7 +52,7 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
         """
         Sets the capabilityStatus property value. Condition of the capability assignment. The possible values are Enabled, Warning, Suspended, Deleted, LockedOut. See a detailed description of each value.
         Args:
-            value: Value to set for the capabilityStatus property.
+            value: Value to set for the capability_status property.
         """
         self._capability_status = value
     
@@ -92,11 +92,11 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assigned_date_time": lambda n : setattr(self, 'assigned_date_time', n.get_datetime_value()),
-            "capability_status": lambda n : setattr(self, 'capability_status', n.get_str_value()),
+            "assignedDateTime": lambda n : setattr(self, 'assigned_date_time', n.get_datetime_value()),
+            "capabilityStatus": lambda n : setattr(self, 'capability_status', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "service": lambda n : setattr(self, 'service', n.get_str_value()),
-            "service_plan_id": lambda n : setattr(self, 'service_plan_id', n.get_object_value(Guid)),
+            "servicePlanId": lambda n : setattr(self, 'service_plan_id', n.get_object_value(Guid)),
         }
         return fields
     
@@ -113,7 +113,7 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -162,7 +162,7 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
         """
         Sets the servicePlanId property value. A GUID that identifies the service plan. For a complete list of GUIDs and their equivalent friendly service names, see Product names and service plan identifiers for licensing.
         Args:
-            value: Value to set for the servicePlanId property.
+            value: Value to set for the service_plan_id property.
         """
         self._service_plan_id = value
     

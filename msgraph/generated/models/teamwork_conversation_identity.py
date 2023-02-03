@@ -29,7 +29,7 @@ class TeamworkConversationIdentity(identity.Identity):
         """
         Sets the conversationIdentityType property value. Type of conversation. Possible values are: team, channel, chat, and unknownFutureValue.
         Args:
-            value: Value to set for the conversationIdentityType property.
+            value: Value to set for the conversation_identity_type property.
         """
         self._conversation_identity_type = value
     
@@ -51,7 +51,7 @@ class TeamworkConversationIdentity(identity.Identity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "conversation_identity_type": lambda n : setattr(self, 'conversation_identity_type', n.get_enum_value(teamwork_conversation_identity_type.TeamworkConversationIdentityType)),
+            "conversationIdentityType": lambda n : setattr(self, 'conversation_identity_type', n.get_enum_value(teamwork_conversation_identity_type.TeamworkConversationIdentityType)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

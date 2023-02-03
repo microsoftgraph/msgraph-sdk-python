@@ -42,7 +42,7 @@ class Group(entity.Entity):
         """
         Sets the createdDateTime property value. Date and time of the group creation. Read-only.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -88,7 +88,7 @@ class Group(entity.Entity):
         """
         Sets the displayName property value. Name of the group.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -98,10 +98,10 @@ class Group(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "parent_site_id": lambda n : setattr(self, 'parent_site_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "parentSiteId": lambda n : setattr(self, 'parent_site_id', n.get_str_value()),
             "scope": lambda n : setattr(self, 'scope', n.get_enum_value(term_group_scope.TermGroupScope)),
             "sets": lambda n : setattr(self, 'sets', n.get_collection_of_object_values(set.Set)),
         }
@@ -122,7 +122,7 @@ class Group(entity.Entity):
         """
         Sets the parentSiteId property value. ID of the parent site of this group.
         Args:
-            value: Value to set for the parentSiteId property.
+            value: Value to set for the parent_site_id property.
         """
         self._parent_site_id = value
     

@@ -53,7 +53,7 @@ class AttributeRuleMembers(subject_set.SubjectSet):
         """
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "membership_rule": lambda n : setattr(self, 'membership_rule', n.get_str_value()),
+            "membershipRule": lambda n : setattr(self, 'membership_rule', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -72,7 +72,7 @@ class AttributeRuleMembers(subject_set.SubjectSet):
         """
         Sets the membershipRule property value. Determines the allowed target users for this policy. For more information about the syntax of the membership rule, see Membership Rules syntax.
         Args:
-            value: Value to set for the membershipRule property.
+            value: Value to set for the membership_rule property.
         """
         self._membership_rule = value
     

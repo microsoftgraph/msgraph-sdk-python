@@ -60,7 +60,7 @@ class Channel(entity.Entity):
         """
         Sets the createdDateTime property value. Read only. Timestamp at which the channel was created.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -106,7 +106,7 @@ class Channel(entity.Entity):
         """
         Sets the displayName property value. Channel name as it will appear to the user in Microsoft Teams. The maximum length is 50 characters.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -140,7 +140,7 @@ class Channel(entity.Entity):
         """
         Sets the filesFolder property value. Metadata for the location where the channel's files are stored.
         Args:
-            value: Value to set for the filesFolder property.
+            value: Value to set for the files_folder property.
         """
         self._files_folder = value
     
@@ -150,19 +150,19 @@ class Channel(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "files_folder": lambda n : setattr(self, 'files_folder', n.get_object_value(drive_item.DriveItem)),
-            "is_favorite_by_default": lambda n : setattr(self, 'is_favorite_by_default', n.get_bool_value()),
+            "filesFolder": lambda n : setattr(self, 'files_folder', n.get_object_value(drive_item.DriveItem)),
+            "isFavoriteByDefault": lambda n : setattr(self, 'is_favorite_by_default', n.get_bool_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(conversation_member.ConversationMember)),
-            "membership_type": lambda n : setattr(self, 'membership_type', n.get_enum_value(channel_membership_type.ChannelMembershipType)),
+            "membershipType": lambda n : setattr(self, 'membership_type', n.get_enum_value(channel_membership_type.ChannelMembershipType)),
             "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(chat_message.ChatMessage)),
-            "shared_with_teams": lambda n : setattr(self, 'shared_with_teams', n.get_collection_of_object_values(shared_with_channel_team_info.SharedWithChannelTeamInfo)),
+            "sharedWithTeams": lambda n : setattr(self, 'shared_with_teams', n.get_collection_of_object_values(shared_with_channel_team_info.SharedWithChannelTeamInfo)),
             "tabs": lambda n : setattr(self, 'tabs', n.get_collection_of_object_values(teams_tab.TeamsTab)),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -181,7 +181,7 @@ class Channel(entity.Entity):
         """
         Sets the isFavoriteByDefault property value. Indicates whether the channel should automatically be marked 'favorite' for all members of the team. Can only be set programmatically with Create team. Default: false.
         Args:
-            value: Value to set for the isFavoriteByDefault property.
+            value: Value to set for the is_favorite_by_default property.
         """
         self._is_favorite_by_default = value
     
@@ -215,7 +215,7 @@ class Channel(entity.Entity):
         """
         Sets the membershipType property value. The type of the channel. Can be set during creation and can't be changed. The possible values are: standard, private, unknownFutureValue, shared. The default value is standard. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: shared.
         Args:
-            value: Value to set for the membershipType property.
+            value: Value to set for the membership_type property.
         """
         self._membership_type = value
     
@@ -272,7 +272,7 @@ class Channel(entity.Entity):
         """
         Sets the sharedWithTeams property value. A collection of teams with which a channel is shared.
         Args:
-            value: Value to set for the sharedWithTeams property.
+            value: Value to set for the shared_with_teams property.
         """
         self._shared_with_teams = value
     
@@ -306,7 +306,7 @@ class Channel(entity.Entity):
         """
         Sets the tenantId property value. The ID of the Azure Active Directory tenant.
         Args:
-            value: Value to set for the tenantId property.
+            value: Value to set for the tenant_id property.
         """
         self._tenant_id = value
     
@@ -323,7 +323,7 @@ class Channel(entity.Entity):
         """
         Sets the webUrl property value. A hyperlink that will go to the channel in Microsoft Teams. This is the URL that you get when you right-click a channel in Microsoft Teams and select Get link to channel. This URL should be treated as an opaque blob, and not parsed. Read-only.
         Args:
-            value: Value to set for the webUrl property.
+            value: Value to set for the web_url property.
         """
         self._web_url = value
     

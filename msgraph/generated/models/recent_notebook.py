@@ -68,7 +68,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. The name of the notebook.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -78,11 +78,11 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "last_accessed_time": lambda n : setattr(self, 'last_accessed_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "lastAccessedTime": lambda n : setattr(self, 'last_accessed_time', n.get_datetime_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(recent_notebook_links.RecentNotebookLinks)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "source_service": lambda n : setattr(self, 'source_service', n.get_enum_value(onenote_source_service.OnenoteSourceService)),
+            "sourceService": lambda n : setattr(self, 'source_service', n.get_enum_value(onenote_source_service.OnenoteSourceService)),
         }
         return fields
     
@@ -99,7 +99,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         """
         Sets the lastAccessedTime property value. The date and time when the notebook was last modified. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         Args:
-            value: Value to set for the lastAccessedTime property.
+            value: Value to set for the last_accessed_time property.
         """
         self._last_accessed_time = value
     
@@ -133,7 +133,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -165,7 +165,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         """
         Sets the sourceService property value. The backend store where the Notebook resides, either OneDriveForBusiness or OneDrive.
         Args:
-            value: Value to set for the sourceService property.
+            value: Value to set for the source_service property.
         """
         self._source_service = value
     

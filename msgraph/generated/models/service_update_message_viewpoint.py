@@ -55,9 +55,9 @@ class ServiceUpdateMessageViewpoint(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_archived": lambda n : setattr(self, 'is_archived', n.get_bool_value()),
-            "is_favorited": lambda n : setattr(self, 'is_favorited', n.get_bool_value()),
-            "is_read": lambda n : setattr(self, 'is_read', n.get_bool_value()),
+            "isArchived": lambda n : setattr(self, 'is_archived', n.get_bool_value()),
+            "isFavorited": lambda n : setattr(self, 'is_favorited', n.get_bool_value()),
+            "isRead": lambda n : setattr(self, 'is_read', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -75,7 +75,7 @@ class ServiceUpdateMessageViewpoint(AdditionalDataHolder, Parsable):
         """
         Sets the isArchived property value. Indicates whether the user archived the message.
         Args:
-            value: Value to set for the isArchived property.
+            value: Value to set for the is_archived property.
         """
         self._is_archived = value
     
@@ -92,7 +92,7 @@ class ServiceUpdateMessageViewpoint(AdditionalDataHolder, Parsable):
         """
         Sets the isFavorited property value. Indicates whether the user marked the message as favorite.
         Args:
-            value: Value to set for the isFavorited property.
+            value: Value to set for the is_favorited property.
         """
         self._is_favorited = value
     
@@ -109,7 +109,7 @@ class ServiceUpdateMessageViewpoint(AdditionalDataHolder, Parsable):
         """
         Sets the isRead property value. Indicates whether the user read the message.
         Args:
-            value: Value to set for the isRead property.
+            value: Value to set for the is_read property.
         """
         self._is_read = value
     
@@ -126,7 +126,7 @@ class ServiceUpdateMessageViewpoint(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

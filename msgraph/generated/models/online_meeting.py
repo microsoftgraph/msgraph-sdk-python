@@ -30,7 +30,7 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the allowAttendeeToEnableCamera property value. Indicates whether attendees can turn on their camera.
         Args:
-            value: Value to set for the allowAttendeeToEnableCamera property.
+            value: Value to set for the allow_attendee_to_enable_camera property.
         """
         self._allow_attendee_to_enable_camera = value
     
@@ -47,26 +47,9 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the allowAttendeeToEnableMic property value. Indicates whether attendees can turn on their microphone.
         Args:
-            value: Value to set for the allowAttendeeToEnableMic property.
+            value: Value to set for the allow_attendee_to_enable_mic property.
         """
         self._allow_attendee_to_enable_mic = value
-    
-    @property
-    def allowed_presenters(self,) -> Optional[online_meeting_presenters.OnlineMeetingPresenters]:
-        """
-        Gets the allowedPresenters property value. Specifies who can be a presenter in a meeting. Possible values are listed in the following table.
-        Returns: Optional[online_meeting_presenters.OnlineMeetingPresenters]
-        """
-        return self._allowed_presenters
-    
-    @allowed_presenters.setter
-    def allowed_presenters(self,value: Optional[online_meeting_presenters.OnlineMeetingPresenters] = None) -> None:
-        """
-        Sets the allowedPresenters property value. Specifies who can be a presenter in a meeting. Possible values are listed in the following table.
-        Args:
-            value: Value to set for the allowedPresenters property.
-        """
-        self._allowed_presenters = value
     
     @property
     def allow_meeting_chat(self,) -> Optional[meeting_chat_mode.MeetingChatMode]:
@@ -81,7 +64,7 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the allowMeetingChat property value. Specifies the mode of meeting chat.
         Args:
-            value: Value to set for the allowMeetingChat property.
+            value: Value to set for the allow_meeting_chat property.
         """
         self._allow_meeting_chat = value
     
@@ -98,9 +81,26 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the allowTeamworkReactions property value. Indicates whether Teams reactions are enabled for the meeting.
         Args:
-            value: Value to set for the allowTeamworkReactions property.
+            value: Value to set for the allow_teamwork_reactions property.
         """
         self._allow_teamwork_reactions = value
+    
+    @property
+    def allowed_presenters(self,) -> Optional[online_meeting_presenters.OnlineMeetingPresenters]:
+        """
+        Gets the allowedPresenters property value. Specifies who can be a presenter in a meeting. Possible values are listed in the following table.
+        Returns: Optional[online_meeting_presenters.OnlineMeetingPresenters]
+        """
+        return self._allowed_presenters
+    
+    @allowed_presenters.setter
+    def allowed_presenters(self,value: Optional[online_meeting_presenters.OnlineMeetingPresenters] = None) -> None:
+        """
+        Sets the allowedPresenters property value. Specifies who can be a presenter in a meeting. Possible values are listed in the following table.
+        Args:
+            value: Value to set for the allowed_presenters property.
+        """
+        self._allowed_presenters = value
     
     @property
     def attendance_reports(self,) -> Optional[List[meeting_attendance_report.MeetingAttendanceReport]]:
@@ -115,7 +115,7 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the attendanceReports property value. The attendance reports of an online meeting. Read-only.
         Args:
-            value: Value to set for the attendanceReports property.
+            value: Value to set for the attendance_reports property.
         """
         self._attendance_reports = value
     
@@ -132,7 +132,7 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the attendeeReport property value. The content stream of the attendee report of a Microsoft Teams live event. Read-only.
         Args:
-            value: Value to set for the attendeeReport property.
+            value: Value to set for the attendee_report property.
         """
         self._attendee_report = value
     
@@ -149,7 +149,7 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the audioConferencing property value. The phone access (dial-in) information for an online meeting. Read-only.
         Args:
-            value: Value to set for the audioConferencing property.
+            value: Value to set for the audio_conferencing property.
         """
         self._audio_conferencing = value
     
@@ -166,7 +166,7 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the broadcastSettings property value. Settings related to a live event.
         Args:
-            value: Value to set for the broadcastSettings property.
+            value: Value to set for the broadcast_settings property.
         """
         self._broadcast_settings = value
     
@@ -183,7 +183,7 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the chatInfo property value. The chat information associated with this online meeting.
         Args:
-            value: Value to set for the chatInfo property.
+            value: Value to set for the chat_info property.
         """
         self._chat_info = value
     
@@ -196,12 +196,12 @@ class OnlineMeeting(entity.Entity):
         self._allow_attendee_to_enable_camera: Optional[bool] = None
         # Indicates whether attendees can turn on their microphone.
         self._allow_attendee_to_enable_mic: Optional[bool] = None
-        # Specifies who can be a presenter in a meeting. Possible values are listed in the following table.
-        self._allowed_presenters: Optional[online_meeting_presenters.OnlineMeetingPresenters] = None
         # Specifies the mode of meeting chat.
         self._allow_meeting_chat: Optional[meeting_chat_mode.MeetingChatMode] = None
         # Indicates whether Teams reactions are enabled for the meeting.
         self._allow_teamwork_reactions: Optional[bool] = None
+        # Specifies who can be a presenter in a meeting. Possible values are listed in the following table.
+        self._allowed_presenters: Optional[online_meeting_presenters.OnlineMeetingPresenters] = None
         # The attendance reports of an online meeting. Read-only.
         self._attendance_reports: Optional[List[meeting_attendance_report.MeetingAttendanceReport]] = None
         # The content stream of the attendee report of a Microsoft Teams live event. Read-only.
@@ -268,7 +268,7 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the creationDateTime property value. The meeting creation time in UTC. Read-only.
         Args:
-            value: Value to set for the creationDateTime property.
+            value: Value to set for the creation_date_time property.
         """
         self._creation_date_time = value
     
@@ -285,7 +285,7 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the endDateTime property value. The meeting end time in UTC.
         Args:
-            value: Value to set for the endDateTime property.
+            value: Value to set for the end_date_time property.
         """
         self._end_date_time = value
     
@@ -302,7 +302,7 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the externalId property value. The externalId property
         Args:
-            value: Value to set for the externalId property.
+            value: Value to set for the external_id property.
         """
         self._external_id = value
     
@@ -312,30 +312,30 @@ class OnlineMeeting(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_attendee_to_enable_camera": lambda n : setattr(self, 'allow_attendee_to_enable_camera', n.get_bool_value()),
-            "allow_attendee_to_enable_mic": lambda n : setattr(self, 'allow_attendee_to_enable_mic', n.get_bool_value()),
-            "allowed_presenters": lambda n : setattr(self, 'allowed_presenters', n.get_enum_value(online_meeting_presenters.OnlineMeetingPresenters)),
-            "allow_meeting_chat": lambda n : setattr(self, 'allow_meeting_chat', n.get_enum_value(meeting_chat_mode.MeetingChatMode)),
-            "allow_teamwork_reactions": lambda n : setattr(self, 'allow_teamwork_reactions', n.get_bool_value()),
-            "attendance_reports": lambda n : setattr(self, 'attendance_reports', n.get_collection_of_object_values(meeting_attendance_report.MeetingAttendanceReport)),
-            "attendee_report": lambda n : setattr(self, 'attendee_report', n.get_bytes_value()),
-            "audio_conferencing": lambda n : setattr(self, 'audio_conferencing', n.get_object_value(audio_conferencing.AudioConferencing)),
-            "broadcast_settings": lambda n : setattr(self, 'broadcast_settings', n.get_object_value(broadcast_meeting_settings.BroadcastMeetingSettings)),
-            "chat_info": lambda n : setattr(self, 'chat_info', n.get_object_value(chat_info.ChatInfo)),
-            "creation_date_time": lambda n : setattr(self, 'creation_date_time', n.get_datetime_value()),
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
-            "is_broadcast": lambda n : setattr(self, 'is_broadcast', n.get_bool_value()),
-            "is_entry_exit_announced": lambda n : setattr(self, 'is_entry_exit_announced', n.get_bool_value()),
-            "join_information": lambda n : setattr(self, 'join_information', n.get_object_value(item_body.ItemBody)),
-            "join_meeting_id_settings": lambda n : setattr(self, 'join_meeting_id_settings', n.get_object_value(join_meeting_id_settings.JoinMeetingIdSettings)),
-            "join_web_url": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
-            "lobby_bypass_settings": lambda n : setattr(self, 'lobby_bypass_settings', n.get_object_value(lobby_bypass_settings.LobbyBypassSettings)),
+            "allowedPresenters": lambda n : setattr(self, 'allowed_presenters', n.get_enum_value(online_meeting_presenters.OnlineMeetingPresenters)),
+            "allowAttendeeToEnableCamera": lambda n : setattr(self, 'allow_attendee_to_enable_camera', n.get_bool_value()),
+            "allowAttendeeToEnableMic": lambda n : setattr(self, 'allow_attendee_to_enable_mic', n.get_bool_value()),
+            "allowMeetingChat": lambda n : setattr(self, 'allow_meeting_chat', n.get_enum_value(meeting_chat_mode.MeetingChatMode)),
+            "allowTeamworkReactions": lambda n : setattr(self, 'allow_teamwork_reactions', n.get_bool_value()),
+            "attendanceReports": lambda n : setattr(self, 'attendance_reports', n.get_collection_of_object_values(meeting_attendance_report.MeetingAttendanceReport)),
+            "attendeeReport": lambda n : setattr(self, 'attendee_report', n.get_bytes_value()),
+            "audioConferencing": lambda n : setattr(self, 'audio_conferencing', n.get_object_value(audio_conferencing.AudioConferencing)),
+            "broadcastSettings": lambda n : setattr(self, 'broadcast_settings', n.get_object_value(broadcast_meeting_settings.BroadcastMeetingSettings)),
+            "chatInfo": lambda n : setattr(self, 'chat_info', n.get_object_value(chat_info.ChatInfo)),
+            "creationDateTime": lambda n : setattr(self, 'creation_date_time', n.get_datetime_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "isBroadcast": lambda n : setattr(self, 'is_broadcast', n.get_bool_value()),
+            "isEntryExitAnnounced": lambda n : setattr(self, 'is_entry_exit_announced', n.get_bool_value()),
+            "joinInformation": lambda n : setattr(self, 'join_information', n.get_object_value(item_body.ItemBody)),
+            "joinMeetingIdSettings": lambda n : setattr(self, 'join_meeting_id_settings', n.get_object_value(join_meeting_id_settings.JoinMeetingIdSettings)),
+            "joinWebUrl": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
+            "lobbyBypassSettings": lambda n : setattr(self, 'lobby_bypass_settings', n.get_object_value(lobby_bypass_settings.LobbyBypassSettings)),
             "participants": lambda n : setattr(self, 'participants', n.get_object_value(meeting_participants.MeetingParticipants)),
-            "record_automatically": lambda n : setattr(self, 'record_automatically', n.get_bool_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "recordAutomatically": lambda n : setattr(self, 'record_automatically', n.get_bool_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
-            "video_teleconference_id": lambda n : setattr(self, 'video_teleconference_id', n.get_str_value()),
+            "videoTeleconferenceId": lambda n : setattr(self, 'video_teleconference_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -354,7 +354,7 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the isBroadcast property value. Indicates if this is a Teams live event.
         Args:
-            value: Value to set for the isBroadcast property.
+            value: Value to set for the is_broadcast property.
         """
         self._is_broadcast = value
     
@@ -371,7 +371,7 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the isEntryExitAnnounced property value. Indicates whether to announce when callers join or leave.
         Args:
-            value: Value to set for the isEntryExitAnnounced property.
+            value: Value to set for the is_entry_exit_announced property.
         """
         self._is_entry_exit_announced = value
     
@@ -388,7 +388,7 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the joinInformation property value. The join information in the language and locale variant specified in the Accept-Language request HTTP header. Read-only.
         Args:
-            value: Value to set for the joinInformation property.
+            value: Value to set for the join_information property.
         """
         self._join_information = value
     
@@ -405,7 +405,7 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the joinMeetingIdSettings property value. Specifies the joinMeetingId, the meeting passcode, and the requirement for the passcode. Once an onlineMeeting is created, the joinMeetingIdSettings cannot be modified. To make any changes to this property, the meeting needs to be canceled and a new one needs to be created.
         Args:
-            value: Value to set for the joinMeetingIdSettings property.
+            value: Value to set for the join_meeting_id_settings property.
         """
         self._join_meeting_id_settings = value
     
@@ -422,7 +422,7 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the joinWebUrl property value. The join URL of the online meeting. Read-only.
         Args:
-            value: Value to set for the joinWebUrl property.
+            value: Value to set for the join_web_url property.
         """
         self._join_web_url = value
     
@@ -439,7 +439,7 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the lobbyBypassSettings property value. Specifies which participants can bypass the meeting   lobby.
         Args:
-            value: Value to set for the lobbyBypassSettings property.
+            value: Value to set for the lobby_bypass_settings property.
         """
         self._lobby_bypass_settings = value
     
@@ -473,7 +473,7 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the recordAutomatically property value. Indicates whether to record the meeting automatically.
         Args:
-            value: Value to set for the recordAutomatically property.
+            value: Value to set for the record_automatically property.
         """
         self._record_automatically = value
     
@@ -486,9 +486,9 @@ class OnlineMeeting(entity.Entity):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
+        writer.write_enum_value("allowedPresenters", self.allowed_presenters)
         writer.write_bool_value("allowAttendeeToEnableCamera", self.allow_attendee_to_enable_camera)
         writer.write_bool_value("allowAttendeeToEnableMic", self.allow_attendee_to_enable_mic)
-        writer.write_enum_value("allowedPresenters", self.allowed_presenters)
         writer.write_enum_value("allowMeetingChat", self.allow_meeting_chat)
         writer.write_bool_value("allowTeamworkReactions", self.allow_teamwork_reactions)
         writer.write_collection_of_object_values("attendanceReports", self.attendance_reports)
@@ -524,7 +524,7 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the startDateTime property value. The meeting start time in UTC.
         Args:
-            value: Value to set for the startDateTime property.
+            value: Value to set for the start_date_time property.
         """
         self._start_date_time = value
     
@@ -558,7 +558,7 @@ class OnlineMeeting(entity.Entity):
         """
         Sets the videoTeleconferenceId property value. The video teleconferencing ID. Read-only.
         Args:
-            value: Value to set for the videoTeleconferenceId property.
+            value: Value to set for the video_teleconference_id property.
         """
         self._video_teleconference_id = value
     

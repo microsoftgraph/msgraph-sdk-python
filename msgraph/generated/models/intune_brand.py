@@ -78,7 +78,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         """
         Sets the contactITEmailAddress property value. Email address of the person/organization responsible for IT support.
         Args:
-            value: Value to set for the contactITEmailAddress property.
+            value: Value to set for the contact_i_t_email_address property.
         """
         self._contact_i_t_email_address = value
     
@@ -95,7 +95,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         """
         Sets the contactITName property value. Name of the person/organization responsible for IT support.
         Args:
-            value: Value to set for the contactITName property.
+            value: Value to set for the contact_i_t_name property.
         """
         self._contact_i_t_name = value
     
@@ -112,7 +112,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         """
         Sets the contactITNotes property value. Text comments regarding the person/organization responsible for IT support.
         Args:
-            value: Value to set for the contactITNotes property.
+            value: Value to set for the contact_i_t_notes property.
         """
         self._contact_i_t_notes = value
     
@@ -129,7 +129,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         """
         Sets the contactITPhoneNumber property value. Phone number of the person/organization responsible for IT support.
         Args:
-            value: Value to set for the contactITPhoneNumber property.
+            value: Value to set for the contact_i_t_phone_number property.
         """
         self._contact_i_t_phone_number = value
     
@@ -158,7 +158,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         """
         Sets the darkBackgroundLogo property value. Logo image displayed in Company Portal apps which have a dark background behind the logo.
         Args:
-            value: Value to set for the darkBackgroundLogo property.
+            value: Value to set for the dark_background_logo property.
         """
         self._dark_background_logo = value
     
@@ -175,7 +175,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. Company/organization name that is displayed to end users.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -185,21 +185,21 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "contact_i_t_email_address": lambda n : setattr(self, 'contact_i_t_email_address', n.get_str_value()),
-            "contact_i_t_name": lambda n : setattr(self, 'contact_i_t_name', n.get_str_value()),
-            "contact_i_t_notes": lambda n : setattr(self, 'contact_i_t_notes', n.get_str_value()),
-            "contact_i_t_phone_number": lambda n : setattr(self, 'contact_i_t_phone_number', n.get_str_value()),
-            "dark_background_logo": lambda n : setattr(self, 'dark_background_logo', n.get_object_value(mime_content.MimeContent)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "light_background_logo": lambda n : setattr(self, 'light_background_logo', n.get_object_value(mime_content.MimeContent)),
+            "contactITEmailAddress": lambda n : setattr(self, 'contact_i_t_email_address', n.get_str_value()),
+            "contactITName": lambda n : setattr(self, 'contact_i_t_name', n.get_str_value()),
+            "contactITNotes": lambda n : setattr(self, 'contact_i_t_notes', n.get_str_value()),
+            "contactITPhoneNumber": lambda n : setattr(self, 'contact_i_t_phone_number', n.get_str_value()),
+            "darkBackgroundLogo": lambda n : setattr(self, 'dark_background_logo', n.get_object_value(mime_content.MimeContent)),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "lightBackgroundLogo": lambda n : setattr(self, 'light_background_logo', n.get_object_value(mime_content.MimeContent)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "online_support_site_name": lambda n : setattr(self, 'online_support_site_name', n.get_str_value()),
-            "online_support_site_url": lambda n : setattr(self, 'online_support_site_url', n.get_str_value()),
-            "privacy_url": lambda n : setattr(self, 'privacy_url', n.get_str_value()),
-            "show_display_name_next_to_logo": lambda n : setattr(self, 'show_display_name_next_to_logo', n.get_bool_value()),
-            "show_logo": lambda n : setattr(self, 'show_logo', n.get_bool_value()),
-            "show_name_next_to_logo": lambda n : setattr(self, 'show_name_next_to_logo', n.get_bool_value()),
-            "theme_color": lambda n : setattr(self, 'theme_color', n.get_object_value(rgb_color.RgbColor)),
+            "onlineSupportSiteName": lambda n : setattr(self, 'online_support_site_name', n.get_str_value()),
+            "onlineSupportSiteUrl": lambda n : setattr(self, 'online_support_site_url', n.get_str_value()),
+            "privacyUrl": lambda n : setattr(self, 'privacy_url', n.get_str_value()),
+            "showDisplayNameNextToLogo": lambda n : setattr(self, 'show_display_name_next_to_logo', n.get_bool_value()),
+            "showLogo": lambda n : setattr(self, 'show_logo', n.get_bool_value()),
+            "showNameNextToLogo": lambda n : setattr(self, 'show_name_next_to_logo', n.get_bool_value()),
+            "themeColor": lambda n : setattr(self, 'theme_color', n.get_object_value(rgb_color.RgbColor)),
         }
         return fields
     
@@ -216,7 +216,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         """
         Sets the lightBackgroundLogo property value. Logo image displayed in Company Portal apps which have a light background behind the logo.
         Args:
-            value: Value to set for the lightBackgroundLogo property.
+            value: Value to set for the light_background_logo property.
         """
         self._light_background_logo = value
     
@@ -233,7 +233,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -250,7 +250,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         """
         Sets the onlineSupportSiteName property value. Display name of the company/organization’s IT helpdesk site.
         Args:
-            value: Value to set for the onlineSupportSiteName property.
+            value: Value to set for the online_support_site_name property.
         """
         self._online_support_site_name = value
     
@@ -267,7 +267,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         """
         Sets the onlineSupportSiteUrl property value. URL to the company/organization’s IT helpdesk site.
         Args:
-            value: Value to set for the onlineSupportSiteUrl property.
+            value: Value to set for the online_support_site_url property.
         """
         self._online_support_site_url = value
     
@@ -284,7 +284,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         """
         Sets the privacyUrl property value. URL to the company/organization’s privacy policy.
         Args:
-            value: Value to set for the privacyUrl property.
+            value: Value to set for the privacy_url property.
         """
         self._privacy_url = value
     
@@ -326,7 +326,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         """
         Sets the showDisplayNameNextToLogo property value. Boolean that represents whether the administrator-supplied display name will be shown next to the logo image.
         Args:
-            value: Value to set for the showDisplayNameNextToLogo property.
+            value: Value to set for the show_display_name_next_to_logo property.
         """
         self._show_display_name_next_to_logo = value
     
@@ -343,7 +343,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         """
         Sets the showLogo property value. Boolean that represents whether the administrator-supplied logo images are shown or not shown.
         Args:
-            value: Value to set for the showLogo property.
+            value: Value to set for the show_logo property.
         """
         self._show_logo = value
     
@@ -360,7 +360,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         """
         Sets the showNameNextToLogo property value. Boolean that represents whether the administrator-supplied display name will be shown next to the logo image.
         Args:
-            value: Value to set for the showNameNextToLogo property.
+            value: Value to set for the show_name_next_to_logo property.
         """
         self._show_name_next_to_logo = value
     
@@ -377,7 +377,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         """
         Sets the themeColor property value. Primary theme color used in the Company Portal applications and web portal.
         Args:
-            value: Value to set for the themeColor property.
+            value: Value to set for the theme_color property.
         """
         self._theme_color = value
     

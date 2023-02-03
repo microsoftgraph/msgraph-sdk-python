@@ -46,7 +46,7 @@ class Album(AdditionalDataHolder, Parsable):
         """
         Sets the coverImageItemId property value. Unique identifier of the [driveItem][] that is the cover of the album.
         Args:
-            value: Value to set for the coverImageItemId property.
+            value: Value to set for the cover_image_item_id property.
         """
         self._cover_image_item_id = value
     
@@ -68,7 +68,7 @@ class Album(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "cover_image_item_id": lambda n : setattr(self, 'cover_image_item_id', n.get_str_value()),
+            "coverImageItemId": lambda n : setattr(self, 'cover_image_item_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -86,7 +86,7 @@ class Album(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

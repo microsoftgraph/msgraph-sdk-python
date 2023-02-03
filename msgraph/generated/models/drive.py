@@ -83,7 +83,7 @@ class Drive(base_item.BaseItem):
         """
         Sets the driveType property value. Describes the type of drive represented by this resource. OneDrive personal drives will return personal. OneDrive for Business will return business. SharePoint document libraries will return documentLibrary. Read-only.
         Args:
-            value: Value to set for the driveType property.
+            value: Value to set for the drive_type property.
         """
         self._drive_type = value
     
@@ -111,14 +111,14 @@ class Drive(base_item.BaseItem):
         """
         fields = {
             "bundles": lambda n : setattr(self, 'bundles', n.get_collection_of_object_values(drive_item.DriveItem)),
-            "drive_type": lambda n : setattr(self, 'drive_type', n.get_str_value()),
+            "driveType": lambda n : setattr(self, 'drive_type', n.get_str_value()),
             "following": lambda n : setattr(self, 'following', n.get_collection_of_object_values(drive_item.DriveItem)),
             "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(drive_item.DriveItem)),
             "list": lambda n : setattr(self, 'list', n.get_object_value(list.List)),
             "owner": lambda n : setattr(self, 'owner', n.get_object_value(identity_set.IdentitySet)),
             "quota": lambda n : setattr(self, 'quota', n.get_object_value(quota.Quota)),
             "root": lambda n : setattr(self, 'root', n.get_object_value(drive_item.DriveItem)),
-            "share_point_ids": lambda n : setattr(self, 'share_point_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
+            "sharePointIds": lambda n : setattr(self, 'share_point_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
             "special": lambda n : setattr(self, 'special', n.get_collection_of_object_values(drive_item.DriveItem)),
             "system": lambda n : setattr(self, 'system', n.get_object_value(system_facet.SystemFacet)),
         }
@@ -245,7 +245,7 @@ class Drive(base_item.BaseItem):
         """
         Sets the sharePointIds property value. The sharePointIds property
         Args:
-            value: Value to set for the sharePointIds property.
+            value: Value to set for the share_point_ids property.
         """
         self._share_point_ids = value
     

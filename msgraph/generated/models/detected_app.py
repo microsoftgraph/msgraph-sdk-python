@@ -58,7 +58,7 @@ class DetectedApp(entity.Entity):
         """
         Sets the deviceCount property value. The number of devices that have installed this application
         Args:
-            value: Value to set for the deviceCount property.
+            value: Value to set for the device_count property.
         """
         self._device_count = value
     
@@ -75,7 +75,7 @@ class DetectedApp(entity.Entity):
         """
         Sets the displayName property value. Name of the discovered application. Read-only
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -85,12 +85,12 @@ class DetectedApp(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_count": lambda n : setattr(self, 'device_count', n.get_int_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "managed_devices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(managed_device.ManagedDevice)),
+            "deviceCount": lambda n : setattr(self, 'device_count', n.get_int_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "managedDevices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(managed_device.ManagedDevice)),
             "platform": lambda n : setattr(self, 'platform', n.get_enum_value(detected_app_platform_type.DetectedAppPlatformType)),
             "publisher": lambda n : setattr(self, 'publisher', n.get_str_value()),
-            "size_in_byte": lambda n : setattr(self, 'size_in_byte', n.get_int_value()),
+            "sizeInByte": lambda n : setattr(self, 'size_in_byte', n.get_int_value()),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -110,7 +110,7 @@ class DetectedApp(entity.Entity):
         """
         Sets the managedDevices property value. The devices that have the discovered application installed
         Args:
-            value: Value to set for the managedDevices property.
+            value: Value to set for the managed_devices property.
         """
         self._managed_devices = value
     
@@ -178,7 +178,7 @@ class DetectedApp(entity.Entity):
         """
         Sets the sizeInByte property value. Discovered application size in bytes. Read-only
         Args:
-            value: Value to set for the sizeInByte property.
+            value: Value to set for the size_in_byte property.
         """
         self._size_in_byte = value
     

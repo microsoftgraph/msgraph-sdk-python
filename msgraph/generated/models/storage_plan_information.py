@@ -52,7 +52,7 @@ class StoragePlanInformation(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "upgrade_available": lambda n : setattr(self, 'upgrade_available', n.get_bool_value()),
+            "upgradeAvailable": lambda n : setattr(self, 'upgrade_available', n.get_bool_value()),
         }
         return fields
     
@@ -69,7 +69,7 @@ class StoragePlanInformation(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -98,7 +98,7 @@ class StoragePlanInformation(AdditionalDataHolder, Parsable):
         """
         Sets the upgradeAvailable property value. Indicates whether there are higher storage quota plans available. Read-only.
         Args:
-            value: Value to set for the upgradeAvailable property.
+            value: Value to set for the upgrade_available property.
         """
         self._upgrade_available = value
     

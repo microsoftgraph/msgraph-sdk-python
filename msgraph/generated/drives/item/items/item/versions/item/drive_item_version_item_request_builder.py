@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 content_request_builder = lazy_import('msgraph.generated.drives.item.items.item.versions.item.content.content_request_builder')
-restore_version_request_builder = lazy_import('msgraph.generated.drives.item.items.item.versions.item.restore_version.restore_version_request_builder')
+restore_version_request_builder = lazy_import('msgraph.generated.drives.item.items.item.versions.item.microsoft_graph_restore_version.restore_version_request_builder')
 drive_item_version = lazy_import('msgraph.generated.models.drive_item_version')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -27,16 +27,17 @@ class DriveItemVersionItemRequestBuilder():
         return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def restore_version(self) -> restore_version_request_builder.RestoreVersionRequestBuilder:
+    def microsoft_graph_restore_version(self) -> restore_version_request_builder.RestoreVersionRequestBuilder:
         """
         Provides operations to call the restoreVersion method.
         """
         return restore_version_request_builder.RestoreVersionRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, drive_item_version_id: Optional[str] = None) -> None:
         """
         Instantiates a new DriveItemVersionItemRequestBuilder and sets the default values.
         Args:
+            driveItemVersionId: key: id of driveItemVersion
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -48,6 +49,7 @@ class DriveItemVersionItemRequestBuilder():
         self.url_template: str = "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/versions/{driveItemVersion%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["driveItemVersion%2Did"] = driveItemVersionId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

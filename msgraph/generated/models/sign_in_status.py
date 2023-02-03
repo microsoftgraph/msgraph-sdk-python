@@ -34,7 +34,7 @@ class SignInStatus(AdditionalDataHolder, Parsable):
         """
         Sets the additionalDetails property value. Provides additional details on the sign-in activity
         Args:
-            value: Value to set for the additionalDetails property.
+            value: Value to set for the additional_details property.
         """
         self._additional_details = value
     
@@ -79,7 +79,7 @@ class SignInStatus(AdditionalDataHolder, Parsable):
         """
         Sets the errorCode property value. Provides the 5-6 digit error code that's generated during a sign-in failure. Check out the list of error codes and messages.
         Args:
-            value: Value to set for the errorCode property.
+            value: Value to set for the error_code property.
         """
         self._error_code = value
     
@@ -96,7 +96,7 @@ class SignInStatus(AdditionalDataHolder, Parsable):
         """
         Sets the failureReason property value. Provides the error message or the reason for failure for the corresponding sign-in activity. Check out the list of error codes and messages.
         Args:
-            value: Value to set for the failureReason property.
+            value: Value to set for the failure_reason property.
         """
         self._failure_reason = value
     
@@ -106,9 +106,9 @@ class SignInStatus(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "additional_details": lambda n : setattr(self, 'additional_details', n.get_str_value()),
-            "error_code": lambda n : setattr(self, 'error_code', n.get_int_value()),
-            "failure_reason": lambda n : setattr(self, 'failure_reason', n.get_str_value()),
+            "additionalDetails": lambda n : setattr(self, 'additional_details', n.get_str_value()),
+            "errorCode": lambda n : setattr(self, 'error_code', n.get_int_value()),
+            "failureReason": lambda n : setattr(self, 'failure_reason', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -126,7 +126,7 @@ class SignInStatus(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

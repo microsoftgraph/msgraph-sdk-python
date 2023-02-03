@@ -37,7 +37,7 @@ class OutlookItem(entity.Entity):
         """
         Sets the changeKey property value. Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.
         Args:
-            value: Value to set for the changeKey property.
+            value: Value to set for the change_key property.
         """
         self._change_key = value
     
@@ -70,7 +70,7 @@ class OutlookItem(entity.Entity):
         """
         Sets the createdDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -93,9 +93,9 @@ class OutlookItem(entity.Entity):
         """
         fields = {
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_primitive_values(str)),
-            "change_key": lambda n : setattr(self, 'change_key', n.get_str_value()),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "last_modified_date_time": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
+            "changeKey": lambda n : setattr(self, 'change_key', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -114,7 +114,7 @@ class OutlookItem(entity.Entity):
         """
         Sets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the lastModifiedDateTime property.
+            value: Value to set for the last_modified_date_time property.
         """
         self._last_modified_date_time = value
     

@@ -60,7 +60,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "source": lambda n : setattr(self, 'source', n.get_enum_value(teamwork_activity_topic_source.TeamworkActivityTopicSource)),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         return fields
     
@@ -77,7 +77,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -142,7 +142,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
         """
         Sets the webUrl property value. The link the user clicks when they select the notification. Optional when source is entityUrl; required when source is text.
         Args:
-            value: Value to set for the webUrl property.
+            value: Value to set for the web_url property.
         """
         self._web_url = value
     

@@ -61,11 +61,11 @@ class SearchResponse(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "hits_containers": lambda n : setattr(self, 'hits_containers', n.get_collection_of_object_values(search_hits_container.SearchHitsContainer)),
+            "hitsContainers": lambda n : setattr(self, 'hits_containers', n.get_collection_of_object_values(search_hits_container.SearchHitsContainer)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "query_alteration_response": lambda n : setattr(self, 'query_alteration_response', n.get_object_value(alteration_response.AlterationResponse)),
-            "result_templates": lambda n : setattr(self, 'result_templates', n.get_object_value(result_template_dictionary.ResultTemplateDictionary)),
-            "search_terms": lambda n : setattr(self, 'search_terms', n.get_collection_of_primitive_values(str)),
+            "queryAlterationResponse": lambda n : setattr(self, 'query_alteration_response', n.get_object_value(alteration_response.AlterationResponse)),
+            "resultTemplates": lambda n : setattr(self, 'result_templates', n.get_object_value(result_template_dictionary.ResultTemplateDictionary)),
+            "searchTerms": lambda n : setattr(self, 'search_terms', n.get_collection_of_primitive_values(str)),
         }
         return fields
     
@@ -82,7 +82,7 @@ class SearchResponse(AdditionalDataHolder, Parsable):
         """
         Sets the hitsContainers property value. A collection of search results.
         Args:
-            value: Value to set for the hitsContainers property.
+            value: Value to set for the hits_containers property.
         """
         self._hits_containers = value
     
@@ -99,7 +99,7 @@ class SearchResponse(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -116,7 +116,7 @@ class SearchResponse(AdditionalDataHolder, Parsable):
         """
         Sets the queryAlterationResponse property value. Provides information related to spelling corrections in the alteration response.
         Args:
-            value: Value to set for the queryAlterationResponse property.
+            value: Value to set for the query_alteration_response property.
         """
         self._query_alteration_response = value
     
@@ -133,7 +133,7 @@ class SearchResponse(AdditionalDataHolder, Parsable):
         """
         Sets the resultTemplates property value. A dictionary of resultTemplateIds and associated values, which include the name and JSON schema of the result templates.
         Args:
-            value: Value to set for the resultTemplates property.
+            value: Value to set for the result_templates property.
         """
         self._result_templates = value
     
@@ -150,7 +150,7 @@ class SearchResponse(AdditionalDataHolder, Parsable):
         """
         Sets the searchTerms property value. Contains the search terms sent in the initial search query.
         Args:
-            value: Value to set for the searchTerms property.
+            value: Value to set for the search_terms property.
         """
         self._search_terms = value
     

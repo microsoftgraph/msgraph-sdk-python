@@ -33,7 +33,7 @@ class AadUserConversationMemberResult(action_result_part.ActionResultPart):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "user_id": lambda n : setattr(self, 'user_id', n.get_str_value()),
+            "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -63,7 +63,7 @@ class AadUserConversationMemberResult(action_result_part.ActionResultPart):
         """
         Sets the userId property value. The userId property
         Args:
-            value: Value to set for the userId property.
+            value: Value to set for the user_id property.
         """
         self._user_id = value
     

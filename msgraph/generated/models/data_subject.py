@@ -81,7 +81,7 @@ class DataSubject(AdditionalDataHolder, Parsable):
         """
         Sets the firstName property value. First name of the data subject.
         Args:
-            value: Value to set for the firstName property.
+            value: Value to set for the first_name property.
         """
         self._first_name = value
     
@@ -92,8 +92,8 @@ class DataSubject(AdditionalDataHolder, Parsable):
         """
         fields = {
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
-            "first_name": lambda n : setattr(self, 'first_name', n.get_str_value()),
-            "last_name": lambda n : setattr(self, 'last_name', n.get_str_value()),
+            "firstName": lambda n : setattr(self, 'first_name', n.get_str_value()),
+            "lastName": lambda n : setattr(self, 'last_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "residency": lambda n : setattr(self, 'residency', n.get_str_value()),
         }
@@ -112,7 +112,7 @@ class DataSubject(AdditionalDataHolder, Parsable):
         """
         Sets the lastName property value. Last Name of the data subject.
         Args:
-            value: Value to set for the lastName property.
+            value: Value to set for the last_name property.
         """
         self._last_name = value
     
@@ -129,7 +129,7 @@ class DataSubject(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

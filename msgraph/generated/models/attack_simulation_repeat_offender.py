@@ -36,7 +36,7 @@ class AttackSimulationRepeatOffender(AdditionalDataHolder, Parsable):
         """
         Sets the attackSimulationUser property value. The user in an attack simulation and training campaign.
         Args:
-            value: Value to set for the attackSimulationUser property.
+            value: Value to set for the attack_simulation_user property.
         """
         self._attack_simulation_user = value
     
@@ -72,9 +72,9 @@ class AttackSimulationRepeatOffender(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "attack_simulation_user": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
+            "attackSimulationUser": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "repeat_offence_count": lambda n : setattr(self, 'repeat_offence_count', n.get_int_value()),
+            "repeatOffenceCount": lambda n : setattr(self, 'repeat_offence_count', n.get_int_value()),
         }
         return fields
     
@@ -91,7 +91,7 @@ class AttackSimulationRepeatOffender(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -108,7 +108,7 @@ class AttackSimulationRepeatOffender(AdditionalDataHolder, Parsable):
         """
         Sets the repeatOffenceCount property value. Number of repeat offences of the user in attack simulation and training campaigns.
         Args:
-            value: Value to set for the repeatOffenceCount property.
+            value: Value to set for the repeat_offence_count property.
         """
         self._repeat_offence_count = value
     

@@ -20,7 +20,7 @@ class CrossTenantAccessPolicyTargetConfiguration(AdditionalDataHolder, Parsable)
         """
         Sets the accessType property value. Defines whether access is allowed or blocked. The possible values are: allowed, blocked, unknownFutureValue.
         Args:
-            value: Value to set for the accessType property.
+            value: Value to set for the access_type property.
         """
         self._access_type = value
     
@@ -73,7 +73,7 @@ class CrossTenantAccessPolicyTargetConfiguration(AdditionalDataHolder, Parsable)
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_type": lambda n : setattr(self, 'access_type', n.get_enum_value(cross_tenant_access_policy_target_configuration_access_type.CrossTenantAccessPolicyTargetConfigurationAccessType)),
+            "accessType": lambda n : setattr(self, 'access_type', n.get_enum_value(cross_tenant_access_policy_target_configuration_access_type.CrossTenantAccessPolicyTargetConfigurationAccessType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "targets": lambda n : setattr(self, 'targets', n.get_collection_of_object_values(cross_tenant_access_policy_target.CrossTenantAccessPolicyTarget)),
         }
@@ -92,7 +92,7 @@ class CrossTenantAccessPolicyTargetConfiguration(AdditionalDataHolder, Parsable)
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

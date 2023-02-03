@@ -54,7 +54,7 @@ class AccessReviewHistoryDefinition(entity.Entity):
         """
         Sets the createdBy property value. The createdBy property
         Args:
-            value: Value to set for the createdBy property.
+            value: Value to set for the created_by property.
         """
         self._created_by = value
     
@@ -71,7 +71,7 @@ class AccessReviewHistoryDefinition(entity.Entity):
         """
         Sets the createdDateTime property value. Timestamp when the access review definition was created.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -117,7 +117,7 @@ class AccessReviewHistoryDefinition(entity.Entity):
         """
         Sets the displayName property value. Name for the access review history data collection. Required.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -127,14 +127,14 @@ class AccessReviewHistoryDefinition(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(user_identity.UserIdentity)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(user_identity.UserIdentity)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "decisions": lambda n : setattr(self, 'decisions', n.get_collection_of_enum_values(access_review_history_decision_filter.AccessReviewHistoryDecisionFilter)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "instances": lambda n : setattr(self, 'instances', n.get_collection_of_object_values(access_review_history_instance.AccessReviewHistoryInstance)),
-            "review_history_period_end_date_time": lambda n : setattr(self, 'review_history_period_end_date_time', n.get_datetime_value()),
-            "review_history_period_start_date_time": lambda n : setattr(self, 'review_history_period_start_date_time', n.get_datetime_value()),
-            "schedule_settings": lambda n : setattr(self, 'schedule_settings', n.get_object_value(access_review_history_schedule_settings.AccessReviewHistoryScheduleSettings)),
+            "reviewHistoryPeriodEndDateTime": lambda n : setattr(self, 'review_history_period_end_date_time', n.get_datetime_value()),
+            "reviewHistoryPeriodStartDateTime": lambda n : setattr(self, 'review_history_period_start_date_time', n.get_datetime_value()),
+            "scheduleSettings": lambda n : setattr(self, 'schedule_settings', n.get_object_value(access_review_history_schedule_settings.AccessReviewHistoryScheduleSettings)),
             "scopes": lambda n : setattr(self, 'scopes', n.get_collection_of_object_values(access_review_scope.AccessReviewScope)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(access_review_history_status.AccessReviewHistoryStatus)),
         }
@@ -172,7 +172,7 @@ class AccessReviewHistoryDefinition(entity.Entity):
         """
         Sets the reviewHistoryPeriodEndDateTime property value. A timestamp. Reviews ending on or before this date will be included in the fetched history data. Only required if scheduleSettings is not defined.
         Args:
-            value: Value to set for the reviewHistoryPeriodEndDateTime property.
+            value: Value to set for the review_history_period_end_date_time property.
         """
         self._review_history_period_end_date_time = value
     
@@ -189,7 +189,7 @@ class AccessReviewHistoryDefinition(entity.Entity):
         """
         Sets the reviewHistoryPeriodStartDateTime property value. A timestamp. Reviews starting on or before this date will be included in the fetched history data. Only required if scheduleSettings is not defined.
         Args:
-            value: Value to set for the reviewHistoryPeriodStartDateTime property.
+            value: Value to set for the review_history_period_start_date_time property.
         """
         self._review_history_period_start_date_time = value
     
@@ -206,7 +206,7 @@ class AccessReviewHistoryDefinition(entity.Entity):
         """
         Sets the scheduleSettings property value. The settings for a recurring access review history definition series. Only required if reviewHistoryPeriodStartDateTime or reviewHistoryPeriodEndDateTime are not defined. Not supported yet.
         Args:
-            value: Value to set for the scheduleSettings property.
+            value: Value to set for the schedule_settings property.
         """
         self._schedule_settings = value
     

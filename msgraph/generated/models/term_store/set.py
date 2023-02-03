@@ -66,7 +66,7 @@ class Set(entity.Entity):
         """
         Sets the createdDateTime property value. Date and time of set creation. Read-only.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -106,10 +106,10 @@ class Set(entity.Entity):
         """
         fields = {
             "children": lambda n : setattr(self, 'children', n.get_collection_of_object_values(term.Term)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "localized_names": lambda n : setattr(self, 'localized_names', n.get_collection_of_object_values(localized_name.LocalizedName)),
-            "parent_group": lambda n : setattr(self, 'parent_group', n.get_object_value(group.Group)),
+            "localizedNames": lambda n : setattr(self, 'localized_names', n.get_collection_of_object_values(localized_name.LocalizedName)),
+            "parentGroup": lambda n : setattr(self, 'parent_group', n.get_object_value(group.Group)),
             "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(key_value.KeyValue)),
             "relations": lambda n : setattr(self, 'relations', n.get_collection_of_object_values(relation.Relation)),
             "terms": lambda n : setattr(self, 'terms', n.get_collection_of_object_values(term.Term)),
@@ -131,7 +131,7 @@ class Set(entity.Entity):
         """
         Sets the localizedNames property value. Name of the set for each languageTag.
         Args:
-            value: Value to set for the localizedNames property.
+            value: Value to set for the localized_names property.
         """
         self._localized_names = value
     
@@ -148,7 +148,7 @@ class Set(entity.Entity):
         """
         Sets the parentGroup property value. The parentGroup property
         Args:
-            value: Value to set for the parentGroup property.
+            value: Value to set for the parent_group property.
         """
         self._parent_group = value
     

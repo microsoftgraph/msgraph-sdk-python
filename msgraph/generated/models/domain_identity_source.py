@@ -42,7 +42,7 @@ class DomainIdentitySource(identity_source.IdentitySource):
         """
         Sets the displayName property value. The name of the identity source, typically also the domain name. Read only.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -59,7 +59,7 @@ class DomainIdentitySource(identity_source.IdentitySource):
         """
         Sets the domainName property value. The domain name. Read only.
         Args:
-            value: Value to set for the domainName property.
+            value: Value to set for the domain_name property.
         """
         self._domain_name = value
     
@@ -69,8 +69,8 @@ class DomainIdentitySource(identity_source.IdentitySource):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "domain_name": lambda n : setattr(self, 'domain_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "domainName": lambda n : setattr(self, 'domain_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

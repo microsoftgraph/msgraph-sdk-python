@@ -24,7 +24,7 @@ class IdentityContainer(entity.Entity):
         """
         Sets the apiConnectors property value. Represents entry point for API connectors.
         Args:
-            value: Value to set for the apiConnectors property.
+            value: Value to set for the api_connectors property.
         """
         self._api_connectors = value
     
@@ -41,7 +41,7 @@ class IdentityContainer(entity.Entity):
         """
         Sets the b2xUserFlows property value. Represents entry point for B2X/self-service sign-up identity userflows.
         Args:
-            value: Value to set for the b2xUserFlows property.
+            value: Value to set for the b2x_user_flows property.
         """
         self._b2x_user_flows = value
     
@@ -58,7 +58,7 @@ class IdentityContainer(entity.Entity):
         """
         Sets the conditionalAccess property value. the entry point for the Conditional Access (CA) object model.
         Args:
-            value: Value to set for the conditionalAccess property.
+            value: Value to set for the conditional_access property.
         """
         self._conditional_access = value
     
@@ -98,11 +98,11 @@ class IdentityContainer(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "api_connectors": lambda n : setattr(self, 'api_connectors', n.get_collection_of_object_values(identity_api_connector.IdentityApiConnector)),
-            "b2x_user_flows": lambda n : setattr(self, 'b2x_user_flows', n.get_collection_of_object_values(b2x_identity_user_flow.B2xIdentityUserFlow)),
-            "conditional_access": lambda n : setattr(self, 'conditional_access', n.get_object_value(conditional_access_root.ConditionalAccessRoot)),
-            "identity_providers": lambda n : setattr(self, 'identity_providers', n.get_collection_of_object_values(identity_provider_base.IdentityProviderBase)),
-            "user_flow_attributes": lambda n : setattr(self, 'user_flow_attributes', n.get_collection_of_object_values(identity_user_flow_attribute.IdentityUserFlowAttribute)),
+            "apiConnectors": lambda n : setattr(self, 'api_connectors', n.get_collection_of_object_values(identity_api_connector.IdentityApiConnector)),
+            "b2xUserFlows": lambda n : setattr(self, 'b2x_user_flows', n.get_collection_of_object_values(b2x_identity_user_flow.B2xIdentityUserFlow)),
+            "conditionalAccess": lambda n : setattr(self, 'conditional_access', n.get_object_value(conditional_access_root.ConditionalAccessRoot)),
+            "identityProviders": lambda n : setattr(self, 'identity_providers', n.get_collection_of_object_values(identity_provider_base.IdentityProviderBase)),
+            "userFlowAttributes": lambda n : setattr(self, 'user_flow_attributes', n.get_collection_of_object_values(identity_user_flow_attribute.IdentityUserFlowAttribute)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -121,7 +121,7 @@ class IdentityContainer(entity.Entity):
         """
         Sets the identityProviders property value. The identityProviders property
         Args:
-            value: Value to set for the identityProviders property.
+            value: Value to set for the identity_providers property.
         """
         self._identity_providers = value
     
@@ -153,7 +153,7 @@ class IdentityContainer(entity.Entity):
         """
         Sets the userFlowAttributes property value. Represents entry point for identity userflow attributes.
         Args:
-            value: Value to set for the userFlowAttributes property.
+            value: Value to set for the user_flow_attributes property.
         """
         self._user_flow_attributes = value
     

@@ -12,14 +12,21 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 teams_app_installation = lazy_import('msgraph.generated.models.teams_app_installation')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+upgrade_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.installed_apps.item.microsoft_graph_upgrade.upgrade_request_builder')
 teams_app_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.installed_apps.item.teams_app.teams_app_request_builder')
 teams_app_definition_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.installed_apps.item.teams_app_definition.teams_app_definition_request_builder')
-upgrade_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.installed_apps.item.upgrade.upgrade_request_builder')
 
 class TeamsAppInstallationItemRequestBuilder():
     """
     Provides operations to manage the installedApps property of the microsoft.graph.team entity.
     """
+    @property
+    def microsoft_graph_upgrade(self) -> upgrade_request_builder.UpgradeRequestBuilder:
+        """
+        Provides operations to call the upgrade method.
+        """
+        return upgrade_request_builder.UpgradeRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @property
     def teams_app(self) -> teams_app_request_builder.TeamsAppRequestBuilder:
         """
@@ -34,19 +41,13 @@ class TeamsAppInstallationItemRequestBuilder():
         """
         return teams_app_definition_request_builder.TeamsAppDefinitionRequestBuilder(self.request_adapter, self.path_parameters)
     
-    @property
-    def upgrade(self) -> upgrade_request_builder.UpgradeRequestBuilder:
-        """
-        Provides operations to call the upgrade method.
-        """
-        return upgrade_request_builder.UpgradeRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, teams_app_installation_id: Optional[str] = None) -> None:
         """
         Instantiates a new TeamsAppInstallationItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            teamsAppInstallationId: key: id of teamsAppInstallation
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -56,6 +57,7 @@ class TeamsAppInstallationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/users/{user%2Did}/joinedTeams/{team%2Did}/installedApps/{teamsAppInstallation%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["teamsAppInstallation%2Did"] = teamsAppInstallationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

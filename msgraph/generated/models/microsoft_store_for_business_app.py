@@ -42,11 +42,11 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "license_type": lambda n : setattr(self, 'license_type', n.get_enum_value(microsoft_store_for_business_license_type.MicrosoftStoreForBusinessLicenseType)),
-            "package_identity_name": lambda n : setattr(self, 'package_identity_name', n.get_str_value()),
-            "product_key": lambda n : setattr(self, 'product_key', n.get_str_value()),
-            "total_license_count": lambda n : setattr(self, 'total_license_count', n.get_int_value()),
-            "used_license_count": lambda n : setattr(self, 'used_license_count', n.get_int_value()),
+            "licenseType": lambda n : setattr(self, 'license_type', n.get_enum_value(microsoft_store_for_business_license_type.MicrosoftStoreForBusinessLicenseType)),
+            "packageIdentityName": lambda n : setattr(self, 'package_identity_name', n.get_str_value()),
+            "productKey": lambda n : setattr(self, 'product_key', n.get_str_value()),
+            "totalLicenseCount": lambda n : setattr(self, 'total_license_count', n.get_int_value()),
+            "usedLicenseCount": lambda n : setattr(self, 'used_license_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -65,7 +65,7 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
         """
         Sets the licenseType property value. The licenseType property
         Args:
-            value: Value to set for the licenseType property.
+            value: Value to set for the license_type property.
         """
         self._license_type = value
     
@@ -82,7 +82,7 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
         """
         Sets the packageIdentityName property value. The app package identifier
         Args:
-            value: Value to set for the packageIdentityName property.
+            value: Value to set for the package_identity_name property.
         """
         self._package_identity_name = value
     
@@ -99,7 +99,7 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
         """
         Sets the productKey property value. The app product key
         Args:
-            value: Value to set for the productKey property.
+            value: Value to set for the product_key property.
         """
         self._product_key = value
     
@@ -131,7 +131,7 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
         """
         Sets the totalLicenseCount property value. The total number of Microsoft Store for Business licenses.
         Args:
-            value: Value to set for the totalLicenseCount property.
+            value: Value to set for the total_license_count property.
         """
         self._total_license_count = value
     
@@ -148,7 +148,7 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
         """
         Sets the usedLicenseCount property value. The number of Microsoft Store for Business licenses in use.
         Args:
-            value: Value to set for the usedLicenseCount property.
+            value: Value to set for the used_license_count property.
         """
         self._used_license_count = value
     

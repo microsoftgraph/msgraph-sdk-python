@@ -40,7 +40,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         self._name: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-        # The teamsAppId property
+        # The ID of the Teams app that is associated with the attachment. The property is specifically used to attribute a Teams message card to the specified app.
         self._teams_app_id: Optional[str] = None
         # URL to a thumbnail image that the channel can use if it supports using an alternative, smaller form of content or contentUrl. For example, if you set contentType to application/word and set contentUrl to the location of the Word document, you might include a thumbnail image that represents the document. The channel could display the thumbnail image instead of the document. When the user clicks the image, the channel would open the document.
         self._thumbnail_url: Optional[str] = None
@@ -75,7 +75,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         """
         Sets the contentType property value. The media type of the content attachment. It can have the following values: reference: Attachment is a link to another file. Populate the contentURL with the link to the object.Any contentTypes supported by the Bot Framework's Attachment objectapplication/vnd.microsoft.card.codesnippet: A code snippet. application/vnd.microsoft.card.announcement: An announcement header.
         Args:
-            value: Value to set for the contentType property.
+            value: Value to set for the content_type property.
         """
         self._content_type = value
     
@@ -92,7 +92,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         """
         Sets the contentUrl property value. URL for the content of the attachment. Supported protocols: http, https, file and data.
         Args:
-            value: Value to set for the contentUrl property.
+            value: Value to set for the content_url property.
         """
         self._content_url = value
     
@@ -115,13 +115,13 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         """
         fields = {
             "content": lambda n : setattr(self, 'content', n.get_str_value()),
-            "content_type": lambda n : setattr(self, 'content_type', n.get_str_value()),
-            "content_url": lambda n : setattr(self, 'content_url', n.get_str_value()),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
+            "contentUrl": lambda n : setattr(self, 'content_url', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "teams_app_id": lambda n : setattr(self, 'teams_app_id', n.get_str_value()),
-            "thumbnail_url": lambda n : setattr(self, 'thumbnail_url', n.get_str_value()),
+            "teamsAppId": lambda n : setattr(self, 'teams_app_id', n.get_str_value()),
+            "thumbnailUrl": lambda n : setattr(self, 'thumbnail_url', n.get_str_value()),
         }
         return fields
     
@@ -172,7 +172,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -197,7 +197,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
     @property
     def teams_app_id(self,) -> Optional[str]:
         """
-        Gets the teamsAppId property value. The teamsAppId property
+        Gets the teamsAppId property value. The ID of the Teams app that is associated with the attachment. The property is specifically used to attribute a Teams message card to the specified app.
         Returns: Optional[str]
         """
         return self._teams_app_id
@@ -205,9 +205,9 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
     @teams_app_id.setter
     def teams_app_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the teamsAppId property value. The teamsAppId property
+        Sets the teamsAppId property value. The ID of the Teams app that is associated with the attachment. The property is specifically used to attribute a Teams message card to the specified app.
         Args:
-            value: Value to set for the teamsAppId property.
+            value: Value to set for the teams_app_id property.
         """
         self._teams_app_id = value
     
@@ -224,7 +224,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         """
         Sets the thumbnailUrl property value. URL to a thumbnail image that the channel can use if it supports using an alternative, smaller form of content or contentUrl. For example, if you set contentType to application/word and set contentUrl to the location of the Word document, you might include a thumbnail image that represents the document. The channel could display the thumbnail image instead of the document. When the user clicks the image, the channel would open the document.
         Args:
-            value: Value to set for the thumbnailUrl property.
+            value: Value to set for the thumbnail_url property.
         """
         self._thumbnail_url = value
     

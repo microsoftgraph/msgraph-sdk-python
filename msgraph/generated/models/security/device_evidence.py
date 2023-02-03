@@ -26,7 +26,7 @@ class DeviceEvidence(alert_evidence.AlertEvidence):
         """
         Sets the azureAdDeviceId property value. A unique identifier assigned to a device by Azure Active Directory (Azure AD) when device is Azure AD-joined.
         Args:
-            value: Value to set for the azureAdDeviceId property.
+            value: Value to set for the azure_ad_device_id property.
         """
         self._azure_ad_device_id = value
     
@@ -93,7 +93,7 @@ class DeviceEvidence(alert_evidence.AlertEvidence):
         """
         Sets the defenderAvStatus property value. State of the Defender AntiMalware engine. The possible values are: notReporting, disabled, notUpdated, updated, unknown, notSupported, unknownFutureValue.
         Args:
-            value: Value to set for the defenderAvStatus property.
+            value: Value to set for the defender_av_status property.
         """
         self._defender_av_status = value
     
@@ -110,7 +110,7 @@ class DeviceEvidence(alert_evidence.AlertEvidence):
         """
         Sets the deviceDnsName property value. The fully qualified domain name (FQDN) for the device.
         Args:
-            value: Value to set for the deviceDnsName property.
+            value: Value to set for the device_dns_name property.
         """
         self._device_dns_name = value
     
@@ -127,7 +127,7 @@ class DeviceEvidence(alert_evidence.AlertEvidence):
         """
         Sets the firstSeenDateTime property value. The date and time when the device was first seen.
         Args:
-            value: Value to set for the firstSeenDateTime property.
+            value: Value to set for the first_seen_date_time property.
         """
         self._first_seen_date_time = value
     
@@ -137,21 +137,21 @@ class DeviceEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "azure_ad_device_id": lambda n : setattr(self, 'azure_ad_device_id', n.get_str_value()),
-            "defender_av_status": lambda n : setattr(self, 'defender_av_status', n.get_enum_value(defender_av_status.DefenderAvStatus)),
-            "device_dns_name": lambda n : setattr(self, 'device_dns_name', n.get_str_value()),
-            "first_seen_date_time": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
-            "health_status": lambda n : setattr(self, 'health_status', n.get_enum_value(device_health_status.DeviceHealthStatus)),
-            "logged_on_users": lambda n : setattr(self, 'logged_on_users', n.get_collection_of_object_values(logged_on_user.LoggedOnUser)),
-            "mde_device_id": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
-            "onboarding_status": lambda n : setattr(self, 'onboarding_status', n.get_enum_value(onboarding_status.OnboardingStatus)),
-            "os_build": lambda n : setattr(self, 'os_build', n.get_int_value()),
-            "os_platform": lambda n : setattr(self, 'os_platform', n.get_str_value()),
-            "rbac_group_id": lambda n : setattr(self, 'rbac_group_id', n.get_int_value()),
-            "rbac_group_name": lambda n : setattr(self, 'rbac_group_name', n.get_str_value()),
-            "risk_score": lambda n : setattr(self, 'risk_score', n.get_enum_value(device_risk_score.DeviceRiskScore)),
+            "azureAdDeviceId": lambda n : setattr(self, 'azure_ad_device_id', n.get_str_value()),
+            "defenderAvStatus": lambda n : setattr(self, 'defender_av_status', n.get_enum_value(defender_av_status.DefenderAvStatus)),
+            "deviceDnsName": lambda n : setattr(self, 'device_dns_name', n.get_str_value()),
+            "firstSeenDateTime": lambda n : setattr(self, 'first_seen_date_time', n.get_datetime_value()),
+            "healthStatus": lambda n : setattr(self, 'health_status', n.get_enum_value(device_health_status.DeviceHealthStatus)),
+            "loggedOnUsers": lambda n : setattr(self, 'logged_on_users', n.get_collection_of_object_values(logged_on_user.LoggedOnUser)),
+            "mdeDeviceId": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
+            "onboardingStatus": lambda n : setattr(self, 'onboarding_status', n.get_enum_value(onboarding_status.OnboardingStatus)),
+            "osBuild": lambda n : setattr(self, 'os_build', n.get_int_value()),
+            "osPlatform": lambda n : setattr(self, 'os_platform', n.get_str_value()),
+            "rbacGroupId": lambda n : setattr(self, 'rbac_group_id', n.get_int_value()),
+            "rbacGroupName": lambda n : setattr(self, 'rbac_group_name', n.get_str_value()),
+            "riskScore": lambda n : setattr(self, 'risk_score', n.get_enum_value(device_risk_score.DeviceRiskScore)),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
-            "vm_metadata": lambda n : setattr(self, 'vm_metadata', n.get_object_value(vm_metadata.VmMetadata)),
+            "vmMetadata": lambda n : setattr(self, 'vm_metadata', n.get_object_value(vm_metadata.VmMetadata)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -170,7 +170,7 @@ class DeviceEvidence(alert_evidence.AlertEvidence):
         """
         Sets the healthStatus property value. The health state of the device.The possible values are: active, inactive, impairedCommunication, noSensorData, noSensorDataImpairedCommunication, unknown, unknownFutureValue.
         Args:
-            value: Value to set for the healthStatus property.
+            value: Value to set for the health_status property.
         """
         self._health_status = value
     
@@ -187,7 +187,7 @@ class DeviceEvidence(alert_evidence.AlertEvidence):
         """
         Sets the loggedOnUsers property value. Users that were logged on the machine during the time of the alert.
         Args:
-            value: Value to set for the loggedOnUsers property.
+            value: Value to set for the logged_on_users property.
         """
         self._logged_on_users = value
     
@@ -204,7 +204,7 @@ class DeviceEvidence(alert_evidence.AlertEvidence):
         """
         Sets the mdeDeviceId property value. A unique identifier assigned to a device by Microsoft Defender for Endpoint.
         Args:
-            value: Value to set for the mdeDeviceId property.
+            value: Value to set for the mde_device_id property.
         """
         self._mde_device_id = value
     
@@ -221,7 +221,7 @@ class DeviceEvidence(alert_evidence.AlertEvidence):
         """
         Sets the onboardingStatus property value. The status of the machine onboarding to Microsoft Defender for Endpoint.The possible values are: insufficientInfo, onboarded, canBeOnboarded, unsupported, unknownFutureValue.
         Args:
-            value: Value to set for the onboardingStatus property.
+            value: Value to set for the onboarding_status property.
         """
         self._onboarding_status = value
     
@@ -238,7 +238,7 @@ class DeviceEvidence(alert_evidence.AlertEvidence):
         """
         Sets the osBuild property value. The build version for the operating system the device is running.
         Args:
-            value: Value to set for the osBuild property.
+            value: Value to set for the os_build property.
         """
         self._os_build = value
     
@@ -255,7 +255,7 @@ class DeviceEvidence(alert_evidence.AlertEvidence):
         """
         Sets the osPlatform property value. The operating system platform the device is running.
         Args:
-            value: Value to set for the osPlatform property.
+            value: Value to set for the os_platform property.
         """
         self._os_platform = value
     
@@ -272,7 +272,7 @@ class DeviceEvidence(alert_evidence.AlertEvidence):
         """
         Sets the rbacGroupId property value. The ID of the role-based access control (RBAC) device group.
         Args:
-            value: Value to set for the rbacGroupId property.
+            value: Value to set for the rbac_group_id property.
         """
         self._rbac_group_id = value
     
@@ -289,7 +289,7 @@ class DeviceEvidence(alert_evidence.AlertEvidence):
         """
         Sets the rbacGroupName property value. The name of the RBAC device group.
         Args:
-            value: Value to set for the rbacGroupName property.
+            value: Value to set for the rbac_group_name property.
         """
         self._rbac_group_name = value
     
@@ -306,7 +306,7 @@ class DeviceEvidence(alert_evidence.AlertEvidence):
         """
         Sets the riskScore property value. Risk score as evaluated by Microsoft Defender for Endpoint. The possible values are: none, informational, low, medium, high, unknownFutureValue.
         Args:
-            value: Value to set for the riskScore property.
+            value: Value to set for the risk_score property.
         """
         self._risk_score = value
     
@@ -365,7 +365,7 @@ class DeviceEvidence(alert_evidence.AlertEvidence):
         """
         Sets the vmMetadata property value. Metadata of the virtual machine (VM) on which Microsoft Defender for Endpoint is running.
         Args:
-            value: Value to set for the vmMetadata property.
+            value: Value to set for the vm_metadata property.
         """
         self._vm_metadata = value
     

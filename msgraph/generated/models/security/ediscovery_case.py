@@ -28,7 +28,7 @@ class EdiscoveryCase(case.Case):
         """
         Sets the closedBy property value. The user who closed the case.
         Args:
-            value: Value to set for the closedBy property.
+            value: Value to set for the closed_by property.
         """
         self._closed_by = value
     
@@ -45,7 +45,7 @@ class EdiscoveryCase(case.Case):
         """
         Sets the closedDateTime property value. The date and time when the case was closed. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the closedDateTime property.
+            value: Value to set for the closed_date_time property.
         """
         self._closed_date_time = value
     
@@ -118,7 +118,7 @@ class EdiscoveryCase(case.Case):
         """
         Sets the externalId property value. The external case number for customer reference.
         Args:
-            value: Value to set for the externalId property.
+            value: Value to set for the external_id property.
         """
         self._external_id = value
     
@@ -128,13 +128,13 @@ class EdiscoveryCase(case.Case):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "closed_by": lambda n : setattr(self, 'closed_by', n.get_object_value(identity_set.IdentitySet)),
-            "closed_date_time": lambda n : setattr(self, 'closed_date_time', n.get_datetime_value()),
+            "closedBy": lambda n : setattr(self, 'closed_by', n.get_object_value(identity_set.IdentitySet)),
+            "closedDateTime": lambda n : setattr(self, 'closed_date_time', n.get_datetime_value()),
             "custodians": lambda n : setattr(self, 'custodians', n.get_collection_of_object_values(ediscovery_custodian.EdiscoveryCustodian)),
-            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
-            "noncustodial_data_sources": lambda n : setattr(self, 'noncustodial_data_sources', n.get_collection_of_object_values(ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource)),
+            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "noncustodialDataSources": lambda n : setattr(self, 'noncustodial_data_sources', n.get_collection_of_object_values(ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource)),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(case_operation.CaseOperation)),
-            "review_sets": lambda n : setattr(self, 'review_sets', n.get_collection_of_object_values(ediscovery_review_set.EdiscoveryReviewSet)),
+            "reviewSets": lambda n : setattr(self, 'review_sets', n.get_collection_of_object_values(ediscovery_review_set.EdiscoveryReviewSet)),
             "searches": lambda n : setattr(self, 'searches', n.get_collection_of_object_values(ediscovery_search.EdiscoverySearch)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(ediscovery_case_settings.EdiscoveryCaseSettings)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_object_values(ediscovery_review_tag.EdiscoveryReviewTag)),
@@ -156,7 +156,7 @@ class EdiscoveryCase(case.Case):
         """
         Sets the noncustodialDataSources property value. Returns a list of case ediscoveryNoncustodialDataSource objects for this case.
         Args:
-            value: Value to set for the noncustodialDataSources property.
+            value: Value to set for the noncustodial_data_sources property.
         """
         self._noncustodial_data_sources = value
     
@@ -190,7 +190,7 @@ class EdiscoveryCase(case.Case):
         """
         Sets the reviewSets property value. Returns a list of eDiscoveryReviewSet objects in the case.
         Args:
-            value: Value to set for the reviewSets property.
+            value: Value to set for the review_sets property.
         """
         self._review_sets = value
     

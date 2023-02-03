@@ -33,7 +33,7 @@ class SharePointIdentity(identity.Identity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "login_name": lambda n : setattr(self, 'login_name', n.get_str_value()),
+            "loginName": lambda n : setattr(self, 'login_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -52,7 +52,7 @@ class SharePointIdentity(identity.Identity):
         """
         Sets the loginName property value. The sign in name of the SharePoint identity.
         Args:
-            value: Value to set for the loginName property.
+            value: Value to set for the login_name property.
         """
         self._login_name = value
     

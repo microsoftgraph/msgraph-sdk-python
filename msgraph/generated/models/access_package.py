@@ -23,7 +23,7 @@ class AccessPackage(entity.Entity):
         """
         Sets the accessPackagesIncompatibleWith property value. The access packages that are incompatible with this package. Read-only.
         Args:
-            value: Value to set for the accessPackagesIncompatibleWith property.
+            value: Value to set for the access_packages_incompatible_with property.
         """
         self._access_packages_incompatible_with = value
     
@@ -40,7 +40,7 @@ class AccessPackage(entity.Entity):
         """
         Sets the assignmentPolicies property value. The assignmentPolicies property
         Args:
-            value: Value to set for the assignmentPolicies property.
+            value: Value to set for the assignment_policies property.
         """
         self._assignment_policies = value
     
@@ -102,7 +102,7 @@ class AccessPackage(entity.Entity):
         """
         Sets the createdDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -148,7 +148,7 @@ class AccessPackage(entity.Entity):
         """
         Sets the displayName property value. The display name of the access package. Supports $filter (eq, contains).
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -158,16 +158,16 @@ class AccessPackage(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_packages_incompatible_with": lambda n : setattr(self, 'access_packages_incompatible_with', n.get_collection_of_object_values(AccessPackage)),
-            "assignment_policies": lambda n : setattr(self, 'assignment_policies', n.get_collection_of_object_values(access_package_assignment_policy.AccessPackageAssignmentPolicy)),
+            "accessPackagesIncompatibleWith": lambda n : setattr(self, 'access_packages_incompatible_with', n.get_collection_of_object_values(AccessPackage)),
+            "assignmentPolicies": lambda n : setattr(self, 'assignment_policies', n.get_collection_of_object_values(access_package_assignment_policy.AccessPackageAssignmentPolicy)),
             "catalog": lambda n : setattr(self, 'catalog', n.get_object_value(access_package_catalog.AccessPackageCatalog)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "incompatible_access_packages": lambda n : setattr(self, 'incompatible_access_packages', n.get_collection_of_object_values(AccessPackage)),
-            "incompatible_groups": lambda n : setattr(self, 'incompatible_groups', n.get_collection_of_object_values(group.Group)),
-            "is_hidden": lambda n : setattr(self, 'is_hidden', n.get_bool_value()),
-            "modified_date_time": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "incompatibleAccessPackages": lambda n : setattr(self, 'incompatible_access_packages', n.get_collection_of_object_values(AccessPackage)),
+            "incompatibleGroups": lambda n : setattr(self, 'incompatible_groups', n.get_collection_of_object_values(group.Group)),
+            "isHidden": lambda n : setattr(self, 'is_hidden', n.get_bool_value()),
+            "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -186,7 +186,7 @@ class AccessPackage(entity.Entity):
         """
         Sets the incompatibleAccessPackages property value. The access packages whose assigned users are ineligible to be assigned this access package.
         Args:
-            value: Value to set for the incompatibleAccessPackages property.
+            value: Value to set for the incompatible_access_packages property.
         """
         self._incompatible_access_packages = value
     
@@ -203,7 +203,7 @@ class AccessPackage(entity.Entity):
         """
         Sets the incompatibleGroups property value. The groups whose members are ineligible to be assigned this access package.
         Args:
-            value: Value to set for the incompatibleGroups property.
+            value: Value to set for the incompatible_groups property.
         """
         self._incompatible_groups = value
     
@@ -220,7 +220,7 @@ class AccessPackage(entity.Entity):
         """
         Sets the isHidden property value. Whether the access package is hidden from the requestor.
         Args:
-            value: Value to set for the isHidden property.
+            value: Value to set for the is_hidden property.
         """
         self._is_hidden = value
     
@@ -237,7 +237,7 @@ class AccessPackage(entity.Entity):
         """
         Sets the modifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         Args:
-            value: Value to set for the modifiedDateTime property.
+            value: Value to set for the modified_date_time property.
         """
         self._modified_date_time = value
     

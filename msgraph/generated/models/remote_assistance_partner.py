@@ -52,7 +52,7 @@ class RemoteAssistancePartner(entity.Entity):
         """
         Sets the displayName property value. Display name of the partner.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -62,10 +62,10 @@ class RemoteAssistancePartner(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "last_connection_date_time": lambda n : setattr(self, 'last_connection_date_time', n.get_datetime_value()),
-            "onboarding_status": lambda n : setattr(self, 'onboarding_status', n.get_enum_value(remote_assistance_onboarding_status.RemoteAssistanceOnboardingStatus)),
-            "onboarding_url": lambda n : setattr(self, 'onboarding_url', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "lastConnectionDateTime": lambda n : setattr(self, 'last_connection_date_time', n.get_datetime_value()),
+            "onboardingStatus": lambda n : setattr(self, 'onboarding_status', n.get_enum_value(remote_assistance_onboarding_status.RemoteAssistanceOnboardingStatus)),
+            "onboardingUrl": lambda n : setattr(self, 'onboarding_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -84,7 +84,7 @@ class RemoteAssistancePartner(entity.Entity):
         """
         Sets the lastConnectionDateTime property value. Timestamp of the last request sent to Intune by the TEM partner.
         Args:
-            value: Value to set for the lastConnectionDateTime property.
+            value: Value to set for the last_connection_date_time property.
         """
         self._last_connection_date_time = value
     
@@ -101,7 +101,7 @@ class RemoteAssistancePartner(entity.Entity):
         """
         Sets the onboardingStatus property value. The current TeamViewer connector status
         Args:
-            value: Value to set for the onboardingStatus property.
+            value: Value to set for the onboarding_status property.
         """
         self._onboarding_status = value
     
@@ -118,7 +118,7 @@ class RemoteAssistancePartner(entity.Entity):
         """
         Sets the onboardingUrl property value. URL of the partner's onboarding portal, where an administrator can configure their Remote Assistance service.
         Args:
-            value: Value to set for the onboardingUrl property.
+            value: Value to set for the onboarding_url property.
         """
         self._onboarding_url = value
     

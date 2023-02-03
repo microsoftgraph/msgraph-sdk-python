@@ -19,7 +19,7 @@ class DelegatedAdminAccessContainer(AdditionalDataHolder, Parsable):
         """
         Sets the accessContainerId property value. The accessContainerId property
         Args:
-            value: Value to set for the accessContainerId property.
+            value: Value to set for the access_container_id property.
         """
         self._access_container_id = value
     
@@ -36,7 +36,7 @@ class DelegatedAdminAccessContainer(AdditionalDataHolder, Parsable):
         """
         Sets the accessContainerType property value. The accessContainerType property
         Args:
-            value: Value to set for the accessContainerType property.
+            value: Value to set for the access_container_type property.
         """
         self._access_container_type = value
     
@@ -89,8 +89,8 @@ class DelegatedAdminAccessContainer(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_container_id": lambda n : setattr(self, 'access_container_id', n.get_str_value()),
-            "access_container_type": lambda n : setattr(self, 'access_container_type', n.get_enum_value(delegated_admin_access_container_type.DelegatedAdminAccessContainerType)),
+            "accessContainerId": lambda n : setattr(self, 'access_container_id', n.get_str_value()),
+            "accessContainerType": lambda n : setattr(self, 'access_container_type', n.get_enum_value(delegated_admin_access_container_type.DelegatedAdminAccessContainerType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -108,7 +108,7 @@ class DelegatedAdminAccessContainer(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

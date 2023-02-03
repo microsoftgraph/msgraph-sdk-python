@@ -35,7 +35,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the clickAction property value. The clickAction property
         Args:
-            value: Value to set for the clickAction property.
+            value: Value to set for the click_action property.
         """
         self._click_action = value
     
@@ -52,7 +52,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the clickDateTime property value. The clickDateTime property
         Args:
-            value: Value to set for the clickDateTime property.
+            value: Value to set for the click_date_time property.
         """
         self._click_date_time = value
     
@@ -96,12 +96,12 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "click_action": lambda n : setattr(self, 'click_action', n.get_str_value()),
-            "click_date_time": lambda n : setattr(self, 'click_date_time', n.get_datetime_value()),
+            "clickAction": lambda n : setattr(self, 'click_action', n.get_str_value()),
+            "clickDateTime": lambda n : setattr(self, 'click_date_time', n.get_datetime_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "source_id": lambda n : setattr(self, 'source_id', n.get_str_value()),
-            "uri_domain": lambda n : setattr(self, 'uri_domain', n.get_str_value()),
+            "sourceId": lambda n : setattr(self, 'source_id', n.get_str_value()),
+            "uriDomain": lambda n : setattr(self, 'uri_domain', n.get_str_value()),
             "verdict": lambda n : setattr(self, 'verdict', n.get_str_value()),
         }
         return fields
@@ -136,7 +136,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -170,7 +170,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the sourceId property value. The sourceId property
         Args:
-            value: Value to set for the sourceId property.
+            value: Value to set for the source_id property.
         """
         self._source_id = value
     
@@ -187,7 +187,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the uriDomain property value. The uriDomain property
         Args:
-            value: Value to set for the uriDomain property.
+            value: Value to set for the uri_domain property.
         """
         self._uri_domain = value
     

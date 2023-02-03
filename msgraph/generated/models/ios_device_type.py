@@ -56,8 +56,8 @@ class IosDeviceType(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "i_pad": lambda n : setattr(self, 'i_pad', n.get_bool_value()),
-            "i_phone_and_i_pod": lambda n : setattr(self, 'i_phone_and_i_pod', n.get_bool_value()),
+            "iPad": lambda n : setattr(self, 'i_pad', n.get_bool_value()),
+            "iPhoneAndIPod": lambda n : setattr(self, 'i_phone_and_i_pod', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -75,7 +75,7 @@ class IosDeviceType(AdditionalDataHolder, Parsable):
         """
         Sets the iPad property value. Whether the app should run on iPads.
         Args:
-            value: Value to set for the iPad property.
+            value: Value to set for the i_pad property.
         """
         self._i_pad = value
     
@@ -92,7 +92,7 @@ class IosDeviceType(AdditionalDataHolder, Parsable):
         """
         Sets the iPhoneAndIPod property value. Whether the app should run on iPhones and iPods.
         Args:
-            value: Value to set for the iPhoneAndIPod property.
+            value: Value to set for the i_phone_and_i_pod property.
         """
         self._i_phone_and_i_pod = value
     
@@ -109,7 +109,7 @@ class IosDeviceType(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

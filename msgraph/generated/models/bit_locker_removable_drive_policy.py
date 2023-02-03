@@ -39,7 +39,7 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, Parsable):
         """
         Sets the blockCrossOrganizationWriteAccess property value. This policy setting determines whether BitLocker protection is required for removable data drives to be writable on a computer.
         Args:
-            value: Value to set for the blockCrossOrganizationWriteAccess property.
+            value: Value to set for the block_cross_organization_write_access property.
         """
         self._block_cross_organization_write_access = value
     
@@ -84,7 +84,7 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, Parsable):
         """
         Sets the encryptionMethod property value. Select the encryption method for removable  drives. Possible values are: aesCbc128, aesCbc256, xtsAes128, xtsAes256.
         Args:
-            value: Value to set for the encryptionMethod property.
+            value: Value to set for the encryption_method property.
         """
         self._encryption_method = value
     
@@ -94,10 +94,10 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "block_cross_organization_write_access": lambda n : setattr(self, 'block_cross_organization_write_access', n.get_bool_value()),
-            "encryption_method": lambda n : setattr(self, 'encryption_method', n.get_enum_value(bit_locker_encryption_method.BitLockerEncryptionMethod)),
+            "blockCrossOrganizationWriteAccess": lambda n : setattr(self, 'block_cross_organization_write_access', n.get_bool_value()),
+            "encryptionMethod": lambda n : setattr(self, 'encryption_method', n.get_enum_value(bit_locker_encryption_method.BitLockerEncryptionMethod)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "require_encryption_for_write_access": lambda n : setattr(self, 'require_encryption_for_write_access', n.get_bool_value()),
+            "requireEncryptionForWriteAccess": lambda n : setattr(self, 'require_encryption_for_write_access', n.get_bool_value()),
         }
         return fields
     
@@ -114,7 +114,7 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -131,7 +131,7 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, Parsable):
         """
         Sets the requireEncryptionForWriteAccess property value. Indicates whether to block write access to devices configured in another organization.  If requireEncryptionForWriteAccess is false, this value does not affect.
         Args:
-            value: Value to set for the requireEncryptionForWriteAccess property.
+            value: Value to set for the require_encryption_for_write_access property.
         """
         self._require_encryption_for_write_access = value
     

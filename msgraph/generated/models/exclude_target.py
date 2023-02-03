@@ -57,7 +57,7 @@ class ExcludeTarget(AdditionalDataHolder, Parsable):
         fields = {
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "target_type": lambda n : setattr(self, 'target_type', n.get_enum_value(authentication_method_target_type.AuthenticationMethodTargetType)),
+            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(authentication_method_target_type.AuthenticationMethodTargetType)),
         }
         return fields
     
@@ -91,7 +91,7 @@ class ExcludeTarget(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -121,7 +121,7 @@ class ExcludeTarget(AdditionalDataHolder, Parsable):
         """
         Sets the targetType property value. The targetType property
         Args:
-            value: Value to set for the targetType property.
+            value: Value to set for the target_type property.
         """
         self._target_type = value
     

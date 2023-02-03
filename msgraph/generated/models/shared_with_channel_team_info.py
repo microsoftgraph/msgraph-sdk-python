@@ -20,7 +20,7 @@ class SharedWithChannelTeamInfo(team_info.TeamInfo):
         """
         Sets the allowedMembers property value. A collection of team members who have access to the shared channel.
         Args:
-            value: Value to set for the allowedMembers property.
+            value: Value to set for the allowed_members property.
         """
         self._allowed_members = value
     
@@ -54,8 +54,8 @@ class SharedWithChannelTeamInfo(team_info.TeamInfo):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allowed_members": lambda n : setattr(self, 'allowed_members', n.get_collection_of_object_values(conversation_member.ConversationMember)),
-            "is_host_team": lambda n : setattr(self, 'is_host_team', n.get_bool_value()),
+            "allowedMembers": lambda n : setattr(self, 'allowed_members', n.get_collection_of_object_values(conversation_member.ConversationMember)),
+            "isHostTeam": lambda n : setattr(self, 'is_host_team', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -74,7 +74,7 @@ class SharedWithChannelTeamInfo(team_info.TeamInfo):
         """
         Sets the isHostTeam property value. Indicates whether the team is the host of the channel.
         Args:
-            value: Value to set for the isHostTeam property.
+            value: Value to set for the is_host_team property.
         """
         self._is_host_team = value
     

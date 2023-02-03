@@ -38,7 +38,7 @@ class EdiscoveryAddToReviewSetOperation(case_operation.CaseOperation):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "review_set": lambda n : setattr(self, 'review_set', n.get_object_value(ediscovery_review_set.EdiscoveryReviewSet)),
+            "reviewSet": lambda n : setattr(self, 'review_set', n.get_object_value(ediscovery_review_set.EdiscoveryReviewSet)),
             "search": lambda n : setattr(self, 'search', n.get_object_value(ediscovery_search.EdiscoverySearch)),
         }
         super_fields = super().get_field_deserializers()
@@ -58,7 +58,7 @@ class EdiscoveryAddToReviewSetOperation(case_operation.CaseOperation):
         """
         Sets the reviewSet property value. eDiscovery review set to which items matching source collection query gets added.
         Args:
-            value: Value to set for the reviewSet property.
+            value: Value to set for the review_set property.
         """
         self._review_set = value
     

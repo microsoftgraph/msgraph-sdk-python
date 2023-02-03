@@ -26,10 +26,11 @@ class AgreementFileLocalizationItemRequestBuilder():
         """
         return versions_request_builder.VersionsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, agreement_file_localization_id: Optional[str] = None) -> None:
         """
         Instantiates a new AgreementFileLocalizationItemRequestBuilder and sets the default values.
         Args:
+            agreementFileLocalizationId: key: id of agreementFileLocalization
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -41,6 +42,7 @@ class AgreementFileLocalizationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/agreements/{agreement%2Did}/files/{agreementFileLocalization%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["agreementFileLocalization%2Did"] = agreementFileLocalizationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

@@ -14,8 +14,8 @@ chat_message = lazy_import('msgraph.generated.models.chat_message')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 hosted_contents_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.primary_channel.messages.item.replies.item.hosted_contents.hosted_contents_request_builder')
 chat_message_hosted_content_item_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.primary_channel.messages.item.replies.item.hosted_contents.item.chat_message_hosted_content_item_request_builder')
-soft_delete_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.primary_channel.messages.item.replies.item.soft_delete.soft_delete_request_builder')
-undo_soft_delete_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.primary_channel.messages.item.replies.item.undo_soft_delete.undo_soft_delete_request_builder')
+soft_delete_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.primary_channel.messages.item.replies.item.microsoft_graph_soft_delete.soft_delete_request_builder')
+undo_soft_delete_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.primary_channel.messages.item.replies.item.microsoft_graph_undo_soft_delete.undo_soft_delete_request_builder')
 
 class ChatMessageItemRequestBuilder():
     """
@@ -29,23 +29,24 @@ class ChatMessageItemRequestBuilder():
         return hosted_contents_request_builder.HostedContentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def soft_delete(self) -> soft_delete_request_builder.SoftDeleteRequestBuilder:
+    def microsoft_graph_soft_delete(self) -> soft_delete_request_builder.SoftDeleteRequestBuilder:
         """
         Provides operations to call the softDelete method.
         """
         return soft_delete_request_builder.SoftDeleteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def undo_soft_delete(self) -> undo_soft_delete_request_builder.UndoSoftDeleteRequestBuilder:
+    def microsoft_graph_undo_soft_delete(self) -> undo_soft_delete_request_builder.UndoSoftDeleteRequestBuilder:
         """
         Provides operations to call the undoSoftDelete method.
         """
         return undo_soft_delete_request_builder.UndoSoftDeleteRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, chat_message_id1: Optional[str] = None) -> None:
         """
         Instantiates a new ChatMessageItemRequestBuilder and sets the default values.
         Args:
+            chatMessageId1: key: id of chatMessage
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -57,6 +58,7 @@ class ChatMessageItemRequestBuilder():
         self.url_template: str = "{+baseurl}/users/{user%2Did}/joinedTeams/{team%2Did}/primaryChannel/messages/{chatMessage%2Did}/replies/{chatMessage%2Did1}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["chatMessage%2Did1"] = chatMessageId1
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

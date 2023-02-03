@@ -19,7 +19,7 @@ class WindowsUniversalAppXContainedApp(mobile_contained_app.MobileContainedApp):
         """
         Sets the appUserModelId property value. The app user model ID of the contained app of a WindowsUniversalAppX app.
         Args:
-            value: Value to set for the appUserModelId property.
+            value: Value to set for the app_user_model_id property.
         """
         self._app_user_model_id = value
     
@@ -50,7 +50,7 @@ class WindowsUniversalAppXContainedApp(mobile_contained_app.MobileContainedApp):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_user_model_id": lambda n : setattr(self, 'app_user_model_id', n.get_str_value()),
+            "appUserModelId": lambda n : setattr(self, 'app_user_model_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

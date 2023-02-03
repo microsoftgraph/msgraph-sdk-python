@@ -56,8 +56,8 @@ class OcrSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
-            "max_image_size": lambda n : setattr(self, 'max_image_size', n.get_int_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "maxImageSize": lambda n : setattr(self, 'max_image_size', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "timeout": lambda n : setattr(self, 'timeout', n.get_object_value(Timedelta)),
         }
@@ -76,7 +76,7 @@ class OcrSettings(AdditionalDataHolder, Parsable):
         """
         Sets the isEnabled property value. Indicates whether or not OCR is enabled for the case.
         Args:
-            value: Value to set for the isEnabled property.
+            value: Value to set for the is_enabled property.
         """
         self._is_enabled = value
     
@@ -93,7 +93,7 @@ class OcrSettings(AdditionalDataHolder, Parsable):
         """
         Sets the maxImageSize property value. Maximum image size that will be processed in KB).
         Args:
-            value: Value to set for the maxImageSize property.
+            value: Value to set for the max_image_size property.
         """
         self._max_image_size = value
     
@@ -110,7 +110,7 @@ class OcrSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

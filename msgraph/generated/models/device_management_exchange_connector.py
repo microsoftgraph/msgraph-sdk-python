@@ -25,7 +25,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         """
         Sets the connectorServerName property value. The name of the server hosting the Exchange Connector.
         Args:
-            value: Value to set for the connectorServerName property.
+            value: Value to set for the connector_server_name property.
         """
         self._connector_server_name = value
     
@@ -80,7 +80,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         """
         Sets the exchangeAlias property value. An alias assigned to the Exchange server
         Args:
-            value: Value to set for the exchangeAlias property.
+            value: Value to set for the exchange_alias property.
         """
         self._exchange_alias = value
     
@@ -97,7 +97,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         """
         Sets the exchangeConnectorType property value. The type of Exchange Connector.
         Args:
-            value: Value to set for the exchangeConnectorType property.
+            value: Value to set for the exchange_connector_type property.
         """
         self._exchange_connector_type = value
     
@@ -114,7 +114,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         """
         Sets the exchangeOrganization property value. Exchange Organization to the Exchange server
         Args:
-            value: Value to set for the exchangeOrganization property.
+            value: Value to set for the exchange_organization property.
         """
         self._exchange_organization = value
     
@@ -124,13 +124,13 @@ class DeviceManagementExchangeConnector(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "connector_server_name": lambda n : setattr(self, 'connector_server_name', n.get_str_value()),
-            "exchange_alias": lambda n : setattr(self, 'exchange_alias', n.get_str_value()),
-            "exchange_connector_type": lambda n : setattr(self, 'exchange_connector_type', n.get_enum_value(device_management_exchange_connector_type.DeviceManagementExchangeConnectorType)),
-            "exchange_organization": lambda n : setattr(self, 'exchange_organization', n.get_str_value()),
-            "last_sync_date_time": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
-            "primary_smtp_address": lambda n : setattr(self, 'primary_smtp_address', n.get_str_value()),
-            "server_name": lambda n : setattr(self, 'server_name', n.get_str_value()),
+            "connectorServerName": lambda n : setattr(self, 'connector_server_name', n.get_str_value()),
+            "exchangeAlias": lambda n : setattr(self, 'exchange_alias', n.get_str_value()),
+            "exchangeConnectorType": lambda n : setattr(self, 'exchange_connector_type', n.get_enum_value(device_management_exchange_connector_type.DeviceManagementExchangeConnectorType)),
+            "exchangeOrganization": lambda n : setattr(self, 'exchange_organization', n.get_str_value()),
+            "lastSyncDateTime": lambda n : setattr(self, 'last_sync_date_time', n.get_datetime_value()),
+            "primarySmtpAddress": lambda n : setattr(self, 'primary_smtp_address', n.get_str_value()),
+            "serverName": lambda n : setattr(self, 'server_name', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(device_management_exchange_connector_status.DeviceManagementExchangeConnectorStatus)),
             "version": lambda n : setattr(self, 'version', n.get_str_value()),
         }
@@ -151,7 +151,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         """
         Sets the lastSyncDateTime property value. Last sync time for the Exchange Connector
         Args:
-            value: Value to set for the lastSyncDateTime property.
+            value: Value to set for the last_sync_date_time property.
         """
         self._last_sync_date_time = value
     
@@ -168,7 +168,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         """
         Sets the primarySmtpAddress property value. Email address used to configure the Service To Service Exchange Connector.
         Args:
-            value: Value to set for the primarySmtpAddress property.
+            value: Value to set for the primary_smtp_address property.
         """
         self._primary_smtp_address = value
     
@@ -204,7 +204,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         """
         Sets the serverName property value. The name of the Exchange server.
         Args:
-            value: Value to set for the serverName property.
+            value: Value to set for the server_name property.
         """
         self._server_name = value
     

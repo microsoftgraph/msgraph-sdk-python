@@ -12,8 +12,8 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.communications.call_records.count.count_request_builder')
-get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder = lazy_import('msgraph.generated.communications.call_records.get_direct_routing_calls_with_from_date_time_with_to_date_time.get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder')
-get_pstn_calls_with_from_date_time_with_to_date_time_request_builder = lazy_import('msgraph.generated.communications.call_records.get_pstn_calls_with_from_date_time_with_to_date_time.get_pstn_calls_with_from_date_time_with_to_date_time_request_builder')
+get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder = lazy_import('msgraph.generated.communications.call_records.microsoft_graph_call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time.get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder')
+get_pstn_calls_with_from_date_time_with_to_date_time_request_builder = lazy_import('msgraph.generated.communications.call_records.microsoft_graph_call_records_get_pstn_calls_with_from_date_time_with_to_date_time.get_pstn_calls_with_from_date_time_with_to_date_time_request_builder')
 call_record = lazy_import('msgraph.generated.models.call_records.call_record')
 call_record_collection_response = lazy_import('msgraph.generated.models.call_records.call_record_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -65,7 +65,7 @@ class CallRecordsRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, call_record_collection_response.CallRecordCollectionResponse, error_mapping)
     
-    def get_direct_routing_calls_with_from_date_time_with_to_date_time(self,from_date_time: Optional[datetime] = None, to_date_time: Optional[datetime] = None) -> get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder.GetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder:
+    def microsoft_graph_call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time(self,from_date_time: Optional[datetime] = None, to_date_time: Optional[datetime] = None) -> get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder.GetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder:
         """
         Provides operations to call the getDirectRoutingCalls method.
         Args:
@@ -79,7 +79,7 @@ class CallRecordsRequestBuilder():
             raise Exception("to_date_time cannot be undefined")
         return get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder.GetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder(self.request_adapter, self.path_parameters, fromDateTime, toDateTime)
     
-    def get_pstn_calls_with_from_date_time_with_to_date_time(self,from_date_time: Optional[datetime] = None, to_date_time: Optional[datetime] = None) -> get_pstn_calls_with_from_date_time_with_to_date_time_request_builder.GetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder:
+    def microsoft_graph_call_records_get_pstn_calls_with_from_date_time_with_to_date_time(self,from_date_time: Optional[datetime] = None, to_date_time: Optional[datetime] = None) -> get_pstn_calls_with_from_date_time_with_to_date_time_request_builder.GetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder:
         """
         Provides operations to call the getPstnCalls method.
         Args:

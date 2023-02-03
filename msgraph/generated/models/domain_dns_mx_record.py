@@ -36,7 +36,7 @@ class DomainDnsMxRecord(domain_dns_record.DomainDnsRecord):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "mail_exchange": lambda n : setattr(self, 'mail_exchange', n.get_str_value()),
+            "mailExchange": lambda n : setattr(self, 'mail_exchange', n.get_str_value()),
             "preference": lambda n : setattr(self, 'preference', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -56,7 +56,7 @@ class DomainDnsMxRecord(domain_dns_record.DomainDnsRecord):
         """
         Sets the mailExchange property value. Value used when configuring the answer/destination/value of the MX record at the DNS host.
         Args:
-            value: Value to set for the mailExchange property.
+            value: Value to set for the mail_exchange property.
         """
         self._mail_exchange = value
     

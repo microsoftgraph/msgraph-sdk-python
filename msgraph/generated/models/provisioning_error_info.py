@@ -36,7 +36,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         """
         Sets the additionalDetails property value. Additional details in case of error.
         Args:
-            value: Value to set for the additionalDetails property.
+            value: Value to set for the additional_details property.
         """
         self._additional_details = value
     
@@ -85,7 +85,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         """
         Sets the errorCategory property value. Categorizes the error code. Possible values are failure, nonServiceFailure, success, unknownFutureValue
         Args:
-            value: Value to set for the errorCategory property.
+            value: Value to set for the error_category property.
         """
         self._error_category = value
     
@@ -102,7 +102,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         """
         Sets the errorCode property value. Unique error code if any occurred. Learn more
         Args:
-            value: Value to set for the errorCode property.
+            value: Value to set for the error_code property.
         """
         self._error_code = value
     
@@ -112,12 +112,12 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "additional_details": lambda n : setattr(self, 'additional_details', n.get_str_value()),
-            "error_category": lambda n : setattr(self, 'error_category', n.get_enum_value(provisioning_status_error_category.ProvisioningStatusErrorCategory)),
-            "error_code": lambda n : setattr(self, 'error_code', n.get_str_value()),
+            "additionalDetails": lambda n : setattr(self, 'additional_details', n.get_str_value()),
+            "errorCategory": lambda n : setattr(self, 'error_category', n.get_enum_value(provisioning_status_error_category.ProvisioningStatusErrorCategory)),
+            "errorCode": lambda n : setattr(self, 'error_code', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "reason": lambda n : setattr(self, 'reason', n.get_str_value()),
-            "recommended_action": lambda n : setattr(self, 'recommended_action', n.get_str_value()),
+            "recommendedAction": lambda n : setattr(self, 'recommended_action', n.get_str_value()),
         }
         return fields
     
@@ -134,7 +134,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -168,7 +168,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         """
         Sets the recommendedAction property value. Provides the resolution for the corresponding error.
         Args:
-            value: Value to set for the recommendedAction property.
+            value: Value to set for the recommended_action property.
         """
         self._recommended_action = value
     

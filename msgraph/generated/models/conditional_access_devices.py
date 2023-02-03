@@ -60,7 +60,7 @@ class ConditionalAccessDevices(AdditionalDataHolder, Parsable):
         """
         Sets the deviceFilter property value. Filter that defines the dynamic-device-syntax rule to include/exclude devices. A filter can use device properties (such as extension attributes) to include/exclude them.
         Args:
-            value: Value to set for the deviceFilter property.
+            value: Value to set for the device_filter property.
         """
         self._device_filter = value
     
@@ -70,7 +70,7 @@ class ConditionalAccessDevices(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_filter": lambda n : setattr(self, 'device_filter', n.get_object_value(conditional_access_filter.ConditionalAccessFilter)),
+            "deviceFilter": lambda n : setattr(self, 'device_filter', n.get_object_value(conditional_access_filter.ConditionalAccessFilter)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -88,7 +88,7 @@ class ConditionalAccessDevices(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

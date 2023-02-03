@@ -58,10 +58,10 @@ class ManagedAppDiagnosticStatus(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "mitigation_instruction": lambda n : setattr(self, 'mitigation_instruction', n.get_str_value()),
+            "mitigationInstruction": lambda n : setattr(self, 'mitigation_instruction', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
-            "validation_name": lambda n : setattr(self, 'validation_name', n.get_str_value()),
+            "validationName": lambda n : setattr(self, 'validation_name', n.get_str_value()),
         }
         return fields
     
@@ -78,7 +78,7 @@ class ManagedAppDiagnosticStatus(AdditionalDataHolder, Parsable):
         """
         Sets the mitigationInstruction property value. Instruction on how to mitigate a failed validation
         Args:
-            value: Value to set for the mitigationInstruction property.
+            value: Value to set for the mitigation_instruction property.
         """
         self._mitigation_instruction = value
     
@@ -95,7 +95,7 @@ class ManagedAppDiagnosticStatus(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -143,7 +143,7 @@ class ManagedAppDiagnosticStatus(AdditionalDataHolder, Parsable):
         """
         Sets the validationName property value. The validation friendly name
         Args:
-            value: Value to set for the validationName property.
+            value: Value to set for the validation_name property.
         """
         self._validation_name = value
     

@@ -78,7 +78,7 @@ class CallRoute(AdditionalDataHolder, Parsable):
             "final": lambda n : setattr(self, 'final', n.get_object_value(identity_set.IdentitySet)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "original": lambda n : setattr(self, 'original', n.get_object_value(identity_set.IdentitySet)),
-            "routing_type": lambda n : setattr(self, 'routing_type', n.get_enum_value(routing_type.RoutingType)),
+            "routingType": lambda n : setattr(self, 'routing_type', n.get_enum_value(routing_type.RoutingType)),
         }
         return fields
     
@@ -95,7 +95,7 @@ class CallRoute(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -129,7 +129,7 @@ class CallRoute(AdditionalDataHolder, Parsable):
         """
         Sets the routingType property value. The routingType property
         Args:
-            value: Value to set for the routingType property.
+            value: Value to set for the routing_type property.
         """
         self._routing_type = value
     

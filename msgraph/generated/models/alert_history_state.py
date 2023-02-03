@@ -38,7 +38,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
         """
         Sets the appId property value. The appId property
         Args:
-            value: Value to set for the appId property.
+            value: Value to set for the app_id property.
         """
         self._app_id = value
     
@@ -55,7 +55,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
         """
         Sets the assignedTo property value. The assignedTo property
         Args:
-            value: Value to set for the assignedTo property.
+            value: Value to set for the assigned_to property.
         """
         self._assigned_to = value
     
@@ -135,13 +135,13 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
-            "assigned_to": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
             "comments": lambda n : setattr(self, 'comments', n.get_collection_of_primitive_values(str)),
             "feedback": lambda n : setattr(self, 'feedback', n.get_enum_value(alert_feedback.AlertFeedback)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(alert_status.AlertStatus)),
-            "updated_date_time": lambda n : setattr(self, 'updated_date_time', n.get_datetime_value()),
+            "updatedDateTime": lambda n : setattr(self, 'updated_date_time', n.get_datetime_value()),
             "user": lambda n : setattr(self, 'user', n.get_str_value()),
         }
         return fields
@@ -159,7 +159,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -211,7 +211,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
         """
         Sets the updatedDateTime property value. The updatedDateTime property
         Args:
-            value: Value to set for the updatedDateTime property.
+            value: Value to set for the updated_date_time property.
         """
         self._updated_date_time = value
     

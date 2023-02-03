@@ -43,7 +43,7 @@ class Incident(entity.Entity):
         """
         Sets the assignedTo property value. Owner of the incident, or null if no owner is assigned. Free editable text.
         Args:
-            value: Value to set for the assignedTo property.
+            value: Value to set for the assigned_to property.
         """
         self._assigned_to = value
     
@@ -130,7 +130,7 @@ class Incident(entity.Entity):
         """
         Sets the createdDateTime property value. Time when the incident was first created.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -159,7 +159,7 @@ class Incident(entity.Entity):
         """
         Sets the customTags property value. Array of custom tags associated with an incident.
         Args:
-            value: Value to set for the customTags property.
+            value: Value to set for the custom_tags property.
         """
         self._custom_tags = value
     
@@ -193,7 +193,7 @@ class Incident(entity.Entity):
         """
         Sets the displayName property value. The incident name.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -204,19 +204,19 @@ class Incident(entity.Entity):
         """
         fields = {
             "alerts": lambda n : setattr(self, 'alerts', n.get_collection_of_object_values(alert.Alert)),
-            "assigned_to": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
+            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
             "classification": lambda n : setattr(self, 'classification', n.get_enum_value(alert_classification.AlertClassification)),
             "comments": lambda n : setattr(self, 'comments', n.get_collection_of_object_values(alert_comment.AlertComment)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "custom_tags": lambda n : setattr(self, 'custom_tags', n.get_collection_of_primitive_values(str)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "customTags": lambda n : setattr(self, 'custom_tags', n.get_collection_of_primitive_values(str)),
             "determination": lambda n : setattr(self, 'determination', n.get_enum_value(alert_determination.AlertDetermination)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "incident_web_url": lambda n : setattr(self, 'incident_web_url', n.get_str_value()),
-            "last_update_date_time": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
-            "redirect_incident_id": lambda n : setattr(self, 'redirect_incident_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "incidentWebUrl": lambda n : setattr(self, 'incident_web_url', n.get_str_value()),
+            "lastUpdateDateTime": lambda n : setattr(self, 'last_update_date_time', n.get_datetime_value()),
+            "redirectIncidentId": lambda n : setattr(self, 'redirect_incident_id', n.get_str_value()),
             "severity": lambda n : setattr(self, 'severity', n.get_enum_value(alert_severity.AlertSeverity)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(incident_status.IncidentStatus)),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -235,7 +235,7 @@ class Incident(entity.Entity):
         """
         Sets the incidentWebUrl property value. The URL for the incident page in the Microsoft 365 Defender portal.
         Args:
-            value: Value to set for the incidentWebUrl property.
+            value: Value to set for the incident_web_url property.
         """
         self._incident_web_url = value
     
@@ -252,7 +252,7 @@ class Incident(entity.Entity):
         """
         Sets the lastUpdateDateTime property value. Time when the incident was last updated.
         Args:
-            value: Value to set for the lastUpdateDateTime property.
+            value: Value to set for the last_update_date_time property.
         """
         self._last_update_date_time = value
     
@@ -269,7 +269,7 @@ class Incident(entity.Entity):
         """
         Sets the redirectIncidentId property value. Only populated in case an incident is grouped together with another incident, as part of the logic that processes incidents. In such a case, the status property is redirected.
         Args:
-            value: Value to set for the redirectIncidentId property.
+            value: Value to set for the redirect_incident_id property.
         """
         self._redirect_incident_id = value
     
@@ -344,7 +344,7 @@ class Incident(entity.Entity):
         """
         Sets the tenantId property value. The Azure Active Directory tenant in which the alert was created.
         Args:
-            value: Value to set for the tenantId property.
+            value: Value to set for the tenant_id property.
         """
         self._tenant_id = value
     

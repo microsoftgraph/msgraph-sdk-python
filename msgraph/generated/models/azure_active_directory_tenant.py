@@ -42,7 +42,7 @@ class AzureActiveDirectoryTenant(identity_source.IdentitySource):
         """
         Sets the displayName property value. The name of the Azure Active Directory tenant. Read only.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -52,8 +52,8 @@ class AzureActiveDirectoryTenant(identity_source.IdentitySource):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -84,7 +84,7 @@ class AzureActiveDirectoryTenant(identity_source.IdentitySource):
         """
         Sets the tenantId property value. The ID of the Azure Active Directory tenant. Read only.
         Args:
-            value: Value to set for the tenantId property.
+            value: Value to set for the tenant_id property.
         """
         self._tenant_id = value
     

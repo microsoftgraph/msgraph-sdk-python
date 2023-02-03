@@ -66,7 +66,7 @@ class TeamsTab(entity.Entity):
         """
         Sets the displayName property value. Name of the tab.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -77,9 +77,9 @@ class TeamsTab(entity.Entity):
         """
         fields = {
             "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(teams_tab_configuration.TeamsTabConfiguration)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "teams_app": lambda n : setattr(self, 'teams_app', n.get_object_value(teams_app.TeamsApp)),
-            "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "teamsApp": lambda n : setattr(self, 'teams_app', n.get_object_value(teams_app.TeamsApp)),
+            "webUrl": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -112,7 +112,7 @@ class TeamsTab(entity.Entity):
         """
         Sets the teamsApp property value. The application that is linked to the tab. This cannot be changed after tab creation.
         Args:
-            value: Value to set for the teamsApp property.
+            value: Value to set for the teams_app property.
         """
         self._teams_app = value
     
@@ -129,7 +129,7 @@ class TeamsTab(entity.Entity):
         """
         Sets the webUrl property value. Deep link URL of the tab instance. Read only.
         Args:
-            value: Value to set for the webUrl property.
+            value: Value to set for the web_url property.
         """
         self._web_url = value
     

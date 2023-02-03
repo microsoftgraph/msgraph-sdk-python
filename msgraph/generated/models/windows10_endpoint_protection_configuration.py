@@ -15,6 +15,23 @@ windows_firewall_network_profile = lazy_import('msgraph.generated.models.windows
 
 class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfiguration):
     @property
+    def app_locker_application_control(self,) -> Optional[app_locker_application_control_type.AppLockerApplicationControlType]:
+        """
+        Gets the appLockerApplicationControl property value. Possible values of AppLocker Application Control Types
+        Returns: Optional[app_locker_application_control_type.AppLockerApplicationControlType]
+        """
+        return self._app_locker_application_control
+    
+    @app_locker_application_control.setter
+    def app_locker_application_control(self,value: Optional[app_locker_application_control_type.AppLockerApplicationControlType] = None) -> None:
+        """
+        Sets the appLockerApplicationControl property value. Possible values of AppLocker Application Control Types
+        Args:
+            value: Value to set for the app_locker_application_control property.
+        """
+        self._app_locker_application_control = value
+    
+    @property
     def application_guard_allow_persistence(self,) -> Optional[bool]:
         """
         Gets the applicationGuardAllowPersistence property value. Allow persisting user generated data inside the App Guard Containter (favorites, cookies, web passwords, etc.)
@@ -27,7 +44,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the applicationGuardAllowPersistence property value. Allow persisting user generated data inside the App Guard Containter (favorites, cookies, web passwords, etc.)
         Args:
-            value: Value to set for the applicationGuardAllowPersistence property.
+            value: Value to set for the application_guard_allow_persistence property.
         """
         self._application_guard_allow_persistence = value
     
@@ -44,7 +61,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the applicationGuardAllowPrintToLocalPrinters property value. Allow printing to Local Printers from Container
         Args:
-            value: Value to set for the applicationGuardAllowPrintToLocalPrinters property.
+            value: Value to set for the application_guard_allow_print_to_local_printers property.
         """
         self._application_guard_allow_print_to_local_printers = value
     
@@ -61,7 +78,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the applicationGuardAllowPrintToNetworkPrinters property value. Allow printing to Network Printers from Container
         Args:
-            value: Value to set for the applicationGuardAllowPrintToNetworkPrinters property.
+            value: Value to set for the application_guard_allow_print_to_network_printers property.
         """
         self._application_guard_allow_print_to_network_printers = value
     
@@ -78,7 +95,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the applicationGuardAllowPrintToPDF property value. Allow printing to PDF from Container
         Args:
-            value: Value to set for the applicationGuardAllowPrintToPDF property.
+            value: Value to set for the application_guard_allow_print_to_p_d_f property.
         """
         self._application_guard_allow_print_to_p_d_f = value
     
@@ -95,7 +112,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the applicationGuardAllowPrintToXPS property value. Allow printing to XPS from Container
         Args:
-            value: Value to set for the applicationGuardAllowPrintToXPS property.
+            value: Value to set for the application_guard_allow_print_to_x_p_s property.
         """
         self._application_guard_allow_print_to_x_p_s = value
     
@@ -112,7 +129,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the applicationGuardBlockClipboardSharing property value. Possible values for applicationGuardBlockClipboardSharingType
         Args:
-            value: Value to set for the applicationGuardBlockClipboardSharing property.
+            value: Value to set for the application_guard_block_clipboard_sharing property.
         """
         self._application_guard_block_clipboard_sharing = value
     
@@ -129,7 +146,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the applicationGuardBlockFileTransfer property value. Possible values for applicationGuardBlockFileTransfer
         Args:
-            value: Value to set for the applicationGuardBlockFileTransfer property.
+            value: Value to set for the application_guard_block_file_transfer property.
         """
         self._application_guard_block_file_transfer = value
     
@@ -146,7 +163,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the applicationGuardBlockNonEnterpriseContent property value. Block enterprise sites to load non-enterprise content, such as third party plug-ins
         Args:
-            value: Value to set for the applicationGuardBlockNonEnterpriseContent property.
+            value: Value to set for the application_guard_block_non_enterprise_content property.
         """
         self._application_guard_block_non_enterprise_content = value
     
@@ -163,7 +180,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the applicationGuardEnabled property value. Enable Windows Defender Application Guard
         Args:
-            value: Value to set for the applicationGuardEnabled property.
+            value: Value to set for the application_guard_enabled property.
         """
         self._application_guard_enabled = value
     
@@ -180,26 +197,9 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the applicationGuardForceAuditing property value. Force auditing will persist Windows logs and events to meet security/compliance criteria (sample events are user login-logoff, use of privilege rights, software installation, system changes, etc.)
         Args:
-            value: Value to set for the applicationGuardForceAuditing property.
+            value: Value to set for the application_guard_force_auditing property.
         """
         self._application_guard_force_auditing = value
-    
-    @property
-    def app_locker_application_control(self,) -> Optional[app_locker_application_control_type.AppLockerApplicationControlType]:
-        """
-        Gets the appLockerApplicationControl property value. Possible values of AppLocker Application Control Types
-        Returns: Optional[app_locker_application_control_type.AppLockerApplicationControlType]
-        """
-        return self._app_locker_application_control
-    
-    @app_locker_application_control.setter
-    def app_locker_application_control(self,value: Optional[app_locker_application_control_type.AppLockerApplicationControlType] = None) -> None:
-        """
-        Sets the appLockerApplicationControl property value. Possible values of AppLocker Application Control Types
-        Args:
-            value: Value to set for the appLockerApplicationControl property.
-        """
-        self._app_locker_application_control = value
     
     @property
     def bit_locker_disable_warning_for_other_disk_encryption(self,) -> Optional[bool]:
@@ -214,7 +214,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the bitLockerDisableWarningForOtherDiskEncryption property value. Allows the Admin to disable the warning prompt for other disk encryption on the user machines.
         Args:
-            value: Value to set for the bitLockerDisableWarningForOtherDiskEncryption property.
+            value: Value to set for the bit_locker_disable_warning_for_other_disk_encryption property.
         """
         self._bit_locker_disable_warning_for_other_disk_encryption = value
     
@@ -231,7 +231,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the bitLockerEnableStorageCardEncryptionOnMobile property value. Allows the admin to require encryption to be turned on using BitLocker. This policy is valid only for a mobile SKU.
         Args:
-            value: Value to set for the bitLockerEnableStorageCardEncryptionOnMobile property.
+            value: Value to set for the bit_locker_enable_storage_card_encryption_on_mobile property.
         """
         self._bit_locker_enable_storage_card_encryption_on_mobile = value
     
@@ -248,7 +248,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the bitLockerEncryptDevice property value. Allows the admin to require encryption to be turned on using BitLocker.
         Args:
-            value: Value to set for the bitLockerEncryptDevice property.
+            value: Value to set for the bit_locker_encrypt_device property.
         """
         self._bit_locker_encrypt_device = value
     
@@ -265,7 +265,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the bitLockerRemovableDrivePolicy property value. BitLocker Removable Drive Policy.
         Args:
-            value: Value to set for the bitLockerRemovableDrivePolicy property.
+            value: Value to set for the bit_locker_removable_drive_policy property.
         """
         self._bit_locker_removable_drive_policy = value
     
@@ -275,6 +275,8 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.windows10EndpointProtectionConfiguration"
+        # Possible values of AppLocker Application Control Types
+        self._app_locker_application_control: Optional[app_locker_application_control_type.AppLockerApplicationControlType] = None
         # Allow persisting user generated data inside the App Guard Containter (favorites, cookies, web passwords, etc.)
         self._application_guard_allow_persistence: Optional[bool] = None
         # Allow printing to Local Printers from Container
@@ -295,8 +297,6 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         self._application_guard_enabled: Optional[bool] = None
         # Force auditing will persist Windows logs and events to meet security/compliance criteria (sample events are user login-logoff, use of privilege rights, software installation, system changes, etc.)
         self._application_guard_force_auditing: Optional[bool] = None
-        # Possible values of AppLocker Application Control Types
-        self._app_locker_application_control: Optional[app_locker_application_control_type.AppLockerApplicationControlType] = None
         # Allows the Admin to disable the warning prompt for other disk encryption on the user machines.
         self._bit_locker_disable_warning_for_other_disk_encryption: Optional[bool] = None
         # Allows the admin to require encryption to be turned on using BitLocker. This policy is valid only for a mobile SKU.
@@ -321,8 +321,6 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         self._firewall_block_stateful_f_t_p: Optional[bool] = None
         # Possible values for firewallCertificateRevocationListCheckMethod
         self._firewall_certificate_revocation_list_check_method: Optional[firewall_certificate_revocation_list_check_method_type.FirewallCertificateRevocationListCheckMethodType] = None
-        # Configures the idle timeout for security associations, in seconds, from 300 to 3600 inclusive. This is the period after which security associations will expire and be deleted. Valid values 300 to 3600
-        self._firewall_idle_timeout_for_security_association_in_seconds: Optional[int] = None
         # Configures IPSec exemptions to allow both IPv4 and IPv6 DHCP traffic
         self._firewall_i_p_sec_exemptions_allow_d_h_c_p: Optional[bool] = None
         # Configures IPSec exemptions to allow ICMP
@@ -331,6 +329,8 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         self._firewall_i_p_sec_exemptions_allow_neighbor_discovery: Optional[bool] = None
         # Configures IPSec exemptions to allow router discovery IPv6 ICMP type-codes
         self._firewall_i_p_sec_exemptions_allow_router_discovery: Optional[bool] = None
+        # Configures the idle timeout for security associations, in seconds, from 300 to 3600 inclusive. This is the period after which security associations will expire and be deleted. Valid values 300 to 3600
+        self._firewall_idle_timeout_for_security_association_in_seconds: Optional[int] = None
         # If an authentication set is not fully supported by a keying module, direct the module to ignore only unsupported authentication suites rather than the entire set
         self._firewall_merge_keying_module_settings: Optional[bool] = None
         # Possible values for firewallPacketQueueingMethod
@@ -373,7 +373,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the defenderAdditionalGuardedFolders property value. List of folder paths to be added to the list of protected folders
         Args:
-            value: Value to set for the defenderAdditionalGuardedFolders property.
+            value: Value to set for the defender_additional_guarded_folders property.
         """
         self._defender_additional_guarded_folders = value
     
@@ -390,7 +390,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the defenderAttackSurfaceReductionExcludedPaths property value. List of exe files and folders to be excluded from attack surface reduction rules
         Args:
-            value: Value to set for the defenderAttackSurfaceReductionExcludedPaths property.
+            value: Value to set for the defender_attack_surface_reduction_excluded_paths property.
         """
         self._defender_attack_surface_reduction_excluded_paths = value
     
@@ -407,7 +407,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the defenderExploitProtectionXml property value. Xml content containing information regarding exploit protection details.
         Args:
-            value: Value to set for the defenderExploitProtectionXml property.
+            value: Value to set for the defender_exploit_protection_xml property.
         """
         self._defender_exploit_protection_xml = value
     
@@ -424,7 +424,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the defenderExploitProtectionXmlFileName property value. Name of the file from which DefenderExploitProtectionXml was obtained.
         Args:
-            value: Value to set for the defenderExploitProtectionXmlFileName property.
+            value: Value to set for the defender_exploit_protection_xml_file_name property.
         """
         self._defender_exploit_protection_xml_file_name = value
     
@@ -441,7 +441,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the defenderGuardedFoldersAllowedAppPaths property value. List of paths to exe that are allowed to access protected folders
         Args:
-            value: Value to set for the defenderGuardedFoldersAllowedAppPaths property.
+            value: Value to set for the defender_guarded_folders_allowed_app_paths property.
         """
         self._defender_guarded_folders_allowed_app_paths = value
     
@@ -458,7 +458,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the defenderSecurityCenterBlockExploitProtectionOverride property value. Indicates whether or not to block user from overriding Exploit Protection settings.
         Args:
-            value: Value to set for the defenderSecurityCenterBlockExploitProtectionOverride property.
+            value: Value to set for the defender_security_center_block_exploit_protection_override property.
         """
         self._defender_security_center_block_exploit_protection_override = value
     
@@ -475,7 +475,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the firewallBlockStatefulFTP property value. Blocks stateful FTP connections to the device
         Args:
-            value: Value to set for the firewallBlockStatefulFTP property.
+            value: Value to set for the firewall_block_stateful_f_t_p property.
         """
         self._firewall_block_stateful_f_t_p = value
     
@@ -492,26 +492,9 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the firewallCertificateRevocationListCheckMethod property value. Possible values for firewallCertificateRevocationListCheckMethod
         Args:
-            value: Value to set for the firewallCertificateRevocationListCheckMethod property.
+            value: Value to set for the firewall_certificate_revocation_list_check_method property.
         """
         self._firewall_certificate_revocation_list_check_method = value
-    
-    @property
-    def firewall_idle_timeout_for_security_association_in_seconds(self,) -> Optional[int]:
-        """
-        Gets the firewallIdleTimeoutForSecurityAssociationInSeconds property value. Configures the idle timeout for security associations, in seconds, from 300 to 3600 inclusive. This is the period after which security associations will expire and be deleted. Valid values 300 to 3600
-        Returns: Optional[int]
-        """
-        return self._firewall_idle_timeout_for_security_association_in_seconds
-    
-    @firewall_idle_timeout_for_security_association_in_seconds.setter
-    def firewall_idle_timeout_for_security_association_in_seconds(self,value: Optional[int] = None) -> None:
-        """
-        Sets the firewallIdleTimeoutForSecurityAssociationInSeconds property value. Configures the idle timeout for security associations, in seconds, from 300 to 3600 inclusive. This is the period after which security associations will expire and be deleted. Valid values 300 to 3600
-        Args:
-            value: Value to set for the firewallIdleTimeoutForSecurityAssociationInSeconds property.
-        """
-        self._firewall_idle_timeout_for_security_association_in_seconds = value
     
     @property
     def firewall_i_p_sec_exemptions_allow_d_h_c_p(self,) -> Optional[bool]:
@@ -526,7 +509,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the firewallIPSecExemptionsAllowDHCP property value. Configures IPSec exemptions to allow both IPv4 and IPv6 DHCP traffic
         Args:
-            value: Value to set for the firewallIPSecExemptionsAllowDHCP property.
+            value: Value to set for the firewall_i_p_sec_exemptions_allow_d_h_c_p property.
         """
         self._firewall_i_p_sec_exemptions_allow_d_h_c_p = value
     
@@ -543,7 +526,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the firewallIPSecExemptionsAllowICMP property value. Configures IPSec exemptions to allow ICMP
         Args:
-            value: Value to set for the firewallIPSecExemptionsAllowICMP property.
+            value: Value to set for the firewall_i_p_sec_exemptions_allow_i_c_m_p property.
         """
         self._firewall_i_p_sec_exemptions_allow_i_c_m_p = value
     
@@ -560,7 +543,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the firewallIPSecExemptionsAllowNeighborDiscovery property value. Configures IPSec exemptions to allow neighbor discovery IPv6 ICMP type-codes
         Args:
-            value: Value to set for the firewallIPSecExemptionsAllowNeighborDiscovery property.
+            value: Value to set for the firewall_i_p_sec_exemptions_allow_neighbor_discovery property.
         """
         self._firewall_i_p_sec_exemptions_allow_neighbor_discovery = value
     
@@ -577,9 +560,26 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the firewallIPSecExemptionsAllowRouterDiscovery property value. Configures IPSec exemptions to allow router discovery IPv6 ICMP type-codes
         Args:
-            value: Value to set for the firewallIPSecExemptionsAllowRouterDiscovery property.
+            value: Value to set for the firewall_i_p_sec_exemptions_allow_router_discovery property.
         """
         self._firewall_i_p_sec_exemptions_allow_router_discovery = value
+    
+    @property
+    def firewall_idle_timeout_for_security_association_in_seconds(self,) -> Optional[int]:
+        """
+        Gets the firewallIdleTimeoutForSecurityAssociationInSeconds property value. Configures the idle timeout for security associations, in seconds, from 300 to 3600 inclusive. This is the period after which security associations will expire and be deleted. Valid values 300 to 3600
+        Returns: Optional[int]
+        """
+        return self._firewall_idle_timeout_for_security_association_in_seconds
+    
+    @firewall_idle_timeout_for_security_association_in_seconds.setter
+    def firewall_idle_timeout_for_security_association_in_seconds(self,value: Optional[int] = None) -> None:
+        """
+        Sets the firewallIdleTimeoutForSecurityAssociationInSeconds property value. Configures the idle timeout for security associations, in seconds, from 300 to 3600 inclusive. This is the period after which security associations will expire and be deleted. Valid values 300 to 3600
+        Args:
+            value: Value to set for the firewall_idle_timeout_for_security_association_in_seconds property.
+        """
+        self._firewall_idle_timeout_for_security_association_in_seconds = value
     
     @property
     def firewall_merge_keying_module_settings(self,) -> Optional[bool]:
@@ -594,7 +594,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the firewallMergeKeyingModuleSettings property value. If an authentication set is not fully supported by a keying module, direct the module to ignore only unsupported authentication suites rather than the entire set
         Args:
-            value: Value to set for the firewallMergeKeyingModuleSettings property.
+            value: Value to set for the firewall_merge_keying_module_settings property.
         """
         self._firewall_merge_keying_module_settings = value
     
@@ -611,7 +611,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the firewallPacketQueueingMethod property value. Possible values for firewallPacketQueueingMethod
         Args:
-            value: Value to set for the firewallPacketQueueingMethod property.
+            value: Value to set for the firewall_packet_queueing_method property.
         """
         self._firewall_packet_queueing_method = value
     
@@ -628,7 +628,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the firewallPreSharedKeyEncodingMethod property value. Possible values for firewallPreSharedKeyEncodingMethod
         Args:
-            value: Value to set for the firewallPreSharedKeyEncodingMethod property.
+            value: Value to set for the firewall_pre_shared_key_encoding_method property.
         """
         self._firewall_pre_shared_key_encoding_method = value
     
@@ -645,7 +645,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the firewallProfileDomain property value. Configures the firewall profile settings for domain networks
         Args:
-            value: Value to set for the firewallProfileDomain property.
+            value: Value to set for the firewall_profile_domain property.
         """
         self._firewall_profile_domain = value
     
@@ -662,7 +662,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the firewallProfilePrivate property value. Configures the firewall profile settings for private networks
         Args:
-            value: Value to set for the firewallProfilePrivate property.
+            value: Value to set for the firewall_profile_private property.
         """
         self._firewall_profile_private = value
     
@@ -679,7 +679,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the firewallProfilePublic property value. Configures the firewall profile settings for public networks
         Args:
-            value: Value to set for the firewallProfilePublic property.
+            value: Value to set for the firewall_profile_public property.
         """
         self._firewall_profile_public = value
     
@@ -689,42 +689,42 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "application_guard_allow_persistence": lambda n : setattr(self, 'application_guard_allow_persistence', n.get_bool_value()),
-            "application_guard_allow_print_to_local_printers": lambda n : setattr(self, 'application_guard_allow_print_to_local_printers', n.get_bool_value()),
-            "application_guard_allow_print_to_network_printers": lambda n : setattr(self, 'application_guard_allow_print_to_network_printers', n.get_bool_value()),
-            "application_guard_allow_print_to_p_d_f": lambda n : setattr(self, 'application_guard_allow_print_to_p_d_f', n.get_bool_value()),
-            "application_guard_allow_print_to_x_p_s": lambda n : setattr(self, 'application_guard_allow_print_to_x_p_s', n.get_bool_value()),
-            "application_guard_block_clipboard_sharing": lambda n : setattr(self, 'application_guard_block_clipboard_sharing', n.get_enum_value(application_guard_block_clipboard_sharing_type.ApplicationGuardBlockClipboardSharingType)),
-            "application_guard_block_file_transfer": lambda n : setattr(self, 'application_guard_block_file_transfer', n.get_enum_value(application_guard_block_file_transfer_type.ApplicationGuardBlockFileTransferType)),
-            "application_guard_block_non_enterprise_content": lambda n : setattr(self, 'application_guard_block_non_enterprise_content', n.get_bool_value()),
-            "application_guard_enabled": lambda n : setattr(self, 'application_guard_enabled', n.get_bool_value()),
-            "application_guard_force_auditing": lambda n : setattr(self, 'application_guard_force_auditing', n.get_bool_value()),
-            "app_locker_application_control": lambda n : setattr(self, 'app_locker_application_control', n.get_enum_value(app_locker_application_control_type.AppLockerApplicationControlType)),
-            "bit_locker_disable_warning_for_other_disk_encryption": lambda n : setattr(self, 'bit_locker_disable_warning_for_other_disk_encryption', n.get_bool_value()),
-            "bit_locker_enable_storage_card_encryption_on_mobile": lambda n : setattr(self, 'bit_locker_enable_storage_card_encryption_on_mobile', n.get_bool_value()),
-            "bit_locker_encrypt_device": lambda n : setattr(self, 'bit_locker_encrypt_device', n.get_bool_value()),
-            "bit_locker_removable_drive_policy": lambda n : setattr(self, 'bit_locker_removable_drive_policy', n.get_object_value(bit_locker_removable_drive_policy.BitLockerRemovableDrivePolicy)),
-            "defender_additional_guarded_folders": lambda n : setattr(self, 'defender_additional_guarded_folders', n.get_collection_of_primitive_values(str)),
-            "defender_attack_surface_reduction_excluded_paths": lambda n : setattr(self, 'defender_attack_surface_reduction_excluded_paths', n.get_collection_of_primitive_values(str)),
-            "defender_exploit_protection_xml": lambda n : setattr(self, 'defender_exploit_protection_xml', n.get_bytes_value()),
-            "defender_exploit_protection_xml_file_name": lambda n : setattr(self, 'defender_exploit_protection_xml_file_name', n.get_str_value()),
-            "defender_guarded_folders_allowed_app_paths": lambda n : setattr(self, 'defender_guarded_folders_allowed_app_paths', n.get_collection_of_primitive_values(str)),
-            "defender_security_center_block_exploit_protection_override": lambda n : setattr(self, 'defender_security_center_block_exploit_protection_override', n.get_bool_value()),
-            "firewall_block_stateful_f_t_p": lambda n : setattr(self, 'firewall_block_stateful_f_t_p', n.get_bool_value()),
-            "firewall_certificate_revocation_list_check_method": lambda n : setattr(self, 'firewall_certificate_revocation_list_check_method', n.get_enum_value(firewall_certificate_revocation_list_check_method_type.FirewallCertificateRevocationListCheckMethodType)),
-            "firewall_idle_timeout_for_security_association_in_seconds": lambda n : setattr(self, 'firewall_idle_timeout_for_security_association_in_seconds', n.get_int_value()),
-            "firewall_i_p_sec_exemptions_allow_d_h_c_p": lambda n : setattr(self, 'firewall_i_p_sec_exemptions_allow_d_h_c_p', n.get_bool_value()),
-            "firewall_i_p_sec_exemptions_allow_i_c_m_p": lambda n : setattr(self, 'firewall_i_p_sec_exemptions_allow_i_c_m_p', n.get_bool_value()),
-            "firewall_i_p_sec_exemptions_allow_neighbor_discovery": lambda n : setattr(self, 'firewall_i_p_sec_exemptions_allow_neighbor_discovery', n.get_bool_value()),
-            "firewall_i_p_sec_exemptions_allow_router_discovery": lambda n : setattr(self, 'firewall_i_p_sec_exemptions_allow_router_discovery', n.get_bool_value()),
-            "firewall_merge_keying_module_settings": lambda n : setattr(self, 'firewall_merge_keying_module_settings', n.get_bool_value()),
-            "firewall_packet_queueing_method": lambda n : setattr(self, 'firewall_packet_queueing_method', n.get_enum_value(firewall_packet_queueing_method_type.FirewallPacketQueueingMethodType)),
-            "firewall_pre_shared_key_encoding_method": lambda n : setattr(self, 'firewall_pre_shared_key_encoding_method', n.get_enum_value(firewall_pre_shared_key_encoding_method_type.FirewallPreSharedKeyEncodingMethodType)),
-            "firewall_profile_domain": lambda n : setattr(self, 'firewall_profile_domain', n.get_object_value(windows_firewall_network_profile.WindowsFirewallNetworkProfile)),
-            "firewall_profile_private": lambda n : setattr(self, 'firewall_profile_private', n.get_object_value(windows_firewall_network_profile.WindowsFirewallNetworkProfile)),
-            "firewall_profile_public": lambda n : setattr(self, 'firewall_profile_public', n.get_object_value(windows_firewall_network_profile.WindowsFirewallNetworkProfile)),
-            "smart_screen_block_override_for_files": lambda n : setattr(self, 'smart_screen_block_override_for_files', n.get_bool_value()),
-            "smart_screen_enable_in_shell": lambda n : setattr(self, 'smart_screen_enable_in_shell', n.get_bool_value()),
+            "applicationGuardAllowPersistence": lambda n : setattr(self, 'application_guard_allow_persistence', n.get_bool_value()),
+            "applicationGuardAllowPrintToLocalPrinters": lambda n : setattr(self, 'application_guard_allow_print_to_local_printers', n.get_bool_value()),
+            "applicationGuardAllowPrintToNetworkPrinters": lambda n : setattr(self, 'application_guard_allow_print_to_network_printers', n.get_bool_value()),
+            "applicationGuardAllowPrintToPDF": lambda n : setattr(self, 'application_guard_allow_print_to_p_d_f', n.get_bool_value()),
+            "applicationGuardAllowPrintToXPS": lambda n : setattr(self, 'application_guard_allow_print_to_x_p_s', n.get_bool_value()),
+            "applicationGuardBlockClipboardSharing": lambda n : setattr(self, 'application_guard_block_clipboard_sharing', n.get_enum_value(application_guard_block_clipboard_sharing_type.ApplicationGuardBlockClipboardSharingType)),
+            "applicationGuardBlockFileTransfer": lambda n : setattr(self, 'application_guard_block_file_transfer', n.get_enum_value(application_guard_block_file_transfer_type.ApplicationGuardBlockFileTransferType)),
+            "applicationGuardBlockNonEnterpriseContent": lambda n : setattr(self, 'application_guard_block_non_enterprise_content', n.get_bool_value()),
+            "applicationGuardEnabled": lambda n : setattr(self, 'application_guard_enabled', n.get_bool_value()),
+            "applicationGuardForceAuditing": lambda n : setattr(self, 'application_guard_force_auditing', n.get_bool_value()),
+            "appLockerApplicationControl": lambda n : setattr(self, 'app_locker_application_control', n.get_enum_value(app_locker_application_control_type.AppLockerApplicationControlType)),
+            "bitLockerDisableWarningForOtherDiskEncryption": lambda n : setattr(self, 'bit_locker_disable_warning_for_other_disk_encryption', n.get_bool_value()),
+            "bitLockerEnableStorageCardEncryptionOnMobile": lambda n : setattr(self, 'bit_locker_enable_storage_card_encryption_on_mobile', n.get_bool_value()),
+            "bitLockerEncryptDevice": lambda n : setattr(self, 'bit_locker_encrypt_device', n.get_bool_value()),
+            "bitLockerRemovableDrivePolicy": lambda n : setattr(self, 'bit_locker_removable_drive_policy', n.get_object_value(bit_locker_removable_drive_policy.BitLockerRemovableDrivePolicy)),
+            "defenderAdditionalGuardedFolders": lambda n : setattr(self, 'defender_additional_guarded_folders', n.get_collection_of_primitive_values(str)),
+            "defenderAttackSurfaceReductionExcludedPaths": lambda n : setattr(self, 'defender_attack_surface_reduction_excluded_paths', n.get_collection_of_primitive_values(str)),
+            "defenderExploitProtectionXml": lambda n : setattr(self, 'defender_exploit_protection_xml', n.get_bytes_value()),
+            "defenderExploitProtectionXmlFileName": lambda n : setattr(self, 'defender_exploit_protection_xml_file_name', n.get_str_value()),
+            "defenderGuardedFoldersAllowedAppPaths": lambda n : setattr(self, 'defender_guarded_folders_allowed_app_paths', n.get_collection_of_primitive_values(str)),
+            "defenderSecurityCenterBlockExploitProtectionOverride": lambda n : setattr(self, 'defender_security_center_block_exploit_protection_override', n.get_bool_value()),
+            "firewallBlockStatefulFTP": lambda n : setattr(self, 'firewall_block_stateful_f_t_p', n.get_bool_value()),
+            "firewallCertificateRevocationListCheckMethod": lambda n : setattr(self, 'firewall_certificate_revocation_list_check_method', n.get_enum_value(firewall_certificate_revocation_list_check_method_type.FirewallCertificateRevocationListCheckMethodType)),
+            "firewallIdleTimeoutForSecurityAssociationInSeconds": lambda n : setattr(self, 'firewall_idle_timeout_for_security_association_in_seconds', n.get_int_value()),
+            "firewallIPSecExemptionsAllowDHCP": lambda n : setattr(self, 'firewall_i_p_sec_exemptions_allow_d_h_c_p', n.get_bool_value()),
+            "firewallIPSecExemptionsAllowICMP": lambda n : setattr(self, 'firewall_i_p_sec_exemptions_allow_i_c_m_p', n.get_bool_value()),
+            "firewallIPSecExemptionsAllowNeighborDiscovery": lambda n : setattr(self, 'firewall_i_p_sec_exemptions_allow_neighbor_discovery', n.get_bool_value()),
+            "firewallIPSecExemptionsAllowRouterDiscovery": lambda n : setattr(self, 'firewall_i_p_sec_exemptions_allow_router_discovery', n.get_bool_value()),
+            "firewallMergeKeyingModuleSettings": lambda n : setattr(self, 'firewall_merge_keying_module_settings', n.get_bool_value()),
+            "firewallPacketQueueingMethod": lambda n : setattr(self, 'firewall_packet_queueing_method', n.get_enum_value(firewall_packet_queueing_method_type.FirewallPacketQueueingMethodType)),
+            "firewallPreSharedKeyEncodingMethod": lambda n : setattr(self, 'firewall_pre_shared_key_encoding_method', n.get_enum_value(firewall_pre_shared_key_encoding_method_type.FirewallPreSharedKeyEncodingMethodType)),
+            "firewallProfileDomain": lambda n : setattr(self, 'firewall_profile_domain', n.get_object_value(windows_firewall_network_profile.WindowsFirewallNetworkProfile)),
+            "firewallProfilePrivate": lambda n : setattr(self, 'firewall_profile_private', n.get_object_value(windows_firewall_network_profile.WindowsFirewallNetworkProfile)),
+            "firewallProfilePublic": lambda n : setattr(self, 'firewall_profile_public', n.get_object_value(windows_firewall_network_profile.WindowsFirewallNetworkProfile)),
+            "smartScreenBlockOverrideForFiles": lambda n : setattr(self, 'smart_screen_block_override_for_files', n.get_bool_value()),
+            "smartScreenEnableInShell": lambda n : setattr(self, 'smart_screen_enable_in_shell', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -789,7 +789,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the smartScreenBlockOverrideForFiles property value. Allows IT Admins to control whether users can can ignore SmartScreen warnings and run malicious files.
         Args:
-            value: Value to set for the smartScreenBlockOverrideForFiles property.
+            value: Value to set for the smart_screen_block_override_for_files property.
         """
         self._smart_screen_block_override_for_files = value
     
@@ -806,7 +806,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         """
         Sets the smartScreenEnableInShell property value. Allows IT Admins to configure SmartScreen for Windows.
         Args:
-            value: Value to set for the smartScreenEnableInShell property.
+            value: Value to set for the smart_screen_enable_in_shell property.
         """
         self._smart_screen_enable_in_shell = value
     

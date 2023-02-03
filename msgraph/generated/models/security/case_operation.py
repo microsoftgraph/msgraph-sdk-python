@@ -41,7 +41,7 @@ class CaseOperation(entity.Entity):
         """
         Sets the completedDateTime property value. The date and time the operation was completed.
         Args:
-            value: Value to set for the completedDateTime property.
+            value: Value to set for the completed_date_time property.
         """
         self._completed_date_time = value
     
@@ -80,7 +80,7 @@ class CaseOperation(entity.Entity):
         """
         Sets the createdBy property value. The user that created the operation.
         Args:
-            value: Value to set for the createdBy property.
+            value: Value to set for the created_by property.
         """
         self._created_by = value
     
@@ -97,7 +97,7 @@ class CaseOperation(entity.Entity):
         """
         Sets the createdDateTime property value. The date and time the operation was created.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -120,11 +120,11 @@ class CaseOperation(entity.Entity):
         """
         fields = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(case_action.CaseAction)),
-            "completed_date_time": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "percent_progress": lambda n : setattr(self, 'percent_progress', n.get_int_value()),
-            "result_info": lambda n : setattr(self, 'result_info', n.get_object_value(result_info.ResultInfo)),
+            "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "percentProgress": lambda n : setattr(self, 'percent_progress', n.get_int_value()),
+            "resultInfo": lambda n : setattr(self, 'result_info', n.get_object_value(result_info.ResultInfo)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(case_operation_status.CaseOperationStatus)),
         }
         super_fields = super().get_field_deserializers()
@@ -144,7 +144,7 @@ class CaseOperation(entity.Entity):
         """
         Sets the percentProgress property value. The progress of the operation.
         Args:
-            value: Value to set for the percentProgress property.
+            value: Value to set for the percent_progress property.
         """
         self._percent_progress = value
     
@@ -161,7 +161,7 @@ class CaseOperation(entity.Entity):
         """
         Sets the resultInfo property value. Contains success and failure-specific result information.
         Args:
-            value: Value to set for the resultInfo property.
+            value: Value to set for the result_info property.
         """
         self._result_info = value
     

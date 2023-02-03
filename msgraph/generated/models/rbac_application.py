@@ -21,14 +21,14 @@ class RbacApplication(entity.Entity):
         super().__init__()
         # The OdataType property
         self.odata_type: Optional[str] = None
-        # Resource to grant access to users or groups.
-        self._role_assignments: Optional[List[unified_role_assignment.UnifiedRoleAssignment]] = None
         # Instances for active role assignments.
         self._role_assignment_schedule_instances: Optional[List[unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance]] = None
         # Requests for active role assignments to principals through PIM.
         self._role_assignment_schedule_requests: Optional[List[unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest]] = None
         # Schedules for active role assignment operations.
         self._role_assignment_schedules: Optional[List[unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule]] = None
+        # Resource to grant access to users or groups.
+        self._role_assignments: Optional[List[unified_role_assignment.UnifiedRoleAssignment]] = None
         # Resource representing the roles allowed by RBAC providers and the permissions assigned to the roles.
         self._role_definitions: Optional[List[unified_role_definition.UnifiedRoleDefinition]] = None
         # Instances for role eligibility requests.
@@ -56,35 +56,18 @@ class RbacApplication(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "role_assignments": lambda n : setattr(self, 'role_assignments', n.get_collection_of_object_values(unified_role_assignment.UnifiedRoleAssignment)),
-            "role_assignment_schedule_instances": lambda n : setattr(self, 'role_assignment_schedule_instances', n.get_collection_of_object_values(unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance)),
-            "role_assignment_schedule_requests": lambda n : setattr(self, 'role_assignment_schedule_requests', n.get_collection_of_object_values(unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest)),
-            "role_assignment_schedules": lambda n : setattr(self, 'role_assignment_schedules', n.get_collection_of_object_values(unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule)),
-            "role_definitions": lambda n : setattr(self, 'role_definitions', n.get_collection_of_object_values(unified_role_definition.UnifiedRoleDefinition)),
-            "role_eligibility_schedule_instances": lambda n : setattr(self, 'role_eligibility_schedule_instances', n.get_collection_of_object_values(unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance)),
-            "role_eligibility_schedule_requests": lambda n : setattr(self, 'role_eligibility_schedule_requests', n.get_collection_of_object_values(unified_role_eligibility_schedule_request.UnifiedRoleEligibilityScheduleRequest)),
-            "role_eligibility_schedules": lambda n : setattr(self, 'role_eligibility_schedules', n.get_collection_of_object_values(unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule)),
+            "roleAssignments": lambda n : setattr(self, 'role_assignments', n.get_collection_of_object_values(unified_role_assignment.UnifiedRoleAssignment)),
+            "roleAssignmentSchedules": lambda n : setattr(self, 'role_assignment_schedules', n.get_collection_of_object_values(unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule)),
+            "roleAssignmentScheduleInstances": lambda n : setattr(self, 'role_assignment_schedule_instances', n.get_collection_of_object_values(unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance)),
+            "roleAssignmentScheduleRequests": lambda n : setattr(self, 'role_assignment_schedule_requests', n.get_collection_of_object_values(unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest)),
+            "roleDefinitions": lambda n : setattr(self, 'role_definitions', n.get_collection_of_object_values(unified_role_definition.UnifiedRoleDefinition)),
+            "roleEligibilitySchedules": lambda n : setattr(self, 'role_eligibility_schedules', n.get_collection_of_object_values(unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule)),
+            "roleEligibilityScheduleInstances": lambda n : setattr(self, 'role_eligibility_schedule_instances', n.get_collection_of_object_values(unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance)),
+            "roleEligibilityScheduleRequests": lambda n : setattr(self, 'role_eligibility_schedule_requests', n.get_collection_of_object_values(unified_role_eligibility_schedule_request.UnifiedRoleEligibilityScheduleRequest)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def role_assignments(self,) -> Optional[List[unified_role_assignment.UnifiedRoleAssignment]]:
-        """
-        Gets the roleAssignments property value. Resource to grant access to users or groups.
-        Returns: Optional[List[unified_role_assignment.UnifiedRoleAssignment]]
-        """
-        return self._role_assignments
-    
-    @role_assignments.setter
-    def role_assignments(self,value: Optional[List[unified_role_assignment.UnifiedRoleAssignment]] = None) -> None:
-        """
-        Sets the roleAssignments property value. Resource to grant access to users or groups.
-        Args:
-            value: Value to set for the roleAssignments property.
-        """
-        self._role_assignments = value
     
     @property
     def role_assignment_schedule_instances(self,) -> Optional[List[unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance]]:
@@ -99,7 +82,7 @@ class RbacApplication(entity.Entity):
         """
         Sets the roleAssignmentScheduleInstances property value. Instances for active role assignments.
         Args:
-            value: Value to set for the roleAssignmentScheduleInstances property.
+            value: Value to set for the role_assignment_schedule_instances property.
         """
         self._role_assignment_schedule_instances = value
     
@@ -116,7 +99,7 @@ class RbacApplication(entity.Entity):
         """
         Sets the roleAssignmentScheduleRequests property value. Requests for active role assignments to principals through PIM.
         Args:
-            value: Value to set for the roleAssignmentScheduleRequests property.
+            value: Value to set for the role_assignment_schedule_requests property.
         """
         self._role_assignment_schedule_requests = value
     
@@ -133,9 +116,26 @@ class RbacApplication(entity.Entity):
         """
         Sets the roleAssignmentSchedules property value. Schedules for active role assignment operations.
         Args:
-            value: Value to set for the roleAssignmentSchedules property.
+            value: Value to set for the role_assignment_schedules property.
         """
         self._role_assignment_schedules = value
+    
+    @property
+    def role_assignments(self,) -> Optional[List[unified_role_assignment.UnifiedRoleAssignment]]:
+        """
+        Gets the roleAssignments property value. Resource to grant access to users or groups.
+        Returns: Optional[List[unified_role_assignment.UnifiedRoleAssignment]]
+        """
+        return self._role_assignments
+    
+    @role_assignments.setter
+    def role_assignments(self,value: Optional[List[unified_role_assignment.UnifiedRoleAssignment]] = None) -> None:
+        """
+        Sets the roleAssignments property value. Resource to grant access to users or groups.
+        Args:
+            value: Value to set for the role_assignments property.
+        """
+        self._role_assignments = value
     
     @property
     def role_definitions(self,) -> Optional[List[unified_role_definition.UnifiedRoleDefinition]]:
@@ -150,7 +150,7 @@ class RbacApplication(entity.Entity):
         """
         Sets the roleDefinitions property value. Resource representing the roles allowed by RBAC providers and the permissions assigned to the roles.
         Args:
-            value: Value to set for the roleDefinitions property.
+            value: Value to set for the role_definitions property.
         """
         self._role_definitions = value
     
@@ -167,7 +167,7 @@ class RbacApplication(entity.Entity):
         """
         Sets the roleEligibilityScheduleInstances property value. Instances for role eligibility requests.
         Args:
-            value: Value to set for the roleEligibilityScheduleInstances property.
+            value: Value to set for the role_eligibility_schedule_instances property.
         """
         self._role_eligibility_schedule_instances = value
     
@@ -184,7 +184,7 @@ class RbacApplication(entity.Entity):
         """
         Sets the roleEligibilityScheduleRequests property value. Requests for role eligibilities for principals through PIM.
         Args:
-            value: Value to set for the roleEligibilityScheduleRequests property.
+            value: Value to set for the role_eligibility_schedule_requests property.
         """
         self._role_eligibility_schedule_requests = value
     
@@ -201,7 +201,7 @@ class RbacApplication(entity.Entity):
         """
         Sets the roleEligibilitySchedules property value. Schedules for role eligibility operations.
         Args:
-            value: Value to set for the roleEligibilitySchedules property.
+            value: Value to set for the role_eligibility_schedules property.
         """
         self._role_eligibility_schedules = value
     
@@ -215,12 +215,12 @@ class RbacApplication(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("roleAssignments", self.role_assignments)
+        writer.write_collection_of_object_values("roleAssignmentSchedules", self.role_assignment_schedules)
         writer.write_collection_of_object_values("roleAssignmentScheduleInstances", self.role_assignment_schedule_instances)
         writer.write_collection_of_object_values("roleAssignmentScheduleRequests", self.role_assignment_schedule_requests)
-        writer.write_collection_of_object_values("roleAssignmentSchedules", self.role_assignment_schedules)
         writer.write_collection_of_object_values("roleDefinitions", self.role_definitions)
+        writer.write_collection_of_object_values("roleEligibilitySchedules", self.role_eligibility_schedules)
         writer.write_collection_of_object_values("roleEligibilityScheduleInstances", self.role_eligibility_schedule_instances)
         writer.write_collection_of_object_values("roleEligibilityScheduleRequests", self.role_eligibility_schedule_requests)
-        writer.write_collection_of_object_values("roleEligibilitySchedules", self.role_eligibility_schedules)
     
 

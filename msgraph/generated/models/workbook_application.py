@@ -19,7 +19,7 @@ class WorkbookApplication(entity.Entity):
         """
         Sets the calculationMode property value. Returns the calculation mode used in the workbook. Possible values are: Automatic, AutomaticExceptTables, Manual.
         Args:
-            value: Value to set for the calculationMode property.
+            value: Value to set for the calculation_mode property.
         """
         self._calculation_mode = value
     
@@ -51,7 +51,7 @@ class WorkbookApplication(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "calculation_mode": lambda n : setattr(self, 'calculation_mode', n.get_str_value()),
+            "calculationMode": lambda n : setattr(self, 'calculation_mode', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

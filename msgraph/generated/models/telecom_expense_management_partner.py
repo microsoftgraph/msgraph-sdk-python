@@ -23,7 +23,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
         """
         Sets the appAuthorized property value. Whether the partner's AAD app has been authorized to access Intune.
         Args:
-            value: Value to set for the appAuthorized property.
+            value: Value to set for the app_authorized property.
         """
         self._app_authorized = value
     
@@ -70,7 +70,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
         """
         Sets the displayName property value. Display name of the TEM partner.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -97,10 +97,10 @@ class TelecomExpenseManagementPartner(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_authorized": lambda n : setattr(self, 'app_authorized', n.get_bool_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "appAuthorized": lambda n : setattr(self, 'app_authorized', n.get_bool_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "enabled": lambda n : setattr(self, 'enabled', n.get_bool_value()),
-            "last_connection_date_time": lambda n : setattr(self, 'last_connection_date_time', n.get_datetime_value()),
+            "lastConnectionDateTime": lambda n : setattr(self, 'last_connection_date_time', n.get_datetime_value()),
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -120,7 +120,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
         """
         Sets the lastConnectionDateTime property value. Timestamp of the last request sent to Intune by the TEM partner.
         Args:
-            value: Value to set for the lastConnectionDateTime property.
+            value: Value to set for the last_connection_date_time property.
         """
         self._last_connection_date_time = value
     

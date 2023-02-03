@@ -19,7 +19,7 @@ class ConfigurationManagerCollectionAssignmentTarget(device_and_app_management_a
         """
         Sets the collectionId property value. The collection Id that is the target of the assignment.
         Args:
-            value: Value to set for the collectionId property.
+            value: Value to set for the collection_id property.
         """
         self._collection_id = value
     
@@ -50,7 +50,7 @@ class ConfigurationManagerCollectionAssignmentTarget(device_and_app_management_a
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "collection_id": lambda n : setattr(self, 'collection_id', n.get_str_value()),
+            "collectionId": lambda n : setattr(self, 'collection_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

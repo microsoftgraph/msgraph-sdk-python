@@ -72,7 +72,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
         """
         Sets the contentDateTime property value. Date and time of the training content playback by the user.
         Args:
-            value: Value to set for the contentDateTime property.
+            value: Value to set for the content_date_time property.
         """
         self._content_date_time = value
     
@@ -95,11 +95,11 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
         """
         fields = {
             "browser": lambda n : setattr(self, 'browser', n.get_str_value()),
-            "content_date_time": lambda n : setattr(self, 'content_date_time', n.get_datetime_value()),
-            "ip_address": lambda n : setattr(self, 'ip_address', n.get_str_value()),
+            "contentDateTime": lambda n : setattr(self, 'content_date_time', n.get_datetime_value()),
+            "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "os_platform_device_details": lambda n : setattr(self, 'os_platform_device_details', n.get_str_value()),
-            "potential_score_impact": lambda n : setattr(self, 'potential_score_impact', n.get_float_value()),
+            "osPlatformDeviceDetails": lambda n : setattr(self, 'os_platform_device_details', n.get_str_value()),
+            "potentialScoreImpact": lambda n : setattr(self, 'potential_score_impact', n.get_float_value()),
         }
         return fields
     
@@ -116,7 +116,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
         """
         Sets the ipAddress property value. IP address of the user for the training event.
         Args:
-            value: Value to set for the ipAddress property.
+            value: Value to set for the ip_address property.
         """
         self._ip_address = value
     
@@ -133,7 +133,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -150,7 +150,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
         """
         Sets the osPlatformDeviceDetails property value. The operating system, platform, and device details of the user for the training event.
         Args:
-            value: Value to set for the osPlatformDeviceDetails property.
+            value: Value to set for the os_platform_device_details property.
         """
         self._os_platform_device_details = value
     
@@ -167,7 +167,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
         """
         Sets the potentialScoreImpact property value. Potential improvement in the tenant security posture after completion of the training by the user.
         Args:
-            value: Value to set for the potentialScoreImpact property.
+            value: Value to set for the potential_score_impact property.
         """
         self._potential_score_impact = value
     

@@ -29,26 +29,9 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the allowWindows11Upgrade property value. When TRUE, allows eligible Windows 10 devices to upgrade to Windows 11. When FALSE, implies the device stays on the existing operating system. Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the allowWindows11Upgrade property.
+            value: Value to set for the allow_windows11_upgrade property.
         """
         self._allow_windows11_upgrade = value
-    
-    @property
-    def automatic_update_mode(self,) -> Optional[automatic_update_mode.AutomaticUpdateMode]:
-        """
-        Gets the automaticUpdateMode property value. Possible values for automatic update mode.
-        Returns: Optional[automatic_update_mode.AutomaticUpdateMode]
-        """
-        return self._automatic_update_mode
-    
-    @automatic_update_mode.setter
-    def automatic_update_mode(self,value: Optional[automatic_update_mode.AutomaticUpdateMode] = None) -> None:
-        """
-        Sets the automaticUpdateMode property value. Possible values for automatic update mode.
-        Args:
-            value: Value to set for the automaticUpdateMode property.
-        """
-        self._automatic_update_mode = value
     
     @property
     def auto_restart_notification_dismissal(self,) -> Optional[auto_restart_notification_dismissal_method.AutoRestartNotificationDismissalMethod]:
@@ -63,9 +46,26 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the autoRestartNotificationDismissal property value. Auto restart required notification dismissal method
         Args:
-            value: Value to set for the autoRestartNotificationDismissal property.
+            value: Value to set for the auto_restart_notification_dismissal property.
         """
         self._auto_restart_notification_dismissal = value
+    
+    @property
+    def automatic_update_mode(self,) -> Optional[automatic_update_mode.AutomaticUpdateMode]:
+        """
+        Gets the automaticUpdateMode property value. Possible values for automatic update mode.
+        Returns: Optional[automatic_update_mode.AutomaticUpdateMode]
+        """
+        return self._automatic_update_mode
+    
+    @automatic_update_mode.setter
+    def automatic_update_mode(self,value: Optional[automatic_update_mode.AutomaticUpdateMode] = None) -> None:
+        """
+        Sets the automaticUpdateMode property value. Possible values for automatic update mode.
+        Args:
+            value: Value to set for the automatic_update_mode property.
+        """
+        self._automatic_update_mode = value
     
     @property
     def business_ready_updates_only(self,) -> Optional[windows_update_type.WindowsUpdateType]:
@@ -80,7 +80,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the businessReadyUpdatesOnly property value. Which branch devices will receive their updates from
         Args:
-            value: Value to set for the businessReadyUpdatesOnly property.
+            value: Value to set for the business_ready_updates_only property.
         """
         self._business_ready_updates_only = value
     
@@ -92,10 +92,10 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         self.odata_type = "#microsoft.graph.windowsUpdateForBusinessConfiguration"
         # When TRUE, allows eligible Windows 10 devices to upgrade to Windows 11. When FALSE, implies the device stays on the existing operating system. Returned by default. Query parameters are not supported.
         self._allow_windows11_upgrade: Optional[bool] = None
-        # Possible values for automatic update mode.
-        self._automatic_update_mode: Optional[automatic_update_mode.AutomaticUpdateMode] = None
         # Auto restart required notification dismissal method
         self._auto_restart_notification_dismissal: Optional[auto_restart_notification_dismissal_method.AutoRestartNotificationDismissalMethod] = None
+        # Possible values for automatic update mode.
+        self._automatic_update_mode: Optional[automatic_update_mode.AutomaticUpdateMode] = None
         # Which branch devices will receive their updates from
         self._business_ready_updates_only: Optional[windows_update_type.WindowsUpdateType] = None
         # Number of days before feature updates are installed automatically with valid range from 0 to 30 days. Returned by default. Query parameters are not supported.
@@ -116,12 +116,12 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         self._engaged_restart_transition_schedule_in_days: Optional[int] = None
         # Defer Feature Updates by these many days with valid range from 0 to 30 days. Returned by default. Query parameters are not supported.
         self._feature_updates_deferral_period_in_days: Optional[int] = None
-        # When TRUE, assigned devices are paused from receiving feature updates for up to 35 days from the time you pause the ring. When FALSE, does not pause Feature Updates. Returned by default. Query parameters are not supported.s
-        self._feature_updates_paused: Optional[bool] = None
         # The Feature Updates Pause Expiry datetime. This value is 35 days from the time admin paused or extended the pause for the ring. Returned by default. Query parameters are not supported.
         self._feature_updates_pause_expiry_date_time: Optional[datetime] = None
         # The Feature Updates Pause start date. This value is the time when the admin paused or extended the pause for the ring. Returned by default. Query parameters are not supported. This property is read-only.
         self._feature_updates_pause_start_date: Optional[Date] = None
+        # When TRUE, assigned devices are paused from receiving feature updates for up to 35 days from the time you pause the ring. When FALSE, does not pause Feature Updates. Returned by default. Query parameters are not supported.s
+        self._feature_updates_paused: Optional[bool] = None
         # The Feature Updates Rollback Start datetime.This value is the time when the admin rolled back the Feature update for the ring.Returned by default.Query parameters are not supported.
         self._feature_updates_rollback_start_date_time: Optional[datetime] = None
         # The number of days after a Feature Update for which a rollback is valid with valid range from 2 to 60 days. Returned by default. Query parameters are not supported.
@@ -138,12 +138,12 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         self._prerelease_features: Optional[prerelease_features.PrereleaseFeatures] = None
         # Defer Quality Updates by these many days with valid range from 0 to 30 days. Returned by default. Query parameters are not supported.
         self._quality_updates_deferral_period_in_days: Optional[int] = None
-        # When TRUE, assigned devices are paused from receiving quality updates for up to 35 days from the time you pause the ring. When FALSE, does not pause Quality Updates. Returned by default. Query parameters are not supported.
-        self._quality_updates_paused: Optional[bool] = None
         # The Quality Updates Pause Expiry datetime. This value is 35 days from the time admin paused or extended the pause for the ring. Returned by default. Query parameters are not supported.
         self._quality_updates_pause_expiry_date_time: Optional[datetime] = None
         # The Quality Updates Pause start date. This value is the time when the admin paused or extended the pause for the ring. Returned by default. Query parameters are not supported. This property is read-only.
         self._quality_updates_pause_start_date: Optional[Date] = None
+        # When TRUE, assigned devices are paused from receiving quality updates for up to 35 days from the time you pause the ring. When FALSE, does not pause Quality Updates. Returned by default. Query parameters are not supported.
+        self._quality_updates_paused: Optional[bool] = None
         # The Quality Updates Rollback Start datetime. This value is the time when the admin rolled back the Quality update for the ring. Returned by default. Query parameters are not supported.
         self._quality_updates_rollback_start_date_time: Optional[datetime] = None
         # When TRUE, rollback Quality Updates on the next device check in. When FALSE, do not rollback Quality Updates on the next device check in. Returned by default. Query parameters are not supported.
@@ -188,7 +188,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the deadlineForFeatureUpdatesInDays property value. Number of days before feature updates are installed automatically with valid range from 0 to 30 days. Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the deadlineForFeatureUpdatesInDays property.
+            value: Value to set for the deadline_for_feature_updates_in_days property.
         """
         self._deadline_for_feature_updates_in_days = value
     
@@ -205,7 +205,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the deadlineForQualityUpdatesInDays property value. Number of days before quality updates are installed automatically with valid range from 0 to 30 days. Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the deadlineForQualityUpdatesInDays property.
+            value: Value to set for the deadline_for_quality_updates_in_days property.
         """
         self._deadline_for_quality_updates_in_days = value
     
@@ -222,7 +222,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the deadlineGracePeriodInDays property value. Number of days after deadline until restarts occur automatically with valid range from 0 to 7 days. Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the deadlineGracePeriodInDays property.
+            value: Value to set for the deadline_grace_period_in_days property.
         """
         self._deadline_grace_period_in_days = value
     
@@ -239,7 +239,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the deliveryOptimizationMode property value. Delivery optimization mode for peer distribution
         Args:
-            value: Value to set for the deliveryOptimizationMode property.
+            value: Value to set for the delivery_optimization_mode property.
         """
         self._delivery_optimization_mode = value
     
@@ -256,7 +256,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the driversExcluded property value. When TRUE, excludes Windows update Drivers. When FALSE, does not exclude Windows update Drivers. Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the driversExcluded property.
+            value: Value to set for the drivers_excluded property.
         """
         self._drivers_excluded = value
     
@@ -273,7 +273,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the engagedRestartDeadlineInDays property value. Deadline in days before automatically scheduling and executing a pending restart outside of active hours, with valid range from 2 to 30 days. Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the engagedRestartDeadlineInDays property.
+            value: Value to set for the engaged_restart_deadline_in_days property.
         """
         self._engaged_restart_deadline_in_days = value
     
@@ -290,7 +290,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the engagedRestartSnoozeScheduleInDays property value. Number of days a user can snooze Engaged Restart reminder notifications with valid range from 1 to 3 days. Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the engagedRestartSnoozeScheduleInDays property.
+            value: Value to set for the engaged_restart_snooze_schedule_in_days property.
         """
         self._engaged_restart_snooze_schedule_in_days = value
     
@@ -307,7 +307,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the engagedRestartTransitionScheduleInDays property value. Number of days before transitioning from Auto Restarts scheduled outside of active hours to Engaged Restart, which requires the user to schedule, with valid range from 0 to 30 days. Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the engagedRestartTransitionScheduleInDays property.
+            value: Value to set for the engaged_restart_transition_schedule_in_days property.
         """
         self._engaged_restart_transition_schedule_in_days = value
     
@@ -324,26 +324,9 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the featureUpdatesDeferralPeriodInDays property value. Defer Feature Updates by these many days with valid range from 0 to 30 days. Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the featureUpdatesDeferralPeriodInDays property.
+            value: Value to set for the feature_updates_deferral_period_in_days property.
         """
         self._feature_updates_deferral_period_in_days = value
-    
-    @property
-    def feature_updates_paused(self,) -> Optional[bool]:
-        """
-        Gets the featureUpdatesPaused property value. When TRUE, assigned devices are paused from receiving feature updates for up to 35 days from the time you pause the ring. When FALSE, does not pause Feature Updates. Returned by default. Query parameters are not supported.s
-        Returns: Optional[bool]
-        """
-        return self._feature_updates_paused
-    
-    @feature_updates_paused.setter
-    def feature_updates_paused(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the featureUpdatesPaused property value. When TRUE, assigned devices are paused from receiving feature updates for up to 35 days from the time you pause the ring. When FALSE, does not pause Feature Updates. Returned by default. Query parameters are not supported.s
-        Args:
-            value: Value to set for the featureUpdatesPaused property.
-        """
-        self._feature_updates_paused = value
     
     @property
     def feature_updates_pause_expiry_date_time(self,) -> Optional[datetime]:
@@ -358,7 +341,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the featureUpdatesPauseExpiryDateTime property value. The Feature Updates Pause Expiry datetime. This value is 35 days from the time admin paused or extended the pause for the ring. Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the featureUpdatesPauseExpiryDateTime property.
+            value: Value to set for the feature_updates_pause_expiry_date_time property.
         """
         self._feature_updates_pause_expiry_date_time = value
     
@@ -375,9 +358,26 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the featureUpdatesPauseStartDate property value. The Feature Updates Pause start date. This value is the time when the admin paused or extended the pause for the ring. Returned by default. Query parameters are not supported. This property is read-only.
         Args:
-            value: Value to set for the featureUpdatesPauseStartDate property.
+            value: Value to set for the feature_updates_pause_start_date property.
         """
         self._feature_updates_pause_start_date = value
+    
+    @property
+    def feature_updates_paused(self,) -> Optional[bool]:
+        """
+        Gets the featureUpdatesPaused property value. When TRUE, assigned devices are paused from receiving feature updates for up to 35 days from the time you pause the ring. When FALSE, does not pause Feature Updates. Returned by default. Query parameters are not supported.s
+        Returns: Optional[bool]
+        """
+        return self._feature_updates_paused
+    
+    @feature_updates_paused.setter
+    def feature_updates_paused(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the featureUpdatesPaused property value. When TRUE, assigned devices are paused from receiving feature updates for up to 35 days from the time you pause the ring. When FALSE, does not pause Feature Updates. Returned by default. Query parameters are not supported.s
+        Args:
+            value: Value to set for the feature_updates_paused property.
+        """
+        self._feature_updates_paused = value
     
     @property
     def feature_updates_rollback_start_date_time(self,) -> Optional[datetime]:
@@ -392,7 +392,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the featureUpdatesRollbackStartDateTime property value. The Feature Updates Rollback Start datetime.This value is the time when the admin rolled back the Feature update for the ring.Returned by default.Query parameters are not supported.
         Args:
-            value: Value to set for the featureUpdatesRollbackStartDateTime property.
+            value: Value to set for the feature_updates_rollback_start_date_time property.
         """
         self._feature_updates_rollback_start_date_time = value
     
@@ -409,7 +409,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the featureUpdatesRollbackWindowInDays property value. The number of days after a Feature Update for which a rollback is valid with valid range from 2 to 60 days. Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the featureUpdatesRollbackWindowInDays property.
+            value: Value to set for the feature_updates_rollback_window_in_days property.
         """
         self._feature_updates_rollback_window_in_days = value
     
@@ -426,7 +426,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the featureUpdatesWillBeRolledBack property value. When TRUE, rollback Feature Updates on the next device check in. When FALSE, do not rollback Feature Updates on the next device check in. Returned by default.Query parameters are not supported.
         Args:
-            value: Value to set for the featureUpdatesWillBeRolledBack property.
+            value: Value to set for the feature_updates_will_be_rolled_back property.
         """
         self._feature_updates_will_be_rolled_back = value
     
@@ -436,42 +436,42 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_windows11_upgrade": lambda n : setattr(self, 'allow_windows11_upgrade', n.get_bool_value()),
-            "automatic_update_mode": lambda n : setattr(self, 'automatic_update_mode', n.get_enum_value(automatic_update_mode.AutomaticUpdateMode)),
-            "auto_restart_notification_dismissal": lambda n : setattr(self, 'auto_restart_notification_dismissal', n.get_enum_value(auto_restart_notification_dismissal_method.AutoRestartNotificationDismissalMethod)),
-            "business_ready_updates_only": lambda n : setattr(self, 'business_ready_updates_only', n.get_enum_value(windows_update_type.WindowsUpdateType)),
-            "deadline_for_feature_updates_in_days": lambda n : setattr(self, 'deadline_for_feature_updates_in_days', n.get_int_value()),
-            "deadline_for_quality_updates_in_days": lambda n : setattr(self, 'deadline_for_quality_updates_in_days', n.get_int_value()),
-            "deadline_grace_period_in_days": lambda n : setattr(self, 'deadline_grace_period_in_days', n.get_int_value()),
-            "delivery_optimization_mode": lambda n : setattr(self, 'delivery_optimization_mode', n.get_enum_value(windows_delivery_optimization_mode.WindowsDeliveryOptimizationMode)),
-            "drivers_excluded": lambda n : setattr(self, 'drivers_excluded', n.get_bool_value()),
-            "engaged_restart_deadline_in_days": lambda n : setattr(self, 'engaged_restart_deadline_in_days', n.get_int_value()),
-            "engaged_restart_snooze_schedule_in_days": lambda n : setattr(self, 'engaged_restart_snooze_schedule_in_days', n.get_int_value()),
-            "engaged_restart_transition_schedule_in_days": lambda n : setattr(self, 'engaged_restart_transition_schedule_in_days', n.get_int_value()),
-            "feature_updates_deferral_period_in_days": lambda n : setattr(self, 'feature_updates_deferral_period_in_days', n.get_int_value()),
-            "feature_updates_paused": lambda n : setattr(self, 'feature_updates_paused', n.get_bool_value()),
-            "feature_updates_pause_expiry_date_time": lambda n : setattr(self, 'feature_updates_pause_expiry_date_time', n.get_datetime_value()),
-            "feature_updates_pause_start_date": lambda n : setattr(self, 'feature_updates_pause_start_date', n.get_object_value(Date)),
-            "feature_updates_rollback_start_date_time": lambda n : setattr(self, 'feature_updates_rollback_start_date_time', n.get_datetime_value()),
-            "feature_updates_rollback_window_in_days": lambda n : setattr(self, 'feature_updates_rollback_window_in_days', n.get_int_value()),
-            "feature_updates_will_be_rolled_back": lambda n : setattr(self, 'feature_updates_will_be_rolled_back', n.get_bool_value()),
-            "installation_schedule": lambda n : setattr(self, 'installation_schedule', n.get_object_value(windows_update_install_schedule_type.WindowsUpdateInstallScheduleType)),
-            "microsoft_update_service_allowed": lambda n : setattr(self, 'microsoft_update_service_allowed', n.get_bool_value()),
-            "postpone_reboot_until_after_deadline": lambda n : setattr(self, 'postpone_reboot_until_after_deadline', n.get_bool_value()),
-            "prerelease_features": lambda n : setattr(self, 'prerelease_features', n.get_enum_value(prerelease_features.PrereleaseFeatures)),
-            "quality_updates_deferral_period_in_days": lambda n : setattr(self, 'quality_updates_deferral_period_in_days', n.get_int_value()),
-            "quality_updates_paused": lambda n : setattr(self, 'quality_updates_paused', n.get_bool_value()),
-            "quality_updates_pause_expiry_date_time": lambda n : setattr(self, 'quality_updates_pause_expiry_date_time', n.get_datetime_value()),
-            "quality_updates_pause_start_date": lambda n : setattr(self, 'quality_updates_pause_start_date', n.get_object_value(Date)),
-            "quality_updates_rollback_start_date_time": lambda n : setattr(self, 'quality_updates_rollback_start_date_time', n.get_datetime_value()),
-            "quality_updates_will_be_rolled_back": lambda n : setattr(self, 'quality_updates_will_be_rolled_back', n.get_bool_value()),
-            "schedule_imminent_restart_warning_in_minutes": lambda n : setattr(self, 'schedule_imminent_restart_warning_in_minutes', n.get_int_value()),
-            "schedule_restart_warning_in_hours": lambda n : setattr(self, 'schedule_restart_warning_in_hours', n.get_int_value()),
-            "skip_checks_before_restart": lambda n : setattr(self, 'skip_checks_before_restart', n.get_bool_value()),
-            "update_notification_level": lambda n : setattr(self, 'update_notification_level', n.get_enum_value(windows_update_notification_display_option.WindowsUpdateNotificationDisplayOption)),
-            "update_weeks": lambda n : setattr(self, 'update_weeks', n.get_enum_value(windows_update_for_business_update_weeks.WindowsUpdateForBusinessUpdateWeeks)),
-            "user_pause_access": lambda n : setattr(self, 'user_pause_access', n.get_enum_value(enablement.Enablement)),
-            "user_windows_update_scan_access": lambda n : setattr(self, 'user_windows_update_scan_access', n.get_enum_value(enablement.Enablement)),
+            "allowWindows11Upgrade": lambda n : setattr(self, 'allow_windows11_upgrade', n.get_bool_value()),
+            "automaticUpdateMode": lambda n : setattr(self, 'automatic_update_mode', n.get_enum_value(automatic_update_mode.AutomaticUpdateMode)),
+            "autoRestartNotificationDismissal": lambda n : setattr(self, 'auto_restart_notification_dismissal', n.get_enum_value(auto_restart_notification_dismissal_method.AutoRestartNotificationDismissalMethod)),
+            "businessReadyUpdatesOnly": lambda n : setattr(self, 'business_ready_updates_only', n.get_enum_value(windows_update_type.WindowsUpdateType)),
+            "deadlineForFeatureUpdatesInDays": lambda n : setattr(self, 'deadline_for_feature_updates_in_days', n.get_int_value()),
+            "deadlineForQualityUpdatesInDays": lambda n : setattr(self, 'deadline_for_quality_updates_in_days', n.get_int_value()),
+            "deadlineGracePeriodInDays": lambda n : setattr(self, 'deadline_grace_period_in_days', n.get_int_value()),
+            "deliveryOptimizationMode": lambda n : setattr(self, 'delivery_optimization_mode', n.get_enum_value(windows_delivery_optimization_mode.WindowsDeliveryOptimizationMode)),
+            "driversExcluded": lambda n : setattr(self, 'drivers_excluded', n.get_bool_value()),
+            "engagedRestartDeadlineInDays": lambda n : setattr(self, 'engaged_restart_deadline_in_days', n.get_int_value()),
+            "engagedRestartSnoozeScheduleInDays": lambda n : setattr(self, 'engaged_restart_snooze_schedule_in_days', n.get_int_value()),
+            "engagedRestartTransitionScheduleInDays": lambda n : setattr(self, 'engaged_restart_transition_schedule_in_days', n.get_int_value()),
+            "featureUpdatesDeferralPeriodInDays": lambda n : setattr(self, 'feature_updates_deferral_period_in_days', n.get_int_value()),
+            "featureUpdatesPaused": lambda n : setattr(self, 'feature_updates_paused', n.get_bool_value()),
+            "featureUpdatesPauseExpiryDateTime": lambda n : setattr(self, 'feature_updates_pause_expiry_date_time', n.get_datetime_value()),
+            "featureUpdatesPauseStartDate": lambda n : setattr(self, 'feature_updates_pause_start_date', n.get_object_value(Date)),
+            "featureUpdatesRollbackStartDateTime": lambda n : setattr(self, 'feature_updates_rollback_start_date_time', n.get_datetime_value()),
+            "featureUpdatesRollbackWindowInDays": lambda n : setattr(self, 'feature_updates_rollback_window_in_days', n.get_int_value()),
+            "featureUpdatesWillBeRolledBack": lambda n : setattr(self, 'feature_updates_will_be_rolled_back', n.get_bool_value()),
+            "installationSchedule": lambda n : setattr(self, 'installation_schedule', n.get_object_value(windows_update_install_schedule_type.WindowsUpdateInstallScheduleType)),
+            "microsoftUpdateServiceAllowed": lambda n : setattr(self, 'microsoft_update_service_allowed', n.get_bool_value()),
+            "postponeRebootUntilAfterDeadline": lambda n : setattr(self, 'postpone_reboot_until_after_deadline', n.get_bool_value()),
+            "prereleaseFeatures": lambda n : setattr(self, 'prerelease_features', n.get_enum_value(prerelease_features.PrereleaseFeatures)),
+            "qualityUpdatesDeferralPeriodInDays": lambda n : setattr(self, 'quality_updates_deferral_period_in_days', n.get_int_value()),
+            "qualityUpdatesPaused": lambda n : setattr(self, 'quality_updates_paused', n.get_bool_value()),
+            "qualityUpdatesPauseExpiryDateTime": lambda n : setattr(self, 'quality_updates_pause_expiry_date_time', n.get_datetime_value()),
+            "qualityUpdatesPauseStartDate": lambda n : setattr(self, 'quality_updates_pause_start_date', n.get_object_value(Date)),
+            "qualityUpdatesRollbackStartDateTime": lambda n : setattr(self, 'quality_updates_rollback_start_date_time', n.get_datetime_value()),
+            "qualityUpdatesWillBeRolledBack": lambda n : setattr(self, 'quality_updates_will_be_rolled_back', n.get_bool_value()),
+            "scheduleImminentRestartWarningInMinutes": lambda n : setattr(self, 'schedule_imminent_restart_warning_in_minutes', n.get_int_value()),
+            "scheduleRestartWarningInHours": lambda n : setattr(self, 'schedule_restart_warning_in_hours', n.get_int_value()),
+            "skipChecksBeforeRestart": lambda n : setattr(self, 'skip_checks_before_restart', n.get_bool_value()),
+            "updateNotificationLevel": lambda n : setattr(self, 'update_notification_level', n.get_enum_value(windows_update_notification_display_option.WindowsUpdateNotificationDisplayOption)),
+            "updateWeeks": lambda n : setattr(self, 'update_weeks', n.get_enum_value(windows_update_for_business_update_weeks.WindowsUpdateForBusinessUpdateWeeks)),
+            "userPauseAccess": lambda n : setattr(self, 'user_pause_access', n.get_enum_value(enablement.Enablement)),
+            "userWindowsUpdateScanAccess": lambda n : setattr(self, 'user_windows_update_scan_access', n.get_enum_value(enablement.Enablement)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -490,7 +490,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the installationSchedule property value. The Installation Schedule. Possible values are: ActiveHoursStart, ActiveHoursEnd, ScheduledInstallDay, ScheduledInstallTime. Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the installationSchedule property.
+            value: Value to set for the installation_schedule property.
         """
         self._installation_schedule = value
     
@@ -507,7 +507,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the microsoftUpdateServiceAllowed property value. When TRUE, allows Microsoft Update Service. When FALSE, does not allow Microsoft Update Service. Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the microsoftUpdateServiceAllowed property.
+            value: Value to set for the microsoft_update_service_allowed property.
         """
         self._microsoft_update_service_allowed = value
     
@@ -524,7 +524,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the postponeRebootUntilAfterDeadline property value. When TRUE the device should wait until deadline for rebooting outside of active hours. When FALSE the device should not wait until deadline for rebooting outside of active hours. Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the postponeRebootUntilAfterDeadline property.
+            value: Value to set for the postpone_reboot_until_after_deadline property.
         """
         self._postpone_reboot_until_after_deadline = value
     
@@ -541,7 +541,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the prereleaseFeatures property value. Possible values for pre-release features.
         Args:
-            value: Value to set for the prereleaseFeatures property.
+            value: Value to set for the prerelease_features property.
         """
         self._prerelease_features = value
     
@@ -558,26 +558,9 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the qualityUpdatesDeferralPeriodInDays property value. Defer Quality Updates by these many days with valid range from 0 to 30 days. Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the qualityUpdatesDeferralPeriodInDays property.
+            value: Value to set for the quality_updates_deferral_period_in_days property.
         """
         self._quality_updates_deferral_period_in_days = value
-    
-    @property
-    def quality_updates_paused(self,) -> Optional[bool]:
-        """
-        Gets the qualityUpdatesPaused property value. When TRUE, assigned devices are paused from receiving quality updates for up to 35 days from the time you pause the ring. When FALSE, does not pause Quality Updates. Returned by default. Query parameters are not supported.
-        Returns: Optional[bool]
-        """
-        return self._quality_updates_paused
-    
-    @quality_updates_paused.setter
-    def quality_updates_paused(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the qualityUpdatesPaused property value. When TRUE, assigned devices are paused from receiving quality updates for up to 35 days from the time you pause the ring. When FALSE, does not pause Quality Updates. Returned by default. Query parameters are not supported.
-        Args:
-            value: Value to set for the qualityUpdatesPaused property.
-        """
-        self._quality_updates_paused = value
     
     @property
     def quality_updates_pause_expiry_date_time(self,) -> Optional[datetime]:
@@ -592,7 +575,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the qualityUpdatesPauseExpiryDateTime property value. The Quality Updates Pause Expiry datetime. This value is 35 days from the time admin paused or extended the pause for the ring. Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the qualityUpdatesPauseExpiryDateTime property.
+            value: Value to set for the quality_updates_pause_expiry_date_time property.
         """
         self._quality_updates_pause_expiry_date_time = value
     
@@ -609,9 +592,26 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the qualityUpdatesPauseStartDate property value. The Quality Updates Pause start date. This value is the time when the admin paused or extended the pause for the ring. Returned by default. Query parameters are not supported. This property is read-only.
         Args:
-            value: Value to set for the qualityUpdatesPauseStartDate property.
+            value: Value to set for the quality_updates_pause_start_date property.
         """
         self._quality_updates_pause_start_date = value
+    
+    @property
+    def quality_updates_paused(self,) -> Optional[bool]:
+        """
+        Gets the qualityUpdatesPaused property value. When TRUE, assigned devices are paused from receiving quality updates for up to 35 days from the time you pause the ring. When FALSE, does not pause Quality Updates. Returned by default. Query parameters are not supported.
+        Returns: Optional[bool]
+        """
+        return self._quality_updates_paused
+    
+    @quality_updates_paused.setter
+    def quality_updates_paused(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the qualityUpdatesPaused property value. When TRUE, assigned devices are paused from receiving quality updates for up to 35 days from the time you pause the ring. When FALSE, does not pause Quality Updates. Returned by default. Query parameters are not supported.
+        Args:
+            value: Value to set for the quality_updates_paused property.
+        """
+        self._quality_updates_paused = value
     
     @property
     def quality_updates_rollback_start_date_time(self,) -> Optional[datetime]:
@@ -626,7 +626,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the qualityUpdatesRollbackStartDateTime property value. The Quality Updates Rollback Start datetime. This value is the time when the admin rolled back the Quality update for the ring. Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the qualityUpdatesRollbackStartDateTime property.
+            value: Value to set for the quality_updates_rollback_start_date_time property.
         """
         self._quality_updates_rollback_start_date_time = value
     
@@ -643,7 +643,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the qualityUpdatesWillBeRolledBack property value. When TRUE, rollback Quality Updates on the next device check in. When FALSE, do not rollback Quality Updates on the next device check in. Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the qualityUpdatesWillBeRolledBack property.
+            value: Value to set for the quality_updates_will_be_rolled_back property.
         """
         self._quality_updates_will_be_rolled_back = value
     
@@ -660,7 +660,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the scheduleImminentRestartWarningInMinutes property value. Specify the period for auto-restart imminent warning notifications. Supported values: 15, 30 or 60 (minutes). Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the scheduleImminentRestartWarningInMinutes property.
+            value: Value to set for the schedule_imminent_restart_warning_in_minutes property.
         """
         self._schedule_imminent_restart_warning_in_minutes = value
     
@@ -677,7 +677,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the scheduleRestartWarningInHours property value. Specify the period for auto-restart warning reminder notifications. Supported values: 2, 4, 8, 12 or 24 (hours). Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the scheduleRestartWarningInHours property.
+            value: Value to set for the schedule_restart_warning_in_hours property.
         """
         self._schedule_restart_warning_in_hours = value
     
@@ -738,7 +738,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the skipChecksBeforeRestart property value. When TRUE, skips all checks before restart: Battery level = 40%, User presence, Display Needed, Presentation mode, Full screen mode, phone call state, game mode etc. When FALSE, does not skip all checks before restart. Returned by default. Query parameters are not supported.
         Args:
-            value: Value to set for the skipChecksBeforeRestart property.
+            value: Value to set for the skip_checks_before_restart property.
         """
         self._skip_checks_before_restart = value
     
@@ -755,7 +755,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the updateNotificationLevel property value. Windows Update Notification Display Options
         Args:
-            value: Value to set for the updateNotificationLevel property.
+            value: Value to set for the update_notification_level property.
         """
         self._update_notification_level = value
     
@@ -772,7 +772,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the updateWeeks property value. Schedule the update installation on the weeks of the month. Possible values are: UserDefined, FirstWeek, SecondWeek, ThirdWeek, FourthWeek, EveryWeek. Returned by default. Query parameters are not supported. Possible values are: userDefined, firstWeek, secondWeek, thirdWeek, fourthWeek, everyWeek, unknownFutureValue.
         Args:
-            value: Value to set for the updateWeeks property.
+            value: Value to set for the update_weeks property.
         """
         self._update_weeks = value
     
@@ -789,7 +789,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the userPauseAccess property value. Possible values of a property
         Args:
-            value: Value to set for the userPauseAccess property.
+            value: Value to set for the user_pause_access property.
         """
         self._user_pause_access = value
     
@@ -806,7 +806,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         """
         Sets the userWindowsUpdateScanAccess property value. Possible values of a property
         Args:
-            value: Value to set for the userWindowsUpdateScanAccess property.
+            value: Value to set for the user_windows_update_scan_access property.
         """
         self._user_windows_update_scan_access = value
     

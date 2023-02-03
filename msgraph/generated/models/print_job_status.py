@@ -96,7 +96,7 @@ class PrintJobStatus(AdditionalDataHolder, Parsable):
         fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "details": lambda n : setattr(self, 'details', n.get_collection_of_enum_values(print_job_state_detail.PrintJobStateDetail)),
-            "is_acquired_by_printer": lambda n : setattr(self, 'is_acquired_by_printer', n.get_bool_value()),
+            "isAcquiredByPrinter": lambda n : setattr(self, 'is_acquired_by_printer', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(print_job_processing_state.PrintJobProcessingState)),
         }
@@ -115,7 +115,7 @@ class PrintJobStatus(AdditionalDataHolder, Parsable):
         """
         Sets the isAcquiredByPrinter property value. True if the job was acknowledged by a printer; false otherwise. Read-only.
         Args:
-            value: Value to set for the isAcquiredByPrinter property.
+            value: Value to set for the is_acquired_by_printer property.
         """
         self._is_acquired_by_printer = value
     
@@ -132,7 +132,7 @@ class PrintJobStatus(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

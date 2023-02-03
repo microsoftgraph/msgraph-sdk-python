@@ -19,7 +19,7 @@ class ChatMembersNotificationRecipient(teamwork_notification_recipient.TeamworkN
         """
         Sets the chatId property value. The unique identifier for the chat whose members should receive the notifications.
         Args:
-            value: Value to set for the chatId property.
+            value: Value to set for the chat_id property.
         """
         self._chat_id = value
     
@@ -50,7 +50,7 @@ class ChatMembersNotificationRecipient(teamwork_notification_recipient.TeamworkN
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "chat_id": lambda n : setattr(self, 'chat_id', n.get_str_value()),
+            "chatId": lambda n : setattr(self, 'chat_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

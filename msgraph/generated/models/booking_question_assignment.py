@@ -53,9 +53,9 @@ class BookingQuestionAssignment(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_required": lambda n : setattr(self, 'is_required', n.get_bool_value()),
+            "isRequired": lambda n : setattr(self, 'is_required', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "question_id": lambda n : setattr(self, 'question_id', n.get_str_value()),
+            "questionId": lambda n : setattr(self, 'question_id', n.get_str_value()),
         }
         return fields
     
@@ -72,7 +72,7 @@ class BookingQuestionAssignment(AdditionalDataHolder, Parsable):
         """
         Sets the isRequired property value. The ID of the custom question.
         Args:
-            value: Value to set for the isRequired property.
+            value: Value to set for the is_required property.
         """
         self._is_required = value
     
@@ -89,7 +89,7 @@ class BookingQuestionAssignment(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -106,7 +106,7 @@ class BookingQuestionAssignment(AdditionalDataHolder, Parsable):
         """
         Sets the questionId property value. Indicates whether it is mandatory to answer the custom question.
         Args:
-            value: Value to set for the questionId property.
+            value: Value to set for the question_id property.
         """
         self._question_id = value
     

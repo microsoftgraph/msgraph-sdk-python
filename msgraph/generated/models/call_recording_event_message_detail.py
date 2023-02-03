@@ -22,7 +22,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the callId property value. Unique identifier of the call.
         Args:
-            value: Value to set for the callId property.
+            value: Value to set for the call_id property.
         """
         self._call_id = value
     
@@ -39,7 +39,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the callRecordingDisplayName property value. Display name for the call recording.
         Args:
-            value: Value to set for the callRecordingDisplayName property.
+            value: Value to set for the call_recording_display_name property.
         """
         self._call_recording_display_name = value
     
@@ -56,7 +56,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the callRecordingDuration property value. Duration of the call recording.
         Args:
-            value: Value to set for the callRecordingDuration property.
+            value: Value to set for the call_recording_duration property.
         """
         self._call_recording_duration = value
     
@@ -73,7 +73,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the callRecordingStatus property value. Status of the call recording. Possible values are: success, failure, initial, chunkFinished, unknownFutureValue.
         Args:
-            value: Value to set for the callRecordingStatus property.
+            value: Value to set for the call_recording_status property.
         """
         self._call_recording_status = value
     
@@ -90,7 +90,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the callRecordingUrl property value. Call recording URL.
         Args:
-            value: Value to set for the callRecordingUrl property.
+            value: Value to set for the call_recording_url property.
         """
         self._call_recording_url = value
     
@@ -133,13 +133,13 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "call_id": lambda n : setattr(self, 'call_id', n.get_str_value()),
-            "call_recording_display_name": lambda n : setattr(self, 'call_recording_display_name', n.get_str_value()),
-            "call_recording_duration": lambda n : setattr(self, 'call_recording_duration', n.get_object_value(Timedelta)),
-            "call_recording_status": lambda n : setattr(self, 'call_recording_status', n.get_enum_value(call_recording_status.CallRecordingStatus)),
-            "call_recording_url": lambda n : setattr(self, 'call_recording_url', n.get_str_value()),
+            "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
+            "callRecordingDisplayName": lambda n : setattr(self, 'call_recording_display_name', n.get_str_value()),
+            "callRecordingDuration": lambda n : setattr(self, 'call_recording_duration', n.get_object_value(Timedelta)),
+            "callRecordingStatus": lambda n : setattr(self, 'call_recording_status', n.get_enum_value(call_recording_status.CallRecordingStatus)),
+            "callRecordingUrl": lambda n : setattr(self, 'call_recording_url', n.get_str_value()),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
-            "meeting_organizer": lambda n : setattr(self, 'meeting_organizer', n.get_object_value(identity_set.IdentitySet)),
+            "meetingOrganizer": lambda n : setattr(self, 'meeting_organizer', n.get_object_value(identity_set.IdentitySet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -175,7 +175,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         Sets the meetingOrganizer property value. Organizer of the meeting.
         Args:
-            value: Value to set for the meetingOrganizer property.
+            value: Value to set for the meeting_organizer property.
         """
         self._meeting_organizer = value
     

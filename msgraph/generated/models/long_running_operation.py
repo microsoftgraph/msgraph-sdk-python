@@ -39,7 +39,7 @@ class LongRunningOperation(entity.Entity):
         """
         Sets the createdDateTime property value. The start time of the operation. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -61,11 +61,11 @@ class LongRunningOperation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "last_action_date_time": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
-            "resource_location": lambda n : setattr(self, 'resource_location', n.get_str_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "lastActionDateTime": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
+            "resourceLocation": lambda n : setattr(self, 'resource_location', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(long_running_operation_status.LongRunningOperationStatus)),
-            "status_detail": lambda n : setattr(self, 'status_detail', n.get_str_value()),
+            "statusDetail": lambda n : setattr(self, 'status_detail', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -84,7 +84,7 @@ class LongRunningOperation(entity.Entity):
         """
         Sets the lastActionDateTime property value. The time of the last action in the operation. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the lastActionDateTime property.
+            value: Value to set for the last_action_date_time property.
         """
         self._last_action_date_time = value
     
@@ -101,7 +101,7 @@ class LongRunningOperation(entity.Entity):
         """
         Sets the resourceLocation property value. URI of the resource that the operation is performed on.
         Args:
-            value: Value to set for the resourceLocation property.
+            value: Value to set for the resource_location property.
         """
         self._resource_location = value
     
@@ -150,7 +150,7 @@ class LongRunningOperation(entity.Entity):
         """
         Sets the statusDetail property value. Details about the status of the operation.
         Args:
-            value: Value to set for the statusDetail property.
+            value: Value to set for the status_detail property.
         """
         self._status_detail = value
     

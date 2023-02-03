@@ -19,7 +19,7 @@ class AccessReviewInstanceDecisionItemServicePrincipalResource(access_review_ins
         """
         Sets the appId property value. The appId property
         Args:
-            value: Value to set for the appId property.
+            value: Value to set for the app_id property.
         """
         self._app_id = value
     
@@ -50,7 +50,7 @@ class AccessReviewInstanceDecisionItemServicePrincipalResource(access_review_ins
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

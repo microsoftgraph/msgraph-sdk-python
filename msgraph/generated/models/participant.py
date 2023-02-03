@@ -48,11 +48,11 @@ class Participant(entity.Entity):
         """
         fields = {
             "info": lambda n : setattr(self, 'info', n.get_object_value(participant_info.ParticipantInfo)),
-            "is_in_lobby": lambda n : setattr(self, 'is_in_lobby', n.get_bool_value()),
-            "is_muted": lambda n : setattr(self, 'is_muted', n.get_bool_value()),
-            "media_streams": lambda n : setattr(self, 'media_streams', n.get_collection_of_object_values(media_stream.MediaStream)),
+            "isInLobby": lambda n : setattr(self, 'is_in_lobby', n.get_bool_value()),
+            "isMuted": lambda n : setattr(self, 'is_muted', n.get_bool_value()),
+            "mediaStreams": lambda n : setattr(self, 'media_streams', n.get_collection_of_object_values(media_stream.MediaStream)),
             "metadata": lambda n : setattr(self, 'metadata', n.get_str_value()),
-            "recording_info": lambda n : setattr(self, 'recording_info', n.get_object_value(recording_info.RecordingInfo)),
+            "recordingInfo": lambda n : setattr(self, 'recording_info', n.get_object_value(recording_info.RecordingInfo)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -88,7 +88,7 @@ class Participant(entity.Entity):
         """
         Sets the isInLobby property value. true if the participant is in lobby.
         Args:
-            value: Value to set for the isInLobby property.
+            value: Value to set for the is_in_lobby property.
         """
         self._is_in_lobby = value
     
@@ -105,7 +105,7 @@ class Participant(entity.Entity):
         """
         Sets the isMuted property value. true if the participant is muted (client or server muted).
         Args:
-            value: Value to set for the isMuted property.
+            value: Value to set for the is_muted property.
         """
         self._is_muted = value
     
@@ -122,7 +122,7 @@ class Participant(entity.Entity):
         """
         Sets the mediaStreams property value. The list of media streams.
         Args:
-            value: Value to set for the mediaStreams property.
+            value: Value to set for the media_streams property.
         """
         self._media_streams = value
     
@@ -156,7 +156,7 @@ class Participant(entity.Entity):
         """
         Sets the recordingInfo property value. Information about whether the participant has recording capability.
         Args:
-            value: Value to set for the recordingInfo property.
+            value: Value to set for the recording_info property.
         """
         self._recording_info = value
     

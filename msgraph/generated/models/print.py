@@ -95,7 +95,7 @@ class Print(AdditionalDataHolder, Parsable):
             "services": lambda n : setattr(self, 'services', n.get_collection_of_object_values(print_service.PrintService)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(print_settings.PrintSettings)),
             "shares": lambda n : setattr(self, 'shares', n.get_collection_of_object_values(printer_share.PrinterShare)),
-            "task_definitions": lambda n : setattr(self, 'task_definitions', n.get_collection_of_object_values(print_task_definition.PrintTaskDefinition)),
+            "taskDefinitions": lambda n : setattr(self, 'task_definitions', n.get_collection_of_object_values(print_task_definition.PrintTaskDefinition)),
         }
         return fields
     
@@ -112,7 +112,7 @@ class Print(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -232,7 +232,7 @@ class Print(AdditionalDataHolder, Parsable):
         """
         Sets the taskDefinitions property value. List of abstract definition for a task that can be triggered when various events occur within Universal Print.
         Args:
-            value: Value to set for the taskDefinitions property.
+            value: Value to set for the task_definitions property.
         """
         self._task_definitions = value
     

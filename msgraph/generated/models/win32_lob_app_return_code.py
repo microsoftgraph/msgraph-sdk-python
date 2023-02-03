@@ -59,7 +59,7 @@ class Win32LobAppReturnCode(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "return_code": lambda n : setattr(self, 'return_code', n.get_int_value()),
+            "returnCode": lambda n : setattr(self, 'return_code', n.get_int_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(win32_lob_app_return_code_type.Win32LobAppReturnCodeType)),
         }
         return fields
@@ -77,7 +77,7 @@ class Win32LobAppReturnCode(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -94,7 +94,7 @@ class Win32LobAppReturnCode(AdditionalDataHolder, Parsable):
         """
         Sets the returnCode property value. Return code.
         Args:
-            value: Value to set for the returnCode property.
+            value: Value to set for the return_code property.
         """
         self._return_code = value
     

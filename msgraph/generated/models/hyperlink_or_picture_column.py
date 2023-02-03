@@ -51,7 +51,7 @@ class HyperlinkOrPictureColumn(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "is_picture": lambda n : setattr(self, 'is_picture', n.get_bool_value()),
+            "isPicture": lambda n : setattr(self, 'is_picture', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -69,7 +69,7 @@ class HyperlinkOrPictureColumn(AdditionalDataHolder, Parsable):
         """
         Sets the isPicture property value. Specifies whether the display format used for URL columns is an image or a hyperlink.
         Args:
-            value: Value to set for the isPicture property.
+            value: Value to set for the is_picture property.
         """
         self._is_picture = value
     
@@ -86,7 +86,7 @@ class HyperlinkOrPictureColumn(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

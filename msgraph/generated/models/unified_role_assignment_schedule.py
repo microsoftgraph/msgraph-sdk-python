@@ -21,7 +21,7 @@ class UnifiedRoleAssignmentSchedule(unified_role_schedule_base.UnifiedRoleSchedu
         """
         Sets the activatedUsing property value. If the request is from an eligible administrator to activate a role, this parameter will show the related eligible assignment for that activation. Otherwise, it is null. Supports $expand.
         Args:
-            value: Value to set for the activatedUsing property.
+            value: Value to set for the activated_using property.
         """
         self._activated_using = value
     
@@ -38,7 +38,7 @@ class UnifiedRoleAssignmentSchedule(unified_role_schedule_base.UnifiedRoleSchedu
         """
         Sets the assignmentType property value. Type of the assignment which can either be Assigned or Activated. Supports $filter (eq, ne).
         Args:
-            value: Value to set for the assignmentType property.
+            value: Value to set for the assignment_type property.
         """
         self._assignment_type = value
     
@@ -76,10 +76,10 @@ class UnifiedRoleAssignmentSchedule(unified_role_schedule_base.UnifiedRoleSchedu
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "activated_using": lambda n : setattr(self, 'activated_using', n.get_object_value(unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule)),
-            "assignment_type": lambda n : setattr(self, 'assignment_type', n.get_str_value()),
-            "member_type": lambda n : setattr(self, 'member_type', n.get_str_value()),
-            "schedule_info": lambda n : setattr(self, 'schedule_info', n.get_object_value(request_schedule.RequestSchedule)),
+            "activatedUsing": lambda n : setattr(self, 'activated_using', n.get_object_value(unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule)),
+            "assignmentType": lambda n : setattr(self, 'assignment_type', n.get_str_value()),
+            "memberType": lambda n : setattr(self, 'member_type', n.get_str_value()),
+            "scheduleInfo": lambda n : setattr(self, 'schedule_info', n.get_object_value(request_schedule.RequestSchedule)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -98,7 +98,7 @@ class UnifiedRoleAssignmentSchedule(unified_role_schedule_base.UnifiedRoleSchedu
         """
         Sets the memberType property value. How the assignments is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleAssignmentSchedule can be managed by the caller. Supports $filter (eq, ne).
         Args:
-            value: Value to set for the memberType property.
+            value: Value to set for the member_type property.
         """
         self._member_type = value
     
@@ -115,7 +115,7 @@ class UnifiedRoleAssignmentSchedule(unified_role_schedule_base.UnifiedRoleSchedu
         """
         Sets the scheduleInfo property value. The period of the role assignment. It can represent a single occurrence or multiple recurrences.
         Args:
-            value: Value to set for the scheduleInfo property.
+            value: Value to set for the schedule_info property.
         """
         self._schedule_info = value
     

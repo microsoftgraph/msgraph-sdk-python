@@ -34,7 +34,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         """
         Sets the adminConsentDescription property value. A description of the delegated permissions, intended to be read by an administrator granting the permission on behalf of all users. This text appears in tenant-wide admin consent experiences.
         Args:
-            value: Value to set for the adminConsentDescription property.
+            value: Value to set for the admin_consent_description property.
         """
         self._admin_consent_description = value
     
@@ -51,7 +51,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         """
         Sets the adminConsentDisplayName property value. The permission's title, intended to be read by an administrator granting the permission on behalf of all users.
         Args:
-            value: Value to set for the adminConsentDisplayName property.
+            value: Value to set for the admin_consent_display_name property.
         """
         self._admin_consent_display_name = value
     
@@ -101,15 +101,15 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "admin_consent_description": lambda n : setattr(self, 'admin_consent_description', n.get_str_value()),
-            "admin_consent_display_name": lambda n : setattr(self, 'admin_consent_display_name', n.get_str_value()),
+            "adminConsentDescription": lambda n : setattr(self, 'admin_consent_description', n.get_str_value()),
+            "adminConsentDisplayName": lambda n : setattr(self, 'admin_consent_display_name', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_object_value(Guid)),
-            "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "origin": lambda n : setattr(self, 'origin', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
-            "user_consent_description": lambda n : setattr(self, 'user_consent_description', n.get_str_value()),
-            "user_consent_display_name": lambda n : setattr(self, 'user_consent_display_name', n.get_str_value()),
+            "userConsentDescription": lambda n : setattr(self, 'user_consent_description', n.get_str_value()),
+            "userConsentDisplayName": lambda n : setattr(self, 'user_consent_display_name', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
         }
         return fields
@@ -144,7 +144,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         """
         Sets the isEnabled property value. When creating or updating a permission, this property must be set to true (which is the default). To delete a permission, this property must first be set to false.  At that point, in a subsequent call, the permission may be removed.
         Args:
-            value: Value to set for the isEnabled property.
+            value: Value to set for the is_enabled property.
         """
         self._is_enabled = value
     
@@ -161,7 +161,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -232,7 +232,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         """
         Sets the userConsentDescription property value. A description of the delegated permissions, intended to be read by a user granting the permission on their own behalf. This text appears in consent experiences where the user is consenting only on behalf of themselves.
         Args:
-            value: Value to set for the userConsentDescription property.
+            value: Value to set for the user_consent_description property.
         """
         self._user_consent_description = value
     
@@ -249,7 +249,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         """
         Sets the userConsentDisplayName property value. A title for the permission, intended to be read by a user granting the permission on their own behalf. This text appears in consent experiences where the user is consenting only on behalf of themselves.
         Args:
-            value: Value to set for the userConsentDisplayName property.
+            value: Value to set for the user_consent_display_name property.
         """
         self._user_consent_display_name = value
     

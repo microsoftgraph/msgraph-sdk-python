@@ -35,7 +35,7 @@ class AppCatalogs(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "teams_apps": lambda n : setattr(self, 'teams_apps', n.get_collection_of_object_values(teams_app.TeamsApp)),
+            "teamsApps": lambda n : setattr(self, 'teams_apps', n.get_collection_of_object_values(teams_app.TeamsApp)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -65,7 +65,7 @@ class AppCatalogs(entity.Entity):
         """
         Sets the teamsApps property value. The teamsApps property
         Args:
-            value: Value to set for the teamsApps property.
+            value: Value to set for the teams_apps property.
         """
         self._teams_apps = value
     

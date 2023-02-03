@@ -57,7 +57,7 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "target": lambda n : setattr(self, 'target', n.get_str_value()),
-            "target_type": lambda n : setattr(self, 'target_type', n.get_enum_value(cross_tenant_access_policy_target_type.CrossTenantAccessPolicyTargetType)),
+            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(cross_tenant_access_policy_target_type.CrossTenantAccessPolicyTargetType)),
         }
         return fields
     
@@ -74,7 +74,7 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -121,7 +121,7 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
         """
         Sets the targetType property value. The type of resource that you want to target. The possible values are: user, group, application, unknownFutureValue.
         Args:
-            value: Value to set for the targetType property.
+            value: Value to set for the target_type property.
         """
         self._target_type = value
     

@@ -17,12 +17,13 @@ class ScopedRoleMembershipItemRequestBuilder():
     """
     Provides operations to manage the collection of scopedRoleMembership entities.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, scoped_role_membership_id: Optional[str] = None) -> None:
         """
         Instantiates a new ScopedRoleMembershipItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
+            scopedRoleMembershipId: key: id of scopedRoleMembership
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -32,12 +33,13 @@ class ScopedRoleMembershipItemRequestBuilder():
         self.url_template: str = "{+baseurl}/scopedRoleMemberships/{scopedRoleMembership%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["scopedRoleMembership%2Did"] = scopedRoleMembershipId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
     async def delete(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete entity from scopedRoleMemberships by key (id)
+        Delete entity from scopedRoleMemberships
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -54,7 +56,7 @@ class ScopedRoleMembershipItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderGetRequestConfiguration] = None) -> Optional[scoped_role_membership.ScopedRoleMembership]:
         """
-        Get entity from scopedRoleMemberships by key (id)
+        Get entity from scopedRoleMemberships by key
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[scoped_role_membership.ScopedRoleMembership]
@@ -72,7 +74,7 @@ class ScopedRoleMembershipItemRequestBuilder():
     
     async def patch(self,body: Optional[scoped_role_membership.ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[scoped_role_membership.ScopedRoleMembership]:
         """
-        Update entity in scopedRoleMemberships by key (id)
+        Update entity in scopedRoleMemberships
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -93,7 +95,7 @@ class ScopedRoleMembershipItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete entity from scopedRoleMemberships by key (id)
+        Delete entity from scopedRoleMemberships
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -109,7 +111,7 @@ class ScopedRoleMembershipItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get entity from scopedRoleMemberships by key (id)
+        Get entity from scopedRoleMemberships by key
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -127,7 +129,7 @@ class ScopedRoleMembershipItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[scoped_role_membership.ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update entity in scopedRoleMemberships by key (id)
+        Update entity in scopedRoleMemberships
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +163,7 @@ class ScopedRoleMembershipItemRequestBuilder():
     @dataclass
     class ScopedRoleMembershipItemRequestBuilderGetQueryParameters():
         """
-        Get entity from scopedRoleMemberships by key (id)
+        Get entity from scopedRoleMemberships by key
         """
         # Expand related entities
         expand: Optional[List[str]] = None

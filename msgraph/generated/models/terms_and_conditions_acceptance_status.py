@@ -24,7 +24,7 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         """
         Sets the acceptedDateTime property value. DateTime when the terms were last accepted by the user.
         Args:
-            value: Value to set for the acceptedDateTime property.
+            value: Value to set for the accepted_date_time property.
         """
         self._accepted_date_time = value
     
@@ -41,7 +41,7 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         """
         Sets the acceptedVersion property value. Most recent version number of the T&C accepted by the user.
         Args:
-            value: Value to set for the acceptedVersion property.
+            value: Value to set for the accepted_version property.
         """
         self._accepted_version = value
     
@@ -81,11 +81,11 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "accepted_date_time": lambda n : setattr(self, 'accepted_date_time', n.get_datetime_value()),
-            "accepted_version": lambda n : setattr(self, 'accepted_version', n.get_int_value()),
-            "terms_and_conditions": lambda n : setattr(self, 'terms_and_conditions', n.get_object_value(terms_and_conditions.TermsAndConditions)),
-            "user_display_name": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "acceptedDateTime": lambda n : setattr(self, 'accepted_date_time', n.get_datetime_value()),
+            "acceptedVersion": lambda n : setattr(self, 'accepted_version', n.get_int_value()),
+            "termsAndConditions": lambda n : setattr(self, 'terms_and_conditions', n.get_object_value(terms_and_conditions.TermsAndConditions)),
+            "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -119,7 +119,7 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         """
         Sets the termsAndConditions property value. Navigation link to the terms and conditions that are assigned.
         Args:
-            value: Value to set for the termsAndConditions property.
+            value: Value to set for the terms_and_conditions property.
         """
         self._terms_and_conditions = value
     
@@ -136,7 +136,7 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         """
         Sets the userDisplayName property value. Display name of the user whose acceptance the entity represents.
         Args:
-            value: Value to set for the userDisplayName property.
+            value: Value to set for the user_display_name property.
         """
         self._user_display_name = value
     
@@ -153,7 +153,7 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         """
         Sets the userPrincipalName property value. The userPrincipalName of the User that accepted the term.
         Args:
-            value: Value to set for the userPrincipalName property.
+            value: Value to set for the user_principal_name property.
         """
         self._user_principal_name = value
     

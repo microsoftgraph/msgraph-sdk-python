@@ -57,7 +57,7 @@ class RolePermission(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "resource_actions": lambda n : setattr(self, 'resource_actions', n.get_collection_of_object_values(resource_action.ResourceAction)),
+            "resourceActions": lambda n : setattr(self, 'resource_actions', n.get_collection_of_object_values(resource_action.ResourceAction)),
         }
         return fields
     
@@ -74,7 +74,7 @@ class RolePermission(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -91,7 +91,7 @@ class RolePermission(AdditionalDataHolder, Parsable):
         """
         Sets the resourceActions property value. Resource Actions each containing a set of allowed and not allowed permissions.
         Args:
-            value: Value to set for the resourceActions property.
+            value: Value to set for the resource_actions property.
         """
         self._resource_actions = value
     

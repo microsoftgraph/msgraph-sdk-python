@@ -21,7 +21,7 @@ class MeetingAttendanceReport(entity.Entity):
         """
         Sets the attendanceRecords property value. List of attendance records of an attendance report. Read-only.
         Args:
-            value: Value to set for the attendanceRecords property.
+            value: Value to set for the attendance_records property.
         """
         self._attendance_records = value
     
@@ -59,10 +59,10 @@ class MeetingAttendanceReport(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "attendance_records": lambda n : setattr(self, 'attendance_records', n.get_collection_of_object_values(attendance_record.AttendanceRecord)),
-            "meeting_end_date_time": lambda n : setattr(self, 'meeting_end_date_time', n.get_datetime_value()),
-            "meeting_start_date_time": lambda n : setattr(self, 'meeting_start_date_time', n.get_datetime_value()),
-            "total_participant_count": lambda n : setattr(self, 'total_participant_count', n.get_int_value()),
+            "attendanceRecords": lambda n : setattr(self, 'attendance_records', n.get_collection_of_object_values(attendance_record.AttendanceRecord)),
+            "meetingEndDateTime": lambda n : setattr(self, 'meeting_end_date_time', n.get_datetime_value()),
+            "meetingStartDateTime": lambda n : setattr(self, 'meeting_start_date_time', n.get_datetime_value()),
+            "totalParticipantCount": lambda n : setattr(self, 'total_participant_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -81,7 +81,7 @@ class MeetingAttendanceReport(entity.Entity):
         """
         Sets the meetingEndDateTime property value. UTC time when the meeting ended. Read-only.
         Args:
-            value: Value to set for the meetingEndDateTime property.
+            value: Value to set for the meeting_end_date_time property.
         """
         self._meeting_end_date_time = value
     
@@ -98,7 +98,7 @@ class MeetingAttendanceReport(entity.Entity):
         """
         Sets the meetingStartDateTime property value. UTC time when the meeting started. Read-only.
         Args:
-            value: Value to set for the meetingStartDateTime property.
+            value: Value to set for the meeting_start_date_time property.
         """
         self._meeting_start_date_time = value
     
@@ -129,7 +129,7 @@ class MeetingAttendanceReport(entity.Entity):
         """
         Sets the totalParticipantCount property value. Total number of participants. Read-only.
         Args:
-            value: Value to set for the totalParticipantCount property.
+            value: Value to set for the total_participant_count property.
         """
         self._total_participant_count = value
     

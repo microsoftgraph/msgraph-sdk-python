@@ -48,7 +48,7 @@ class EmployeeOrgData(AdditionalDataHolder, Parsable):
         """
         Sets the costCenter property value. The cost center associated with the user. Returned only on $select. Supports $filter.
         Args:
-            value: Value to set for the costCenter property.
+            value: Value to set for the cost_center property.
         """
         self._cost_center = value
     
@@ -87,7 +87,7 @@ class EmployeeOrgData(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "cost_center": lambda n : setattr(self, 'cost_center', n.get_str_value()),
+            "costCenter": lambda n : setattr(self, 'cost_center', n.get_str_value()),
             "division": lambda n : setattr(self, 'division', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
@@ -106,7 +106,7 @@ class EmployeeOrgData(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

@@ -66,7 +66,7 @@ class ReferenceCreate(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.id property value. The OdataId property
         Args:
-            value: Value to set for the OdataId property.
+            value: Value to set for the odata_id property.
         """
         self._odata_id = value
     

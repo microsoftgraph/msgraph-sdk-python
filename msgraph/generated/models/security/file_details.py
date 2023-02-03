@@ -72,7 +72,7 @@ class FileDetails(AdditionalDataHolder, Parsable):
         """
         Sets the fileName property value. The name of the file.
         Args:
-            value: Value to set for the fileName property.
+            value: Value to set for the file_name property.
         """
         self._file_name = value
     
@@ -89,7 +89,7 @@ class FileDetails(AdditionalDataHolder, Parsable):
         """
         Sets the filePath property value. The file path (location) of the file instance.
         Args:
-            value: Value to set for the filePath property.
+            value: Value to set for the file_path property.
         """
         self._file_path = value
     
@@ -106,7 +106,7 @@ class FileDetails(AdditionalDataHolder, Parsable):
         """
         Sets the filePublisher property value. The publisher of the file.
         Args:
-            value: Value to set for the filePublisher property.
+            value: Value to set for the file_publisher property.
         """
         self._file_publisher = value
     
@@ -123,7 +123,7 @@ class FileDetails(AdditionalDataHolder, Parsable):
         """
         Sets the fileSize property value. The size of the file in bytes.
         Args:
-            value: Value to set for the fileSize property.
+            value: Value to set for the file_size property.
         """
         self._file_size = value
     
@@ -133,10 +133,10 @@ class FileDetails(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "file_name": lambda n : setattr(self, 'file_name', n.get_str_value()),
-            "file_path": lambda n : setattr(self, 'file_path', n.get_str_value()),
-            "file_publisher": lambda n : setattr(self, 'file_publisher', n.get_str_value()),
-            "file_size": lambda n : setattr(self, 'file_size', n.get_int_value()),
+            "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
+            "filePath": lambda n : setattr(self, 'file_path', n.get_str_value()),
+            "filePublisher": lambda n : setattr(self, 'file_publisher', n.get_str_value()),
+            "fileSize": lambda n : setattr(self, 'file_size', n.get_int_value()),
             "issuer": lambda n : setattr(self, 'issuer', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "sha1": lambda n : setattr(self, 'sha1', n.get_str_value()),
@@ -175,7 +175,7 @@ class FileDetails(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

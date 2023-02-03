@@ -17,10 +17,11 @@ class AuthenticationMethodConfigurationItemRequestBuilder():
     """
     Provides operations to manage the collection of authenticationMethodConfiguration entities.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, authentication_method_configuration_id: Optional[str] = None) -> None:
         """
         Instantiates a new AuthenticationMethodConfigurationItemRequestBuilder and sets the default values.
         Args:
+            authenticationMethodConfigurationId: key: id of authenticationMethodConfiguration
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -32,12 +33,13 @@ class AuthenticationMethodConfigurationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/authenticationMethodConfigurations/{authenticationMethodConfiguration%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
+        url_tpl_params["authenticationMethodConfiguration%2Did"] = authenticationMethodConfigurationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
     async def delete(self,request_configuration: Optional[AuthenticationMethodConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete entity from authenticationMethodConfigurations by key (id)
+        Delete entity from authenticationMethodConfigurations
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -54,7 +56,7 @@ class AuthenticationMethodConfigurationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[AuthenticationMethodConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_method_configuration.AuthenticationMethodConfiguration]:
         """
-        Get entity from authenticationMethodConfigurations by key (id)
+        Get entity from authenticationMethodConfigurations by key
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[authentication_method_configuration.AuthenticationMethodConfiguration]
@@ -72,7 +74,7 @@ class AuthenticationMethodConfigurationItemRequestBuilder():
     
     async def patch(self,body: Optional[authentication_method_configuration.AuthenticationMethodConfiguration] = None, request_configuration: Optional[AuthenticationMethodConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[authentication_method_configuration.AuthenticationMethodConfiguration]:
         """
-        Update entity in authenticationMethodConfigurations by key (id)
+        Update entity in authenticationMethodConfigurations
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -93,7 +95,7 @@ class AuthenticationMethodConfigurationItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[AuthenticationMethodConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete entity from authenticationMethodConfigurations by key (id)
+        Delete entity from authenticationMethodConfigurations
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -109,7 +111,7 @@ class AuthenticationMethodConfigurationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AuthenticationMethodConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get entity from authenticationMethodConfigurations by key (id)
+        Get entity from authenticationMethodConfigurations by key
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -127,7 +129,7 @@ class AuthenticationMethodConfigurationItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[authentication_method_configuration.AuthenticationMethodConfiguration] = None, request_configuration: Optional[AuthenticationMethodConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update entity in authenticationMethodConfigurations by key (id)
+        Update entity in authenticationMethodConfigurations
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -161,7 +163,7 @@ class AuthenticationMethodConfigurationItemRequestBuilder():
     @dataclass
     class AuthenticationMethodConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Get entity from authenticationMethodConfigurations by key (id)
+        Get entity from authenticationMethodConfigurations by key
         """
         # Expand related entities
         expand: Optional[List[str]] = None

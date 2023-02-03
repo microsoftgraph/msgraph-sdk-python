@@ -85,15 +85,15 @@ class HostSecurityState(AdditionalDataHolder, Parsable):
         """
         fields = {
             "fqdn": lambda n : setattr(self, 'fqdn', n.get_str_value()),
-            "is_azure_ad_joined": lambda n : setattr(self, 'is_azure_ad_joined', n.get_bool_value()),
-            "is_azure_ad_registered": lambda n : setattr(self, 'is_azure_ad_registered', n.get_bool_value()),
-            "is_hybrid_azure_domain_joined": lambda n : setattr(self, 'is_hybrid_azure_domain_joined', n.get_bool_value()),
-            "net_bios_name": lambda n : setattr(self, 'net_bios_name', n.get_str_value()),
+            "isAzureAdJoined": lambda n : setattr(self, 'is_azure_ad_joined', n.get_bool_value()),
+            "isAzureAdRegistered": lambda n : setattr(self, 'is_azure_ad_registered', n.get_bool_value()),
+            "isHybridAzureDomainJoined": lambda n : setattr(self, 'is_hybrid_azure_domain_joined', n.get_bool_value()),
+            "netBiosName": lambda n : setattr(self, 'net_bios_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "os": lambda n : setattr(self, 'os', n.get_str_value()),
-            "private_ip_address": lambda n : setattr(self, 'private_ip_address', n.get_str_value()),
-            "public_ip_address": lambda n : setattr(self, 'public_ip_address', n.get_str_value()),
-            "risk_score": lambda n : setattr(self, 'risk_score', n.get_str_value()),
+            "privateIpAddress": lambda n : setattr(self, 'private_ip_address', n.get_str_value()),
+            "publicIpAddress": lambda n : setattr(self, 'public_ip_address', n.get_str_value()),
+            "riskScore": lambda n : setattr(self, 'risk_score', n.get_str_value()),
         }
         return fields
     
@@ -110,7 +110,7 @@ class HostSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the isAzureAdJoined property value. The isAzureAdJoined property
         Args:
-            value: Value to set for the isAzureAdJoined property.
+            value: Value to set for the is_azure_ad_joined property.
         """
         self._is_azure_ad_joined = value
     
@@ -127,7 +127,7 @@ class HostSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the isAzureAdRegistered property value. The isAzureAdRegistered property
         Args:
-            value: Value to set for the isAzureAdRegistered property.
+            value: Value to set for the is_azure_ad_registered property.
         """
         self._is_azure_ad_registered = value
     
@@ -144,7 +144,7 @@ class HostSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the isHybridAzureDomainJoined property value. True if the host is domain joined to an on-premises Active Directory domain.
         Args:
-            value: Value to set for the isHybridAzureDomainJoined property.
+            value: Value to set for the is_hybrid_azure_domain_joined property.
         """
         self._is_hybrid_azure_domain_joined = value
     
@@ -161,7 +161,7 @@ class HostSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the netBiosName property value. The local host name, without the DNS domain name.
         Args:
-            value: Value to set for the netBiosName property.
+            value: Value to set for the net_bios_name property.
         """
         self._net_bios_name = value
     
@@ -178,7 +178,7 @@ class HostSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -212,7 +212,7 @@ class HostSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the privateIpAddress property value. Private (not routable) IPv4 or IPv6 address (see RFC 1918) at the time of the alert.
         Args:
-            value: Value to set for the privateIpAddress property.
+            value: Value to set for the private_ip_address property.
         """
         self._private_ip_address = value
     
@@ -229,7 +229,7 @@ class HostSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the publicIpAddress property value. Publicly routable IPv4 or IPv6 address (see RFC 1918) at time of the alert.
         Args:
-            value: Value to set for the publicIpAddress property.
+            value: Value to set for the public_ip_address property.
         """
         self._public_ip_address = value
     
@@ -246,7 +246,7 @@ class HostSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the riskScore property value. Provider-generated/calculated risk score of the host.  Recommended value range of 0-1, which equates to a percentage.
         Args:
-            value: Value to set for the riskScore property.
+            value: Value to set for the risk_score property.
         """
         self._risk_score = value
     

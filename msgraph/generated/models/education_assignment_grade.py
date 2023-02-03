@@ -56,8 +56,8 @@ class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "graded_by": lambda n : setattr(self, 'graded_by', n.get_object_value(identity_set.IdentitySet)),
-            "graded_date_time": lambda n : setattr(self, 'graded_date_time', n.get_datetime_value()),
+            "gradedBy": lambda n : setattr(self, 'graded_by', n.get_object_value(identity_set.IdentitySet)),
+            "gradedDateTime": lambda n : setattr(self, 'graded_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -75,7 +75,7 @@ class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
         """
         Sets the gradedBy property value. User who did the grading.
         Args:
-            value: Value to set for the gradedBy property.
+            value: Value to set for the graded_by property.
         """
         self._graded_by = value
     
@@ -92,7 +92,7 @@ class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
         """
         Sets the gradedDateTime property value. Moment in time when the grade was applied to this submission object. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         Args:
-            value: Value to set for the gradedDateTime property.
+            value: Value to set for the graded_date_time property.
         """
         self._graded_date_time = value
     
@@ -109,7 +109,7 @@ class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

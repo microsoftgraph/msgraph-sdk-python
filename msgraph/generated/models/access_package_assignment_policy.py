@@ -29,7 +29,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         """
         Sets the accessPackage property value. Access package containing this policy. Read-only.
         Args:
-            value: Value to set for the accessPackage property.
+            value: Value to set for the access_package property.
         """
         self._access_package = value
     
@@ -46,7 +46,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         """
         Sets the allowedTargetScope property value. Principals that can be assigned the access package through this policy. The possible values are: notSpecified, specificDirectoryUsers, specificConnectedOrganizationUsers, specificDirectoryServicePrincipals, allMemberUsers, allDirectoryUsers, allDirectoryServicePrincipals, allConfiguredConnectedOrganizationUsers, allExternalUsers, unknownFutureValue.
         Args:
-            value: Value to set for the allowedTargetScope property.
+            value: Value to set for the allowed_target_scope property.
         """
         self._allowed_target_scope = value
     
@@ -63,7 +63,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         """
         Sets the automaticRequestSettings property value. This property is only present for an auto assignment policy; if absent, this is a request-based policy.
         Args:
-            value: Value to set for the automaticRequestSettings property.
+            value: Value to set for the automatic_request_settings property.
         """
         self._automatic_request_settings = value
     
@@ -131,7 +131,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         """
         Sets the createdDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -177,7 +177,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         """
         Sets the displayName property value. The display name of the policy.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -204,19 +204,19 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_package": lambda n : setattr(self, 'access_package', n.get_object_value(access_package.AccessPackage)),
-            "allowed_target_scope": lambda n : setattr(self, 'allowed_target_scope', n.get_enum_value(allowed_target_scope.AllowedTargetScope)),
-            "automatic_request_settings": lambda n : setattr(self, 'automatic_request_settings', n.get_object_value(access_package_automatic_request_settings.AccessPackageAutomaticRequestSettings)),
+            "accessPackage": lambda n : setattr(self, 'access_package', n.get_object_value(access_package.AccessPackage)),
+            "allowedTargetScope": lambda n : setattr(self, 'allowed_target_scope', n.get_enum_value(allowed_target_scope.AllowedTargetScope)),
+            "automaticRequestSettings": lambda n : setattr(self, 'automatic_request_settings', n.get_object_value(access_package_automatic_request_settings.AccessPackageAutomaticRequestSettings)),
             "catalog": lambda n : setattr(self, 'catalog', n.get_object_value(access_package_catalog.AccessPackageCatalog)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "expiration": lambda n : setattr(self, 'expiration', n.get_object_value(expiration_pattern.ExpirationPattern)),
-            "modified_date_time": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
-            "request_approval_settings": lambda n : setattr(self, 'request_approval_settings', n.get_object_value(access_package_assignment_approval_settings.AccessPackageAssignmentApprovalSettings)),
-            "requestor_settings": lambda n : setattr(self, 'requestor_settings', n.get_object_value(access_package_assignment_requestor_settings.AccessPackageAssignmentRequestorSettings)),
-            "review_settings": lambda n : setattr(self, 'review_settings', n.get_object_value(access_package_assignment_review_settings.AccessPackageAssignmentReviewSettings)),
-            "specific_allowed_targets": lambda n : setattr(self, 'specific_allowed_targets', n.get_collection_of_object_values(subject_set.SubjectSet)),
+            "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "requestorSettings": lambda n : setattr(self, 'requestor_settings', n.get_object_value(access_package_assignment_requestor_settings.AccessPackageAssignmentRequestorSettings)),
+            "requestApprovalSettings": lambda n : setattr(self, 'request_approval_settings', n.get_object_value(access_package_assignment_approval_settings.AccessPackageAssignmentApprovalSettings)),
+            "reviewSettings": lambda n : setattr(self, 'review_settings', n.get_object_value(access_package_assignment_review_settings.AccessPackageAssignmentReviewSettings)),
+            "specificAllowedTargets": lambda n : setattr(self, 'specific_allowed_targets', n.get_collection_of_object_values(subject_set.SubjectSet)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -235,7 +235,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         """
         Sets the modifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
-            value: Value to set for the modifiedDateTime property.
+            value: Value to set for the modified_date_time property.
         """
         self._modified_date_time = value
     
@@ -252,7 +252,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         """
         Sets the requestApprovalSettings property value. Specifies the settings for approval of requests for an access package assignment through this policy. For example, if approval is required for new requests.
         Args:
-            value: Value to set for the requestApprovalSettings property.
+            value: Value to set for the request_approval_settings property.
         """
         self._request_approval_settings = value
     
@@ -269,7 +269,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         """
         Sets the requestorSettings property value. Provides additional settings to select who can create a request for an access package assignment through this policy, and what they can include in their request.
         Args:
-            value: Value to set for the requestorSettings property.
+            value: Value to set for the requestor_settings property.
         """
         self._requestor_settings = value
     
@@ -286,7 +286,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         """
         Sets the reviewSettings property value. Settings for access reviews of assignments through this policy.
         Args:
-            value: Value to set for the reviewSettings property.
+            value: Value to set for the review_settings property.
         """
         self._review_settings = value
     
@@ -308,8 +308,8 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("expiration", self.expiration)
         writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
-        writer.write_object_value("requestApprovalSettings", self.request_approval_settings)
         writer.write_object_value("requestorSettings", self.requestor_settings)
+        writer.write_object_value("requestApprovalSettings", self.request_approval_settings)
         writer.write_object_value("reviewSettings", self.review_settings)
         writer.write_collection_of_object_values("specificAllowedTargets", self.specific_allowed_targets)
     
@@ -326,7 +326,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         """
         Sets the specificAllowedTargets property value. The principals that can be assigned access from an access package through this policy.
         Args:
-            value: Value to set for the specificAllowedTargets property.
+            value: Value to set for the specific_allowed_targets property.
         """
         self._specific_allowed_targets = value
     

@@ -63,7 +63,7 @@ class CustomTimeZone(time_zone_base.TimeZoneBase):
         """
         Sets the daylightOffset property value. Specifies when the time zone switches from standard time to daylight saving time.
         Args:
-            value: Value to set for the daylightOffset property.
+            value: Value to set for the daylight_offset property.
         """
         self._daylight_offset = value
     
@@ -74,8 +74,8 @@ class CustomTimeZone(time_zone_base.TimeZoneBase):
         """
         fields = {
             "bias": lambda n : setattr(self, 'bias', n.get_int_value()),
-            "daylight_offset": lambda n : setattr(self, 'daylight_offset', n.get_object_value(daylight_time_zone_offset.DaylightTimeZoneOffset)),
-            "standard_offset": lambda n : setattr(self, 'standard_offset', n.get_object_value(standard_time_zone_offset.StandardTimeZoneOffset)),
+            "daylightOffset": lambda n : setattr(self, 'daylight_offset', n.get_object_value(daylight_time_zone_offset.DaylightTimeZoneOffset)),
+            "standardOffset": lambda n : setattr(self, 'standard_offset', n.get_object_value(standard_time_zone_offset.StandardTimeZoneOffset)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -107,7 +107,7 @@ class CustomTimeZone(time_zone_base.TimeZoneBase):
         """
         Sets the standardOffset property value. Specifies when the time zone switches from daylight saving time to standard time.
         Args:
-            value: Value to set for the standardOffset property.
+            value: Value to set for the standard_offset property.
         """
         self._standard_offset = value
     

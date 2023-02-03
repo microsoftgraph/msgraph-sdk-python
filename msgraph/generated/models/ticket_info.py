@@ -54,8 +54,8 @@ class TicketInfo(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "ticket_number": lambda n : setattr(self, 'ticket_number', n.get_str_value()),
-            "ticket_system": lambda n : setattr(self, 'ticket_system', n.get_str_value()),
+            "ticketNumber": lambda n : setattr(self, 'ticket_number', n.get_str_value()),
+            "ticketSystem": lambda n : setattr(self, 'ticket_system', n.get_str_value()),
         }
         return fields
     
@@ -72,7 +72,7 @@ class TicketInfo(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -102,7 +102,7 @@ class TicketInfo(AdditionalDataHolder, Parsable):
         """
         Sets the ticketNumber property value. The ticket number.
         Args:
-            value: Value to set for the ticketNumber property.
+            value: Value to set for the ticket_number property.
         """
         self._ticket_number = value
     
@@ -119,7 +119,7 @@ class TicketInfo(AdditionalDataHolder, Parsable):
         """
         Sets the ticketSystem property value. The description of the ticket system.
         Args:
-            value: Value to set for the ticketSystem property.
+            value: Value to set for the ticket_system property.
         """
         self._ticket_system = value
     

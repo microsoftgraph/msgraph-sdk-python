@@ -35,7 +35,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the connectingIP property value. The connectingIP property
         Args:
-            value: Value to set for the connectingIP property.
+            value: Value to set for the connecting_i_p property.
         """
         self._connecting_i_p = value
     
@@ -92,7 +92,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the deliveryAction property value. The deliveryAction property
         Args:
-            value: Value to set for the deliveryAction property.
+            value: Value to set for the delivery_action property.
         """
         self._delivery_action = value
     
@@ -109,7 +109,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the deliveryLocation property value. The deliveryLocation property
         Args:
-            value: Value to set for the deliveryLocation property.
+            value: Value to set for the delivery_location property.
         """
         self._delivery_location = value
     
@@ -136,15 +136,15 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "connecting_i_p": lambda n : setattr(self, 'connecting_i_p', n.get_str_value()),
-            "delivery_action": lambda n : setattr(self, 'delivery_action', n.get_str_value()),
-            "delivery_location": lambda n : setattr(self, 'delivery_location', n.get_str_value()),
+            "connectingIP": lambda n : setattr(self, 'connecting_i_p', n.get_str_value()),
+            "deliveryAction": lambda n : setattr(self, 'delivery_action', n.get_str_value()),
+            "deliveryLocation": lambda n : setattr(self, 'delivery_location', n.get_str_value()),
             "directionality": lambda n : setattr(self, 'directionality', n.get_str_value()),
-            "internet_message_id": lambda n : setattr(self, 'internet_message_id', n.get_str_value()),
-            "message_fingerprint": lambda n : setattr(self, 'message_fingerprint', n.get_str_value()),
-            "message_received_date_time": lambda n : setattr(self, 'message_received_date_time', n.get_datetime_value()),
-            "message_subject": lambda n : setattr(self, 'message_subject', n.get_str_value()),
-            "network_message_id": lambda n : setattr(self, 'network_message_id', n.get_str_value()),
+            "internetMessageId": lambda n : setattr(self, 'internet_message_id', n.get_str_value()),
+            "messageFingerprint": lambda n : setattr(self, 'message_fingerprint', n.get_str_value()),
+            "messageReceivedDateTime": lambda n : setattr(self, 'message_received_date_time', n.get_datetime_value()),
+            "messageSubject": lambda n : setattr(self, 'message_subject', n.get_str_value()),
+            "networkMessageId": lambda n : setattr(self, 'network_message_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -162,7 +162,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the internetMessageId property value. The internetMessageId property
         Args:
-            value: Value to set for the internetMessageId property.
+            value: Value to set for the internet_message_id property.
         """
         self._internet_message_id = value
     
@@ -179,7 +179,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the messageFingerprint property value. The messageFingerprint property
         Args:
-            value: Value to set for the messageFingerprint property.
+            value: Value to set for the message_fingerprint property.
         """
         self._message_fingerprint = value
     
@@ -196,7 +196,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the messageReceivedDateTime property value. The messageReceivedDateTime property
         Args:
-            value: Value to set for the messageReceivedDateTime property.
+            value: Value to set for the message_received_date_time property.
         """
         self._message_received_date_time = value
     
@@ -213,7 +213,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the messageSubject property value. The messageSubject property
         Args:
-            value: Value to set for the messageSubject property.
+            value: Value to set for the message_subject property.
         """
         self._message_subject = value
     
@@ -230,7 +230,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the networkMessageId property value. The networkMessageId property
         Args:
-            value: Value to set for the networkMessageId property.
+            value: Value to set for the network_message_id property.
         """
         self._network_message_id = value
     
@@ -247,7 +247,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

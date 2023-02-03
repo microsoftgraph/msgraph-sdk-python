@@ -35,7 +35,7 @@ class UserEvidence(alert_evidence.AlertEvidence):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "user_account": lambda n : setattr(self, 'user_account', n.get_object_value(user_account.UserAccount)),
+            "userAccount": lambda n : setattr(self, 'user_account', n.get_object_value(user_account.UserAccount)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -65,7 +65,7 @@ class UserEvidence(alert_evidence.AlertEvidence):
         """
         Sets the userAccount property value. The user account details.
         Args:
-            value: Value to set for the userAccount property.
+            value: Value to set for the user_account property.
         """
         self._user_account = value
     

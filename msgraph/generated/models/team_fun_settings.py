@@ -36,7 +36,7 @@ class TeamFunSettings(AdditionalDataHolder, Parsable):
         """
         Sets the allowCustomMemes property value. If set to true, enables users to include custom memes.
         Args:
-            value: Value to set for the allowCustomMemes property.
+            value: Value to set for the allow_custom_memes property.
         """
         self._allow_custom_memes = value
     
@@ -53,7 +53,7 @@ class TeamFunSettings(AdditionalDataHolder, Parsable):
         """
         Sets the allowGiphy property value. If set to true, enables Giphy use.
         Args:
-            value: Value to set for the allowGiphy property.
+            value: Value to set for the allow_giphy property.
         """
         self._allow_giphy = value
     
@@ -70,7 +70,7 @@ class TeamFunSettings(AdditionalDataHolder, Parsable):
         """
         Sets the allowStickersAndMemes property value. If set to true, enables users to include stickers and memes.
         Args:
-            value: Value to set for the allowStickersAndMemes property.
+            value: Value to set for the allow_stickers_and_memes property.
         """
         self._allow_stickers_and_memes = value
     
@@ -110,10 +110,10 @@ class TeamFunSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_custom_memes": lambda n : setattr(self, 'allow_custom_memes', n.get_bool_value()),
-            "allow_giphy": lambda n : setattr(self, 'allow_giphy', n.get_bool_value()),
-            "allow_stickers_and_memes": lambda n : setattr(self, 'allow_stickers_and_memes', n.get_bool_value()),
-            "giphy_content_rating": lambda n : setattr(self, 'giphy_content_rating', n.get_enum_value(giphy_rating_type.GiphyRatingType)),
+            "allowCustomMemes": lambda n : setattr(self, 'allow_custom_memes', n.get_bool_value()),
+            "allowGiphy": lambda n : setattr(self, 'allow_giphy', n.get_bool_value()),
+            "allowStickersAndMemes": lambda n : setattr(self, 'allow_stickers_and_memes', n.get_bool_value()),
+            "giphyContentRating": lambda n : setattr(self, 'giphy_content_rating', n.get_enum_value(giphy_rating_type.GiphyRatingType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -131,7 +131,7 @@ class TeamFunSettings(AdditionalDataHolder, Parsable):
         """
         Sets the giphyContentRating property value. Giphy content rating. Possible values are: moderate, strict.
         Args:
-            value: Value to set for the giphyContentRating property.
+            value: Value to set for the giphy_content_rating property.
         """
         self._giphy_content_rating = value
     
@@ -148,7 +148,7 @@ class TeamFunSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

@@ -33,7 +33,7 @@ class EducationAssignmentPointsGradeType(education_assignment_grade_type.Educati
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "max_points": lambda n : setattr(self, 'max_points', n.get_float_value()),
+            "maxPoints": lambda n : setattr(self, 'max_points', n.get_float_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -52,7 +52,7 @@ class EducationAssignmentPointsGradeType(education_assignment_grade_type.Educati
         """
         Sets the maxPoints property value. Max points possible for this assignment.
         Args:
-            value: Value to set for the maxPoints property.
+            value: Value to set for the max_points property.
         """
         self._max_points = value
     

@@ -35,7 +35,7 @@ class InnerError(AdditionalDataHolder, Parsable):
         """
         Sets the client-request-id property value. Client request Id as sent by the client application.
         Args:
-            value: Value to set for the clientRequestId property.
+            value: Value to set for the client_request_id property.
         """
         self._client_request_id = value
     
@@ -80,7 +80,7 @@ class InnerError(AdditionalDataHolder, Parsable):
         """
         Sets the date property value. Date when the error occured.
         Args:
-            value: Value to set for the Date property.
+            value: Value to set for the date property.
         """
         self._date = value
     
@@ -91,7 +91,7 @@ class InnerError(AdditionalDataHolder, Parsable):
         """
         fields = {
             "client-request-id": lambda n : setattr(self, 'client_request_id', n.get_str_value()),
-            "date": lambda n : setattr(self, 'date', n.get_datetime_value()),
+            "Date": lambda n : setattr(self, 'date', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "request-id": lambda n : setattr(self, 'request_id', n.get_str_value()),
         }
@@ -110,7 +110,7 @@ class InnerError(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -127,7 +127,7 @@ class InnerError(AdditionalDataHolder, Parsable):
         """
         Sets the request-id property value. Request Id as tracked internally by the service
         Args:
-            value: Value to set for the requestId property.
+            value: Value to set for the request_id property.
         """
         self._request_id = value
     

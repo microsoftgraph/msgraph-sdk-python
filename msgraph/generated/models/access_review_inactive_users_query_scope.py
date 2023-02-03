@@ -34,7 +34,7 @@ class AccessReviewInactiveUsersQueryScope(access_review_query_scope.AccessReview
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "inactive_duration": lambda n : setattr(self, 'inactive_duration', n.get_object_value(Timedelta)),
+            "inactiveDuration": lambda n : setattr(self, 'inactive_duration', n.get_object_value(Timedelta)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -53,7 +53,7 @@ class AccessReviewInactiveUsersQueryScope(access_review_query_scope.AccessReview
         """
         Sets the inactiveDuration property value. Defines the duration of inactivity. Inactivity is based on the last sign in date of the user compared to the access review instance's start date. If this property is not specified, it's assigned the default value PT0S.
         Args:
-            value: Value to set for the inactiveDuration property.
+            value: Value to set for the inactive_duration property.
         """
         self._inactive_duration = value
     

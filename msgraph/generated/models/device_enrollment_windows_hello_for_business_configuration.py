@@ -64,7 +64,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         """
         Sets the enhancedBiometricsState property value. Possible values of a property
         Args:
-            value: Value to set for the enhancedBiometricsState property.
+            value: Value to set for the enhanced_biometrics_state property.
         """
         self._enhanced_biometrics_state = value
     
@@ -74,18 +74,18 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "enhanced_biometrics_state": lambda n : setattr(self, 'enhanced_biometrics_state', n.get_enum_value(enablement.Enablement)),
-            "pin_expiration_in_days": lambda n : setattr(self, 'pin_expiration_in_days', n.get_int_value()),
-            "pin_lowercase_characters_usage": lambda n : setattr(self, 'pin_lowercase_characters_usage', n.get_enum_value(windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage)),
-            "pin_maximum_length": lambda n : setattr(self, 'pin_maximum_length', n.get_int_value()),
-            "pin_minimum_length": lambda n : setattr(self, 'pin_minimum_length', n.get_int_value()),
-            "pin_previous_block_count": lambda n : setattr(self, 'pin_previous_block_count', n.get_int_value()),
-            "pin_special_characters_usage": lambda n : setattr(self, 'pin_special_characters_usage', n.get_enum_value(windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage)),
-            "pin_uppercase_characters_usage": lambda n : setattr(self, 'pin_uppercase_characters_usage', n.get_enum_value(windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage)),
-            "remote_passport_enabled": lambda n : setattr(self, 'remote_passport_enabled', n.get_bool_value()),
-            "security_device_required": lambda n : setattr(self, 'security_device_required', n.get_bool_value()),
+            "enhancedBiometricsState": lambda n : setattr(self, 'enhanced_biometrics_state', n.get_enum_value(enablement.Enablement)),
+            "pinExpirationInDays": lambda n : setattr(self, 'pin_expiration_in_days', n.get_int_value()),
+            "pinLowercaseCharactersUsage": lambda n : setattr(self, 'pin_lowercase_characters_usage', n.get_enum_value(windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage)),
+            "pinMaximumLength": lambda n : setattr(self, 'pin_maximum_length', n.get_int_value()),
+            "pinMinimumLength": lambda n : setattr(self, 'pin_minimum_length', n.get_int_value()),
+            "pinPreviousBlockCount": lambda n : setattr(self, 'pin_previous_block_count', n.get_int_value()),
+            "pinSpecialCharactersUsage": lambda n : setattr(self, 'pin_special_characters_usage', n.get_enum_value(windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage)),
+            "pinUppercaseCharactersUsage": lambda n : setattr(self, 'pin_uppercase_characters_usage', n.get_enum_value(windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage)),
+            "remotePassportEnabled": lambda n : setattr(self, 'remote_passport_enabled', n.get_bool_value()),
+            "securityDeviceRequired": lambda n : setattr(self, 'security_device_required', n.get_bool_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(enablement.Enablement)),
-            "unlock_with_biometrics_enabled": lambda n : setattr(self, 'unlock_with_biometrics_enabled', n.get_bool_value()),
+            "unlockWithBiometricsEnabled": lambda n : setattr(self, 'unlock_with_biometrics_enabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -104,7 +104,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         """
         Sets the pinExpirationInDays property value. Controls the period of time (in days) that a PIN can be used before the system requires the user to change it. This must be set between 0 and 730, inclusive. If set to 0, the user's PIN will never expire
         Args:
-            value: Value to set for the pinExpirationInDays property.
+            value: Value to set for the pin_expiration_in_days property.
         """
         self._pin_expiration_in_days = value
     
@@ -121,7 +121,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         """
         Sets the pinLowercaseCharactersUsage property value. Windows Hello for Business pin usage options
         Args:
-            value: Value to set for the pinLowercaseCharactersUsage property.
+            value: Value to set for the pin_lowercase_characters_usage property.
         """
         self._pin_lowercase_characters_usage = value
     
@@ -138,7 +138,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         """
         Sets the pinMaximumLength property value. Controls the maximum number of characters allowed for the Windows Hello for Business PIN. This value must be between 4 and 127, inclusive. This value must be greater than or equal to the value set for the minimum PIN.
         Args:
-            value: Value to set for the pinMaximumLength property.
+            value: Value to set for the pin_maximum_length property.
         """
         self._pin_maximum_length = value
     
@@ -155,7 +155,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         """
         Sets the pinMinimumLength property value. Controls the minimum number of characters required for the Windows Hello for Business PIN.  This value must be between 4 and 127, inclusive, and less than or equal to the value set for the maximum PIN.
         Args:
-            value: Value to set for the pinMinimumLength property.
+            value: Value to set for the pin_minimum_length property.
         """
         self._pin_minimum_length = value
     
@@ -172,7 +172,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         """
         Sets the pinPreviousBlockCount property value. Controls the ability to prevent users from using past PINs. This must be set between 0 and 50, inclusive, and the current PIN of the user is included in that count. If set to 0, previous PINs are not stored. PIN history is not preserved through a PIN reset.
         Args:
-            value: Value to set for the pinPreviousBlockCount property.
+            value: Value to set for the pin_previous_block_count property.
         """
         self._pin_previous_block_count = value
     
@@ -189,7 +189,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         """
         Sets the pinSpecialCharactersUsage property value. Windows Hello for Business pin usage options
         Args:
-            value: Value to set for the pinSpecialCharactersUsage property.
+            value: Value to set for the pin_special_characters_usage property.
         """
         self._pin_special_characters_usage = value
     
@@ -206,7 +206,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         """
         Sets the pinUppercaseCharactersUsage property value. Windows Hello for Business pin usage options
         Args:
-            value: Value to set for the pinUppercaseCharactersUsage property.
+            value: Value to set for the pin_uppercase_characters_usage property.
         """
         self._pin_uppercase_characters_usage = value
     
@@ -223,7 +223,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         """
         Sets the remotePassportEnabled property value. Controls the use of Remote Windows Hello for Business. Remote Windows Hello for Business provides the ability for a portable, registered device to be usable as a companion for desktop authentication. The desktop must be Azure AD joined and the companion device must have a Windows Hello for Business PIN.
         Args:
-            value: Value to set for the remotePassportEnabled property.
+            value: Value to set for the remote_passport_enabled property.
         """
         self._remote_passport_enabled = value
     
@@ -240,7 +240,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         """
         Sets the securityDeviceRequired property value. Controls whether to require a Trusted Platform Module (TPM) for provisioning Windows Hello for Business. A TPM provides an additional security benefit in that data stored on it cannot be used on other devices. If set to False, all devices can provision Windows Hello for Business even if there is not a usable TPM.
         Args:
-            value: Value to set for the securityDeviceRequired property.
+            value: Value to set for the security_device_required property.
         """
         self._security_device_required = value
     
@@ -296,7 +296,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         """
         Sets the unlockWithBiometricsEnabled property value. Controls the use of biometric gestures, such as face and fingerprint, as an alternative to the Windows Hello for Business PIN.  If set to False, biometric gestures are not allowed. Users must still configure a PIN as a backup in case of failures.
         Args:
-            value: Value to set for the unlockWithBiometricsEnabled property.
+            value: Value to set for the unlock_with_biometrics_enabled property.
         """
         self._unlock_with_biometrics_enabled = value
     

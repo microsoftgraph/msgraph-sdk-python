@@ -65,7 +65,7 @@ class BookingCustomer(booking_customer_base.BookingCustomerBase):
         """
         Sets the displayName property value. The name of the customer.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -82,7 +82,7 @@ class BookingCustomer(booking_customer_base.BookingCustomerBase):
         """
         Sets the emailAddress property value. The SMTP address of the customer.
         Args:
-            value: Value to set for the emailAddress property.
+            value: Value to set for the email_address property.
         """
         self._email_address = value
     
@@ -93,8 +93,8 @@ class BookingCustomer(booking_customer_base.BookingCustomerBase):
         """
         fields = {
             "addresses": lambda n : setattr(self, 'addresses', n.get_collection_of_object_values(physical_address.PhysicalAddress)),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "email_address": lambda n : setattr(self, 'email_address', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
             "phones": lambda n : setattr(self, 'phones', n.get_collection_of_object_values(phone.Phone)),
         }
         super_fields = super().get_field_deserializers()

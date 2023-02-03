@@ -57,8 +57,8 @@ class AccessReviewReviewerScope(AdditionalDataHolder, Parsable):
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "query": lambda n : setattr(self, 'query', n.get_str_value()),
-            "query_root": lambda n : setattr(self, 'query_root', n.get_str_value()),
-            "query_type": lambda n : setattr(self, 'query_type', n.get_str_value()),
+            "queryRoot": lambda n : setattr(self, 'query_root', n.get_str_value()),
+            "queryType": lambda n : setattr(self, 'query_type', n.get_str_value()),
         }
         return fields
     
@@ -75,7 +75,7 @@ class AccessReviewReviewerScope(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -109,7 +109,7 @@ class AccessReviewReviewerScope(AdditionalDataHolder, Parsable):
         """
         Sets the queryRoot property value. In the scenario where reviewers need to be specified dynamically, this property is used to indicate the relative source of the query. This property is only required if a relative query, for example, ./manager, is specified. Possible value: decisions.
         Args:
-            value: Value to set for the queryRoot property.
+            value: Value to set for the query_root property.
         """
         self._query_root = value
     
@@ -126,7 +126,7 @@ class AccessReviewReviewerScope(AdditionalDataHolder, Parsable):
         """
         Sets the queryType property value. The type of query. Examples include MicrosoftGraph and ARM.
         Args:
-            value: Value to set for the queryType property.
+            value: Value to set for the query_type property.
         """
         self._query_type = value
     

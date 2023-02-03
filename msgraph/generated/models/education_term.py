@@ -65,7 +65,7 @@ class EducationTerm(AdditionalDataHolder, Parsable):
         """
         Sets the displayName property value. Display name of the term.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -82,7 +82,7 @@ class EducationTerm(AdditionalDataHolder, Parsable):
         """
         Sets the endDate property value. End of the term.
         Args:
-            value: Value to set for the endDate property.
+            value: Value to set for the end_date property.
         """
         self._end_date = value
     
@@ -99,7 +99,7 @@ class EducationTerm(AdditionalDataHolder, Parsable):
         """
         Sets the externalId property value. ID of term in the syncing system.
         Args:
-            value: Value to set for the externalId property.
+            value: Value to set for the external_id property.
         """
         self._external_id = value
     
@@ -109,11 +109,11 @@ class EducationTerm(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "end_date": lambda n : setattr(self, 'end_date', n.get_object_value(Date)),
-            "external_id": lambda n : setattr(self, 'external_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "endDate": lambda n : setattr(self, 'end_date', n.get_object_value(Date)),
+            "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "start_date": lambda n : setattr(self, 'start_date', n.get_object_value(Date)),
+            "startDate": lambda n : setattr(self, 'start_date', n.get_object_value(Date)),
         }
         return fields
     
@@ -130,7 +130,7 @@ class EducationTerm(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -162,7 +162,7 @@ class EducationTerm(AdditionalDataHolder, Parsable):
         """
         Sets the startDate property value. Start of the term.
         Args:
-            value: Value to set for the startDate property.
+            value: Value to set for the start_date property.
         """
         self._start_date = value
     

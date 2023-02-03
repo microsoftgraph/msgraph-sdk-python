@@ -60,7 +60,7 @@ class ImplicitGrantSettings(AdditionalDataHolder, Parsable):
         """
         Sets the enableAccessTokenIssuance property value. Specifies whether this web application can request an access token using the OAuth 2.0 implicit flow.
         Args:
-            value: Value to set for the enableAccessTokenIssuance property.
+            value: Value to set for the enable_access_token_issuance property.
         """
         self._enable_access_token_issuance = value
     
@@ -77,7 +77,7 @@ class ImplicitGrantSettings(AdditionalDataHolder, Parsable):
         """
         Sets the enableIdTokenIssuance property value. Specifies whether this web application can request an ID token using the OAuth 2.0 implicit flow.
         Args:
-            value: Value to set for the enableIdTokenIssuance property.
+            value: Value to set for the enable_id_token_issuance property.
         """
         self._enable_id_token_issuance = value
     
@@ -87,8 +87,8 @@ class ImplicitGrantSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "enable_access_token_issuance": lambda n : setattr(self, 'enable_access_token_issuance', n.get_bool_value()),
-            "enable_id_token_issuance": lambda n : setattr(self, 'enable_id_token_issuance', n.get_bool_value()),
+            "enableAccessTokenIssuance": lambda n : setattr(self, 'enable_access_token_issuance', n.get_bool_value()),
+            "enableIdTokenIssuance": lambda n : setattr(self, 'enable_id_token_issuance', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -106,7 +106,7 @@ class ImplicitGrantSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

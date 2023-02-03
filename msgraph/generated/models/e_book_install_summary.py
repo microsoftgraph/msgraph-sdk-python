@@ -51,7 +51,7 @@ class EBookInstallSummary(entity.Entity):
         """
         Sets the failedDeviceCount property value. Number of Devices that have failed to install this book.
         Args:
-            value: Value to set for the failedDeviceCount property.
+            value: Value to set for the failed_device_count property.
         """
         self._failed_device_count = value
     
@@ -68,7 +68,7 @@ class EBookInstallSummary(entity.Entity):
         """
         Sets the failedUserCount property value. Number of Users that have 1 or more device that failed to install this book.
         Args:
-            value: Value to set for the failedUserCount property.
+            value: Value to set for the failed_user_count property.
         """
         self._failed_user_count = value
     
@@ -78,12 +78,12 @@ class EBookInstallSummary(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "failed_device_count": lambda n : setattr(self, 'failed_device_count', n.get_int_value()),
-            "failed_user_count": lambda n : setattr(self, 'failed_user_count', n.get_int_value()),
-            "installed_device_count": lambda n : setattr(self, 'installed_device_count', n.get_int_value()),
-            "installed_user_count": lambda n : setattr(self, 'installed_user_count', n.get_int_value()),
-            "not_installed_device_count": lambda n : setattr(self, 'not_installed_device_count', n.get_int_value()),
-            "not_installed_user_count": lambda n : setattr(self, 'not_installed_user_count', n.get_int_value()),
+            "failedDeviceCount": lambda n : setattr(self, 'failed_device_count', n.get_int_value()),
+            "failedUserCount": lambda n : setattr(self, 'failed_user_count', n.get_int_value()),
+            "installedDeviceCount": lambda n : setattr(self, 'installed_device_count', n.get_int_value()),
+            "installedUserCount": lambda n : setattr(self, 'installed_user_count', n.get_int_value()),
+            "notInstalledDeviceCount": lambda n : setattr(self, 'not_installed_device_count', n.get_int_value()),
+            "notInstalledUserCount": lambda n : setattr(self, 'not_installed_user_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -102,7 +102,7 @@ class EBookInstallSummary(entity.Entity):
         """
         Sets the installedDeviceCount property value. Number of Devices that have successfully installed this book.
         Args:
-            value: Value to set for the installedDeviceCount property.
+            value: Value to set for the installed_device_count property.
         """
         self._installed_device_count = value
     
@@ -119,7 +119,7 @@ class EBookInstallSummary(entity.Entity):
         """
         Sets the installedUserCount property value. Number of Users whose devices have all succeeded to install this book.
         Args:
-            value: Value to set for the installedUserCount property.
+            value: Value to set for the installed_user_count property.
         """
         self._installed_user_count = value
     
@@ -136,7 +136,7 @@ class EBookInstallSummary(entity.Entity):
         """
         Sets the notInstalledDeviceCount property value. Number of Devices that does not have this book installed.
         Args:
-            value: Value to set for the notInstalledDeviceCount property.
+            value: Value to set for the not_installed_device_count property.
         """
         self._not_installed_device_count = value
     
@@ -153,7 +153,7 @@ class EBookInstallSummary(entity.Entity):
         """
         Sets the notInstalledUserCount property value. Number of Users that did not install this book.
         Args:
-            value: Value to set for the notInstalledUserCount property.
+            value: Value to set for the not_installed_user_count property.
         """
         self._not_installed_user_count = value
     

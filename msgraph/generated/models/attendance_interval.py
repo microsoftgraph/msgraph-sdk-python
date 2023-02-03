@@ -63,7 +63,7 @@ class AttendanceInterval(AdditionalDataHolder, Parsable):
         """
         Sets the durationInSeconds property value. Duration of the meeting interval in seconds; that is, the difference between joinDateTime and leaveDateTime.
         Args:
-            value: Value to set for the durationInSeconds property.
+            value: Value to set for the duration_in_seconds property.
         """
         self._duration_in_seconds = value
     
@@ -73,9 +73,9 @@ class AttendanceInterval(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "duration_in_seconds": lambda n : setattr(self, 'duration_in_seconds', n.get_int_value()),
-            "join_date_time": lambda n : setattr(self, 'join_date_time', n.get_datetime_value()),
-            "leave_date_time": lambda n : setattr(self, 'leave_date_time', n.get_datetime_value()),
+            "durationInSeconds": lambda n : setattr(self, 'duration_in_seconds', n.get_int_value()),
+            "joinDateTime": lambda n : setattr(self, 'join_date_time', n.get_datetime_value()),
+            "leaveDateTime": lambda n : setattr(self, 'leave_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -93,7 +93,7 @@ class AttendanceInterval(AdditionalDataHolder, Parsable):
         """
         Sets the joinDateTime property value. The time the attendee joined in UTC.
         Args:
-            value: Value to set for the joinDateTime property.
+            value: Value to set for the join_date_time property.
         """
         self._join_date_time = value
     
@@ -110,7 +110,7 @@ class AttendanceInterval(AdditionalDataHolder, Parsable):
         """
         Sets the leaveDateTime property value. The time the attendee left in UTC.
         Args:
-            value: Value to set for the leaveDateTime property.
+            value: Value to set for the leave_date_time property.
         """
         self._leave_date_time = value
     
@@ -127,7 +127,7 @@ class AttendanceInterval(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

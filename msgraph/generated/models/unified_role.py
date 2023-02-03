@@ -52,7 +52,7 @@ class UnifiedRole(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "role_definition_id": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
+            "roleDefinitionId": lambda n : setattr(self, 'role_definition_id', n.get_str_value()),
         }
         return fields
     
@@ -69,7 +69,7 @@ class UnifiedRole(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -86,7 +86,7 @@ class UnifiedRole(AdditionalDataHolder, Parsable):
         """
         Sets the roleDefinitionId property value. The roleDefinitionId property
         Args:
-            value: Value to set for the roleDefinitionId property.
+            value: Value to set for the role_definition_id property.
         """
         self._role_definition_id = value
     

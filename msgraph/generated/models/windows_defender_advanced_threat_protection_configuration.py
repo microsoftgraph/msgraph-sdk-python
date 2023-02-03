@@ -19,7 +19,7 @@ class WindowsDefenderAdvancedThreatProtectionConfiguration(device_configuration.
         """
         Sets the allowSampleSharing property value. Windows Defender AdvancedThreatProtection 'Allow Sample Sharing' Rule
         Args:
-            value: Value to set for the allowSampleSharing property.
+            value: Value to set for the allow_sample_sharing property.
         """
         self._allow_sample_sharing = value
     
@@ -59,7 +59,7 @@ class WindowsDefenderAdvancedThreatProtectionConfiguration(device_configuration.
         """
         Sets the enableExpeditedTelemetryReporting property value. Expedite Windows Defender Advanced Threat Protection telemetry reporting frequency.
         Args:
-            value: Value to set for the enableExpeditedTelemetryReporting property.
+            value: Value to set for the enable_expedited_telemetry_reporting property.
         """
         self._enable_expedited_telemetry_reporting = value
     
@@ -69,8 +69,8 @@ class WindowsDefenderAdvancedThreatProtectionConfiguration(device_configuration.
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_sample_sharing": lambda n : setattr(self, 'allow_sample_sharing', n.get_bool_value()),
-            "enable_expedited_telemetry_reporting": lambda n : setattr(self, 'enable_expedited_telemetry_reporting', n.get_bool_value()),
+            "allowSampleSharing": lambda n : setattr(self, 'allow_sample_sharing', n.get_bool_value()),
+            "enableExpeditedTelemetryReporting": lambda n : setattr(self, 'enable_expedited_telemetry_reporting', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

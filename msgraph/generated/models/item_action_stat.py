@@ -17,7 +17,7 @@ class ItemActionStat(AdditionalDataHolder, Parsable):
         """
         Sets the actionCount property value. The number of times the action took place. Read-only.
         Args:
-            value: Value to set for the actionCount property.
+            value: Value to set for the action_count property.
         """
         self._action_count = value
     
@@ -34,7 +34,7 @@ class ItemActionStat(AdditionalDataHolder, Parsable):
         """
         Sets the actorCount property value. The number of distinct actors that performed the action. Read-only.
         Args:
-            value: Value to set for the actorCount property.
+            value: Value to set for the actor_count property.
         """
         self._actor_count = value
     
@@ -87,8 +87,8 @@ class ItemActionStat(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "action_count": lambda n : setattr(self, 'action_count', n.get_int_value()),
-            "actor_count": lambda n : setattr(self, 'actor_count', n.get_int_value()),
+            "actionCount": lambda n : setattr(self, 'action_count', n.get_int_value()),
+            "actorCount": lambda n : setattr(self, 'actor_count', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
@@ -106,7 +106,7 @@ class ItemActionStat(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

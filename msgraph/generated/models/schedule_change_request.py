@@ -22,7 +22,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
         """
         Sets the assignedTo property value. The assignedTo property
         Args:
-            value: Value to set for the assignedTo property.
+            value: Value to set for the assigned_to property.
         """
         self._assigned_to = value
     
@@ -67,13 +67,13 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "assigned_to": lambda n : setattr(self, 'assigned_to', n.get_enum_value(schedule_change_request_actor.ScheduleChangeRequestActor)),
-            "manager_action_date_time": lambda n : setattr(self, 'manager_action_date_time', n.get_datetime_value()),
-            "manager_action_message": lambda n : setattr(self, 'manager_action_message', n.get_str_value()),
-            "manager_user_id": lambda n : setattr(self, 'manager_user_id', n.get_str_value()),
-            "sender_date_time": lambda n : setattr(self, 'sender_date_time', n.get_datetime_value()),
-            "sender_message": lambda n : setattr(self, 'sender_message', n.get_str_value()),
-            "sender_user_id": lambda n : setattr(self, 'sender_user_id', n.get_str_value()),
+            "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_enum_value(schedule_change_request_actor.ScheduleChangeRequestActor)),
+            "managerActionDateTime": lambda n : setattr(self, 'manager_action_date_time', n.get_datetime_value()),
+            "managerActionMessage": lambda n : setattr(self, 'manager_action_message', n.get_str_value()),
+            "managerUserId": lambda n : setattr(self, 'manager_user_id', n.get_str_value()),
+            "senderDateTime": lambda n : setattr(self, 'sender_date_time', n.get_datetime_value()),
+            "senderMessage": lambda n : setattr(self, 'sender_message', n.get_str_value()),
+            "senderUserId": lambda n : setattr(self, 'sender_user_id', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(schedule_change_state.ScheduleChangeState)),
         }
         super_fields = super().get_field_deserializers()
@@ -93,7 +93,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
         """
         Sets the managerActionDateTime property value. The managerActionDateTime property
         Args:
-            value: Value to set for the managerActionDateTime property.
+            value: Value to set for the manager_action_date_time property.
         """
         self._manager_action_date_time = value
     
@@ -110,7 +110,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
         """
         Sets the managerActionMessage property value. The managerActionMessage property
         Args:
-            value: Value to set for the managerActionMessage property.
+            value: Value to set for the manager_action_message property.
         """
         self._manager_action_message = value
     
@@ -127,7 +127,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
         """
         Sets the managerUserId property value. The managerUserId property
         Args:
-            value: Value to set for the managerUserId property.
+            value: Value to set for the manager_user_id property.
         """
         self._manager_user_id = value
     
@@ -144,7 +144,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
         """
         Sets the senderDateTime property value. The senderDateTime property
         Args:
-            value: Value to set for the senderDateTime property.
+            value: Value to set for the sender_date_time property.
         """
         self._sender_date_time = value
     
@@ -161,7 +161,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
         """
         Sets the senderMessage property value. The senderMessage property
         Args:
-            value: Value to set for the senderMessage property.
+            value: Value to set for the sender_message property.
         """
         self._sender_message = value
     
@@ -178,7 +178,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
         """
         Sets the senderUserId property value. The senderUserId property
         Args:
-            value: Value to set for the senderUserId property.
+            value: Value to set for the sender_user_id property.
         """
         self._sender_user_id = value
     

@@ -38,7 +38,7 @@ class DataSource(entity.Entity):
         """
         Sets the createdBy property value. The user who created the dataSource.
         Args:
-            value: Value to set for the createdBy property.
+            value: Value to set for the created_by property.
         """
         self._created_by = value
     
@@ -55,7 +55,7 @@ class DataSource(entity.Entity):
         """
         Sets the createdDateTime property value. The date and time the dataSource was created.
         Args:
-            value: Value to set for the createdDateTime property.
+            value: Value to set for the created_date_time property.
         """
         self._created_date_time = value
     
@@ -84,7 +84,7 @@ class DataSource(entity.Entity):
         """
         Sets the displayName property value. The display name of the dataSource. This will be the name of the SharePoint site.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -94,10 +94,10 @@ class DataSource(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
-            "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "hold_status": lambda n : setattr(self, 'hold_status', n.get_enum_value(data_source_hold_status.DataSourceHoldStatus)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "holdStatus": lambda n : setattr(self, 'hold_status', n.get_enum_value(data_source_hold_status.DataSourceHoldStatus)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -116,7 +116,7 @@ class DataSource(entity.Entity):
         """
         Sets the holdStatus property value. The hold status of the dataSource.The possible values are: notApplied, applied, applying, removing, partial
         Args:
-            value: Value to set for the holdStatus property.
+            value: Value to set for the hold_status property.
         """
         self._hold_status = value
     

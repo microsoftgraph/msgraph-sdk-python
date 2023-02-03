@@ -40,8 +40,8 @@ class SharePointIdentitySet(identity_set.IdentitySet):
         """
         fields = {
             "group": lambda n : setattr(self, 'group', n.get_object_value(identity.Identity)),
-            "site_group": lambda n : setattr(self, 'site_group', n.get_object_value(share_point_identity.SharePointIdentity)),
-            "site_user": lambda n : setattr(self, 'site_user', n.get_object_value(share_point_identity.SharePointIdentity)),
+            "siteGroup": lambda n : setattr(self, 'site_group', n.get_object_value(share_point_identity.SharePointIdentity)),
+            "siteUser": lambda n : setattr(self, 'site_user', n.get_object_value(share_point_identity.SharePointIdentity)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -90,7 +90,7 @@ class SharePointIdentitySet(identity_set.IdentitySet):
         """
         Sets the siteGroup property value. The SharePoint group associated with this action. Optional.
         Args:
-            value: Value to set for the siteGroup property.
+            value: Value to set for the site_group property.
         """
         self._site_group = value
     
@@ -107,7 +107,7 @@ class SharePointIdentitySet(identity_set.IdentitySet):
         """
         Sets the siteUser property value. The SharePoint user associated with this action. Optional.
         Args:
-            value: Value to set for the siteUser property.
+            value: Value to set for the site_user property.
         """
         self._site_user = value
     

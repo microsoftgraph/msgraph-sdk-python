@@ -38,7 +38,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         """
         Sets the allowStaffSelection property value. True if to allow customers to choose a specific person for the booking.
         Args:
-            value: Value to set for the allowStaffSelection property.
+            value: Value to set for the allow_staff_selection property.
         """
         self._allow_staff_selection = value
     
@@ -80,12 +80,12 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allow_staff_selection": lambda n : setattr(self, 'allow_staff_selection', n.get_bool_value()),
-            "maximum_advance": lambda n : setattr(self, 'maximum_advance', n.get_object_value(Timedelta)),
-            "minimum_lead_time": lambda n : setattr(self, 'minimum_lead_time', n.get_object_value(Timedelta)),
+            "allowStaffSelection": lambda n : setattr(self, 'allow_staff_selection', n.get_bool_value()),
+            "maximumAdvance": lambda n : setattr(self, 'maximum_advance', n.get_object_value(Timedelta)),
+            "minimumLeadTime": lambda n : setattr(self, 'minimum_lead_time', n.get_object_value(Timedelta)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "send_confirmations_to_owner": lambda n : setattr(self, 'send_confirmations_to_owner', n.get_bool_value()),
-            "time_slot_interval": lambda n : setattr(self, 'time_slot_interval', n.get_object_value(Timedelta)),
+            "sendConfirmationsToOwner": lambda n : setattr(self, 'send_confirmations_to_owner', n.get_bool_value()),
+            "timeSlotInterval": lambda n : setattr(self, 'time_slot_interval', n.get_object_value(Timedelta)),
         }
         return fields
     
@@ -102,7 +102,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         """
         Sets the maximumAdvance property value. Maximum number of days in advance that a booking can be made. It follows the ISO 8601 format.
         Args:
-            value: Value to set for the maximumAdvance property.
+            value: Value to set for the maximum_advance property.
         """
         self._maximum_advance = value
     
@@ -119,7 +119,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         """
         Sets the minimumLeadTime property value. The minimum amount of time before which bookings and cancellations must be made. It follows the ISO 8601 format.
         Args:
-            value: Value to set for the minimumLeadTime property.
+            value: Value to set for the minimum_lead_time property.
         """
         self._minimum_lead_time = value
     
@@ -136,7 +136,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -153,7 +153,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         """
         Sets the sendConfirmationsToOwner property value. True to notify the business via email when a booking is created or changed. Use the email address specified in the email property of the bookingBusiness entity for the business.
         Args:
-            value: Value to set for the sendConfirmationsToOwner property.
+            value: Value to set for the send_confirmations_to_owner property.
         """
         self._send_confirmations_to_owner = value
     
@@ -186,7 +186,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         """
         Sets the timeSlotInterval property value. Duration of each time slot, denoted in ISO 8601 format.
         Args:
-            value: Value to set for the timeSlotInterval property.
+            value: Value to set for the time_slot_interval property.
         """
         self._time_slot_interval = value
     

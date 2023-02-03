@@ -38,7 +38,7 @@ class CalendarSharingMessageAction(AdditionalDataHolder, Parsable):
         """
         Sets the actionType property value. The actionType property
         Args:
-            value: Value to set for the actionType property.
+            value: Value to set for the action_type property.
         """
         self._action_type = value
     
@@ -94,7 +94,7 @@ class CalendarSharingMessageAction(AdditionalDataHolder, Parsable):
         """
         fields = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(calendar_sharing_action.CalendarSharingAction)),
-            "action_type": lambda n : setattr(self, 'action_type', n.get_enum_value(calendar_sharing_action_type.CalendarSharingActionType)),
+            "actionType": lambda n : setattr(self, 'action_type', n.get_enum_value(calendar_sharing_action_type.CalendarSharingActionType)),
             "importance": lambda n : setattr(self, 'importance', n.get_enum_value(calendar_sharing_action_importance.CalendarSharingActionImportance)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
@@ -130,7 +130,7 @@ class CalendarSharingMessageAction(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

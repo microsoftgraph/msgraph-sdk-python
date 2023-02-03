@@ -14,9 +14,9 @@ organization = lazy_import('msgraph.generated.models.organization')
 organization_collection_response = lazy_import('msgraph.generated.models.organization_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.organization.count.count_request_builder')
-get_available_extension_properties_request_builder = lazy_import('msgraph.generated.organization.get_available_extension_properties.get_available_extension_properties_request_builder')
-get_by_ids_request_builder = lazy_import('msgraph.generated.organization.get_by_ids.get_by_ids_request_builder')
-validate_properties_request_builder = lazy_import('msgraph.generated.organization.validate_properties.validate_properties_request_builder')
+get_available_extension_properties_request_builder = lazy_import('msgraph.generated.organization.microsoft_graph_get_available_extension_properties.get_available_extension_properties_request_builder')
+get_by_ids_request_builder = lazy_import('msgraph.generated.organization.microsoft_graph_get_by_ids.get_by_ids_request_builder')
+validate_properties_request_builder = lazy_import('msgraph.generated.organization.microsoft_graph_validate_properties.validate_properties_request_builder')
 
 class OrganizationRequestBuilder():
     """
@@ -30,21 +30,21 @@ class OrganizationRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
+    def microsoft_graph_get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
         """
         Provides operations to call the getAvailableExtensionProperties method.
         """
         return get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
+    def microsoft_graph_get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
         """
         Provides operations to call the getByIds method.
         """
         return get_by_ids_request_builder.GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
+    def microsoft_graph_validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
         """
         Provides operations to call the validateProperties method.
         """

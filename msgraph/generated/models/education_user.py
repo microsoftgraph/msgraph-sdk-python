@@ -37,7 +37,7 @@ class EducationUser(entity.Entity):
         """
         Sets the accountEnabled property value. True if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter.
         Args:
-            value: Value to set for the accountEnabled property.
+            value: Value to set for the account_enabled property.
         """
         self._account_enabled = value
     
@@ -54,7 +54,7 @@ class EducationUser(entity.Entity):
         """
         Sets the assignedLicenses property value. The licenses that are assigned to the user. Not nullable.
         Args:
-            value: Value to set for the assignedLicenses property.
+            value: Value to set for the assigned_licenses property.
         """
         self._assigned_licenses = value
     
@@ -71,7 +71,7 @@ class EducationUser(entity.Entity):
         """
         Sets the assignedPlans property value. The plans that are assigned to the user. Read-only. Not nullable.
         Args:
-            value: Value to set for the assignedPlans property.
+            value: Value to set for the assigned_plans property.
         """
         self._assigned_plans = value
     
@@ -105,7 +105,7 @@ class EducationUser(entity.Entity):
         """
         Sets the businessPhones property value. The telephone numbers for the user. Note: Although this is a string collection, only one number can be set for this property.
         Args:
-            value: Value to set for the businessPhones property.
+            value: Value to set for the business_phones property.
         """
         self._business_phones = value
     
@@ -157,10 +157,10 @@ class EducationUser(entity.Entity):
         self._given_name: Optional[str] = None
         # The SMTP address for the user, for example, jeff@contoso.onmicrosoft.com. Read-Only. Supports $filter.
         self._mail: Optional[str] = None
-        # The mail address of the user.
-        self._mailing_address: Optional[physical_address.PhysicalAddress] = None
         # The mail alias for the user. This property must be specified when a user is created. Supports $filter.
         self._mail_nickname: Optional[str] = None
+        # The mail address of the user.
+        self._mailing_address: Optional[physical_address.PhysicalAddress] = None
         # The middle name of the user.
         self._middle_name: Optional[str] = None
         # The primary cellular telephone number for the user.
@@ -223,7 +223,7 @@ class EducationUser(entity.Entity):
         """
         Sets the createdBy property value. The entity who created the user.
         Args:
-            value: Value to set for the createdBy property.
+            value: Value to set for the created_by property.
         """
         self._created_by = value
     
@@ -269,7 +269,7 @@ class EducationUser(entity.Entity):
         """
         Sets the displayName property value. The name displayed in the address book for the user. This is usually the combination of the user's first name, middle initial, and last name. This property is required when a user is created and it cannot be cleared during updates. Supports $filter and $orderby.
         Args:
-            value: Value to set for the displayName property.
+            value: Value to set for the display_name property.
         """
         self._display_name = value
     
@@ -286,7 +286,7 @@ class EducationUser(entity.Entity):
         """
         Sets the externalSource property value. Where this user was created from. Possible values are: sis, manual.
         Args:
-            value: Value to set for the externalSource property.
+            value: Value to set for the external_source property.
         """
         self._external_source = value
     
@@ -303,7 +303,7 @@ class EducationUser(entity.Entity):
         """
         Sets the externalSourceDetail property value. The name of the external source this resource was generated from.
         Args:
-            value: Value to set for the externalSourceDetail property.
+            value: Value to set for the external_source_detail property.
         """
         self._external_source_detail = value
     
@@ -313,44 +313,44 @@ class EducationUser(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "account_enabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
-            "assigned_licenses": lambda n : setattr(self, 'assigned_licenses', n.get_collection_of_object_values(assigned_license.AssignedLicense)),
-            "assigned_plans": lambda n : setattr(self, 'assigned_plans', n.get_collection_of_object_values(assigned_plan.AssignedPlan)),
+            "accountEnabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
+            "assignedLicenses": lambda n : setattr(self, 'assigned_licenses', n.get_collection_of_object_values(assigned_license.AssignedLicense)),
+            "assignedPlans": lambda n : setattr(self, 'assigned_plans', n.get_collection_of_object_values(assigned_plan.AssignedPlan)),
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(education_assignment.EducationAssignment)),
-            "business_phones": lambda n : setattr(self, 'business_phones', n.get_collection_of_primitive_values(str)),
+            "businessPhones": lambda n : setattr(self, 'business_phones', n.get_collection_of_primitive_values(str)),
             "classes": lambda n : setattr(self, 'classes', n.get_collection_of_object_values(education_class.EducationClass)),
-            "created_by": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
+            "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),
-            "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "external_source": lambda n : setattr(self, 'external_source', n.get_enum_value(education_external_source.EducationExternalSource)),
-            "external_source_detail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
-            "given_name": lambda n : setattr(self, 'given_name', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "externalSource": lambda n : setattr(self, 'external_source', n.get_enum_value(education_external_source.EducationExternalSource)),
+            "externalSourceDetail": lambda n : setattr(self, 'external_source_detail', n.get_str_value()),
+            "givenName": lambda n : setattr(self, 'given_name', n.get_str_value()),
             "mail": lambda n : setattr(self, 'mail', n.get_str_value()),
-            "mailing_address": lambda n : setattr(self, 'mailing_address', n.get_object_value(physical_address.PhysicalAddress)),
-            "mail_nickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
-            "middle_name": lambda n : setattr(self, 'middle_name', n.get_str_value()),
-            "mobile_phone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
-            "office_location": lambda n : setattr(self, 'office_location', n.get_str_value()),
-            "on_premises_info": lambda n : setattr(self, 'on_premises_info', n.get_object_value(education_on_premises_info.EducationOnPremisesInfo)),
-            "password_policies": lambda n : setattr(self, 'password_policies', n.get_str_value()),
-            "password_profile": lambda n : setattr(self, 'password_profile', n.get_object_value(password_profile.PasswordProfile)),
-            "preferred_language": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
-            "primary_role": lambda n : setattr(self, 'primary_role', n.get_enum_value(education_user_role.EducationUserRole)),
-            "provisioned_plans": lambda n : setattr(self, 'provisioned_plans', n.get_collection_of_object_values(provisioned_plan.ProvisionedPlan)),
-            "refresh_tokens_valid_from_date_time": lambda n : setattr(self, 'refresh_tokens_valid_from_date_time', n.get_datetime_value()),
-            "related_contacts": lambda n : setattr(self, 'related_contacts', n.get_collection_of_object_values(related_contact.RelatedContact)),
-            "residence_address": lambda n : setattr(self, 'residence_address', n.get_object_value(physical_address.PhysicalAddress)),
+            "mailingAddress": lambda n : setattr(self, 'mailing_address', n.get_object_value(physical_address.PhysicalAddress)),
+            "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
+            "middleName": lambda n : setattr(self, 'middle_name', n.get_str_value()),
+            "mobilePhone": lambda n : setattr(self, 'mobile_phone', n.get_str_value()),
+            "officeLocation": lambda n : setattr(self, 'office_location', n.get_str_value()),
+            "onPremisesInfo": lambda n : setattr(self, 'on_premises_info', n.get_object_value(education_on_premises_info.EducationOnPremisesInfo)),
+            "passwordPolicies": lambda n : setattr(self, 'password_policies', n.get_str_value()),
+            "passwordProfile": lambda n : setattr(self, 'password_profile', n.get_object_value(password_profile.PasswordProfile)),
+            "preferredLanguage": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
+            "primaryRole": lambda n : setattr(self, 'primary_role', n.get_enum_value(education_user_role.EducationUserRole)),
+            "provisionedPlans": lambda n : setattr(self, 'provisioned_plans', n.get_collection_of_object_values(provisioned_plan.ProvisionedPlan)),
+            "refreshTokensValidFromDateTime": lambda n : setattr(self, 'refresh_tokens_valid_from_date_time', n.get_datetime_value()),
+            "relatedContacts": lambda n : setattr(self, 'related_contacts', n.get_collection_of_object_values(related_contact.RelatedContact)),
+            "residenceAddress": lambda n : setattr(self, 'residence_address', n.get_object_value(physical_address.PhysicalAddress)),
             "rubrics": lambda n : setattr(self, 'rubrics', n.get_collection_of_object_values(education_rubric.EducationRubric)),
             "schools": lambda n : setattr(self, 'schools', n.get_collection_of_object_values(education_school.EducationSchool)),
-            "show_in_address_list": lambda n : setattr(self, 'show_in_address_list', n.get_bool_value()),
+            "showInAddressList": lambda n : setattr(self, 'show_in_address_list', n.get_bool_value()),
             "student": lambda n : setattr(self, 'student', n.get_object_value(education_student.EducationStudent)),
             "surname": lambda n : setattr(self, 'surname', n.get_str_value()),
-            "taught_classes": lambda n : setattr(self, 'taught_classes', n.get_collection_of_object_values(education_class.EducationClass)),
+            "taughtClasses": lambda n : setattr(self, 'taught_classes', n.get_collection_of_object_values(education_class.EducationClass)),
             "teacher": lambda n : setattr(self, 'teacher', n.get_object_value(education_teacher.EducationTeacher)),
-            "usage_location": lambda n : setattr(self, 'usage_location', n.get_str_value()),
+            "usageLocation": lambda n : setattr(self, 'usage_location', n.get_str_value()),
             "user": lambda n : setattr(self, 'user', n.get_object_value(user.User)),
-            "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
-            "user_type": lambda n : setattr(self, 'user_type', n.get_str_value()),
+            "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
+            "userType": lambda n : setattr(self, 'user_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -369,7 +369,7 @@ class EducationUser(entity.Entity):
         """
         Sets the givenName property value. The given name (first name) of the user. Supports $filter.
         Args:
-            value: Value to set for the givenName property.
+            value: Value to set for the given_name property.
         """
         self._given_name = value
     
@@ -391,23 +391,6 @@ class EducationUser(entity.Entity):
         self._mail = value
     
     @property
-    def mailing_address(self,) -> Optional[physical_address.PhysicalAddress]:
-        """
-        Gets the mailingAddress property value. The mail address of the user.
-        Returns: Optional[physical_address.PhysicalAddress]
-        """
-        return self._mailing_address
-    
-    @mailing_address.setter
-    def mailing_address(self,value: Optional[physical_address.PhysicalAddress] = None) -> None:
-        """
-        Sets the mailingAddress property value. The mail address of the user.
-        Args:
-            value: Value to set for the mailingAddress property.
-        """
-        self._mailing_address = value
-    
-    @property
     def mail_nickname(self,) -> Optional[str]:
         """
         Gets the mailNickname property value. The mail alias for the user. This property must be specified when a user is created. Supports $filter.
@@ -420,9 +403,26 @@ class EducationUser(entity.Entity):
         """
         Sets the mailNickname property value. The mail alias for the user. This property must be specified when a user is created. Supports $filter.
         Args:
-            value: Value to set for the mailNickname property.
+            value: Value to set for the mail_nickname property.
         """
         self._mail_nickname = value
+    
+    @property
+    def mailing_address(self,) -> Optional[physical_address.PhysicalAddress]:
+        """
+        Gets the mailingAddress property value. The mail address of the user.
+        Returns: Optional[physical_address.PhysicalAddress]
+        """
+        return self._mailing_address
+    
+    @mailing_address.setter
+    def mailing_address(self,value: Optional[physical_address.PhysicalAddress] = None) -> None:
+        """
+        Sets the mailingAddress property value. The mail address of the user.
+        Args:
+            value: Value to set for the mailing_address property.
+        """
+        self._mailing_address = value
     
     @property
     def middle_name(self,) -> Optional[str]:
@@ -437,7 +437,7 @@ class EducationUser(entity.Entity):
         """
         Sets the middleName property value. The middle name of the user.
         Args:
-            value: Value to set for the middleName property.
+            value: Value to set for the middle_name property.
         """
         self._middle_name = value
     
@@ -454,7 +454,7 @@ class EducationUser(entity.Entity):
         """
         Sets the mobilePhone property value. The primary cellular telephone number for the user.
         Args:
-            value: Value to set for the mobilePhone property.
+            value: Value to set for the mobile_phone property.
         """
         self._mobile_phone = value
     
@@ -471,7 +471,7 @@ class EducationUser(entity.Entity):
         """
         Sets the officeLocation property value. The officeLocation property
         Args:
-            value: Value to set for the officeLocation property.
+            value: Value to set for the office_location property.
         """
         self._office_location = value
     
@@ -488,7 +488,7 @@ class EducationUser(entity.Entity):
         """
         Sets the onPremisesInfo property value. Additional information used to associate the Azure Active Directory user with its Active Directory counterpart.
         Args:
-            value: Value to set for the onPremisesInfo property.
+            value: Value to set for the on_premises_info property.
         """
         self._on_premises_info = value
     
@@ -505,7 +505,7 @@ class EducationUser(entity.Entity):
         """
         Sets the passwordPolicies property value. Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified. The two can be specified together; for example: DisablePasswordExpiration, DisableStrongPassword.
         Args:
-            value: Value to set for the passwordPolicies property.
+            value: Value to set for the password_policies property.
         """
         self._password_policies = value
     
@@ -522,7 +522,7 @@ class EducationUser(entity.Entity):
         """
         Sets the passwordProfile property value. Specifies the password profile for the user. The profile contains the user's password. This property is required when a user is created. The password in the profile must satisfy minimum requirements as specified by the passwordPolicies property. By default, a strong password is required.
         Args:
-            value: Value to set for the passwordProfile property.
+            value: Value to set for the password_profile property.
         """
         self._password_profile = value
     
@@ -539,7 +539,7 @@ class EducationUser(entity.Entity):
         """
         Sets the preferredLanguage property value. The preferred language for the user that should follow the ISO 639-1 code, for example, en-US.
         Args:
-            value: Value to set for the preferredLanguage property.
+            value: Value to set for the preferred_language property.
         """
         self._preferred_language = value
     
@@ -556,7 +556,7 @@ class EducationUser(entity.Entity):
         """
         Sets the primaryRole property value. The primaryRole property
         Args:
-            value: Value to set for the primaryRole property.
+            value: Value to set for the primary_role property.
         """
         self._primary_role = value
     
@@ -573,7 +573,7 @@ class EducationUser(entity.Entity):
         """
         Sets the provisionedPlans property value. The plans that are provisioned for the user. Read-only. Not nullable.
         Args:
-            value: Value to set for the provisionedPlans property.
+            value: Value to set for the provisioned_plans property.
         """
         self._provisioned_plans = value
     
@@ -590,7 +590,7 @@ class EducationUser(entity.Entity):
         """
         Sets the refreshTokensValidFromDateTime property value. The refreshTokensValidFromDateTime property
         Args:
-            value: Value to set for the refreshTokensValidFromDateTime property.
+            value: Value to set for the refresh_tokens_valid_from_date_time property.
         """
         self._refresh_tokens_valid_from_date_time = value
     
@@ -607,7 +607,7 @@ class EducationUser(entity.Entity):
         """
         Sets the relatedContacts property value. Related records associated with the user. Read-only.
         Args:
-            value: Value to set for the relatedContacts property.
+            value: Value to set for the related_contacts property.
         """
         self._related_contacts = value
     
@@ -624,7 +624,7 @@ class EducationUser(entity.Entity):
         """
         Sets the residenceAddress property value. The address where the user lives.
         Args:
-            value: Value to set for the residenceAddress property.
+            value: Value to set for the residence_address property.
         """
         self._residence_address = value
     
@@ -723,7 +723,7 @@ class EducationUser(entity.Entity):
         """
         Sets the showInAddressList property value. True if the Outlook Global Address List should contain this user; otherwise, false. If not set, this will be treated as true. For users invited through the invitation manager, this property will be set to false.
         Args:
-            value: Value to set for the showInAddressList property.
+            value: Value to set for the show_in_address_list property.
         """
         self._show_in_address_list = value
     
@@ -774,7 +774,7 @@ class EducationUser(entity.Entity):
         """
         Sets the taughtClasses property value. Classes for which the user is a teacher.
         Args:
-            value: Value to set for the taughtClasses property.
+            value: Value to set for the taught_classes property.
         """
         self._taught_classes = value
     
@@ -808,7 +808,7 @@ class EducationUser(entity.Entity):
         """
         Sets the usageLocation property value. A two-letter country code (ISO standard 3166). Required for users who will be assigned licenses due to a legal requirement to check for availability of services in countries or regions. Examples include: US, JP, and GB. Not nullable. Supports $filter.
         Args:
-            value: Value to set for the usageLocation property.
+            value: Value to set for the usage_location property.
         """
         self._usage_location = value
     
@@ -842,7 +842,7 @@ class EducationUser(entity.Entity):
         """
         Sets the userPrincipalName property value. The user principal name (UPN) of the user. The UPN is an internet-style login name for the user based on the internet standard RFC 822. By convention, this should map to the user's email name. The general format is alias@domain, where domain must be present in the tenant's collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of the organization. Supports $filter and $orderby.
         Args:
-            value: Value to set for the userPrincipalName property.
+            value: Value to set for the user_principal_name property.
         """
         self._user_principal_name = value
     
@@ -859,7 +859,7 @@ class EducationUser(entity.Entity):
         """
         Sets the userType property value. A string value that can be used to classify user types in your directory, such as Member and Guest. Supports $filter.
         Args:
-            value: Value to set for the userType property.
+            value: Value to set for the user_type property.
         """
         self._user_type = value
     

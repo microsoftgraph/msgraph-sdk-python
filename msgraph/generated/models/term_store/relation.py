@@ -50,7 +50,7 @@ class Relation(entity.Entity):
         """
         Sets the fromTerm property value. The from [term] of the relation. The term from which the relationship is defined. A null value would indicate the relation is directly with the [set].
         Args:
-            value: Value to set for the fromTerm property.
+            value: Value to set for the from_term property.
         """
         self._from_term = value
     
@@ -60,10 +60,10 @@ class Relation(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "from_term": lambda n : setattr(self, 'from_term', n.get_object_value(term.Term)),
+            "fromTerm": lambda n : setattr(self, 'from_term', n.get_object_value(term.Term)),
             "relationship": lambda n : setattr(self, 'relationship', n.get_enum_value(relation_type.RelationType)),
             "set": lambda n : setattr(self, 'set', n.get_object_value(set.Set)),
-            "to_term": lambda n : setattr(self, 'to_term', n.get_object_value(term.Term)),
+            "toTerm": lambda n : setattr(self, 'to_term', n.get_object_value(term.Term)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -130,7 +130,7 @@ class Relation(entity.Entity):
         """
         Sets the toTerm property value. The to [term] of the relation. The term to which the relationship is defined.
         Args:
-            value: Value to set for the toTerm property.
+            value: Value to set for the to_term property.
         """
         self._to_term = value
     

@@ -37,8 +37,8 @@ class IdentityUserFlow(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "user_flow_type": lambda n : setattr(self, 'user_flow_type', n.get_enum_value(user_flow_type.UserFlowType)),
-            "user_flow_type_version": lambda n : setattr(self, 'user_flow_type_version', n.get_float_value()),
+            "userFlowType": lambda n : setattr(self, 'user_flow_type', n.get_enum_value(user_flow_type.UserFlowType)),
+            "userFlowTypeVersion": lambda n : setattr(self, 'user_flow_type_version', n.get_float_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -69,7 +69,7 @@ class IdentityUserFlow(entity.Entity):
         """
         Sets the userFlowType property value. The userFlowType property
         Args:
-            value: Value to set for the userFlowType property.
+            value: Value to set for the user_flow_type property.
         """
         self._user_flow_type = value
     
@@ -86,7 +86,7 @@ class IdentityUserFlow(entity.Entity):
         """
         Sets the userFlowTypeVersion property value. The userFlowTypeVersion property
         Args:
-            value: Value to set for the userFlowTypeVersion property.
+            value: Value to set for the user_flow_type_version property.
         """
         self._user_flow_type_version = value
     

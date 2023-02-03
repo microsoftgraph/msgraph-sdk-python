@@ -34,10 +34,10 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
         self._id: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-        # The authentication method that the user is prompted to register. The value must be microsoftAuthenticator.
-        self._targeted_authentication_method: Optional[str] = None
         # The targetType property
         self._target_type: Optional[authentication_method_target_type.AuthenticationMethodTargetType] = None
+        # The authentication method that the user is prompted to register. The value must be microsoftAuthenticator.
+        self._targeted_authentication_method: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationMethodsRegistrationCampaignIncludeTarget:
@@ -59,8 +59,8 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
         fields = {
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "targeted_authentication_method": lambda n : setattr(self, 'targeted_authentication_method', n.get_str_value()),
-            "target_type": lambda n : setattr(self, 'target_type', n.get_enum_value(authentication_method_target_type.AuthenticationMethodTargetType)),
+            "targetedAuthenticationMethod": lambda n : setattr(self, 'targeted_authentication_method', n.get_str_value()),
+            "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(authentication_method_target_type.AuthenticationMethodTargetType)),
         }
         return fields
     
@@ -94,7 +94,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -113,23 +113,6 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
         writer.write_additional_data_value(self.additional_data)
     
     @property
-    def targeted_authentication_method(self,) -> Optional[str]:
-        """
-        Gets the targetedAuthenticationMethod property value. The authentication method that the user is prompted to register. The value must be microsoftAuthenticator.
-        Returns: Optional[str]
-        """
-        return self._targeted_authentication_method
-    
-    @targeted_authentication_method.setter
-    def targeted_authentication_method(self,value: Optional[str] = None) -> None:
-        """
-        Sets the targetedAuthenticationMethod property value. The authentication method that the user is prompted to register. The value must be microsoftAuthenticator.
-        Args:
-            value: Value to set for the targetedAuthenticationMethod property.
-        """
-        self._targeted_authentication_method = value
-    
-    @property
     def target_type(self,) -> Optional[authentication_method_target_type.AuthenticationMethodTargetType]:
         """
         Gets the targetType property value. The targetType property
@@ -142,8 +125,25 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
         """
         Sets the targetType property value. The targetType property
         Args:
-            value: Value to set for the targetType property.
+            value: Value to set for the target_type property.
         """
         self._target_type = value
+    
+    @property
+    def targeted_authentication_method(self,) -> Optional[str]:
+        """
+        Gets the targetedAuthenticationMethod property value. The authentication method that the user is prompted to register. The value must be microsoftAuthenticator.
+        Returns: Optional[str]
+        """
+        return self._targeted_authentication_method
+    
+    @targeted_authentication_method.setter
+    def targeted_authentication_method(self,value: Optional[str] = None) -> None:
+        """
+        Sets the targetedAuthenticationMethod property value. The authentication method that the user is prompted to register. The value must be microsoftAuthenticator.
+        Args:
+            value: Value to set for the targeted_authentication_method property.
+        """
+        self._targeted_authentication_method = value
     
 

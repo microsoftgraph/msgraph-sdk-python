@@ -82,16 +82,16 @@ class WorkbookTable(entity.Entity):
         """
         fields = {
             "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(workbook_table_column.WorkbookTableColumn)),
-            "highlight_first_column": lambda n : setattr(self, 'highlight_first_column', n.get_bool_value()),
-            "highlight_last_column": lambda n : setattr(self, 'highlight_last_column', n.get_bool_value()),
-            "legacy_id": lambda n : setattr(self, 'legacy_id', n.get_str_value()),
+            "highlightFirstColumn": lambda n : setattr(self, 'highlight_first_column', n.get_bool_value()),
+            "highlightLastColumn": lambda n : setattr(self, 'highlight_last_column', n.get_bool_value()),
+            "legacyId": lambda n : setattr(self, 'legacy_id', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "rows": lambda n : setattr(self, 'rows', n.get_collection_of_object_values(workbook_table_row.WorkbookTableRow)),
-            "show_banded_columns": lambda n : setattr(self, 'show_banded_columns', n.get_bool_value()),
-            "show_banded_rows": lambda n : setattr(self, 'show_banded_rows', n.get_bool_value()),
-            "show_filter_button": lambda n : setattr(self, 'show_filter_button', n.get_bool_value()),
-            "show_headers": lambda n : setattr(self, 'show_headers', n.get_bool_value()),
-            "show_totals": lambda n : setattr(self, 'show_totals', n.get_bool_value()),
+            "showBandedColumns": lambda n : setattr(self, 'show_banded_columns', n.get_bool_value()),
+            "showBandedRows": lambda n : setattr(self, 'show_banded_rows', n.get_bool_value()),
+            "showFilterButton": lambda n : setattr(self, 'show_filter_button', n.get_bool_value()),
+            "showHeaders": lambda n : setattr(self, 'show_headers', n.get_bool_value()),
+            "showTotals": lambda n : setattr(self, 'show_totals', n.get_bool_value()),
             "sort": lambda n : setattr(self, 'sort', n.get_object_value(workbook_table_sort.WorkbookTableSort)),
             "style": lambda n : setattr(self, 'style', n.get_str_value()),
             "worksheet": lambda n : setattr(self, 'worksheet', n.get_object_value(workbook_worksheet.WorkbookWorksheet)),
@@ -113,7 +113,7 @@ class WorkbookTable(entity.Entity):
         """
         Sets the highlightFirstColumn property value. Indicates whether the first column contains special formatting.
         Args:
-            value: Value to set for the highlightFirstColumn property.
+            value: Value to set for the highlight_first_column property.
         """
         self._highlight_first_column = value
     
@@ -130,7 +130,7 @@ class WorkbookTable(entity.Entity):
         """
         Sets the highlightLastColumn property value. Indicates whether the last column contains special formatting.
         Args:
-            value: Value to set for the highlightLastColumn property.
+            value: Value to set for the highlight_last_column property.
         """
         self._highlight_last_column = value
     
@@ -147,7 +147,7 @@ class WorkbookTable(entity.Entity):
         """
         Sets the legacyId property value. Legacy Id used in older Excle clients. The value of the identifier remains the same even when the table is renamed. This property should be interpreted as an opaque string value and should not be parsed to any other type. Read-only.
         Args:
-            value: Value to set for the legacyId property.
+            value: Value to set for the legacy_id property.
         """
         self._legacy_id = value
     
@@ -222,7 +222,7 @@ class WorkbookTable(entity.Entity):
         """
         Sets the showBandedColumns property value. Indicates whether the columns show banded formatting in which odd columns are highlighted differently from even ones to make reading the table easier.
         Args:
-            value: Value to set for the showBandedColumns property.
+            value: Value to set for the show_banded_columns property.
         """
         self._show_banded_columns = value
     
@@ -239,7 +239,7 @@ class WorkbookTable(entity.Entity):
         """
         Sets the showBandedRows property value. Indicates whether the rows show banded formatting in which odd rows are highlighted differently from even ones to make reading the table easier.
         Args:
-            value: Value to set for the showBandedRows property.
+            value: Value to set for the show_banded_rows property.
         """
         self._show_banded_rows = value
     
@@ -256,7 +256,7 @@ class WorkbookTable(entity.Entity):
         """
         Sets the showFilterButton property value. Indicates whether the filter buttons are visible at the top of each column header. Setting this is only allowed if the table contains a header row.
         Args:
-            value: Value to set for the showFilterButton property.
+            value: Value to set for the show_filter_button property.
         """
         self._show_filter_button = value
     
@@ -273,7 +273,7 @@ class WorkbookTable(entity.Entity):
         """
         Sets the showHeaders property value. Indicates whether the header row is visible or not. This value can be set to show or remove the header row.
         Args:
-            value: Value to set for the showHeaders property.
+            value: Value to set for the show_headers property.
         """
         self._show_headers = value
     
@@ -290,7 +290,7 @@ class WorkbookTable(entity.Entity):
         """
         Sets the showTotals property value. Indicates whether the total row is visible or not. This value can be set to show or remove the total row.
         Args:
-            value: Value to set for the showTotals property.
+            value: Value to set for the show_totals property.
         """
         self._show_totals = value
     

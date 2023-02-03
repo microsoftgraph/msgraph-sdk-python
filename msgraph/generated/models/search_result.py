@@ -52,7 +52,7 @@ class SearchResult(AdditionalDataHolder, Parsable):
         """
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "on_click_telemetry_url": lambda n : setattr(self, 'on_click_telemetry_url', n.get_str_value()),
+            "onClickTelemetryUrl": lambda n : setattr(self, 'on_click_telemetry_url', n.get_str_value()),
         }
         return fields
     
@@ -69,7 +69,7 @@ class SearchResult(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -86,7 +86,7 @@ class SearchResult(AdditionalDataHolder, Parsable):
         """
         Sets the onClickTelemetryUrl property value. A callback URL that can be used to record telemetry information. The application should issue a GET on this URL if the user interacts with this item to improve the quality of results.
         Args:
-            value: Value to set for the onClickTelemetryUrl property.
+            value: Value to set for the on_click_telemetry_url property.
         """
         self._on_click_telemetry_url = value
     

@@ -68,7 +68,7 @@ class OutlookGeoCoordinates(AdditionalDataHolder, Parsable):
         """
         Sets the altitudeAccuracy property value. The accuracy of the altitude.
         Args:
-            value: Value to set for the altitudeAccuracy property.
+            value: Value to set for the altitude_accuracy property.
         """
         self._altitude_accuracy = value
     
@@ -112,7 +112,7 @@ class OutlookGeoCoordinates(AdditionalDataHolder, Parsable):
         fields = {
             "accuracy": lambda n : setattr(self, 'accuracy', n.get_float_value()),
             "altitude": lambda n : setattr(self, 'altitude', n.get_float_value()),
-            "altitude_accuracy": lambda n : setattr(self, 'altitude_accuracy', n.get_float_value()),
+            "altitudeAccuracy": lambda n : setattr(self, 'altitude_accuracy', n.get_float_value()),
             "latitude": lambda n : setattr(self, 'latitude', n.get_float_value()),
             "longitude": lambda n : setattr(self, 'longitude', n.get_float_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -166,7 +166,7 @@ class OutlookGeoCoordinates(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     

@@ -48,7 +48,7 @@ class UnifiedRoleEligibilityScheduleInstance(unified_role_schedule_instance_base
         """
         Sets the endDateTime property value. The end date of the schedule instance.
         Args:
-            value: Value to set for the endDateTime property.
+            value: Value to set for the end_date_time property.
         """
         self._end_date_time = value
     
@@ -58,10 +58,10 @@ class UnifiedRoleEligibilityScheduleInstance(unified_role_schedule_instance_base
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
-            "member_type": lambda n : setattr(self, 'member_type', n.get_str_value()),
-            "role_eligibility_schedule_id": lambda n : setattr(self, 'role_eligibility_schedule_id', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
+            "memberType": lambda n : setattr(self, 'member_type', n.get_str_value()),
+            "roleEligibilityScheduleId": lambda n : setattr(self, 'role_eligibility_schedule_id', n.get_str_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -80,7 +80,7 @@ class UnifiedRoleEligibilityScheduleInstance(unified_role_schedule_instance_base
         """
         Sets the memberType property value. How the role eligibility is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleEligibilitySchedule can be managed by the caller. Supports $filter (eq, ne).
         Args:
-            value: Value to set for the memberType property.
+            value: Value to set for the member_type property.
         """
         self._member_type = value
     
@@ -97,7 +97,7 @@ class UnifiedRoleEligibilityScheduleInstance(unified_role_schedule_instance_base
         """
         Sets the roleEligibilityScheduleId property value. The identifier of the unifiedRoleEligibilitySchedule object from which this instance was created. Supports $filter (eq, ne).
         Args:
-            value: Value to set for the roleEligibilityScheduleId property.
+            value: Value to set for the role_eligibility_schedule_id property.
         """
         self._role_eligibility_schedule_id = value
     
@@ -128,7 +128,7 @@ class UnifiedRoleEligibilityScheduleInstance(unified_role_schedule_instance_base
         """
         Sets the startDateTime property value. When this instance starts.
         Args:
-            value: Value to set for the startDateTime property.
+            value: Value to set for the start_date_time property.
         """
         self._start_date_time = value
     

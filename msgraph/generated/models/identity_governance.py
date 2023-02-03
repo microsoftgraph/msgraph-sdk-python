@@ -22,7 +22,7 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
         """
         Sets the accessReviews property value. The accessReviews property
         Args:
-            value: Value to set for the accessReviews property.
+            value: Value to set for the access_reviews property.
         """
         self._access_reviews = value
     
@@ -56,7 +56,7 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
         """
         Sets the appConsent property value. The appConsent property
         Args:
-            value: Value to set for the appConsent property.
+            value: Value to set for the app_consent property.
         """
         self._app_consent = value
     
@@ -103,7 +103,7 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
         """
         Sets the entitlementManagement property value. The entitlementManagement property
         Args:
-            value: Value to set for the entitlementManagement property.
+            value: Value to set for the entitlement_management property.
         """
         self._entitlement_management = value
     
@@ -113,11 +113,11 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "access_reviews": lambda n : setattr(self, 'access_reviews', n.get_object_value(access_review_set.AccessReviewSet)),
-            "app_consent": lambda n : setattr(self, 'app_consent', n.get_object_value(app_consent_approval_route.AppConsentApprovalRoute)),
-            "entitlement_management": lambda n : setattr(self, 'entitlement_management', n.get_object_value(entitlement_management.EntitlementManagement)),
+            "accessReviews": lambda n : setattr(self, 'access_reviews', n.get_object_value(access_review_set.AccessReviewSet)),
+            "appConsent": lambda n : setattr(self, 'app_consent', n.get_object_value(app_consent_approval_route.AppConsentApprovalRoute)),
+            "entitlementManagement": lambda n : setattr(self, 'entitlement_management', n.get_object_value(entitlement_management.EntitlementManagement)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "terms_of_use": lambda n : setattr(self, 'terms_of_use', n.get_object_value(terms_of_use_container.TermsOfUseContainer)),
+            "termsOfUse": lambda n : setattr(self, 'terms_of_use', n.get_object_value(terms_of_use_container.TermsOfUseContainer)),
         }
         return fields
     
@@ -134,7 +134,7 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -166,7 +166,7 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
         """
         Sets the termsOfUse property value. The termsOfUse property
         Args:
-            value: Value to set for the termsOfUse property.
+            value: Value to set for the terms_of_use property.
         """
         self._terms_of_use = value
     

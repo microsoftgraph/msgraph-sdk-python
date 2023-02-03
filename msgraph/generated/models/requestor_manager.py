@@ -33,7 +33,7 @@ class RequestorManager(subject_set.SubjectSet):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "manager_level": lambda n : setattr(self, 'manager_level', n.get_int_value()),
+            "managerLevel": lambda n : setattr(self, 'manager_level', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -52,7 +52,7 @@ class RequestorManager(subject_set.SubjectSet):
         """
         Sets the managerLevel property value. The hierarchical level of the manager with respect to the requestor. For example, the direct manager of a requestor would have a managerLevel of 1, while the manager of the requestor's manager would have a managerLevel of 2. Default value for managerLevel is 1. Possible values for this property range from 1 to 2.
         Args:
-            value: Value to set for the managerLevel property.
+            value: Value to set for the manager_level property.
         """
         self._manager_level = value
     

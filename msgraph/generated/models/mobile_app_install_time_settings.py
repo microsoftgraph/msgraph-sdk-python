@@ -66,7 +66,7 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
         """
         Sets the deadlineDateTime property value. The time at which the app should be installed.
         Args:
-            value: Value to set for the deadlineDateTime property.
+            value: Value to set for the deadline_date_time property.
         """
         self._deadline_date_time = value
     
@@ -76,10 +76,10 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "deadline_date_time": lambda n : setattr(self, 'deadline_date_time', n.get_datetime_value()),
+            "deadlineDateTime": lambda n : setattr(self, 'deadline_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
-            "use_local_time": lambda n : setattr(self, 'use_local_time', n.get_bool_value()),
+            "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
+            "useLocalTime": lambda n : setattr(self, 'use_local_time', n.get_bool_value()),
         }
         return fields
     
@@ -96,7 +96,7 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -127,7 +127,7 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
         """
         Sets the startDateTime property value. The time at which the app should be available for installation.
         Args:
-            value: Value to set for the startDateTime property.
+            value: Value to set for the start_date_time property.
         """
         self._start_date_time = value
     
@@ -144,7 +144,7 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
         """
         Sets the useLocalTime property value. Whether the local device time or UTC time should be used when determining the available and deadline times.
         Args:
-            value: Value to set for the useLocalTime property.
+            value: Value to set for the use_local_time property.
         """
         self._use_local_time = value
     

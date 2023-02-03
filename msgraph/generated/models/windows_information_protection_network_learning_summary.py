@@ -46,7 +46,7 @@ class WindowsInformationProtectionNetworkLearningSummary(entity.Entity):
         """
         Sets the deviceCount property value. Device Count
         Args:
-            value: Value to set for the deviceCount property.
+            value: Value to set for the device_count property.
         """
         self._device_count = value
     
@@ -56,7 +56,7 @@ class WindowsInformationProtectionNetworkLearningSummary(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "device_count": lambda n : setattr(self, 'device_count', n.get_int_value()),
+            "deviceCount": lambda n : setattr(self, 'device_count', n.get_int_value()),
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

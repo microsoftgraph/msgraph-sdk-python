@@ -25,7 +25,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         """
         Sets the actionRequiredByDateTime property value. The expected deadline of the action for the message.
         Args:
-            value: Value to set for the actionRequiredByDateTime property.
+            value: Value to set for the action_required_by_date_time property.
         """
         self._action_required_by_date_time = value
     
@@ -59,7 +59,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         """
         Sets the attachmentsArchive property value. The zip file that contains all attachments for a message.
         Args:
-            value: Value to set for the attachmentsArchive property.
+            value: Value to set for the attachments_archive property.
         """
         self._attachments_archive = value
     
@@ -144,17 +144,17 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "action_required_by_date_time": lambda n : setattr(self, 'action_required_by_date_time', n.get_datetime_value()),
+            "actionRequiredByDateTime": lambda n : setattr(self, 'action_required_by_date_time', n.get_datetime_value()),
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(service_announcement_attachment.ServiceAnnouncementAttachment)),
-            "attachments_archive": lambda n : setattr(self, 'attachments_archive', n.get_bytes_value()),
+            "attachmentsArchive": lambda n : setattr(self, 'attachments_archive', n.get_bytes_value()),
             "body": lambda n : setattr(self, 'body', n.get_object_value(item_body.ItemBody)),
             "category": lambda n : setattr(self, 'category', n.get_enum_value(service_update_category.ServiceUpdateCategory)),
-            "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
-            "is_major_change": lambda n : setattr(self, 'is_major_change', n.get_bool_value()),
+            "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
+            "isMajorChange": lambda n : setattr(self, 'is_major_change', n.get_bool_value()),
             "services": lambda n : setattr(self, 'services', n.get_collection_of_primitive_values(str)),
             "severity": lambda n : setattr(self, 'severity', n.get_enum_value(service_update_severity.ServiceUpdateSeverity)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
-            "view_point": lambda n : setattr(self, 'view_point', n.get_object_value(service_update_message_viewpoint.ServiceUpdateMessageViewpoint)),
+            "viewPoint": lambda n : setattr(self, 'view_point', n.get_object_value(service_update_message_viewpoint.ServiceUpdateMessageViewpoint)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -173,7 +173,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         """
         Sets the hasAttachments property value. Indicates whether the message has any attachment.
         Args:
-            value: Value to set for the hasAttachments property.
+            value: Value to set for the has_attachments property.
         """
         self._has_attachments = value
     
@@ -190,7 +190,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         """
         Sets the isMajorChange property value. Indicates whether the message describes a major update for the service.
         Args:
-            value: Value to set for the isMajorChange property.
+            value: Value to set for the is_major_change property.
         """
         self._is_major_change = value
     
@@ -279,7 +279,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         """
         Sets the viewPoint property value. Represents user viewpoints data of the service message. This data includes message status such as whether the user has archived, read, or marked the message as favorite. This property is null when accessed with application permissions.
         Args:
-            value: Value to set for the viewPoint property.
+            value: Value to set for the view_point property.
         """
         self._view_point = value
     

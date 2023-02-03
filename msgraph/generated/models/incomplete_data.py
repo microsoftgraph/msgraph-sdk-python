@@ -54,9 +54,9 @@ class IncompleteData(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "missing_data_before_date_time": lambda n : setattr(self, 'missing_data_before_date_time', n.get_datetime_value()),
+            "missingDataBeforeDateTime": lambda n : setattr(self, 'missing_data_before_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "was_throttled": lambda n : setattr(self, 'was_throttled', n.get_bool_value()),
+            "wasThrottled": lambda n : setattr(self, 'was_throttled', n.get_bool_value()),
         }
         return fields
     
@@ -73,7 +73,7 @@ class IncompleteData(AdditionalDataHolder, Parsable):
         """
         Sets the missingDataBeforeDateTime property value. The service does not have source data before the specified time.
         Args:
-            value: Value to set for the missingDataBeforeDateTime property.
+            value: Value to set for the missing_data_before_date_time property.
         """
         self._missing_data_before_date_time = value
     
@@ -90,7 +90,7 @@ class IncompleteData(AdditionalDataHolder, Parsable):
         """
         Sets the @odata.type property value. The OdataType property
         Args:
-            value: Value to set for the OdataType property.
+            value: Value to set for the odata_type property.
         """
         self._odata_type = value
     
@@ -120,7 +120,7 @@ class IncompleteData(AdditionalDataHolder, Parsable):
         """
         Sets the wasThrottled property value. Some data was not recorded due to excessive activity.
         Args:
-            value: Value to set for the wasThrottled property.
+            value: Value to set for the was_throttled property.
         """
         self._was_throttled = value
     

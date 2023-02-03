@@ -19,7 +19,7 @@ class DeviceConfigurationDeviceStateSummary(entity.Entity):
         """
         Sets the compliantDeviceCount property value. Number of compliant devices
         Args:
-            value: Value to set for the compliantDeviceCount property.
+            value: Value to set for the compliant_device_count property.
         """
         self._compliant_device_count = value
     
@@ -36,7 +36,7 @@ class DeviceConfigurationDeviceStateSummary(entity.Entity):
         """
         Sets the conflictDeviceCount property value. Number of conflict devices
         Args:
-            value: Value to set for the conflictDeviceCount property.
+            value: Value to set for the conflict_device_count property.
         """
         self._conflict_device_count = value
     
@@ -87,7 +87,7 @@ class DeviceConfigurationDeviceStateSummary(entity.Entity):
         """
         Sets the errorDeviceCount property value. Number of error devices
         Args:
-            value: Value to set for the errorDeviceCount property.
+            value: Value to set for the error_device_count property.
         """
         self._error_device_count = value
     
@@ -97,13 +97,13 @@ class DeviceConfigurationDeviceStateSummary(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "compliant_device_count": lambda n : setattr(self, 'compliant_device_count', n.get_int_value()),
-            "conflict_device_count": lambda n : setattr(self, 'conflict_device_count', n.get_int_value()),
-            "error_device_count": lambda n : setattr(self, 'error_device_count', n.get_int_value()),
-            "non_compliant_device_count": lambda n : setattr(self, 'non_compliant_device_count', n.get_int_value()),
-            "not_applicable_device_count": lambda n : setattr(self, 'not_applicable_device_count', n.get_int_value()),
-            "remediated_device_count": lambda n : setattr(self, 'remediated_device_count', n.get_int_value()),
-            "unknown_device_count": lambda n : setattr(self, 'unknown_device_count', n.get_int_value()),
+            "compliantDeviceCount": lambda n : setattr(self, 'compliant_device_count', n.get_int_value()),
+            "conflictDeviceCount": lambda n : setattr(self, 'conflict_device_count', n.get_int_value()),
+            "errorDeviceCount": lambda n : setattr(self, 'error_device_count', n.get_int_value()),
+            "nonCompliantDeviceCount": lambda n : setattr(self, 'non_compliant_device_count', n.get_int_value()),
+            "notApplicableDeviceCount": lambda n : setattr(self, 'not_applicable_device_count', n.get_int_value()),
+            "remediatedDeviceCount": lambda n : setattr(self, 'remediated_device_count', n.get_int_value()),
+            "unknownDeviceCount": lambda n : setattr(self, 'unknown_device_count', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -122,7 +122,7 @@ class DeviceConfigurationDeviceStateSummary(entity.Entity):
         """
         Sets the nonCompliantDeviceCount property value. Number of NonCompliant devices
         Args:
-            value: Value to set for the nonCompliantDeviceCount property.
+            value: Value to set for the non_compliant_device_count property.
         """
         self._non_compliant_device_count = value
     
@@ -139,7 +139,7 @@ class DeviceConfigurationDeviceStateSummary(entity.Entity):
         """
         Sets the notApplicableDeviceCount property value. Number of not applicable devices
         Args:
-            value: Value to set for the notApplicableDeviceCount property.
+            value: Value to set for the not_applicable_device_count property.
         """
         self._not_applicable_device_count = value
     
@@ -156,7 +156,7 @@ class DeviceConfigurationDeviceStateSummary(entity.Entity):
         """
         Sets the remediatedDeviceCount property value. Number of remediated devices
         Args:
-            value: Value to set for the remediatedDeviceCount property.
+            value: Value to set for the remediated_device_count property.
         """
         self._remediated_device_count = value
     
@@ -190,7 +190,7 @@ class DeviceConfigurationDeviceStateSummary(entity.Entity):
         """
         Sets the unknownDeviceCount property value. Number of unknown devices
         Args:
-            value: Value to set for the unknownDeviceCount property.
+            value: Value to set for the unknown_device_count property.
         """
         self._unknown_device_count = value
     

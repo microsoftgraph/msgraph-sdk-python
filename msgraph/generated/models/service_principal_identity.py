@@ -19,7 +19,7 @@ class ServicePrincipalIdentity(identity.Identity):
         """
         Sets the appId property value. The application identifier of the service principal.
         Args:
-            value: Value to set for the appId property.
+            value: Value to set for the app_id property.
         """
         self._app_id = value
     
@@ -50,7 +50,7 @@ class ServicePrincipalIdentity(identity.Identity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_id": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

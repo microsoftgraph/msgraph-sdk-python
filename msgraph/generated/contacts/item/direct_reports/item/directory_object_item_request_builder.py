@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-org_contact_request_builder = lazy_import('msgraph.generated.contacts.item.direct_reports.item.microsoft_graph_org_contact.org_contact_request_builder')
-user_request_builder = lazy_import('msgraph.generated.contacts.item.direct_reports.item.microsoft_graph_user.user_request_builder')
+microsoft_graph_org_contact_request_builder = lazy_import('msgraph.generated.contacts.item.direct_reports.item.microsoft_graph_org_contact.microsoft_graph_org_contact_request_builder')
+microsoft_graph_user_request_builder = lazy_import('msgraph.generated.contacts.item.direct_reports.item.microsoft_graph_user.microsoft_graph_user_request_builder')
 directory_object = lazy_import('msgraph.generated.models.directory_object')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -20,24 +20,23 @@ class DirectoryObjectItemRequestBuilder():
     Provides operations to manage the directReports property of the microsoft.graph.orgContact entity.
     """
     @property
-    def microsoft_graph_org_contact(self) -> org_contact_request_builder.OrgContactRequestBuilder:
+    def microsoft_graph_org_contact(self) -> microsoft_graph_org_contact_request_builder.MicrosoftGraphOrgContactRequestBuilder:
         """
         Casts the previous resource to orgContact.
         """
-        return org_contact_request_builder.OrgContactRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_org_contact_request_builder.MicrosoftGraphOrgContactRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_user(self) -> user_request_builder.UserRequestBuilder:
+    def microsoft_graph_user(self) -> microsoft_graph_user_request_builder.MicrosoftGraphUserRequestBuilder:
         """
         Casts the previous resource to user.
         """
-        return user_request_builder.UserRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_user_request_builder.MicrosoftGraphUserRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, directory_object_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DirectoryObjectItemRequestBuilder and sets the default values.
         Args:
-            directoryObjectId: key: id of directoryObject
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -49,7 +48,6 @@ class DirectoryObjectItemRequestBuilder():
         self.url_template: str = "{+baseurl}/contacts/{orgContact%2Did}/directReports/{directoryObject%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["directoryObject%2Did"] = directoryObjectId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

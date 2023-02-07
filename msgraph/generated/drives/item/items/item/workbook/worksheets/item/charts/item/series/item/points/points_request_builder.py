@@ -10,8 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-count_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.series.item.points.microsoft_graph_count.count_request_builder')
-item_at_with_index_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.series.item.points.microsoft_graph_item_at_with_index.item_at_with_index_request_builder')
+count_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.series.item.points.count.count_request_builder')
+microsoft_graph_count_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.series.item.points.microsoft_graph_count.microsoft_graph_count_request_builder')
+microsoft_graph_item_at_with_index_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.series.item.points.microsoft_graph_item_at_with_index.microsoft_graph_item_at_with_index_request_builder')
 workbook_chart_point = lazy_import('msgraph.generated.models.workbook_chart_point')
 workbook_chart_point_collection_response = lazy_import('msgraph.generated.models.workbook_chart_point_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -28,11 +29,11 @@ class PointsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_count(self) -> count_request_builder.CountRequestBuilder:
+    def microsoft_graph_count(self) -> microsoft_graph_count_request_builder.MicrosoftGraphCountRequestBuilder:
         """
         Provides operations to call the count method.
         """
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_count_request_builder.MicrosoftGraphCountRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -70,16 +71,16 @@ class PointsRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, workbook_chart_point_collection_response.WorkbookChartPointCollectionResponse, error_mapping)
     
-    def microsoft_graph_item_at_with_index(self,index: Optional[int] = None) -> item_at_with_index_request_builder.ItemAtWithIndexRequestBuilder:
+    def microsoft_graph_item_at_with_index(self,index: Optional[int] = None) -> microsoft_graph_item_at_with_index_request_builder.MicrosoftGraphItemAtWithIndexRequestBuilder:
         """
         Provides operations to call the itemAt method.
         Args:
             index: Usage: index={index}
-        Returns: item_at_with_index_request_builder.ItemAtWithIndexRequestBuilder
+        Returns: microsoft_graph_item_at_with_index_request_builder.MicrosoftGraphItemAtWithIndexRequestBuilder
         """
         if index is None:
             raise Exception("index cannot be undefined")
-        return item_at_with_index_request_builder.ItemAtWithIndexRequestBuilder(self.request_adapter, self.path_parameters, index)
+        return microsoft_graph_item_at_with_index_request_builder.MicrosoftGraphItemAtWithIndexRequestBuilder(self.request_adapter, self.path_parameters, index)
     
     async def post(self,body: Optional[workbook_chart_point.WorkbookChartPoint] = None, request_configuration: Optional[PointsRequestBuilderPostRequestConfiguration] = None) -> Optional[workbook_chart_point.WorkbookChartPoint]:
         """

@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 instances_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.instances_request_builder')
 access_review_instance_item_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.access_review_instance_item_request_builder')
-stop_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.microsoft_graph_stop.stop_request_builder')
+microsoft_graph_stop_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.microsoft_graph_stop.microsoft_graph_stop_request_builder')
 access_review_schedule_definition = lazy_import('msgraph.generated.models.access_review_schedule_definition')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -28,17 +28,16 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
         return instances_request_builder.InstancesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_stop(self) -> stop_request_builder.StopRequestBuilder:
+    def microsoft_graph_stop(self) -> microsoft_graph_stop_request_builder.MicrosoftGraphStopRequestBuilder:
         """
         Provides operations to call the stop method.
         """
-        return stop_request_builder.StopRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_stop_request_builder.MicrosoftGraphStopRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, access_review_schedule_definition_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AccessReviewScheduleDefinitionItemRequestBuilder and sets the default values.
         Args:
-            accessReviewScheduleDefinitionId: key: id of accessReviewScheduleDefinition
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -50,7 +49,6 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
         self.url_template: str = "{+baseurl}/identityGovernance/accessReviews/definitions/{accessReviewScheduleDefinition%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["accessReviewScheduleDefinition%2Did"] = accessReviewScheduleDefinitionId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

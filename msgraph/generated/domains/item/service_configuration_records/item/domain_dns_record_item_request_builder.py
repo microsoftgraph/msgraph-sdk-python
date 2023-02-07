@@ -17,11 +17,10 @@ class DomainDnsRecordItemRequestBuilder():
     """
     Provides operations to manage the serviceConfigurationRecords property of the microsoft.graph.domain entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, domain_dns_record_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DomainDnsRecordItemRequestBuilder and sets the default values.
         Args:
-            domainDnsRecordId: key: id of domainDnsRecord
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class DomainDnsRecordItemRequestBuilder():
         self.url_template: str = "{+baseurl}/domains/{domain%2Did}/serviceConfigurationRecords/{domainDnsRecord%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["domainDnsRecord%2Did"] = domainDnsRecordId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

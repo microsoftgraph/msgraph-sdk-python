@@ -10,7 +10,7 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-calculate_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.application.microsoft_graph_calculate.calculate_request_builder')
+microsoft_graph_calculate_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.application.microsoft_graph_calculate.microsoft_graph_calculate_request_builder')
 workbook_application = lazy_import('msgraph.generated.models.workbook_application')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -19,11 +19,11 @@ class ApplicationRequestBuilder():
     Provides operations to manage the application property of the microsoft.graph.workbook entity.
     """
     @property
-    def microsoft_graph_calculate(self) -> calculate_request_builder.CalculateRequestBuilder:
+    def microsoft_graph_calculate(self) -> microsoft_graph_calculate_request_builder.MicrosoftGraphCalculateRequestBuilder:
         """
         Provides operations to call the calculate method.
         """
-        return calculate_request_builder.CalculateRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_calculate_request_builder.MicrosoftGraphCalculateRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

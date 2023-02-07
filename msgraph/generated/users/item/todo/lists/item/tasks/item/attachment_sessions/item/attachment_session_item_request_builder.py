@@ -25,11 +25,10 @@ class AttachmentSessionItemRequestBuilder():
         """
         return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, attachment_session_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AttachmentSessionItemRequestBuilder and sets the default values.
         Args:
-            attachmentSessionId: key: id of attachmentSession
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -41,7 +40,6 @@ class AttachmentSessionItemRequestBuilder():
         self.url_template: str = "{+baseurl}/users/{user%2Did}/todo/lists/{todoTaskList%2Did}/tasks/{todoTask%2Did}/attachmentSessions/{attachmentSession%2Did}{?%24select}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["attachmentSession%2Did"] = attachmentSessionId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

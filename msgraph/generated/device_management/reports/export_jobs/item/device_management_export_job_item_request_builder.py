@@ -17,11 +17,10 @@ class DeviceManagementExportJobItemRequestBuilder():
     """
     Provides operations to manage the exportJobs property of the microsoft.graph.deviceManagementReports entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, device_management_export_job_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DeviceManagementExportJobItemRequestBuilder and sets the default values.
         Args:
-            deviceManagementExportJobId: key: id of deviceManagementExportJob
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class DeviceManagementExportJobItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceManagement/reports/exportJobs/{deviceManagementExportJob%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["deviceManagementExportJob%2Did"] = deviceManagementExportJobId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

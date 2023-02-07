@@ -19,11 +19,11 @@ column_positions_request_builder = lazy_import('msgraph.generated.drives.item.li
 column_definition_item_request_builder = lazy_import('msgraph.generated.drives.item.list.content_types.item.column_positions.item.column_definition_item_request_builder')
 columns_request_builder = lazy_import('msgraph.generated.drives.item.list.content_types.item.columns.columns_request_builder')
 column_definition_item_request_builder = lazy_import('msgraph.generated.drives.item.list.content_types.item.columns.item.column_definition_item_request_builder')
-associate_with_hub_sites_request_builder = lazy_import('msgraph.generated.drives.item.list.content_types.item.microsoft_graph_associate_with_hub_sites.associate_with_hub_sites_request_builder')
-copy_to_default_content_location_request_builder = lazy_import('msgraph.generated.drives.item.list.content_types.item.microsoft_graph_copy_to_default_content_location.copy_to_default_content_location_request_builder')
-is_published_request_builder = lazy_import('msgraph.generated.drives.item.list.content_types.item.microsoft_graph_is_published.is_published_request_builder')
-publish_request_builder = lazy_import('msgraph.generated.drives.item.list.content_types.item.microsoft_graph_publish.publish_request_builder')
-unpublish_request_builder = lazy_import('msgraph.generated.drives.item.list.content_types.item.microsoft_graph_unpublish.unpublish_request_builder')
+microsoft_graph_associate_with_hub_sites_request_builder = lazy_import('msgraph.generated.drives.item.list.content_types.item.microsoft_graph_associate_with_hub_sites.microsoft_graph_associate_with_hub_sites_request_builder')
+microsoft_graph_copy_to_default_content_location_request_builder = lazy_import('msgraph.generated.drives.item.list.content_types.item.microsoft_graph_copy_to_default_content_location.microsoft_graph_copy_to_default_content_location_request_builder')
+microsoft_graph_is_published_request_builder = lazy_import('msgraph.generated.drives.item.list.content_types.item.microsoft_graph_is_published.microsoft_graph_is_published_request_builder')
+microsoft_graph_publish_request_builder = lazy_import('msgraph.generated.drives.item.list.content_types.item.microsoft_graph_publish.microsoft_graph_publish_request_builder')
+microsoft_graph_unpublish_request_builder = lazy_import('msgraph.generated.drives.item.list.content_types.item.microsoft_graph_unpublish.microsoft_graph_unpublish_request_builder')
 content_type = lazy_import('msgraph.generated.models.content_type')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -67,39 +67,39 @@ class ContentTypeItemRequestBuilder():
         return columns_request_builder.ColumnsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_associate_with_hub_sites(self) -> associate_with_hub_sites_request_builder.AssociateWithHubSitesRequestBuilder:
+    def microsoft_graph_associate_with_hub_sites(self) -> microsoft_graph_associate_with_hub_sites_request_builder.MicrosoftGraphAssociateWithHubSitesRequestBuilder:
         """
         Provides operations to call the associateWithHubSites method.
         """
-        return associate_with_hub_sites_request_builder.AssociateWithHubSitesRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_associate_with_hub_sites_request_builder.MicrosoftGraphAssociateWithHubSitesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_copy_to_default_content_location(self) -> copy_to_default_content_location_request_builder.CopyToDefaultContentLocationRequestBuilder:
+    def microsoft_graph_copy_to_default_content_location(self) -> microsoft_graph_copy_to_default_content_location_request_builder.MicrosoftGraphCopyToDefaultContentLocationRequestBuilder:
         """
         Provides operations to call the copyToDefaultContentLocation method.
         """
-        return copy_to_default_content_location_request_builder.CopyToDefaultContentLocationRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_copy_to_default_content_location_request_builder.MicrosoftGraphCopyToDefaultContentLocationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_is_published(self) -> is_published_request_builder.IsPublishedRequestBuilder:
+    def microsoft_graph_is_published(self) -> microsoft_graph_is_published_request_builder.MicrosoftGraphIsPublishedRequestBuilder:
         """
         Provides operations to call the isPublished method.
         """
-        return is_published_request_builder.IsPublishedRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_is_published_request_builder.MicrosoftGraphIsPublishedRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_publish(self) -> publish_request_builder.PublishRequestBuilder:
+    def microsoft_graph_publish(self) -> microsoft_graph_publish_request_builder.MicrosoftGraphPublishRequestBuilder:
         """
         Provides operations to call the publish method.
         """
-        return publish_request_builder.PublishRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_publish_request_builder.MicrosoftGraphPublishRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_unpublish(self) -> unpublish_request_builder.UnpublishRequestBuilder:
+    def microsoft_graph_unpublish(self) -> microsoft_graph_unpublish_request_builder.MicrosoftGraphUnpublishRequestBuilder:
         """
         Provides operations to call the unpublish method.
         """
-        return unpublish_request_builder.UnpublishRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_unpublish_request_builder.MicrosoftGraphUnpublishRequestBuilder(self.request_adapter, self.path_parameters)
     
     def base_types_by_id(self,id: str) -> ContentTypeItemRequestBuilder:
         """
@@ -153,11 +153,10 @@ class ContentTypeItemRequestBuilder():
         url_tpl_params["columnDefinition%2Did"] = id
         return column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, content_type_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ContentTypeItemRequestBuilder and sets the default values.
         Args:
-            contentTypeId: key: id of contentType
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -169,7 +168,6 @@ class ContentTypeItemRequestBuilder():
         self.url_template: str = "{+baseurl}/drives/{drive%2Did}/list/contentTypes/{contentType%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["contentType%2Did"] = contentTypeId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

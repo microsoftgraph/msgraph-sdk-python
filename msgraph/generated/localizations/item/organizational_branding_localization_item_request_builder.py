@@ -41,11 +41,10 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
         """
         return square_logo_request_builder.SquareLogoRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, organizational_branding_localization_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new OrganizationalBrandingLocalizationItemRequestBuilder and sets the default values.
         Args:
-            organizationalBrandingLocalizationId: key: id of organizationalBrandingLocalization
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -57,7 +56,6 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/localizations/{organizationalBrandingLocalization%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["organizationalBrandingLocalization%2Did"] = organizationalBrandingLocalizationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

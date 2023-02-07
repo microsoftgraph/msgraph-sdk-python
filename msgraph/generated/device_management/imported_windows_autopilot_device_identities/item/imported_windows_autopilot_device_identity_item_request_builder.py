@@ -17,11 +17,10 @@ class ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder():
     """
     Provides operations to manage the importedWindowsAutopilotDeviceIdentities property of the microsoft.graph.deviceManagement entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, imported_windows_autopilot_device_identity_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder and sets the default values.
         Args:
-            importedWindowsAutopilotDeviceIdentityId: key: id of importedWindowsAutopilotDeviceIdentity
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceManagement/importedWindowsAutopilotDeviceIdentities/{importedWindowsAutopilotDeviceIdentity%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["importedWindowsAutopilotDeviceIdentity%2Did"] = importedWindowsAutopilotDeviceIdentityId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

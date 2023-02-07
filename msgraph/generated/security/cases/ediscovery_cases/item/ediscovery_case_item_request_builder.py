@@ -14,8 +14,8 @@ o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error'
 ediscovery_case = lazy_import('msgraph.generated.models.security.ediscovery_case')
 custodians_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.custodians.custodians_request_builder')
 ediscovery_custodian_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.custodians.item.ediscovery_custodian_item_request_builder')
-close_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.microsoft_graph_security_close.close_request_builder')
-reopen_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.microsoft_graph_security_reopen.reopen_request_builder')
+microsoft_graph_security_close_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.microsoft_graph_security_close.microsoft_graph_security_close_request_builder')
+microsoft_graph_security_reopen_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.microsoft_graph_security_reopen.microsoft_graph_security_reopen_request_builder')
 noncustodial_data_sources_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.noncustodial_data_sources_request_builder')
 ediscovery_noncustodial_data_source_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.ediscovery_noncustodial_data_source_item_request_builder')
 operations_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.operations.operations_request_builder')
@@ -40,18 +40,18 @@ class EdiscoveryCaseItemRequestBuilder():
         return custodians_request_builder.CustodiansRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_security_close(self) -> close_request_builder.CloseRequestBuilder:
+    def microsoft_graph_security_close(self) -> microsoft_graph_security_close_request_builder.MicrosoftGraphSecurityCloseRequestBuilder:
         """
         Provides operations to call the close method.
         """
-        return close_request_builder.CloseRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_security_close_request_builder.MicrosoftGraphSecurityCloseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_security_reopen(self) -> reopen_request_builder.ReopenRequestBuilder:
+    def microsoft_graph_security_reopen(self) -> microsoft_graph_security_reopen_request_builder.MicrosoftGraphSecurityReopenRequestBuilder:
         """
         Provides operations to call the reopen method.
         """
-        return reopen_request_builder.ReopenRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_security_reopen_request_builder.MicrosoftGraphSecurityReopenRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def noncustodial_data_sources(self) -> noncustodial_data_sources_request_builder.NoncustodialDataSourcesRequestBuilder:
@@ -95,11 +95,10 @@ class EdiscoveryCaseItemRequestBuilder():
         """
         return tags_request_builder.TagsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, ediscovery_case_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EdiscoveryCaseItemRequestBuilder and sets the default values.
         Args:
-            ediscoveryCaseId: key: id of ediscoveryCase
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -111,7 +110,6 @@ class EdiscoveryCaseItemRequestBuilder():
         self.url_template: str = "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["ediscoveryCase%2Did"] = ediscoveryCaseId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

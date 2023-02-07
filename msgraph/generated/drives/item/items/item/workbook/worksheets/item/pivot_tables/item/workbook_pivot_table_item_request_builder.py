@@ -10,7 +10,7 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-refresh_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.pivot_tables.item.microsoft_graph_refresh.refresh_request_builder')
+microsoft_graph_refresh_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.pivot_tables.item.microsoft_graph_refresh.microsoft_graph_refresh_request_builder')
 worksheet_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.pivot_tables.item.worksheet.worksheet_request_builder')
 workbook_pivot_table = lazy_import('msgraph.generated.models.workbook_pivot_table')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -20,11 +20,11 @@ class WorkbookPivotTableItemRequestBuilder():
     Provides operations to manage the pivotTables property of the microsoft.graph.workbookWorksheet entity.
     """
     @property
-    def microsoft_graph_refresh(self) -> refresh_request_builder.RefreshRequestBuilder:
+    def microsoft_graph_refresh(self) -> microsoft_graph_refresh_request_builder.MicrosoftGraphRefreshRequestBuilder:
         """
         Provides operations to call the refresh method.
         """
-        return refresh_request_builder.RefreshRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_refresh_request_builder.MicrosoftGraphRefreshRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def worksheet(self) -> worksheet_request_builder.WorksheetRequestBuilder:
@@ -33,13 +33,12 @@ class WorkbookPivotTableItemRequestBuilder():
         """
         return worksheet_request_builder.WorksheetRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, workbook_pivot_table_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new WorkbookPivotTableItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            workbookPivotTableId: key: id of workbookPivotTable
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -49,7 +48,6 @@ class WorkbookPivotTableItemRequestBuilder():
         self.url_template: str = "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/pivotTables/{workbookPivotTable%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["workbookPivotTable%2Did"] = workbookPivotTableId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

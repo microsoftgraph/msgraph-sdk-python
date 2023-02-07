@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.communications.online_meetings.count.count_request_builder')
-create_or_get_request_builder = lazy_import('msgraph.generated.communications.online_meetings.microsoft_graph_create_or_get.create_or_get_request_builder')
+microsoft_graph_create_or_get_request_builder = lazy_import('msgraph.generated.communications.online_meetings.microsoft_graph_create_or_get.microsoft_graph_create_or_get_request_builder')
 online_meeting = lazy_import('msgraph.generated.models.online_meeting')
 online_meeting_collection_response = lazy_import('msgraph.generated.models.online_meeting_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -28,11 +28,11 @@ class OnlineMeetingsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_create_or_get(self) -> create_or_get_request_builder.CreateOrGetRequestBuilder:
+    def microsoft_graph_create_or_get(self) -> microsoft_graph_create_or_get_request_builder.MicrosoftGraphCreateOrGetRequestBuilder:
         """
         Provides operations to call the createOrGet method.
         """
-        return create_or_get_request_builder.CreateOrGetRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_create_or_get_request_builder.MicrosoftGraphCreateOrGetRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

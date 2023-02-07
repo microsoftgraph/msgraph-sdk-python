@@ -72,7 +72,7 @@ class DetailsRequestBuilder():
     
     async def patch(self,body: Optional[planner_task_details.PlannerTaskDetails] = None, request_configuration: Optional[DetailsRequestBuilderPatchRequestConfiguration] = None) -> Optional[planner_task_details.PlannerTaskDetails]:
         """
-        Update the properties of **plannerTaskDetails** object.
+        Update the navigation property details in groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -127,7 +127,7 @@ class DetailsRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[planner_task_details.PlannerTaskDetails] = None, request_configuration: Optional[DetailsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of **plannerTaskDetails** object.
+        Update the navigation property details in groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

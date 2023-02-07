@@ -14,11 +14,11 @@ application_request_builder = lazy_import('msgraph.generated.drives.item.items.i
 comments_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.comments.comments_request_builder')
 workbook_comment_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.comments.item.workbook_comment_item_request_builder')
 functions_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.functions_request_builder')
-close_session_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.microsoft_graph_close_session.close_session_request_builder')
-create_session_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.microsoft_graph_create_session.create_session_request_builder')
-refresh_session_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.microsoft_graph_refresh_session.refresh_session_request_builder')
-session_info_resource_with_key_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.microsoft_graph_session_info_resource_with_key.session_info_resource_with_key_request_builder')
-table_row_operation_result_with_key_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.microsoft_graph_table_row_operation_result_with_key.table_row_operation_result_with_key_request_builder')
+microsoft_graph_close_session_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.microsoft_graph_close_session.microsoft_graph_close_session_request_builder')
+microsoft_graph_create_session_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.microsoft_graph_create_session.microsoft_graph_create_session_request_builder')
+microsoft_graph_refresh_session_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.microsoft_graph_refresh_session.microsoft_graph_refresh_session_request_builder')
+microsoft_graph_session_info_resource_with_key_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.microsoft_graph_session_info_resource_with_key.microsoft_graph_session_info_resource_with_key_request_builder')
+microsoft_graph_table_row_operation_result_with_key_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.microsoft_graph_table_row_operation_result_with_key.microsoft_graph_table_row_operation_result_with_key_request_builder')
 names_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.names.names_request_builder')
 workbook_named_item_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.names.item.workbook_named_item_item_request_builder')
 operations_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.operations.operations_request_builder')
@@ -56,25 +56,25 @@ class WorkbookRequestBuilder():
         return functions_request_builder.FunctionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_close_session(self) -> close_session_request_builder.CloseSessionRequestBuilder:
+    def microsoft_graph_close_session(self) -> microsoft_graph_close_session_request_builder.MicrosoftGraphCloseSessionRequestBuilder:
         """
         Provides operations to call the closeSession method.
         """
-        return close_session_request_builder.CloseSessionRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_close_session_request_builder.MicrosoftGraphCloseSessionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_create_session(self) -> create_session_request_builder.CreateSessionRequestBuilder:
+    def microsoft_graph_create_session(self) -> microsoft_graph_create_session_request_builder.MicrosoftGraphCreateSessionRequestBuilder:
         """
         Provides operations to call the createSession method.
         """
-        return create_session_request_builder.CreateSessionRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_create_session_request_builder.MicrosoftGraphCreateSessionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_refresh_session(self) -> refresh_session_request_builder.RefreshSessionRequestBuilder:
+    def microsoft_graph_refresh_session(self) -> microsoft_graph_refresh_session_request_builder.MicrosoftGraphRefreshSessionRequestBuilder:
         """
         Provides operations to call the refreshSession method.
         """
-        return refresh_session_request_builder.RefreshSessionRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_refresh_session_request_builder.MicrosoftGraphRefreshSessionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def names(self) -> names_request_builder.NamesRequestBuilder:
@@ -170,27 +170,27 @@ class WorkbookRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, workbook.Workbook, error_mapping)
     
-    def microsoft_graph_session_info_resource_with_key(self,key: Optional[str] = None) -> session_info_resource_with_key_request_builder.SessionInfoResourceWithKeyRequestBuilder:
+    def microsoft_graph_session_info_resource_with_key(self,key: Optional[str] = None) -> microsoft_graph_session_info_resource_with_key_request_builder.MicrosoftGraphSessionInfoResourceWithKeyRequestBuilder:
         """
         Provides operations to call the sessionInfoResource method.
         Args:
             key: Usage: key='{key}'
-        Returns: session_info_resource_with_key_request_builder.SessionInfoResourceWithKeyRequestBuilder
+        Returns: microsoft_graph_session_info_resource_with_key_request_builder.MicrosoftGraphSessionInfoResourceWithKeyRequestBuilder
         """
         if key is None:
             raise Exception("key cannot be undefined")
-        return session_info_resource_with_key_request_builder.SessionInfoResourceWithKeyRequestBuilder(self.request_adapter, self.path_parameters, key)
+        return microsoft_graph_session_info_resource_with_key_request_builder.MicrosoftGraphSessionInfoResourceWithKeyRequestBuilder(self.request_adapter, self.path_parameters, key)
     
-    def microsoft_graph_table_row_operation_result_with_key(self,key: Optional[str] = None) -> table_row_operation_result_with_key_request_builder.TableRowOperationResultWithKeyRequestBuilder:
+    def microsoft_graph_table_row_operation_result_with_key(self,key: Optional[str] = None) -> microsoft_graph_table_row_operation_result_with_key_request_builder.MicrosoftGraphTableRowOperationResultWithKeyRequestBuilder:
         """
         Provides operations to call the tableRowOperationResult method.
         Args:
             key: Usage: key='{key}'
-        Returns: table_row_operation_result_with_key_request_builder.TableRowOperationResultWithKeyRequestBuilder
+        Returns: microsoft_graph_table_row_operation_result_with_key_request_builder.MicrosoftGraphTableRowOperationResultWithKeyRequestBuilder
         """
         if key is None:
             raise Exception("key cannot be undefined")
-        return table_row_operation_result_with_key_request_builder.TableRowOperationResultWithKeyRequestBuilder(self.request_adapter, self.path_parameters, key)
+        return microsoft_graph_table_row_operation_result_with_key_request_builder.MicrosoftGraphTableRowOperationResultWithKeyRequestBuilder(self.request_adapter, self.path_parameters, key)
     
     def names_by_id(self,id: str) -> workbook_named_item_item_request_builder.WorkbookNamedItemItemRequestBuilder:
         """

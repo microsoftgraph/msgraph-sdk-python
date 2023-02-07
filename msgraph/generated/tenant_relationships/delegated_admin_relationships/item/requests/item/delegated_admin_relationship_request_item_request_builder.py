@@ -17,11 +17,10 @@ class DelegatedAdminRelationshipRequestItemRequestBuilder():
     """
     Provides operations to manage the requests property of the microsoft.graph.delegatedAdminRelationship entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, delegated_admin_relationship_request_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DelegatedAdminRelationshipRequestItemRequestBuilder and sets the default values.
         Args:
-            delegatedAdminRelationshipRequestId: key: id of delegatedAdminRelationshipRequest
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class DelegatedAdminRelationshipRequestItemRequestBuilder():
         self.url_template: str = "{+baseurl}/tenantRelationships/delegatedAdminRelationships/{delegatedAdminRelationship%2Did}/requests/{delegatedAdminRelationshipRequest%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["delegatedAdminRelationshipRequest%2Did"] = delegatedAdminRelationshipRequestId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -56,7 +54,7 @@ class DelegatedAdminRelationshipRequestItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[DelegatedAdminRelationshipRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]:
         """
-        Get requests from tenantRelationships
+        The requests associated with the delegated admin relationship.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]
@@ -111,7 +109,7 @@ class DelegatedAdminRelationshipRequestItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DelegatedAdminRelationshipRequestItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get requests from tenantRelationships
+        The requests associated with the delegated admin relationship.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -163,7 +161,7 @@ class DelegatedAdminRelationshipRequestItemRequestBuilder():
     @dataclass
     class DelegatedAdminRelationshipRequestItemRequestBuilderGetQueryParameters():
         """
-        Get requests from tenantRelationships
+        The requests associated with the delegated admin relationship.
         """
         # Expand related entities
         expand: Optional[List[str]] = None

@@ -10,11 +10,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-reassign_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.microsoft_graph_reassign.reassign_request_builder')
-return_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.microsoft_graph_return.return_request_builder')
-set_up_resources_folder_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.microsoft_graph_set_up_resources_folder.set_up_resources_folder_request_builder')
-submit_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.microsoft_graph_submit.submit_request_builder')
-unsubmit_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.microsoft_graph_unsubmit.unsubmit_request_builder')
+microsoft_graph_reassign_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.microsoft_graph_reassign.microsoft_graph_reassign_request_builder')
+microsoft_graph_return_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.microsoft_graph_return.microsoft_graph_return_request_builder')
+microsoft_graph_set_up_resources_folder_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.microsoft_graph_set_up_resources_folder.microsoft_graph_set_up_resources_folder_request_builder')
+microsoft_graph_submit_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.microsoft_graph_submit.microsoft_graph_submit_request_builder')
+microsoft_graph_unsubmit_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.microsoft_graph_unsubmit.microsoft_graph_unsubmit_request_builder')
 outcomes_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.outcomes.outcomes_request_builder')
 education_outcome_item_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.outcomes.item.education_outcome_item_request_builder')
 resources_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.resources.resources_request_builder')
@@ -29,39 +29,39 @@ class EducationSubmissionItemRequestBuilder():
     Provides operations to manage the submissions property of the microsoft.graph.educationAssignment entity.
     """
     @property
-    def microsoft_graph_reassign(self) -> reassign_request_builder.ReassignRequestBuilder:
+    def microsoft_graph_reassign(self) -> microsoft_graph_reassign_request_builder.MicrosoftGraphReassignRequestBuilder:
         """
         Provides operations to call the reassign method.
         """
-        return reassign_request_builder.ReassignRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_reassign_request_builder.MicrosoftGraphReassignRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_return(self) -> return_request_builder.ReturnRequestBuilder:
+    def microsoft_graph_return(self) -> microsoft_graph_return_request_builder.MicrosoftGraphReturnRequestBuilder:
         """
         Provides operations to call the return method.
         """
-        return return_request_builder.ReturnRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_return_request_builder.MicrosoftGraphReturnRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_set_up_resources_folder(self) -> set_up_resources_folder_request_builder.SetUpResourcesFolderRequestBuilder:
+    def microsoft_graph_set_up_resources_folder(self) -> microsoft_graph_set_up_resources_folder_request_builder.MicrosoftGraphSetUpResourcesFolderRequestBuilder:
         """
         Provides operations to call the setUpResourcesFolder method.
         """
-        return set_up_resources_folder_request_builder.SetUpResourcesFolderRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_set_up_resources_folder_request_builder.MicrosoftGraphSetUpResourcesFolderRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_submit(self) -> submit_request_builder.SubmitRequestBuilder:
+    def microsoft_graph_submit(self) -> microsoft_graph_submit_request_builder.MicrosoftGraphSubmitRequestBuilder:
         """
         Provides operations to call the submit method.
         """
-        return submit_request_builder.SubmitRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_submit_request_builder.MicrosoftGraphSubmitRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_unsubmit(self) -> unsubmit_request_builder.UnsubmitRequestBuilder:
+    def microsoft_graph_unsubmit(self) -> microsoft_graph_unsubmit_request_builder.MicrosoftGraphUnsubmitRequestBuilder:
         """
         Provides operations to call the unsubmit method.
         """
-        return unsubmit_request_builder.UnsubmitRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_unsubmit_request_builder.MicrosoftGraphUnsubmitRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def outcomes(self) -> outcomes_request_builder.OutcomesRequestBuilder:
@@ -84,11 +84,10 @@ class EducationSubmissionItemRequestBuilder():
         """
         return submitted_resources_request_builder.SubmittedResourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, education_submission_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EducationSubmissionItemRequestBuilder and sets the default values.
         Args:
-            educationSubmissionId: key: id of educationSubmission
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -100,7 +99,6 @@ class EducationSubmissionItemRequestBuilder():
         self.url_template: str = "{+baseurl}/education/me/assignments/{educationAssignment%2Did}/submissions/{educationSubmission%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["educationSubmission%2Did"] = educationSubmissionId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

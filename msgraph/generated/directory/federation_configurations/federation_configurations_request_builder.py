@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.directory.federation_configurations.count.count_request_builder')
-available_provider_types_request_builder = lazy_import('msgraph.generated.directory.federation_configurations.microsoft_graph_available_provider_types.available_provider_types_request_builder')
+microsoft_graph_available_provider_types_request_builder = lazy_import('msgraph.generated.directory.federation_configurations.microsoft_graph_available_provider_types.microsoft_graph_available_provider_types_request_builder')
 identity_provider_base = lazy_import('msgraph.generated.models.identity_provider_base')
 identity_provider_base_collection_response = lazy_import('msgraph.generated.models.identity_provider_base_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -28,11 +28,11 @@ class FederationConfigurationsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_available_provider_types(self) -> available_provider_types_request_builder.AvailableProviderTypesRequestBuilder:
+    def microsoft_graph_available_provider_types(self) -> microsoft_graph_available_provider_types_request_builder.MicrosoftGraphAvailableProviderTypesRequestBuilder:
         """
         Provides operations to call the availableProviderTypes method.
         """
-        return available_provider_types_request_builder.AvailableProviderTypesRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_available_provider_types_request_builder.MicrosoftGraphAvailableProviderTypesRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

@@ -17,13 +17,12 @@ class SettingStateDeviceSummaryItemRequestBuilder():
     """
     Provides operations to manage the deviceSettingStateSummaries property of the microsoft.graph.deviceCompliancePolicy entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, setting_state_device_summary_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SettingStateDeviceSummaryItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            settingStateDeviceSummaryId: key: id of settingStateDeviceSummary
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -33,7 +32,6 @@ class SettingStateDeviceSummaryItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicy%2Did}/deviceSettingStateSummaries/{settingStateDeviceSummary%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["settingStateDeviceSummary%2Did"] = settingStateDeviceSummaryId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

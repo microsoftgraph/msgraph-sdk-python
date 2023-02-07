@@ -32,7 +32,7 @@ class DelegatedAdminAccessDetails(AdditionalDataHolder, Parsable):
 
         # The OdataType property
         self._odata_type: Optional[str] = None
-        # The unifiedRoles property
+        # The directory roles that the Microsoft partner is assigned in the customer tenant.
         self._unified_roles: Optional[List[unified_role.UnifiedRole]] = None
     
     @staticmethod
@@ -90,7 +90,7 @@ class DelegatedAdminAccessDetails(AdditionalDataHolder, Parsable):
     @property
     def unified_roles(self,) -> Optional[List[unified_role.UnifiedRole]]:
         """
-        Gets the unifiedRoles property value. The unifiedRoles property
+        Gets the unifiedRoles property value. The directory roles that the Microsoft partner is assigned in the customer tenant.
         Returns: Optional[List[unified_role.UnifiedRole]]
         """
         return self._unified_roles
@@ -98,7 +98,7 @@ class DelegatedAdminAccessDetails(AdditionalDataHolder, Parsable):
     @unified_roles.setter
     def unified_roles(self,value: Optional[List[unified_role.UnifiedRole]] = None) -> None:
         """
-        Sets the unifiedRoles property value. The unifiedRoles property
+        Sets the unifiedRoles property value. The directory roles that the Microsoft partner is assigned in the customer tenant.
         Args:
             value: Value to set for the unified_roles property.
         """

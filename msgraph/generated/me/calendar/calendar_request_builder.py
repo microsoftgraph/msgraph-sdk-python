@@ -16,8 +16,8 @@ calendar_view_request_builder = lazy_import('msgraph.generated.me.calendar.calen
 event_item_request_builder = lazy_import('msgraph.generated.me.calendar.calendar_view.item.event_item_request_builder')
 events_request_builder = lazy_import('msgraph.generated.me.calendar.events.events_request_builder')
 event_item_request_builder = lazy_import('msgraph.generated.me.calendar.events.item.event_item_request_builder')
-allowed_calendar_sharing_roles_with_user_request_builder = lazy_import('msgraph.generated.me.calendar.microsoft_graph_allowed_calendar_sharing_roles_with_user.allowed_calendar_sharing_roles_with_user_request_builder')
-get_schedule_request_builder = lazy_import('msgraph.generated.me.calendar.microsoft_graph_get_schedule.get_schedule_request_builder')
+microsoft_graph_allowed_calendar_sharing_roles_with_user_request_builder = lazy_import('msgraph.generated.me.calendar.microsoft_graph_allowed_calendar_sharing_roles_with_user.microsoft_graph_allowed_calendar_sharing_roles_with_user_request_builder')
+microsoft_graph_get_schedule_request_builder = lazy_import('msgraph.generated.me.calendar.microsoft_graph_get_schedule.microsoft_graph_get_schedule_request_builder')
 multi_value_extended_properties_request_builder = lazy_import('msgraph.generated.me.calendar.multi_value_extended_properties.multi_value_extended_properties_request_builder')
 multi_value_legacy_extended_property_item_request_builder = lazy_import('msgraph.generated.me.calendar.multi_value_extended_properties.item.multi_value_legacy_extended_property_item_request_builder')
 single_value_extended_properties_request_builder = lazy_import('msgraph.generated.me.calendar.single_value_extended_properties.single_value_extended_properties_request_builder')
@@ -51,11 +51,11 @@ class CalendarRequestBuilder():
         return events_request_builder.EventsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_schedule(self) -> get_schedule_request_builder.GetScheduleRequestBuilder:
+    def microsoft_graph_get_schedule(self) -> microsoft_graph_get_schedule_request_builder.MicrosoftGraphGetScheduleRequestBuilder:
         """
         Provides operations to call the getSchedule method.
         """
-        return get_schedule_request_builder.GetScheduleRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_schedule_request_builder.MicrosoftGraphGetScheduleRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
@@ -146,16 +146,16 @@ class CalendarRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, calendar.Calendar, error_mapping)
     
-    def microsoft_graph_allowed_calendar_sharing_roles_with_user(self,user: Optional[str] = None) -> allowed_calendar_sharing_roles_with_user_request_builder.AllowedCalendarSharingRolesWithUserRequestBuilder:
+    def microsoft_graph_allowed_calendar_sharing_roles_with_user(self,user: Optional[str] = None) -> microsoft_graph_allowed_calendar_sharing_roles_with_user_request_builder.MicrosoftGraphAllowedCalendarSharingRolesWithUserRequestBuilder:
         """
         Provides operations to call the allowedCalendarSharingRoles method.
         Args:
             User: Usage: User='{User}'
-        Returns: allowed_calendar_sharing_roles_with_user_request_builder.AllowedCalendarSharingRolesWithUserRequestBuilder
+        Returns: microsoft_graph_allowed_calendar_sharing_roles_with_user_request_builder.MicrosoftGraphAllowedCalendarSharingRolesWithUserRequestBuilder
         """
         if user is None:
             raise Exception("user cannot be undefined")
-        return allowed_calendar_sharing_roles_with_user_request_builder.AllowedCalendarSharingRolesWithUserRequestBuilder(self.request_adapter, self.path_parameters, User)
+        return microsoft_graph_allowed_calendar_sharing_roles_with_user_request_builder.MicrosoftGraphAllowedCalendarSharingRolesWithUserRequestBuilder(self.request_adapter, self.path_parameters, User)
     
     def multi_value_extended_properties_by_id(self,id: str) -> multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder:
         """

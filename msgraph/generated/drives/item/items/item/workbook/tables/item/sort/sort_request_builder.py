@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-apply_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.sort.microsoft_graph_apply.apply_request_builder')
-clear_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.sort.microsoft_graph_clear.clear_request_builder')
-reapply_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.sort.microsoft_graph_reapply.reapply_request_builder')
+microsoft_graph_apply_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.sort.microsoft_graph_apply.microsoft_graph_apply_request_builder')
+microsoft_graph_clear_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.sort.microsoft_graph_clear.microsoft_graph_clear_request_builder')
+microsoft_graph_reapply_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.sort.microsoft_graph_reapply.microsoft_graph_reapply_request_builder')
 workbook_table_sort = lazy_import('msgraph.generated.models.workbook_table_sort')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -21,25 +21,25 @@ class SortRequestBuilder():
     Provides operations to manage the sort property of the microsoft.graph.workbookTable entity.
     """
     @property
-    def microsoft_graph_apply(self) -> apply_request_builder.ApplyRequestBuilder:
+    def microsoft_graph_apply(self) -> microsoft_graph_apply_request_builder.MicrosoftGraphApplyRequestBuilder:
         """
         Provides operations to call the apply method.
         """
-        return apply_request_builder.ApplyRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_apply_request_builder.MicrosoftGraphApplyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_clear(self) -> clear_request_builder.ClearRequestBuilder:
+    def microsoft_graph_clear(self) -> microsoft_graph_clear_request_builder.MicrosoftGraphClearRequestBuilder:
         """
         Provides operations to call the clear method.
         """
-        return clear_request_builder.ClearRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_clear_request_builder.MicrosoftGraphClearRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_reapply(self) -> reapply_request_builder.ReapplyRequestBuilder:
+    def microsoft_graph_reapply(self) -> microsoft_graph_reapply_request_builder.MicrosoftGraphReapplyRequestBuilder:
         """
         Provides operations to call the reapply method.
         """
-        return reapply_request_builder.ReapplyRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_reapply_request_builder.MicrosoftGraphReapplyRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

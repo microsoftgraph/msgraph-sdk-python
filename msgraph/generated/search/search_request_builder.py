@@ -12,18 +12,18 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 search_entity = lazy_import('msgraph.generated.models.search_entity')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-query_request_builder = lazy_import('msgraph.generated.search.microsoft_graph_query.query_request_builder')
+microsoft_graph_query_request_builder = lazy_import('msgraph.generated.search.microsoft_graph_query.microsoft_graph_query_request_builder')
 
 class SearchRequestBuilder():
     """
     Provides operations to manage the searchEntity singleton.
     """
     @property
-    def microsoft_graph_query(self) -> query_request_builder.QueryRequestBuilder:
+    def microsoft_graph_query(self) -> microsoft_graph_query_request_builder.MicrosoftGraphQueryRequestBuilder:
         """
         Provides operations to call the query method.
         """
-        return query_request_builder.QueryRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_query_request_builder.MicrosoftGraphQueryRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

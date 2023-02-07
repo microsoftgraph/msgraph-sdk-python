@@ -39,11 +39,10 @@ class AccessPackageCatalogItemRequestBuilder():
         url_tpl_params["accessPackage%2Did"] = id
         return access_package_item_request_builder.AccessPackageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, access_package_catalog_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AccessPackageCatalogItemRequestBuilder and sets the default values.
         Args:
-            accessPackageCatalogId: key: id of accessPackageCatalog
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -55,7 +54,6 @@ class AccessPackageCatalogItemRequestBuilder():
         self.url_template: str = "{+baseurl}/identityGovernance/entitlementManagement/catalogs/{accessPackageCatalog%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["accessPackageCatalog%2Did"] = accessPackageCatalogId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

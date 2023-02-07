@@ -10,7 +10,7 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-reset_password_request_builder = lazy_import('msgraph.generated.me.authentication.methods.item.microsoft_graph_reset_password.reset_password_request_builder')
+microsoft_graph_reset_password_request_builder = lazy_import('msgraph.generated.me.authentication.methods.item.microsoft_graph_reset_password.microsoft_graph_reset_password_request_builder')
 authentication_method = lazy_import('msgraph.generated.models.authentication_method')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -19,17 +19,16 @@ class AuthenticationMethodItemRequestBuilder():
     Provides operations to manage the methods property of the microsoft.graph.authentication entity.
     """
     @property
-    def microsoft_graph_reset_password(self) -> reset_password_request_builder.ResetPasswordRequestBuilder:
+    def microsoft_graph_reset_password(self) -> microsoft_graph_reset_password_request_builder.MicrosoftGraphResetPasswordRequestBuilder:
         """
         Provides operations to call the resetPassword method.
         """
-        return reset_password_request_builder.ResetPasswordRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_reset_password_request_builder.MicrosoftGraphResetPasswordRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, authentication_method_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AuthenticationMethodItemRequestBuilder and sets the default values.
         Args:
-            authenticationMethodId: key: id of authenticationMethod
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -41,7 +40,6 @@ class AuthenticationMethodItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/authentication/methods/{authenticationMethod%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["authenticationMethod%2Did"] = authenticationMethodId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

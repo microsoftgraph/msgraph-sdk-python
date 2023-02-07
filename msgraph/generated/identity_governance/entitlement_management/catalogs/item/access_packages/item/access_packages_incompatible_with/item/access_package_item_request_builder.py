@@ -17,11 +17,10 @@ class AccessPackageItemRequestBuilder():
     """
     Provides operations to manage the accessPackagesIncompatibleWith property of the microsoft.graph.accessPackage entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, access_package_id1: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AccessPackageItemRequestBuilder and sets the default values.
         Args:
-            accessPackageId1: key: id of accessPackage
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class AccessPackageItemRequestBuilder():
         self.url_template: str = "{+baseurl}/identityGovernance/entitlementManagement/catalogs/{accessPackageCatalog%2Did}/accessPackages/{accessPackage%2Did}/accessPackagesIncompatibleWith/{accessPackage%2Did1}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["accessPackage%2Did1"] = accessPackageId1
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

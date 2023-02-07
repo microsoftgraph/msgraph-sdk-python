@@ -72,7 +72,7 @@ class BucketTaskBoardFormatRequestBuilder():
     
     async def patch(self,body: Optional[planner_bucket_task_board_task_format.PlannerBucketTaskBoardTaskFormat] = None, request_configuration: Optional[BucketTaskBoardFormatRequestBuilderPatchRequestConfiguration] = None) -> Optional[planner_bucket_task_board_task_format.PlannerBucketTaskBoardTaskFormat]:
         """
-        Update the properties of **plannerBucketTaskBoardTaskFormat** object.
+        Update the navigation property bucketTaskBoardFormat in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -127,7 +127,7 @@ class BucketTaskBoardFormatRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[planner_bucket_task_board_task_format.PlannerBucketTaskBoardTaskFormat] = None, request_configuration: Optional[BucketTaskBoardFormatRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of **plannerBucketTaskBoardTaskFormat** object.
+        Update the navigation property bucketTaskBoardFormat in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

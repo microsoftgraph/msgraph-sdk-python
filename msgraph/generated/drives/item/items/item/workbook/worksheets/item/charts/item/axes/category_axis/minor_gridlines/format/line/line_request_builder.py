@@ -10,7 +10,7 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-clear_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.axes.category_axis.minor_gridlines.format.line.microsoft_graph_clear.clear_request_builder')
+microsoft_graph_clear_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.axes.category_axis.minor_gridlines.format.line.microsoft_graph_clear.microsoft_graph_clear_request_builder')
 workbook_chart_line_format = lazy_import('msgraph.generated.models.workbook_chart_line_format')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -19,11 +19,11 @@ class LineRequestBuilder():
     Provides operations to manage the line property of the microsoft.graph.workbookChartGridlinesFormat entity.
     """
     @property
-    def microsoft_graph_clear(self) -> clear_request_builder.ClearRequestBuilder:
+    def microsoft_graph_clear(self) -> microsoft_graph_clear_request_builder.MicrosoftGraphClearRequestBuilder:
         """
         Provides operations to call the clear method.
         """
-        return clear_request_builder.ClearRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_clear_request_builder.MicrosoftGraphClearRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

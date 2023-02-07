@@ -17,11 +17,10 @@ class DataPolicyOperationItemRequestBuilder():
     """
     Provides operations to manage the collection of dataPolicyOperation entities.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, data_policy_operation_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DataPolicyOperationItemRequestBuilder and sets the default values.
         Args:
-            dataPolicyOperationId: key: id of dataPolicyOperation
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class DataPolicyOperationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/dataPolicyOperations/{dataPolicyOperation%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["dataPolicyOperation%2Did"] = dataPolicyOperationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-clear_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.legend.format.fill.microsoft_graph_clear.clear_request_builder')
-set_solid_color_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.legend.format.fill.microsoft_graph_set_solid_color.set_solid_color_request_builder')
+microsoft_graph_clear_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.legend.format.fill.microsoft_graph_clear.microsoft_graph_clear_request_builder')
+microsoft_graph_set_solid_color_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.legend.format.fill.microsoft_graph_set_solid_color.microsoft_graph_set_solid_color_request_builder')
 workbook_chart_fill = lazy_import('msgraph.generated.models.workbook_chart_fill')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -20,18 +20,18 @@ class FillRequestBuilder():
     Provides operations to manage the fill property of the microsoft.graph.workbookChartLegendFormat entity.
     """
     @property
-    def microsoft_graph_clear(self) -> clear_request_builder.ClearRequestBuilder:
+    def microsoft_graph_clear(self) -> microsoft_graph_clear_request_builder.MicrosoftGraphClearRequestBuilder:
         """
         Provides operations to call the clear method.
         """
-        return clear_request_builder.ClearRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_clear_request_builder.MicrosoftGraphClearRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_set_solid_color(self) -> set_solid_color_request_builder.SetSolidColorRequestBuilder:
+    def microsoft_graph_set_solid_color(self) -> microsoft_graph_set_solid_color_request_builder.MicrosoftGraphSetSolidColorRequestBuilder:
         """
         Provides operations to call the setSolidColor method.
         """
-        return set_solid_color_request_builder.SetSolidColorRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_set_solid_color_request_builder.MicrosoftGraphSetSolidColorRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

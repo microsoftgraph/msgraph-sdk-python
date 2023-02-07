@@ -17,11 +17,10 @@ class AttendanceRecordItemRequestBuilder():
     """
     Provides operations to manage the attendanceRecords property of the microsoft.graph.meetingAttendanceReport entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, attendance_record_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AttendanceRecordItemRequestBuilder and sets the default values.
         Args:
-            attendanceRecordId: key: id of attendanceRecord
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class AttendanceRecordItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/onlineMeetings/{onlineMeeting%2Did}/attendanceReports/{meetingAttendanceReport%2Did}/attendanceRecords/{attendanceRecord%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["attendanceRecord%2Did"] = attendanceRecordId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

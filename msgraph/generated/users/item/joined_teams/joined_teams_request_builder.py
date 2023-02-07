@@ -14,7 +14,7 @@ team = lazy_import('msgraph.generated.models.team')
 team_collection_response = lazy_import('msgraph.generated.models.team_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.count.count_request_builder')
-get_all_messages_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.microsoft_graph_get_all_messages.get_all_messages_request_builder')
+microsoft_graph_get_all_messages_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.microsoft_graph_get_all_messages.microsoft_graph_get_all_messages_request_builder')
 
 class JoinedTeamsRequestBuilder():
     """
@@ -28,11 +28,11 @@ class JoinedTeamsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_all_messages(self) -> get_all_messages_request_builder.GetAllMessagesRequestBuilder:
+    def microsoft_graph_get_all_messages(self) -> microsoft_graph_get_all_messages_request_builder.MicrosoftGraphGetAllMessagesRequestBuilder:
         """
         Provides operations to call the getAllMessages method.
         """
-        return get_all_messages_request_builder.GetAllMessagesRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_all_messages_request_builder.MicrosoftGraphGetAllMessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

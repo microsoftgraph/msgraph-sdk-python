@@ -10,7 +10,7 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.rows.item.microsoft_graph_range.range_request_builder')
+microsoft_graph_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.rows.item.microsoft_graph_range.microsoft_graph_range_request_builder')
 workbook_table_row = lazy_import('msgraph.generated.models.workbook_table_row')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -19,19 +19,18 @@ class WorkbookTableRowItemRequestBuilder():
     Provides operations to manage the rows property of the microsoft.graph.workbookTable entity.
     """
     @property
-    def microsoft_graph_range(self) -> range_request_builder.RangeRequestBuilder:
+    def microsoft_graph_range(self) -> microsoft_graph_range_request_builder.MicrosoftGraphRangeRequestBuilder:
         """
         Provides operations to call the range method.
         """
-        return range_request_builder.RangeRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_range_request_builder.MicrosoftGraphRangeRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, workbook_table_row_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new WorkbookTableRowItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            workbookTableRowId: key: id of workbookTableRow
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -41,7 +40,6 @@ class WorkbookTableRowItemRequestBuilder():
         self.url_template: str = "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/tables/{workbookTable%2Did}/rows/{workbookTableRow%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["workbookTableRow%2Did"] = workbookTableRowId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

@@ -26,11 +26,10 @@ class ApprovalItemRequestBuilder():
         """
         return stages_request_builder.StagesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, approval_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ApprovalItemRequestBuilder and sets the default values.
         Args:
-            approvalId: key: id of approval
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -42,7 +41,6 @@ class ApprovalItemRequestBuilder():
         self.url_template: str = "{+baseurl}/identityGovernance/entitlementManagement/accessPackageAssignmentApprovals/{approval%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["approval%2Did"] = approvalId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

@@ -13,9 +13,9 @@ class DelegatedAdminServiceManagementDetail(entity.Entity):
         super().__init__()
         # The OdataType property
         self.odata_type: Optional[str] = None
-        # The serviceManagementUrl property
+        # The URL of the management portal for the managed service. Read-only.
         self._service_management_url: Optional[str] = None
-        # The serviceName property
+        # The name of a managed service. Read-only.
         self._service_name: Optional[str] = None
     
     @staticmethod
@@ -58,7 +58,7 @@ class DelegatedAdminServiceManagementDetail(entity.Entity):
     @property
     def service_management_url(self,) -> Optional[str]:
         """
-        Gets the serviceManagementUrl property value. The serviceManagementUrl property
+        Gets the serviceManagementUrl property value. The URL of the management portal for the managed service. Read-only.
         Returns: Optional[str]
         """
         return self._service_management_url
@@ -66,7 +66,7 @@ class DelegatedAdminServiceManagementDetail(entity.Entity):
     @service_management_url.setter
     def service_management_url(self,value: Optional[str] = None) -> None:
         """
-        Sets the serviceManagementUrl property value. The serviceManagementUrl property
+        Sets the serviceManagementUrl property value. The URL of the management portal for the managed service. Read-only.
         Args:
             value: Value to set for the service_management_url property.
         """
@@ -75,7 +75,7 @@ class DelegatedAdminServiceManagementDetail(entity.Entity):
     @property
     def service_name(self,) -> Optional[str]:
         """
-        Gets the serviceName property value. The serviceName property
+        Gets the serviceName property value. The name of a managed service. Read-only.
         Returns: Optional[str]
         """
         return self._service_name
@@ -83,7 +83,7 @@ class DelegatedAdminServiceManagementDetail(entity.Entity):
     @service_name.setter
     def service_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the serviceName property value. The serviceName property
+        Sets the serviceName property value. The name of a managed service. Read-only.
         Args:
             value: Value to set for the service_name property.
         """

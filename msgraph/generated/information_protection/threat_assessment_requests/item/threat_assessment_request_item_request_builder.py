@@ -26,13 +26,12 @@ class ThreatAssessmentRequestItemRequestBuilder():
         """
         return results_request_builder.ResultsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, threat_assessment_request_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ThreatAssessmentRequestItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            threatAssessmentRequestId: key: id of threatAssessmentRequest
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -42,7 +41,6 @@ class ThreatAssessmentRequestItemRequestBuilder():
         self.url_template: str = "{+baseurl}/informationProtection/threatAssessmentRequests/{threatAssessmentRequest%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["threatAssessmentRequest%2Did"] = threatAssessmentRequestId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

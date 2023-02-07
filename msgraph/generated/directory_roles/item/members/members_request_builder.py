@@ -11,12 +11,12 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.directory_roles.item.members.count.count_request_builder')
-application_request_builder = lazy_import('msgraph.generated.directory_roles.item.members.microsoft_graph_application.application_request_builder')
-device_request_builder = lazy_import('msgraph.generated.directory_roles.item.members.microsoft_graph_device.device_request_builder')
-group_request_builder = lazy_import('msgraph.generated.directory_roles.item.members.microsoft_graph_group.group_request_builder')
-org_contact_request_builder = lazy_import('msgraph.generated.directory_roles.item.members.microsoft_graph_org_contact.org_contact_request_builder')
-service_principal_request_builder = lazy_import('msgraph.generated.directory_roles.item.members.microsoft_graph_service_principal.service_principal_request_builder')
-user_request_builder = lazy_import('msgraph.generated.directory_roles.item.members.microsoft_graph_user.user_request_builder')
+microsoft_graph_application_request_builder = lazy_import('msgraph.generated.directory_roles.item.members.microsoft_graph_application.microsoft_graph_application_request_builder')
+microsoft_graph_device_request_builder = lazy_import('msgraph.generated.directory_roles.item.members.microsoft_graph_device.microsoft_graph_device_request_builder')
+microsoft_graph_group_request_builder = lazy_import('msgraph.generated.directory_roles.item.members.microsoft_graph_group.microsoft_graph_group_request_builder')
+microsoft_graph_org_contact_request_builder = lazy_import('msgraph.generated.directory_roles.item.members.microsoft_graph_org_contact.microsoft_graph_org_contact_request_builder')
+microsoft_graph_service_principal_request_builder = lazy_import('msgraph.generated.directory_roles.item.members.microsoft_graph_service_principal.microsoft_graph_service_principal_request_builder')
+microsoft_graph_user_request_builder = lazy_import('msgraph.generated.directory_roles.item.members.microsoft_graph_user.microsoft_graph_user_request_builder')
 ref_request_builder = lazy_import('msgraph.generated.directory_roles.item.members.ref.ref_request_builder')
 directory_object_collection_response = lazy_import('msgraph.generated.models.directory_object_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -33,46 +33,46 @@ class MembersRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_application(self) -> application_request_builder.ApplicationRequestBuilder:
+    def microsoft_graph_application(self) -> microsoft_graph_application_request_builder.MicrosoftGraphApplicationRequestBuilder:
         """
         Casts the previous resource to application.
         """
-        return application_request_builder.ApplicationRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_application_request_builder.MicrosoftGraphApplicationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_device(self) -> device_request_builder.DeviceRequestBuilder:
+    def microsoft_graph_device(self) -> microsoft_graph_device_request_builder.MicrosoftGraphDeviceRequestBuilder:
         """
         Casts the previous resource to device.
         """
-        return device_request_builder.DeviceRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_device_request_builder.MicrosoftGraphDeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_group(self) -> group_request_builder.GroupRequestBuilder:
+    def microsoft_graph_group(self) -> microsoft_graph_group_request_builder.MicrosoftGraphGroupRequestBuilder:
         """
         Casts the previous resource to group.
         """
-        return group_request_builder.GroupRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_group_request_builder.MicrosoftGraphGroupRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_org_contact(self) -> org_contact_request_builder.OrgContactRequestBuilder:
+    def microsoft_graph_org_contact(self) -> microsoft_graph_org_contact_request_builder.MicrosoftGraphOrgContactRequestBuilder:
         """
         Casts the previous resource to orgContact.
         """
-        return org_contact_request_builder.OrgContactRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_org_contact_request_builder.MicrosoftGraphOrgContactRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_service_principal(self) -> service_principal_request_builder.ServicePrincipalRequestBuilder:
+    def microsoft_graph_service_principal(self) -> microsoft_graph_service_principal_request_builder.MicrosoftGraphServicePrincipalRequestBuilder:
         """
         Casts the previous resource to servicePrincipal.
         """
-        return service_principal_request_builder.ServicePrincipalRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_service_principal_request_builder.MicrosoftGraphServicePrincipalRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_user(self) -> user_request_builder.UserRequestBuilder:
+    def microsoft_graph_user(self) -> microsoft_graph_user_request_builder.MicrosoftGraphUserRequestBuilder:
         """
         Casts the previous resource to user.
         """
-        return user_request_builder.UserRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_user_request_builder.MicrosoftGraphUserRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def ref(self) -> ref_request_builder.RefRequestBuilder:

@@ -13,8 +13,8 @@ from typing import Any, Callable, Dict, List, Optional, Union
 directory_object_collection_response = lazy_import('msgraph.generated.models.directory_object_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.users.item.direct_reports.count.count_request_builder')
-org_contact_request_builder = lazy_import('msgraph.generated.users.item.direct_reports.microsoft_graph_org_contact.org_contact_request_builder')
-user_request_builder = lazy_import('msgraph.generated.users.item.direct_reports.microsoft_graph_user.user_request_builder')
+microsoft_graph_org_contact_request_builder = lazy_import('msgraph.generated.users.item.direct_reports.microsoft_graph_org_contact.microsoft_graph_org_contact_request_builder')
+microsoft_graph_user_request_builder = lazy_import('msgraph.generated.users.item.direct_reports.microsoft_graph_user.microsoft_graph_user_request_builder')
 
 class DirectReportsRequestBuilder():
     """
@@ -28,18 +28,18 @@ class DirectReportsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_org_contact(self) -> org_contact_request_builder.OrgContactRequestBuilder:
+    def microsoft_graph_org_contact(self) -> microsoft_graph_org_contact_request_builder.MicrosoftGraphOrgContactRequestBuilder:
         """
         Casts the previous resource to orgContact.
         """
-        return org_contact_request_builder.OrgContactRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_org_contact_request_builder.MicrosoftGraphOrgContactRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_user(self) -> user_request_builder.UserRequestBuilder:
+    def microsoft_graph_user(self) -> microsoft_graph_user_request_builder.MicrosoftGraphUserRequestBuilder:
         """
         Casts the previous resource to user.
         """
-        return user_request_builder.UserRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_user_request_builder.MicrosoftGraphUserRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

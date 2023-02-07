@@ -11,12 +11,12 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.count.count_request_builder')
-archive_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.microsoft_graph_archive.archive_request_builder')
-favorite_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.microsoft_graph_favorite.favorite_request_builder')
-mark_read_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.microsoft_graph_mark_read.mark_read_request_builder')
-mark_unread_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.microsoft_graph_mark_unread.mark_unread_request_builder')
-unarchive_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.microsoft_graph_unarchive.unarchive_request_builder')
-unfavorite_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.microsoft_graph_unfavorite.unfavorite_request_builder')
+microsoft_graph_archive_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.microsoft_graph_archive.microsoft_graph_archive_request_builder')
+microsoft_graph_favorite_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.microsoft_graph_favorite.microsoft_graph_favorite_request_builder')
+microsoft_graph_mark_read_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.microsoft_graph_mark_read.microsoft_graph_mark_read_request_builder')
+microsoft_graph_mark_unread_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.microsoft_graph_mark_unread.microsoft_graph_mark_unread_request_builder')
+microsoft_graph_unarchive_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.microsoft_graph_unarchive.microsoft_graph_unarchive_request_builder')
+microsoft_graph_unfavorite_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.microsoft_graph_unfavorite.microsoft_graph_unfavorite_request_builder')
 service_update_message = lazy_import('msgraph.generated.models.service_update_message')
 service_update_message_collection_response = lazy_import('msgraph.generated.models.service_update_message_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -33,46 +33,46 @@ class MessagesRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_archive(self) -> archive_request_builder.ArchiveRequestBuilder:
+    def microsoft_graph_archive(self) -> microsoft_graph_archive_request_builder.MicrosoftGraphArchiveRequestBuilder:
         """
         Provides operations to call the archive method.
         """
-        return archive_request_builder.ArchiveRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_archive_request_builder.MicrosoftGraphArchiveRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_favorite(self) -> favorite_request_builder.FavoriteRequestBuilder:
+    def microsoft_graph_favorite(self) -> microsoft_graph_favorite_request_builder.MicrosoftGraphFavoriteRequestBuilder:
         """
         Provides operations to call the favorite method.
         """
-        return favorite_request_builder.FavoriteRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_favorite_request_builder.MicrosoftGraphFavoriteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_mark_read(self) -> mark_read_request_builder.MarkReadRequestBuilder:
+    def microsoft_graph_mark_read(self) -> microsoft_graph_mark_read_request_builder.MicrosoftGraphMarkReadRequestBuilder:
         """
         Provides operations to call the markRead method.
         """
-        return mark_read_request_builder.MarkReadRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_mark_read_request_builder.MicrosoftGraphMarkReadRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_mark_unread(self) -> mark_unread_request_builder.MarkUnreadRequestBuilder:
+    def microsoft_graph_mark_unread(self) -> microsoft_graph_mark_unread_request_builder.MicrosoftGraphMarkUnreadRequestBuilder:
         """
         Provides operations to call the markUnread method.
         """
-        return mark_unread_request_builder.MarkUnreadRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_mark_unread_request_builder.MicrosoftGraphMarkUnreadRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_unarchive(self) -> unarchive_request_builder.UnarchiveRequestBuilder:
+    def microsoft_graph_unarchive(self) -> microsoft_graph_unarchive_request_builder.MicrosoftGraphUnarchiveRequestBuilder:
         """
         Provides operations to call the unarchive method.
         """
-        return unarchive_request_builder.UnarchiveRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_unarchive_request_builder.MicrosoftGraphUnarchiveRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_unfavorite(self) -> unfavorite_request_builder.UnfavoriteRequestBuilder:
+    def microsoft_graph_unfavorite(self) -> microsoft_graph_unfavorite_request_builder.MicrosoftGraphUnfavoriteRequestBuilder:
         """
         Provides operations to call the unfavorite method.
         """
-        return unfavorite_request_builder.UnfavoriteRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_unfavorite_request_builder.MicrosoftGraphUnfavoriteRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

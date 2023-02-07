@@ -20,7 +20,7 @@ attack_simulation_request_builder = lazy_import('msgraph.generated.security.atta
 cases_request_builder = lazy_import('msgraph.generated.security.cases.cases_request_builder')
 incidents_request_builder = lazy_import('msgraph.generated.security.incidents.incidents_request_builder')
 incident_item_request_builder = lazy_import('msgraph.generated.security.incidents.item.incident_item_request_builder')
-run_hunting_query_request_builder = lazy_import('msgraph.generated.security.microsoft_graph_security_run_hunting_query.run_hunting_query_request_builder')
+microsoft_graph_security_run_hunting_query_request_builder = lazy_import('msgraph.generated.security.microsoft_graph_security_run_hunting_query.microsoft_graph_security_run_hunting_query_request_builder')
 secure_score_control_profiles_request_builder = lazy_import('msgraph.generated.security.secure_score_control_profiles.secure_score_control_profiles_request_builder')
 secure_score_control_profile_item_request_builder = lazy_import('msgraph.generated.security.secure_score_control_profiles.item.secure_score_control_profile_item_request_builder')
 secure_scores_request_builder = lazy_import('msgraph.generated.security.secure_scores.secure_scores_request_builder')
@@ -66,11 +66,11 @@ class SecurityRequestBuilder():
         return incidents_request_builder.IncidentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_security_run_hunting_query(self) -> run_hunting_query_request_builder.RunHuntingQueryRequestBuilder:
+    def microsoft_graph_security_run_hunting_query(self) -> microsoft_graph_security_run_hunting_query_request_builder.MicrosoftGraphSecurityRunHuntingQueryRequestBuilder:
         """
         Provides operations to call the runHuntingQuery method.
         """
-        return run_hunting_query_request_builder.RunHuntingQueryRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_security_run_hunting_query_request_builder.MicrosoftGraphSecurityRunHuntingQueryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def secure_score_control_profiles(self) -> secure_score_control_profiles_request_builder.SecureScoreControlProfilesRequestBuilder:

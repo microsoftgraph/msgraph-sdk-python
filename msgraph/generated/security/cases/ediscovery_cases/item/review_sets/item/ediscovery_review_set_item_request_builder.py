@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 ediscovery_review_set = lazy_import('msgraph.generated.models.security.ediscovery_review_set')
-add_to_review_set_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.review_sets.item.microsoft_graph_security_add_to_review_set.add_to_review_set_request_builder')
+microsoft_graph_security_add_to_review_set_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.review_sets.item.microsoft_graph_security_add_to_review_set.microsoft_graph_security_add_to_review_set_request_builder')
 queries_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.review_sets.item.queries.queries_request_builder')
 ediscovery_review_set_query_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.review_sets.item.queries.item.ediscovery_review_set_query_item_request_builder')
 
@@ -21,11 +21,11 @@ class EdiscoveryReviewSetItemRequestBuilder():
     Provides operations to manage the reviewSets property of the microsoft.graph.security.ediscoveryCase entity.
     """
     @property
-    def microsoft_graph_security_add_to_review_set(self) -> add_to_review_set_request_builder.AddToReviewSetRequestBuilder:
+    def microsoft_graph_security_add_to_review_set(self) -> microsoft_graph_security_add_to_review_set_request_builder.MicrosoftGraphSecurityAddToReviewSetRequestBuilder:
         """
         Provides operations to call the addToReviewSet method.
         """
-        return add_to_review_set_request_builder.AddToReviewSetRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_security_add_to_review_set_request_builder.MicrosoftGraphSecurityAddToReviewSetRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def queries(self) -> queries_request_builder.QueriesRequestBuilder:
@@ -34,11 +34,10 @@ class EdiscoveryReviewSetItemRequestBuilder():
         """
         return queries_request_builder.QueriesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, ediscovery_review_set_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EdiscoveryReviewSetItemRequestBuilder and sets the default values.
         Args:
-            ediscoveryReviewSetId: key: id of ediscoveryReviewSet
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -50,7 +49,6 @@ class EdiscoveryReviewSetItemRequestBuilder():
         self.url_template: str = "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}/reviewSets/{ediscoveryReviewSet%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["ediscoveryReviewSet%2Did"] = ediscoveryReviewSetId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

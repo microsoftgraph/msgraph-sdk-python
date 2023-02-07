@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 fields_request_builder = lazy_import('msgraph.generated.drives.item.list.items.item.versions.item.fields.fields_request_builder')
-restore_version_request_builder = lazy_import('msgraph.generated.drives.item.list.items.item.versions.item.microsoft_graph_restore_version.restore_version_request_builder')
+microsoft_graph_restore_version_request_builder = lazy_import('msgraph.generated.drives.item.list.items.item.versions.item.microsoft_graph_restore_version.microsoft_graph_restore_version_request_builder')
 list_item_version = lazy_import('msgraph.generated.models.list_item_version')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -27,17 +27,16 @@ class ListItemVersionItemRequestBuilder():
         return fields_request_builder.FieldsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_restore_version(self) -> restore_version_request_builder.RestoreVersionRequestBuilder:
+    def microsoft_graph_restore_version(self) -> microsoft_graph_restore_version_request_builder.MicrosoftGraphRestoreVersionRequestBuilder:
         """
         Provides operations to call the restoreVersion method.
         """
-        return restore_version_request_builder.RestoreVersionRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_restore_version_request_builder.MicrosoftGraphRestoreVersionRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, list_item_version_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ListItemVersionItemRequestBuilder and sets the default values.
         Args:
-            listItemVersionId: key: id of listItemVersion
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -49,7 +48,6 @@ class ListItemVersionItemRequestBuilder():
         self.url_template: str = "{+baseurl}/drives/{drive%2Did}/list/items/{listItem%2Did}/versions/{listItemVersion%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["listItemVersion%2Did"] = listItemVersionId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

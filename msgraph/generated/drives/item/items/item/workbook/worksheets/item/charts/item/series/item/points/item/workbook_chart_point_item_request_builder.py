@@ -25,13 +25,12 @@ class WorkbookChartPointItemRequestBuilder():
         """
         return format_request_builder.FormatRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, workbook_chart_point_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new WorkbookChartPointItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            workbookChartPointId: key: id of workbookChartPoint
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -41,7 +40,6 @@ class WorkbookChartPointItemRequestBuilder():
         self.url_template: str = "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/{workbookChart%2Did}/series/{workbookChartSeries%2Did}/points/{workbookChartPoint%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["workbookChartPoint%2Did"] = workbookChartPointId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

@@ -17,11 +17,10 @@ class ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder():
     """
     Provides operations to manage the assignments property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, managed_device_mobile_app_configuration_assignment_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder and sets the default values.
         Args:
-            managedDeviceMobileAppConfigurationAssignmentId: key: id of managedDeviceMobileAppConfigurationAssignment
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceAppManagement/mobileAppConfigurations/{managedDeviceMobileAppConfiguration%2Did}/assignments/{managedDeviceMobileAppConfigurationAssignment%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["managedDeviceMobileAppConfigurationAssignment%2Did"] = managedDeviceMobileAppConfigurationAssignmentId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

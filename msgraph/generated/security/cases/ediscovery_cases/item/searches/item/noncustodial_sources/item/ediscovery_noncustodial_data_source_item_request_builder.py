@@ -17,11 +17,10 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
     """
     Provides operations to manage the noncustodialSources property of the microsoft.graph.security.ediscoverySearch entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, ediscovery_noncustodial_data_source_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EdiscoveryNoncustodialDataSourceItemRequestBuilder and sets the default values.
         Args:
-            ediscoveryNoncustodialDataSourceId: key: id of ediscoveryNoncustodialDataSource
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
         self.url_template: str = "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}/searches/{ediscoverySearch%2Did}/noncustodialSources/{ediscoveryNoncustodialDataSource%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["ediscoveryNoncustodialDataSource%2Did"] = ediscoveryNoncustodialDataSourceId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

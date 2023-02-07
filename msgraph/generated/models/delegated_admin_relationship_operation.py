@@ -14,11 +14,11 @@ class DelegatedAdminRelationshipOperation(entity.Entity):
         Instantiates a new delegatedAdminRelationshipOperation and sets the default values.
         """
         super().__init__()
-        # The createdDateTime property
+        # The time in ISO 8601 format and in UTC time when the long-running operation was created. Read-only.
         self._created_date_time: Optional[datetime] = None
-        # The data property
+        # The data (payload) for the operation. Read-only.
         self._data: Optional[str] = None
-        # The lastModifiedDateTime property
+        # The time in ISO 8601 format and in UTC time when the long-running operation was last modified. Read-only.
         self._last_modified_date_time: Optional[datetime] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
@@ -30,7 +30,7 @@ class DelegatedAdminRelationshipOperation(entity.Entity):
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
-        Gets the createdDateTime property value. The createdDateTime property
+        Gets the createdDateTime property value. The time in ISO 8601 format and in UTC time when the long-running operation was created. Read-only.
         Returns: Optional[datetime]
         """
         return self._created_date_time
@@ -38,7 +38,7 @@ class DelegatedAdminRelationshipOperation(entity.Entity):
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the createdDateTime property value. The createdDateTime property
+        Sets the createdDateTime property value. The time in ISO 8601 format and in UTC time when the long-running operation was created. Read-only.
         Args:
             value: Value to set for the created_date_time property.
         """
@@ -59,7 +59,7 @@ class DelegatedAdminRelationshipOperation(entity.Entity):
     @property
     def data(self,) -> Optional[str]:
         """
-        Gets the data property value. The data property
+        Gets the data property value. The data (payload) for the operation. Read-only.
         Returns: Optional[str]
         """
         return self._data
@@ -67,7 +67,7 @@ class DelegatedAdminRelationshipOperation(entity.Entity):
     @data.setter
     def data(self,value: Optional[str] = None) -> None:
         """
-        Sets the data property value. The data property
+        Sets the data property value. The data (payload) for the operation. Read-only.
         Args:
             value: Value to set for the data property.
         """
@@ -92,7 +92,7 @@ class DelegatedAdminRelationshipOperation(entity.Entity):
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
-        Gets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Gets the lastModifiedDateTime property value. The time in ISO 8601 format and in UTC time when the long-running operation was last modified. Read-only.
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
@@ -100,7 +100,7 @@ class DelegatedAdminRelationshipOperation(entity.Entity):
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Sets the lastModifiedDateTime property value. The time in ISO 8601 format and in UTC time when the long-running operation was last modified. Read-only.
         Args:
             value: Value to set for the last_modified_date_time property.
         """

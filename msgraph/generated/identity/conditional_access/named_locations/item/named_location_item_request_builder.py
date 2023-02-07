@@ -17,11 +17,10 @@ class NamedLocationItemRequestBuilder():
     """
     Provides operations to manage the namedLocations property of the microsoft.graph.conditionalAccessRoot entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, named_location_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new NamedLocationItemRequestBuilder and sets the default values.
         Args:
-            namedLocationId: key: id of namedLocation
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class NamedLocationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/identity/conditionalAccess/namedLocations/{namedLocation%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["namedLocation%2Did"] = namedLocationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

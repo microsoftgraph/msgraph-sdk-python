@@ -17,11 +17,10 @@ class ExtensionItemRequestBuilder():
     """
     Provides operations to manage the extensions property of the microsoft.graph.post entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, extension_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ExtensionItemRequestBuilder and sets the default values.
         Args:
-            extensionId: key: id of extension
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class ExtensionItemRequestBuilder():
         self.url_template: str = "{+baseurl}/groups/{group%2Did}/threads/{conversationThread%2Did}/posts/{post%2Did}/inReplyTo/extensions/{extension%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["extension%2Did"] = extensionId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

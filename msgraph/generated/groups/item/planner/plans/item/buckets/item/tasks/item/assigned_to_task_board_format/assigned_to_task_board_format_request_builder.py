@@ -72,7 +72,7 @@ class AssignedToTaskBoardFormatRequestBuilder():
     
     async def patch(self,body: Optional[planner_assigned_to_task_board_task_format.PlannerAssignedToTaskBoardTaskFormat] = None, request_configuration: Optional[AssignedToTaskBoardFormatRequestBuilderPatchRequestConfiguration] = None) -> Optional[planner_assigned_to_task_board_task_format.PlannerAssignedToTaskBoardTaskFormat]:
         """
-        Update the properties of **plannerAssignedToTaskBoardTaskFormat** object.
+        Update the navigation property assignedToTaskBoardFormat in groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -127,7 +127,7 @@ class AssignedToTaskBoardFormatRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[planner_assigned_to_task_board_task_format.PlannerAssignedToTaskBoardTaskFormat] = None, request_configuration: Optional[AssignedToTaskBoardFormatRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of **plannerAssignedToTaskBoardTaskFormat** object.
+        Update the navigation property assignedToTaskBoardFormat in groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

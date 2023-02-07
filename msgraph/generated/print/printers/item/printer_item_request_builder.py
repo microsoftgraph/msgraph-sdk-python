@@ -14,7 +14,7 @@ printer = lazy_import('msgraph.generated.models.printer')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 connectors_request_builder = lazy_import('msgraph.generated.print.printers.item.connectors.connectors_request_builder')
 print_connector_item_request_builder = lazy_import('msgraph.generated.print.printers.item.connectors.item.print_connector_item_request_builder')
-restore_factory_defaults_request_builder = lazy_import('msgraph.generated.print.printers.item.microsoft_graph_restore_factory_defaults.restore_factory_defaults_request_builder')
+microsoft_graph_restore_factory_defaults_request_builder = lazy_import('msgraph.generated.print.printers.item.microsoft_graph_restore_factory_defaults.microsoft_graph_restore_factory_defaults_request_builder')
 shares_request_builder = lazy_import('msgraph.generated.print.printers.item.shares.shares_request_builder')
 printer_share_item_request_builder = lazy_import('msgraph.generated.print.printers.item.shares.item.printer_share_item_request_builder')
 task_triggers_request_builder = lazy_import('msgraph.generated.print.printers.item.task_triggers.task_triggers_request_builder')
@@ -32,11 +32,11 @@ class PrinterItemRequestBuilder():
         return connectors_request_builder.ConnectorsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_restore_factory_defaults(self) -> restore_factory_defaults_request_builder.RestoreFactoryDefaultsRequestBuilder:
+    def microsoft_graph_restore_factory_defaults(self) -> microsoft_graph_restore_factory_defaults_request_builder.MicrosoftGraphRestoreFactoryDefaultsRequestBuilder:
         """
         Provides operations to call the restoreFactoryDefaults method.
         """
-        return restore_factory_defaults_request_builder.RestoreFactoryDefaultsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_restore_factory_defaults_request_builder.MicrosoftGraphRestoreFactoryDefaultsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def shares(self) -> shares_request_builder.SharesRequestBuilder:
@@ -65,12 +65,11 @@ class PrinterItemRequestBuilder():
         url_tpl_params["printConnector%2Did"] = id
         return print_connector_item_request_builder.PrintConnectorItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, printer_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PrinterItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
-            printerId: key: id of printer
             requestAdapter: The request adapter to use to execute the requests.
         """
         if path_parameters is None:
@@ -81,7 +80,6 @@ class PrinterItemRequestBuilder():
         self.url_template: str = "{+baseurl}/print/printers/{printer%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["printer%2Did"] = printerId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

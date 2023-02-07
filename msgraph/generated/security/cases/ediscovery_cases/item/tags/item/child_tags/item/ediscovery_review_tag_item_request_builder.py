@@ -17,11 +17,10 @@ class EdiscoveryReviewTagItemRequestBuilder():
     """
     Provides operations to manage the childTags property of the microsoft.graph.security.ediscoveryReviewTag entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, ediscovery_review_tag_id1: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EdiscoveryReviewTagItemRequestBuilder and sets the default values.
         Args:
-            ediscoveryReviewTagId1: key: id of ediscoveryReviewTag
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class EdiscoveryReviewTagItemRequestBuilder():
         self.url_template: str = "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}/tags/{ediscoveryReviewTag%2Did}/childTags/{ediscoveryReviewTag%2Did1}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["ediscoveryReviewTag%2Did1"] = ediscoveryReviewTagId1
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

@@ -17,11 +17,10 @@ class BookingStaffMemberBaseItemRequestBuilder():
     """
     Provides operations to manage the staffMembers property of the microsoft.graph.bookingBusiness entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, booking_staff_member_base_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new BookingStaffMemberBaseItemRequestBuilder and sets the default values.
         Args:
-            bookingStaffMemberBaseId: key: id of bookingStaffMemberBase
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class BookingStaffMemberBaseItemRequestBuilder():
         self.url_template: str = "{+baseurl}/solutions/bookingBusinesses/{bookingBusiness%2Did}/staffMembers/{bookingStaffMemberBase%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["bookingStaffMemberBase%2Did"] = bookingStaffMemberBaseId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

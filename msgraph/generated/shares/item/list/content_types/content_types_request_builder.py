@@ -14,9 +14,9 @@ content_type = lazy_import('msgraph.generated.models.content_type')
 content_type_collection_response = lazy_import('msgraph.generated.models.content_type_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.shares.item.list.content_types.count.count_request_builder')
-add_copy_request_builder = lazy_import('msgraph.generated.shares.item.list.content_types.microsoft_graph_add_copy.add_copy_request_builder')
-add_copy_from_content_type_hub_request_builder = lazy_import('msgraph.generated.shares.item.list.content_types.microsoft_graph_add_copy_from_content_type_hub.add_copy_from_content_type_hub_request_builder')
-get_compatible_hub_content_types_request_builder = lazy_import('msgraph.generated.shares.item.list.content_types.microsoft_graph_get_compatible_hub_content_types.get_compatible_hub_content_types_request_builder')
+microsoft_graph_add_copy_request_builder = lazy_import('msgraph.generated.shares.item.list.content_types.microsoft_graph_add_copy.microsoft_graph_add_copy_request_builder')
+microsoft_graph_add_copy_from_content_type_hub_request_builder = lazy_import('msgraph.generated.shares.item.list.content_types.microsoft_graph_add_copy_from_content_type_hub.microsoft_graph_add_copy_from_content_type_hub_request_builder')
+microsoft_graph_get_compatible_hub_content_types_request_builder = lazy_import('msgraph.generated.shares.item.list.content_types.microsoft_graph_get_compatible_hub_content_types.microsoft_graph_get_compatible_hub_content_types_request_builder')
 
 class ContentTypesRequestBuilder():
     """
@@ -30,25 +30,25 @@ class ContentTypesRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_add_copy(self) -> add_copy_request_builder.AddCopyRequestBuilder:
+    def microsoft_graph_add_copy(self) -> microsoft_graph_add_copy_request_builder.MicrosoftGraphAddCopyRequestBuilder:
         """
         Provides operations to call the addCopy method.
         """
-        return add_copy_request_builder.AddCopyRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_add_copy_request_builder.MicrosoftGraphAddCopyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_add_copy_from_content_type_hub(self) -> add_copy_from_content_type_hub_request_builder.AddCopyFromContentTypeHubRequestBuilder:
+    def microsoft_graph_add_copy_from_content_type_hub(self) -> microsoft_graph_add_copy_from_content_type_hub_request_builder.MicrosoftGraphAddCopyFromContentTypeHubRequestBuilder:
         """
         Provides operations to call the addCopyFromContentTypeHub method.
         """
-        return add_copy_from_content_type_hub_request_builder.AddCopyFromContentTypeHubRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_add_copy_from_content_type_hub_request_builder.MicrosoftGraphAddCopyFromContentTypeHubRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_compatible_hub_content_types(self) -> get_compatible_hub_content_types_request_builder.GetCompatibleHubContentTypesRequestBuilder:
+    def microsoft_graph_get_compatible_hub_content_types(self) -> microsoft_graph_get_compatible_hub_content_types_request_builder.MicrosoftGraphGetCompatibleHubContentTypesRequestBuilder:
         """
         Provides operations to call the getCompatibleHubContentTypes method.
         """
-        return get_compatible_hub_content_types_request_builder.GetCompatibleHubContentTypesRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_compatible_hub_content_types_request_builder.MicrosoftGraphGetCompatibleHubContentTypesRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

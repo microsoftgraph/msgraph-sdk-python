@@ -17,11 +17,10 @@ class ContentSharingSessionItemRequestBuilder():
     """
     Provides operations to manage the contentSharingSessions property of the microsoft.graph.call entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, content_sharing_session_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ContentSharingSessionItemRequestBuilder and sets the default values.
         Args:
-            contentSharingSessionId: key: id of contentSharingSession
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class ContentSharingSessionItemRequestBuilder():
         self.url_template: str = "{+baseurl}/communications/calls/{call%2Did}/contentSharingSessions/{contentSharingSession%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["contentSharingSession%2Did"] = contentSharingSessionId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

@@ -12,7 +12,7 @@ class IpNamedLocation(named_location.NamedLocation):
         Instantiates a new IpNamedLocation and sets the default values.
         """
         super().__init__()
-        # List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596. Required.
+        # List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC5969. Required.
         self._ip_ranges: Optional[List[ip_range.IpRange]] = None
         # true if this location is explicitly trusted. Optional. Default value is false.
         self._is_trusted: Optional[bool] = None
@@ -47,7 +47,7 @@ class IpNamedLocation(named_location.NamedLocation):
     @property
     def ip_ranges(self,) -> Optional[List[ip_range.IpRange]]:
         """
-        Gets the ipRanges property value. List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596. Required.
+        Gets the ipRanges property value. List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC5969. Required.
         Returns: Optional[List[ip_range.IpRange]]
         """
         return self._ip_ranges
@@ -55,7 +55,7 @@ class IpNamedLocation(named_location.NamedLocation):
     @ip_ranges.setter
     def ip_ranges(self,value: Optional[List[ip_range.IpRange]] = None) -> None:
         """
-        Sets the ipRanges property value. List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596. Required.
+        Sets the ipRanges property value. List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC5969. Required.
         Args:
             value: Value to set for the ip_ranges property.
         """

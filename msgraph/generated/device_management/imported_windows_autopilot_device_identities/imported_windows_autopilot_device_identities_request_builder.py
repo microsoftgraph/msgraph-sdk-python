@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.device_management.imported_windows_autopilot_device_identities.count.count_request_builder')
-import_request_builder = lazy_import('msgraph.generated.device_management.imported_windows_autopilot_device_identities.microsoft_graph_import.import_request_builder')
+microsoft_graph_import_request_builder = lazy_import('msgraph.generated.device_management.imported_windows_autopilot_device_identities.microsoft_graph_import.microsoft_graph_import_request_builder')
 imported_windows_autopilot_device_identity = lazy_import('msgraph.generated.models.imported_windows_autopilot_device_identity')
 imported_windows_autopilot_device_identity_collection_response = lazy_import('msgraph.generated.models.imported_windows_autopilot_device_identity_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -28,11 +28,11 @@ class ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_import(self) -> import_request_builder.ImportRequestBuilder:
+    def microsoft_graph_import(self) -> microsoft_graph_import_request_builder.MicrosoftGraphImportRequestBuilder:
         """
         Provides operations to call the import method.
         """
-        return import_request_builder.ImportRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_import_request_builder.MicrosoftGraphImportRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

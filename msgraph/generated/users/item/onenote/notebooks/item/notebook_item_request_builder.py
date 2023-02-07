@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 notebook = lazy_import('msgraph.generated.models.notebook')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-copy_notebook_request_builder = lazy_import('msgraph.generated.users.item.onenote.notebooks.item.microsoft_graph_copy_notebook.copy_notebook_request_builder')
+microsoft_graph_copy_notebook_request_builder = lazy_import('msgraph.generated.users.item.onenote.notebooks.item.microsoft_graph_copy_notebook.microsoft_graph_copy_notebook_request_builder')
 section_groups_request_builder = lazy_import('msgraph.generated.users.item.onenote.notebooks.item.section_groups.section_groups_request_builder')
 section_group_item_request_builder = lazy_import('msgraph.generated.users.item.onenote.notebooks.item.section_groups.item.section_group_item_request_builder')
 sections_request_builder = lazy_import('msgraph.generated.users.item.onenote.notebooks.item.sections.sections_request_builder')
@@ -23,11 +23,11 @@ class NotebookItemRequestBuilder():
     Provides operations to manage the notebooks property of the microsoft.graph.onenote entity.
     """
     @property
-    def microsoft_graph_copy_notebook(self) -> copy_notebook_request_builder.CopyNotebookRequestBuilder:
+    def microsoft_graph_copy_notebook(self) -> microsoft_graph_copy_notebook_request_builder.MicrosoftGraphCopyNotebookRequestBuilder:
         """
         Provides operations to call the copyNotebook method.
         """
-        return copy_notebook_request_builder.CopyNotebookRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_copy_notebook_request_builder.MicrosoftGraphCopyNotebookRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def section_groups(self) -> section_groups_request_builder.SectionGroupsRequestBuilder:
@@ -43,11 +43,10 @@ class NotebookItemRequestBuilder():
         """
         return sections_request_builder.SectionsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, notebook_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new NotebookItemRequestBuilder and sets the default values.
         Args:
-            notebookId: key: id of notebook
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -59,7 +58,6 @@ class NotebookItemRequestBuilder():
         self.url_template: str = "{+baseurl}/users/{user%2Did}/onenote/notebooks/{notebook%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["notebook%2Did"] = notebookId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

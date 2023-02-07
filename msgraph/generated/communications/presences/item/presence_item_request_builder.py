@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-clear_presence_request_builder = lazy_import('msgraph.generated.communications.presences.item.microsoft_graph_clear_presence.clear_presence_request_builder')
-clear_user_preferred_presence_request_builder = lazy_import('msgraph.generated.communications.presences.item.microsoft_graph_clear_user_preferred_presence.clear_user_preferred_presence_request_builder')
-set_presence_request_builder = lazy_import('msgraph.generated.communications.presences.item.microsoft_graph_set_presence.set_presence_request_builder')
-set_user_preferred_presence_request_builder = lazy_import('msgraph.generated.communications.presences.item.microsoft_graph_set_user_preferred_presence.set_user_preferred_presence_request_builder')
+microsoft_graph_clear_presence_request_builder = lazy_import('msgraph.generated.communications.presences.item.microsoft_graph_clear_presence.microsoft_graph_clear_presence_request_builder')
+microsoft_graph_clear_user_preferred_presence_request_builder = lazy_import('msgraph.generated.communications.presences.item.microsoft_graph_clear_user_preferred_presence.microsoft_graph_clear_user_preferred_presence_request_builder')
+microsoft_graph_set_presence_request_builder = lazy_import('msgraph.generated.communications.presences.item.microsoft_graph_set_presence.microsoft_graph_set_presence_request_builder')
+microsoft_graph_set_user_preferred_presence_request_builder = lazy_import('msgraph.generated.communications.presences.item.microsoft_graph_set_user_preferred_presence.microsoft_graph_set_user_preferred_presence_request_builder')
 presence = lazy_import('msgraph.generated.models.presence')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -22,39 +22,38 @@ class PresenceItemRequestBuilder():
     Provides operations to manage the presences property of the microsoft.graph.cloudCommunications entity.
     """
     @property
-    def microsoft_graph_clear_presence(self) -> clear_presence_request_builder.ClearPresenceRequestBuilder:
+    def microsoft_graph_clear_presence(self) -> microsoft_graph_clear_presence_request_builder.MicrosoftGraphClearPresenceRequestBuilder:
         """
         Provides operations to call the clearPresence method.
         """
-        return clear_presence_request_builder.ClearPresenceRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_clear_presence_request_builder.MicrosoftGraphClearPresenceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_clear_user_preferred_presence(self) -> clear_user_preferred_presence_request_builder.ClearUserPreferredPresenceRequestBuilder:
+    def microsoft_graph_clear_user_preferred_presence(self) -> microsoft_graph_clear_user_preferred_presence_request_builder.MicrosoftGraphClearUserPreferredPresenceRequestBuilder:
         """
         Provides operations to call the clearUserPreferredPresence method.
         """
-        return clear_user_preferred_presence_request_builder.ClearUserPreferredPresenceRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_clear_user_preferred_presence_request_builder.MicrosoftGraphClearUserPreferredPresenceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_set_presence(self) -> set_presence_request_builder.SetPresenceRequestBuilder:
+    def microsoft_graph_set_presence(self) -> microsoft_graph_set_presence_request_builder.MicrosoftGraphSetPresenceRequestBuilder:
         """
         Provides operations to call the setPresence method.
         """
-        return set_presence_request_builder.SetPresenceRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_set_presence_request_builder.MicrosoftGraphSetPresenceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_set_user_preferred_presence(self) -> set_user_preferred_presence_request_builder.SetUserPreferredPresenceRequestBuilder:
+    def microsoft_graph_set_user_preferred_presence(self) -> microsoft_graph_set_user_preferred_presence_request_builder.MicrosoftGraphSetUserPreferredPresenceRequestBuilder:
         """
         Provides operations to call the setUserPreferredPresence method.
         """
-        return set_user_preferred_presence_request_builder.SetUserPreferredPresenceRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_set_user_preferred_presence_request_builder.MicrosoftGraphSetUserPreferredPresenceRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, presence_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PresenceItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
-            presenceId: key: id of presence
             requestAdapter: The request adapter to use to execute the requests.
         """
         if path_parameters is None:
@@ -65,7 +64,6 @@ class PresenceItemRequestBuilder():
         self.url_template: str = "{+baseurl}/communications/presences/{presence%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["presence%2Did"] = presenceId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

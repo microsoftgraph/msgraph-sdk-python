@@ -11,10 +11,10 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.filter_request_builder')
-data_body_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.microsoft_graph_data_body_range.data_body_range_request_builder')
-header_row_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.microsoft_graph_header_row_range.header_row_range_request_builder')
-range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.microsoft_graph_range.range_request_builder')
-total_row_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.microsoft_graph_total_row_range.total_row_range_request_builder')
+microsoft_graph_data_body_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.microsoft_graph_data_body_range.microsoft_graph_data_body_range_request_builder')
+microsoft_graph_header_row_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.microsoft_graph_header_row_range.microsoft_graph_header_row_range_request_builder')
+microsoft_graph_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.microsoft_graph_range.microsoft_graph_range_request_builder')
+microsoft_graph_total_row_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.microsoft_graph_total_row_range.microsoft_graph_total_row_range_request_builder')
 workbook_table_column = lazy_import('msgraph.generated.models.workbook_table_column')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -30,40 +30,39 @@ class WorkbookTableColumnItemRequestBuilder():
         return filter_request_builder.FilterRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_data_body_range(self) -> data_body_range_request_builder.DataBodyRangeRequestBuilder:
+    def microsoft_graph_data_body_range(self) -> microsoft_graph_data_body_range_request_builder.MicrosoftGraphDataBodyRangeRequestBuilder:
         """
         Provides operations to call the dataBodyRange method.
         """
-        return data_body_range_request_builder.DataBodyRangeRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_data_body_range_request_builder.MicrosoftGraphDataBodyRangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_header_row_range(self) -> header_row_range_request_builder.HeaderRowRangeRequestBuilder:
+    def microsoft_graph_header_row_range(self) -> microsoft_graph_header_row_range_request_builder.MicrosoftGraphHeaderRowRangeRequestBuilder:
         """
         Provides operations to call the headerRowRange method.
         """
-        return header_row_range_request_builder.HeaderRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_header_row_range_request_builder.MicrosoftGraphHeaderRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_range(self) -> range_request_builder.RangeRequestBuilder:
+    def microsoft_graph_range(self) -> microsoft_graph_range_request_builder.MicrosoftGraphRangeRequestBuilder:
         """
         Provides operations to call the range method.
         """
-        return range_request_builder.RangeRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_range_request_builder.MicrosoftGraphRangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_total_row_range(self) -> total_row_range_request_builder.TotalRowRangeRequestBuilder:
+    def microsoft_graph_total_row_range(self) -> microsoft_graph_total_row_range_request_builder.MicrosoftGraphTotalRowRangeRequestBuilder:
         """
         Provides operations to call the totalRowRange method.
         """
-        return total_row_range_request_builder.TotalRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_total_row_range_request_builder.MicrosoftGraphTotalRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, workbook_table_column_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new WorkbookTableColumnItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            workbookTableColumnId: key: id of workbookTableColumn
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -73,7 +72,6 @@ class WorkbookTableColumnItemRequestBuilder():
         self.url_template: str = "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/tables/{workbookTable%2Did}/columns/{workbookTableColumn%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["workbookTableColumn%2Did"] = workbookTableColumnId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

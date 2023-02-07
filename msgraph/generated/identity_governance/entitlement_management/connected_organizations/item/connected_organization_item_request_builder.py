@@ -35,11 +35,10 @@ class ConnectedOrganizationItemRequestBuilder():
         """
         return internal_sponsors_request_builder.InternalSponsorsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, connected_organization_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ConnectedOrganizationItemRequestBuilder and sets the default values.
         Args:
-            connectedOrganizationId: key: id of connectedOrganization
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -51,7 +50,6 @@ class ConnectedOrganizationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/identityGovernance/entitlementManagement/connectedOrganizations/{connectedOrganization%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["connectedOrganization%2Did"] = connectedOrganizationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

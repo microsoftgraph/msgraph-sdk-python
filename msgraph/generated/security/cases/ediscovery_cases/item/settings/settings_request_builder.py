@@ -12,18 +12,18 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 ediscovery_case_settings = lazy_import('msgraph.generated.models.security.ediscovery_case_settings')
-reset_to_default_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.settings.microsoft_graph_security_reset_to_default.reset_to_default_request_builder')
+microsoft_graph_security_reset_to_default_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.settings.microsoft_graph_security_reset_to_default.microsoft_graph_security_reset_to_default_request_builder')
 
 class SettingsRequestBuilder():
     """
     Provides operations to manage the settings property of the microsoft.graph.security.ediscoveryCase entity.
     """
     @property
-    def microsoft_graph_security_reset_to_default(self) -> reset_to_default_request_builder.ResetToDefaultRequestBuilder:
+    def microsoft_graph_security_reset_to_default(self) -> microsoft_graph_security_reset_to_default_request_builder.MicrosoftGraphSecurityResetToDefaultRequestBuilder:
         """
         Provides operations to call the resetToDefault method.
         """
-        return reset_to_default_request_builder.ResetToDefaultRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_security_reset_to_default_request_builder.MicrosoftGraphSecurityResetToDefaultRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

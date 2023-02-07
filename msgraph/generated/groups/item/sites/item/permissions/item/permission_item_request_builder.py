@@ -10,7 +10,7 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-grant_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.permissions.item.microsoft_graph_grant.grant_request_builder')
+microsoft_graph_grant_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.permissions.item.microsoft_graph_grant.microsoft_graph_grant_request_builder')
 permission = lazy_import('msgraph.generated.models.permission')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -19,18 +19,17 @@ class PermissionItemRequestBuilder():
     Provides operations to manage the permissions property of the microsoft.graph.site entity.
     """
     @property
-    def microsoft_graph_grant(self) -> grant_request_builder.GrantRequestBuilder:
+    def microsoft_graph_grant(self) -> microsoft_graph_grant_request_builder.MicrosoftGraphGrantRequestBuilder:
         """
         Provides operations to call the grant method.
         """
-        return grant_request_builder.GrantRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_grant_request_builder.MicrosoftGraphGrantRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, permission_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PermissionItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
-            permissionId: key: id of permission
             requestAdapter: The request adapter to use to execute the requests.
         """
         if path_parameters is None:
@@ -41,7 +40,6 @@ class PermissionItemRequestBuilder():
         self.url_template: str = "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/permissions/{permission%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["permission%2Did"] = permissionId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

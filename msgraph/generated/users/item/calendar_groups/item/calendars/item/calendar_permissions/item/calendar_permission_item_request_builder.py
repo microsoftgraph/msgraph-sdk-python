@@ -17,11 +17,10 @@ class CalendarPermissionItemRequestBuilder():
     """
     Provides operations to manage the calendarPermissions property of the microsoft.graph.calendar entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, calendar_permission_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CalendarPermissionItemRequestBuilder and sets the default values.
         Args:
-            calendarPermissionId: key: id of calendarPermission
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class CalendarPermissionItemRequestBuilder():
         self.url_template: str = "{+baseurl}/users/{user%2Did}/calendarGroups/{calendarGroup%2Did}/calendars/{calendar%2Did}/calendarPermissions/{calendarPermission%2Did}{?%24select}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["calendarPermission%2Did"] = calendarPermissionId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

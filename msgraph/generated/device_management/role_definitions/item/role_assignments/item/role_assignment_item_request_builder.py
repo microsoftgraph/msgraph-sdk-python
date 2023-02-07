@@ -25,13 +25,12 @@ class RoleAssignmentItemRequestBuilder():
         """
         return role_definition_request_builder.RoleDefinitionRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, role_assignment_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new RoleAssignmentItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            roleAssignmentId: key: id of roleAssignment
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -41,7 +40,6 @@ class RoleAssignmentItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceManagement/roleDefinitions/{roleDefinition%2Did}/roleAssignments/{roleAssignment%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["roleAssignment%2Did"] = roleAssignmentId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

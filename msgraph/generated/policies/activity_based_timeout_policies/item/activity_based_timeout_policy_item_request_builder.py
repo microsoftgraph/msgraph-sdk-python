@@ -17,11 +17,10 @@ class ActivityBasedTimeoutPolicyItemRequestBuilder():
     """
     Provides operations to manage the activityBasedTimeoutPolicies property of the microsoft.graph.policyRoot entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, activity_based_timeout_policy_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ActivityBasedTimeoutPolicyItemRequestBuilder and sets the default values.
         Args:
-            activityBasedTimeoutPolicyId: key: id of activityBasedTimeoutPolicy
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class ActivityBasedTimeoutPolicyItemRequestBuilder():
         self.url_template: str = "{+baseurl}/policies/activityBasedTimeoutPolicies/{activityBasedTimeoutPolicy%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["activityBasedTimeoutPolicy%2Did"] = activityBasedTimeoutPolicyId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

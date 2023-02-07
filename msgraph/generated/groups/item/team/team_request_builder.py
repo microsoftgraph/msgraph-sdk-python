@@ -21,11 +21,11 @@ installed_apps_request_builder = lazy_import('msgraph.generated.groups.item.team
 teams_app_installation_item_request_builder = lazy_import('msgraph.generated.groups.item.team.installed_apps.item.teams_app_installation_item_request_builder')
 members_request_builder = lazy_import('msgraph.generated.groups.item.team.members.members_request_builder')
 conversation_member_item_request_builder = lazy_import('msgraph.generated.groups.item.team.members.item.conversation_member_item_request_builder')
-archive_request_builder = lazy_import('msgraph.generated.groups.item.team.microsoft_graph_archive.archive_request_builder')
-clone_request_builder = lazy_import('msgraph.generated.groups.item.team.microsoft_graph_clone.clone_request_builder')
-complete_migration_request_builder = lazy_import('msgraph.generated.groups.item.team.microsoft_graph_complete_migration.complete_migration_request_builder')
-send_activity_notification_request_builder = lazy_import('msgraph.generated.groups.item.team.microsoft_graph_send_activity_notification.send_activity_notification_request_builder')
-unarchive_request_builder = lazy_import('msgraph.generated.groups.item.team.microsoft_graph_unarchive.unarchive_request_builder')
+microsoft_graph_archive_request_builder = lazy_import('msgraph.generated.groups.item.team.microsoft_graph_archive.microsoft_graph_archive_request_builder')
+microsoft_graph_clone_request_builder = lazy_import('msgraph.generated.groups.item.team.microsoft_graph_clone.microsoft_graph_clone_request_builder')
+microsoft_graph_complete_migration_request_builder = lazy_import('msgraph.generated.groups.item.team.microsoft_graph_complete_migration.microsoft_graph_complete_migration_request_builder')
+microsoft_graph_send_activity_notification_request_builder = lazy_import('msgraph.generated.groups.item.team.microsoft_graph_send_activity_notification.microsoft_graph_send_activity_notification_request_builder')
+microsoft_graph_unarchive_request_builder = lazy_import('msgraph.generated.groups.item.team.microsoft_graph_unarchive.microsoft_graph_unarchive_request_builder')
 operations_request_builder = lazy_import('msgraph.generated.groups.item.team.operations.operations_request_builder')
 teams_async_operation_item_request_builder = lazy_import('msgraph.generated.groups.item.team.operations.item.teams_async_operation_item_request_builder')
 photo_request_builder = lazy_import('msgraph.generated.groups.item.team.photo.photo_request_builder')
@@ -84,39 +84,39 @@ class TeamRequestBuilder():
         return members_request_builder.MembersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_archive(self) -> archive_request_builder.ArchiveRequestBuilder:
+    def microsoft_graph_archive(self) -> microsoft_graph_archive_request_builder.MicrosoftGraphArchiveRequestBuilder:
         """
         Provides operations to call the archive method.
         """
-        return archive_request_builder.ArchiveRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_archive_request_builder.MicrosoftGraphArchiveRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_clone(self) -> clone_request_builder.CloneRequestBuilder:
+    def microsoft_graph_clone(self) -> microsoft_graph_clone_request_builder.MicrosoftGraphCloneRequestBuilder:
         """
         Provides operations to call the clone method.
         """
-        return clone_request_builder.CloneRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_clone_request_builder.MicrosoftGraphCloneRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_complete_migration(self) -> complete_migration_request_builder.CompleteMigrationRequestBuilder:
+    def microsoft_graph_complete_migration(self) -> microsoft_graph_complete_migration_request_builder.MicrosoftGraphCompleteMigrationRequestBuilder:
         """
         Provides operations to call the completeMigration method.
         """
-        return complete_migration_request_builder.CompleteMigrationRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_complete_migration_request_builder.MicrosoftGraphCompleteMigrationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_send_activity_notification(self) -> send_activity_notification_request_builder.SendActivityNotificationRequestBuilder:
+    def microsoft_graph_send_activity_notification(self) -> microsoft_graph_send_activity_notification_request_builder.MicrosoftGraphSendActivityNotificationRequestBuilder:
         """
         Provides operations to call the sendActivityNotification method.
         """
-        return send_activity_notification_request_builder.SendActivityNotificationRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_send_activity_notification_request_builder.MicrosoftGraphSendActivityNotificationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_unarchive(self) -> unarchive_request_builder.UnarchiveRequestBuilder:
+    def microsoft_graph_unarchive(self) -> microsoft_graph_unarchive_request_builder.MicrosoftGraphUnarchiveRequestBuilder:
         """
         Provides operations to call the unarchive method.
         """
-        return unarchive_request_builder.UnarchiveRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_unarchive_request_builder.MicrosoftGraphUnarchiveRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def operations(self) -> operations_request_builder.OperationsRequestBuilder:

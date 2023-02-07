@@ -11,8 +11,8 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.device_management.audit_events.count.count_request_builder')
-get_audit_activity_types_with_category_request_builder = lazy_import('msgraph.generated.device_management.audit_events.microsoft_graph_get_audit_activity_types_with_category.get_audit_activity_types_with_category_request_builder')
-get_audit_categories_request_builder = lazy_import('msgraph.generated.device_management.audit_events.microsoft_graph_get_audit_categories.get_audit_categories_request_builder')
+microsoft_graph_get_audit_activity_types_with_category_request_builder = lazy_import('msgraph.generated.device_management.audit_events.microsoft_graph_get_audit_activity_types_with_category.microsoft_graph_get_audit_activity_types_with_category_request_builder')
+microsoft_graph_get_audit_categories_request_builder = lazy_import('msgraph.generated.device_management.audit_events.microsoft_graph_get_audit_categories.microsoft_graph_get_audit_categories_request_builder')
 audit_event = lazy_import('msgraph.generated.models.audit_event')
 audit_event_collection_response = lazy_import('msgraph.generated.models.audit_event_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -29,11 +29,11 @@ class AuditEventsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_audit_categories(self) -> get_audit_categories_request_builder.GetAuditCategoriesRequestBuilder:
+    def microsoft_graph_get_audit_categories(self) -> microsoft_graph_get_audit_categories_request_builder.MicrosoftGraphGetAuditCategoriesRequestBuilder:
         """
         Provides operations to call the getAuditCategories method.
         """
-        return get_audit_categories_request_builder.GetAuditCategoriesRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_audit_categories_request_builder.MicrosoftGraphGetAuditCategoriesRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -71,16 +71,16 @@ class AuditEventsRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, audit_event_collection_response.AuditEventCollectionResponse, error_mapping)
     
-    def microsoft_graph_get_audit_activity_types_with_category(self,category: Optional[str] = None) -> get_audit_activity_types_with_category_request_builder.GetAuditActivityTypesWithCategoryRequestBuilder:
+    def microsoft_graph_get_audit_activity_types_with_category(self,category: Optional[str] = None) -> microsoft_graph_get_audit_activity_types_with_category_request_builder.MicrosoftGraphGetAuditActivityTypesWithCategoryRequestBuilder:
         """
         Provides operations to call the getAuditActivityTypes method.
         Args:
             category: Usage: category='{category}'
-        Returns: get_audit_activity_types_with_category_request_builder.GetAuditActivityTypesWithCategoryRequestBuilder
+        Returns: microsoft_graph_get_audit_activity_types_with_category_request_builder.MicrosoftGraphGetAuditActivityTypesWithCategoryRequestBuilder
         """
         if category is None:
             raise Exception("category cannot be undefined")
-        return get_audit_activity_types_with_category_request_builder.GetAuditActivityTypesWithCategoryRequestBuilder(self.request_adapter, self.path_parameters, category)
+        return microsoft_graph_get_audit_activity_types_with_category_request_builder.MicrosoftGraphGetAuditActivityTypesWithCategoryRequestBuilder(self.request_adapter, self.path_parameters, category)
     
     async def post(self,body: Optional[audit_event.AuditEvent] = None, request_configuration: Optional[AuditEventsRequestBuilderPostRequestConfiguration] = None) -> Optional[audit_event.AuditEvent]:
         """

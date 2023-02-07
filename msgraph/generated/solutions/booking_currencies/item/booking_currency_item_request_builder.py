@@ -17,11 +17,10 @@ class BookingCurrencyItemRequestBuilder():
     """
     Provides operations to manage the bookingCurrencies property of the microsoft.graph.solutionsRoot entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, booking_currency_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new BookingCurrencyItemRequestBuilder and sets the default values.
         Args:
-            bookingCurrencyId: key: id of bookingCurrency
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class BookingCurrencyItemRequestBuilder():
         self.url_template: str = "{+baseurl}/solutions/bookingCurrencies/{bookingCurrency%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["bookingCurrency%2Did"] = bookingCurrencyId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

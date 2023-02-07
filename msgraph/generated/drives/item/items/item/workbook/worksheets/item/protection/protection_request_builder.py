@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-protect_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.protection.microsoft_graph_protect.protect_request_builder')
-unprotect_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.protection.microsoft_graph_unprotect.unprotect_request_builder')
+microsoft_graph_protect_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.protection.microsoft_graph_protect.microsoft_graph_protect_request_builder')
+microsoft_graph_unprotect_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.protection.microsoft_graph_unprotect.microsoft_graph_unprotect_request_builder')
 workbook_worksheet_protection = lazy_import('msgraph.generated.models.workbook_worksheet_protection')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -20,18 +20,18 @@ class ProtectionRequestBuilder():
     Provides operations to manage the protection property of the microsoft.graph.workbookWorksheet entity.
     """
     @property
-    def microsoft_graph_protect(self) -> protect_request_builder.ProtectRequestBuilder:
+    def microsoft_graph_protect(self) -> microsoft_graph_protect_request_builder.MicrosoftGraphProtectRequestBuilder:
         """
         Provides operations to call the protect method.
         """
-        return protect_request_builder.ProtectRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_protect_request_builder.MicrosoftGraphProtectRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_unprotect(self) -> unprotect_request_builder.UnprotectRequestBuilder:
+    def microsoft_graph_unprotect(self) -> microsoft_graph_unprotect_request_builder.MicrosoftGraphUnprotectRequestBuilder:
         """
         Provides operations to call the unprotect method.
         """
-        return unprotect_request_builder.UnprotectRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_unprotect_request_builder.MicrosoftGraphUnprotectRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

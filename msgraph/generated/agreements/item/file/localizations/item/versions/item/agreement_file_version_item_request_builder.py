@@ -17,11 +17,10 @@ class AgreementFileVersionItemRequestBuilder():
     """
     Provides operations to manage the versions property of the microsoft.graph.agreementFileLocalization entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, agreement_file_version_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AgreementFileVersionItemRequestBuilder and sets the default values.
         Args:
-            agreementFileVersionId: key: id of agreementFileVersion
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class AgreementFileVersionItemRequestBuilder():
         self.url_template: str = "{+baseurl}/agreements/{agreement%2Did}/file/localizations/{agreementFileLocalization%2Did}/versions/{agreementFileVersion%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["agreementFileVersion%2Did"] = agreementFileVersionId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

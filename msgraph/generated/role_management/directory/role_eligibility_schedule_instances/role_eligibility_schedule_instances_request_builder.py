@@ -14,7 +14,7 @@ unified_role_eligibility_schedule_instance = lazy_import('msgraph.generated.mode
 unified_role_eligibility_schedule_instance_collection_response = lazy_import('msgraph.generated.models.unified_role_eligibility_schedule_instance_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.role_management.directory.role_eligibility_schedule_instances.count.count_request_builder')
-filter_by_current_user_with_on_request_builder = lazy_import('msgraph.generated.role_management.directory.role_eligibility_schedule_instances.microsoft_graph_filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder')
+microsoft_graph_filter_by_current_user_with_on_request_builder = lazy_import('msgraph.generated.role_management.directory.role_eligibility_schedule_instances.microsoft_graph_filter_by_current_user_with_on.microsoft_graph_filter_by_current_user_with_on_request_builder')
 
 class RoleEligibilityScheduleInstancesRequestBuilder():
     """
@@ -63,16 +63,16 @@ class RoleEligibilityScheduleInstancesRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, unified_role_eligibility_schedule_instance_collection_response.UnifiedRoleEligibilityScheduleInstanceCollectionResponse, error_mapping)
     
-    def microsoft_graph_filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
+    def microsoft_graph_filter_by_current_user_with_on(self,on: Optional[str] = None) -> microsoft_graph_filter_by_current_user_with_on_request_builder.MicrosoftGraphFilterByCurrentUserWithOnRequestBuilder:
         """
         Provides operations to call the filterByCurrentUser method.
         Args:
             on: Usage: on='{on}'
-        Returns: filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder
+        Returns: microsoft_graph_filter_by_current_user_with_on_request_builder.MicrosoftGraphFilterByCurrentUserWithOnRequestBuilder
         """
         if on is None:
             raise Exception("on cannot be undefined")
-        return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
+        return microsoft_graph_filter_by_current_user_with_on_request_builder.MicrosoftGraphFilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
     async def post(self,body: Optional[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance] = None, request_configuration: Optional[RoleEligibilityScheduleInstancesRequestBuilderPostRequestConfiguration] = None) -> Optional[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]:
         """

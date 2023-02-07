@@ -17,11 +17,10 @@ class AudioRoutingGroupItemRequestBuilder():
     """
     Provides operations to manage the audioRoutingGroups property of the microsoft.graph.call entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, audio_routing_group_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AudioRoutingGroupItemRequestBuilder and sets the default values.
         Args:
-            audioRoutingGroupId: key: id of audioRoutingGroup
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class AudioRoutingGroupItemRequestBuilder():
         self.url_template: str = "{+baseurl}/communications/calls/{call%2Did}/audioRoutingGroups/{audioRoutingGroup%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["audioRoutingGroup%2Did"] = audioRoutingGroupId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

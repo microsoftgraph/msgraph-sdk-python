@@ -34,13 +34,12 @@ class TermItemRequestBuilder():
         """
         return set_request_builder.SetRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, term_id1: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new TermItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            termId1: key: id of term
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -50,7 +49,6 @@ class TermItemRequestBuilder():
         self.url_template: str = "{+baseurl}/sites/{site%2Did}/termStore/sets/{set%2Did}/terms/{term%2Did}/children/{term%2Did1}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["term%2Did1"] = termId1
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

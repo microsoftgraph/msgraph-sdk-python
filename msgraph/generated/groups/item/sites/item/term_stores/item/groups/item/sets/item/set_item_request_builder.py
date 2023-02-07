@@ -65,13 +65,12 @@ class SetItemRequestBuilder():
         url_tpl_params["term%2Did"] = id
         return term_item_request_builder.TermItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, set_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SetItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            setId: key: id of set
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -81,7 +80,6 @@ class SetItemRequestBuilder():
         self.url_template: str = "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/termStores/{store%2Did}/groups/{group%2Did1}/sets/{set%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["set%2Did"] = setId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

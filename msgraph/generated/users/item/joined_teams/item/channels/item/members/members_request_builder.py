@@ -14,7 +14,7 @@ conversation_member = lazy_import('msgraph.generated.models.conversation_member'
 conversation_member_collection_response = lazy_import('msgraph.generated.models.conversation_member_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.channels.item.members.count.count_request_builder')
-add_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.channels.item.members.microsoft_graph_add.add_request_builder')
+microsoft_graph_add_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.channels.item.members.microsoft_graph_add.microsoft_graph_add_request_builder')
 
 class MembersRequestBuilder():
     """
@@ -28,11 +28,11 @@ class MembersRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_add(self) -> add_request_builder.AddRequestBuilder:
+    def microsoft_graph_add(self) -> microsoft_graph_add_request_builder.MicrosoftGraphAddRequestBuilder:
         """
         Provides operations to call the add method.
         """
-        return add_request_builder.AddRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_add_request_builder.MicrosoftGraphAddRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

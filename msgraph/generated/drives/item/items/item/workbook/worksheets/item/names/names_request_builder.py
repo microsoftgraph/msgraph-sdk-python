@@ -11,8 +11,8 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.names.count.count_request_builder')
-add_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.names.microsoft_graph_add.add_request_builder')
-add_formula_local_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.names.microsoft_graph_add_formula_local.add_formula_local_request_builder')
+microsoft_graph_add_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.names.microsoft_graph_add.microsoft_graph_add_request_builder')
+microsoft_graph_add_formula_local_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.names.microsoft_graph_add_formula_local.microsoft_graph_add_formula_local_request_builder')
 workbook_named_item = lazy_import('msgraph.generated.models.workbook_named_item')
 workbook_named_item_collection_response = lazy_import('msgraph.generated.models.workbook_named_item_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -29,18 +29,18 @@ class NamesRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_add(self) -> add_request_builder.AddRequestBuilder:
+    def microsoft_graph_add(self) -> microsoft_graph_add_request_builder.MicrosoftGraphAddRequestBuilder:
         """
         Provides operations to call the add method.
         """
-        return add_request_builder.AddRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_add_request_builder.MicrosoftGraphAddRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_add_formula_local(self) -> add_formula_local_request_builder.AddFormulaLocalRequestBuilder:
+    def microsoft_graph_add_formula_local(self) -> microsoft_graph_add_formula_local_request_builder.MicrosoftGraphAddFormulaLocalRequestBuilder:
         """
         Provides operations to call the addFormulaLocal method.
         """
-        return add_formula_local_request_builder.AddFormulaLocalRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_add_formula_local_request_builder.MicrosoftGraphAddFormulaLocalRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

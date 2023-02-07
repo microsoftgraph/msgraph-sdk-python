@@ -11,8 +11,8 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_apps.count.count_request_builder')
-managed_mobile_lob_app_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_apps.microsoft_graph_managed_mobile_lob_app.managed_mobile_lob_app_request_builder')
-mobile_lob_app_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_apps.microsoft_graph_mobile_lob_app.mobile_lob_app_request_builder')
+microsoft_graph_managed_mobile_lob_app_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_apps.microsoft_graph_managed_mobile_lob_app.microsoft_graph_managed_mobile_lob_app_request_builder')
+microsoft_graph_mobile_lob_app_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_apps.microsoft_graph_mobile_lob_app.microsoft_graph_mobile_lob_app_request_builder')
 mobile_app = lazy_import('msgraph.generated.models.mobile_app')
 mobile_app_collection_response = lazy_import('msgraph.generated.models.mobile_app_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -29,18 +29,18 @@ class MobileAppsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_managed_mobile_lob_app(self) -> managed_mobile_lob_app_request_builder.ManagedMobileLobAppRequestBuilder:
+    def microsoft_graph_managed_mobile_lob_app(self) -> microsoft_graph_managed_mobile_lob_app_request_builder.MicrosoftGraphManagedMobileLobAppRequestBuilder:
         """
         Casts the previous resource to managedMobileLobApp.
         """
-        return managed_mobile_lob_app_request_builder.ManagedMobileLobAppRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_managed_mobile_lob_app_request_builder.MicrosoftGraphManagedMobileLobAppRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_mobile_lob_app(self) -> mobile_lob_app_request_builder.MobileLobAppRequestBuilder:
+    def microsoft_graph_mobile_lob_app(self) -> microsoft_graph_mobile_lob_app_request_builder.MicrosoftGraphMobileLobAppRequestBuilder:
         """
         Casts the previous resource to mobileLobApp.
         """
-        return mobile_lob_app_request_builder.MobileLobAppRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_mobile_lob_app_request_builder.MicrosoftGraphMobileLobAppRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

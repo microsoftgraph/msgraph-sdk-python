@@ -713,8 +713,9 @@ class BaseGraphServiceClient():
         register_default_serializer(TextSerializationWriterFactory)
         register_default_deserializer(JsonParseNodeFactory)
         register_default_deserializer(TextParseNodeFactory)
-        if not request_adapter.base_url:
-            request_adapter.base_url = "https://graph.microsoft.com/v1.0"
+        if not self.request_adapter.base_url:
+            self.request_adapter.base_url = "https://graph.microsoft.com/v1.0"
+        self.path_parameters["base_url"] = self.request_adapter.base_url
     
     def contacts_by_id(self,id: str) -> org_contact_item_request_builder.OrgContactItemRequestBuilder:
         """

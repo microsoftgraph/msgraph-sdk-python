@@ -10,7 +10,7 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-download_apple_push_notification_certificate_signing_request_request_builder = lazy_import('msgraph.generated.device_management.apple_push_notification_certificate.microsoft_graph_download_apple_push_notification_certificate_signing_request.download_apple_push_notification_certificate_signing_request_request_builder')
+microsoft_graph_download_apple_push_notification_certificate_signing_request_request_builder = lazy_import('msgraph.generated.device_management.apple_push_notification_certificate.microsoft_graph_download_apple_push_notification_certificate_signing_request.microsoft_graph_download_apple_push_notification_certificate_signing_request_request_builder')
 apple_push_notification_certificate = lazy_import('msgraph.generated.models.apple_push_notification_certificate')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -19,11 +19,11 @@ class ApplePushNotificationCertificateRequestBuilder():
     Provides operations to manage the applePushNotificationCertificate property of the microsoft.graph.deviceManagement entity.
     """
     @property
-    def microsoft_graph_download_apple_push_notification_certificate_signing_request(self) -> download_apple_push_notification_certificate_signing_request_request_builder.DownloadApplePushNotificationCertificateSigningRequestRequestBuilder:
+    def microsoft_graph_download_apple_push_notification_certificate_signing_request(self) -> microsoft_graph_download_apple_push_notification_certificate_signing_request_request_builder.MicrosoftGraphDownloadApplePushNotificationCertificateSigningRequestRequestBuilder:
         """
         Provides operations to call the downloadApplePushNotificationCertificateSigningRequest method.
         """
-        return download_apple_push_notification_certificate_signing_request_request_builder.DownloadApplePushNotificationCertificateSigningRequestRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_download_apple_push_notification_certificate_signing_request_request_builder.MicrosoftGraphDownloadApplePushNotificationCertificateSigningRequestRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

@@ -17,11 +17,10 @@ class DeviceCategoryItemRequestBuilder():
     """
     Provides operations to manage the deviceCategories property of the microsoft.graph.deviceManagement entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, device_category_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DeviceCategoryItemRequestBuilder and sets the default values.
         Args:
-            deviceCategoryId: key: id of deviceCategory
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class DeviceCategoryItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceManagement/deviceCategories/{deviceCategory%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["deviceCategory%2Did"] = deviceCategoryId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

@@ -14,8 +14,8 @@ notebook = lazy_import('msgraph.generated.models.notebook')
 notebook_collection_response = lazy_import('msgraph.generated.models.notebook_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.users.item.onenote.notebooks.count.count_request_builder')
-get_notebook_from_web_url_request_builder = lazy_import('msgraph.generated.users.item.onenote.notebooks.microsoft_graph_get_notebook_from_web_url.get_notebook_from_web_url_request_builder')
-get_recent_notebooks_with_include_personal_notebooks_request_builder = lazy_import('msgraph.generated.users.item.onenote.notebooks.microsoft_graph_get_recent_notebooks_with_include_personal_notebooks.get_recent_notebooks_with_include_personal_notebooks_request_builder')
+microsoft_graph_get_notebook_from_web_url_request_builder = lazy_import('msgraph.generated.users.item.onenote.notebooks.microsoft_graph_get_notebook_from_web_url.microsoft_graph_get_notebook_from_web_url_request_builder')
+microsoft_graph_get_recent_notebooks_with_include_personal_notebooks_request_builder = lazy_import('msgraph.generated.users.item.onenote.notebooks.microsoft_graph_get_recent_notebooks_with_include_personal_notebooks.microsoft_graph_get_recent_notebooks_with_include_personal_notebooks_request_builder')
 
 class NotebooksRequestBuilder():
     """
@@ -29,11 +29,11 @@ class NotebooksRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_notebook_from_web_url(self) -> get_notebook_from_web_url_request_builder.GetNotebookFromWebUrlRequestBuilder:
+    def microsoft_graph_get_notebook_from_web_url(self) -> microsoft_graph_get_notebook_from_web_url_request_builder.MicrosoftGraphGetNotebookFromWebUrlRequestBuilder:
         """
         Provides operations to call the getNotebookFromWebUrl method.
         """
-        return get_notebook_from_web_url_request_builder.GetNotebookFromWebUrlRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_notebook_from_web_url_request_builder.MicrosoftGraphGetNotebookFromWebUrlRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -71,16 +71,16 @@ class NotebooksRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, notebook_collection_response.NotebookCollectionResponse, error_mapping)
     
-    def microsoft_graph_get_recent_notebooks_with_include_personal_notebooks(self,include_personal_notebooks: Optional[bool] = None) -> get_recent_notebooks_with_include_personal_notebooks_request_builder.GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder:
+    def microsoft_graph_get_recent_notebooks_with_include_personal_notebooks(self,include_personal_notebooks: Optional[bool] = None) -> microsoft_graph_get_recent_notebooks_with_include_personal_notebooks_request_builder.MicrosoftGraphGetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder:
         """
         Provides operations to call the getRecentNotebooks method.
         Args:
             includePersonalNotebooks: Usage: includePersonalNotebooks={includePersonalNotebooks}
-        Returns: get_recent_notebooks_with_include_personal_notebooks_request_builder.GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder
+        Returns: microsoft_graph_get_recent_notebooks_with_include_personal_notebooks_request_builder.MicrosoftGraphGetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder
         """
         if include_personal_notebooks is None:
             raise Exception("include_personal_notebooks cannot be undefined")
-        return get_recent_notebooks_with_include_personal_notebooks_request_builder.GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder(self.request_adapter, self.path_parameters, includePersonalNotebooks)
+        return microsoft_graph_get_recent_notebooks_with_include_personal_notebooks_request_builder.MicrosoftGraphGetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder(self.request_adapter, self.path_parameters, includePersonalNotebooks)
     
     async def post(self,body: Optional[notebook.Notebook] = None, request_configuration: Optional[NotebooksRequestBuilderPostRequestConfiguration] = None) -> Optional[notebook.Notebook]:
         """

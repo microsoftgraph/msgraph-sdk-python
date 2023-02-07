@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-copy_to_notebook_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.onenote.section_groups.item.sections.item.microsoft_graph_copy_to_notebook.copy_to_notebook_request_builder')
-copy_to_section_group_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.onenote.section_groups.item.sections.item.microsoft_graph_copy_to_section_group.copy_to_section_group_request_builder')
+microsoft_graph_copy_to_notebook_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.onenote.section_groups.item.sections.item.microsoft_graph_copy_to_notebook.microsoft_graph_copy_to_notebook_request_builder')
+microsoft_graph_copy_to_section_group_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.onenote.section_groups.item.sections.item.microsoft_graph_copy_to_section_group.microsoft_graph_copy_to_section_group_request_builder')
 pages_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.onenote.section_groups.item.sections.item.pages.pages_request_builder')
 onenote_page_item_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.onenote.section_groups.item.sections.item.pages.item.onenote_page_item_request_builder')
 parent_notebook_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.onenote.section_groups.item.sections.item.parent_notebook.parent_notebook_request_builder')
@@ -24,18 +24,18 @@ class OnenoteSectionItemRequestBuilder():
     Provides operations to manage the sections property of the microsoft.graph.sectionGroup entity.
     """
     @property
-    def microsoft_graph_copy_to_notebook(self) -> copy_to_notebook_request_builder.CopyToNotebookRequestBuilder:
+    def microsoft_graph_copy_to_notebook(self) -> microsoft_graph_copy_to_notebook_request_builder.MicrosoftGraphCopyToNotebookRequestBuilder:
         """
         Provides operations to call the copyToNotebook method.
         """
-        return copy_to_notebook_request_builder.CopyToNotebookRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_copy_to_notebook_request_builder.MicrosoftGraphCopyToNotebookRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_copy_to_section_group(self) -> copy_to_section_group_request_builder.CopyToSectionGroupRequestBuilder:
+    def microsoft_graph_copy_to_section_group(self) -> microsoft_graph_copy_to_section_group_request_builder.MicrosoftGraphCopyToSectionGroupRequestBuilder:
         """
         Provides operations to call the copyToSectionGroup method.
         """
-        return copy_to_section_group_request_builder.CopyToSectionGroupRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_copy_to_section_group_request_builder.MicrosoftGraphCopyToSectionGroupRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def pages(self) -> pages_request_builder.PagesRequestBuilder:
@@ -58,11 +58,10 @@ class OnenoteSectionItemRequestBuilder():
         """
         return parent_section_group_request_builder.ParentSectionGroupRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, onenote_section_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new OnenoteSectionItemRequestBuilder and sets the default values.
         Args:
-            onenoteSectionId: key: id of onenoteSection
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -74,7 +73,6 @@ class OnenoteSectionItemRequestBuilder():
         self.url_template: str = "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/onenote/sectionGroups/{sectionGroup%2Did}/sections/{onenoteSection%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["onenoteSection%2Did"] = onenoteSectionId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

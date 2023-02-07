@@ -14,8 +14,8 @@ o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error'
 ediscovery_custodian = lazy_import('msgraph.generated.models.security.ediscovery_custodian')
 ediscovery_custodian_collection_response = lazy_import('msgraph.generated.models.security.ediscovery_custodian_collection_response')
 count_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.custodians.count.count_request_builder')
-apply_hold_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.custodians.microsoft_graph_security_apply_hold.apply_hold_request_builder')
-remove_hold_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.custodians.microsoft_graph_security_remove_hold.remove_hold_request_builder')
+microsoft_graph_security_apply_hold_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.custodians.microsoft_graph_security_apply_hold.microsoft_graph_security_apply_hold_request_builder')
+microsoft_graph_security_remove_hold_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.custodians.microsoft_graph_security_remove_hold.microsoft_graph_security_remove_hold_request_builder')
 
 class CustodiansRequestBuilder():
     """
@@ -29,18 +29,18 @@ class CustodiansRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_security_apply_hold(self) -> apply_hold_request_builder.ApplyHoldRequestBuilder:
+    def microsoft_graph_security_apply_hold(self) -> microsoft_graph_security_apply_hold_request_builder.MicrosoftGraphSecurityApplyHoldRequestBuilder:
         """
         Provides operations to call the applyHold method.
         """
-        return apply_hold_request_builder.ApplyHoldRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_security_apply_hold_request_builder.MicrosoftGraphSecurityApplyHoldRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_security_remove_hold(self) -> remove_hold_request_builder.RemoveHoldRequestBuilder:
+    def microsoft_graph_security_remove_hold(self) -> microsoft_graph_security_remove_hold_request_builder.MicrosoftGraphSecurityRemoveHoldRequestBuilder:
         """
         Provides operations to call the removeHold method.
         """
-        return remove_hold_request_builder.RemoveHoldRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_security_remove_hold_request_builder.MicrosoftGraphSecurityRemoveHoldRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

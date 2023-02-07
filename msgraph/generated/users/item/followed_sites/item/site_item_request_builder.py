@@ -17,13 +17,12 @@ class SiteItemRequestBuilder():
     """
     Provides operations to manage the followedSites property of the microsoft.graph.user entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, site_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SiteItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            siteId: key: id of site
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -33,7 +32,6 @@ class SiteItemRequestBuilder():
         self.url_template: str = "{+baseurl}/users/{user%2Did}/followedSites/{site%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["site%2Did"] = siteId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

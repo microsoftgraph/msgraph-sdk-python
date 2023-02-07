@@ -13,8 +13,8 @@ from typing import Any, Callable, Dict, List, Optional, Union
 site_collection_response = lazy_import('msgraph.generated.models.site_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.sites.count.count_request_builder')
-add_request_builder = lazy_import('msgraph.generated.sites.microsoft_graph_add.add_request_builder')
-remove_request_builder = lazy_import('msgraph.generated.sites.microsoft_graph_remove.remove_request_builder')
+microsoft_graph_add_request_builder = lazy_import('msgraph.generated.sites.microsoft_graph_add.microsoft_graph_add_request_builder')
+microsoft_graph_remove_request_builder = lazy_import('msgraph.generated.sites.microsoft_graph_remove.microsoft_graph_remove_request_builder')
 
 class SitesRequestBuilder():
     """
@@ -28,18 +28,18 @@ class SitesRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_add(self) -> add_request_builder.AddRequestBuilder:
+    def microsoft_graph_add(self) -> microsoft_graph_add_request_builder.MicrosoftGraphAddRequestBuilder:
         """
         Provides operations to call the add method.
         """
-        return add_request_builder.AddRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_add_request_builder.MicrosoftGraphAddRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_remove(self) -> remove_request_builder.RemoveRequestBuilder:
+    def microsoft_graph_remove(self) -> microsoft_graph_remove_request_builder.MicrosoftGraphRemoveRequestBuilder:
         """
         Provides operations to call the remove method.
         """
-        return remove_request_builder.RemoveRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_remove_request_builder.MicrosoftGraphRemoveRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

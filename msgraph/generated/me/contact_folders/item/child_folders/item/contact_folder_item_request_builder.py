@@ -44,11 +44,10 @@ class ContactFolderItemRequestBuilder():
         """
         return single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, contact_folder_id1: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ContactFolderItemRequestBuilder and sets the default values.
         Args:
-            contactFolderId1: key: id of contactFolder
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -60,7 +59,6 @@ class ContactFolderItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/contactFolders/{contactFolder%2Did}/childFolders/{contactFolder%2Did1}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["contactFolder%2Did1"] = contactFolderId1
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

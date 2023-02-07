@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 schedule = lazy_import('msgraph.generated.models.schedule')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-share_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.schedule.microsoft_graph_share.share_request_builder')
+microsoft_graph_share_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.schedule.microsoft_graph_share.microsoft_graph_share_request_builder')
 offer_shift_requests_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.schedule.offer_shift_requests.offer_shift_requests_request_builder')
 offer_shift_request_item_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.schedule.offer_shift_requests.item.offer_shift_request_item_request_builder')
 open_shift_change_requests_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.schedule.open_shift_change_requests.open_shift_change_requests_request_builder')
@@ -37,11 +37,11 @@ class ScheduleRequestBuilder():
     Provides operations to manage the schedule property of the microsoft.graph.team entity.
     """
     @property
-    def microsoft_graph_share(self) -> share_request_builder.ShareRequestBuilder:
+    def microsoft_graph_share(self) -> microsoft_graph_share_request_builder.MicrosoftGraphShareRequestBuilder:
         """
         Provides operations to call the share method.
         """
-        return share_request_builder.ShareRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_share_request_builder.MicrosoftGraphShareRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def offer_shift_requests(self) -> offer_shift_requests_request_builder.OfferShiftRequestsRequestBuilder:

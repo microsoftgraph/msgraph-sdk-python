@@ -68,7 +68,7 @@ class ReplyPostRequestBody(AdditionalDataHolder, Parsable):
         """
         Sets the post property value. The Post property
         Args:
-            value: Value to set for the post property.
+            value: Value to set for the Post property.
         """
         self._post = value
     

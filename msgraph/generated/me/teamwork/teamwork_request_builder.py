@@ -14,7 +14,7 @@ associated_teams_request_builder = lazy_import('msgraph.generated.me.teamwork.as
 associated_team_info_item_request_builder = lazy_import('msgraph.generated.me.teamwork.associated_teams.item.associated_team_info_item_request_builder')
 installed_apps_request_builder = lazy_import('msgraph.generated.me.teamwork.installed_apps.installed_apps_request_builder')
 user_scope_teams_app_installation_item_request_builder = lazy_import('msgraph.generated.me.teamwork.installed_apps.item.user_scope_teams_app_installation_item_request_builder')
-send_activity_notification_request_builder = lazy_import('msgraph.generated.me.teamwork.microsoft_graph_send_activity_notification.send_activity_notification_request_builder')
+microsoft_graph_send_activity_notification_request_builder = lazy_import('msgraph.generated.me.teamwork.microsoft_graph_send_activity_notification.microsoft_graph_send_activity_notification_request_builder')
 user_teamwork = lazy_import('msgraph.generated.models.user_teamwork')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -37,11 +37,11 @@ class TeamworkRequestBuilder():
         return installed_apps_request_builder.InstalledAppsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_send_activity_notification(self) -> send_activity_notification_request_builder.SendActivityNotificationRequestBuilder:
+    def microsoft_graph_send_activity_notification(self) -> microsoft_graph_send_activity_notification_request_builder.MicrosoftGraphSendActivityNotificationRequestBuilder:
         """
         Provides operations to call the sendActivityNotification method.
         """
-        return send_activity_notification_request_builder.SendActivityNotificationRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_send_activity_notification_request_builder.MicrosoftGraphSendActivityNotificationRequestBuilder(self.request_adapter, self.path_parameters)
     
     def associated_teams_by_id(self,id: str) -> associated_team_info_item_request_builder.AssociatedTeamInfoItemRequestBuilder:
         """

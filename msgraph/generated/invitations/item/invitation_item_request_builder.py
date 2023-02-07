@@ -25,11 +25,10 @@ class InvitationItemRequestBuilder():
         """
         return invited_user_request_builder.InvitedUserRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, invitation_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new InvitationItemRequestBuilder and sets the default values.
         Args:
-            invitationId: key: id of invitation
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -41,7 +40,6 @@ class InvitationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/invitations/{invitation%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["invitation%2Did"] = invitationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

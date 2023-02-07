@@ -9,7 +9,7 @@ class DelegatedAdminAccessContainer(AdditionalDataHolder, Parsable):
     @property
     def access_container_id(self,) -> Optional[str]:
         """
-        Gets the accessContainerId property value. The accessContainerId property
+        Gets the accessContainerId property value. The identifier of the access container (for example, a security group). For 'securityGroup' access containers, this must be a valid ID of an Azure AD security group in the Microsoft partner's tenant.
         Returns: Optional[str]
         """
         return self._access_container_id
@@ -17,7 +17,7 @@ class DelegatedAdminAccessContainer(AdditionalDataHolder, Parsable):
     @access_container_id.setter
     def access_container_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the accessContainerId property value. The accessContainerId property
+        Sets the accessContainerId property value. The identifier of the access container (for example, a security group). For 'securityGroup' access containers, this must be a valid ID of an Azure AD security group in the Microsoft partner's tenant.
         Args:
             value: Value to set for the access_container_id property.
         """
@@ -64,7 +64,7 @@ class DelegatedAdminAccessContainer(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The accessContainerId property
+        # The identifier of the access container (for example, a security group). For 'securityGroup' access containers, this must be a valid ID of an Azure AD security group in the Microsoft partner's tenant.
         self._access_container_id: Optional[str] = None
         # The accessContainerType property
         self._access_container_type: Optional[delegated_admin_access_container_type.DelegatedAdminAccessContainerType] = None

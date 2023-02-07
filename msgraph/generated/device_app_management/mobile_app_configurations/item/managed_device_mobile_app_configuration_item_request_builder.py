@@ -15,7 +15,7 @@ managed_device_mobile_app_configuration_assignment_item_request_builder = lazy_i
 device_statuses_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_configurations.item.device_statuses.device_statuses_request_builder')
 managed_device_mobile_app_configuration_device_status_item_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_configurations.item.device_statuses.item.managed_device_mobile_app_configuration_device_status_item_request_builder')
 device_status_summary_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_configurations.item.device_status_summary.device_status_summary_request_builder')
-assign_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_configurations.item.microsoft_graph_assign.assign_request_builder')
+microsoft_graph_assign_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_configurations.item.microsoft_graph_assign.microsoft_graph_assign_request_builder')
 user_statuses_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_configurations.item.user_statuses.user_statuses_request_builder')
 managed_device_mobile_app_configuration_user_status_item_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_configurations.item.user_statuses.item.managed_device_mobile_app_configuration_user_status_item_request_builder')
 user_status_summary_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_configurations.item.user_status_summary.user_status_summary_request_builder')
@@ -48,11 +48,11 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
         return device_status_summary_request_builder.DeviceStatusSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_assign(self) -> assign_request_builder.AssignRequestBuilder:
+    def microsoft_graph_assign(self) -> microsoft_graph_assign_request_builder.MicrosoftGraphAssignRequestBuilder:
         """
         Provides operations to call the assign method.
         """
-        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_assign_request_builder.MicrosoftGraphAssignRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def user_statuses(self) -> user_statuses_request_builder.UserStatusesRequestBuilder:
@@ -81,11 +81,10 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
         url_tpl_params["managedDeviceMobileAppConfigurationAssignment%2Did"] = id
         return managed_device_mobile_app_configuration_assignment_item_request_builder.ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, managed_device_mobile_app_configuration_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ManagedDeviceMobileAppConfigurationItemRequestBuilder and sets the default values.
         Args:
-            managedDeviceMobileAppConfigurationId: key: id of managedDeviceMobileAppConfiguration
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -97,7 +96,6 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceAppManagement/mobileAppConfigurations/{managedDeviceMobileAppConfiguration%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["managedDeviceMobileAppConfiguration%2Did"] = managedDeviceMobileAppConfigurationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

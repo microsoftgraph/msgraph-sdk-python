@@ -17,9 +17,9 @@ drive_item_item_request_builder = lazy_import('msgraph.generated.drives.item.fol
 items_request_builder = lazy_import('msgraph.generated.drives.item.items.items_request_builder')
 drive_item_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.drive_item_item_request_builder')
 list_request_builder = lazy_import('msgraph.generated.drives.item.list.list_request_builder')
-recent_request_builder = lazy_import('msgraph.generated.drives.item.microsoft_graph_recent.recent_request_builder')
-search_with_q_request_builder = lazy_import('msgraph.generated.drives.item.microsoft_graph_search_with_q.search_with_q_request_builder')
-shared_with_me_request_builder = lazy_import('msgraph.generated.drives.item.microsoft_graph_shared_with_me.shared_with_me_request_builder')
+microsoft_graph_recent_request_builder = lazy_import('msgraph.generated.drives.item.microsoft_graph_recent.microsoft_graph_recent_request_builder')
+microsoft_graph_search_with_q_request_builder = lazy_import('msgraph.generated.drives.item.microsoft_graph_search_with_q.microsoft_graph_search_with_q_request_builder')
+microsoft_graph_shared_with_me_request_builder = lazy_import('msgraph.generated.drives.item.microsoft_graph_shared_with_me.microsoft_graph_shared_with_me_request_builder')
 root_request_builder = lazy_import('msgraph.generated.drives.item.root.root_request_builder')
 special_request_builder = lazy_import('msgraph.generated.drives.item.special.special_request_builder')
 drive_item_item_request_builder = lazy_import('msgraph.generated.drives.item.special.item.drive_item_item_request_builder')
@@ -59,18 +59,18 @@ class DriveItemRequestBuilder():
         return list_request_builder.ListRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_recent(self) -> recent_request_builder.RecentRequestBuilder:
+    def microsoft_graph_recent(self) -> microsoft_graph_recent_request_builder.MicrosoftGraphRecentRequestBuilder:
         """
         Provides operations to call the recent method.
         """
-        return recent_request_builder.RecentRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_recent_request_builder.MicrosoftGraphRecentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_shared_with_me(self) -> shared_with_me_request_builder.SharedWithMeRequestBuilder:
+    def microsoft_graph_shared_with_me(self) -> microsoft_graph_shared_with_me_request_builder.MicrosoftGraphSharedWithMeRequestBuilder:
         """
         Provides operations to call the sharedWithMe method.
         """
-        return shared_with_me_request_builder.SharedWithMeRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_shared_with_me_request_builder.MicrosoftGraphSharedWithMeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def root(self) -> root_request_builder.RootRequestBuilder:
@@ -99,11 +99,10 @@ class DriveItemRequestBuilder():
         url_tpl_params["driveItem%2Did"] = id
         return drive_item_item_request_builder.DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, drive_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DriveItemRequestBuilder and sets the default values.
         Args:
-            driveId: key: id of drive
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -115,7 +114,6 @@ class DriveItemRequestBuilder():
         self.url_template: str = "{+baseurl}/drives/{drive%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["drive%2Did"] = driveId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -180,16 +178,16 @@ class DriveItemRequestBuilder():
         url_tpl_params["driveItem%2Did"] = id
         return drive_item_item_request_builder.DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def microsoft_graph_search_with_q(self,q: Optional[str] = None) -> search_with_q_request_builder.SearchWithQRequestBuilder:
+    def microsoft_graph_search_with_q(self,q: Optional[str] = None) -> microsoft_graph_search_with_q_request_builder.MicrosoftGraphSearchWithQRequestBuilder:
         """
         Provides operations to call the search method.
         Args:
             q: Usage: q='{q}'
-        Returns: search_with_q_request_builder.SearchWithQRequestBuilder
+        Returns: microsoft_graph_search_with_q_request_builder.MicrosoftGraphSearchWithQRequestBuilder
         """
         if q is None:
             raise Exception("q cannot be undefined")
-        return search_with_q_request_builder.SearchWithQRequestBuilder(self.request_adapter, self.path_parameters, q)
+        return microsoft_graph_search_with_q_request_builder.MicrosoftGraphSearchWithQRequestBuilder(self.request_adapter, self.path_parameters, q)
     
     async def patch(self,body: Optional[drive.Drive] = None, request_configuration: Optional[DriveItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[drive.Drive]:
         """

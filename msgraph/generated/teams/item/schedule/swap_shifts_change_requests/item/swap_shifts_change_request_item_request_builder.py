@@ -17,13 +17,12 @@ class SwapShiftsChangeRequestItemRequestBuilder():
     """
     Provides operations to manage the swapShiftsChangeRequests property of the microsoft.graph.schedule entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, swap_shifts_change_request_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SwapShiftsChangeRequestItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            swapShiftsChangeRequestId: key: id of swapShiftsChangeRequest
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -33,7 +32,6 @@ class SwapShiftsChangeRequestItemRequestBuilder():
         self.url_template: str = "{+baseurl}/teams/{team%2Did}/schedule/swapShiftsChangeRequests/{swapShiftsChangeRequest%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["swapShiftsChangeRequest%2Did"] = swapShiftsChangeRequestId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

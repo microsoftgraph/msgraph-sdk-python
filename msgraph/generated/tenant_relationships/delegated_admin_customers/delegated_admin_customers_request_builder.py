@@ -46,7 +46,7 @@ class DelegatedAdminCustomersRequestBuilder():
     
     async def get(self,request_configuration: Optional[DelegatedAdminCustomersRequestBuilderGetRequestConfiguration] = None) -> Optional[delegated_admin_customer_collection_response.DelegatedAdminCustomerCollectionResponse]:
         """
-        Get delegatedAdminCustomers from tenantRelationships
+        Get a list of the delegatedAdminCustomer objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[delegated_admin_customer_collection_response.DelegatedAdminCustomerCollectionResponse]
@@ -85,7 +85,7 @@ class DelegatedAdminCustomersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DelegatedAdminCustomersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get delegatedAdminCustomers from tenantRelationships
+        Get a list of the delegatedAdminCustomer objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -125,7 +125,7 @@ class DelegatedAdminCustomersRequestBuilder():
     @dataclass
     class DelegatedAdminCustomersRequestBuilderGetQueryParameters():
         """
-        Get delegatedAdminCustomers from tenantRelationships
+        Get a list of the delegatedAdminCustomer objects and their properties.
         """
         # Include count of items
         count: Optional[bool] = None

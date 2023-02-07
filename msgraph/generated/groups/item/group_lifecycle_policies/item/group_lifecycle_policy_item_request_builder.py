@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-add_group_request_builder = lazy_import('msgraph.generated.groups.item.group_lifecycle_policies.item.microsoft_graph_add_group.add_group_request_builder')
-remove_group_request_builder = lazy_import('msgraph.generated.groups.item.group_lifecycle_policies.item.microsoft_graph_remove_group.remove_group_request_builder')
+microsoft_graph_add_group_request_builder = lazy_import('msgraph.generated.groups.item.group_lifecycle_policies.item.microsoft_graph_add_group.microsoft_graph_add_group_request_builder')
+microsoft_graph_remove_group_request_builder = lazy_import('msgraph.generated.groups.item.group_lifecycle_policies.item.microsoft_graph_remove_group.microsoft_graph_remove_group_request_builder')
 group_lifecycle_policy = lazy_import('msgraph.generated.models.group_lifecycle_policy')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -20,24 +20,23 @@ class GroupLifecyclePolicyItemRequestBuilder():
     Provides operations to manage the groupLifecyclePolicies property of the microsoft.graph.group entity.
     """
     @property
-    def microsoft_graph_add_group(self) -> add_group_request_builder.AddGroupRequestBuilder:
+    def microsoft_graph_add_group(self) -> microsoft_graph_add_group_request_builder.MicrosoftGraphAddGroupRequestBuilder:
         """
         Provides operations to call the addGroup method.
         """
-        return add_group_request_builder.AddGroupRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_add_group_request_builder.MicrosoftGraphAddGroupRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_remove_group(self) -> remove_group_request_builder.RemoveGroupRequestBuilder:
+    def microsoft_graph_remove_group(self) -> microsoft_graph_remove_group_request_builder.MicrosoftGraphRemoveGroupRequestBuilder:
         """
         Provides operations to call the removeGroup method.
         """
-        return remove_group_request_builder.RemoveGroupRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_remove_group_request_builder.MicrosoftGraphRemoveGroupRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, group_lifecycle_policy_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new GroupLifecyclePolicyItemRequestBuilder and sets the default values.
         Args:
-            groupLifecyclePolicyId: key: id of groupLifecyclePolicy
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -49,7 +48,6 @@ class GroupLifecyclePolicyItemRequestBuilder():
         self.url_template: str = "{+baseurl}/groups/{group%2Did}/groupLifecyclePolicies/{groupLifecyclePolicy%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["groupLifecyclePolicy%2Did"] = groupLifecyclePolicyId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

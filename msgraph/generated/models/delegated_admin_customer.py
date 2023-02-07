@@ -9,16 +9,16 @@ entity = lazy_import('msgraph.generated.models.entity')
 class DelegatedAdminCustomer(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new delegatedAdminCustomer and sets the default values.
+        Instantiates a new DelegatedAdminCustomer and sets the default values.
         """
         super().__init__()
-        # The displayName property
+        # The Azure AD display name of the customer tenant. Read-only. Supports $orderBy.
         self._display_name: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-        # The serviceManagementDetails property
+        # Contains the management details of a service in the customer tenant that's managed by delegated administration.
         self._service_management_details: Optional[List[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail]] = None
-        # The tenantId property
+        # The Azure AD-assigned tenant ID of the customer. Read-only.
         self._tenant_id: Optional[str] = None
     
     @staticmethod
@@ -36,7 +36,7 @@ class DelegatedAdminCustomer(entity.Entity):
     @property
     def display_name(self,) -> Optional[str]:
         """
-        Gets the displayName property value. The displayName property
+        Gets the displayName property value. The Azure AD display name of the customer tenant. Read-only. Supports $orderBy.
         Returns: Optional[str]
         """
         return self._display_name
@@ -44,7 +44,7 @@ class DelegatedAdminCustomer(entity.Entity):
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the displayName property value. The displayName property
+        Sets the displayName property value. The Azure AD display name of the customer tenant. Read-only. Supports $orderBy.
         Args:
             value: Value to set for the display_name property.
         """
@@ -80,7 +80,7 @@ class DelegatedAdminCustomer(entity.Entity):
     @property
     def service_management_details(self,) -> Optional[List[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail]]:
         """
-        Gets the serviceManagementDetails property value. The serviceManagementDetails property
+        Gets the serviceManagementDetails property value. Contains the management details of a service in the customer tenant that's managed by delegated administration.
         Returns: Optional[List[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail]]
         """
         return self._service_management_details
@@ -88,7 +88,7 @@ class DelegatedAdminCustomer(entity.Entity):
     @service_management_details.setter
     def service_management_details(self,value: Optional[List[delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail]] = None) -> None:
         """
-        Sets the serviceManagementDetails property value. The serviceManagementDetails property
+        Sets the serviceManagementDetails property value. Contains the management details of a service in the customer tenant that's managed by delegated administration.
         Args:
             value: Value to set for the service_management_details property.
         """
@@ -97,7 +97,7 @@ class DelegatedAdminCustomer(entity.Entity):
     @property
     def tenant_id(self,) -> Optional[str]:
         """
-        Gets the tenantId property value. The tenantId property
+        Gets the tenantId property value. The Azure AD-assigned tenant ID of the customer. Read-only.
         Returns: Optional[str]
         """
         return self._tenant_id
@@ -105,7 +105,7 @@ class DelegatedAdminCustomer(entity.Entity):
     @tenant_id.setter
     def tenant_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the tenantId property value. The tenantId property
+        Sets the tenantId property value. The Azure AD-assigned tenant ID of the customer. Read-only.
         Args:
             value: Value to set for the tenant_id property.
         """

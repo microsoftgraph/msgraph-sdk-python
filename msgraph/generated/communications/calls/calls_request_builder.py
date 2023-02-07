@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.communications.calls.count.count_request_builder')
-log_teleconference_device_quality_request_builder = lazy_import('msgraph.generated.communications.calls.microsoft_graph_log_teleconference_device_quality.log_teleconference_device_quality_request_builder')
+microsoft_graph_log_teleconference_device_quality_request_builder = lazy_import('msgraph.generated.communications.calls.microsoft_graph_log_teleconference_device_quality.microsoft_graph_log_teleconference_device_quality_request_builder')
 call = lazy_import('msgraph.generated.models.call')
 call_collection_response = lazy_import('msgraph.generated.models.call_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -28,11 +28,11 @@ class CallsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_log_teleconference_device_quality(self) -> log_teleconference_device_quality_request_builder.LogTeleconferenceDeviceQualityRequestBuilder:
+    def microsoft_graph_log_teleconference_device_quality(self) -> microsoft_graph_log_teleconference_device_quality_request_builder.MicrosoftGraphLogTeleconferenceDeviceQualityRequestBuilder:
         """
         Provides operations to call the logTeleconferenceDeviceQuality method.
         """
-        return log_teleconference_device_quality_request_builder.LogTeleconferenceDeviceQualityRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_log_teleconference_device_quality_request_builder.MicrosoftGraphLogTeleconferenceDeviceQualityRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

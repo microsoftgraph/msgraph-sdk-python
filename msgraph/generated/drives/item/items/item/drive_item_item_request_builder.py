@@ -15,22 +15,22 @@ children_request_builder = lazy_import('msgraph.generated.drives.item.items.item
 drive_item_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.children.item.drive_item_item_request_builder')
 content_request_builder = lazy_import('msgraph.generated.drives.item.items.item.content.content_request_builder')
 list_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.list_item.list_item_request_builder')
-checkin_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_checkin.checkin_request_builder')
-checkout_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_checkout.checkout_request_builder')
-copy_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_copy.copy_request_builder')
-create_link_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_create_link.create_link_request_builder')
-create_upload_session_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_create_upload_session.create_upload_session_request_builder')
-delta_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_delta.delta_request_builder')
-delta_with_token_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_delta_with_token.delta_with_token_request_builder')
-follow_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_follow.follow_request_builder')
-get_activities_by_interval_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_get_activities_by_interval.get_activities_by_interval_request_builder')
-get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder')
-invite_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_invite.invite_request_builder')
-preview_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_preview.preview_request_builder')
-restore_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_restore.restore_request_builder')
-search_with_q_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_search_with_q.search_with_q_request_builder')
-unfollow_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_unfollow.unfollow_request_builder')
-validate_permission_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_validate_permission.validate_permission_request_builder')
+microsoft_graph_checkin_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_checkin.microsoft_graph_checkin_request_builder')
+microsoft_graph_checkout_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_checkout.microsoft_graph_checkout_request_builder')
+microsoft_graph_copy_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_copy.microsoft_graph_copy_request_builder')
+microsoft_graph_create_link_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_create_link.microsoft_graph_create_link_request_builder')
+microsoft_graph_create_upload_session_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_create_upload_session.microsoft_graph_create_upload_session_request_builder')
+microsoft_graph_delta_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_delta.microsoft_graph_delta_request_builder')
+microsoft_graph_delta_with_token_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_delta_with_token.microsoft_graph_delta_with_token_request_builder')
+microsoft_graph_follow_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_follow.microsoft_graph_follow_request_builder')
+microsoft_graph_get_activities_by_interval_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_get_activities_by_interval.microsoft_graph_get_activities_by_interval_request_builder')
+microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder')
+microsoft_graph_invite_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_invite.microsoft_graph_invite_request_builder')
+microsoft_graph_preview_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_preview.microsoft_graph_preview_request_builder')
+microsoft_graph_restore_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_restore.microsoft_graph_restore_request_builder')
+microsoft_graph_search_with_q_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_search_with_q.microsoft_graph_search_with_q_request_builder')
+microsoft_graph_unfollow_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_unfollow.microsoft_graph_unfollow_request_builder')
+microsoft_graph_validate_permission_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_validate_permission.microsoft_graph_validate_permission_request_builder')
 permissions_request_builder = lazy_import('msgraph.generated.drives.item.items.item.permissions.permissions_request_builder')
 permission_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.permissions.item.permission_item_request_builder')
 subscriptions_request_builder = lazy_import('msgraph.generated.drives.item.items.item.subscriptions.subscriptions_request_builder')
@@ -76,95 +76,95 @@ class DriveItemItemRequestBuilder():
         return list_item_request_builder.ListItemRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_checkin(self) -> checkin_request_builder.CheckinRequestBuilder:
+    def microsoft_graph_checkin(self) -> microsoft_graph_checkin_request_builder.MicrosoftGraphCheckinRequestBuilder:
         """
         Provides operations to call the checkin method.
         """
-        return checkin_request_builder.CheckinRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_checkin_request_builder.MicrosoftGraphCheckinRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_checkout(self) -> checkout_request_builder.CheckoutRequestBuilder:
+    def microsoft_graph_checkout(self) -> microsoft_graph_checkout_request_builder.MicrosoftGraphCheckoutRequestBuilder:
         """
         Provides operations to call the checkout method.
         """
-        return checkout_request_builder.CheckoutRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_checkout_request_builder.MicrosoftGraphCheckoutRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_copy(self) -> copy_request_builder.CopyRequestBuilder:
+    def microsoft_graph_copy(self) -> microsoft_graph_copy_request_builder.MicrosoftGraphCopyRequestBuilder:
         """
         Provides operations to call the copy method.
         """
-        return copy_request_builder.CopyRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_copy_request_builder.MicrosoftGraphCopyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_create_link(self) -> create_link_request_builder.CreateLinkRequestBuilder:
+    def microsoft_graph_create_link(self) -> microsoft_graph_create_link_request_builder.MicrosoftGraphCreateLinkRequestBuilder:
         """
         Provides operations to call the createLink method.
         """
-        return create_link_request_builder.CreateLinkRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_create_link_request_builder.MicrosoftGraphCreateLinkRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_create_upload_session(self) -> create_upload_session_request_builder.CreateUploadSessionRequestBuilder:
+    def microsoft_graph_create_upload_session(self) -> microsoft_graph_create_upload_session_request_builder.MicrosoftGraphCreateUploadSessionRequestBuilder:
         """
         Provides operations to call the createUploadSession method.
         """
-        return create_upload_session_request_builder.CreateUploadSessionRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_create_upload_session_request_builder.MicrosoftGraphCreateUploadSessionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_delta(self) -> delta_request_builder.DeltaRequestBuilder:
+    def microsoft_graph_delta(self) -> microsoft_graph_delta_request_builder.MicrosoftGraphDeltaRequestBuilder:
         """
         Provides operations to call the delta method.
         """
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_delta_request_builder.MicrosoftGraphDeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_follow(self) -> follow_request_builder.FollowRequestBuilder:
+    def microsoft_graph_follow(self) -> microsoft_graph_follow_request_builder.MicrosoftGraphFollowRequestBuilder:
         """
         Provides operations to call the follow method.
         """
-        return follow_request_builder.FollowRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_follow_request_builder.MicrosoftGraphFollowRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_activities_by_interval(self) -> get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder:
+    def microsoft_graph_get_activities_by_interval(self) -> microsoft_graph_get_activities_by_interval_request_builder.MicrosoftGraphGetActivitiesByIntervalRequestBuilder:
         """
         Provides operations to call the getActivitiesByInterval method.
         """
-        return get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_activities_by_interval_request_builder.MicrosoftGraphGetActivitiesByIntervalRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_invite(self) -> invite_request_builder.InviteRequestBuilder:
+    def microsoft_graph_invite(self) -> microsoft_graph_invite_request_builder.MicrosoftGraphInviteRequestBuilder:
         """
         Provides operations to call the invite method.
         """
-        return invite_request_builder.InviteRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_invite_request_builder.MicrosoftGraphInviteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_preview(self) -> preview_request_builder.PreviewRequestBuilder:
+    def microsoft_graph_preview(self) -> microsoft_graph_preview_request_builder.MicrosoftGraphPreviewRequestBuilder:
         """
         Provides operations to call the preview method.
         """
-        return preview_request_builder.PreviewRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_preview_request_builder.MicrosoftGraphPreviewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_restore(self) -> restore_request_builder.RestoreRequestBuilder:
+    def microsoft_graph_restore(self) -> microsoft_graph_restore_request_builder.MicrosoftGraphRestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
-        return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_restore_request_builder.MicrosoftGraphRestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_unfollow(self) -> unfollow_request_builder.UnfollowRequestBuilder:
+    def microsoft_graph_unfollow(self) -> microsoft_graph_unfollow_request_builder.MicrosoftGraphUnfollowRequestBuilder:
         """
         Provides operations to call the unfollow method.
         """
-        return unfollow_request_builder.UnfollowRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_unfollow_request_builder.MicrosoftGraphUnfollowRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_validate_permission(self) -> validate_permission_request_builder.ValidatePermissionRequestBuilder:
+    def microsoft_graph_validate_permission(self) -> microsoft_graph_validate_permission_request_builder.MicrosoftGraphValidatePermissionRequestBuilder:
         """
         Provides operations to call the validatePermission method.
         """
-        return validate_permission_request_builder.ValidatePermissionRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_validate_permission_request_builder.MicrosoftGraphValidatePermissionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def permissions(self) -> permissions_request_builder.PermissionsRequestBuilder:
@@ -214,11 +214,10 @@ class DriveItemItemRequestBuilder():
         url_tpl_params["driveItem%2Did1"] = id
         return DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, drive_item_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DriveItemItemRequestBuilder and sets the default values.
         Args:
-            driveItemId: key: id of driveItem
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -230,7 +229,6 @@ class DriveItemItemRequestBuilder():
         self.url_template: str = "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["driveItem%2Did"] = driveItemId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -269,25 +267,25 @@ class DriveItemItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, drive_item.DriveItem, error_mapping)
     
-    def microsoft_graph_delta_with_token(self,token: Optional[str] = None) -> delta_with_token_request_builder.DeltaWithTokenRequestBuilder:
+    def microsoft_graph_delta_with_token(self,token: Optional[str] = None) -> microsoft_graph_delta_with_token_request_builder.MicrosoftGraphDeltaWithTokenRequestBuilder:
         """
         Provides operations to call the delta method.
         Args:
             token: Usage: token='{token}'
-        Returns: delta_with_token_request_builder.DeltaWithTokenRequestBuilder
+        Returns: microsoft_graph_delta_with_token_request_builder.MicrosoftGraphDeltaWithTokenRequestBuilder
         """
         if token is None:
             raise Exception("token cannot be undefined")
-        return delta_with_token_request_builder.DeltaWithTokenRequestBuilder(self.request_adapter, self.path_parameters, token)
+        return microsoft_graph_delta_with_token_request_builder.MicrosoftGraphDeltaWithTokenRequestBuilder(self.request_adapter, self.path_parameters, token)
     
-    def microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: Optional[str] = None, interval: Optional[str] = None, start_date_time: Optional[str] = None) -> get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
+    def microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: Optional[str] = None, interval: Optional[str] = None, start_date_time: Optional[str] = None) -> microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.MicrosoftGraphGetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
         """
         Provides operations to call the getActivitiesByInterval method.
         Args:
             endDateTime: Usage: endDateTime='{endDateTime}'
             interval: Usage: interval='{interval}'
             startDateTime: Usage: startDateTime='{startDateTime}'
-        Returns: get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
+        Returns: microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.MicrosoftGraphGetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
         """
         if end_date_time is None:
             raise Exception("end_date_time cannot be undefined")
@@ -295,18 +293,18 @@ class DriveItemItemRequestBuilder():
             raise Exception("interval cannot be undefined")
         if start_date_time is None:
             raise Exception("start_date_time cannot be undefined")
-        return get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder(self.request_adapter, self.path_parameters, endDateTime, interval, startDateTime)
+        return microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.MicrosoftGraphGetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder(self.request_adapter, self.path_parameters, endDateTime, interval, startDateTime)
     
-    def microsoft_graph_search_with_q(self,q: Optional[str] = None) -> search_with_q_request_builder.SearchWithQRequestBuilder:
+    def microsoft_graph_search_with_q(self,q: Optional[str] = None) -> microsoft_graph_search_with_q_request_builder.MicrosoftGraphSearchWithQRequestBuilder:
         """
         Provides operations to call the search method.
         Args:
             q: Usage: q='{q}'
-        Returns: search_with_q_request_builder.SearchWithQRequestBuilder
+        Returns: microsoft_graph_search_with_q_request_builder.MicrosoftGraphSearchWithQRequestBuilder
         """
         if q is None:
             raise Exception("q cannot be undefined")
-        return search_with_q_request_builder.SearchWithQRequestBuilder(self.request_adapter, self.path_parameters, q)
+        return microsoft_graph_search_with_q_request_builder.MicrosoftGraphSearchWithQRequestBuilder(self.request_adapter, self.path_parameters, q)
     
     async def patch(self,body: Optional[drive_item.DriveItem] = None, request_configuration: Optional[DriveItemItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[drive_item.DriveItem]:
         """

@@ -10,7 +10,7 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-sync_licenses_request_builder = lazy_import('msgraph.generated.device_app_management.vpp_tokens.item.microsoft_graph_sync_licenses.sync_licenses_request_builder')
+microsoft_graph_sync_licenses_request_builder = lazy_import('msgraph.generated.device_app_management.vpp_tokens.item.microsoft_graph_sync_licenses.microsoft_graph_sync_licenses_request_builder')
 vpp_token = lazy_import('msgraph.generated.models.vpp_token')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -19,19 +19,18 @@ class VppTokenItemRequestBuilder():
     Provides operations to manage the vppTokens property of the microsoft.graph.deviceAppManagement entity.
     """
     @property
-    def microsoft_graph_sync_licenses(self) -> sync_licenses_request_builder.SyncLicensesRequestBuilder:
+    def microsoft_graph_sync_licenses(self) -> microsoft_graph_sync_licenses_request_builder.MicrosoftGraphSyncLicensesRequestBuilder:
         """
         Provides operations to call the syncLicenses method.
         """
-        return sync_licenses_request_builder.SyncLicensesRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_sync_licenses_request_builder.MicrosoftGraphSyncLicensesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, vpp_token_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new VppTokenItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            vppTokenId: key: id of vppToken
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -41,7 +40,6 @@ class VppTokenItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceAppManagement/vppTokens/{vppToken%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["vppToken%2Did"] = vppTokenId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

@@ -17,11 +17,10 @@ class DriveItemRequestBuilder():
     """
     Provides operations to manage the drives property of the microsoft.graph.user entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, drive_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DriveItemRequestBuilder and sets the default values.
         Args:
-            driveId: key: id of drive
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class DriveItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/drives/{drive%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["drive%2Did"] = driveId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

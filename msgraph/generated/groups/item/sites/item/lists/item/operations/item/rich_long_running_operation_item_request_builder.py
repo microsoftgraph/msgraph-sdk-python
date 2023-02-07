@@ -17,13 +17,12 @@ class RichLongRunningOperationItemRequestBuilder():
     """
     Provides operations to manage the operations property of the microsoft.graph.list entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, rich_long_running_operation_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new RichLongRunningOperationItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            richLongRunningOperationId: key: id of richLongRunningOperation
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -33,7 +32,6 @@ class RichLongRunningOperationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/lists/{list%2Did}/operations/{richLongRunningOperation%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["richLongRunningOperation%2Did"] = richLongRunningOperationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

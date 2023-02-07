@@ -17,12 +17,11 @@ class PersonItemRequestBuilder():
     """
     Provides operations to manage the people property of the microsoft.graph.user entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, person_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PersonItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
-            personId: key: id of person
             requestAdapter: The request adapter to use to execute the requests.
         """
         if path_parameters is None:
@@ -33,7 +32,6 @@ class PersonItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/people/{person%2Did}{?%24select}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["person%2Did"] = personId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

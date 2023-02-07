@@ -17,12 +17,11 @@ class PrintConnectorItemRequestBuilder():
     """
     Provides operations to manage the connectors property of the microsoft.graph.printer entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, print_connector_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PrintConnectorItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
-            printConnectorId: key: id of printConnector
             requestAdapter: The request adapter to use to execute the requests.
         """
         if path_parameters is None:
@@ -33,7 +32,6 @@ class PrintConnectorItemRequestBuilder():
         self.url_template: str = "{+baseurl}/print/printers/{printer%2Did}/connectors/{printConnector%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["printConnector%2Did"] = printConnectorId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

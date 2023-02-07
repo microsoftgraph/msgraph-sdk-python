@@ -17,13 +17,12 @@ class SimulationItemRequestBuilder():
     """
     Provides operations to manage the simulations property of the microsoft.graph.attackSimulationRoot entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, simulation_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SimulationItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            simulationId: key: id of simulation
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -33,7 +32,6 @@ class SimulationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/security/attackSimulation/simulations/{simulation%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["simulation%2Did"] = simulationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

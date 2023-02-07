@@ -17,11 +17,10 @@ class ChannelItemRequestBuilder():
     """
     Provides operations to manage the incomingChannels property of the microsoft.graph.team entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, channel_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ChannelItemRequestBuilder and sets the default values.
         Args:
-            channelId: key: id of channel
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class ChannelItemRequestBuilder():
         self.url_template: str = "{+baseurl}/groups/{group%2Did}/team/incomingChannels/{channel%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["channel%2Did"] = channelId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

@@ -72,7 +72,7 @@ class ProgressTaskBoardFormatRequestBuilder():
     
     async def patch(self,body: Optional[planner_progress_task_board_task_format.PlannerProgressTaskBoardTaskFormat] = None, request_configuration: Optional[ProgressTaskBoardFormatRequestBuilderPatchRequestConfiguration] = None) -> Optional[planner_progress_task_board_task_format.PlannerProgressTaskBoardTaskFormat]:
         """
-        Update the properties of **plannerProgressTaskBoardTaskFormat** object.
+        Update the navigation property progressTaskBoardFormat in planner
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -127,7 +127,7 @@ class ProgressTaskBoardFormatRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[planner_progress_task_board_task_format.PlannerProgressTaskBoardTaskFormat] = None, request_configuration: Optional[ProgressTaskBoardFormatRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of **plannerProgressTaskBoardTaskFormat** object.
+        Update the navigation property progressTaskBoardFormat in planner
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

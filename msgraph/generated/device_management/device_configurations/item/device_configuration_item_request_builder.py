@@ -17,8 +17,8 @@ setting_state_device_summary_item_request_builder = lazy_import('msgraph.generat
 device_statuses_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.device_statuses.device_statuses_request_builder')
 device_configuration_device_status_item_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.device_statuses.item.device_configuration_device_status_item_request_builder')
 device_status_overview_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.device_status_overview.device_status_overview_request_builder')
-assign_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.microsoft_graph_assign.assign_request_builder')
-get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.microsoft_graph_get_oma_setting_plain_text_value_with_secret_reference_value_id.get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder')
+microsoft_graph_assign_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.microsoft_graph_assign.microsoft_graph_assign_request_builder')
+microsoft_graph_get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.microsoft_graph_get_oma_setting_plain_text_value_with_secret_reference_value_id.microsoft_graph_get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder')
 user_statuses_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.user_statuses.user_statuses_request_builder')
 device_configuration_user_status_item_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.user_statuses.item.device_configuration_user_status_item_request_builder')
 user_status_overview_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.user_status_overview.user_status_overview_request_builder')
@@ -58,11 +58,11 @@ class DeviceConfigurationItemRequestBuilder():
         return device_status_overview_request_builder.DeviceStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_assign(self) -> assign_request_builder.AssignRequestBuilder:
+    def microsoft_graph_assign(self) -> microsoft_graph_assign_request_builder.MicrosoftGraphAssignRequestBuilder:
         """
         Provides operations to call the assign method.
         """
-        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_assign_request_builder.MicrosoftGraphAssignRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def user_statuses(self) -> user_statuses_request_builder.UserStatusesRequestBuilder:
@@ -91,11 +91,10 @@ class DeviceConfigurationItemRequestBuilder():
         url_tpl_params["deviceConfigurationAssignment%2Did"] = id
         return device_configuration_assignment_item_request_builder.DeviceConfigurationAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, device_configuration_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DeviceConfigurationItemRequestBuilder and sets the default values.
         Args:
-            deviceConfigurationId: key: id of deviceConfiguration
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -107,7 +106,6 @@ class DeviceConfigurationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceManagement/deviceConfigurations/{deviceConfiguration%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["deviceConfiguration%2Did"] = deviceConfigurationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -172,16 +170,16 @@ class DeviceConfigurationItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, device_configuration.DeviceConfiguration, error_mapping)
     
-    def microsoft_graph_get_oma_setting_plain_text_value_with_secret_reference_value_id(self,secret_reference_value_id: Optional[str] = None) -> get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder.GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder:
+    def microsoft_graph_get_oma_setting_plain_text_value_with_secret_reference_value_id(self,secret_reference_value_id: Optional[str] = None) -> microsoft_graph_get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder.MicrosoftGraphGetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder:
         """
         Provides operations to call the getOmaSettingPlainTextValue method.
         Args:
             secretReferenceValueId: Usage: secretReferenceValueId='{secretReferenceValueId}'
-        Returns: get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder.GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder
+        Returns: microsoft_graph_get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder.MicrosoftGraphGetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder
         """
         if secret_reference_value_id is None:
             raise Exception("secret_reference_value_id cannot be undefined")
-        return get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder.GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder(self.request_adapter, self.path_parameters, secretReferenceValueId)
+        return microsoft_graph_get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder.MicrosoftGraphGetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder(self.request_adapter, self.path_parameters, secretReferenceValueId)
     
     async def patch(self,body: Optional[device_configuration.DeviceConfiguration] = None, request_configuration: Optional[DeviceConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[device_configuration.DeviceConfiguration]:
         """

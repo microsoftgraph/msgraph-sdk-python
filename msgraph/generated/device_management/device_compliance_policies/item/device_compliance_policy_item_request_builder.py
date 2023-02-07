@@ -17,8 +17,8 @@ setting_state_device_summary_item_request_builder = lazy_import('msgraph.generat
 device_statuses_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.device_statuses.device_statuses_request_builder')
 device_compliance_device_status_item_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.device_statuses.item.device_compliance_device_status_item_request_builder')
 device_status_overview_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.device_status_overview.device_status_overview_request_builder')
-assign_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.microsoft_graph_assign.assign_request_builder')
-schedule_actions_for_rules_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.microsoft_graph_schedule_actions_for_rules.schedule_actions_for_rules_request_builder')
+microsoft_graph_assign_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.microsoft_graph_assign.microsoft_graph_assign_request_builder')
+microsoft_graph_schedule_actions_for_rules_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.microsoft_graph_schedule_actions_for_rules.microsoft_graph_schedule_actions_for_rules_request_builder')
 scheduled_actions_for_rule_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.scheduled_actions_for_rule.scheduled_actions_for_rule_request_builder')
 device_compliance_scheduled_action_for_rule_item_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.scheduled_actions_for_rule.item.device_compliance_scheduled_action_for_rule_item_request_builder')
 user_statuses_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.user_statuses.user_statuses_request_builder')
@@ -60,18 +60,18 @@ class DeviceCompliancePolicyItemRequestBuilder():
         return device_status_overview_request_builder.DeviceStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_assign(self) -> assign_request_builder.AssignRequestBuilder:
+    def microsoft_graph_assign(self) -> microsoft_graph_assign_request_builder.MicrosoftGraphAssignRequestBuilder:
         """
         Provides operations to call the assign method.
         """
-        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_assign_request_builder.MicrosoftGraphAssignRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_schedule_actions_for_rules(self) -> schedule_actions_for_rules_request_builder.ScheduleActionsForRulesRequestBuilder:
+    def microsoft_graph_schedule_actions_for_rules(self) -> microsoft_graph_schedule_actions_for_rules_request_builder.MicrosoftGraphScheduleActionsForRulesRequestBuilder:
         """
         Provides operations to call the scheduleActionsForRules method.
         """
-        return schedule_actions_for_rules_request_builder.ScheduleActionsForRulesRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_schedule_actions_for_rules_request_builder.MicrosoftGraphScheduleActionsForRulesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def scheduled_actions_for_rule(self) -> scheduled_actions_for_rule_request_builder.ScheduledActionsForRuleRequestBuilder:
@@ -107,11 +107,10 @@ class DeviceCompliancePolicyItemRequestBuilder():
         url_tpl_params["deviceCompliancePolicyAssignment%2Did"] = id
         return device_compliance_policy_assignment_item_request_builder.DeviceCompliancePolicyAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, device_compliance_policy_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DeviceCompliancePolicyItemRequestBuilder and sets the default values.
         Args:
-            deviceCompliancePolicyId: key: id of deviceCompliancePolicy
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -123,7 +122,6 @@ class DeviceCompliancePolicyItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicy%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["deviceCompliancePolicy%2Did"] = deviceCompliancePolicyId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

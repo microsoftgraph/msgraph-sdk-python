@@ -17,13 +17,12 @@ class TargetedManagedAppPolicyAssignmentItemRequestBuilder():
     """
     Provides operations to manage the assignments property of the microsoft.graph.targetedManagedAppConfiguration entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, targeted_managed_app_policy_assignment_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new TargetedManagedAppPolicyAssignmentItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            targetedManagedAppPolicyAssignmentId: key: id of targetedManagedAppPolicyAssignment
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -33,7 +32,6 @@ class TargetedManagedAppPolicyAssignmentItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceAppManagement/targetedManagedAppConfigurations/{targetedManagedAppConfiguration%2Did}/assignments/{targetedManagedAppPolicyAssignment%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["targetedManagedAppPolicyAssignment%2Did"] = targetedManagedAppPolicyAssignmentId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

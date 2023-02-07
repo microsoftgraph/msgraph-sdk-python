@@ -12,8 +12,8 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 assignments_request_builder = lazy_import('msgraph.generated.device_management.device_enrollment_configurations.item.assignments.assignments_request_builder')
 enrollment_configuration_assignment_item_request_builder = lazy_import('msgraph.generated.device_management.device_enrollment_configurations.item.assignments.item.enrollment_configuration_assignment_item_request_builder')
-assign_request_builder = lazy_import('msgraph.generated.device_management.device_enrollment_configurations.item.microsoft_graph_assign.assign_request_builder')
-set_priority_request_builder = lazy_import('msgraph.generated.device_management.device_enrollment_configurations.item.microsoft_graph_set_priority.set_priority_request_builder')
+microsoft_graph_assign_request_builder = lazy_import('msgraph.generated.device_management.device_enrollment_configurations.item.microsoft_graph_assign.microsoft_graph_assign_request_builder')
+microsoft_graph_set_priority_request_builder = lazy_import('msgraph.generated.device_management.device_enrollment_configurations.item.microsoft_graph_set_priority.microsoft_graph_set_priority_request_builder')
 device_enrollment_configuration = lazy_import('msgraph.generated.models.device_enrollment_configuration')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -29,18 +29,18 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
         return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_assign(self) -> assign_request_builder.AssignRequestBuilder:
+    def microsoft_graph_assign(self) -> microsoft_graph_assign_request_builder.MicrosoftGraphAssignRequestBuilder:
         """
         Provides operations to call the assign method.
         """
-        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_assign_request_builder.MicrosoftGraphAssignRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_set_priority(self) -> set_priority_request_builder.SetPriorityRequestBuilder:
+    def microsoft_graph_set_priority(self) -> microsoft_graph_set_priority_request_builder.MicrosoftGraphSetPriorityRequestBuilder:
         """
         Provides operations to call the setPriority method.
         """
-        return set_priority_request_builder.SetPriorityRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_set_priority_request_builder.MicrosoftGraphSetPriorityRequestBuilder(self.request_adapter, self.path_parameters)
     
     def assignments_by_id(self,id: str) -> enrollment_configuration_assignment_item_request_builder.EnrollmentConfigurationAssignmentItemRequestBuilder:
         """
@@ -55,11 +55,10 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
         url_tpl_params["enrollmentConfigurationAssignment%2Did"] = id
         return enrollment_configuration_assignment_item_request_builder.EnrollmentConfigurationAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, device_enrollment_configuration_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DeviceEnrollmentConfigurationItemRequestBuilder and sets the default values.
         Args:
-            deviceEnrollmentConfigurationId: key: id of deviceEnrollmentConfiguration
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -71,7 +70,6 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceManagement/deviceEnrollmentConfigurations/{deviceEnrollmentConfiguration%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["deviceEnrollmentConfiguration%2Did"] = deviceEnrollmentConfigurationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

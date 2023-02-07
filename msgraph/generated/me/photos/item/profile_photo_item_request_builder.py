@@ -25,12 +25,11 @@ class ProfilePhotoItemRequestBuilder():
         """
         return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, profile_photo_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ProfilePhotoItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
-            profilePhotoId: key: id of profilePhoto
             requestAdapter: The request adapter to use to execute the requests.
         """
         if path_parameters is None:
@@ -41,7 +40,6 @@ class ProfilePhotoItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/photos/{profilePhoto%2Did}{?%24select}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["profilePhoto%2Did"] = profilePhotoId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

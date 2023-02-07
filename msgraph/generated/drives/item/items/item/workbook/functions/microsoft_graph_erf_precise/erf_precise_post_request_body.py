@@ -79,7 +79,7 @@ class Erf_PrecisePostRequestBody(AdditionalDataHolder, Parsable):
         """
         Sets the x property value. The X property
         Args:
-            value: Value to set for the x property.
+            value: Value to set for the X property.
         """
         self._x = value
     

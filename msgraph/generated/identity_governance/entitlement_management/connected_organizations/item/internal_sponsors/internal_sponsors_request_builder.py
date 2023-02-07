@@ -11,9 +11,9 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.internal_sponsors.count.count_request_builder')
-get_available_extension_properties_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.internal_sponsors.microsoft_graph_get_available_extension_properties.get_available_extension_properties_request_builder')
-get_by_ids_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.internal_sponsors.microsoft_graph_get_by_ids.get_by_ids_request_builder')
-validate_properties_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.internal_sponsors.microsoft_graph_validate_properties.validate_properties_request_builder')
+microsoft_graph_get_available_extension_properties_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.internal_sponsors.microsoft_graph_get_available_extension_properties.microsoft_graph_get_available_extension_properties_request_builder')
+microsoft_graph_get_by_ids_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.internal_sponsors.microsoft_graph_get_by_ids.microsoft_graph_get_by_ids_request_builder')
+microsoft_graph_validate_properties_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.internal_sponsors.microsoft_graph_validate_properties.microsoft_graph_validate_properties_request_builder')
 ref_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.internal_sponsors.ref.ref_request_builder')
 directory_object = lazy_import('msgraph.generated.models.directory_object')
 directory_object_collection_response = lazy_import('msgraph.generated.models.directory_object_collection_response')
@@ -31,25 +31,25 @@ class InternalSponsorsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
+    def microsoft_graph_get_available_extension_properties(self) -> microsoft_graph_get_available_extension_properties_request_builder.MicrosoftGraphGetAvailableExtensionPropertiesRequestBuilder:
         """
         Provides operations to call the getAvailableExtensionProperties method.
         """
-        return get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_available_extension_properties_request_builder.MicrosoftGraphGetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
+    def microsoft_graph_get_by_ids(self) -> microsoft_graph_get_by_ids_request_builder.MicrosoftGraphGetByIdsRequestBuilder:
         """
         Provides operations to call the getByIds method.
         """
-        return get_by_ids_request_builder.GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_by_ids_request_builder.MicrosoftGraphGetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
+    def microsoft_graph_validate_properties(self) -> microsoft_graph_validate_properties_request_builder.MicrosoftGraphValidatePropertiesRequestBuilder:
         """
         Provides operations to call the validateProperties method.
         """
-        return validate_properties_request_builder.ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_validate_properties_request_builder.MicrosoftGraphValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def ref(self) -> ref_request_builder.RefRequestBuilder:

@@ -47,11 +47,10 @@ class IosManagedAppProtectionItemRequestBuilder():
         url_tpl_params["managedMobileApp%2Did"] = id
         return managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, ios_managed_app_protection_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new IosManagedAppProtectionItemRequestBuilder and sets the default values.
         Args:
-            iosManagedAppProtectionId: key: id of iosManagedAppProtection
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -63,7 +62,6 @@ class IosManagedAppProtectionItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceAppManagement/iosManagedAppProtections/{iosManagedAppProtection%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["iosManagedAppProtection%2Did"] = iosManagedAppProtectionId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

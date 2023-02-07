@@ -17,13 +17,12 @@ class TeamsTemplateItemRequestBuilder():
     """
     Provides operations to manage the collection of teamsTemplate entities.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, teams_template_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new TeamsTemplateItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            teamsTemplateId: key: id of teamsTemplate
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -33,7 +32,6 @@ class TeamsTemplateItemRequestBuilder():
         self.url_template: str = "{+baseurl}/teamsTemplates/{teamsTemplate%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["teamsTemplate%2Did"] = teamsTemplateId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

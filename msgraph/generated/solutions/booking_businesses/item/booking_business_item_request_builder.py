@@ -20,9 +20,9 @@ customers_request_builder = lazy_import('msgraph.generated.solutions.booking_bus
 booking_customer_base_item_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.customers.item.booking_customer_base_item_request_builder')
 custom_questions_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.custom_questions.custom_questions_request_builder')
 booking_custom_question_item_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.custom_questions.item.booking_custom_question_item_request_builder')
-get_staff_availability_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.microsoft_graph_get_staff_availability.get_staff_availability_request_builder')
-publish_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.microsoft_graph_publish.publish_request_builder')
-unpublish_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.microsoft_graph_unpublish.unpublish_request_builder')
+microsoft_graph_get_staff_availability_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.microsoft_graph_get_staff_availability.microsoft_graph_get_staff_availability_request_builder')
+microsoft_graph_publish_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.microsoft_graph_publish.microsoft_graph_publish_request_builder')
+microsoft_graph_unpublish_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.microsoft_graph_unpublish.microsoft_graph_unpublish_request_builder')
 services_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.services.services_request_builder')
 booking_service_item_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.services.item.booking_service_item_request_builder')
 staff_members_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.staff_members.staff_members_request_builder')
@@ -61,25 +61,25 @@ class BookingBusinessItemRequestBuilder():
         return custom_questions_request_builder.CustomQuestionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_staff_availability(self) -> get_staff_availability_request_builder.GetStaffAvailabilityRequestBuilder:
+    def microsoft_graph_get_staff_availability(self) -> microsoft_graph_get_staff_availability_request_builder.MicrosoftGraphGetStaffAvailabilityRequestBuilder:
         """
         Provides operations to call the getStaffAvailability method.
         """
-        return get_staff_availability_request_builder.GetStaffAvailabilityRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_staff_availability_request_builder.MicrosoftGraphGetStaffAvailabilityRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_publish(self) -> publish_request_builder.PublishRequestBuilder:
+    def microsoft_graph_publish(self) -> microsoft_graph_publish_request_builder.MicrosoftGraphPublishRequestBuilder:
         """
         Provides operations to call the publish method.
         """
-        return publish_request_builder.PublishRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_publish_request_builder.MicrosoftGraphPublishRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_unpublish(self) -> unpublish_request_builder.UnpublishRequestBuilder:
+    def microsoft_graph_unpublish(self) -> microsoft_graph_unpublish_request_builder.MicrosoftGraphUnpublishRequestBuilder:
         """
         Provides operations to call the unpublish method.
         """
-        return unpublish_request_builder.UnpublishRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_unpublish_request_builder.MicrosoftGraphUnpublishRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def services(self) -> services_request_builder.ServicesRequestBuilder:
@@ -121,11 +121,10 @@ class BookingBusinessItemRequestBuilder():
         url_tpl_params["bookingAppointment%2Did"] = id
         return booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, booking_business_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new BookingBusinessItemRequestBuilder and sets the default values.
         Args:
-            bookingBusinessId: key: id of bookingBusiness
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -137,7 +136,6 @@ class BookingBusinessItemRequestBuilder():
         self.url_template: str = "{+baseurl}/solutions/bookingBusinesses/{bookingBusiness%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["bookingBusiness%2Did"] = bookingBusinessId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

@@ -17,11 +17,10 @@ class AppRoleAssignmentItemRequestBuilder():
     """
     Provides operations to manage the appRoleAssignedTo property of the microsoft.graph.servicePrincipal entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, app_role_assignment_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AppRoleAssignmentItemRequestBuilder and sets the default values.
         Args:
-            appRoleAssignmentId: key: id of appRoleAssignment
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class AppRoleAssignmentItemRequestBuilder():
         self.url_template: str = "{+baseurl}/servicePrincipals/{servicePrincipal%2Did}/appRoleAssignedTo/{appRoleAssignment%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["appRoleAssignment%2Did"] = appRoleAssignmentId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

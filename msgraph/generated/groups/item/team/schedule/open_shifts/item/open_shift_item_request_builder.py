@@ -17,11 +17,10 @@ class OpenShiftItemRequestBuilder():
     """
     Provides operations to manage the openShifts property of the microsoft.graph.schedule entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, open_shift_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new OpenShiftItemRequestBuilder and sets the default values.
         Args:
-            openShiftId: key: id of openShift
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class OpenShiftItemRequestBuilder():
         self.url_template: str = "{+baseurl}/groups/{group%2Did}/team/schedule/openShifts/{openShift%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["openShift%2Did"] = openShiftId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 teamwork = lazy_import('msgraph.generated.models.teamwork')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-send_activity_notification_to_recipients_request_builder = lazy_import('msgraph.generated.teamwork.microsoft_graph_send_activity_notification_to_recipients.send_activity_notification_to_recipients_request_builder')
+microsoft_graph_send_activity_notification_to_recipients_request_builder = lazy_import('msgraph.generated.teamwork.microsoft_graph_send_activity_notification_to_recipients.microsoft_graph_send_activity_notification_to_recipients_request_builder')
 workforce_integrations_request_builder = lazy_import('msgraph.generated.teamwork.workforce_integrations.workforce_integrations_request_builder')
 workforce_integration_item_request_builder = lazy_import('msgraph.generated.teamwork.workforce_integrations.item.workforce_integration_item_request_builder')
 
@@ -21,11 +21,11 @@ class TeamworkRequestBuilder():
     Provides operations to manage the teamwork singleton.
     """
     @property
-    def microsoft_graph_send_activity_notification_to_recipients(self) -> send_activity_notification_to_recipients_request_builder.SendActivityNotificationToRecipientsRequestBuilder:
+    def microsoft_graph_send_activity_notification_to_recipients(self) -> microsoft_graph_send_activity_notification_to_recipients_request_builder.MicrosoftGraphSendActivityNotificationToRecipientsRequestBuilder:
         """
         Provides operations to call the sendActivityNotificationToRecipients method.
         """
-        return send_activity_notification_to_recipients_request_builder.SendActivityNotificationToRecipientsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_send_activity_notification_to_recipients_request_builder.MicrosoftGraphSendActivityNotificationToRecipientsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def workforce_integrations(self) -> workforce_integrations_request_builder.WorkforceIntegrationsRequestBuilder:

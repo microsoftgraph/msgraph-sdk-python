@@ -17,11 +17,10 @@ class ChecklistItemItemRequestBuilder():
     """
     Provides operations to manage the checklistItems property of the microsoft.graph.todoTask entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, checklist_item_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ChecklistItemItemRequestBuilder and sets the default values.
         Args:
-            checklistItemId: key: id of checklistItem
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class ChecklistItemItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/todo/lists/{todoTaskList%2Did}/tasks/{todoTask%2Did}/checklistItems/{checklistItem%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["checklistItem%2Did"] = checklistItemId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

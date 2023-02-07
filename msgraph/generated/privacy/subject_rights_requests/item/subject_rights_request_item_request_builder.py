@@ -12,8 +12,8 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 subject_rights_request = lazy_import('msgraph.generated.models.subject_rights_request')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-get_final_attachment_request_builder = lazy_import('msgraph.generated.privacy.subject_rights_requests.item.microsoft_graph_get_final_attachment.get_final_attachment_request_builder')
-get_final_report_request_builder = lazy_import('msgraph.generated.privacy.subject_rights_requests.item.microsoft_graph_get_final_report.get_final_report_request_builder')
+microsoft_graph_get_final_attachment_request_builder = lazy_import('msgraph.generated.privacy.subject_rights_requests.item.microsoft_graph_get_final_attachment.microsoft_graph_get_final_attachment_request_builder')
+microsoft_graph_get_final_report_request_builder = lazy_import('msgraph.generated.privacy.subject_rights_requests.item.microsoft_graph_get_final_report.microsoft_graph_get_final_report_request_builder')
 notes_request_builder = lazy_import('msgraph.generated.privacy.subject_rights_requests.item.notes.notes_request_builder')
 authored_note_item_request_builder = lazy_import('msgraph.generated.privacy.subject_rights_requests.item.notes.item.authored_note_item_request_builder')
 team_request_builder = lazy_import('msgraph.generated.privacy.subject_rights_requests.item.team.team_request_builder')
@@ -23,18 +23,18 @@ class SubjectRightsRequestItemRequestBuilder():
     Provides operations to manage the subjectRightsRequests property of the microsoft.graph.privacy entity.
     """
     @property
-    def microsoft_graph_get_final_attachment(self) -> get_final_attachment_request_builder.GetFinalAttachmentRequestBuilder:
+    def microsoft_graph_get_final_attachment(self) -> microsoft_graph_get_final_attachment_request_builder.MicrosoftGraphGetFinalAttachmentRequestBuilder:
         """
         Provides operations to call the getFinalAttachment method.
         """
-        return get_final_attachment_request_builder.GetFinalAttachmentRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_final_attachment_request_builder.MicrosoftGraphGetFinalAttachmentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_final_report(self) -> get_final_report_request_builder.GetFinalReportRequestBuilder:
+    def microsoft_graph_get_final_report(self) -> microsoft_graph_get_final_report_request_builder.MicrosoftGraphGetFinalReportRequestBuilder:
         """
         Provides operations to call the getFinalReport method.
         """
-        return get_final_report_request_builder.GetFinalReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_final_report_request_builder.MicrosoftGraphGetFinalReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def notes(self) -> notes_request_builder.NotesRequestBuilder:
@@ -50,13 +50,12 @@ class SubjectRightsRequestItemRequestBuilder():
         """
         return team_request_builder.TeamRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, subject_rights_request_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SubjectRightsRequestItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            subjectRightsRequestId: key: id of subjectRightsRequest
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -66,7 +65,6 @@ class SubjectRightsRequestItemRequestBuilder():
         self.url_template: str = "{+baseurl}/privacy/subjectRightsRequests/{subjectRightsRequest%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["subjectRightsRequest%2Did"] = subjectRightsRequestId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

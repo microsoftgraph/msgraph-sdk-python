@@ -17,11 +17,10 @@ class DeviceInstallStateItemRequestBuilder():
     """
     Provides operations to manage the deviceStates property of the microsoft.graph.managedEBook entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, device_install_state_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DeviceInstallStateItemRequestBuilder and sets the default values.
         Args:
-            deviceInstallStateId: key: id of deviceInstallState
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class DeviceInstallStateItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceAppManagement/managedEBooks/{managedEBook%2Did}/deviceStates/{deviceInstallState%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["deviceInstallState%2Did"] = deviceInstallStateId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

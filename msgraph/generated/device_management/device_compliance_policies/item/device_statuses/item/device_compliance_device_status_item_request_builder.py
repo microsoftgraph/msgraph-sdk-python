@@ -17,11 +17,10 @@ class DeviceComplianceDeviceStatusItemRequestBuilder():
     """
     Provides operations to manage the deviceStatuses property of the microsoft.graph.deviceCompliancePolicy entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, device_compliance_device_status_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DeviceComplianceDeviceStatusItemRequestBuilder and sets the default values.
         Args:
-            deviceComplianceDeviceStatusId: key: id of deviceComplianceDeviceStatus
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class DeviceComplianceDeviceStatusItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceManagement/deviceCompliancePolicies/{deviceCompliancePolicy%2Did}/deviceStatuses/{deviceComplianceDeviceStatus%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["deviceComplianceDeviceStatus%2Did"] = deviceComplianceDeviceStatusId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

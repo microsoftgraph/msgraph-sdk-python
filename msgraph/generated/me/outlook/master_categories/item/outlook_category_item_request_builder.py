@@ -17,11 +17,10 @@ class OutlookCategoryItemRequestBuilder():
     """
     Provides operations to manage the masterCategories property of the microsoft.graph.outlookUser entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, outlook_category_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new OutlookCategoryItemRequestBuilder and sets the default values.
         Args:
-            outlookCategoryId: key: id of outlookCategory
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class OutlookCategoryItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/outlook/masterCategories/{outlookCategory%2Did}{?%24select}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["outlookCategory%2Did"] = outlookCategoryId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

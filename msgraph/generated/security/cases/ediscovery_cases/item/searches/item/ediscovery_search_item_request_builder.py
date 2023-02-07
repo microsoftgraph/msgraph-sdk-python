@@ -18,8 +18,8 @@ add_to_review_set_operation_request_builder = lazy_import('msgraph.generated.sec
 custodian_sources_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.custodian_sources.custodian_sources_request_builder')
 data_source_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.custodian_sources.item.data_source_item_request_builder')
 last_estimate_statistics_operation_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.last_estimate_statistics_operation.last_estimate_statistics_operation_request_builder')
-estimate_statistics_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.microsoft_graph_security_estimate_statistics.estimate_statistics_request_builder')
-purge_data_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.microsoft_graph_security_purge_data.purge_data_request_builder')
+microsoft_graph_security_estimate_statistics_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.microsoft_graph_security_estimate_statistics.microsoft_graph_security_estimate_statistics_request_builder')
+microsoft_graph_security_purge_data_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.microsoft_graph_security_purge_data.microsoft_graph_security_purge_data_request_builder')
 noncustodial_sources_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.noncustodial_sources.noncustodial_sources_request_builder')
 ediscovery_noncustodial_data_source_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.noncustodial_sources.item.ediscovery_noncustodial_data_source_item_request_builder')
 
@@ -56,18 +56,18 @@ class EdiscoverySearchItemRequestBuilder():
         return last_estimate_statistics_operation_request_builder.LastEstimateStatisticsOperationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_security_estimate_statistics(self) -> estimate_statistics_request_builder.EstimateStatisticsRequestBuilder:
+    def microsoft_graph_security_estimate_statistics(self) -> microsoft_graph_security_estimate_statistics_request_builder.MicrosoftGraphSecurityEstimateStatisticsRequestBuilder:
         """
         Provides operations to call the estimateStatistics method.
         """
-        return estimate_statistics_request_builder.EstimateStatisticsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_security_estimate_statistics_request_builder.MicrosoftGraphSecurityEstimateStatisticsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_security_purge_data(self) -> purge_data_request_builder.PurgeDataRequestBuilder:
+    def microsoft_graph_security_purge_data(self) -> microsoft_graph_security_purge_data_request_builder.MicrosoftGraphSecurityPurgeDataRequestBuilder:
         """
         Provides operations to call the purgeData method.
         """
-        return purge_data_request_builder.PurgeDataRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_security_purge_data_request_builder.MicrosoftGraphSecurityPurgeDataRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def noncustodial_sources(self) -> noncustodial_sources_request_builder.NoncustodialSourcesRequestBuilder:
@@ -89,11 +89,10 @@ class EdiscoverySearchItemRequestBuilder():
         url_tpl_params["dataSource%2Did"] = id
         return data_source_item_request_builder.DataSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, ediscovery_search_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EdiscoverySearchItemRequestBuilder and sets the default values.
         Args:
-            ediscoverySearchId: key: id of ediscoverySearch
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -105,7 +104,6 @@ class EdiscoverySearchItemRequestBuilder():
         self.url_template: str = "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}/searches/{ediscoverySearch%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["ediscoverySearch%2Did"] = ediscoverySearchId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

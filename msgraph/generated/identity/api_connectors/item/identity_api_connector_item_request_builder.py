@@ -10,7 +10,7 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-upload_client_certificate_request_builder = lazy_import('msgraph.generated.identity.api_connectors.item.microsoft_graph_upload_client_certificate.upload_client_certificate_request_builder')
+microsoft_graph_upload_client_certificate_request_builder = lazy_import('msgraph.generated.identity.api_connectors.item.microsoft_graph_upload_client_certificate.microsoft_graph_upload_client_certificate_request_builder')
 identity_api_connector = lazy_import('msgraph.generated.models.identity_api_connector')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -19,17 +19,16 @@ class IdentityApiConnectorItemRequestBuilder():
     Provides operations to manage the apiConnectors property of the microsoft.graph.identityContainer entity.
     """
     @property
-    def microsoft_graph_upload_client_certificate(self) -> upload_client_certificate_request_builder.UploadClientCertificateRequestBuilder:
+    def microsoft_graph_upload_client_certificate(self) -> microsoft_graph_upload_client_certificate_request_builder.MicrosoftGraphUploadClientCertificateRequestBuilder:
         """
         Provides operations to call the uploadClientCertificate method.
         """
-        return upload_client_certificate_request_builder.UploadClientCertificateRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_upload_client_certificate_request_builder.MicrosoftGraphUploadClientCertificateRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, identity_api_connector_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new IdentityApiConnectorItemRequestBuilder and sets the default values.
         Args:
-            identityApiConnectorId: key: id of identityApiConnector
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -41,7 +40,6 @@ class IdentityApiConnectorItemRequestBuilder():
         self.url_template: str = "{+baseurl}/identity/apiConnectors/{identityApiConnector%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["identityApiConnector%2Did"] = identityApiConnectorId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

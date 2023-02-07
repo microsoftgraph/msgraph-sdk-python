@@ -17,11 +17,10 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder():
     """
     Provides operations to manage the mdmWindowsInformationProtectionPolicies property of the microsoft.graph.deviceAppManagement entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, mdm_windows_information_protection_policy_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new MdmWindowsInformationProtectionPolicyItemRequestBuilder and sets the default values.
         Args:
-            mdmWindowsInformationProtectionPolicyId: key: id of mdmWindowsInformationProtectionPolicy
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class MdmWindowsInformationProtectionPolicyItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceAppManagement/mdmWindowsInformationProtectionPolicies/{mdmWindowsInformationProtectionPolicy%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["mdmWindowsInformationProtectionPolicy%2Did"] = mdmWindowsInformationProtectionPolicyId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

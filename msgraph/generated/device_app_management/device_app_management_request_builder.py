@@ -26,7 +26,7 @@ managed_e_books_request_builder = lazy_import('msgraph.generated.device_app_mana
 managed_e_book_item_request_builder = lazy_import('msgraph.generated.device_app_management.managed_e_books.item.managed_e_book_item_request_builder')
 mdm_windows_information_protection_policies_request_builder = lazy_import('msgraph.generated.device_app_management.mdm_windows_information_protection_policies.mdm_windows_information_protection_policies_request_builder')
 mdm_windows_information_protection_policy_item_request_builder = lazy_import('msgraph.generated.device_app_management.mdm_windows_information_protection_policies.item.mdm_windows_information_protection_policy_item_request_builder')
-sync_microsoft_store_for_business_apps_request_builder = lazy_import('msgraph.generated.device_app_management.microsoft_graph_sync_microsoft_store_for_business_apps.sync_microsoft_store_for_business_apps_request_builder')
+microsoft_graph_sync_microsoft_store_for_business_apps_request_builder = lazy_import('msgraph.generated.device_app_management.microsoft_graph_sync_microsoft_store_for_business_apps.microsoft_graph_sync_microsoft_store_for_business_apps_request_builder')
 mobile_app_categories_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_categories.mobile_app_categories_request_builder')
 mobile_app_category_item_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_categories.item.mobile_app_category_item_request_builder')
 mobile_app_configurations_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_configurations.mobile_app_configurations_request_builder')
@@ -103,11 +103,11 @@ class DeviceAppManagementRequestBuilder():
         return mdm_windows_information_protection_policies_request_builder.MdmWindowsInformationProtectionPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_sync_microsoft_store_for_business_apps(self) -> sync_microsoft_store_for_business_apps_request_builder.SyncMicrosoftStoreForBusinessAppsRequestBuilder:
+    def microsoft_graph_sync_microsoft_store_for_business_apps(self) -> microsoft_graph_sync_microsoft_store_for_business_apps_request_builder.MicrosoftGraphSyncMicrosoftStoreForBusinessAppsRequestBuilder:
         """
         Provides operations to call the syncMicrosoftStoreForBusinessApps method.
         """
-        return sync_microsoft_store_for_business_apps_request_builder.SyncMicrosoftStoreForBusinessAppsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_sync_microsoft_store_for_business_apps_request_builder.MicrosoftGraphSyncMicrosoftStoreForBusinessAppsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def mobile_app_categories(self) -> mobile_app_categories_request_builder.MobileAppCategoriesRequestBuilder:

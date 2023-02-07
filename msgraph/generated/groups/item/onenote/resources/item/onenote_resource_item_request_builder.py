@@ -25,11 +25,10 @@ class OnenoteResourceItemRequestBuilder():
         """
         return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, onenote_resource_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new OnenoteResourceItemRequestBuilder and sets the default values.
         Args:
-            onenoteResourceId: key: id of onenoteResource
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -41,7 +40,6 @@ class OnenoteResourceItemRequestBuilder():
         self.url_template: str = "{+baseurl}/groups/{group%2Did}/onenote/resources/{onenoteResource%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["onenoteResource%2Did"] = onenoteResourceId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

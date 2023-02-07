@@ -12,18 +12,18 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 permission = lazy_import('msgraph.generated.models.permission')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-grant_request_builder = lazy_import('msgraph.generated.shares.item.permission.microsoft_graph_grant.grant_request_builder')
+microsoft_graph_grant_request_builder = lazy_import('msgraph.generated.shares.item.permission.microsoft_graph_grant.microsoft_graph_grant_request_builder')
 
 class PermissionRequestBuilder():
     """
     Provides operations to manage the permission property of the microsoft.graph.sharedDriveItem entity.
     """
     @property
-    def microsoft_graph_grant(self) -> grant_request_builder.GrantRequestBuilder:
+    def microsoft_graph_grant(self) -> microsoft_graph_grant_request_builder.MicrosoftGraphGrantRequestBuilder:
         """
         Provides operations to call the grant method.
         """
-        return grant_request_builder.GrantRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_grant_request_builder.MicrosoftGraphGrantRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

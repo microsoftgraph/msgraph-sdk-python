@@ -16,8 +16,8 @@ message_rules_request_builder = lazy_import('msgraph.generated.me.mail_folders.i
 message_rule_item_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.message_rules.item.message_rule_item_request_builder')
 messages_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.messages.messages_request_builder')
 message_item_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.messages.item.message_item_request_builder')
-copy_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.microsoft_graph_copy.copy_request_builder')
-move_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.microsoft_graph_move.move_request_builder')
+microsoft_graph_copy_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.microsoft_graph_copy.microsoft_graph_copy_request_builder')
+microsoft_graph_move_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.microsoft_graph_move.microsoft_graph_move_request_builder')
 multi_value_extended_properties_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.multi_value_extended_properties.multi_value_extended_properties_request_builder')
 multi_value_legacy_extended_property_item_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.multi_value_extended_properties.item.multi_value_legacy_extended_property_item_request_builder')
 single_value_extended_properties_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.single_value_extended_properties.single_value_extended_properties_request_builder')
@@ -51,18 +51,18 @@ class MailFolderItemRequestBuilder():
         return messages_request_builder.MessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_copy(self) -> copy_request_builder.CopyRequestBuilder:
+    def microsoft_graph_copy(self) -> microsoft_graph_copy_request_builder.MicrosoftGraphCopyRequestBuilder:
         """
         Provides operations to call the copy method.
         """
-        return copy_request_builder.CopyRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_copy_request_builder.MicrosoftGraphCopyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_move(self) -> move_request_builder.MoveRequestBuilder:
+    def microsoft_graph_move(self) -> microsoft_graph_move_request_builder.MicrosoftGraphMoveRequestBuilder:
         """
         Provides operations to call the move method.
         """
-        return move_request_builder.MoveRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_move_request_builder.MicrosoftGraphMoveRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
@@ -91,11 +91,10 @@ class MailFolderItemRequestBuilder():
         url_tpl_params["mailFolder%2Did1"] = id
         return MailFolderItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, mail_folder_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new MailFolderItemRequestBuilder and sets the default values.
         Args:
-            mailFolderId: key: id of mailFolder
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -107,7 +106,6 @@ class MailFolderItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/mailFolders/{mailFolder%2Did}{?%24select}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["mailFolder%2Did"] = mailFolderId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

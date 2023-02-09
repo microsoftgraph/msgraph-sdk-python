@@ -137,6 +137,10 @@ class CalendarViewRequestBuilder():
                 return "%24skip"
             if original_name == "top":
                 return "%24top"
+            if original_name == "start_date_time":
+                return "startDateTime"
+            if original_name == "end_date_time":
+                return "endDateTime"
             return original_name
         
     

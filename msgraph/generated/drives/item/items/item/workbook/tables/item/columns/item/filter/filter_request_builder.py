@@ -10,18 +10,18 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-apply_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply.apply_request_builder')
-apply_bottom_items_filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply_bottom_items_filter.apply_bottom_items_filter_request_builder')
-apply_bottom_percent_filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply_bottom_percent_filter.apply_bottom_percent_filter_request_builder')
-apply_cell_color_filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply_cell_color_filter.apply_cell_color_filter_request_builder')
-apply_custom_filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply_custom_filter.apply_custom_filter_request_builder')
-apply_dynamic_filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply_dynamic_filter.apply_dynamic_filter_request_builder')
-apply_font_color_filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply_font_color_filter.apply_font_color_filter_request_builder')
-apply_icon_filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply_icon_filter.apply_icon_filter_request_builder')
-apply_top_items_filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply_top_items_filter.apply_top_items_filter_request_builder')
-apply_top_percent_filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply_top_percent_filter.apply_top_percent_filter_request_builder')
-apply_values_filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply_values_filter.apply_values_filter_request_builder')
-clear_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_clear.clear_request_builder')
+microsoft_graph_apply_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply.microsoft_graph_apply_request_builder')
+microsoft_graph_apply_bottom_items_filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply_bottom_items_filter.microsoft_graph_apply_bottom_items_filter_request_builder')
+microsoft_graph_apply_bottom_percent_filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply_bottom_percent_filter.microsoft_graph_apply_bottom_percent_filter_request_builder')
+microsoft_graph_apply_cell_color_filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply_cell_color_filter.microsoft_graph_apply_cell_color_filter_request_builder')
+microsoft_graph_apply_custom_filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply_custom_filter.microsoft_graph_apply_custom_filter_request_builder')
+microsoft_graph_apply_dynamic_filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply_dynamic_filter.microsoft_graph_apply_dynamic_filter_request_builder')
+microsoft_graph_apply_font_color_filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply_font_color_filter.microsoft_graph_apply_font_color_filter_request_builder')
+microsoft_graph_apply_icon_filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply_icon_filter.microsoft_graph_apply_icon_filter_request_builder')
+microsoft_graph_apply_top_items_filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply_top_items_filter.microsoft_graph_apply_top_items_filter_request_builder')
+microsoft_graph_apply_top_percent_filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply_top_percent_filter.microsoft_graph_apply_top_percent_filter_request_builder')
+microsoft_graph_apply_values_filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_apply_values_filter.microsoft_graph_apply_values_filter_request_builder')
+microsoft_graph_clear_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.microsoft_graph_clear.microsoft_graph_clear_request_builder')
 workbook_filter = lazy_import('msgraph.generated.models.workbook_filter')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -30,88 +30,88 @@ class FilterRequestBuilder():
     Provides operations to manage the filter property of the microsoft.graph.workbookTableColumn entity.
     """
     @property
-    def microsoft_graph_apply(self) -> apply_request_builder.ApplyRequestBuilder:
+    def microsoft_graph_apply(self) -> microsoft_graph_apply_request_builder.MicrosoftGraphApplyRequestBuilder:
         """
         Provides operations to call the apply method.
         """
-        return apply_request_builder.ApplyRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_apply_request_builder.MicrosoftGraphApplyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_apply_bottom_items_filter(self) -> apply_bottom_items_filter_request_builder.ApplyBottomItemsFilterRequestBuilder:
+    def microsoft_graph_apply_bottom_items_filter(self) -> microsoft_graph_apply_bottom_items_filter_request_builder.MicrosoftGraphApplyBottomItemsFilterRequestBuilder:
         """
         Provides operations to call the applyBottomItemsFilter method.
         """
-        return apply_bottom_items_filter_request_builder.ApplyBottomItemsFilterRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_apply_bottom_items_filter_request_builder.MicrosoftGraphApplyBottomItemsFilterRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_apply_bottom_percent_filter(self) -> apply_bottom_percent_filter_request_builder.ApplyBottomPercentFilterRequestBuilder:
+    def microsoft_graph_apply_bottom_percent_filter(self) -> microsoft_graph_apply_bottom_percent_filter_request_builder.MicrosoftGraphApplyBottomPercentFilterRequestBuilder:
         """
         Provides operations to call the applyBottomPercentFilter method.
         """
-        return apply_bottom_percent_filter_request_builder.ApplyBottomPercentFilterRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_apply_bottom_percent_filter_request_builder.MicrosoftGraphApplyBottomPercentFilterRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_apply_cell_color_filter(self) -> apply_cell_color_filter_request_builder.ApplyCellColorFilterRequestBuilder:
+    def microsoft_graph_apply_cell_color_filter(self) -> microsoft_graph_apply_cell_color_filter_request_builder.MicrosoftGraphApplyCellColorFilterRequestBuilder:
         """
         Provides operations to call the applyCellColorFilter method.
         """
-        return apply_cell_color_filter_request_builder.ApplyCellColorFilterRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_apply_cell_color_filter_request_builder.MicrosoftGraphApplyCellColorFilterRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_apply_custom_filter(self) -> apply_custom_filter_request_builder.ApplyCustomFilterRequestBuilder:
+    def microsoft_graph_apply_custom_filter(self) -> microsoft_graph_apply_custom_filter_request_builder.MicrosoftGraphApplyCustomFilterRequestBuilder:
         """
         Provides operations to call the applyCustomFilter method.
         """
-        return apply_custom_filter_request_builder.ApplyCustomFilterRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_apply_custom_filter_request_builder.MicrosoftGraphApplyCustomFilterRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_apply_dynamic_filter(self) -> apply_dynamic_filter_request_builder.ApplyDynamicFilterRequestBuilder:
+    def microsoft_graph_apply_dynamic_filter(self) -> microsoft_graph_apply_dynamic_filter_request_builder.MicrosoftGraphApplyDynamicFilterRequestBuilder:
         """
         Provides operations to call the applyDynamicFilter method.
         """
-        return apply_dynamic_filter_request_builder.ApplyDynamicFilterRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_apply_dynamic_filter_request_builder.MicrosoftGraphApplyDynamicFilterRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_apply_font_color_filter(self) -> apply_font_color_filter_request_builder.ApplyFontColorFilterRequestBuilder:
+    def microsoft_graph_apply_font_color_filter(self) -> microsoft_graph_apply_font_color_filter_request_builder.MicrosoftGraphApplyFontColorFilterRequestBuilder:
         """
         Provides operations to call the applyFontColorFilter method.
         """
-        return apply_font_color_filter_request_builder.ApplyFontColorFilterRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_apply_font_color_filter_request_builder.MicrosoftGraphApplyFontColorFilterRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_apply_icon_filter(self) -> apply_icon_filter_request_builder.ApplyIconFilterRequestBuilder:
+    def microsoft_graph_apply_icon_filter(self) -> microsoft_graph_apply_icon_filter_request_builder.MicrosoftGraphApplyIconFilterRequestBuilder:
         """
         Provides operations to call the applyIconFilter method.
         """
-        return apply_icon_filter_request_builder.ApplyIconFilterRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_apply_icon_filter_request_builder.MicrosoftGraphApplyIconFilterRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_apply_top_items_filter(self) -> apply_top_items_filter_request_builder.ApplyTopItemsFilterRequestBuilder:
+    def microsoft_graph_apply_top_items_filter(self) -> microsoft_graph_apply_top_items_filter_request_builder.MicrosoftGraphApplyTopItemsFilterRequestBuilder:
         """
         Provides operations to call the applyTopItemsFilter method.
         """
-        return apply_top_items_filter_request_builder.ApplyTopItemsFilterRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_apply_top_items_filter_request_builder.MicrosoftGraphApplyTopItemsFilterRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_apply_top_percent_filter(self) -> apply_top_percent_filter_request_builder.ApplyTopPercentFilterRequestBuilder:
+    def microsoft_graph_apply_top_percent_filter(self) -> microsoft_graph_apply_top_percent_filter_request_builder.MicrosoftGraphApplyTopPercentFilterRequestBuilder:
         """
         Provides operations to call the applyTopPercentFilter method.
         """
-        return apply_top_percent_filter_request_builder.ApplyTopPercentFilterRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_apply_top_percent_filter_request_builder.MicrosoftGraphApplyTopPercentFilterRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_apply_values_filter(self) -> apply_values_filter_request_builder.ApplyValuesFilterRequestBuilder:
+    def microsoft_graph_apply_values_filter(self) -> microsoft_graph_apply_values_filter_request_builder.MicrosoftGraphApplyValuesFilterRequestBuilder:
         """
         Provides operations to call the applyValuesFilter method.
         """
-        return apply_values_filter_request_builder.ApplyValuesFilterRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_apply_values_filter_request_builder.MicrosoftGraphApplyValuesFilterRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_clear(self) -> clear_request_builder.ClearRequestBuilder:
+    def microsoft_graph_clear(self) -> microsoft_graph_clear_request_builder.MicrosoftGraphClearRequestBuilder:
         """
         Provides operations to call the clear method.
         """
-        return clear_request_builder.ClearRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_clear_request_builder.MicrosoftGraphClearRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -214,7 +214,7 @@ class FilterRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -235,7 +235,7 @@ class FilterRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -248,7 +248,7 @@ class FilterRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -287,7 +287,7 @@ class FilterRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -302,7 +302,7 @@ class FilterRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

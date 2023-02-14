@@ -12,34 +12,34 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 security_reports_root = lazy_import('msgraph.generated.models.security_reports_root')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-get_attack_simulation_repeat_offenders_request_builder = lazy_import('msgraph.generated.reports.security.microsoft_graph_get_attack_simulation_repeat_offenders.get_attack_simulation_repeat_offenders_request_builder')
-get_attack_simulation_simulation_user_coverage_request_builder = lazy_import('msgraph.generated.reports.security.microsoft_graph_get_attack_simulation_simulation_user_coverage.get_attack_simulation_simulation_user_coverage_request_builder')
-get_attack_simulation_training_user_coverage_request_builder = lazy_import('msgraph.generated.reports.security.microsoft_graph_get_attack_simulation_training_user_coverage.get_attack_simulation_training_user_coverage_request_builder')
+microsoft_graph_get_attack_simulation_repeat_offenders_request_builder = lazy_import('msgraph.generated.reports.security.microsoft_graph_get_attack_simulation_repeat_offenders.microsoft_graph_get_attack_simulation_repeat_offenders_request_builder')
+microsoft_graph_get_attack_simulation_simulation_user_coverage_request_builder = lazy_import('msgraph.generated.reports.security.microsoft_graph_get_attack_simulation_simulation_user_coverage.microsoft_graph_get_attack_simulation_simulation_user_coverage_request_builder')
+microsoft_graph_get_attack_simulation_training_user_coverage_request_builder = lazy_import('msgraph.generated.reports.security.microsoft_graph_get_attack_simulation_training_user_coverage.microsoft_graph_get_attack_simulation_training_user_coverage_request_builder')
 
 class SecurityRequestBuilder():
     """
     Provides operations to manage the security property of the microsoft.graph.reportRoot entity.
     """
     @property
-    def microsoft_graph_get_attack_simulation_repeat_offenders(self) -> get_attack_simulation_repeat_offenders_request_builder.GetAttackSimulationRepeatOffendersRequestBuilder:
+    def microsoft_graph_get_attack_simulation_repeat_offenders(self) -> microsoft_graph_get_attack_simulation_repeat_offenders_request_builder.MicrosoftGraphGetAttackSimulationRepeatOffendersRequestBuilder:
         """
         Provides operations to call the getAttackSimulationRepeatOffenders method.
         """
-        return get_attack_simulation_repeat_offenders_request_builder.GetAttackSimulationRepeatOffendersRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_attack_simulation_repeat_offenders_request_builder.MicrosoftGraphGetAttackSimulationRepeatOffendersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_attack_simulation_simulation_user_coverage(self) -> get_attack_simulation_simulation_user_coverage_request_builder.GetAttackSimulationSimulationUserCoverageRequestBuilder:
+    def microsoft_graph_get_attack_simulation_simulation_user_coverage(self) -> microsoft_graph_get_attack_simulation_simulation_user_coverage_request_builder.MicrosoftGraphGetAttackSimulationSimulationUserCoverageRequestBuilder:
         """
         Provides operations to call the getAttackSimulationSimulationUserCoverage method.
         """
-        return get_attack_simulation_simulation_user_coverage_request_builder.GetAttackSimulationSimulationUserCoverageRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_attack_simulation_simulation_user_coverage_request_builder.MicrosoftGraphGetAttackSimulationSimulationUserCoverageRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_attack_simulation_training_user_coverage(self) -> get_attack_simulation_training_user_coverage_request_builder.GetAttackSimulationTrainingUserCoverageRequestBuilder:
+    def microsoft_graph_get_attack_simulation_training_user_coverage(self) -> microsoft_graph_get_attack_simulation_training_user_coverage_request_builder.MicrosoftGraphGetAttackSimulationTrainingUserCoverageRequestBuilder:
         """
         Provides operations to call the getAttackSimulationTrainingUserCoverage method.
         """
-        return get_attack_simulation_training_user_coverage_request_builder.GetAttackSimulationTrainingUserCoverageRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_attack_simulation_training_user_coverage_request_builder.MicrosoftGraphGetAttackSimulationTrainingUserCoverageRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -142,7 +142,7 @@ class SecurityRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -163,7 +163,7 @@ class SecurityRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -176,7 +176,7 @@ class SecurityRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -215,7 +215,7 @@ class SecurityRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -230,7 +230,7 @@ class SecurityRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

@@ -12,24 +12,24 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 export_jobs_request_builder = lazy_import('msgraph.generated.device_management.reports.export_jobs.export_jobs_request_builder')
 device_management_export_job_item_request_builder = lazy_import('msgraph.generated.device_management.reports.export_jobs.item.device_management_export_job_item_request_builder')
-get_cached_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_cached_report.get_cached_report_request_builder')
-get_compliance_policy_non_compliance_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_compliance_policy_non_compliance_report.get_compliance_policy_non_compliance_report_request_builder')
-get_compliance_policy_non_compliance_summary_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_compliance_policy_non_compliance_summary_report.get_compliance_policy_non_compliance_summary_report_request_builder')
-get_compliance_setting_non_compliance_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_compliance_setting_non_compliance_report.get_compliance_setting_non_compliance_report_request_builder')
-get_configuration_policy_non_compliance_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_configuration_policy_non_compliance_report.get_configuration_policy_non_compliance_report_request_builder')
-get_configuration_policy_non_compliance_summary_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_configuration_policy_non_compliance_summary_report.get_configuration_policy_non_compliance_summary_report_request_builder')
-get_configuration_setting_non_compliance_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_configuration_setting_non_compliance_report.get_configuration_setting_non_compliance_report_request_builder')
-get_device_management_intent_per_setting_contributing_profiles_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_device_management_intent_per_setting_contributing_profiles.get_device_management_intent_per_setting_contributing_profiles_request_builder')
-get_device_management_intent_settings_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_device_management_intent_settings_report.get_device_management_intent_settings_report_request_builder')
-get_device_non_compliance_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_device_non_compliance_report.get_device_non_compliance_report_request_builder')
-get_devices_without_compliance_policy_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_devices_without_compliance_policy_report.get_devices_without_compliance_policy_report_request_builder')
-get_historical_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_historical_report.get_historical_report_request_builder')
-get_noncompliant_devices_and_settings_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_noncompliant_devices_and_settings_report.get_noncompliant_devices_and_settings_report_request_builder')
-get_policy_non_compliance_metadata_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_policy_non_compliance_metadata.get_policy_non_compliance_metadata_request_builder')
-get_policy_non_compliance_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_policy_non_compliance_report.get_policy_non_compliance_report_request_builder')
-get_policy_non_compliance_summary_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_policy_non_compliance_summary_report.get_policy_non_compliance_summary_report_request_builder')
-get_report_filters_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_report_filters.get_report_filters_request_builder')
-get_setting_non_compliance_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_setting_non_compliance_report.get_setting_non_compliance_report_request_builder')
+microsoft_graph_get_cached_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_cached_report.microsoft_graph_get_cached_report_request_builder')
+microsoft_graph_get_compliance_policy_non_compliance_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_compliance_policy_non_compliance_report.microsoft_graph_get_compliance_policy_non_compliance_report_request_builder')
+microsoft_graph_get_compliance_policy_non_compliance_summary_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_compliance_policy_non_compliance_summary_report.microsoft_graph_get_compliance_policy_non_compliance_summary_report_request_builder')
+microsoft_graph_get_compliance_setting_non_compliance_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_compliance_setting_non_compliance_report.microsoft_graph_get_compliance_setting_non_compliance_report_request_builder')
+microsoft_graph_get_configuration_policy_non_compliance_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_configuration_policy_non_compliance_report.microsoft_graph_get_configuration_policy_non_compliance_report_request_builder')
+microsoft_graph_get_configuration_policy_non_compliance_summary_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_configuration_policy_non_compliance_summary_report.microsoft_graph_get_configuration_policy_non_compliance_summary_report_request_builder')
+microsoft_graph_get_configuration_setting_non_compliance_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_configuration_setting_non_compliance_report.microsoft_graph_get_configuration_setting_non_compliance_report_request_builder')
+microsoft_graph_get_device_management_intent_per_setting_contributing_profiles_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_device_management_intent_per_setting_contributing_profiles.microsoft_graph_get_device_management_intent_per_setting_contributing_profiles_request_builder')
+microsoft_graph_get_device_management_intent_settings_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_device_management_intent_settings_report.microsoft_graph_get_device_management_intent_settings_report_request_builder')
+microsoft_graph_get_device_non_compliance_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_device_non_compliance_report.microsoft_graph_get_device_non_compliance_report_request_builder')
+microsoft_graph_get_devices_without_compliance_policy_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_devices_without_compliance_policy_report.microsoft_graph_get_devices_without_compliance_policy_report_request_builder')
+microsoft_graph_get_historical_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_historical_report.microsoft_graph_get_historical_report_request_builder')
+microsoft_graph_get_noncompliant_devices_and_settings_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_noncompliant_devices_and_settings_report.microsoft_graph_get_noncompliant_devices_and_settings_report_request_builder')
+microsoft_graph_get_policy_non_compliance_metadata_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_policy_non_compliance_metadata.microsoft_graph_get_policy_non_compliance_metadata_request_builder')
+microsoft_graph_get_policy_non_compliance_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_policy_non_compliance_report.microsoft_graph_get_policy_non_compliance_report_request_builder')
+microsoft_graph_get_policy_non_compliance_summary_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_policy_non_compliance_summary_report.microsoft_graph_get_policy_non_compliance_summary_report_request_builder')
+microsoft_graph_get_report_filters_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_report_filters.microsoft_graph_get_report_filters_request_builder')
+microsoft_graph_get_setting_non_compliance_report_request_builder = lazy_import('msgraph.generated.device_management.reports.microsoft_graph_get_setting_non_compliance_report.microsoft_graph_get_setting_non_compliance_report_request_builder')
 device_management_reports = lazy_import('msgraph.generated.models.device_management_reports')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -45,130 +45,130 @@ class ReportsRequestBuilder():
         return export_jobs_request_builder.ExportJobsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_cached_report(self) -> get_cached_report_request_builder.GetCachedReportRequestBuilder:
+    def microsoft_graph_get_cached_report(self) -> microsoft_graph_get_cached_report_request_builder.MicrosoftGraphGetCachedReportRequestBuilder:
         """
         Provides operations to call the getCachedReport method.
         """
-        return get_cached_report_request_builder.GetCachedReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_cached_report_request_builder.MicrosoftGraphGetCachedReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_compliance_policy_non_compliance_report(self) -> get_compliance_policy_non_compliance_report_request_builder.GetCompliancePolicyNonComplianceReportRequestBuilder:
+    def microsoft_graph_get_compliance_policy_non_compliance_report(self) -> microsoft_graph_get_compliance_policy_non_compliance_report_request_builder.MicrosoftGraphGetCompliancePolicyNonComplianceReportRequestBuilder:
         """
         Provides operations to call the getCompliancePolicyNonComplianceReport method.
         """
-        return get_compliance_policy_non_compliance_report_request_builder.GetCompliancePolicyNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_compliance_policy_non_compliance_report_request_builder.MicrosoftGraphGetCompliancePolicyNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_compliance_policy_non_compliance_summary_report(self) -> get_compliance_policy_non_compliance_summary_report_request_builder.GetCompliancePolicyNonComplianceSummaryReportRequestBuilder:
+    def microsoft_graph_get_compliance_policy_non_compliance_summary_report(self) -> microsoft_graph_get_compliance_policy_non_compliance_summary_report_request_builder.MicrosoftGraphGetCompliancePolicyNonComplianceSummaryReportRequestBuilder:
         """
         Provides operations to call the getCompliancePolicyNonComplianceSummaryReport method.
         """
-        return get_compliance_policy_non_compliance_summary_report_request_builder.GetCompliancePolicyNonComplianceSummaryReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_compliance_policy_non_compliance_summary_report_request_builder.MicrosoftGraphGetCompliancePolicyNonComplianceSummaryReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_compliance_setting_non_compliance_report(self) -> get_compliance_setting_non_compliance_report_request_builder.GetComplianceSettingNonComplianceReportRequestBuilder:
+    def microsoft_graph_get_compliance_setting_non_compliance_report(self) -> microsoft_graph_get_compliance_setting_non_compliance_report_request_builder.MicrosoftGraphGetComplianceSettingNonComplianceReportRequestBuilder:
         """
         Provides operations to call the getComplianceSettingNonComplianceReport method.
         """
-        return get_compliance_setting_non_compliance_report_request_builder.GetComplianceSettingNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_compliance_setting_non_compliance_report_request_builder.MicrosoftGraphGetComplianceSettingNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_configuration_policy_non_compliance_report(self) -> get_configuration_policy_non_compliance_report_request_builder.GetConfigurationPolicyNonComplianceReportRequestBuilder:
+    def microsoft_graph_get_configuration_policy_non_compliance_report(self) -> microsoft_graph_get_configuration_policy_non_compliance_report_request_builder.MicrosoftGraphGetConfigurationPolicyNonComplianceReportRequestBuilder:
         """
         Provides operations to call the getConfigurationPolicyNonComplianceReport method.
         """
-        return get_configuration_policy_non_compliance_report_request_builder.GetConfigurationPolicyNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_configuration_policy_non_compliance_report_request_builder.MicrosoftGraphGetConfigurationPolicyNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_configuration_policy_non_compliance_summary_report(self) -> get_configuration_policy_non_compliance_summary_report_request_builder.GetConfigurationPolicyNonComplianceSummaryReportRequestBuilder:
+    def microsoft_graph_get_configuration_policy_non_compliance_summary_report(self) -> microsoft_graph_get_configuration_policy_non_compliance_summary_report_request_builder.MicrosoftGraphGetConfigurationPolicyNonComplianceSummaryReportRequestBuilder:
         """
         Provides operations to call the getConfigurationPolicyNonComplianceSummaryReport method.
         """
-        return get_configuration_policy_non_compliance_summary_report_request_builder.GetConfigurationPolicyNonComplianceSummaryReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_configuration_policy_non_compliance_summary_report_request_builder.MicrosoftGraphGetConfigurationPolicyNonComplianceSummaryReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_configuration_setting_non_compliance_report(self) -> get_configuration_setting_non_compliance_report_request_builder.GetConfigurationSettingNonComplianceReportRequestBuilder:
+    def microsoft_graph_get_configuration_setting_non_compliance_report(self) -> microsoft_graph_get_configuration_setting_non_compliance_report_request_builder.MicrosoftGraphGetConfigurationSettingNonComplianceReportRequestBuilder:
         """
         Provides operations to call the getConfigurationSettingNonComplianceReport method.
         """
-        return get_configuration_setting_non_compliance_report_request_builder.GetConfigurationSettingNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_configuration_setting_non_compliance_report_request_builder.MicrosoftGraphGetConfigurationSettingNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_device_management_intent_per_setting_contributing_profiles(self) -> get_device_management_intent_per_setting_contributing_profiles_request_builder.GetDeviceManagementIntentPerSettingContributingProfilesRequestBuilder:
+    def microsoft_graph_get_device_management_intent_per_setting_contributing_profiles(self) -> microsoft_graph_get_device_management_intent_per_setting_contributing_profiles_request_builder.MicrosoftGraphGetDeviceManagementIntentPerSettingContributingProfilesRequestBuilder:
         """
         Provides operations to call the getDeviceManagementIntentPerSettingContributingProfiles method.
         """
-        return get_device_management_intent_per_setting_contributing_profiles_request_builder.GetDeviceManagementIntentPerSettingContributingProfilesRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_device_management_intent_per_setting_contributing_profiles_request_builder.MicrosoftGraphGetDeviceManagementIntentPerSettingContributingProfilesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_device_management_intent_settings_report(self) -> get_device_management_intent_settings_report_request_builder.GetDeviceManagementIntentSettingsReportRequestBuilder:
+    def microsoft_graph_get_device_management_intent_settings_report(self) -> microsoft_graph_get_device_management_intent_settings_report_request_builder.MicrosoftGraphGetDeviceManagementIntentSettingsReportRequestBuilder:
         """
         Provides operations to call the getDeviceManagementIntentSettingsReport method.
         """
-        return get_device_management_intent_settings_report_request_builder.GetDeviceManagementIntentSettingsReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_device_management_intent_settings_report_request_builder.MicrosoftGraphGetDeviceManagementIntentSettingsReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_device_non_compliance_report(self) -> get_device_non_compliance_report_request_builder.GetDeviceNonComplianceReportRequestBuilder:
+    def microsoft_graph_get_device_non_compliance_report(self) -> microsoft_graph_get_device_non_compliance_report_request_builder.MicrosoftGraphGetDeviceNonComplianceReportRequestBuilder:
         """
         Provides operations to call the getDeviceNonComplianceReport method.
         """
-        return get_device_non_compliance_report_request_builder.GetDeviceNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_device_non_compliance_report_request_builder.MicrosoftGraphGetDeviceNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_devices_without_compliance_policy_report(self) -> get_devices_without_compliance_policy_report_request_builder.GetDevicesWithoutCompliancePolicyReportRequestBuilder:
+    def microsoft_graph_get_devices_without_compliance_policy_report(self) -> microsoft_graph_get_devices_without_compliance_policy_report_request_builder.MicrosoftGraphGetDevicesWithoutCompliancePolicyReportRequestBuilder:
         """
         Provides operations to call the getDevicesWithoutCompliancePolicyReport method.
         """
-        return get_devices_without_compliance_policy_report_request_builder.GetDevicesWithoutCompliancePolicyReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_devices_without_compliance_policy_report_request_builder.MicrosoftGraphGetDevicesWithoutCompliancePolicyReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_historical_report(self) -> get_historical_report_request_builder.GetHistoricalReportRequestBuilder:
+    def microsoft_graph_get_historical_report(self) -> microsoft_graph_get_historical_report_request_builder.MicrosoftGraphGetHistoricalReportRequestBuilder:
         """
         Provides operations to call the getHistoricalReport method.
         """
-        return get_historical_report_request_builder.GetHistoricalReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_historical_report_request_builder.MicrosoftGraphGetHistoricalReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_noncompliant_devices_and_settings_report(self) -> get_noncompliant_devices_and_settings_report_request_builder.GetNoncompliantDevicesAndSettingsReportRequestBuilder:
+    def microsoft_graph_get_noncompliant_devices_and_settings_report(self) -> microsoft_graph_get_noncompliant_devices_and_settings_report_request_builder.MicrosoftGraphGetNoncompliantDevicesAndSettingsReportRequestBuilder:
         """
         Provides operations to call the getNoncompliantDevicesAndSettingsReport method.
         """
-        return get_noncompliant_devices_and_settings_report_request_builder.GetNoncompliantDevicesAndSettingsReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_noncompliant_devices_and_settings_report_request_builder.MicrosoftGraphGetNoncompliantDevicesAndSettingsReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_policy_non_compliance_metadata(self) -> get_policy_non_compliance_metadata_request_builder.GetPolicyNonComplianceMetadataRequestBuilder:
+    def microsoft_graph_get_policy_non_compliance_metadata(self) -> microsoft_graph_get_policy_non_compliance_metadata_request_builder.MicrosoftGraphGetPolicyNonComplianceMetadataRequestBuilder:
         """
         Provides operations to call the getPolicyNonComplianceMetadata method.
         """
-        return get_policy_non_compliance_metadata_request_builder.GetPolicyNonComplianceMetadataRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_policy_non_compliance_metadata_request_builder.MicrosoftGraphGetPolicyNonComplianceMetadataRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_policy_non_compliance_report(self) -> get_policy_non_compliance_report_request_builder.GetPolicyNonComplianceReportRequestBuilder:
+    def microsoft_graph_get_policy_non_compliance_report(self) -> microsoft_graph_get_policy_non_compliance_report_request_builder.MicrosoftGraphGetPolicyNonComplianceReportRequestBuilder:
         """
         Provides operations to call the getPolicyNonComplianceReport method.
         """
-        return get_policy_non_compliance_report_request_builder.GetPolicyNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_policy_non_compliance_report_request_builder.MicrosoftGraphGetPolicyNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_policy_non_compliance_summary_report(self) -> get_policy_non_compliance_summary_report_request_builder.GetPolicyNonComplianceSummaryReportRequestBuilder:
+    def microsoft_graph_get_policy_non_compliance_summary_report(self) -> microsoft_graph_get_policy_non_compliance_summary_report_request_builder.MicrosoftGraphGetPolicyNonComplianceSummaryReportRequestBuilder:
         """
         Provides operations to call the getPolicyNonComplianceSummaryReport method.
         """
-        return get_policy_non_compliance_summary_report_request_builder.GetPolicyNonComplianceSummaryReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_policy_non_compliance_summary_report_request_builder.MicrosoftGraphGetPolicyNonComplianceSummaryReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_report_filters(self) -> get_report_filters_request_builder.GetReportFiltersRequestBuilder:
+    def microsoft_graph_get_report_filters(self) -> microsoft_graph_get_report_filters_request_builder.MicrosoftGraphGetReportFiltersRequestBuilder:
         """
         Provides operations to call the getReportFilters method.
         """
-        return get_report_filters_request_builder.GetReportFiltersRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_report_filters_request_builder.MicrosoftGraphGetReportFiltersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_setting_non_compliance_report(self) -> get_setting_non_compliance_report_request_builder.GetSettingNonComplianceReportRequestBuilder:
+    def microsoft_graph_get_setting_non_compliance_report(self) -> microsoft_graph_get_setting_non_compliance_report_request_builder.MicrosoftGraphGetSettingNonComplianceReportRequestBuilder:
         """
         Provides operations to call the getSettingNonComplianceReport method.
         """
-        return get_setting_non_compliance_report_request_builder.GetSettingNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_setting_non_compliance_report_request_builder.MicrosoftGraphGetSettingNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -284,7 +284,7 @@ class ReportsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -305,7 +305,7 @@ class ReportsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -318,7 +318,7 @@ class ReportsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -357,7 +357,7 @@ class ReportsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -372,7 +372,7 @@ class ReportsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

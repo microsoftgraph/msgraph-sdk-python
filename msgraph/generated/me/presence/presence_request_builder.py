@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-clear_presence_request_builder = lazy_import('msgraph.generated.me.presence.microsoft_graph_clear_presence.clear_presence_request_builder')
-clear_user_preferred_presence_request_builder = lazy_import('msgraph.generated.me.presence.microsoft_graph_clear_user_preferred_presence.clear_user_preferred_presence_request_builder')
-set_presence_request_builder = lazy_import('msgraph.generated.me.presence.microsoft_graph_set_presence.set_presence_request_builder')
-set_user_preferred_presence_request_builder = lazy_import('msgraph.generated.me.presence.microsoft_graph_set_user_preferred_presence.set_user_preferred_presence_request_builder')
+microsoft_graph_clear_presence_request_builder = lazy_import('msgraph.generated.me.presence.microsoft_graph_clear_presence.microsoft_graph_clear_presence_request_builder')
+microsoft_graph_clear_user_preferred_presence_request_builder = lazy_import('msgraph.generated.me.presence.microsoft_graph_clear_user_preferred_presence.microsoft_graph_clear_user_preferred_presence_request_builder')
+microsoft_graph_set_presence_request_builder = lazy_import('msgraph.generated.me.presence.microsoft_graph_set_presence.microsoft_graph_set_presence_request_builder')
+microsoft_graph_set_user_preferred_presence_request_builder = lazy_import('msgraph.generated.me.presence.microsoft_graph_set_user_preferred_presence.microsoft_graph_set_user_preferred_presence_request_builder')
 presence = lazy_import('msgraph.generated.models.presence')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -22,32 +22,32 @@ class PresenceRequestBuilder():
     Provides operations to manage the presence property of the microsoft.graph.user entity.
     """
     @property
-    def microsoft_graph_clear_presence(self) -> clear_presence_request_builder.ClearPresenceRequestBuilder:
+    def microsoft_graph_clear_presence(self) -> microsoft_graph_clear_presence_request_builder.MicrosoftGraphClearPresenceRequestBuilder:
         """
         Provides operations to call the clearPresence method.
         """
-        return clear_presence_request_builder.ClearPresenceRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_clear_presence_request_builder.MicrosoftGraphClearPresenceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_clear_user_preferred_presence(self) -> clear_user_preferred_presence_request_builder.ClearUserPreferredPresenceRequestBuilder:
+    def microsoft_graph_clear_user_preferred_presence(self) -> microsoft_graph_clear_user_preferred_presence_request_builder.MicrosoftGraphClearUserPreferredPresenceRequestBuilder:
         """
         Provides operations to call the clearUserPreferredPresence method.
         """
-        return clear_user_preferred_presence_request_builder.ClearUserPreferredPresenceRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_clear_user_preferred_presence_request_builder.MicrosoftGraphClearUserPreferredPresenceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_set_presence(self) -> set_presence_request_builder.SetPresenceRequestBuilder:
+    def microsoft_graph_set_presence(self) -> microsoft_graph_set_presence_request_builder.MicrosoftGraphSetPresenceRequestBuilder:
         """
         Provides operations to call the setPresence method.
         """
-        return set_presence_request_builder.SetPresenceRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_set_presence_request_builder.MicrosoftGraphSetPresenceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_set_user_preferred_presence(self) -> set_user_preferred_presence_request_builder.SetUserPreferredPresenceRequestBuilder:
+    def microsoft_graph_set_user_preferred_presence(self) -> microsoft_graph_set_user_preferred_presence_request_builder.MicrosoftGraphSetUserPreferredPresenceRequestBuilder:
         """
         Provides operations to call the setUserPreferredPresence method.
         """
-        return set_user_preferred_presence_request_builder.SetUserPreferredPresenceRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_set_user_preferred_presence_request_builder.MicrosoftGraphSetUserPreferredPresenceRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -150,7 +150,7 @@ class PresenceRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -171,7 +171,7 @@ class PresenceRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -184,7 +184,7 @@ class PresenceRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -223,7 +223,7 @@ class PresenceRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -238,7 +238,7 @@ class PresenceRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

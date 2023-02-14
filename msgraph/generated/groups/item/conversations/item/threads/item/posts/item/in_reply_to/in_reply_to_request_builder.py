@@ -14,8 +14,8 @@ attachments_request_builder = lazy_import('msgraph.generated.groups.item.convers
 attachment_item_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.attachments.item.attachment_item_request_builder')
 extensions_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.extensions.extensions_request_builder')
 extension_item_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.extensions.item.extension_item_request_builder')
-forward_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.microsoft_graph_forward.forward_request_builder')
-reply_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.microsoft_graph_reply.reply_request_builder')
+microsoft_graph_forward_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.microsoft_graph_forward.microsoft_graph_forward_request_builder')
+microsoft_graph_reply_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.microsoft_graph_reply.microsoft_graph_reply_request_builder')
 multi_value_extended_properties_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.multi_value_extended_properties.multi_value_extended_properties_request_builder')
 multi_value_legacy_extended_property_item_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.multi_value_extended_properties.item.multi_value_legacy_extended_property_item_request_builder')
 single_value_extended_properties_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.in_reply_to.single_value_extended_properties.single_value_extended_properties_request_builder')
@@ -42,18 +42,18 @@ class InReplyToRequestBuilder():
         return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_forward(self) -> forward_request_builder.ForwardRequestBuilder:
+    def microsoft_graph_forward(self) -> microsoft_graph_forward_request_builder.MicrosoftGraphForwardRequestBuilder:
         """
         Provides operations to call the forward method.
         """
-        return forward_request_builder.ForwardRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_forward_request_builder.MicrosoftGraphForwardRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_reply(self) -> reply_request_builder.ReplyRequestBuilder:
+    def microsoft_graph_reply(self) -> microsoft_graph_reply_request_builder.MicrosoftGraphReplyRequestBuilder:
         """
         Provides operations to call the reply method.
         """
-        return reply_request_builder.ReplyRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_reply_request_builder.MicrosoftGraphReplyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
@@ -168,7 +168,7 @@ class InReplyToRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -208,7 +208,7 @@ class InReplyToRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

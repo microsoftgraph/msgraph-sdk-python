@@ -64,28 +64,28 @@ member_of_request_builder = lazy_import('msgraph.generated.users.item.member_of.
 directory_object_item_request_builder = lazy_import('msgraph.generated.users.item.member_of.item.directory_object_item_request_builder')
 messages_request_builder = lazy_import('msgraph.generated.users.item.messages.messages_request_builder')
 message_item_request_builder = lazy_import('msgraph.generated.users.item.messages.item.message_item_request_builder')
-assign_license_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_assign_license.assign_license_request_builder')
-change_password_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_change_password.change_password_request_builder')
-check_member_groups_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_check_member_groups.check_member_groups_request_builder')
-check_member_objects_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_check_member_objects.check_member_objects_request_builder')
-export_device_and_app_management_data_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_export_device_and_app_management_data.export_device_and_app_management_data_request_builder')
-export_device_and_app_management_data_with_skip_with_top_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_export_device_and_app_management_data_with_skip_with_top.export_device_and_app_management_data_with_skip_with_top_request_builder')
-export_personal_data_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_export_personal_data.export_personal_data_request_builder')
-find_meeting_times_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_find_meeting_times.find_meeting_times_request_builder')
-get_mail_tips_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_get_mail_tips.get_mail_tips_request_builder')
-get_managed_app_diagnostic_statuses_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_get_managed_app_diagnostic_statuses.get_managed_app_diagnostic_statuses_request_builder')
-get_managed_app_policies_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_get_managed_app_policies.get_managed_app_policies_request_builder')
-get_managed_devices_with_app_failures_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_get_managed_devices_with_app_failures.get_managed_devices_with_app_failures_request_builder')
-get_member_groups_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_get_member_groups.get_member_groups_request_builder')
-get_member_objects_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_get_member_objects.get_member_objects_request_builder')
-reminder_view_with_start_date_time_with_end_date_time_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_reminder_view_with_start_date_time_with_end_date_time.reminder_view_with_start_date_time_with_end_date_time_request_builder')
-remove_all_devices_from_management_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_remove_all_devices_from_management.remove_all_devices_from_management_request_builder')
-reprocess_license_assignment_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_reprocess_license_assignment.reprocess_license_assignment_request_builder')
-restore_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_restore.restore_request_builder')
-revoke_sign_in_sessions_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_revoke_sign_in_sessions.revoke_sign_in_sessions_request_builder')
-send_mail_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_send_mail.send_mail_request_builder')
-translate_exchange_ids_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_translate_exchange_ids.translate_exchange_ids_request_builder')
-wipe_managed_app_registrations_by_device_tag_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_wipe_managed_app_registrations_by_device_tag.wipe_managed_app_registrations_by_device_tag_request_builder')
+microsoft_graph_assign_license_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_assign_license.microsoft_graph_assign_license_request_builder')
+microsoft_graph_change_password_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_change_password.microsoft_graph_change_password_request_builder')
+microsoft_graph_check_member_groups_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_check_member_groups.microsoft_graph_check_member_groups_request_builder')
+microsoft_graph_check_member_objects_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_check_member_objects.microsoft_graph_check_member_objects_request_builder')
+microsoft_graph_export_device_and_app_management_data_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_export_device_and_app_management_data.microsoft_graph_export_device_and_app_management_data_request_builder')
+microsoft_graph_export_device_and_app_management_data_with_skip_with_top_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_export_device_and_app_management_data_with_skip_with_top.microsoft_graph_export_device_and_app_management_data_with_skip_with_top_request_builder')
+microsoft_graph_export_personal_data_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_export_personal_data.microsoft_graph_export_personal_data_request_builder')
+microsoft_graph_find_meeting_times_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_find_meeting_times.microsoft_graph_find_meeting_times_request_builder')
+microsoft_graph_get_mail_tips_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_get_mail_tips.microsoft_graph_get_mail_tips_request_builder')
+microsoft_graph_get_managed_app_diagnostic_statuses_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_get_managed_app_diagnostic_statuses.microsoft_graph_get_managed_app_diagnostic_statuses_request_builder')
+microsoft_graph_get_managed_app_policies_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_get_managed_app_policies.microsoft_graph_get_managed_app_policies_request_builder')
+microsoft_graph_get_managed_devices_with_app_failures_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_get_managed_devices_with_app_failures.microsoft_graph_get_managed_devices_with_app_failures_request_builder')
+microsoft_graph_get_member_groups_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_get_member_groups.microsoft_graph_get_member_groups_request_builder')
+microsoft_graph_get_member_objects_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_get_member_objects.microsoft_graph_get_member_objects_request_builder')
+microsoft_graph_reminder_view_with_start_date_time_with_end_date_time_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_reminder_view_with_start_date_time_with_end_date_time.microsoft_graph_reminder_view_with_start_date_time_with_end_date_time_request_builder')
+microsoft_graph_remove_all_devices_from_management_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_remove_all_devices_from_management.microsoft_graph_remove_all_devices_from_management_request_builder')
+microsoft_graph_reprocess_license_assignment_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_reprocess_license_assignment.microsoft_graph_reprocess_license_assignment_request_builder')
+microsoft_graph_restore_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_restore.microsoft_graph_restore_request_builder')
+microsoft_graph_revoke_sign_in_sessions_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_revoke_sign_in_sessions.microsoft_graph_revoke_sign_in_sessions_request_builder')
+microsoft_graph_send_mail_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_send_mail.microsoft_graph_send_mail_request_builder')
+microsoft_graph_translate_exchange_ids_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_translate_exchange_ids.microsoft_graph_translate_exchange_ids_request_builder')
+microsoft_graph_wipe_managed_app_registrations_by_device_tag_request_builder = lazy_import('msgraph.generated.users.item.microsoft_graph_wipe_managed_app_registrations_by_device_tag.microsoft_graph_wipe_managed_app_registrations_by_device_tag_request_builder')
 oauth2_permission_grants_request_builder = lazy_import('msgraph.generated.users.item.oauth2_permission_grants.oauth2_permission_grants_request_builder')
 o_auth2_permission_grant_item_request_builder = lazy_import('msgraph.generated.users.item.oauth2_permission_grants.item.o_auth2_permission_grant_item_request_builder')
 onenote_request_builder = lazy_import('msgraph.generated.users.item.onenote.onenote_request_builder')
@@ -321,144 +321,144 @@ class UserItemRequestBuilder():
         return messages_request_builder.MessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_assign_license(self) -> assign_license_request_builder.AssignLicenseRequestBuilder:
+    def microsoft_graph_assign_license(self) -> microsoft_graph_assign_license_request_builder.MicrosoftGraphAssignLicenseRequestBuilder:
         """
         Provides operations to call the assignLicense method.
         """
-        return assign_license_request_builder.AssignLicenseRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_assign_license_request_builder.MicrosoftGraphAssignLicenseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_change_password(self) -> change_password_request_builder.ChangePasswordRequestBuilder:
+    def microsoft_graph_change_password(self) -> microsoft_graph_change_password_request_builder.MicrosoftGraphChangePasswordRequestBuilder:
         """
         Provides operations to call the changePassword method.
         """
-        return change_password_request_builder.ChangePasswordRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_change_password_request_builder.MicrosoftGraphChangePasswordRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
+    def microsoft_graph_check_member_groups(self) -> microsoft_graph_check_member_groups_request_builder.MicrosoftGraphCheckMemberGroupsRequestBuilder:
         """
         Provides operations to call the checkMemberGroups method.
         """
-        return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_check_member_groups_request_builder.MicrosoftGraphCheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
+    def microsoft_graph_check_member_objects(self) -> microsoft_graph_check_member_objects_request_builder.MicrosoftGraphCheckMemberObjectsRequestBuilder:
         """
         Provides operations to call the checkMemberObjects method.
         """
-        return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_check_member_objects_request_builder.MicrosoftGraphCheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_export_device_and_app_management_data(self) -> export_device_and_app_management_data_request_builder.ExportDeviceAndAppManagementDataRequestBuilder:
+    def microsoft_graph_export_device_and_app_management_data(self) -> microsoft_graph_export_device_and_app_management_data_request_builder.MicrosoftGraphExportDeviceAndAppManagementDataRequestBuilder:
         """
         Provides operations to call the exportDeviceAndAppManagementData method.
         """
-        return export_device_and_app_management_data_request_builder.ExportDeviceAndAppManagementDataRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_export_device_and_app_management_data_request_builder.MicrosoftGraphExportDeviceAndAppManagementDataRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_export_personal_data(self) -> export_personal_data_request_builder.ExportPersonalDataRequestBuilder:
+    def microsoft_graph_export_personal_data(self) -> microsoft_graph_export_personal_data_request_builder.MicrosoftGraphExportPersonalDataRequestBuilder:
         """
         Provides operations to call the exportPersonalData method.
         """
-        return export_personal_data_request_builder.ExportPersonalDataRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_export_personal_data_request_builder.MicrosoftGraphExportPersonalDataRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_find_meeting_times(self) -> find_meeting_times_request_builder.FindMeetingTimesRequestBuilder:
+    def microsoft_graph_find_meeting_times(self) -> microsoft_graph_find_meeting_times_request_builder.MicrosoftGraphFindMeetingTimesRequestBuilder:
         """
         Provides operations to call the findMeetingTimes method.
         """
-        return find_meeting_times_request_builder.FindMeetingTimesRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_find_meeting_times_request_builder.MicrosoftGraphFindMeetingTimesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_mail_tips(self) -> get_mail_tips_request_builder.GetMailTipsRequestBuilder:
+    def microsoft_graph_get_mail_tips(self) -> microsoft_graph_get_mail_tips_request_builder.MicrosoftGraphGetMailTipsRequestBuilder:
         """
         Provides operations to call the getMailTips method.
         """
-        return get_mail_tips_request_builder.GetMailTipsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_mail_tips_request_builder.MicrosoftGraphGetMailTipsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_managed_app_diagnostic_statuses(self) -> get_managed_app_diagnostic_statuses_request_builder.GetManagedAppDiagnosticStatusesRequestBuilder:
+    def microsoft_graph_get_managed_app_diagnostic_statuses(self) -> microsoft_graph_get_managed_app_diagnostic_statuses_request_builder.MicrosoftGraphGetManagedAppDiagnosticStatusesRequestBuilder:
         """
         Provides operations to call the getManagedAppDiagnosticStatuses method.
         """
-        return get_managed_app_diagnostic_statuses_request_builder.GetManagedAppDiagnosticStatusesRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_managed_app_diagnostic_statuses_request_builder.MicrosoftGraphGetManagedAppDiagnosticStatusesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_managed_app_policies(self) -> get_managed_app_policies_request_builder.GetManagedAppPoliciesRequestBuilder:
+    def microsoft_graph_get_managed_app_policies(self) -> microsoft_graph_get_managed_app_policies_request_builder.MicrosoftGraphGetManagedAppPoliciesRequestBuilder:
         """
         Provides operations to call the getManagedAppPolicies method.
         """
-        return get_managed_app_policies_request_builder.GetManagedAppPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_managed_app_policies_request_builder.MicrosoftGraphGetManagedAppPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_managed_devices_with_app_failures(self) -> get_managed_devices_with_app_failures_request_builder.GetManagedDevicesWithAppFailuresRequestBuilder:
+    def microsoft_graph_get_managed_devices_with_app_failures(self) -> microsoft_graph_get_managed_devices_with_app_failures_request_builder.MicrosoftGraphGetManagedDevicesWithAppFailuresRequestBuilder:
         """
         Provides operations to call the getManagedDevicesWithAppFailures method.
         """
-        return get_managed_devices_with_app_failures_request_builder.GetManagedDevicesWithAppFailuresRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_managed_devices_with_app_failures_request_builder.MicrosoftGraphGetManagedDevicesWithAppFailuresRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
+    def microsoft_graph_get_member_groups(self) -> microsoft_graph_get_member_groups_request_builder.MicrosoftGraphGetMemberGroupsRequestBuilder:
         """
         Provides operations to call the getMemberGroups method.
         """
-        return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_member_groups_request_builder.MicrosoftGraphGetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
+    def microsoft_graph_get_member_objects(self) -> microsoft_graph_get_member_objects_request_builder.MicrosoftGraphGetMemberObjectsRequestBuilder:
         """
         Provides operations to call the getMemberObjects method.
         """
-        return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_member_objects_request_builder.MicrosoftGraphGetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_remove_all_devices_from_management(self) -> remove_all_devices_from_management_request_builder.RemoveAllDevicesFromManagementRequestBuilder:
+    def microsoft_graph_remove_all_devices_from_management(self) -> microsoft_graph_remove_all_devices_from_management_request_builder.MicrosoftGraphRemoveAllDevicesFromManagementRequestBuilder:
         """
         Provides operations to call the removeAllDevicesFromManagement method.
         """
-        return remove_all_devices_from_management_request_builder.RemoveAllDevicesFromManagementRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_remove_all_devices_from_management_request_builder.MicrosoftGraphRemoveAllDevicesFromManagementRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_reprocess_license_assignment(self) -> reprocess_license_assignment_request_builder.ReprocessLicenseAssignmentRequestBuilder:
+    def microsoft_graph_reprocess_license_assignment(self) -> microsoft_graph_reprocess_license_assignment_request_builder.MicrosoftGraphReprocessLicenseAssignmentRequestBuilder:
         """
         Provides operations to call the reprocessLicenseAssignment method.
         """
-        return reprocess_license_assignment_request_builder.ReprocessLicenseAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_reprocess_license_assignment_request_builder.MicrosoftGraphReprocessLicenseAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_restore(self) -> restore_request_builder.RestoreRequestBuilder:
+    def microsoft_graph_restore(self) -> microsoft_graph_restore_request_builder.MicrosoftGraphRestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
-        return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_restore_request_builder.MicrosoftGraphRestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_revoke_sign_in_sessions(self) -> revoke_sign_in_sessions_request_builder.RevokeSignInSessionsRequestBuilder:
+    def microsoft_graph_revoke_sign_in_sessions(self) -> microsoft_graph_revoke_sign_in_sessions_request_builder.MicrosoftGraphRevokeSignInSessionsRequestBuilder:
         """
         Provides operations to call the revokeSignInSessions method.
         """
-        return revoke_sign_in_sessions_request_builder.RevokeSignInSessionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_revoke_sign_in_sessions_request_builder.MicrosoftGraphRevokeSignInSessionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_send_mail(self) -> send_mail_request_builder.SendMailRequestBuilder:
+    def microsoft_graph_send_mail(self) -> microsoft_graph_send_mail_request_builder.MicrosoftGraphSendMailRequestBuilder:
         """
         Provides operations to call the sendMail method.
         """
-        return send_mail_request_builder.SendMailRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_send_mail_request_builder.MicrosoftGraphSendMailRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_translate_exchange_ids(self) -> translate_exchange_ids_request_builder.TranslateExchangeIdsRequestBuilder:
+    def microsoft_graph_translate_exchange_ids(self) -> microsoft_graph_translate_exchange_ids_request_builder.MicrosoftGraphTranslateExchangeIdsRequestBuilder:
         """
         Provides operations to call the translateExchangeIds method.
         """
-        return translate_exchange_ids_request_builder.TranslateExchangeIdsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_translate_exchange_ids_request_builder.MicrosoftGraphTranslateExchangeIdsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_wipe_managed_app_registrations_by_device_tag(self) -> wipe_managed_app_registrations_by_device_tag_request_builder.WipeManagedAppRegistrationsByDeviceTagRequestBuilder:
+    def microsoft_graph_wipe_managed_app_registrations_by_device_tag(self) -> microsoft_graph_wipe_managed_app_registrations_by_device_tag_request_builder.MicrosoftGraphWipeManagedAppRegistrationsByDeviceTagRequestBuilder:
         """
         Provides operations to call the wipeManagedAppRegistrationsByDeviceTag method.
         """
-        return wipe_managed_app_registrations_by_device_tag_request_builder.WipeManagedAppRegistrationsByDeviceTagRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_wipe_managed_app_registrations_by_device_tag_request_builder.MicrosoftGraphWipeManagedAppRegistrationsByDeviceTagRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def oauth2_permission_grants(self) -> oauth2_permission_grants_request_builder.Oauth2PermissionGrantsRequestBuilder:
@@ -670,13 +670,12 @@ class UserItemRequestBuilder():
         url_tpl_params["chat%2Did"] = id
         return chat_item_request_builder.ChatItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, user_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new UserItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            userId: key: id of user
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -686,7 +685,6 @@ class UserItemRequestBuilder():
         self.url_template: str = "{+baseurl}/users/{user%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["user%2Did"] = userId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -933,33 +931,33 @@ class UserItemRequestBuilder():
         url_tpl_params["message%2Did"] = id
         return message_item_request_builder.MessageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def microsoft_graph_export_device_and_app_management_data_with_skip_with_top(self,skip: Optional[int] = None, top: Optional[int] = None) -> export_device_and_app_management_data_with_skip_with_top_request_builder.ExportDeviceAndAppManagementDataWithSkipWithTopRequestBuilder:
+    def microsoft_graph_export_device_and_app_management_data_with_skip_with_top(self,skip: Optional[int] = None, top: Optional[int] = None) -> microsoft_graph_export_device_and_app_management_data_with_skip_with_top_request_builder.MicrosoftGraphExportDeviceAndAppManagementDataWithSkipWithTopRequestBuilder:
         """
         Provides operations to call the exportDeviceAndAppManagementData method.
         Args:
             skip: Usage: skip={skip}
             top: Usage: top={top}
-        Returns: export_device_and_app_management_data_with_skip_with_top_request_builder.ExportDeviceAndAppManagementDataWithSkipWithTopRequestBuilder
+        Returns: microsoft_graph_export_device_and_app_management_data_with_skip_with_top_request_builder.MicrosoftGraphExportDeviceAndAppManagementDataWithSkipWithTopRequestBuilder
         """
         if skip is None:
             raise Exception("skip cannot be undefined")
         if top is None:
             raise Exception("top cannot be undefined")
-        return export_device_and_app_management_data_with_skip_with_top_request_builder.ExportDeviceAndAppManagementDataWithSkipWithTopRequestBuilder(self.request_adapter, self.path_parameters, skip, top)
+        return microsoft_graph_export_device_and_app_management_data_with_skip_with_top_request_builder.MicrosoftGraphExportDeviceAndAppManagementDataWithSkipWithTopRequestBuilder(self.request_adapter, self.path_parameters, skip, top)
     
-    def microsoft_graph_reminder_view_with_start_date_time_with_end_date_time(self,end_date_time: Optional[str] = None, start_date_time: Optional[str] = None) -> reminder_view_with_start_date_time_with_end_date_time_request_builder.ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilder:
+    def microsoft_graph_reminder_view_with_start_date_time_with_end_date_time(self,end_date_time: Optional[str] = None, start_date_time: Optional[str] = None) -> microsoft_graph_reminder_view_with_start_date_time_with_end_date_time_request_builder.MicrosoftGraphReminderViewWithStartDateTimeWithEndDateTimeRequestBuilder:
         """
         Provides operations to call the reminderView method.
         Args:
             EndDateTime: Usage: EndDateTime='{EndDateTime}'
             StartDateTime: Usage: StartDateTime='{StartDateTime}'
-        Returns: reminder_view_with_start_date_time_with_end_date_time_request_builder.ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilder
+        Returns: microsoft_graph_reminder_view_with_start_date_time_with_end_date_time_request_builder.MicrosoftGraphReminderViewWithStartDateTimeWithEndDateTimeRequestBuilder
         """
         if end_date_time is None:
             raise Exception("end_date_time cannot be undefined")
         if start_date_time is None:
             raise Exception("start_date_time cannot be undefined")
-        return reminder_view_with_start_date_time_with_end_date_time_request_builder.ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, EndDateTime, StartDateTime)
+        return microsoft_graph_reminder_view_with_start_date_time_with_end_date_time_request_builder.MicrosoftGraphReminderViewWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, EndDateTime, StartDateTime)
     
     def oauth2_permission_grants_by_id(self,id: str) -> o_auth2_permission_grant_item_request_builder.OAuth2PermissionGrantItemRequestBuilder:
         """
@@ -1113,7 +1111,7 @@ class UserItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -1134,7 +1132,7 @@ class UserItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -1160,7 +1158,7 @@ class UserItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -1199,7 +1197,7 @@ class UserItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -1214,7 +1212,7 @@ class UserItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

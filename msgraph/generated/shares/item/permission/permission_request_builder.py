@@ -12,18 +12,18 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 permission = lazy_import('msgraph.generated.models.permission')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-grant_request_builder = lazy_import('msgraph.generated.shares.item.permission.microsoft_graph_grant.grant_request_builder')
+microsoft_graph_grant_request_builder = lazy_import('msgraph.generated.shares.item.permission.microsoft_graph_grant.microsoft_graph_grant_request_builder')
 
 class PermissionRequestBuilder():
     """
     Provides operations to manage the permission property of the microsoft.graph.sharedDriveItem entity.
     """
     @property
-    def microsoft_graph_grant(self) -> grant_request_builder.GrantRequestBuilder:
+    def microsoft_graph_grant(self) -> microsoft_graph_grant_request_builder.MicrosoftGraphGrantRequestBuilder:
         """
         Provides operations to call the grant method.
         """
-        return grant_request_builder.GrantRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_grant_request_builder.MicrosoftGraphGrantRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -126,7 +126,7 @@ class PermissionRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -147,7 +147,7 @@ class PermissionRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -160,7 +160,7 @@ class PermissionRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -199,7 +199,7 @@ class PermissionRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -214,7 +214,7 @@ class PermissionRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

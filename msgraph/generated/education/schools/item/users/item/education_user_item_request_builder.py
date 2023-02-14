@@ -17,11 +17,10 @@ class EducationUserItemRequestBuilder():
         """
         return ref_request_builder.RefRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, education_user_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EducationUserItemRequestBuilder and sets the default values.
         Args:
-            educationUserId: key: id of educationUser
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -33,7 +32,6 @@ class EducationUserItemRequestBuilder():
         self.url_template: str = "{+baseurl}/education/schools/{educationSchool%2Did}/users/{educationUser%2Did}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["educationUser%2Did"] = educationUserId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     

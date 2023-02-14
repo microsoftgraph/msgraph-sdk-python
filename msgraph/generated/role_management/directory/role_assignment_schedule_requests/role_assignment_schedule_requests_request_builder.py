@@ -14,7 +14,7 @@ unified_role_assignment_schedule_request = lazy_import('msgraph.generated.models
 unified_role_assignment_schedule_request_collection_response = lazy_import('msgraph.generated.models.unified_role_assignment_schedule_request_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.role_management.directory.role_assignment_schedule_requests.count.count_request_builder')
-filter_by_current_user_with_on_request_builder = lazy_import('msgraph.generated.role_management.directory.role_assignment_schedule_requests.microsoft_graph_filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder')
+microsoft_graph_filter_by_current_user_with_on_request_builder = lazy_import('msgraph.generated.role_management.directory.role_assignment_schedule_requests.microsoft_graph_filter_by_current_user_with_on.microsoft_graph_filter_by_current_user_with_on_request_builder')
 
 class RoleAssignmentScheduleRequestsRequestBuilder():
     """
@@ -63,16 +63,16 @@ class RoleAssignmentScheduleRequestsRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, unified_role_assignment_schedule_request_collection_response.UnifiedRoleAssignmentScheduleRequestCollectionResponse, error_mapping)
     
-    def microsoft_graph_filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
+    def microsoft_graph_filter_by_current_user_with_on(self,on: Optional[str] = None) -> microsoft_graph_filter_by_current_user_with_on_request_builder.MicrosoftGraphFilterByCurrentUserWithOnRequestBuilder:
         """
         Provides operations to call the filterByCurrentUser method.
         Args:
             on: Usage: on='{on}'
-        Returns: filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder
+        Returns: microsoft_graph_filter_by_current_user_with_on_request_builder.MicrosoftGraphFilterByCurrentUserWithOnRequestBuilder
         """
         if on is None:
             raise Exception("on cannot be undefined")
-        return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
+        return microsoft_graph_filter_by_current_user_with_on_request_builder.MicrosoftGraphFilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
     async def post(self,body: Optional[unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest] = None, request_configuration: Optional[RoleAssignmentScheduleRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest]:
         """
@@ -106,7 +106,7 @@ class RoleAssignmentScheduleRequestsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -127,7 +127,7 @@ class RoleAssignmentScheduleRequestsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -197,7 +197,7 @@ class RoleAssignmentScheduleRequestsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -212,7 +212,7 @@ class RoleAssignmentScheduleRequestsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

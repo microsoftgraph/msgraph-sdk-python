@@ -8,6 +8,7 @@ entity_type = lazy_import('msgraph.generated.models.entity_type')
 result_template_option = lazy_import('msgraph.generated.models.result_template_option')
 search_alteration_options = lazy_import('msgraph.generated.models.search_alteration_options')
 search_query = lazy_import('msgraph.generated.models.search_query')
+share_point_one_drive_options = lazy_import('msgraph.generated.models.share_point_one_drive_options')
 sort_property = lazy_import('msgraph.generated.models.sort_property')
 
 class SearchRequest(AdditionalDataHolder, Parsable):
@@ -89,8 +90,12 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         self._query: Optional[search_query.SearchQuery] = None
         # The queryAlterationOptions property
         self._query_alteration_options: Optional[search_alteration_options.SearchAlterationOptions] = None
+        # The region property
+        self._region: Optional[str] = None
         # The resultTemplateOptions property
         self._result_template_options: Optional[result_template_option.ResultTemplateOption] = None
+        # The sharePointOneDriveOptions property
+        self._share_point_one_drive_options: Optional[share_point_one_drive_options.SharePointOneDriveOptions] = None
         # The size property
         self._size: Optional[int] = None
         # The sortProperties property
@@ -209,7 +214,9 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "query": lambda n : setattr(self, 'query', n.get_object_value(search_query.SearchQuery)),
             "queryAlterationOptions": lambda n : setattr(self, 'query_alteration_options', n.get_object_value(search_alteration_options.SearchAlterationOptions)),
+            "region": lambda n : setattr(self, 'region', n.get_str_value()),
             "resultTemplateOptions": lambda n : setattr(self, 'result_template_options', n.get_object_value(result_template_option.ResultTemplateOption)),
+            "sharePointOneDriveOptions": lambda n : setattr(self, 'share_point_one_drive_options', n.get_object_value(share_point_one_drive_options.SharePointOneDriveOptions)),
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
             "sortProperties": lambda n : setattr(self, 'sort_properties', n.get_collection_of_object_values(sort_property.SortProperty)),
         }
@@ -267,6 +274,23 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         self._query_alteration_options = value
     
     @property
+    def region(self,) -> Optional[str]:
+        """
+        Gets the region property value. The region property
+        Returns: Optional[str]
+        """
+        return self._region
+    
+    @region.setter
+    def region(self,value: Optional[str] = None) -> None:
+        """
+        Sets the region property value. The region property
+        Args:
+            value: Value to set for the region property.
+        """
+        self._region = value
+    
+    @property
     def result_template_options(self,) -> Optional[result_template_option.ResultTemplateOption]:
         """
         Gets the resultTemplateOptions property value. The resultTemplateOptions property
@@ -301,10 +325,29 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("query", self.query)
         writer.write_object_value("queryAlterationOptions", self.query_alteration_options)
+        writer.write_str_value("region", self.region)
         writer.write_object_value("resultTemplateOptions", self.result_template_options)
+        writer.write_object_value("sharePointOneDriveOptions", self.share_point_one_drive_options)
         writer.write_int_value("size", self.size)
         writer.write_collection_of_object_values("sortProperties", self.sort_properties)
         writer.write_additional_data_value(self.additional_data)
+    
+    @property
+    def share_point_one_drive_options(self,) -> Optional[share_point_one_drive_options.SharePointOneDriveOptions]:
+        """
+        Gets the sharePointOneDriveOptions property value. The sharePointOneDriveOptions property
+        Returns: Optional[share_point_one_drive_options.SharePointOneDriveOptions]
+        """
+        return self._share_point_one_drive_options
+    
+    @share_point_one_drive_options.setter
+    def share_point_one_drive_options(self,value: Optional[share_point_one_drive_options.SharePointOneDriveOptions] = None) -> None:
+        """
+        Sets the sharePointOneDriveOptions property value. The sharePointOneDriveOptions property
+        Args:
+            value: Value to set for the share_point_one_drive_options property.
+        """
+        self._share_point_one_drive_options = value
     
     @property
     def size(self,) -> Optional[int]:

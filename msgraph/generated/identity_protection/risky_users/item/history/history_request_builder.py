@@ -46,7 +46,7 @@ class HistoryRequestBuilder():
     
     async def get(self,request_configuration: Optional[HistoryRequestBuilderGetRequestConfiguration] = None) -> Optional[risky_user_history_item_collection_response.RiskyUserHistoryItemCollectionResponse]:
         """
-        Get the riskyUserHistoryItems from the history navigation property.
+        Read the properties and relationships of a riskyUserHistoryItem object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[risky_user_history_item_collection_response.RiskyUserHistoryItemCollectionResponse]
@@ -85,7 +85,7 @@ class HistoryRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[HistoryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the riskyUserHistoryItems from the history navigation property.
+        Read the properties and relationships of a riskyUserHistoryItem object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -94,7 +94,7 @@ class HistoryRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -115,7 +115,7 @@ class HistoryRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -125,7 +125,7 @@ class HistoryRequestBuilder():
     @dataclass
     class HistoryRequestBuilderGetQueryParameters():
         """
-        Get the riskyUserHistoryItems from the history navigation property.
+        Read the properties and relationships of a riskyUserHistoryItem object.
         """
         # Include count of items
         count: Optional[bool] = None
@@ -185,7 +185,7 @@ class HistoryRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -200,7 +200,7 @@ class HistoryRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

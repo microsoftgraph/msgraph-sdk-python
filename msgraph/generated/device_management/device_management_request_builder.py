@@ -41,8 +41,8 @@ ios_update_device_status_item_request_builder = lazy_import('msgraph.generated.d
 managed_device_overview_request_builder = lazy_import('msgraph.generated.device_management.managed_device_overview.managed_device_overview_request_builder')
 managed_devices_request_builder = lazy_import('msgraph.generated.device_management.managed_devices.managed_devices_request_builder')
 managed_device_item_request_builder = lazy_import('msgraph.generated.device_management.managed_devices.item.managed_device_item_request_builder')
-get_effective_permissions_with_scope_request_builder = lazy_import('msgraph.generated.device_management.microsoft_graph_get_effective_permissions_with_scope.get_effective_permissions_with_scope_request_builder')
-verify_windows_enrollment_auto_discovery_with_domain_name_request_builder = lazy_import('msgraph.generated.device_management.microsoft_graph_verify_windows_enrollment_auto_discovery_with_domain_name.verify_windows_enrollment_auto_discovery_with_domain_name_request_builder')
+microsoft_graph_get_effective_permissions_with_scope_request_builder = lazy_import('msgraph.generated.device_management.microsoft_graph_get_effective_permissions_with_scope.microsoft_graph_get_effective_permissions_with_scope_request_builder')
+microsoft_graph_verify_windows_enrollment_auto_discovery_with_domain_name_request_builder = lazy_import('msgraph.generated.device_management.microsoft_graph_verify_windows_enrollment_auto_discovery_with_domain_name.microsoft_graph_verify_windows_enrollment_auto_discovery_with_domain_name_request_builder')
 mobile_threat_defense_connectors_request_builder = lazy_import('msgraph.generated.device_management.mobile_threat_defense_connectors.mobile_threat_defense_connectors_request_builder')
 mobile_threat_defense_connector_item_request_builder = lazy_import('msgraph.generated.device_management.mobile_threat_defense_connectors.item.mobile_threat_defense_connector_item_request_builder')
 notification_message_templates_request_builder = lazy_import('msgraph.generated.device_management.notification_message_templates.notification_message_templates_request_builder')
@@ -505,27 +505,27 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["managedDevice%2Did"] = id
         return managed_device_item_request_builder.ManagedDeviceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def microsoft_graph_get_effective_permissions_with_scope(self,scope: Optional[str] = None) -> get_effective_permissions_with_scope_request_builder.GetEffectivePermissionsWithScopeRequestBuilder:
+    def microsoft_graph_get_effective_permissions_with_scope(self,scope: Optional[str] = None) -> microsoft_graph_get_effective_permissions_with_scope_request_builder.MicrosoftGraphGetEffectivePermissionsWithScopeRequestBuilder:
         """
         Provides operations to call the getEffectivePermissions method.
         Args:
             scope: Usage: scope='{scope}'
-        Returns: get_effective_permissions_with_scope_request_builder.GetEffectivePermissionsWithScopeRequestBuilder
+        Returns: microsoft_graph_get_effective_permissions_with_scope_request_builder.MicrosoftGraphGetEffectivePermissionsWithScopeRequestBuilder
         """
         if scope is None:
             raise Exception("scope cannot be undefined")
-        return get_effective_permissions_with_scope_request_builder.GetEffectivePermissionsWithScopeRequestBuilder(self.request_adapter, self.path_parameters, scope)
+        return microsoft_graph_get_effective_permissions_with_scope_request_builder.MicrosoftGraphGetEffectivePermissionsWithScopeRequestBuilder(self.request_adapter, self.path_parameters, scope)
     
-    def microsoft_graph_verify_windows_enrollment_auto_discovery_with_domain_name(self,domain_name: Optional[str] = None) -> verify_windows_enrollment_auto_discovery_with_domain_name_request_builder.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder:
+    def microsoft_graph_verify_windows_enrollment_auto_discovery_with_domain_name(self,domain_name: Optional[str] = None) -> microsoft_graph_verify_windows_enrollment_auto_discovery_with_domain_name_request_builder.MicrosoftGraphVerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder:
         """
         Provides operations to call the verifyWindowsEnrollmentAutoDiscovery method.
         Args:
             domainName: Usage: domainName='{domainName}'
-        Returns: verify_windows_enrollment_auto_discovery_with_domain_name_request_builder.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder
+        Returns: microsoft_graph_verify_windows_enrollment_auto_discovery_with_domain_name_request_builder.MicrosoftGraphVerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder
         """
         if domain_name is None:
             raise Exception("domain_name cannot be undefined")
-        return verify_windows_enrollment_auto_discovery_with_domain_name_request_builder.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder(self.request_adapter, self.path_parameters, domainName)
+        return microsoft_graph_verify_windows_enrollment_auto_discovery_with_domain_name_request_builder.MicrosoftGraphVerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder(self.request_adapter, self.path_parameters, domainName)
     
     def mobile_threat_defense_connectors_by_id(self,id: str) -> mobile_threat_defense_connector_item_request_builder.MobileThreatDefenseConnectorItemRequestBuilder:
         """
@@ -663,7 +663,7 @@ class DeviceManagementRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -684,7 +684,7 @@ class DeviceManagementRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -776,7 +776,7 @@ class DeviceManagementRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -791,7 +791,7 @@ class DeviceManagementRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

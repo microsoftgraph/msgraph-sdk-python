@@ -14,7 +14,7 @@ call_records_request_builder = lazy_import('msgraph.generated.communications.cal
 call_record_item_request_builder = lazy_import('msgraph.generated.communications.call_records.item.call_record_item_request_builder')
 calls_request_builder = lazy_import('msgraph.generated.communications.calls.calls_request_builder')
 call_item_request_builder = lazy_import('msgraph.generated.communications.calls.item.call_item_request_builder')
-get_presences_by_user_id_request_builder = lazy_import('msgraph.generated.communications.microsoft_graph_get_presences_by_user_id.get_presences_by_user_id_request_builder')
+microsoft_graph_get_presences_by_user_id_request_builder = lazy_import('msgraph.generated.communications.microsoft_graph_get_presences_by_user_id.microsoft_graph_get_presences_by_user_id_request_builder')
 online_meetings_request_builder = lazy_import('msgraph.generated.communications.online_meetings.online_meetings_request_builder')
 online_meeting_item_request_builder = lazy_import('msgraph.generated.communications.online_meetings.item.online_meeting_item_request_builder')
 presences_request_builder = lazy_import('msgraph.generated.communications.presences.presences_request_builder')
@@ -41,11 +41,11 @@ class CommunicationsRequestBuilder():
         return calls_request_builder.CallsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_presences_by_user_id(self) -> get_presences_by_user_id_request_builder.GetPresencesByUserIdRequestBuilder:
+    def microsoft_graph_get_presences_by_user_id(self) -> microsoft_graph_get_presences_by_user_id_request_builder.MicrosoftGraphGetPresencesByUserIdRequestBuilder:
         """
         Provides operations to call the getPresencesByUserId method.
         """
-        return get_presences_by_user_id_request_builder.GetPresencesByUserIdRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_presences_by_user_id_request_builder.MicrosoftGraphGetPresencesByUserIdRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def online_meetings(self) -> online_meetings_request_builder.OnlineMeetingsRequestBuilder:
@@ -181,7 +181,7 @@ class CommunicationsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -202,7 +202,7 @@ class CommunicationsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -242,7 +242,7 @@ class CommunicationsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -257,7 +257,7 @@ class CommunicationsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-mute_request_builder = lazy_import('msgraph.generated.communications.calls.item.participants.item.microsoft_graph_mute.mute_request_builder')
-start_hold_music_request_builder = lazy_import('msgraph.generated.communications.calls.item.participants.item.microsoft_graph_start_hold_music.start_hold_music_request_builder')
-stop_hold_music_request_builder = lazy_import('msgraph.generated.communications.calls.item.participants.item.microsoft_graph_stop_hold_music.stop_hold_music_request_builder')
+microsoft_graph_mute_request_builder = lazy_import('msgraph.generated.communications.calls.item.participants.item.microsoft_graph_mute.microsoft_graph_mute_request_builder')
+microsoft_graph_start_hold_music_request_builder = lazy_import('msgraph.generated.communications.calls.item.participants.item.microsoft_graph_start_hold_music.microsoft_graph_start_hold_music_request_builder')
+microsoft_graph_stop_hold_music_request_builder = lazy_import('msgraph.generated.communications.calls.item.participants.item.microsoft_graph_stop_hold_music.microsoft_graph_stop_hold_music_request_builder')
 participant = lazy_import('msgraph.generated.models.participant')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -21,31 +21,30 @@ class ParticipantItemRequestBuilder():
     Provides operations to manage the participants property of the microsoft.graph.call entity.
     """
     @property
-    def microsoft_graph_mute(self) -> mute_request_builder.MuteRequestBuilder:
+    def microsoft_graph_mute(self) -> microsoft_graph_mute_request_builder.MicrosoftGraphMuteRequestBuilder:
         """
         Provides operations to call the mute method.
         """
-        return mute_request_builder.MuteRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_mute_request_builder.MicrosoftGraphMuteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_start_hold_music(self) -> start_hold_music_request_builder.StartHoldMusicRequestBuilder:
+    def microsoft_graph_start_hold_music(self) -> microsoft_graph_start_hold_music_request_builder.MicrosoftGraphStartHoldMusicRequestBuilder:
         """
         Provides operations to call the startHoldMusic method.
         """
-        return start_hold_music_request_builder.StartHoldMusicRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_start_hold_music_request_builder.MicrosoftGraphStartHoldMusicRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_stop_hold_music(self) -> stop_hold_music_request_builder.StopHoldMusicRequestBuilder:
+    def microsoft_graph_stop_hold_music(self) -> microsoft_graph_stop_hold_music_request_builder.MicrosoftGraphStopHoldMusicRequestBuilder:
         """
         Provides operations to call the stopHoldMusic method.
         """
-        return stop_hold_music_request_builder.StopHoldMusicRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_stop_hold_music_request_builder.MicrosoftGraphStopHoldMusicRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, participant_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ParticipantItemRequestBuilder and sets the default values.
         Args:
-            participantId: key: id of participant
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -57,7 +56,6 @@ class ParticipantItemRequestBuilder():
         self.url_template: str = "{+baseurl}/communications/calls/{call%2Did}/participants/{participant%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["participant%2Did"] = participantId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -144,7 +142,7 @@ class ParticipantItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -165,7 +163,7 @@ class ParticipantItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -178,7 +176,7 @@ class ParticipantItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -217,7 +215,7 @@ class ParticipantItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -232,7 +230,7 @@ class ParticipantItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

@@ -36,7 +36,7 @@ class ReplyAllPostRequestBody(AdditionalDataHolder, Parsable):
         """
         Sets the comment property value. The Comment property
         Args:
-            value: Value to set for the comment property.
+            value: Value to set for the Comment property.
         """
         self._comment = value
     
@@ -88,7 +88,7 @@ class ReplyAllPostRequestBody(AdditionalDataHolder, Parsable):
         """
         Sets the message property value. The Message property
         Args:
-            value: Value to set for the message property.
+            value: Value to set for the Message property.
         """
         self._message = value
     

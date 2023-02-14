@@ -12,13 +12,13 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 columns_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.columns_request_builder')
 workbook_table_column_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.workbook_table_column_item_request_builder')
-clear_filters_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.microsoft_graph_clear_filters.clear_filters_request_builder')
-convert_to_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.microsoft_graph_convert_to_range.convert_to_range_request_builder')
-data_body_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.microsoft_graph_data_body_range.data_body_range_request_builder')
-header_row_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.microsoft_graph_header_row_range.header_row_range_request_builder')
-range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.microsoft_graph_range.range_request_builder')
-reapply_filters_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.microsoft_graph_reapply_filters.reapply_filters_request_builder')
-total_row_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.microsoft_graph_total_row_range.total_row_range_request_builder')
+microsoft_graph_clear_filters_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.microsoft_graph_clear_filters.microsoft_graph_clear_filters_request_builder')
+microsoft_graph_convert_to_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.microsoft_graph_convert_to_range.microsoft_graph_convert_to_range_request_builder')
+microsoft_graph_data_body_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.microsoft_graph_data_body_range.microsoft_graph_data_body_range_request_builder')
+microsoft_graph_header_row_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.microsoft_graph_header_row_range.microsoft_graph_header_row_range_request_builder')
+microsoft_graph_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.microsoft_graph_range.microsoft_graph_range_request_builder')
+microsoft_graph_reapply_filters_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.microsoft_graph_reapply_filters.microsoft_graph_reapply_filters_request_builder')
+microsoft_graph_total_row_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.microsoft_graph_total_row_range.microsoft_graph_total_row_range_request_builder')
 rows_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.rows.rows_request_builder')
 workbook_table_row_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.rows.item.workbook_table_row_item_request_builder')
 sort_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.sort.sort_request_builder')
@@ -38,53 +38,53 @@ class WorkbookTableItemRequestBuilder():
         return columns_request_builder.ColumnsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_clear_filters(self) -> clear_filters_request_builder.ClearFiltersRequestBuilder:
+    def microsoft_graph_clear_filters(self) -> microsoft_graph_clear_filters_request_builder.MicrosoftGraphClearFiltersRequestBuilder:
         """
         Provides operations to call the clearFilters method.
         """
-        return clear_filters_request_builder.ClearFiltersRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_clear_filters_request_builder.MicrosoftGraphClearFiltersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_convert_to_range(self) -> convert_to_range_request_builder.ConvertToRangeRequestBuilder:
+    def microsoft_graph_convert_to_range(self) -> microsoft_graph_convert_to_range_request_builder.MicrosoftGraphConvertToRangeRequestBuilder:
         """
         Provides operations to call the convertToRange method.
         """
-        return convert_to_range_request_builder.ConvertToRangeRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_convert_to_range_request_builder.MicrosoftGraphConvertToRangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_data_body_range(self) -> data_body_range_request_builder.DataBodyRangeRequestBuilder:
+    def microsoft_graph_data_body_range(self) -> microsoft_graph_data_body_range_request_builder.MicrosoftGraphDataBodyRangeRequestBuilder:
         """
         Provides operations to call the dataBodyRange method.
         """
-        return data_body_range_request_builder.DataBodyRangeRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_data_body_range_request_builder.MicrosoftGraphDataBodyRangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_header_row_range(self) -> header_row_range_request_builder.HeaderRowRangeRequestBuilder:
+    def microsoft_graph_header_row_range(self) -> microsoft_graph_header_row_range_request_builder.MicrosoftGraphHeaderRowRangeRequestBuilder:
         """
         Provides operations to call the headerRowRange method.
         """
-        return header_row_range_request_builder.HeaderRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_header_row_range_request_builder.MicrosoftGraphHeaderRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_range(self) -> range_request_builder.RangeRequestBuilder:
+    def microsoft_graph_range(self) -> microsoft_graph_range_request_builder.MicrosoftGraphRangeRequestBuilder:
         """
         Provides operations to call the range method.
         """
-        return range_request_builder.RangeRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_range_request_builder.MicrosoftGraphRangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_reapply_filters(self) -> reapply_filters_request_builder.ReapplyFiltersRequestBuilder:
+    def microsoft_graph_reapply_filters(self) -> microsoft_graph_reapply_filters_request_builder.MicrosoftGraphReapplyFiltersRequestBuilder:
         """
         Provides operations to call the reapplyFilters method.
         """
-        return reapply_filters_request_builder.ReapplyFiltersRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_reapply_filters_request_builder.MicrosoftGraphReapplyFiltersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_total_row_range(self) -> total_row_range_request_builder.TotalRowRangeRequestBuilder:
+    def microsoft_graph_total_row_range(self) -> microsoft_graph_total_row_range_request_builder.MicrosoftGraphTotalRowRangeRequestBuilder:
         """
         Provides operations to call the totalRowRange method.
         """
-        return total_row_range_request_builder.TotalRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_total_row_range_request_builder.MicrosoftGraphTotalRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def rows(self) -> rows_request_builder.RowsRequestBuilder:
@@ -120,13 +120,12 @@ class WorkbookTableItemRequestBuilder():
         url_tpl_params["workbookTableColumn%2Did"] = id
         return workbook_table_column_item_request_builder.WorkbookTableColumnItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, workbook_table_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new WorkbookTableItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            workbookTableId: key: id of workbookTable
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -136,7 +135,6 @@ class WorkbookTableItemRequestBuilder():
         self.url_template: str = "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/tables/{workbookTable%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["workbookTable%2Did"] = workbookTableId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -236,7 +234,7 @@ class WorkbookTableItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -257,7 +255,7 @@ class WorkbookTableItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -270,7 +268,7 @@ class WorkbookTableItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -309,7 +307,7 @@ class WorkbookTableItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -324,7 +322,7 @@ class WorkbookTableItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

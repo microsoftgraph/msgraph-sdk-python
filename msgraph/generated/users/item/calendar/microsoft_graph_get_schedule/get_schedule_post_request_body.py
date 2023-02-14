@@ -111,7 +111,7 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
         """
         Sets the schedules property value. The Schedules property
         Args:
-            value: Value to set for the schedules property.
+            value: Value to set for the Schedules property.
         """
         self._schedules = value
     

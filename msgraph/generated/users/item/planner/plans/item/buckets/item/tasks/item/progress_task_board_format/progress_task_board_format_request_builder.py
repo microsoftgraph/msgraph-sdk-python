@@ -72,7 +72,7 @@ class ProgressTaskBoardFormatRequestBuilder():
     
     async def patch(self,body: Optional[planner_progress_task_board_task_format.PlannerProgressTaskBoardTaskFormat] = None, request_configuration: Optional[ProgressTaskBoardFormatRequestBuilderPatchRequestConfiguration] = None) -> Optional[planner_progress_task_board_task_format.PlannerProgressTaskBoardTaskFormat]:
         """
-        Update the properties of **plannerProgressTaskBoardTaskFormat** object.
+        Update the navigation property progressTaskBoardFormat in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -118,7 +118,7 @@ class ProgressTaskBoardFormatRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -127,7 +127,7 @@ class ProgressTaskBoardFormatRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[planner_progress_task_board_task_format.PlannerProgressTaskBoardTaskFormat] = None, request_configuration: Optional[ProgressTaskBoardFormatRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of **plannerProgressTaskBoardTaskFormat** object.
+        Update the navigation property progressTaskBoardFormat in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -139,7 +139,7 @@ class ProgressTaskBoardFormatRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -152,7 +152,7 @@ class ProgressTaskBoardFormatRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -191,7 +191,7 @@ class ProgressTaskBoardFormatRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -206,7 +206,7 @@ class ProgressTaskBoardFormatRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

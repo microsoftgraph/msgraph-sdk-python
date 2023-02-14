@@ -79,7 +79,7 @@ class Device(directory_object.DirectoryObject):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new Device and sets the default values.
+        Instantiates a new device and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.device"

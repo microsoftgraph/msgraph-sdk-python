@@ -183,7 +183,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         self._conference_id: Optional[str] = None
         # Connection fee price.
         self._connection_charge: Optional[float] = None
-        # Type of currency used to calculate the cost of the call (ISO 4217).
+        # Type of currency used to calculate the cost of the call. For details, see (ISO 4217.
         self._currency: Optional[str] = None
         # Whether the call was domestic (within a country or region) or international (outside a country or region) based on the user's location.
         self._destination_context: Optional[str] = None
@@ -205,15 +205,15 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         self._operator: Optional[str] = None
         # Call start time.
         self._start_date_time: Optional[datetime] = None
-        # Country code of the tenant, ISO 3166-1 alpha-2.
+        # Country code of the tenant. For details, see ISO 3166-1 alpha-2.
         self._tenant_country_code: Optional[str] = None
-        # Country code of the user, ISO 3166-1 alpha-2.
+        # Country code of the user. For details, see ISO 3166-1 alpha-2.
         self._usage_country_code: Optional[str] = None
         # Display name of the user.
         self._user_display_name: Optional[str] = None
         # Calling user's ID in Graph. GUID. This and other user info will be null/empty for bot call types (ucap_in, ucap_out).
         self._user_id: Optional[str] = None
-        # UserPrincipalName (sign-in name) in Azure Active Directory. This is usually the same as user's SIP Address, and can be same as user's e-mail address.
+        # The user principal name (sign-in name) in Azure Active Directory. This is usually the same as the user's SIP address, and can be same as the user's e-mail address.
         self._user_principal_name: Optional[str] = None
     
     @staticmethod
@@ -231,7 +231,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
     @property
     def currency(self,) -> Optional[str]:
         """
-        Gets the currency property value. Type of currency used to calculate the cost of the call (ISO 4217).
+        Gets the currency property value. Type of currency used to calculate the cost of the call. For details, see (ISO 4217.
         Returns: Optional[str]
         """
         return self._currency
@@ -239,7 +239,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
     @currency.setter
     def currency(self,value: Optional[str] = None) -> None:
         """
-        Sets the currency property value. Type of currency used to calculate the cost of the call (ISO 4217).
+        Sets the currency property value. Type of currency used to calculate the cost of the call. For details, see (ISO 4217.
         Args:
             value: Value to set for the currency property.
         """
@@ -485,7 +485,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
     @property
     def tenant_country_code(self,) -> Optional[str]:
         """
-        Gets the tenantCountryCode property value. Country code of the tenant, ISO 3166-1 alpha-2.
+        Gets the tenantCountryCode property value. Country code of the tenant. For details, see ISO 3166-1 alpha-2.
         Returns: Optional[str]
         """
         return self._tenant_country_code
@@ -493,7 +493,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
     @tenant_country_code.setter
     def tenant_country_code(self,value: Optional[str] = None) -> None:
         """
-        Sets the tenantCountryCode property value. Country code of the tenant, ISO 3166-1 alpha-2.
+        Sets the tenantCountryCode property value. Country code of the tenant. For details, see ISO 3166-1 alpha-2.
         Args:
             value: Value to set for the tenant_country_code property.
         """
@@ -502,7 +502,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
     @property
     def usage_country_code(self,) -> Optional[str]:
         """
-        Gets the usageCountryCode property value. Country code of the user, ISO 3166-1 alpha-2.
+        Gets the usageCountryCode property value. Country code of the user. For details, see ISO 3166-1 alpha-2.
         Returns: Optional[str]
         """
         return self._usage_country_code
@@ -510,7 +510,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
     @usage_country_code.setter
     def usage_country_code(self,value: Optional[str] = None) -> None:
         """
-        Sets the usageCountryCode property value. Country code of the user, ISO 3166-1 alpha-2.
+        Sets the usageCountryCode property value. Country code of the user. For details, see ISO 3166-1 alpha-2.
         Args:
             value: Value to set for the usage_country_code property.
         """
@@ -553,7 +553,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
-        Gets the userPrincipalName property value. UserPrincipalName (sign-in name) in Azure Active Directory. This is usually the same as user's SIP Address, and can be same as user's e-mail address.
+        Gets the userPrincipalName property value. The user principal name (sign-in name) in Azure Active Directory. This is usually the same as the user's SIP address, and can be same as the user's e-mail address.
         Returns: Optional[str]
         """
         return self._user_principal_name
@@ -561,7 +561,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the userPrincipalName property value. UserPrincipalName (sign-in name) in Azure Active Directory. This is usually the same as user's SIP Address, and can be same as user's e-mail address.
+        Sets the userPrincipalName property value. The user principal name (sign-in name) in Azure Active Directory. This is usually the same as the user's SIP address, and can be same as the user's e-mail address.
         Args:
             value: Value to set for the user_principal_name property.
         """

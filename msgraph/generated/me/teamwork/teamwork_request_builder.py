@@ -14,7 +14,7 @@ associated_teams_request_builder = lazy_import('msgraph.generated.me.teamwork.as
 associated_team_info_item_request_builder = lazy_import('msgraph.generated.me.teamwork.associated_teams.item.associated_team_info_item_request_builder')
 installed_apps_request_builder = lazy_import('msgraph.generated.me.teamwork.installed_apps.installed_apps_request_builder')
 user_scope_teams_app_installation_item_request_builder = lazy_import('msgraph.generated.me.teamwork.installed_apps.item.user_scope_teams_app_installation_item_request_builder')
-send_activity_notification_request_builder = lazy_import('msgraph.generated.me.teamwork.microsoft_graph_send_activity_notification.send_activity_notification_request_builder')
+microsoft_graph_send_activity_notification_request_builder = lazy_import('msgraph.generated.me.teamwork.microsoft_graph_send_activity_notification.microsoft_graph_send_activity_notification_request_builder')
 user_teamwork = lazy_import('msgraph.generated.models.user_teamwork')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -37,11 +37,11 @@ class TeamworkRequestBuilder():
         return installed_apps_request_builder.InstalledAppsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_send_activity_notification(self) -> send_activity_notification_request_builder.SendActivityNotificationRequestBuilder:
+    def microsoft_graph_send_activity_notification(self) -> microsoft_graph_send_activity_notification_request_builder.MicrosoftGraphSendActivityNotificationRequestBuilder:
         """
         Provides operations to call the sendActivityNotification method.
         """
-        return send_activity_notification_request_builder.SendActivityNotificationRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_send_activity_notification_request_builder.MicrosoftGraphSendActivityNotificationRequestBuilder(self.request_adapter, self.path_parameters)
     
     def associated_teams_by_id(self,id: str) -> associated_team_info_item_request_builder.AssociatedTeamInfoItemRequestBuilder:
         """
@@ -170,7 +170,7 @@ class TeamworkRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -191,7 +191,7 @@ class TeamworkRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -204,7 +204,7 @@ class TeamworkRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -243,7 +243,7 @@ class TeamworkRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -258,7 +258,7 @@ class TeamworkRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

@@ -71,7 +71,7 @@ class SendMailPostRequestBody(AdditionalDataHolder, Parsable):
         """
         Sets the message property value. The Message property
         Args:
-            value: Value to set for the message property.
+            value: Value to set for the Message property.
         """
         self._message = value
     

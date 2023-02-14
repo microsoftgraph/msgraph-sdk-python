@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 decisions_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.stages.item.decisions.decisions_request_builder')
 access_review_instance_decision_item_item_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.stages.item.decisions.item.access_review_instance_decision_item_item_request_builder')
-stop_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.stages.item.microsoft_graph_stop.stop_request_builder')
+microsoft_graph_stop_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.stages.item.microsoft_graph_stop.microsoft_graph_stop_request_builder')
 access_review_stage = lazy_import('msgraph.generated.models.access_review_stage')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -28,17 +28,16 @@ class AccessReviewStageItemRequestBuilder():
         return decisions_request_builder.DecisionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_stop(self) -> stop_request_builder.StopRequestBuilder:
+    def microsoft_graph_stop(self) -> microsoft_graph_stop_request_builder.MicrosoftGraphStopRequestBuilder:
         """
         Provides operations to call the stop method.
         """
-        return stop_request_builder.StopRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_stop_request_builder.MicrosoftGraphStopRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, access_review_stage_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AccessReviewStageItemRequestBuilder and sets the default values.
         Args:
-            accessReviewStageId: key: id of accessReviewStage
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -50,7 +49,6 @@ class AccessReviewStageItemRequestBuilder():
         self.url_template: str = "{+baseurl}/identityGovernance/accessReviews/definitions/{accessReviewScheduleDefinition%2Did}/instances/{accessReviewInstance%2Did}/stages/{accessReviewStage%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["accessReviewStage%2Did"] = accessReviewStageId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -150,7 +148,7 @@ class AccessReviewStageItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -171,7 +169,7 @@ class AccessReviewStageItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -184,7 +182,7 @@ class AccessReviewStageItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -223,7 +221,7 @@ class AccessReviewStageItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -238,7 +236,7 @@ class AccessReviewStageItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

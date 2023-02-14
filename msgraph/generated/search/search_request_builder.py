@@ -12,18 +12,18 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 search_entity = lazy_import('msgraph.generated.models.search_entity')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-query_request_builder = lazy_import('msgraph.generated.search.microsoft_graph_query.query_request_builder')
+microsoft_graph_query_request_builder = lazy_import('msgraph.generated.search.microsoft_graph_query.microsoft_graph_query_request_builder')
 
 class SearchRequestBuilder():
     """
     Provides operations to manage the searchEntity singleton.
     """
     @property
-    def microsoft_graph_query(self) -> query_request_builder.QueryRequestBuilder:
+    def microsoft_graph_query(self) -> microsoft_graph_query_request_builder.MicrosoftGraphQueryRequestBuilder:
         """
         Provides operations to call the query method.
         """
-        return query_request_builder.QueryRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_query_request_builder.MicrosoftGraphQueryRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -93,7 +93,7 @@ class SearchRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -114,7 +114,7 @@ class SearchRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -154,7 +154,7 @@ class SearchRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -169,7 +169,7 @@ class SearchRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

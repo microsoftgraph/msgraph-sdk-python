@@ -12,24 +12,23 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 booking_appointment = lazy_import('msgraph.generated.models.booking_appointment')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-cancel_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.appointments.item.microsoft_graph_cancel.cancel_request_builder')
+microsoft_graph_cancel_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.appointments.item.microsoft_graph_cancel.microsoft_graph_cancel_request_builder')
 
 class BookingAppointmentItemRequestBuilder():
     """
     Provides operations to manage the appointments property of the microsoft.graph.bookingBusiness entity.
     """
     @property
-    def microsoft_graph_cancel(self) -> cancel_request_builder.CancelRequestBuilder:
+    def microsoft_graph_cancel(self) -> microsoft_graph_cancel_request_builder.MicrosoftGraphCancelRequestBuilder:
         """
         Provides operations to call the cancel method.
         """
-        return cancel_request_builder.CancelRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_cancel_request_builder.MicrosoftGraphCancelRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, booking_appointment_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new BookingAppointmentItemRequestBuilder and sets the default values.
         Args:
-            bookingAppointmentId: key: id of bookingAppointment
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -41,7 +40,6 @@ class BookingAppointmentItemRequestBuilder():
         self.url_template: str = "{+baseurl}/solutions/bookingBusinesses/{bookingBusiness%2Did}/appointments/{bookingAppointment%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["bookingAppointment%2Did"] = bookingAppointmentId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -128,7 +126,7 @@ class BookingAppointmentItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -149,7 +147,7 @@ class BookingAppointmentItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -162,7 +160,7 @@ class BookingAppointmentItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -201,7 +199,7 @@ class BookingAppointmentItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -216,7 +214,7 @@ class BookingAppointmentItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

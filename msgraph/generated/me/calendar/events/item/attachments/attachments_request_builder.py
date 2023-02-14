@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.me.calendar.events.item.attachments.count.count_request_builder')
-create_upload_session_request_builder = lazy_import('msgraph.generated.me.calendar.events.item.attachments.microsoft_graph_create_upload_session.create_upload_session_request_builder')
+microsoft_graph_create_upload_session_request_builder = lazy_import('msgraph.generated.me.calendar.events.item.attachments.microsoft_graph_create_upload_session.microsoft_graph_create_upload_session_request_builder')
 attachment = lazy_import('msgraph.generated.models.attachment')
 attachment_collection_response = lazy_import('msgraph.generated.models.attachment_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -28,11 +28,11 @@ class AttachmentsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_create_upload_session(self) -> create_upload_session_request_builder.CreateUploadSessionRequestBuilder:
+    def microsoft_graph_create_upload_session(self) -> microsoft_graph_create_upload_session_request_builder.MicrosoftGraphCreateUploadSessionRequestBuilder:
         """
         Provides operations to call the createUploadSession method.
         """
-        return create_upload_session_request_builder.CreateUploadSessionRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_create_upload_session_request_builder.MicrosoftGraphCreateUploadSessionRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -72,7 +72,7 @@ class AttachmentsRequestBuilder():
     
     async def post(self,body: Optional[attachment.Attachment] = None, request_configuration: Optional[AttachmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[attachment.Attachment]:
         """
-        Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
+        Use this API to add an attachment to an existing event. This operation limits the size of the attachment you can add to under 3 MB. If an organizer adds an attachment to a meeting event, the organizer can subsequently update the event to send the attachment and update the event for each attendee as well.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class AttachmentsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -111,7 +111,7 @@ class AttachmentsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[attachment.Attachment] = None, request_configuration: Optional[AttachmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
+        Use this API to add an attachment to an existing event. This operation limits the size of the attachment you can add to under 3 MB. If an organizer adds an attachment to a meeting event, the organizer can subsequently update the event to send the attachment and update the event for each attendee as well.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -123,7 +123,7 @@ class AttachmentsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -188,7 +188,7 @@ class AttachmentsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -203,7 +203,7 @@ class AttachmentsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

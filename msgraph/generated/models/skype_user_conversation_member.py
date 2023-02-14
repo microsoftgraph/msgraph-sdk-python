@@ -12,7 +12,7 @@ class SkypeUserConversationMember(conversation_member.ConversationMember):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.skypeUserConversationMember"
-        # The skypeId property
+        # Skype ID of the user.
         self._skype_id: Optional[str] = None
     
     @staticmethod
@@ -53,7 +53,7 @@ class SkypeUserConversationMember(conversation_member.ConversationMember):
     @property
     def skype_id(self,) -> Optional[str]:
         """
-        Gets the skypeId property value. The skypeId property
+        Gets the skypeId property value. Skype ID of the user.
         Returns: Optional[str]
         """
         return self._skype_id
@@ -61,7 +61,7 @@ class SkypeUserConversationMember(conversation_member.ConversationMember):
     @skype_id.setter
     def skype_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the skypeId property value. The skypeId property
+        Sets the skypeId property value. Skype ID of the user.
         Args:
             value: Value to set for the skype_id property.
         """

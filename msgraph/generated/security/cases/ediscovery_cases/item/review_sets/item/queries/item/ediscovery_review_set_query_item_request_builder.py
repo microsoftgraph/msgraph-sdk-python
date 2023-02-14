@@ -12,24 +12,23 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 ediscovery_review_set_query = lazy_import('msgraph.generated.models.security.ediscovery_review_set_query')
-apply_tags_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.review_sets.item.queries.item.microsoft_graph_security_apply_tags.apply_tags_request_builder')
+microsoft_graph_security_apply_tags_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.review_sets.item.queries.item.microsoft_graph_security_apply_tags.microsoft_graph_security_apply_tags_request_builder')
 
 class EdiscoveryReviewSetQueryItemRequestBuilder():
     """
     Provides operations to manage the queries property of the microsoft.graph.security.ediscoveryReviewSet entity.
     """
     @property
-    def microsoft_graph_security_apply_tags(self) -> apply_tags_request_builder.ApplyTagsRequestBuilder:
+    def microsoft_graph_security_apply_tags(self) -> microsoft_graph_security_apply_tags_request_builder.MicrosoftGraphSecurityApplyTagsRequestBuilder:
         """
         Provides operations to call the applyTags method.
         """
-        return apply_tags_request_builder.ApplyTagsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_security_apply_tags_request_builder.MicrosoftGraphSecurityApplyTagsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, ediscovery_review_set_query_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EdiscoveryReviewSetQueryItemRequestBuilder and sets the default values.
         Args:
-            ediscoveryReviewSetQueryId: key: id of ediscoveryReviewSetQuery
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -41,7 +40,6 @@ class EdiscoveryReviewSetQueryItemRequestBuilder():
         self.url_template: str = "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}/reviewSets/{ediscoveryReviewSet%2Did}/queries/{ediscoveryReviewSetQuery%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["ediscoveryReviewSetQuery%2Did"] = ediscoveryReviewSetQueryId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -128,7 +126,7 @@ class EdiscoveryReviewSetQueryItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -149,7 +147,7 @@ class EdiscoveryReviewSetQueryItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -162,7 +160,7 @@ class EdiscoveryReviewSetQueryItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -201,7 +199,7 @@ class EdiscoveryReviewSetQueryItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -216,7 +214,7 @@ class EdiscoveryReviewSetQueryItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

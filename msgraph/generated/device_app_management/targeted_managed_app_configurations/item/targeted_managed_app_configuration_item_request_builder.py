@@ -15,8 +15,8 @@ managed_mobile_app_item_request_builder = lazy_import('msgraph.generated.device_
 assignments_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.assignments.assignments_request_builder')
 targeted_managed_app_policy_assignment_item_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.assignments.item.targeted_managed_app_policy_assignment_item_request_builder')
 deployment_summary_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.deployment_summary.deployment_summary_request_builder')
-assign_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.microsoft_graph_assign.assign_request_builder')
-target_apps_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.microsoft_graph_target_apps.target_apps_request_builder')
+microsoft_graph_assign_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.microsoft_graph_assign.microsoft_graph_assign_request_builder')
+microsoft_graph_target_apps_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.microsoft_graph_target_apps.microsoft_graph_target_apps_request_builder')
 targeted_managed_app_configuration = lazy_import('msgraph.generated.models.targeted_managed_app_configuration')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -46,18 +46,18 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         return deployment_summary_request_builder.DeploymentSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_assign(self) -> assign_request_builder.AssignRequestBuilder:
+    def microsoft_graph_assign(self) -> microsoft_graph_assign_request_builder.MicrosoftGraphAssignRequestBuilder:
         """
         Provides operations to call the assign method.
         """
-        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_assign_request_builder.MicrosoftGraphAssignRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_target_apps(self) -> target_apps_request_builder.TargetAppsRequestBuilder:
+    def microsoft_graph_target_apps(self) -> microsoft_graph_target_apps_request_builder.MicrosoftGraphTargetAppsRequestBuilder:
         """
         Provides operations to call the targetApps method.
         """
-        return target_apps_request_builder.TargetAppsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_target_apps_request_builder.MicrosoftGraphTargetAppsRequestBuilder(self.request_adapter, self.path_parameters)
     
     def apps_by_id(self,id: str) -> managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder:
         """
@@ -85,13 +85,12 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         url_tpl_params["targetedManagedAppPolicyAssignment%2Did"] = id
         return targeted_managed_app_policy_assignment_item_request_builder.TargetedManagedAppPolicyAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, targeted_managed_app_configuration_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new TargetedManagedAppConfigurationItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            targetedManagedAppConfigurationId: key: id of targetedManagedAppConfiguration
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -101,7 +100,6 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceAppManagement/targetedManagedAppConfigurations/{targetedManagedAppConfiguration%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["targetedManagedAppConfiguration%2Did"] = targetedManagedAppConfigurationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -188,7 +186,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -209,7 +207,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -222,7 +220,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -261,7 +259,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -276,7 +274,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

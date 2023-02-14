@@ -10,9 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-reply_request_builder = lazy_import('msgraph.generated.groups.item.threads.item.microsoft_graph_reply.reply_request_builder')
+microsoft_graph_reply_request_builder = lazy_import('msgraph.generated.groups.item.threads.item.microsoft_graph_reply.microsoft_graph_reply_request_builder')
 posts_request_builder = lazy_import('msgraph.generated.groups.item.threads.item.posts.posts_request_builder')
-post_item_request_builder = lazy_import('msgraph.generated.groups.item.threads.item.posts.item.post_item_request_builder')
 conversation_thread = lazy_import('msgraph.generated.models.conversation_thread')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -21,11 +20,11 @@ class ConversationThreadItemRequestBuilder():
     Provides operations to manage the threads property of the microsoft.graph.group entity.
     """
     @property
-    def microsoft_graph_reply(self) -> reply_request_builder.ReplyRequestBuilder:
+    def microsoft_graph_reply(self) -> microsoft_graph_reply_request_builder.MicrosoftGraphReplyRequestBuilder:
         """
         Provides operations to call the reply method.
         """
-        return reply_request_builder.ReplyRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_reply_request_builder.MicrosoftGraphReplyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def posts(self) -> posts_request_builder.PostsRequestBuilder:
@@ -34,11 +33,10 @@ class ConversationThreadItemRequestBuilder():
         """
         return posts_request_builder.PostsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, conversation_thread_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ConversationThreadItemRequestBuilder and sets the default values.
         Args:
-            conversationThreadId: key: id of conversationThread
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -50,7 +48,6 @@ class ConversationThreadItemRequestBuilder():
         self.url_template: str = "{+baseurl}/groups/{group%2Did}/threads/{conversationThread%2Did}{?%24select}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["conversationThread%2Did"] = conversationThreadId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -110,18 +107,18 @@ class ConversationThreadItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, conversation_thread.ConversationThread, error_mapping)
     
-    def posts_by_id(self,id: str) -> post_item_request_builder.PostItemRequestBuilder:
+    def posts_by_id(self,id: str) -> post_path_item_request_builder.PostPathItemRequestBuilder:
         """
         Provides operations to manage the posts property of the microsoft.graph.conversationThread entity.
         Args:
             id: Unique identifier of the item
-        Returns: post_item_request_builder.PostItemRequestBuilder
+        Returns: post_path_item_request_builder.PostPathItemRequestBuilder
         """
         if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["post%2Did"] = id
-        return post_item_request_builder.PostItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return post_path_item_request_builder.PostPathItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[ConversationThreadItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -150,7 +147,7 @@ class ConversationThreadItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -171,7 +168,7 @@ class ConversationThreadItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -184,7 +181,7 @@ class ConversationThreadItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -218,7 +215,7 @@ class ConversationThreadItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -233,7 +230,7 @@ class ConversationThreadItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

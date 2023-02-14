@@ -14,12 +14,12 @@ axes_request_builder = lazy_import('msgraph.generated.drives.item.items.item.wor
 data_labels_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.data_labels.data_labels_request_builder')
 format_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.format.format_request_builder')
 legend_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.legend.legend_request_builder')
-image_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.microsoft_graph_image.image_request_builder')
-image_with_width_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.microsoft_graph_image_with_width.image_with_width_request_builder')
-image_with_width_with_height_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.microsoft_graph_image_with_width_with_height.image_with_width_with_height_request_builder')
-image_with_width_with_height_with_fitting_mode_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.microsoft_graph_image_with_width_with_height_with_fitting_mode.image_with_width_with_height_with_fitting_mode_request_builder')
-set_data_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.microsoft_graph_set_data.set_data_request_builder')
-set_position_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.microsoft_graph_set_position.set_position_request_builder')
+microsoft_graph_image_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.microsoft_graph_image.microsoft_graph_image_request_builder')
+microsoft_graph_image_with_width_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.microsoft_graph_image_with_width.microsoft_graph_image_with_width_request_builder')
+microsoft_graph_image_with_width_with_height_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.microsoft_graph_image_with_width_with_height.microsoft_graph_image_with_width_with_height_request_builder')
+microsoft_graph_image_with_width_with_height_with_fitting_mode_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.microsoft_graph_image_with_width_with_height_with_fitting_mode.microsoft_graph_image_with_width_with_height_with_fitting_mode_request_builder')
+microsoft_graph_set_data_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.microsoft_graph_set_data.microsoft_graph_set_data_request_builder')
+microsoft_graph_set_position_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.microsoft_graph_set_position.microsoft_graph_set_position_request_builder')
 series_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.series.series_request_builder')
 workbook_chart_series_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.series.item.workbook_chart_series_item_request_builder')
 title_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.title.title_request_builder')
@@ -60,25 +60,25 @@ class WorkbookChartItemRequestBuilder():
         return legend_request_builder.LegendRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_image(self) -> image_request_builder.ImageRequestBuilder:
+    def microsoft_graph_image(self) -> microsoft_graph_image_request_builder.MicrosoftGraphImageRequestBuilder:
         """
         Provides operations to call the image method.
         """
-        return image_request_builder.ImageRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_image_request_builder.MicrosoftGraphImageRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_set_data(self) -> set_data_request_builder.SetDataRequestBuilder:
+    def microsoft_graph_set_data(self) -> microsoft_graph_set_data_request_builder.MicrosoftGraphSetDataRequestBuilder:
         """
         Provides operations to call the setData method.
         """
-        return set_data_request_builder.SetDataRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_set_data_request_builder.MicrosoftGraphSetDataRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_set_position(self) -> set_position_request_builder.SetPositionRequestBuilder:
+    def microsoft_graph_set_position(self) -> microsoft_graph_set_position_request_builder.MicrosoftGraphSetPositionRequestBuilder:
         """
         Provides operations to call the setPosition method.
         """
-        return set_position_request_builder.SetPositionRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_set_position_request_builder.MicrosoftGraphSetPositionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def series(self) -> series_request_builder.SeriesRequestBuilder:
@@ -101,13 +101,12 @@ class WorkbookChartItemRequestBuilder():
         """
         return worksheet_request_builder.WorksheetRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, workbook_chart_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new WorkbookChartItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            workbookChartId: key: id of workbookChart
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -117,7 +116,6 @@ class WorkbookChartItemRequestBuilder():
         self.url_template: str = "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/{workbookChart%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["workbookChart%2Did"] = workbookChartId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -156,39 +154,39 @@ class WorkbookChartItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, workbook_chart.WorkbookChart, error_mapping)
     
-    def microsoft_graph_image_with_width(self,width: Optional[int] = None) -> image_with_width_request_builder.ImageWithWidthRequestBuilder:
+    def microsoft_graph_image_with_width(self,width: Optional[int] = None) -> microsoft_graph_image_with_width_request_builder.MicrosoftGraphImageWithWidthRequestBuilder:
         """
         Provides operations to call the image method.
         Args:
             width: Usage: width={width}
-        Returns: image_with_width_request_builder.ImageWithWidthRequestBuilder
+        Returns: microsoft_graph_image_with_width_request_builder.MicrosoftGraphImageWithWidthRequestBuilder
         """
         if width is None:
             raise Exception("width cannot be undefined")
-        return image_with_width_request_builder.ImageWithWidthRequestBuilder(self.request_adapter, self.path_parameters, width)
+        return microsoft_graph_image_with_width_request_builder.MicrosoftGraphImageWithWidthRequestBuilder(self.request_adapter, self.path_parameters, width)
     
-    def microsoft_graph_image_with_width_with_height(self,height: Optional[int] = None, width: Optional[int] = None) -> image_with_width_with_height_request_builder.ImageWithWidthWithHeightRequestBuilder:
+    def microsoft_graph_image_with_width_with_height(self,height: Optional[int] = None, width: Optional[int] = None) -> microsoft_graph_image_with_width_with_height_request_builder.MicrosoftGraphImageWithWidthWithHeightRequestBuilder:
         """
         Provides operations to call the image method.
         Args:
             height: Usage: height={height}
             width: Usage: width={width}
-        Returns: image_with_width_with_height_request_builder.ImageWithWidthWithHeightRequestBuilder
+        Returns: microsoft_graph_image_with_width_with_height_request_builder.MicrosoftGraphImageWithWidthWithHeightRequestBuilder
         """
         if height is None:
             raise Exception("height cannot be undefined")
         if width is None:
             raise Exception("width cannot be undefined")
-        return image_with_width_with_height_request_builder.ImageWithWidthWithHeightRequestBuilder(self.request_adapter, self.path_parameters, height, width)
+        return microsoft_graph_image_with_width_with_height_request_builder.MicrosoftGraphImageWithWidthWithHeightRequestBuilder(self.request_adapter, self.path_parameters, height, width)
     
-    def microsoft_graph_image_with_width_with_height_with_fitting_mode(self,fitting_mode: Optional[str] = None, height: Optional[int] = None, width: Optional[int] = None) -> image_with_width_with_height_with_fitting_mode_request_builder.ImageWithWidthWithHeightWithFittingModeRequestBuilder:
+    def microsoft_graph_image_with_width_with_height_with_fitting_mode(self,fitting_mode: Optional[str] = None, height: Optional[int] = None, width: Optional[int] = None) -> microsoft_graph_image_with_width_with_height_with_fitting_mode_request_builder.MicrosoftGraphImageWithWidthWithHeightWithFittingModeRequestBuilder:
         """
         Provides operations to call the image method.
         Args:
             fittingMode: Usage: fittingMode='{fittingMode}'
             height: Usage: height={height}
             width: Usage: width={width}
-        Returns: image_with_width_with_height_with_fitting_mode_request_builder.ImageWithWidthWithHeightWithFittingModeRequestBuilder
+        Returns: microsoft_graph_image_with_width_with_height_with_fitting_mode_request_builder.MicrosoftGraphImageWithWidthWithHeightWithFittingModeRequestBuilder
         """
         if fitting_mode is None:
             raise Exception("fitting_mode cannot be undefined")
@@ -196,7 +194,7 @@ class WorkbookChartItemRequestBuilder():
             raise Exception("height cannot be undefined")
         if width is None:
             raise Exception("width cannot be undefined")
-        return image_with_width_with_height_with_fitting_mode_request_builder.ImageWithWidthWithHeightWithFittingModeRequestBuilder(self.request_adapter, self.path_parameters, fittingMode, height, width)
+        return microsoft_graph_image_with_width_with_height_with_fitting_mode_request_builder.MicrosoftGraphImageWithWidthWithHeightWithFittingModeRequestBuilder(self.request_adapter, self.path_parameters, fittingMode, height, width)
     
     async def patch(self,body: Optional[workbook_chart.WorkbookChart] = None, request_configuration: Optional[WorkbookChartItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_chart.WorkbookChart]:
         """
@@ -259,7 +257,7 @@ class WorkbookChartItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -280,7 +278,7 @@ class WorkbookChartItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -293,7 +291,7 @@ class WorkbookChartItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -332,7 +330,7 @@ class WorkbookChartItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -347,7 +345,7 @@ class WorkbookChartItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

@@ -30,16 +30,16 @@ home_realm_discovery_policies_request_builder = lazy_import('msgraph.generated.s
 home_realm_discovery_policy_item_request_builder = lazy_import('msgraph.generated.service_principals.item.home_realm_discovery_policies.item.home_realm_discovery_policy_item_request_builder')
 member_of_request_builder = lazy_import('msgraph.generated.service_principals.item.member_of.member_of_request_builder')
 directory_object_item_request_builder = lazy_import('msgraph.generated.service_principals.item.member_of.item.directory_object_item_request_builder')
-add_key_request_builder = lazy_import('msgraph.generated.service_principals.item.microsoft_graph_add_key.add_key_request_builder')
-add_password_request_builder = lazy_import('msgraph.generated.service_principals.item.microsoft_graph_add_password.add_password_request_builder')
-add_token_signing_certificate_request_builder = lazy_import('msgraph.generated.service_principals.item.microsoft_graph_add_token_signing_certificate.add_token_signing_certificate_request_builder')
-check_member_groups_request_builder = lazy_import('msgraph.generated.service_principals.item.microsoft_graph_check_member_groups.check_member_groups_request_builder')
-check_member_objects_request_builder = lazy_import('msgraph.generated.service_principals.item.microsoft_graph_check_member_objects.check_member_objects_request_builder')
-get_member_groups_request_builder = lazy_import('msgraph.generated.service_principals.item.microsoft_graph_get_member_groups.get_member_groups_request_builder')
-get_member_objects_request_builder = lazy_import('msgraph.generated.service_principals.item.microsoft_graph_get_member_objects.get_member_objects_request_builder')
-remove_key_request_builder = lazy_import('msgraph.generated.service_principals.item.microsoft_graph_remove_key.remove_key_request_builder')
-remove_password_request_builder = lazy_import('msgraph.generated.service_principals.item.microsoft_graph_remove_password.remove_password_request_builder')
-restore_request_builder = lazy_import('msgraph.generated.service_principals.item.microsoft_graph_restore.restore_request_builder')
+microsoft_graph_add_key_request_builder = lazy_import('msgraph.generated.service_principals.item.microsoft_graph_add_key.microsoft_graph_add_key_request_builder')
+microsoft_graph_add_password_request_builder = lazy_import('msgraph.generated.service_principals.item.microsoft_graph_add_password.microsoft_graph_add_password_request_builder')
+microsoft_graph_add_token_signing_certificate_request_builder = lazy_import('msgraph.generated.service_principals.item.microsoft_graph_add_token_signing_certificate.microsoft_graph_add_token_signing_certificate_request_builder')
+microsoft_graph_check_member_groups_request_builder = lazy_import('msgraph.generated.service_principals.item.microsoft_graph_check_member_groups.microsoft_graph_check_member_groups_request_builder')
+microsoft_graph_check_member_objects_request_builder = lazy_import('msgraph.generated.service_principals.item.microsoft_graph_check_member_objects.microsoft_graph_check_member_objects_request_builder')
+microsoft_graph_get_member_groups_request_builder = lazy_import('msgraph.generated.service_principals.item.microsoft_graph_get_member_groups.microsoft_graph_get_member_groups_request_builder')
+microsoft_graph_get_member_objects_request_builder = lazy_import('msgraph.generated.service_principals.item.microsoft_graph_get_member_objects.microsoft_graph_get_member_objects_request_builder')
+microsoft_graph_remove_key_request_builder = lazy_import('msgraph.generated.service_principals.item.microsoft_graph_remove_key.microsoft_graph_remove_key_request_builder')
+microsoft_graph_remove_password_request_builder = lazy_import('msgraph.generated.service_principals.item.microsoft_graph_remove_password.microsoft_graph_remove_password_request_builder')
+microsoft_graph_restore_request_builder = lazy_import('msgraph.generated.service_principals.item.microsoft_graph_restore.microsoft_graph_restore_request_builder')
 oauth2_permission_grants_request_builder = lazy_import('msgraph.generated.service_principals.item.oauth2_permission_grants.oauth2_permission_grants_request_builder')
 o_auth2_permission_grant_item_request_builder = lazy_import('msgraph.generated.service_principals.item.oauth2_permission_grants.item.o_auth2_permission_grant_item_request_builder')
 owned_objects_request_builder = lazy_import('msgraph.generated.service_principals.item.owned_objects.owned_objects_request_builder')
@@ -121,74 +121,74 @@ class ServicePrincipalItemRequestBuilder():
         return member_of_request_builder.MemberOfRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_add_key(self) -> add_key_request_builder.AddKeyRequestBuilder:
+    def microsoft_graph_add_key(self) -> microsoft_graph_add_key_request_builder.MicrosoftGraphAddKeyRequestBuilder:
         """
         Provides operations to call the addKey method.
         """
-        return add_key_request_builder.AddKeyRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_add_key_request_builder.MicrosoftGraphAddKeyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_add_password(self) -> add_password_request_builder.AddPasswordRequestBuilder:
+    def microsoft_graph_add_password(self) -> microsoft_graph_add_password_request_builder.MicrosoftGraphAddPasswordRequestBuilder:
         """
         Provides operations to call the addPassword method.
         """
-        return add_password_request_builder.AddPasswordRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_add_password_request_builder.MicrosoftGraphAddPasswordRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_add_token_signing_certificate(self) -> add_token_signing_certificate_request_builder.AddTokenSigningCertificateRequestBuilder:
+    def microsoft_graph_add_token_signing_certificate(self) -> microsoft_graph_add_token_signing_certificate_request_builder.MicrosoftGraphAddTokenSigningCertificateRequestBuilder:
         """
         Provides operations to call the addTokenSigningCertificate method.
         """
-        return add_token_signing_certificate_request_builder.AddTokenSigningCertificateRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_add_token_signing_certificate_request_builder.MicrosoftGraphAddTokenSigningCertificateRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
+    def microsoft_graph_check_member_groups(self) -> microsoft_graph_check_member_groups_request_builder.MicrosoftGraphCheckMemberGroupsRequestBuilder:
         """
         Provides operations to call the checkMemberGroups method.
         """
-        return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_check_member_groups_request_builder.MicrosoftGraphCheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
+    def microsoft_graph_check_member_objects(self) -> microsoft_graph_check_member_objects_request_builder.MicrosoftGraphCheckMemberObjectsRequestBuilder:
         """
         Provides operations to call the checkMemberObjects method.
         """
-        return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_check_member_objects_request_builder.MicrosoftGraphCheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
+    def microsoft_graph_get_member_groups(self) -> microsoft_graph_get_member_groups_request_builder.MicrosoftGraphGetMemberGroupsRequestBuilder:
         """
         Provides operations to call the getMemberGroups method.
         """
-        return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_member_groups_request_builder.MicrosoftGraphGetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
+    def microsoft_graph_get_member_objects(self) -> microsoft_graph_get_member_objects_request_builder.MicrosoftGraphGetMemberObjectsRequestBuilder:
         """
         Provides operations to call the getMemberObjects method.
         """
-        return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_member_objects_request_builder.MicrosoftGraphGetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_remove_key(self) -> remove_key_request_builder.RemoveKeyRequestBuilder:
+    def microsoft_graph_remove_key(self) -> microsoft_graph_remove_key_request_builder.MicrosoftGraphRemoveKeyRequestBuilder:
         """
         Provides operations to call the removeKey method.
         """
-        return remove_key_request_builder.RemoveKeyRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_remove_key_request_builder.MicrosoftGraphRemoveKeyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_remove_password(self) -> remove_password_request_builder.RemovePasswordRequestBuilder:
+    def microsoft_graph_remove_password(self) -> microsoft_graph_remove_password_request_builder.MicrosoftGraphRemovePasswordRequestBuilder:
         """
         Provides operations to call the removePassword method.
         """
-        return remove_password_request_builder.RemovePasswordRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_remove_password_request_builder.MicrosoftGraphRemovePasswordRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_restore(self) -> restore_request_builder.RestoreRequestBuilder:
+    def microsoft_graph_restore(self) -> microsoft_graph_restore_request_builder.MicrosoftGraphRestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
-        return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_restore_request_builder.MicrosoftGraphRestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def oauth2_permission_grants(self) -> oauth2_permission_grants_request_builder.Oauth2PermissionGrantsRequestBuilder:
@@ -271,13 +271,12 @@ class ServicePrincipalItemRequestBuilder():
         url_tpl_params["claimsMappingPolicy%2Did"] = id
         return claims_mapping_policy_item_request_builder.ClaimsMappingPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, service_principal_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ServicePrincipalItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            servicePrincipalId: key: id of servicePrincipal
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -287,7 +286,6 @@ class ServicePrincipalItemRequestBuilder():
         self.url_template: str = "{+baseurl}/servicePrincipals/{servicePrincipal%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["servicePrincipal%2Did"] = servicePrincipalId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -491,7 +489,7 @@ class ServicePrincipalItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -538,7 +536,7 @@ class ServicePrincipalItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -564,7 +562,7 @@ class ServicePrincipalItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -603,7 +601,7 @@ class ServicePrincipalItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -618,7 +616,7 @@ class ServicePrincipalItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

@@ -14,9 +14,9 @@ assignments_request_builder = lazy_import('msgraph.generated.device_app_manageme
 mobile_app_assignment_item_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_apps.item.assignments.item.mobile_app_assignment_item_request_builder')
 categories_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_apps.item.categories.categories_request_builder')
 mobile_app_category_item_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_apps.item.categories.item.mobile_app_category_item_request_builder')
-assign_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_apps.item.microsoft_graph_assign.assign_request_builder')
-managed_mobile_lob_app_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_apps.item.microsoft_graph_managed_mobile_lob_app.managed_mobile_lob_app_request_builder')
-mobile_lob_app_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_apps.item.microsoft_graph_mobile_lob_app.mobile_lob_app_request_builder')
+microsoft_graph_assign_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_apps.item.microsoft_graph_assign.microsoft_graph_assign_request_builder')
+microsoft_graph_managed_mobile_lob_app_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_apps.item.microsoft_graph_managed_mobile_lob_app.microsoft_graph_managed_mobile_lob_app_request_builder')
+microsoft_graph_mobile_lob_app_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_apps.item.microsoft_graph_mobile_lob_app.microsoft_graph_mobile_lob_app_request_builder')
 mobile_app = lazy_import('msgraph.generated.models.mobile_app')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -39,25 +39,25 @@ class MobileAppItemRequestBuilder():
         return categories_request_builder.CategoriesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_assign(self) -> assign_request_builder.AssignRequestBuilder:
+    def microsoft_graph_assign(self) -> microsoft_graph_assign_request_builder.MicrosoftGraphAssignRequestBuilder:
         """
         Provides operations to call the assign method.
         """
-        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_assign_request_builder.MicrosoftGraphAssignRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_managed_mobile_lob_app(self) -> managed_mobile_lob_app_request_builder.ManagedMobileLobAppRequestBuilder:
+    def microsoft_graph_managed_mobile_lob_app(self) -> microsoft_graph_managed_mobile_lob_app_request_builder.MicrosoftGraphManagedMobileLobAppRequestBuilder:
         """
         Casts the previous resource to managedMobileLobApp.
         """
-        return managed_mobile_lob_app_request_builder.ManagedMobileLobAppRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_managed_mobile_lob_app_request_builder.MicrosoftGraphManagedMobileLobAppRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_mobile_lob_app(self) -> mobile_lob_app_request_builder.MobileLobAppRequestBuilder:
+    def microsoft_graph_mobile_lob_app(self) -> microsoft_graph_mobile_lob_app_request_builder.MicrosoftGraphMobileLobAppRequestBuilder:
         """
         Casts the previous resource to mobileLobApp.
         """
-        return mobile_lob_app_request_builder.MobileLobAppRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_mobile_lob_app_request_builder.MicrosoftGraphMobileLobAppRequestBuilder(self.request_adapter, self.path_parameters)
     
     def assignments_by_id(self,id: str) -> mobile_app_assignment_item_request_builder.MobileAppAssignmentItemRequestBuilder:
         """
@@ -85,11 +85,10 @@ class MobileAppItemRequestBuilder():
         url_tpl_params["mobileAppCategory%2Did"] = id
         return mobile_app_category_item_request_builder.MobileAppCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, mobile_app_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new MobileAppItemRequestBuilder and sets the default values.
         Args:
-            mobileAppId: key: id of mobileApp
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -101,7 +100,6 @@ class MobileAppItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceAppManagement/mobileApps/{mobileApp%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["mobileApp%2Did"] = mobileAppId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -188,7 +186,7 @@ class MobileAppItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -209,7 +207,7 @@ class MobileAppItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -222,7 +220,7 @@ class MobileAppItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -261,7 +259,7 @@ class MobileAppItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -276,7 +274,7 @@ class MobileAppItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

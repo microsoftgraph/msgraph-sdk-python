@@ -80,7 +80,7 @@ class InnerError(AdditionalDataHolder, Parsable):
         """
         Sets the date property value. Date when the error occured.
         Args:
-            value: Value to set for the date property.
+            value: Value to set for the Date property.
         """
         self._date = value
     

@@ -24,10 +24,10 @@ items_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.it
 base_item_item_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.items.item.base_item_item_request_builder')
 lists_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.lists_request_builder')
 list_item_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.list_item_request_builder')
-get_activities_by_interval_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.microsoft_graph_get_activities_by_interval.get_activities_by_interval_request_builder')
-get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder')
-get_applicable_content_types_for_list_with_list_id_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.microsoft_graph_get_applicable_content_types_for_list_with_list_id.get_applicable_content_types_for_list_with_list_id_request_builder')
-get_by_path_with_path_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.microsoft_graph_get_by_path_with_path.get_by_path_with_path_request_builder')
+microsoft_graph_get_activities_by_interval_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.microsoft_graph_get_activities_by_interval.microsoft_graph_get_activities_by_interval_request_builder')
+microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder')
+microsoft_graph_get_applicable_content_types_for_list_with_list_id_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.microsoft_graph_get_applicable_content_types_for_list_with_list_id.microsoft_graph_get_applicable_content_types_for_list_with_list_id_request_builder')
+microsoft_graph_get_by_path_with_path_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.microsoft_graph_get_by_path_with_path.microsoft_graph_get_by_path_with_path_request_builder')
 onenote_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.onenote.onenote_request_builder')
 operations_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.operations.operations_request_builder')
 rich_long_running_operation_item_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.operations.item.rich_long_running_operation_item_request_builder')
@@ -102,11 +102,11 @@ class SiteItemRequestBuilder():
         return lists_request_builder.ListsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_activities_by_interval(self) -> get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder:
+    def microsoft_graph_get_activities_by_interval(self) -> microsoft_graph_get_activities_by_interval_request_builder.MicrosoftGraphGetActivitiesByIntervalRequestBuilder:
         """
         Provides operations to call the getActivitiesByInterval method.
         """
-        return get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_get_activities_by_interval_request_builder.MicrosoftGraphGetActivitiesByIntervalRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def onenote(self) -> onenote_request_builder.OnenoteRequestBuilder:
@@ -163,13 +163,12 @@ class SiteItemRequestBuilder():
         url_tpl_params["columnDefinition%2Did"] = id
         return column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, site_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SiteItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            siteId: key: id of site
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -179,7 +178,6 @@ class SiteItemRequestBuilder():
         self.url_template: str = "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["site%2Did"] = siteId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -266,14 +264,14 @@ class SiteItemRequestBuilder():
         url_tpl_params["list%2Did"] = id
         return list_item_request_builder.ListItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: Optional[str] = None, interval: Optional[str] = None, start_date_time: Optional[str] = None) -> get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
+    def microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: Optional[str] = None, interval: Optional[str] = None, start_date_time: Optional[str] = None) -> microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.MicrosoftGraphGetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
         """
         Provides operations to call the getActivitiesByInterval method.
         Args:
             endDateTime: Usage: endDateTime='{endDateTime}'
             interval: Usage: interval='{interval}'
             startDateTime: Usage: startDateTime='{startDateTime}'
-        Returns: get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
+        Returns: microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.MicrosoftGraphGetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
         """
         if end_date_time is None:
             raise Exception("end_date_time cannot be undefined")
@@ -281,29 +279,29 @@ class SiteItemRequestBuilder():
             raise Exception("interval cannot be undefined")
         if start_date_time is None:
             raise Exception("start_date_time cannot be undefined")
-        return get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder(self.request_adapter, self.path_parameters, endDateTime, interval, startDateTime)
+        return microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.MicrosoftGraphGetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder(self.request_adapter, self.path_parameters, endDateTime, interval, startDateTime)
     
-    def microsoft_graph_get_applicable_content_types_for_list_with_list_id(self,list_id: Optional[str] = None) -> get_applicable_content_types_for_list_with_list_id_request_builder.GetApplicableContentTypesForListWithListIdRequestBuilder:
+    def microsoft_graph_get_applicable_content_types_for_list_with_list_id(self,list_id: Optional[str] = None) -> microsoft_graph_get_applicable_content_types_for_list_with_list_id_request_builder.MicrosoftGraphGetApplicableContentTypesForListWithListIdRequestBuilder:
         """
         Provides operations to call the getApplicableContentTypesForList method.
         Args:
             listId: Usage: listId='{listId}'
-        Returns: get_applicable_content_types_for_list_with_list_id_request_builder.GetApplicableContentTypesForListWithListIdRequestBuilder
+        Returns: microsoft_graph_get_applicable_content_types_for_list_with_list_id_request_builder.MicrosoftGraphGetApplicableContentTypesForListWithListIdRequestBuilder
         """
         if list_id is None:
             raise Exception("list_id cannot be undefined")
-        return get_applicable_content_types_for_list_with_list_id_request_builder.GetApplicableContentTypesForListWithListIdRequestBuilder(self.request_adapter, self.path_parameters, listId)
+        return microsoft_graph_get_applicable_content_types_for_list_with_list_id_request_builder.MicrosoftGraphGetApplicableContentTypesForListWithListIdRequestBuilder(self.request_adapter, self.path_parameters, listId)
     
-    def microsoft_graph_get_by_path_with_path(self,path: Optional[str] = None) -> get_by_path_with_path_request_builder.GetByPathWithPathRequestBuilder:
+    def microsoft_graph_get_by_path_with_path(self,path: Optional[str] = None) -> microsoft_graph_get_by_path_with_path_request_builder.MicrosoftGraphGetByPathWithPathRequestBuilder:
         """
         Provides operations to call the getByPath method.
         Args:
             path: Usage: path='{path}'
-        Returns: get_by_path_with_path_request_builder.GetByPathWithPathRequestBuilder
+        Returns: microsoft_graph_get_by_path_with_path_request_builder.MicrosoftGraphGetByPathWithPathRequestBuilder
         """
         if path is None:
             raise Exception("path cannot be undefined")
-        return get_by_path_with_path_request_builder.GetByPathWithPathRequestBuilder(self.request_adapter, self.path_parameters, path)
+        return microsoft_graph_get_by_path_with_path_request_builder.MicrosoftGraphGetByPathWithPathRequestBuilder(self.request_adapter, self.path_parameters, path)
     
     def operations_by_id(self,id: str) -> rich_long_running_operation_item_request_builder.RichLongRunningOperationItemRequestBuilder:
         """
@@ -389,7 +387,7 @@ class SiteItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -410,7 +408,7 @@ class SiteItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -450,7 +448,7 @@ class SiteItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -465,7 +463,7 @@ class SiteItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

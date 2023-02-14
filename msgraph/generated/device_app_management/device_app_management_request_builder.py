@@ -26,7 +26,7 @@ managed_e_books_request_builder = lazy_import('msgraph.generated.device_app_mana
 managed_e_book_item_request_builder = lazy_import('msgraph.generated.device_app_management.managed_e_books.item.managed_e_book_item_request_builder')
 mdm_windows_information_protection_policies_request_builder = lazy_import('msgraph.generated.device_app_management.mdm_windows_information_protection_policies.mdm_windows_information_protection_policies_request_builder')
 mdm_windows_information_protection_policy_item_request_builder = lazy_import('msgraph.generated.device_app_management.mdm_windows_information_protection_policies.item.mdm_windows_information_protection_policy_item_request_builder')
-sync_microsoft_store_for_business_apps_request_builder = lazy_import('msgraph.generated.device_app_management.microsoft_graph_sync_microsoft_store_for_business_apps.sync_microsoft_store_for_business_apps_request_builder')
+microsoft_graph_sync_microsoft_store_for_business_apps_request_builder = lazy_import('msgraph.generated.device_app_management.microsoft_graph_sync_microsoft_store_for_business_apps.microsoft_graph_sync_microsoft_store_for_business_apps_request_builder')
 mobile_app_categories_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_categories.mobile_app_categories_request_builder')
 mobile_app_category_item_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_categories.item.mobile_app_category_item_request_builder')
 mobile_app_configurations_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_configurations.mobile_app_configurations_request_builder')
@@ -103,11 +103,11 @@ class DeviceAppManagementRequestBuilder():
         return mdm_windows_information_protection_policies_request_builder.MdmWindowsInformationProtectionPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_sync_microsoft_store_for_business_apps(self) -> sync_microsoft_store_for_business_apps_request_builder.SyncMicrosoftStoreForBusinessAppsRequestBuilder:
+    def microsoft_graph_sync_microsoft_store_for_business_apps(self) -> microsoft_graph_sync_microsoft_store_for_business_apps_request_builder.MicrosoftGraphSyncMicrosoftStoreForBusinessAppsRequestBuilder:
         """
         Provides operations to call the syncMicrosoftStoreForBusinessApps method.
         """
-        return sync_microsoft_store_for_business_apps_request_builder.SyncMicrosoftStoreForBusinessAppsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_sync_microsoft_store_for_business_apps_request_builder.MicrosoftGraphSyncMicrosoftStoreForBusinessAppsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def mobile_app_categories(self) -> mobile_app_categories_request_builder.MobileAppCategoriesRequestBuilder:
@@ -375,7 +375,7 @@ class DeviceAppManagementRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -396,7 +396,7 @@ class DeviceAppManagementRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -462,7 +462,7 @@ class DeviceAppManagementRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -477,7 +477,7 @@ class DeviceAppManagementRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

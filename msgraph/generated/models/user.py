@@ -468,6 +468,8 @@ class User(directory_object.DirectoryObject):
         self._employee_hire_date: Optional[datetime] = None
         # The employee identifier assigned to the user by the organization. The maximum length is 16 characters. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).
         self._employee_id: Optional[str] = None
+        # The employeeLeaveDateTime property
+        self._employee_leave_date_time: Optional[datetime] = None
         # Represents organization data (e.g. division and costCenter) associated with a user. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in).
         self._employee_org_data: Optional[employee_org_data.EmployeeOrgData] = None
         # Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in, startsWith).
@@ -903,6 +905,23 @@ class User(directory_object.DirectoryObject):
         self._employee_id = value
     
     @property
+    def employee_leave_date_time(self,) -> Optional[datetime]:
+        """
+        Gets the employeeLeaveDateTime property value. The employeeLeaveDateTime property
+        Returns: Optional[datetime]
+        """
+        return self._employee_leave_date_time
+    
+    @employee_leave_date_time.setter
+    def employee_leave_date_time(self,value: Optional[datetime] = None) -> None:
+        """
+        Sets the employeeLeaveDateTime property value. The employeeLeaveDateTime property
+        Args:
+            value: Value to set for the employee_leave_date_time property.
+        """
+        self._employee_leave_date_time = value
+    
+    @property
     def employee_org_data(self,) -> Optional[employee_org_data.EmployeeOrgData]:
         """
         Gets the employeeOrgData property value. Represents organization data (e.g. division and costCenter) associated with a user. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in).
@@ -1079,6 +1098,7 @@ class User(directory_object.DirectoryObject):
             "drives": lambda n : setattr(self, 'drives', n.get_collection_of_object_values(drive.Drive)),
             "employeeHireDate": lambda n : setattr(self, 'employee_hire_date', n.get_datetime_value()),
             "employeeId": lambda n : setattr(self, 'employee_id', n.get_str_value()),
+            "employeeLeaveDateTime": lambda n : setattr(self, 'employee_leave_date_time', n.get_datetime_value()),
             "employeeOrgData": lambda n : setattr(self, 'employee_org_data', n.get_object_value(employee_org_data.EmployeeOrgData)),
             "employeeType": lambda n : setattr(self, 'employee_type', n.get_str_value()),
             "events": lambda n : setattr(self, 'events', n.get_collection_of_object_values(event.Event)),
@@ -2265,6 +2285,7 @@ class User(directory_object.DirectoryObject):
         writer.write_collection_of_object_values("drives", self.drives)
         writer.write_datetime_value("employeeHireDate", self.employee_hire_date)
         writer.write_str_value("employeeId", self.employee_id)
+        writer.write_datetime_value("employeeLeaveDateTime", self.employee_leave_date_time)
         writer.write_object_value("employeeOrgData", self.employee_org_data)
         writer.write_str_value("employeeType", self.employee_type)
         writer.write_collection_of_object_values("events", self.events)

@@ -10,7 +10,7 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-generate_download_uri_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.history_definitions.item.instances.item.microsoft_graph_generate_download_uri.generate_download_uri_request_builder')
+microsoft_graph_generate_download_uri_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.history_definitions.item.instances.item.microsoft_graph_generate_download_uri.microsoft_graph_generate_download_uri_request_builder')
 access_review_history_instance = lazy_import('msgraph.generated.models.access_review_history_instance')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -19,17 +19,16 @@ class AccessReviewHistoryInstanceItemRequestBuilder():
     Provides operations to manage the instances property of the microsoft.graph.accessReviewHistoryDefinition entity.
     """
     @property
-    def microsoft_graph_generate_download_uri(self) -> generate_download_uri_request_builder.GenerateDownloadUriRequestBuilder:
+    def microsoft_graph_generate_download_uri(self) -> microsoft_graph_generate_download_uri_request_builder.MicrosoftGraphGenerateDownloadUriRequestBuilder:
         """
         Provides operations to call the generateDownloadUri method.
         """
-        return generate_download_uri_request_builder.GenerateDownloadUriRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_generate_download_uri_request_builder.MicrosoftGraphGenerateDownloadUriRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, access_review_history_instance_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AccessReviewHistoryInstanceItemRequestBuilder and sets the default values.
         Args:
-            accessReviewHistoryInstanceId: key: id of accessReviewHistoryInstance
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -41,7 +40,6 @@ class AccessReviewHistoryInstanceItemRequestBuilder():
         self.url_template: str = "{+baseurl}/identityGovernance/accessReviews/historyDefinitions/{accessReviewHistoryDefinition%2Did}/instances/{accessReviewHistoryInstance%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["accessReviewHistoryInstance%2Did"] = accessReviewHistoryInstanceId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -128,7 +126,7 @@ class AccessReviewHistoryInstanceItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -149,7 +147,7 @@ class AccessReviewHistoryInstanceItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -162,7 +160,7 @@ class AccessReviewHistoryInstanceItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -201,7 +199,7 @@ class AccessReviewHistoryInstanceItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -216,7 +214,7 @@ class AccessReviewHistoryInstanceItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

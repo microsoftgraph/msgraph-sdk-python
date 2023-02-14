@@ -46,7 +46,7 @@ class RequestsRequestBuilder():
     
     async def get(self,request_configuration: Optional[RequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[delegated_admin_relationship_request_collection_response.DelegatedAdminRelationshipRequestCollectionResponse]:
         """
-        Get requests from tenantRelationships
+        Get a list of the delegatedAdminRelationshipRequest objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[delegated_admin_relationship_request_collection_response.DelegatedAdminRelationshipRequestCollectionResponse]
@@ -64,7 +64,7 @@ class RequestsRequestBuilder():
     
     async def post(self,body: Optional[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest] = None, request_configuration: Optional[RequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]:
         """
-        Create new navigation property to requests for tenantRelationships
+        Create a new delegatedAdminRelationshipRequest object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -85,7 +85,7 @@ class RequestsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get requests from tenantRelationships
+        Get a list of the delegatedAdminRelationshipRequest objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -94,7 +94,7 @@ class RequestsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -103,7 +103,7 @@ class RequestsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest] = None, request_configuration: Optional[RequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to requests for tenantRelationships
+        Create a new delegatedAdminRelationshipRequest object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -115,7 +115,7 @@ class RequestsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -125,7 +125,7 @@ class RequestsRequestBuilder():
     @dataclass
     class RequestsRequestBuilderGetQueryParameters():
         """
-        Get requests from tenantRelationships
+        Get a list of the delegatedAdminRelationshipRequest objects and their properties.
         """
         # Include count of items
         count: Optional[bool] = None
@@ -185,7 +185,7 @@ class RequestsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -200,7 +200,7 @@ class RequestsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.chats.item.messages.item.replies.count.count_request_builder')
-delta_request_builder = lazy_import('msgraph.generated.chats.item.messages.item.replies.microsoft_graph_delta.delta_request_builder')
+microsoft_graph_delta_request_builder = lazy_import('msgraph.generated.chats.item.messages.item.replies.microsoft_graph_delta.microsoft_graph_delta_request_builder')
 chat_message = lazy_import('msgraph.generated.models.chat_message')
 chat_message_collection_response = lazy_import('msgraph.generated.models.chat_message_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -28,11 +28,11 @@ class RepliesRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_delta(self) -> delta_request_builder.DeltaRequestBuilder:
+    def microsoft_graph_delta(self) -> microsoft_graph_delta_request_builder.MicrosoftGraphDeltaRequestBuilder:
         """
         Provides operations to call the delta method.
         """
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_delta_request_builder.MicrosoftGraphDeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -72,7 +72,7 @@ class RepliesRequestBuilder():
     
     async def post(self,body: Optional[chat_message.ChatMessage] = None, request_configuration: Optional[RepliesRequestBuilderPostRequestConfiguration] = None) -> Optional[chat_message.ChatMessage]:
         """
-        Create a new reply to a chatMessage in a specified channel.
+        Send a new reply to a chatMessage in a specified channel.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class RepliesRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -111,7 +111,7 @@ class RepliesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[chat_message.ChatMessage] = None, request_configuration: Optional[RepliesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new reply to a chatMessage in a specified channel.
+        Send a new reply to a chatMessage in a specified channel.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -123,7 +123,7 @@ class RepliesRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -193,7 +193,7 @@ class RepliesRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -208,7 +208,7 @@ class RepliesRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

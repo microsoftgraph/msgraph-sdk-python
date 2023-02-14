@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.categories.count.count_request_builder')
-delta_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.categories.microsoft_graph_delta.delta_request_builder')
+microsoft_graph_delta_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.categories.microsoft_graph_delta.microsoft_graph_delta_request_builder')
 ref_request_builder = lazy_import('msgraph.generated.education.classes.item.assignments.item.categories.ref.ref_request_builder')
 education_category = lazy_import('msgraph.generated.models.education_category')
 education_category_collection_response = lazy_import('msgraph.generated.models.education_category_collection_response')
@@ -29,11 +29,11 @@ class CategoriesRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_delta(self) -> delta_request_builder.DeltaRequestBuilder:
+    def microsoft_graph_delta(self) -> microsoft_graph_delta_request_builder.MicrosoftGraphDeltaRequestBuilder:
         """
         Provides operations to call the delta method.
         """
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_delta_request_builder.MicrosoftGraphDeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def ref(self) -> ref_request_builder.RefRequestBuilder:
@@ -110,7 +110,7 @@ class CategoriesRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -131,7 +131,7 @@ class CategoriesRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -201,7 +201,7 @@ class CategoriesRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -216,7 +216,7 @@ class CategoriesRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

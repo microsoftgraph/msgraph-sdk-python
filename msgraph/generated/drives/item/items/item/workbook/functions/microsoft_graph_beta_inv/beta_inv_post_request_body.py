@@ -19,7 +19,7 @@ class Beta_InvPostRequestBody(AdditionalDataHolder, Parsable):
         """
         Sets the a property value. The A property
         Args:
-            value: Value to set for the a property.
+            value: Value to set for the A property.
         """
         self._a = value
     
@@ -70,7 +70,7 @@ class Beta_InvPostRequestBody(AdditionalDataHolder, Parsable):
         """
         Sets the b property value. The B property
         Args:
-            value: Value to set for the b property.
+            value: Value to set for the B property.
         """
         self._b = value
     

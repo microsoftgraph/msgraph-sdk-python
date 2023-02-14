@@ -10,372 +10,372 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-abs_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_abs.abs_request_builder')
-accr_int_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_accr_int.accr_int_request_builder')
-accr_int_m_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_accr_int_m.accr_int_m_request_builder')
-acos_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_acos.acos_request_builder')
-acosh_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_acosh.acosh_request_builder')
-acot_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_acot.acot_request_builder')
-acoth_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_acoth.acoth_request_builder')
-amor_degrc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_amor_degrc.amor_degrc_request_builder')
-amor_linc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_amor_linc.amor_linc_request_builder')
-and_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_and.and_request_builder')
-arabic_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_arabic.arabic_request_builder')
-areas_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_areas.areas_request_builder')
-asc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_asc.asc_request_builder')
-asin_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_asin.asin_request_builder')
-asinh_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_asinh.asinh_request_builder')
-atan_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_atan.atan_request_builder')
-atan2_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_atan2.atan2_request_builder')
-atanh_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_atanh.atanh_request_builder')
-ave_dev_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_ave_dev.ave_dev_request_builder')
-average_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_average.average_request_builder')
-average_a_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_average_a.average_a_request_builder')
-average_if_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_average_if.average_if_request_builder')
-average_ifs_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_average_ifs.average_ifs_request_builder')
-baht_text_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_baht_text.baht_text_request_builder')
-base_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_base.base_request_builder')
-bessel_i_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bessel_i.bessel_i_request_builder')
-bessel_j_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bessel_j.bessel_j_request_builder')
-bessel_k_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bessel_k.bessel_k_request_builder')
-bessel_y_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bessel_y.bessel_y_request_builder')
-beta_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_beta_dist.beta_dist_request_builder')
-beta_inv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_beta_inv.beta_inv_request_builder')
-bin2_dec_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bin2_dec.bin2_dec_request_builder')
-bin2_hex_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bin2_hex.bin2_hex_request_builder')
-bin2_oct_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bin2_oct.bin2_oct_request_builder')
-binom_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_binom_dist.binom_dist_request_builder')
-binom_dist_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_binom_dist_range.binom_dist_range_request_builder')
-binom_inv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_binom_inv.binom_inv_request_builder')
-bitand_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bitand.bitand_request_builder')
-bitlshift_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bitlshift.bitlshift_request_builder')
-bitor_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bitor.bitor_request_builder')
-bitrshift_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bitrshift.bitrshift_request_builder')
-bitxor_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bitxor.bitxor_request_builder')
-ceiling_math_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_ceiling_math.ceiling_math_request_builder')
-ceiling_precise_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_ceiling_precise.ceiling_precise_request_builder')
-char_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_char.char_request_builder')
-chi_sq_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_chi_sq_dist.chi_sq_dist_request_builder')
-chi_sq_dist_r_t_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_chi_sq_dist_r_t.chi_sq_dist_r_t_request_builder')
-chi_sq_inv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_chi_sq_inv.chi_sq_inv_request_builder')
-chi_sq_inv_r_t_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_chi_sq_inv_r_t.chi_sq_inv_r_t_request_builder')
-choose_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_choose.choose_request_builder')
-clean_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_clean.clean_request_builder')
-code_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_code.code_request_builder')
-columns_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_columns.columns_request_builder')
-combin_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_combin.combin_request_builder')
-combina_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_combina.combina_request_builder')
-complex_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_complex.complex_request_builder')
-concatenate_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_concatenate.concatenate_request_builder')
-confidence_norm_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_confidence_norm.confidence_norm_request_builder')
-confidence_t_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_confidence_t.confidence_t_request_builder')
-convert_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_convert.convert_request_builder')
-cos_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_cos.cos_request_builder')
-cosh_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_cosh.cosh_request_builder')
-cot_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_cot.cot_request_builder')
-coth_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_coth.coth_request_builder')
-count_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_count.count_request_builder')
-count_a_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_count_a.count_a_request_builder')
-count_blank_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_count_blank.count_blank_request_builder')
-count_if_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_count_if.count_if_request_builder')
-count_ifs_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_count_ifs.count_ifs_request_builder')
-coup_day_bs_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_coup_day_bs.coup_day_bs_request_builder')
-coup_days_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_coup_days.coup_days_request_builder')
-coup_days_nc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_coup_days_nc.coup_days_nc_request_builder')
-coup_ncd_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_coup_ncd.coup_ncd_request_builder')
-coup_num_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_coup_num.coup_num_request_builder')
-coup_pcd_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_coup_pcd.coup_pcd_request_builder')
-csc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_csc.csc_request_builder')
-csch_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_csch.csch_request_builder')
-cum_i_pmt_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_cum_i_pmt.cum_i_pmt_request_builder')
-cum_princ_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_cum_princ.cum_princ_request_builder')
-date_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_date.date_request_builder')
-datevalue_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_datevalue.datevalue_request_builder')
-daverage_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_daverage.daverage_request_builder')
-day_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_day.day_request_builder')
-days_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_days.days_request_builder')
-days360_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_days360.days360_request_builder')
-db_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_db.db_request_builder')
-dbcs_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dbcs.dbcs_request_builder')
-dcount_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dcount.dcount_request_builder')
-dcount_a_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dcount_a.dcount_a_request_builder')
-ddb_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_ddb.ddb_request_builder')
-dec2_bin_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dec2_bin.dec2_bin_request_builder')
-dec2_hex_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dec2_hex.dec2_hex_request_builder')
-dec2_oct_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dec2_oct.dec2_oct_request_builder')
-decimal_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_decimal.decimal_request_builder')
-degrees_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_degrees.degrees_request_builder')
-delta_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_delta.delta_request_builder')
-dev_sq_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dev_sq.dev_sq_request_builder')
-dget_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dget.dget_request_builder')
-disc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_disc.disc_request_builder')
-dmax_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dmax.dmax_request_builder')
-dmin_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dmin.dmin_request_builder')
-dollar_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dollar.dollar_request_builder')
-dollar_de_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dollar_de.dollar_de_request_builder')
-dollar_fr_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dollar_fr.dollar_fr_request_builder')
-dproduct_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dproduct.dproduct_request_builder')
-dst_dev_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dst_dev.dst_dev_request_builder')
-dst_dev_p_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dst_dev_p.dst_dev_p_request_builder')
-dsum_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dsum.dsum_request_builder')
-duration_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_duration.duration_request_builder')
-dvar_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dvar.dvar_request_builder')
-dvar_p_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dvar_p.dvar_p_request_builder')
-ecma_ceiling_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_ecma_ceiling.ecma_ceiling_request_builder')
-edate_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_edate.edate_request_builder')
-effect_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_effect.effect_request_builder')
-eo_month_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_eo_month.eo_month_request_builder')
-erf_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_erf.erf_request_builder')
-erf_precise_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_erf_precise.erf_precise_request_builder')
-erf_c_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_erf_c.erf_c_request_builder')
-erf_c_precise_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_erf_c_precise.erf_c_precise_request_builder')
-error_type_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_error_type.error_type_request_builder')
-even_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_even.even_request_builder')
-exact_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_exact.exact_request_builder')
-exp_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_exp.exp_request_builder')
-expon_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_expon_dist.expon_dist_request_builder')
-f_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_f_dist.f_dist_request_builder')
-f_dist_r_t_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_f_dist_r_t.f_dist_r_t_request_builder')
-f_inv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_f_inv.f_inv_request_builder')
-f_inv_r_t_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_f_inv_r_t.f_inv_r_t_request_builder')
-fact_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_fact.fact_request_builder')
-fact_double_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_fact_double.fact_double_request_builder')
-false_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_false.false_request_builder')
-find_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_find.find_request_builder')
-find_b_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_find_b.find_b_request_builder')
-fisher_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_fisher.fisher_request_builder')
-fisher_inv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_fisher_inv.fisher_inv_request_builder')
-fixed_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_fixed.fixed_request_builder')
-floor_math_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_floor_math.floor_math_request_builder')
-floor_precise_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_floor_precise.floor_precise_request_builder')
-fv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_fv.fv_request_builder')
-fvschedule_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_fvschedule.fvschedule_request_builder')
-gamma_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_gamma.gamma_request_builder')
-gamma_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_gamma_dist.gamma_dist_request_builder')
-gamma_inv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_gamma_inv.gamma_inv_request_builder')
-gamma_ln_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_gamma_ln.gamma_ln_request_builder')
-gamma_ln_precise_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_gamma_ln_precise.gamma_ln_precise_request_builder')
-gauss_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_gauss.gauss_request_builder')
-gcd_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_gcd.gcd_request_builder')
-geo_mean_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_geo_mean.geo_mean_request_builder')
-ge_step_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_ge_step.ge_step_request_builder')
-har_mean_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_har_mean.har_mean_request_builder')
-hex2_bin_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_hex2_bin.hex2_bin_request_builder')
-hex2_dec_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_hex2_dec.hex2_dec_request_builder')
-hex2_oct_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_hex2_oct.hex2_oct_request_builder')
-hlookup_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_hlookup.hlookup_request_builder')
-hour_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_hour.hour_request_builder')
-hyperlink_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_hyperlink.hyperlink_request_builder')
-hyp_geom_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_hyp_geom_dist.hyp_geom_dist_request_builder')
-if_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_if.if_request_builder')
-im_abs_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_abs.im_abs_request_builder')
-imaginary_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_imaginary.imaginary_request_builder')
-im_argument_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_argument.im_argument_request_builder')
-im_conjugate_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_conjugate.im_conjugate_request_builder')
-im_cos_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_cos.im_cos_request_builder')
-im_cosh_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_cosh.im_cosh_request_builder')
-im_cot_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_cot.im_cot_request_builder')
-im_csc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_csc.im_csc_request_builder')
-im_csch_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_csch.im_csch_request_builder')
-im_div_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_div.im_div_request_builder')
-im_exp_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_exp.im_exp_request_builder')
-im_ln_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_ln.im_ln_request_builder')
-im_log10_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_log10.im_log10_request_builder')
-im_log2_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_log2.im_log2_request_builder')
-im_power_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_power.im_power_request_builder')
-im_product_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_product.im_product_request_builder')
-im_real_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_real.im_real_request_builder')
-im_sec_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_sec.im_sec_request_builder')
-im_sech_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_sech.im_sech_request_builder')
-im_sin_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_sin.im_sin_request_builder')
-im_sinh_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_sinh.im_sinh_request_builder')
-im_sqrt_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_sqrt.im_sqrt_request_builder')
-im_sub_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_sub.im_sub_request_builder')
-im_sum_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_sum.im_sum_request_builder')
-im_tan_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_tan.im_tan_request_builder')
-int_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_int.int_request_builder')
-int_rate_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_int_rate.int_rate_request_builder')
-ipmt_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_ipmt.ipmt_request_builder')
-irr_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_irr.irr_request_builder')
-is_err_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_is_err.is_err_request_builder')
-is_error_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_is_error.is_error_request_builder')
-is_even_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_is_even.is_even_request_builder')
-is_formula_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_is_formula.is_formula_request_builder')
-is_logical_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_is_logical.is_logical_request_builder')
-is_n_a_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_is_n_a.is_n_a_request_builder')
-is_non_text_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_is_non_text.is_non_text_request_builder')
-is_number_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_is_number.is_number_request_builder')
-iso_ceiling_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_iso_ceiling.iso_ceiling_request_builder')
-is_odd_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_is_odd.is_odd_request_builder')
-iso_week_num_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_iso_week_num.iso_week_num_request_builder')
-ispmt_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_ispmt.ispmt_request_builder')
-isref_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_isref.isref_request_builder')
-is_text_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_is_text.is_text_request_builder')
-kurt_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_kurt.kurt_request_builder')
-large_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_large.large_request_builder')
-lcm_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_lcm.lcm_request_builder')
-left_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_left.left_request_builder')
-leftb_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_leftb.leftb_request_builder')
-len_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_len.len_request_builder')
-lenb_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_lenb.lenb_request_builder')
-ln_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_ln.ln_request_builder')
-log_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_log.log_request_builder')
-log10_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_log10.log10_request_builder')
-log_norm_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_log_norm_dist.log_norm_dist_request_builder')
-log_norm_inv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_log_norm_inv.log_norm_inv_request_builder')
-lookup_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_lookup.lookup_request_builder')
-lower_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_lower.lower_request_builder')
-match_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_match.match_request_builder')
-max_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_max.max_request_builder')
-max_a_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_max_a.max_a_request_builder')
-mduration_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_mduration.mduration_request_builder')
-median_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_median.median_request_builder')
-mid_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_mid.mid_request_builder')
-midb_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_midb.midb_request_builder')
-min_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_min.min_request_builder')
-min_a_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_min_a.min_a_request_builder')
-minute_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_minute.minute_request_builder')
-mirr_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_mirr.mirr_request_builder')
-mod_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_mod.mod_request_builder')
-month_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_month.month_request_builder')
-mround_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_mround.mround_request_builder')
-multi_nomial_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_multi_nomial.multi_nomial_request_builder')
-n_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_n.n_request_builder')
-na_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_na.na_request_builder')
-neg_binom_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_neg_binom_dist.neg_binom_dist_request_builder')
-network_days_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_network_days.network_days_request_builder')
-network_days_intl_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_network_days_intl.network_days_intl_request_builder')
-nominal_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_nominal.nominal_request_builder')
-norm_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_norm_dist.norm_dist_request_builder')
-norm_inv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_norm_inv.norm_inv_request_builder')
-norm_s_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_norm_s_dist.norm_s_dist_request_builder')
-norm_s_inv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_norm_s_inv.norm_s_inv_request_builder')
-not_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_not.not_request_builder')
-now_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_now.now_request_builder')
-nper_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_nper.nper_request_builder')
-npv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_npv.npv_request_builder')
-number_value_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_number_value.number_value_request_builder')
-oct2_bin_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_oct2_bin.oct2_bin_request_builder')
-oct2_dec_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_oct2_dec.oct2_dec_request_builder')
-oct2_hex_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_oct2_hex.oct2_hex_request_builder')
-odd_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_odd.odd_request_builder')
-odd_f_price_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_odd_f_price.odd_f_price_request_builder')
-odd_f_yield_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_odd_f_yield.odd_f_yield_request_builder')
-odd_l_price_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_odd_l_price.odd_l_price_request_builder')
-odd_l_yield_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_odd_l_yield.odd_l_yield_request_builder')
-or_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_or.or_request_builder')
-pduration_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_pduration.pduration_request_builder')
-percentile_exc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_percentile_exc.percentile_exc_request_builder')
-percentile_inc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_percentile_inc.percentile_inc_request_builder')
-percent_rank_exc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_percent_rank_exc.percent_rank_exc_request_builder')
-percent_rank_inc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_percent_rank_inc.percent_rank_inc_request_builder')
-permut_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_permut.permut_request_builder')
-permutationa_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_permutationa.permutationa_request_builder')
-phi_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_phi.phi_request_builder')
-pi_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_pi.pi_request_builder')
-pmt_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_pmt.pmt_request_builder')
-poisson_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_poisson_dist.poisson_dist_request_builder')
-power_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_power.power_request_builder')
-ppmt_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_ppmt.ppmt_request_builder')
-price_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_price.price_request_builder')
-price_disc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_price_disc.price_disc_request_builder')
-price_mat_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_price_mat.price_mat_request_builder')
-product_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_product.product_request_builder')
-proper_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_proper.proper_request_builder')
-pv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_pv.pv_request_builder')
-quartile_exc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_quartile_exc.quartile_exc_request_builder')
-quartile_inc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_quartile_inc.quartile_inc_request_builder')
-quotient_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_quotient.quotient_request_builder')
-radians_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_radians.radians_request_builder')
-rand_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_rand.rand_request_builder')
-rand_between_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_rand_between.rand_between_request_builder')
-rank_avg_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_rank_avg.rank_avg_request_builder')
-rank_eq_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_rank_eq.rank_eq_request_builder')
-rate_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_rate.rate_request_builder')
-received_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_received.received_request_builder')
-replace_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_replace.replace_request_builder')
-replace_b_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_replace_b.replace_b_request_builder')
-rept_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_rept.rept_request_builder')
-right_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_right.right_request_builder')
-rightb_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_rightb.rightb_request_builder')
-roman_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_roman.roman_request_builder')
-round_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_round.round_request_builder')
-round_down_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_round_down.round_down_request_builder')
-round_up_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_round_up.round_up_request_builder')
-rows_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_rows.rows_request_builder')
-rri_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_rri.rri_request_builder')
-sec_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sec.sec_request_builder')
-sech_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sech.sech_request_builder')
-second_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_second.second_request_builder')
-series_sum_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_series_sum.series_sum_request_builder')
-sheet_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sheet.sheet_request_builder')
-sheets_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sheets.sheets_request_builder')
-sign_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sign.sign_request_builder')
-sin_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sin.sin_request_builder')
-sinh_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sinh.sinh_request_builder')
-skew_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_skew.skew_request_builder')
-skew_p_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_skew_p.skew_p_request_builder')
-sln_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sln.sln_request_builder')
-small_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_small.small_request_builder')
-sqrt_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sqrt.sqrt_request_builder')
-sqrt_pi_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sqrt_pi.sqrt_pi_request_builder')
-standardize_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_standardize.standardize_request_builder')
-st_dev_p_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_st_dev_p.st_dev_p_request_builder')
-st_dev_s_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_st_dev_s.st_dev_s_request_builder')
-st_dev_a_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_st_dev_a.st_dev_a_request_builder')
-st_dev_p_a_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_st_dev_p_a.st_dev_p_a_request_builder')
-substitute_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_substitute.substitute_request_builder')
-subtotal_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_subtotal.subtotal_request_builder')
-sum_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sum.sum_request_builder')
-sum_if_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sum_if.sum_if_request_builder')
-sum_ifs_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sum_ifs.sum_ifs_request_builder')
-sum_sq_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sum_sq.sum_sq_request_builder')
-syd_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_syd.syd_request_builder')
-t_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_t.t_request_builder')
-t_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_t_dist.t_dist_request_builder')
-t_dist_2_t_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_t_dist_2_t.t_dist_2_t_request_builder')
-t_dist_r_t_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_t_dist_r_t.t_dist_r_t_request_builder')
-t_inv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_t_inv.t_inv_request_builder')
-t_inv_2_t_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_t_inv_2_t.t_inv_2_t_request_builder')
-tan_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_tan.tan_request_builder')
-tanh_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_tanh.tanh_request_builder')
-tbill_eq_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_tbill_eq.tbill_eq_request_builder')
-tbill_price_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_tbill_price.tbill_price_request_builder')
-tbill_yield_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_tbill_yield.tbill_yield_request_builder')
-text_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_text.text_request_builder')
-time_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_time.time_request_builder')
-timevalue_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_timevalue.timevalue_request_builder')
-today_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_today.today_request_builder')
-trim_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_trim.trim_request_builder')
-trim_mean_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_trim_mean.trim_mean_request_builder')
-true_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_true.true_request_builder')
-trunc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_trunc.trunc_request_builder')
-type_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_type.type_request_builder')
-unichar_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_unichar.unichar_request_builder')
-unicode_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_unicode.unicode_request_builder')
-upper_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_upper.upper_request_builder')
-usdollar_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_usdollar.usdollar_request_builder')
-value_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_value.value_request_builder')
-var_p_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_var_p.var_p_request_builder')
-var_s_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_var_s.var_s_request_builder')
-var_a_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_var_a.var_a_request_builder')
-var_p_a_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_var_p_a.var_p_a_request_builder')
-vdb_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_vdb.vdb_request_builder')
-vlookup_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_vlookup.vlookup_request_builder')
-weekday_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_weekday.weekday_request_builder')
-week_num_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_week_num.week_num_request_builder')
-weibull_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_weibull_dist.weibull_dist_request_builder')
-work_day_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_work_day.work_day_request_builder')
-work_day_intl_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_work_day_intl.work_day_intl_request_builder')
-xirr_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_xirr.xirr_request_builder')
-xnpv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_xnpv.xnpv_request_builder')
-xor_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_xor.xor_request_builder')
-year_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_year.year_request_builder')
-year_frac_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_year_frac.year_frac_request_builder')
-yield_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_yield.yield_request_builder')
-yield_disc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_yield_disc.yield_disc_request_builder')
-yield_mat_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_yield_mat.yield_mat_request_builder')
-z_test_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_z_test.z_test_request_builder')
+microsoft_graph_abs_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_abs.microsoft_graph_abs_request_builder')
+microsoft_graph_accr_int_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_accr_int.microsoft_graph_accr_int_request_builder')
+microsoft_graph_accr_int_m_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_accr_int_m.microsoft_graph_accr_int_m_request_builder')
+microsoft_graph_acos_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_acos.microsoft_graph_acos_request_builder')
+microsoft_graph_acosh_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_acosh.microsoft_graph_acosh_request_builder')
+microsoft_graph_acot_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_acot.microsoft_graph_acot_request_builder')
+microsoft_graph_acoth_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_acoth.microsoft_graph_acoth_request_builder')
+microsoft_graph_amor_degrc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_amor_degrc.microsoft_graph_amor_degrc_request_builder')
+microsoft_graph_amor_linc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_amor_linc.microsoft_graph_amor_linc_request_builder')
+microsoft_graph_and_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_and.microsoft_graph_and_request_builder')
+microsoft_graph_arabic_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_arabic.microsoft_graph_arabic_request_builder')
+microsoft_graph_areas_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_areas.microsoft_graph_areas_request_builder')
+microsoft_graph_asc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_asc.microsoft_graph_asc_request_builder')
+microsoft_graph_asin_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_asin.microsoft_graph_asin_request_builder')
+microsoft_graph_asinh_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_asinh.microsoft_graph_asinh_request_builder')
+microsoft_graph_atan_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_atan.microsoft_graph_atan_request_builder')
+microsoft_graph_atan2_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_atan2.microsoft_graph_atan2_request_builder')
+microsoft_graph_atanh_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_atanh.microsoft_graph_atanh_request_builder')
+microsoft_graph_ave_dev_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_ave_dev.microsoft_graph_ave_dev_request_builder')
+microsoft_graph_average_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_average.microsoft_graph_average_request_builder')
+microsoft_graph_average_a_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_average_a.microsoft_graph_average_a_request_builder')
+microsoft_graph_average_if_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_average_if.microsoft_graph_average_if_request_builder')
+microsoft_graph_average_ifs_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_average_ifs.microsoft_graph_average_ifs_request_builder')
+microsoft_graph_baht_text_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_baht_text.microsoft_graph_baht_text_request_builder')
+microsoft_graph_base_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_base.microsoft_graph_base_request_builder')
+microsoft_graph_bessel_i_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bessel_i.microsoft_graph_bessel_i_request_builder')
+microsoft_graph_bessel_j_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bessel_j.microsoft_graph_bessel_j_request_builder')
+microsoft_graph_bessel_k_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bessel_k.microsoft_graph_bessel_k_request_builder')
+microsoft_graph_bessel_y_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bessel_y.microsoft_graph_bessel_y_request_builder')
+microsoft_graph_beta_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_beta_dist.microsoft_graph_beta_dist_request_builder')
+microsoft_graph_beta_inv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_beta_inv.microsoft_graph_beta_inv_request_builder')
+microsoft_graph_bin2_dec_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bin2_dec.microsoft_graph_bin2_dec_request_builder')
+microsoft_graph_bin2_hex_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bin2_hex.microsoft_graph_bin2_hex_request_builder')
+microsoft_graph_bin2_oct_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bin2_oct.microsoft_graph_bin2_oct_request_builder')
+microsoft_graph_binom_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_binom_dist.microsoft_graph_binom_dist_request_builder')
+microsoft_graph_binom_dist_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_binom_dist_range.microsoft_graph_binom_dist_range_request_builder')
+microsoft_graph_binom_inv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_binom_inv.microsoft_graph_binom_inv_request_builder')
+microsoft_graph_bitand_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bitand.microsoft_graph_bitand_request_builder')
+microsoft_graph_bitlshift_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bitlshift.microsoft_graph_bitlshift_request_builder')
+microsoft_graph_bitor_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bitor.microsoft_graph_bitor_request_builder')
+microsoft_graph_bitrshift_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bitrshift.microsoft_graph_bitrshift_request_builder')
+microsoft_graph_bitxor_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_bitxor.microsoft_graph_bitxor_request_builder')
+microsoft_graph_ceiling_math_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_ceiling_math.microsoft_graph_ceiling_math_request_builder')
+microsoft_graph_ceiling_precise_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_ceiling_precise.microsoft_graph_ceiling_precise_request_builder')
+microsoft_graph_char_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_char.microsoft_graph_char_request_builder')
+microsoft_graph_chi_sq_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_chi_sq_dist.microsoft_graph_chi_sq_dist_request_builder')
+microsoft_graph_chi_sq_dist_r_t_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_chi_sq_dist_r_t.microsoft_graph_chi_sq_dist_r_t_request_builder')
+microsoft_graph_chi_sq_inv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_chi_sq_inv.microsoft_graph_chi_sq_inv_request_builder')
+microsoft_graph_chi_sq_inv_r_t_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_chi_sq_inv_r_t.microsoft_graph_chi_sq_inv_r_t_request_builder')
+microsoft_graph_choose_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_choose.microsoft_graph_choose_request_builder')
+microsoft_graph_clean_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_clean.microsoft_graph_clean_request_builder')
+microsoft_graph_code_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_code.microsoft_graph_code_request_builder')
+microsoft_graph_columns_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_columns.microsoft_graph_columns_request_builder')
+microsoft_graph_combin_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_combin.microsoft_graph_combin_request_builder')
+microsoft_graph_combina_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_combina.microsoft_graph_combina_request_builder')
+microsoft_graph_complex_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_complex.microsoft_graph_complex_request_builder')
+microsoft_graph_concatenate_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_concatenate.microsoft_graph_concatenate_request_builder')
+microsoft_graph_confidence_norm_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_confidence_norm.microsoft_graph_confidence_norm_request_builder')
+microsoft_graph_confidence_t_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_confidence_t.microsoft_graph_confidence_t_request_builder')
+microsoft_graph_convert_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_convert.microsoft_graph_convert_request_builder')
+microsoft_graph_cos_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_cos.microsoft_graph_cos_request_builder')
+microsoft_graph_cosh_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_cosh.microsoft_graph_cosh_request_builder')
+microsoft_graph_cot_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_cot.microsoft_graph_cot_request_builder')
+microsoft_graph_coth_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_coth.microsoft_graph_coth_request_builder')
+microsoft_graph_count_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_count.microsoft_graph_count_request_builder')
+microsoft_graph_count_a_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_count_a.microsoft_graph_count_a_request_builder')
+microsoft_graph_count_blank_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_count_blank.microsoft_graph_count_blank_request_builder')
+microsoft_graph_count_if_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_count_if.microsoft_graph_count_if_request_builder')
+microsoft_graph_count_ifs_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_count_ifs.microsoft_graph_count_ifs_request_builder')
+microsoft_graph_coup_day_bs_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_coup_day_bs.microsoft_graph_coup_day_bs_request_builder')
+microsoft_graph_coup_days_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_coup_days.microsoft_graph_coup_days_request_builder')
+microsoft_graph_coup_days_nc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_coup_days_nc.microsoft_graph_coup_days_nc_request_builder')
+microsoft_graph_coup_ncd_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_coup_ncd.microsoft_graph_coup_ncd_request_builder')
+microsoft_graph_coup_num_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_coup_num.microsoft_graph_coup_num_request_builder')
+microsoft_graph_coup_pcd_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_coup_pcd.microsoft_graph_coup_pcd_request_builder')
+microsoft_graph_csc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_csc.microsoft_graph_csc_request_builder')
+microsoft_graph_csch_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_csch.microsoft_graph_csch_request_builder')
+microsoft_graph_cum_i_pmt_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_cum_i_pmt.microsoft_graph_cum_i_pmt_request_builder')
+microsoft_graph_cum_princ_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_cum_princ.microsoft_graph_cum_princ_request_builder')
+microsoft_graph_date_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_date.microsoft_graph_date_request_builder')
+microsoft_graph_datevalue_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_datevalue.microsoft_graph_datevalue_request_builder')
+microsoft_graph_daverage_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_daverage.microsoft_graph_daverage_request_builder')
+microsoft_graph_day_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_day.microsoft_graph_day_request_builder')
+microsoft_graph_days_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_days.microsoft_graph_days_request_builder')
+microsoft_graph_days360_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_days360.microsoft_graph_days360_request_builder')
+microsoft_graph_db_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_db.microsoft_graph_db_request_builder')
+microsoft_graph_dbcs_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dbcs.microsoft_graph_dbcs_request_builder')
+microsoft_graph_dcount_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dcount.microsoft_graph_dcount_request_builder')
+microsoft_graph_dcount_a_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dcount_a.microsoft_graph_dcount_a_request_builder')
+microsoft_graph_ddb_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_ddb.microsoft_graph_ddb_request_builder')
+microsoft_graph_dec2_bin_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dec2_bin.microsoft_graph_dec2_bin_request_builder')
+microsoft_graph_dec2_hex_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dec2_hex.microsoft_graph_dec2_hex_request_builder')
+microsoft_graph_dec2_oct_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dec2_oct.microsoft_graph_dec2_oct_request_builder')
+microsoft_graph_decimal_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_decimal.microsoft_graph_decimal_request_builder')
+microsoft_graph_degrees_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_degrees.microsoft_graph_degrees_request_builder')
+microsoft_graph_delta_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_delta.microsoft_graph_delta_request_builder')
+microsoft_graph_dev_sq_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dev_sq.microsoft_graph_dev_sq_request_builder')
+microsoft_graph_dget_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dget.microsoft_graph_dget_request_builder')
+microsoft_graph_disc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_disc.microsoft_graph_disc_request_builder')
+microsoft_graph_dmax_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dmax.microsoft_graph_dmax_request_builder')
+microsoft_graph_dmin_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dmin.microsoft_graph_dmin_request_builder')
+microsoft_graph_dollar_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dollar.microsoft_graph_dollar_request_builder')
+microsoft_graph_dollar_de_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dollar_de.microsoft_graph_dollar_de_request_builder')
+microsoft_graph_dollar_fr_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dollar_fr.microsoft_graph_dollar_fr_request_builder')
+microsoft_graph_dproduct_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dproduct.microsoft_graph_dproduct_request_builder')
+microsoft_graph_dst_dev_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dst_dev.microsoft_graph_dst_dev_request_builder')
+microsoft_graph_dst_dev_p_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dst_dev_p.microsoft_graph_dst_dev_p_request_builder')
+microsoft_graph_dsum_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dsum.microsoft_graph_dsum_request_builder')
+microsoft_graph_duration_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_duration.microsoft_graph_duration_request_builder')
+microsoft_graph_dvar_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dvar.microsoft_graph_dvar_request_builder')
+microsoft_graph_dvar_p_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_dvar_p.microsoft_graph_dvar_p_request_builder')
+microsoft_graph_ecma_ceiling_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_ecma_ceiling.microsoft_graph_ecma_ceiling_request_builder')
+microsoft_graph_edate_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_edate.microsoft_graph_edate_request_builder')
+microsoft_graph_effect_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_effect.microsoft_graph_effect_request_builder')
+microsoft_graph_eo_month_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_eo_month.microsoft_graph_eo_month_request_builder')
+microsoft_graph_erf_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_erf.microsoft_graph_erf_request_builder')
+microsoft_graph_erf_precise_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_erf_precise.microsoft_graph_erf_precise_request_builder')
+microsoft_graph_erf_c_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_erf_c.microsoft_graph_erf_c_request_builder')
+microsoft_graph_erf_c_precise_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_erf_c_precise.microsoft_graph_erf_c_precise_request_builder')
+microsoft_graph_error_type_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_error_type.microsoft_graph_error_type_request_builder')
+microsoft_graph_even_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_even.microsoft_graph_even_request_builder')
+microsoft_graph_exact_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_exact.microsoft_graph_exact_request_builder')
+microsoft_graph_exp_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_exp.microsoft_graph_exp_request_builder')
+microsoft_graph_expon_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_expon_dist.microsoft_graph_expon_dist_request_builder')
+microsoft_graph_f_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_f_dist.microsoft_graph_f_dist_request_builder')
+microsoft_graph_f_dist_r_t_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_f_dist_r_t.microsoft_graph_f_dist_r_t_request_builder')
+microsoft_graph_f_inv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_f_inv.microsoft_graph_f_inv_request_builder')
+microsoft_graph_f_inv_r_t_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_f_inv_r_t.microsoft_graph_f_inv_r_t_request_builder')
+microsoft_graph_fact_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_fact.microsoft_graph_fact_request_builder')
+microsoft_graph_fact_double_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_fact_double.microsoft_graph_fact_double_request_builder')
+microsoft_graph_false_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_false.microsoft_graph_false_request_builder')
+microsoft_graph_find_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_find.microsoft_graph_find_request_builder')
+microsoft_graph_find_b_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_find_b.microsoft_graph_find_b_request_builder')
+microsoft_graph_fisher_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_fisher.microsoft_graph_fisher_request_builder')
+microsoft_graph_fisher_inv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_fisher_inv.microsoft_graph_fisher_inv_request_builder')
+microsoft_graph_fixed_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_fixed.microsoft_graph_fixed_request_builder')
+microsoft_graph_floor_math_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_floor_math.microsoft_graph_floor_math_request_builder')
+microsoft_graph_floor_precise_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_floor_precise.microsoft_graph_floor_precise_request_builder')
+microsoft_graph_fv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_fv.microsoft_graph_fv_request_builder')
+microsoft_graph_fvschedule_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_fvschedule.microsoft_graph_fvschedule_request_builder')
+microsoft_graph_gamma_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_gamma.microsoft_graph_gamma_request_builder')
+microsoft_graph_gamma_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_gamma_dist.microsoft_graph_gamma_dist_request_builder')
+microsoft_graph_gamma_inv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_gamma_inv.microsoft_graph_gamma_inv_request_builder')
+microsoft_graph_gamma_ln_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_gamma_ln.microsoft_graph_gamma_ln_request_builder')
+microsoft_graph_gamma_ln_precise_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_gamma_ln_precise.microsoft_graph_gamma_ln_precise_request_builder')
+microsoft_graph_gauss_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_gauss.microsoft_graph_gauss_request_builder')
+microsoft_graph_gcd_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_gcd.microsoft_graph_gcd_request_builder')
+microsoft_graph_geo_mean_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_geo_mean.microsoft_graph_geo_mean_request_builder')
+microsoft_graph_ge_step_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_ge_step.microsoft_graph_ge_step_request_builder')
+microsoft_graph_har_mean_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_har_mean.microsoft_graph_har_mean_request_builder')
+microsoft_graph_hex2_bin_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_hex2_bin.microsoft_graph_hex2_bin_request_builder')
+microsoft_graph_hex2_dec_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_hex2_dec.microsoft_graph_hex2_dec_request_builder')
+microsoft_graph_hex2_oct_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_hex2_oct.microsoft_graph_hex2_oct_request_builder')
+microsoft_graph_hlookup_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_hlookup.microsoft_graph_hlookup_request_builder')
+microsoft_graph_hour_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_hour.microsoft_graph_hour_request_builder')
+microsoft_graph_hyperlink_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_hyperlink.microsoft_graph_hyperlink_request_builder')
+microsoft_graph_hyp_geom_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_hyp_geom_dist.microsoft_graph_hyp_geom_dist_request_builder')
+microsoft_graph_if_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_if.microsoft_graph_if_request_builder')
+microsoft_graph_im_abs_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_abs.microsoft_graph_im_abs_request_builder')
+microsoft_graph_imaginary_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_imaginary.microsoft_graph_imaginary_request_builder')
+microsoft_graph_im_argument_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_argument.microsoft_graph_im_argument_request_builder')
+microsoft_graph_im_conjugate_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_conjugate.microsoft_graph_im_conjugate_request_builder')
+microsoft_graph_im_cos_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_cos.microsoft_graph_im_cos_request_builder')
+microsoft_graph_im_cosh_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_cosh.microsoft_graph_im_cosh_request_builder')
+microsoft_graph_im_cot_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_cot.microsoft_graph_im_cot_request_builder')
+microsoft_graph_im_csc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_csc.microsoft_graph_im_csc_request_builder')
+microsoft_graph_im_csch_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_csch.microsoft_graph_im_csch_request_builder')
+microsoft_graph_im_div_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_div.microsoft_graph_im_div_request_builder')
+microsoft_graph_im_exp_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_exp.microsoft_graph_im_exp_request_builder')
+microsoft_graph_im_ln_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_ln.microsoft_graph_im_ln_request_builder')
+microsoft_graph_im_log10_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_log10.microsoft_graph_im_log10_request_builder')
+microsoft_graph_im_log2_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_log2.microsoft_graph_im_log2_request_builder')
+microsoft_graph_im_power_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_power.microsoft_graph_im_power_request_builder')
+microsoft_graph_im_product_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_product.microsoft_graph_im_product_request_builder')
+microsoft_graph_im_real_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_real.microsoft_graph_im_real_request_builder')
+microsoft_graph_im_sec_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_sec.microsoft_graph_im_sec_request_builder')
+microsoft_graph_im_sech_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_sech.microsoft_graph_im_sech_request_builder')
+microsoft_graph_im_sin_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_sin.microsoft_graph_im_sin_request_builder')
+microsoft_graph_im_sinh_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_sinh.microsoft_graph_im_sinh_request_builder')
+microsoft_graph_im_sqrt_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_sqrt.microsoft_graph_im_sqrt_request_builder')
+microsoft_graph_im_sub_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_sub.microsoft_graph_im_sub_request_builder')
+microsoft_graph_im_sum_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_sum.microsoft_graph_im_sum_request_builder')
+microsoft_graph_im_tan_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_im_tan.microsoft_graph_im_tan_request_builder')
+microsoft_graph_int_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_int.microsoft_graph_int_request_builder')
+microsoft_graph_int_rate_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_int_rate.microsoft_graph_int_rate_request_builder')
+microsoft_graph_ipmt_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_ipmt.microsoft_graph_ipmt_request_builder')
+microsoft_graph_irr_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_irr.microsoft_graph_irr_request_builder')
+microsoft_graph_is_err_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_is_err.microsoft_graph_is_err_request_builder')
+microsoft_graph_is_error_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_is_error.microsoft_graph_is_error_request_builder')
+microsoft_graph_is_even_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_is_even.microsoft_graph_is_even_request_builder')
+microsoft_graph_is_formula_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_is_formula.microsoft_graph_is_formula_request_builder')
+microsoft_graph_is_logical_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_is_logical.microsoft_graph_is_logical_request_builder')
+microsoft_graph_is_n_a_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_is_n_a.microsoft_graph_is_n_a_request_builder')
+microsoft_graph_is_non_text_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_is_non_text.microsoft_graph_is_non_text_request_builder')
+microsoft_graph_is_number_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_is_number.microsoft_graph_is_number_request_builder')
+microsoft_graph_iso_ceiling_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_iso_ceiling.microsoft_graph_iso_ceiling_request_builder')
+microsoft_graph_is_odd_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_is_odd.microsoft_graph_is_odd_request_builder')
+microsoft_graph_iso_week_num_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_iso_week_num.microsoft_graph_iso_week_num_request_builder')
+microsoft_graph_ispmt_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_ispmt.microsoft_graph_ispmt_request_builder')
+microsoft_graph_isref_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_isref.microsoft_graph_isref_request_builder')
+microsoft_graph_is_text_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_is_text.microsoft_graph_is_text_request_builder')
+microsoft_graph_kurt_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_kurt.microsoft_graph_kurt_request_builder')
+microsoft_graph_large_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_large.microsoft_graph_large_request_builder')
+microsoft_graph_lcm_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_lcm.microsoft_graph_lcm_request_builder')
+microsoft_graph_left_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_left.microsoft_graph_left_request_builder')
+microsoft_graph_leftb_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_leftb.microsoft_graph_leftb_request_builder')
+microsoft_graph_len_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_len.microsoft_graph_len_request_builder')
+microsoft_graph_lenb_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_lenb.microsoft_graph_lenb_request_builder')
+microsoft_graph_ln_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_ln.microsoft_graph_ln_request_builder')
+microsoft_graph_log_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_log.microsoft_graph_log_request_builder')
+microsoft_graph_log10_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_log10.microsoft_graph_log10_request_builder')
+microsoft_graph_log_norm_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_log_norm_dist.microsoft_graph_log_norm_dist_request_builder')
+microsoft_graph_log_norm_inv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_log_norm_inv.microsoft_graph_log_norm_inv_request_builder')
+microsoft_graph_lookup_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_lookup.microsoft_graph_lookup_request_builder')
+microsoft_graph_lower_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_lower.microsoft_graph_lower_request_builder')
+microsoft_graph_match_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_match.microsoft_graph_match_request_builder')
+microsoft_graph_max_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_max.microsoft_graph_max_request_builder')
+microsoft_graph_max_a_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_max_a.microsoft_graph_max_a_request_builder')
+microsoft_graph_mduration_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_mduration.microsoft_graph_mduration_request_builder')
+microsoft_graph_median_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_median.microsoft_graph_median_request_builder')
+microsoft_graph_mid_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_mid.microsoft_graph_mid_request_builder')
+microsoft_graph_midb_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_midb.microsoft_graph_midb_request_builder')
+microsoft_graph_min_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_min.microsoft_graph_min_request_builder')
+microsoft_graph_min_a_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_min_a.microsoft_graph_min_a_request_builder')
+microsoft_graph_minute_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_minute.microsoft_graph_minute_request_builder')
+microsoft_graph_mirr_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_mirr.microsoft_graph_mirr_request_builder')
+microsoft_graph_mod_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_mod.microsoft_graph_mod_request_builder')
+microsoft_graph_month_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_month.microsoft_graph_month_request_builder')
+microsoft_graph_mround_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_mround.microsoft_graph_mround_request_builder')
+microsoft_graph_multi_nomial_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_multi_nomial.microsoft_graph_multi_nomial_request_builder')
+microsoft_graph_n_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_n.microsoft_graph_n_request_builder')
+microsoft_graph_na_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_na.microsoft_graph_na_request_builder')
+microsoft_graph_neg_binom_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_neg_binom_dist.microsoft_graph_neg_binom_dist_request_builder')
+microsoft_graph_network_days_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_network_days.microsoft_graph_network_days_request_builder')
+microsoft_graph_network_days_intl_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_network_days_intl.microsoft_graph_network_days_intl_request_builder')
+microsoft_graph_nominal_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_nominal.microsoft_graph_nominal_request_builder')
+microsoft_graph_norm_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_norm_dist.microsoft_graph_norm_dist_request_builder')
+microsoft_graph_norm_inv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_norm_inv.microsoft_graph_norm_inv_request_builder')
+microsoft_graph_norm_s_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_norm_s_dist.microsoft_graph_norm_s_dist_request_builder')
+microsoft_graph_norm_s_inv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_norm_s_inv.microsoft_graph_norm_s_inv_request_builder')
+microsoft_graph_not_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_not.microsoft_graph_not_request_builder')
+microsoft_graph_now_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_now.microsoft_graph_now_request_builder')
+microsoft_graph_nper_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_nper.microsoft_graph_nper_request_builder')
+microsoft_graph_npv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_npv.microsoft_graph_npv_request_builder')
+microsoft_graph_number_value_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_number_value.microsoft_graph_number_value_request_builder')
+microsoft_graph_oct2_bin_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_oct2_bin.microsoft_graph_oct2_bin_request_builder')
+microsoft_graph_oct2_dec_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_oct2_dec.microsoft_graph_oct2_dec_request_builder')
+microsoft_graph_oct2_hex_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_oct2_hex.microsoft_graph_oct2_hex_request_builder')
+microsoft_graph_odd_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_odd.microsoft_graph_odd_request_builder')
+microsoft_graph_odd_f_price_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_odd_f_price.microsoft_graph_odd_f_price_request_builder')
+microsoft_graph_odd_f_yield_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_odd_f_yield.microsoft_graph_odd_f_yield_request_builder')
+microsoft_graph_odd_l_price_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_odd_l_price.microsoft_graph_odd_l_price_request_builder')
+microsoft_graph_odd_l_yield_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_odd_l_yield.microsoft_graph_odd_l_yield_request_builder')
+microsoft_graph_or_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_or.microsoft_graph_or_request_builder')
+microsoft_graph_pduration_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_pduration.microsoft_graph_pduration_request_builder')
+microsoft_graph_percentile_exc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_percentile_exc.microsoft_graph_percentile_exc_request_builder')
+microsoft_graph_percentile_inc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_percentile_inc.microsoft_graph_percentile_inc_request_builder')
+microsoft_graph_percent_rank_exc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_percent_rank_exc.microsoft_graph_percent_rank_exc_request_builder')
+microsoft_graph_percent_rank_inc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_percent_rank_inc.microsoft_graph_percent_rank_inc_request_builder')
+microsoft_graph_permut_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_permut.microsoft_graph_permut_request_builder')
+microsoft_graph_permutationa_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_permutationa.microsoft_graph_permutationa_request_builder')
+microsoft_graph_phi_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_phi.microsoft_graph_phi_request_builder')
+microsoft_graph_pi_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_pi.microsoft_graph_pi_request_builder')
+microsoft_graph_pmt_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_pmt.microsoft_graph_pmt_request_builder')
+microsoft_graph_poisson_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_poisson_dist.microsoft_graph_poisson_dist_request_builder')
+microsoft_graph_power_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_power.microsoft_graph_power_request_builder')
+microsoft_graph_ppmt_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_ppmt.microsoft_graph_ppmt_request_builder')
+microsoft_graph_price_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_price.microsoft_graph_price_request_builder')
+microsoft_graph_price_disc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_price_disc.microsoft_graph_price_disc_request_builder')
+microsoft_graph_price_mat_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_price_mat.microsoft_graph_price_mat_request_builder')
+microsoft_graph_product_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_product.microsoft_graph_product_request_builder')
+microsoft_graph_proper_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_proper.microsoft_graph_proper_request_builder')
+microsoft_graph_pv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_pv.microsoft_graph_pv_request_builder')
+microsoft_graph_quartile_exc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_quartile_exc.microsoft_graph_quartile_exc_request_builder')
+microsoft_graph_quartile_inc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_quartile_inc.microsoft_graph_quartile_inc_request_builder')
+microsoft_graph_quotient_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_quotient.microsoft_graph_quotient_request_builder')
+microsoft_graph_radians_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_radians.microsoft_graph_radians_request_builder')
+microsoft_graph_rand_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_rand.microsoft_graph_rand_request_builder')
+microsoft_graph_rand_between_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_rand_between.microsoft_graph_rand_between_request_builder')
+microsoft_graph_rank_avg_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_rank_avg.microsoft_graph_rank_avg_request_builder')
+microsoft_graph_rank_eq_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_rank_eq.microsoft_graph_rank_eq_request_builder')
+microsoft_graph_rate_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_rate.microsoft_graph_rate_request_builder')
+microsoft_graph_received_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_received.microsoft_graph_received_request_builder')
+microsoft_graph_replace_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_replace.microsoft_graph_replace_request_builder')
+microsoft_graph_replace_b_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_replace_b.microsoft_graph_replace_b_request_builder')
+microsoft_graph_rept_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_rept.microsoft_graph_rept_request_builder')
+microsoft_graph_right_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_right.microsoft_graph_right_request_builder')
+microsoft_graph_rightb_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_rightb.microsoft_graph_rightb_request_builder')
+microsoft_graph_roman_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_roman.microsoft_graph_roman_request_builder')
+microsoft_graph_round_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_round.microsoft_graph_round_request_builder')
+microsoft_graph_round_down_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_round_down.microsoft_graph_round_down_request_builder')
+microsoft_graph_round_up_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_round_up.microsoft_graph_round_up_request_builder')
+microsoft_graph_rows_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_rows.microsoft_graph_rows_request_builder')
+microsoft_graph_rri_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_rri.microsoft_graph_rri_request_builder')
+microsoft_graph_sec_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sec.microsoft_graph_sec_request_builder')
+microsoft_graph_sech_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sech.microsoft_graph_sech_request_builder')
+microsoft_graph_second_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_second.microsoft_graph_second_request_builder')
+microsoft_graph_series_sum_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_series_sum.microsoft_graph_series_sum_request_builder')
+microsoft_graph_sheet_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sheet.microsoft_graph_sheet_request_builder')
+microsoft_graph_sheets_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sheets.microsoft_graph_sheets_request_builder')
+microsoft_graph_sign_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sign.microsoft_graph_sign_request_builder')
+microsoft_graph_sin_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sin.microsoft_graph_sin_request_builder')
+microsoft_graph_sinh_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sinh.microsoft_graph_sinh_request_builder')
+microsoft_graph_skew_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_skew.microsoft_graph_skew_request_builder')
+microsoft_graph_skew_p_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_skew_p.microsoft_graph_skew_p_request_builder')
+microsoft_graph_sln_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sln.microsoft_graph_sln_request_builder')
+microsoft_graph_small_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_small.microsoft_graph_small_request_builder')
+microsoft_graph_sqrt_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sqrt.microsoft_graph_sqrt_request_builder')
+microsoft_graph_sqrt_pi_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sqrt_pi.microsoft_graph_sqrt_pi_request_builder')
+microsoft_graph_standardize_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_standardize.microsoft_graph_standardize_request_builder')
+microsoft_graph_st_dev_p_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_st_dev_p.microsoft_graph_st_dev_p_request_builder')
+microsoft_graph_st_dev_s_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_st_dev_s.microsoft_graph_st_dev_s_request_builder')
+microsoft_graph_st_dev_a_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_st_dev_a.microsoft_graph_st_dev_a_request_builder')
+microsoft_graph_st_dev_p_a_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_st_dev_p_a.microsoft_graph_st_dev_p_a_request_builder')
+microsoft_graph_substitute_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_substitute.microsoft_graph_substitute_request_builder')
+microsoft_graph_subtotal_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_subtotal.microsoft_graph_subtotal_request_builder')
+microsoft_graph_sum_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sum.microsoft_graph_sum_request_builder')
+microsoft_graph_sum_if_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sum_if.microsoft_graph_sum_if_request_builder')
+microsoft_graph_sum_ifs_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sum_ifs.microsoft_graph_sum_ifs_request_builder')
+microsoft_graph_sum_sq_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_sum_sq.microsoft_graph_sum_sq_request_builder')
+microsoft_graph_syd_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_syd.microsoft_graph_syd_request_builder')
+microsoft_graph_t_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_t.microsoft_graph_t_request_builder')
+microsoft_graph_t_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_t_dist.microsoft_graph_t_dist_request_builder')
+microsoft_graph_t_dist_2_t_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_t_dist_2_t.microsoft_graph_t_dist_2_t_request_builder')
+microsoft_graph_t_dist_r_t_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_t_dist_r_t.microsoft_graph_t_dist_r_t_request_builder')
+microsoft_graph_t_inv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_t_inv.microsoft_graph_t_inv_request_builder')
+microsoft_graph_t_inv_2_t_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_t_inv_2_t.microsoft_graph_t_inv_2_t_request_builder')
+microsoft_graph_tan_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_tan.microsoft_graph_tan_request_builder')
+microsoft_graph_tanh_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_tanh.microsoft_graph_tanh_request_builder')
+microsoft_graph_tbill_eq_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_tbill_eq.microsoft_graph_tbill_eq_request_builder')
+microsoft_graph_tbill_price_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_tbill_price.microsoft_graph_tbill_price_request_builder')
+microsoft_graph_tbill_yield_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_tbill_yield.microsoft_graph_tbill_yield_request_builder')
+microsoft_graph_text_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_text.microsoft_graph_text_request_builder')
+microsoft_graph_time_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_time.microsoft_graph_time_request_builder')
+microsoft_graph_timevalue_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_timevalue.microsoft_graph_timevalue_request_builder')
+microsoft_graph_today_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_today.microsoft_graph_today_request_builder')
+microsoft_graph_trim_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_trim.microsoft_graph_trim_request_builder')
+microsoft_graph_trim_mean_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_trim_mean.microsoft_graph_trim_mean_request_builder')
+microsoft_graph_true_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_true.microsoft_graph_true_request_builder')
+microsoft_graph_trunc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_trunc.microsoft_graph_trunc_request_builder')
+microsoft_graph_type_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_type.microsoft_graph_type_request_builder')
+microsoft_graph_unichar_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_unichar.microsoft_graph_unichar_request_builder')
+microsoft_graph_unicode_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_unicode.microsoft_graph_unicode_request_builder')
+microsoft_graph_upper_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_upper.microsoft_graph_upper_request_builder')
+microsoft_graph_usdollar_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_usdollar.microsoft_graph_usdollar_request_builder')
+microsoft_graph_value_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_value.microsoft_graph_value_request_builder')
+microsoft_graph_var_p_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_var_p.microsoft_graph_var_p_request_builder')
+microsoft_graph_var_s_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_var_s.microsoft_graph_var_s_request_builder')
+microsoft_graph_var_a_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_var_a.microsoft_graph_var_a_request_builder')
+microsoft_graph_var_p_a_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_var_p_a.microsoft_graph_var_p_a_request_builder')
+microsoft_graph_vdb_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_vdb.microsoft_graph_vdb_request_builder')
+microsoft_graph_vlookup_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_vlookup.microsoft_graph_vlookup_request_builder')
+microsoft_graph_weekday_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_weekday.microsoft_graph_weekday_request_builder')
+microsoft_graph_week_num_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_week_num.microsoft_graph_week_num_request_builder')
+microsoft_graph_weibull_dist_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_weibull_dist.microsoft_graph_weibull_dist_request_builder')
+microsoft_graph_work_day_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_work_day.microsoft_graph_work_day_request_builder')
+microsoft_graph_work_day_intl_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_work_day_intl.microsoft_graph_work_day_intl_request_builder')
+microsoft_graph_xirr_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_xirr.microsoft_graph_xirr_request_builder')
+microsoft_graph_xnpv_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_xnpv.microsoft_graph_xnpv_request_builder')
+microsoft_graph_xor_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_xor.microsoft_graph_xor_request_builder')
+microsoft_graph_year_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_year.microsoft_graph_year_request_builder')
+microsoft_graph_year_frac_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_year_frac.microsoft_graph_year_frac_request_builder')
+microsoft_graph_yield_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_yield.microsoft_graph_yield_request_builder')
+microsoft_graph_yield_disc_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_yield_disc.microsoft_graph_yield_disc_request_builder')
+microsoft_graph_yield_mat_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_yield_mat.microsoft_graph_yield_mat_request_builder')
+microsoft_graph_z_test_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.microsoft_graph_z_test.microsoft_graph_z_test_request_builder')
 workbook_functions = lazy_import('msgraph.generated.models.workbook_functions')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -384,2566 +384,2566 @@ class FunctionsRequestBuilder():
     Provides operations to manage the functions property of the microsoft.graph.workbook entity.
     """
     @property
-    def microsoft_graph_abs(self) -> abs_request_builder.AbsRequestBuilder:
+    def microsoft_graph_abs(self) -> microsoft_graph_abs_request_builder.MicrosoftGraphAbsRequestBuilder:
         """
         Provides operations to call the abs method.
         """
-        return abs_request_builder.AbsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_abs_request_builder.MicrosoftGraphAbsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_accr_int(self) -> accr_int_request_builder.AccrIntRequestBuilder:
+    def microsoft_graph_accr_int(self) -> microsoft_graph_accr_int_request_builder.MicrosoftGraphAccrIntRequestBuilder:
         """
         Provides operations to call the accrInt method.
         """
-        return accr_int_request_builder.AccrIntRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_accr_int_request_builder.MicrosoftGraphAccrIntRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_accr_int_m(self) -> accr_int_m_request_builder.AccrIntMRequestBuilder:
+    def microsoft_graph_accr_int_m(self) -> microsoft_graph_accr_int_m_request_builder.MicrosoftGraphAccrIntMRequestBuilder:
         """
         Provides operations to call the accrIntM method.
         """
-        return accr_int_m_request_builder.AccrIntMRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_accr_int_m_request_builder.MicrosoftGraphAccrIntMRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_acos(self) -> acos_request_builder.AcosRequestBuilder:
+    def microsoft_graph_acos(self) -> microsoft_graph_acos_request_builder.MicrosoftGraphAcosRequestBuilder:
         """
         Provides operations to call the acos method.
         """
-        return acos_request_builder.AcosRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_acos_request_builder.MicrosoftGraphAcosRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_acosh(self) -> acosh_request_builder.AcoshRequestBuilder:
+    def microsoft_graph_acosh(self) -> microsoft_graph_acosh_request_builder.MicrosoftGraphAcoshRequestBuilder:
         """
         Provides operations to call the acosh method.
         """
-        return acosh_request_builder.AcoshRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_acosh_request_builder.MicrosoftGraphAcoshRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_acot(self) -> acot_request_builder.AcotRequestBuilder:
+    def microsoft_graph_acot(self) -> microsoft_graph_acot_request_builder.MicrosoftGraphAcotRequestBuilder:
         """
         Provides operations to call the acot method.
         """
-        return acot_request_builder.AcotRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_acot_request_builder.MicrosoftGraphAcotRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_acoth(self) -> acoth_request_builder.AcothRequestBuilder:
+    def microsoft_graph_acoth(self) -> microsoft_graph_acoth_request_builder.MicrosoftGraphAcothRequestBuilder:
         """
         Provides operations to call the acoth method.
         """
-        return acoth_request_builder.AcothRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_acoth_request_builder.MicrosoftGraphAcothRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_amor_degrc(self) -> amor_degrc_request_builder.AmorDegrcRequestBuilder:
+    def microsoft_graph_amor_degrc(self) -> microsoft_graph_amor_degrc_request_builder.MicrosoftGraphAmorDegrcRequestBuilder:
         """
         Provides operations to call the amorDegrc method.
         """
-        return amor_degrc_request_builder.AmorDegrcRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_amor_degrc_request_builder.MicrosoftGraphAmorDegrcRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_amor_linc(self) -> amor_linc_request_builder.AmorLincRequestBuilder:
+    def microsoft_graph_amor_linc(self) -> microsoft_graph_amor_linc_request_builder.MicrosoftGraphAmorLincRequestBuilder:
         """
         Provides operations to call the amorLinc method.
         """
-        return amor_linc_request_builder.AmorLincRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_amor_linc_request_builder.MicrosoftGraphAmorLincRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_and(self) -> and_request_builder.AndRequestBuilder:
+    def microsoft_graph_and(self) -> microsoft_graph_and_request_builder.MicrosoftGraphAndRequestBuilder:
         """
         Provides operations to call the and method.
         """
-        return and_request_builder.AndRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_and_request_builder.MicrosoftGraphAndRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_arabic(self) -> arabic_request_builder.ArabicRequestBuilder:
+    def microsoft_graph_arabic(self) -> microsoft_graph_arabic_request_builder.MicrosoftGraphArabicRequestBuilder:
         """
         Provides operations to call the arabic method.
         """
-        return arabic_request_builder.ArabicRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_arabic_request_builder.MicrosoftGraphArabicRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_areas(self) -> areas_request_builder.AreasRequestBuilder:
+    def microsoft_graph_areas(self) -> microsoft_graph_areas_request_builder.MicrosoftGraphAreasRequestBuilder:
         """
         Provides operations to call the areas method.
         """
-        return areas_request_builder.AreasRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_areas_request_builder.MicrosoftGraphAreasRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_asc(self) -> asc_request_builder.AscRequestBuilder:
+    def microsoft_graph_asc(self) -> microsoft_graph_asc_request_builder.MicrosoftGraphAscRequestBuilder:
         """
         Provides operations to call the asc method.
         """
-        return asc_request_builder.AscRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_asc_request_builder.MicrosoftGraphAscRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_asin(self) -> asin_request_builder.AsinRequestBuilder:
+    def microsoft_graph_asin(self) -> microsoft_graph_asin_request_builder.MicrosoftGraphAsinRequestBuilder:
         """
         Provides operations to call the asin method.
         """
-        return asin_request_builder.AsinRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_asin_request_builder.MicrosoftGraphAsinRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_asinh(self) -> asinh_request_builder.AsinhRequestBuilder:
+    def microsoft_graph_asinh(self) -> microsoft_graph_asinh_request_builder.MicrosoftGraphAsinhRequestBuilder:
         """
         Provides operations to call the asinh method.
         """
-        return asinh_request_builder.AsinhRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_asinh_request_builder.MicrosoftGraphAsinhRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_atan(self) -> atan_request_builder.AtanRequestBuilder:
+    def microsoft_graph_atan(self) -> microsoft_graph_atan_request_builder.MicrosoftGraphAtanRequestBuilder:
         """
         Provides operations to call the atan method.
         """
-        return atan_request_builder.AtanRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_atan_request_builder.MicrosoftGraphAtanRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_atan2(self) -> atan2_request_builder.Atan2RequestBuilder:
+    def microsoft_graph_atan2(self) -> microsoft_graph_atan2_request_builder.MicrosoftGraphAtan2RequestBuilder:
         """
         Provides operations to call the atan2 method.
         """
-        return atan2_request_builder.Atan2RequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_atan2_request_builder.MicrosoftGraphAtan2RequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_atanh(self) -> atanh_request_builder.AtanhRequestBuilder:
+    def microsoft_graph_atanh(self) -> microsoft_graph_atanh_request_builder.MicrosoftGraphAtanhRequestBuilder:
         """
         Provides operations to call the atanh method.
         """
-        return atanh_request_builder.AtanhRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_atanh_request_builder.MicrosoftGraphAtanhRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_ave_dev(self) -> ave_dev_request_builder.AveDevRequestBuilder:
+    def microsoft_graph_ave_dev(self) -> microsoft_graph_ave_dev_request_builder.MicrosoftGraphAveDevRequestBuilder:
         """
         Provides operations to call the aveDev method.
         """
-        return ave_dev_request_builder.AveDevRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_ave_dev_request_builder.MicrosoftGraphAveDevRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_average(self) -> average_request_builder.AverageRequestBuilder:
+    def microsoft_graph_average(self) -> microsoft_graph_average_request_builder.MicrosoftGraphAverageRequestBuilder:
         """
         Provides operations to call the average method.
         """
-        return average_request_builder.AverageRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_average_request_builder.MicrosoftGraphAverageRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_average_a(self) -> average_a_request_builder.AverageARequestBuilder:
+    def microsoft_graph_average_a(self) -> microsoft_graph_average_a_request_builder.MicrosoftGraphAverageARequestBuilder:
         """
         Provides operations to call the averageA method.
         """
-        return average_a_request_builder.AverageARequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_average_a_request_builder.MicrosoftGraphAverageARequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_average_if(self) -> average_if_request_builder.AverageIfRequestBuilder:
+    def microsoft_graph_average_if(self) -> microsoft_graph_average_if_request_builder.MicrosoftGraphAverageIfRequestBuilder:
         """
         Provides operations to call the averageIf method.
         """
-        return average_if_request_builder.AverageIfRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_average_if_request_builder.MicrosoftGraphAverageIfRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_average_ifs(self) -> average_ifs_request_builder.AverageIfsRequestBuilder:
+    def microsoft_graph_average_ifs(self) -> microsoft_graph_average_ifs_request_builder.MicrosoftGraphAverageIfsRequestBuilder:
         """
         Provides operations to call the averageIfs method.
         """
-        return average_ifs_request_builder.AverageIfsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_average_ifs_request_builder.MicrosoftGraphAverageIfsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_baht_text(self) -> baht_text_request_builder.BahtTextRequestBuilder:
+    def microsoft_graph_baht_text(self) -> microsoft_graph_baht_text_request_builder.MicrosoftGraphBahtTextRequestBuilder:
         """
         Provides operations to call the bahtText method.
         """
-        return baht_text_request_builder.BahtTextRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_baht_text_request_builder.MicrosoftGraphBahtTextRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_base(self) -> base_request_builder.BaseRequestBuilder:
+    def microsoft_graph_base(self) -> microsoft_graph_base_request_builder.MicrosoftGraphBaseRequestBuilder:
         """
         Provides operations to call the base method.
         """
-        return base_request_builder.BaseRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_base_request_builder.MicrosoftGraphBaseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_bessel_i(self) -> bessel_i_request_builder.BesselIRequestBuilder:
+    def microsoft_graph_bessel_i(self) -> microsoft_graph_bessel_i_request_builder.MicrosoftGraphBesselIRequestBuilder:
         """
         Provides operations to call the besselI method.
         """
-        return bessel_i_request_builder.BesselIRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_bessel_i_request_builder.MicrosoftGraphBesselIRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_bessel_j(self) -> bessel_j_request_builder.BesselJRequestBuilder:
+    def microsoft_graph_bessel_j(self) -> microsoft_graph_bessel_j_request_builder.MicrosoftGraphBesselJRequestBuilder:
         """
         Provides operations to call the besselJ method.
         """
-        return bessel_j_request_builder.BesselJRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_bessel_j_request_builder.MicrosoftGraphBesselJRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_bessel_k(self) -> bessel_k_request_builder.BesselKRequestBuilder:
+    def microsoft_graph_bessel_k(self) -> microsoft_graph_bessel_k_request_builder.MicrosoftGraphBesselKRequestBuilder:
         """
         Provides operations to call the besselK method.
         """
-        return bessel_k_request_builder.BesselKRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_bessel_k_request_builder.MicrosoftGraphBesselKRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_bessel_y(self) -> bessel_y_request_builder.BesselYRequestBuilder:
+    def microsoft_graph_bessel_y(self) -> microsoft_graph_bessel_y_request_builder.MicrosoftGraphBesselYRequestBuilder:
         """
         Provides operations to call the besselY method.
         """
-        return bessel_y_request_builder.BesselYRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_bessel_y_request_builder.MicrosoftGraphBesselYRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_beta_dist(self) -> beta_dist_request_builder.Beta_DistRequestBuilder:
+    def microsoft_graph_beta_dist(self) -> microsoft_graph_beta_dist_request_builder.MicrosoftGraphBeta_DistRequestBuilder:
         """
         Provides operations to call the beta_Dist method.
         """
-        return beta_dist_request_builder.Beta_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_beta_dist_request_builder.MicrosoftGraphBeta_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_beta_inv(self) -> beta_inv_request_builder.Beta_InvRequestBuilder:
+    def microsoft_graph_beta_inv(self) -> microsoft_graph_beta_inv_request_builder.MicrosoftGraphBeta_InvRequestBuilder:
         """
         Provides operations to call the beta_Inv method.
         """
-        return beta_inv_request_builder.Beta_InvRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_beta_inv_request_builder.MicrosoftGraphBeta_InvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_bin2_dec(self) -> bin2_dec_request_builder.Bin2DecRequestBuilder:
+    def microsoft_graph_bin2_dec(self) -> microsoft_graph_bin2_dec_request_builder.MicrosoftGraphBin2DecRequestBuilder:
         """
         Provides operations to call the bin2Dec method.
         """
-        return bin2_dec_request_builder.Bin2DecRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_bin2_dec_request_builder.MicrosoftGraphBin2DecRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_bin2_hex(self) -> bin2_hex_request_builder.Bin2HexRequestBuilder:
+    def microsoft_graph_bin2_hex(self) -> microsoft_graph_bin2_hex_request_builder.MicrosoftGraphBin2HexRequestBuilder:
         """
         Provides operations to call the bin2Hex method.
         """
-        return bin2_hex_request_builder.Bin2HexRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_bin2_hex_request_builder.MicrosoftGraphBin2HexRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_bin2_oct(self) -> bin2_oct_request_builder.Bin2OctRequestBuilder:
+    def microsoft_graph_bin2_oct(self) -> microsoft_graph_bin2_oct_request_builder.MicrosoftGraphBin2OctRequestBuilder:
         """
         Provides operations to call the bin2Oct method.
         """
-        return bin2_oct_request_builder.Bin2OctRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_bin2_oct_request_builder.MicrosoftGraphBin2OctRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_binom_dist(self) -> binom_dist_request_builder.Binom_DistRequestBuilder:
+    def microsoft_graph_binom_dist(self) -> microsoft_graph_binom_dist_request_builder.MicrosoftGraphBinom_DistRequestBuilder:
         """
         Provides operations to call the binom_Dist method.
         """
-        return binom_dist_request_builder.Binom_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_binom_dist_request_builder.MicrosoftGraphBinom_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_binom_dist_range(self) -> binom_dist_range_request_builder.Binom_Dist_RangeRequestBuilder:
+    def microsoft_graph_binom_dist_range(self) -> microsoft_graph_binom_dist_range_request_builder.MicrosoftGraphBinom_Dist_RangeRequestBuilder:
         """
         Provides operations to call the binom_Dist_Range method.
         """
-        return binom_dist_range_request_builder.Binom_Dist_RangeRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_binom_dist_range_request_builder.MicrosoftGraphBinom_Dist_RangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_binom_inv(self) -> binom_inv_request_builder.Binom_InvRequestBuilder:
+    def microsoft_graph_binom_inv(self) -> microsoft_graph_binom_inv_request_builder.MicrosoftGraphBinom_InvRequestBuilder:
         """
         Provides operations to call the binom_Inv method.
         """
-        return binom_inv_request_builder.Binom_InvRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_binom_inv_request_builder.MicrosoftGraphBinom_InvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_bitand(self) -> bitand_request_builder.BitandRequestBuilder:
+    def microsoft_graph_bitand(self) -> microsoft_graph_bitand_request_builder.MicrosoftGraphBitandRequestBuilder:
         """
         Provides operations to call the bitand method.
         """
-        return bitand_request_builder.BitandRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_bitand_request_builder.MicrosoftGraphBitandRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_bitlshift(self) -> bitlshift_request_builder.BitlshiftRequestBuilder:
+    def microsoft_graph_bitlshift(self) -> microsoft_graph_bitlshift_request_builder.MicrosoftGraphBitlshiftRequestBuilder:
         """
         Provides operations to call the bitlshift method.
         """
-        return bitlshift_request_builder.BitlshiftRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_bitlshift_request_builder.MicrosoftGraphBitlshiftRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_bitor(self) -> bitor_request_builder.BitorRequestBuilder:
+    def microsoft_graph_bitor(self) -> microsoft_graph_bitor_request_builder.MicrosoftGraphBitorRequestBuilder:
         """
         Provides operations to call the bitor method.
         """
-        return bitor_request_builder.BitorRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_bitor_request_builder.MicrosoftGraphBitorRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_bitrshift(self) -> bitrshift_request_builder.BitrshiftRequestBuilder:
+    def microsoft_graph_bitrshift(self) -> microsoft_graph_bitrshift_request_builder.MicrosoftGraphBitrshiftRequestBuilder:
         """
         Provides operations to call the bitrshift method.
         """
-        return bitrshift_request_builder.BitrshiftRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_bitrshift_request_builder.MicrosoftGraphBitrshiftRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_bitxor(self) -> bitxor_request_builder.BitxorRequestBuilder:
+    def microsoft_graph_bitxor(self) -> microsoft_graph_bitxor_request_builder.MicrosoftGraphBitxorRequestBuilder:
         """
         Provides operations to call the bitxor method.
         """
-        return bitxor_request_builder.BitxorRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_bitxor_request_builder.MicrosoftGraphBitxorRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_ceiling_math(self) -> ceiling_math_request_builder.Ceiling_MathRequestBuilder:
+    def microsoft_graph_ceiling_math(self) -> microsoft_graph_ceiling_math_request_builder.MicrosoftGraphCeiling_MathRequestBuilder:
         """
         Provides operations to call the ceiling_Math method.
         """
-        return ceiling_math_request_builder.Ceiling_MathRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_ceiling_math_request_builder.MicrosoftGraphCeiling_MathRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_ceiling_precise(self) -> ceiling_precise_request_builder.Ceiling_PreciseRequestBuilder:
+    def microsoft_graph_ceiling_precise(self) -> microsoft_graph_ceiling_precise_request_builder.MicrosoftGraphCeiling_PreciseRequestBuilder:
         """
         Provides operations to call the ceiling_Precise method.
         """
-        return ceiling_precise_request_builder.Ceiling_PreciseRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_ceiling_precise_request_builder.MicrosoftGraphCeiling_PreciseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_char(self) -> char_request_builder.CharRequestBuilder:
+    def microsoft_graph_char(self) -> microsoft_graph_char_request_builder.MicrosoftGraphCharRequestBuilder:
         """
         Provides operations to call the char method.
         """
-        return char_request_builder.CharRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_char_request_builder.MicrosoftGraphCharRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_chi_sq_dist(self) -> chi_sq_dist_request_builder.ChiSq_DistRequestBuilder:
+    def microsoft_graph_chi_sq_dist(self) -> microsoft_graph_chi_sq_dist_request_builder.MicrosoftGraphChiSq_DistRequestBuilder:
         """
         Provides operations to call the chiSq_Dist method.
         """
-        return chi_sq_dist_request_builder.ChiSq_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_chi_sq_dist_request_builder.MicrosoftGraphChiSq_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_chi_sq_dist_r_t(self) -> chi_sq_dist_r_t_request_builder.ChiSq_Dist_RTRequestBuilder:
+    def microsoft_graph_chi_sq_dist_r_t(self) -> microsoft_graph_chi_sq_dist_r_t_request_builder.MicrosoftGraphChiSq_Dist_RTRequestBuilder:
         """
         Provides operations to call the chiSq_Dist_RT method.
         """
-        return chi_sq_dist_r_t_request_builder.ChiSq_Dist_RTRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_chi_sq_dist_r_t_request_builder.MicrosoftGraphChiSq_Dist_RTRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_chi_sq_inv(self) -> chi_sq_inv_request_builder.ChiSq_InvRequestBuilder:
+    def microsoft_graph_chi_sq_inv(self) -> microsoft_graph_chi_sq_inv_request_builder.MicrosoftGraphChiSq_InvRequestBuilder:
         """
         Provides operations to call the chiSq_Inv method.
         """
-        return chi_sq_inv_request_builder.ChiSq_InvRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_chi_sq_inv_request_builder.MicrosoftGraphChiSq_InvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_chi_sq_inv_r_t(self) -> chi_sq_inv_r_t_request_builder.ChiSq_Inv_RTRequestBuilder:
+    def microsoft_graph_chi_sq_inv_r_t(self) -> microsoft_graph_chi_sq_inv_r_t_request_builder.MicrosoftGraphChiSq_Inv_RTRequestBuilder:
         """
         Provides operations to call the chiSq_Inv_RT method.
         """
-        return chi_sq_inv_r_t_request_builder.ChiSq_Inv_RTRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_chi_sq_inv_r_t_request_builder.MicrosoftGraphChiSq_Inv_RTRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_choose(self) -> choose_request_builder.ChooseRequestBuilder:
+    def microsoft_graph_choose(self) -> microsoft_graph_choose_request_builder.MicrosoftGraphChooseRequestBuilder:
         """
         Provides operations to call the choose method.
         """
-        return choose_request_builder.ChooseRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_choose_request_builder.MicrosoftGraphChooseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_clean(self) -> clean_request_builder.CleanRequestBuilder:
+    def microsoft_graph_clean(self) -> microsoft_graph_clean_request_builder.MicrosoftGraphCleanRequestBuilder:
         """
         Provides operations to call the clean method.
         """
-        return clean_request_builder.CleanRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_clean_request_builder.MicrosoftGraphCleanRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_code(self) -> code_request_builder.CodeRequestBuilder:
+    def microsoft_graph_code(self) -> microsoft_graph_code_request_builder.MicrosoftGraphCodeRequestBuilder:
         """
         Provides operations to call the code method.
         """
-        return code_request_builder.CodeRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_code_request_builder.MicrosoftGraphCodeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_columns(self) -> columns_request_builder.ColumnsRequestBuilder:
+    def microsoft_graph_columns(self) -> microsoft_graph_columns_request_builder.MicrosoftGraphColumnsRequestBuilder:
         """
         Provides operations to call the columns method.
         """
-        return columns_request_builder.ColumnsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_columns_request_builder.MicrosoftGraphColumnsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_combin(self) -> combin_request_builder.CombinRequestBuilder:
+    def microsoft_graph_combin(self) -> microsoft_graph_combin_request_builder.MicrosoftGraphCombinRequestBuilder:
         """
         Provides operations to call the combin method.
         """
-        return combin_request_builder.CombinRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_combin_request_builder.MicrosoftGraphCombinRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_combina(self) -> combina_request_builder.CombinaRequestBuilder:
+    def microsoft_graph_combina(self) -> microsoft_graph_combina_request_builder.MicrosoftGraphCombinaRequestBuilder:
         """
         Provides operations to call the combina method.
         """
-        return combina_request_builder.CombinaRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_combina_request_builder.MicrosoftGraphCombinaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_complex(self) -> complex_request_builder.ComplexRequestBuilder:
+    def microsoft_graph_complex(self) -> microsoft_graph_complex_request_builder.MicrosoftGraphComplexRequestBuilder:
         """
         Provides operations to call the complex method.
         """
-        return complex_request_builder.ComplexRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_complex_request_builder.MicrosoftGraphComplexRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_concatenate(self) -> concatenate_request_builder.ConcatenateRequestBuilder:
+    def microsoft_graph_concatenate(self) -> microsoft_graph_concatenate_request_builder.MicrosoftGraphConcatenateRequestBuilder:
         """
         Provides operations to call the concatenate method.
         """
-        return concatenate_request_builder.ConcatenateRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_concatenate_request_builder.MicrosoftGraphConcatenateRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_confidence_norm(self) -> confidence_norm_request_builder.Confidence_NormRequestBuilder:
+    def microsoft_graph_confidence_norm(self) -> microsoft_graph_confidence_norm_request_builder.MicrosoftGraphConfidence_NormRequestBuilder:
         """
         Provides operations to call the confidence_Norm method.
         """
-        return confidence_norm_request_builder.Confidence_NormRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_confidence_norm_request_builder.MicrosoftGraphConfidence_NormRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_confidence_t(self) -> confidence_t_request_builder.Confidence_TRequestBuilder:
+    def microsoft_graph_confidence_t(self) -> microsoft_graph_confidence_t_request_builder.MicrosoftGraphConfidence_TRequestBuilder:
         """
         Provides operations to call the confidence_T method.
         """
-        return confidence_t_request_builder.Confidence_TRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_confidence_t_request_builder.MicrosoftGraphConfidence_TRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_convert(self) -> convert_request_builder.ConvertRequestBuilder:
+    def microsoft_graph_convert(self) -> microsoft_graph_convert_request_builder.MicrosoftGraphConvertRequestBuilder:
         """
         Provides operations to call the convert method.
         """
-        return convert_request_builder.ConvertRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_convert_request_builder.MicrosoftGraphConvertRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_cos(self) -> cos_request_builder.CosRequestBuilder:
+    def microsoft_graph_cos(self) -> microsoft_graph_cos_request_builder.MicrosoftGraphCosRequestBuilder:
         """
         Provides operations to call the cos method.
         """
-        return cos_request_builder.CosRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_cos_request_builder.MicrosoftGraphCosRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_cosh(self) -> cosh_request_builder.CoshRequestBuilder:
+    def microsoft_graph_cosh(self) -> microsoft_graph_cosh_request_builder.MicrosoftGraphCoshRequestBuilder:
         """
         Provides operations to call the cosh method.
         """
-        return cosh_request_builder.CoshRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_cosh_request_builder.MicrosoftGraphCoshRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_cot(self) -> cot_request_builder.CotRequestBuilder:
+    def microsoft_graph_cot(self) -> microsoft_graph_cot_request_builder.MicrosoftGraphCotRequestBuilder:
         """
         Provides operations to call the cot method.
         """
-        return cot_request_builder.CotRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_cot_request_builder.MicrosoftGraphCotRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_coth(self) -> coth_request_builder.CothRequestBuilder:
+    def microsoft_graph_coth(self) -> microsoft_graph_coth_request_builder.MicrosoftGraphCothRequestBuilder:
         """
         Provides operations to call the coth method.
         """
-        return coth_request_builder.CothRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_coth_request_builder.MicrosoftGraphCothRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_count(self) -> count_request_builder.CountRequestBuilder:
+    def microsoft_graph_count(self) -> microsoft_graph_count_request_builder.MicrosoftGraphCountRequestBuilder:
         """
         Provides operations to call the count method.
         """
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_count_request_builder.MicrosoftGraphCountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_count_a(self) -> count_a_request_builder.CountARequestBuilder:
+    def microsoft_graph_count_a(self) -> microsoft_graph_count_a_request_builder.MicrosoftGraphCountARequestBuilder:
         """
         Provides operations to call the countA method.
         """
-        return count_a_request_builder.CountARequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_count_a_request_builder.MicrosoftGraphCountARequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_count_blank(self) -> count_blank_request_builder.CountBlankRequestBuilder:
+    def microsoft_graph_count_blank(self) -> microsoft_graph_count_blank_request_builder.MicrosoftGraphCountBlankRequestBuilder:
         """
         Provides operations to call the countBlank method.
         """
-        return count_blank_request_builder.CountBlankRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_count_blank_request_builder.MicrosoftGraphCountBlankRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_count_if(self) -> count_if_request_builder.CountIfRequestBuilder:
+    def microsoft_graph_count_if(self) -> microsoft_graph_count_if_request_builder.MicrosoftGraphCountIfRequestBuilder:
         """
         Provides operations to call the countIf method.
         """
-        return count_if_request_builder.CountIfRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_count_if_request_builder.MicrosoftGraphCountIfRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_count_ifs(self) -> count_ifs_request_builder.CountIfsRequestBuilder:
+    def microsoft_graph_count_ifs(self) -> microsoft_graph_count_ifs_request_builder.MicrosoftGraphCountIfsRequestBuilder:
         """
         Provides operations to call the countIfs method.
         """
-        return count_ifs_request_builder.CountIfsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_count_ifs_request_builder.MicrosoftGraphCountIfsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_coup_day_bs(self) -> coup_day_bs_request_builder.CoupDayBsRequestBuilder:
+    def microsoft_graph_coup_day_bs(self) -> microsoft_graph_coup_day_bs_request_builder.MicrosoftGraphCoupDayBsRequestBuilder:
         """
         Provides operations to call the coupDayBs method.
         """
-        return coup_day_bs_request_builder.CoupDayBsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_coup_day_bs_request_builder.MicrosoftGraphCoupDayBsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_coup_days(self) -> coup_days_request_builder.CoupDaysRequestBuilder:
+    def microsoft_graph_coup_days(self) -> microsoft_graph_coup_days_request_builder.MicrosoftGraphCoupDaysRequestBuilder:
         """
         Provides operations to call the coupDays method.
         """
-        return coup_days_request_builder.CoupDaysRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_coup_days_request_builder.MicrosoftGraphCoupDaysRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_coup_days_nc(self) -> coup_days_nc_request_builder.CoupDaysNcRequestBuilder:
+    def microsoft_graph_coup_days_nc(self) -> microsoft_graph_coup_days_nc_request_builder.MicrosoftGraphCoupDaysNcRequestBuilder:
         """
         Provides operations to call the coupDaysNc method.
         """
-        return coup_days_nc_request_builder.CoupDaysNcRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_coup_days_nc_request_builder.MicrosoftGraphCoupDaysNcRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_coup_ncd(self) -> coup_ncd_request_builder.CoupNcdRequestBuilder:
+    def microsoft_graph_coup_ncd(self) -> microsoft_graph_coup_ncd_request_builder.MicrosoftGraphCoupNcdRequestBuilder:
         """
         Provides operations to call the coupNcd method.
         """
-        return coup_ncd_request_builder.CoupNcdRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_coup_ncd_request_builder.MicrosoftGraphCoupNcdRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_coup_num(self) -> coup_num_request_builder.CoupNumRequestBuilder:
+    def microsoft_graph_coup_num(self) -> microsoft_graph_coup_num_request_builder.MicrosoftGraphCoupNumRequestBuilder:
         """
         Provides operations to call the coupNum method.
         """
-        return coup_num_request_builder.CoupNumRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_coup_num_request_builder.MicrosoftGraphCoupNumRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_coup_pcd(self) -> coup_pcd_request_builder.CoupPcdRequestBuilder:
+    def microsoft_graph_coup_pcd(self) -> microsoft_graph_coup_pcd_request_builder.MicrosoftGraphCoupPcdRequestBuilder:
         """
         Provides operations to call the coupPcd method.
         """
-        return coup_pcd_request_builder.CoupPcdRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_coup_pcd_request_builder.MicrosoftGraphCoupPcdRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_csc(self) -> csc_request_builder.CscRequestBuilder:
+    def microsoft_graph_csc(self) -> microsoft_graph_csc_request_builder.MicrosoftGraphCscRequestBuilder:
         """
         Provides operations to call the csc method.
         """
-        return csc_request_builder.CscRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_csc_request_builder.MicrosoftGraphCscRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_csch(self) -> csch_request_builder.CschRequestBuilder:
+    def microsoft_graph_csch(self) -> microsoft_graph_csch_request_builder.MicrosoftGraphCschRequestBuilder:
         """
         Provides operations to call the csch method.
         """
-        return csch_request_builder.CschRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_csch_request_builder.MicrosoftGraphCschRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_cum_i_pmt(self) -> cum_i_pmt_request_builder.CumIPmtRequestBuilder:
+    def microsoft_graph_cum_i_pmt(self) -> microsoft_graph_cum_i_pmt_request_builder.MicrosoftGraphCumIPmtRequestBuilder:
         """
         Provides operations to call the cumIPmt method.
         """
-        return cum_i_pmt_request_builder.CumIPmtRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_cum_i_pmt_request_builder.MicrosoftGraphCumIPmtRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_cum_princ(self) -> cum_princ_request_builder.CumPrincRequestBuilder:
+    def microsoft_graph_cum_princ(self) -> microsoft_graph_cum_princ_request_builder.MicrosoftGraphCumPrincRequestBuilder:
         """
         Provides operations to call the cumPrinc method.
         """
-        return cum_princ_request_builder.CumPrincRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_cum_princ_request_builder.MicrosoftGraphCumPrincRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_date(self) -> date_request_builder.DateRequestBuilder:
+    def microsoft_graph_date(self) -> microsoft_graph_date_request_builder.MicrosoftGraphDateRequestBuilder:
         """
         Provides operations to call the date method.
         """
-        return date_request_builder.DateRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_date_request_builder.MicrosoftGraphDateRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_datevalue(self) -> datevalue_request_builder.DatevalueRequestBuilder:
+    def microsoft_graph_datevalue(self) -> microsoft_graph_datevalue_request_builder.MicrosoftGraphDatevalueRequestBuilder:
         """
         Provides operations to call the datevalue method.
         """
-        return datevalue_request_builder.DatevalueRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_datevalue_request_builder.MicrosoftGraphDatevalueRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_daverage(self) -> daverage_request_builder.DaverageRequestBuilder:
+    def microsoft_graph_daverage(self) -> microsoft_graph_daverage_request_builder.MicrosoftGraphDaverageRequestBuilder:
         """
         Provides operations to call the daverage method.
         """
-        return daverage_request_builder.DaverageRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_daverage_request_builder.MicrosoftGraphDaverageRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_day(self) -> day_request_builder.DayRequestBuilder:
+    def microsoft_graph_day(self) -> microsoft_graph_day_request_builder.MicrosoftGraphDayRequestBuilder:
         """
         Provides operations to call the day method.
         """
-        return day_request_builder.DayRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_day_request_builder.MicrosoftGraphDayRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_days(self) -> days_request_builder.DaysRequestBuilder:
+    def microsoft_graph_days(self) -> microsoft_graph_days_request_builder.MicrosoftGraphDaysRequestBuilder:
         """
         Provides operations to call the days method.
         """
-        return days_request_builder.DaysRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_days_request_builder.MicrosoftGraphDaysRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_days360(self) -> days360_request_builder.Days360RequestBuilder:
+    def microsoft_graph_days360(self) -> microsoft_graph_days360_request_builder.MicrosoftGraphDays360RequestBuilder:
         """
         Provides operations to call the days360 method.
         """
-        return days360_request_builder.Days360RequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_days360_request_builder.MicrosoftGraphDays360RequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_db(self) -> db_request_builder.DbRequestBuilder:
+    def microsoft_graph_db(self) -> microsoft_graph_db_request_builder.MicrosoftGraphDbRequestBuilder:
         """
         Provides operations to call the db method.
         """
-        return db_request_builder.DbRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_db_request_builder.MicrosoftGraphDbRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_dbcs(self) -> dbcs_request_builder.DbcsRequestBuilder:
+    def microsoft_graph_dbcs(self) -> microsoft_graph_dbcs_request_builder.MicrosoftGraphDbcsRequestBuilder:
         """
         Provides operations to call the dbcs method.
         """
-        return dbcs_request_builder.DbcsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_dbcs_request_builder.MicrosoftGraphDbcsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_dcount(self) -> dcount_request_builder.DcountRequestBuilder:
+    def microsoft_graph_dcount(self) -> microsoft_graph_dcount_request_builder.MicrosoftGraphDcountRequestBuilder:
         """
         Provides operations to call the dcount method.
         """
-        return dcount_request_builder.DcountRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_dcount_request_builder.MicrosoftGraphDcountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_dcount_a(self) -> dcount_a_request_builder.DcountARequestBuilder:
+    def microsoft_graph_dcount_a(self) -> microsoft_graph_dcount_a_request_builder.MicrosoftGraphDcountARequestBuilder:
         """
         Provides operations to call the dcountA method.
         """
-        return dcount_a_request_builder.DcountARequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_dcount_a_request_builder.MicrosoftGraphDcountARequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_ddb(self) -> ddb_request_builder.DdbRequestBuilder:
+    def microsoft_graph_ddb(self) -> microsoft_graph_ddb_request_builder.MicrosoftGraphDdbRequestBuilder:
         """
         Provides operations to call the ddb method.
         """
-        return ddb_request_builder.DdbRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_ddb_request_builder.MicrosoftGraphDdbRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_dec2_bin(self) -> dec2_bin_request_builder.Dec2BinRequestBuilder:
+    def microsoft_graph_dec2_bin(self) -> microsoft_graph_dec2_bin_request_builder.MicrosoftGraphDec2BinRequestBuilder:
         """
         Provides operations to call the dec2Bin method.
         """
-        return dec2_bin_request_builder.Dec2BinRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_dec2_bin_request_builder.MicrosoftGraphDec2BinRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_dec2_hex(self) -> dec2_hex_request_builder.Dec2HexRequestBuilder:
+    def microsoft_graph_dec2_hex(self) -> microsoft_graph_dec2_hex_request_builder.MicrosoftGraphDec2HexRequestBuilder:
         """
         Provides operations to call the dec2Hex method.
         """
-        return dec2_hex_request_builder.Dec2HexRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_dec2_hex_request_builder.MicrosoftGraphDec2HexRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_dec2_oct(self) -> dec2_oct_request_builder.Dec2OctRequestBuilder:
+    def microsoft_graph_dec2_oct(self) -> microsoft_graph_dec2_oct_request_builder.MicrosoftGraphDec2OctRequestBuilder:
         """
         Provides operations to call the dec2Oct method.
         """
-        return dec2_oct_request_builder.Dec2OctRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_dec2_oct_request_builder.MicrosoftGraphDec2OctRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_decimal(self) -> decimal_request_builder.DecimalRequestBuilder:
+    def microsoft_graph_decimal(self) -> microsoft_graph_decimal_request_builder.MicrosoftGraphDecimalRequestBuilder:
         """
         Provides operations to call the decimal method.
         """
-        return decimal_request_builder.DecimalRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_decimal_request_builder.MicrosoftGraphDecimalRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_degrees(self) -> degrees_request_builder.DegreesRequestBuilder:
+    def microsoft_graph_degrees(self) -> microsoft_graph_degrees_request_builder.MicrosoftGraphDegreesRequestBuilder:
         """
         Provides operations to call the degrees method.
         """
-        return degrees_request_builder.DegreesRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_degrees_request_builder.MicrosoftGraphDegreesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_delta(self) -> delta_request_builder.DeltaRequestBuilder:
+    def microsoft_graph_delta(self) -> microsoft_graph_delta_request_builder.MicrosoftGraphDeltaRequestBuilder:
         """
         Provides operations to call the delta method.
         """
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_delta_request_builder.MicrosoftGraphDeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_dev_sq(self) -> dev_sq_request_builder.DevSqRequestBuilder:
+    def microsoft_graph_dev_sq(self) -> microsoft_graph_dev_sq_request_builder.MicrosoftGraphDevSqRequestBuilder:
         """
         Provides operations to call the devSq method.
         """
-        return dev_sq_request_builder.DevSqRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_dev_sq_request_builder.MicrosoftGraphDevSqRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_dget(self) -> dget_request_builder.DgetRequestBuilder:
+    def microsoft_graph_dget(self) -> microsoft_graph_dget_request_builder.MicrosoftGraphDgetRequestBuilder:
         """
         Provides operations to call the dget method.
         """
-        return dget_request_builder.DgetRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_dget_request_builder.MicrosoftGraphDgetRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_disc(self) -> disc_request_builder.DiscRequestBuilder:
+    def microsoft_graph_disc(self) -> microsoft_graph_disc_request_builder.MicrosoftGraphDiscRequestBuilder:
         """
         Provides operations to call the disc method.
         """
-        return disc_request_builder.DiscRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_disc_request_builder.MicrosoftGraphDiscRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_dmax(self) -> dmax_request_builder.DmaxRequestBuilder:
+    def microsoft_graph_dmax(self) -> microsoft_graph_dmax_request_builder.MicrosoftGraphDmaxRequestBuilder:
         """
         Provides operations to call the dmax method.
         """
-        return dmax_request_builder.DmaxRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_dmax_request_builder.MicrosoftGraphDmaxRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_dmin(self) -> dmin_request_builder.DminRequestBuilder:
+    def microsoft_graph_dmin(self) -> microsoft_graph_dmin_request_builder.MicrosoftGraphDminRequestBuilder:
         """
         Provides operations to call the dmin method.
         """
-        return dmin_request_builder.DminRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_dmin_request_builder.MicrosoftGraphDminRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_dollar(self) -> dollar_request_builder.DollarRequestBuilder:
+    def microsoft_graph_dollar(self) -> microsoft_graph_dollar_request_builder.MicrosoftGraphDollarRequestBuilder:
         """
         Provides operations to call the dollar method.
         """
-        return dollar_request_builder.DollarRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_dollar_request_builder.MicrosoftGraphDollarRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_dollar_de(self) -> dollar_de_request_builder.DollarDeRequestBuilder:
+    def microsoft_graph_dollar_de(self) -> microsoft_graph_dollar_de_request_builder.MicrosoftGraphDollarDeRequestBuilder:
         """
         Provides operations to call the dollarDe method.
         """
-        return dollar_de_request_builder.DollarDeRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_dollar_de_request_builder.MicrosoftGraphDollarDeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_dollar_fr(self) -> dollar_fr_request_builder.DollarFrRequestBuilder:
+    def microsoft_graph_dollar_fr(self) -> microsoft_graph_dollar_fr_request_builder.MicrosoftGraphDollarFrRequestBuilder:
         """
         Provides operations to call the dollarFr method.
         """
-        return dollar_fr_request_builder.DollarFrRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_dollar_fr_request_builder.MicrosoftGraphDollarFrRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_dproduct(self) -> dproduct_request_builder.DproductRequestBuilder:
+    def microsoft_graph_dproduct(self) -> microsoft_graph_dproduct_request_builder.MicrosoftGraphDproductRequestBuilder:
         """
         Provides operations to call the dproduct method.
         """
-        return dproduct_request_builder.DproductRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_dproduct_request_builder.MicrosoftGraphDproductRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_dst_dev(self) -> dst_dev_request_builder.DstDevRequestBuilder:
+    def microsoft_graph_dst_dev(self) -> microsoft_graph_dst_dev_request_builder.MicrosoftGraphDstDevRequestBuilder:
         """
         Provides operations to call the dstDev method.
         """
-        return dst_dev_request_builder.DstDevRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_dst_dev_request_builder.MicrosoftGraphDstDevRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_dst_dev_p(self) -> dst_dev_p_request_builder.DstDevPRequestBuilder:
+    def microsoft_graph_dst_dev_p(self) -> microsoft_graph_dst_dev_p_request_builder.MicrosoftGraphDstDevPRequestBuilder:
         """
         Provides operations to call the dstDevP method.
         """
-        return dst_dev_p_request_builder.DstDevPRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_dst_dev_p_request_builder.MicrosoftGraphDstDevPRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_dsum(self) -> dsum_request_builder.DsumRequestBuilder:
+    def microsoft_graph_dsum(self) -> microsoft_graph_dsum_request_builder.MicrosoftGraphDsumRequestBuilder:
         """
         Provides operations to call the dsum method.
         """
-        return dsum_request_builder.DsumRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_dsum_request_builder.MicrosoftGraphDsumRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_duration(self) -> duration_request_builder.DurationRequestBuilder:
+    def microsoft_graph_duration(self) -> microsoft_graph_duration_request_builder.MicrosoftGraphDurationRequestBuilder:
         """
         Provides operations to call the duration method.
         """
-        return duration_request_builder.DurationRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_duration_request_builder.MicrosoftGraphDurationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_dvar(self) -> dvar_request_builder.DvarRequestBuilder:
+    def microsoft_graph_dvar(self) -> microsoft_graph_dvar_request_builder.MicrosoftGraphDvarRequestBuilder:
         """
         Provides operations to call the dvar method.
         """
-        return dvar_request_builder.DvarRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_dvar_request_builder.MicrosoftGraphDvarRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_dvar_p(self) -> dvar_p_request_builder.DvarPRequestBuilder:
+    def microsoft_graph_dvar_p(self) -> microsoft_graph_dvar_p_request_builder.MicrosoftGraphDvarPRequestBuilder:
         """
         Provides operations to call the dvarP method.
         """
-        return dvar_p_request_builder.DvarPRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_dvar_p_request_builder.MicrosoftGraphDvarPRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_ecma_ceiling(self) -> ecma_ceiling_request_builder.Ecma_CeilingRequestBuilder:
+    def microsoft_graph_ecma_ceiling(self) -> microsoft_graph_ecma_ceiling_request_builder.MicrosoftGraphEcma_CeilingRequestBuilder:
         """
         Provides operations to call the ecma_Ceiling method.
         """
-        return ecma_ceiling_request_builder.Ecma_CeilingRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_ecma_ceiling_request_builder.MicrosoftGraphEcma_CeilingRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_edate(self) -> edate_request_builder.EdateRequestBuilder:
+    def microsoft_graph_edate(self) -> microsoft_graph_edate_request_builder.MicrosoftGraphEdateRequestBuilder:
         """
         Provides operations to call the edate method.
         """
-        return edate_request_builder.EdateRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_edate_request_builder.MicrosoftGraphEdateRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_effect(self) -> effect_request_builder.EffectRequestBuilder:
+    def microsoft_graph_effect(self) -> microsoft_graph_effect_request_builder.MicrosoftGraphEffectRequestBuilder:
         """
         Provides operations to call the effect method.
         """
-        return effect_request_builder.EffectRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_effect_request_builder.MicrosoftGraphEffectRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_eo_month(self) -> eo_month_request_builder.EoMonthRequestBuilder:
+    def microsoft_graph_eo_month(self) -> microsoft_graph_eo_month_request_builder.MicrosoftGraphEoMonthRequestBuilder:
         """
         Provides operations to call the eoMonth method.
         """
-        return eo_month_request_builder.EoMonthRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_eo_month_request_builder.MicrosoftGraphEoMonthRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_erf(self) -> erf_request_builder.ErfRequestBuilder:
+    def microsoft_graph_erf(self) -> microsoft_graph_erf_request_builder.MicrosoftGraphErfRequestBuilder:
         """
         Provides operations to call the erf method.
         """
-        return erf_request_builder.ErfRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_erf_request_builder.MicrosoftGraphErfRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_erf_precise(self) -> erf_precise_request_builder.Erf_PreciseRequestBuilder:
+    def microsoft_graph_erf_precise(self) -> microsoft_graph_erf_precise_request_builder.MicrosoftGraphErf_PreciseRequestBuilder:
         """
         Provides operations to call the erf_Precise method.
         """
-        return erf_precise_request_builder.Erf_PreciseRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_erf_precise_request_builder.MicrosoftGraphErf_PreciseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_erf_c(self) -> erf_c_request_builder.ErfCRequestBuilder:
+    def microsoft_graph_erf_c(self) -> microsoft_graph_erf_c_request_builder.MicrosoftGraphErfCRequestBuilder:
         """
         Provides operations to call the erfC method.
         """
-        return erf_c_request_builder.ErfCRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_erf_c_request_builder.MicrosoftGraphErfCRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_erf_c_precise(self) -> erf_c_precise_request_builder.ErfC_PreciseRequestBuilder:
+    def microsoft_graph_erf_c_precise(self) -> microsoft_graph_erf_c_precise_request_builder.MicrosoftGraphErfC_PreciseRequestBuilder:
         """
         Provides operations to call the erfC_Precise method.
         """
-        return erf_c_precise_request_builder.ErfC_PreciseRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_erf_c_precise_request_builder.MicrosoftGraphErfC_PreciseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_error_type(self) -> error_type_request_builder.Error_TypeRequestBuilder:
+    def microsoft_graph_error_type(self) -> microsoft_graph_error_type_request_builder.MicrosoftGraphError_TypeRequestBuilder:
         """
         Provides operations to call the error_Type method.
         """
-        return error_type_request_builder.Error_TypeRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_error_type_request_builder.MicrosoftGraphError_TypeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_even(self) -> even_request_builder.EvenRequestBuilder:
+    def microsoft_graph_even(self) -> microsoft_graph_even_request_builder.MicrosoftGraphEvenRequestBuilder:
         """
         Provides operations to call the even method.
         """
-        return even_request_builder.EvenRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_even_request_builder.MicrosoftGraphEvenRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_exact(self) -> exact_request_builder.ExactRequestBuilder:
+    def microsoft_graph_exact(self) -> microsoft_graph_exact_request_builder.MicrosoftGraphExactRequestBuilder:
         """
         Provides operations to call the exact method.
         """
-        return exact_request_builder.ExactRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_exact_request_builder.MicrosoftGraphExactRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_exp(self) -> exp_request_builder.ExpRequestBuilder:
+    def microsoft_graph_exp(self) -> microsoft_graph_exp_request_builder.MicrosoftGraphExpRequestBuilder:
         """
         Provides operations to call the exp method.
         """
-        return exp_request_builder.ExpRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_exp_request_builder.MicrosoftGraphExpRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_expon_dist(self) -> expon_dist_request_builder.Expon_DistRequestBuilder:
+    def microsoft_graph_expon_dist(self) -> microsoft_graph_expon_dist_request_builder.MicrosoftGraphExpon_DistRequestBuilder:
         """
         Provides operations to call the expon_Dist method.
         """
-        return expon_dist_request_builder.Expon_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_expon_dist_request_builder.MicrosoftGraphExpon_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_f_dist(self) -> f_dist_request_builder.F_DistRequestBuilder:
+    def microsoft_graph_f_dist(self) -> microsoft_graph_f_dist_request_builder.MicrosoftGraphF_DistRequestBuilder:
         """
         Provides operations to call the f_Dist method.
         """
-        return f_dist_request_builder.F_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_f_dist_request_builder.MicrosoftGraphF_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_f_dist_r_t(self) -> f_dist_r_t_request_builder.F_Dist_RTRequestBuilder:
+    def microsoft_graph_f_dist_r_t(self) -> microsoft_graph_f_dist_r_t_request_builder.MicrosoftGraphF_Dist_RTRequestBuilder:
         """
         Provides operations to call the f_Dist_RT method.
         """
-        return f_dist_r_t_request_builder.F_Dist_RTRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_f_dist_r_t_request_builder.MicrosoftGraphF_Dist_RTRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_f_inv(self) -> f_inv_request_builder.F_InvRequestBuilder:
+    def microsoft_graph_f_inv(self) -> microsoft_graph_f_inv_request_builder.MicrosoftGraphF_InvRequestBuilder:
         """
         Provides operations to call the f_Inv method.
         """
-        return f_inv_request_builder.F_InvRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_f_inv_request_builder.MicrosoftGraphF_InvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_f_inv_r_t(self) -> f_inv_r_t_request_builder.F_Inv_RTRequestBuilder:
+    def microsoft_graph_f_inv_r_t(self) -> microsoft_graph_f_inv_r_t_request_builder.MicrosoftGraphF_Inv_RTRequestBuilder:
         """
         Provides operations to call the f_Inv_RT method.
         """
-        return f_inv_r_t_request_builder.F_Inv_RTRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_f_inv_r_t_request_builder.MicrosoftGraphF_Inv_RTRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_fact(self) -> fact_request_builder.FactRequestBuilder:
+    def microsoft_graph_fact(self) -> microsoft_graph_fact_request_builder.MicrosoftGraphFactRequestBuilder:
         """
         Provides operations to call the fact method.
         """
-        return fact_request_builder.FactRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_fact_request_builder.MicrosoftGraphFactRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_fact_double(self) -> fact_double_request_builder.FactDoubleRequestBuilder:
+    def microsoft_graph_fact_double(self) -> microsoft_graph_fact_double_request_builder.MicrosoftGraphFactDoubleRequestBuilder:
         """
         Provides operations to call the factDouble method.
         """
-        return fact_double_request_builder.FactDoubleRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_fact_double_request_builder.MicrosoftGraphFactDoubleRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_false(self) -> false_request_builder.FalseRequestBuilder:
+    def microsoft_graph_false(self) -> microsoft_graph_false_request_builder.MicrosoftGraphFalseRequestBuilder:
         """
         Provides operations to call the false method.
         """
-        return false_request_builder.FalseRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_false_request_builder.MicrosoftGraphFalseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_find(self) -> find_request_builder.FindRequestBuilder:
+    def microsoft_graph_find(self) -> microsoft_graph_find_request_builder.MicrosoftGraphFindRequestBuilder:
         """
         Provides operations to call the find method.
         """
-        return find_request_builder.FindRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_find_request_builder.MicrosoftGraphFindRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_find_b(self) -> find_b_request_builder.FindBRequestBuilder:
+    def microsoft_graph_find_b(self) -> microsoft_graph_find_b_request_builder.MicrosoftGraphFindBRequestBuilder:
         """
         Provides operations to call the findB method.
         """
-        return find_b_request_builder.FindBRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_find_b_request_builder.MicrosoftGraphFindBRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_fisher(self) -> fisher_request_builder.FisherRequestBuilder:
+    def microsoft_graph_fisher(self) -> microsoft_graph_fisher_request_builder.MicrosoftGraphFisherRequestBuilder:
         """
         Provides operations to call the fisher method.
         """
-        return fisher_request_builder.FisherRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_fisher_request_builder.MicrosoftGraphFisherRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_fisher_inv(self) -> fisher_inv_request_builder.FisherInvRequestBuilder:
+    def microsoft_graph_fisher_inv(self) -> microsoft_graph_fisher_inv_request_builder.MicrosoftGraphFisherInvRequestBuilder:
         """
         Provides operations to call the fisherInv method.
         """
-        return fisher_inv_request_builder.FisherInvRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_fisher_inv_request_builder.MicrosoftGraphFisherInvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_fixed(self) -> fixed_request_builder.FixedRequestBuilder:
+    def microsoft_graph_fixed(self) -> microsoft_graph_fixed_request_builder.MicrosoftGraphFixedRequestBuilder:
         """
         Provides operations to call the fixed method.
         """
-        return fixed_request_builder.FixedRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_fixed_request_builder.MicrosoftGraphFixedRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_floor_math(self) -> floor_math_request_builder.Floor_MathRequestBuilder:
+    def microsoft_graph_floor_math(self) -> microsoft_graph_floor_math_request_builder.MicrosoftGraphFloor_MathRequestBuilder:
         """
         Provides operations to call the floor_Math method.
         """
-        return floor_math_request_builder.Floor_MathRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_floor_math_request_builder.MicrosoftGraphFloor_MathRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_floor_precise(self) -> floor_precise_request_builder.Floor_PreciseRequestBuilder:
+    def microsoft_graph_floor_precise(self) -> microsoft_graph_floor_precise_request_builder.MicrosoftGraphFloor_PreciseRequestBuilder:
         """
         Provides operations to call the floor_Precise method.
         """
-        return floor_precise_request_builder.Floor_PreciseRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_floor_precise_request_builder.MicrosoftGraphFloor_PreciseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_fv(self) -> fv_request_builder.FvRequestBuilder:
+    def microsoft_graph_fv(self) -> microsoft_graph_fv_request_builder.MicrosoftGraphFvRequestBuilder:
         """
         Provides operations to call the fv method.
         """
-        return fv_request_builder.FvRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_fv_request_builder.MicrosoftGraphFvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_fvschedule(self) -> fvschedule_request_builder.FvscheduleRequestBuilder:
+    def microsoft_graph_fvschedule(self) -> microsoft_graph_fvschedule_request_builder.MicrosoftGraphFvscheduleRequestBuilder:
         """
         Provides operations to call the fvschedule method.
         """
-        return fvschedule_request_builder.FvscheduleRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_fvschedule_request_builder.MicrosoftGraphFvscheduleRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_gamma(self) -> gamma_request_builder.GammaRequestBuilder:
+    def microsoft_graph_gamma(self) -> microsoft_graph_gamma_request_builder.MicrosoftGraphGammaRequestBuilder:
         """
         Provides operations to call the gamma method.
         """
-        return gamma_request_builder.GammaRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_gamma_request_builder.MicrosoftGraphGammaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_gamma_dist(self) -> gamma_dist_request_builder.Gamma_DistRequestBuilder:
+    def microsoft_graph_gamma_dist(self) -> microsoft_graph_gamma_dist_request_builder.MicrosoftGraphGamma_DistRequestBuilder:
         """
         Provides operations to call the gamma_Dist method.
         """
-        return gamma_dist_request_builder.Gamma_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_gamma_dist_request_builder.MicrosoftGraphGamma_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_gamma_inv(self) -> gamma_inv_request_builder.Gamma_InvRequestBuilder:
+    def microsoft_graph_gamma_inv(self) -> microsoft_graph_gamma_inv_request_builder.MicrosoftGraphGamma_InvRequestBuilder:
         """
         Provides operations to call the gamma_Inv method.
         """
-        return gamma_inv_request_builder.Gamma_InvRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_gamma_inv_request_builder.MicrosoftGraphGamma_InvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_gamma_ln(self) -> gamma_ln_request_builder.GammaLnRequestBuilder:
+    def microsoft_graph_gamma_ln(self) -> microsoft_graph_gamma_ln_request_builder.MicrosoftGraphGammaLnRequestBuilder:
         """
         Provides operations to call the gammaLn method.
         """
-        return gamma_ln_request_builder.GammaLnRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_gamma_ln_request_builder.MicrosoftGraphGammaLnRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_gamma_ln_precise(self) -> gamma_ln_precise_request_builder.GammaLn_PreciseRequestBuilder:
+    def microsoft_graph_gamma_ln_precise(self) -> microsoft_graph_gamma_ln_precise_request_builder.MicrosoftGraphGammaLn_PreciseRequestBuilder:
         """
         Provides operations to call the gammaLn_Precise method.
         """
-        return gamma_ln_precise_request_builder.GammaLn_PreciseRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_gamma_ln_precise_request_builder.MicrosoftGraphGammaLn_PreciseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_gauss(self) -> gauss_request_builder.GaussRequestBuilder:
+    def microsoft_graph_gauss(self) -> microsoft_graph_gauss_request_builder.MicrosoftGraphGaussRequestBuilder:
         """
         Provides operations to call the gauss method.
         """
-        return gauss_request_builder.GaussRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_gauss_request_builder.MicrosoftGraphGaussRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_gcd(self) -> gcd_request_builder.GcdRequestBuilder:
+    def microsoft_graph_gcd(self) -> microsoft_graph_gcd_request_builder.MicrosoftGraphGcdRequestBuilder:
         """
         Provides operations to call the gcd method.
         """
-        return gcd_request_builder.GcdRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_gcd_request_builder.MicrosoftGraphGcdRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_geo_mean(self) -> geo_mean_request_builder.GeoMeanRequestBuilder:
+    def microsoft_graph_geo_mean(self) -> microsoft_graph_geo_mean_request_builder.MicrosoftGraphGeoMeanRequestBuilder:
         """
         Provides operations to call the geoMean method.
         """
-        return geo_mean_request_builder.GeoMeanRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_geo_mean_request_builder.MicrosoftGraphGeoMeanRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_ge_step(self) -> ge_step_request_builder.GeStepRequestBuilder:
+    def microsoft_graph_ge_step(self) -> microsoft_graph_ge_step_request_builder.MicrosoftGraphGeStepRequestBuilder:
         """
         Provides operations to call the geStep method.
         """
-        return ge_step_request_builder.GeStepRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_ge_step_request_builder.MicrosoftGraphGeStepRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_har_mean(self) -> har_mean_request_builder.HarMeanRequestBuilder:
+    def microsoft_graph_har_mean(self) -> microsoft_graph_har_mean_request_builder.MicrosoftGraphHarMeanRequestBuilder:
         """
         Provides operations to call the harMean method.
         """
-        return har_mean_request_builder.HarMeanRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_har_mean_request_builder.MicrosoftGraphHarMeanRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_hex2_bin(self) -> hex2_bin_request_builder.Hex2BinRequestBuilder:
+    def microsoft_graph_hex2_bin(self) -> microsoft_graph_hex2_bin_request_builder.MicrosoftGraphHex2BinRequestBuilder:
         """
         Provides operations to call the hex2Bin method.
         """
-        return hex2_bin_request_builder.Hex2BinRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_hex2_bin_request_builder.MicrosoftGraphHex2BinRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_hex2_dec(self) -> hex2_dec_request_builder.Hex2DecRequestBuilder:
+    def microsoft_graph_hex2_dec(self) -> microsoft_graph_hex2_dec_request_builder.MicrosoftGraphHex2DecRequestBuilder:
         """
         Provides operations to call the hex2Dec method.
         """
-        return hex2_dec_request_builder.Hex2DecRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_hex2_dec_request_builder.MicrosoftGraphHex2DecRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_hex2_oct(self) -> hex2_oct_request_builder.Hex2OctRequestBuilder:
+    def microsoft_graph_hex2_oct(self) -> microsoft_graph_hex2_oct_request_builder.MicrosoftGraphHex2OctRequestBuilder:
         """
         Provides operations to call the hex2Oct method.
         """
-        return hex2_oct_request_builder.Hex2OctRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_hex2_oct_request_builder.MicrosoftGraphHex2OctRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_hlookup(self) -> hlookup_request_builder.HlookupRequestBuilder:
+    def microsoft_graph_hlookup(self) -> microsoft_graph_hlookup_request_builder.MicrosoftGraphHlookupRequestBuilder:
         """
         Provides operations to call the hlookup method.
         """
-        return hlookup_request_builder.HlookupRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_hlookup_request_builder.MicrosoftGraphHlookupRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_hour(self) -> hour_request_builder.HourRequestBuilder:
+    def microsoft_graph_hour(self) -> microsoft_graph_hour_request_builder.MicrosoftGraphHourRequestBuilder:
         """
         Provides operations to call the hour method.
         """
-        return hour_request_builder.HourRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_hour_request_builder.MicrosoftGraphHourRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_hyperlink(self) -> hyperlink_request_builder.HyperlinkRequestBuilder:
+    def microsoft_graph_hyperlink(self) -> microsoft_graph_hyperlink_request_builder.MicrosoftGraphHyperlinkRequestBuilder:
         """
         Provides operations to call the hyperlink method.
         """
-        return hyperlink_request_builder.HyperlinkRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_hyperlink_request_builder.MicrosoftGraphHyperlinkRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_hyp_geom_dist(self) -> hyp_geom_dist_request_builder.HypGeom_DistRequestBuilder:
+    def microsoft_graph_hyp_geom_dist(self) -> microsoft_graph_hyp_geom_dist_request_builder.MicrosoftGraphHypGeom_DistRequestBuilder:
         """
         Provides operations to call the hypGeom_Dist method.
         """
-        return hyp_geom_dist_request_builder.HypGeom_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_hyp_geom_dist_request_builder.MicrosoftGraphHypGeom_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_if(self) -> if_request_builder.IfRequestBuilder:
+    def microsoft_graph_if(self) -> microsoft_graph_if_request_builder.MicrosoftGraphIfRequestBuilder:
         """
         Provides operations to call the if method.
         """
-        return if_request_builder.IfRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_if_request_builder.MicrosoftGraphIfRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_abs(self) -> im_abs_request_builder.ImAbsRequestBuilder:
+    def microsoft_graph_im_abs(self) -> microsoft_graph_im_abs_request_builder.MicrosoftGraphImAbsRequestBuilder:
         """
         Provides operations to call the imAbs method.
         """
-        return im_abs_request_builder.ImAbsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_abs_request_builder.MicrosoftGraphImAbsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_imaginary(self) -> imaginary_request_builder.ImaginaryRequestBuilder:
+    def microsoft_graph_imaginary(self) -> microsoft_graph_imaginary_request_builder.MicrosoftGraphImaginaryRequestBuilder:
         """
         Provides operations to call the imaginary method.
         """
-        return imaginary_request_builder.ImaginaryRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_imaginary_request_builder.MicrosoftGraphImaginaryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_argument(self) -> im_argument_request_builder.ImArgumentRequestBuilder:
+    def microsoft_graph_im_argument(self) -> microsoft_graph_im_argument_request_builder.MicrosoftGraphImArgumentRequestBuilder:
         """
         Provides operations to call the imArgument method.
         """
-        return im_argument_request_builder.ImArgumentRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_argument_request_builder.MicrosoftGraphImArgumentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_conjugate(self) -> im_conjugate_request_builder.ImConjugateRequestBuilder:
+    def microsoft_graph_im_conjugate(self) -> microsoft_graph_im_conjugate_request_builder.MicrosoftGraphImConjugateRequestBuilder:
         """
         Provides operations to call the imConjugate method.
         """
-        return im_conjugate_request_builder.ImConjugateRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_conjugate_request_builder.MicrosoftGraphImConjugateRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_cos(self) -> im_cos_request_builder.ImCosRequestBuilder:
+    def microsoft_graph_im_cos(self) -> microsoft_graph_im_cos_request_builder.MicrosoftGraphImCosRequestBuilder:
         """
         Provides operations to call the imCos method.
         """
-        return im_cos_request_builder.ImCosRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_cos_request_builder.MicrosoftGraphImCosRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_cosh(self) -> im_cosh_request_builder.ImCoshRequestBuilder:
+    def microsoft_graph_im_cosh(self) -> microsoft_graph_im_cosh_request_builder.MicrosoftGraphImCoshRequestBuilder:
         """
         Provides operations to call the imCosh method.
         """
-        return im_cosh_request_builder.ImCoshRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_cosh_request_builder.MicrosoftGraphImCoshRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_cot(self) -> im_cot_request_builder.ImCotRequestBuilder:
+    def microsoft_graph_im_cot(self) -> microsoft_graph_im_cot_request_builder.MicrosoftGraphImCotRequestBuilder:
         """
         Provides operations to call the imCot method.
         """
-        return im_cot_request_builder.ImCotRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_cot_request_builder.MicrosoftGraphImCotRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_csc(self) -> im_csc_request_builder.ImCscRequestBuilder:
+    def microsoft_graph_im_csc(self) -> microsoft_graph_im_csc_request_builder.MicrosoftGraphImCscRequestBuilder:
         """
         Provides operations to call the imCsc method.
         """
-        return im_csc_request_builder.ImCscRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_csc_request_builder.MicrosoftGraphImCscRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_csch(self) -> im_csch_request_builder.ImCschRequestBuilder:
+    def microsoft_graph_im_csch(self) -> microsoft_graph_im_csch_request_builder.MicrosoftGraphImCschRequestBuilder:
         """
         Provides operations to call the imCsch method.
         """
-        return im_csch_request_builder.ImCschRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_csch_request_builder.MicrosoftGraphImCschRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_div(self) -> im_div_request_builder.ImDivRequestBuilder:
+    def microsoft_graph_im_div(self) -> microsoft_graph_im_div_request_builder.MicrosoftGraphImDivRequestBuilder:
         """
         Provides operations to call the imDiv method.
         """
-        return im_div_request_builder.ImDivRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_div_request_builder.MicrosoftGraphImDivRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_exp(self) -> im_exp_request_builder.ImExpRequestBuilder:
+    def microsoft_graph_im_exp(self) -> microsoft_graph_im_exp_request_builder.MicrosoftGraphImExpRequestBuilder:
         """
         Provides operations to call the imExp method.
         """
-        return im_exp_request_builder.ImExpRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_exp_request_builder.MicrosoftGraphImExpRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_ln(self) -> im_ln_request_builder.ImLnRequestBuilder:
+    def microsoft_graph_im_ln(self) -> microsoft_graph_im_ln_request_builder.MicrosoftGraphImLnRequestBuilder:
         """
         Provides operations to call the imLn method.
         """
-        return im_ln_request_builder.ImLnRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_ln_request_builder.MicrosoftGraphImLnRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_log10(self) -> im_log10_request_builder.ImLog10RequestBuilder:
+    def microsoft_graph_im_log10(self) -> microsoft_graph_im_log10_request_builder.MicrosoftGraphImLog10RequestBuilder:
         """
         Provides operations to call the imLog10 method.
         """
-        return im_log10_request_builder.ImLog10RequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_log10_request_builder.MicrosoftGraphImLog10RequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_log2(self) -> im_log2_request_builder.ImLog2RequestBuilder:
+    def microsoft_graph_im_log2(self) -> microsoft_graph_im_log2_request_builder.MicrosoftGraphImLog2RequestBuilder:
         """
         Provides operations to call the imLog2 method.
         """
-        return im_log2_request_builder.ImLog2RequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_log2_request_builder.MicrosoftGraphImLog2RequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_power(self) -> im_power_request_builder.ImPowerRequestBuilder:
+    def microsoft_graph_im_power(self) -> microsoft_graph_im_power_request_builder.MicrosoftGraphImPowerRequestBuilder:
         """
         Provides operations to call the imPower method.
         """
-        return im_power_request_builder.ImPowerRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_power_request_builder.MicrosoftGraphImPowerRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_product(self) -> im_product_request_builder.ImProductRequestBuilder:
+    def microsoft_graph_im_product(self) -> microsoft_graph_im_product_request_builder.MicrosoftGraphImProductRequestBuilder:
         """
         Provides operations to call the imProduct method.
         """
-        return im_product_request_builder.ImProductRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_product_request_builder.MicrosoftGraphImProductRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_real(self) -> im_real_request_builder.ImRealRequestBuilder:
+    def microsoft_graph_im_real(self) -> microsoft_graph_im_real_request_builder.MicrosoftGraphImRealRequestBuilder:
         """
         Provides operations to call the imReal method.
         """
-        return im_real_request_builder.ImRealRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_real_request_builder.MicrosoftGraphImRealRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_sec(self) -> im_sec_request_builder.ImSecRequestBuilder:
+    def microsoft_graph_im_sec(self) -> microsoft_graph_im_sec_request_builder.MicrosoftGraphImSecRequestBuilder:
         """
         Provides operations to call the imSec method.
         """
-        return im_sec_request_builder.ImSecRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_sec_request_builder.MicrosoftGraphImSecRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_sech(self) -> im_sech_request_builder.ImSechRequestBuilder:
+    def microsoft_graph_im_sech(self) -> microsoft_graph_im_sech_request_builder.MicrosoftGraphImSechRequestBuilder:
         """
         Provides operations to call the imSech method.
         """
-        return im_sech_request_builder.ImSechRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_sech_request_builder.MicrosoftGraphImSechRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_sin(self) -> im_sin_request_builder.ImSinRequestBuilder:
+    def microsoft_graph_im_sin(self) -> microsoft_graph_im_sin_request_builder.MicrosoftGraphImSinRequestBuilder:
         """
         Provides operations to call the imSin method.
         """
-        return im_sin_request_builder.ImSinRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_sin_request_builder.MicrosoftGraphImSinRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_sinh(self) -> im_sinh_request_builder.ImSinhRequestBuilder:
+    def microsoft_graph_im_sinh(self) -> microsoft_graph_im_sinh_request_builder.MicrosoftGraphImSinhRequestBuilder:
         """
         Provides operations to call the imSinh method.
         """
-        return im_sinh_request_builder.ImSinhRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_sinh_request_builder.MicrosoftGraphImSinhRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_sqrt(self) -> im_sqrt_request_builder.ImSqrtRequestBuilder:
+    def microsoft_graph_im_sqrt(self) -> microsoft_graph_im_sqrt_request_builder.MicrosoftGraphImSqrtRequestBuilder:
         """
         Provides operations to call the imSqrt method.
         """
-        return im_sqrt_request_builder.ImSqrtRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_sqrt_request_builder.MicrosoftGraphImSqrtRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_sub(self) -> im_sub_request_builder.ImSubRequestBuilder:
+    def microsoft_graph_im_sub(self) -> microsoft_graph_im_sub_request_builder.MicrosoftGraphImSubRequestBuilder:
         """
         Provides operations to call the imSub method.
         """
-        return im_sub_request_builder.ImSubRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_sub_request_builder.MicrosoftGraphImSubRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_sum(self) -> im_sum_request_builder.ImSumRequestBuilder:
+    def microsoft_graph_im_sum(self) -> microsoft_graph_im_sum_request_builder.MicrosoftGraphImSumRequestBuilder:
         """
         Provides operations to call the imSum method.
         """
-        return im_sum_request_builder.ImSumRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_sum_request_builder.MicrosoftGraphImSumRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_im_tan(self) -> im_tan_request_builder.ImTanRequestBuilder:
+    def microsoft_graph_im_tan(self) -> microsoft_graph_im_tan_request_builder.MicrosoftGraphImTanRequestBuilder:
         """
         Provides operations to call the imTan method.
         """
-        return im_tan_request_builder.ImTanRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_im_tan_request_builder.MicrosoftGraphImTanRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_int(self) -> int_request_builder.IntRequestBuilder:
+    def microsoft_graph_int(self) -> microsoft_graph_int_request_builder.MicrosoftGraphIntRequestBuilder:
         """
         Provides operations to call the int method.
         """
-        return int_request_builder.IntRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_int_request_builder.MicrosoftGraphIntRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_int_rate(self) -> int_rate_request_builder.IntRateRequestBuilder:
+    def microsoft_graph_int_rate(self) -> microsoft_graph_int_rate_request_builder.MicrosoftGraphIntRateRequestBuilder:
         """
         Provides operations to call the intRate method.
         """
-        return int_rate_request_builder.IntRateRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_int_rate_request_builder.MicrosoftGraphIntRateRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_ipmt(self) -> ipmt_request_builder.IpmtRequestBuilder:
+    def microsoft_graph_ipmt(self) -> microsoft_graph_ipmt_request_builder.MicrosoftGraphIpmtRequestBuilder:
         """
         Provides operations to call the ipmt method.
         """
-        return ipmt_request_builder.IpmtRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_ipmt_request_builder.MicrosoftGraphIpmtRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_irr(self) -> irr_request_builder.IrrRequestBuilder:
+    def microsoft_graph_irr(self) -> microsoft_graph_irr_request_builder.MicrosoftGraphIrrRequestBuilder:
         """
         Provides operations to call the irr method.
         """
-        return irr_request_builder.IrrRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_irr_request_builder.MicrosoftGraphIrrRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_is_err(self) -> is_err_request_builder.IsErrRequestBuilder:
+    def microsoft_graph_is_err(self) -> microsoft_graph_is_err_request_builder.MicrosoftGraphIsErrRequestBuilder:
         """
         Provides operations to call the isErr method.
         """
-        return is_err_request_builder.IsErrRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_is_err_request_builder.MicrosoftGraphIsErrRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_is_error(self) -> is_error_request_builder.IsErrorRequestBuilder:
+    def microsoft_graph_is_error(self) -> microsoft_graph_is_error_request_builder.MicrosoftGraphIsErrorRequestBuilder:
         """
         Provides operations to call the isError method.
         """
-        return is_error_request_builder.IsErrorRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_is_error_request_builder.MicrosoftGraphIsErrorRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_is_even(self) -> is_even_request_builder.IsEvenRequestBuilder:
+    def microsoft_graph_is_even(self) -> microsoft_graph_is_even_request_builder.MicrosoftGraphIsEvenRequestBuilder:
         """
         Provides operations to call the isEven method.
         """
-        return is_even_request_builder.IsEvenRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_is_even_request_builder.MicrosoftGraphIsEvenRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_is_formula(self) -> is_formula_request_builder.IsFormulaRequestBuilder:
+    def microsoft_graph_is_formula(self) -> microsoft_graph_is_formula_request_builder.MicrosoftGraphIsFormulaRequestBuilder:
         """
         Provides operations to call the isFormula method.
         """
-        return is_formula_request_builder.IsFormulaRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_is_formula_request_builder.MicrosoftGraphIsFormulaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_is_logical(self) -> is_logical_request_builder.IsLogicalRequestBuilder:
+    def microsoft_graph_is_logical(self) -> microsoft_graph_is_logical_request_builder.MicrosoftGraphIsLogicalRequestBuilder:
         """
         Provides operations to call the isLogical method.
         """
-        return is_logical_request_builder.IsLogicalRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_is_logical_request_builder.MicrosoftGraphIsLogicalRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_is_n_a(self) -> is_n_a_request_builder.IsNARequestBuilder:
+    def microsoft_graph_is_n_a(self) -> microsoft_graph_is_n_a_request_builder.MicrosoftGraphIsNARequestBuilder:
         """
         Provides operations to call the isNA method.
         """
-        return is_n_a_request_builder.IsNARequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_is_n_a_request_builder.MicrosoftGraphIsNARequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_is_non_text(self) -> is_non_text_request_builder.IsNonTextRequestBuilder:
+    def microsoft_graph_is_non_text(self) -> microsoft_graph_is_non_text_request_builder.MicrosoftGraphIsNonTextRequestBuilder:
         """
         Provides operations to call the isNonText method.
         """
-        return is_non_text_request_builder.IsNonTextRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_is_non_text_request_builder.MicrosoftGraphIsNonTextRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_is_number(self) -> is_number_request_builder.IsNumberRequestBuilder:
+    def microsoft_graph_is_number(self) -> microsoft_graph_is_number_request_builder.MicrosoftGraphIsNumberRequestBuilder:
         """
         Provides operations to call the isNumber method.
         """
-        return is_number_request_builder.IsNumberRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_is_number_request_builder.MicrosoftGraphIsNumberRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_iso_ceiling(self) -> iso_ceiling_request_builder.Iso_CeilingRequestBuilder:
+    def microsoft_graph_iso_ceiling(self) -> microsoft_graph_iso_ceiling_request_builder.MicrosoftGraphIso_CeilingRequestBuilder:
         """
         Provides operations to call the iso_Ceiling method.
         """
-        return iso_ceiling_request_builder.Iso_CeilingRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_iso_ceiling_request_builder.MicrosoftGraphIso_CeilingRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_is_odd(self) -> is_odd_request_builder.IsOddRequestBuilder:
+    def microsoft_graph_is_odd(self) -> microsoft_graph_is_odd_request_builder.MicrosoftGraphIsOddRequestBuilder:
         """
         Provides operations to call the isOdd method.
         """
-        return is_odd_request_builder.IsOddRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_is_odd_request_builder.MicrosoftGraphIsOddRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_iso_week_num(self) -> iso_week_num_request_builder.IsoWeekNumRequestBuilder:
+    def microsoft_graph_iso_week_num(self) -> microsoft_graph_iso_week_num_request_builder.MicrosoftGraphIsoWeekNumRequestBuilder:
         """
         Provides operations to call the isoWeekNum method.
         """
-        return iso_week_num_request_builder.IsoWeekNumRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_iso_week_num_request_builder.MicrosoftGraphIsoWeekNumRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_ispmt(self) -> ispmt_request_builder.IspmtRequestBuilder:
+    def microsoft_graph_ispmt(self) -> microsoft_graph_ispmt_request_builder.MicrosoftGraphIspmtRequestBuilder:
         """
         Provides operations to call the ispmt method.
         """
-        return ispmt_request_builder.IspmtRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_ispmt_request_builder.MicrosoftGraphIspmtRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_isref(self) -> isref_request_builder.IsrefRequestBuilder:
+    def microsoft_graph_isref(self) -> microsoft_graph_isref_request_builder.MicrosoftGraphIsrefRequestBuilder:
         """
         Provides operations to call the isref method.
         """
-        return isref_request_builder.IsrefRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_isref_request_builder.MicrosoftGraphIsrefRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_is_text(self) -> is_text_request_builder.IsTextRequestBuilder:
+    def microsoft_graph_is_text(self) -> microsoft_graph_is_text_request_builder.MicrosoftGraphIsTextRequestBuilder:
         """
         Provides operations to call the isText method.
         """
-        return is_text_request_builder.IsTextRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_is_text_request_builder.MicrosoftGraphIsTextRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_kurt(self) -> kurt_request_builder.KurtRequestBuilder:
+    def microsoft_graph_kurt(self) -> microsoft_graph_kurt_request_builder.MicrosoftGraphKurtRequestBuilder:
         """
         Provides operations to call the kurt method.
         """
-        return kurt_request_builder.KurtRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_kurt_request_builder.MicrosoftGraphKurtRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_large(self) -> large_request_builder.LargeRequestBuilder:
+    def microsoft_graph_large(self) -> microsoft_graph_large_request_builder.MicrosoftGraphLargeRequestBuilder:
         """
         Provides operations to call the large method.
         """
-        return large_request_builder.LargeRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_large_request_builder.MicrosoftGraphLargeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_lcm(self) -> lcm_request_builder.LcmRequestBuilder:
+    def microsoft_graph_lcm(self) -> microsoft_graph_lcm_request_builder.MicrosoftGraphLcmRequestBuilder:
         """
         Provides operations to call the lcm method.
         """
-        return lcm_request_builder.LcmRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_lcm_request_builder.MicrosoftGraphLcmRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_left(self) -> left_request_builder.LeftRequestBuilder:
+    def microsoft_graph_left(self) -> microsoft_graph_left_request_builder.MicrosoftGraphLeftRequestBuilder:
         """
         Provides operations to call the left method.
         """
-        return left_request_builder.LeftRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_left_request_builder.MicrosoftGraphLeftRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_leftb(self) -> leftb_request_builder.LeftbRequestBuilder:
+    def microsoft_graph_leftb(self) -> microsoft_graph_leftb_request_builder.MicrosoftGraphLeftbRequestBuilder:
         """
         Provides operations to call the leftb method.
         """
-        return leftb_request_builder.LeftbRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_leftb_request_builder.MicrosoftGraphLeftbRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_len(self) -> len_request_builder.LenRequestBuilder:
+    def microsoft_graph_len(self) -> microsoft_graph_len_request_builder.MicrosoftGraphLenRequestBuilder:
         """
         Provides operations to call the len method.
         """
-        return len_request_builder.LenRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_len_request_builder.MicrosoftGraphLenRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_lenb(self) -> lenb_request_builder.LenbRequestBuilder:
+    def microsoft_graph_lenb(self) -> microsoft_graph_lenb_request_builder.MicrosoftGraphLenbRequestBuilder:
         """
         Provides operations to call the lenb method.
         """
-        return lenb_request_builder.LenbRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_lenb_request_builder.MicrosoftGraphLenbRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_ln(self) -> ln_request_builder.LnRequestBuilder:
+    def microsoft_graph_ln(self) -> microsoft_graph_ln_request_builder.MicrosoftGraphLnRequestBuilder:
         """
         Provides operations to call the ln method.
         """
-        return ln_request_builder.LnRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_ln_request_builder.MicrosoftGraphLnRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_log(self) -> log_request_builder.LogRequestBuilder:
+    def microsoft_graph_log(self) -> microsoft_graph_log_request_builder.MicrosoftGraphLogRequestBuilder:
         """
         Provides operations to call the log method.
         """
-        return log_request_builder.LogRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_log_request_builder.MicrosoftGraphLogRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_log10(self) -> log10_request_builder.Log10RequestBuilder:
+    def microsoft_graph_log10(self) -> microsoft_graph_log10_request_builder.MicrosoftGraphLog10RequestBuilder:
         """
         Provides operations to call the log10 method.
         """
-        return log10_request_builder.Log10RequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_log10_request_builder.MicrosoftGraphLog10RequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_log_norm_dist(self) -> log_norm_dist_request_builder.LogNorm_DistRequestBuilder:
+    def microsoft_graph_log_norm_dist(self) -> microsoft_graph_log_norm_dist_request_builder.MicrosoftGraphLogNorm_DistRequestBuilder:
         """
         Provides operations to call the logNorm_Dist method.
         """
-        return log_norm_dist_request_builder.LogNorm_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_log_norm_dist_request_builder.MicrosoftGraphLogNorm_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_log_norm_inv(self) -> log_norm_inv_request_builder.LogNorm_InvRequestBuilder:
+    def microsoft_graph_log_norm_inv(self) -> microsoft_graph_log_norm_inv_request_builder.MicrosoftGraphLogNorm_InvRequestBuilder:
         """
         Provides operations to call the logNorm_Inv method.
         """
-        return log_norm_inv_request_builder.LogNorm_InvRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_log_norm_inv_request_builder.MicrosoftGraphLogNorm_InvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_lookup(self) -> lookup_request_builder.LookupRequestBuilder:
+    def microsoft_graph_lookup(self) -> microsoft_graph_lookup_request_builder.MicrosoftGraphLookupRequestBuilder:
         """
         Provides operations to call the lookup method.
         """
-        return lookup_request_builder.LookupRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_lookup_request_builder.MicrosoftGraphLookupRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_lower(self) -> lower_request_builder.LowerRequestBuilder:
+    def microsoft_graph_lower(self) -> microsoft_graph_lower_request_builder.MicrosoftGraphLowerRequestBuilder:
         """
         Provides operations to call the lower method.
         """
-        return lower_request_builder.LowerRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_lower_request_builder.MicrosoftGraphLowerRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_match(self) -> match_request_builder.MatchRequestBuilder:
+    def microsoft_graph_match(self) -> microsoft_graph_match_request_builder.MicrosoftGraphMatchRequestBuilder:
         """
         Provides operations to call the match method.
         """
-        return match_request_builder.MatchRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_match_request_builder.MicrosoftGraphMatchRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_max(self) -> max_request_builder.MaxRequestBuilder:
+    def microsoft_graph_max(self) -> microsoft_graph_max_request_builder.MicrosoftGraphMaxRequestBuilder:
         """
         Provides operations to call the max method.
         """
-        return max_request_builder.MaxRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_max_request_builder.MicrosoftGraphMaxRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_max_a(self) -> max_a_request_builder.MaxARequestBuilder:
+    def microsoft_graph_max_a(self) -> microsoft_graph_max_a_request_builder.MicrosoftGraphMaxARequestBuilder:
         """
         Provides operations to call the maxA method.
         """
-        return max_a_request_builder.MaxARequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_max_a_request_builder.MicrosoftGraphMaxARequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_mduration(self) -> mduration_request_builder.MdurationRequestBuilder:
+    def microsoft_graph_mduration(self) -> microsoft_graph_mduration_request_builder.MicrosoftGraphMdurationRequestBuilder:
         """
         Provides operations to call the mduration method.
         """
-        return mduration_request_builder.MdurationRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_mduration_request_builder.MicrosoftGraphMdurationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_median(self) -> median_request_builder.MedianRequestBuilder:
+    def microsoft_graph_median(self) -> microsoft_graph_median_request_builder.MicrosoftGraphMedianRequestBuilder:
         """
         Provides operations to call the median method.
         """
-        return median_request_builder.MedianRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_median_request_builder.MicrosoftGraphMedianRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_mid(self) -> mid_request_builder.MidRequestBuilder:
+    def microsoft_graph_mid(self) -> microsoft_graph_mid_request_builder.MicrosoftGraphMidRequestBuilder:
         """
         Provides operations to call the mid method.
         """
-        return mid_request_builder.MidRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_mid_request_builder.MicrosoftGraphMidRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_midb(self) -> midb_request_builder.MidbRequestBuilder:
+    def microsoft_graph_midb(self) -> microsoft_graph_midb_request_builder.MicrosoftGraphMidbRequestBuilder:
         """
         Provides operations to call the midb method.
         """
-        return midb_request_builder.MidbRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_midb_request_builder.MicrosoftGraphMidbRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_min(self) -> min_request_builder.MinRequestBuilder:
+    def microsoft_graph_min(self) -> microsoft_graph_min_request_builder.MicrosoftGraphMinRequestBuilder:
         """
         Provides operations to call the min method.
         """
-        return min_request_builder.MinRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_min_request_builder.MicrosoftGraphMinRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_min_a(self) -> min_a_request_builder.MinARequestBuilder:
+    def microsoft_graph_min_a(self) -> microsoft_graph_min_a_request_builder.MicrosoftGraphMinARequestBuilder:
         """
         Provides operations to call the minA method.
         """
-        return min_a_request_builder.MinARequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_min_a_request_builder.MicrosoftGraphMinARequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_minute(self) -> minute_request_builder.MinuteRequestBuilder:
+    def microsoft_graph_minute(self) -> microsoft_graph_minute_request_builder.MicrosoftGraphMinuteRequestBuilder:
         """
         Provides operations to call the minute method.
         """
-        return minute_request_builder.MinuteRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_minute_request_builder.MicrosoftGraphMinuteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_mirr(self) -> mirr_request_builder.MirrRequestBuilder:
+    def microsoft_graph_mirr(self) -> microsoft_graph_mirr_request_builder.MicrosoftGraphMirrRequestBuilder:
         """
         Provides operations to call the mirr method.
         """
-        return mirr_request_builder.MirrRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_mirr_request_builder.MicrosoftGraphMirrRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_mod(self) -> mod_request_builder.ModRequestBuilder:
+    def microsoft_graph_mod(self) -> microsoft_graph_mod_request_builder.MicrosoftGraphModRequestBuilder:
         """
         Provides operations to call the mod method.
         """
-        return mod_request_builder.ModRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_mod_request_builder.MicrosoftGraphModRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_month(self) -> month_request_builder.MonthRequestBuilder:
+    def microsoft_graph_month(self) -> microsoft_graph_month_request_builder.MicrosoftGraphMonthRequestBuilder:
         """
         Provides operations to call the month method.
         """
-        return month_request_builder.MonthRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_month_request_builder.MicrosoftGraphMonthRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_mround(self) -> mround_request_builder.MroundRequestBuilder:
+    def microsoft_graph_mround(self) -> microsoft_graph_mround_request_builder.MicrosoftGraphMroundRequestBuilder:
         """
         Provides operations to call the mround method.
         """
-        return mround_request_builder.MroundRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_mround_request_builder.MicrosoftGraphMroundRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_multi_nomial(self) -> multi_nomial_request_builder.MultiNomialRequestBuilder:
+    def microsoft_graph_multi_nomial(self) -> microsoft_graph_multi_nomial_request_builder.MicrosoftGraphMultiNomialRequestBuilder:
         """
         Provides operations to call the multiNomial method.
         """
-        return multi_nomial_request_builder.MultiNomialRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_multi_nomial_request_builder.MicrosoftGraphMultiNomialRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_n(self) -> n_request_builder.NRequestBuilder:
+    def microsoft_graph_n(self) -> microsoft_graph_n_request_builder.MicrosoftGraphNRequestBuilder:
         """
         Provides operations to call the n method.
         """
-        return n_request_builder.NRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_n_request_builder.MicrosoftGraphNRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_na(self) -> na_request_builder.NaRequestBuilder:
+    def microsoft_graph_na(self) -> microsoft_graph_na_request_builder.MicrosoftGraphNaRequestBuilder:
         """
         Provides operations to call the na method.
         """
-        return na_request_builder.NaRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_na_request_builder.MicrosoftGraphNaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_neg_binom_dist(self) -> neg_binom_dist_request_builder.NegBinom_DistRequestBuilder:
+    def microsoft_graph_neg_binom_dist(self) -> microsoft_graph_neg_binom_dist_request_builder.MicrosoftGraphNegBinom_DistRequestBuilder:
         """
         Provides operations to call the negBinom_Dist method.
         """
-        return neg_binom_dist_request_builder.NegBinom_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_neg_binom_dist_request_builder.MicrosoftGraphNegBinom_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_network_days(self) -> network_days_request_builder.NetworkDaysRequestBuilder:
+    def microsoft_graph_network_days(self) -> microsoft_graph_network_days_request_builder.MicrosoftGraphNetworkDaysRequestBuilder:
         """
         Provides operations to call the networkDays method.
         """
-        return network_days_request_builder.NetworkDaysRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_network_days_request_builder.MicrosoftGraphNetworkDaysRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_network_days_intl(self) -> network_days_intl_request_builder.NetworkDays_IntlRequestBuilder:
+    def microsoft_graph_network_days_intl(self) -> microsoft_graph_network_days_intl_request_builder.MicrosoftGraphNetworkDays_IntlRequestBuilder:
         """
         Provides operations to call the networkDays_Intl method.
         """
-        return network_days_intl_request_builder.NetworkDays_IntlRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_network_days_intl_request_builder.MicrosoftGraphNetworkDays_IntlRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_nominal(self) -> nominal_request_builder.NominalRequestBuilder:
+    def microsoft_graph_nominal(self) -> microsoft_graph_nominal_request_builder.MicrosoftGraphNominalRequestBuilder:
         """
         Provides operations to call the nominal method.
         """
-        return nominal_request_builder.NominalRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_nominal_request_builder.MicrosoftGraphNominalRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_norm_dist(self) -> norm_dist_request_builder.Norm_DistRequestBuilder:
+    def microsoft_graph_norm_dist(self) -> microsoft_graph_norm_dist_request_builder.MicrosoftGraphNorm_DistRequestBuilder:
         """
         Provides operations to call the norm_Dist method.
         """
-        return norm_dist_request_builder.Norm_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_norm_dist_request_builder.MicrosoftGraphNorm_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_norm_inv(self) -> norm_inv_request_builder.Norm_InvRequestBuilder:
+    def microsoft_graph_norm_inv(self) -> microsoft_graph_norm_inv_request_builder.MicrosoftGraphNorm_InvRequestBuilder:
         """
         Provides operations to call the norm_Inv method.
         """
-        return norm_inv_request_builder.Norm_InvRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_norm_inv_request_builder.MicrosoftGraphNorm_InvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_norm_s_dist(self) -> norm_s_dist_request_builder.Norm_S_DistRequestBuilder:
+    def microsoft_graph_norm_s_dist(self) -> microsoft_graph_norm_s_dist_request_builder.MicrosoftGraphNorm_S_DistRequestBuilder:
         """
         Provides operations to call the norm_S_Dist method.
         """
-        return norm_s_dist_request_builder.Norm_S_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_norm_s_dist_request_builder.MicrosoftGraphNorm_S_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_norm_s_inv(self) -> norm_s_inv_request_builder.Norm_S_InvRequestBuilder:
+    def microsoft_graph_norm_s_inv(self) -> microsoft_graph_norm_s_inv_request_builder.MicrosoftGraphNorm_S_InvRequestBuilder:
         """
         Provides operations to call the norm_S_Inv method.
         """
-        return norm_s_inv_request_builder.Norm_S_InvRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_norm_s_inv_request_builder.MicrosoftGraphNorm_S_InvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_not(self) -> not_request_builder.NotRequestBuilder:
+    def microsoft_graph_not(self) -> microsoft_graph_not_request_builder.MicrosoftGraphNotRequestBuilder:
         """
         Provides operations to call the not method.
         """
-        return not_request_builder.NotRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_not_request_builder.MicrosoftGraphNotRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_now(self) -> now_request_builder.NowRequestBuilder:
+    def microsoft_graph_now(self) -> microsoft_graph_now_request_builder.MicrosoftGraphNowRequestBuilder:
         """
         Provides operations to call the now method.
         """
-        return now_request_builder.NowRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_now_request_builder.MicrosoftGraphNowRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_nper(self) -> nper_request_builder.NperRequestBuilder:
+    def microsoft_graph_nper(self) -> microsoft_graph_nper_request_builder.MicrosoftGraphNperRequestBuilder:
         """
         Provides operations to call the nper method.
         """
-        return nper_request_builder.NperRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_nper_request_builder.MicrosoftGraphNperRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_npv(self) -> npv_request_builder.NpvRequestBuilder:
+    def microsoft_graph_npv(self) -> microsoft_graph_npv_request_builder.MicrosoftGraphNpvRequestBuilder:
         """
         Provides operations to call the npv method.
         """
-        return npv_request_builder.NpvRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_npv_request_builder.MicrosoftGraphNpvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_number_value(self) -> number_value_request_builder.NumberValueRequestBuilder:
+    def microsoft_graph_number_value(self) -> microsoft_graph_number_value_request_builder.MicrosoftGraphNumberValueRequestBuilder:
         """
         Provides operations to call the numberValue method.
         """
-        return number_value_request_builder.NumberValueRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_number_value_request_builder.MicrosoftGraphNumberValueRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_oct2_bin(self) -> oct2_bin_request_builder.Oct2BinRequestBuilder:
+    def microsoft_graph_oct2_bin(self) -> microsoft_graph_oct2_bin_request_builder.MicrosoftGraphOct2BinRequestBuilder:
         """
         Provides operations to call the oct2Bin method.
         """
-        return oct2_bin_request_builder.Oct2BinRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_oct2_bin_request_builder.MicrosoftGraphOct2BinRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_oct2_dec(self) -> oct2_dec_request_builder.Oct2DecRequestBuilder:
+    def microsoft_graph_oct2_dec(self) -> microsoft_graph_oct2_dec_request_builder.MicrosoftGraphOct2DecRequestBuilder:
         """
         Provides operations to call the oct2Dec method.
         """
-        return oct2_dec_request_builder.Oct2DecRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_oct2_dec_request_builder.MicrosoftGraphOct2DecRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_oct2_hex(self) -> oct2_hex_request_builder.Oct2HexRequestBuilder:
+    def microsoft_graph_oct2_hex(self) -> microsoft_graph_oct2_hex_request_builder.MicrosoftGraphOct2HexRequestBuilder:
         """
         Provides operations to call the oct2Hex method.
         """
-        return oct2_hex_request_builder.Oct2HexRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_oct2_hex_request_builder.MicrosoftGraphOct2HexRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_odd(self) -> odd_request_builder.OddRequestBuilder:
+    def microsoft_graph_odd(self) -> microsoft_graph_odd_request_builder.MicrosoftGraphOddRequestBuilder:
         """
         Provides operations to call the odd method.
         """
-        return odd_request_builder.OddRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_odd_request_builder.MicrosoftGraphOddRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_odd_f_price(self) -> odd_f_price_request_builder.OddFPriceRequestBuilder:
+    def microsoft_graph_odd_f_price(self) -> microsoft_graph_odd_f_price_request_builder.MicrosoftGraphOddFPriceRequestBuilder:
         """
         Provides operations to call the oddFPrice method.
         """
-        return odd_f_price_request_builder.OddFPriceRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_odd_f_price_request_builder.MicrosoftGraphOddFPriceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_odd_f_yield(self) -> odd_f_yield_request_builder.OddFYieldRequestBuilder:
+    def microsoft_graph_odd_f_yield(self) -> microsoft_graph_odd_f_yield_request_builder.MicrosoftGraphOddFYieldRequestBuilder:
         """
         Provides operations to call the oddFYield method.
         """
-        return odd_f_yield_request_builder.OddFYieldRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_odd_f_yield_request_builder.MicrosoftGraphOddFYieldRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_odd_l_price(self) -> odd_l_price_request_builder.OddLPriceRequestBuilder:
+    def microsoft_graph_odd_l_price(self) -> microsoft_graph_odd_l_price_request_builder.MicrosoftGraphOddLPriceRequestBuilder:
         """
         Provides operations to call the oddLPrice method.
         """
-        return odd_l_price_request_builder.OddLPriceRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_odd_l_price_request_builder.MicrosoftGraphOddLPriceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_odd_l_yield(self) -> odd_l_yield_request_builder.OddLYieldRequestBuilder:
+    def microsoft_graph_odd_l_yield(self) -> microsoft_graph_odd_l_yield_request_builder.MicrosoftGraphOddLYieldRequestBuilder:
         """
         Provides operations to call the oddLYield method.
         """
-        return odd_l_yield_request_builder.OddLYieldRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_odd_l_yield_request_builder.MicrosoftGraphOddLYieldRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_or(self) -> or_request_builder.OrRequestBuilder:
+    def microsoft_graph_or(self) -> microsoft_graph_or_request_builder.MicrosoftGraphOrRequestBuilder:
         """
         Provides operations to call the or method.
         """
-        return or_request_builder.OrRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_or_request_builder.MicrosoftGraphOrRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_pduration(self) -> pduration_request_builder.PdurationRequestBuilder:
+    def microsoft_graph_pduration(self) -> microsoft_graph_pduration_request_builder.MicrosoftGraphPdurationRequestBuilder:
         """
         Provides operations to call the pduration method.
         """
-        return pduration_request_builder.PdurationRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_pduration_request_builder.MicrosoftGraphPdurationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_percentile_exc(self) -> percentile_exc_request_builder.Percentile_ExcRequestBuilder:
+    def microsoft_graph_percentile_exc(self) -> microsoft_graph_percentile_exc_request_builder.MicrosoftGraphPercentile_ExcRequestBuilder:
         """
         Provides operations to call the percentile_Exc method.
         """
-        return percentile_exc_request_builder.Percentile_ExcRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_percentile_exc_request_builder.MicrosoftGraphPercentile_ExcRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_percentile_inc(self) -> percentile_inc_request_builder.Percentile_IncRequestBuilder:
+    def microsoft_graph_percentile_inc(self) -> microsoft_graph_percentile_inc_request_builder.MicrosoftGraphPercentile_IncRequestBuilder:
         """
         Provides operations to call the percentile_Inc method.
         """
-        return percentile_inc_request_builder.Percentile_IncRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_percentile_inc_request_builder.MicrosoftGraphPercentile_IncRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_percent_rank_exc(self) -> percent_rank_exc_request_builder.PercentRank_ExcRequestBuilder:
+    def microsoft_graph_percent_rank_exc(self) -> microsoft_graph_percent_rank_exc_request_builder.MicrosoftGraphPercentRank_ExcRequestBuilder:
         """
         Provides operations to call the percentRank_Exc method.
         """
-        return percent_rank_exc_request_builder.PercentRank_ExcRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_percent_rank_exc_request_builder.MicrosoftGraphPercentRank_ExcRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_percent_rank_inc(self) -> percent_rank_inc_request_builder.PercentRank_IncRequestBuilder:
+    def microsoft_graph_percent_rank_inc(self) -> microsoft_graph_percent_rank_inc_request_builder.MicrosoftGraphPercentRank_IncRequestBuilder:
         """
         Provides operations to call the percentRank_Inc method.
         """
-        return percent_rank_inc_request_builder.PercentRank_IncRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_percent_rank_inc_request_builder.MicrosoftGraphPercentRank_IncRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_permut(self) -> permut_request_builder.PermutRequestBuilder:
+    def microsoft_graph_permut(self) -> microsoft_graph_permut_request_builder.MicrosoftGraphPermutRequestBuilder:
         """
         Provides operations to call the permut method.
         """
-        return permut_request_builder.PermutRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_permut_request_builder.MicrosoftGraphPermutRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_permutationa(self) -> permutationa_request_builder.PermutationaRequestBuilder:
+    def microsoft_graph_permutationa(self) -> microsoft_graph_permutationa_request_builder.MicrosoftGraphPermutationaRequestBuilder:
         """
         Provides operations to call the permutationa method.
         """
-        return permutationa_request_builder.PermutationaRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_permutationa_request_builder.MicrosoftGraphPermutationaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_phi(self) -> phi_request_builder.PhiRequestBuilder:
+    def microsoft_graph_phi(self) -> microsoft_graph_phi_request_builder.MicrosoftGraphPhiRequestBuilder:
         """
         Provides operations to call the phi method.
         """
-        return phi_request_builder.PhiRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_phi_request_builder.MicrosoftGraphPhiRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_pi(self) -> pi_request_builder.PiRequestBuilder:
+    def microsoft_graph_pi(self) -> microsoft_graph_pi_request_builder.MicrosoftGraphPiRequestBuilder:
         """
         Provides operations to call the pi method.
         """
-        return pi_request_builder.PiRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_pi_request_builder.MicrosoftGraphPiRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_pmt(self) -> pmt_request_builder.PmtRequestBuilder:
+    def microsoft_graph_pmt(self) -> microsoft_graph_pmt_request_builder.MicrosoftGraphPmtRequestBuilder:
         """
         Provides operations to call the pmt method.
         """
-        return pmt_request_builder.PmtRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_pmt_request_builder.MicrosoftGraphPmtRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_poisson_dist(self) -> poisson_dist_request_builder.Poisson_DistRequestBuilder:
+    def microsoft_graph_poisson_dist(self) -> microsoft_graph_poisson_dist_request_builder.MicrosoftGraphPoisson_DistRequestBuilder:
         """
         Provides operations to call the poisson_Dist method.
         """
-        return poisson_dist_request_builder.Poisson_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_poisson_dist_request_builder.MicrosoftGraphPoisson_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_power(self) -> power_request_builder.PowerRequestBuilder:
+    def microsoft_graph_power(self) -> microsoft_graph_power_request_builder.MicrosoftGraphPowerRequestBuilder:
         """
         Provides operations to call the power method.
         """
-        return power_request_builder.PowerRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_power_request_builder.MicrosoftGraphPowerRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_ppmt(self) -> ppmt_request_builder.PpmtRequestBuilder:
+    def microsoft_graph_ppmt(self) -> microsoft_graph_ppmt_request_builder.MicrosoftGraphPpmtRequestBuilder:
         """
         Provides operations to call the ppmt method.
         """
-        return ppmt_request_builder.PpmtRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_ppmt_request_builder.MicrosoftGraphPpmtRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_price(self) -> price_request_builder.PriceRequestBuilder:
+    def microsoft_graph_price(self) -> microsoft_graph_price_request_builder.MicrosoftGraphPriceRequestBuilder:
         """
         Provides operations to call the price method.
         """
-        return price_request_builder.PriceRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_price_request_builder.MicrosoftGraphPriceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_price_disc(self) -> price_disc_request_builder.PriceDiscRequestBuilder:
+    def microsoft_graph_price_disc(self) -> microsoft_graph_price_disc_request_builder.MicrosoftGraphPriceDiscRequestBuilder:
         """
         Provides operations to call the priceDisc method.
         """
-        return price_disc_request_builder.PriceDiscRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_price_disc_request_builder.MicrosoftGraphPriceDiscRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_price_mat(self) -> price_mat_request_builder.PriceMatRequestBuilder:
+    def microsoft_graph_price_mat(self) -> microsoft_graph_price_mat_request_builder.MicrosoftGraphPriceMatRequestBuilder:
         """
         Provides operations to call the priceMat method.
         """
-        return price_mat_request_builder.PriceMatRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_price_mat_request_builder.MicrosoftGraphPriceMatRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_product(self) -> product_request_builder.ProductRequestBuilder:
+    def microsoft_graph_product(self) -> microsoft_graph_product_request_builder.MicrosoftGraphProductRequestBuilder:
         """
         Provides operations to call the product method.
         """
-        return product_request_builder.ProductRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_product_request_builder.MicrosoftGraphProductRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_proper(self) -> proper_request_builder.ProperRequestBuilder:
+    def microsoft_graph_proper(self) -> microsoft_graph_proper_request_builder.MicrosoftGraphProperRequestBuilder:
         """
         Provides operations to call the proper method.
         """
-        return proper_request_builder.ProperRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_proper_request_builder.MicrosoftGraphProperRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_pv(self) -> pv_request_builder.PvRequestBuilder:
+    def microsoft_graph_pv(self) -> microsoft_graph_pv_request_builder.MicrosoftGraphPvRequestBuilder:
         """
         Provides operations to call the pv method.
         """
-        return pv_request_builder.PvRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_pv_request_builder.MicrosoftGraphPvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_quartile_exc(self) -> quartile_exc_request_builder.Quartile_ExcRequestBuilder:
+    def microsoft_graph_quartile_exc(self) -> microsoft_graph_quartile_exc_request_builder.MicrosoftGraphQuartile_ExcRequestBuilder:
         """
         Provides operations to call the quartile_Exc method.
         """
-        return quartile_exc_request_builder.Quartile_ExcRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_quartile_exc_request_builder.MicrosoftGraphQuartile_ExcRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_quartile_inc(self) -> quartile_inc_request_builder.Quartile_IncRequestBuilder:
+    def microsoft_graph_quartile_inc(self) -> microsoft_graph_quartile_inc_request_builder.MicrosoftGraphQuartile_IncRequestBuilder:
         """
         Provides operations to call the quartile_Inc method.
         """
-        return quartile_inc_request_builder.Quartile_IncRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_quartile_inc_request_builder.MicrosoftGraphQuartile_IncRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_quotient(self) -> quotient_request_builder.QuotientRequestBuilder:
+    def microsoft_graph_quotient(self) -> microsoft_graph_quotient_request_builder.MicrosoftGraphQuotientRequestBuilder:
         """
         Provides operations to call the quotient method.
         """
-        return quotient_request_builder.QuotientRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_quotient_request_builder.MicrosoftGraphQuotientRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_radians(self) -> radians_request_builder.RadiansRequestBuilder:
+    def microsoft_graph_radians(self) -> microsoft_graph_radians_request_builder.MicrosoftGraphRadiansRequestBuilder:
         """
         Provides operations to call the radians method.
         """
-        return radians_request_builder.RadiansRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_radians_request_builder.MicrosoftGraphRadiansRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_rand(self) -> rand_request_builder.RandRequestBuilder:
+    def microsoft_graph_rand(self) -> microsoft_graph_rand_request_builder.MicrosoftGraphRandRequestBuilder:
         """
         Provides operations to call the rand method.
         """
-        return rand_request_builder.RandRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_rand_request_builder.MicrosoftGraphRandRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_rand_between(self) -> rand_between_request_builder.RandBetweenRequestBuilder:
+    def microsoft_graph_rand_between(self) -> microsoft_graph_rand_between_request_builder.MicrosoftGraphRandBetweenRequestBuilder:
         """
         Provides operations to call the randBetween method.
         """
-        return rand_between_request_builder.RandBetweenRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_rand_between_request_builder.MicrosoftGraphRandBetweenRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_rank_avg(self) -> rank_avg_request_builder.Rank_AvgRequestBuilder:
+    def microsoft_graph_rank_avg(self) -> microsoft_graph_rank_avg_request_builder.MicrosoftGraphRank_AvgRequestBuilder:
         """
         Provides operations to call the rank_Avg method.
         """
-        return rank_avg_request_builder.Rank_AvgRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_rank_avg_request_builder.MicrosoftGraphRank_AvgRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_rank_eq(self) -> rank_eq_request_builder.Rank_EqRequestBuilder:
+    def microsoft_graph_rank_eq(self) -> microsoft_graph_rank_eq_request_builder.MicrosoftGraphRank_EqRequestBuilder:
         """
         Provides operations to call the rank_Eq method.
         """
-        return rank_eq_request_builder.Rank_EqRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_rank_eq_request_builder.MicrosoftGraphRank_EqRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_rate(self) -> rate_request_builder.RateRequestBuilder:
+    def microsoft_graph_rate(self) -> microsoft_graph_rate_request_builder.MicrosoftGraphRateRequestBuilder:
         """
         Provides operations to call the rate method.
         """
-        return rate_request_builder.RateRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_rate_request_builder.MicrosoftGraphRateRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_received(self) -> received_request_builder.ReceivedRequestBuilder:
+    def microsoft_graph_received(self) -> microsoft_graph_received_request_builder.MicrosoftGraphReceivedRequestBuilder:
         """
         Provides operations to call the received method.
         """
-        return received_request_builder.ReceivedRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_received_request_builder.MicrosoftGraphReceivedRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_replace(self) -> replace_request_builder.ReplaceRequestBuilder:
+    def microsoft_graph_replace(self) -> microsoft_graph_replace_request_builder.MicrosoftGraphReplaceRequestBuilder:
         """
         Provides operations to call the replace method.
         """
-        return replace_request_builder.ReplaceRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_replace_request_builder.MicrosoftGraphReplaceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_replace_b(self) -> replace_b_request_builder.ReplaceBRequestBuilder:
+    def microsoft_graph_replace_b(self) -> microsoft_graph_replace_b_request_builder.MicrosoftGraphReplaceBRequestBuilder:
         """
         Provides operations to call the replaceB method.
         """
-        return replace_b_request_builder.ReplaceBRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_replace_b_request_builder.MicrosoftGraphReplaceBRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_rept(self) -> rept_request_builder.ReptRequestBuilder:
+    def microsoft_graph_rept(self) -> microsoft_graph_rept_request_builder.MicrosoftGraphReptRequestBuilder:
         """
         Provides operations to call the rept method.
         """
-        return rept_request_builder.ReptRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_rept_request_builder.MicrosoftGraphReptRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_right(self) -> right_request_builder.RightRequestBuilder:
+    def microsoft_graph_right(self) -> microsoft_graph_right_request_builder.MicrosoftGraphRightRequestBuilder:
         """
         Provides operations to call the right method.
         """
-        return right_request_builder.RightRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_right_request_builder.MicrosoftGraphRightRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_rightb(self) -> rightb_request_builder.RightbRequestBuilder:
+    def microsoft_graph_rightb(self) -> microsoft_graph_rightb_request_builder.MicrosoftGraphRightbRequestBuilder:
         """
         Provides operations to call the rightb method.
         """
-        return rightb_request_builder.RightbRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_rightb_request_builder.MicrosoftGraphRightbRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_roman(self) -> roman_request_builder.RomanRequestBuilder:
+    def microsoft_graph_roman(self) -> microsoft_graph_roman_request_builder.MicrosoftGraphRomanRequestBuilder:
         """
         Provides operations to call the roman method.
         """
-        return roman_request_builder.RomanRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_roman_request_builder.MicrosoftGraphRomanRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_round(self) -> round_request_builder.RoundRequestBuilder:
+    def microsoft_graph_round(self) -> microsoft_graph_round_request_builder.MicrosoftGraphRoundRequestBuilder:
         """
         Provides operations to call the round method.
         """
-        return round_request_builder.RoundRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_round_request_builder.MicrosoftGraphRoundRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_round_down(self) -> round_down_request_builder.RoundDownRequestBuilder:
+    def microsoft_graph_round_down(self) -> microsoft_graph_round_down_request_builder.MicrosoftGraphRoundDownRequestBuilder:
         """
         Provides operations to call the roundDown method.
         """
-        return round_down_request_builder.RoundDownRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_round_down_request_builder.MicrosoftGraphRoundDownRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_round_up(self) -> round_up_request_builder.RoundUpRequestBuilder:
+    def microsoft_graph_round_up(self) -> microsoft_graph_round_up_request_builder.MicrosoftGraphRoundUpRequestBuilder:
         """
         Provides operations to call the roundUp method.
         """
-        return round_up_request_builder.RoundUpRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_round_up_request_builder.MicrosoftGraphRoundUpRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_rows(self) -> rows_request_builder.RowsRequestBuilder:
+    def microsoft_graph_rows(self) -> microsoft_graph_rows_request_builder.MicrosoftGraphRowsRequestBuilder:
         """
         Provides operations to call the rows method.
         """
-        return rows_request_builder.RowsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_rows_request_builder.MicrosoftGraphRowsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_rri(self) -> rri_request_builder.RriRequestBuilder:
+    def microsoft_graph_rri(self) -> microsoft_graph_rri_request_builder.MicrosoftGraphRriRequestBuilder:
         """
         Provides operations to call the rri method.
         """
-        return rri_request_builder.RriRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_rri_request_builder.MicrosoftGraphRriRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_sec(self) -> sec_request_builder.SecRequestBuilder:
+    def microsoft_graph_sec(self) -> microsoft_graph_sec_request_builder.MicrosoftGraphSecRequestBuilder:
         """
         Provides operations to call the sec method.
         """
-        return sec_request_builder.SecRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_sec_request_builder.MicrosoftGraphSecRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_sech(self) -> sech_request_builder.SechRequestBuilder:
+    def microsoft_graph_sech(self) -> microsoft_graph_sech_request_builder.MicrosoftGraphSechRequestBuilder:
         """
         Provides operations to call the sech method.
         """
-        return sech_request_builder.SechRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_sech_request_builder.MicrosoftGraphSechRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_second(self) -> second_request_builder.SecondRequestBuilder:
+    def microsoft_graph_second(self) -> microsoft_graph_second_request_builder.MicrosoftGraphSecondRequestBuilder:
         """
         Provides operations to call the second method.
         """
-        return second_request_builder.SecondRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_second_request_builder.MicrosoftGraphSecondRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_series_sum(self) -> series_sum_request_builder.SeriesSumRequestBuilder:
+    def microsoft_graph_series_sum(self) -> microsoft_graph_series_sum_request_builder.MicrosoftGraphSeriesSumRequestBuilder:
         """
         Provides operations to call the seriesSum method.
         """
-        return series_sum_request_builder.SeriesSumRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_series_sum_request_builder.MicrosoftGraphSeriesSumRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_sheet(self) -> sheet_request_builder.SheetRequestBuilder:
+    def microsoft_graph_sheet(self) -> microsoft_graph_sheet_request_builder.MicrosoftGraphSheetRequestBuilder:
         """
         Provides operations to call the sheet method.
         """
-        return sheet_request_builder.SheetRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_sheet_request_builder.MicrosoftGraphSheetRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_sheets(self) -> sheets_request_builder.SheetsRequestBuilder:
+    def microsoft_graph_sheets(self) -> microsoft_graph_sheets_request_builder.MicrosoftGraphSheetsRequestBuilder:
         """
         Provides operations to call the sheets method.
         """
-        return sheets_request_builder.SheetsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_sheets_request_builder.MicrosoftGraphSheetsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_sign(self) -> sign_request_builder.SignRequestBuilder:
+    def microsoft_graph_sign(self) -> microsoft_graph_sign_request_builder.MicrosoftGraphSignRequestBuilder:
         """
         Provides operations to call the sign method.
         """
-        return sign_request_builder.SignRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_sign_request_builder.MicrosoftGraphSignRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_sin(self) -> sin_request_builder.SinRequestBuilder:
+    def microsoft_graph_sin(self) -> microsoft_graph_sin_request_builder.MicrosoftGraphSinRequestBuilder:
         """
         Provides operations to call the sin method.
         """
-        return sin_request_builder.SinRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_sin_request_builder.MicrosoftGraphSinRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_sinh(self) -> sinh_request_builder.SinhRequestBuilder:
+    def microsoft_graph_sinh(self) -> microsoft_graph_sinh_request_builder.MicrosoftGraphSinhRequestBuilder:
         """
         Provides operations to call the sinh method.
         """
-        return sinh_request_builder.SinhRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_sinh_request_builder.MicrosoftGraphSinhRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_skew(self) -> skew_request_builder.SkewRequestBuilder:
+    def microsoft_graph_skew(self) -> microsoft_graph_skew_request_builder.MicrosoftGraphSkewRequestBuilder:
         """
         Provides operations to call the skew method.
         """
-        return skew_request_builder.SkewRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_skew_request_builder.MicrosoftGraphSkewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_skew_p(self) -> skew_p_request_builder.Skew_pRequestBuilder:
+    def microsoft_graph_skew_p(self) -> microsoft_graph_skew_p_request_builder.MicrosoftGraphSkew_pRequestBuilder:
         """
         Provides operations to call the skew_p method.
         """
-        return skew_p_request_builder.Skew_pRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_skew_p_request_builder.MicrosoftGraphSkew_pRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_sln(self) -> sln_request_builder.SlnRequestBuilder:
+    def microsoft_graph_sln(self) -> microsoft_graph_sln_request_builder.MicrosoftGraphSlnRequestBuilder:
         """
         Provides operations to call the sln method.
         """
-        return sln_request_builder.SlnRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_sln_request_builder.MicrosoftGraphSlnRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_small(self) -> small_request_builder.SmallRequestBuilder:
+    def microsoft_graph_small(self) -> microsoft_graph_small_request_builder.MicrosoftGraphSmallRequestBuilder:
         """
         Provides operations to call the small method.
         """
-        return small_request_builder.SmallRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_small_request_builder.MicrosoftGraphSmallRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_sqrt(self) -> sqrt_request_builder.SqrtRequestBuilder:
+    def microsoft_graph_sqrt(self) -> microsoft_graph_sqrt_request_builder.MicrosoftGraphSqrtRequestBuilder:
         """
         Provides operations to call the sqrt method.
         """
-        return sqrt_request_builder.SqrtRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_sqrt_request_builder.MicrosoftGraphSqrtRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_sqrt_pi(self) -> sqrt_pi_request_builder.SqrtPiRequestBuilder:
+    def microsoft_graph_sqrt_pi(self) -> microsoft_graph_sqrt_pi_request_builder.MicrosoftGraphSqrtPiRequestBuilder:
         """
         Provides operations to call the sqrtPi method.
         """
-        return sqrt_pi_request_builder.SqrtPiRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_sqrt_pi_request_builder.MicrosoftGraphSqrtPiRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_standardize(self) -> standardize_request_builder.StandardizeRequestBuilder:
+    def microsoft_graph_standardize(self) -> microsoft_graph_standardize_request_builder.MicrosoftGraphStandardizeRequestBuilder:
         """
         Provides operations to call the standardize method.
         """
-        return standardize_request_builder.StandardizeRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_standardize_request_builder.MicrosoftGraphStandardizeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_st_dev_p(self) -> st_dev_p_request_builder.StDev_PRequestBuilder:
+    def microsoft_graph_st_dev_p(self) -> microsoft_graph_st_dev_p_request_builder.MicrosoftGraphStDev_PRequestBuilder:
         """
         Provides operations to call the stDev_P method.
         """
-        return st_dev_p_request_builder.StDev_PRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_st_dev_p_request_builder.MicrosoftGraphStDev_PRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_st_dev_s(self) -> st_dev_s_request_builder.StDev_SRequestBuilder:
+    def microsoft_graph_st_dev_s(self) -> microsoft_graph_st_dev_s_request_builder.MicrosoftGraphStDev_SRequestBuilder:
         """
         Provides operations to call the stDev_S method.
         """
-        return st_dev_s_request_builder.StDev_SRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_st_dev_s_request_builder.MicrosoftGraphStDev_SRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_st_dev_a(self) -> st_dev_a_request_builder.StDevARequestBuilder:
+    def microsoft_graph_st_dev_a(self) -> microsoft_graph_st_dev_a_request_builder.MicrosoftGraphStDevARequestBuilder:
         """
         Provides operations to call the stDevA method.
         """
-        return st_dev_a_request_builder.StDevARequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_st_dev_a_request_builder.MicrosoftGraphStDevARequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_st_dev_p_a(self) -> st_dev_p_a_request_builder.StDevPARequestBuilder:
+    def microsoft_graph_st_dev_p_a(self) -> microsoft_graph_st_dev_p_a_request_builder.MicrosoftGraphStDevPARequestBuilder:
         """
         Provides operations to call the stDevPA method.
         """
-        return st_dev_p_a_request_builder.StDevPARequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_st_dev_p_a_request_builder.MicrosoftGraphStDevPARequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_substitute(self) -> substitute_request_builder.SubstituteRequestBuilder:
+    def microsoft_graph_substitute(self) -> microsoft_graph_substitute_request_builder.MicrosoftGraphSubstituteRequestBuilder:
         """
         Provides operations to call the substitute method.
         """
-        return substitute_request_builder.SubstituteRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_substitute_request_builder.MicrosoftGraphSubstituteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_subtotal(self) -> subtotal_request_builder.SubtotalRequestBuilder:
+    def microsoft_graph_subtotal(self) -> microsoft_graph_subtotal_request_builder.MicrosoftGraphSubtotalRequestBuilder:
         """
         Provides operations to call the subtotal method.
         """
-        return subtotal_request_builder.SubtotalRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_subtotal_request_builder.MicrosoftGraphSubtotalRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_sum(self) -> sum_request_builder.SumRequestBuilder:
+    def microsoft_graph_sum(self) -> microsoft_graph_sum_request_builder.MicrosoftGraphSumRequestBuilder:
         """
         Provides operations to call the sum method.
         """
-        return sum_request_builder.SumRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_sum_request_builder.MicrosoftGraphSumRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_sum_if(self) -> sum_if_request_builder.SumIfRequestBuilder:
+    def microsoft_graph_sum_if(self) -> microsoft_graph_sum_if_request_builder.MicrosoftGraphSumIfRequestBuilder:
         """
         Provides operations to call the sumIf method.
         """
-        return sum_if_request_builder.SumIfRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_sum_if_request_builder.MicrosoftGraphSumIfRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_sum_ifs(self) -> sum_ifs_request_builder.SumIfsRequestBuilder:
+    def microsoft_graph_sum_ifs(self) -> microsoft_graph_sum_ifs_request_builder.MicrosoftGraphSumIfsRequestBuilder:
         """
         Provides operations to call the sumIfs method.
         """
-        return sum_ifs_request_builder.SumIfsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_sum_ifs_request_builder.MicrosoftGraphSumIfsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_sum_sq(self) -> sum_sq_request_builder.SumSqRequestBuilder:
+    def microsoft_graph_sum_sq(self) -> microsoft_graph_sum_sq_request_builder.MicrosoftGraphSumSqRequestBuilder:
         """
         Provides operations to call the sumSq method.
         """
-        return sum_sq_request_builder.SumSqRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_sum_sq_request_builder.MicrosoftGraphSumSqRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_syd(self) -> syd_request_builder.SydRequestBuilder:
+    def microsoft_graph_syd(self) -> microsoft_graph_syd_request_builder.MicrosoftGraphSydRequestBuilder:
         """
         Provides operations to call the syd method.
         """
-        return syd_request_builder.SydRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_syd_request_builder.MicrosoftGraphSydRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_t(self) -> t_request_builder.TRequestBuilder:
+    def microsoft_graph_t(self) -> microsoft_graph_t_request_builder.MicrosoftGraphTRequestBuilder:
         """
         Provides operations to call the t method.
         """
-        return t_request_builder.TRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_t_request_builder.MicrosoftGraphTRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_t_dist(self) -> t_dist_request_builder.T_DistRequestBuilder:
+    def microsoft_graph_t_dist(self) -> microsoft_graph_t_dist_request_builder.MicrosoftGraphT_DistRequestBuilder:
         """
         Provides operations to call the t_Dist method.
         """
-        return t_dist_request_builder.T_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_t_dist_request_builder.MicrosoftGraphT_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_t_dist_2_t(self) -> t_dist_2_t_request_builder.T_Dist_2TRequestBuilder:
+    def microsoft_graph_t_dist_2_t(self) -> microsoft_graph_t_dist_2_t_request_builder.MicrosoftGraphT_Dist_2TRequestBuilder:
         """
         Provides operations to call the t_Dist_2T method.
         """
-        return t_dist_2_t_request_builder.T_Dist_2TRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_t_dist_2_t_request_builder.MicrosoftGraphT_Dist_2TRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_t_dist_r_t(self) -> t_dist_r_t_request_builder.T_Dist_RTRequestBuilder:
+    def microsoft_graph_t_dist_r_t(self) -> microsoft_graph_t_dist_r_t_request_builder.MicrosoftGraphT_Dist_RTRequestBuilder:
         """
         Provides operations to call the t_Dist_RT method.
         """
-        return t_dist_r_t_request_builder.T_Dist_RTRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_t_dist_r_t_request_builder.MicrosoftGraphT_Dist_RTRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_t_inv(self) -> t_inv_request_builder.T_InvRequestBuilder:
+    def microsoft_graph_t_inv(self) -> microsoft_graph_t_inv_request_builder.MicrosoftGraphT_InvRequestBuilder:
         """
         Provides operations to call the t_Inv method.
         """
-        return t_inv_request_builder.T_InvRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_t_inv_request_builder.MicrosoftGraphT_InvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_t_inv_2_t(self) -> t_inv_2_t_request_builder.T_Inv_2TRequestBuilder:
+    def microsoft_graph_t_inv_2_t(self) -> microsoft_graph_t_inv_2_t_request_builder.MicrosoftGraphT_Inv_2TRequestBuilder:
         """
         Provides operations to call the t_Inv_2T method.
         """
-        return t_inv_2_t_request_builder.T_Inv_2TRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_t_inv_2_t_request_builder.MicrosoftGraphT_Inv_2TRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_tan(self) -> tan_request_builder.TanRequestBuilder:
+    def microsoft_graph_tan(self) -> microsoft_graph_tan_request_builder.MicrosoftGraphTanRequestBuilder:
         """
         Provides operations to call the tan method.
         """
-        return tan_request_builder.TanRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_tan_request_builder.MicrosoftGraphTanRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_tanh(self) -> tanh_request_builder.TanhRequestBuilder:
+    def microsoft_graph_tanh(self) -> microsoft_graph_tanh_request_builder.MicrosoftGraphTanhRequestBuilder:
         """
         Provides operations to call the tanh method.
         """
-        return tanh_request_builder.TanhRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_tanh_request_builder.MicrosoftGraphTanhRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_tbill_eq(self) -> tbill_eq_request_builder.TbillEqRequestBuilder:
+    def microsoft_graph_tbill_eq(self) -> microsoft_graph_tbill_eq_request_builder.MicrosoftGraphTbillEqRequestBuilder:
         """
         Provides operations to call the tbillEq method.
         """
-        return tbill_eq_request_builder.TbillEqRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_tbill_eq_request_builder.MicrosoftGraphTbillEqRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_tbill_price(self) -> tbill_price_request_builder.TbillPriceRequestBuilder:
+    def microsoft_graph_tbill_price(self) -> microsoft_graph_tbill_price_request_builder.MicrosoftGraphTbillPriceRequestBuilder:
         """
         Provides operations to call the tbillPrice method.
         """
-        return tbill_price_request_builder.TbillPriceRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_tbill_price_request_builder.MicrosoftGraphTbillPriceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_tbill_yield(self) -> tbill_yield_request_builder.TbillYieldRequestBuilder:
+    def microsoft_graph_tbill_yield(self) -> microsoft_graph_tbill_yield_request_builder.MicrosoftGraphTbillYieldRequestBuilder:
         """
         Provides operations to call the tbillYield method.
         """
-        return tbill_yield_request_builder.TbillYieldRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_tbill_yield_request_builder.MicrosoftGraphTbillYieldRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_text(self) -> text_request_builder.TextRequestBuilder:
+    def microsoft_graph_text(self) -> microsoft_graph_text_request_builder.MicrosoftGraphTextRequestBuilder:
         """
         Provides operations to call the text method.
         """
-        return text_request_builder.TextRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_text_request_builder.MicrosoftGraphTextRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_time(self) -> time_request_builder.TimeRequestBuilder:
+    def microsoft_graph_time(self) -> microsoft_graph_time_request_builder.MicrosoftGraphTimeRequestBuilder:
         """
         Provides operations to call the time method.
         """
-        return time_request_builder.TimeRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_time_request_builder.MicrosoftGraphTimeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_timevalue(self) -> timevalue_request_builder.TimevalueRequestBuilder:
+    def microsoft_graph_timevalue(self) -> microsoft_graph_timevalue_request_builder.MicrosoftGraphTimevalueRequestBuilder:
         """
         Provides operations to call the timevalue method.
         """
-        return timevalue_request_builder.TimevalueRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_timevalue_request_builder.MicrosoftGraphTimevalueRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_today(self) -> today_request_builder.TodayRequestBuilder:
+    def microsoft_graph_today(self) -> microsoft_graph_today_request_builder.MicrosoftGraphTodayRequestBuilder:
         """
         Provides operations to call the today method.
         """
-        return today_request_builder.TodayRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_today_request_builder.MicrosoftGraphTodayRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_trim(self) -> trim_request_builder.TrimRequestBuilder:
+    def microsoft_graph_trim(self) -> microsoft_graph_trim_request_builder.MicrosoftGraphTrimRequestBuilder:
         """
         Provides operations to call the trim method.
         """
-        return trim_request_builder.TrimRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_trim_request_builder.MicrosoftGraphTrimRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_trim_mean(self) -> trim_mean_request_builder.TrimMeanRequestBuilder:
+    def microsoft_graph_trim_mean(self) -> microsoft_graph_trim_mean_request_builder.MicrosoftGraphTrimMeanRequestBuilder:
         """
         Provides operations to call the trimMean method.
         """
-        return trim_mean_request_builder.TrimMeanRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_trim_mean_request_builder.MicrosoftGraphTrimMeanRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_true(self) -> true_request_builder.TrueRequestBuilder:
+    def microsoft_graph_true(self) -> microsoft_graph_true_request_builder.MicrosoftGraphTrueRequestBuilder:
         """
         Provides operations to call the true method.
         """
-        return true_request_builder.TrueRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_true_request_builder.MicrosoftGraphTrueRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_trunc(self) -> trunc_request_builder.TruncRequestBuilder:
+    def microsoft_graph_trunc(self) -> microsoft_graph_trunc_request_builder.MicrosoftGraphTruncRequestBuilder:
         """
         Provides operations to call the trunc method.
         """
-        return trunc_request_builder.TruncRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_trunc_request_builder.MicrosoftGraphTruncRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_type(self) -> type_request_builder.TypeRequestBuilder:
+    def microsoft_graph_type(self) -> microsoft_graph_type_request_builder.MicrosoftGraphTypeRequestBuilder:
         """
         Provides operations to call the type method.
         """
-        return type_request_builder.TypeRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_type_request_builder.MicrosoftGraphTypeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_unichar(self) -> unichar_request_builder.UnicharRequestBuilder:
+    def microsoft_graph_unichar(self) -> microsoft_graph_unichar_request_builder.MicrosoftGraphUnicharRequestBuilder:
         """
         Provides operations to call the unichar method.
         """
-        return unichar_request_builder.UnicharRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_unichar_request_builder.MicrosoftGraphUnicharRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_unicode(self) -> unicode_request_builder.UnicodeRequestBuilder:
+    def microsoft_graph_unicode(self) -> microsoft_graph_unicode_request_builder.MicrosoftGraphUnicodeRequestBuilder:
         """
         Provides operations to call the unicode method.
         """
-        return unicode_request_builder.UnicodeRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_unicode_request_builder.MicrosoftGraphUnicodeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_upper(self) -> upper_request_builder.UpperRequestBuilder:
+    def microsoft_graph_upper(self) -> microsoft_graph_upper_request_builder.MicrosoftGraphUpperRequestBuilder:
         """
         Provides operations to call the upper method.
         """
-        return upper_request_builder.UpperRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_upper_request_builder.MicrosoftGraphUpperRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_usdollar(self) -> usdollar_request_builder.UsdollarRequestBuilder:
+    def microsoft_graph_usdollar(self) -> microsoft_graph_usdollar_request_builder.MicrosoftGraphUsdollarRequestBuilder:
         """
         Provides operations to call the usdollar method.
         """
-        return usdollar_request_builder.UsdollarRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_usdollar_request_builder.MicrosoftGraphUsdollarRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_value(self) -> value_request_builder.ValueRequestBuilder:
+    def microsoft_graph_value(self) -> microsoft_graph_value_request_builder.MicrosoftGraphValueRequestBuilder:
         """
         Provides operations to call the value method.
         """
-        return value_request_builder.ValueRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_value_request_builder.MicrosoftGraphValueRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_var_p(self) -> var_p_request_builder.Var_PRequestBuilder:
+    def microsoft_graph_var_p(self) -> microsoft_graph_var_p_request_builder.MicrosoftGraphVar_PRequestBuilder:
         """
         Provides operations to call the var_P method.
         """
-        return var_p_request_builder.Var_PRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_var_p_request_builder.MicrosoftGraphVar_PRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_var_s(self) -> var_s_request_builder.Var_SRequestBuilder:
+    def microsoft_graph_var_s(self) -> microsoft_graph_var_s_request_builder.MicrosoftGraphVar_SRequestBuilder:
         """
         Provides operations to call the var_S method.
         """
-        return var_s_request_builder.Var_SRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_var_s_request_builder.MicrosoftGraphVar_SRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_var_a(self) -> var_a_request_builder.VarARequestBuilder:
+    def microsoft_graph_var_a(self) -> microsoft_graph_var_a_request_builder.MicrosoftGraphVarARequestBuilder:
         """
         Provides operations to call the varA method.
         """
-        return var_a_request_builder.VarARequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_var_a_request_builder.MicrosoftGraphVarARequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_var_p_a(self) -> var_p_a_request_builder.VarPARequestBuilder:
+    def microsoft_graph_var_p_a(self) -> microsoft_graph_var_p_a_request_builder.MicrosoftGraphVarPARequestBuilder:
         """
         Provides operations to call the varPA method.
         """
-        return var_p_a_request_builder.VarPARequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_var_p_a_request_builder.MicrosoftGraphVarPARequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_vdb(self) -> vdb_request_builder.VdbRequestBuilder:
+    def microsoft_graph_vdb(self) -> microsoft_graph_vdb_request_builder.MicrosoftGraphVdbRequestBuilder:
         """
         Provides operations to call the vdb method.
         """
-        return vdb_request_builder.VdbRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_vdb_request_builder.MicrosoftGraphVdbRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_vlookup(self) -> vlookup_request_builder.VlookupRequestBuilder:
+    def microsoft_graph_vlookup(self) -> microsoft_graph_vlookup_request_builder.MicrosoftGraphVlookupRequestBuilder:
         """
         Provides operations to call the vlookup method.
         """
-        return vlookup_request_builder.VlookupRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_vlookup_request_builder.MicrosoftGraphVlookupRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_weekday(self) -> weekday_request_builder.WeekdayRequestBuilder:
+    def microsoft_graph_weekday(self) -> microsoft_graph_weekday_request_builder.MicrosoftGraphWeekdayRequestBuilder:
         """
         Provides operations to call the weekday method.
         """
-        return weekday_request_builder.WeekdayRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_weekday_request_builder.MicrosoftGraphWeekdayRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_week_num(self) -> week_num_request_builder.WeekNumRequestBuilder:
+    def microsoft_graph_week_num(self) -> microsoft_graph_week_num_request_builder.MicrosoftGraphWeekNumRequestBuilder:
         """
         Provides operations to call the weekNum method.
         """
-        return week_num_request_builder.WeekNumRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_week_num_request_builder.MicrosoftGraphWeekNumRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_weibull_dist(self) -> weibull_dist_request_builder.Weibull_DistRequestBuilder:
+    def microsoft_graph_weibull_dist(self) -> microsoft_graph_weibull_dist_request_builder.MicrosoftGraphWeibull_DistRequestBuilder:
         """
         Provides operations to call the weibull_Dist method.
         """
-        return weibull_dist_request_builder.Weibull_DistRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_weibull_dist_request_builder.MicrosoftGraphWeibull_DistRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_work_day(self) -> work_day_request_builder.WorkDayRequestBuilder:
+    def microsoft_graph_work_day(self) -> microsoft_graph_work_day_request_builder.MicrosoftGraphWorkDayRequestBuilder:
         """
         Provides operations to call the workDay method.
         """
-        return work_day_request_builder.WorkDayRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_work_day_request_builder.MicrosoftGraphWorkDayRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_work_day_intl(self) -> work_day_intl_request_builder.WorkDay_IntlRequestBuilder:
+    def microsoft_graph_work_day_intl(self) -> microsoft_graph_work_day_intl_request_builder.MicrosoftGraphWorkDay_IntlRequestBuilder:
         """
         Provides operations to call the workDay_Intl method.
         """
-        return work_day_intl_request_builder.WorkDay_IntlRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_work_day_intl_request_builder.MicrosoftGraphWorkDay_IntlRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_xirr(self) -> xirr_request_builder.XirrRequestBuilder:
+    def microsoft_graph_xirr(self) -> microsoft_graph_xirr_request_builder.MicrosoftGraphXirrRequestBuilder:
         """
         Provides operations to call the xirr method.
         """
-        return xirr_request_builder.XirrRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_xirr_request_builder.MicrosoftGraphXirrRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_xnpv(self) -> xnpv_request_builder.XnpvRequestBuilder:
+    def microsoft_graph_xnpv(self) -> microsoft_graph_xnpv_request_builder.MicrosoftGraphXnpvRequestBuilder:
         """
         Provides operations to call the xnpv method.
         """
-        return xnpv_request_builder.XnpvRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_xnpv_request_builder.MicrosoftGraphXnpvRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_xor(self) -> xor_request_builder.XorRequestBuilder:
+    def microsoft_graph_xor(self) -> microsoft_graph_xor_request_builder.MicrosoftGraphXorRequestBuilder:
         """
         Provides operations to call the xor method.
         """
-        return xor_request_builder.XorRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_xor_request_builder.MicrosoftGraphXorRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_year(self) -> year_request_builder.YearRequestBuilder:
+    def microsoft_graph_year(self) -> microsoft_graph_year_request_builder.MicrosoftGraphYearRequestBuilder:
         """
         Provides operations to call the year method.
         """
-        return year_request_builder.YearRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_year_request_builder.MicrosoftGraphYearRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_year_frac(self) -> year_frac_request_builder.YearFracRequestBuilder:
+    def microsoft_graph_year_frac(self) -> microsoft_graph_year_frac_request_builder.MicrosoftGraphYearFracRequestBuilder:
         """
         Provides operations to call the yearFrac method.
         """
-        return year_frac_request_builder.YearFracRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_year_frac_request_builder.MicrosoftGraphYearFracRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_yield(self) -> yield_request_builder.YieldRequestBuilder:
+    def microsoft_graph_yield(self) -> microsoft_graph_yield_request_builder.MicrosoftGraphYieldRequestBuilder:
         """
         Provides operations to call the yield method.
         """
-        return yield_request_builder.YieldRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_yield_request_builder.MicrosoftGraphYieldRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_yield_disc(self) -> yield_disc_request_builder.YieldDiscRequestBuilder:
+    def microsoft_graph_yield_disc(self) -> microsoft_graph_yield_disc_request_builder.MicrosoftGraphYieldDiscRequestBuilder:
         """
         Provides operations to call the yieldDisc method.
         """
-        return yield_disc_request_builder.YieldDiscRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_yield_disc_request_builder.MicrosoftGraphYieldDiscRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_yield_mat(self) -> yield_mat_request_builder.YieldMatRequestBuilder:
+    def microsoft_graph_yield_mat(self) -> microsoft_graph_yield_mat_request_builder.MicrosoftGraphYieldMatRequestBuilder:
         """
         Provides operations to call the yieldMat method.
         """
-        return yield_mat_request_builder.YieldMatRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_yield_mat_request_builder.MicrosoftGraphYieldMatRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_z_test(self) -> z_test_request_builder.Z_TestRequestBuilder:
+    def microsoft_graph_z_test(self) -> microsoft_graph_z_test_request_builder.MicrosoftGraphZ_TestRequestBuilder:
         """
         Provides operations to call the z_Test method.
         """
-        return z_test_request_builder.Z_TestRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_z_test_request_builder.MicrosoftGraphZ_TestRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -3046,7 +3046,7 @@ class FunctionsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -3067,7 +3067,7 @@ class FunctionsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -3080,7 +3080,7 @@ class FunctionsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -3119,7 +3119,7 @@ class FunctionsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -3134,7 +3134,7 @@ class FunctionsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

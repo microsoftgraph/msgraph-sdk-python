@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 schedule = lazy_import('msgraph.generated.models.schedule')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-share_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.schedule.microsoft_graph_share.share_request_builder')
+microsoft_graph_share_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.schedule.microsoft_graph_share.microsoft_graph_share_request_builder')
 offer_shift_requests_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.schedule.offer_shift_requests.offer_shift_requests_request_builder')
 offer_shift_request_item_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.schedule.offer_shift_requests.item.offer_shift_request_item_request_builder')
 open_shift_change_requests_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.schedule.open_shift_change_requests.open_shift_change_requests_request_builder')
@@ -37,11 +37,11 @@ class ScheduleRequestBuilder():
     Provides operations to manage the schedule property of the microsoft.graph.team entity.
     """
     @property
-    def microsoft_graph_share(self) -> share_request_builder.ShareRequestBuilder:
+    def microsoft_graph_share(self) -> microsoft_graph_share_request_builder.MicrosoftGraphShareRequestBuilder:
         """
         Provides operations to call the share method.
         """
-        return share_request_builder.ShareRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_share_request_builder.MicrosoftGraphShareRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def offer_shift_requests(self) -> offer_shift_requests_request_builder.OfferShiftRequestsRequestBuilder:
@@ -324,7 +324,7 @@ class ScheduleRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -345,7 +345,7 @@ class ScheduleRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PUT
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -358,7 +358,7 @@ class ScheduleRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -397,7 +397,7 @@ class ScheduleRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -412,7 +412,7 @@ class ScheduleRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

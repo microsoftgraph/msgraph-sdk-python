@@ -31,9 +31,9 @@ class TenantRelationship(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The delegatedAdminCustomers property
+        # The customer who has a delegated admin relationship with a Microsoft partner.
         self._delegated_admin_customers: Optional[List[delegated_admin_customer.DelegatedAdminCustomer]] = None
-        # The delegatedAdminRelationships property
+        # The details of the delegated administrative privileges that a Microsoft partner has in a customer tenant.
         self._delegated_admin_relationships: Optional[List[delegated_admin_relationship.DelegatedAdminRelationship]] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
@@ -53,7 +53,7 @@ class TenantRelationship(AdditionalDataHolder, Parsable):
     @property
     def delegated_admin_customers(self,) -> Optional[List[delegated_admin_customer.DelegatedAdminCustomer]]:
         """
-        Gets the delegatedAdminCustomers property value. The delegatedAdminCustomers property
+        Gets the delegatedAdminCustomers property value. The customer who has a delegated admin relationship with a Microsoft partner.
         Returns: Optional[List[delegated_admin_customer.DelegatedAdminCustomer]]
         """
         return self._delegated_admin_customers
@@ -61,7 +61,7 @@ class TenantRelationship(AdditionalDataHolder, Parsable):
     @delegated_admin_customers.setter
     def delegated_admin_customers(self,value: Optional[List[delegated_admin_customer.DelegatedAdminCustomer]] = None) -> None:
         """
-        Sets the delegatedAdminCustomers property value. The delegatedAdminCustomers property
+        Sets the delegatedAdminCustomers property value. The customer who has a delegated admin relationship with a Microsoft partner.
         Args:
             value: Value to set for the delegated_admin_customers property.
         """
@@ -70,7 +70,7 @@ class TenantRelationship(AdditionalDataHolder, Parsable):
     @property
     def delegated_admin_relationships(self,) -> Optional[List[delegated_admin_relationship.DelegatedAdminRelationship]]:
         """
-        Gets the delegatedAdminRelationships property value. The delegatedAdminRelationships property
+        Gets the delegatedAdminRelationships property value. The details of the delegated administrative privileges that a Microsoft partner has in a customer tenant.
         Returns: Optional[List[delegated_admin_relationship.DelegatedAdminRelationship]]
         """
         return self._delegated_admin_relationships
@@ -78,7 +78,7 @@ class TenantRelationship(AdditionalDataHolder, Parsable):
     @delegated_admin_relationships.setter
     def delegated_admin_relationships(self,value: Optional[List[delegated_admin_relationship.DelegatedAdminRelationship]] = None) -> None:
         """
-        Sets the delegatedAdminRelationships property value. The delegatedAdminRelationships property
+        Sets the delegatedAdminRelationships property value. The details of the delegated administrative privileges that a Microsoft partner has in a customer tenant.
         Args:
             value: Value to set for the delegated_admin_relationships property.
         """

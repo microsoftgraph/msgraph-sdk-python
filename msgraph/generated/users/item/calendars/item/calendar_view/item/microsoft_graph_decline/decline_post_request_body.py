@@ -36,7 +36,7 @@ class DeclinePostRequestBody(AdditionalDataHolder, Parsable):
         """
         Sets the comment property value. The Comment property
         Args:
-            value: Value to set for the comment property.
+            value: Value to set for the Comment property.
         """
         self._comment = value
     

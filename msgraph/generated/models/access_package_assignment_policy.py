@@ -10,6 +10,7 @@ access_package_assignment_requestor_settings = lazy_import('msgraph.generated.mo
 access_package_assignment_review_settings = lazy_import('msgraph.generated.models.access_package_assignment_review_settings')
 access_package_automatic_request_settings = lazy_import('msgraph.generated.models.access_package_automatic_request_settings')
 access_package_catalog = lazy_import('msgraph.generated.models.access_package_catalog')
+access_package_question = lazy_import('msgraph.generated.models.access_package_question')
 allowed_target_scope = lazy_import('msgraph.generated.models.allowed_target_scope')
 entity = lazy_import('msgraph.generated.models.entity')
 expiration_pattern = lazy_import('msgraph.generated.models.expiration_pattern')
@@ -109,6 +110,8 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         self._modified_date_time: Optional[datetime] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
+        # The questions property
+        self._questions: Optional[List[access_package_question.AccessPackageQuestion]] = None
         # Specifies the settings for approval of requests for an access package assignment through this policy. For example, if approval is required for new requests.
         self._request_approval_settings: Optional[access_package_assignment_approval_settings.AccessPackageAssignmentApprovalSettings] = None
         # Provides additional settings to select who can create a request for an access package assignment through this policy, and what they can include in their request.
@@ -213,6 +216,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "expiration": lambda n : setattr(self, 'expiration', n.get_object_value(expiration_pattern.ExpirationPattern)),
             "modifiedDateTime": lambda n : setattr(self, 'modified_date_time', n.get_datetime_value()),
+            "questions": lambda n : setattr(self, 'questions', n.get_collection_of_object_values(access_package_question.AccessPackageQuestion)),
             "requestorSettings": lambda n : setattr(self, 'requestor_settings', n.get_object_value(access_package_assignment_requestor_settings.AccessPackageAssignmentRequestorSettings)),
             "requestApprovalSettings": lambda n : setattr(self, 'request_approval_settings', n.get_object_value(access_package_assignment_approval_settings.AccessPackageAssignmentApprovalSettings)),
             "reviewSettings": lambda n : setattr(self, 'review_settings', n.get_object_value(access_package_assignment_review_settings.AccessPackageAssignmentReviewSettings)),
@@ -238,6 +242,23 @@ class AccessPackageAssignmentPolicy(entity.Entity):
             value: Value to set for the modified_date_time property.
         """
         self._modified_date_time = value
+    
+    @property
+    def questions(self,) -> Optional[List[access_package_question.AccessPackageQuestion]]:
+        """
+        Gets the questions property value. The questions property
+        Returns: Optional[List[access_package_question.AccessPackageQuestion]]
+        """
+        return self._questions
+    
+    @questions.setter
+    def questions(self,value: Optional[List[access_package_question.AccessPackageQuestion]] = None) -> None:
+        """
+        Sets the questions property value. The questions property
+        Args:
+            value: Value to set for the questions property.
+        """
+        self._questions = value
     
     @property
     def request_approval_settings(self,) -> Optional[access_package_assignment_approval_settings.AccessPackageAssignmentApprovalSettings]:
@@ -308,6 +329,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("expiration", self.expiration)
         writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
+        writer.write_collection_of_object_values("questions", self.questions)
         writer.write_object_value("requestorSettings", self.requestor_settings)
         writer.write_object_value("requestApprovalSettings", self.request_approval_settings)
         writer.write_object_value("reviewSettings", self.review_settings)

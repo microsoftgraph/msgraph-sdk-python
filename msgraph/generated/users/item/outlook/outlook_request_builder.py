@@ -14,9 +14,9 @@ outlook_user = lazy_import('msgraph.generated.models.outlook_user')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 master_categories_request_builder = lazy_import('msgraph.generated.users.item.outlook.master_categories.master_categories_request_builder')
 outlook_category_item_request_builder = lazy_import('msgraph.generated.users.item.outlook.master_categories.item.outlook_category_item_request_builder')
-supported_languages_request_builder = lazy_import('msgraph.generated.users.item.outlook.microsoft_graph_supported_languages.supported_languages_request_builder')
-supported_time_zones_request_builder = lazy_import('msgraph.generated.users.item.outlook.microsoft_graph_supported_time_zones.supported_time_zones_request_builder')
-supported_time_zones_with_time_zone_standard_request_builder = lazy_import('msgraph.generated.users.item.outlook.microsoft_graph_supported_time_zones_with_time_zone_standard.supported_time_zones_with_time_zone_standard_request_builder')
+microsoft_graph_supported_languages_request_builder = lazy_import('msgraph.generated.users.item.outlook.microsoft_graph_supported_languages.microsoft_graph_supported_languages_request_builder')
+microsoft_graph_supported_time_zones_request_builder = lazy_import('msgraph.generated.users.item.outlook.microsoft_graph_supported_time_zones.microsoft_graph_supported_time_zones_request_builder')
+microsoft_graph_supported_time_zones_with_time_zone_standard_request_builder = lazy_import('msgraph.generated.users.item.outlook.microsoft_graph_supported_time_zones_with_time_zone_standard.microsoft_graph_supported_time_zones_with_time_zone_standard_request_builder')
 
 class OutlookRequestBuilder():
     """
@@ -30,18 +30,18 @@ class OutlookRequestBuilder():
         return master_categories_request_builder.MasterCategoriesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_supported_languages(self) -> supported_languages_request_builder.SupportedLanguagesRequestBuilder:
+    def microsoft_graph_supported_languages(self) -> microsoft_graph_supported_languages_request_builder.MicrosoftGraphSupportedLanguagesRequestBuilder:
         """
         Provides operations to call the supportedLanguages method.
         """
-        return supported_languages_request_builder.SupportedLanguagesRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_supported_languages_request_builder.MicrosoftGraphSupportedLanguagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_supported_time_zones(self) -> supported_time_zones_request_builder.SupportedTimeZonesRequestBuilder:
+    def microsoft_graph_supported_time_zones(self) -> microsoft_graph_supported_time_zones_request_builder.MicrosoftGraphSupportedTimeZonesRequestBuilder:
         """
         Provides operations to call the supportedTimeZones method.
         """
-        return supported_time_zones_request_builder.SupportedTimeZonesRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_supported_time_zones_request_builder.MicrosoftGraphSupportedTimeZonesRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -92,16 +92,16 @@ class OutlookRequestBuilder():
         url_tpl_params["outlookCategory%2Did"] = id
         return outlook_category_item_request_builder.OutlookCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def microsoft_graph_supported_time_zones_with_time_zone_standard(self,time_zone_standard: Optional[str] = None) -> supported_time_zones_with_time_zone_standard_request_builder.SupportedTimeZonesWithTimeZoneStandardRequestBuilder:
+    def microsoft_graph_supported_time_zones_with_time_zone_standard(self,time_zone_standard: Optional[str] = None) -> microsoft_graph_supported_time_zones_with_time_zone_standard_request_builder.MicrosoftGraphSupportedTimeZonesWithTimeZoneStandardRequestBuilder:
         """
         Provides operations to call the supportedTimeZones method.
         Args:
             TimeZoneStandard: Usage: TimeZoneStandard='{TimeZoneStandard}'
-        Returns: supported_time_zones_with_time_zone_standard_request_builder.SupportedTimeZonesWithTimeZoneStandardRequestBuilder
+        Returns: microsoft_graph_supported_time_zones_with_time_zone_standard_request_builder.MicrosoftGraphSupportedTimeZonesWithTimeZoneStandardRequestBuilder
         """
         if time_zone_standard is None:
             raise Exception("time_zone_standard cannot be undefined")
-        return supported_time_zones_with_time_zone_standard_request_builder.SupportedTimeZonesWithTimeZoneStandardRequestBuilder(self.request_adapter, self.path_parameters, TimeZoneStandard)
+        return microsoft_graph_supported_time_zones_with_time_zone_standard_request_builder.MicrosoftGraphSupportedTimeZonesWithTimeZoneStandardRequestBuilder(self.request_adapter, self.path_parameters, TimeZoneStandard)
     
     def to_get_request_information(self,request_configuration: Optional[OutlookRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -114,7 +114,7 @@ class OutlookRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -149,7 +149,7 @@ class OutlookRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

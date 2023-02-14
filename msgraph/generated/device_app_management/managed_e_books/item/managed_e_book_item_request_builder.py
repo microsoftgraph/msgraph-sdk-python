@@ -15,7 +15,7 @@ managed_e_book_assignment_item_request_builder = lazy_import('msgraph.generated.
 device_states_request_builder = lazy_import('msgraph.generated.device_app_management.managed_e_books.item.device_states.device_states_request_builder')
 device_install_state_item_request_builder = lazy_import('msgraph.generated.device_app_management.managed_e_books.item.device_states.item.device_install_state_item_request_builder')
 install_summary_request_builder = lazy_import('msgraph.generated.device_app_management.managed_e_books.item.install_summary.install_summary_request_builder')
-assign_request_builder = lazy_import('msgraph.generated.device_app_management.managed_e_books.item.microsoft_graph_assign.assign_request_builder')
+microsoft_graph_assign_request_builder = lazy_import('msgraph.generated.device_app_management.managed_e_books.item.microsoft_graph_assign.microsoft_graph_assign_request_builder')
 user_state_summary_request_builder = lazy_import('msgraph.generated.device_app_management.managed_e_books.item.user_state_summary.user_state_summary_request_builder')
 user_install_state_summary_item_request_builder = lazy_import('msgraph.generated.device_app_management.managed_e_books.item.user_state_summary.item.user_install_state_summary_item_request_builder')
 managed_e_book = lazy_import('msgraph.generated.models.managed_e_book')
@@ -47,11 +47,11 @@ class ManagedEBookItemRequestBuilder():
         return install_summary_request_builder.InstallSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_assign(self) -> assign_request_builder.AssignRequestBuilder:
+    def microsoft_graph_assign(self) -> microsoft_graph_assign_request_builder.MicrosoftGraphAssignRequestBuilder:
         """
         Provides operations to call the assign method.
         """
-        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_assign_request_builder.MicrosoftGraphAssignRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def user_state_summary(self) -> user_state_summary_request_builder.UserStateSummaryRequestBuilder:
@@ -73,11 +73,10 @@ class ManagedEBookItemRequestBuilder():
         url_tpl_params["managedEBookAssignment%2Did"] = id
         return managed_e_book_assignment_item_request_builder.ManagedEBookAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, managed_e_book_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ManagedEBookItemRequestBuilder and sets the default values.
         Args:
-            managedEBookId: key: id of managedEBook
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -89,7 +88,6 @@ class ManagedEBookItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceAppManagement/managedEBooks/{managedEBook%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["managedEBook%2Did"] = managedEBookId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -189,7 +187,7 @@ class ManagedEBookItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -210,7 +208,7 @@ class ManagedEBookItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -236,7 +234,7 @@ class ManagedEBookItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -275,7 +273,7 @@ class ManagedEBookItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -290,7 +288,7 @@ class ManagedEBookItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

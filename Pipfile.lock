@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a3398d25f43f958ea0c541f9dc1fea87708507f3b8447922a792e6ee5f18cb78"
+            "sha256": "f42ec941422ac810312a069dab1a78cd3704a28bdd265cabb1c20dc3927df536"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -495,11 +495,11 @@
         },
         "microsoft-kiota-abstractions": {
             "hashes": [
-                "sha256:73a38d270f6070e525b5160acfa55d06b541e1c044ebd3ce13de569c415de1a3",
-                "sha256:fbf6bf1dd15403b2c1ce2a38563df36d79f4866eb1047d902bc191eb97722b90"
+                "sha256:317be35be5ed1c88e264ebcd40b290ebd063d4efcaa9922716b6f6d8cbc408bb",
+                "sha256:a04a6eb95f8bd02c5d0231c68d3627e229cd580954b9f8bf105475f0b8d88224"
             ],
             "index": "pypi",
-            "version": "==0.3.0"
+            "version": "==0.4.0"
         },
         "microsoft-kiota-authentication-azure": {
             "hashes": [

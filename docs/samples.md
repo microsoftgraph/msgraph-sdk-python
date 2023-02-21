@@ -231,3 +231,5 @@ async def send_mail():
 asyncio.run(send_mail())
 
 ```
+
+## Download Attachment from Email.

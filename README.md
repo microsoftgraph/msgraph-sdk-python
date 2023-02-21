@@ -57,11 +57,12 @@ adapter = GraphRequestAdapter(auth_provider)
 We currently use [HTTPX](https://www.python-httpx.org/) as our HTTP client. You can pass your custom configured `httpx.AsyncClient` using:
 
 ```py
+import httpx
 from msgraph import GraphRequestAdapter
 from msgraph_core import GraphClientFactory
 
-http_Client = GraphClientFactory.create_with_default_middleware(client=httpx.AsyncClient())
-request_adapter = GraphRequestAdapter(auth_Provider, http_client)
+http_client = GraphClientFactory.create_with_default_middleware(client=httpx.AsyncClient())
+request_adapter = GraphRequestAdapter(auth_provider, http_client)
 ```
 
 ### 2.3 Get a GraphServiceClient object

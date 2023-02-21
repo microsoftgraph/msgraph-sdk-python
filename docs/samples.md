@@ -233,3 +233,4 @@ asyncio.run(send_mail())
 ```
 
 ## Download Attachment from Email.
+This would be a very useful addition ... :)

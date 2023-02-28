@@ -12,27 +12,34 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 chat = lazy_import('msgraph.generated.models.chat')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+hide_for_user_request_builder = lazy_import('msgraph.generated.users.item.chats.item.hide_for_user.hide_for_user_request_builder')
 installed_apps_request_builder = lazy_import('msgraph.generated.users.item.chats.item.installed_apps.installed_apps_request_builder')
 teams_app_installation_item_request_builder = lazy_import('msgraph.generated.users.item.chats.item.installed_apps.item.teams_app_installation_item_request_builder')
 last_message_preview_request_builder = lazy_import('msgraph.generated.users.item.chats.item.last_message_preview.last_message_preview_request_builder')
+mark_chat_read_for_user_request_builder = lazy_import('msgraph.generated.users.item.chats.item.mark_chat_read_for_user.mark_chat_read_for_user_request_builder')
+mark_chat_unread_for_user_request_builder = lazy_import('msgraph.generated.users.item.chats.item.mark_chat_unread_for_user.mark_chat_unread_for_user_request_builder')
 members_request_builder = lazy_import('msgraph.generated.users.item.chats.item.members.members_request_builder')
 conversation_member_item_request_builder = lazy_import('msgraph.generated.users.item.chats.item.members.item.conversation_member_item_request_builder')
 messages_request_builder = lazy_import('msgraph.generated.users.item.chats.item.messages.messages_request_builder')
 chat_message_item_request_builder = lazy_import('msgraph.generated.users.item.chats.item.messages.item.chat_message_item_request_builder')
-hide_for_user_request_builder = lazy_import('msgraph.generated.users.item.chats.item.microsoft_graph_hide_for_user.hide_for_user_request_builder')
-mark_chat_read_for_user_request_builder = lazy_import('msgraph.generated.users.item.chats.item.microsoft_graph_mark_chat_read_for_user.mark_chat_read_for_user_request_builder')
-mark_chat_unread_for_user_request_builder = lazy_import('msgraph.generated.users.item.chats.item.microsoft_graph_mark_chat_unread_for_user.mark_chat_unread_for_user_request_builder')
-send_activity_notification_request_builder = lazy_import('msgraph.generated.users.item.chats.item.microsoft_graph_send_activity_notification.send_activity_notification_request_builder')
-unhide_for_user_request_builder = lazy_import('msgraph.generated.users.item.chats.item.microsoft_graph_unhide_for_user.unhide_for_user_request_builder')
 pinned_messages_request_builder = lazy_import('msgraph.generated.users.item.chats.item.pinned_messages.pinned_messages_request_builder')
 pinned_chat_message_info_item_request_builder = lazy_import('msgraph.generated.users.item.chats.item.pinned_messages.item.pinned_chat_message_info_item_request_builder')
+send_activity_notification_request_builder = lazy_import('msgraph.generated.users.item.chats.item.send_activity_notification.send_activity_notification_request_builder')
 tabs_request_builder = lazy_import('msgraph.generated.users.item.chats.item.tabs.tabs_request_builder')
 teams_tab_item_request_builder = lazy_import('msgraph.generated.users.item.chats.item.tabs.item.teams_tab_item_request_builder')
+unhide_for_user_request_builder = lazy_import('msgraph.generated.users.item.chats.item.unhide_for_user.unhide_for_user_request_builder')
 
 class ChatItemRequestBuilder():
     """
     Provides operations to manage the chats property of the microsoft.graph.user entity.
     """
+    @property
+    def hide_for_user(self) -> hide_for_user_request_builder.HideForUserRequestBuilder:
+        """
+        Provides operations to call the hideForUser method.
+        """
+        return hide_for_user_request_builder.HideForUserRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @property
     def installed_apps(self) -> installed_apps_request_builder.InstalledAppsRequestBuilder:
         """
@@ -46,6 +53,20 @@ class ChatItemRequestBuilder():
         Provides operations to manage the lastMessagePreview property of the microsoft.graph.chat entity.
         """
         return last_message_preview_request_builder.LastMessagePreviewRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def mark_chat_read_for_user(self) -> mark_chat_read_for_user_request_builder.MarkChatReadForUserRequestBuilder:
+        """
+        Provides operations to call the markChatReadForUser method.
+        """
+        return mark_chat_read_for_user_request_builder.MarkChatReadForUserRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def mark_chat_unread_for_user(self) -> mark_chat_unread_for_user_request_builder.MarkChatUnreadForUserRequestBuilder:
+        """
+        Provides operations to call the markChatUnreadForUser method.
+        """
+        return mark_chat_unread_for_user_request_builder.MarkChatUnreadForUserRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def members(self) -> members_request_builder.MembersRequestBuilder:
@@ -62,46 +83,18 @@ class ChatItemRequestBuilder():
         return messages_request_builder.MessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_hide_for_user(self) -> hide_for_user_request_builder.HideForUserRequestBuilder:
-        """
-        Provides operations to call the hideForUser method.
-        """
-        return hide_for_user_request_builder.HideForUserRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_mark_chat_read_for_user(self) -> mark_chat_read_for_user_request_builder.MarkChatReadForUserRequestBuilder:
-        """
-        Provides operations to call the markChatReadForUser method.
-        """
-        return mark_chat_read_for_user_request_builder.MarkChatReadForUserRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_mark_chat_unread_for_user(self) -> mark_chat_unread_for_user_request_builder.MarkChatUnreadForUserRequestBuilder:
-        """
-        Provides operations to call the markChatUnreadForUser method.
-        """
-        return mark_chat_unread_for_user_request_builder.MarkChatUnreadForUserRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_send_activity_notification(self) -> send_activity_notification_request_builder.SendActivityNotificationRequestBuilder:
-        """
-        Provides operations to call the sendActivityNotification method.
-        """
-        return send_activity_notification_request_builder.SendActivityNotificationRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_unhide_for_user(self) -> unhide_for_user_request_builder.UnhideForUserRequestBuilder:
-        """
-        Provides operations to call the unhideForUser method.
-        """
-        return unhide_for_user_request_builder.UnhideForUserRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def pinned_messages(self) -> pinned_messages_request_builder.PinnedMessagesRequestBuilder:
         """
         Provides operations to manage the pinnedMessages property of the microsoft.graph.chat entity.
         """
         return pinned_messages_request_builder.PinnedMessagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def send_activity_notification(self) -> send_activity_notification_request_builder.SendActivityNotificationRequestBuilder:
+        """
+        Provides operations to call the sendActivityNotification method.
+        """
+        return send_activity_notification_request_builder.SendActivityNotificationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def tabs(self) -> tabs_request_builder.TabsRequestBuilder:
@@ -110,11 +103,17 @@ class ChatItemRequestBuilder():
         """
         return tabs_request_builder.TabsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, chat_id: Optional[str] = None) -> None:
+    @property
+    def unhide_for_user(self) -> unhide_for_user_request_builder.UnhideForUserRequestBuilder:
+        """
+        Provides operations to call the unhideForUser method.
+        """
+        return unhide_for_user_request_builder.UnhideForUserRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ChatItemRequestBuilder and sets the default values.
         Args:
-            chatId: key: id of chat
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -126,7 +125,6 @@ class ChatItemRequestBuilder():
         self.url_template: str = "{+baseurl}/users/{user%2Did}/chats/{chat%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["chat%2Did"] = chatId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -278,7 +276,7 @@ class ChatItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -299,7 +297,7 @@ class ChatItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -312,7 +310,7 @@ class ChatItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -351,7 +349,7 @@ class ChatItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -366,7 +364,7 @@ class ChatItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

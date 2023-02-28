@@ -11,32 +11,32 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 analytics_request_builder = lazy_import('msgraph.generated.drives.item.items.item.analytics.analytics_request_builder')
+checkin_request_builder = lazy_import('msgraph.generated.drives.item.items.item.checkin.checkin_request_builder')
+checkout_request_builder = lazy_import('msgraph.generated.drives.item.items.item.checkout.checkout_request_builder')
 children_request_builder = lazy_import('msgraph.generated.drives.item.items.item.children.children_request_builder')
 drive_item_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.children.item.drive_item_item_request_builder')
 content_request_builder = lazy_import('msgraph.generated.drives.item.items.item.content.content_request_builder')
+copy_request_builder = lazy_import('msgraph.generated.drives.item.items.item.copy.copy_request_builder')
+create_link_request_builder = lazy_import('msgraph.generated.drives.item.items.item.create_link.create_link_request_builder')
+create_upload_session_request_builder = lazy_import('msgraph.generated.drives.item.items.item.create_upload_session.create_upload_session_request_builder')
+delta_request_builder = lazy_import('msgraph.generated.drives.item.items.item.delta.delta_request_builder')
+delta_with_token_request_builder = lazy_import('msgraph.generated.drives.item.items.item.delta_with_token.delta_with_token_request_builder')
+follow_request_builder = lazy_import('msgraph.generated.drives.item.items.item.follow.follow_request_builder')
+get_activities_by_interval_request_builder = lazy_import('msgraph.generated.drives.item.items.item.get_activities_by_interval.get_activities_by_interval_request_builder')
+get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder = lazy_import('msgraph.generated.drives.item.items.item.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder')
+invite_request_builder = lazy_import('msgraph.generated.drives.item.items.item.invite.invite_request_builder')
 list_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.list_item.list_item_request_builder')
-checkin_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_checkin.checkin_request_builder')
-checkout_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_checkout.checkout_request_builder')
-copy_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_copy.copy_request_builder')
-create_link_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_create_link.create_link_request_builder')
-create_upload_session_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_create_upload_session.create_upload_session_request_builder')
-delta_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_delta.delta_request_builder')
-delta_with_token_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_delta_with_token.delta_with_token_request_builder')
-follow_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_follow.follow_request_builder')
-get_activities_by_interval_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_get_activities_by_interval.get_activities_by_interval_request_builder')
-get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder')
-invite_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_invite.invite_request_builder')
-preview_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_preview.preview_request_builder')
-restore_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_restore.restore_request_builder')
-search_with_q_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_search_with_q.search_with_q_request_builder')
-unfollow_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_unfollow.unfollow_request_builder')
-validate_permission_request_builder = lazy_import('msgraph.generated.drives.item.items.item.microsoft_graph_validate_permission.validate_permission_request_builder')
 permissions_request_builder = lazy_import('msgraph.generated.drives.item.items.item.permissions.permissions_request_builder')
 permission_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.permissions.item.permission_item_request_builder')
+preview_request_builder = lazy_import('msgraph.generated.drives.item.items.item.preview.preview_request_builder')
+restore_request_builder = lazy_import('msgraph.generated.drives.item.items.item.restore.restore_request_builder')
+search_with_q_request_builder = lazy_import('msgraph.generated.drives.item.items.item.search_with_q.search_with_q_request_builder')
 subscriptions_request_builder = lazy_import('msgraph.generated.drives.item.items.item.subscriptions.subscriptions_request_builder')
 subscription_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.subscriptions.item.subscription_item_request_builder')
 thumbnails_request_builder = lazy_import('msgraph.generated.drives.item.items.item.thumbnails.thumbnails_request_builder')
 thumbnail_set_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.thumbnails.item.thumbnail_set_item_request_builder')
+unfollow_request_builder = lazy_import('msgraph.generated.drives.item.items.item.unfollow.unfollow_request_builder')
+validate_permission_request_builder = lazy_import('msgraph.generated.drives.item.items.item.validate_permission.validate_permission_request_builder')
 versions_request_builder = lazy_import('msgraph.generated.drives.item.items.item.versions.versions_request_builder')
 drive_item_version_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.versions.item.drive_item_version_item_request_builder')
 workbook_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.workbook_request_builder')
@@ -55,6 +55,20 @@ class DriveItemItemRequestBuilder():
         return analytics_request_builder.AnalyticsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def checkin(self) -> checkin_request_builder.CheckinRequestBuilder:
+        """
+        Provides operations to call the checkin method.
+        """
+        return checkin_request_builder.CheckinRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def checkout(self) -> checkout_request_builder.CheckoutRequestBuilder:
+        """
+        Provides operations to call the checkout method.
+        """
+        return checkout_request_builder.CheckoutRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def children(self) -> children_request_builder.ChildrenRequestBuilder:
         """
         Provides operations to manage the children property of the microsoft.graph.driveItem entity.
@@ -69,6 +83,55 @@ class DriveItemItemRequestBuilder():
         return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def copy(self) -> copy_request_builder.CopyRequestBuilder:
+        """
+        Provides operations to call the copy method.
+        """
+        return copy_request_builder.CopyRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def create_link(self) -> create_link_request_builder.CreateLinkRequestBuilder:
+        """
+        Provides operations to call the createLink method.
+        """
+        return create_link_request_builder.CreateLinkRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def create_upload_session(self) -> create_upload_session_request_builder.CreateUploadSessionRequestBuilder:
+        """
+        Provides operations to call the createUploadSession method.
+        """
+        return create_upload_session_request_builder.CreateUploadSessionRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def delta(self) -> delta_request_builder.DeltaRequestBuilder:
+        """
+        Provides operations to call the delta method.
+        """
+        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def follow(self) -> follow_request_builder.FollowRequestBuilder:
+        """
+        Provides operations to call the follow method.
+        """
+        return follow_request_builder.FollowRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_activities_by_interval(self) -> get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder:
+        """
+        Provides operations to call the getActivitiesByInterval method.
+        """
+        return get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def invite(self) -> invite_request_builder.InviteRequestBuilder:
+        """
+        Provides operations to call the invite method.
+        """
+        return invite_request_builder.InviteRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def list_item(self) -> list_item_request_builder.ListItemRequestBuilder:
         """
         Provides operations to manage the listItem property of the microsoft.graph.driveItem entity.
@@ -76,102 +139,25 @@ class DriveItemItemRequestBuilder():
         return list_item_request_builder.ListItemRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_checkin(self) -> checkin_request_builder.CheckinRequestBuilder:
+    def permissions(self) -> permissions_request_builder.PermissionsRequestBuilder:
         """
-        Provides operations to call the checkin method.
+        Provides operations to manage the permissions property of the microsoft.graph.driveItem entity.
         """
-        return checkin_request_builder.CheckinRequestBuilder(self.request_adapter, self.path_parameters)
+        return permissions_request_builder.PermissionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_checkout(self) -> checkout_request_builder.CheckoutRequestBuilder:
-        """
-        Provides operations to call the checkout method.
-        """
-        return checkout_request_builder.CheckoutRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_copy(self) -> copy_request_builder.CopyRequestBuilder:
-        """
-        Provides operations to call the copy method.
-        """
-        return copy_request_builder.CopyRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_create_link(self) -> create_link_request_builder.CreateLinkRequestBuilder:
-        """
-        Provides operations to call the createLink method.
-        """
-        return create_link_request_builder.CreateLinkRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_create_upload_session(self) -> create_upload_session_request_builder.CreateUploadSessionRequestBuilder:
-        """
-        Provides operations to call the createUploadSession method.
-        """
-        return create_upload_session_request_builder.CreateUploadSessionRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_delta(self) -> delta_request_builder.DeltaRequestBuilder:
-        """
-        Provides operations to call the delta method.
-        """
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_follow(self) -> follow_request_builder.FollowRequestBuilder:
-        """
-        Provides operations to call the follow method.
-        """
-        return follow_request_builder.FollowRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_get_activities_by_interval(self) -> get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder:
-        """
-        Provides operations to call the getActivitiesByInterval method.
-        """
-        return get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_invite(self) -> invite_request_builder.InviteRequestBuilder:
-        """
-        Provides operations to call the invite method.
-        """
-        return invite_request_builder.InviteRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_preview(self) -> preview_request_builder.PreviewRequestBuilder:
+    def preview(self) -> preview_request_builder.PreviewRequestBuilder:
         """
         Provides operations to call the preview method.
         """
         return preview_request_builder.PreviewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_restore(self) -> restore_request_builder.RestoreRequestBuilder:
+    def restore(self) -> restore_request_builder.RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
         return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_unfollow(self) -> unfollow_request_builder.UnfollowRequestBuilder:
-        """
-        Provides operations to call the unfollow method.
-        """
-        return unfollow_request_builder.UnfollowRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_validate_permission(self) -> validate_permission_request_builder.ValidatePermissionRequestBuilder:
-        """
-        Provides operations to call the validatePermission method.
-        """
-        return validate_permission_request_builder.ValidatePermissionRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def permissions(self) -> permissions_request_builder.PermissionsRequestBuilder:
-        """
-        Provides operations to manage the permissions property of the microsoft.graph.driveItem entity.
-        """
-        return permissions_request_builder.PermissionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def subscriptions(self) -> subscriptions_request_builder.SubscriptionsRequestBuilder:
@@ -186,6 +172,20 @@ class DriveItemItemRequestBuilder():
         Provides operations to manage the thumbnails property of the microsoft.graph.driveItem entity.
         """
         return thumbnails_request_builder.ThumbnailsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def unfollow(self) -> unfollow_request_builder.UnfollowRequestBuilder:
+        """
+        Provides operations to call the unfollow method.
+        """
+        return unfollow_request_builder.UnfollowRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def validate_permission(self) -> validate_permission_request_builder.ValidatePermissionRequestBuilder:
+        """
+        Provides operations to call the validatePermission method.
+        """
+        return validate_permission_request_builder.ValidatePermissionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def versions(self) -> versions_request_builder.VersionsRequestBuilder:
@@ -214,11 +214,10 @@ class DriveItemItemRequestBuilder():
         url_tpl_params["driveItem%2Did1"] = id
         return DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, drive_item_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DriveItemItemRequestBuilder and sets the default values.
         Args:
-            driveItemId: key: id of driveItem
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -230,7 +229,6 @@ class DriveItemItemRequestBuilder():
         self.url_template: str = "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["driveItem%2Did"] = driveItemId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -251,6 +249,17 @@ class DriveItemItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
+    def delta_with_token(self,token: Optional[str] = None) -> delta_with_token_request_builder.DeltaWithTokenRequestBuilder:
+        """
+        Provides operations to call the delta method.
+        Args:
+            token: Usage: token='{token}'
+        Returns: delta_with_token_request_builder.DeltaWithTokenRequestBuilder
+        """
+        if token is None:
+            raise Exception("token cannot be undefined")
+        return delta_with_token_request_builder.DeltaWithTokenRequestBuilder(self.request_adapter, self.path_parameters, token)
+    
     async def get(self,request_configuration: Optional[DriveItemItemRequestBuilderGetRequestConfiguration] = None) -> Optional[drive_item.DriveItem]:
         """
         All items contained in the drive. Read-only. Nullable.
@@ -269,18 +278,7 @@ class DriveItemItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, drive_item.DriveItem, error_mapping)
     
-    def microsoft_graph_delta_with_token(self,token: Optional[str] = None) -> delta_with_token_request_builder.DeltaWithTokenRequestBuilder:
-        """
-        Provides operations to call the delta method.
-        Args:
-            token: Usage: token='{token}'
-        Returns: delta_with_token_request_builder.DeltaWithTokenRequestBuilder
-        """
-        if token is None:
-            raise Exception("token cannot be undefined")
-        return delta_with_token_request_builder.DeltaWithTokenRequestBuilder(self.request_adapter, self.path_parameters, token)
-    
-    def microsoft_graph_get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: Optional[str] = None, interval: Optional[str] = None, start_date_time: Optional[str] = None) -> get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
+    def get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: Optional[str] = None, interval: Optional[str] = None, start_date_time: Optional[str] = None) -> get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
         """
         Provides operations to call the getActivitiesByInterval method.
         Args:
@@ -296,17 +294,6 @@ class DriveItemItemRequestBuilder():
         if start_date_time is None:
             raise Exception("start_date_time cannot be undefined")
         return get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder(self.request_adapter, self.path_parameters, endDateTime, interval, startDateTime)
-    
-    def microsoft_graph_search_with_q(self,q: Optional[str] = None) -> search_with_q_request_builder.SearchWithQRequestBuilder:
-        """
-        Provides operations to call the search method.
-        Args:
-            q: Usage: q='{q}'
-        Returns: search_with_q_request_builder.SearchWithQRequestBuilder
-        """
-        if q is None:
-            raise Exception("q cannot be undefined")
-        return search_with_q_request_builder.SearchWithQRequestBuilder(self.request_adapter, self.path_parameters, q)
     
     async def patch(self,body: Optional[drive_item.DriveItem] = None, request_configuration: Optional[DriveItemItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[drive_item.DriveItem]:
         """
@@ -341,6 +328,17 @@ class DriveItemItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["permission%2Did"] = id
         return permission_item_request_builder.PermissionItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def search_with_q(self,q: Optional[str] = None) -> search_with_q_request_builder.SearchWithQRequestBuilder:
+        """
+        Provides operations to call the search method.
+        Args:
+            q: Usage: q='{q}'
+        Returns: search_with_q_request_builder.SearchWithQRequestBuilder
+        """
+        if q is None:
+            raise Exception("q cannot be undefined")
+        return search_with_q_request_builder.SearchWithQRequestBuilder(self.request_adapter, self.path_parameters, q)
     
     def subscriptions_by_id(self,id: str) -> subscription_item_request_builder.SubscriptionItemRequestBuilder:
         """
@@ -395,7 +393,7 @@ class DriveItemItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -416,7 +414,7 @@ class DriveItemItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -442,7 +440,7 @@ class DriveItemItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -481,7 +479,7 @@ class DriveItemItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -496,7 +494,7 @@ class DriveItemItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

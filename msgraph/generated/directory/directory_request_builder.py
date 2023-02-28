@@ -16,6 +16,8 @@ deleted_items_request_builder = lazy_import('msgraph.generated.directory.deleted
 directory_object_item_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.directory_object_item_request_builder')
 federation_configurations_request_builder = lazy_import('msgraph.generated.directory.federation_configurations.federation_configurations_request_builder')
 identity_provider_base_item_request_builder = lazy_import('msgraph.generated.directory.federation_configurations.item.identity_provider_base_item_request_builder')
+on_premises_synchronization_request_builder = lazy_import('msgraph.generated.directory.on_premises_synchronization.on_premises_synchronization_request_builder')
+on_premises_directory_synchronization_item_request_builder = lazy_import('msgraph.generated.directory.on_premises_synchronization.item.on_premises_directory_synchronization_item_request_builder')
 directory = lazy_import('msgraph.generated.models.directory')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -43,6 +45,13 @@ class DirectoryRequestBuilder():
         Provides operations to manage the federationConfigurations property of the microsoft.graph.directory entity.
         """
         return federation_configurations_request_builder.FederationConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def on_premises_synchronization(self) -> on_premises_synchronization_request_builder.OnPremisesSynchronizationRequestBuilder:
+        """
+        Provides operations to manage the onPremisesSynchronization property of the microsoft.graph.directory entity.
+        """
+        return on_premises_synchronization_request_builder.OnPremisesSynchronizationRequestBuilder(self.request_adapter, self.path_parameters)
     
     def administrative_units_by_id(self,id: str) -> administrative_unit_item_request_builder.AdministrativeUnitItemRequestBuilder:
         """
@@ -119,6 +128,19 @@ class DirectoryRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, directory.Directory, error_mapping)
     
+    def on_premises_synchronization_by_id(self,id: str) -> on_premises_directory_synchronization_item_request_builder.OnPremisesDirectorySynchronizationItemRequestBuilder:
+        """
+        Provides operations to manage the onPremisesSynchronization property of the microsoft.graph.directory entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: on_premises_directory_synchronization_item_request_builder.OnPremisesDirectorySynchronizationItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["onPremisesDirectorySynchronization%2Did"] = id
+        return on_premises_directory_synchronization_item_request_builder.OnPremisesDirectorySynchronizationItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def patch(self,body: Optional[directory.Directory] = None, request_configuration: Optional[DirectoryRequestBuilderPatchRequestConfiguration] = None) -> Optional[directory.Directory]:
         """
         Update directory
@@ -151,7 +173,7 @@ class DirectoryRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -172,7 +194,7 @@ class DirectoryRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -212,7 +234,7 @@ class DirectoryRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -227,7 +249,7 @@ class DirectoryRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

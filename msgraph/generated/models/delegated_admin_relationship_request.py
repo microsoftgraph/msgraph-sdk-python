@@ -33,19 +33,19 @@ class DelegatedAdminRelationshipRequest(entity.Entity):
         super().__init__()
         # The action property
         self._action: Optional[delegated_admin_relationship_request_action.DelegatedAdminRelationshipRequestAction] = None
-        # The createdDateTime property
+        # The date and time in ISO 8601 format and in UTC time when the relationship request was created. Read-only.
         self._created_date_time: Optional[datetime] = None
-        # The lastModifiedDateTime property
+        # The date and time in ISO 8601 format and UTC time when this relationship request was last modified. Read-only.
         self._last_modified_date_time: Optional[datetime] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-        # The status property
+        # The status of the request. Read-only. The possible values are: created, pending, succeeded, failed, unknownFutureValue.
         self._status: Optional[delegated_admin_relationship_request_status.DelegatedAdminRelationshipRequestStatus] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
-        Gets the createdDateTime property value. The createdDateTime property
+        Gets the createdDateTime property value. The date and time in ISO 8601 format and in UTC time when the relationship request was created. Read-only.
         Returns: Optional[datetime]
         """
         return self._created_date_time
@@ -53,7 +53,7 @@ class DelegatedAdminRelationshipRequest(entity.Entity):
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the createdDateTime property value. The createdDateTime property
+        Sets the createdDateTime property value. The date and time in ISO 8601 format and in UTC time when the relationship request was created. Read-only.
         Args:
             value: Value to set for the created_date_time property.
         """
@@ -89,7 +89,7 @@ class DelegatedAdminRelationshipRequest(entity.Entity):
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
-        Gets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Gets the lastModifiedDateTime property value. The date and time in ISO 8601 format and UTC time when this relationship request was last modified. Read-only.
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
@@ -97,7 +97,7 @@ class DelegatedAdminRelationshipRequest(entity.Entity):
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Sets the lastModifiedDateTime property value. The date and time in ISO 8601 format and UTC time when this relationship request was last modified. Read-only.
         Args:
             value: Value to set for the last_modified_date_time property.
         """
@@ -120,7 +120,7 @@ class DelegatedAdminRelationshipRequest(entity.Entity):
     @property
     def status(self,) -> Optional[delegated_admin_relationship_request_status.DelegatedAdminRelationshipRequestStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. The status of the request. Read-only. The possible values are: created, pending, succeeded, failed, unknownFutureValue.
         Returns: Optional[delegated_admin_relationship_request_status.DelegatedAdminRelationshipRequestStatus]
         """
         return self._status
@@ -128,7 +128,7 @@ class DelegatedAdminRelationshipRequest(entity.Entity):
     @status.setter
     def status(self,value: Optional[delegated_admin_relationship_request_status.DelegatedAdminRelationshipRequestStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. The status of the request. Read-only. The possible values are: created, pending, succeeded, failed, unknownFutureValue.
         Args:
             value: Value to set for the status property.
         """

@@ -10,6 +10,7 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
+assign_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.assign.assign_request_builder')
 assignments_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.assignments.assignments_request_builder')
 device_configuration_assignment_item_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.assignments.item.device_configuration_assignment_item_request_builder')
 device_setting_state_summaries_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.device_setting_state_summaries.device_setting_state_summaries_request_builder')
@@ -17,8 +18,7 @@ setting_state_device_summary_item_request_builder = lazy_import('msgraph.generat
 device_statuses_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.device_statuses.device_statuses_request_builder')
 device_configuration_device_status_item_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.device_statuses.item.device_configuration_device_status_item_request_builder')
 device_status_overview_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.device_status_overview.device_status_overview_request_builder')
-assign_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.microsoft_graph_assign.assign_request_builder')
-get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.microsoft_graph_get_oma_setting_plain_text_value_with_secret_reference_value_id.get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder')
+get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.get_oma_setting_plain_text_value_with_secret_reference_value_id.get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder')
 user_statuses_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.user_statuses.user_statuses_request_builder')
 device_configuration_user_status_item_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.user_statuses.item.device_configuration_user_status_item_request_builder')
 user_status_overview_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.user_status_overview.user_status_overview_request_builder')
@@ -29,6 +29,13 @@ class DeviceConfigurationItemRequestBuilder():
     """
     Provides operations to manage the deviceConfigurations property of the microsoft.graph.deviceManagement entity.
     """
+    @property
+    def assign(self) -> assign_request_builder.AssignRequestBuilder:
+        """
+        Provides operations to call the assign method.
+        """
+        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @property
     def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
         """
@@ -58,13 +65,6 @@ class DeviceConfigurationItemRequestBuilder():
         return device_status_overview_request_builder.DeviceStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_assign(self) -> assign_request_builder.AssignRequestBuilder:
-        """
-        Provides operations to call the assign method.
-        """
-        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def user_statuses(self) -> user_statuses_request_builder.UserStatusesRequestBuilder:
         """
         Provides operations to manage the userStatuses property of the microsoft.graph.deviceConfiguration entity.
@@ -91,11 +91,10 @@ class DeviceConfigurationItemRequestBuilder():
         url_tpl_params["deviceConfigurationAssignment%2Did"] = id
         return device_configuration_assignment_item_request_builder.DeviceConfigurationAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, device_configuration_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DeviceConfigurationItemRequestBuilder and sets the default values.
         Args:
-            deviceConfigurationId: key: id of deviceConfiguration
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -107,7 +106,6 @@ class DeviceConfigurationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceManagement/deviceConfigurations/{deviceConfiguration%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["deviceConfiguration%2Did"] = deviceConfigurationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -172,7 +170,7 @@ class DeviceConfigurationItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, device_configuration.DeviceConfiguration, error_mapping)
     
-    def microsoft_graph_get_oma_setting_plain_text_value_with_secret_reference_value_id(self,secret_reference_value_id: Optional[str] = None) -> get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder.GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder:
+    def get_oma_setting_plain_text_value_with_secret_reference_value_id(self,secret_reference_value_id: Optional[str] = None) -> get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder.GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder:
         """
         Provides operations to call the getOmaSettingPlainTextValue method.
         Args:
@@ -231,7 +229,7 @@ class DeviceConfigurationItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -252,7 +250,7 @@ class DeviceConfigurationItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -278,7 +276,7 @@ class DeviceConfigurationItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -317,7 +315,7 @@ class DeviceConfigurationItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -332,7 +330,7 @@ class DeviceConfigurationItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

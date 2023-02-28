@@ -9,7 +9,7 @@ class IosiPadOSWebClip(mobile_app.MobileApp):
     @property
     def app_url(self,) -> Optional[str]:
         """
-        Gets the appUrl property value. Indicates iOS/iPadOS web clip app URL. Example: "https://www.contoso.com"
+        Gets the appUrl property value. Indicates iOS/iPadOS web clip app URL. Example: 'https://www.contoso.com'
         Returns: Optional[str]
         """
         return self._app_url
@@ -17,7 +17,7 @@ class IosiPadOSWebClip(mobile_app.MobileApp):
     @app_url.setter
     def app_url(self,value: Optional[str] = None) -> None:
         """
-        Sets the appUrl property value. Indicates iOS/iPadOS web clip app URL. Example: "https://www.contoso.com"
+        Sets the appUrl property value. Indicates iOS/iPadOS web clip app URL. Example: 'https://www.contoso.com'
         Args:
             value: Value to set for the app_url property.
         """
@@ -29,7 +29,7 @@ class IosiPadOSWebClip(mobile_app.MobileApp):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.iosiPadOSWebClip"
-        # Indicates iOS/iPadOS web clip app URL. Example: "https://www.contoso.com"
+        # Indicates iOS/iPadOS web clip app URL. Example: 'https://www.contoso.com'
         self._app_url: Optional[str] = None
         # Whether or not to use managed browser. When TRUE, the app will be required to be opened in Microsoft Edge. When FALSE, the app will not be required to be opened in Microsoft Edge. By default, this property is set to FALSE.
         self._use_managed_browser: Optional[bool] = None

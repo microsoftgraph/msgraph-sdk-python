@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
+confirm_compromised_request_builder = lazy_import('msgraph.generated.identity_protection.risky_service_principals.confirm_compromised.confirm_compromised_request_builder')
 count_request_builder = lazy_import('msgraph.generated.identity_protection.risky_service_principals.count.count_request_builder')
-confirm_compromised_request_builder = lazy_import('msgraph.generated.identity_protection.risky_service_principals.microsoft_graph_confirm_compromised.confirm_compromised_request_builder')
-dismiss_request_builder = lazy_import('msgraph.generated.identity_protection.risky_service_principals.microsoft_graph_dismiss.dismiss_request_builder')
+dismiss_request_builder = lazy_import('msgraph.generated.identity_protection.risky_service_principals.dismiss.dismiss_request_builder')
 risky_service_principal = lazy_import('msgraph.generated.models.risky_service_principal')
 risky_service_principal_collection_response = lazy_import('msgraph.generated.models.risky_service_principal_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -22,6 +22,13 @@ class RiskyServicePrincipalsRequestBuilder():
     Provides operations to manage the riskyServicePrincipals property of the microsoft.graph.identityProtectionRoot entity.
     """
     @property
+    def confirm_compromised(self) -> confirm_compromised_request_builder.ConfirmCompromisedRequestBuilder:
+        """
+        Provides operations to call the confirmCompromised method.
+        """
+        return confirm_compromised_request_builder.ConfirmCompromisedRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
@@ -29,14 +36,7 @@ class RiskyServicePrincipalsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_confirm_compromised(self) -> confirm_compromised_request_builder.ConfirmCompromisedRequestBuilder:
-        """
-        Provides operations to call the confirmCompromised method.
-        """
-        return confirm_compromised_request_builder.ConfirmCompromisedRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_dismiss(self) -> dismiss_request_builder.DismissRequestBuilder:
+    def dismiss(self) -> dismiss_request_builder.DismissRequestBuilder:
         """
         Provides operations to call the dismiss method.
         """
@@ -110,7 +110,7 @@ class RiskyServicePrincipalsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -131,7 +131,7 @@ class RiskyServicePrincipalsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -201,7 +201,7 @@ class RiskyServicePrincipalsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -216,7 +216,7 @@ class RiskyServicePrincipalsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

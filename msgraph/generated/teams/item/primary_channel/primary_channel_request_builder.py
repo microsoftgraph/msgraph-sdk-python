@@ -12,15 +12,15 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 channel = lazy_import('msgraph.generated.models.channel')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+complete_migration_request_builder = lazy_import('msgraph.generated.teams.item.primary_channel.complete_migration.complete_migration_request_builder')
+does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder = lazy_import('msgraph.generated.teams.item.primary_channel.does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name.does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder')
 files_folder_request_builder = lazy_import('msgraph.generated.teams.item.primary_channel.files_folder.files_folder_request_builder')
 members_request_builder = lazy_import('msgraph.generated.teams.item.primary_channel.members.members_request_builder')
 conversation_member_item_request_builder = lazy_import('msgraph.generated.teams.item.primary_channel.members.item.conversation_member_item_request_builder')
 messages_request_builder = lazy_import('msgraph.generated.teams.item.primary_channel.messages.messages_request_builder')
 chat_message_item_request_builder = lazy_import('msgraph.generated.teams.item.primary_channel.messages.item.chat_message_item_request_builder')
-complete_migration_request_builder = lazy_import('msgraph.generated.teams.item.primary_channel.microsoft_graph_complete_migration.complete_migration_request_builder')
-does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder = lazy_import('msgraph.generated.teams.item.primary_channel.microsoft_graph_does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name.does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder')
-provision_email_request_builder = lazy_import('msgraph.generated.teams.item.primary_channel.microsoft_graph_provision_email.provision_email_request_builder')
-remove_email_request_builder = lazy_import('msgraph.generated.teams.item.primary_channel.microsoft_graph_remove_email.remove_email_request_builder')
+provision_email_request_builder = lazy_import('msgraph.generated.teams.item.primary_channel.provision_email.provision_email_request_builder')
+remove_email_request_builder = lazy_import('msgraph.generated.teams.item.primary_channel.remove_email.remove_email_request_builder')
 shared_with_teams_request_builder = lazy_import('msgraph.generated.teams.item.primary_channel.shared_with_teams.shared_with_teams_request_builder')
 shared_with_channel_team_info_item_request_builder = lazy_import('msgraph.generated.teams.item.primary_channel.shared_with_teams.item.shared_with_channel_team_info_item_request_builder')
 tabs_request_builder = lazy_import('msgraph.generated.teams.item.primary_channel.tabs.tabs_request_builder')
@@ -30,6 +30,20 @@ class PrimaryChannelRequestBuilder():
     """
     Provides operations to manage the primaryChannel property of the microsoft.graph.team entity.
     """
+    @property
+    def complete_migration(self) -> complete_migration_request_builder.CompleteMigrationRequestBuilder:
+        """
+        Provides operations to call the completeMigration method.
+        """
+        return complete_migration_request_builder.CompleteMigrationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name(self) -> does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder.DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder:
+        """
+        Provides operations to call the doesUserHaveAccess method.
+        """
+        return does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder.DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @property
     def files_folder(self) -> files_folder_request_builder.FilesFolderRequestBuilder:
         """
@@ -52,28 +66,14 @@ class PrimaryChannelRequestBuilder():
         return messages_request_builder.MessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_complete_migration(self) -> complete_migration_request_builder.CompleteMigrationRequestBuilder:
-        """
-        Provides operations to call the completeMigration method.
-        """
-        return complete_migration_request_builder.CompleteMigrationRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name(self) -> does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder.DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder:
-        """
-        Provides operations to call the doesUserHaveAccess method.
-        """
-        return does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder.DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_provision_email(self) -> provision_email_request_builder.ProvisionEmailRequestBuilder:
+    def provision_email(self) -> provision_email_request_builder.ProvisionEmailRequestBuilder:
         """
         Provides operations to call the provisionEmail method.
         """
         return provision_email_request_builder.ProvisionEmailRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_remove_email(self) -> remove_email_request_builder.RemoveEmailRequestBuilder:
+    def remove_email(self) -> remove_email_request_builder.RemoveEmailRequestBuilder:
         """
         Provides operations to call the removeEmail method.
         """
@@ -246,7 +246,7 @@ class PrimaryChannelRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -267,7 +267,7 @@ class PrimaryChannelRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -280,7 +280,7 @@ class PrimaryChannelRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -319,7 +319,7 @@ class PrimaryChannelRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -334,7 +334,7 @@ class PrimaryChannelRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

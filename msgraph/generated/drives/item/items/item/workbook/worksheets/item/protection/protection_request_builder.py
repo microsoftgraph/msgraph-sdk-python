@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-protect_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.protection.microsoft_graph_protect.protect_request_builder')
-unprotect_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.protection.microsoft_graph_unprotect.unprotect_request_builder')
+protect_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.protection.protect.protect_request_builder')
+unprotect_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.protection.unprotect.unprotect_request_builder')
 workbook_worksheet_protection = lazy_import('msgraph.generated.models.workbook_worksheet_protection')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -20,14 +20,14 @@ class ProtectionRequestBuilder():
     Provides operations to manage the protection property of the microsoft.graph.workbookWorksheet entity.
     """
     @property
-    def microsoft_graph_protect(self) -> protect_request_builder.ProtectRequestBuilder:
+    def protect(self) -> protect_request_builder.ProtectRequestBuilder:
         """
         Provides operations to call the protect method.
         """
         return protect_request_builder.ProtectRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_unprotect(self) -> unprotect_request_builder.UnprotectRequestBuilder:
+    def unprotect(self) -> unprotect_request_builder.UnprotectRequestBuilder:
         """
         Provides operations to call the unprotect method.
         """
@@ -134,7 +134,7 @@ class ProtectionRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -155,7 +155,7 @@ class ProtectionRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -168,7 +168,7 @@ class ProtectionRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -207,7 +207,7 @@ class ProtectionRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -222,7 +222,7 @@ class ProtectionRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

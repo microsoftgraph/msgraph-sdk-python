@@ -104,7 +104,7 @@ class EducationClass(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new educationClass and sets the default values.
+        Instantiates a new EducationClass and sets the default values.
         """
         super().__init__()
         # All categories associated with this class. Nullable.

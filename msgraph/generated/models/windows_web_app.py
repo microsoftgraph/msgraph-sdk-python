@@ -9,7 +9,7 @@ class WindowsWebApp(mobile_app.MobileApp):
     @property
     def app_url(self,) -> Optional[str]:
         """
-        Gets the appUrl property value. Indicates the Windows web app URL. Example: "https://www.contoso.com"
+        Gets the appUrl property value. Indicates the Windows web app URL. Example: 'https://www.contoso.com'
         Returns: Optional[str]
         """
         return self._app_url
@@ -17,7 +17,7 @@ class WindowsWebApp(mobile_app.MobileApp):
     @app_url.setter
     def app_url(self,value: Optional[str] = None) -> None:
         """
-        Sets the appUrl property value. Indicates the Windows web app URL. Example: "https://www.contoso.com"
+        Sets the appUrl property value. Indicates the Windows web app URL. Example: 'https://www.contoso.com'
         Args:
             value: Value to set for the app_url property.
         """
@@ -29,7 +29,7 @@ class WindowsWebApp(mobile_app.MobileApp):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.windowsWebApp"
-        # Indicates the Windows web app URL. Example: "https://www.contoso.com"
+        # Indicates the Windows web app URL. Example: 'https://www.contoso.com'
         self._app_url: Optional[str] = None
     
     @staticmethod

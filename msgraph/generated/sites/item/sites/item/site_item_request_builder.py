@@ -17,13 +17,12 @@ class SiteItemRequestBuilder():
     """
     Provides operations to manage the sites property of the microsoft.graph.site entity.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, site_id1: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SiteItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            siteId1: key: id of site
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -33,7 +32,6 @@ class SiteItemRequestBuilder():
         self.url_template: str = "{+baseurl}/sites/{site%2Did}/sites/{site%2Did1}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["site%2Did1"] = siteId1
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -66,7 +64,7 @@ class SiteItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -106,7 +104,7 @@ class SiteItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

@@ -11,11 +11,11 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 content_request_builder = lazy_import('msgraph.generated.me.onenote.notebooks.item.sections.item.pages.item.content.content_request_builder')
-copy_to_section_request_builder = lazy_import('msgraph.generated.me.onenote.notebooks.item.sections.item.pages.item.microsoft_graph_copy_to_section.copy_to_section_request_builder')
-onenote_patch_content_request_builder = lazy_import('msgraph.generated.me.onenote.notebooks.item.sections.item.pages.item.microsoft_graph_onenote_patch_content.onenote_patch_content_request_builder')
-preview_request_builder = lazy_import('msgraph.generated.me.onenote.notebooks.item.sections.item.pages.item.microsoft_graph_preview.preview_request_builder')
+copy_to_section_request_builder = lazy_import('msgraph.generated.me.onenote.notebooks.item.sections.item.pages.item.copy_to_section.copy_to_section_request_builder')
+onenote_patch_content_request_builder = lazy_import('msgraph.generated.me.onenote.notebooks.item.sections.item.pages.item.onenote_patch_content.onenote_patch_content_request_builder')
 parent_notebook_request_builder = lazy_import('msgraph.generated.me.onenote.notebooks.item.sections.item.pages.item.parent_notebook.parent_notebook_request_builder')
 parent_section_request_builder = lazy_import('msgraph.generated.me.onenote.notebooks.item.sections.item.pages.item.parent_section.parent_section_request_builder')
+preview_request_builder = lazy_import('msgraph.generated.me.onenote.notebooks.item.sections.item.pages.item.preview.preview_request_builder')
 onenote_page = lazy_import('msgraph.generated.models.onenote_page')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -31,25 +31,18 @@ class OnenotePageItemRequestBuilder():
         return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_copy_to_section(self) -> copy_to_section_request_builder.CopyToSectionRequestBuilder:
+    def copy_to_section(self) -> copy_to_section_request_builder.CopyToSectionRequestBuilder:
         """
         Provides operations to call the copyToSection method.
         """
         return copy_to_section_request_builder.CopyToSectionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_onenote_patch_content(self) -> onenote_patch_content_request_builder.OnenotePatchContentRequestBuilder:
+    def onenote_patch_content(self) -> onenote_patch_content_request_builder.OnenotePatchContentRequestBuilder:
         """
         Provides operations to call the onenotePatchContent method.
         """
         return onenote_patch_content_request_builder.OnenotePatchContentRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_preview(self) -> preview_request_builder.PreviewRequestBuilder:
-        """
-        Provides operations to call the preview method.
-        """
-        return preview_request_builder.PreviewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def parent_notebook(self) -> parent_notebook_request_builder.ParentNotebookRequestBuilder:
@@ -65,11 +58,17 @@ class OnenotePageItemRequestBuilder():
         """
         return parent_section_request_builder.ParentSectionRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, onenote_page_id: Optional[str] = None) -> None:
+    @property
+    def preview(self) -> preview_request_builder.PreviewRequestBuilder:
+        """
+        Provides operations to call the preview method.
+        """
+        return preview_request_builder.PreviewRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new OnenotePageItemRequestBuilder and sets the default values.
         Args:
-            onenotePageId: key: id of onenotePage
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -81,7 +80,6 @@ class OnenotePageItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/onenote/notebooks/{notebook%2Did}/sections/{onenoteSection%2Did}/pages/{onenotePage%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["onenotePage%2Did"] = onenotePageId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -168,7 +166,7 @@ class OnenotePageItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -189,7 +187,7 @@ class OnenotePageItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -202,7 +200,7 @@ class OnenotePageItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -241,7 +239,7 @@ class OnenotePageItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -256,7 +254,7 @@ class OnenotePageItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

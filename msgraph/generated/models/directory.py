@@ -7,6 +7,7 @@ administrative_unit = lazy_import('msgraph.generated.models.administrative_unit'
 directory_object = lazy_import('msgraph.generated.models.directory_object')
 entity = lazy_import('msgraph.generated.models.entity')
 identity_provider_base = lazy_import('msgraph.generated.models.identity_provider_base')
+on_premises_directory_synchronization = lazy_import('msgraph.generated.models.on_premises_directory_synchronization')
 
 class Directory(entity.Entity):
     @property
@@ -39,6 +40,8 @@ class Directory(entity.Entity):
         self._federation_configurations: Optional[List[identity_provider_base.IdentityProviderBase]] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
+        # A container for on-premises directory synchronization functionalities that are available for the organization.
+        self._on_premises_synchronization: Optional[List[on_premises_directory_synchronization.OnPremisesDirectorySynchronization]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Directory:
@@ -95,10 +98,28 @@ class Directory(entity.Entity):
             "administrativeUnits": lambda n : setattr(self, 'administrative_units', n.get_collection_of_object_values(administrative_unit.AdministrativeUnit)),
             "deletedItems": lambda n : setattr(self, 'deleted_items', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "federationConfigurations": lambda n : setattr(self, 'federation_configurations', n.get_collection_of_object_values(identity_provider_base.IdentityProviderBase)),
+            "onPremisesSynchronization": lambda n : setattr(self, 'on_premises_synchronization', n.get_collection_of_object_values(on_premises_directory_synchronization.OnPremisesDirectorySynchronization)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
+    
+    @property
+    def on_premises_synchronization(self,) -> Optional[List[on_premises_directory_synchronization.OnPremisesDirectorySynchronization]]:
+        """
+        Gets the onPremisesSynchronization property value. A container for on-premises directory synchronization functionalities that are available for the organization.
+        Returns: Optional[List[on_premises_directory_synchronization.OnPremisesDirectorySynchronization]]
+        """
+        return self._on_premises_synchronization
+    
+    @on_premises_synchronization.setter
+    def on_premises_synchronization(self,value: Optional[List[on_premises_directory_synchronization.OnPremisesDirectorySynchronization]] = None) -> None:
+        """
+        Sets the onPremisesSynchronization property value. A container for on-premises directory synchronization functionalities that are available for the organization.
+        Args:
+            value: Value to set for the on_premises_synchronization property.
+        """
+        self._on_premises_synchronization = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """
@@ -112,5 +133,6 @@ class Directory(entity.Entity):
         writer.write_collection_of_object_values("administrativeUnits", self.administrative_units)
         writer.write_collection_of_object_values("deletedItems", self.deleted_items)
         writer.write_collection_of_object_values("federationConfigurations", self.federation_configurations)
+        writer.write_collection_of_object_values("onPremisesSynchronization", self.on_premises_synchronization)
     
 

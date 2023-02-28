@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.count.count_request_builder')
-filter_by_current_user_with_on_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.microsoft_graph_filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder')
+filter_by_current_user_with_on_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder')
 access_package_assignment_request = lazy_import('msgraph.generated.models.access_package_assignment_request')
 access_package_assignment_request_collection_response = lazy_import('msgraph.generated.models.access_package_assignment_request_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -45,6 +45,17 @@ class AssignmentRequestsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
+        """
+        Provides operations to call the filterByCurrentUser method.
+        Args:
+            on: Usage: on='{on}'
+        Returns: filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder
+        """
+        if on is None:
+            raise Exception("on cannot be undefined")
+        return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
+    
     async def get(self,request_configuration: Optional[AssignmentRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_assignment_request_collection_response.AccessPackageAssignmentRequestCollectionResponse]:
         """
         In Azure AD entitlement management, retrieve a list of accessPackageAssignmentRequest objects.  The resulting list includes all the assignment requests, current and well as expired, that the caller has access to read, across all catalogs and access packages.
@@ -63,20 +74,9 @@ class AssignmentRequestsRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_package_assignment_request_collection_response.AccessPackageAssignmentRequestCollectionResponse, error_mapping)
     
-    def microsoft_graph_filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
-        """
-        Provides operations to call the filterByCurrentUser method.
-        Args:
-            on: Usage: on='{on}'
-        Returns: filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder
-        """
-        if on is None:
-            raise Exception("on cannot be undefined")
-        return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
-    
     async def post(self,body: Optional[access_package_assignment_request.AccessPackageAssignmentRequest] = None, request_configuration: Optional[AssignmentRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[access_package_assignment_request.AccessPackageAssignmentRequest]:
         """
-        In Azure AD Entitlement Management, create a new accessPackageAssignmentRequest object.  This operation is used to assign a user to an access package, or to remove an access package assignment.
+        In Azure AD Entitlement Management, create a new accessPackageAssignmentRequest object.  This operation is used to assign a user to an access package, update the assignment, or to remove an access package assignment.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -106,7 +106,7 @@ class AssignmentRequestsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -115,7 +115,7 @@ class AssignmentRequestsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[access_package_assignment_request.AccessPackageAssignmentRequest] = None, request_configuration: Optional[AssignmentRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        In Azure AD Entitlement Management, create a new accessPackageAssignmentRequest object.  This operation is used to assign a user to an access package, or to remove an access package assignment.
+        In Azure AD Entitlement Management, create a new accessPackageAssignmentRequest object.  This operation is used to assign a user to an access package, update the assignment, or to remove an access package assignment.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -127,7 +127,7 @@ class AssignmentRequestsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -197,7 +197,7 @@ class AssignmentRequestsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -212,7 +212,7 @@ class AssignmentRequestsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

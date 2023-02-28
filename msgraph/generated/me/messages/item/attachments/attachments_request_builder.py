@@ -11,7 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.me.messages.item.attachments.count.count_request_builder')
-create_upload_session_request_builder = lazy_import('msgraph.generated.me.messages.item.attachments.microsoft_graph_create_upload_session.create_upload_session_request_builder')
+create_upload_session_request_builder = lazy_import('msgraph.generated.me.messages.item.attachments.create_upload_session.create_upload_session_request_builder')
 attachment = lazy_import('msgraph.generated.models.attachment')
 attachment_collection_response = lazy_import('msgraph.generated.models.attachment_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -28,7 +28,7 @@ class AttachmentsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_create_upload_session(self) -> create_upload_session_request_builder.CreateUploadSessionRequestBuilder:
+    def create_upload_session(self) -> create_upload_session_request_builder.CreateUploadSessionRequestBuilder:
         """
         Provides operations to call the createUploadSession method.
         """
@@ -54,7 +54,7 @@ class AttachmentsRequestBuilder():
     
     async def get(self,request_configuration: Optional[AttachmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[attachment_collection_response.AttachmentCollectionResponse]:
         """
-        Retrieve a list of attachment objects.
+        Retrieve a list of attachment objects attached to a message.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[attachment_collection_response.AttachmentCollectionResponse]
@@ -93,7 +93,7 @@ class AttachmentsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AttachmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of attachment objects.
+        Retrieve a list of attachment objects attached to a message.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -102,7 +102,7 @@ class AttachmentsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -123,7 +123,7 @@ class AttachmentsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -133,7 +133,7 @@ class AttachmentsRequestBuilder():
     @dataclass
     class AttachmentsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of attachment objects.
+        Retrieve a list of attachment objects attached to a message.
         """
         # Include count of items
         count: Optional[bool] = None
@@ -188,7 +188,7 @@ class AttachmentsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -203,7 +203,7 @@ class AttachmentsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

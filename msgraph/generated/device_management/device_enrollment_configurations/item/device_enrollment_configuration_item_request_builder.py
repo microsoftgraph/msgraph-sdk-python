@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
+assign_request_builder = lazy_import('msgraph.generated.device_management.device_enrollment_configurations.item.assign.assign_request_builder')
 assignments_request_builder = lazy_import('msgraph.generated.device_management.device_enrollment_configurations.item.assignments.assignments_request_builder')
 enrollment_configuration_assignment_item_request_builder = lazy_import('msgraph.generated.device_management.device_enrollment_configurations.item.assignments.item.enrollment_configuration_assignment_item_request_builder')
-assign_request_builder = lazy_import('msgraph.generated.device_management.device_enrollment_configurations.item.microsoft_graph_assign.assign_request_builder')
-set_priority_request_builder = lazy_import('msgraph.generated.device_management.device_enrollment_configurations.item.microsoft_graph_set_priority.set_priority_request_builder')
+set_priority_request_builder = lazy_import('msgraph.generated.device_management.device_enrollment_configurations.item.set_priority.set_priority_request_builder')
 device_enrollment_configuration = lazy_import('msgraph.generated.models.device_enrollment_configuration')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -22,6 +22,13 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
     Provides operations to manage the deviceEnrollmentConfigurations property of the microsoft.graph.deviceManagement entity.
     """
     @property
+    def assign(self) -> assign_request_builder.AssignRequestBuilder:
+        """
+        Provides operations to call the assign method.
+        """
+        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.deviceEnrollmentConfiguration entity.
@@ -29,14 +36,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
         return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_assign(self) -> assign_request_builder.AssignRequestBuilder:
-        """
-        Provides operations to call the assign method.
-        """
-        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_set_priority(self) -> set_priority_request_builder.SetPriorityRequestBuilder:
+    def set_priority(self) -> set_priority_request_builder.SetPriorityRequestBuilder:
         """
         Provides operations to call the setPriority method.
         """
@@ -55,11 +55,10 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
         url_tpl_params["enrollmentConfigurationAssignment%2Did"] = id
         return enrollment_configuration_assignment_item_request_builder.EnrollmentConfigurationAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, device_enrollment_configuration_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DeviceEnrollmentConfigurationItemRequestBuilder and sets the default values.
         Args:
-            deviceEnrollmentConfigurationId: key: id of deviceEnrollmentConfiguration
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -71,7 +70,6 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/deviceManagement/deviceEnrollmentConfigurations/{deviceEnrollmentConfiguration%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["deviceEnrollmentConfiguration%2Did"] = deviceEnrollmentConfigurationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -158,7 +156,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -179,7 +177,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -192,7 +190,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -231,7 +229,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -246,7 +244,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

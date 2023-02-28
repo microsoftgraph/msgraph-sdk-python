@@ -10,7 +10,7 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-download_apple_push_notification_certificate_signing_request_request_builder = lazy_import('msgraph.generated.device_management.apple_push_notification_certificate.microsoft_graph_download_apple_push_notification_certificate_signing_request.download_apple_push_notification_certificate_signing_request_request_builder')
+download_apple_push_notification_certificate_signing_request_request_builder = lazy_import('msgraph.generated.device_management.apple_push_notification_certificate.download_apple_push_notification_certificate_signing_request.download_apple_push_notification_certificate_signing_request_request_builder')
 apple_push_notification_certificate = lazy_import('msgraph.generated.models.apple_push_notification_certificate')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -19,7 +19,7 @@ class ApplePushNotificationCertificateRequestBuilder():
     Provides operations to manage the applePushNotificationCertificate property of the microsoft.graph.deviceManagement entity.
     """
     @property
-    def microsoft_graph_download_apple_push_notification_certificate_signing_request(self) -> download_apple_push_notification_certificate_signing_request_request_builder.DownloadApplePushNotificationCertificateSigningRequestRequestBuilder:
+    def download_apple_push_notification_certificate_signing_request(self) -> download_apple_push_notification_certificate_signing_request_request_builder.DownloadApplePushNotificationCertificateSigningRequestRequestBuilder:
         """
         Provides operations to call the downloadApplePushNotificationCertificateSigningRequest method.
         """
@@ -126,7 +126,7 @@ class ApplePushNotificationCertificateRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -147,7 +147,7 @@ class ApplePushNotificationCertificateRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -160,7 +160,7 @@ class ApplePushNotificationCertificateRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -199,7 +199,7 @@ class ApplePushNotificationCertificateRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -214,7 +214,7 @@ class ApplePushNotificationCertificateRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

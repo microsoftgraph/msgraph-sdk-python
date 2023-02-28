@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 add_in = lazy_import('msgraph.generated.models.add_in')
 api_application = lazy_import('msgraph.generated.models.api_application')
+app_management_policy = lazy_import('msgraph.generated.models.app_management_policy')
 app_role = lazy_import('msgraph.generated.models.app_role')
 certification = lazy_import('msgraph.generated.models.certification')
 directory_object = lazy_import('msgraph.generated.models.directory_object')
@@ -79,6 +80,23 @@ class Application(directory_object.DirectoryObject):
         self._app_id = value
     
     @property
+    def app_management_policies(self,) -> Optional[List[app_management_policy.AppManagementPolicy]]:
+        """
+        Gets the appManagementPolicies property value. The appManagementPolicies property
+        Returns: Optional[List[app_management_policy.AppManagementPolicy]]
+        """
+        return self._app_management_policies
+    
+    @app_management_policies.setter
+    def app_management_policies(self,value: Optional[List[app_management_policy.AppManagementPolicy]] = None) -> None:
+        """
+        Sets the appManagementPolicies property value. The appManagementPolicies property
+        Args:
+            value: Value to set for the app_management_policies property.
+        """
+        self._app_management_policies = value
+    
+    @property
     def app_roles(self,) -> Optional[List[app_role.AppRole]]:
         """
         Gets the appRoles property value. The collection of roles defined for the application. With app role assignments, these roles can be assigned to users, groups, or service principals associated with other applications. Not nullable.
@@ -141,6 +159,8 @@ class Application(directory_object.DirectoryObject):
         self._api: Optional[api_application.ApiApplication] = None
         # The unique identifier for the application that is assigned to an application by Azure AD. Not nullable. Read-only. Supports $filter (eq).
         self._app_id: Optional[str] = None
+        # The appManagementPolicies property
+        self._app_management_policies: Optional[List[app_management_policy.AppManagementPolicy]] = None
         # The collection of roles defined for the application. With app role assignments, these roles can be assigned to users, groups, or service principals associated with other applications. Not nullable.
         self._app_roles: Optional[List[app_role.AppRole]] = None
         # Unique identifier of the applicationTemplate. Supports $filter (eq, not, ne).
@@ -378,6 +398,7 @@ class Application(directory_object.DirectoryObject):
             "api": lambda n : setattr(self, 'api', n.get_object_value(api_application.ApiApplication)),
             "applicationTemplateId": lambda n : setattr(self, 'application_template_id', n.get_str_value()),
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "appManagementPolicies": lambda n : setattr(self, 'app_management_policies', n.get_collection_of_object_values(app_management_policy.AppManagementPolicy)),
             "appRoles": lambda n : setattr(self, 'app_roles', n.get_collection_of_object_values(app_role.AppRole)),
             "certification": lambda n : setattr(self, 'certification', n.get_object_value(certification.Certification)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
@@ -757,6 +778,7 @@ class Application(directory_object.DirectoryObject):
         writer.write_object_value("api", self.api)
         writer.write_str_value("applicationTemplateId", self.application_template_id)
         writer.write_str_value("appId", self.app_id)
+        writer.write_collection_of_object_values("appManagementPolicies", self.app_management_policies)
         writer.write_collection_of_object_values("appRoles", self.app_roles)
         writer.write_object_value("certification", self.certification)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

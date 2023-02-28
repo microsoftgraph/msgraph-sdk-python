@@ -3,6 +3,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
+deleted_team = lazy_import('msgraph.generated.models.deleted_team')
 entity = lazy_import('msgraph.generated.models.entity')
 workforce_integration = lazy_import('msgraph.generated.models.workforce_integration')
 
@@ -12,6 +13,8 @@ class Teamwork(entity.Entity):
         Instantiates a new Teamwork and sets the default values.
         """
         super().__init__()
+        # The deletedTeams property
+        self._deleted_teams: Optional[List[deleted_team.DeletedTeam]] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
         # The workforceIntegrations property
@@ -29,12 +32,30 @@ class Teamwork(entity.Entity):
             raise Exception("parse_node cannot be undefined")
         return Teamwork()
     
+    @property
+    def deleted_teams(self,) -> Optional[List[deleted_team.DeletedTeam]]:
+        """
+        Gets the deletedTeams property value. The deletedTeams property
+        Returns: Optional[List[deleted_team.DeletedTeam]]
+        """
+        return self._deleted_teams
+    
+    @deleted_teams.setter
+    def deleted_teams(self,value: Optional[List[deleted_team.DeletedTeam]] = None) -> None:
+        """
+        Sets the deletedTeams property value. The deletedTeams property
+        Args:
+            value: Value to set for the deleted_teams property.
+        """
+        self._deleted_teams = value
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
+            "deletedTeams": lambda n : setattr(self, 'deleted_teams', n.get_collection_of_object_values(deleted_team.DeletedTeam)),
             "workforceIntegrations": lambda n : setattr(self, 'workforce_integrations', n.get_collection_of_object_values(workforce_integration.WorkforceIntegration)),
         }
         super_fields = super().get_field_deserializers()
@@ -50,6 +71,7 @@ class Teamwork(entity.Entity):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
+        writer.write_collection_of_object_values("deletedTeams", self.deleted_teams)
         writer.write_collection_of_object_values("workforceIntegrations", self.workforce_integrations)
     
     @property

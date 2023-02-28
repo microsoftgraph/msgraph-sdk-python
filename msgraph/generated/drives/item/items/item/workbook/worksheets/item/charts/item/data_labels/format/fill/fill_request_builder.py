@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-clear_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.data_labels.format.fill.microsoft_graph_clear.clear_request_builder')
-set_solid_color_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.data_labels.format.fill.microsoft_graph_set_solid_color.set_solid_color_request_builder')
+clear_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.data_labels.format.fill.clear.clear_request_builder')
+set_solid_color_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.data_labels.format.fill.set_solid_color.set_solid_color_request_builder')
 workbook_chart_fill = lazy_import('msgraph.generated.models.workbook_chart_fill')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -20,14 +20,14 @@ class FillRequestBuilder():
     Provides operations to manage the fill property of the microsoft.graph.workbookChartDataLabelFormat entity.
     """
     @property
-    def microsoft_graph_clear(self) -> clear_request_builder.ClearRequestBuilder:
+    def clear(self) -> clear_request_builder.ClearRequestBuilder:
         """
         Provides operations to call the clear method.
         """
         return clear_request_builder.ClearRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_set_solid_color(self) -> set_solid_color_request_builder.SetSolidColorRequestBuilder:
+    def set_solid_color(self) -> set_solid_color_request_builder.SetSolidColorRequestBuilder:
         """
         Provides operations to call the setSolidColor method.
         """
@@ -134,7 +134,7 @@ class FillRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -155,7 +155,7 @@ class FillRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -168,7 +168,7 @@ class FillRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -207,7 +207,7 @@ class FillRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -222,7 +222,7 @@ class FillRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

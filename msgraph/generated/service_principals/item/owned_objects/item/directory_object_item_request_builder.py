@@ -12,56 +12,55 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 directory_object = lazy_import('msgraph.generated.models.directory_object')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-application_request_builder = lazy_import('msgraph.generated.service_principals.item.owned_objects.item.microsoft_graph_application.application_request_builder')
-app_role_assignment_request_builder = lazy_import('msgraph.generated.service_principals.item.owned_objects.item.microsoft_graph_app_role_assignment.app_role_assignment_request_builder')
-endpoint_request_builder = lazy_import('msgraph.generated.service_principals.item.owned_objects.item.microsoft_graph_endpoint.endpoint_request_builder')
-group_request_builder = lazy_import('msgraph.generated.service_principals.item.owned_objects.item.microsoft_graph_group.group_request_builder')
-service_principal_request_builder = lazy_import('msgraph.generated.service_principals.item.owned_objects.item.microsoft_graph_service_principal.service_principal_request_builder')
+graph_application_request_builder = lazy_import('msgraph.generated.service_principals.item.owned_objects.item.graph_application.graph_application_request_builder')
+graph_app_role_assignment_request_builder = lazy_import('msgraph.generated.service_principals.item.owned_objects.item.graph_app_role_assignment.graph_app_role_assignment_request_builder')
+graph_endpoint_request_builder = lazy_import('msgraph.generated.service_principals.item.owned_objects.item.graph_endpoint.graph_endpoint_request_builder')
+graph_group_request_builder = lazy_import('msgraph.generated.service_principals.item.owned_objects.item.graph_group.graph_group_request_builder')
+graph_service_principal_request_builder = lazy_import('msgraph.generated.service_principals.item.owned_objects.item.graph_service_principal.graph_service_principal_request_builder')
 
 class DirectoryObjectItemRequestBuilder():
     """
     Provides operations to manage the ownedObjects property of the microsoft.graph.servicePrincipal entity.
     """
     @property
-    def microsoft_graph_application(self) -> application_request_builder.ApplicationRequestBuilder:
+    def graph_application(self) -> graph_application_request_builder.GraphApplicationRequestBuilder:
         """
         Casts the previous resource to application.
         """
-        return application_request_builder.ApplicationRequestBuilder(self.request_adapter, self.path_parameters)
+        return graph_application_request_builder.GraphApplicationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_app_role_assignment(self) -> app_role_assignment_request_builder.AppRoleAssignmentRequestBuilder:
+    def graph_app_role_assignment(self) -> graph_app_role_assignment_request_builder.GraphAppRoleAssignmentRequestBuilder:
         """
         Casts the previous resource to appRoleAssignment.
         """
-        return app_role_assignment_request_builder.AppRoleAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
+        return graph_app_role_assignment_request_builder.GraphAppRoleAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_endpoint(self) -> endpoint_request_builder.EndpointRequestBuilder:
+    def graph_endpoint(self) -> graph_endpoint_request_builder.GraphEndpointRequestBuilder:
         """
         Casts the previous resource to endpoint.
         """
-        return endpoint_request_builder.EndpointRequestBuilder(self.request_adapter, self.path_parameters)
+        return graph_endpoint_request_builder.GraphEndpointRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_group(self) -> group_request_builder.GroupRequestBuilder:
+    def graph_group(self) -> graph_group_request_builder.GraphGroupRequestBuilder:
         """
         Casts the previous resource to group.
         """
-        return group_request_builder.GroupRequestBuilder(self.request_adapter, self.path_parameters)
+        return graph_group_request_builder.GraphGroupRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_service_principal(self) -> service_principal_request_builder.ServicePrincipalRequestBuilder:
+    def graph_service_principal(self) -> graph_service_principal_request_builder.GraphServicePrincipalRequestBuilder:
         """
         Casts the previous resource to servicePrincipal.
         """
-        return service_principal_request_builder.ServicePrincipalRequestBuilder(self.request_adapter, self.path_parameters)
+        return graph_service_principal_request_builder.GraphServicePrincipalRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, directory_object_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DirectoryObjectItemRequestBuilder and sets the default values.
         Args:
-            directoryObjectId: key: id of directoryObject
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -73,7 +72,6 @@ class DirectoryObjectItemRequestBuilder():
         self.url_template: str = "{+baseurl}/servicePrincipals/{servicePrincipal%2Did}/ownedObjects/{directoryObject%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["directoryObject%2Did"] = directoryObjectId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -106,7 +104,7 @@ class DirectoryObjectItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -146,7 +144,7 @@ class DirectoryObjectItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

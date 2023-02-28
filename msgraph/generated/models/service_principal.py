@@ -4,6 +4,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 add_in = lazy_import('msgraph.generated.models.add_in')
+app_management_policy = lazy_import('msgraph.generated.models.app_management_policy')
 app_role = lazy_import('msgraph.generated.models.app_role')
 app_role_assignment = lazy_import('msgraph.generated.models.app_role_assignment')
 claims_mapping_policy = lazy_import('msgraph.generated.models.claims_mapping_policy')
@@ -125,6 +126,23 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the app_id property.
         """
         self._app_id = value
+    
+    @property
+    def app_management_policies(self,) -> Optional[List[app_management_policy.AppManagementPolicy]]:
+        """
+        Gets the appManagementPolicies property value. The appManagementPolicies property
+        Returns: Optional[List[app_management_policy.AppManagementPolicy]]
+        """
+        return self._app_management_policies
+    
+    @app_management_policies.setter
+    def app_management_policies(self,value: Optional[List[app_management_policy.AppManagementPolicy]] = None) -> None:
+        """
+        Sets the appManagementPolicies property value. The appManagementPolicies property
+        Args:
+            value: Value to set for the app_management_policies property.
+        """
+        self._app_management_policies = value
     
     @property
     def app_owner_organization_id(self,) -> Optional[Guid]:
@@ -263,6 +281,8 @@ class ServicePrincipal(directory_object.DirectoryObject):
         self._app_display_name: Optional[str] = None
         # The unique identifier for the associated application (its appId property). Supports $filter (eq, ne, not, in, startsWith).
         self._app_id: Optional[str] = None
+        # The appManagementPolicies property
+        self._app_management_policies: Optional[List[app_management_policy.AppManagementPolicy]] = None
         # Contains the tenant id where the application is registered. This is applicable only to service principals backed by applications. Supports $filter (eq, ne, NOT, ge, le).
         self._app_owner_organization_id: Optional[Guid] = None
         # App role assignments for this app or service, granted to users, groups, and other service principals. Supports $expand.
@@ -492,6 +512,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             "appDescription": lambda n : setattr(self, 'app_description', n.get_str_value()),
             "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
+            "appManagementPolicies": lambda n : setattr(self, 'app_management_policies', n.get_collection_of_object_values(app_management_policy.AppManagementPolicy)),
             "appOwnerOrganizationId": lambda n : setattr(self, 'app_owner_organization_id', n.get_object_value(Guid)),
             "appRoles": lambda n : setattr(self, 'app_roles', n.get_collection_of_object_values(app_role.AppRole)),
             "appRoleAssignedTo": lambda n : setattr(self, 'app_role_assigned_to', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
@@ -877,6 +898,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         writer.write_str_value("appDescription", self.app_description)
         writer.write_str_value("appDisplayName", self.app_display_name)
         writer.write_str_value("appId", self.app_id)
+        writer.write_collection_of_object_values("appManagementPolicies", self.app_management_policies)
         writer.write_object_value("appOwnerOrganizationId", self.app_owner_organization_id)
         writer.write_collection_of_object_values("appRoles", self.app_roles)
         writer.write_collection_of_object_values("appRoleAssignedTo", self.app_role_assigned_to)

@@ -11,8 +11,8 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.device_management.audit_events.count.count_request_builder')
-get_audit_activity_types_with_category_request_builder = lazy_import('msgraph.generated.device_management.audit_events.microsoft_graph_get_audit_activity_types_with_category.get_audit_activity_types_with_category_request_builder')
-get_audit_categories_request_builder = lazy_import('msgraph.generated.device_management.audit_events.microsoft_graph_get_audit_categories.get_audit_categories_request_builder')
+get_audit_activity_types_with_category_request_builder = lazy_import('msgraph.generated.device_management.audit_events.get_audit_activity_types_with_category.get_audit_activity_types_with_category_request_builder')
+get_audit_categories_request_builder = lazy_import('msgraph.generated.device_management.audit_events.get_audit_categories.get_audit_categories_request_builder')
 audit_event = lazy_import('msgraph.generated.models.audit_event')
 audit_event_collection_response = lazy_import('msgraph.generated.models.audit_event_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -29,7 +29,7 @@ class AuditEventsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_audit_categories(self) -> get_audit_categories_request_builder.GetAuditCategoriesRequestBuilder:
+    def get_audit_categories(self) -> get_audit_categories_request_builder.GetAuditCategoriesRequestBuilder:
         """
         Provides operations to call the getAuditCategories method.
         """
@@ -71,7 +71,7 @@ class AuditEventsRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, audit_event_collection_response.AuditEventCollectionResponse, error_mapping)
     
-    def microsoft_graph_get_audit_activity_types_with_category(self,category: Optional[str] = None) -> get_audit_activity_types_with_category_request_builder.GetAuditActivityTypesWithCategoryRequestBuilder:
+    def get_audit_activity_types_with_category(self,category: Optional[str] = None) -> get_audit_activity_types_with_category_request_builder.GetAuditActivityTypesWithCategoryRequestBuilder:
         """
         Provides operations to call the getAuditActivityTypes method.
         Args:
@@ -114,7 +114,7 @@ class AuditEventsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -135,7 +135,7 @@ class AuditEventsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -205,7 +205,7 @@ class AuditEventsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -220,7 +220,7 @@ class AuditEventsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

@@ -35,7 +35,7 @@ class MeetingParticipantInfo(AdditionalDataHolder, Parsable):
         self._identity: Optional[identity_set.IdentitySet] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-        # Specifies the participant's role in the meeting.  Possible values are attendee, presenter, producer, and unknownFutureValue.
+        # Specifies the participant's role in the meeting.
         self._role: Optional[online_meeting_role.OnlineMeetingRole] = None
         # User principal name of the participant.
         self._upn: Optional[str] = None
@@ -102,7 +102,7 @@ class MeetingParticipantInfo(AdditionalDataHolder, Parsable):
     @property
     def role(self,) -> Optional[online_meeting_role.OnlineMeetingRole]:
         """
-        Gets the role property value. Specifies the participant's role in the meeting.  Possible values are attendee, presenter, producer, and unknownFutureValue.
+        Gets the role property value. Specifies the participant's role in the meeting.
         Returns: Optional[online_meeting_role.OnlineMeetingRole]
         """
         return self._role
@@ -110,7 +110,7 @@ class MeetingParticipantInfo(AdditionalDataHolder, Parsable):
     @role.setter
     def role(self,value: Optional[online_meeting_role.OnlineMeetingRole] = None) -> None:
         """
-        Sets the role property value. Specifies the participant's role in the meeting.  Possible values are attendee, presenter, producer, and unknownFutureValue.
+        Sets the role property value. Specifies the participant's role in the meeting.
         Args:
             value: Value to set for the role property.
         """

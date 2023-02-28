@@ -15,11 +15,11 @@ access_package_item_request_builder = lazy_import('msgraph.generated.identity_go
 assignment_policies_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.catalogs.item.access_packages.item.assignment_policies.assignment_policies_request_builder')
 access_package_assignment_policy_item_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.catalogs.item.access_packages.item.assignment_policies.item.access_package_assignment_policy_item_request_builder')
 catalog_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.catalogs.item.access_packages.item.catalog.catalog_request_builder')
+get_applicable_policy_requirements_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.catalogs.item.access_packages.item.get_applicable_policy_requirements.get_applicable_policy_requirements_request_builder')
 incompatible_access_packages_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.catalogs.item.access_packages.item.incompatible_access_packages.incompatible_access_packages_request_builder')
 access_package_item_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.catalogs.item.access_packages.item.incompatible_access_packages.item.access_package_item_request_builder')
 incompatible_groups_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.catalogs.item.access_packages.item.incompatible_groups.incompatible_groups_request_builder')
 group_item_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.catalogs.item.access_packages.item.incompatible_groups.item.group_item_request_builder')
-get_applicable_policy_requirements_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.catalogs.item.access_packages.item.microsoft_graph_get_applicable_policy_requirements.get_applicable_policy_requirements_request_builder')
 access_package = lazy_import('msgraph.generated.models.access_package')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -49,6 +49,13 @@ class AccessPackageItemRequestBuilder():
         return catalog_request_builder.CatalogRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def get_applicable_policy_requirements(self) -> get_applicable_policy_requirements_request_builder.GetApplicablePolicyRequirementsRequestBuilder:
+        """
+        Provides operations to call the getApplicablePolicyRequirements method.
+        """
+        return get_applicable_policy_requirements_request_builder.GetApplicablePolicyRequirementsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def incompatible_access_packages(self) -> incompatible_access_packages_request_builder.IncompatibleAccessPackagesRequestBuilder:
         """
         Provides operations to manage the incompatibleAccessPackages property of the microsoft.graph.accessPackage entity.
@@ -61,13 +68,6 @@ class AccessPackageItemRequestBuilder():
         Provides operations to manage the incompatibleGroups property of the microsoft.graph.accessPackage entity.
         """
         return incompatible_groups_request_builder.IncompatibleGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_get_applicable_policy_requirements(self) -> get_applicable_policy_requirements_request_builder.GetApplicablePolicyRequirementsRequestBuilder:
-        """
-        Provides operations to call the getApplicablePolicyRequirements method.
-        """
-        return get_applicable_policy_requirements_request_builder.GetApplicablePolicyRequirementsRequestBuilder(self.request_adapter, self.path_parameters)
     
     def access_packages_incompatible_with_by_id(self,id: str) -> AccessPackageItemRequestBuilder:
         """
@@ -95,11 +95,10 @@ class AccessPackageItemRequestBuilder():
         url_tpl_params["accessPackageAssignmentPolicy%2Did"] = id
         return access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, access_package_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AccessPackageItemRequestBuilder and sets the default values.
         Args:
-            accessPackageId: key: id of accessPackage
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -111,7 +110,6 @@ class AccessPackageItemRequestBuilder():
         self.url_template: str = "{+baseurl}/identityGovernance/entitlementManagement/catalogs/{accessPackageCatalog%2Did}/accessPackages/{accessPackage%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["accessPackage%2Did"] = accessPackageId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -224,7 +222,7 @@ class AccessPackageItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -245,7 +243,7 @@ class AccessPackageItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -258,7 +256,7 @@ class AccessPackageItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -297,7 +295,7 @@ class AccessPackageItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -312,7 +310,7 @@ class AccessPackageItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

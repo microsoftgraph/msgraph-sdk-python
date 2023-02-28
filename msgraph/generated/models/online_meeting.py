@@ -12,9 +12,7 @@ item_body = lazy_import('msgraph.generated.models.item_body')
 join_meeting_id_settings = lazy_import('msgraph.generated.models.join_meeting_id_settings')
 lobby_bypass_settings = lazy_import('msgraph.generated.models.lobby_bypass_settings')
 meeting_attendance_report = lazy_import('msgraph.generated.models.meeting_attendance_report')
-meeting_chat_mode = lazy_import('msgraph.generated.models.meeting_chat_mode')
 meeting_participants = lazy_import('msgraph.generated.models.meeting_participants')
-online_meeting_presenters = lazy_import('msgraph.generated.models.online_meeting_presenters')
 
 class OnlineMeeting(entity.Entity):
     @property
@@ -52,23 +50,6 @@ class OnlineMeeting(entity.Entity):
         self._allow_attendee_to_enable_mic = value
     
     @property
-    def allow_meeting_chat(self,) -> Optional[meeting_chat_mode.MeetingChatMode]:
-        """
-        Gets the allowMeetingChat property value. Specifies the mode of meeting chat.
-        Returns: Optional[meeting_chat_mode.MeetingChatMode]
-        """
-        return self._allow_meeting_chat
-    
-    @allow_meeting_chat.setter
-    def allow_meeting_chat(self,value: Optional[meeting_chat_mode.MeetingChatMode] = None) -> None:
-        """
-        Sets the allowMeetingChat property value. Specifies the mode of meeting chat.
-        Args:
-            value: Value to set for the allow_meeting_chat property.
-        """
-        self._allow_meeting_chat = value
-    
-    @property
     def allow_teamwork_reactions(self,) -> Optional[bool]:
         """
         Gets the allowTeamworkReactions property value. Indicates whether Teams reactions are enabled for the meeting.
@@ -84,23 +65,6 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the allow_teamwork_reactions property.
         """
         self._allow_teamwork_reactions = value
-    
-    @property
-    def allowed_presenters(self,) -> Optional[online_meeting_presenters.OnlineMeetingPresenters]:
-        """
-        Gets the allowedPresenters property value. Specifies who can be a presenter in a meeting. Possible values are listed in the following table.
-        Returns: Optional[online_meeting_presenters.OnlineMeetingPresenters]
-        """
-        return self._allowed_presenters
-    
-    @allowed_presenters.setter
-    def allowed_presenters(self,value: Optional[online_meeting_presenters.OnlineMeetingPresenters] = None) -> None:
-        """
-        Sets the allowedPresenters property value. Specifies who can be a presenter in a meeting. Possible values are listed in the following table.
-        Args:
-            value: Value to set for the allowed_presenters property.
-        """
-        self._allowed_presenters = value
     
     @property
     def attendance_reports(self,) -> Optional[List[meeting_attendance_report.MeetingAttendanceReport]]:
@@ -196,12 +160,8 @@ class OnlineMeeting(entity.Entity):
         self._allow_attendee_to_enable_camera: Optional[bool] = None
         # Indicates whether attendees can turn on their microphone.
         self._allow_attendee_to_enable_mic: Optional[bool] = None
-        # Specifies the mode of meeting chat.
-        self._allow_meeting_chat: Optional[meeting_chat_mode.MeetingChatMode] = None
         # Indicates whether Teams reactions are enabled for the meeting.
         self._allow_teamwork_reactions: Optional[bool] = None
-        # Specifies who can be a presenter in a meeting. Possible values are listed in the following table.
-        self._allowed_presenters: Optional[online_meeting_presenters.OnlineMeetingPresenters] = None
         # The attendance reports of an online meeting. Read-only.
         self._attendance_reports: Optional[List[meeting_attendance_report.MeetingAttendanceReport]] = None
         # The content stream of the attendee report of a Microsoft Teams live event. Read-only.
@@ -312,10 +272,8 @@ class OnlineMeeting(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "allowedPresenters": lambda n : setattr(self, 'allowed_presenters', n.get_enum_value(online_meeting_presenters.OnlineMeetingPresenters)),
             "allowAttendeeToEnableCamera": lambda n : setattr(self, 'allow_attendee_to_enable_camera', n.get_bool_value()),
             "allowAttendeeToEnableMic": lambda n : setattr(self, 'allow_attendee_to_enable_mic', n.get_bool_value()),
-            "allowMeetingChat": lambda n : setattr(self, 'allow_meeting_chat', n.get_enum_value(meeting_chat_mode.MeetingChatMode)),
             "allowTeamworkReactions": lambda n : setattr(self, 'allow_teamwork_reactions', n.get_bool_value()),
             "attendanceReports": lambda n : setattr(self, 'attendance_reports', n.get_collection_of_object_values(meeting_attendance_report.MeetingAttendanceReport)),
             "attendeeReport": lambda n : setattr(self, 'attendee_report', n.get_bytes_value()),
@@ -486,10 +444,8 @@ class OnlineMeeting(entity.Entity):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-        writer.write_enum_value("allowedPresenters", self.allowed_presenters)
         writer.write_bool_value("allowAttendeeToEnableCamera", self.allow_attendee_to_enable_camera)
         writer.write_bool_value("allowAttendeeToEnableMic", self.allow_attendee_to_enable_mic)
-        writer.write_enum_value("allowMeetingChat", self.allow_meeting_chat)
         writer.write_bool_value("allowTeamworkReactions", self.allow_teamwork_reactions)
         writer.write_collection_of_object_values("attendanceReports", self.attendance_reports)
         writer.write_object_value("attendeeReport", self.attendee_report)

@@ -31,7 +31,7 @@ class DeviceAndAppManagementData(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The content property
+        # Not yet documented
         self._content: Optional[bytes] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
@@ -39,7 +39,7 @@ class DeviceAndAppManagementData(AdditionalDataHolder, Parsable):
     @property
     def content(self,) -> Optional[bytes]:
         """
-        Gets the content property value. The content property
+        Gets the content property value. Not yet documented
         Returns: Optional[bytes]
         """
         return self._content
@@ -47,7 +47,7 @@ class DeviceAndAppManagementData(AdditionalDataHolder, Parsable):
     @content.setter
     def content(self,value: Optional[bytes] = None) -> None:
         """
-        Sets the content property value. The content property
+        Sets the content property value. Not yet documented
         Args:
             value: Value to set for the content property.
         """

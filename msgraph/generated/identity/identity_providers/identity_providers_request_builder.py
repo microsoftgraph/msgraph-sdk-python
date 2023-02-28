@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
+available_provider_types_request_builder = lazy_import('msgraph.generated.identity.identity_providers.available_provider_types.available_provider_types_request_builder')
 count_request_builder = lazy_import('msgraph.generated.identity.identity_providers.count.count_request_builder')
-available_provider_types_request_builder = lazy_import('msgraph.generated.identity.identity_providers.microsoft_graph_available_provider_types.available_provider_types_request_builder')
 identity_provider_base = lazy_import('msgraph.generated.models.identity_provider_base')
 identity_provider_base_collection_response = lazy_import('msgraph.generated.models.identity_provider_base_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -21,18 +21,18 @@ class IdentityProvidersRequestBuilder():
     Provides operations to manage the identityProviders property of the microsoft.graph.identityContainer entity.
     """
     @property
+    def available_provider_types(self) -> available_provider_types_request_builder.AvailableProviderTypesRequestBuilder:
+        """
+        Provides operations to call the availableProviderTypes method.
+        """
+        return available_provider_types_request_builder.AvailableProviderTypesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_available_provider_types(self) -> available_provider_types_request_builder.AvailableProviderTypesRequestBuilder:
-        """
-        Provides operations to call the availableProviderTypes method.
-        """
-        return available_provider_types_request_builder.AvailableProviderTypesRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -72,7 +72,7 @@ class IdentityProvidersRequestBuilder():
     
     async def post(self,body: Optional[identity_provider_base.IdentityProviderBase] = None, request_configuration: Optional[IdentityProvidersRequestBuilderPostRequestConfiguration] = None) -> Optional[identity_provider_base.IdentityProviderBase]:
         """
-        Create an identity provider resource that is of the type specified in the request body. Among the types of providers derived from identityProviderBase, you can currently create a socialIdentityProvider resource in Azure AD. In Azure AD B2C, this operation can currently create a socialIdentityProvider, or an appleManagedIdentityProvider resource.
+        Create an identity provider object that is of the type specified in the request body. Among the types of providers derived from identityProviderBase, you can currently create a socialIdentityProvider resource in Azure AD. In Azure AD B2C, this operation can currently create a socialIdentityProvider, or an appleManagedIdentityProvider resource.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class IdentityProvidersRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -111,7 +111,7 @@ class IdentityProvidersRequestBuilder():
     
     def to_post_request_information(self,body: Optional[identity_provider_base.IdentityProviderBase] = None, request_configuration: Optional[IdentityProvidersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create an identity provider resource that is of the type specified in the request body. Among the types of providers derived from identityProviderBase, you can currently create a socialIdentityProvider resource in Azure AD. In Azure AD B2C, this operation can currently create a socialIdentityProvider, or an appleManagedIdentityProvider resource.
+        Create an identity provider object that is of the type specified in the request body. Among the types of providers derived from identityProviderBase, you can currently create a socialIdentityProvider resource in Azure AD. In Azure AD B2C, this operation can currently create a socialIdentityProvider, or an appleManagedIdentityProvider resource.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -123,7 +123,7 @@ class IdentityProvidersRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -193,7 +193,7 @@ class IdentityProvidersRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -208,7 +208,7 @@ class IdentityProvidersRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

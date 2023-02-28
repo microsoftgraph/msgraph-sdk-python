@@ -10,14 +10,14 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
+allowed_calendar_sharing_roles_with_user_request_builder = lazy_import('msgraph.generated.me.calendar_groups.item.calendars.item.allowed_calendar_sharing_roles_with_user.allowed_calendar_sharing_roles_with_user_request_builder')
 calendar_permissions_request_builder = lazy_import('msgraph.generated.me.calendar_groups.item.calendars.item.calendar_permissions.calendar_permissions_request_builder')
 calendar_permission_item_request_builder = lazy_import('msgraph.generated.me.calendar_groups.item.calendars.item.calendar_permissions.item.calendar_permission_item_request_builder')
 calendar_view_request_builder = lazy_import('msgraph.generated.me.calendar_groups.item.calendars.item.calendar_view.calendar_view_request_builder')
 event_item_request_builder = lazy_import('msgraph.generated.me.calendar_groups.item.calendars.item.calendar_view.item.event_item_request_builder')
 events_request_builder = lazy_import('msgraph.generated.me.calendar_groups.item.calendars.item.events.events_request_builder')
 event_item_request_builder = lazy_import('msgraph.generated.me.calendar_groups.item.calendars.item.events.item.event_item_request_builder')
-allowed_calendar_sharing_roles_with_user_request_builder = lazy_import('msgraph.generated.me.calendar_groups.item.calendars.item.microsoft_graph_allowed_calendar_sharing_roles_with_user.allowed_calendar_sharing_roles_with_user_request_builder')
-get_schedule_request_builder = lazy_import('msgraph.generated.me.calendar_groups.item.calendars.item.microsoft_graph_get_schedule.get_schedule_request_builder')
+get_schedule_request_builder = lazy_import('msgraph.generated.me.calendar_groups.item.calendars.item.get_schedule.get_schedule_request_builder')
 multi_value_extended_properties_request_builder = lazy_import('msgraph.generated.me.calendar_groups.item.calendars.item.multi_value_extended_properties.multi_value_extended_properties_request_builder')
 multi_value_legacy_extended_property_item_request_builder = lazy_import('msgraph.generated.me.calendar_groups.item.calendars.item.multi_value_extended_properties.item.multi_value_legacy_extended_property_item_request_builder')
 single_value_extended_properties_request_builder = lazy_import('msgraph.generated.me.calendar_groups.item.calendars.item.single_value_extended_properties.single_value_extended_properties_request_builder')
@@ -51,7 +51,7 @@ class CalendarItemRequestBuilder():
         return events_request_builder.EventsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_schedule(self) -> get_schedule_request_builder.GetScheduleRequestBuilder:
+    def get_schedule(self) -> get_schedule_request_builder.GetScheduleRequestBuilder:
         """
         Provides operations to call the getSchedule method.
         """
@@ -70,6 +70,17 @@ class CalendarItemRequestBuilder():
         Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.calendar entity.
         """
         return single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    def allowed_calendar_sharing_roles_with_user(self,user: Optional[str] = None) -> allowed_calendar_sharing_roles_with_user_request_builder.AllowedCalendarSharingRolesWithUserRequestBuilder:
+        """
+        Provides operations to call the allowedCalendarSharingRoles method.
+        Args:
+            User: Usage: User='{User}'
+        Returns: allowed_calendar_sharing_roles_with_user_request_builder.AllowedCalendarSharingRolesWithUserRequestBuilder
+        """
+        if user is None:
+            raise Exception("user cannot be undefined")
+        return allowed_calendar_sharing_roles_with_user_request_builder.AllowedCalendarSharingRolesWithUserRequestBuilder(self.request_adapter, self.path_parameters, User)
     
     def calendar_permissions_by_id(self,id: str) -> calendar_permission_item_request_builder.CalendarPermissionItemRequestBuilder:
         """
@@ -97,11 +108,10 @@ class CalendarItemRequestBuilder():
         url_tpl_params["event%2Did"] = id
         return event_item_request_builder.EventItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, calendar_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CalendarItemRequestBuilder and sets the default values.
         Args:
-            calendarId: key: id of calendar
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -113,7 +123,6 @@ class CalendarItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/calendarGroups/{calendarGroup%2Did}/calendars/{calendar%2Did}{?%24select}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["calendar%2Did"] = calendarId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -164,17 +173,6 @@ class CalendarItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, calendar.Calendar, error_mapping)
-    
-    def microsoft_graph_allowed_calendar_sharing_roles_with_user(self,user: Optional[str] = None) -> allowed_calendar_sharing_roles_with_user_request_builder.AllowedCalendarSharingRolesWithUserRequestBuilder:
-        """
-        Provides operations to call the allowedCalendarSharingRoles method.
-        Args:
-            User: Usage: User='{User}'
-        Returns: allowed_calendar_sharing_roles_with_user_request_builder.AllowedCalendarSharingRolesWithUserRequestBuilder
-        """
-        if user is None:
-            raise Exception("user cannot be undefined")
-        return allowed_calendar_sharing_roles_with_user_request_builder.AllowedCalendarSharingRolesWithUserRequestBuilder(self.request_adapter, self.path_parameters, User)
     
     def multi_value_extended_properties_by_id(self,id: str) -> multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder:
         """
@@ -250,7 +248,7 @@ class CalendarItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -271,7 +269,7 @@ class CalendarItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -284,7 +282,7 @@ class CalendarItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -318,7 +316,7 @@ class CalendarItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -333,7 +331,7 @@ class CalendarItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

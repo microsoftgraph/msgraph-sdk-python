@@ -10,7 +10,6 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-share_request_builder = lazy_import('msgraph.generated.groups.item.team.schedule.microsoft_graph_share.share_request_builder')
 offer_shift_requests_request_builder = lazy_import('msgraph.generated.groups.item.team.schedule.offer_shift_requests.offer_shift_requests_request_builder')
 offer_shift_request_item_request_builder = lazy_import('msgraph.generated.groups.item.team.schedule.offer_shift_requests.item.offer_shift_request_item_request_builder')
 open_shift_change_requests_request_builder = lazy_import('msgraph.generated.groups.item.team.schedule.open_shift_change_requests.open_shift_change_requests_request_builder')
@@ -19,6 +18,7 @@ open_shifts_request_builder = lazy_import('msgraph.generated.groups.item.team.sc
 open_shift_item_request_builder = lazy_import('msgraph.generated.groups.item.team.schedule.open_shifts.item.open_shift_item_request_builder')
 scheduling_groups_request_builder = lazy_import('msgraph.generated.groups.item.team.schedule.scheduling_groups.scheduling_groups_request_builder')
 scheduling_group_item_request_builder = lazy_import('msgraph.generated.groups.item.team.schedule.scheduling_groups.item.scheduling_group_item_request_builder')
+share_request_builder = lazy_import('msgraph.generated.groups.item.team.schedule.share.share_request_builder')
 shifts_request_builder = lazy_import('msgraph.generated.groups.item.team.schedule.shifts.shifts_request_builder')
 shift_item_request_builder = lazy_import('msgraph.generated.groups.item.team.schedule.shifts.item.shift_item_request_builder')
 swap_shifts_change_requests_request_builder = lazy_import('msgraph.generated.groups.item.team.schedule.swap_shifts_change_requests.swap_shifts_change_requests_request_builder')
@@ -36,13 +36,6 @@ class ScheduleRequestBuilder():
     """
     Provides operations to manage the schedule property of the microsoft.graph.team entity.
     """
-    @property
-    def microsoft_graph_share(self) -> share_request_builder.ShareRequestBuilder:
-        """
-        Provides operations to call the share method.
-        """
-        return share_request_builder.ShareRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @property
     def offer_shift_requests(self) -> offer_shift_requests_request_builder.OfferShiftRequestsRequestBuilder:
         """
@@ -70,6 +63,13 @@ class ScheduleRequestBuilder():
         Provides operations to manage the schedulingGroups property of the microsoft.graph.schedule entity.
         """
         return scheduling_groups_request_builder.SchedulingGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def share(self) -> share_request_builder.ShareRequestBuilder:
+        """
+        Provides operations to call the share method.
+        """
+        return share_request_builder.ShareRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def shifts(self) -> shifts_request_builder.ShiftsRequestBuilder:
@@ -324,7 +324,7 @@ class ScheduleRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -345,7 +345,7 @@ class ScheduleRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PUT
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -358,7 +358,7 @@ class ScheduleRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -397,7 +397,7 @@ class ScheduleRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -412,7 +412,7 @@ class ScheduleRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

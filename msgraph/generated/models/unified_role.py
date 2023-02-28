@@ -30,7 +30,7 @@ class UnifiedRole(AdditionalDataHolder, Parsable):
 
         # The OdataType property
         self._odata_type: Optional[str] = None
-        # The roleDefinitionId property
+        # The unified role definition ID of the directory role. Refer to unifiedRoleDefinition resource.
         self._role_definition_id: Optional[str] = None
     
     @staticmethod
@@ -76,7 +76,7 @@ class UnifiedRole(AdditionalDataHolder, Parsable):
     @property
     def role_definition_id(self,) -> Optional[str]:
         """
-        Gets the roleDefinitionId property value. The roleDefinitionId property
+        Gets the roleDefinitionId property value. The unified role definition ID of the directory role. Refer to unifiedRoleDefinition resource.
         Returns: Optional[str]
         """
         return self._role_definition_id
@@ -84,7 +84,7 @@ class UnifiedRole(AdditionalDataHolder, Parsable):
     @role_definition_id.setter
     def role_definition_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the roleDefinitionId property value. The roleDefinitionId property
+        Sets the roleDefinitionId property value. The unified role definition ID of the directory role. Refer to unifiedRoleDefinition resource.
         Args:
             value: Value to set for the role_definition_id property.
         """

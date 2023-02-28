@@ -42,7 +42,7 @@ class Presence(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new presence and sets the default values.
+        Instantiates a new Presence and sets the default values.
         """
         super().__init__()
         # The supplemental information to a user's availability. Possible values are Available, Away, BeRightBack, Busy, DoNotDisturb, InACall, InAConferenceCall, Inactive, InAMeeting, Offline, OffWork, OutOfOffice, PresenceUnknown, Presenting, UrgentInterruptionsOnly.

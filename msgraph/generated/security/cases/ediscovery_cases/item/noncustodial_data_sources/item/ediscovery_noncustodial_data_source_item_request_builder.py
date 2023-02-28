@@ -14,10 +14,10 @@ o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error'
 ediscovery_noncustodial_data_source = lazy_import('msgraph.generated.models.security.ediscovery_noncustodial_data_source')
 data_source_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.data_source.data_source_request_builder')
 last_index_operation_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.last_index_operation.last_index_operation_request_builder')
-apply_hold_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.microsoft_graph_security_apply_hold.apply_hold_request_builder')
-release_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.microsoft_graph_security_release.release_request_builder')
-remove_hold_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.microsoft_graph_security_remove_hold.remove_hold_request_builder')
-update_index_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.microsoft_graph_security_update_index.update_index_request_builder')
+security_apply_hold_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.security_apply_hold.security_apply_hold_request_builder')
+security_release_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.security_release.security_release_request_builder')
+security_remove_hold_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.security_remove_hold.security_remove_hold_request_builder')
+security_update_index_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.security_update_index.security_update_index_request_builder')
 
 class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
     """
@@ -38,38 +38,37 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
         return last_index_operation_request_builder.LastIndexOperationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_security_apply_hold(self) -> apply_hold_request_builder.ApplyHoldRequestBuilder:
+    def security_apply_hold(self) -> security_apply_hold_request_builder.SecurityApplyHoldRequestBuilder:
         """
         Provides operations to call the applyHold method.
         """
-        return apply_hold_request_builder.ApplyHoldRequestBuilder(self.request_adapter, self.path_parameters)
+        return security_apply_hold_request_builder.SecurityApplyHoldRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_security_release(self) -> release_request_builder.ReleaseRequestBuilder:
+    def security_release(self) -> security_release_request_builder.SecurityReleaseRequestBuilder:
         """
         Provides operations to call the release method.
         """
-        return release_request_builder.ReleaseRequestBuilder(self.request_adapter, self.path_parameters)
+        return security_release_request_builder.SecurityReleaseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_security_remove_hold(self) -> remove_hold_request_builder.RemoveHoldRequestBuilder:
+    def security_remove_hold(self) -> security_remove_hold_request_builder.SecurityRemoveHoldRequestBuilder:
         """
         Provides operations to call the removeHold method.
         """
-        return remove_hold_request_builder.RemoveHoldRequestBuilder(self.request_adapter, self.path_parameters)
+        return security_remove_hold_request_builder.SecurityRemoveHoldRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_security_update_index(self) -> update_index_request_builder.UpdateIndexRequestBuilder:
+    def security_update_index(self) -> security_update_index_request_builder.SecurityUpdateIndexRequestBuilder:
         """
         Provides operations to call the updateIndex method.
         """
-        return update_index_request_builder.UpdateIndexRequestBuilder(self.request_adapter, self.path_parameters)
+        return security_update_index_request_builder.SecurityUpdateIndexRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, ediscovery_noncustodial_data_source_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EdiscoveryNoncustodialDataSourceItemRequestBuilder and sets the default values.
         Args:
-            ediscoveryNoncustodialDataSourceId: key: id of ediscoveryNoncustodialDataSource
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -81,7 +80,6 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
         self.url_template: str = "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}/noncustodialDataSources/{ediscoveryNoncustodialDataSource%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["ediscoveryNoncustodialDataSource%2Did"] = ediscoveryNoncustodialDataSourceId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -168,7 +166,7 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -189,7 +187,7 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -202,7 +200,7 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -241,7 +239,7 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -256,7 +254,7 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

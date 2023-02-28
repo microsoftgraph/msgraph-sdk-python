@@ -11,12 +11,12 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.groups.item.members.count.count_request_builder')
-application_request_builder = lazy_import('msgraph.generated.groups.item.members.microsoft_graph_application.application_request_builder')
-device_request_builder = lazy_import('msgraph.generated.groups.item.members.microsoft_graph_device.device_request_builder')
-group_request_builder = lazy_import('msgraph.generated.groups.item.members.microsoft_graph_group.group_request_builder')
-org_contact_request_builder = lazy_import('msgraph.generated.groups.item.members.microsoft_graph_org_contact.org_contact_request_builder')
-service_principal_request_builder = lazy_import('msgraph.generated.groups.item.members.microsoft_graph_service_principal.service_principal_request_builder')
-user_request_builder = lazy_import('msgraph.generated.groups.item.members.microsoft_graph_user.user_request_builder')
+graph_application_request_builder = lazy_import('msgraph.generated.groups.item.members.graph_application.graph_application_request_builder')
+graph_device_request_builder = lazy_import('msgraph.generated.groups.item.members.graph_device.graph_device_request_builder')
+graph_group_request_builder = lazy_import('msgraph.generated.groups.item.members.graph_group.graph_group_request_builder')
+graph_org_contact_request_builder = lazy_import('msgraph.generated.groups.item.members.graph_org_contact.graph_org_contact_request_builder')
+graph_service_principal_request_builder = lazy_import('msgraph.generated.groups.item.members.graph_service_principal.graph_service_principal_request_builder')
+graph_user_request_builder = lazy_import('msgraph.generated.groups.item.members.graph_user.graph_user_request_builder')
 ref_request_builder = lazy_import('msgraph.generated.groups.item.members.ref.ref_request_builder')
 directory_object_collection_response = lazy_import('msgraph.generated.models.directory_object_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -33,46 +33,46 @@ class MembersRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_application(self) -> application_request_builder.ApplicationRequestBuilder:
+    def graph_application(self) -> graph_application_request_builder.GraphApplicationRequestBuilder:
         """
         Casts the previous resource to application.
         """
-        return application_request_builder.ApplicationRequestBuilder(self.request_adapter, self.path_parameters)
+        return graph_application_request_builder.GraphApplicationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_device(self) -> device_request_builder.DeviceRequestBuilder:
+    def graph_device(self) -> graph_device_request_builder.GraphDeviceRequestBuilder:
         """
         Casts the previous resource to device.
         """
-        return device_request_builder.DeviceRequestBuilder(self.request_adapter, self.path_parameters)
+        return graph_device_request_builder.GraphDeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_group(self) -> group_request_builder.GroupRequestBuilder:
+    def graph_group(self) -> graph_group_request_builder.GraphGroupRequestBuilder:
         """
         Casts the previous resource to group.
         """
-        return group_request_builder.GroupRequestBuilder(self.request_adapter, self.path_parameters)
+        return graph_group_request_builder.GraphGroupRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_org_contact(self) -> org_contact_request_builder.OrgContactRequestBuilder:
+    def graph_org_contact(self) -> graph_org_contact_request_builder.GraphOrgContactRequestBuilder:
         """
         Casts the previous resource to orgContact.
         """
-        return org_contact_request_builder.OrgContactRequestBuilder(self.request_adapter, self.path_parameters)
+        return graph_org_contact_request_builder.GraphOrgContactRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_service_principal(self) -> service_principal_request_builder.ServicePrincipalRequestBuilder:
+    def graph_service_principal(self) -> graph_service_principal_request_builder.GraphServicePrincipalRequestBuilder:
         """
         Casts the previous resource to servicePrincipal.
         """
-        return service_principal_request_builder.ServicePrincipalRequestBuilder(self.request_adapter, self.path_parameters)
+        return graph_service_principal_request_builder.GraphServicePrincipalRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_user(self) -> user_request_builder.UserRequestBuilder:
+    def graph_user(self) -> graph_user_request_builder.GraphUserRequestBuilder:
         """
         Casts the previous resource to user.
         """
-        return user_request_builder.UserRequestBuilder(self.request_adapter, self.path_parameters)
+        return graph_user_request_builder.GraphUserRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def ref(self) -> ref_request_builder.RefRequestBuilder:
@@ -128,7 +128,7 @@ class MembersRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -198,7 +198,7 @@ class MembersRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

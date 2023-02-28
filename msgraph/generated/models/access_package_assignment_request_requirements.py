@@ -3,6 +3,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
+access_package_question = lazy_import('msgraph.generated.models.access_package_question')
 entitlement_management_schedule = lazy_import('msgraph.generated.models.entitlement_management_schedule')
 
 class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable):
@@ -61,6 +62,8 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         self._policy_display_name: Optional[str] = None
         # The identifier of the policy that these requirements are associated with. This identifier can be used when creating a new assignment request.
         self._policy_id: Optional[str] = None
+        # The questions property
+        self._questions: Optional[List[access_package_question.AccessPackageQuestion]] = None
         # Schedule restrictions enforced, if any.
         self._schedule: Optional[entitlement_management_schedule.EntitlementManagementSchedule] = None
     
@@ -89,6 +92,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
             "policyDescription": lambda n : setattr(self, 'policy_description', n.get_str_value()),
             "policyDisplayName": lambda n : setattr(self, 'policy_display_name', n.get_str_value()),
             "policyId": lambda n : setattr(self, 'policy_id', n.get_str_value()),
+            "questions": lambda n : setattr(self, 'questions', n.get_collection_of_object_values(access_package_question.AccessPackageQuestion)),
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(entitlement_management_schedule.EntitlementManagementSchedule)),
         }
         return fields
@@ -196,6 +200,23 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         self._policy_id = value
     
     @property
+    def questions(self,) -> Optional[List[access_package_question.AccessPackageQuestion]]:
+        """
+        Gets the questions property value. The questions property
+        Returns: Optional[List[access_package_question.AccessPackageQuestion]]
+        """
+        return self._questions
+    
+    @questions.setter
+    def questions(self,value: Optional[List[access_package_question.AccessPackageQuestion]] = None) -> None:
+        """
+        Sets the questions property value. The questions property
+        Args:
+            value: Value to set for the questions property.
+        """
+        self._questions = value
+    
+    @property
     def schedule(self,) -> Optional[entitlement_management_schedule.EntitlementManagementSchedule]:
         """
         Gets the schedule property value. Schedule restrictions enforced, if any.
@@ -227,6 +248,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         writer.write_str_value("policyDescription", self.policy_description)
         writer.write_str_value("policyDisplayName", self.policy_display_name)
         writer.write_str_value("policyId", self.policy_id)
+        writer.write_collection_of_object_values("questions", self.questions)
         writer.write_object_value("schedule", self.schedule)
         writer.write_additional_data_value(self.additional_data)
     

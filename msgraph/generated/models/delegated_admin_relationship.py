@@ -16,7 +16,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def access_assignments(self,) -> Optional[List[delegated_admin_access_assignment.DelegatedAdminAccessAssignment]]:
         """
-        Gets the accessAssignments property value. The accessAssignments property
+        Gets the accessAssignments property value. The access assignments associated with the delegated admin relationship.
         Returns: Optional[List[delegated_admin_access_assignment.DelegatedAdminAccessAssignment]]
         """
         return self._access_assignments
@@ -24,7 +24,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @access_assignments.setter
     def access_assignments(self,value: Optional[List[delegated_admin_access_assignment.DelegatedAdminAccessAssignment]] = None) -> None:
         """
-        Sets the accessAssignments property value. The accessAssignments property
+        Sets the accessAssignments property value. The access assignments associated with the delegated admin relationship.
         Args:
             value: Value to set for the access_assignments property.
         """
@@ -50,7 +50,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def activated_date_time(self,) -> Optional[datetime]:
         """
-        Gets the activatedDateTime property value. The activatedDateTime property
+        Gets the activatedDateTime property value. The date and time in ISO 8601 format and in UTC time when the relationship became active. Read-only.
         Returns: Optional[datetime]
         """
         return self._activated_date_time
@@ -58,7 +58,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @activated_date_time.setter
     def activated_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the activatedDateTime property value. The activatedDateTime property
+        Sets the activatedDateTime property value. The date and time in ISO 8601 format and in UTC time when the relationship became active. Read-only.
         Args:
             value: Value to set for the activated_date_time property.
         """
@@ -69,37 +69,37 @@ class DelegatedAdminRelationship(entity.Entity):
         Instantiates a new DelegatedAdminRelationship and sets the default values.
         """
         super().__init__()
-        # The accessAssignments property
+        # The access assignments associated with the delegated admin relationship.
         self._access_assignments: Optional[List[delegated_admin_access_assignment.DelegatedAdminAccessAssignment]] = None
         # The accessDetails property
         self._access_details: Optional[delegated_admin_access_details.DelegatedAdminAccessDetails] = None
-        # The activatedDateTime property
+        # The date and time in ISO 8601 format and in UTC time when the relationship became active. Read-only.
         self._activated_date_time: Optional[datetime] = None
-        # The createdDateTime property
+        # The date and time in ISO 8601 format and in UTC time when the relationship was created. Read-only.
         self._created_date_time: Optional[datetime] = None
-        # The customer property
+        # The display name and unique identifier of the customer of the relationship. This is configured either by the partner at the time the relationship is created or by the system after the customer approves the relationship. Cannot be changed by the customer.
         self._customer: Optional[delegated_admin_relationship_customer_participant.DelegatedAdminRelationshipCustomerParticipant] = None
-        # The displayName property
+        # The display name of the relationship used for ease of identification. Must be unique across all delegated admin relationships of the partner. This is set by the partner only when the relationship is in the created status and cannot be changed by the customer.
         self._display_name: Optional[str] = None
-        # The duration property
+        # The duration of the relationship in ISO 8601 format. Must be a value between P1D and P2Y inclusive. This is set by the partner only when the relationship is in the created status and cannot be changed by the customer.
         self._duration: Optional[Timedelta] = None
-        # The endDateTime property
+        # The date and time in ISO 8601 format and in UTC time when the status of relationship changes to either terminated or expired. Calculated as endDateTime = activatedDateTime + duration. Read-only.
         self._end_date_time: Optional[datetime] = None
-        # The lastModifiedDateTime property
+        # The date and time in ISO 8601 format and in UTC time when the relationship was last modified. Read-only.
         self._last_modified_date_time: Optional[datetime] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-        # The operations property
+        # The long running operations associated with the delegated admin relationship.
         self._operations: Optional[List[delegated_admin_relationship_operation.DelegatedAdminRelationshipOperation]] = None
-        # The requests property
+        # The requests associated with the delegated admin relationship.
         self._requests: Optional[List[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]] = None
-        # The status property
+        # The status of the relationship. Read Only. The possible values are: activating, active, approvalPending, approved, created, expired, expiring, terminated, terminating, terminationRequested, unknownFutureValue. Supports $orderBy.
         self._status: Optional[delegated_admin_relationship_status.DelegatedAdminRelationshipStatus] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
-        Gets the createdDateTime property value. The createdDateTime property
+        Gets the createdDateTime property value. The date and time in ISO 8601 format and in UTC time when the relationship was created. Read-only.
         Returns: Optional[datetime]
         """
         return self._created_date_time
@@ -107,7 +107,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the createdDateTime property value. The createdDateTime property
+        Sets the createdDateTime property value. The date and time in ISO 8601 format and in UTC time when the relationship was created. Read-only.
         Args:
             value: Value to set for the created_date_time property.
         """
@@ -128,7 +128,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def customer(self,) -> Optional[delegated_admin_relationship_customer_participant.DelegatedAdminRelationshipCustomerParticipant]:
         """
-        Gets the customer property value. The customer property
+        Gets the customer property value. The display name and unique identifier of the customer of the relationship. This is configured either by the partner at the time the relationship is created or by the system after the customer approves the relationship. Cannot be changed by the customer.
         Returns: Optional[delegated_admin_relationship_customer_participant.DelegatedAdminRelationshipCustomerParticipant]
         """
         return self._customer
@@ -136,7 +136,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @customer.setter
     def customer(self,value: Optional[delegated_admin_relationship_customer_participant.DelegatedAdminRelationshipCustomerParticipant] = None) -> None:
         """
-        Sets the customer property value. The customer property
+        Sets the customer property value. The display name and unique identifier of the customer of the relationship. This is configured either by the partner at the time the relationship is created or by the system after the customer approves the relationship. Cannot be changed by the customer.
         Args:
             value: Value to set for the customer property.
         """
@@ -145,7 +145,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def display_name(self,) -> Optional[str]:
         """
-        Gets the displayName property value. The displayName property
+        Gets the displayName property value. The display name of the relationship used for ease of identification. Must be unique across all delegated admin relationships of the partner. This is set by the partner only when the relationship is in the created status and cannot be changed by the customer.
         Returns: Optional[str]
         """
         return self._display_name
@@ -153,7 +153,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the displayName property value. The displayName property
+        Sets the displayName property value. The display name of the relationship used for ease of identification. Must be unique across all delegated admin relationships of the partner. This is set by the partner only when the relationship is in the created status and cannot be changed by the customer.
         Args:
             value: Value to set for the display_name property.
         """
@@ -162,7 +162,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def duration(self,) -> Optional[Timedelta]:
         """
-        Gets the duration property value. The duration property
+        Gets the duration property value. The duration of the relationship in ISO 8601 format. Must be a value between P1D and P2Y inclusive. This is set by the partner only when the relationship is in the created status and cannot be changed by the customer.
         Returns: Optional[Timedelta]
         """
         return self._duration
@@ -170,7 +170,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @duration.setter
     def duration(self,value: Optional[Timedelta] = None) -> None:
         """
-        Sets the duration property value. The duration property
+        Sets the duration property value. The duration of the relationship in ISO 8601 format. Must be a value between P1D and P2Y inclusive. This is set by the partner only when the relationship is in the created status and cannot be changed by the customer.
         Args:
             value: Value to set for the duration property.
         """
@@ -179,7 +179,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def end_date_time(self,) -> Optional[datetime]:
         """
-        Gets the endDateTime property value. The endDateTime property
+        Gets the endDateTime property value. The date and time in ISO 8601 format and in UTC time when the status of relationship changes to either terminated or expired. Calculated as endDateTime = activatedDateTime + duration. Read-only.
         Returns: Optional[datetime]
         """
         return self._end_date_time
@@ -187,7 +187,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @end_date_time.setter
     def end_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the endDateTime property value. The endDateTime property
+        Sets the endDateTime property value. The date and time in ISO 8601 format and in UTC time when the status of relationship changes to either terminated or expired. Calculated as endDateTime = activatedDateTime + duration. Read-only.
         Args:
             value: Value to set for the end_date_time property.
         """
@@ -219,7 +219,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
-        Gets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Gets the lastModifiedDateTime property value. The date and time in ISO 8601 format and in UTC time when the relationship was last modified. Read-only.
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
@@ -227,7 +227,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the lastModifiedDateTime property value. The lastModifiedDateTime property
+        Sets the lastModifiedDateTime property value. The date and time in ISO 8601 format and in UTC time when the relationship was last modified. Read-only.
         Args:
             value: Value to set for the last_modified_date_time property.
         """
@@ -236,7 +236,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def operations(self,) -> Optional[List[delegated_admin_relationship_operation.DelegatedAdminRelationshipOperation]]:
         """
-        Gets the operations property value. The operations property
+        Gets the operations property value. The long running operations associated with the delegated admin relationship.
         Returns: Optional[List[delegated_admin_relationship_operation.DelegatedAdminRelationshipOperation]]
         """
         return self._operations
@@ -244,7 +244,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @operations.setter
     def operations(self,value: Optional[List[delegated_admin_relationship_operation.DelegatedAdminRelationshipOperation]] = None) -> None:
         """
-        Sets the operations property value. The operations property
+        Sets the operations property value. The long running operations associated with the delegated admin relationship.
         Args:
             value: Value to set for the operations property.
         """
@@ -253,7 +253,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def requests(self,) -> Optional[List[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]]:
         """
-        Gets the requests property value. The requests property
+        Gets the requests property value. The requests associated with the delegated admin relationship.
         Returns: Optional[List[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]]
         """
         return self._requests
@@ -261,7 +261,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @requests.setter
     def requests(self,value: Optional[List[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]] = None) -> None:
         """
-        Sets the requests property value. The requests property
+        Sets the requests property value. The requests associated with the delegated admin relationship.
         Args:
             value: Value to set for the requests property.
         """
@@ -292,7 +292,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @property
     def status(self,) -> Optional[delegated_admin_relationship_status.DelegatedAdminRelationshipStatus]:
         """
-        Gets the status property value. The status property
+        Gets the status property value. The status of the relationship. Read Only. The possible values are: activating, active, approvalPending, approved, created, expired, expiring, terminated, terminating, terminationRequested, unknownFutureValue. Supports $orderBy.
         Returns: Optional[delegated_admin_relationship_status.DelegatedAdminRelationshipStatus]
         """
         return self._status
@@ -300,7 +300,7 @@ class DelegatedAdminRelationship(entity.Entity):
     @status.setter
     def status(self,value: Optional[delegated_admin_relationship_status.DelegatedAdminRelationshipStatus] = None) -> None:
         """
-        Sets the status property value. The status property
+        Sets the status property value. The status of the relationship. Read Only. The possible values are: activating, active, approvalPending, approved, created, expired, expiring, terminated, terminating, terminationRequested, unknownFutureValue. Supports $orderBy.
         Args:
             value: Value to set for the status property.
         """

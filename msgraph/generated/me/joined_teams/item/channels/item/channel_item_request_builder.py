@@ -10,15 +10,15 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
+complete_migration_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.complete_migration.complete_migration_request_builder')
+does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name.does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder')
 files_folder_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.files_folder.files_folder_request_builder')
 members_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.members.members_request_builder')
 conversation_member_item_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.members.item.conversation_member_item_request_builder')
 messages_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.messages.messages_request_builder')
 chat_message_item_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.messages.item.chat_message_item_request_builder')
-complete_migration_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.microsoft_graph_complete_migration.complete_migration_request_builder')
-does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.microsoft_graph_does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name.does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder')
-provision_email_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.microsoft_graph_provision_email.provision_email_request_builder')
-remove_email_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.microsoft_graph_remove_email.remove_email_request_builder')
+provision_email_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.provision_email.provision_email_request_builder')
+remove_email_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.remove_email.remove_email_request_builder')
 shared_with_teams_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.shared_with_teams.shared_with_teams_request_builder')
 shared_with_channel_team_info_item_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.shared_with_teams.item.shared_with_channel_team_info_item_request_builder')
 tabs_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.tabs.tabs_request_builder')
@@ -30,6 +30,20 @@ class ChannelItemRequestBuilder():
     """
     Provides operations to manage the channels property of the microsoft.graph.team entity.
     """
+    @property
+    def complete_migration(self) -> complete_migration_request_builder.CompleteMigrationRequestBuilder:
+        """
+        Provides operations to call the completeMigration method.
+        """
+        return complete_migration_request_builder.CompleteMigrationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name(self) -> does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder.DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder:
+        """
+        Provides operations to call the doesUserHaveAccess method.
+        """
+        return does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder.DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @property
     def files_folder(self) -> files_folder_request_builder.FilesFolderRequestBuilder:
         """
@@ -52,28 +66,14 @@ class ChannelItemRequestBuilder():
         return messages_request_builder.MessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_complete_migration(self) -> complete_migration_request_builder.CompleteMigrationRequestBuilder:
-        """
-        Provides operations to call the completeMigration method.
-        """
-        return complete_migration_request_builder.CompleteMigrationRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name(self) -> does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder.DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder:
-        """
-        Provides operations to call the doesUserHaveAccess method.
-        """
-        return does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder.DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_provision_email(self) -> provision_email_request_builder.ProvisionEmailRequestBuilder:
+    def provision_email(self) -> provision_email_request_builder.ProvisionEmailRequestBuilder:
         """
         Provides operations to call the provisionEmail method.
         """
         return provision_email_request_builder.ProvisionEmailRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_remove_email(self) -> remove_email_request_builder.RemoveEmailRequestBuilder:
+    def remove_email(self) -> remove_email_request_builder.RemoveEmailRequestBuilder:
         """
         Provides operations to call the removeEmail method.
         """
@@ -93,11 +93,10 @@ class ChannelItemRequestBuilder():
         """
         return tabs_request_builder.TabsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, channel_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ChannelItemRequestBuilder and sets the default values.
         Args:
-            channelId: key: id of channel
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -109,7 +108,6 @@ class ChannelItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/joinedTeams/{team%2Did}/channels/{channel%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["channel%2Did"] = channelId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -248,7 +246,7 @@ class ChannelItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -269,7 +267,7 @@ class ChannelItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -282,7 +280,7 @@ class ChannelItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -321,7 +319,7 @@ class ChannelItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -336,7 +334,7 @@ class ChannelItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

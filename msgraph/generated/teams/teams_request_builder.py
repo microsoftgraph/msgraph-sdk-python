@@ -14,7 +14,7 @@ team = lazy_import('msgraph.generated.models.team')
 team_collection_response = lazy_import('msgraph.generated.models.team_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.teams.count.count_request_builder')
-get_all_messages_request_builder = lazy_import('msgraph.generated.teams.microsoft_graph_get_all_messages.get_all_messages_request_builder')
+get_all_messages_request_builder = lazy_import('msgraph.generated.teams.get_all_messages.get_all_messages_request_builder')
 
 class TeamsRequestBuilder():
     """
@@ -28,7 +28,7 @@ class TeamsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_all_messages(self) -> get_all_messages_request_builder.GetAllMessagesRequestBuilder:
+    def get_all_messages(self) -> get_all_messages_request_builder.GetAllMessagesRequestBuilder:
         """
         Provides operations to call the getAllMessages method.
         """
@@ -102,7 +102,7 @@ class TeamsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -123,7 +123,7 @@ class TeamsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -193,7 +193,7 @@ class TeamsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -208,7 +208,7 @@ class TeamsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

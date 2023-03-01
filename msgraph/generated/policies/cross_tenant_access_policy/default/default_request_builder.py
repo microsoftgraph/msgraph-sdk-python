@@ -12,14 +12,14 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 cross_tenant_access_policy_configuration_default = lazy_import('msgraph.generated.models.cross_tenant_access_policy_configuration_default')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-reset_to_system_default_request_builder = lazy_import('msgraph.generated.policies.cross_tenant_access_policy.default.microsoft_graph_reset_to_system_default.reset_to_system_default_request_builder')
+reset_to_system_default_request_builder = lazy_import('msgraph.generated.policies.cross_tenant_access_policy.default.reset_to_system_default.reset_to_system_default_request_builder')
 
 class DefaultRequestBuilder():
     """
     Provides operations to manage the default property of the microsoft.graph.crossTenantAccessPolicy entity.
     """
     @property
-    def microsoft_graph_reset_to_system_default(self) -> reset_to_system_default_request_builder.ResetToSystemDefaultRequestBuilder:
+    def reset_to_system_default(self) -> reset_to_system_default_request_builder.ResetToSystemDefaultRequestBuilder:
         """
         Provides operations to call the resetToSystemDefault method.
         """
@@ -126,7 +126,7 @@ class DefaultRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -147,7 +147,7 @@ class DefaultRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -160,7 +160,7 @@ class DefaultRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -199,7 +199,7 @@ class DefaultRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -214,7 +214,7 @@ class DefaultRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

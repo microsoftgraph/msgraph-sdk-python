@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-app_role_assignment_request_builder = lazy_import('msgraph.generated.me.registered_devices.item.microsoft_graph_app_role_assignment.app_role_assignment_request_builder')
-device_request_builder = lazy_import('msgraph.generated.me.registered_devices.item.microsoft_graph_device.device_request_builder')
-endpoint_request_builder = lazy_import('msgraph.generated.me.registered_devices.item.microsoft_graph_endpoint.endpoint_request_builder')
+graph_app_role_assignment_request_builder = lazy_import('msgraph.generated.me.registered_devices.item.graph_app_role_assignment.graph_app_role_assignment_request_builder')
+graph_device_request_builder = lazy_import('msgraph.generated.me.registered_devices.item.graph_device.graph_device_request_builder')
+graph_endpoint_request_builder = lazy_import('msgraph.generated.me.registered_devices.item.graph_endpoint.graph_endpoint_request_builder')
 directory_object = lazy_import('msgraph.generated.models.directory_object')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -21,31 +21,30 @@ class DirectoryObjectItemRequestBuilder():
     Provides operations to manage the registeredDevices property of the microsoft.graph.user entity.
     """
     @property
-    def microsoft_graph_app_role_assignment(self) -> app_role_assignment_request_builder.AppRoleAssignmentRequestBuilder:
+    def graph_app_role_assignment(self) -> graph_app_role_assignment_request_builder.GraphAppRoleAssignmentRequestBuilder:
         """
         Casts the previous resource to appRoleAssignment.
         """
-        return app_role_assignment_request_builder.AppRoleAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
+        return graph_app_role_assignment_request_builder.GraphAppRoleAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_device(self) -> device_request_builder.DeviceRequestBuilder:
+    def graph_device(self) -> graph_device_request_builder.GraphDeviceRequestBuilder:
         """
         Casts the previous resource to device.
         """
-        return device_request_builder.DeviceRequestBuilder(self.request_adapter, self.path_parameters)
+        return graph_device_request_builder.GraphDeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_endpoint(self) -> endpoint_request_builder.EndpointRequestBuilder:
+    def graph_endpoint(self) -> graph_endpoint_request_builder.GraphEndpointRequestBuilder:
         """
         Casts the previous resource to endpoint.
         """
-        return endpoint_request_builder.EndpointRequestBuilder(self.request_adapter, self.path_parameters)
+        return graph_endpoint_request_builder.GraphEndpointRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, directory_object_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DirectoryObjectItemRequestBuilder and sets the default values.
         Args:
-            directoryObjectId: key: id of directoryObject
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -57,7 +56,6 @@ class DirectoryObjectItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/registeredDevices/{directoryObject%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["directoryObject%2Did"] = directoryObjectId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -90,7 +88,7 @@ class DirectoryObjectItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -130,7 +128,7 @@ class DirectoryObjectItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

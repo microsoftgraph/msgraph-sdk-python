@@ -5,6 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 activity_based_timeout_policy = lazy_import('msgraph.generated.models.activity_based_timeout_policy')
 admin_consent_request_policy = lazy_import('msgraph.generated.models.admin_consent_request_policy')
+app_management_policy = lazy_import('msgraph.generated.models.app_management_policy')
 authentication_flows_policy = lazy_import('msgraph.generated.models.authentication_flows_policy')
 authentication_methods_policy = lazy_import('msgraph.generated.models.authentication_methods_policy')
 authorization_policy = lazy_import('msgraph.generated.models.authorization_policy')
@@ -16,6 +17,7 @@ feature_rollout_policy = lazy_import('msgraph.generated.models.feature_rollout_p
 home_realm_discovery_policy = lazy_import('msgraph.generated.models.home_realm_discovery_policy')
 identity_security_defaults_enforcement_policy = lazy_import('msgraph.generated.models.identity_security_defaults_enforcement_policy')
 permission_grant_policy = lazy_import('msgraph.generated.models.permission_grant_policy')
+tenant_app_management_policy = lazy_import('msgraph.generated.models.tenant_app_management_policy')
 token_issuance_policy = lazy_import('msgraph.generated.models.token_issuance_policy')
 token_lifetime_policy = lazy_import('msgraph.generated.models.token_lifetime_policy')
 unified_role_management_policy = lazy_import('msgraph.generated.models.unified_role_management_policy')
@@ -55,6 +57,23 @@ class PolicyRoot(entity.Entity):
             value: Value to set for the admin_consent_request_policy property.
         """
         self._admin_consent_request_policy = value
+    
+    @property
+    def app_management_policies(self,) -> Optional[List[app_management_policy.AppManagementPolicy]]:
+        """
+        Gets the appManagementPolicies property value. The appManagementPolicies property
+        Returns: Optional[List[app_management_policy.AppManagementPolicy]]
+        """
+        return self._app_management_policies
+    
+    @app_management_policies.setter
+    def app_management_policies(self,value: Optional[List[app_management_policy.AppManagementPolicy]] = None) -> None:
+        """
+        Sets the appManagementPolicies property value. The appManagementPolicies property
+        Args:
+            value: Value to set for the app_management_policies property.
+        """
+        self._app_management_policies = value
     
     @property
     def authentication_flows_policy(self,) -> Optional[authentication_flows_policy.AuthenticationFlowsPolicy]:
@@ -150,6 +169,8 @@ class PolicyRoot(entity.Entity):
         self._activity_based_timeout_policies: Optional[List[activity_based_timeout_policy.ActivityBasedTimeoutPolicy]] = None
         # The policy by which consent requests are created and managed for the entire tenant.
         self._admin_consent_request_policy: Optional[admin_consent_request_policy.AdminConsentRequestPolicy] = None
+        # The appManagementPolicies property
+        self._app_management_policies: Optional[List[app_management_policy.AppManagementPolicy]] = None
         # The policy configuration of the self-service sign-up experience of external users.
         self._authentication_flows_policy: Optional[authentication_flows_policy.AuthenticationFlowsPolicy] = None
         # The authentication methods and the users that are allowed to use them to sign in and perform multi-factor authentication (MFA) in Azure Active Directory (Azure AD).
@@ -162,6 +183,8 @@ class PolicyRoot(entity.Entity):
         self._conditional_access_policies: Optional[List[conditional_access_policy.ConditionalAccessPolicy]] = None
         # The custom rules that define an access scenario when interacting with external Azure AD tenants.
         self._cross_tenant_access_policy: Optional[cross_tenant_access_policy.CrossTenantAccessPolicy] = None
+        # The defaultAppManagementPolicy property
+        self._default_app_management_policy: Optional[tenant_app_management_policy.TenantAppManagementPolicy] = None
         # The feature rollout policy associated with a directory object.
         self._feature_rollout_policies: Optional[List[feature_rollout_policy.FeatureRolloutPolicy]] = None
         # The policy to control Azure AD authentication behavior for federated users.
@@ -211,6 +234,23 @@ class PolicyRoot(entity.Entity):
         self._cross_tenant_access_policy = value
     
     @property
+    def default_app_management_policy(self,) -> Optional[tenant_app_management_policy.TenantAppManagementPolicy]:
+        """
+        Gets the defaultAppManagementPolicy property value. The defaultAppManagementPolicy property
+        Returns: Optional[tenant_app_management_policy.TenantAppManagementPolicy]
+        """
+        return self._default_app_management_policy
+    
+    @default_app_management_policy.setter
+    def default_app_management_policy(self,value: Optional[tenant_app_management_policy.TenantAppManagementPolicy] = None) -> None:
+        """
+        Sets the defaultAppManagementPolicy property value. The defaultAppManagementPolicy property
+        Args:
+            value: Value to set for the default_app_management_policy property.
+        """
+        self._default_app_management_policy = value
+    
+    @property
     def feature_rollout_policies(self,) -> Optional[List[feature_rollout_policy.FeatureRolloutPolicy]]:
         """
         Gets the featureRolloutPolicies property value. The feature rollout policy associated with a directory object.
@@ -235,12 +275,14 @@ class PolicyRoot(entity.Entity):
         fields = {
             "activityBasedTimeoutPolicies": lambda n : setattr(self, 'activity_based_timeout_policies', n.get_collection_of_object_values(activity_based_timeout_policy.ActivityBasedTimeoutPolicy)),
             "adminConsentRequestPolicy": lambda n : setattr(self, 'admin_consent_request_policy', n.get_object_value(admin_consent_request_policy.AdminConsentRequestPolicy)),
+            "appManagementPolicies": lambda n : setattr(self, 'app_management_policies', n.get_collection_of_object_values(app_management_policy.AppManagementPolicy)),
             "authenticationFlowsPolicy": lambda n : setattr(self, 'authentication_flows_policy', n.get_object_value(authentication_flows_policy.AuthenticationFlowsPolicy)),
             "authenticationMethodsPolicy": lambda n : setattr(self, 'authentication_methods_policy', n.get_object_value(authentication_methods_policy.AuthenticationMethodsPolicy)),
             "authorizationPolicy": lambda n : setattr(self, 'authorization_policy', n.get_object_value(authorization_policy.AuthorizationPolicy)),
             "claimsMappingPolicies": lambda n : setattr(self, 'claims_mapping_policies', n.get_collection_of_object_values(claims_mapping_policy.ClaimsMappingPolicy)),
             "conditionalAccessPolicies": lambda n : setattr(self, 'conditional_access_policies', n.get_collection_of_object_values(conditional_access_policy.ConditionalAccessPolicy)),
             "crossTenantAccessPolicy": lambda n : setattr(self, 'cross_tenant_access_policy', n.get_object_value(cross_tenant_access_policy.CrossTenantAccessPolicy)),
+            "defaultAppManagementPolicy": lambda n : setattr(self, 'default_app_management_policy', n.get_object_value(tenant_app_management_policy.TenantAppManagementPolicy)),
             "featureRolloutPolicies": lambda n : setattr(self, 'feature_rollout_policies', n.get_collection_of_object_values(feature_rollout_policy.FeatureRolloutPolicy)),
             "homeRealmDiscoveryPolicies": lambda n : setattr(self, 'home_realm_discovery_policies', n.get_collection_of_object_values(home_realm_discovery_policy.HomeRealmDiscoveryPolicy)),
             "identitySecurityDefaultsEnforcementPolicy": lambda n : setattr(self, 'identity_security_defaults_enforcement_policy', n.get_object_value(identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy)),
@@ -350,12 +392,14 @@ class PolicyRoot(entity.Entity):
         super().serialize(writer)
         writer.write_collection_of_object_values("activityBasedTimeoutPolicies", self.activity_based_timeout_policies)
         writer.write_object_value("adminConsentRequestPolicy", self.admin_consent_request_policy)
+        writer.write_collection_of_object_values("appManagementPolicies", self.app_management_policies)
         writer.write_object_value("authenticationFlowsPolicy", self.authentication_flows_policy)
         writer.write_object_value("authenticationMethodsPolicy", self.authentication_methods_policy)
         writer.write_object_value("authorizationPolicy", self.authorization_policy)
         writer.write_collection_of_object_values("claimsMappingPolicies", self.claims_mapping_policies)
         writer.write_collection_of_object_values("conditionalAccessPolicies", self.conditional_access_policies)
         writer.write_object_value("crossTenantAccessPolicy", self.cross_tenant_access_policy)
+        writer.write_object_value("defaultAppManagementPolicy", self.default_app_management_policy)
         writer.write_collection_of_object_values("featureRolloutPolicies", self.feature_rollout_policies)
         writer.write_collection_of_object_values("homeRealmDiscoveryPolicies", self.home_realm_discovery_policies)
         writer.write_object_value("identitySecurityDefaultsEnforcementPolicy", self.identity_security_defaults_enforcement_policy)

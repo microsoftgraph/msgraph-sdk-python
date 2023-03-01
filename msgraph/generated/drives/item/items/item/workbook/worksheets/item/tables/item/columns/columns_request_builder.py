@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
+add_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.tables.item.columns.add.add_request_builder')
 count_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.tables.item.columns.count.count_request_builder')
-add_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.tables.item.columns.microsoft_graph_add.add_request_builder')
-item_at_with_index_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.tables.item.columns.microsoft_graph_item_at_with_index.item_at_with_index_request_builder')
+item_at_with_index_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.tables.item.columns.item_at_with_index.item_at_with_index_request_builder')
 workbook_table_column = lazy_import('msgraph.generated.models.workbook_table_column')
 workbook_table_column_collection_response = lazy_import('msgraph.generated.models.workbook_table_column_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -22,21 +22,14 @@ class ColumnsRequestBuilder():
     Provides operations to manage the columns property of the microsoft.graph.workbookTable entity.
     """
     @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_add(self) -> add_request_builder.AddRequestBuilder:
+    def add(self) -> add_request_builder.AddRequestBuilder:
         """
         Provides operations to call the add method.
         """
         return add_request_builder.AddRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_count(self) -> count_request_builder.CountRequestBuilder:
+    def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to call the count method.
         """
@@ -78,7 +71,7 @@ class ColumnsRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, workbook_table_column_collection_response.WorkbookTableColumnCollectionResponse, error_mapping)
     
-    def microsoft_graph_item_at_with_index(self,index: Optional[int] = None) -> item_at_with_index_request_builder.ItemAtWithIndexRequestBuilder:
+    def item_at_with_index(self,index: Optional[int] = None) -> item_at_with_index_request_builder.ItemAtWithIndexRequestBuilder:
         """
         Provides operations to call the itemAt method.
         Args:
@@ -121,7 +114,7 @@ class ColumnsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -142,7 +135,7 @@ class ColumnsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -212,7 +205,7 @@ class ColumnsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -227,7 +220,7 @@ class ColumnsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

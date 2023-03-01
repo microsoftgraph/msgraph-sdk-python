@@ -10,31 +10,33 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
+add_key_request_builder = lazy_import('msgraph.generated.applications.item.add_key.add_key_request_builder')
+add_password_request_builder = lazy_import('msgraph.generated.applications.item.add_password.add_password_request_builder')
+app_management_policies_request_builder = lazy_import('msgraph.generated.applications.item.app_management_policies.app_management_policies_request_builder')
+app_management_policy_item_request_builder = lazy_import('msgraph.generated.applications.item.app_management_policies.item.app_management_policy_item_request_builder')
+check_member_groups_request_builder = lazy_import('msgraph.generated.applications.item.check_member_groups.check_member_groups_request_builder')
+check_member_objects_request_builder = lazy_import('msgraph.generated.applications.item.check_member_objects.check_member_objects_request_builder')
 created_on_behalf_of_request_builder = lazy_import('msgraph.generated.applications.item.created_on_behalf_of.created_on_behalf_of_request_builder')
 extension_properties_request_builder = lazy_import('msgraph.generated.applications.item.extension_properties.extension_properties_request_builder')
 extension_property_item_request_builder = lazy_import('msgraph.generated.applications.item.extension_properties.item.extension_property_item_request_builder')
 federated_identity_credentials_request_builder = lazy_import('msgraph.generated.applications.item.federated_identity_credentials.federated_identity_credentials_request_builder')
 federated_identity_credential_item_request_builder = lazy_import('msgraph.generated.applications.item.federated_identity_credentials.item.federated_identity_credential_item_request_builder')
+get_member_groups_request_builder = lazy_import('msgraph.generated.applications.item.get_member_groups.get_member_groups_request_builder')
+get_member_objects_request_builder = lazy_import('msgraph.generated.applications.item.get_member_objects.get_member_objects_request_builder')
 home_realm_discovery_policies_request_builder = lazy_import('msgraph.generated.applications.item.home_realm_discovery_policies.home_realm_discovery_policies_request_builder')
 home_realm_discovery_policy_item_request_builder = lazy_import('msgraph.generated.applications.item.home_realm_discovery_policies.item.home_realm_discovery_policy_item_request_builder')
 logo_request_builder = lazy_import('msgraph.generated.applications.item.logo.logo_request_builder')
-add_key_request_builder = lazy_import('msgraph.generated.applications.item.microsoft_graph_add_key.add_key_request_builder')
-add_password_request_builder = lazy_import('msgraph.generated.applications.item.microsoft_graph_add_password.add_password_request_builder')
-check_member_groups_request_builder = lazy_import('msgraph.generated.applications.item.microsoft_graph_check_member_groups.check_member_groups_request_builder')
-check_member_objects_request_builder = lazy_import('msgraph.generated.applications.item.microsoft_graph_check_member_objects.check_member_objects_request_builder')
-get_member_groups_request_builder = lazy_import('msgraph.generated.applications.item.microsoft_graph_get_member_groups.get_member_groups_request_builder')
-get_member_objects_request_builder = lazy_import('msgraph.generated.applications.item.microsoft_graph_get_member_objects.get_member_objects_request_builder')
-remove_key_request_builder = lazy_import('msgraph.generated.applications.item.microsoft_graph_remove_key.remove_key_request_builder')
-remove_password_request_builder = lazy_import('msgraph.generated.applications.item.microsoft_graph_remove_password.remove_password_request_builder')
-restore_request_builder = lazy_import('msgraph.generated.applications.item.microsoft_graph_restore.restore_request_builder')
-set_verified_publisher_request_builder = lazy_import('msgraph.generated.applications.item.microsoft_graph_set_verified_publisher.set_verified_publisher_request_builder')
-unset_verified_publisher_request_builder = lazy_import('msgraph.generated.applications.item.microsoft_graph_unset_verified_publisher.unset_verified_publisher_request_builder')
 owners_request_builder = lazy_import('msgraph.generated.applications.item.owners.owners_request_builder')
 directory_object_item_request_builder = lazy_import('msgraph.generated.applications.item.owners.item.directory_object_item_request_builder')
+remove_key_request_builder = lazy_import('msgraph.generated.applications.item.remove_key.remove_key_request_builder')
+remove_password_request_builder = lazy_import('msgraph.generated.applications.item.remove_password.remove_password_request_builder')
+restore_request_builder = lazy_import('msgraph.generated.applications.item.restore.restore_request_builder')
+set_verified_publisher_request_builder = lazy_import('msgraph.generated.applications.item.set_verified_publisher.set_verified_publisher_request_builder')
 token_issuance_policies_request_builder = lazy_import('msgraph.generated.applications.item.token_issuance_policies.token_issuance_policies_request_builder')
 token_issuance_policy_item_request_builder = lazy_import('msgraph.generated.applications.item.token_issuance_policies.item.token_issuance_policy_item_request_builder')
 token_lifetime_policies_request_builder = lazy_import('msgraph.generated.applications.item.token_lifetime_policies.token_lifetime_policies_request_builder')
 token_lifetime_policy_item_request_builder = lazy_import('msgraph.generated.applications.item.token_lifetime_policies.item.token_lifetime_policy_item_request_builder')
+unset_verified_publisher_request_builder = lazy_import('msgraph.generated.applications.item.unset_verified_publisher.unset_verified_publisher_request_builder')
 application = lazy_import('msgraph.generated.models.application')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -42,6 +44,41 @@ class ApplicationItemRequestBuilder():
     """
     Provides operations to manage the collection of application entities.
     """
+    @property
+    def add_key(self) -> add_key_request_builder.AddKeyRequestBuilder:
+        """
+        Provides operations to call the addKey method.
+        """
+        return add_key_request_builder.AddKeyRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def add_password(self) -> add_password_request_builder.AddPasswordRequestBuilder:
+        """
+        Provides operations to call the addPassword method.
+        """
+        return add_password_request_builder.AddPasswordRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def app_management_policies(self) -> app_management_policies_request_builder.AppManagementPoliciesRequestBuilder:
+        """
+        Provides operations to manage the appManagementPolicies property of the microsoft.graph.application entity.
+        """
+        return app_management_policies_request_builder.AppManagementPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
+        """
+        Provides operations to call the checkMemberGroups method.
+        """
+        return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
+        """
+        Provides operations to call the checkMemberObjects method.
+        """
+        return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @property
     def created_on_behalf_of(self) -> created_on_behalf_of_request_builder.CreatedOnBehalfOfRequestBuilder:
         """
@@ -64,6 +101,20 @@ class ApplicationItemRequestBuilder():
         return federated_identity_credentials_request_builder.FederatedIdentityCredentialsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
+        """
+        Provides operations to call the getMemberGroups method.
+        """
+        return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
+        """
+        Provides operations to call the getMemberObjects method.
+        """
+        return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def home_realm_discovery_policies(self) -> home_realm_discovery_policies_request_builder.HomeRealmDiscoveryPoliciesRequestBuilder:
         """
         Provides operations to manage the homeRealmDiscoveryPolicies property of the microsoft.graph.application entity.
@@ -78,88 +129,39 @@ class ApplicationItemRequestBuilder():
         return logo_request_builder.LogoRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_add_key(self) -> add_key_request_builder.AddKeyRequestBuilder:
+    def owners(self) -> owners_request_builder.OwnersRequestBuilder:
         """
-        Provides operations to call the addKey method.
+        Provides operations to manage the owners property of the microsoft.graph.application entity.
         """
-        return add_key_request_builder.AddKeyRequestBuilder(self.request_adapter, self.path_parameters)
+        return owners_request_builder.OwnersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_add_password(self) -> add_password_request_builder.AddPasswordRequestBuilder:
-        """
-        Provides operations to call the addPassword method.
-        """
-        return add_password_request_builder.AddPasswordRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
-        """
-        Provides operations to call the checkMemberGroups method.
-        """
-        return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
-        """
-        Provides operations to call the checkMemberObjects method.
-        """
-        return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
-        """
-        Provides operations to call the getMemberGroups method.
-        """
-        return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
-        """
-        Provides operations to call the getMemberObjects method.
-        """
-        return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_remove_key(self) -> remove_key_request_builder.RemoveKeyRequestBuilder:
+    def remove_key(self) -> remove_key_request_builder.RemoveKeyRequestBuilder:
         """
         Provides operations to call the removeKey method.
         """
         return remove_key_request_builder.RemoveKeyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_remove_password(self) -> remove_password_request_builder.RemovePasswordRequestBuilder:
+    def remove_password(self) -> remove_password_request_builder.RemovePasswordRequestBuilder:
         """
         Provides operations to call the removePassword method.
         """
         return remove_password_request_builder.RemovePasswordRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_restore(self) -> restore_request_builder.RestoreRequestBuilder:
+    def restore(self) -> restore_request_builder.RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
         return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_set_verified_publisher(self) -> set_verified_publisher_request_builder.SetVerifiedPublisherRequestBuilder:
+    def set_verified_publisher(self) -> set_verified_publisher_request_builder.SetVerifiedPublisherRequestBuilder:
         """
         Provides operations to call the setVerifiedPublisher method.
         """
         return set_verified_publisher_request_builder.SetVerifiedPublisherRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_unset_verified_publisher(self) -> unset_verified_publisher_request_builder.UnsetVerifiedPublisherRequestBuilder:
-        """
-        Provides operations to call the unsetVerifiedPublisher method.
-        """
-        return unset_verified_publisher_request_builder.UnsetVerifiedPublisherRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def owners(self) -> owners_request_builder.OwnersRequestBuilder:
-        """
-        Provides operations to manage the owners property of the microsoft.graph.application entity.
-        """
-        return owners_request_builder.OwnersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def token_issuance_policies(self) -> token_issuance_policies_request_builder.TokenIssuancePoliciesRequestBuilder:
@@ -175,11 +177,30 @@ class ApplicationItemRequestBuilder():
         """
         return token_lifetime_policies_request_builder.TokenLifetimePoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, application_id: Optional[str] = None) -> None:
+    @property
+    def unset_verified_publisher(self) -> unset_verified_publisher_request_builder.UnsetVerifiedPublisherRequestBuilder:
+        """
+        Provides operations to call the unsetVerifiedPublisher method.
+        """
+        return unset_verified_publisher_request_builder.UnsetVerifiedPublisherRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    def app_management_policies_by_id(self,id: str) -> app_management_policy_item_request_builder.AppManagementPolicyItemRequestBuilder:
+        """
+        Gets an item from the msgraph.generated.applications.item.appManagementPolicies.item collection
+        Args:
+            id: Unique identifier of the item
+        Returns: app_management_policy_item_request_builder.AppManagementPolicyItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["appManagementPolicy%2Did"] = id
+        return app_management_policy_item_request_builder.AppManagementPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ApplicationItemRequestBuilder and sets the default values.
         Args:
-            applicationId: key: id of application
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -191,7 +212,6 @@ class ApplicationItemRequestBuilder():
         self.url_template: str = "{+baseurl}/applications/{application%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["application%2Did"] = applicationId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -330,7 +350,7 @@ class ApplicationItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -377,7 +397,7 @@ class ApplicationItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -390,7 +410,7 @@ class ApplicationItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -429,7 +449,7 @@ class ApplicationItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -444,7 +464,7 @@ class ApplicationItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

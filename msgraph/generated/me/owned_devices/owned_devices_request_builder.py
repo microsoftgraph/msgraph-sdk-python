@@ -11,9 +11,9 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.me.owned_devices.count.count_request_builder')
-app_role_assignment_request_builder = lazy_import('msgraph.generated.me.owned_devices.microsoft_graph_app_role_assignment.app_role_assignment_request_builder')
-device_request_builder = lazy_import('msgraph.generated.me.owned_devices.microsoft_graph_device.device_request_builder')
-endpoint_request_builder = lazy_import('msgraph.generated.me.owned_devices.microsoft_graph_endpoint.endpoint_request_builder')
+graph_app_role_assignment_request_builder = lazy_import('msgraph.generated.me.owned_devices.graph_app_role_assignment.graph_app_role_assignment_request_builder')
+graph_device_request_builder = lazy_import('msgraph.generated.me.owned_devices.graph_device.graph_device_request_builder')
+graph_endpoint_request_builder = lazy_import('msgraph.generated.me.owned_devices.graph_endpoint.graph_endpoint_request_builder')
 directory_object_collection_response = lazy_import('msgraph.generated.models.directory_object_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -29,25 +29,25 @@ class OwnedDevicesRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_app_role_assignment(self) -> app_role_assignment_request_builder.AppRoleAssignmentRequestBuilder:
+    def graph_app_role_assignment(self) -> graph_app_role_assignment_request_builder.GraphAppRoleAssignmentRequestBuilder:
         """
         Casts the previous resource to appRoleAssignment.
         """
-        return app_role_assignment_request_builder.AppRoleAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
+        return graph_app_role_assignment_request_builder.GraphAppRoleAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_device(self) -> device_request_builder.DeviceRequestBuilder:
+    def graph_device(self) -> graph_device_request_builder.GraphDeviceRequestBuilder:
         """
         Casts the previous resource to device.
         """
-        return device_request_builder.DeviceRequestBuilder(self.request_adapter, self.path_parameters)
+        return graph_device_request_builder.GraphDeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_endpoint(self) -> endpoint_request_builder.EndpointRequestBuilder:
+    def graph_endpoint(self) -> graph_endpoint_request_builder.GraphEndpointRequestBuilder:
         """
         Casts the previous resource to endpoint.
         """
-        return endpoint_request_builder.EndpointRequestBuilder(self.request_adapter, self.path_parameters)
+        return graph_endpoint_request_builder.GraphEndpointRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -96,7 +96,7 @@ class OwnedDevicesRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -166,7 +166,7 @@ class OwnedDevicesRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

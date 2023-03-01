@@ -14,8 +14,6 @@ o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error'
 ediscovery_case = lazy_import('msgraph.generated.models.security.ediscovery_case')
 custodians_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.custodians.custodians_request_builder')
 ediscovery_custodian_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.custodians.item.ediscovery_custodian_item_request_builder')
-close_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.microsoft_graph_security_close.close_request_builder')
-reopen_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.microsoft_graph_security_reopen.reopen_request_builder')
 noncustodial_data_sources_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.noncustodial_data_sources_request_builder')
 ediscovery_noncustodial_data_source_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.ediscovery_noncustodial_data_source_item_request_builder')
 operations_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.operations.operations_request_builder')
@@ -24,6 +22,8 @@ review_sets_request_builder = lazy_import('msgraph.generated.security.cases.edis
 ediscovery_review_set_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.review_sets.item.ediscovery_review_set_item_request_builder')
 searches_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.searches_request_builder')
 ediscovery_search_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.ediscovery_search_item_request_builder')
+security_close_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.security_close.security_close_request_builder')
+security_reopen_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.security_reopen.security_reopen_request_builder')
 settings_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.settings.settings_request_builder')
 tags_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.tags.tags_request_builder')
 ediscovery_review_tag_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.tags.item.ediscovery_review_tag_item_request_builder')
@@ -38,20 +38,6 @@ class EdiscoveryCaseItemRequestBuilder():
         Provides operations to manage the custodians property of the microsoft.graph.security.ediscoveryCase entity.
         """
         return custodians_request_builder.CustodiansRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_security_close(self) -> close_request_builder.CloseRequestBuilder:
-        """
-        Provides operations to call the close method.
-        """
-        return close_request_builder.CloseRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_security_reopen(self) -> reopen_request_builder.ReopenRequestBuilder:
-        """
-        Provides operations to call the reopen method.
-        """
-        return reopen_request_builder.ReopenRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def noncustodial_data_sources(self) -> noncustodial_data_sources_request_builder.NoncustodialDataSourcesRequestBuilder:
@@ -82,6 +68,20 @@ class EdiscoveryCaseItemRequestBuilder():
         return searches_request_builder.SearchesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def security_close(self) -> security_close_request_builder.SecurityCloseRequestBuilder:
+        """
+        Provides operations to call the close method.
+        """
+        return security_close_request_builder.SecurityCloseRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def security_reopen(self) -> security_reopen_request_builder.SecurityReopenRequestBuilder:
+        """
+        Provides operations to call the reopen method.
+        """
+        return security_reopen_request_builder.SecurityReopenRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def settings(self) -> settings_request_builder.SettingsRequestBuilder:
         """
         Provides operations to manage the settings property of the microsoft.graph.security.ediscoveryCase entity.
@@ -95,11 +95,10 @@ class EdiscoveryCaseItemRequestBuilder():
         """
         return tags_request_builder.TagsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, ediscovery_case_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EdiscoveryCaseItemRequestBuilder and sets the default values.
         Args:
-            ediscoveryCaseId: key: id of ediscoveryCase
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -111,7 +110,6 @@ class EdiscoveryCaseItemRequestBuilder():
         self.url_template: str = "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["ediscoveryCase%2Did"] = ediscoveryCaseId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -276,7 +274,7 @@ class EdiscoveryCaseItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -297,7 +295,7 @@ class EdiscoveryCaseItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -310,7 +308,7 @@ class EdiscoveryCaseItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -349,7 +347,7 @@ class EdiscoveryCaseItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -364,7 +362,7 @@ class EdiscoveryCaseItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

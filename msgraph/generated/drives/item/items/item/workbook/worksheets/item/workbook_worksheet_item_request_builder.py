@@ -10,20 +10,20 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
+cell_with_row_with_column_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.cell_with_row_with_column.cell_with_row_with_column_request_builder')
 charts_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.charts_request_builder')
 workbook_chart_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.workbook_chart_item_request_builder')
-cell_with_row_with_column_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.microsoft_graph_cell_with_row_with_column.cell_with_row_with_column_request_builder')
-range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.microsoft_graph_range.range_request_builder')
-range_with_address_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.microsoft_graph_range_with_address.range_with_address_request_builder')
-used_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.microsoft_graph_used_range.used_range_request_builder')
-used_range_with_values_only_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.microsoft_graph_used_range_with_values_only.used_range_with_values_only_request_builder')
 names_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.names.names_request_builder')
 workbook_named_item_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.names.item.workbook_named_item_item_request_builder')
 pivot_tables_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.pivot_tables.pivot_tables_request_builder')
 workbook_pivot_table_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.pivot_tables.item.workbook_pivot_table_item_request_builder')
 protection_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.protection.protection_request_builder')
+range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.range.range_request_builder')
+range_with_address_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.range_with_address.range_with_address_request_builder')
 tables_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.tables.tables_request_builder')
 workbook_table_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.tables.item.workbook_table_item_request_builder')
+used_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.used_range.used_range_request_builder')
+used_range_with_values_only_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.used_range_with_values_only.used_range_with_values_only_request_builder')
 workbook_worksheet = lazy_import('msgraph.generated.models.workbook_worksheet')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -37,20 +37,6 @@ class WorkbookWorksheetItemRequestBuilder():
         Provides operations to manage the charts property of the microsoft.graph.workbookWorksheet entity.
         """
         return charts_request_builder.ChartsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_range(self) -> range_request_builder.RangeRequestBuilder:
-        """
-        Provides operations to call the range method.
-        """
-        return range_request_builder.RangeRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_used_range(self) -> used_range_request_builder.UsedRangeRequestBuilder:
-        """
-        Provides operations to call the usedRange method.
-        """
-        return used_range_request_builder.UsedRangeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def names(self) -> names_request_builder.NamesRequestBuilder:
@@ -74,11 +60,39 @@ class WorkbookWorksheetItemRequestBuilder():
         return protection_request_builder.ProtectionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def range(self) -> range_request_builder.RangeRequestBuilder:
+        """
+        Provides operations to call the range method.
+        """
+        return range_request_builder.RangeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def tables(self) -> tables_request_builder.TablesRequestBuilder:
         """
         Provides operations to manage the tables property of the microsoft.graph.workbookWorksheet entity.
         """
         return tables_request_builder.TablesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def used_range(self) -> used_range_request_builder.UsedRangeRequestBuilder:
+        """
+        Provides operations to call the usedRange method.
+        """
+        return used_range_request_builder.UsedRangeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    def cell_with_row_with_column(self,column: Optional[int] = None, row: Optional[int] = None) -> cell_with_row_with_column_request_builder.CellWithRowWithColumnRequestBuilder:
+        """
+        Provides operations to call the cell method.
+        Args:
+            column: Usage: column={column}
+            row: Usage: row={row}
+        Returns: cell_with_row_with_column_request_builder.CellWithRowWithColumnRequestBuilder
+        """
+        if column is None:
+            raise Exception("column cannot be undefined")
+        if row is None:
+            raise Exception("row cannot be undefined")
+        return cell_with_row_with_column_request_builder.CellWithRowWithColumnRequestBuilder(self.request_adapter, self.path_parameters, column, row)
     
     def charts_by_id(self,id: str) -> workbook_chart_item_request_builder.WorkbookChartItemRequestBuilder:
         """
@@ -93,13 +107,12 @@ class WorkbookWorksheetItemRequestBuilder():
         url_tpl_params["workbookChart%2Did"] = id
         return workbook_chart_item_request_builder.WorkbookChartItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, workbook_worksheet_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new WorkbookWorksheetItemRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
-            workbookWorksheetId: key: id of workbookWorksheet
         """
         if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
@@ -109,7 +122,6 @@ class WorkbookWorksheetItemRequestBuilder():
         self.url_template: str = "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["workbookWorksheet%2Did"] = workbookWorksheetId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -147,42 +159,6 @@ class WorkbookWorksheetItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, workbook_worksheet.WorkbookWorksheet, error_mapping)
-    
-    def microsoft_graph_cell_with_row_with_column(self,column: Optional[int] = None, row: Optional[int] = None) -> cell_with_row_with_column_request_builder.CellWithRowWithColumnRequestBuilder:
-        """
-        Provides operations to call the cell method.
-        Args:
-            column: Usage: column={column}
-            row: Usage: row={row}
-        Returns: cell_with_row_with_column_request_builder.CellWithRowWithColumnRequestBuilder
-        """
-        if column is None:
-            raise Exception("column cannot be undefined")
-        if row is None:
-            raise Exception("row cannot be undefined")
-        return cell_with_row_with_column_request_builder.CellWithRowWithColumnRequestBuilder(self.request_adapter, self.path_parameters, column, row)
-    
-    def microsoft_graph_range_with_address(self,address: Optional[str] = None) -> range_with_address_request_builder.RangeWithAddressRequestBuilder:
-        """
-        Provides operations to call the range method.
-        Args:
-            address: Usage: address='{address}'
-        Returns: range_with_address_request_builder.RangeWithAddressRequestBuilder
-        """
-        if address is None:
-            raise Exception("address cannot be undefined")
-        return range_with_address_request_builder.RangeWithAddressRequestBuilder(self.request_adapter, self.path_parameters, address)
-    
-    def microsoft_graph_used_range_with_values_only(self,values_only: Optional[bool] = None) -> used_range_with_values_only_request_builder.UsedRangeWithValuesOnlyRequestBuilder:
-        """
-        Provides operations to call the usedRange method.
-        Args:
-            valuesOnly: Usage: valuesOnly={valuesOnly}
-        Returns: used_range_with_values_only_request_builder.UsedRangeWithValuesOnlyRequestBuilder
-        """
-        if values_only is None:
-            raise Exception("values_only cannot be undefined")
-        return used_range_with_values_only_request_builder.UsedRangeWithValuesOnlyRequestBuilder(self.request_adapter, self.path_parameters, valuesOnly)
     
     def names_by_id(self,id: str) -> workbook_named_item_item_request_builder.WorkbookNamedItemItemRequestBuilder:
         """
@@ -231,6 +207,17 @@ class WorkbookWorksheetItemRequestBuilder():
         url_tpl_params["workbookPivotTable%2Did"] = id
         return workbook_pivot_table_item_request_builder.WorkbookPivotTableItemRequestBuilder(self.request_adapter, url_tpl_params)
     
+    def range_with_address(self,address: Optional[str] = None) -> range_with_address_request_builder.RangeWithAddressRequestBuilder:
+        """
+        Provides operations to call the range method.
+        Args:
+            address: Usage: address='{address}'
+        Returns: range_with_address_request_builder.RangeWithAddressRequestBuilder
+        """
+        if address is None:
+            raise Exception("address cannot be undefined")
+        return range_with_address_request_builder.RangeWithAddressRequestBuilder(self.request_adapter, self.path_parameters, address)
+    
     def tables_by_id(self,id: str) -> workbook_table_item_request_builder.WorkbookTableItemRequestBuilder:
         """
         Provides operations to manage the tables property of the microsoft.graph.workbookWorksheet entity.
@@ -271,7 +258,7 @@ class WorkbookWorksheetItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -292,12 +279,23 @@ class WorkbookWorksheetItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    def used_range_with_values_only(self,values_only: Optional[bool] = None) -> used_range_with_values_only_request_builder.UsedRangeWithValuesOnlyRequestBuilder:
+        """
+        Provides operations to call the usedRange method.
+        Args:
+            valuesOnly: Usage: valuesOnly={valuesOnly}
+        Returns: used_range_with_values_only_request_builder.UsedRangeWithValuesOnlyRequestBuilder
+        """
+        if values_only is None:
+            raise Exception("values_only cannot be undefined")
+        return used_range_with_values_only_request_builder.UsedRangeWithValuesOnlyRequestBuilder(self.request_adapter, self.path_parameters, valuesOnly)
     
     @dataclass
     class WorkbookWorksheetItemRequestBuilderDeleteRequestConfiguration():
@@ -305,7 +303,7 @@ class WorkbookWorksheetItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -344,7 +342,7 @@ class WorkbookWorksheetItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -359,7 +357,7 @@ class WorkbookWorksheetItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

@@ -10,10 +10,10 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
+additional_access_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignments.additional_access.additional_access_request_builder')
+additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignments.additional_access_with_access_package_id_with_incompatible_access_package_id.additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder')
 count_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignments.count.count_request_builder')
-additional_access_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignments.microsoft_graph_additional_access.additional_access_request_builder')
-additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignments.microsoft_graph_additional_access_with_access_package_id_with_incompatible_access_package_id.additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder')
-filter_by_current_user_with_on_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignments.microsoft_graph_filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder')
+filter_by_current_user_with_on_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignments.filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder')
 access_package_assignment = lazy_import('msgraph.generated.models.access_package_assignment')
 access_package_assignment_collection_response = lazy_import('msgraph.generated.models.access_package_assignment_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -23,18 +23,32 @@ class AssignmentsRequestBuilder():
     Provides operations to manage the assignments property of the microsoft.graph.entitlementManagement entity.
     """
     @property
+    def additional_access(self) -> additional_access_request_builder.AdditionalAccessRequestBuilder:
+        """
+        Provides operations to call the additionalAccess method.
+        """
+        return additional_access_request_builder.AdditionalAccessRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
-    @property
-    def microsoft_graph_additional_access(self) -> additional_access_request_builder.AdditionalAccessRequestBuilder:
+    def additional_access_with_access_package_id_with_incompatible_access_package_id(self,access_package_id: Optional[str] = None, incompatible_access_package_id: Optional[str] = None) -> additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder.AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder:
         """
         Provides operations to call the additionalAccess method.
+        Args:
+            accessPackageId: Usage: accessPackageId='{accessPackageId}'
+            incompatibleAccessPackageId: Usage: incompatibleAccessPackageId='{incompatibleAccessPackageId}'
+        Returns: additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder.AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder
         """
-        return additional_access_request_builder.AdditionalAccessRequestBuilder(self.request_adapter, self.path_parameters)
+        if access_package_id is None:
+            raise Exception("access_package_id cannot be undefined")
+        if incompatible_access_package_id is None:
+            raise Exception("incompatible_access_package_id cannot be undefined")
+        return additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder.AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder(self.request_adapter, self.path_parameters, accessPackageId, incompatibleAccessPackageId)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -54,6 +68,17 @@ class AssignmentsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
+        """
+        Provides operations to call the filterByCurrentUser method.
+        Args:
+            on: Usage: on='{on}'
+        Returns: filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder
+        """
+        if on is None:
+            raise Exception("on cannot be undefined")
+        return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
+    
     async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_assignment_collection_response.AccessPackageAssignmentCollectionResponse]:
         """
         In Azure AD entitlement management, retrieve a list of accessPackageAssignment objects. For directory-wide administrators, the resulting list includes all the assignments, current and well as expired, that the caller has access to read, across all catalogs and access packages.  If the caller is on behalf of a delegated user who is assigned only to catalog-specific delegated administrative roles, the request must supply a filter to indicate a specific access package, such as: `$filter=accessPackage/id eq 'a914b616-e04e-476b-aa37-91038f0b165b'`.
@@ -71,31 +96,6 @@ class AssignmentsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_package_assignment_collection_response.AccessPackageAssignmentCollectionResponse, error_mapping)
-    
-    def microsoft_graph_additional_access_with_access_package_id_with_incompatible_access_package_id(self,access_package_id: Optional[str] = None, incompatible_access_package_id: Optional[str] = None) -> additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder.AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder:
-        """
-        Provides operations to call the additionalAccess method.
-        Args:
-            accessPackageId: Usage: accessPackageId='{accessPackageId}'
-            incompatibleAccessPackageId: Usage: incompatibleAccessPackageId='{incompatibleAccessPackageId}'
-        Returns: additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder.AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder
-        """
-        if access_package_id is None:
-            raise Exception("access_package_id cannot be undefined")
-        if incompatible_access_package_id is None:
-            raise Exception("incompatible_access_package_id cannot be undefined")
-        return additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder.AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder(self.request_adapter, self.path_parameters, accessPackageId, incompatibleAccessPackageId)
-    
-    def microsoft_graph_filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
-        """
-        Provides operations to call the filterByCurrentUser method.
-        Args:
-            on: Usage: on='{on}'
-        Returns: filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder
-        """
-        if on is None:
-            raise Exception("on cannot be undefined")
-        return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
     async def post(self,body: Optional[access_package_assignment.AccessPackageAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[access_package_assignment.AccessPackageAssignment]:
         """
@@ -129,7 +129,7 @@ class AssignmentsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -150,7 +150,7 @@ class AssignmentsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -220,7 +220,7 @@ class AssignmentsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -235,7 +235,7 @@ class AssignmentsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

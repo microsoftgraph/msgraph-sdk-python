@@ -9,7 +9,7 @@ class AnonymousGuestConversationMember(conversation_member.ConversationMember):
     @property
     def anonymous_guest_id(self,) -> Optional[str]:
         """
-        Gets the anonymousGuestId property value. The anonymousGuestId property
+        Gets the anonymousGuestId property value. Unique ID that represents the user. Note: This ID can change if the user leaves and rejoins the meeting, or joins from a different device.
         Returns: Optional[str]
         """
         return self._anonymous_guest_id
@@ -17,7 +17,7 @@ class AnonymousGuestConversationMember(conversation_member.ConversationMember):
     @anonymous_guest_id.setter
     def anonymous_guest_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the anonymousGuestId property value. The anonymousGuestId property
+        Sets the anonymousGuestId property value. Unique ID that represents the user. Note: This ID can change if the user leaves and rejoins the meeting, or joins from a different device.
         Args:
             value: Value to set for the anonymous_guest_id property.
         """
@@ -29,7 +29,7 @@ class AnonymousGuestConversationMember(conversation_member.ConversationMember):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.anonymousGuestConversationMember"
-        # The anonymousGuestId property
+        # Unique ID that represents the user. Note: This ID can change if the user leaves and rejoins the meeting, or joins from a different device.
         self._anonymous_guest_id: Optional[str] = None
     
     @staticmethod

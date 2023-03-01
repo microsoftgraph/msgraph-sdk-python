@@ -12,7 +12,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 teamwork = lazy_import('msgraph.generated.models.teamwork')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-send_activity_notification_to_recipients_request_builder = lazy_import('msgraph.generated.teamwork.microsoft_graph_send_activity_notification_to_recipients.send_activity_notification_to_recipients_request_builder')
+deleted_teams_request_builder = lazy_import('msgraph.generated.teamwork.deleted_teams.deleted_teams_request_builder')
+deleted_team_item_request_builder = lazy_import('msgraph.generated.teamwork.deleted_teams.item.deleted_team_item_request_builder')
+send_activity_notification_to_recipients_request_builder = lazy_import('msgraph.generated.teamwork.send_activity_notification_to_recipients.send_activity_notification_to_recipients_request_builder')
 workforce_integrations_request_builder = lazy_import('msgraph.generated.teamwork.workforce_integrations.workforce_integrations_request_builder')
 workforce_integration_item_request_builder = lazy_import('msgraph.generated.teamwork.workforce_integrations.item.workforce_integration_item_request_builder')
 
@@ -21,7 +23,14 @@ class TeamworkRequestBuilder():
     Provides operations to manage the teamwork singleton.
     """
     @property
-    def microsoft_graph_send_activity_notification_to_recipients(self) -> send_activity_notification_to_recipients_request_builder.SendActivityNotificationToRecipientsRequestBuilder:
+    def deleted_teams(self) -> deleted_teams_request_builder.DeletedTeamsRequestBuilder:
+        """
+        Provides operations to manage the deletedTeams property of the microsoft.graph.teamwork entity.
+        """
+        return deleted_teams_request_builder.DeletedTeamsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def send_activity_notification_to_recipients(self) -> send_activity_notification_to_recipients_request_builder.SendActivityNotificationToRecipientsRequestBuilder:
         """
         Provides operations to call the sendActivityNotificationToRecipients method.
         """
@@ -51,6 +60,19 @@ class TeamworkRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def deleted_teams_by_id(self,id: str) -> deleted_team_item_request_builder.DeletedTeamItemRequestBuilder:
+        """
+        Provides operations to manage the deletedTeams property of the microsoft.graph.teamwork entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: deleted_team_item_request_builder.DeletedTeamItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["deletedTeam%2Did"] = id
+        return deleted_team_item_request_builder.DeletedTeamItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[TeamworkRequestBuilderGetRequestConfiguration] = None) -> Optional[teamwork.Teamwork]:
         """
@@ -102,7 +124,7 @@ class TeamworkRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -123,7 +145,7 @@ class TeamworkRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -176,7 +198,7 @@ class TeamworkRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -191,7 +213,7 @@ class TeamworkRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

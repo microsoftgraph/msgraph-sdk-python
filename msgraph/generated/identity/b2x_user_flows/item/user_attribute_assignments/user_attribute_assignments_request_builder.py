@@ -11,8 +11,8 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.user_attribute_assignments.count.count_request_builder')
-get_order_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.user_attribute_assignments.microsoft_graph_get_order.get_order_request_builder')
-set_order_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.user_attribute_assignments.microsoft_graph_set_order.set_order_request_builder')
+get_order_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.user_attribute_assignments.get_order.get_order_request_builder')
+set_order_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.user_attribute_assignments.set_order.set_order_request_builder')
 identity_user_flow_attribute_assignment = lazy_import('msgraph.generated.models.identity_user_flow_attribute_assignment')
 identity_user_flow_attribute_assignment_collection_response = lazy_import('msgraph.generated.models.identity_user_flow_attribute_assignment_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -29,14 +29,14 @@ class UserAttributeAssignmentsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_order(self) -> get_order_request_builder.GetOrderRequestBuilder:
+    def get_order(self) -> get_order_request_builder.GetOrderRequestBuilder:
         """
         Provides operations to call the getOrder method.
         """
         return get_order_request_builder.GetOrderRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_set_order(self) -> set_order_request_builder.SetOrderRequestBuilder:
+    def set_order(self) -> set_order_request_builder.SetOrderRequestBuilder:
         """
         Provides operations to call the setOrder method.
         """
@@ -110,7 +110,7 @@ class UserAttributeAssignmentsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -131,7 +131,7 @@ class UserAttributeAssignmentsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -201,7 +201,7 @@ class UserAttributeAssignmentsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -216,7 +216,7 @@ class UserAttributeAssignmentsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

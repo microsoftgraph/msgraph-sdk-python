@@ -28,11 +28,11 @@ class DelegatedAdminRelationshipCustomerParticipant(AdditionalDataHolder, Parsab
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The displayName property
+        # The display name of the customer tenant as set by Azure AD. Read-only
         self._display_name: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-        # The tenantId property
+        # The Azure AD-assigned tenant ID of the customer tenant.
         self._tenant_id: Optional[str] = None
     
     @staticmethod
@@ -50,7 +50,7 @@ class DelegatedAdminRelationshipCustomerParticipant(AdditionalDataHolder, Parsab
     @property
     def display_name(self,) -> Optional[str]:
         """
-        Gets the displayName property value. The displayName property
+        Gets the displayName property value. The display name of the customer tenant as set by Azure AD. Read-only
         Returns: Optional[str]
         """
         return self._display_name
@@ -58,7 +58,7 @@ class DelegatedAdminRelationshipCustomerParticipant(AdditionalDataHolder, Parsab
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the displayName property value. The displayName property
+        Sets the displayName property value. The display name of the customer tenant as set by Azure AD. Read-only
         Args:
             value: Value to set for the display_name property.
         """
@@ -109,7 +109,7 @@ class DelegatedAdminRelationshipCustomerParticipant(AdditionalDataHolder, Parsab
     @property
     def tenant_id(self,) -> Optional[str]:
         """
-        Gets the tenantId property value. The tenantId property
+        Gets the tenantId property value. The Azure AD-assigned tenant ID of the customer tenant.
         Returns: Optional[str]
         """
         return self._tenant_id
@@ -117,7 +117,7 @@ class DelegatedAdminRelationshipCustomerParticipant(AdditionalDataHolder, Parsab
     @tenant_id.setter
     def tenant_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the tenantId property value. The tenantId property
+        Sets the tenantId property value. The Azure AD-assigned tenant ID of the customer tenant.
         Args:
             value: Value to set for the tenant_id property.
         """

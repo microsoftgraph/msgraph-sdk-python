@@ -11,7 +11,7 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
     @property
     def allowed_cloud_endpoints(self,) -> Optional[List[str]]:
         """
-        Gets the allowedCloudEndpoints property value. The allowedCloudEndpoints property
+        Gets the allowedCloudEndpoints property value. Used to specify which Microsoft clouds an organization would like to collaborate with. By default, this value is empty. Supported values for this field are: microsoftonline.com, microsoftonline.us, and partner.microsoftonline.cn.
         Returns: Optional[List[str]]
         """
         return self._allowed_cloud_endpoints
@@ -19,7 +19,7 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
     @allowed_cloud_endpoints.setter
     def allowed_cloud_endpoints(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the allowedCloudEndpoints property value. The allowedCloudEndpoints property
+        Sets the allowedCloudEndpoints property value. Used to specify which Microsoft clouds an organization would like to collaborate with. By default, this value is empty. Supported values for this field are: microsoftonline.com, microsoftonline.us, and partner.microsoftonline.cn.
         Args:
             value: Value to set for the allowed_cloud_endpoints property.
         """
@@ -31,7 +31,7 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.crossTenantAccessPolicy"
-        # The allowedCloudEndpoints property
+        # Used to specify which Microsoft clouds an organization would like to collaborate with. By default, this value is empty. Supported values for this field are: microsoftonline.com, microsoftonline.us, and partner.microsoftonline.cn.
         self._allowed_cloud_endpoints: Optional[List[str]] = None
         # Defines the default configuration for how your organization interacts with external Azure Active Directory organizations.
         self._default: Optional[cross_tenant_access_policy_configuration_default.CrossTenantAccessPolicyConfigurationDefault] = None

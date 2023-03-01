@@ -64,7 +64,7 @@ class ShiftsRequestBuilder():
     
     async def post(self,body: Optional[shift.Shift] = None, request_configuration: Optional[ShiftsRequestBuilderPostRequestConfiguration] = None) -> Optional[shift.Shift]:
         """
-        Create a new shift instance in a schedule.
+        Create a new shift instance in a schedule. The duration of a shift cannot be less than 1 minute or longer than 24 hours.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ class ShiftsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -103,7 +103,7 @@ class ShiftsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[shift.Shift] = None, request_configuration: Optional[ShiftsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new shift instance in a schedule.
+        Create a new shift instance in a schedule. The duration of a shift cannot be less than 1 minute or longer than 24 hours.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -115,7 +115,7 @@ class ShiftsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -180,7 +180,7 @@ class ShiftsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -195,7 +195,7 @@ class ShiftsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

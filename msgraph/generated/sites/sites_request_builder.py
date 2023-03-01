@@ -12,14 +12,21 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 site_collection_response = lazy_import('msgraph.generated.models.site_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+add_request_builder = lazy_import('msgraph.generated.sites.add.add_request_builder')
 count_request_builder = lazy_import('msgraph.generated.sites.count.count_request_builder')
-add_request_builder = lazy_import('msgraph.generated.sites.microsoft_graph_add.add_request_builder')
-remove_request_builder = lazy_import('msgraph.generated.sites.microsoft_graph_remove.remove_request_builder')
+remove_request_builder = lazy_import('msgraph.generated.sites.remove.remove_request_builder')
 
 class SitesRequestBuilder():
     """
     Provides operations to manage the collection of site entities.
     """
+    @property
+    def add(self) -> add_request_builder.AddRequestBuilder:
+        """
+        Provides operations to call the add method.
+        """
+        return add_request_builder.AddRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
@@ -28,14 +35,7 @@ class SitesRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_add(self) -> add_request_builder.AddRequestBuilder:
-        """
-        Provides operations to call the add method.
-        """
-        return add_request_builder.AddRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_remove(self) -> remove_request_builder.RemoveRequestBuilder:
+    def remove(self) -> remove_request_builder.RemoveRequestBuilder:
         """
         Provides operations to call the remove method.
         """
@@ -88,7 +88,7 @@ class SitesRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -158,7 +158,7 @@ class SitesRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

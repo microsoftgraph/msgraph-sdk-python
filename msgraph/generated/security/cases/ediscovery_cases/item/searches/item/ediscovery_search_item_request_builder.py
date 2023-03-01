@@ -18,10 +18,10 @@ add_to_review_set_operation_request_builder = lazy_import('msgraph.generated.sec
 custodian_sources_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.custodian_sources.custodian_sources_request_builder')
 data_source_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.custodian_sources.item.data_source_item_request_builder')
 last_estimate_statistics_operation_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.last_estimate_statistics_operation.last_estimate_statistics_operation_request_builder')
-estimate_statistics_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.microsoft_graph_security_estimate_statistics.estimate_statistics_request_builder')
-purge_data_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.microsoft_graph_security_purge_data.purge_data_request_builder')
 noncustodial_sources_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.noncustodial_sources.noncustodial_sources_request_builder')
 ediscovery_noncustodial_data_source_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.noncustodial_sources.item.ediscovery_noncustodial_data_source_item_request_builder')
+security_estimate_statistics_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.security_estimate_statistics.security_estimate_statistics_request_builder')
+security_purge_data_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.security_purge_data.security_purge_data_request_builder')
 
 class EdiscoverySearchItemRequestBuilder():
     """
@@ -56,25 +56,25 @@ class EdiscoverySearchItemRequestBuilder():
         return last_estimate_statistics_operation_request_builder.LastEstimateStatisticsOperationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_security_estimate_statistics(self) -> estimate_statistics_request_builder.EstimateStatisticsRequestBuilder:
-        """
-        Provides operations to call the estimateStatistics method.
-        """
-        return estimate_statistics_request_builder.EstimateStatisticsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_security_purge_data(self) -> purge_data_request_builder.PurgeDataRequestBuilder:
-        """
-        Provides operations to call the purgeData method.
-        """
-        return purge_data_request_builder.PurgeDataRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def noncustodial_sources(self) -> noncustodial_sources_request_builder.NoncustodialSourcesRequestBuilder:
         """
         Provides operations to manage the noncustodialSources property of the microsoft.graph.security.ediscoverySearch entity.
         """
         return noncustodial_sources_request_builder.NoncustodialSourcesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def security_estimate_statistics(self) -> security_estimate_statistics_request_builder.SecurityEstimateStatisticsRequestBuilder:
+        """
+        Provides operations to call the estimateStatistics method.
+        """
+        return security_estimate_statistics_request_builder.SecurityEstimateStatisticsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def security_purge_data(self) -> security_purge_data_request_builder.SecurityPurgeDataRequestBuilder:
+        """
+        Provides operations to call the purgeData method.
+        """
+        return security_purge_data_request_builder.SecurityPurgeDataRequestBuilder(self.request_adapter, self.path_parameters)
     
     def additional_sources_by_id(self,id: str) -> data_source_item_request_builder.DataSourceItemRequestBuilder:
         """
@@ -89,11 +89,10 @@ class EdiscoverySearchItemRequestBuilder():
         url_tpl_params["dataSource%2Did"] = id
         return data_source_item_request_builder.DataSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, ediscovery_search_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EdiscoverySearchItemRequestBuilder and sets the default values.
         Args:
-            ediscoverySearchId: key: id of ediscoverySearch
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -105,7 +104,6 @@ class EdiscoverySearchItemRequestBuilder():
         self.url_template: str = "{+baseurl}/security/cases/ediscoveryCases/{ediscoveryCase%2Did}/searches/{ediscoverySearch%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["ediscoverySearch%2Did"] = ediscoverySearchId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -218,7 +216,7 @@ class EdiscoverySearchItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -239,7 +237,7 @@ class EdiscoverySearchItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -252,7 +250,7 @@ class EdiscoverySearchItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -291,7 +289,7 @@ class EdiscoverySearchItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -306,7 +304,7 @@ class EdiscoverySearchItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

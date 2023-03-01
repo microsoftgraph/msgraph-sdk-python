@@ -12,8 +12,8 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 hosted_contents_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.messages.item.replies.item.hosted_contents.hosted_contents_request_builder')
 chat_message_hosted_content_item_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.messages.item.replies.item.hosted_contents.item.chat_message_hosted_content_item_request_builder')
-soft_delete_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.messages.item.replies.item.microsoft_graph_soft_delete.soft_delete_request_builder')
-undo_soft_delete_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.messages.item.replies.item.microsoft_graph_undo_soft_delete.undo_soft_delete_request_builder')
+soft_delete_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.messages.item.replies.item.soft_delete.soft_delete_request_builder')
+undo_soft_delete_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.channels.item.messages.item.replies.item.undo_soft_delete.undo_soft_delete_request_builder')
 chat_message = lazy_import('msgraph.generated.models.chat_message')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -29,24 +29,23 @@ class ChatMessageItemRequestBuilder():
         return hosted_contents_request_builder.HostedContentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_soft_delete(self) -> soft_delete_request_builder.SoftDeleteRequestBuilder:
+    def soft_delete(self) -> soft_delete_request_builder.SoftDeleteRequestBuilder:
         """
         Provides operations to call the softDelete method.
         """
         return soft_delete_request_builder.SoftDeleteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_undo_soft_delete(self) -> undo_soft_delete_request_builder.UndoSoftDeleteRequestBuilder:
+    def undo_soft_delete(self) -> undo_soft_delete_request_builder.UndoSoftDeleteRequestBuilder:
         """
         Provides operations to call the undoSoftDelete method.
         """
         return undo_soft_delete_request_builder.UndoSoftDeleteRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, chat_message_id1: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ChatMessageItemRequestBuilder and sets the default values.
         Args:
-            chatMessageId1: key: id of chatMessage
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -58,7 +57,6 @@ class ChatMessageItemRequestBuilder():
         self.url_template: str = "{+baseurl}/me/joinedTeams/{team%2Did}/channels/{channel%2Did}/messages/{chatMessage%2Did}/replies/{chatMessage%2Did1}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["chatMessage%2Did1"] = chatMessageId1
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -158,7 +156,7 @@ class ChatMessageItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -179,7 +177,7 @@ class ChatMessageItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -192,7 +190,7 @@ class ChatMessageItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -231,7 +229,7 @@ class ChatMessageItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -246,7 +244,7 @@ class ChatMessageItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

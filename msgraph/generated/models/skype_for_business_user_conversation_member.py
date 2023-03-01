@@ -12,9 +12,9 @@ class SkypeForBusinessUserConversationMember(conversation_member.ConversationMem
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.skypeForBusinessUserConversationMember"
-        # The tenantId property
+        # ID of the tenant that the user belongs to.
         self._tenant_id: Optional[str] = None
-        # The userId property
+        # Azure Active Directory ID of the user.
         self._user_id: Optional[str] = None
     
     @staticmethod
@@ -57,7 +57,7 @@ class SkypeForBusinessUserConversationMember(conversation_member.ConversationMem
     @property
     def tenant_id(self,) -> Optional[str]:
         """
-        Gets the tenantId property value. The tenantId property
+        Gets the tenantId property value. ID of the tenant that the user belongs to.
         Returns: Optional[str]
         """
         return self._tenant_id
@@ -65,7 +65,7 @@ class SkypeForBusinessUserConversationMember(conversation_member.ConversationMem
     @tenant_id.setter
     def tenant_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the tenantId property value. The tenantId property
+        Sets the tenantId property value. ID of the tenant that the user belongs to.
         Args:
             value: Value to set for the tenant_id property.
         """
@@ -74,7 +74,7 @@ class SkypeForBusinessUserConversationMember(conversation_member.ConversationMem
     @property
     def user_id(self,) -> Optional[str]:
         """
-        Gets the userId property value. The userId property
+        Gets the userId property value. Azure Active Directory ID of the user.
         Returns: Optional[str]
         """
         return self._user_id
@@ -82,7 +82,7 @@ class SkypeForBusinessUserConversationMember(conversation_member.ConversationMem
     @user_id.setter
     def user_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the userId property value. The userId property
+        Sets the userId property value. Azure Active Directory ID of the user.
         Args:
             value: Value to set for the user_id property.
         """

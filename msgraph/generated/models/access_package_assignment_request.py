@@ -5,6 +5,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 access_package = lazy_import('msgraph.generated.models.access_package')
+access_package_answer = lazy_import('msgraph.generated.models.access_package_answer')
 access_package_assignment = lazy_import('msgraph.generated.models.access_package_assignment')
 access_package_request_state = lazy_import('msgraph.generated.models.access_package_request_state')
 access_package_request_type = lazy_import('msgraph.generated.models.access_package_request_type')
@@ -29,6 +30,23 @@ class AccessPackageAssignmentRequest(entity.Entity):
             value: Value to set for the access_package property.
         """
         self._access_package = value
+    
+    @property
+    def answers(self,) -> Optional[List[access_package_answer.AccessPackageAnswer]]:
+        """
+        Gets the answers property value. Answers provided by the requestor to accessPackageQuestions asked of them at the time of request.
+        Returns: Optional[List[access_package_answer.AccessPackageAnswer]]
+        """
+        return self._answers
+    
+    @answers.setter
+    def answers(self,value: Optional[List[access_package_answer.AccessPackageAnswer]] = None) -> None:
+        """
+        Sets the answers property value. Answers provided by the requestor to accessPackageQuestions asked of them at the time of request.
+        Args:
+            value: Value to set for the answers property.
+        """
+        self._answers = value
     
     @property
     def assignment(self,) -> Optional[access_package_assignment.AccessPackageAssignment]:
@@ -71,6 +89,8 @@ class AccessPackageAssignmentRequest(entity.Entity):
         super().__init__()
         # The access package associated with the accessPackageAssignmentRequest. An access package defines the collections of resource roles and the policies for how one or more users can get access to those resources. Read-only. Nullable.  Supports $expand.
         self._access_package: Optional[access_package.AccessPackage] = None
+        # Answers provided by the requestor to accessPackageQuestions asked of them at the time of request.
+        self._answers: Optional[List[access_package_answer.AccessPackageAnswer]] = None
         # For a requestType of userAdd or adminAdd, this is an access package assignment requested to be created.  For a requestType of userRemove, adminRemove or systemRemove, this has the id property of an existing assignment to be removed.   Supports $expand.
         self._assignment: Optional[access_package_assignment.AccessPackageAssignment] = None
         # The date of the end of processing, either successful or failure, of a request. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
@@ -126,6 +146,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
         """
         fields = {
             "accessPackage": lambda n : setattr(self, 'access_package', n.get_object_value(access_package.AccessPackage)),
+            "answers": lambda n : setattr(self, 'answers', n.get_collection_of_object_values(access_package_answer.AccessPackageAnswer)),
             "assignment": lambda n : setattr(self, 'assignment', n.get_object_value(access_package_assignment.AccessPackageAssignment)),
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
@@ -200,6 +221,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("accessPackage", self.access_package)
+        writer.write_collection_of_object_values("answers", self.answers)
         writer.write_object_value("assignment", self.assignment)
         writer.write_datetime_value("completedDateTime", self.completed_date_time)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

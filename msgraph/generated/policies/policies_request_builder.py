@@ -15,6 +15,8 @@ o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error'
 activity_based_timeout_policies_request_builder = lazy_import('msgraph.generated.policies.activity_based_timeout_policies.activity_based_timeout_policies_request_builder')
 activity_based_timeout_policy_item_request_builder = lazy_import('msgraph.generated.policies.activity_based_timeout_policies.item.activity_based_timeout_policy_item_request_builder')
 admin_consent_request_policy_request_builder = lazy_import('msgraph.generated.policies.admin_consent_request_policy.admin_consent_request_policy_request_builder')
+app_management_policies_request_builder = lazy_import('msgraph.generated.policies.app_management_policies.app_management_policies_request_builder')
+app_management_policy_item_request_builder = lazy_import('msgraph.generated.policies.app_management_policies.item.app_management_policy_item_request_builder')
 authentication_flows_policy_request_builder = lazy_import('msgraph.generated.policies.authentication_flows_policy.authentication_flows_policy_request_builder')
 authentication_methods_policy_request_builder = lazy_import('msgraph.generated.policies.authentication_methods_policy.authentication_methods_policy_request_builder')
 authorization_policy_request_builder = lazy_import('msgraph.generated.policies.authorization_policy.authorization_policy_request_builder')
@@ -23,6 +25,7 @@ claims_mapping_policy_item_request_builder = lazy_import('msgraph.generated.poli
 conditional_access_policies_request_builder = lazy_import('msgraph.generated.policies.conditional_access_policies.conditional_access_policies_request_builder')
 conditional_access_policy_item_request_builder = lazy_import('msgraph.generated.policies.conditional_access_policies.item.conditional_access_policy_item_request_builder')
 cross_tenant_access_policy_request_builder = lazy_import('msgraph.generated.policies.cross_tenant_access_policy.cross_tenant_access_policy_request_builder')
+default_app_management_policy_request_builder = lazy_import('msgraph.generated.policies.default_app_management_policy.default_app_management_policy_request_builder')
 feature_rollout_policies_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.feature_rollout_policies_request_builder')
 feature_rollout_policy_item_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.feature_rollout_policy_item_request_builder')
 home_realm_discovery_policies_request_builder = lazy_import('msgraph.generated.policies.home_realm_discovery_policies.home_realm_discovery_policies_request_builder')
@@ -56,6 +59,13 @@ class PoliciesRequestBuilder():
         Provides operations to manage the adminConsentRequestPolicy property of the microsoft.graph.policyRoot entity.
         """
         return admin_consent_request_policy_request_builder.AdminConsentRequestPolicyRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def app_management_policies(self) -> app_management_policies_request_builder.AppManagementPoliciesRequestBuilder:
+        """
+        Provides operations to manage the appManagementPolicies property of the microsoft.graph.policyRoot entity.
+        """
+        return app_management_policies_request_builder.AppManagementPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def authentication_flows_policy(self) -> authentication_flows_policy_request_builder.AuthenticationFlowsPolicyRequestBuilder:
@@ -98,6 +108,13 @@ class PoliciesRequestBuilder():
         Provides operations to manage the crossTenantAccessPolicy property of the microsoft.graph.policyRoot entity.
         """
         return cross_tenant_access_policy_request_builder.CrossTenantAccessPolicyRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def default_app_management_policy(self) -> default_app_management_policy_request_builder.DefaultAppManagementPolicyRequestBuilder:
+        """
+        Provides operations to manage the defaultAppManagementPolicy property of the microsoft.graph.policyRoot entity.
+        """
+        return default_app_management_policy_request_builder.DefaultAppManagementPolicyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def feature_rollout_policies(self) -> feature_rollout_policies_request_builder.FeatureRolloutPoliciesRequestBuilder:
@@ -167,6 +184,19 @@ class PoliciesRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["activityBasedTimeoutPolicy%2Did"] = id
         return activity_based_timeout_policy_item_request_builder.ActivityBasedTimeoutPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def app_management_policies_by_id(self,id: str) -> app_management_policy_item_request_builder.AppManagementPolicyItemRequestBuilder:
+        """
+        Provides operations to manage the appManagementPolicies property of the microsoft.graph.policyRoot entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: app_management_policy_item_request_builder.AppManagementPolicyItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["appManagementPolicy%2Did"] = id
+        return app_management_policy_item_request_builder.AppManagementPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def claims_mapping_policies_by_id(self,id: str) -> claims_mapping_policy_item_request_builder.ClaimsMappingPolicyItemRequestBuilder:
         """
@@ -327,7 +357,7 @@ class PoliciesRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -374,7 +404,7 @@ class PoliciesRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -414,7 +444,7 @@ class PoliciesRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -429,7 +459,7 @@ class PoliciesRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

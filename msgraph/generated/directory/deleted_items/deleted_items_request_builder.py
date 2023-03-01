@@ -11,12 +11,12 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.directory.deleted_items.count.count_request_builder')
-application_request_builder = lazy_import('msgraph.generated.directory.deleted_items.microsoft_graph_application.application_request_builder')
-get_available_extension_properties_request_builder = lazy_import('msgraph.generated.directory.deleted_items.microsoft_graph_get_available_extension_properties.get_available_extension_properties_request_builder')
-get_by_ids_request_builder = lazy_import('msgraph.generated.directory.deleted_items.microsoft_graph_get_by_ids.get_by_ids_request_builder')
-group_request_builder = lazy_import('msgraph.generated.directory.deleted_items.microsoft_graph_group.group_request_builder')
-user_request_builder = lazy_import('msgraph.generated.directory.deleted_items.microsoft_graph_user.user_request_builder')
-validate_properties_request_builder = lazy_import('msgraph.generated.directory.deleted_items.microsoft_graph_validate_properties.validate_properties_request_builder')
+get_available_extension_properties_request_builder = lazy_import('msgraph.generated.directory.deleted_items.get_available_extension_properties.get_available_extension_properties_request_builder')
+get_by_ids_request_builder = lazy_import('msgraph.generated.directory.deleted_items.get_by_ids.get_by_ids_request_builder')
+graph_application_request_builder = lazy_import('msgraph.generated.directory.deleted_items.graph_application.graph_application_request_builder')
+graph_group_request_builder = lazy_import('msgraph.generated.directory.deleted_items.graph_group.graph_group_request_builder')
+graph_user_request_builder = lazy_import('msgraph.generated.directory.deleted_items.graph_user.graph_user_request_builder')
+validate_properties_request_builder = lazy_import('msgraph.generated.directory.deleted_items.validate_properties.validate_properties_request_builder')
 directory_object = lazy_import('msgraph.generated.models.directory_object')
 directory_object_collection_response = lazy_import('msgraph.generated.models.directory_object_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -33,42 +33,42 @@ class DeletedItemsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_application(self) -> application_request_builder.ApplicationRequestBuilder:
-        """
-        Casts the previous resource to application.
-        """
-        return application_request_builder.ApplicationRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
+    def get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
         """
         Provides operations to call the getAvailableExtensionProperties method.
         """
         return get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
+    def get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
         """
         Provides operations to call the getByIds method.
         """
         return get_by_ids_request_builder.GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_group(self) -> group_request_builder.GroupRequestBuilder:
+    def graph_application(self) -> graph_application_request_builder.GraphApplicationRequestBuilder:
+        """
+        Casts the previous resource to application.
+        """
+        return graph_application_request_builder.GraphApplicationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_group(self) -> graph_group_request_builder.GraphGroupRequestBuilder:
         """
         Casts the previous resource to group.
         """
-        return group_request_builder.GroupRequestBuilder(self.request_adapter, self.path_parameters)
+        return graph_group_request_builder.GraphGroupRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_user(self) -> user_request_builder.UserRequestBuilder:
+    def graph_user(self) -> graph_user_request_builder.GraphUserRequestBuilder:
         """
         Casts the previous resource to user.
         """
-        return user_request_builder.UserRequestBuilder(self.request_adapter, self.path_parameters)
+        return graph_user_request_builder.GraphUserRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
+    def validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
         """
         Provides operations to call the validateProperties method.
         """
@@ -142,7 +142,7 @@ class DeletedItemsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -163,7 +163,7 @@ class DeletedItemsRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -233,7 +233,7 @@ class DeletedItemsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -248,7 +248,7 @@ class DeletedItemsRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

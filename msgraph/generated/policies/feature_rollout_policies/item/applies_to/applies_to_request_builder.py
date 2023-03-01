@@ -14,10 +14,10 @@ directory_object = lazy_import('msgraph.generated.models.directory_object')
 directory_object_collection_response = lazy_import('msgraph.generated.models.directory_object_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.applies_to.count.count_request_builder')
-get_available_extension_properties_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.applies_to.microsoft_graph_get_available_extension_properties.get_available_extension_properties_request_builder')
-get_by_ids_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.applies_to.microsoft_graph_get_by_ids.get_by_ids_request_builder')
-validate_properties_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.applies_to.microsoft_graph_validate_properties.validate_properties_request_builder')
+get_available_extension_properties_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.applies_to.get_available_extension_properties.get_available_extension_properties_request_builder')
+get_by_ids_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.applies_to.get_by_ids.get_by_ids_request_builder')
 ref_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.applies_to.ref.ref_request_builder')
+validate_properties_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.applies_to.validate_properties.validate_properties_request_builder')
 
 class AppliesToRequestBuilder():
     """
@@ -31,25 +31,18 @@ class AppliesToRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
+    def get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
         """
         Provides operations to call the getAvailableExtensionProperties method.
         """
         return get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
+    def get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
         """
         Provides operations to call the getByIds method.
         """
         return get_by_ids_request_builder.GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
-        """
-        Provides operations to call the validateProperties method.
-        """
-        return validate_properties_request_builder.ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def ref(self) -> ref_request_builder.RefRequestBuilder:
@@ -57,6 +50,13 @@ class AppliesToRequestBuilder():
         Provides operations to manage the collection of policyRoot entities.
         """
         return ref_request_builder.RefRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
+        """
+        Provides operations to call the validateProperties method.
+        """
+        return validate_properties_request_builder.ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -126,7 +126,7 @@ class AppliesToRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -147,7 +147,7 @@ class AppliesToRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -217,7 +217,7 @@ class AppliesToRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -232,7 +232,7 @@ class AppliesToRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

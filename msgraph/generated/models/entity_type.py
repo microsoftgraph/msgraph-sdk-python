@@ -10,4 +10,5 @@ class EntityType(Enum):
     ListItem = "listItem",
     Drive = "drive",
     UnknownFutureValue = "unknownFutureValue",
+    ChatMessage = "chatMessage",
 

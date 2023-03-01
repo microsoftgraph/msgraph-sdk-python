@@ -20,11 +20,11 @@ attack_simulation_request_builder = lazy_import('msgraph.generated.security.atta
 cases_request_builder = lazy_import('msgraph.generated.security.cases.cases_request_builder')
 incidents_request_builder = lazy_import('msgraph.generated.security.incidents.incidents_request_builder')
 incident_item_request_builder = lazy_import('msgraph.generated.security.incidents.item.incident_item_request_builder')
-run_hunting_query_request_builder = lazy_import('msgraph.generated.security.microsoft_graph_security_run_hunting_query.run_hunting_query_request_builder')
 secure_score_control_profiles_request_builder = lazy_import('msgraph.generated.security.secure_score_control_profiles.secure_score_control_profiles_request_builder')
 secure_score_control_profile_item_request_builder = lazy_import('msgraph.generated.security.secure_score_control_profiles.item.secure_score_control_profile_item_request_builder')
 secure_scores_request_builder = lazy_import('msgraph.generated.security.secure_scores.secure_scores_request_builder')
 secure_score_item_request_builder = lazy_import('msgraph.generated.security.secure_scores.item.secure_score_item_request_builder')
+security_run_hunting_query_request_builder = lazy_import('msgraph.generated.security.security_run_hunting_query.security_run_hunting_query_request_builder')
 
 class SecurityRequestBuilder():
     """
@@ -66,13 +66,6 @@ class SecurityRequestBuilder():
         return incidents_request_builder.IncidentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_security_run_hunting_query(self) -> run_hunting_query_request_builder.RunHuntingQueryRequestBuilder:
-        """
-        Provides operations to call the runHuntingQuery method.
-        """
-        return run_hunting_query_request_builder.RunHuntingQueryRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def secure_score_control_profiles(self) -> secure_score_control_profiles_request_builder.SecureScoreControlProfilesRequestBuilder:
         """
         Provides operations to manage the secureScoreControlProfiles property of the microsoft.graph.security entity.
@@ -85,6 +78,13 @@ class SecurityRequestBuilder():
         Provides operations to manage the secureScores property of the microsoft.graph.security entity.
         """
         return secure_scores_request_builder.SecureScoresRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def security_run_hunting_query(self) -> security_run_hunting_query_request_builder.SecurityRunHuntingQueryRequestBuilder:
+        """
+        Provides operations to call the runHuntingQuery method.
+        """
+        return security_run_hunting_query_request_builder.SecurityRunHuntingQueryRequestBuilder(self.request_adapter, self.path_parameters)
     
     def alerts_by_id(self,id: str) -> alert_item_request_builder.AlertItemRequestBuilder:
         """
@@ -219,7 +219,7 @@ class SecurityRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -240,7 +240,7 @@ class SecurityRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -280,7 +280,7 @@ class SecurityRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -295,7 +295,7 @@ class SecurityRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

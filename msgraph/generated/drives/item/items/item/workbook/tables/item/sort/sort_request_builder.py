@@ -10,9 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-apply_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.sort.microsoft_graph_apply.apply_request_builder')
-clear_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.sort.microsoft_graph_clear.clear_request_builder')
-reapply_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.sort.microsoft_graph_reapply.reapply_request_builder')
+apply_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.sort.apply.apply_request_builder')
+clear_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.sort.clear.clear_request_builder')
+reapply_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.sort.reapply.reapply_request_builder')
 workbook_table_sort = lazy_import('msgraph.generated.models.workbook_table_sort')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -21,21 +21,21 @@ class SortRequestBuilder():
     Provides operations to manage the sort property of the microsoft.graph.workbookTable entity.
     """
     @property
-    def microsoft_graph_apply(self) -> apply_request_builder.ApplyRequestBuilder:
+    def apply(self) -> apply_request_builder.ApplyRequestBuilder:
         """
         Provides operations to call the apply method.
         """
         return apply_request_builder.ApplyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_clear(self) -> clear_request_builder.ClearRequestBuilder:
+    def clear(self) -> clear_request_builder.ClearRequestBuilder:
         """
         Provides operations to call the clear method.
         """
         return clear_request_builder.ClearRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_reapply(self) -> reapply_request_builder.ReapplyRequestBuilder:
+    def reapply(self) -> reapply_request_builder.ReapplyRequestBuilder:
         """
         Provides operations to call the reapply method.
         """
@@ -142,7 +142,7 @@ class SortRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -163,7 +163,7 @@ class SortRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -176,7 +176,7 @@ class SortRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -215,7 +215,7 @@ class SortRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -230,7 +230,7 @@ class SortRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

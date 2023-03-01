@@ -14,7 +14,7 @@ user_activity = lazy_import('msgraph.generated.models.user_activity')
 user_activity_collection_response = lazy_import('msgraph.generated.models.user_activity_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.users.item.activities.count.count_request_builder')
-recent_request_builder = lazy_import('msgraph.generated.users.item.activities.microsoft_graph_recent.recent_request_builder')
+recent_request_builder = lazy_import('msgraph.generated.users.item.activities.recent.recent_request_builder')
 
 class ActivitiesRequestBuilder():
     """
@@ -28,7 +28,7 @@ class ActivitiesRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_recent(self) -> recent_request_builder.RecentRequestBuilder:
+    def recent(self) -> recent_request_builder.RecentRequestBuilder:
         """
         Provides operations to call the recent method.
         """
@@ -102,7 +102,7 @@ class ActivitiesRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -123,7 +123,7 @@ class ActivitiesRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -193,7 +193,7 @@ class ActivitiesRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -208,7 +208,7 @@ class ActivitiesRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

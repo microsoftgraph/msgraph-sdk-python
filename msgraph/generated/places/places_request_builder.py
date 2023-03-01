@@ -1,24 +1,15 @@
 from __future__ import annotations
-from dataclasses import dataclass
 from kiota_abstractions.get_path_parameters import get_path_parameters
-from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
-from kiota_abstractions.request_information import RequestInformation
-from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
-from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-place = lazy_import('msgraph.generated.models.place')
-place_collection_response = lazy_import('msgraph.generated.models.place_collection_response')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.places.count.count_request_builder')
-room_request_builder = lazy_import('msgraph.generated.places.microsoft_graph_room.room_request_builder')
+graph_room_request_builder = lazy_import('msgraph.generated.places.graph_room.graph_room_request_builder')
 
 class PlacesRequestBuilder():
     """
-    Provides operations to manage the collection of place entities.
+    Builds and executes requests for operations under /places
     """
     @property
     def count(self) -> count_request_builder.CountRequestBuilder:
@@ -28,11 +19,11 @@ class PlacesRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_room(self) -> room_request_builder.RoomRequestBuilder:
+    def graph_room(self) -> graph_room_request_builder.GraphRoomRequestBuilder:
         """
         Casts the previous resource to room.
         """
-        return room_request_builder.RoomRequestBuilder(self.request_adapter, self.path_parameters)
+        return graph_room_request_builder.GraphRoomRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -46,172 +37,10 @@ class PlacesRequestBuilder():
         if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/places{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}"
+        self.url_template: str = "{+baseurl}/places"
 
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    async def get(self,request_configuration: Optional[PlacesRequestBuilderGetRequestConfiguration] = None) -> Optional[place_collection_response.PlaceCollectionResponse]:
-        """
-        Get the properties and relationships of a place object specified by either its ID or email address. The **place** object can be one of the following types: Both **room** and **roomList** are derived from the place object.
-        Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[place_collection_response.PlaceCollectionResponse]
-        """
-        request_info = self.to_get_request_information(
-            request_configuration
-        )
-        error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, place_collection_response.PlaceCollectionResponse, error_mapping)
-    
-    async def post(self,body: Optional[place.Place] = None, request_configuration: Optional[PlacesRequestBuilderPostRequestConfiguration] = None) -> Optional[place.Place]:
-        """
-        Add new entity to places
-        Args:
-            body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[place.Place]
-        """
-        if body is None:
-            raise Exception("body cannot be undefined")
-        request_info = self.to_post_request_information(
-            body, request_configuration
-        )
-        error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, place.Place, error_mapping)
-    
-    def to_get_request_information(self,request_configuration: Optional[PlacesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
-        """
-        Get the properties and relationships of a place object specified by either its ID or email address. The **place** object can be one of the following types: Both **room** and **roomList** are derived from the place object.
-        Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
-        return request_info
-    
-    def to_post_request_information(self,body: Optional[place.Place] = None, request_configuration: Optional[PlacesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
-        """
-        Add new entity to places
-        Args:
-            body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        if body is None:
-            raise Exception("body cannot be undefined")
-        request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
-        return request_info
-    
-    @dataclass
-    class PlacesRequestBuilderGetQueryParameters():
-        """
-        Get the properties and relationships of a place object specified by either its ID or email address. The **place** object can be one of the following types: Both **room** and **roomList** are derived from the place object.
-        """
-        # Include count of items
-        count: Optional[bool] = None
-
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Filter items by property values
-        filter: Optional[str] = None
-
-        # Order items by property values
-        orderby: Optional[List[str]] = None
-
-        # Search items by search phrases
-        search: Optional[str] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
-        # Skip the first n items
-        skip: Optional[int] = None
-
-        # Show only the first n items
-        top: Optional[int] = None
-
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
-            """
-            Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                originalName: The original query parameter name in the class.
-            Returns: str
-            """
-            if original_name is None:
-                raise Exception("original_name cannot be undefined")
-            if original_name == "count":
-                return "%24count"
-            if original_name == "expand":
-                return "%24expand"
-            if original_name == "filter":
-                return "%24filter"
-            if original_name == "orderby":
-                return "%24orderby"
-            if original_name == "search":
-                return "%24search"
-            if original_name == "select":
-                return "%24select"
-            if original_name == "skip":
-                return "%24skip"
-            if original_name == "top":
-                return "%24top"
-            return original_name
-        
-    
-    @dataclass
-    class PlacesRequestBuilderGetRequestConfiguration():
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request headers
-        headers: Optional[Dict[str, str]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
-        # Request query parameters
-        query_parameters: Optional[PlacesRequestBuilder.PlacesRequestBuilderGetQueryParameters] = None
-
-    
-    @dataclass
-    class PlacesRequestBuilderPostRequestConfiguration():
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request headers
-        headers: Optional[Dict[str, str]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

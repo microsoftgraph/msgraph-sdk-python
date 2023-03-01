@@ -10,13 +10,13 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
+archive_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.archive.archive_request_builder')
 count_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.count.count_request_builder')
-archive_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.microsoft_graph_archive.archive_request_builder')
-favorite_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.microsoft_graph_favorite.favorite_request_builder')
-mark_read_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.microsoft_graph_mark_read.mark_read_request_builder')
-mark_unread_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.microsoft_graph_mark_unread.mark_unread_request_builder')
-unarchive_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.microsoft_graph_unarchive.unarchive_request_builder')
-unfavorite_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.microsoft_graph_unfavorite.unfavorite_request_builder')
+favorite_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.favorite.favorite_request_builder')
+mark_read_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.mark_read.mark_read_request_builder')
+mark_unread_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.mark_unread.mark_unread_request_builder')
+unarchive_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.unarchive.unarchive_request_builder')
+unfavorite_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.unfavorite.unfavorite_request_builder')
 service_update_message = lazy_import('msgraph.generated.models.service_update_message')
 service_update_message_collection_response = lazy_import('msgraph.generated.models.service_update_message_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -26,6 +26,13 @@ class MessagesRequestBuilder():
     Provides operations to manage the messages property of the microsoft.graph.serviceAnnouncement entity.
     """
     @property
+    def archive(self) -> archive_request_builder.ArchiveRequestBuilder:
+        """
+        Provides operations to call the archive method.
+        """
+        return archive_request_builder.ArchiveRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
@@ -33,42 +40,35 @@ class MessagesRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_archive(self) -> archive_request_builder.ArchiveRequestBuilder:
-        """
-        Provides operations to call the archive method.
-        """
-        return archive_request_builder.ArchiveRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_graph_favorite(self) -> favorite_request_builder.FavoriteRequestBuilder:
+    def favorite(self) -> favorite_request_builder.FavoriteRequestBuilder:
         """
         Provides operations to call the favorite method.
         """
         return favorite_request_builder.FavoriteRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_mark_read(self) -> mark_read_request_builder.MarkReadRequestBuilder:
+    def mark_read(self) -> mark_read_request_builder.MarkReadRequestBuilder:
         """
         Provides operations to call the markRead method.
         """
         return mark_read_request_builder.MarkReadRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_mark_unread(self) -> mark_unread_request_builder.MarkUnreadRequestBuilder:
+    def mark_unread(self) -> mark_unread_request_builder.MarkUnreadRequestBuilder:
         """
         Provides operations to call the markUnread method.
         """
         return mark_unread_request_builder.MarkUnreadRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_unarchive(self) -> unarchive_request_builder.UnarchiveRequestBuilder:
+    def unarchive(self) -> unarchive_request_builder.UnarchiveRequestBuilder:
         """
         Provides operations to call the unarchive method.
         """
         return unarchive_request_builder.UnarchiveRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_unfavorite(self) -> unfavorite_request_builder.UnfavoriteRequestBuilder:
+    def unfavorite(self) -> unfavorite_request_builder.UnfavoriteRequestBuilder:
         """
         Provides operations to call the unfavorite method.
         """
@@ -142,7 +142,7 @@ class MessagesRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -163,7 +163,7 @@ class MessagesRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -233,7 +233,7 @@ class MessagesRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -248,7 +248,7 @@ class MessagesRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

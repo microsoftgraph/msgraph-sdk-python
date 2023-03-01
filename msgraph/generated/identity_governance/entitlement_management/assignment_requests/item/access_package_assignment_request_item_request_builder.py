@@ -12,8 +12,8 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 access_package_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.item.access_package.access_package_request_builder')
 assignment_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.item.assignment.assignment_request_builder')
-cancel_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.item.microsoft_graph_cancel.cancel_request_builder')
-reprocess_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.item.microsoft_graph_reprocess.reprocess_request_builder')
+cancel_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.item.cancel.cancel_request_builder')
+reprocess_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.item.reprocess.reprocess_request_builder')
 requestor_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.item.requestor.requestor_request_builder')
 access_package_assignment_request = lazy_import('msgraph.generated.models.access_package_assignment_request')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -37,14 +37,14 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
         return assignment_request_builder.AssignmentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_cancel(self) -> cancel_request_builder.CancelRequestBuilder:
+    def cancel(self) -> cancel_request_builder.CancelRequestBuilder:
         """
         Provides operations to call the cancel method.
         """
         return cancel_request_builder.CancelRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def microsoft_graph_reprocess(self) -> reprocess_request_builder.ReprocessRequestBuilder:
+    def reprocess(self) -> reprocess_request_builder.ReprocessRequestBuilder:
         """
         Provides operations to call the reprocess method.
         """
@@ -57,11 +57,10 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
         """
         return requestor_request_builder.RequestorRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, access_package_assignment_request_id: Optional[str] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AccessPackageAssignmentRequestItemRequestBuilder and sets the default values.
         Args:
-            accessPackageAssignmentRequestId: key: id of accessPackageAssignmentRequest
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
@@ -73,7 +72,6 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
         self.url_template: str = "{+baseurl}/identityGovernance/entitlementManagement/assignmentRequests/{accessPackageAssignmentRequest%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
-        url_tpl_params["accessPackageAssignmentRequest%2Did"] = accessPackageAssignmentRequestId
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
@@ -160,7 +158,7 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -181,7 +179,7 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -194,7 +192,7 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -233,7 +231,7 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -248,7 +246,7 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

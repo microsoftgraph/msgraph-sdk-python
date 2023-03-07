@@ -54,7 +54,7 @@ class AccessPackageQuestionItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[AccessPackageQuestionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_question.AccessPackageQuestion]:
         """
-        Get questions from identityGovernance
+        Questions that are posed to the  requestor.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[access_package_question.AccessPackageQuestion]
@@ -109,7 +109,7 @@ class AccessPackageQuestionItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AccessPackageQuestionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get questions from identityGovernance
+        Questions that are posed to the  requestor.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -161,7 +161,7 @@ class AccessPackageQuestionItemRequestBuilder():
     @dataclass
     class AccessPackageQuestionItemRequestBuilderGetQueryParameters():
         """
-        Get questions from identityGovernance
+        Questions that are posed to the  requestor.
         """
         # Expand related entities
         expand: Optional[List[str]] = None

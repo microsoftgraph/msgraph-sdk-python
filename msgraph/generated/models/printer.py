@@ -29,7 +29,7 @@ class Printer(printer_base.PrinterBase):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new Printer and sets the default values.
+        Instantiates a new printer and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.printer"

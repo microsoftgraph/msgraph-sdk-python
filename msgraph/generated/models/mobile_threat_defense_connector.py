@@ -9,7 +9,7 @@ mobile_threat_partner_tenant_state = lazy_import('msgraph.generated.models.mobil
 
 class MobileThreatDefenseConnector(entity.Entity):
     """
-    Entity which represents a connection to Mobile threat defense partner.
+    Entity which represents a connection to Mobile Threat Defense partner.
     """
     @property
     def allow_partner_to_collect_i_o_s_application_metadata(self,) -> Optional[bool]:

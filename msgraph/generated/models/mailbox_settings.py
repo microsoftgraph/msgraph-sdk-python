@@ -84,7 +84,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         self._time_format: Optional[str] = None
         # The default time zone for the user's mailbox.
         self._time_zone: Optional[str] = None
-        # The userPurpose property
+        # The purpose of the mailbox. Differentiates a mailbox for a single user from a shared mailbox and equipment mailbox in Exchange Online. Possible values are: user, linked, shared, room, equipment, others, unknownFutureValue. Read-only.
         self._user_purpose: Optional[user_purpose.UserPurpose] = None
         # The days of the week and hours in a specific time zone that the user works.
         self._working_hours: Optional[working_hours.WorkingHours] = None
@@ -245,7 +245,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
     @property
     def user_purpose(self,) -> Optional[user_purpose.UserPurpose]:
         """
-        Gets the userPurpose property value. The userPurpose property
+        Gets the userPurpose property value. The purpose of the mailbox. Differentiates a mailbox for a single user from a shared mailbox and equipment mailbox in Exchange Online. Possible values are: user, linked, shared, room, equipment, others, unknownFutureValue. Read-only.
         Returns: Optional[user_purpose.UserPurpose]
         """
         return self._user_purpose
@@ -253,7 +253,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
     @user_purpose.setter
     def user_purpose(self,value: Optional[user_purpose.UserPurpose] = None) -> None:
         """
-        Sets the userPurpose property value. The userPurpose property
+        Sets the userPurpose property value. The purpose of the mailbox. Differentiates a mailbox for a single user from a shared mailbox and equipment mailbox in Exchange Online. Possible values are: user, linked, shared, room, equipment, others, unknownFutureValue. Read-only.
         Args:
             value: Value to set for the user_purpose property.
         """

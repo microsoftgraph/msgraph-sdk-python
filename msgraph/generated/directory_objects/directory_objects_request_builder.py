@@ -11,6 +11,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 count_request_builder = lazy_import('msgraph.generated.directory_objects.count.count_request_builder')
+delta_request_builder = lazy_import('msgraph.generated.directory_objects.delta.delta_request_builder')
 get_available_extension_properties_request_builder = lazy_import('msgraph.generated.directory_objects.get_available_extension_properties.get_available_extension_properties_request_builder')
 get_by_ids_request_builder = lazy_import('msgraph.generated.directory_objects.get_by_ids.get_by_ids_request_builder')
 validate_properties_request_builder = lazy_import('msgraph.generated.directory_objects.validate_properties.validate_properties_request_builder')
@@ -28,6 +29,13 @@ class DirectoryObjectsRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def delta(self) -> delta_request_builder.DeltaRequestBuilder:
+        """
+        Provides operations to call the delta method.
+        """
+        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:

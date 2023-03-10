@@ -3,6 +3,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
+conditional_access_guests_or_external_users = lazy_import('msgraph.generated.models.conditional_access_guests_or_external_users')
+
 class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
     @property
     def additional_data(self,) -> Dict[str, Any]:
@@ -30,12 +32,16 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
 
         # Group IDs excluded from scope of policy.
         self._exclude_groups: Optional[List[str]] = None
+        # The excludeGuestsOrExternalUsers property
+        self._exclude_guests_or_external_users: Optional[conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers] = None
         # Role IDs excluded from scope of policy.
         self._exclude_roles: Optional[List[str]] = None
         # User IDs excluded from scope of policy and/or GuestsOrExternalUsers.
         self._exclude_users: Optional[List[str]] = None
         # Group IDs in scope of policy unless explicitly excluded, or All.
         self._include_groups: Optional[List[str]] = None
+        # The includeGuestsOrExternalUsers property
+        self._include_guests_or_external_users: Optional[conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers] = None
         # Role IDs in scope of policy unless explicitly excluded, or All.
         self._include_roles: Optional[List[str]] = None
         # User IDs in scope of policy unless explicitly excluded, or None or All or GuestsOrExternalUsers.
@@ -71,6 +77,23 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
             value: Value to set for the exclude_groups property.
         """
         self._exclude_groups = value
+    
+    @property
+    def exclude_guests_or_external_users(self,) -> Optional[conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers]:
+        """
+        Gets the excludeGuestsOrExternalUsers property value. The excludeGuestsOrExternalUsers property
+        Returns: Optional[conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers]
+        """
+        return self._exclude_guests_or_external_users
+    
+    @exclude_guests_or_external_users.setter
+    def exclude_guests_or_external_users(self,value: Optional[conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers] = None) -> None:
+        """
+        Sets the excludeGuestsOrExternalUsers property value. The excludeGuestsOrExternalUsers property
+        Args:
+            value: Value to set for the exclude_guests_or_external_users property.
+        """
+        self._exclude_guests_or_external_users = value
     
     @property
     def exclude_roles(self,) -> Optional[List[str]]:
@@ -113,9 +136,11 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
         """
         fields = {
             "excludeGroups": lambda n : setattr(self, 'exclude_groups', n.get_collection_of_primitive_values(str)),
+            "excludeGuestsOrExternalUsers": lambda n : setattr(self, 'exclude_guests_or_external_users', n.get_object_value(conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers)),
             "excludeRoles": lambda n : setattr(self, 'exclude_roles', n.get_collection_of_primitive_values(str)),
             "excludeUsers": lambda n : setattr(self, 'exclude_users', n.get_collection_of_primitive_values(str)),
             "includeGroups": lambda n : setattr(self, 'include_groups', n.get_collection_of_primitive_values(str)),
+            "includeGuestsOrExternalUsers": lambda n : setattr(self, 'include_guests_or_external_users', n.get_object_value(conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers)),
             "includeRoles": lambda n : setattr(self, 'include_roles', n.get_collection_of_primitive_values(str)),
             "includeUsers": lambda n : setattr(self, 'include_users', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -138,6 +163,23 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
             value: Value to set for the include_groups property.
         """
         self._include_groups = value
+    
+    @property
+    def include_guests_or_external_users(self,) -> Optional[conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers]:
+        """
+        Gets the includeGuestsOrExternalUsers property value. The includeGuestsOrExternalUsers property
+        Returns: Optional[conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers]
+        """
+        return self._include_guests_or_external_users
+    
+    @include_guests_or_external_users.setter
+    def include_guests_or_external_users(self,value: Optional[conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers] = None) -> None:
+        """
+        Sets the includeGuestsOrExternalUsers property value. The includeGuestsOrExternalUsers property
+        Args:
+            value: Value to set for the include_guests_or_external_users property.
+        """
+        self._include_guests_or_external_users = value
     
     @property
     def include_roles(self,) -> Optional[List[str]]:
@@ -199,9 +241,11 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
         if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_primitive_values("excludeGroups", self.exclude_groups)
+        writer.write_object_value("excludeGuestsOrExternalUsers", self.exclude_guests_or_external_users)
         writer.write_collection_of_primitive_values("excludeRoles", self.exclude_roles)
         writer.write_collection_of_primitive_values("excludeUsers", self.exclude_users)
         writer.write_collection_of_primitive_values("includeGroups", self.include_groups)
+        writer.write_object_value("includeGuestsOrExternalUsers", self.include_guests_or_external_users)
         writer.write_collection_of_primitive_values("includeRoles", self.include_roles)
         writer.write_collection_of_primitive_values("includeUsers", self.include_users)
         writer.write_str_value("@odata.type", self.odata_type)

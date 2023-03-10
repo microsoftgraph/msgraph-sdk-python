@@ -14,6 +14,7 @@ directory_object = lazy_import('msgraph.generated.models.directory_object')
 directory_object_collection_response = lazy_import('msgraph.generated.models.directory_object_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.applies_to.count.count_request_builder')
+delta_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.applies_to.delta.delta_request_builder')
 get_available_extension_properties_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.applies_to.get_available_extension_properties.get_available_extension_properties_request_builder')
 get_by_ids_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.applies_to.get_by_ids.get_by_ids_request_builder')
 ref_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.applies_to.ref.ref_request_builder')
@@ -29,6 +30,13 @@ class AppliesToRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def delta(self) -> delta_request_builder.DeltaRequestBuilder:
+        """
+        Provides operations to call the delta method.
+        """
+        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:

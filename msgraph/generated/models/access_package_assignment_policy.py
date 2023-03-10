@@ -110,7 +110,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         self._modified_date_time: Optional[datetime] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-        # The questions property
+        # Questions that are posed to the  requestor.
         self._questions: Optional[List[access_package_question.AccessPackageQuestion]] = None
         # Specifies the settings for approval of requests for an access package assignment through this policy. For example, if approval is required for new requests.
         self._request_approval_settings: Optional[access_package_assignment_approval_settings.AccessPackageAssignmentApprovalSettings] = None
@@ -246,7 +246,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
     @property
     def questions(self,) -> Optional[List[access_package_question.AccessPackageQuestion]]:
         """
-        Gets the questions property value. The questions property
+        Gets the questions property value. Questions that are posed to the  requestor.
         Returns: Optional[List[access_package_question.AccessPackageQuestion]]
         """
         return self._questions
@@ -254,7 +254,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
     @questions.setter
     def questions(self,value: Optional[List[access_package_question.AccessPackageQuestion]] = None) -> None:
         """
-        Sets the questions property value. The questions property
+        Sets the questions property value. Questions that are posed to the  requestor.
         Args:
             value: Value to set for the questions property.
         """

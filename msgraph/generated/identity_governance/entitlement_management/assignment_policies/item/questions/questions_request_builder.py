@@ -46,7 +46,7 @@ class QuestionsRequestBuilder():
     
     async def get(self,request_configuration: Optional[QuestionsRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_question_collection_response.AccessPackageQuestionCollectionResponse]:
         """
-        Get questions from identityGovernance
+        Questions that are posed to the  requestor.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[access_package_question_collection_response.AccessPackageQuestionCollectionResponse]
@@ -85,7 +85,7 @@ class QuestionsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[QuestionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get questions from identityGovernance
+        Questions that are posed to the  requestor.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -125,7 +125,7 @@ class QuestionsRequestBuilder():
     @dataclass
     class QuestionsRequestBuilderGetQueryParameters():
         """
-        Get questions from identityGovernance
+        Questions that are posed to the  requestor.
         """
         # Include count of items
         count: Optional[bool] = None

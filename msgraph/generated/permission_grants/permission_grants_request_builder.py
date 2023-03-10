@@ -13,6 +13,7 @@ from typing import Any, Callable, Dict, List, Optional, Union
 resource_specific_permission_grant = lazy_import('msgraph.generated.models.resource_specific_permission_grant')
 resource_specific_permission_grant_collection_response = lazy_import('msgraph.generated.models.resource_specific_permission_grant_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+delta_request_builder = lazy_import('msgraph.generated.permission_grants.delta.delta_request_builder')
 get_available_extension_properties_request_builder = lazy_import('msgraph.generated.permission_grants.get_available_extension_properties.get_available_extension_properties_request_builder')
 get_by_ids_request_builder = lazy_import('msgraph.generated.permission_grants.get_by_ids.get_by_ids_request_builder')
 validate_properties_request_builder = lazy_import('msgraph.generated.permission_grants.validate_properties.validate_properties_request_builder')
@@ -21,6 +22,13 @@ class PermissionGrantsRequestBuilder():
     """
     Provides operations to manage the collection of resourceSpecificPermissionGrant entities.
     """
+    @property
+    def delta(self) -> delta_request_builder.DeltaRequestBuilder:
+        """
+        Provides operations to call the delta method.
+        """
+        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @property
     def get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
         """

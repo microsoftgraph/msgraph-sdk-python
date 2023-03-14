@@ -43,7 +43,7 @@ class WorkbookRangeView(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new WorkbookRangeView and sets the default values.
+        Instantiates a new workbookRangeView and sets the default values.
         """
         super().__init__()
         # Represents the cell addresses
@@ -65,7 +65,7 @@ class WorkbookRangeView(entity.Entity):
         # Returns the number of visible rows. Read-only.
         self._row_count: Optional[int] = None
         # Represents a collection of range views associated with the range. Read-only. Read-only.
-        self._rows: Optional[List[workbook_range_view.WorkbookRangeView]] = None
+        self._rows: Optional[List[WorkbookRangeView]] = None
         # Text values of the specified range. The Text value will not depend on the cell width. The # sign substitution that happens in Excel UI will not affect the text value returned by the API. Read-only.
         self._text: Optional[json.Json] = None
         # Represents the type of data of each cell. Read-only. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error.
@@ -149,7 +149,7 @@ class WorkbookRangeView(entity.Entity):
             "formulasR1C1": lambda n : setattr(self, 'formulas_r1_c1', n.get_object_value(json.Json)),
             "index": lambda n : setattr(self, 'index', n.get_int_value()),
             "numberFormat": lambda n : setattr(self, 'number_format', n.get_object_value(json.Json)),
-            "rows": lambda n : setattr(self, 'rows', n.get_collection_of_object_values(workbook_range_view.WorkbookRangeView)),
+            "rows": lambda n : setattr(self, 'rows', n.get_collection_of_object_values(WorkbookRangeView)),
             "rowCount": lambda n : setattr(self, 'row_count', n.get_int_value()),
             "text": lambda n : setattr(self, 'text', n.get_object_value(json.Json)),
             "values": lambda n : setattr(self, 'values', n.get_object_value(json.Json)),
@@ -211,15 +211,15 @@ class WorkbookRangeView(entity.Entity):
         self._row_count = value
     
     @property
-    def rows(self,) -> Optional[List[workbook_range_view.WorkbookRangeView]]:
+    def rows(self,) -> Optional[List[WorkbookRangeView]]:
         """
         Gets the rows property value. Represents a collection of range views associated with the range. Read-only. Read-only.
-        Returns: Optional[List[workbook_range_view.WorkbookRangeView]]
+        Returns: Optional[List[WorkbookRangeView]]
         """
         return self._rows
     
     @rows.setter
-    def rows(self,value: Optional[List[workbook_range_view.WorkbookRangeView]] = None) -> None:
+    def rows(self,value: Optional[List[WorkbookRangeView]] = None) -> None:
         """
         Sets the rows property value. Represents a collection of range views associated with the range. Read-only. Read-only.
         Args:

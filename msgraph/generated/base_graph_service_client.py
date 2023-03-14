@@ -57,6 +57,7 @@ domain_item_request_builder = lazy_import('msgraph.generated.domains.item.domain
 drives_request_builder = lazy_import('msgraph.generated.drives.drives_request_builder')
 drive_item_request_builder = lazy_import('msgraph.generated.drives.item.drive_item_request_builder')
 education_request_builder = lazy_import('msgraph.generated.education.education_request_builder')
+employee_experience_request_builder = lazy_import('msgraph.generated.employee_experience.employee_experience_request_builder')
 external_request_builder = lazy_import('msgraph.generated.external.external_request_builder')
 group_lifecycle_policies_request_builder = lazy_import('msgraph.generated.group_lifecycle_policies.group_lifecycle_policies_request_builder')
 group_lifecycle_policy_item_request_builder = lazy_import('msgraph.generated.group_lifecycle_policies.item.group_lifecycle_policy_item_request_builder')
@@ -323,6 +324,13 @@ class BaseGraphServiceClient():
         Provides operations to manage the educationRoot singleton.
         """
         return education_request_builder.EducationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def employee_experience(self) -> employee_experience_request_builder.EmployeeExperienceRequestBuilder:
+        """
+        Provides operations to manage the employeeExperience singleton.
+        """
+        return employee_experience_request_builder.EmployeeExperienceRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def external(self) -> external_request_builder.ExternalRequestBuilder:

@@ -9,7 +9,7 @@ todo_task_list = lazy_import('msgraph.generated.models.todo_task_list')
 class Todo(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new todo and sets the default values.
+        Instantiates a new Todo and sets the default values.
         """
         super().__init__()
         # The task lists in the users mailbox.

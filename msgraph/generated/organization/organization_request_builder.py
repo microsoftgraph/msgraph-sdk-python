@@ -14,6 +14,7 @@ organization = lazy_import('msgraph.generated.models.organization')
 organization_collection_response = lazy_import('msgraph.generated.models.organization_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.organization.count.count_request_builder')
+delta_request_builder = lazy_import('msgraph.generated.organization.delta.delta_request_builder')
 get_available_extension_properties_request_builder = lazy_import('msgraph.generated.organization.get_available_extension_properties.get_available_extension_properties_request_builder')
 get_by_ids_request_builder = lazy_import('msgraph.generated.organization.get_by_ids.get_by_ids_request_builder')
 validate_properties_request_builder = lazy_import('msgraph.generated.organization.validate_properties.validate_properties_request_builder')
@@ -28,6 +29,13 @@ class OrganizationRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def delta(self) -> delta_request_builder.DeltaRequestBuilder:
+        """
+        Provides operations to call the delta method.
+        """
+        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:

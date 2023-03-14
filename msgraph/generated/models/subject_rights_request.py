@@ -54,7 +54,7 @@ class SubjectRightsRequest(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new SubjectRightsRequest and sets the default values.
+        Instantiates a new subjectRightsRequest and sets the default values.
         """
         super().__init__()
         # Identity that the request is assigned to.

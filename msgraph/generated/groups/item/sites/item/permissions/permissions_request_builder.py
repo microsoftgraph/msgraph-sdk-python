@@ -64,7 +64,7 @@ class PermissionsRequestBuilder():
     
     async def post(self,body: Optional[permission.Permission] = None, request_configuration: Optional[PermissionsRequestBuilderPostRequestConfiguration] = None) -> Optional[permission.Permission]:
         """
-        Create a new permission object on a site.
+        Create a new permission object on a site. 
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class PermissionsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[permission.Permission] = None, request_configuration: Optional[PermissionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new permission object on a site.
+        Create a new permission object on a site. 
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

@@ -49,7 +49,7 @@ class Post(outlook_item.OutlookItem):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new post and sets the default values.
+        Instantiates a new Post and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.post"
@@ -68,7 +68,7 @@ class Post(outlook_item.OutlookItem):
         # Indicates whether the post has at least one attachment. This is a default property.
         self._has_attachments: Optional[bool] = None
         # Read-only. Supports $expand.
-        self._in_reply_to: Optional[Post] = None
+        self._in_reply_to: Optional[post.Post] = None
         # The collection of multi-value extended properties defined for the post. Read-only. Nullable.
         self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
         # Conversation participants that were added to the thread as part of this post.
@@ -173,7 +173,7 @@ class Post(outlook_item.OutlookItem):
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
             "from": lambda n : setattr(self, 'from_', n.get_object_value(recipient.Recipient)),
             "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
-            "inReplyTo": lambda n : setattr(self, 'in_reply_to', n.get_object_value(Post)),
+            "inReplyTo": lambda n : setattr(self, 'in_reply_to', n.get_object_value(post.Post)),
             "multiValueExtendedProperties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty)),
             "newParticipants": lambda n : setattr(self, 'new_participants', n.get_collection_of_object_values(recipient.Recipient)),
             "receivedDateTime": lambda n : setattr(self, 'received_date_time', n.get_datetime_value()),
@@ -202,15 +202,15 @@ class Post(outlook_item.OutlookItem):
         self._has_attachments = value
     
     @property
-    def in_reply_to(self,) -> Optional[Post]:
+    def in_reply_to(self,) -> Optional[post.Post]:
         """
         Gets the inReplyTo property value. Read-only. Supports $expand.
-        Returns: Optional[Post]
+        Returns: Optional[post.Post]
         """
         return self._in_reply_to
     
     @in_reply_to.setter
-    def in_reply_to(self,value: Optional[Post] = None) -> None:
+    def in_reply_to(self,value: Optional[post.Post] = None) -> None:
         """
         Sets the inReplyTo property value. Read-only. Supports $expand.
         Args:

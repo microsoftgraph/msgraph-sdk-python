@@ -46,7 +46,7 @@ class DelegatedAdminAccessAssignment(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new delegatedAdminAccessAssignment and sets the default values.
+        Instantiates a new DelegatedAdminAccessAssignment and sets the default values.
         """
         super().__init__()
         # The accessContainer property

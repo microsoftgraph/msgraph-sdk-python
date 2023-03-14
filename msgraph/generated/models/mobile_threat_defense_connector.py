@@ -9,12 +9,12 @@ mobile_threat_partner_tenant_state = lazy_import('msgraph.generated.models.mobil
 
 class MobileThreatDefenseConnector(entity.Entity):
     """
-    Entity which represents a connection to Mobile threat defense partner.
+    Entity which represents a connection to Mobile Threat Defense partner.
     """
     @property
     def allow_partner_to_collect_i_o_s_application_metadata(self,) -> Optional[bool]:
         """
-        Gets the allowPartnerToCollectIOSApplicationMetadata property value. When TRUE, indicates the data sync partner may collect metadata about installed applications from Intune for IOS devices. When FALSE, indicates the data sync partner may not collect metadata about installed applications from Intune for IOS devices. Default value is FALSE.
+        Gets the allowPartnerToCollectIOSApplicationMetadata property value. When TRUE, indicates the Mobile Threat Defense partner may collect metadata about installed applications from Intune for IOS devices. When FALSE, indicates the Mobile Threat Defense partner may not collect metadata about installed applications from Intune for IOS devices. Default value is FALSE.
         Returns: Optional[bool]
         """
         return self._allow_partner_to_collect_i_o_s_application_metadata
@@ -22,7 +22,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @allow_partner_to_collect_i_o_s_application_metadata.setter
     def allow_partner_to_collect_i_o_s_application_metadata(self,value: Optional[bool] = None) -> None:
         """
-        Sets the allowPartnerToCollectIOSApplicationMetadata property value. When TRUE, indicates the data sync partner may collect metadata about installed applications from Intune for IOS devices. When FALSE, indicates the data sync partner may not collect metadata about installed applications from Intune for IOS devices. Default value is FALSE.
+        Sets the allowPartnerToCollectIOSApplicationMetadata property value. When TRUE, indicates the Mobile Threat Defense partner may collect metadata about installed applications from Intune for IOS devices. When FALSE, indicates the Mobile Threat Defense partner may not collect metadata about installed applications from Intune for IOS devices. Default value is FALSE.
         Args:
             value: Value to set for the allow_partner_to_collect_i_o_s_application_metadata property.
         """
@@ -31,7 +31,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @property
     def allow_partner_to_collect_i_o_s_personal_application_metadata(self,) -> Optional[bool]:
         """
-        Gets the allowPartnerToCollectIOSPersonalApplicationMetadata property value. When TRUE, indicates the data sync partner may collect metadata about personally installed applications from Intune for IOS devices. When FALSE, indicates the data sync partner may not collect metadata about personally installed applications from Intune for IOS devices. Default value is FALSE.
+        Gets the allowPartnerToCollectIOSPersonalApplicationMetadata property value. When TRUE, indicates the Mobile Threat Defense partner may collect metadata about personally installed applications from Intune for IOS devices. When FALSE, indicates the Mobile Threat Defense partner may not collect metadata about personally installed applications from Intune for IOS devices. Default value is FALSE.
         Returns: Optional[bool]
         """
         return self._allow_partner_to_collect_i_o_s_personal_application_metadata
@@ -39,7 +39,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @allow_partner_to_collect_i_o_s_personal_application_metadata.setter
     def allow_partner_to_collect_i_o_s_personal_application_metadata(self,value: Optional[bool] = None) -> None:
         """
-        Sets the allowPartnerToCollectIOSPersonalApplicationMetadata property value. When TRUE, indicates the data sync partner may collect metadata about personally installed applications from Intune for IOS devices. When FALSE, indicates the data sync partner may not collect metadata about personally installed applications from Intune for IOS devices. Default value is FALSE.
+        Sets the allowPartnerToCollectIOSPersonalApplicationMetadata property value. When TRUE, indicates the Mobile Threat Defense partner may collect metadata about personally installed applications from Intune for IOS devices. When FALSE, indicates the Mobile Threat Defense partner may not collect metadata about personally installed applications from Intune for IOS devices. Default value is FALSE.
         Args:
             value: Value to set for the allow_partner_to_collect_i_o_s_personal_application_metadata property.
         """
@@ -48,7 +48,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @property
     def android_device_blocked_on_missing_partner_data(self,) -> Optional[bool]:
         """
-        Gets the androidDeviceBlockedOnMissingPartnerData property value. For Android, set whether Intune must receive data from the data sync partner prior to marking a device compliant
+        Gets the androidDeviceBlockedOnMissingPartnerData property value. For Android, set whether Intune must receive data from the Mobile Threat Defense partner prior to marking a device compliant
         Returns: Optional[bool]
         """
         return self._android_device_blocked_on_missing_partner_data
@@ -56,7 +56,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @android_device_blocked_on_missing_partner_data.setter
     def android_device_blocked_on_missing_partner_data(self,value: Optional[bool] = None) -> None:
         """
-        Sets the androidDeviceBlockedOnMissingPartnerData property value. For Android, set whether Intune must receive data from the data sync partner prior to marking a device compliant
+        Sets the androidDeviceBlockedOnMissingPartnerData property value. For Android, set whether Intune must receive data from the Mobile Threat Defense partner prior to marking a device compliant
         Args:
             value: Value to set for the android_device_blocked_on_missing_partner_data property.
         """
@@ -65,7 +65,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @property
     def android_enabled(self,) -> Optional[bool]:
         """
-        Gets the androidEnabled property value. For Android, set whether data from the data sync partner should be used during compliance evaluations
+        Gets the androidEnabled property value. For Android, set whether data from the Mobile Threat Defense partner should be used during compliance evaluations
         Returns: Optional[bool]
         """
         return self._android_enabled
@@ -73,7 +73,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @android_enabled.setter
     def android_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the androidEnabled property value. For Android, set whether data from the data sync partner should be used during compliance evaluations
+        Sets the androidEnabled property value. For Android, set whether data from the Mobile Threat Defense partner should be used during compliance evaluations
         Args:
             value: Value to set for the android_enabled property.
         """
@@ -82,7 +82,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @property
     def android_mobile_application_management_enabled(self,) -> Optional[bool]:
         """
-        Gets the androidMobileApplicationManagementEnabled property value. When TRUE, inidicates that data from the data sync partner can be used during Mobile Application Management (MAM) evaluations for Android devices. When FALSE, inidicates that data from the data sync partner should not be used during Mobile Application Management (MAM) evaluations for Android devices. Only one partner per platform may be enabled for Mobile Application Management (MAM) evaluation. Default value is FALSE.
+        Gets the androidMobileApplicationManagementEnabled property value. When TRUE, inidicates that data from the Mobile Threat Defense partner can be used during Mobile Application Management (MAM) evaluations for Android devices. When FALSE, inidicates that data from the Mobile Threat Defense partner should not be used during Mobile Application Management (MAM) evaluations for Android devices. Only one partner per platform may be enabled for Mobile Application Management (MAM) evaluation. Default value is FALSE.
         Returns: Optional[bool]
         """
         return self._android_mobile_application_management_enabled
@@ -90,7 +90,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @android_mobile_application_management_enabled.setter
     def android_mobile_application_management_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the androidMobileApplicationManagementEnabled property value. When TRUE, inidicates that data from the data sync partner can be used during Mobile Application Management (MAM) evaluations for Android devices. When FALSE, inidicates that data from the data sync partner should not be used during Mobile Application Management (MAM) evaluations for Android devices. Only one partner per platform may be enabled for Mobile Application Management (MAM) evaluation. Default value is FALSE.
+        Sets the androidMobileApplicationManagementEnabled property value. When TRUE, inidicates that data from the Mobile Threat Defense partner can be used during Mobile Application Management (MAM) evaluations for Android devices. When FALSE, inidicates that data from the Mobile Threat Defense partner should not be used during Mobile Application Management (MAM) evaluations for Android devices. Only one partner per platform may be enabled for Mobile Application Management (MAM) evaluation. Default value is FALSE.
         Args:
             value: Value to set for the android_mobile_application_management_enabled property.
         """
@@ -101,23 +101,23 @@ class MobileThreatDefenseConnector(entity.Entity):
         Instantiates a new mobileThreatDefenseConnector and sets the default values.
         """
         super().__init__()
-        # When TRUE, indicates the data sync partner may collect metadata about installed applications from Intune for IOS devices. When FALSE, indicates the data sync partner may not collect metadata about installed applications from Intune for IOS devices. Default value is FALSE.
+        # When TRUE, indicates the Mobile Threat Defense partner may collect metadata about installed applications from Intune for IOS devices. When FALSE, indicates the Mobile Threat Defense partner may not collect metadata about installed applications from Intune for IOS devices. Default value is FALSE.
         self._allow_partner_to_collect_i_o_s_application_metadata: Optional[bool] = None
-        # When TRUE, indicates the data sync partner may collect metadata about personally installed applications from Intune for IOS devices. When FALSE, indicates the data sync partner may not collect metadata about personally installed applications from Intune for IOS devices. Default value is FALSE.
+        # When TRUE, indicates the Mobile Threat Defense partner may collect metadata about personally installed applications from Intune for IOS devices. When FALSE, indicates the Mobile Threat Defense partner may not collect metadata about personally installed applications from Intune for IOS devices. Default value is FALSE.
         self._allow_partner_to_collect_i_o_s_personal_application_metadata: Optional[bool] = None
-        # For Android, set whether Intune must receive data from the data sync partner prior to marking a device compliant
+        # For Android, set whether Intune must receive data from the Mobile Threat Defense partner prior to marking a device compliant
         self._android_device_blocked_on_missing_partner_data: Optional[bool] = None
-        # For Android, set whether data from the data sync partner should be used during compliance evaluations
+        # For Android, set whether data from the Mobile Threat Defense partner should be used during compliance evaluations
         self._android_enabled: Optional[bool] = None
-        # When TRUE, inidicates that data from the data sync partner can be used during Mobile Application Management (MAM) evaluations for Android devices. When FALSE, inidicates that data from the data sync partner should not be used during Mobile Application Management (MAM) evaluations for Android devices. Only one partner per platform may be enabled for Mobile Application Management (MAM) evaluation. Default value is FALSE.
+        # When TRUE, inidicates that data from the Mobile Threat Defense partner can be used during Mobile Application Management (MAM) evaluations for Android devices. When FALSE, inidicates that data from the Mobile Threat Defense partner should not be used during Mobile Application Management (MAM) evaluations for Android devices. Only one partner per platform may be enabled for Mobile Application Management (MAM) evaluation. Default value is FALSE.
         self._android_mobile_application_management_enabled: Optional[bool] = None
-        # For IOS, set whether Intune must receive data from the data sync partner prior to marking a device compliant
+        # For IOS, set whether Intune must receive data from the Mobile Threat Defense partner prior to marking a device compliant
         self._ios_device_blocked_on_missing_partner_data: Optional[bool] = None
-        # For IOS, get or set whether data from the data sync partner should be used during compliance evaluations
+        # For IOS, get or set whether data from the Mobile Threat Defense partner should be used during compliance evaluations
         self._ios_enabled: Optional[bool] = None
-        # When TRUE, inidicates that data from the data sync partner can be used during Mobile Application Management (MAM) evaluations for IOS devices. When FALSE, inidicates that data from the data sync partner should not be used during Mobile Application Management (MAM) evaluations for IOS devices. Only one partner per platform may be enabled for Mobile Application Management (MAM) evaluation. Default value is FALSE.
+        # When TRUE, inidicates that data from the Mobile Threat Defense partner can be used during Mobile Application Management (MAM) evaluations for IOS devices. When FALSE, inidicates that data from the Mobile Threat Defense partner should not be used during Mobile Application Management (MAM) evaluations for IOS devices. Only one partner per platform may be enabled for Mobile Application Management (MAM) evaluation. Default value is FALSE.
         self._ios_mobile_application_management_enabled: Optional[bool] = None
-        # DateTime of last Heartbeat recieved from the Data Sync Partner
+        # DateTime of last Heartbeat recieved from the Mobile Threat Defense partner
         self._last_heartbeat_date_time: Optional[datetime] = None
         # When TRUE, inidicates that configuration profile management via Microsoft Defender for Endpoint is enabled. When FALSE, inidicates that configuration profile management via Microsoft Defender for Endpoint is disabled. Default value is FALSE.
         self._microsoft_defender_for_endpoint_attach_enabled: Optional[bool] = None
@@ -127,11 +127,11 @@ class MobileThreatDefenseConnector(entity.Entity):
         self._partner_state: Optional[mobile_threat_partner_tenant_state.MobileThreatPartnerTenantState] = None
         # Get or Set days the per tenant tolerance to unresponsiveness for this partner integration
         self._partner_unresponsiveness_threshold_in_days: Optional[int] = None
-        # Get or set whether to block devices on the enabled platforms that do not meet the minimum version requirements of the Data Sync Partner
+        # Get or set whether to block devices on the enabled platforms that do not meet the minimum version requirements of the Mobile Threat Defense partner
         self._partner_unsupported_os_version_blocked: Optional[bool] = None
-        # When TRUE, inidicates that Intune must receive data from the data sync partner prior to marking a device compliant for Windows. When FALSE, inidicates that Intune may make a device compliant without receiving data from the data sync partner for Windows. Default value is FALSE.
+        # When TRUE, inidicates that Intune must receive data from the Mobile Threat Defense partner prior to marking a device compliant for Windows. When FALSE, inidicates that Intune may make a device compliant without receiving data from the Mobile Threat Defense partner for Windows. Default value is FALSE.
         self._windows_device_blocked_on_missing_partner_data: Optional[bool] = None
-        # When TRUE, inidicates that data from the data sync partner can be used during compliance evaluations for Windows. When FALSE, inidicates that data from the data sync partner should not be used during compliance evaluations for Windows. Default value is FALSE.
+        # When TRUE, inidicates that data from the Mobile Threat Defense partner can be used during compliance evaluations for Windows. When FALSE, inidicates that data from the Mobile Threat Defense partner should not be used during compliance evaluations for Windows. Default value is FALSE.
         self._windows_enabled: Optional[bool] = None
     
     @staticmethod
@@ -175,7 +175,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @property
     def ios_device_blocked_on_missing_partner_data(self,) -> Optional[bool]:
         """
-        Gets the iosDeviceBlockedOnMissingPartnerData property value. For IOS, set whether Intune must receive data from the data sync partner prior to marking a device compliant
+        Gets the iosDeviceBlockedOnMissingPartnerData property value. For IOS, set whether Intune must receive data from the Mobile Threat Defense partner prior to marking a device compliant
         Returns: Optional[bool]
         """
         return self._ios_device_blocked_on_missing_partner_data
@@ -183,7 +183,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @ios_device_blocked_on_missing_partner_data.setter
     def ios_device_blocked_on_missing_partner_data(self,value: Optional[bool] = None) -> None:
         """
-        Sets the iosDeviceBlockedOnMissingPartnerData property value. For IOS, set whether Intune must receive data from the data sync partner prior to marking a device compliant
+        Sets the iosDeviceBlockedOnMissingPartnerData property value. For IOS, set whether Intune must receive data from the Mobile Threat Defense partner prior to marking a device compliant
         Args:
             value: Value to set for the ios_device_blocked_on_missing_partner_data property.
         """
@@ -192,7 +192,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @property
     def ios_enabled(self,) -> Optional[bool]:
         """
-        Gets the iosEnabled property value. For IOS, get or set whether data from the data sync partner should be used during compliance evaluations
+        Gets the iosEnabled property value. For IOS, get or set whether data from the Mobile Threat Defense partner should be used during compliance evaluations
         Returns: Optional[bool]
         """
         return self._ios_enabled
@@ -200,7 +200,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @ios_enabled.setter
     def ios_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the iosEnabled property value. For IOS, get or set whether data from the data sync partner should be used during compliance evaluations
+        Sets the iosEnabled property value. For IOS, get or set whether data from the Mobile Threat Defense partner should be used during compliance evaluations
         Args:
             value: Value to set for the ios_enabled property.
         """
@@ -209,7 +209,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @property
     def ios_mobile_application_management_enabled(self,) -> Optional[bool]:
         """
-        Gets the iosMobileApplicationManagementEnabled property value. When TRUE, inidicates that data from the data sync partner can be used during Mobile Application Management (MAM) evaluations for IOS devices. When FALSE, inidicates that data from the data sync partner should not be used during Mobile Application Management (MAM) evaluations for IOS devices. Only one partner per platform may be enabled for Mobile Application Management (MAM) evaluation. Default value is FALSE.
+        Gets the iosMobileApplicationManagementEnabled property value. When TRUE, inidicates that data from the Mobile Threat Defense partner can be used during Mobile Application Management (MAM) evaluations for IOS devices. When FALSE, inidicates that data from the Mobile Threat Defense partner should not be used during Mobile Application Management (MAM) evaluations for IOS devices. Only one partner per platform may be enabled for Mobile Application Management (MAM) evaluation. Default value is FALSE.
         Returns: Optional[bool]
         """
         return self._ios_mobile_application_management_enabled
@@ -217,7 +217,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @ios_mobile_application_management_enabled.setter
     def ios_mobile_application_management_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the iosMobileApplicationManagementEnabled property value. When TRUE, inidicates that data from the data sync partner can be used during Mobile Application Management (MAM) evaluations for IOS devices. When FALSE, inidicates that data from the data sync partner should not be used during Mobile Application Management (MAM) evaluations for IOS devices. Only one partner per platform may be enabled for Mobile Application Management (MAM) evaluation. Default value is FALSE.
+        Sets the iosMobileApplicationManagementEnabled property value. When TRUE, inidicates that data from the Mobile Threat Defense partner can be used during Mobile Application Management (MAM) evaluations for IOS devices. When FALSE, inidicates that data from the Mobile Threat Defense partner should not be used during Mobile Application Management (MAM) evaluations for IOS devices. Only one partner per platform may be enabled for Mobile Application Management (MAM) evaluation. Default value is FALSE.
         Args:
             value: Value to set for the ios_mobile_application_management_enabled property.
         """
@@ -226,7 +226,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @property
     def last_heartbeat_date_time(self,) -> Optional[datetime]:
         """
-        Gets the lastHeartbeatDateTime property value. DateTime of last Heartbeat recieved from the Data Sync Partner
+        Gets the lastHeartbeatDateTime property value. DateTime of last Heartbeat recieved from the Mobile Threat Defense partner
         Returns: Optional[datetime]
         """
         return self._last_heartbeat_date_time
@@ -234,7 +234,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @last_heartbeat_date_time.setter
     def last_heartbeat_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the lastHeartbeatDateTime property value. DateTime of last Heartbeat recieved from the Data Sync Partner
+        Sets the lastHeartbeatDateTime property value. DateTime of last Heartbeat recieved from the Mobile Threat Defense partner
         Args:
             value: Value to set for the last_heartbeat_date_time property.
         """
@@ -294,7 +294,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @property
     def partner_unsupported_os_version_blocked(self,) -> Optional[bool]:
         """
-        Gets the partnerUnsupportedOsVersionBlocked property value. Get or set whether to block devices on the enabled platforms that do not meet the minimum version requirements of the Data Sync Partner
+        Gets the partnerUnsupportedOsVersionBlocked property value. Get or set whether to block devices on the enabled platforms that do not meet the minimum version requirements of the Mobile Threat Defense partner
         Returns: Optional[bool]
         """
         return self._partner_unsupported_os_version_blocked
@@ -302,7 +302,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @partner_unsupported_os_version_blocked.setter
     def partner_unsupported_os_version_blocked(self,value: Optional[bool] = None) -> None:
         """
-        Sets the partnerUnsupportedOsVersionBlocked property value. Get or set whether to block devices on the enabled platforms that do not meet the minimum version requirements of the Data Sync Partner
+        Sets the partnerUnsupportedOsVersionBlocked property value. Get or set whether to block devices on the enabled platforms that do not meet the minimum version requirements of the Mobile Threat Defense partner
         Args:
             value: Value to set for the partner_unsupported_os_version_blocked property.
         """
@@ -336,7 +336,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @property
     def windows_device_blocked_on_missing_partner_data(self,) -> Optional[bool]:
         """
-        Gets the windowsDeviceBlockedOnMissingPartnerData property value. When TRUE, inidicates that Intune must receive data from the data sync partner prior to marking a device compliant for Windows. When FALSE, inidicates that Intune may make a device compliant without receiving data from the data sync partner for Windows. Default value is FALSE.
+        Gets the windowsDeviceBlockedOnMissingPartnerData property value. When TRUE, inidicates that Intune must receive data from the Mobile Threat Defense partner prior to marking a device compliant for Windows. When FALSE, inidicates that Intune may make a device compliant without receiving data from the Mobile Threat Defense partner for Windows. Default value is FALSE.
         Returns: Optional[bool]
         """
         return self._windows_device_blocked_on_missing_partner_data
@@ -344,7 +344,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @windows_device_blocked_on_missing_partner_data.setter
     def windows_device_blocked_on_missing_partner_data(self,value: Optional[bool] = None) -> None:
         """
-        Sets the windowsDeviceBlockedOnMissingPartnerData property value. When TRUE, inidicates that Intune must receive data from the data sync partner prior to marking a device compliant for Windows. When FALSE, inidicates that Intune may make a device compliant without receiving data from the data sync partner for Windows. Default value is FALSE.
+        Sets the windowsDeviceBlockedOnMissingPartnerData property value. When TRUE, inidicates that Intune must receive data from the Mobile Threat Defense partner prior to marking a device compliant for Windows. When FALSE, inidicates that Intune may make a device compliant without receiving data from the Mobile Threat Defense partner for Windows. Default value is FALSE.
         Args:
             value: Value to set for the windows_device_blocked_on_missing_partner_data property.
         """
@@ -353,7 +353,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @property
     def windows_enabled(self,) -> Optional[bool]:
         """
-        Gets the windowsEnabled property value. When TRUE, inidicates that data from the data sync partner can be used during compliance evaluations for Windows. When FALSE, inidicates that data from the data sync partner should not be used during compliance evaluations for Windows. Default value is FALSE.
+        Gets the windowsEnabled property value. When TRUE, inidicates that data from the Mobile Threat Defense partner can be used during compliance evaluations for Windows. When FALSE, inidicates that data from the Mobile Threat Defense partner should not be used during compliance evaluations for Windows. Default value is FALSE.
         Returns: Optional[bool]
         """
         return self._windows_enabled
@@ -361,7 +361,7 @@ class MobileThreatDefenseConnector(entity.Entity):
     @windows_enabled.setter
     def windows_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the windowsEnabled property value. When TRUE, inidicates that data from the data sync partner can be used during compliance evaluations for Windows. When FALSE, inidicates that data from the data sync partner should not be used during compliance evaluations for Windows. Default value is FALSE.
+        Sets the windowsEnabled property value. When TRUE, inidicates that data from the Mobile Threat Defense partner can be used during compliance evaluations for Windows. When FALSE, inidicates that data from the Mobile Threat Defense partner should not be used during compliance evaluations for Windows. Default value is FALSE.
         Args:
             value: Value to set for the windows_enabled property.
         """

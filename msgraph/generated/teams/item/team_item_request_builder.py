@@ -223,7 +223,7 @@ class TeamItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[TeamItemRequestBuilderGetRequestConfiguration] = None) -> Optional[team.Team]:
         """
-        Retrieve the properties and relationships of the specified team.
+        Get entity from teams by key
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[team.Team]
@@ -343,7 +343,7 @@ class TeamItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TeamItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of the specified team.
+        Get entity from teams by key
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -395,7 +395,7 @@ class TeamItemRequestBuilder():
     @dataclass
     class TeamItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of the specified team.
+        Get entity from teams by key
         """
         # Expand related entities
         expand: Optional[List[str]] = None

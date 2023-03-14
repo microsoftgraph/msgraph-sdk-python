@@ -28,7 +28,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new ScheduleChangeRequest and sets the default values.
+        Instantiates a new scheduleChangeRequest and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.scheduleChangeRequest"

@@ -54,7 +54,7 @@ class DeletedTeamsRequestBuilder():
     
     async def get(self,request_configuration: Optional[DeletedTeamsRequestBuilderGetRequestConfiguration] = None) -> Optional[deleted_team_collection_response.DeletedTeamCollectionResponse]:
         """
-        Get deletedTeams from teamwork
+        Get a list of the deletedTeam objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[deleted_team_collection_response.DeletedTeamCollectionResponse]
@@ -93,7 +93,7 @@ class DeletedTeamsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DeletedTeamsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get deletedTeams from teamwork
+        Get a list of the deletedTeam objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -133,7 +133,7 @@ class DeletedTeamsRequestBuilder():
     @dataclass
     class DeletedTeamsRequestBuilderGetQueryParameters():
         """
-        Get deletedTeams from teamwork
+        Get a list of the deletedTeam objects and their properties.
         """
         # Include count of items
         count: Optional[bool] = None

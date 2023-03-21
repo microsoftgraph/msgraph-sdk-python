@@ -9,6 +9,9 @@ audit_resource = lazy_import('msgraph.generated.models.audit_resource')
 entity = lazy_import('msgraph.generated.models.entity')
 
 class AuditEvent(entity.Entity):
+    """
+    A class containing the properties for Audit Event.
+    """
     @property
     def activity(self,) -> Optional[str]:
         """
@@ -147,7 +150,7 @@ class AuditEvent(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new AuditEvent and sets the default values.
+        Instantiates a new auditEvent and sets the default values.
         """
         super().__init__()
         # Friendly name of the activity.

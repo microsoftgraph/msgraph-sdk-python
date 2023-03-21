@@ -43,6 +43,23 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         self._allow_invites_from = value
     
     @property
+    def allow_user_consent_for_risky_apps(self,) -> Optional[bool]:
+        """
+        Gets the allowUserConsentForRiskyApps property value. The allowUserConsentForRiskyApps property
+        Returns: Optional[bool]
+        """
+        return self._allow_user_consent_for_risky_apps
+    
+    @allow_user_consent_for_risky_apps.setter
+    def allow_user_consent_for_risky_apps(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the allowUserConsentForRiskyApps property value. The allowUserConsentForRiskyApps property
+        Args:
+            value: Value to set for the allow_user_consent_for_risky_apps property.
+        """
+        self._allow_user_consent_for_risky_apps = value
+    
+    @property
     def allowed_to_sign_up_email_based_subscriptions(self,) -> Optional[bool]:
         """
         Gets the allowedToSignUpEmailBasedSubscriptions property value. Indicates whether users can sign up for email based subscriptions.
@@ -103,6 +120,8 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         self._allow_email_verified_users_to_join_organization: Optional[bool] = None
         # Indicates who can invite external users to the organization. Possible values are: none, adminsAndGuestInviters, adminsGuestInvitersAndAllMembers, everyone.  everyone is the default setting for all cloud environments except US Government. See more in the table below.
         self._allow_invites_from: Optional[allow_invites_from.AllowInvitesFrom] = None
+        # The allowUserConsentForRiskyApps property
+        self._allow_user_consent_for_risky_apps: Optional[bool] = None
         # Indicates whether users can sign up for email based subscriptions.
         self._allowed_to_sign_up_email_based_subscriptions: Optional[bool] = None
         # Indicates whether the Self-Serve Password Reset feature can be used by users on the tenant.
@@ -153,6 +172,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
             "allowedToUseSSPR": lambda n : setattr(self, 'allowed_to_use_s_s_p_r', n.get_bool_value()),
             "allowEmailVerifiedUsersToJoinOrganization": lambda n : setattr(self, 'allow_email_verified_users_to_join_organization', n.get_bool_value()),
             "allowInvitesFrom": lambda n : setattr(self, 'allow_invites_from', n.get_enum_value(allow_invites_from.AllowInvitesFrom)),
+            "allowUserConsentForRiskyApps": lambda n : setattr(self, 'allow_user_consent_for_risky_apps', n.get_bool_value()),
             "blockMsolPowerShell": lambda n : setattr(self, 'block_msol_power_shell', n.get_bool_value()),
             "defaultUserRolePermissions": lambda n : setattr(self, 'default_user_role_permissions', n.get_object_value(default_user_role_permissions.DefaultUserRolePermissions)),
             "guestUserRoleId": lambda n : setattr(self, 'guest_user_role_id', n.get_object_value(Guid)),
@@ -191,6 +211,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         writer.write_bool_value("allowedToUseSSPR", self.allowed_to_use_s_s_p_r)
         writer.write_bool_value("allowEmailVerifiedUsersToJoinOrganization", self.allow_email_verified_users_to_join_organization)
         writer.write_enum_value("allowInvitesFrom", self.allow_invites_from)
+        writer.write_bool_value("allowUserConsentForRiskyApps", self.allow_user_consent_for_risky_apps)
         writer.write_bool_value("blockMsolPowerShell", self.block_msol_power_shell)
         writer.write_object_value("defaultUserRolePermissions", self.default_user_role_permissions)
         writer.write_object_value("guestUserRoleId", self.guest_user_role_id)

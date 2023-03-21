@@ -13,6 +13,7 @@ from typing import Any, Callable, Dict, List, Optional, Union
 directory_object_collection_response = lazy_import('msgraph.generated.models.directory_object_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.users.item.transitive_member_of.count.count_request_builder')
+graph_administrative_unit_request_builder = lazy_import('msgraph.generated.users.item.transitive_member_of.graph_administrative_unit.graph_administrative_unit_request_builder')
 graph_group_request_builder = lazy_import('msgraph.generated.users.item.transitive_member_of.graph_group.graph_group_request_builder')
 
 class TransitiveMemberOfRequestBuilder():
@@ -25,6 +26,13 @@ class TransitiveMemberOfRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_administrative_unit(self) -> graph_administrative_unit_request_builder.GraphAdministrativeUnitRequestBuilder:
+        """
+        Casts the previous resource to administrativeUnit.
+        """
+        return graph_administrative_unit_request_builder.GraphAdministrativeUnitRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def graph_group(self) -> graph_group_request_builder.GraphGroupRequestBuilder:

@@ -10,6 +10,7 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
+graph_administrative_unit_request_builder = lazy_import('msgraph.generated.devices.item.member_of.item.graph_administrative_unit.graph_administrative_unit_request_builder')
 graph_group_request_builder = lazy_import('msgraph.generated.devices.item.member_of.item.graph_group.graph_group_request_builder')
 directory_object = lazy_import('msgraph.generated.models.directory_object')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
@@ -18,6 +19,13 @@ class DirectoryObjectItemRequestBuilder():
     """
     Provides operations to manage the memberOf property of the microsoft.graph.device entity.
     """
+    @property
+    def graph_administrative_unit(self) -> graph_administrative_unit_request_builder.GraphAdministrativeUnitRequestBuilder:
+        """
+        Casts the previous resource to administrativeUnit.
+        """
+        return graph_administrative_unit_request_builder.GraphAdministrativeUnitRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @property
     def graph_group(self) -> graph_group_request_builder.GraphGroupRequestBuilder:
         """

@@ -10,7 +10,7 @@ class DeletedTeam(entity.Entity):
     @property
     def channels(self,) -> Optional[List[channel.Channel]]:
         """
-        Gets the channels property value. The channels property
+        Gets the channels property value. The channels that are either shared with this deleted team or created in this deleted team.
         Returns: Optional[List[channel.Channel]]
         """
         return self._channels
@@ -18,7 +18,7 @@ class DeletedTeam(entity.Entity):
     @channels.setter
     def channels(self,value: Optional[List[channel.Channel]] = None) -> None:
         """
-        Sets the channels property value. The channels property
+        Sets the channels property value. The channels that are either shared with this deleted team or created in this deleted team.
         Args:
             value: Value to set for the channels property.
         """
@@ -29,7 +29,7 @@ class DeletedTeam(entity.Entity):
         Instantiates a new deletedTeam and sets the default values.
         """
         super().__init__()
-        # The channels property
+        # The channels that are either shared with this deleted team or created in this deleted team.
         self._channels: Optional[List[channel.Channel]] = None
         # The OdataType property
         self.odata_type: Optional[str] = None

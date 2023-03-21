@@ -130,7 +130,7 @@ class ChannelItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ChannelItemRequestBuilderGetRequestConfiguration] = None) -> Optional[channel.Channel]:
         """
-        Get channels from teamwork
+        The channels that are either shared with this deleted team or created in this deleted team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[channel.Channel]
@@ -237,7 +237,7 @@ class ChannelItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ChannelItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get channels from teamwork
+        The channels that are either shared with this deleted team or created in this deleted team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -289,7 +289,7 @@ class ChannelItemRequestBuilder():
     @dataclass
     class ChannelItemRequestBuilderGetQueryParameters():
         """
-        Get channels from teamwork
+        The channels that are either shared with this deleted team or created in this deleted team.
         """
         # Expand related entities
         expand: Optional[List[str]] = None

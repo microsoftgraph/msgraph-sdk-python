@@ -13,7 +13,7 @@ class Teamwork(entity.Entity):
         Instantiates a new Teamwork and sets the default values.
         """
         super().__init__()
-        # The deletedTeams property
+        # The deleted team.
         self._deleted_teams: Optional[List[deleted_team.DeletedTeam]] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
@@ -35,7 +35,7 @@ class Teamwork(entity.Entity):
     @property
     def deleted_teams(self,) -> Optional[List[deleted_team.DeletedTeam]]:
         """
-        Gets the deletedTeams property value. The deletedTeams property
+        Gets the deletedTeams property value. The deleted team.
         Returns: Optional[List[deleted_team.DeletedTeam]]
         """
         return self._deleted_teams
@@ -43,7 +43,7 @@ class Teamwork(entity.Entity):
     @deleted_teams.setter
     def deleted_teams(self,value: Optional[List[deleted_team.DeletedTeam]] = None) -> None:
         """
-        Sets the deletedTeams property value. The deletedTeams property
+        Sets the deletedTeams property value. The deleted team.
         Args:
             value: Value to set for the deleted_teams property.
         """

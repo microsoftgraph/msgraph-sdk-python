@@ -76,7 +76,7 @@ class DeletedTeamItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[DeletedTeamItemRequestBuilderGetRequestConfiguration] = None) -> Optional[deleted_team.DeletedTeam]:
         """
-        Get deletedTeams from teamwork
+        The deleted team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[deleted_team.DeletedTeam]
@@ -131,7 +131,7 @@ class DeletedTeamItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DeletedTeamItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get deletedTeams from teamwork
+        The deleted team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -183,7 +183,7 @@ class DeletedTeamItemRequestBuilder():
     @dataclass
     class DeletedTeamItemRequestBuilderGetQueryParameters():
         """
-        Get deletedTeams from teamwork
+        The deleted team.
         """
         # Expand related entities
         expand: Optional[List[str]] = None

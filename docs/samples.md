@@ -152,11 +152,15 @@ The SDK provides a default response handler which returns the native HTTPX respo
 To get the raw response:
 ```py
 from kiota_abstractions.native_response_handler import NativeResponseHandler
+from kiota_http.middleware.options import ResponseHandlerOption
+from msgraph.generated.users.item.messages.messages_request_builder import MessagesRequestBuilder
 
-async def get_user():
+async def get_user_messages():
     try:
-        user = await client.users_by_id('USER_ID').get(None, NativeResponseHandler())
-        print(user.value)
+        request_config = MessagesRequestBuilder.MessagesRequestBuilderGetRequestConfiguration(
+            options=[ResponseHandlerOption(NativeResponseHandler())], )
+        messages = await client.users_by_id('USER_ID').messages.get(request_configuration=request_config)
+        print(messages.json())
     except Exception as e:
         print(e.error.message)
 asyncio.run(get_user())

@@ -1,11 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-operation_status = lazy_import('msgraph.generated.models.operation_status')
+if TYPE_CHECKING:
+    from . import entity, onenote_operation, operation_status
+
+from . import entity
 
 class Operation(entity.Entity):
     def __init__(self,) -> None:
@@ -49,6 +50,13 @@ class Operation(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.onenoteOperation":
+                from . import onenote_operation
+
+                return onenote_operation.OnenoteOperation()
         return Operation()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -56,7 +64,9 @@ class Operation(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, onenote_operation, operation_status
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "lastActionDateTime": lambda n : setattr(self, 'last_action_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(operation_status.OperationStatus)),

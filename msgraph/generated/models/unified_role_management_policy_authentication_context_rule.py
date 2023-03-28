@@ -1,11 +1,24 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-unified_role_management_policy_rule = lazy_import('msgraph.generated.models.unified_role_management_policy_rule')
+if TYPE_CHECKING:
+    from . import unified_role_management_policy_rule
+
+from . import unified_role_management_policy_rule
 
 class UnifiedRoleManagementPolicyAuthenticationContextRule(unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new UnifiedRoleManagementPolicyAuthenticationContextRule and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.unifiedRoleManagementPolicyAuthenticationContextRule"
+        # The value of the authentication context claim.
+        self._claim_value: Optional[str] = None
+        # Whether this rule is enabled.
+        self._is_enabled: Optional[bool] = None
+    
     @property
     def claim_value(self,) -> Optional[str]:
         """
@@ -22,17 +35,6 @@ class UnifiedRoleManagementPolicyAuthenticationContextRule(unified_role_manageme
             value: Value to set for the claim_value property.
         """
         self._claim_value = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new UnifiedRoleManagementPolicyAuthenticationContextRule and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.unifiedRoleManagementPolicyAuthenticationContextRule"
-        # The value of the authentication context claim.
-        self._claim_value: Optional[str] = None
-        # Whether this rule is enabled.
-        self._is_enabled: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleManagementPolicyAuthenticationContextRule:
@@ -51,7 +53,9 @@ class UnifiedRoleManagementPolicyAuthenticationContextRule(unified_role_manageme
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import unified_role_management_policy_rule
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "claimValue": lambda n : setattr(self, 'claim_value', n.get_str_value()),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
         }

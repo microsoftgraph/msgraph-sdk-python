@@ -1,12 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-data_source_container_status = lazy_import('msgraph.generated.models.security.data_source_container_status')
-data_source_hold_status = lazy_import('msgraph.generated.models.security.data_source_hold_status')
+if TYPE_CHECKING:
+    from . import data_source_container_status, data_source_hold_status, ediscovery_custodian, ediscovery_noncustodial_data_source
+    from .. import entity
+
+from .. import entity
 
 class DataSourceContainer(entity.Entity):
     def __init__(self,) -> None:
@@ -56,6 +57,17 @@ class DataSourceContainer(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.security.ediscoveryCustodian":
+                from . import ediscovery_custodian
+
+                return ediscovery_custodian.EdiscoveryCustodian()
+            if mapping_value == "#microsoft.graph.security.ediscoveryNoncustodialDataSource":
+                from . import ediscovery_noncustodial_data_source
+
+                return ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource()
         return DataSourceContainer()
     
     @property
@@ -80,7 +92,10 @@ class DataSourceContainer(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import data_source_container_status, data_source_hold_status, ediscovery_custodian, ediscovery_noncustodial_data_source
+        from .. import entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "holdStatus": lambda n : setattr(self, 'hold_status', n.get_enum_value(data_source_hold_status.DataSourceHoldStatus)),

@@ -7,90 +7,28 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-assign_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.assign.assign_request_builder')
-assignments_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.assignments.assignments_request_builder')
-device_configuration_assignment_item_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.assignments.item.device_configuration_assignment_item_request_builder')
-device_setting_state_summaries_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.device_setting_state_summaries.device_setting_state_summaries_request_builder')
-setting_state_device_summary_item_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.device_setting_state_summaries.item.setting_state_device_summary_item_request_builder')
-device_statuses_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.device_statuses.device_statuses_request_builder')
-device_configuration_device_status_item_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.device_statuses.item.device_configuration_device_status_item_request_builder')
-device_status_overview_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.device_status_overview.device_status_overview_request_builder')
-get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.get_oma_setting_plain_text_value_with_secret_reference_value_id.get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder')
-user_statuses_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.user_statuses.user_statuses_request_builder')
-device_configuration_user_status_item_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.user_statuses.item.device_configuration_user_status_item_request_builder')
-user_status_overview_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.user_status_overview.user_status_overview_request_builder')
-device_configuration = lazy_import('msgraph.generated.models.device_configuration')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from ....models import device_configuration
+    from ....models.o_data_errors import o_data_error
+    from .assign import assign_request_builder
+    from .assignments import assignments_request_builder
+    from .assignments.item import device_configuration_assignment_item_request_builder
+    from .device_setting_state_summaries import device_setting_state_summaries_request_builder
+    from .device_setting_state_summaries.item import setting_state_device_summary_item_request_builder
+    from .device_statuses import device_statuses_request_builder
+    from .device_statuses.item import device_configuration_device_status_item_request_builder
+    from .device_status_overview import device_status_overview_request_builder
+    from .get_oma_setting_plain_text_value_with_secret_reference_value_id import get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder
+    from .user_statuses import user_statuses_request_builder
+    from .user_statuses.item import device_configuration_user_status_item_request_builder
+    from .user_status_overview import user_status_overview_request_builder
 
 class DeviceConfigurationItemRequestBuilder():
     """
     Provides operations to manage the deviceConfigurations property of the microsoft.graph.deviceManagement entity.
     """
-    @property
-    def assign(self) -> assign_request_builder.AssignRequestBuilder:
-        """
-        Provides operations to call the assign method.
-        """
-        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
-        """
-        Provides operations to manage the assignments property of the microsoft.graph.deviceConfiguration entity.
-        """
-        return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def device_setting_state_summaries(self) -> device_setting_state_summaries_request_builder.DeviceSettingStateSummariesRequestBuilder:
-        """
-        Provides operations to manage the deviceSettingStateSummaries property of the microsoft.graph.deviceConfiguration entity.
-        """
-        return device_setting_state_summaries_request_builder.DeviceSettingStateSummariesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def device_statuses(self) -> device_statuses_request_builder.DeviceStatusesRequestBuilder:
-        """
-        Provides operations to manage the deviceStatuses property of the microsoft.graph.deviceConfiguration entity.
-        """
-        return device_statuses_request_builder.DeviceStatusesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def device_status_overview(self) -> device_status_overview_request_builder.DeviceStatusOverviewRequestBuilder:
-        """
-        Provides operations to manage the deviceStatusOverview property of the microsoft.graph.deviceConfiguration entity.
-        """
-        return device_status_overview_request_builder.DeviceStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def user_statuses(self) -> user_statuses_request_builder.UserStatusesRequestBuilder:
-        """
-        Provides operations to manage the userStatuses property of the microsoft.graph.deviceConfiguration entity.
-        """
-        return user_statuses_request_builder.UserStatusesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def user_status_overview(self) -> user_status_overview_request_builder.UserStatusOverviewRequestBuilder:
-        """
-        Provides operations to manage the userStatusOverview property of the microsoft.graph.deviceConfiguration entity.
-        """
-        return user_status_overview_request_builder.UserStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    def assignments_by_id(self,id: str) -> device_configuration_assignment_item_request_builder.DeviceConfigurationAssignmentItemRequestBuilder:
-        """
-        Provides operations to manage the assignments property of the microsoft.graph.deviceConfiguration entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: device_configuration_assignment_item_request_builder.DeviceConfigurationAssignmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["deviceConfigurationAssignment%2Did"] = id
-        return device_configuration_assignment_item_request_builder.DeviceConfigurationAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DeviceConfigurationItemRequestBuilder and sets the default values.
@@ -109,6 +47,21 @@ class DeviceConfigurationItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def assignments_by_id(self,id: str) -> device_configuration_assignment_item_request_builder.DeviceConfigurationAssignmentItemRequestBuilder:
+        """
+        Provides operations to manage the assignments property of the microsoft.graph.deviceConfiguration entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: device_configuration_assignment_item_request_builder.DeviceConfigurationAssignmentItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        from .assignments.item import device_configuration_assignment_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["deviceConfigurationAssignment%2Did"] = id
+        return device_configuration_assignment_item_request_builder.DeviceConfigurationAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def delete(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property deviceConfigurations for deviceManagement
@@ -118,6 +71,8 @@ class DeviceConfigurationItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -135,6 +90,8 @@ class DeviceConfigurationItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .device_setting_state_summaries.item import setting_state_device_summary_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["settingStateDeviceSummary%2Did"] = id
         return setting_state_device_summary_item_request_builder.SettingStateDeviceSummaryItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -148,6 +105,8 @@ class DeviceConfigurationItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .device_statuses.item import device_configuration_device_status_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceConfigurationDeviceStatus%2Did"] = id
         return device_configuration_device_status_item_request_builder.DeviceConfigurationDeviceStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -162,12 +121,16 @@ class DeviceConfigurationItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ....models import device_configuration
+
         return await self.request_adapter.send_async(request_info, device_configuration.DeviceConfiguration, error_mapping)
     
     def get_oma_setting_plain_text_value_with_secret_reference_value_id(self,secret_reference_value_id: Optional[str] = None) -> get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder.GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder:
@@ -179,7 +142,9 @@ class DeviceConfigurationItemRequestBuilder():
         """
         if secret_reference_value_id is None:
             raise Exception("secret_reference_value_id cannot be undefined")
-        return get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder.GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder(self.request_adapter, self.path_parameters, secretReferenceValueId)
+        from .get_oma_setting_plain_text_value_with_secret_reference_value_id import get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder
+
+        return get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder.GetOmaSettingPlainTextValueWithSecretReferenceValueIdRequestBuilder(self.request_adapter, self.path_parameters, secret_reference_value_id)
     
     async def patch(self,body: Optional[device_configuration.DeviceConfiguration] = None, request_configuration: Optional[DeviceConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[device_configuration.DeviceConfiguration]:
         """
@@ -194,12 +159,16 @@ class DeviceConfigurationItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ....models import device_configuration
+
         return await self.request_adapter.send_async(request_info, device_configuration.DeviceConfiguration, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -266,9 +235,74 @@ class DeviceConfigurationItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .user_statuses.item import device_configuration_user_status_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceConfigurationUserStatus%2Did"] = id
         return device_configuration_user_status_item_request_builder.DeviceConfigurationUserStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    @property
+    def assign(self) -> assign_request_builder.AssignRequestBuilder:
+        """
+        Provides operations to call the assign method.
+        """
+        from .assign import assign_request_builder
+
+        return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
+        """
+        Provides operations to manage the assignments property of the microsoft.graph.deviceConfiguration entity.
+        """
+        from .assignments import assignments_request_builder
+
+        return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def device_setting_state_summaries(self) -> device_setting_state_summaries_request_builder.DeviceSettingStateSummariesRequestBuilder:
+        """
+        Provides operations to manage the deviceSettingStateSummaries property of the microsoft.graph.deviceConfiguration entity.
+        """
+        from .device_setting_state_summaries import device_setting_state_summaries_request_builder
+
+        return device_setting_state_summaries_request_builder.DeviceSettingStateSummariesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def device_statuses(self) -> device_statuses_request_builder.DeviceStatusesRequestBuilder:
+        """
+        Provides operations to manage the deviceStatuses property of the microsoft.graph.deviceConfiguration entity.
+        """
+        from .device_statuses import device_statuses_request_builder
+
+        return device_statuses_request_builder.DeviceStatusesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def device_status_overview(self) -> device_status_overview_request_builder.DeviceStatusOverviewRequestBuilder:
+        """
+        Provides operations to manage the deviceStatusOverview property of the microsoft.graph.deviceConfiguration entity.
+        """
+        from .device_status_overview import device_status_overview_request_builder
+
+        return device_status_overview_request_builder.DeviceStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def user_statuses(self) -> user_statuses_request_builder.UserStatusesRequestBuilder:
+        """
+        Provides operations to manage the userStatuses property of the microsoft.graph.deviceConfiguration entity.
+        """
+        from .user_statuses import user_statuses_request_builder
+
+        return user_statuses_request_builder.UserStatusesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def user_status_overview(self) -> user_status_overview_request_builder.UserStatusOverviewRequestBuilder:
+        """
+        Provides operations to manage the userStatusOverview property of the microsoft.graph.deviceConfiguration entity.
+        """
+        from .user_status_overview import user_status_overview_request_builder
+
+        return user_status_overview_request_builder.UserStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DeviceConfigurationItemRequestBuilderDeleteRequestConfiguration():
@@ -287,12 +321,6 @@ class DeviceConfigurationItemRequestBuilder():
         """
         The device configurations.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -308,6 +336,12 @@ class DeviceConfigurationItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class DeviceConfigurationItemRequestBuilderGetRequestConfiguration():

@@ -1,31 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-evidence_remediation_status = lazy_import('msgraph.generated.models.security.evidence_remediation_status')
-evidence_role = lazy_import('msgraph.generated.models.security.evidence_role')
-evidence_verdict = lazy_import('msgraph.generated.models.security.evidence_verdict')
+if TYPE_CHECKING:
+    from . import analyzed_message_evidence, cloud_application_evidence, device_evidence, evidence_remediation_status, evidence_role, evidence_verdict, file_evidence, ip_evidence, mailbox_evidence, mail_cluster_evidence, oauth_application_evidence, process_evidence, registry_key_evidence, registry_value_evidence, security_group_evidence, url_evidence, user_evidence
 
 class AlertEvidence(AdditionalDataHolder, Parsable):
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new alertEvidence and sets the default values.
@@ -47,6 +28,23 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
         self._tags: Optional[List[str]] = None
         # The verdict property
         self._verdict: Optional[evidence_verdict.EvidenceVerdict] = None
+    
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -75,6 +73,65 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.security.analyzedMessageEvidence":
+                from . import analyzed_message_evidence
+
+                return analyzed_message_evidence.AnalyzedMessageEvidence()
+            if mapping_value == "#microsoft.graph.security.cloudApplicationEvidence":
+                from . import cloud_application_evidence
+
+                return cloud_application_evidence.CloudApplicationEvidence()
+            if mapping_value == "#microsoft.graph.security.deviceEvidence":
+                from . import device_evidence
+
+                return device_evidence.DeviceEvidence()
+            if mapping_value == "#microsoft.graph.security.fileEvidence":
+                from . import file_evidence
+
+                return file_evidence.FileEvidence()
+            if mapping_value == "#microsoft.graph.security.ipEvidence":
+                from . import ip_evidence
+
+                return ip_evidence.IpEvidence()
+            if mapping_value == "#microsoft.graph.security.mailboxEvidence":
+                from . import mailbox_evidence
+
+                return mailbox_evidence.MailboxEvidence()
+            if mapping_value == "#microsoft.graph.security.mailClusterEvidence":
+                from . import mail_cluster_evidence
+
+                return mail_cluster_evidence.MailClusterEvidence()
+            if mapping_value == "#microsoft.graph.security.oauthApplicationEvidence":
+                from . import oauth_application_evidence
+
+                return oauth_application_evidence.OauthApplicationEvidence()
+            if mapping_value == "#microsoft.graph.security.processEvidence":
+                from . import process_evidence
+
+                return process_evidence.ProcessEvidence()
+            if mapping_value == "#microsoft.graph.security.registryKeyEvidence":
+                from . import registry_key_evidence
+
+                return registry_key_evidence.RegistryKeyEvidence()
+            if mapping_value == "#microsoft.graph.security.registryValueEvidence":
+                from . import registry_value_evidence
+
+                return registry_value_evidence.RegistryValueEvidence()
+            if mapping_value == "#microsoft.graph.security.securityGroupEvidence":
+                from . import security_group_evidence
+
+                return security_group_evidence.SecurityGroupEvidence()
+            if mapping_value == "#microsoft.graph.security.urlEvidence":
+                from . import url_evidence
+
+                return url_evidence.UrlEvidence()
+            if mapping_value == "#microsoft.graph.security.userEvidence":
+                from . import user_evidence
+
+                return user_evidence.UserEvidence()
         return AlertEvidence()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -82,7 +139,9 @@ class AlertEvidence(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import analyzed_message_evidence, cloud_application_evidence, device_evidence, evidence_remediation_status, evidence_role, evidence_verdict, file_evidence, ip_evidence, mailbox_evidence, mail_cluster_evidence, oauth_application_evidence, process_evidence, registry_key_evidence, registry_value_evidence, security_group_evidence, url_evidence, user_evidence
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "remediationStatus": lambda n : setattr(self, 'remediation_status', n.get_enum_value(evidence_remediation_status.EvidenceRemediationStatus)),

@@ -1,11 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-risk_detail = lazy_import('msgraph.generated.models.risk_detail')
+if TYPE_CHECKING:
+    from . import risk_detail
 
 class RiskUserActivity(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new riskUserActivity and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Details of the detected risk. Possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue.
+        self._detail: Optional[risk_detail.RiskDetail] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The type of risk event detected.
+        self._risk_event_types: Optional[List[str]] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -22,20 +36,6 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new riskUserActivity and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Details of the detected risk. Possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue.
-        self._detail: Optional[risk_detail.RiskDetail] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The type of risk event detected.
-        self._risk_event_types: Optional[List[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RiskUserActivity:
@@ -71,7 +71,9 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import risk_detail
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "detail": lambda n : setattr(self, 'detail', n.get_enum_value(risk_detail.RiskDetail)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "riskEventTypes": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_primitive_values(str)),

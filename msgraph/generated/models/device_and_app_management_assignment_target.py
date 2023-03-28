@@ -1,12 +1,24 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+
+if TYPE_CHECKING:
+    from . import all_devices_assignment_target, all_licensed_users_assignment_target, configuration_manager_collection_assignment_target, exclusion_group_assignment_target, group_assignment_target
 
 class DeviceAndAppManagementAssignmentTarget(AdditionalDataHolder, Parsable):
     """
     Base type for assignment targets.
     """
+    def __init__(self,) -> None:
+        """
+        Instantiates a new deviceAndAppManagementAssignmentTarget and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -24,16 +36,6 @@ class DeviceAndAppManagementAssignmentTarget(AdditionalDataHolder, Parsable):
         """
         self._additional_data = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new deviceAndAppManagementAssignmentTarget and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceAndAppManagementAssignmentTarget:
         """
@@ -44,6 +46,29 @@ class DeviceAndAppManagementAssignmentTarget(AdditionalDataHolder, Parsable):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.allDevicesAssignmentTarget":
+                from . import all_devices_assignment_target
+
+                return all_devices_assignment_target.AllDevicesAssignmentTarget()
+            if mapping_value == "#microsoft.graph.allLicensedUsersAssignmentTarget":
+                from . import all_licensed_users_assignment_target
+
+                return all_licensed_users_assignment_target.AllLicensedUsersAssignmentTarget()
+            if mapping_value == "#microsoft.graph.configurationManagerCollectionAssignmentTarget":
+                from . import configuration_manager_collection_assignment_target
+
+                return configuration_manager_collection_assignment_target.ConfigurationManagerCollectionAssignmentTarget()
+            if mapping_value == "#microsoft.graph.exclusionGroupAssignmentTarget":
+                from . import exclusion_group_assignment_target
+
+                return exclusion_group_assignment_target.ExclusionGroupAssignmentTarget()
+            if mapping_value == "#microsoft.graph.groupAssignmentTarget":
+                from . import group_assignment_target
+
+                return group_assignment_target.GroupAssignmentTarget()
         return DeviceAndAppManagementAssignmentTarget()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -51,7 +76,9 @@ class DeviceAndAppManagementAssignmentTarget(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import all_devices_assignment_target, all_licensed_users_assignment_target, configuration_manager_collection_assignment_target, exclusion_group_assignment_target, group_assignment_target
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

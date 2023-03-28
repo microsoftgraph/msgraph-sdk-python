@@ -1,11 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-agreement_file_data = lazy_import('msgraph.generated.models.agreement_file_data')
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import agreement_file, agreement_file_data, agreement_file_localization, agreement_file_version, entity
+
+from . import entity
 
 class AgreementFileProperties(entity.Entity):
     def __init__(self,) -> None:
@@ -57,6 +58,21 @@ class AgreementFileProperties(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.agreementFile":
+                from . import agreement_file
+
+                return agreement_file.AgreementFile()
+            if mapping_value == "#microsoft.graph.agreementFileLocalization":
+                from . import agreement_file_localization
+
+                return agreement_file_localization.AgreementFileLocalization()
+            if mapping_value == "#microsoft.graph.agreementFileVersion":
+                from . import agreement_file_version
+
+                return agreement_file_version.AgreementFileVersion()
         return AgreementFileProperties()
     
     @property
@@ -115,7 +131,9 @@ class AgreementFileProperties(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import agreement_file, agreement_file_data, agreement_file_localization, agreement_file_version, entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "fileData": lambda n : setattr(self, 'file_data', n.get_object_value(agreement_file_data.AgreementFileData)),

@@ -1,12 +1,28 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-schedule_entity_theme = lazy_import('msgraph.generated.models.schedule_entity_theme')
+if TYPE_CHECKING:
+    from . import open_shift_item, schedule_entity_theme, shift_item, time_off_item
 
 class ScheduleEntity(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new scheduleEntity and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The endDateTime property
+        self._end_date_time: Optional[datetime] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The startDateTime property
+        self._start_date_time: Optional[datetime] = None
+        # The theme property
+        self._theme: Optional[schedule_entity_theme.ScheduleEntityTheme] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -24,22 +40,6 @@ class ScheduleEntity(AdditionalDataHolder, Parsable):
         """
         self._additional_data = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new scheduleEntity and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The endDateTime property
-        self._end_date_time: Optional[datetime] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The startDateTime property
-        self._start_date_time: Optional[datetime] = None
-        # The theme property
-        self._theme: Optional[schedule_entity_theme.ScheduleEntityTheme] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ScheduleEntity:
         """
@@ -50,6 +50,21 @@ class ScheduleEntity(AdditionalDataHolder, Parsable):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.openShiftItem":
+                from . import open_shift_item
+
+                return open_shift_item.OpenShiftItem()
+            if mapping_value == "#microsoft.graph.shiftItem":
+                from . import shift_item
+
+                return shift_item.ShiftItem()
+            if mapping_value == "#microsoft.graph.timeOffItem":
+                from . import time_off_item
+
+                return time_off_item.TimeOffItem()
         return ScheduleEntity()
     
     @property
@@ -74,7 +89,9 @@ class ScheduleEntity(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import open_shift_item, schedule_entity_theme, shift_item, time_off_item
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),

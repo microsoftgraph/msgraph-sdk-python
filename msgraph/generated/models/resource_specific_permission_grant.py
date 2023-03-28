@@ -1,11 +1,30 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-directory_object = lazy_import('msgraph.generated.models.directory_object')
+if TYPE_CHECKING:
+    from . import directory_object
+
+from . import directory_object
 
 class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new resourceSpecificPermissionGrant and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.resourceSpecificPermissionGrant"
+        # ID of the service principal of the Azure AD app that has been granted access. Read-only.
+        self._client_app_id: Optional[str] = None
+        # ID of the Azure AD app that has been granted access. Read-only.
+        self._client_id: Optional[str] = None
+        # The name of the resource-specific permission. Read-only.
+        self._permission: Optional[str] = None
+        # The type of permission. Possible values are: Application, Delegated. Read-only.
+        self._permission_type: Optional[str] = None
+        # ID of the Azure AD app that is hosting the resource. Read-only.
+        self._resource_app_id: Optional[str] = None
+    
     @property
     def client_app_id(self,) -> Optional[str]:
         """
@@ -40,23 +59,6 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
         """
         self._client_id = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new resourceSpecificPermissionGrant and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.resourceSpecificPermissionGrant"
-        # ID of the service principal of the Azure AD app that has been granted access. Read-only.
-        self._client_app_id: Optional[str] = None
-        # ID of the Azure AD app that has been granted access. Read-only.
-        self._client_id: Optional[str] = None
-        # The name of the resource-specific permission. Read-only.
-        self._permission: Optional[str] = None
-        # The type of permission. Possible values are: Application, Delegated. Read-only.
-        self._permission_type: Optional[str] = None
-        # ID of the Azure AD app that is hosting the resource. Read-only.
-        self._resource_app_id: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ResourceSpecificPermissionGrant:
         """
@@ -74,7 +76,9 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import directory_object
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "clientAppId": lambda n : setattr(self, 'client_app_id', n.get_str_value()),
             "clientId": lambda n : setattr(self, 'client_id', n.get_str_value()),
             "permission": lambda n : setattr(self, 'permission', n.get_str_value()),

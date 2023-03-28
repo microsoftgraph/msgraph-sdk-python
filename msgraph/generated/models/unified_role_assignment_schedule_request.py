@@ -1,19 +1,53 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-app_scope = lazy_import('msgraph.generated.models.app_scope')
-directory_object = lazy_import('msgraph.generated.models.directory_object')
-request = lazy_import('msgraph.generated.models.request')
-request_schedule = lazy_import('msgraph.generated.models.request_schedule')
-ticket_info = lazy_import('msgraph.generated.models.ticket_info')
-unified_role_assignment_schedule = lazy_import('msgraph.generated.models.unified_role_assignment_schedule')
-unified_role_definition = lazy_import('msgraph.generated.models.unified_role_definition')
-unified_role_eligibility_schedule = lazy_import('msgraph.generated.models.unified_role_eligibility_schedule')
-unified_role_schedule_request_actions = lazy_import('msgraph.generated.models.unified_role_schedule_request_actions')
+if TYPE_CHECKING:
+    from . import app_scope, directory_object, request, request_schedule, ticket_info, unified_role_assignment_schedule, unified_role_definition, unified_role_eligibility_schedule, unified_role_schedule_request_actions
+
+from . import request
 
 class UnifiedRoleAssignmentScheduleRequest(request.Request):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new UnifiedRoleAssignmentScheduleRequest and sets the default values.
+        """
+        super().__init__()
+        # Represents the type of the operation on the role assignment request. The possible values are: adminAssign, adminUpdate, adminRemove, selfActivate, selfDeactivate, adminExtend, adminRenew, selfExtend, selfRenew, unknownFutureValue. adminAssign: For administrators to assign roles to principals.adminRemove: For administrators to remove principals from roles. adminUpdate: For administrators to change existing role assignments.adminExtend: For administrators to extend expiring assignments.adminRenew: For administrators to renew expired assignments.selfActivate: For principals to activate their assignments.selfDeactivate: For principals to deactivate their active assignments.selfExtend: For principals to request to extend their expiring assignments.selfRenew: For principals to request to renew their expired assignments.
+        self._action: Optional[unified_role_schedule_request_actions.UnifiedRoleScheduleRequestActions] = None
+        # If the request is from an eligible administrator to activate a role, this parameter will show the related eligible assignment for that activation. Otherwise, it's null. Supports $expand.
+        self._activated_using: Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule] = None
+        # Read-only property with details of the app-specific scope when the assignment is scoped to an app. Nullable. Supports $expand.
+        self._app_scope: Optional[app_scope.AppScope] = None
+        # Identifier of the app-specific scope when the assignment is scoped to an app. The scope of an assignment determines the set of resources for which the principal has been granted access. App scopes are scopes that are defined and understood by this application only. Use / for tenant-wide app scopes. Use directoryScopeId to limit the scope to particular directory objects, for example, administrative units. Supports $filter (eq, ne, and on null values).
+        self._app_scope_id: Optional[str] = None
+        # The directory object that is the scope of the assignment. Read-only. Supports $expand.
+        self._directory_scope: Optional[directory_object.DirectoryObject] = None
+        # Identifier of the directory object representing the scope of the assignment. The scope of an assignment determines the set of resources for which the principal has been granted access. Directory scopes are shared scopes stored in the directory that are understood by multiple applications. Use / for tenant-wide scope. Use appScopeId to limit the scope to an application only. Supports $filter (eq, ne, and on null values).
+        self._directory_scope_id: Optional[str] = None
+        # Determines whether the call is a validation or an actual call. Only set this property if you want to check whether an activation is subject to additional rules like MFA before actually submitting the request.
+        self._is_validation_only: Optional[bool] = None
+        # A message provided by users and administrators when create they create the unifiedRoleAssignmentScheduleRequest object.
+        self._justification: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The principal that's getting a role assignment through the request. Supports $expand.
+        self._principal: Optional[directory_object.DirectoryObject] = None
+        # Identifier of the principal that has been granted the assignment. Can be a user, role-assignable group, or a service principal. Supports $filter (eq, ne).
+        self._principal_id: Optional[str] = None
+        # Detailed information for the unifiedRoleDefinition object that is referenced through the roleDefinitionId property. Supports $expand.
+        self._role_definition: Optional[unified_role_definition.UnifiedRoleDefinition] = None
+        # Identifier of the unifiedRoleDefinition object that is being assigned to the principal. Supports $filter (eq, ne).
+        self._role_definition_id: Optional[str] = None
+        # The period of the role assignment. Recurring schedules are currently unsupported.
+        self._schedule_info: Optional[request_schedule.RequestSchedule] = None
+        # The schedule for an eligible role assignment that is referenced through the targetScheduleId property. Supports $expand.
+        self._target_schedule: Optional[unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule] = None
+        # Identifier of the schedule object that's linked to the assignment request. Supports $filter (eq, ne).
+        self._target_schedule_id: Optional[str] = None
+        # Ticket details linked to the role assignment request including details of the ticket number and ticket system.
+        self._ticket_info: Optional[ticket_info.TicketInfo] = None
+    
     @property
     def action(self,) -> Optional[unified_role_schedule_request_actions.UnifiedRoleScheduleRequestActions]:
         """
@@ -82,46 +116,6 @@ class UnifiedRoleAssignmentScheduleRequest(request.Request):
         """
         self._app_scope_id = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new UnifiedRoleAssignmentScheduleRequest and sets the default values.
-        """
-        super().__init__()
-        # Represents the type of the operation on the role assignment request. The possible values are: adminAssign, adminUpdate, adminRemove, selfActivate, selfDeactivate, adminExtend, adminRenew, selfExtend, selfRenew, unknownFutureValue. adminAssign: For administrators to assign roles to principals.adminRemove: For administrators to remove principals from roles. adminUpdate: For administrators to change existing role assignments.adminExtend: For administrators to extend expiring assignments.adminRenew: For administrators to renew expired assignments.selfActivate: For principals to activate their assignments.selfDeactivate: For principals to deactivate their active assignments.selfExtend: For principals to request to extend their expiring assignments.selfRenew: For principals to request to renew their expired assignments.
-        self._action: Optional[unified_role_schedule_request_actions.UnifiedRoleScheduleRequestActions] = None
-        # If the request is from an eligible administrator to activate a role, this parameter will show the related eligible assignment for that activation. Otherwise, it's null. Supports $expand.
-        self._activated_using: Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule] = None
-        # Read-only property with details of the app-specific scope when the assignment is scoped to an app. Nullable. Supports $expand.
-        self._app_scope: Optional[app_scope.AppScope] = None
-        # Identifier of the app-specific scope when the assignment is scoped to an app. The scope of an assignment determines the set of resources for which the principal has been granted access. App scopes are scopes that are defined and understood by this application only. Use / for tenant-wide app scopes. Use directoryScopeId to limit the scope to particular directory objects, for example, administrative units. Supports $filter (eq, ne, and on null values).
-        self._app_scope_id: Optional[str] = None
-        # The directory object that is the scope of the assignment. Read-only. Supports $expand.
-        self._directory_scope: Optional[directory_object.DirectoryObject] = None
-        # Identifier of the directory object representing the scope of the assignment. The scope of an assignment determines the set of resources for which the principal has been granted access. Directory scopes are shared scopes stored in the directory that are understood by multiple applications. Use / for tenant-wide scope. Use appScopeId to limit the scope to an application only. Supports $filter (eq, ne, and on null values).
-        self._directory_scope_id: Optional[str] = None
-        # Determines whether the call is a validation or an actual call. Only set this property if you want to check whether an activation is subject to additional rules like MFA before actually submitting the request.
-        self._is_validation_only: Optional[bool] = None
-        # A message provided by users and administrators when create they create the unifiedRoleAssignmentScheduleRequest object.
-        self._justification: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The principal that's getting a role assignment through the request. Supports $expand.
-        self._principal: Optional[directory_object.DirectoryObject] = None
-        # Identifier of the principal that has been granted the assignment. Can be a user, role-assignable group, or a service principal. Supports $filter (eq, ne).
-        self._principal_id: Optional[str] = None
-        # Detailed information for the unifiedRoleDefinition object that is referenced through the roleDefinitionId property. Supports $expand.
-        self._role_definition: Optional[unified_role_definition.UnifiedRoleDefinition] = None
-        # Identifier of the unifiedRoleDefinition object that is being assigned to the principal. Supports $filter (eq, ne).
-        self._role_definition_id: Optional[str] = None
-        # The period of the role assignment. Recurring schedules are currently unsupported.
-        self._schedule_info: Optional[request_schedule.RequestSchedule] = None
-        # The schedule for an eligible role assignment that is referenced through the targetScheduleId property. Supports $expand.
-        self._target_schedule: Optional[unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule] = None
-        # Identifier of the schedule object that's linked to the assignment request. Supports $filter (eq, ne).
-        self._target_schedule_id: Optional[str] = None
-        # Ticket details linked to the role assignment request including details of the ticket number and ticket system.
-        self._ticket_info: Optional[ticket_info.TicketInfo] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleAssignmentScheduleRequest:
         """
@@ -173,7 +167,9 @@ class UnifiedRoleAssignmentScheduleRequest(request.Request):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import app_scope, directory_object, request, request_schedule, ticket_info, unified_role_assignment_schedule, unified_role_definition, unified_role_eligibility_schedule, unified_role_schedule_request_actions
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(unified_role_schedule_request_actions.UnifiedRoleScheduleRequestActions)),
             "activatedUsing": lambda n : setattr(self, 'activated_using', n.get_object_value(unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule)),
             "appScope": lambda n : setattr(self, 'app_scope', n.get_object_value(app_scope.AppScope)),

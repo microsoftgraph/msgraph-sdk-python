@@ -7,120 +7,31 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-booking_business = lazy_import('msgraph.generated.models.booking_business')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-appointments_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.appointments.appointments_request_builder')
-booking_appointment_item_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.appointments.item.booking_appointment_item_request_builder')
-calendar_view_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.calendar_view.calendar_view_request_builder')
-booking_appointment_item_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.calendar_view.item.booking_appointment_item_request_builder')
-customers_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.customers.customers_request_builder')
-booking_customer_base_item_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.customers.item.booking_customer_base_item_request_builder')
-custom_questions_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.custom_questions.custom_questions_request_builder')
-booking_custom_question_item_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.custom_questions.item.booking_custom_question_item_request_builder')
-get_staff_availability_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.get_staff_availability.get_staff_availability_request_builder')
-publish_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.publish.publish_request_builder')
-services_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.services.services_request_builder')
-booking_service_item_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.services.item.booking_service_item_request_builder')
-staff_members_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.staff_members.staff_members_request_builder')
-booking_staff_member_base_item_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.staff_members.item.booking_staff_member_base_item_request_builder')
-unpublish_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.unpublish.unpublish_request_builder')
+if TYPE_CHECKING:
+    from ....models import booking_business
+    from ....models.o_data_errors import o_data_error
+    from .appointments import appointments_request_builder
+    from .appointments.item import booking_appointment_item_request_builder
+    from .calendar_view import calendar_view_request_builder
+    from .calendar_view.item import booking_appointment_item_request_builder
+    from .customers import customers_request_builder
+    from .customers.item import booking_customer_base_item_request_builder
+    from .custom_questions import custom_questions_request_builder
+    from .custom_questions.item import booking_custom_question_item_request_builder
+    from .get_staff_availability import get_staff_availability_request_builder
+    from .publish import publish_request_builder
+    from .services import services_request_builder
+    from .services.item import booking_service_item_request_builder
+    from .staff_members import staff_members_request_builder
+    from .staff_members.item import booking_staff_member_base_item_request_builder
+    from .unpublish import unpublish_request_builder
 
 class BookingBusinessItemRequestBuilder():
     """
     Provides operations to manage the bookingBusinesses property of the microsoft.graph.solutionsRoot entity.
     """
-    @property
-    def appointments(self) -> appointments_request_builder.AppointmentsRequestBuilder:
-        """
-        Provides operations to manage the appointments property of the microsoft.graph.bookingBusiness entity.
-        """
-        return appointments_request_builder.AppointmentsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def calendar_view(self) -> calendar_view_request_builder.CalendarViewRequestBuilder:
-        """
-        Provides operations to manage the calendarView property of the microsoft.graph.bookingBusiness entity.
-        """
-        return calendar_view_request_builder.CalendarViewRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def customers(self) -> customers_request_builder.CustomersRequestBuilder:
-        """
-        Provides operations to manage the customers property of the microsoft.graph.bookingBusiness entity.
-        """
-        return customers_request_builder.CustomersRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def custom_questions(self) -> custom_questions_request_builder.CustomQuestionsRequestBuilder:
-        """
-        Provides operations to manage the customQuestions property of the microsoft.graph.bookingBusiness entity.
-        """
-        return custom_questions_request_builder.CustomQuestionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def get_staff_availability(self) -> get_staff_availability_request_builder.GetStaffAvailabilityRequestBuilder:
-        """
-        Provides operations to call the getStaffAvailability method.
-        """
-        return get_staff_availability_request_builder.GetStaffAvailabilityRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def publish(self) -> publish_request_builder.PublishRequestBuilder:
-        """
-        Provides operations to call the publish method.
-        """
-        return publish_request_builder.PublishRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def services(self) -> services_request_builder.ServicesRequestBuilder:
-        """
-        Provides operations to manage the services property of the microsoft.graph.bookingBusiness entity.
-        """
-        return services_request_builder.ServicesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def staff_members(self) -> staff_members_request_builder.StaffMembersRequestBuilder:
-        """
-        Provides operations to manage the staffMembers property of the microsoft.graph.bookingBusiness entity.
-        """
-        return staff_members_request_builder.StaffMembersRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def unpublish(self) -> unpublish_request_builder.UnpublishRequestBuilder:
-        """
-        Provides operations to call the unpublish method.
-        """
-        return unpublish_request_builder.UnpublishRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    def appointments_by_id(self,id: str) -> booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder:
-        """
-        Provides operations to manage the appointments property of the microsoft.graph.bookingBusiness entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["bookingAppointment%2Did"] = id
-        return booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def calendar_view_by_id(self,id: str) -> booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder:
-        """
-        Provides operations to manage the calendarView property of the microsoft.graph.bookingBusiness entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["bookingAppointment%2Did"] = id
-        return booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new BookingBusinessItemRequestBuilder and sets the default values.
@@ -139,6 +50,38 @@ class BookingBusinessItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def appointments_by_id(self,id: str) -> booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder:
+        """
+        Provides operations to manage the appointments property of the microsoft.graph.bookingBusiness entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        from .appointments.item import booking_appointment_item_request_builder
+        from .calendar_view.item import booking_appointment_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["bookingAppointment%2Did"] = id
+        return booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def calendar_view_by_id(self,id: str) -> booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder:
+        """
+        Provides operations to manage the calendarView property of the microsoft.graph.bookingBusiness entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        from .appointments.item import booking_appointment_item_request_builder
+        from .calendar_view.item import booking_appointment_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["bookingAppointment%2Did"] = id
+        return booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     def customers_by_id(self,id: str) -> booking_customer_base_item_request_builder.BookingCustomerBaseItemRequestBuilder:
         """
         Provides operations to manage the customers property of the microsoft.graph.bookingBusiness entity.
@@ -148,6 +91,8 @@ class BookingBusinessItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .customers.item import booking_customer_base_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["bookingCustomerBase%2Did"] = id
         return booking_customer_base_item_request_builder.BookingCustomerBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -161,6 +106,8 @@ class BookingBusinessItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .custom_questions.item import booking_custom_question_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["bookingCustomQuestion%2Did"] = id
         return booking_custom_question_item_request_builder.BookingCustomQuestionItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -174,6 +121,8 @@ class BookingBusinessItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -192,12 +141,16 @@ class BookingBusinessItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ....models import booking_business
+
         return await self.request_adapter.send_async(request_info, booking_business.BookingBusiness, error_mapping)
     
     async def patch(self,body: Optional[booking_business.BookingBusiness] = None, request_configuration: Optional[BookingBusinessItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[booking_business.BookingBusiness]:
@@ -213,12 +166,16 @@ class BookingBusinessItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ....models import booking_business
+
         return await self.request_adapter.send_async(request_info, booking_business.BookingBusiness, error_mapping)
     
     def services_by_id(self,id: str) -> booking_service_item_request_builder.BookingServiceItemRequestBuilder:
@@ -230,6 +187,8 @@ class BookingBusinessItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .services.item import booking_service_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["bookingService%2Did"] = id
         return booking_service_item_request_builder.BookingServiceItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -243,6 +202,8 @@ class BookingBusinessItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .staff_members.item import booking_staff_member_base_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["bookingStaffMemberBase%2Did"] = id
         return booking_staff_member_base_item_request_builder.BookingStaffMemberBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -302,6 +263,87 @@ class BookingBusinessItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def appointments(self) -> appointments_request_builder.AppointmentsRequestBuilder:
+        """
+        Provides operations to manage the appointments property of the microsoft.graph.bookingBusiness entity.
+        """
+        from .appointments import appointments_request_builder
+
+        return appointments_request_builder.AppointmentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def calendar_view(self) -> calendar_view_request_builder.CalendarViewRequestBuilder:
+        """
+        Provides operations to manage the calendarView property of the microsoft.graph.bookingBusiness entity.
+        """
+        from .calendar_view import calendar_view_request_builder
+
+        return calendar_view_request_builder.CalendarViewRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def customers(self) -> customers_request_builder.CustomersRequestBuilder:
+        """
+        Provides operations to manage the customers property of the microsoft.graph.bookingBusiness entity.
+        """
+        from .customers import customers_request_builder
+
+        return customers_request_builder.CustomersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def custom_questions(self) -> custom_questions_request_builder.CustomQuestionsRequestBuilder:
+        """
+        Provides operations to manage the customQuestions property of the microsoft.graph.bookingBusiness entity.
+        """
+        from .custom_questions import custom_questions_request_builder
+
+        return custom_questions_request_builder.CustomQuestionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_staff_availability(self) -> get_staff_availability_request_builder.GetStaffAvailabilityRequestBuilder:
+        """
+        Provides operations to call the getStaffAvailability method.
+        """
+        from .get_staff_availability import get_staff_availability_request_builder
+
+        return get_staff_availability_request_builder.GetStaffAvailabilityRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def publish(self) -> publish_request_builder.PublishRequestBuilder:
+        """
+        Provides operations to call the publish method.
+        """
+        from .publish import publish_request_builder
+
+        return publish_request_builder.PublishRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def services(self) -> services_request_builder.ServicesRequestBuilder:
+        """
+        Provides operations to manage the services property of the microsoft.graph.bookingBusiness entity.
+        """
+        from .services import services_request_builder
+
+        return services_request_builder.ServicesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def staff_members(self) -> staff_members_request_builder.StaffMembersRequestBuilder:
+        """
+        Provides operations to manage the staffMembers property of the microsoft.graph.bookingBusiness entity.
+        """
+        from .staff_members import staff_members_request_builder
+
+        return staff_members_request_builder.StaffMembersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def unpublish(self) -> unpublish_request_builder.UnpublishRequestBuilder:
+        """
+        Provides operations to call the unpublish method.
+        """
+        from .unpublish import unpublish_request_builder
+
+        return unpublish_request_builder.UnpublishRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class BookingBusinessItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -319,12 +361,6 @@ class BookingBusinessItemRequestBuilder():
         """
         Get bookingBusinesses from solutions
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -340,6 +376,12 @@ class BookingBusinessItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class BookingBusinessItemRequestBuilderGetRequestConfiguration():

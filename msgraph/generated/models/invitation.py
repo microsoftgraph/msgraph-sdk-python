@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-invited_user_message_info = lazy_import('msgraph.generated.models.invited_user_message_info')
-user = lazy_import('msgraph.generated.models.user')
+if TYPE_CHECKING:
+    from . import entity, invited_user_message_info, user
+
+from . import entity
 
 class Invitation(entity.Entity):
     def __init__(self,) -> None:
@@ -53,7 +53,9 @@ class Invitation(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, invited_user_message_info, user
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "invitedUser": lambda n : setattr(self, 'invited_user', n.get_object_value(user.User)),
             "invitedUserDisplayName": lambda n : setattr(self, 'invited_user_display_name', n.get_str_value()),
             "invitedUserEmailAddress": lambda n : setattr(self, 'invited_user_email_address', n.get_str_value()),

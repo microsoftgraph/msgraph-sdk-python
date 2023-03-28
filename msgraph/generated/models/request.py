@@ -1,13 +1,34 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-identity_set = lazy_import('msgraph.generated.models.identity_set')
+if TYPE_CHECKING:
+    from . import entity, identity_set, unified_role_assignment_schedule_request, unified_role_eligibility_schedule_request, user_consent_request
+
+from . import entity
 
 class Request(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new request and sets the default values.
+        """
+        super().__init__()
+        # The identifier of the approval of the request.
+        self._approval_id: Optional[str] = None
+        # The request completion date time.
+        self._completed_date_time: Optional[datetime] = None
+        # The principal that created the request.
+        self._created_by: Optional[identity_set.IdentitySet] = None
+        # The request creation date time.
+        self._created_date_time: Optional[datetime] = None
+        # Free text field to define any custom data for the request. Not used.
+        self._custom_data: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The status of the request. Not nullable. The possible values are: Canceled, Denied, Failed, Granted, PendingAdminDecision, PendingApproval, PendingProvisioning, PendingScheduleCreation, Provisioned, Revoked, and ScheduleCreated. Not nullable.
+        self._status: Optional[str] = None
+    
     @property
     def approval_id(self,) -> Optional[str]:
         """
@@ -41,26 +62,6 @@ class Request(entity.Entity):
             value: Value to set for the completed_date_time property.
         """
         self._completed_date_time = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new request and sets the default values.
-        """
-        super().__init__()
-        # The identifier of the approval of the request.
-        self._approval_id: Optional[str] = None
-        # The request completion date time.
-        self._completed_date_time: Optional[datetime] = None
-        # The principal that created the request.
-        self._created_by: Optional[identity_set.IdentitySet] = None
-        # The request creation date time.
-        self._created_date_time: Optional[datetime] = None
-        # Free text field to define any custom data for the request. Not used.
-        self._custom_data: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The status of the request. Not nullable. The possible values are: Canceled, Denied, Failed, Granted, PendingAdminDecision, PendingApproval, PendingProvisioning, PendingScheduleCreation, Provisioned, Revoked, and ScheduleCreated. Not nullable.
-        self._status: Optional[str] = None
     
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
@@ -106,6 +107,21 @@ class Request(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.unifiedRoleAssignmentScheduleRequest":
+                from . import unified_role_assignment_schedule_request
+
+                return unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest()
+            if mapping_value == "#microsoft.graph.unifiedRoleEligibilityScheduleRequest":
+                from . import unified_role_eligibility_schedule_request
+
+                return unified_role_eligibility_schedule_request.UnifiedRoleEligibilityScheduleRequest()
+            if mapping_value == "#microsoft.graph.userConsentRequest":
+                from . import user_consent_request
+
+                return user_consent_request.UserConsentRequest()
         return Request()
     
     @property
@@ -130,7 +146,9 @@ class Request(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, identity_set, unified_role_assignment_schedule_request, unified_role_eligibility_schedule_request, user_consent_request
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "approvalId": lambda n : setattr(self, 'approval_id', n.get_str_value()),
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),

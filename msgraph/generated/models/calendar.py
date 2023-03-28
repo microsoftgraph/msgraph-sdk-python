@@ -1,18 +1,57 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-calendar_color = lazy_import('msgraph.generated.models.calendar_color')
-calendar_permission = lazy_import('msgraph.generated.models.calendar_permission')
-email_address = lazy_import('msgraph.generated.models.email_address')
-entity = lazy_import('msgraph.generated.models.entity')
-event = lazy_import('msgraph.generated.models.event')
-multi_value_legacy_extended_property = lazy_import('msgraph.generated.models.multi_value_legacy_extended_property')
-online_meeting_provider_type = lazy_import('msgraph.generated.models.online_meeting_provider_type')
-single_value_legacy_extended_property = lazy_import('msgraph.generated.models.single_value_legacy_extended_property')
+if TYPE_CHECKING:
+    from . import calendar_color, calendar_permission, email_address, entity, event, multi_value_legacy_extended_property, online_meeting_provider_type, single_value_legacy_extended_property
+
+from . import entity
 
 class Calendar(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new calendar and sets the default values.
+        """
+        super().__init__()
+        # Represent the online meeting service providers that can be used to create online meetings in this calendar. Possible values are: unknown, skypeForBusiness, skypeForConsumer, teamsForBusiness.
+        self._allowed_online_meeting_providers: Optional[List[online_meeting_provider_type.OnlineMeetingProviderType]] = None
+        # The permissions of the users with whom the calendar is shared.
+        self._calendar_permissions: Optional[List[calendar_permission.CalendarPermission]] = None
+        # The calendar view for the calendar. Navigation property. Read-only.
+        self._calendar_view: Optional[List[event.Event]] = None
+        # true if the user can write to the calendar, false otherwise. This property is true for the user who created the calendar. This property is also true for a user who has been shared a calendar and granted write access.
+        self._can_edit: Optional[bool] = None
+        # true if the user has the permission to share the calendar, false otherwise. Only the user who created the calendar can share it.
+        self._can_share: Optional[bool] = None
+        # true if the user can read calendar items that have been marked private, false otherwise.
+        self._can_view_private_items: Optional[bool] = None
+        # Identifies the version of the calendar object. Every time the calendar is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.
+        self._change_key: Optional[str] = None
+        # Specifies the color theme to distinguish the calendar from other calendars in a UI. The property values are: auto, lightBlue, lightGreen, lightOrange, lightGray, lightYellow, lightTeal, lightPink, lightBrown, lightRed, maxColor.
+        self._color: Optional[calendar_color.CalendarColor] = None
+        # The default online meeting provider for meetings sent from this calendar. Possible values are: unknown, skypeForBusiness, skypeForConsumer, teamsForBusiness.
+        self._default_online_meeting_provider: Optional[online_meeting_provider_type.OnlineMeetingProviderType] = None
+        # The events in the calendar. Navigation property. Read-only.
+        self._events: Optional[List[event.Event]] = None
+        # The calendar color, expressed in a hex color code of three hexadecimal values, each ranging from 00 to FF and representing the red, green, or blue components of the color in the RGB color space. If the user has never explicitly set a color for the calendar, this property is empty. Read-only.
+        self._hex_color: Optional[str] = None
+        # true if this is the default calendar where new events are created by default, false otherwise.
+        self._is_default_calendar: Optional[bool] = None
+        # Indicates whether this user calendar can be deleted from the user mailbox.
+        self._is_removable: Optional[bool] = None
+        # Indicates whether this user calendar supports tracking of meeting responses. Only meeting invites sent from users' primary calendars support tracking of meeting responses.
+        self._is_tallying_responses: Optional[bool] = None
+        # The collection of multi-value extended properties defined for the calendar. Read-only. Nullable.
+        self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
+        # The calendar name.
+        self._name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # If set, this represents the user who created or added the calendar. For a calendar that the user created or added, the owner property is set to the user. For a calendar shared with the user, the owner property is set to the person who shared that calendar with the user.
+        self._owner: Optional[email_address.EmailAddress] = None
+        # The collection of single-value extended properties defined for the calendar. Read-only. Nullable.
+        self._single_value_extended_properties: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None
+    
     @property
     def allowed_online_meeting_providers(self,) -> Optional[List[online_meeting_provider_type.OnlineMeetingProviderType]]:
         """
@@ -149,50 +188,6 @@ class Calendar(entity.Entity):
         """
         self._color = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new calendar and sets the default values.
-        """
-        super().__init__()
-        # Represent the online meeting service providers that can be used to create online meetings in this calendar. Possible values are: unknown, skypeForBusiness, skypeForConsumer, teamsForBusiness.
-        self._allowed_online_meeting_providers: Optional[List[online_meeting_provider_type.OnlineMeetingProviderType]] = None
-        # The permissions of the users with whom the calendar is shared.
-        self._calendar_permissions: Optional[List[calendar_permission.CalendarPermission]] = None
-        # The calendar view for the calendar. Navigation property. Read-only.
-        self._calendar_view: Optional[List[event.Event]] = None
-        # true if the user can write to the calendar, false otherwise. This property is true for the user who created the calendar. This property is also true for a user who has been shared a calendar and granted write access.
-        self._can_edit: Optional[bool] = None
-        # true if the user has the permission to share the calendar, false otherwise. Only the user who created the calendar can share it.
-        self._can_share: Optional[bool] = None
-        # true if the user can read calendar items that have been marked private, false otherwise.
-        self._can_view_private_items: Optional[bool] = None
-        # Identifies the version of the calendar object. Every time the calendar is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.
-        self._change_key: Optional[str] = None
-        # Specifies the color theme to distinguish the calendar from other calendars in a UI. The property values are: auto, lightBlue, lightGreen, lightOrange, lightGray, lightYellow, lightTeal, lightPink, lightBrown, lightRed, maxColor.
-        self._color: Optional[calendar_color.CalendarColor] = None
-        # The default online meeting provider for meetings sent from this calendar. Possible values are: unknown, skypeForBusiness, skypeForConsumer, teamsForBusiness.
-        self._default_online_meeting_provider: Optional[online_meeting_provider_type.OnlineMeetingProviderType] = None
-        # The events in the calendar. Navigation property. Read-only.
-        self._events: Optional[List[event.Event]] = None
-        # The calendar color, expressed in a hex color code of three hexadecimal values, each ranging from 00 to FF and representing the red, green, or blue components of the color in the RGB color space. If the user has never explicitly set a color for the calendar, this property is empty. Read-only.
-        self._hex_color: Optional[str] = None
-        # true if this is the default calendar where new events are created by default, false otherwise.
-        self._is_default_calendar: Optional[bool] = None
-        # Indicates whether this user calendar can be deleted from the user mailbox.
-        self._is_removable: Optional[bool] = None
-        # Indicates whether this user calendar supports tracking of meeting responses. Only meeting invites sent from users' primary calendars support tracking of meeting responses.
-        self._is_tallying_responses: Optional[bool] = None
-        # The collection of multi-value extended properties defined for the calendar. Read-only. Nullable.
-        self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
-        # The calendar name.
-        self._name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # If set, this represents the user who created or added the calendar. For a calendar that the user created or added, the owner property is set to the user. For a calendar shared with the user, the owner property is set to the person who shared that calendar with the user.
-        self._owner: Optional[email_address.EmailAddress] = None
-        # The collection of single-value extended properties defined for the calendar. Read-only. Nullable.
-        self._single_value_extended_properties: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Calendar:
         """
@@ -244,7 +239,9 @@ class Calendar(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import calendar_color, calendar_permission, email_address, entity, event, multi_value_legacy_extended_property, online_meeting_provider_type, single_value_legacy_extended_property
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "allowedOnlineMeetingProviders": lambda n : setattr(self, 'allowed_online_meeting_providers', n.get_collection_of_enum_values(online_meeting_provider_type.OnlineMeetingProviderType)),
             "calendarPermissions": lambda n : setattr(self, 'calendar_permissions', n.get_collection_of_object_values(calendar_permission.CalendarPermission)),
             "calendarView": lambda n : setattr(self, 'calendar_view', n.get_collection_of_object_values(event.Event)),

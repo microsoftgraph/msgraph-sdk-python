@@ -1,11 +1,21 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-password_credential = lazy_import('msgraph.generated.models.password_credential')
+if TYPE_CHECKING:
+    from ....models import password_credential
 
 class AddPasswordPostRequestBody(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new addPasswordPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The passwordCredential property
+        self._password_credential: Optional[password_credential.PasswordCredential] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -22,16 +32,6 @@ class AddPasswordPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new addPasswordPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The passwordCredential property
-        self._password_credential: Optional[password_credential.PasswordCredential] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AddPasswordPostRequestBody:
@@ -50,7 +50,9 @@ class AddPasswordPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from ....models import password_credential
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "passwordCredential": lambda n : setattr(self, 'password_credential', n.get_object_value(password_credential.PasswordCredential)),
         }
         return fields

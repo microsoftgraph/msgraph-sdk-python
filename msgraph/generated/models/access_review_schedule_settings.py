@@ -1,12 +1,43 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-access_review_apply_action = lazy_import('msgraph.generated.models.access_review_apply_action')
-patterned_recurrence = lazy_import('msgraph.generated.models.patterned_recurrence')
+if TYPE_CHECKING:
+    from . import access_review_apply_action, patterned_recurrence
 
 class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new accessReviewScheduleSettings and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Optional field. Describes the  actions to take once a review is complete. There are two types that are currently supported: removeAccessApplyAction (default) and disableAndDeleteUserApplyAction. Field only needs to be specified in the case of disableAndDeleteUserApplyAction.
+        self._apply_actions: Optional[List[access_review_apply_action.AccessReviewApplyAction]] = None
+        # Indicates whether decisions are automatically applied. When set to false, an admin must apply the decisions manually once the reviewer completes the access review. When set to true, decisions are applied automatically after the access review instance duration ends, whether or not the reviewers have responded. Default value is false.
+        self._auto_apply_decisions_enabled: Optional[bool] = None
+        # Indicates whether decisions on previous access review stages are available for reviewers on an accessReviewInstance with multiple subsequent stages. If not provided, the default is disabled (false).
+        self._decision_histories_for_reviewers_enabled: Optional[bool] = None
+        # Decision chosen if defaultDecisionEnabled is enabled. Can be one of Approve, Deny, or Recommendation.
+        self._default_decision: Optional[str] = None
+        # Indicates whether the default decision is enabled or disabled when reviewers do not respond. Default value is false.
+        self._default_decision_enabled: Optional[bool] = None
+        # Duration of an access review instance in days. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its durationInDays setting will be used instead of the value of this property.
+        self._instance_duration_in_days: Optional[int] = None
+        # Indicates whether reviewers are required to provide justification with their decision. Default value is false.
+        self._justification_required_on_approval: Optional[bool] = None
+        # Indicates whether emails are enabled or disabled. Default value is false.
+        self._mail_notifications_enabled: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Indicates whether decision recommendations are enabled or disabled. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationsEnabled setting will be used instead of the value of this property.
+        self._recommendations_enabled: Optional[bool] = None
+        # Detailed settings for recurrence using the standard Outlook recurrence object. Note: Only dayOfMonth, interval, and type (weekly, absoluteMonthly) properties are supported. Use the property startDate on recurrenceRange to determine the day the review starts.
+        self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
+        # Indicates whether reminders are enabled or disabled. Default value is false.
+        self._reminder_notifications_enabled: Optional[bool] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -57,38 +88,6 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the auto_apply_decisions_enabled property.
         """
         self._auto_apply_decisions_enabled = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new accessReviewScheduleSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Optional field. Describes the  actions to take once a review is complete. There are two types that are currently supported: removeAccessApplyAction (default) and disableAndDeleteUserApplyAction. Field only needs to be specified in the case of disableAndDeleteUserApplyAction.
-        self._apply_actions: Optional[List[access_review_apply_action.AccessReviewApplyAction]] = None
-        # Indicates whether decisions are automatically applied. When set to false, an admin must apply the decisions manually once the reviewer completes the access review. When set to true, decisions are applied automatically after the access review instance duration ends, whether or not the reviewers have responded. Default value is false.
-        self._auto_apply_decisions_enabled: Optional[bool] = None
-        # Indicates whether decisions on previous access review stages are available for reviewers on an accessReviewInstance with multiple subsequent stages. If not provided, the default is disabled (false).
-        self._decision_histories_for_reviewers_enabled: Optional[bool] = None
-        # Decision chosen if defaultDecisionEnabled is enabled. Can be one of Approve, Deny, or Recommendation.
-        self._default_decision: Optional[str] = None
-        # Indicates whether the default decision is enabled or disabled when reviewers do not respond. Default value is false.
-        self._default_decision_enabled: Optional[bool] = None
-        # Duration of an access review instance in days. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its durationInDays setting will be used instead of the value of this property.
-        self._instance_duration_in_days: Optional[int] = None
-        # Indicates whether reviewers are required to provide justification with their decision. Default value is false.
-        self._justification_required_on_approval: Optional[bool] = None
-        # Indicates whether emails are enabled or disabled. Default value is false.
-        self._mail_notifications_enabled: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Indicates whether decision recommendations are enabled or disabled. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationsEnabled setting will be used instead of the value of this property.
-        self._recommendations_enabled: Optional[bool] = None
-        # Detailed settings for recurrence using the standard Outlook recurrence object. Note: Only dayOfMonth, interval, and type (weekly, absoluteMonthly) properties are supported. Use the property startDate on recurrenceRange to determine the day the review starts.
-        self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
-        # Indicates whether reminders are enabled or disabled. Default value is false.
-        self._reminder_notifications_enabled: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewScheduleSettings:
@@ -158,7 +157,9 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import access_review_apply_action, patterned_recurrence
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "applyActions": lambda n : setattr(self, 'apply_actions', n.get_collection_of_object_values(access_review_apply_action.AccessReviewApplyAction)),
             "autoApplyDecisionsEnabled": lambda n : setattr(self, 'auto_apply_decisions_enabled', n.get_bool_value()),
             "decisionHistoriesForReviewersEnabled": lambda n : setattr(self, 'decision_histories_for_reviewers_enabled', n.get_bool_value()),

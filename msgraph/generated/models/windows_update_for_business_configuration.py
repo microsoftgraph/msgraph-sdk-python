@@ -1,89 +1,14 @@
 from __future__ import annotations
 from datetime import date, datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-auto_restart_notification_dismissal_method = lazy_import('msgraph.generated.models.auto_restart_notification_dismissal_method')
-automatic_update_mode = lazy_import('msgraph.generated.models.automatic_update_mode')
-device_configuration = lazy_import('msgraph.generated.models.device_configuration')
-enablement = lazy_import('msgraph.generated.models.enablement')
-prerelease_features = lazy_import('msgraph.generated.models.prerelease_features')
-windows_delivery_optimization_mode = lazy_import('msgraph.generated.models.windows_delivery_optimization_mode')
-windows_update_for_business_update_weeks = lazy_import('msgraph.generated.models.windows_update_for_business_update_weeks')
-windows_update_install_schedule_type = lazy_import('msgraph.generated.models.windows_update_install_schedule_type')
-windows_update_notification_display_option = lazy_import('msgraph.generated.models.windows_update_notification_display_option')
-windows_update_type = lazy_import('msgraph.generated.models.windows_update_type')
+if TYPE_CHECKING:
+    from . import automatic_update_mode, auto_restart_notification_dismissal_method, device_configuration, enablement, prerelease_features, windows_delivery_optimization_mode, windows_update_for_business_update_weeks, windows_update_install_schedule_type, windows_update_notification_display_option, windows_update_type
+
+from . import device_configuration
 
 class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfiguration):
-    @property
-    def allow_windows11_upgrade(self,) -> Optional[bool]:
-        """
-        Gets the allowWindows11Upgrade property value. When TRUE, allows eligible Windows 10 devices to upgrade to Windows 11. When FALSE, implies the device stays on the existing operating system. Returned by default. Query parameters are not supported.
-        Returns: Optional[bool]
-        """
-        return self._allow_windows11_upgrade
-    
-    @allow_windows11_upgrade.setter
-    def allow_windows11_upgrade(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowWindows11Upgrade property value. When TRUE, allows eligible Windows 10 devices to upgrade to Windows 11. When FALSE, implies the device stays on the existing operating system. Returned by default. Query parameters are not supported.
-        Args:
-            value: Value to set for the allow_windows11_upgrade property.
-        """
-        self._allow_windows11_upgrade = value
-    
-    @property
-    def auto_restart_notification_dismissal(self,) -> Optional[auto_restart_notification_dismissal_method.AutoRestartNotificationDismissalMethod]:
-        """
-        Gets the autoRestartNotificationDismissal property value. Auto restart required notification dismissal method
-        Returns: Optional[auto_restart_notification_dismissal_method.AutoRestartNotificationDismissalMethod]
-        """
-        return self._auto_restart_notification_dismissal
-    
-    @auto_restart_notification_dismissal.setter
-    def auto_restart_notification_dismissal(self,value: Optional[auto_restart_notification_dismissal_method.AutoRestartNotificationDismissalMethod] = None) -> None:
-        """
-        Sets the autoRestartNotificationDismissal property value. Auto restart required notification dismissal method
-        Args:
-            value: Value to set for the auto_restart_notification_dismissal property.
-        """
-        self._auto_restart_notification_dismissal = value
-    
-    @property
-    def automatic_update_mode(self,) -> Optional[automatic_update_mode.AutomaticUpdateMode]:
-        """
-        Gets the automaticUpdateMode property value. Possible values for automatic update mode.
-        Returns: Optional[automatic_update_mode.AutomaticUpdateMode]
-        """
-        return self._automatic_update_mode
-    
-    @automatic_update_mode.setter
-    def automatic_update_mode(self,value: Optional[automatic_update_mode.AutomaticUpdateMode] = None) -> None:
-        """
-        Sets the automaticUpdateMode property value. Possible values for automatic update mode.
-        Args:
-            value: Value to set for the automatic_update_mode property.
-        """
-        self._automatic_update_mode = value
-    
-    @property
-    def business_ready_updates_only(self,) -> Optional[windows_update_type.WindowsUpdateType]:
-        """
-        Gets the businessReadyUpdatesOnly property value. Which branch devices will receive their updates from
-        Returns: Optional[windows_update_type.WindowsUpdateType]
-        """
-        return self._business_ready_updates_only
-    
-    @business_ready_updates_only.setter
-    def business_ready_updates_only(self,value: Optional[windows_update_type.WindowsUpdateType] = None) -> None:
-        """
-        Sets the businessReadyUpdatesOnly property value. Which branch devices will receive their updates from
-        Args:
-            value: Value to set for the business_ready_updates_only property.
-        """
-        self._business_ready_updates_only = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new WindowsUpdateForBusinessConfiguration and sets the default values.
@@ -162,6 +87,74 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         self._user_pause_access: Optional[enablement.Enablement] = None
         # Possible values of a property
         self._user_windows_update_scan_access: Optional[enablement.Enablement] = None
+    
+    @property
+    def allow_windows11_upgrade(self,) -> Optional[bool]:
+        """
+        Gets the allowWindows11Upgrade property value. When TRUE, allows eligible Windows 10 devices to upgrade to Windows 11. When FALSE, implies the device stays on the existing operating system. Returned by default. Query parameters are not supported.
+        Returns: Optional[bool]
+        """
+        return self._allow_windows11_upgrade
+    
+    @allow_windows11_upgrade.setter
+    def allow_windows11_upgrade(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the allowWindows11Upgrade property value. When TRUE, allows eligible Windows 10 devices to upgrade to Windows 11. When FALSE, implies the device stays on the existing operating system. Returned by default. Query parameters are not supported.
+        Args:
+            value: Value to set for the allow_windows11_upgrade property.
+        """
+        self._allow_windows11_upgrade = value
+    
+    @property
+    def auto_restart_notification_dismissal(self,) -> Optional[auto_restart_notification_dismissal_method.AutoRestartNotificationDismissalMethod]:
+        """
+        Gets the autoRestartNotificationDismissal property value. Auto restart required notification dismissal method
+        Returns: Optional[auto_restart_notification_dismissal_method.AutoRestartNotificationDismissalMethod]
+        """
+        return self._auto_restart_notification_dismissal
+    
+    @auto_restart_notification_dismissal.setter
+    def auto_restart_notification_dismissal(self,value: Optional[auto_restart_notification_dismissal_method.AutoRestartNotificationDismissalMethod] = None) -> None:
+        """
+        Sets the autoRestartNotificationDismissal property value. Auto restart required notification dismissal method
+        Args:
+            value: Value to set for the auto_restart_notification_dismissal property.
+        """
+        self._auto_restart_notification_dismissal = value
+    
+    @property
+    def automatic_update_mode(self,) -> Optional[automatic_update_mode.AutomaticUpdateMode]:
+        """
+        Gets the automaticUpdateMode property value. Possible values for automatic update mode.
+        Returns: Optional[automatic_update_mode.AutomaticUpdateMode]
+        """
+        return self._automatic_update_mode
+    
+    @automatic_update_mode.setter
+    def automatic_update_mode(self,value: Optional[automatic_update_mode.AutomaticUpdateMode] = None) -> None:
+        """
+        Sets the automaticUpdateMode property value. Possible values for automatic update mode.
+        Args:
+            value: Value to set for the automatic_update_mode property.
+        """
+        self._automatic_update_mode = value
+    
+    @property
+    def business_ready_updates_only(self,) -> Optional[windows_update_type.WindowsUpdateType]:
+        """
+        Gets the businessReadyUpdatesOnly property value. Which branch devices will receive their updates from
+        Returns: Optional[windows_update_type.WindowsUpdateType]
+        """
+        return self._business_ready_updates_only
+    
+    @business_ready_updates_only.setter
+    def business_ready_updates_only(self,value: Optional[windows_update_type.WindowsUpdateType] = None) -> None:
+        """
+        Sets the businessReadyUpdatesOnly property value. Which branch devices will receive their updates from
+        Args:
+            value: Value to set for the business_ready_updates_only property.
+        """
+        self._business_ready_updates_only = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsUpdateForBusinessConfiguration:
@@ -435,7 +428,9 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import automatic_update_mode, auto_restart_notification_dismissal_method, device_configuration, enablement, prerelease_features, windows_delivery_optimization_mode, windows_update_for_business_update_weeks, windows_update_install_schedule_type, windows_update_notification_display_option, windows_update_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "allowWindows11Upgrade": lambda n : setattr(self, 'allow_windows11_upgrade', n.get_bool_value()),
             "automaticUpdateMode": lambda n : setattr(self, 'automatic_update_mode', n.get_enum_value(automatic_update_mode.AutomaticUpdateMode)),
             "autoRestartNotificationDismissal": lambda n : setattr(self, 'auto_restart_notification_dismissal', n.get_enum_value(auto_restart_notification_dismissal_method.AutoRestartNotificationDismissalMethod)),

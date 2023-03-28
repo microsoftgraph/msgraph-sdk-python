@@ -1,10 +1,61 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new directRoutingLogRow and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # In addition to the SIP codes, Microsoft has own subcodes that indicate the specific issue.
+        self._call_end_sub_reason: Optional[int] = None
+        # Call type and direction.
+        self._call_type: Optional[str] = None
+        # Number of the user or bot who received the call. E.164 format, but may include additional data.
+        self._callee_number: Optional[str] = None
+        # Number of the user or bot who made the call. E.164 format, but may include additional data.
+        self._caller_number: Optional[str] = None
+        # Identifier for the call that you can use when calling Microsoft Support. GUID.
+        self._correlation_id: Optional[str] = None
+        # Duration of the call in seconds.
+        self._duration: Optional[int] = None
+        # Only exists for successful (fully established) calls. Time when call ended.
+        self._end_date_time: Optional[datetime] = None
+        # Only exists for failed (not fully established) calls.
+        self._failure_date_time: Optional[datetime] = None
+        # The code with which the call ended, RFC 3261.
+        self._final_sip_code: Optional[int] = None
+        # Description of the SIP code and Microsoft subcode.
+        self._final_sip_code_phrase: Optional[str] = None
+        # Unique call identifier. GUID.
+        self._id: Optional[str] = None
+        # When the initial invite was sent.
+        self._invite_date_time: Optional[datetime] = None
+        # Indicates if the trunk was enabled for media bypass or not.
+        self._media_bypass_enabled: Optional[bool] = None
+        # The datacenter used for media path in non-bypass call.
+        self._media_path_location: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The datacenter used for signaling for both bypass and non-bypass calls.
+        self._signaling_location: Optional[str] = None
+        # Call start time.For failed and unanswered calls, this can be equal to invite or failure time.
+        self._start_date_time: Optional[datetime] = None
+        # Success or attempt.
+        self._successful_call: Optional[bool] = None
+        # Fully qualified domain name of the session border controller.
+        self._trunk_fully_qualified_domain_name: Optional[str] = None
+        # Display name of the user.
+        self._user_display_name: Optional[str] = None
+        # Calling user's ID in Graph. This and other user info will be null/empty for bot call types. GUID.
+        self._user_id: Optional[str] = None
+        # UserPrincipalName (sign-in name) in Azure Active Directory. This is usually the same as user's SIP Address, and can be same as user's e-mail address.
+        self._user_principal_name: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -89,58 +140,6 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the caller_number property.
         """
         self._caller_number = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new directRoutingLogRow and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # In addition to the SIP codes, Microsoft has own subcodes that indicate the specific issue.
-        self._call_end_sub_reason: Optional[int] = None
-        # Call type and direction.
-        self._call_type: Optional[str] = None
-        # Number of the user or bot who received the call. E.164 format, but may include additional data.
-        self._callee_number: Optional[str] = None
-        # Number of the user or bot who made the call. E.164 format, but may include additional data.
-        self._caller_number: Optional[str] = None
-        # Identifier for the call that you can use when calling Microsoft Support. GUID.
-        self._correlation_id: Optional[str] = None
-        # Duration of the call in seconds.
-        self._duration: Optional[int] = None
-        # Only exists for successful (fully established) calls. Time when call ended.
-        self._end_date_time: Optional[datetime] = None
-        # Only exists for failed (not fully established) calls.
-        self._failure_date_time: Optional[datetime] = None
-        # The code with which the call ended, RFC 3261.
-        self._final_sip_code: Optional[int] = None
-        # Description of the SIP code and Microsoft subcode.
-        self._final_sip_code_phrase: Optional[str] = None
-        # Unique call identifier. GUID.
-        self._id: Optional[str] = None
-        # When the initial invite was sent.
-        self._invite_date_time: Optional[datetime] = None
-        # Indicates if the trunk was enabled for media bypass or not.
-        self._media_bypass_enabled: Optional[bool] = None
-        # The datacenter used for media path in non-bypass call.
-        self._media_path_location: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The datacenter used for signaling for both bypass and non-bypass calls.
-        self._signaling_location: Optional[str] = None
-        # Call start time.For failed and unanswered calls, this can be equal to invite or failure time.
-        self._start_date_time: Optional[datetime] = None
-        # Success or attempt.
-        self._successful_call: Optional[bool] = None
-        # Fully qualified domain name of the session border controller.
-        self._trunk_fully_qualified_domain_name: Optional[str] = None
-        # Display name of the user.
-        self._user_display_name: Optional[str] = None
-        # Calling user's ID in Graph. This and other user info will be null/empty for bot call types. GUID.
-        self._user_id: Optional[str] = None
-        # UserPrincipalName (sign-in name) in Azure Active Directory. This is usually the same as user's SIP Address, and can be same as user's e-mail address.
-        self._user_principal_name: Optional[str] = None
     
     @property
     def correlation_id(self,) -> Optional[str]:
@@ -261,7 +260,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "calleeNumber": lambda n : setattr(self, 'callee_number', n.get_str_value()),
             "callerNumber": lambda n : setattr(self, 'caller_number', n.get_str_value()),
             "callEndSubReason": lambda n : setattr(self, 'call_end_sub_reason', n.get_int_value()),

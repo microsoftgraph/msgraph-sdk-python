@@ -1,11 +1,33 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-print_certificate_signing_request = lazy_import('msgraph.generated.models.print_certificate_signing_request')
+if TYPE_CHECKING:
+    from ....models import print_certificate_signing_request
 
 class CreatePostRequestBody(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new createPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The certificateSigningRequest property
+        self._certificate_signing_request: Optional[print_certificate_signing_request.PrintCertificateSigningRequest] = None
+        # The connectorId property
+        self._connector_id: Optional[str] = None
+        # The displayName property
+        self._display_name: Optional[str] = None
+        # The hasPhysicalDevice property
+        self._has_physical_device: Optional[bool] = None
+        # The manufacturer property
+        self._manufacturer: Optional[str] = None
+        # The model property
+        self._model: Optional[str] = None
+        # The physicalDeviceId property
+        self._physical_device_id: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -57,28 +79,6 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
         """
         self._connector_id = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new createPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The certificateSigningRequest property
-        self._certificate_signing_request: Optional[print_certificate_signing_request.PrintCertificateSigningRequest] = None
-        # The connectorId property
-        self._connector_id: Optional[str] = None
-        # The displayName property
-        self._display_name: Optional[str] = None
-        # The hasPhysicalDevice property
-        self._has_physical_device: Optional[bool] = None
-        # The manufacturer property
-        self._manufacturer: Optional[str] = None
-        # The model property
-        self._model: Optional[str] = None
-        # The physicalDeviceId property
-        self._physical_device_id: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CreatePostRequestBody:
         """
@@ -113,7 +113,9 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from ....models import print_certificate_signing_request
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "certificateSigningRequest": lambda n : setattr(self, 'certificate_signing_request', n.get_object_value(print_certificate_signing_request.PrintCertificateSigningRequest)),
             "connectorId": lambda n : setattr(self, 'connector_id', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

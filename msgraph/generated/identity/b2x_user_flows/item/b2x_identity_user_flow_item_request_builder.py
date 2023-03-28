@@ -7,52 +7,24 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-identity_providers_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.identity_providers.identity_providers_request_builder')
-identity_provider_item_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.identity_providers.item.identity_provider_item_request_builder')
-languages_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.languages.languages_request_builder')
-user_flow_language_configuration_item_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.languages.item.user_flow_language_configuration_item_request_builder')
-user_attribute_assignments_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.user_attribute_assignments.user_attribute_assignments_request_builder')
-identity_user_flow_attribute_assignment_item_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.user_attribute_assignments.item.identity_user_flow_attribute_assignment_item_request_builder')
-user_flow_identity_providers_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.user_flow_identity_providers.user_flow_identity_providers_request_builder')
-identity_provider_base_item_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.user_flow_identity_providers.item.identity_provider_base_item_request_builder')
-b2x_identity_user_flow = lazy_import('msgraph.generated.models.b2x_identity_user_flow')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from ....models import b2x_identity_user_flow
+    from ....models.o_data_errors import o_data_error
+    from .identity_providers import identity_providers_request_builder
+    from .identity_providers.item import identity_provider_item_request_builder
+    from .languages import languages_request_builder
+    from .languages.item import user_flow_language_configuration_item_request_builder
+    from .user_attribute_assignments import user_attribute_assignments_request_builder
+    from .user_attribute_assignments.item import identity_user_flow_attribute_assignment_item_request_builder
+    from .user_flow_identity_providers import user_flow_identity_providers_request_builder
+    from .user_flow_identity_providers.item import identity_provider_base_item_request_builder
 
 class B2xIdentityUserFlowItemRequestBuilder():
     """
     Provides operations to manage the b2xUserFlows property of the microsoft.graph.identityContainer entity.
     """
-    @property
-    def identity_providers(self) -> identity_providers_request_builder.IdentityProvidersRequestBuilder:
-        """
-        Provides operations to manage the identityProviders property of the microsoft.graph.b2xIdentityUserFlow entity.
-        """
-        return identity_providers_request_builder.IdentityProvidersRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def languages(self) -> languages_request_builder.LanguagesRequestBuilder:
-        """
-        Provides operations to manage the languages property of the microsoft.graph.b2xIdentityUserFlow entity.
-        """
-        return languages_request_builder.LanguagesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def user_attribute_assignments(self) -> user_attribute_assignments_request_builder.UserAttributeAssignmentsRequestBuilder:
-        """
-        Provides operations to manage the userAttributeAssignments property of the microsoft.graph.b2xIdentityUserFlow entity.
-        """
-        return user_attribute_assignments_request_builder.UserAttributeAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def user_flow_identity_providers(self) -> user_flow_identity_providers_request_builder.UserFlowIdentityProvidersRequestBuilder:
-        """
-        Provides operations to manage the userFlowIdentityProviders property of the microsoft.graph.b2xIdentityUserFlow entity.
-        """
-        return user_flow_identity_providers_request_builder.UserFlowIdentityProvidersRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new B2xIdentityUserFlowItemRequestBuilder and sets the default values.
@@ -80,6 +52,8 @@ class B2xIdentityUserFlowItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -98,12 +72,16 @@ class B2xIdentityUserFlowItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ....models import b2x_identity_user_flow
+
         return await self.request_adapter.send_async(request_info, b2x_identity_user_flow.B2xIdentityUserFlow, error_mapping)
     
     def identity_providers_by_id(self,id: str) -> identity_provider_item_request_builder.IdentityProviderItemRequestBuilder:
@@ -115,6 +93,8 @@ class B2xIdentityUserFlowItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .identity_providers.item import identity_provider_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["identityProvider%2Did"] = id
         return identity_provider_item_request_builder.IdentityProviderItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -128,6 +108,8 @@ class B2xIdentityUserFlowItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .languages.item import user_flow_language_configuration_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["userFlowLanguageConfiguration%2Did"] = id
         return user_flow_language_configuration_item_request_builder.UserFlowLanguageConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -145,12 +127,16 @@ class B2xIdentityUserFlowItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ....models import b2x_identity_user_flow
+
         return await self.request_adapter.send_async(request_info, b2x_identity_user_flow.B2xIdentityUserFlow, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -217,6 +203,8 @@ class B2xIdentityUserFlowItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .user_attribute_assignments.item import identity_user_flow_attribute_assignment_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["identityUserFlowAttributeAssignment%2Did"] = id
         return identity_user_flow_attribute_assignment_item_request_builder.IdentityUserFlowAttributeAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -230,9 +218,47 @@ class B2xIdentityUserFlowItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .user_flow_identity_providers.item import identity_provider_base_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["identityProviderBase%2Did"] = id
         return identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    @property
+    def identity_providers(self) -> identity_providers_request_builder.IdentityProvidersRequestBuilder:
+        """
+        Provides operations to manage the identityProviders property of the microsoft.graph.b2xIdentityUserFlow entity.
+        """
+        from .identity_providers import identity_providers_request_builder
+
+        return identity_providers_request_builder.IdentityProvidersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def languages(self) -> languages_request_builder.LanguagesRequestBuilder:
+        """
+        Provides operations to manage the languages property of the microsoft.graph.b2xIdentityUserFlow entity.
+        """
+        from .languages import languages_request_builder
+
+        return languages_request_builder.LanguagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def user_attribute_assignments(self) -> user_attribute_assignments_request_builder.UserAttributeAssignmentsRequestBuilder:
+        """
+        Provides operations to manage the userAttributeAssignments property of the microsoft.graph.b2xIdentityUserFlow entity.
+        """
+        from .user_attribute_assignments import user_attribute_assignments_request_builder
+
+        return user_attribute_assignments_request_builder.UserAttributeAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def user_flow_identity_providers(self) -> user_flow_identity_providers_request_builder.UserFlowIdentityProvidersRequestBuilder:
+        """
+        Provides operations to manage the userFlowIdentityProviders property of the microsoft.graph.b2xIdentityUserFlow entity.
+        """
+        from .user_flow_identity_providers import user_flow_identity_providers_request_builder
+
+        return user_flow_identity_providers_request_builder.UserFlowIdentityProvidersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class B2xIdentityUserFlowItemRequestBuilderDeleteRequestConfiguration():
@@ -251,12 +277,6 @@ class B2xIdentityUserFlowItemRequestBuilder():
         """
         Represents entry point for B2X/self-service sign-up identity userflows.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -272,6 +292,12 @@ class B2xIdentityUserFlowItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class B2xIdentityUserFlowItemRequestBuilderGetRequestConfiguration():

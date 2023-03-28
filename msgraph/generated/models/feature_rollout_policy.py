@@ -1,30 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-directory_object = lazy_import('msgraph.generated.models.directory_object')
-entity = lazy_import('msgraph.generated.models.entity')
-staged_feature_name = lazy_import('msgraph.generated.models.staged_feature_name')
+if TYPE_CHECKING:
+    from . import directory_object, entity, staged_feature_name
+
+from . import entity
 
 class FeatureRolloutPolicy(entity.Entity):
-    @property
-    def applies_to(self,) -> Optional[List[directory_object.DirectoryObject]]:
-        """
-        Gets the appliesTo property value. Nullable. Specifies a list of directoryObjects that feature is enabled for.
-        Returns: Optional[List[directory_object.DirectoryObject]]
-        """
-        return self._applies_to
-    
-    @applies_to.setter
-    def applies_to(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
-        """
-        Sets the appliesTo property value. Nullable. Specifies a list of directoryObjects that feature is enabled for.
-        Args:
-            value: Value to set for the applies_to property.
-        """
-        self._applies_to = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new featureRolloutPolicy and sets the default values.
@@ -44,6 +27,23 @@ class FeatureRolloutPolicy(entity.Entity):
         self._is_enabled: Optional[bool] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
+    
+    @property
+    def applies_to(self,) -> Optional[List[directory_object.DirectoryObject]]:
+        """
+        Gets the appliesTo property value. Nullable. Specifies a list of directoryObjects that feature is enabled for.
+        Returns: Optional[List[directory_object.DirectoryObject]]
+        """
+        return self._applies_to
+    
+    @applies_to.setter
+    def applies_to(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
+        """
+        Sets the appliesTo property value. Nullable. Specifies a list of directoryObjects that feature is enabled for.
+        Args:
+            value: Value to set for the applies_to property.
+        """
+        self._applies_to = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FeatureRolloutPolicy:
@@ -113,7 +113,9 @@ class FeatureRolloutPolicy(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import directory_object, entity, staged_feature_name
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "appliesTo": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

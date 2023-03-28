@@ -1,12 +1,27 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-item_activity_stat = lazy_import('msgraph.generated.models.item_activity_stat')
+if TYPE_CHECKING:
+    from . import entity, item_activity_stat
+
+from . import entity
 
 class ItemAnalytics(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new itemAnalytics and sets the default values.
+        """
+        super().__init__()
+        # The allTime property
+        self._all_time: Optional[item_activity_stat.ItemActivityStat] = None
+        # The itemActivityStats property
+        self._item_activity_stats: Optional[List[item_activity_stat.ItemActivityStat]] = None
+        # The lastSevenDays property
+        self._last_seven_days: Optional[item_activity_stat.ItemActivityStat] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+    
     @property
     def all_time(self,) -> Optional[item_activity_stat.ItemActivityStat]:
         """
@@ -23,20 +38,6 @@ class ItemAnalytics(entity.Entity):
             value: Value to set for the all_time property.
         """
         self._all_time = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new itemAnalytics and sets the default values.
-        """
-        super().__init__()
-        # The allTime property
-        self._all_time: Optional[item_activity_stat.ItemActivityStat] = None
-        # The itemActivityStats property
-        self._item_activity_stats: Optional[List[item_activity_stat.ItemActivityStat]] = None
-        # The lastSevenDays property
-        self._last_seven_days: Optional[item_activity_stat.ItemActivityStat] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ItemAnalytics:
@@ -55,7 +56,9 @@ class ItemAnalytics(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, item_activity_stat
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "allTime": lambda n : setattr(self, 'all_time', n.get_object_value(item_activity_stat.ItemActivityStat)),
             "itemActivityStats": lambda n : setattr(self, 'item_activity_stats', n.get_collection_of_object_values(item_activity_stat.ItemActivityStat)),
             "lastSevenDays": lambda n : setattr(self, 'last_seven_days', n.get_object_value(item_activity_stat.ItemActivityStat)),

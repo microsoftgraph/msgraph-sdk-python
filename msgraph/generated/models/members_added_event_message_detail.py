@@ -1,12 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-event_message_detail = lazy_import('msgraph.generated.models.event_message_detail')
-identity_set = lazy_import('msgraph.generated.models.identity_set')
-teamwork_user_identity = lazy_import('msgraph.generated.models.teamwork_user_identity')
+if TYPE_CHECKING:
+    from . import event_message_detail, identity_set, teamwork_user_identity
+
+from . import event_message_detail
 
 class MembersAddedEventMessageDetail(event_message_detail.EventMessageDetail):
     def __init__(self,) -> None:
@@ -39,7 +39,9 @@ class MembersAddedEventMessageDetail(event_message_detail.EventMessageDetail):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import event_message_detail, identity_set, teamwork_user_identity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(teamwork_user_identity.TeamworkUserIdentity)),
             "visibleHistoryStartDateTime": lambda n : setattr(self, 'visible_history_start_date_time', n.get_datetime_value()),

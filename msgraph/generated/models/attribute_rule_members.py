@@ -1,9 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-subject_set = lazy_import('msgraph.generated.models.subject_set')
+if TYPE_CHECKING:
+    from . import subject_set
+
+from . import subject_set
 
 class AttributeRuleMembers(subject_set.SubjectSet):
     def __init__(self,) -> None:
@@ -51,7 +53,9 @@ class AttributeRuleMembers(subject_set.SubjectSet):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import subject_set
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "membershipRule": lambda n : setattr(self, 'membership_rule', n.get_str_value()),
         }

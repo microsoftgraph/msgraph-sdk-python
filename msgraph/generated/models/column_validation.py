@@ -1,11 +1,27 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-display_name_localization = lazy_import('msgraph.generated.models.display_name_localization')
+if TYPE_CHECKING:
+    from . import display_name_localization
 
 class ColumnValidation(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new columnValidation and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Default BCP 47 language tag for the description.
+        self._default_language: Optional[str] = None
+        # Localized messages that explain what is needed for this column's value to be considered valid. User will be prompted with this message if validation fails.
+        self._descriptions: Optional[List[display_name_localization.DisplayNameLocalization]] = None
+        # The formula to validate column value. For examples, see Examples of common formulas in lists.
+        self._formula: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -22,22 +38,6 @@ class ColumnValidation(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new columnValidation and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Default BCP 47 language tag for the description.
-        self._default_language: Optional[str] = None
-        # Localized messages that explain what is needed for this column's value to be considered valid. User will be prompted with this message if validation fails.
-        self._descriptions: Optional[List[display_name_localization.DisplayNameLocalization]] = None
-        # The formula to validate column value. For examples, see Examples of common formulas in lists.
-        self._formula: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ColumnValidation:
@@ -107,7 +107,9 @@ class ColumnValidation(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import display_name_localization
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "defaultLanguage": lambda n : setattr(self, 'default_language', n.get_str_value()),
             "descriptions": lambda n : setattr(self, 'descriptions', n.get_collection_of_object_values(display_name_localization.DisplayNameLocalization)),
             "formula": lambda n : setattr(self, 'formula', n.get_str_value()),

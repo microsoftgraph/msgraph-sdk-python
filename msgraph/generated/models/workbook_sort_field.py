@@ -1,11 +1,33 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-workbook_icon = lazy_import('msgraph.generated.models.workbook_icon')
+if TYPE_CHECKING:
+    from . import workbook_icon
 
 class WorkbookSortField(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new workbookSortField and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Represents whether the sorting is done in an ascending fashion.
+        self._ascending: Optional[bool] = None
+        # Represents the color that is the target of the condition if the sorting is on font or cell color.
+        self._color: Optional[str] = None
+        # Represents additional sorting options for this field. The possible values are: Normal, TextAsNumber.
+        self._data_option: Optional[str] = None
+        # Represents the icon that is the target of the condition if the sorting is on the cell's icon.
+        self._icon: Optional[workbook_icon.WorkbookIcon] = None
+        # Represents the column (or row, depending on the sort orientation) that the condition is on. Represented as an offset from the first column (or row).
+        self._key: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Represents the type of sorting of this condition. The possible values are: Value, CellColor, FontColor, Icon.
+        self._sort_on: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -57,28 +79,6 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         """
         self._color = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookSortField and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Represents whether the sorting is done in an ascending fashion.
-        self._ascending: Optional[bool] = None
-        # Represents the color that is the target of the condition if the sorting is on font or cell color.
-        self._color: Optional[str] = None
-        # Represents additional sorting options for this field. The possible values are: Normal, TextAsNumber.
-        self._data_option: Optional[str] = None
-        # Represents the icon that is the target of the condition if the sorting is on the cell's icon.
-        self._icon: Optional[workbook_icon.WorkbookIcon] = None
-        # Represents the column (or row, depending on the sort orientation) that the condition is on. Represented as an offset from the first column (or row).
-        self._key: Optional[int] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Represents the type of sorting of this condition. The possible values are: Value, CellColor, FontColor, Icon.
-        self._sort_on: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookSortField:
         """
@@ -113,7 +113,9 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import workbook_icon
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "ascending": lambda n : setattr(self, 'ascending', n.get_bool_value()),
             "color": lambda n : setattr(self, 'color', n.get_str_value()),
             "dataOption": lambda n : setattr(self, 'data_option', n.get_str_value()),

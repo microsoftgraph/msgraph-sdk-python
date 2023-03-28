@@ -1,9 +1,18 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class ApplyTopItemsFilterPostRequestBody(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new applyTopItemsFilterPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The count property
+        self._count: Optional[int] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -20,16 +29,6 @@ class ApplyTopItemsFilterPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new applyTopItemsFilterPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The count property
-        self._count: Optional[int] = None
     
     @property
     def count(self,) -> Optional[int]:
@@ -65,7 +64,7 @@ class ApplyTopItemsFilterPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "count": lambda n : setattr(self, 'count', n.get_int_value()),
         }
         return fields

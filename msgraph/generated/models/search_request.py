@@ -1,17 +1,49 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-aggregation_option = lazy_import('msgraph.generated.models.aggregation_option')
-entity_type = lazy_import('msgraph.generated.models.entity_type')
-result_template_option = lazy_import('msgraph.generated.models.result_template_option')
-search_alteration_options = lazy_import('msgraph.generated.models.search_alteration_options')
-search_query = lazy_import('msgraph.generated.models.search_query')
-share_point_one_drive_options = lazy_import('msgraph.generated.models.share_point_one_drive_options')
-sort_property = lazy_import('msgraph.generated.models.sort_property')
+if TYPE_CHECKING:
+    from . import aggregation_option, entity_type, result_template_option, search_alteration_options, search_query, share_point_one_drive_options, sort_property
 
 class SearchRequest(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new searchRequest and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The aggregationFilters property
+        self._aggregation_filters: Optional[List[str]] = None
+        # The aggregations property
+        self._aggregations: Optional[List[aggregation_option.AggregationOption]] = None
+        # The contentSources property
+        self._content_sources: Optional[List[str]] = None
+        # The enableTopResults property
+        self._enable_top_results: Optional[bool] = None
+        # The entityTypes property
+        self._entity_types: Optional[List[entity_type.EntityType]] = None
+        # The fields property
+        self._fields: Optional[List[str]] = None
+        # The from property
+        self._from_: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The query property
+        self._query: Optional[search_query.SearchQuery] = None
+        # The queryAlterationOptions property
+        self._query_alteration_options: Optional[search_alteration_options.SearchAlterationOptions] = None
+        # The region property
+        self._region: Optional[str] = None
+        # The resultTemplateOptions property
+        self._result_template_options: Optional[result_template_option.ResultTemplateOption] = None
+        # The sharePointOneDriveOptions property
+        self._share_point_one_drive_options: Optional[share_point_one_drive_options.SharePointOneDriveOptions] = None
+        # The size property
+        self._size: Optional[int] = None
+        # The sortProperties property
+        self._sort_properties: Optional[List[sort_property.SortProperty]] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -62,44 +94,6 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             value: Value to set for the aggregations property.
         """
         self._aggregations = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new searchRequest and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The aggregationFilters property
-        self._aggregation_filters: Optional[List[str]] = None
-        # The aggregations property
-        self._aggregations: Optional[List[aggregation_option.AggregationOption]] = None
-        # The contentSources property
-        self._content_sources: Optional[List[str]] = None
-        # The enableTopResults property
-        self._enable_top_results: Optional[bool] = None
-        # The entityTypes property
-        self._entity_types: Optional[List[entity_type.EntityType]] = None
-        # The fields property
-        self._fields: Optional[List[str]] = None
-        # The from property
-        self._from_: Optional[int] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The query property
-        self._query: Optional[search_query.SearchQuery] = None
-        # The queryAlterationOptions property
-        self._query_alteration_options: Optional[search_alteration_options.SearchAlterationOptions] = None
-        # The region property
-        self._region: Optional[str] = None
-        # The resultTemplateOptions property
-        self._result_template_options: Optional[result_template_option.ResultTemplateOption] = None
-        # The sharePointOneDriveOptions property
-        self._share_point_one_drive_options: Optional[share_point_one_drive_options.SharePointOneDriveOptions] = None
-        # The size property
-        self._size: Optional[int] = None
-        # The sortProperties property
-        self._sort_properties: Optional[List[sort_property.SortProperty]] = None
     
     @property
     def content_sources(self,) -> Optional[List[str]]:
@@ -203,7 +197,9 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import aggregation_option, entity_type, result_template_option, search_alteration_options, search_query, share_point_one_drive_options, sort_property
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "aggregations": lambda n : setattr(self, 'aggregations', n.get_collection_of_object_values(aggregation_option.AggregationOption)),
             "aggregationFilters": lambda n : setattr(self, 'aggregation_filters', n.get_collection_of_primitive_values(str)),
             "contentSources": lambda n : setattr(self, 'content_sources', n.get_collection_of_primitive_values(str)),

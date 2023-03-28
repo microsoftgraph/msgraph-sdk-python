@@ -1,10 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-inference_classification_override = lazy_import('msgraph.generated.models.inference_classification_override')
+if TYPE_CHECKING:
+    from . import entity, inference_classification_override
+
+from . import entity
 
 class InferenceClassification(entity.Entity):
     def __init__(self,) -> None:
@@ -34,7 +35,9 @@ class InferenceClassification(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, inference_classification_override
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "overrides": lambda n : setattr(self, 'overrides', n.get_collection_of_object_values(inference_classification_override.InferenceClassificationOverride)),
         }
         super_fields = super().get_field_deserializers()

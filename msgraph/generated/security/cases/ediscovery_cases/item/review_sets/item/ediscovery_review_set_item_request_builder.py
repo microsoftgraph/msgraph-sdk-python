@@ -7,33 +7,19 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-ediscovery_review_set = lazy_import('msgraph.generated.models.security.ediscovery_review_set')
-queries_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.review_sets.item.queries.queries_request_builder')
-ediscovery_review_set_query_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.review_sets.item.queries.item.ediscovery_review_set_query_item_request_builder')
-security_add_to_review_set_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.review_sets.item.security_add_to_review_set.security_add_to_review_set_request_builder')
+if TYPE_CHECKING:
+    from .......models.o_data_errors import o_data_error
+    from .......models.security import ediscovery_review_set
+    from .queries import queries_request_builder
+    from .queries.item import ediscovery_review_set_query_item_request_builder
+    from .security_add_to_review_set import security_add_to_review_set_request_builder
 
 class EdiscoveryReviewSetItemRequestBuilder():
     """
     Provides operations to manage the reviewSets property of the microsoft.graph.security.ediscoveryCase entity.
     """
-    @property
-    def queries(self) -> queries_request_builder.QueriesRequestBuilder:
-        """
-        Provides operations to manage the queries property of the microsoft.graph.security.ediscoveryReviewSet entity.
-        """
-        return queries_request_builder.QueriesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def security_add_to_review_set(self) -> security_add_to_review_set_request_builder.SecurityAddToReviewSetRequestBuilder:
-        """
-        Provides operations to call the addToReviewSet method.
-        """
-        return security_add_to_review_set_request_builder.SecurityAddToReviewSetRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EdiscoveryReviewSetItemRequestBuilder and sets the default values.
@@ -61,6 +47,8 @@ class EdiscoveryReviewSetItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from .......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -79,12 +67,16 @@ class EdiscoveryReviewSetItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from .......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .......models.security import ediscovery_review_set
+
         return await self.request_adapter.send_async(request_info, ediscovery_review_set.EdiscoveryReviewSet, error_mapping)
     
     async def patch(self,body: Optional[ediscovery_review_set.EdiscoveryReviewSet] = None, request_configuration: Optional[EdiscoveryReviewSetItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ediscovery_review_set.EdiscoveryReviewSet]:
@@ -100,12 +92,16 @@ class EdiscoveryReviewSetItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from .......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .......models.security import ediscovery_review_set
+
         return await self.request_adapter.send_async(request_info, ediscovery_review_set.EdiscoveryReviewSet, error_mapping)
     
     def queries_by_id(self,id: str) -> ediscovery_review_set_query_item_request_builder.EdiscoveryReviewSetQueryItemRequestBuilder:
@@ -117,6 +113,8 @@ class EdiscoveryReviewSetItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .queries.item import ediscovery_review_set_query_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["ediscoveryReviewSetQuery%2Did"] = id
         return ediscovery_review_set_query_item_request_builder.EdiscoveryReviewSetQueryItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -176,6 +174,24 @@ class EdiscoveryReviewSetItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def queries(self) -> queries_request_builder.QueriesRequestBuilder:
+        """
+        Provides operations to manage the queries property of the microsoft.graph.security.ediscoveryReviewSet entity.
+        """
+        from .queries import queries_request_builder
+
+        return queries_request_builder.QueriesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def security_add_to_review_set(self) -> security_add_to_review_set_request_builder.SecurityAddToReviewSetRequestBuilder:
+        """
+        Provides operations to call the addToReviewSet method.
+        """
+        from .security_add_to_review_set import security_add_to_review_set_request_builder
+
+        return security_add_to_review_set_request_builder.SecurityAddToReviewSetRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class EdiscoveryReviewSetItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -193,12 +209,6 @@ class EdiscoveryReviewSetItemRequestBuilder():
         """
         Returns a list of eDiscoveryReviewSet objects in the case.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -214,6 +224,12 @@ class EdiscoveryReviewSetItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class EdiscoveryReviewSetItemRequestBuilderGetRequestConfiguration():

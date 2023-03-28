@@ -1,33 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-workbook_chart = lazy_import('msgraph.generated.models.workbook_chart')
-workbook_named_item = lazy_import('msgraph.generated.models.workbook_named_item')
-workbook_pivot_table = lazy_import('msgraph.generated.models.workbook_pivot_table')
-workbook_table = lazy_import('msgraph.generated.models.workbook_table')
-workbook_worksheet_protection = lazy_import('msgraph.generated.models.workbook_worksheet_protection')
+if TYPE_CHECKING:
+    from . import entity, workbook_chart, workbook_named_item, workbook_pivot_table, workbook_table, workbook_worksheet_protection
+
+from . import entity
 
 class WorkbookWorksheet(entity.Entity):
-    @property
-    def charts(self,) -> Optional[List[workbook_chart.WorkbookChart]]:
-        """
-        Gets the charts property value. Returns collection of charts that are part of the worksheet. Read-only.
-        Returns: Optional[List[workbook_chart.WorkbookChart]]
-        """
-        return self._charts
-    
-    @charts.setter
-    def charts(self,value: Optional[List[workbook_chart.WorkbookChart]] = None) -> None:
-        """
-        Sets the charts property value. Returns collection of charts that are part of the worksheet. Read-only.
-        Args:
-            value: Value to set for the charts property.
-        """
-        self._charts = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new workbookWorksheet and sets the default values.
@@ -52,6 +32,23 @@ class WorkbookWorksheet(entity.Entity):
         # The Visibility of the worksheet. The possible values are: Visible, Hidden, VeryHidden.
         self._visibility: Optional[str] = None
     
+    @property
+    def charts(self,) -> Optional[List[workbook_chart.WorkbookChart]]:
+        """
+        Gets the charts property value. Returns collection of charts that are part of the worksheet. Read-only.
+        Returns: Optional[List[workbook_chart.WorkbookChart]]
+        """
+        return self._charts
+    
+    @charts.setter
+    def charts(self,value: Optional[List[workbook_chart.WorkbookChart]] = None) -> None:
+        """
+        Sets the charts property value. Returns collection of charts that are part of the worksheet. Read-only.
+        Args:
+            value: Value to set for the charts property.
+        """
+        self._charts = value
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookWorksheet:
         """
@@ -69,7 +66,9 @@ class WorkbookWorksheet(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, workbook_chart, workbook_named_item, workbook_pivot_table, workbook_table, workbook_worksheet_protection
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "charts": lambda n : setattr(self, 'charts', n.get_collection_of_object_values(workbook_chart.WorkbookChart)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "names": lambda n : setattr(self, 'names', n.get_collection_of_object_values(workbook_named_item.WorkbookNamedItem)),

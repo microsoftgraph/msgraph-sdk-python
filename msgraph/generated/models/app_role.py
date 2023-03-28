@@ -1,9 +1,32 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class AppRole(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new appRole and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Specifies whether this app role can be assigned to users and groups (by setting to ['User']), to other application's (by setting to ['Application'], or both (by setting to ['User', 'Application']). App roles supporting assignment to other applications' service principals are also known as application permissions. The 'Application' value is only supported for app roles defined on application entities.
+        self._allowed_member_types: Optional[List[str]] = None
+        # The description for the app role. This is displayed when the app role is being assigned and, if the app role functions as an application permission, during  consent experiences.
+        self._description: Optional[str] = None
+        # Display name for the permission that appears in the app role assignment and consent experiences.
+        self._display_name: Optional[str] = None
+        # Unique role identifier inside the appRoles collection. When creating a new app role, a new GUID identifier must be provided.
+        self._id: Optional[Guid] = None
+        # When creating or updating an app role, this must be set to true (which is the default). To delete a role, this must first be set to false.  At that point, in a subsequent call, this role may be removed.
+        self._is_enabled: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Specifies if the app role is defined on the application object or on the servicePrincipal entity. Must not be included in any POST or PATCH requests. Read-only.
+        self._origin: Optional[str] = None
+        # Specifies the value to include in the roles claim in ID tokens and access tokens authenticating an assigned user or service principal. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, as well as characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, are not allowed. May not begin with ..
+        self._value: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -37,30 +60,6 @@ class AppRole(AdditionalDataHolder, Parsable):
             value: Value to set for the allowed_member_types property.
         """
         self._allowed_member_types = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new appRole and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Specifies whether this app role can be assigned to users and groups (by setting to ['User']), to other application's (by setting to ['Application'], or both (by setting to ['User', 'Application']). App roles supporting assignment to other applications' service principals are also known as application permissions. The 'Application' value is only supported for app roles defined on application entities.
-        self._allowed_member_types: Optional[List[str]] = None
-        # The description for the app role. This is displayed when the app role is being assigned and, if the app role functions as an application permission, during  consent experiences.
-        self._description: Optional[str] = None
-        # Display name for the permission that appears in the app role assignment and consent experiences.
-        self._display_name: Optional[str] = None
-        # Unique role identifier inside the appRoles collection. When creating a new app role, a new GUID identifier must be provided.
-        self._id: Optional[Guid] = None
-        # When creating or updating an app role, this must be set to true (which is the default). To delete a role, this must first be set to false.  At that point, in a subsequent call, this role may be removed.
-        self._is_enabled: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Specifies if the app role is defined on the application object or on the servicePrincipal entity. Must not be included in any POST or PATCH requests. Read-only.
-        self._origin: Optional[str] = None
-        # Specifies the value to include in the roles claim in ID tokens and access tokens authenticating an assigned user or service principal. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, as well as characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, are not allowed. May not begin with ..
-        self._value: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppRole:
@@ -113,7 +112,7 @@ class AppRole(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "allowedMemberTypes": lambda n : setattr(self, 'allowed_member_types', n.get_collection_of_primitive_values(str)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

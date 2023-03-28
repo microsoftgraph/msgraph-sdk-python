@@ -1,10 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
-windows10_enterprise_modern_app_management_configuration = lazy_import('msgraph.generated.models.windows10_enterprise_modern_app_management_configuration')
+if TYPE_CHECKING:
+    from . import base_collection_pagination_count_response, windows10_enterprise_modern_app_management_configuration
+
+from . import base_collection_pagination_count_response
 
 class Windows10EnterpriseModernAppManagementConfigurationCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
     def __init__(self,) -> None:
@@ -32,7 +33,9 @@ class Windows10EnterpriseModernAppManagementConfigurationCollectionResponse(base
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import base_collection_pagination_count_response, windows10_enterprise_modern_app_management_configuration
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(windows10_enterprise_modern_app_management_configuration.Windows10EnterpriseModernAppManagementConfiguration)),
         }
         super_fields = super().get_field_deserializers()

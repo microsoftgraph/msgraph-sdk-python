@@ -1,11 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-assigned_training_info = lazy_import('msgraph.generated.models.assigned_training_info')
+if TYPE_CHECKING:
+    from . import assigned_training_info
 
 class TrainingEventsContent(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new trainingEventsContent and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # List of assigned trainings and their information in an attack simulation and training campaign.
+        self._assigned_trainings_infos: Optional[List[assigned_training_info.AssignedTrainingInfo]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Number of users who were assigned trainings in an attack simulation and training campaign.
+        self._trainings_assigned_user_count: Optional[int] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -40,20 +54,6 @@ class TrainingEventsContent(AdditionalDataHolder, Parsable):
         """
         self._assigned_trainings_infos = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new trainingEventsContent and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # List of assigned trainings and their information in an attack simulation and training campaign.
-        self._assigned_trainings_infos: Optional[List[assigned_training_info.AssignedTrainingInfo]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Number of users who were assigned trainings in an attack simulation and training campaign.
-        self._trainings_assigned_user_count: Optional[int] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TrainingEventsContent:
         """
@@ -71,7 +71,9 @@ class TrainingEventsContent(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import assigned_training_info
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "assignedTrainingsInfos": lambda n : setattr(self, 'assigned_trainings_infos', n.get_collection_of_object_values(assigned_training_info.AssignedTrainingInfo)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "trainingsAssignedUserCount": lambda n : setattr(self, 'trainings_assigned_user_count', n.get_int_value()),

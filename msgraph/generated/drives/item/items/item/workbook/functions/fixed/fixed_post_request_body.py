@@ -1,11 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-json = lazy_import('msgraph.generated.models.json')
+if TYPE_CHECKING:
+    from ........models import json
 
 class FixedPostRequestBody(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new fixedPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The decimals property
+        self._decimals: Optional[json.Json] = None
+        # The noCommas property
+        self._no_commas: Optional[json.Json] = None
+        # The number property
+        self._number: Optional[json.Json] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -22,20 +36,6 @@ class FixedPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new fixedPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The decimals property
-        self._decimals: Optional[json.Json] = None
-        # The noCommas property
-        self._no_commas: Optional[json.Json] = None
-        # The number property
-        self._number: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FixedPostRequestBody:
@@ -71,7 +71,9 @@ class FixedPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from ........models import json
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "decimals": lambda n : setattr(self, 'decimals', n.get_object_value(json.Json)),
             "noCommas": lambda n : setattr(self, 'no_commas', n.get_object_value(json.Json)),
             "number": lambda n : setattr(self, 'number', n.get_object_value(json.Json)),

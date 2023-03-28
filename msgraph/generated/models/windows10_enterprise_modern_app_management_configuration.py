@@ -1,9 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-device_configuration = lazy_import('msgraph.generated.models.device_configuration')
+if TYPE_CHECKING:
+    from . import device_configuration
+
+from . import device_configuration
 
 class Windows10EnterpriseModernAppManagementConfiguration(device_configuration.DeviceConfiguration):
     def __init__(self,) -> None:
@@ -32,7 +34,9 @@ class Windows10EnterpriseModernAppManagementConfiguration(device_configuration.D
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import device_configuration
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "uninstallBuiltInApps": lambda n : setattr(self, 'uninstall_built_in_apps', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

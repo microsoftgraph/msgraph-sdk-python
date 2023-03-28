@@ -1,10 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-role_definition = lazy_import('msgraph.generated.models.role_definition')
+if TYPE_CHECKING:
+    from . import device_and_app_management_role_assignment, entity, role_definition
+
+from . import entity
 
 class RoleAssignment(entity.Entity):
     """
@@ -36,6 +37,13 @@ class RoleAssignment(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.deviceAndAppManagementRoleAssignment":
+                from . import device_and_app_management_role_assignment
+
+                return device_and_app_management_role_assignment.DeviceAndAppManagementRoleAssignment()
         return RoleAssignment()
     
     @property
@@ -77,7 +85,9 @@ class RoleAssignment(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import device_and_app_management_role_assignment, entity, role_definition
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "resourceScopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_primitive_values(str)),

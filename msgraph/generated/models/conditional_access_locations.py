@@ -1,9 +1,22 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class ConditionalAccessLocations(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new conditionalAccessLocations and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Location IDs excluded from scope of policy.
+        self._exclude_locations: Optional[List[str]] = None
+        # Location IDs in scope of policy unless explicitly excluded, All, or AllTrusted.
+        self._include_locations: Optional[List[str]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -20,20 +33,6 @@ class ConditionalAccessLocations(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new conditionalAccessLocations and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Location IDs excluded from scope of policy.
-        self._exclude_locations: Optional[List[str]] = None
-        # Location IDs in scope of policy unless explicitly excluded, All, or AllTrusted.
-        self._include_locations: Optional[List[str]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessLocations:
@@ -69,7 +68,7 @@ class ConditionalAccessLocations(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "excludeLocations": lambda n : setattr(self, 'exclude_locations', n.get_collection_of_primitive_values(str)),
             "includeLocations": lambda n : setattr(self, 'include_locations', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

@@ -1,11 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-meeting_time_suggestion = lazy_import('msgraph.generated.models.meeting_time_suggestion')
+if TYPE_CHECKING:
+    from . import meeting_time_suggestion
 
 class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new meetingTimeSuggestionsResult and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # A reason for not returning any meeting suggestions. The possible values are: attendeesUnavailable, attendeesUnavailableOrUnknown, locationsUnavailable, organizerUnavailable, or unknown. This property is an empty string if the meetingTimeSuggestions property does include any meeting suggestions.
+        self._empty_suggestions_reason: Optional[str] = None
+        # An array of meeting suggestions.
+        self._meeting_time_suggestions: Optional[List[meeting_time_suggestion.MeetingTimeSuggestion]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -22,20 +36,6 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new meetingTimeSuggestionsResult and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # A reason for not returning any meeting suggestions. The possible values are: attendeesUnavailable, attendeesUnavailableOrUnknown, locationsUnavailable, organizerUnavailable, or unknown. This property is an empty string if the meetingTimeSuggestions property does include any meeting suggestions.
-        self._empty_suggestions_reason: Optional[str] = None
-        # An array of meeting suggestions.
-        self._meeting_time_suggestions: Optional[List[meeting_time_suggestion.MeetingTimeSuggestion]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MeetingTimeSuggestionsResult:
@@ -71,7 +71,9 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import meeting_time_suggestion
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "emptySuggestionsReason": lambda n : setattr(self, 'empty_suggestions_reason', n.get_str_value()),
             "meetingTimeSuggestions": lambda n : setattr(self, 'meeting_time_suggestions', n.get_collection_of_object_values(meeting_time_suggestion.MeetingTimeSuggestion)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

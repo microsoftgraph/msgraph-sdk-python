@@ -1,13 +1,26 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-app_management_configuration = lazy_import('msgraph.generated.models.app_management_configuration')
-directory_object = lazy_import('msgraph.generated.models.directory_object')
-policy_base = lazy_import('msgraph.generated.models.policy_base')
+if TYPE_CHECKING:
+    from . import app_management_configuration, directory_object, policy_base
+
+from . import policy_base
 
 class AppManagementPolicy(policy_base.PolicyBase):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new AppManagementPolicy and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.appManagementPolicy"
+        # The appliesTo property
+        self._applies_to: Optional[List[directory_object.DirectoryObject]] = None
+        # The isEnabled property
+        self._is_enabled: Optional[bool] = None
+        # The restrictions property
+        self._restrictions: Optional[app_management_configuration.AppManagementConfiguration] = None
+    
     @property
     def applies_to(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -24,19 +37,6 @@ class AppManagementPolicy(policy_base.PolicyBase):
             value: Value to set for the applies_to property.
         """
         self._applies_to = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AppManagementPolicy and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.appManagementPolicy"
-        # The appliesTo property
-        self._applies_to: Optional[List[directory_object.DirectoryObject]] = None
-        # The isEnabled property
-        self._is_enabled: Optional[bool] = None
-        # The restrictions property
-        self._restrictions: Optional[app_management_configuration.AppManagementConfiguration] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppManagementPolicy:
@@ -55,7 +55,9 @@ class AppManagementPolicy(policy_base.PolicyBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import app_management_configuration, directory_object, policy_base
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "appliesTo": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "restrictions": lambda n : setattr(self, 'restrictions', n.get_object_value(app_management_configuration.AppManagementConfiguration)),

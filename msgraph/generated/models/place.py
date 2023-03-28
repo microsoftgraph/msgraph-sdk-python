@@ -1,13 +1,29 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-outlook_geo_coordinates = lazy_import('msgraph.generated.models.outlook_geo_coordinates')
-physical_address = lazy_import('msgraph.generated.models.physical_address')
+if TYPE_CHECKING:
+    from . import entity, outlook_geo_coordinates, physical_address, room, room_list
+
+from . import entity
 
 class Place(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new place and sets the default values.
+        """
+        super().__init__()
+        # The street address of the place.
+        self._address: Optional[physical_address.PhysicalAddress] = None
+        # The name associated with the place.
+        self._display_name: Optional[str] = None
+        # Specifies the place location in latitude, longitude and (optionally) altitude coordinates.
+        self._geo_coordinates: Optional[outlook_geo_coordinates.OutlookGeoCoordinates] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The phone number of the place.
+        self._phone: Optional[str] = None
+    
     @property
     def address(self,) -> Optional[physical_address.PhysicalAddress]:
         """
@@ -25,22 +41,6 @@ class Place(entity.Entity):
         """
         self._address = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Place and sets the default values.
-        """
-        super().__init__()
-        # The street address of the place.
-        self._address: Optional[physical_address.PhysicalAddress] = None
-        # The name associated with the place.
-        self._display_name: Optional[str] = None
-        # Specifies the place location in latitude, longitude and (optionally) altitude coordinates.
-        self._geo_coordinates: Optional[outlook_geo_coordinates.OutlookGeoCoordinates] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The phone number of the place.
-        self._phone: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Place:
         """
@@ -51,6 +51,17 @@ class Place(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.room":
+                from . import room
+
+                return room.Room()
+            if mapping_value == "#microsoft.graph.roomList":
+                from . import room_list
+
+                return room_list.RoomList()
         return Place()
     
     @property
@@ -92,7 +103,9 @@ class Place(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, outlook_geo_coordinates, physical_address, room, room_list
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "address": lambda n : setattr(self, 'address', n.get_object_value(physical_address.PhysicalAddress)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "geoCoordinates": lambda n : setattr(self, 'geo_coordinates', n.get_object_value(outlook_geo_coordinates.OutlookGeoCoordinates)),

@@ -1,14 +1,29 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-access_review_set = lazy_import('msgraph.generated.models.access_review_set')
-app_consent_approval_route = lazy_import('msgraph.generated.models.app_consent_approval_route')
-entitlement_management = lazy_import('msgraph.generated.models.entitlement_management')
-terms_of_use_container = lazy_import('msgraph.generated.models.terms_of_use_container')
+if TYPE_CHECKING:
+    from . import access_review_set, app_consent_approval_route, entitlement_management, terms_of_use_container
 
 class IdentityGovernance(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new IdentityGovernance and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The accessReviews property
+        self._access_reviews: Optional[access_review_set.AccessReviewSet] = None
+        # The appConsent property
+        self._app_consent: Optional[app_consent_approval_route.AppConsentApprovalRoute] = None
+        # The entitlementManagement property
+        self._entitlement_management: Optional[entitlement_management.EntitlementManagement] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The termsOfUse property
+        self._terms_of_use: Optional[terms_of_use_container.TermsOfUseContainer] = None
+    
     @property
     def access_reviews(self,) -> Optional[access_review_set.AccessReviewSet]:
         """
@@ -60,24 +75,6 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
         """
         self._app_consent = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new IdentityGovernance and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The accessReviews property
-        self._access_reviews: Optional[access_review_set.AccessReviewSet] = None
-        # The appConsent property
-        self._app_consent: Optional[app_consent_approval_route.AppConsentApprovalRoute] = None
-        # The entitlementManagement property
-        self._entitlement_management: Optional[entitlement_management.EntitlementManagement] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The termsOfUse property
-        self._terms_of_use: Optional[terms_of_use_container.TermsOfUseContainer] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdentityGovernance:
         """
@@ -112,7 +109,9 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import access_review_set, app_consent_approval_route, entitlement_management, terms_of_use_container
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "accessReviews": lambda n : setattr(self, 'access_reviews', n.get_object_value(access_review_set.AccessReviewSet)),
             "appConsent": lambda n : setattr(self, 'app_consent', n.get_object_value(app_consent_approval_route.AppConsentApprovalRoute)),
             "entitlementManagement": lambda n : setattr(self, 'entitlement_management', n.get_object_value(entitlement_management.EntitlementManagement)),

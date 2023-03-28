@@ -1,9 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-education_assignment_recipient = lazy_import('msgraph.generated.models.education_assignment_recipient')
+if TYPE_CHECKING:
+    from . import education_assignment_recipient
+
+from . import education_assignment_recipient
 
 class EducationAssignmentIndividualRecipient(education_assignment_recipient.EducationAssignmentRecipient):
     def __init__(self,) -> None:
@@ -32,7 +34,9 @@ class EducationAssignmentIndividualRecipient(education_assignment_recipient.Educ
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import education_assignment_recipient
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "recipients": lambda n : setattr(self, 'recipients', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()

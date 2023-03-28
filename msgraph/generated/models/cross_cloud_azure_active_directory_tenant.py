@@ -1,11 +1,26 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-identity_source = lazy_import('msgraph.generated.models.identity_source')
+if TYPE_CHECKING:
+    from . import identity_source
+
+from . import identity_source
 
 class CrossCloudAzureActiveDirectoryTenant(identity_source.IdentitySource):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new CrossCloudAzureActiveDirectoryTenant and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.crossCloudAzureActiveDirectoryTenant"
+        # The ID of the cloud where the tenant is located, one of microsoftonline.com, microsoftonline.us or partner.microsoftonline.cn. Read only.
+        self._cloud_instance: Optional[str] = None
+        # The name of the Azure Active Directory tenant. Read only.
+        self._display_name: Optional[str] = None
+        # The ID of the Azure Active Directory tenant. Read only.
+        self._tenant_id: Optional[str] = None
+    
     @property
     def cloud_instance(self,) -> Optional[str]:
         """
@@ -22,19 +37,6 @@ class CrossCloudAzureActiveDirectoryTenant(identity_source.IdentitySource):
             value: Value to set for the cloud_instance property.
         """
         self._cloud_instance = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new CrossCloudAzureActiveDirectoryTenant and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.crossCloudAzureActiveDirectoryTenant"
-        # The ID of the cloud where the tenant is located, one of microsoftonline.com, microsoftonline.us or partner.microsoftonline.cn. Read only.
-        self._cloud_instance: Optional[str] = None
-        # The name of the Azure Active Directory tenant. Read only.
-        self._display_name: Optional[str] = None
-        # The ID of the Azure Active Directory tenant. Read only.
-        self._tenant_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CrossCloudAzureActiveDirectoryTenant:
@@ -70,7 +72,9 @@ class CrossCloudAzureActiveDirectoryTenant(identity_source.IdentitySource):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import identity_source
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "cloudInstance": lambda n : setattr(self, 'cloud_instance', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),

@@ -1,12 +1,38 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import entity
+
+from . import entity
 
 class ApplePushNotificationCertificate(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new applePushNotificationCertificate and sets the default values.
+        """
+        super().__init__()
+        # Apple Id of the account used to create the MDM push certificate.
+        self._apple_identifier: Optional[str] = None
+        # Not yet documented
+        self._certificate: Optional[str] = None
+        # Certificate serial number. This property is read-only.
+        self._certificate_serial_number: Optional[str] = None
+        # The reason the certificate upload failed.
+        self._certificate_upload_failure_reason: Optional[str] = None
+        # The certificate upload status.
+        self._certificate_upload_status: Optional[str] = None
+        # The expiration date and time for Apple push notification certificate.
+        self._expiration_date_time: Optional[datetime] = None
+        # Last modified date and time for Apple push notification certificate.
+        self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Topic Id.
+        self._topic_identifier: Optional[str] = None
+    
     @property
     def apple_identifier(self,) -> Optional[str]:
         """
@@ -92,30 +118,6 @@ class ApplePushNotificationCertificate(entity.Entity):
         """
         self._certificate_upload_status = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new applePushNotificationCertificate and sets the default values.
-        """
-        super().__init__()
-        # Apple Id of the account used to create the MDM push certificate.
-        self._apple_identifier: Optional[str] = None
-        # Not yet documented
-        self._certificate: Optional[str] = None
-        # Certificate serial number. This property is read-only.
-        self._certificate_serial_number: Optional[str] = None
-        # The reason the certificate upload failed.
-        self._certificate_upload_failure_reason: Optional[str] = None
-        # The certificate upload status.
-        self._certificate_upload_status: Optional[str] = None
-        # The expiration date and time for Apple push notification certificate.
-        self._expiration_date_time: Optional[datetime] = None
-        # Last modified date and time for Apple push notification certificate.
-        self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Topic Id.
-        self._topic_identifier: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ApplePushNotificationCertificate:
         """
@@ -150,7 +152,9 @@ class ApplePushNotificationCertificate(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "appleIdentifier": lambda n : setattr(self, 'apple_identifier', n.get_str_value()),
             "certificate": lambda n : setattr(self, 'certificate', n.get_str_value()),
             "certificateSerialNumber": lambda n : setattr(self, 'certificate_serial_number', n.get_str_value()),

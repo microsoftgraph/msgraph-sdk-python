@@ -1,14 +1,28 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-ios_home_screen_item = lazy_import('msgraph.generated.models.ios_home_screen_item')
+if TYPE_CHECKING:
+    from . import ios_home_screen_item
 
 class IosHomeScreenPage(AdditionalDataHolder, Parsable):
     """
     A page containing apps, folders, and web clips on the Home Screen.
     """
+    def __init__(self,) -> None:
+        """
+        Instantiates a new iosHomeScreenPage and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Name of the page
+        self._display_name: Optional[str] = None
+        # A list of apps, folders, and web clips to appear on a page. This collection can contain a maximum of 500 elements.
+        self._icons: Optional[List[ios_home_screen_item.IosHomeScreenItem]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -25,20 +39,6 @@ class IosHomeScreenPage(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new iosHomeScreenPage and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Name of the page
-        self._display_name: Optional[str] = None
-        # A list of apps, folders, and web clips to appear on a page. This collection can contain a maximum of 500 elements.
-        self._icons: Optional[List[ios_home_screen_item.IosHomeScreenItem]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosHomeScreenPage:
@@ -74,7 +74,9 @@ class IosHomeScreenPage(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import ios_home_screen_item
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "icons": lambda n : setattr(self, 'icons', n.get_collection_of_object_values(ios_home_screen_item.IosHomeScreenItem)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

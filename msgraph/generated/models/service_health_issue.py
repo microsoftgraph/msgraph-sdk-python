@@ -1,32 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-service_announcement_base = lazy_import('msgraph.generated.models.service_announcement_base')
-service_health_classification_type = lazy_import('msgraph.generated.models.service_health_classification_type')
-service_health_issue_post = lazy_import('msgraph.generated.models.service_health_issue_post')
-service_health_origin = lazy_import('msgraph.generated.models.service_health_origin')
-service_health_status = lazy_import('msgraph.generated.models.service_health_status')
+if TYPE_CHECKING:
+    from . import service_announcement_base, service_health_classification_type, service_health_issue_post, service_health_origin, service_health_status
+
+from . import service_announcement_base
 
 class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
-    @property
-    def classification(self,) -> Optional[service_health_classification_type.ServiceHealthClassificationType]:
-        """
-        Gets the classification property value. The classification property
-        Returns: Optional[service_health_classification_type.ServiceHealthClassificationType]
-        """
-        return self._classification
-    
-    @classification.setter
-    def classification(self,value: Optional[service_health_classification_type.ServiceHealthClassificationType] = None) -> None:
-        """
-        Sets the classification property value. The classification property
-        Args:
-            value: Value to set for the classification property.
-        """
-        self._classification = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new ServiceHealthIssue and sets the default values.
@@ -51,6 +32,23 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         self._service: Optional[str] = None
         # The status property
         self._status: Optional[service_health_status.ServiceHealthStatus] = None
+    
+    @property
+    def classification(self,) -> Optional[service_health_classification_type.ServiceHealthClassificationType]:
+        """
+        Gets the classification property value. The classification property
+        Returns: Optional[service_health_classification_type.ServiceHealthClassificationType]
+        """
+        return self._classification
+    
+    @classification.setter
+    def classification(self,value: Optional[service_health_classification_type.ServiceHealthClassificationType] = None) -> None:
+        """
+        Sets the classification property value. The classification property
+        Args:
+            value: Value to set for the classification property.
+        """
+        self._classification = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceHealthIssue:
@@ -103,7 +101,9 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import service_announcement_base, service_health_classification_type, service_health_issue_post, service_health_origin, service_health_status
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "classification": lambda n : setattr(self, 'classification', n.get_enum_value(service_health_classification_type.ServiceHealthClassificationType)),
             "feature": lambda n : setattr(self, 'feature', n.get_str_value()),
             "featureGroup": lambda n : setattr(self, 'feature_group', n.get_str_value()),

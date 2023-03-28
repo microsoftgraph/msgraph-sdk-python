@@ -1,12 +1,29 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-set = lazy_import('msgraph.generated.models.term_store.set')
-term = lazy_import('msgraph.generated.models.term_store.term')
+if TYPE_CHECKING:
+    from .term_store import set, term
 
 class TermColumn(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new termColumn and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Specifies whether the column will allow more than one value.
+        self._allow_multiple_values: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The parentTerm property
+        self._parent_term: Optional[term.Term] = None
+        # Specifies whether to display the entire term path or only the term label.
+        self._show_fully_qualified_name: Optional[bool] = None
+        # The termSet property
+        self._term_set: Optional[set.Set] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -41,24 +58,6 @@ class TermColumn(AdditionalDataHolder, Parsable):
         """
         self._allow_multiple_values = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new termColumn and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Specifies whether the column will allow more than one value.
-        self._allow_multiple_values: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The parentTerm property
-        self._parent_term: Optional[term.Term] = None
-        # Specifies whether to display the entire term path or only the term label.
-        self._show_fully_qualified_name: Optional[bool] = None
-        # The termSet property
-        self._term_set: Optional[set.Set] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TermColumn:
         """
@@ -76,7 +75,9 @@ class TermColumn(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from .term_store import set, term
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "allowMultipleValues": lambda n : setattr(self, 'allow_multiple_values', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "parentTerm": lambda n : setattr(self, 'parent_term', n.get_object_value(term.Term)),

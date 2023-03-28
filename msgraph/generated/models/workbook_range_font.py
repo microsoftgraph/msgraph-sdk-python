@@ -1,11 +1,33 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import entity
+
+from . import entity
 
 class WorkbookRangeFont(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new workbookRangeFont and sets the default values.
+        """
+        super().__init__()
+        # Represents the bold status of font.
+        self._bold: Optional[bool] = None
+        # HTML color code representation of the text color. E.g. #FF0000 represents Red.
+        self._color: Optional[str] = None
+        # Represents the italic status of the font.
+        self._italic: Optional[bool] = None
+        # Font name (e.g. 'Calibri')
+        self._name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Font size.
+        self._size: Optional[float] = None
+        # Type of underline applied to the font. The possible values are: None, Single, Double, SingleAccountant, DoubleAccountant.
+        self._underline: Optional[str] = None
+    
     @property
     def bold(self,) -> Optional[bool]:
         """
@@ -40,26 +62,6 @@ class WorkbookRangeFont(entity.Entity):
         """
         self._color = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookRangeFont and sets the default values.
-        """
-        super().__init__()
-        # Represents the bold status of font.
-        self._bold: Optional[bool] = None
-        # HTML color code representation of the text color. E.g. #FF0000 represents Red.
-        self._color: Optional[str] = None
-        # Represents the italic status of the font.
-        self._italic: Optional[bool] = None
-        # Font name (e.g. 'Calibri')
-        self._name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Font size.
-        self._size: Optional[float] = None
-        # Type of underline applied to the font. The possible values are: None, Single, Double, SingleAccountant, DoubleAccountant.
-        self._underline: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookRangeFont:
         """
@@ -77,7 +79,9 @@ class WorkbookRangeFont(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "bold": lambda n : setattr(self, 'bold', n.get_bool_value()),
             "color": lambda n : setattr(self, 'color', n.get_str_value()),
             "italic": lambda n : setattr(self, 'italic', n.get_bool_value()),

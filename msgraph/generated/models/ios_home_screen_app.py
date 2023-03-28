@@ -1,11 +1,22 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-ios_home_screen_item = lazy_import('msgraph.generated.models.ios_home_screen_item')
+if TYPE_CHECKING:
+    from . import ios_home_screen_item
+
+from . import ios_home_screen_item
 
 class IosHomeScreenApp(ios_home_screen_item.IosHomeScreenItem):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new IosHomeScreenApp and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.iosHomeScreenApp"
+        # BundleID of the app if isWebClip is false or the URL of a web clip if isWebClip is true.
+        self._bundle_i_d: Optional[str] = None
+    
     @property
     def bundle_i_d(self,) -> Optional[str]:
         """
@@ -22,15 +33,6 @@ class IosHomeScreenApp(ios_home_screen_item.IosHomeScreenItem):
             value: Value to set for the bundle_i_d property.
         """
         self._bundle_i_d = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new IosHomeScreenApp and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.iosHomeScreenApp"
-        # BundleID of the app if isWebClip is false or the URL of a web clip if isWebClip is true.
-        self._bundle_i_d: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosHomeScreenApp:
@@ -49,7 +51,9 @@ class IosHomeScreenApp(ios_home_screen_item.IosHomeScreenItem):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import ios_home_screen_item
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "bundleID": lambda n : setattr(self, 'bundle_i_d', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

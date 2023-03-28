@@ -1,30 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-onenote_source_service = lazy_import('msgraph.generated.models.onenote_source_service')
-recent_notebook_links = lazy_import('msgraph.generated.models.recent_notebook_links')
+if TYPE_CHECKING:
+    from . import onenote_source_service, recent_notebook_links
 
 class RecentNotebook(AdditionalDataHolder, Parsable):
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new recentNotebook and sets the default values.
@@ -42,6 +24,23 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The backend store where the Notebook resides, either OneDriveForBusiness or OneDrive.
         self._source_service: Optional[onenote_source_service.OnenoteSourceService] = None
+    
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RecentNotebook:
@@ -77,7 +76,9 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import onenote_source_service, recent_notebook_links
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "lastAccessedTime": lambda n : setattr(self, 'last_accessed_time', n.get_datetime_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(recent_notebook_links.RecentNotebookLinks)),

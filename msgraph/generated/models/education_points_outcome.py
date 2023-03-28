@@ -1,10 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-education_assignment_points_grade = lazy_import('msgraph.generated.models.education_assignment_points_grade')
-education_outcome = lazy_import('msgraph.generated.models.education_outcome')
+if TYPE_CHECKING:
+    from . import education_assignment_points_grade, education_outcome
+
+from . import education_outcome
 
 class EducationPointsOutcome(education_outcome.EducationOutcome):
     def __init__(self,) -> None:
@@ -35,7 +36,9 @@ class EducationPointsOutcome(education_outcome.EducationOutcome):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import education_assignment_points_grade, education_outcome
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "points": lambda n : setattr(self, 'points', n.get_object_value(education_assignment_points_grade.EducationAssignmentPointsGrade)),
             "publishedPoints": lambda n : setattr(self, 'published_points', n.get_object_value(education_assignment_points_grade.EducationAssignmentPointsGrade)),
         }

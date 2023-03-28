@@ -1,12 +1,22 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-identity = lazy_import('msgraph.generated.models.identity')
-teamwork_application_identity_type = lazy_import('msgraph.generated.models.teamwork_application_identity_type')
+if TYPE_CHECKING:
+    from . import identity, teamwork_application_identity_type
+
+from . import identity
 
 class TeamworkApplicationIdentity(identity.Identity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new TeamworkApplicationIdentity and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.teamworkApplicationIdentity"
+        # Type of application that is referenced. Possible values are: aadApplication, bot, tenantBot, office365Connector, outgoingWebhook, and unknownFutureValue.
+        self._application_identity_type: Optional[teamwork_application_identity_type.TeamworkApplicationIdentityType] = None
+    
     @property
     def application_identity_type(self,) -> Optional[teamwork_application_identity_type.TeamworkApplicationIdentityType]:
         """
@@ -23,15 +33,6 @@ class TeamworkApplicationIdentity(identity.Identity):
             value: Value to set for the application_identity_type property.
         """
         self._application_identity_type = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new TeamworkApplicationIdentity and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.teamworkApplicationIdentity"
-        # Type of application that is referenced. Possible values are: aadApplication, bot, tenantBot, office365Connector, outgoingWebhook, and unknownFutureValue.
-        self._application_identity_type: Optional[teamwork_application_identity_type.TeamworkApplicationIdentityType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamworkApplicationIdentity:
@@ -50,7 +51,9 @@ class TeamworkApplicationIdentity(identity.Identity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import identity, teamwork_application_identity_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "applicationIdentityType": lambda n : setattr(self, 'application_identity_type', n.get_enum_value(teamwork_application_identity_type.TeamworkApplicationIdentityType)),
         }
         super_fields = super().get_field_deserializers()

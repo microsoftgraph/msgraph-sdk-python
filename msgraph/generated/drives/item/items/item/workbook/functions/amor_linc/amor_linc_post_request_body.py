@@ -1,11 +1,33 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-json = lazy_import('msgraph.generated.models.json')
+if TYPE_CHECKING:
+    from ........models import json
 
 class AmorLincPostRequestBody(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new amorLincPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The basis property
+        self._basis: Optional[json.Json] = None
+        # The cost property
+        self._cost: Optional[json.Json] = None
+        # The datePurchased property
+        self._date_purchased: Optional[json.Json] = None
+        # The firstPeriod property
+        self._first_period: Optional[json.Json] = None
+        # The period property
+        self._period: Optional[json.Json] = None
+        # The rate property
+        self._rate: Optional[json.Json] = None
+        # The salvage property
+        self._salvage: Optional[json.Json] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -39,28 +61,6 @@ class AmorLincPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the basis property.
         """
         self._basis = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new amorLincPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The basis property
-        self._basis: Optional[json.Json] = None
-        # The cost property
-        self._cost: Optional[json.Json] = None
-        # The datePurchased property
-        self._date_purchased: Optional[json.Json] = None
-        # The firstPeriod property
-        self._first_period: Optional[json.Json] = None
-        # The period property
-        self._period: Optional[json.Json] = None
-        # The rate property
-        self._rate: Optional[json.Json] = None
-        # The salvage property
-        self._salvage: Optional[json.Json] = None
     
     @property
     def cost(self,) -> Optional[json.Json]:
@@ -130,7 +130,9 @@ class AmorLincPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from ........models import json
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "basis": lambda n : setattr(self, 'basis', n.get_object_value(json.Json)),
             "cost": lambda n : setattr(self, 'cost', n.get_object_value(json.Json)),
             "datePurchased": lambda n : setattr(self, 'date_purchased', n.get_object_value(json.Json)),

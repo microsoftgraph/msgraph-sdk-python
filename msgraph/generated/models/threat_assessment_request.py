@@ -1,39 +1,17 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-identity_set = lazy_import('msgraph.generated.models.identity_set')
-threat_assessment_content_type = lazy_import('msgraph.generated.models.threat_assessment_content_type')
-threat_assessment_request_source = lazy_import('msgraph.generated.models.threat_assessment_request_source')
-threat_assessment_result = lazy_import('msgraph.generated.models.threat_assessment_result')
-threat_assessment_status = lazy_import('msgraph.generated.models.threat_assessment_status')
-threat_category = lazy_import('msgraph.generated.models.threat_category')
-threat_expected_assessment = lazy_import('msgraph.generated.models.threat_expected_assessment')
+if TYPE_CHECKING:
+    from . import email_file_assessment_request, entity, file_assessment_request, identity_set, mail_assessment_request, threat_assessment_content_type, threat_assessment_request_source, threat_assessment_result, threat_assessment_status, threat_category, threat_expected_assessment, url_assessment_request
+
+from . import entity
 
 class ThreatAssessmentRequest(entity.Entity):
-    @property
-    def category(self,) -> Optional[threat_category.ThreatCategory]:
-        """
-        Gets the category property value. The category property
-        Returns: Optional[threat_category.ThreatCategory]
-        """
-        return self._category
-    
-    @category.setter
-    def category(self,value: Optional[threat_category.ThreatCategory] = None) -> None:
-        """
-        Sets the category property value. The category property
-        Args:
-            value: Value to set for the category property.
-        """
-        self._category = value
-    
     def __init__(self,) -> None:
         """
-        Instantiates a new ThreatAssessmentRequest and sets the default values.
+        Instantiates a new threatAssessmentRequest and sets the default values.
         """
         super().__init__()
         # The category property
@@ -54,6 +32,23 @@ class ThreatAssessmentRequest(entity.Entity):
         self._results: Optional[List[threat_assessment_result.ThreatAssessmentResult]] = None
         # The assessment process status. Possible values are: pending, completed.
         self._status: Optional[threat_assessment_status.ThreatAssessmentStatus] = None
+    
+    @property
+    def category(self,) -> Optional[threat_category.ThreatCategory]:
+        """
+        Gets the category property value. The category property
+        Returns: Optional[threat_category.ThreatCategory]
+        """
+        return self._category
+    
+    @category.setter
+    def category(self,value: Optional[threat_category.ThreatCategory] = None) -> None:
+        """
+        Sets the category property value. The category property
+        Args:
+            value: Value to set for the category property.
+        """
+        self._category = value
     
     @property
     def content_type(self,) -> Optional[threat_assessment_content_type.ThreatAssessmentContentType]:
@@ -116,6 +111,25 @@ class ThreatAssessmentRequest(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.emailFileAssessmentRequest":
+                from . import email_file_assessment_request
+
+                return email_file_assessment_request.EmailFileAssessmentRequest()
+            if mapping_value == "#microsoft.graph.fileAssessmentRequest":
+                from . import file_assessment_request
+
+                return file_assessment_request.FileAssessmentRequest()
+            if mapping_value == "#microsoft.graph.mailAssessmentRequest":
+                from . import mail_assessment_request
+
+                return mail_assessment_request.MailAssessmentRequest()
+            if mapping_value == "#microsoft.graph.urlAssessmentRequest":
+                from . import url_assessment_request
+
+                return url_assessment_request.UrlAssessmentRequest()
         return ThreatAssessmentRequest()
     
     @property
@@ -140,7 +154,9 @@ class ThreatAssessmentRequest(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import email_file_assessment_request, entity, file_assessment_request, identity_set, mail_assessment_request, threat_assessment_content_type, threat_assessment_request_source, threat_assessment_result, threat_assessment_status, threat_category, threat_expected_assessment, url_assessment_request
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "category": lambda n : setattr(self, 'category', n.get_enum_value(threat_category.ThreatCategory)),
             "contentType": lambda n : setattr(self, 'content_type', n.get_enum_value(threat_assessment_content_type.ThreatAssessmentContentType)),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),

@@ -1,14 +1,30 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-delegated_admin_relationship_request_action = lazy_import('msgraph.generated.models.delegated_admin_relationship_request_action')
-delegated_admin_relationship_request_status = lazy_import('msgraph.generated.models.delegated_admin_relationship_request_status')
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import delegated_admin_relationship_request_action, delegated_admin_relationship_request_status, entity
+
+from . import entity
 
 class DelegatedAdminRelationshipRequest(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new delegatedAdminRelationshipRequest and sets the default values.
+        """
+        super().__init__()
+        # The action property
+        self._action: Optional[delegated_admin_relationship_request_action.DelegatedAdminRelationshipRequestAction] = None
+        # The date and time in ISO 8601 format and in UTC time when the relationship request was created. Read-only.
+        self._created_date_time: Optional[datetime] = None
+        # The date and time in ISO 8601 format and UTC time when this relationship request was last modified. Read-only.
+        self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The status of the request. Read-only. The possible values are: created, pending, succeeded, failed, unknownFutureValue.
+        self._status: Optional[delegated_admin_relationship_request_status.DelegatedAdminRelationshipRequestStatus] = None
+    
     @property
     def action(self,) -> Optional[delegated_admin_relationship_request_action.DelegatedAdminRelationshipRequestAction]:
         """
@@ -25,22 +41,6 @@ class DelegatedAdminRelationshipRequest(entity.Entity):
             value: Value to set for the action property.
         """
         self._action = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new delegatedAdminRelationshipRequest and sets the default values.
-        """
-        super().__init__()
-        # The action property
-        self._action: Optional[delegated_admin_relationship_request_action.DelegatedAdminRelationshipRequestAction] = None
-        # The date and time in ISO 8601 format and in UTC time when the relationship request was created. Read-only.
-        self._created_date_time: Optional[datetime] = None
-        # The date and time in ISO 8601 format and UTC time when this relationship request was last modified. Read-only.
-        self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The status of the request. Read-only. The possible values are: created, pending, succeeded, failed, unknownFutureValue.
-        self._status: Optional[delegated_admin_relationship_request_status.DelegatedAdminRelationshipRequestStatus] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -76,7 +76,9 @@ class DelegatedAdminRelationshipRequest(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import delegated_admin_relationship_request_action, delegated_admin_relationship_request_status, entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(delegated_admin_relationship_request_action.DelegatedAdminRelationshipRequestAction)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),

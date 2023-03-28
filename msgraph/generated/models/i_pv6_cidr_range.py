@@ -1,11 +1,22 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-ip_range = lazy_import('msgraph.generated.models.ip_range')
+if TYPE_CHECKING:
+    from . import ip_range
+
+from . import ip_range
 
 class IPv6CidrRange(ip_range.IpRange):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new IPv6CidrRange and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.iPv6CidrRange"
+        # IPv6 address in CIDR notation. Not nullable.
+        self._cidr_address: Optional[str] = None
+    
     @property
     def cidr_address(self,) -> Optional[str]:
         """
@@ -22,15 +33,6 @@ class IPv6CidrRange(ip_range.IpRange):
             value: Value to set for the cidr_address property.
         """
         self._cidr_address = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new IPv6CidrRange and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.iPv6CidrRange"
-        # IPv6 address in CIDR notation. Not nullable.
-        self._cidr_address: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IPv6CidrRange:
@@ -49,7 +51,9 @@ class IPv6CidrRange(ip_range.IpRange):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import ip_range
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "cidrAddress": lambda n : setattr(self, 'cidr_address', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

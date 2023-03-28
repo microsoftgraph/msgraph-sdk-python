@@ -1,9 +1,22 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class BookingQuestionAssignment(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new bookingQuestionAssignment and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The ID of the custom question.
+        self._is_required: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Indicates whether it is mandatory to answer the custom question.
+        self._question_id: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -20,20 +33,6 @@ class BookingQuestionAssignment(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new bookingQuestionAssignment and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The ID of the custom question.
-        self._is_required: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Indicates whether it is mandatory to answer the custom question.
-        self._question_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingQuestionAssignment:
@@ -52,7 +51,7 @@ class BookingQuestionAssignment(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "isRequired": lambda n : setattr(self, 'is_required', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "questionId": lambda n : setattr(self, 'question_id', n.get_str_value()),

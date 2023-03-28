@@ -1,11 +1,35 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-answer_input_type = lazy_import('msgraph.generated.models.answer_input_type')
+if TYPE_CHECKING:
+    from . import answer_input_type
 
 class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new bookingQuestionAnswer and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The answer given by the user in case the answerInputType is text.
+        self._answer: Optional[str] = None
+        # The expected answer type. The possible values are: text, radioButton, unknownFutureValue.
+        self._answer_input_type: Optional[answer_input_type.AnswerInputType] = None
+        # In case the answerInputType is radioButton, this will consists of a list of possible answer values.
+        self._answer_options: Optional[List[str]] = None
+        # Indicates whether it is mandatory to answer the custom question.
+        self._is_required: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The question.
+        self._question: Optional[str] = None
+        # The ID of the custom question.
+        self._question_id: Optional[str] = None
+        # The answers selected by the user.
+        self._selected_options: Optional[List[str]] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -74,30 +98,6 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         """
         self._answer_options = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new bookingQuestionAnswer and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The answer given by the user in case the answerInputType is text.
-        self._answer: Optional[str] = None
-        # The expected answer type. The possible values are: text, radioButton, unknownFutureValue.
-        self._answer_input_type: Optional[answer_input_type.AnswerInputType] = None
-        # In case the answerInputType is radioButton, this will consists of a list of possible answer values.
-        self._answer_options: Optional[List[str]] = None
-        # Indicates whether it is mandatory to answer the custom question.
-        self._is_required: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The question.
-        self._question: Optional[str] = None
-        # The ID of the custom question.
-        self._question_id: Optional[str] = None
-        # The answers selected by the user.
-        self._selected_options: Optional[List[str]] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingQuestionAnswer:
         """
@@ -115,7 +115,9 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import answer_input_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "answer": lambda n : setattr(self, 'answer', n.get_str_value()),
             "answerInputType": lambda n : setattr(self, 'answer_input_type', n.get_enum_value(answer_input_type.AnswerInputType)),
             "answerOptions": lambda n : setattr(self, 'answer_options', n.get_collection_of_primitive_values(str)),

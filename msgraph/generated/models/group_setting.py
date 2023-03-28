@@ -1,10 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-setting_value = lazy_import('msgraph.generated.models.setting_value')
+if TYPE_CHECKING:
+    from . import entity, setting_value
+
+from . import entity
 
 class GroupSetting(entity.Entity):
     def __init__(self,) -> None:
@@ -55,7 +56,9 @@ class GroupSetting(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, setting_value
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "templateId": lambda n : setattr(self, 'template_id', n.get_str_value()),
             "values": lambda n : setattr(self, 'values', n.get_collection_of_object_values(setting_value.SettingValue)),

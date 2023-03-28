@@ -1,10 +1,27 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class AssignedPlan(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new assignedPlan and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The date and time at which the plan was assigned. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+        self._assigned_date_time: Optional[datetime] = None
+        # Condition of the capability assignment. The possible values are Enabled, Warning, Suspended, Deleted, LockedOut. See a detailed description of each value.
+        self._capability_status: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The name of the service; for example, exchange.
+        self._service: Optional[str] = None
+        # A GUID that identifies the service plan. For a complete list of GUIDs and their equivalent friendly service names, see Product names and service plan identifiers for licensing.
+        self._service_plan_id: Optional[Guid] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -56,24 +73,6 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
         """
         self._capability_status = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new assignedPlan and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The date and time at which the plan was assigned. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        self._assigned_date_time: Optional[datetime] = None
-        # Condition of the capability assignment. The possible values are Enabled, Warning, Suspended, Deleted, LockedOut. See a detailed description of each value.
-        self._capability_status: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The name of the service; for example, exchange.
-        self._service: Optional[str] = None
-        # A GUID that identifies the service plan. For a complete list of GUIDs and their equivalent friendly service names, see Product names and service plan identifiers for licensing.
-        self._service_plan_id: Optional[Guid] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AssignedPlan:
         """
@@ -91,7 +90,7 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "assignedDateTime": lambda n : setattr(self, 'assigned_date_time', n.get_datetime_value()),
             "capabilityStatus": lambda n : setattr(self, 'capability_status', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

@@ -1,29 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+
+if TYPE_CHECKING:
+    from . import windows_information_protection_desktop_app, windows_information_protection_store_app
 
 class WindowsInformationProtectionApp(AdditionalDataHolder, Parsable):
     """
     App for Windows information protection
     """
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new windowsInformationProtectionApp and sets the default values.
@@ -44,6 +29,23 @@ class WindowsInformationProtectionApp(AdditionalDataHolder, Parsable):
         # The publisher name
         self._publisher_name: Optional[str] = None
     
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtectionApp:
         """
@@ -54,6 +56,17 @@ class WindowsInformationProtectionApp(AdditionalDataHolder, Parsable):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.windowsInformationProtectionDesktopApp":
+                from . import windows_information_protection_desktop_app
+
+                return windows_information_protection_desktop_app.WindowsInformationProtectionDesktopApp()
+            if mapping_value == "#microsoft.graph.windowsInformationProtectionStoreApp":
+                from . import windows_information_protection_store_app
+
+                return windows_information_protection_store_app.WindowsInformationProtectionStoreApp()
         return WindowsInformationProtectionApp()
     
     @property
@@ -112,7 +125,9 @@ class WindowsInformationProtectionApp(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import windows_information_protection_desktop_app, windows_information_protection_store_app
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "denied": lambda n : setattr(self, 'denied', n.get_bool_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

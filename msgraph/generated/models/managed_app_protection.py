@@ -1,17 +1,75 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-managed_app_clipboard_sharing_level = lazy_import('msgraph.generated.models.managed_app_clipboard_sharing_level')
-managed_app_data_storage_location = lazy_import('msgraph.generated.models.managed_app_data_storage_location')
-managed_app_data_transfer_level = lazy_import('msgraph.generated.models.managed_app_data_transfer_level')
-managed_app_pin_character_set = lazy_import('msgraph.generated.models.managed_app_pin_character_set')
-managed_app_policy = lazy_import('msgraph.generated.models.managed_app_policy')
-managed_browser_type = lazy_import('msgraph.generated.models.managed_browser_type')
+if TYPE_CHECKING:
+    from . import android_managed_app_protection, default_managed_app_protection, ios_managed_app_protection, managed_app_clipboard_sharing_level, managed_app_data_storage_location, managed_app_data_transfer_level, managed_app_pin_character_set, managed_app_policy, managed_browser_type, targeted_managed_app_protection
+
+from . import managed_app_policy
 
 class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new ManagedAppProtection and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.managedAppProtection"
+        # Data storage locations where a user may store managed data.
+        self._allowed_data_storage_locations: Optional[List[managed_app_data_storage_location.ManagedAppDataStorageLocation]] = None
+        # Data can be transferred from/to these classes of apps
+        self._allowed_inbound_data_transfer_sources: Optional[managed_app_data_transfer_level.ManagedAppDataTransferLevel] = None
+        # Represents the level to which the device's clipboard may be shared between apps
+        self._allowed_outbound_clipboard_sharing_level: Optional[managed_app_clipboard_sharing_level.ManagedAppClipboardSharingLevel] = None
+        # Data can be transferred from/to these classes of apps
+        self._allowed_outbound_data_transfer_destinations: Optional[managed_app_data_transfer_level.ManagedAppDataTransferLevel] = None
+        # Indicates whether contacts can be synced to the user's device.
+        self._contact_sync_blocked: Optional[bool] = None
+        # Indicates whether the backup of a managed app's data is blocked.
+        self._data_backup_blocked: Optional[bool] = None
+        # Indicates whether device compliance is required.
+        self._device_compliance_required: Optional[bool] = None
+        # Indicates whether use of the app pin is required if the device pin is set.
+        self._disable_app_pin_if_device_pin_is_set: Optional[bool] = None
+        # Indicates whether use of the fingerprint reader is allowed in place of a pin if PinRequired is set to True.
+        self._fingerprint_blocked: Optional[bool] = None
+        # Type of managed browser
+        self._managed_browser: Optional[managed_browser_type.ManagedBrowserType] = None
+        # Indicates whether internet links should be opened in the managed browser app, or any custom browser specified by CustomBrowserProtocol (for iOS) or CustomBrowserPackageId/CustomBrowserDisplayName (for Android)
+        self._managed_browser_to_open_links_required: Optional[bool] = None
+        # Maximum number of incorrect pin retry attempts before the managed app is either blocked or wiped.
+        self._maximum_pin_retries: Optional[int] = None
+        # Minimum pin length required for an app-level pin if PinRequired is set to True
+        self._minimum_pin_length: Optional[int] = None
+        # Versions less than the specified version will block the managed app from accessing company data.
+        self._minimum_required_app_version: Optional[str] = None
+        # Versions less than the specified version will block the managed app from accessing company data.
+        self._minimum_required_os_version: Optional[str] = None
+        # Versions less than the specified version will result in warning message on the managed app.
+        self._minimum_warning_app_version: Optional[str] = None
+        # Versions less than the specified version will result in warning message on the managed app from accessing company data.
+        self._minimum_warning_os_version: Optional[str] = None
+        # Indicates whether organizational credentials are required for app use.
+        self._organizational_credentials_required: Optional[bool] = None
+        # TimePeriod before the all-level pin must be reset if PinRequired is set to True.
+        self._period_before_pin_reset: Optional[Timedelta] = None
+        # The period after which access is checked when the device is not connected to the internet.
+        self._period_offline_before_access_check: Optional[Timedelta] = None
+        # The amount of time an app is allowed to remain disconnected from the internet before all managed data it is wiped.
+        self._period_offline_before_wipe_is_enforced: Optional[Timedelta] = None
+        # The period after which access is checked when the device is connected to the internet.
+        self._period_online_before_access_check: Optional[Timedelta] = None
+        # Character set which is to be used for a user's app PIN
+        self._pin_character_set: Optional[managed_app_pin_character_set.ManagedAppPinCharacterSet] = None
+        # Indicates whether an app-level pin is required.
+        self._pin_required: Optional[bool] = None
+        # Indicates whether printing is allowed from managed apps.
+        self._print_blocked: Optional[bool] = None
+        # Indicates whether users may use the 'Save As' menu item to save a copy of protected files.
+        self._save_as_blocked: Optional[bool] = None
+        # Indicates whether simplePin is blocked.
+        self._simple_pin_blocked: Optional[bool] = None
+    
     @property
     def allowed_data_storage_locations(self,) -> Optional[List[managed_app_data_storage_location.ManagedAppDataStorageLocation]]:
         """
@@ -80,67 +138,6 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         """
         self._allowed_outbound_data_transfer_destinations = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ManagedAppProtection and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.managedAppProtection"
-        # Data storage locations where a user may store managed data.
-        self._allowed_data_storage_locations: Optional[List[managed_app_data_storage_location.ManagedAppDataStorageLocation]] = None
-        # Data can be transferred from/to these classes of apps
-        self._allowed_inbound_data_transfer_sources: Optional[managed_app_data_transfer_level.ManagedAppDataTransferLevel] = None
-        # Represents the level to which the device's clipboard may be shared between apps
-        self._allowed_outbound_clipboard_sharing_level: Optional[managed_app_clipboard_sharing_level.ManagedAppClipboardSharingLevel] = None
-        # Data can be transferred from/to these classes of apps
-        self._allowed_outbound_data_transfer_destinations: Optional[managed_app_data_transfer_level.ManagedAppDataTransferLevel] = None
-        # Indicates whether contacts can be synced to the user's device.
-        self._contact_sync_blocked: Optional[bool] = None
-        # Indicates whether the backup of a managed app's data is blocked.
-        self._data_backup_blocked: Optional[bool] = None
-        # Indicates whether device compliance is required.
-        self._device_compliance_required: Optional[bool] = None
-        # Indicates whether use of the app pin is required if the device pin is set.
-        self._disable_app_pin_if_device_pin_is_set: Optional[bool] = None
-        # Indicates whether use of the fingerprint reader is allowed in place of a pin if PinRequired is set to True.
-        self._fingerprint_blocked: Optional[bool] = None
-        # Type of managed browser
-        self._managed_browser: Optional[managed_browser_type.ManagedBrowserType] = None
-        # Indicates whether internet links should be opened in the managed browser app, or any custom browser specified by CustomBrowserProtocol (for iOS) or CustomBrowserPackageId/CustomBrowserDisplayName (for Android)
-        self._managed_browser_to_open_links_required: Optional[bool] = None
-        # Maximum number of incorrect pin retry attempts before the managed app is either blocked or wiped.
-        self._maximum_pin_retries: Optional[int] = None
-        # Minimum pin length required for an app-level pin if PinRequired is set to True
-        self._minimum_pin_length: Optional[int] = None
-        # Versions less than the specified version will block the managed app from accessing company data.
-        self._minimum_required_app_version: Optional[str] = None
-        # Versions less than the specified version will block the managed app from accessing company data.
-        self._minimum_required_os_version: Optional[str] = None
-        # Versions less than the specified version will result in warning message on the managed app.
-        self._minimum_warning_app_version: Optional[str] = None
-        # Versions less than the specified version will result in warning message on the managed app from accessing company data.
-        self._minimum_warning_os_version: Optional[str] = None
-        # Indicates whether organizational credentials are required for app use.
-        self._organizational_credentials_required: Optional[bool] = None
-        # TimePeriod before the all-level pin must be reset if PinRequired is set to True.
-        self._period_before_pin_reset: Optional[Timedelta] = None
-        # The period after which access is checked when the device is not connected to the internet.
-        self._period_offline_before_access_check: Optional[Timedelta] = None
-        # The amount of time an app is allowed to remain disconnected from the internet before all managed data it is wiped.
-        self._period_offline_before_wipe_is_enforced: Optional[Timedelta] = None
-        # The period after which access is checked when the device is connected to the internet.
-        self._period_online_before_access_check: Optional[Timedelta] = None
-        # Character set which is to be used for a user's app PIN
-        self._pin_character_set: Optional[managed_app_pin_character_set.ManagedAppPinCharacterSet] = None
-        # Indicates whether an app-level pin is required.
-        self._pin_required: Optional[bool] = None
-        # Indicates whether printing is allowed from managed apps.
-        self._print_blocked: Optional[bool] = None
-        # Indicates whether users may use the 'Save As' menu item to save a copy of protected files.
-        self._save_as_blocked: Optional[bool] = None
-        # Indicates whether simplePin is blocked.
-        self._simple_pin_blocked: Optional[bool] = None
-    
     @property
     def contact_sync_blocked(self,) -> Optional[bool]:
         """
@@ -168,6 +165,25 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.androidManagedAppProtection":
+                from . import android_managed_app_protection
+
+                return android_managed_app_protection.AndroidManagedAppProtection()
+            if mapping_value == "#microsoft.graph.defaultManagedAppProtection":
+                from . import default_managed_app_protection
+
+                return default_managed_app_protection.DefaultManagedAppProtection()
+            if mapping_value == "#microsoft.graph.iosManagedAppProtection":
+                from . import ios_managed_app_protection
+
+                return ios_managed_app_protection.IosManagedAppProtection()
+            if mapping_value == "#microsoft.graph.targetedManagedAppProtection":
+                from . import targeted_managed_app_protection
+
+                return targeted_managed_app_protection.TargetedManagedAppProtection()
         return ManagedAppProtection()
     
     @property
@@ -243,7 +259,9 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import android_managed_app_protection, default_managed_app_protection, ios_managed_app_protection, managed_app_clipboard_sharing_level, managed_app_data_storage_location, managed_app_data_transfer_level, managed_app_pin_character_set, managed_app_policy, managed_browser_type, targeted_managed_app_protection
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "allowedDataStorageLocations": lambda n : setattr(self, 'allowed_data_storage_locations', n.get_collection_of_enum_values(managed_app_data_storage_location.ManagedAppDataStorageLocation)),
             "allowedInboundDataTransferSources": lambda n : setattr(self, 'allowed_inbound_data_transfer_sources', n.get_enum_value(managed_app_data_transfer_level.ManagedAppDataTransferLevel)),
             "allowedOutboundClipboardSharingLevel": lambda n : setattr(self, 'allowed_outbound_clipboard_sharing_level', n.get_enum_value(managed_app_clipboard_sharing_level.ManagedAppClipboardSharingLevel)),

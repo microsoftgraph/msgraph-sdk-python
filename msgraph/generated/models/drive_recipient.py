@@ -1,9 +1,24 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class DriveRecipient(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new driveRecipient and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The alias of the domain object, for cases where an email address is unavailable (e.g. security groups).
+        self._alias: Optional[str] = None
+        # The email address for the recipient, if the recipient has an associated email address.
+        self._email: Optional[str] = None
+        # The unique identifier for the recipient in the directory.
+        self._object_id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -37,22 +52,6 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
             value: Value to set for the alias property.
         """
         self._alias = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new driveRecipient and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The alias of the domain object, for cases where an email address is unavailable (e.g. security groups).
-        self._alias: Optional[str] = None
-        # The email address for the recipient, if the recipient has an associated email address.
-        self._email: Optional[str] = None
-        # The unique identifier for the recipient in the directory.
-        self._object_id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DriveRecipient:
@@ -88,7 +87,7 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "alias": lambda n : setattr(self, 'alias', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
             "objectId": lambda n : setattr(self, 'object_id', n.get_str_value()),

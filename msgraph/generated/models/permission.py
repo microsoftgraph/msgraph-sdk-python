@@ -1,15 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-identity_set = lazy_import('msgraph.generated.models.identity_set')
-item_reference = lazy_import('msgraph.generated.models.item_reference')
-share_point_identity_set = lazy_import('msgraph.generated.models.share_point_identity_set')
-sharing_invitation = lazy_import('msgraph.generated.models.sharing_invitation')
-sharing_link = lazy_import('msgraph.generated.models.sharing_link')
+if TYPE_CHECKING:
+    from . import entity, identity_set, item_reference, share_point_identity_set, sharing_invitation, sharing_link
+
+from . import entity
 
 class Permission(entity.Entity):
     def __init__(self,) -> None:
@@ -76,7 +73,9 @@ class Permission(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, identity_set, item_reference, share_point_identity_set, sharing_invitation, sharing_link
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
             "grantedTo": lambda n : setattr(self, 'granted_to', n.get_object_value(identity_set.IdentitySet)),
             "grantedToIdentities": lambda n : setattr(self, 'granted_to_identities', n.get_collection_of_object_values(identity_set.IdentitySet)),

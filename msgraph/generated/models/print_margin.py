@@ -1,9 +1,26 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class PrintMargin(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new printMargin and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The margin in microns from the bottom edge.
+        self._bottom: Optional[int] = None
+        # The margin in microns from the left edge.
+        self._left: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The margin in microns from the right edge.
+        self._right: Optional[int] = None
+        # The margin in microns from the top edge.
+        self._top: Optional[int] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -38,24 +55,6 @@ class PrintMargin(AdditionalDataHolder, Parsable):
         """
         self._bottom = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new printMargin and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The margin in microns from the bottom edge.
-        self._bottom: Optional[int] = None
-        # The margin in microns from the left edge.
-        self._left: Optional[int] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The margin in microns from the right edge.
-        self._right: Optional[int] = None
-        # The margin in microns from the top edge.
-        self._top: Optional[int] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintMargin:
         """
@@ -73,7 +72,7 @@ class PrintMargin(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "bottom": lambda n : setattr(self, 'bottom', n.get_int_value()),
             "left": lambda n : setattr(self, 'left', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

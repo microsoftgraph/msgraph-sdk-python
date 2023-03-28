@@ -1,12 +1,27 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-risk_user_activity = lazy_import('msgraph.generated.models.risk_user_activity')
-risky_user = lazy_import('msgraph.generated.models.risky_user')
+if TYPE_CHECKING:
+    from . import risky_user, risk_user_activity
+
+from . import risky_user
 
 class RiskyUserHistoryItem(risky_user.RiskyUser):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new riskyUserHistoryItem and sets the default values.
+        """
+        super().__init__()
+        # The activity related to user risk level change.
+        self._activity: Optional[risk_user_activity.RiskUserActivity] = None
+        # The ID of actor that does the operation.
+        self._initiated_by: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The ID of the user.
+        self._user_id: Optional[str] = None
+    
     @property
     def activity(self,) -> Optional[risk_user_activity.RiskUserActivity]:
         """
@@ -23,20 +38,6 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
             value: Value to set for the activity property.
         """
         self._activity = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new riskyUserHistoryItem and sets the default values.
-        """
-        super().__init__()
-        # The activity related to user risk level change.
-        self._activity: Optional[risk_user_activity.RiskUserActivity] = None
-        # The ID of actor that does the operation.
-        self._initiated_by: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The ID of the user.
-        self._user_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RiskyUserHistoryItem:
@@ -55,7 +56,9 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import risky_user, risk_user_activity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_object_value(risk_user_activity.RiskUserActivity)),
             "initiatedBy": lambda n : setattr(self, 'initiated_by', n.get_str_value()),
             "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),

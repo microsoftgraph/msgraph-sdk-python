@@ -1,13 +1,31 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-free_busy_error = lazy_import('msgraph.generated.models.free_busy_error')
-schedule_item = lazy_import('msgraph.generated.models.schedule_item')
-working_hours = lazy_import('msgraph.generated.models.working_hours')
+if TYPE_CHECKING:
+    from . import free_busy_error, schedule_item, working_hours
 
 class ScheduleInformation(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new scheduleInformation and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Represents a merged view of availability of all the items in scheduleItems. The view consists of time slots. Availability during each time slot is indicated with: 0= free, 1= tentative, 2= busy, 3= out of office, 4= working elsewhere.
+        self._availability_view: Optional[str] = None
+        # Error information from attempting to get the availability of the user, distribution list, or resource.
+        self._error: Optional[free_busy_error.FreeBusyError] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # An SMTP address of the user, distribution list, or resource, identifying an instance of scheduleInformation.
+        self._schedule_id: Optional[str] = None
+        # Contains the items that describe the availability of the user or resource.
+        self._schedule_items: Optional[List[schedule_item.ScheduleItem]] = None
+        # The days of the week and hours in a specific time zone that the user works. These are set as part of the user's mailboxSettings.
+        self._working_hours: Optional[working_hours.WorkingHours] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -41,26 +59,6 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the availability_view property.
         """
         self._availability_view = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new scheduleInformation and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Represents a merged view of availability of all the items in scheduleItems. The view consists of time slots. Availability during each time slot is indicated with: 0= free, 1= tentative, 2= busy, 3= out of office, 4= working elsewhere.
-        self._availability_view: Optional[str] = None
-        # Error information from attempting to get the availability of the user, distribution list, or resource.
-        self._error: Optional[free_busy_error.FreeBusyError] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # An SMTP address of the user, distribution list, or resource, identifying an instance of scheduleInformation.
-        self._schedule_id: Optional[str] = None
-        # Contains the items that describe the availability of the user or resource.
-        self._schedule_items: Optional[List[schedule_item.ScheduleItem]] = None
-        # The days of the week and hours in a specific time zone that the user works. These are set as part of the user's mailboxSettings.
-        self._working_hours: Optional[working_hours.WorkingHours] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ScheduleInformation:
@@ -96,7 +94,9 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import free_busy_error, schedule_item, working_hours
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "availabilityView": lambda n : setattr(self, 'availability_view', n.get_str_value()),
             "error": lambda n : setattr(self, 'error', n.get_object_value(free_busy_error.FreeBusyError)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

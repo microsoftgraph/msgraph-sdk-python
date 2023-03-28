@@ -7,25 +7,18 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-results_request_builder = lazy_import('msgraph.generated.information_protection.threat_assessment_requests.item.results.results_request_builder')
-threat_assessment_result_item_request_builder = lazy_import('msgraph.generated.information_protection.threat_assessment_requests.item.results.item.threat_assessment_result_item_request_builder')
-threat_assessment_request = lazy_import('msgraph.generated.models.threat_assessment_request')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from ....models import threat_assessment_request
+    from ....models.o_data_errors import o_data_error
+    from .results import results_request_builder
+    from .results.item import threat_assessment_result_item_request_builder
 
 class ThreatAssessmentRequestItemRequestBuilder():
     """
     Provides operations to manage the threatAssessmentRequests property of the microsoft.graph.informationProtection entity.
     """
-    @property
-    def results(self) -> results_request_builder.ResultsRequestBuilder:
-        """
-        Provides operations to manage the results property of the microsoft.graph.threatAssessmentRequest entity.
-        """
-        return results_request_builder.ResultsRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ThreatAssessmentRequestItemRequestBuilder and sets the default values.
@@ -53,6 +46,8 @@ class ThreatAssessmentRequestItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -71,12 +66,16 @@ class ThreatAssessmentRequestItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ....models import threat_assessment_request
+
         return await self.request_adapter.send_async(request_info, threat_assessment_request.ThreatAssessmentRequest, error_mapping)
     
     async def patch(self,body: Optional[threat_assessment_request.ThreatAssessmentRequest] = None, request_configuration: Optional[ThreatAssessmentRequestItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[threat_assessment_request.ThreatAssessmentRequest]:
@@ -92,12 +91,16 @@ class ThreatAssessmentRequestItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ....models import threat_assessment_request
+
         return await self.request_adapter.send_async(request_info, threat_assessment_request.ThreatAssessmentRequest, error_mapping)
     
     def results_by_id(self,id: str) -> threat_assessment_result_item_request_builder.ThreatAssessmentResultItemRequestBuilder:
@@ -109,6 +112,8 @@ class ThreatAssessmentRequestItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .results.item import threat_assessment_result_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["threatAssessmentResult%2Did"] = id
         return threat_assessment_result_item_request_builder.ThreatAssessmentResultItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -168,6 +173,15 @@ class ThreatAssessmentRequestItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def results(self) -> results_request_builder.ResultsRequestBuilder:
+        """
+        Provides operations to manage the results property of the microsoft.graph.threatAssessmentRequest entity.
+        """
+        from .results import results_request_builder
+
+        return results_request_builder.ResultsRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class ThreatAssessmentRequestItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -185,12 +199,6 @@ class ThreatAssessmentRequestItemRequestBuilder():
         """
         Get threatAssessmentRequests from informationProtection
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -206,6 +214,12 @@ class ThreatAssessmentRequestItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class ThreatAssessmentRequestItemRequestBuilderGetRequestConfiguration():

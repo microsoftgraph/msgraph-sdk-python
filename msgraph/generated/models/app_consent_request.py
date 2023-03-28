@@ -1,13 +1,29 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-app_consent_request_scope = lazy_import('msgraph.generated.models.app_consent_request_scope')
-entity = lazy_import('msgraph.generated.models.entity')
-user_consent_request = lazy_import('msgraph.generated.models.user_consent_request')
+if TYPE_CHECKING:
+    from . import app_consent_request_scope, entity, user_consent_request
+
+from . import entity
 
 class AppConsentRequest(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new appConsentRequest and sets the default values.
+        """
+        super().__init__()
+        # The display name of the app for which consent is requested. Required. Supports $filter (eq only) and $orderby.
+        self._app_display_name: Optional[str] = None
+        # The identifier of the application. Required. Supports $filter (eq only) and $orderby.
+        self._app_id: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # A list of pending scopes waiting for approval. Required.
+        self._pending_scopes: Optional[List[app_consent_request_scope.AppConsentRequestScope]] = None
+        # A list of pending user consent requests. Supports $filter (eq).
+        self._user_consent_requests: Optional[List[user_consent_request.UserConsentRequest]] = None
+    
     @property
     def app_display_name(self,) -> Optional[str]:
         """
@@ -42,22 +58,6 @@ class AppConsentRequest(entity.Entity):
         """
         self._app_id = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new appConsentRequest and sets the default values.
-        """
-        super().__init__()
-        # The display name of the app for which consent is requested. Required. Supports $filter (eq only) and $orderby.
-        self._app_display_name: Optional[str] = None
-        # The identifier of the application. Required. Supports $filter (eq only) and $orderby.
-        self._app_id: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # A list of pending scopes waiting for approval. Required.
-        self._pending_scopes: Optional[List[app_consent_request_scope.AppConsentRequestScope]] = None
-        # A list of pending user consent requests. Supports $filter (eq).
-        self._user_consent_requests: Optional[List[user_consent_request.UserConsentRequest]] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppConsentRequest:
         """
@@ -75,7 +75,9 @@ class AppConsentRequest(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import app_consent_request_scope, entity, user_consent_request
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
             "pendingScopes": lambda n : setattr(self, 'pending_scopes', n.get_collection_of_object_values(app_consent_request_scope.AppConsentRequestScope)),

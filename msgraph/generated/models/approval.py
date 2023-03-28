@@ -1,10 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-approval_stage = lazy_import('msgraph.generated.models.approval_stage')
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import approval_stage, entity
+
+from . import entity
 
 class Approval(entity.Entity):
     def __init__(self,) -> None:
@@ -34,7 +35,9 @@ class Approval(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import approval_stage, entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "stages": lambda n : setattr(self, 'stages', n.get_collection_of_object_values(approval_stage.ApprovalStage)),
         }
         super_fields = super().get_field_deserializers()

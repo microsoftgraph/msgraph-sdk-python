@@ -1,12 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-service_health = lazy_import('msgraph.generated.models.service_health')
-service_health_issue = lazy_import('msgraph.generated.models.service_health_issue')
-service_update_message = lazy_import('msgraph.generated.models.service_update_message')
+if TYPE_CHECKING:
+    from . import entity, service_health, service_health_issue, service_update_message
+
+from . import entity
 
 class ServiceAnnouncement(entity.Entity):
     def __init__(self,) -> None:
@@ -40,7 +39,9 @@ class ServiceAnnouncement(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, service_health, service_health_issue, service_update_message
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "healthOverviews": lambda n : setattr(self, 'health_overviews', n.get_collection_of_object_values(service_health.ServiceHealth)),
             "issues": lambda n : setattr(self, 'issues', n.get_collection_of_object_values(service_health_issue.ServiceHealthIssue)),
             "messages": lambda n : setattr(self, 'messages', n.get_collection_of_object_values(service_update_message.ServiceUpdateMessage)),

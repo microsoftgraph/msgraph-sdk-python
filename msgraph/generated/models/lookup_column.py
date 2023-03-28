@@ -1,9 +1,28 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class LookupColumn(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new lookupColumn and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Indicates whether multiple values can be selected from the source.
+        self._allow_multiple_values: Optional[bool] = None
+        # Indicates whether values in the column should be able to exceed the standard limit of 255 characters.
+        self._allow_unlimited_length: Optional[bool] = None
+        # The name of the lookup source column.
+        self._column_name: Optional[str] = None
+        # The unique identifier of the lookup source list.
+        self._list_id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # If specified, this column is a secondary lookup, pulling an additional field from the list item looked up by the primary lookup. Use the list item looked up by the primary as the source for the column named here.
+        self._primary_lookup_column_id: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -72,26 +91,6 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         """
         self._column_name = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new lookupColumn and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Indicates whether multiple values can be selected from the source.
-        self._allow_multiple_values: Optional[bool] = None
-        # Indicates whether values in the column should be able to exceed the standard limit of 255 characters.
-        self._allow_unlimited_length: Optional[bool] = None
-        # The name of the lookup source column.
-        self._column_name: Optional[str] = None
-        # The unique identifier of the lookup source list.
-        self._list_id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # If specified, this column is a secondary lookup, pulling an additional field from the list item looked up by the primary lookup. Use the list item looked up by the primary as the source for the column named here.
-        self._primary_lookup_column_id: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LookupColumn:
         """
@@ -109,7 +108,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "allowMultipleValues": lambda n : setattr(self, 'allow_multiple_values', n.get_bool_value()),
             "allowUnlimitedLength": lambda n : setattr(self, 'allow_unlimited_length', n.get_bool_value()),
             "columnName": lambda n : setattr(self, 'column_name', n.get_str_value()),

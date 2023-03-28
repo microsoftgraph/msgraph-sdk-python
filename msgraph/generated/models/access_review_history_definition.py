@@ -1,16 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-access_review_history_decision_filter = lazy_import('msgraph.generated.models.access_review_history_decision_filter')
-access_review_history_instance = lazy_import('msgraph.generated.models.access_review_history_instance')
-access_review_history_schedule_settings = lazy_import('msgraph.generated.models.access_review_history_schedule_settings')
-access_review_history_status = lazy_import('msgraph.generated.models.access_review_history_status')
-access_review_scope = lazy_import('msgraph.generated.models.access_review_scope')
-entity = lazy_import('msgraph.generated.models.entity')
-user_identity = lazy_import('msgraph.generated.models.user_identity')
+if TYPE_CHECKING:
+    from . import access_review_history_decision_filter, access_review_history_instance, access_review_history_schedule_settings, access_review_history_status, access_review_scope, entity, user_identity
+
+from . import entity
 
 class AccessReviewHistoryDefinition(entity.Entity):
     def __init__(self,) -> None:
@@ -126,7 +122,9 @@ class AccessReviewHistoryDefinition(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import access_review_history_decision_filter, access_review_history_instance, access_review_history_schedule_settings, access_review_history_status, access_review_scope, entity, user_identity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(user_identity.UserIdentity)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "decisions": lambda n : setattr(self, 'decisions', n.get_collection_of_enum_values(access_review_history_decision_filter.AccessReviewHistoryDecisionFilter)),

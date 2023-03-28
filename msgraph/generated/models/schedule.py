@@ -1,19 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-offer_shift_request = lazy_import('msgraph.generated.models.offer_shift_request')
-open_shift = lazy_import('msgraph.generated.models.open_shift')
-open_shift_change_request = lazy_import('msgraph.generated.models.open_shift_change_request')
-operation_status = lazy_import('msgraph.generated.models.operation_status')
-scheduling_group = lazy_import('msgraph.generated.models.scheduling_group')
-shift = lazy_import('msgraph.generated.models.shift')
-swap_shifts_change_request = lazy_import('msgraph.generated.models.swap_shifts_change_request')
-time_off = lazy_import('msgraph.generated.models.time_off')
-time_off_reason = lazy_import('msgraph.generated.models.time_off_reason')
-time_off_request = lazy_import('msgraph.generated.models.time_off_request')
+if TYPE_CHECKING:
+    from . import entity, offer_shift_request, open_shift, open_shift_change_request, operation_status, scheduling_group, shift, swap_shifts_change_request, time_off, time_off_reason, time_off_request
+
+from . import entity
 
 class Schedule(entity.Entity):
     def __init__(self,) -> None:
@@ -96,7 +88,9 @@ class Schedule(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, offer_shift_request, open_shift, open_shift_change_request, operation_status, scheduling_group, shift, swap_shifts_change_request, time_off, time_off_reason, time_off_request
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "enabled": lambda n : setattr(self, 'enabled', n.get_bool_value()),
             "offerShiftRequests": lambda n : setattr(self, 'offer_shift_requests', n.get_collection_of_object_values(offer_shift_request.OfferShiftRequest)),
             "offerShiftRequestsEnabled": lambda n : setattr(self, 'offer_shift_requests_enabled', n.get_bool_value()),

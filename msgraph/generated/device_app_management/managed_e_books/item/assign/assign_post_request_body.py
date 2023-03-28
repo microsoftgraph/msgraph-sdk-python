@@ -1,11 +1,21 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-managed_e_book_assignment = lazy_import('msgraph.generated.models.managed_e_book_assignment')
+if TYPE_CHECKING:
+    from .....models import managed_e_book_assignment
 
 class AssignPostRequestBody(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new assignPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The managedEBookAssignments property
+        self._managed_e_book_assignments: Optional[List[managed_e_book_assignment.ManagedEBookAssignment]] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -22,16 +32,6 @@ class AssignPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new assignPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The managedEBookAssignments property
-        self._managed_e_book_assignments: Optional[List[managed_e_book_assignment.ManagedEBookAssignment]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AssignPostRequestBody:
@@ -50,7 +50,9 @@ class AssignPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from .....models import managed_e_book_assignment
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "managedEBookAssignments": lambda n : setattr(self, 'managed_e_book_assignments', n.get_collection_of_object_values(managed_e_book_assignment.ManagedEBookAssignment)),
         }
         return fields

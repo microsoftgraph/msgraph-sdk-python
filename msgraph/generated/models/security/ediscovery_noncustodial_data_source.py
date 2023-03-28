@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-data_source = lazy_import('msgraph.generated.models.security.data_source')
-data_source_container = lazy_import('msgraph.generated.models.security.data_source_container')
-ediscovery_index_operation = lazy_import('msgraph.generated.models.security.ediscovery_index_operation')
+if TYPE_CHECKING:
+    from . import data_source, data_source_container, ediscovery_index_operation
+
+from . import data_source_container
 
 class EdiscoveryNoncustodialDataSource(data_source_container.DataSourceContainer):
     def __init__(self,) -> None:
@@ -53,7 +53,9 @@ class EdiscoveryNoncustodialDataSource(data_source_container.DataSourceContainer
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import data_source, data_source_container, ediscovery_index_operation
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "dataSource": lambda n : setattr(self, 'data_source', n.get_object_value(data_source.DataSource)),
             "lastIndexOperation": lambda n : setattr(self, 'last_index_operation', n.get_object_value(ediscovery_index_operation.EdiscoveryIndexOperation)),
         }

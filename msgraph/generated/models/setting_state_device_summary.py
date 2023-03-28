@@ -1,14 +1,42 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import entity
+
+from . import entity
 
 class SettingStateDeviceSummary(entity.Entity):
     """
     Device Compilance Policy and Configuration for a Setting State summary
     """
+    def __init__(self,) -> None:
+        """
+        Instantiates a new settingStateDeviceSummary and sets the default values.
+        """
+        super().__init__()
+        # Device Compliant count for the setting
+        self._compliant_device_count: Optional[int] = None
+        # Device conflict error count for the setting
+        self._conflict_device_count: Optional[int] = None
+        # Device error count for the setting
+        self._error_device_count: Optional[int] = None
+        # Name of the InstancePath for the setting
+        self._instance_path: Optional[str] = None
+        # Device NonCompliant count for the setting
+        self._non_compliant_device_count: Optional[int] = None
+        # Device Not Applicable count for the setting
+        self._not_applicable_device_count: Optional[int] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Device Compliant count for the setting
+        self._remediated_device_count: Optional[int] = None
+        # Name of the setting
+        self._setting_name: Optional[str] = None
+        # Device Unkown count for the setting
+        self._unknown_device_count: Optional[int] = None
+    
     @property
     def compliant_device_count(self,) -> Optional[int]:
         """
@@ -42,32 +70,6 @@ class SettingStateDeviceSummary(entity.Entity):
             value: Value to set for the conflict_device_count property.
         """
         self._conflict_device_count = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new settingStateDeviceSummary and sets the default values.
-        """
-        super().__init__()
-        # Device Compliant count for the setting
-        self._compliant_device_count: Optional[int] = None
-        # Device conflict error count for the setting
-        self._conflict_device_count: Optional[int] = None
-        # Device error count for the setting
-        self._error_device_count: Optional[int] = None
-        # Name of the InstancePath for the setting
-        self._instance_path: Optional[str] = None
-        # Device NonCompliant count for the setting
-        self._non_compliant_device_count: Optional[int] = None
-        # Device Not Applicable count for the setting
-        self._not_applicable_device_count: Optional[int] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Device Compliant count for the setting
-        self._remediated_device_count: Optional[int] = None
-        # Name of the setting
-        self._setting_name: Optional[str] = None
-        # Device Unkown count for the setting
-        self._unknown_device_count: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SettingStateDeviceSummary:
@@ -103,7 +105,9 @@ class SettingStateDeviceSummary(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "compliantDeviceCount": lambda n : setattr(self, 'compliant_device_count', n.get_int_value()),
             "conflictDeviceCount": lambda n : setattr(self, 'conflict_device_count', n.get_int_value()),
             "errorDeviceCount": lambda n : setattr(self, 'error_device_count', n.get_int_value()),

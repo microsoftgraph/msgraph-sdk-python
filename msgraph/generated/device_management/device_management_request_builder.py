@@ -7,325 +7,75 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-apple_push_notification_certificate_request_builder = lazy_import('msgraph.generated.device_management.apple_push_notification_certificate.apple_push_notification_certificate_request_builder')
-audit_events_request_builder = lazy_import('msgraph.generated.device_management.audit_events.audit_events_request_builder')
-audit_event_item_request_builder = lazy_import('msgraph.generated.device_management.audit_events.item.audit_event_item_request_builder')
-compliance_management_partners_request_builder = lazy_import('msgraph.generated.device_management.compliance_management_partners.compliance_management_partners_request_builder')
-compliance_management_partner_item_request_builder = lazy_import('msgraph.generated.device_management.compliance_management_partners.item.compliance_management_partner_item_request_builder')
-conditional_access_settings_request_builder = lazy_import('msgraph.generated.device_management.conditional_access_settings.conditional_access_settings_request_builder')
-detected_apps_request_builder = lazy_import('msgraph.generated.device_management.detected_apps.detected_apps_request_builder')
-detected_app_item_request_builder = lazy_import('msgraph.generated.device_management.detected_apps.item.detected_app_item_request_builder')
-device_categories_request_builder = lazy_import('msgraph.generated.device_management.device_categories.device_categories_request_builder')
-device_category_item_request_builder = lazy_import('msgraph.generated.device_management.device_categories.item.device_category_item_request_builder')
-device_compliance_policies_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.device_compliance_policies_request_builder')
-device_compliance_policy_item_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.device_compliance_policy_item_request_builder')
-device_compliance_policy_device_state_summary_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policy_device_state_summary.device_compliance_policy_device_state_summary_request_builder')
-device_compliance_policy_setting_state_summaries_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policy_setting_state_summaries.device_compliance_policy_setting_state_summaries_request_builder')
-device_compliance_policy_setting_state_summary_item_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policy_setting_state_summaries.item.device_compliance_policy_setting_state_summary_item_request_builder')
-device_configuration_device_state_summaries_request_builder = lazy_import('msgraph.generated.device_management.device_configuration_device_state_summaries.device_configuration_device_state_summaries_request_builder')
-device_configurations_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.device_configurations_request_builder')
-device_configuration_item_request_builder = lazy_import('msgraph.generated.device_management.device_configurations.item.device_configuration_item_request_builder')
-device_enrollment_configurations_request_builder = lazy_import('msgraph.generated.device_management.device_enrollment_configurations.device_enrollment_configurations_request_builder')
-device_enrollment_configuration_item_request_builder = lazy_import('msgraph.generated.device_management.device_enrollment_configurations.item.device_enrollment_configuration_item_request_builder')
-device_management_partners_request_builder = lazy_import('msgraph.generated.device_management.device_management_partners.device_management_partners_request_builder')
-device_management_partner_item_request_builder = lazy_import('msgraph.generated.device_management.device_management_partners.item.device_management_partner_item_request_builder')
-exchange_connectors_request_builder = lazy_import('msgraph.generated.device_management.exchange_connectors.exchange_connectors_request_builder')
-device_management_exchange_connector_item_request_builder = lazy_import('msgraph.generated.device_management.exchange_connectors.item.device_management_exchange_connector_item_request_builder')
-get_effective_permissions_with_scope_request_builder = lazy_import('msgraph.generated.device_management.get_effective_permissions_with_scope.get_effective_permissions_with_scope_request_builder')
-imported_windows_autopilot_device_identities_request_builder = lazy_import('msgraph.generated.device_management.imported_windows_autopilot_device_identities.imported_windows_autopilot_device_identities_request_builder')
-imported_windows_autopilot_device_identity_item_request_builder = lazy_import('msgraph.generated.device_management.imported_windows_autopilot_device_identities.item.imported_windows_autopilot_device_identity_item_request_builder')
-ios_update_statuses_request_builder = lazy_import('msgraph.generated.device_management.ios_update_statuses.ios_update_statuses_request_builder')
-ios_update_device_status_item_request_builder = lazy_import('msgraph.generated.device_management.ios_update_statuses.item.ios_update_device_status_item_request_builder')
-managed_device_overview_request_builder = lazy_import('msgraph.generated.device_management.managed_device_overview.managed_device_overview_request_builder')
-managed_devices_request_builder = lazy_import('msgraph.generated.device_management.managed_devices.managed_devices_request_builder')
-managed_device_item_request_builder = lazy_import('msgraph.generated.device_management.managed_devices.item.managed_device_item_request_builder')
-mobile_threat_defense_connectors_request_builder = lazy_import('msgraph.generated.device_management.mobile_threat_defense_connectors.mobile_threat_defense_connectors_request_builder')
-mobile_threat_defense_connector_item_request_builder = lazy_import('msgraph.generated.device_management.mobile_threat_defense_connectors.item.mobile_threat_defense_connector_item_request_builder')
-notification_message_templates_request_builder = lazy_import('msgraph.generated.device_management.notification_message_templates.notification_message_templates_request_builder')
-notification_message_template_item_request_builder = lazy_import('msgraph.generated.device_management.notification_message_templates.item.notification_message_template_item_request_builder')
-remote_assistance_partners_request_builder = lazy_import('msgraph.generated.device_management.remote_assistance_partners.remote_assistance_partners_request_builder')
-remote_assistance_partner_item_request_builder = lazy_import('msgraph.generated.device_management.remote_assistance_partners.item.remote_assistance_partner_item_request_builder')
-reports_request_builder = lazy_import('msgraph.generated.device_management.reports.reports_request_builder')
-resource_operations_request_builder = lazy_import('msgraph.generated.device_management.resource_operations.resource_operations_request_builder')
-resource_operation_item_request_builder = lazy_import('msgraph.generated.device_management.resource_operations.item.resource_operation_item_request_builder')
-role_assignments_request_builder = lazy_import('msgraph.generated.device_management.role_assignments.role_assignments_request_builder')
-device_and_app_management_role_assignment_item_request_builder = lazy_import('msgraph.generated.device_management.role_assignments.item.device_and_app_management_role_assignment_item_request_builder')
-role_definitions_request_builder = lazy_import('msgraph.generated.device_management.role_definitions.role_definitions_request_builder')
-role_definition_item_request_builder = lazy_import('msgraph.generated.device_management.role_definitions.item.role_definition_item_request_builder')
-software_update_status_summary_request_builder = lazy_import('msgraph.generated.device_management.software_update_status_summary.software_update_status_summary_request_builder')
-telecom_expense_management_partners_request_builder = lazy_import('msgraph.generated.device_management.telecom_expense_management_partners.telecom_expense_management_partners_request_builder')
-telecom_expense_management_partner_item_request_builder = lazy_import('msgraph.generated.device_management.telecom_expense_management_partners.item.telecom_expense_management_partner_item_request_builder')
-terms_and_conditions_request_builder = lazy_import('msgraph.generated.device_management.terms_and_conditions.terms_and_conditions_request_builder')
-terms_and_conditions_item_request_builder = lazy_import('msgraph.generated.device_management.terms_and_conditions.item.terms_and_conditions_item_request_builder')
-troubleshooting_events_request_builder = lazy_import('msgraph.generated.device_management.troubleshooting_events.troubleshooting_events_request_builder')
-device_management_troubleshooting_event_item_request_builder = lazy_import('msgraph.generated.device_management.troubleshooting_events.item.device_management_troubleshooting_event_item_request_builder')
-verify_windows_enrollment_auto_discovery_with_domain_name_request_builder = lazy_import('msgraph.generated.device_management.verify_windows_enrollment_auto_discovery_with_domain_name.verify_windows_enrollment_auto_discovery_with_domain_name_request_builder')
-windows_autopilot_device_identities_request_builder = lazy_import('msgraph.generated.device_management.windows_autopilot_device_identities.windows_autopilot_device_identities_request_builder')
-windows_autopilot_device_identity_item_request_builder = lazy_import('msgraph.generated.device_management.windows_autopilot_device_identities.item.windows_autopilot_device_identity_item_request_builder')
-windows_information_protection_app_learning_summaries_request_builder = lazy_import('msgraph.generated.device_management.windows_information_protection_app_learning_summaries.windows_information_protection_app_learning_summaries_request_builder')
-windows_information_protection_app_learning_summary_item_request_builder = lazy_import('msgraph.generated.device_management.windows_information_protection_app_learning_summaries.item.windows_information_protection_app_learning_summary_item_request_builder')
-windows_information_protection_network_learning_summaries_request_builder = lazy_import('msgraph.generated.device_management.windows_information_protection_network_learning_summaries.windows_information_protection_network_learning_summaries_request_builder')
-windows_information_protection_network_learning_summary_item_request_builder = lazy_import('msgraph.generated.device_management.windows_information_protection_network_learning_summaries.item.windows_information_protection_network_learning_summary_item_request_builder')
-device_management = lazy_import('msgraph.generated.models.device_management')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from ..models import device_management
+    from ..models.o_data_errors import o_data_error
+    from .apple_push_notification_certificate import apple_push_notification_certificate_request_builder
+    from .audit_events import audit_events_request_builder
+    from .audit_events.item import audit_event_item_request_builder
+    from .compliance_management_partners import compliance_management_partners_request_builder
+    from .compliance_management_partners.item import compliance_management_partner_item_request_builder
+    from .conditional_access_settings import conditional_access_settings_request_builder
+    from .detected_apps import detected_apps_request_builder
+    from .detected_apps.item import detected_app_item_request_builder
+    from .device_categories import device_categories_request_builder
+    from .device_categories.item import device_category_item_request_builder
+    from .device_compliance_policies import device_compliance_policies_request_builder
+    from .device_compliance_policies.item import device_compliance_policy_item_request_builder
+    from .device_compliance_policy_device_state_summary import device_compliance_policy_device_state_summary_request_builder
+    from .device_compliance_policy_setting_state_summaries import device_compliance_policy_setting_state_summaries_request_builder
+    from .device_compliance_policy_setting_state_summaries.item import device_compliance_policy_setting_state_summary_item_request_builder
+    from .device_configuration_device_state_summaries import device_configuration_device_state_summaries_request_builder
+    from .device_configurations import device_configurations_request_builder
+    from .device_configurations.item import device_configuration_item_request_builder
+    from .device_enrollment_configurations import device_enrollment_configurations_request_builder
+    from .device_enrollment_configurations.item import device_enrollment_configuration_item_request_builder
+    from .device_management_partners import device_management_partners_request_builder
+    from .device_management_partners.item import device_management_partner_item_request_builder
+    from .exchange_connectors import exchange_connectors_request_builder
+    from .exchange_connectors.item import device_management_exchange_connector_item_request_builder
+    from .get_effective_permissions_with_scope import get_effective_permissions_with_scope_request_builder
+    from .imported_windows_autopilot_device_identities import imported_windows_autopilot_device_identities_request_builder
+    from .imported_windows_autopilot_device_identities.item import imported_windows_autopilot_device_identity_item_request_builder
+    from .ios_update_statuses import ios_update_statuses_request_builder
+    from .ios_update_statuses.item import ios_update_device_status_item_request_builder
+    from .managed_device_overview import managed_device_overview_request_builder
+    from .managed_devices import managed_devices_request_builder
+    from .managed_devices.item import managed_device_item_request_builder
+    from .mobile_threat_defense_connectors import mobile_threat_defense_connectors_request_builder
+    from .mobile_threat_defense_connectors.item import mobile_threat_defense_connector_item_request_builder
+    from .notification_message_templates import notification_message_templates_request_builder
+    from .notification_message_templates.item import notification_message_template_item_request_builder
+    from .remote_assistance_partners import remote_assistance_partners_request_builder
+    from .remote_assistance_partners.item import remote_assistance_partner_item_request_builder
+    from .reports import reports_request_builder
+    from .resource_operations import resource_operations_request_builder
+    from .resource_operations.item import resource_operation_item_request_builder
+    from .role_assignments import role_assignments_request_builder
+    from .role_assignments.item import device_and_app_management_role_assignment_item_request_builder
+    from .role_definitions import role_definitions_request_builder
+    from .role_definitions.item import role_definition_item_request_builder
+    from .software_update_status_summary import software_update_status_summary_request_builder
+    from .telecom_expense_management_partners import telecom_expense_management_partners_request_builder
+    from .telecom_expense_management_partners.item import telecom_expense_management_partner_item_request_builder
+    from .terms_and_conditions import terms_and_conditions_request_builder
+    from .terms_and_conditions.item import terms_and_conditions_item_request_builder
+    from .troubleshooting_events import troubleshooting_events_request_builder
+    from .troubleshooting_events.item import device_management_troubleshooting_event_item_request_builder
+    from .verify_windows_enrollment_auto_discovery_with_domain_name import verify_windows_enrollment_auto_discovery_with_domain_name_request_builder
+    from .windows_autopilot_device_identities import windows_autopilot_device_identities_request_builder
+    from .windows_autopilot_device_identities.item import windows_autopilot_device_identity_item_request_builder
+    from .windows_information_protection_app_learning_summaries import windows_information_protection_app_learning_summaries_request_builder
+    from .windows_information_protection_app_learning_summaries.item import windows_information_protection_app_learning_summary_item_request_builder
+    from .windows_information_protection_network_learning_summaries import windows_information_protection_network_learning_summaries_request_builder
+    from .windows_information_protection_network_learning_summaries.item import windows_information_protection_network_learning_summary_item_request_builder
 
 class DeviceManagementRequestBuilder():
     """
     Provides operations to manage the deviceManagement singleton.
     """
-    @property
-    def apple_push_notification_certificate(self) -> apple_push_notification_certificate_request_builder.ApplePushNotificationCertificateRequestBuilder:
-        """
-        Provides operations to manage the applePushNotificationCertificate property of the microsoft.graph.deviceManagement entity.
-        """
-        return apple_push_notification_certificate_request_builder.ApplePushNotificationCertificateRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def audit_events(self) -> audit_events_request_builder.AuditEventsRequestBuilder:
-        """
-        Provides operations to manage the auditEvents property of the microsoft.graph.deviceManagement entity.
-        """
-        return audit_events_request_builder.AuditEventsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def compliance_management_partners(self) -> compliance_management_partners_request_builder.ComplianceManagementPartnersRequestBuilder:
-        """
-        Provides operations to manage the complianceManagementPartners property of the microsoft.graph.deviceManagement entity.
-        """
-        return compliance_management_partners_request_builder.ComplianceManagementPartnersRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def conditional_access_settings(self) -> conditional_access_settings_request_builder.ConditionalAccessSettingsRequestBuilder:
-        """
-        Provides operations to manage the conditionalAccessSettings property of the microsoft.graph.deviceManagement entity.
-        """
-        return conditional_access_settings_request_builder.ConditionalAccessSettingsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def detected_apps(self) -> detected_apps_request_builder.DetectedAppsRequestBuilder:
-        """
-        Provides operations to manage the detectedApps property of the microsoft.graph.deviceManagement entity.
-        """
-        return detected_apps_request_builder.DetectedAppsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def device_categories(self) -> device_categories_request_builder.DeviceCategoriesRequestBuilder:
-        """
-        Provides operations to manage the deviceCategories property of the microsoft.graph.deviceManagement entity.
-        """
-        return device_categories_request_builder.DeviceCategoriesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def device_compliance_policies(self) -> device_compliance_policies_request_builder.DeviceCompliancePoliciesRequestBuilder:
-        """
-        Provides operations to manage the deviceCompliancePolicies property of the microsoft.graph.deviceManagement entity.
-        """
-        return device_compliance_policies_request_builder.DeviceCompliancePoliciesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def device_compliance_policy_device_state_summary(self) -> device_compliance_policy_device_state_summary_request_builder.DeviceCompliancePolicyDeviceStateSummaryRequestBuilder:
-        """
-        Provides operations to manage the deviceCompliancePolicyDeviceStateSummary property of the microsoft.graph.deviceManagement entity.
-        """
-        return device_compliance_policy_device_state_summary_request_builder.DeviceCompliancePolicyDeviceStateSummaryRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def device_compliance_policy_setting_state_summaries(self) -> device_compliance_policy_setting_state_summaries_request_builder.DeviceCompliancePolicySettingStateSummariesRequestBuilder:
-        """
-        Provides operations to manage the deviceCompliancePolicySettingStateSummaries property of the microsoft.graph.deviceManagement entity.
-        """
-        return device_compliance_policy_setting_state_summaries_request_builder.DeviceCompliancePolicySettingStateSummariesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def device_configuration_device_state_summaries(self) -> device_configuration_device_state_summaries_request_builder.DeviceConfigurationDeviceStateSummariesRequestBuilder:
-        """
-        Provides operations to manage the deviceConfigurationDeviceStateSummaries property of the microsoft.graph.deviceManagement entity.
-        """
-        return device_configuration_device_state_summaries_request_builder.DeviceConfigurationDeviceStateSummariesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def device_configurations(self) -> device_configurations_request_builder.DeviceConfigurationsRequestBuilder:
-        """
-        Provides operations to manage the deviceConfigurations property of the microsoft.graph.deviceManagement entity.
-        """
-        return device_configurations_request_builder.DeviceConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def device_enrollment_configurations(self) -> device_enrollment_configurations_request_builder.DeviceEnrollmentConfigurationsRequestBuilder:
-        """
-        Provides operations to manage the deviceEnrollmentConfigurations property of the microsoft.graph.deviceManagement entity.
-        """
-        return device_enrollment_configurations_request_builder.DeviceEnrollmentConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def device_management_partners(self) -> device_management_partners_request_builder.DeviceManagementPartnersRequestBuilder:
-        """
-        Provides operations to manage the deviceManagementPartners property of the microsoft.graph.deviceManagement entity.
-        """
-        return device_management_partners_request_builder.DeviceManagementPartnersRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def exchange_connectors(self) -> exchange_connectors_request_builder.ExchangeConnectorsRequestBuilder:
-        """
-        Provides operations to manage the exchangeConnectors property of the microsoft.graph.deviceManagement entity.
-        """
-        return exchange_connectors_request_builder.ExchangeConnectorsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def imported_windows_autopilot_device_identities(self) -> imported_windows_autopilot_device_identities_request_builder.ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder:
-        """
-        Provides operations to manage the importedWindowsAutopilotDeviceIdentities property of the microsoft.graph.deviceManagement entity.
-        """
-        return imported_windows_autopilot_device_identities_request_builder.ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def ios_update_statuses(self) -> ios_update_statuses_request_builder.IosUpdateStatusesRequestBuilder:
-        """
-        Provides operations to manage the iosUpdateStatuses property of the microsoft.graph.deviceManagement entity.
-        """
-        return ios_update_statuses_request_builder.IosUpdateStatusesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def managed_device_overview(self) -> managed_device_overview_request_builder.ManagedDeviceOverviewRequestBuilder:
-        """
-        Provides operations to manage the managedDeviceOverview property of the microsoft.graph.deviceManagement entity.
-        """
-        return managed_device_overview_request_builder.ManagedDeviceOverviewRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def managed_devices(self) -> managed_devices_request_builder.ManagedDevicesRequestBuilder:
-        """
-        Provides operations to manage the managedDevices property of the microsoft.graph.deviceManagement entity.
-        """
-        return managed_devices_request_builder.ManagedDevicesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def mobile_threat_defense_connectors(self) -> mobile_threat_defense_connectors_request_builder.MobileThreatDefenseConnectorsRequestBuilder:
-        """
-        Provides operations to manage the mobileThreatDefenseConnectors property of the microsoft.graph.deviceManagement entity.
-        """
-        return mobile_threat_defense_connectors_request_builder.MobileThreatDefenseConnectorsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def notification_message_templates(self) -> notification_message_templates_request_builder.NotificationMessageTemplatesRequestBuilder:
-        """
-        Provides operations to manage the notificationMessageTemplates property of the microsoft.graph.deviceManagement entity.
-        """
-        return notification_message_templates_request_builder.NotificationMessageTemplatesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def remote_assistance_partners(self) -> remote_assistance_partners_request_builder.RemoteAssistancePartnersRequestBuilder:
-        """
-        Provides operations to manage the remoteAssistancePartners property of the microsoft.graph.deviceManagement entity.
-        """
-        return remote_assistance_partners_request_builder.RemoteAssistancePartnersRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def reports(self) -> reports_request_builder.ReportsRequestBuilder:
-        """
-        Provides operations to manage the reports property of the microsoft.graph.deviceManagement entity.
-        """
-        return reports_request_builder.ReportsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def resource_operations(self) -> resource_operations_request_builder.ResourceOperationsRequestBuilder:
-        """
-        Provides operations to manage the resourceOperations property of the microsoft.graph.deviceManagement entity.
-        """
-        return resource_operations_request_builder.ResourceOperationsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def role_assignments(self) -> role_assignments_request_builder.RoleAssignmentsRequestBuilder:
-        """
-        Provides operations to manage the roleAssignments property of the microsoft.graph.deviceManagement entity.
-        """
-        return role_assignments_request_builder.RoleAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def role_definitions(self) -> role_definitions_request_builder.RoleDefinitionsRequestBuilder:
-        """
-        Provides operations to manage the roleDefinitions property of the microsoft.graph.deviceManagement entity.
-        """
-        return role_definitions_request_builder.RoleDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def software_update_status_summary(self) -> software_update_status_summary_request_builder.SoftwareUpdateStatusSummaryRequestBuilder:
-        """
-        Provides operations to manage the softwareUpdateStatusSummary property of the microsoft.graph.deviceManagement entity.
-        """
-        return software_update_status_summary_request_builder.SoftwareUpdateStatusSummaryRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def telecom_expense_management_partners(self) -> telecom_expense_management_partners_request_builder.TelecomExpenseManagementPartnersRequestBuilder:
-        """
-        Provides operations to manage the telecomExpenseManagementPartners property of the microsoft.graph.deviceManagement entity.
-        """
-        return telecom_expense_management_partners_request_builder.TelecomExpenseManagementPartnersRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def terms_and_conditions(self) -> terms_and_conditions_request_builder.TermsAndConditionsRequestBuilder:
-        """
-        Provides operations to manage the termsAndConditions property of the microsoft.graph.deviceManagement entity.
-        """
-        return terms_and_conditions_request_builder.TermsAndConditionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def troubleshooting_events(self) -> troubleshooting_events_request_builder.TroubleshootingEventsRequestBuilder:
-        """
-        Provides operations to manage the troubleshootingEvents property of the microsoft.graph.deviceManagement entity.
-        """
-        return troubleshooting_events_request_builder.TroubleshootingEventsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def windows_autopilot_device_identities(self) -> windows_autopilot_device_identities_request_builder.WindowsAutopilotDeviceIdentitiesRequestBuilder:
-        """
-        Provides operations to manage the windowsAutopilotDeviceIdentities property of the microsoft.graph.deviceManagement entity.
-        """
-        return windows_autopilot_device_identities_request_builder.WindowsAutopilotDeviceIdentitiesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def windows_information_protection_app_learning_summaries(self) -> windows_information_protection_app_learning_summaries_request_builder.WindowsInformationProtectionAppLearningSummariesRequestBuilder:
-        """
-        Provides operations to manage the windowsInformationProtectionAppLearningSummaries property of the microsoft.graph.deviceManagement entity.
-        """
-        return windows_information_protection_app_learning_summaries_request_builder.WindowsInformationProtectionAppLearningSummariesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def windows_information_protection_network_learning_summaries(self) -> windows_information_protection_network_learning_summaries_request_builder.WindowsInformationProtectionNetworkLearningSummariesRequestBuilder:
-        """
-        Provides operations to manage the windowsInformationProtectionNetworkLearningSummaries property of the microsoft.graph.deviceManagement entity.
-        """
-        return windows_information_protection_network_learning_summaries_request_builder.WindowsInformationProtectionNetworkLearningSummariesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    def audit_events_by_id(self,id: str) -> audit_event_item_request_builder.AuditEventItemRequestBuilder:
-        """
-        Provides operations to manage the auditEvents property of the microsoft.graph.deviceManagement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: audit_event_item_request_builder.AuditEventItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["auditEvent%2Did"] = id
-        return audit_event_item_request_builder.AuditEventItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def compliance_management_partners_by_id(self,id: str) -> compliance_management_partner_item_request_builder.ComplianceManagementPartnerItemRequestBuilder:
-        """
-        Provides operations to manage the complianceManagementPartners property of the microsoft.graph.deviceManagement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: compliance_management_partner_item_request_builder.ComplianceManagementPartnerItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["complianceManagementPartner%2Did"] = id
-        return compliance_management_partner_item_request_builder.ComplianceManagementPartnerItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DeviceManagementRequestBuilder and sets the default values.
@@ -344,6 +94,36 @@ class DeviceManagementRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def audit_events_by_id(self,id: str) -> audit_event_item_request_builder.AuditEventItemRequestBuilder:
+        """
+        Provides operations to manage the auditEvents property of the microsoft.graph.deviceManagement entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: audit_event_item_request_builder.AuditEventItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        from .audit_events.item import audit_event_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["auditEvent%2Did"] = id
+        return audit_event_item_request_builder.AuditEventItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def compliance_management_partners_by_id(self,id: str) -> compliance_management_partner_item_request_builder.ComplianceManagementPartnerItemRequestBuilder:
+        """
+        Provides operations to manage the complianceManagementPartners property of the microsoft.graph.deviceManagement entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: compliance_management_partner_item_request_builder.ComplianceManagementPartnerItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        from .compliance_management_partners.item import compliance_management_partner_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["complianceManagementPartner%2Did"] = id
+        return compliance_management_partner_item_request_builder.ComplianceManagementPartnerItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     def detected_apps_by_id(self,id: str) -> detected_app_item_request_builder.DetectedAppItemRequestBuilder:
         """
         Provides operations to manage the detectedApps property of the microsoft.graph.deviceManagement entity.
@@ -353,6 +133,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .detected_apps.item import detected_app_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["detectedApp%2Did"] = id
         return detected_app_item_request_builder.DetectedAppItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -366,6 +148,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .device_categories.item import device_category_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceCategory%2Did"] = id
         return device_category_item_request_builder.DeviceCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -379,6 +163,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .device_compliance_policies.item import device_compliance_policy_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceCompliancePolicy%2Did"] = id
         return device_compliance_policy_item_request_builder.DeviceCompliancePolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -392,6 +178,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .device_compliance_policy_setting_state_summaries.item import device_compliance_policy_setting_state_summary_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceCompliancePolicySettingStateSummary%2Did"] = id
         return device_compliance_policy_setting_state_summary_item_request_builder.DeviceCompliancePolicySettingStateSummaryItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -405,6 +193,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .device_configurations.item import device_configuration_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceConfiguration%2Did"] = id
         return device_configuration_item_request_builder.DeviceConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -418,6 +208,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .device_enrollment_configurations.item import device_enrollment_configuration_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceEnrollmentConfiguration%2Did"] = id
         return device_enrollment_configuration_item_request_builder.DeviceEnrollmentConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -431,6 +223,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .device_management_partners.item import device_management_partner_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceManagementPartner%2Did"] = id
         return device_management_partner_item_request_builder.DeviceManagementPartnerItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -444,6 +238,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .exchange_connectors.item import device_management_exchange_connector_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceManagementExchangeConnector%2Did"] = id
         return device_management_exchange_connector_item_request_builder.DeviceManagementExchangeConnectorItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -458,12 +254,16 @@ class DeviceManagementRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ..models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ..models import device_management
+
         return await self.request_adapter.send_async(request_info, device_management.DeviceManagement, error_mapping)
     
     def get_effective_permissions_with_scope(self,scope: Optional[str] = None) -> get_effective_permissions_with_scope_request_builder.GetEffectivePermissionsWithScopeRequestBuilder:
@@ -475,6 +275,8 @@ class DeviceManagementRequestBuilder():
         """
         if scope is None:
             raise Exception("scope cannot be undefined")
+        from .get_effective_permissions_with_scope import get_effective_permissions_with_scope_request_builder
+
         return get_effective_permissions_with_scope_request_builder.GetEffectivePermissionsWithScopeRequestBuilder(self.request_adapter, self.path_parameters, scope)
     
     def imported_windows_autopilot_device_identities_by_id(self,id: str) -> imported_windows_autopilot_device_identity_item_request_builder.ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder:
@@ -486,6 +288,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .imported_windows_autopilot_device_identities.item import imported_windows_autopilot_device_identity_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["importedWindowsAutopilotDeviceIdentity%2Did"] = id
         return imported_windows_autopilot_device_identity_item_request_builder.ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -499,6 +303,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .ios_update_statuses.item import ios_update_device_status_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["iosUpdateDeviceStatus%2Did"] = id
         return ios_update_device_status_item_request_builder.IosUpdateDeviceStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -512,6 +318,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .managed_devices.item import managed_device_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["managedDevice%2Did"] = id
         return managed_device_item_request_builder.ManagedDeviceItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -525,6 +333,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .mobile_threat_defense_connectors.item import mobile_threat_defense_connector_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["mobileThreatDefenseConnector%2Did"] = id
         return mobile_threat_defense_connector_item_request_builder.MobileThreatDefenseConnectorItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -538,6 +348,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .notification_message_templates.item import notification_message_template_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["notificationMessageTemplate%2Did"] = id
         return notification_message_template_item_request_builder.NotificationMessageTemplateItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -555,12 +367,16 @@ class DeviceManagementRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from ..models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ..models import device_management
+
         return await self.request_adapter.send_async(request_info, device_management.DeviceManagement, error_mapping)
     
     def remote_assistance_partners_by_id(self,id: str) -> remote_assistance_partner_item_request_builder.RemoteAssistancePartnerItemRequestBuilder:
@@ -572,6 +388,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .remote_assistance_partners.item import remote_assistance_partner_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["remoteAssistancePartner%2Did"] = id
         return remote_assistance_partner_item_request_builder.RemoteAssistancePartnerItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -585,6 +403,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .resource_operations.item import resource_operation_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["resourceOperation%2Did"] = id
         return resource_operation_item_request_builder.ResourceOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -598,6 +418,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .role_assignments.item import device_and_app_management_role_assignment_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceAndAppManagementRoleAssignment%2Did"] = id
         return device_and_app_management_role_assignment_item_request_builder.DeviceAndAppManagementRoleAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -611,6 +433,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .role_definitions.item import role_definition_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["roleDefinition%2Did"] = id
         return role_definition_item_request_builder.RoleDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -624,6 +448,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .telecom_expense_management_partners.item import telecom_expense_management_partner_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["telecomExpenseManagementPartner%2Did"] = id
         return telecom_expense_management_partner_item_request_builder.TelecomExpenseManagementPartnerItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -637,6 +463,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .terms_and_conditions.item import terms_and_conditions_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["termsAndConditions%2Did"] = id
         return terms_and_conditions_item_request_builder.TermsAndConditionsItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -689,6 +517,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .troubleshooting_events.item import device_management_troubleshooting_event_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceManagementTroubleshootingEvent%2Did"] = id
         return device_management_troubleshooting_event_item_request_builder.DeviceManagementTroubleshootingEventItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -702,7 +532,9 @@ class DeviceManagementRequestBuilder():
         """
         if domain_name is None:
             raise Exception("domain_name cannot be undefined")
-        return verify_windows_enrollment_auto_discovery_with_domain_name_request_builder.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder(self.request_adapter, self.path_parameters, domainName)
+        from .verify_windows_enrollment_auto_discovery_with_domain_name import verify_windows_enrollment_auto_discovery_with_domain_name_request_builder
+
+        return verify_windows_enrollment_auto_discovery_with_domain_name_request_builder.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder(self.request_adapter, self.path_parameters, domain_name)
     
     def windows_autopilot_device_identities_by_id(self,id: str) -> windows_autopilot_device_identity_item_request_builder.WindowsAutopilotDeviceIdentityItemRequestBuilder:
         """
@@ -713,6 +545,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .windows_autopilot_device_identities.item import windows_autopilot_device_identity_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["windowsAutopilotDeviceIdentity%2Did"] = id
         return windows_autopilot_device_identity_item_request_builder.WindowsAutopilotDeviceIdentityItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -726,6 +560,8 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .windows_information_protection_app_learning_summaries.item import windows_information_protection_app_learning_summary_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["windowsInformationProtectionAppLearningSummary%2Did"] = id
         return windows_information_protection_app_learning_summary_item_request_builder.WindowsInformationProtectionAppLearningSummaryItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -739,21 +575,305 @@ class DeviceManagementRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .windows_information_protection_network_learning_summaries.item import windows_information_protection_network_learning_summary_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["windowsInformationProtectionNetworkLearningSummary%2Did"] = id
         return windows_information_protection_network_learning_summary_item_request_builder.WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    @property
+    def apple_push_notification_certificate(self) -> apple_push_notification_certificate_request_builder.ApplePushNotificationCertificateRequestBuilder:
+        """
+        Provides operations to manage the applePushNotificationCertificate property of the microsoft.graph.deviceManagement entity.
+        """
+        from .apple_push_notification_certificate import apple_push_notification_certificate_request_builder
+
+        return apple_push_notification_certificate_request_builder.ApplePushNotificationCertificateRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def audit_events(self) -> audit_events_request_builder.AuditEventsRequestBuilder:
+        """
+        Provides operations to manage the auditEvents property of the microsoft.graph.deviceManagement entity.
+        """
+        from .audit_events import audit_events_request_builder
+
+        return audit_events_request_builder.AuditEventsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def compliance_management_partners(self) -> compliance_management_partners_request_builder.ComplianceManagementPartnersRequestBuilder:
+        """
+        Provides operations to manage the complianceManagementPartners property of the microsoft.graph.deviceManagement entity.
+        """
+        from .compliance_management_partners import compliance_management_partners_request_builder
+
+        return compliance_management_partners_request_builder.ComplianceManagementPartnersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def conditional_access_settings(self) -> conditional_access_settings_request_builder.ConditionalAccessSettingsRequestBuilder:
+        """
+        Provides operations to manage the conditionalAccessSettings property of the microsoft.graph.deviceManagement entity.
+        """
+        from .conditional_access_settings import conditional_access_settings_request_builder
+
+        return conditional_access_settings_request_builder.ConditionalAccessSettingsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def detected_apps(self) -> detected_apps_request_builder.DetectedAppsRequestBuilder:
+        """
+        Provides operations to manage the detectedApps property of the microsoft.graph.deviceManagement entity.
+        """
+        from .detected_apps import detected_apps_request_builder
+
+        return detected_apps_request_builder.DetectedAppsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def device_categories(self) -> device_categories_request_builder.DeviceCategoriesRequestBuilder:
+        """
+        Provides operations to manage the deviceCategories property of the microsoft.graph.deviceManagement entity.
+        """
+        from .device_categories import device_categories_request_builder
+
+        return device_categories_request_builder.DeviceCategoriesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def device_compliance_policies(self) -> device_compliance_policies_request_builder.DeviceCompliancePoliciesRequestBuilder:
+        """
+        Provides operations to manage the deviceCompliancePolicies property of the microsoft.graph.deviceManagement entity.
+        """
+        from .device_compliance_policies import device_compliance_policies_request_builder
+
+        return device_compliance_policies_request_builder.DeviceCompliancePoliciesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def device_compliance_policy_device_state_summary(self) -> device_compliance_policy_device_state_summary_request_builder.DeviceCompliancePolicyDeviceStateSummaryRequestBuilder:
+        """
+        Provides operations to manage the deviceCompliancePolicyDeviceStateSummary property of the microsoft.graph.deviceManagement entity.
+        """
+        from .device_compliance_policy_device_state_summary import device_compliance_policy_device_state_summary_request_builder
+
+        return device_compliance_policy_device_state_summary_request_builder.DeviceCompliancePolicyDeviceStateSummaryRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def device_compliance_policy_setting_state_summaries(self) -> device_compliance_policy_setting_state_summaries_request_builder.DeviceCompliancePolicySettingStateSummariesRequestBuilder:
+        """
+        Provides operations to manage the deviceCompliancePolicySettingStateSummaries property of the microsoft.graph.deviceManagement entity.
+        """
+        from .device_compliance_policy_setting_state_summaries import device_compliance_policy_setting_state_summaries_request_builder
+
+        return device_compliance_policy_setting_state_summaries_request_builder.DeviceCompliancePolicySettingStateSummariesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def device_configuration_device_state_summaries(self) -> device_configuration_device_state_summaries_request_builder.DeviceConfigurationDeviceStateSummariesRequestBuilder:
+        """
+        Provides operations to manage the deviceConfigurationDeviceStateSummaries property of the microsoft.graph.deviceManagement entity.
+        """
+        from .device_configuration_device_state_summaries import device_configuration_device_state_summaries_request_builder
+
+        return device_configuration_device_state_summaries_request_builder.DeviceConfigurationDeviceStateSummariesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def device_configurations(self) -> device_configurations_request_builder.DeviceConfigurationsRequestBuilder:
+        """
+        Provides operations to manage the deviceConfigurations property of the microsoft.graph.deviceManagement entity.
+        """
+        from .device_configurations import device_configurations_request_builder
+
+        return device_configurations_request_builder.DeviceConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def device_enrollment_configurations(self) -> device_enrollment_configurations_request_builder.DeviceEnrollmentConfigurationsRequestBuilder:
+        """
+        Provides operations to manage the deviceEnrollmentConfigurations property of the microsoft.graph.deviceManagement entity.
+        """
+        from .device_enrollment_configurations import device_enrollment_configurations_request_builder
+
+        return device_enrollment_configurations_request_builder.DeviceEnrollmentConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def device_management_partners(self) -> device_management_partners_request_builder.DeviceManagementPartnersRequestBuilder:
+        """
+        Provides operations to manage the deviceManagementPartners property of the microsoft.graph.deviceManagement entity.
+        """
+        from .device_management_partners import device_management_partners_request_builder
+
+        return device_management_partners_request_builder.DeviceManagementPartnersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def exchange_connectors(self) -> exchange_connectors_request_builder.ExchangeConnectorsRequestBuilder:
+        """
+        Provides operations to manage the exchangeConnectors property of the microsoft.graph.deviceManagement entity.
+        """
+        from .exchange_connectors import exchange_connectors_request_builder
+
+        return exchange_connectors_request_builder.ExchangeConnectorsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def imported_windows_autopilot_device_identities(self) -> imported_windows_autopilot_device_identities_request_builder.ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder:
+        """
+        Provides operations to manage the importedWindowsAutopilotDeviceIdentities property of the microsoft.graph.deviceManagement entity.
+        """
+        from .imported_windows_autopilot_device_identities import imported_windows_autopilot_device_identities_request_builder
+
+        return imported_windows_autopilot_device_identities_request_builder.ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def ios_update_statuses(self) -> ios_update_statuses_request_builder.IosUpdateStatusesRequestBuilder:
+        """
+        Provides operations to manage the iosUpdateStatuses property of the microsoft.graph.deviceManagement entity.
+        """
+        from .ios_update_statuses import ios_update_statuses_request_builder
+
+        return ios_update_statuses_request_builder.IosUpdateStatusesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def managed_device_overview(self) -> managed_device_overview_request_builder.ManagedDeviceOverviewRequestBuilder:
+        """
+        Provides operations to manage the managedDeviceOverview property of the microsoft.graph.deviceManagement entity.
+        """
+        from .managed_device_overview import managed_device_overview_request_builder
+
+        return managed_device_overview_request_builder.ManagedDeviceOverviewRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def managed_devices(self) -> managed_devices_request_builder.ManagedDevicesRequestBuilder:
+        """
+        Provides operations to manage the managedDevices property of the microsoft.graph.deviceManagement entity.
+        """
+        from .managed_devices import managed_devices_request_builder
+
+        return managed_devices_request_builder.ManagedDevicesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def mobile_threat_defense_connectors(self) -> mobile_threat_defense_connectors_request_builder.MobileThreatDefenseConnectorsRequestBuilder:
+        """
+        Provides operations to manage the mobileThreatDefenseConnectors property of the microsoft.graph.deviceManagement entity.
+        """
+        from .mobile_threat_defense_connectors import mobile_threat_defense_connectors_request_builder
+
+        return mobile_threat_defense_connectors_request_builder.MobileThreatDefenseConnectorsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def notification_message_templates(self) -> notification_message_templates_request_builder.NotificationMessageTemplatesRequestBuilder:
+        """
+        Provides operations to manage the notificationMessageTemplates property of the microsoft.graph.deviceManagement entity.
+        """
+        from .notification_message_templates import notification_message_templates_request_builder
+
+        return notification_message_templates_request_builder.NotificationMessageTemplatesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def remote_assistance_partners(self) -> remote_assistance_partners_request_builder.RemoteAssistancePartnersRequestBuilder:
+        """
+        Provides operations to manage the remoteAssistancePartners property of the microsoft.graph.deviceManagement entity.
+        """
+        from .remote_assistance_partners import remote_assistance_partners_request_builder
+
+        return remote_assistance_partners_request_builder.RemoteAssistancePartnersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def reports(self) -> reports_request_builder.ReportsRequestBuilder:
+        """
+        Provides operations to manage the reports property of the microsoft.graph.deviceManagement entity.
+        """
+        from .reports import reports_request_builder
+
+        return reports_request_builder.ReportsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def resource_operations(self) -> resource_operations_request_builder.ResourceOperationsRequestBuilder:
+        """
+        Provides operations to manage the resourceOperations property of the microsoft.graph.deviceManagement entity.
+        """
+        from .resource_operations import resource_operations_request_builder
+
+        return resource_operations_request_builder.ResourceOperationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def role_assignments(self) -> role_assignments_request_builder.RoleAssignmentsRequestBuilder:
+        """
+        Provides operations to manage the roleAssignments property of the microsoft.graph.deviceManagement entity.
+        """
+        from .role_assignments import role_assignments_request_builder
+
+        return role_assignments_request_builder.RoleAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def role_definitions(self) -> role_definitions_request_builder.RoleDefinitionsRequestBuilder:
+        """
+        Provides operations to manage the roleDefinitions property of the microsoft.graph.deviceManagement entity.
+        """
+        from .role_definitions import role_definitions_request_builder
+
+        return role_definitions_request_builder.RoleDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def software_update_status_summary(self) -> software_update_status_summary_request_builder.SoftwareUpdateStatusSummaryRequestBuilder:
+        """
+        Provides operations to manage the softwareUpdateStatusSummary property of the microsoft.graph.deviceManagement entity.
+        """
+        from .software_update_status_summary import software_update_status_summary_request_builder
+
+        return software_update_status_summary_request_builder.SoftwareUpdateStatusSummaryRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def telecom_expense_management_partners(self) -> telecom_expense_management_partners_request_builder.TelecomExpenseManagementPartnersRequestBuilder:
+        """
+        Provides operations to manage the telecomExpenseManagementPartners property of the microsoft.graph.deviceManagement entity.
+        """
+        from .telecom_expense_management_partners import telecom_expense_management_partners_request_builder
+
+        return telecom_expense_management_partners_request_builder.TelecomExpenseManagementPartnersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def terms_and_conditions(self) -> terms_and_conditions_request_builder.TermsAndConditionsRequestBuilder:
+        """
+        Provides operations to manage the termsAndConditions property of the microsoft.graph.deviceManagement entity.
+        """
+        from .terms_and_conditions import terms_and_conditions_request_builder
+
+        return terms_and_conditions_request_builder.TermsAndConditionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def troubleshooting_events(self) -> troubleshooting_events_request_builder.TroubleshootingEventsRequestBuilder:
+        """
+        Provides operations to manage the troubleshootingEvents property of the microsoft.graph.deviceManagement entity.
+        """
+        from .troubleshooting_events import troubleshooting_events_request_builder
+
+        return troubleshooting_events_request_builder.TroubleshootingEventsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def windows_autopilot_device_identities(self) -> windows_autopilot_device_identities_request_builder.WindowsAutopilotDeviceIdentitiesRequestBuilder:
+        """
+        Provides operations to manage the windowsAutopilotDeviceIdentities property of the microsoft.graph.deviceManagement entity.
+        """
+        from .windows_autopilot_device_identities import windows_autopilot_device_identities_request_builder
+
+        return windows_autopilot_device_identities_request_builder.WindowsAutopilotDeviceIdentitiesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def windows_information_protection_app_learning_summaries(self) -> windows_information_protection_app_learning_summaries_request_builder.WindowsInformationProtectionAppLearningSummariesRequestBuilder:
+        """
+        Provides operations to manage the windowsInformationProtectionAppLearningSummaries property of the microsoft.graph.deviceManagement entity.
+        """
+        from .windows_information_protection_app_learning_summaries import windows_information_protection_app_learning_summaries_request_builder
+
+        return windows_information_protection_app_learning_summaries_request_builder.WindowsInformationProtectionAppLearningSummariesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def windows_information_protection_network_learning_summaries(self) -> windows_information_protection_network_learning_summaries_request_builder.WindowsInformationProtectionNetworkLearningSummariesRequestBuilder:
+        """
+        Provides operations to manage the windowsInformationProtectionNetworkLearningSummaries property of the microsoft.graph.deviceManagement entity.
+        """
+        from .windows_information_protection_network_learning_summaries import windows_information_protection_network_learning_summaries_request_builder
+
+        return windows_information_protection_network_learning_summaries_request_builder.WindowsInformationProtectionNetworkLearningSummariesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DeviceManagementRequestBuilderGetQueryParameters():
         """
         Get deviceManagement
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -769,6 +889,12 @@ class DeviceManagementRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class DeviceManagementRequestBuilderGetRequestConfiguration():

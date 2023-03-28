@@ -1,12 +1,33 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-broadcast_meeting_audience = lazy_import('msgraph.generated.models.broadcast_meeting_audience')
-broadcast_meeting_caption_settings = lazy_import('msgraph.generated.models.broadcast_meeting_caption_settings')
+if TYPE_CHECKING:
+    from . import broadcast_meeting_audience, broadcast_meeting_caption_settings
 
 class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new broadcastMeetingSettings and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Defines who can join the Teams live event. Possible values are listed in the following table.
+        self._allowed_audience: Optional[broadcast_meeting_audience.BroadcastMeetingAudience] = None
+        # Caption settings of a Teams live event.
+        self._captions: Optional[broadcast_meeting_caption_settings.BroadcastMeetingCaptionSettings] = None
+        # Indicates whether attendee report is enabled for this Teams live event. Default value is false.
+        self._is_attendee_report_enabled: Optional[bool] = None
+        # Indicates whether Q&A is enabled for this Teams live event. Default value is false.
+        self._is_question_and_answer_enabled: Optional[bool] = None
+        # Indicates whether recording is enabled for this Teams live event. Default value is false.
+        self._is_recording_enabled: Optional[bool] = None
+        # Indicates whether video on demand is enabled for this Teams live event. Default value is false.
+        self._is_video_on_demand_enabled: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -58,28 +79,6 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
         """
         self._captions = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new broadcastMeetingSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Defines who can join the Teams live event. Possible values are listed in the following table.
-        self._allowed_audience: Optional[broadcast_meeting_audience.BroadcastMeetingAudience] = None
-        # Caption settings of a Teams live event.
-        self._captions: Optional[broadcast_meeting_caption_settings.BroadcastMeetingCaptionSettings] = None
-        # Indicates whether attendee report is enabled for this Teams live event. Default value is false.
-        self._is_attendee_report_enabled: Optional[bool] = None
-        # Indicates whether Q&A is enabled for this Teams live event. Default value is false.
-        self._is_question_and_answer_enabled: Optional[bool] = None
-        # Indicates whether recording is enabled for this Teams live event. Default value is false.
-        self._is_recording_enabled: Optional[bool] = None
-        # Indicates whether video on demand is enabled for this Teams live event. Default value is false.
-        self._is_video_on_demand_enabled: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BroadcastMeetingSettings:
         """
@@ -97,7 +96,9 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import broadcast_meeting_audience, broadcast_meeting_caption_settings
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "allowedAudience": lambda n : setattr(self, 'allowed_audience', n.get_enum_value(broadcast_meeting_audience.BroadcastMeetingAudience)),
             "captions": lambda n : setattr(self, 'captions', n.get_object_value(broadcast_meeting_caption_settings.BroadcastMeetingCaptionSettings)),
             "isAttendeeReportEnabled": lambda n : setattr(self, 'is_attendee_report_enabled', n.get_bool_value()),

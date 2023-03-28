@@ -1,11 +1,29 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import entity
+
+from . import entity
 
 class WorkbookRangeBorder(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new workbookRangeBorder and sets the default values.
+        """
+        super().__init__()
+        # HTML color code representing the color of the border line, of the form #RRGGBB (e.g. 'FFA500') or as a named HTML color (e.g. 'orange').
+        self._color: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Constant value that indicates the specific side of the border. The possible values are: EdgeTop, EdgeBottom, EdgeLeft, EdgeRight, InsideVertical, InsideHorizontal, DiagonalDown, DiagonalUp. Read-only.
+        self._side_index: Optional[str] = None
+        # One of the constants of line style specifying the line style for the border. The possible values are: None, Continuous, Dash, DashDot, DashDotDot, Dot, Double, SlantDashDot.
+        self._style: Optional[str] = None
+        # Specifies the weight of the border around a range. The possible values are: Hairline, Thin, Medium, Thick.
+        self._weight: Optional[str] = None
+    
     @property
     def color(self,) -> Optional[str]:
         """
@@ -22,22 +40,6 @@ class WorkbookRangeBorder(entity.Entity):
             value: Value to set for the color property.
         """
         self._color = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookRangeBorder and sets the default values.
-        """
-        super().__init__()
-        # HTML color code representing the color of the border line, of the form #RRGGBB (e.g. 'FFA500') or as a named HTML color (e.g. 'orange').
-        self._color: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Constant value that indicates the specific side of the border. The possible values are: EdgeTop, EdgeBottom, EdgeLeft, EdgeRight, InsideVertical, InsideHorizontal, DiagonalDown, DiagonalUp. Read-only.
-        self._side_index: Optional[str] = None
-        # One of the constants of line style specifying the line style for the border. The possible values are: None, Continuous, Dash, DashDot, DashDotDot, Dot, Double, SlantDashDot.
-        self._style: Optional[str] = None
-        # Specifies the weight of the border around a range. The possible values are: Hairline, Thin, Medium, Thick.
-        self._weight: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookRangeBorder:
@@ -56,7 +58,9 @@ class WorkbookRangeBorder(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "color": lambda n : setattr(self, 'color', n.get_str_value()),
             "sideIndex": lambda n : setattr(self, 'side_index', n.get_str_value()),
             "style": lambda n : setattr(self, 'style', n.get_str_value()),

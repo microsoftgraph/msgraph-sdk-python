@@ -1,15 +1,29 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-authentication_context_class_reference = lazy_import('msgraph.generated.models.authentication_context_class_reference')
-conditional_access_policy = lazy_import('msgraph.generated.models.conditional_access_policy')
-conditional_access_template = lazy_import('msgraph.generated.models.conditional_access_template')
-entity = lazy_import('msgraph.generated.models.entity')
-named_location = lazy_import('msgraph.generated.models.named_location')
+if TYPE_CHECKING:
+    from . import authentication_context_class_reference, conditional_access_policy, conditional_access_template, entity, named_location
+
+from . import entity
 
 class ConditionalAccessRoot(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new conditionalAccessRoot and sets the default values.
+        """
+        super().__init__()
+        # Read-only. Nullable. Returns a collection of the specified authentication context class references.
+        self._authentication_context_class_references: Optional[List[authentication_context_class_reference.AuthenticationContextClassReference]] = None
+        # Read-only. Nullable. Returns a collection of the specified named locations.
+        self._named_locations: Optional[List[named_location.NamedLocation]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
+        self._policies: Optional[List[conditional_access_policy.ConditionalAccessPolicy]] = None
+        # Read-only. Nullable. Returns a collection of the specified Conditional Access templates.
+        self._templates: Optional[List[conditional_access_template.ConditionalAccessTemplate]] = None
+    
     @property
     def authentication_context_class_references(self,) -> Optional[List[authentication_context_class_reference.AuthenticationContextClassReference]]:
         """
@@ -26,22 +40,6 @@ class ConditionalAccessRoot(entity.Entity):
             value: Value to set for the authentication_context_class_references property.
         """
         self._authentication_context_class_references = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new conditionalAccessRoot and sets the default values.
-        """
-        super().__init__()
-        # Read-only. Nullable. Returns a collection of the specified authentication context class references.
-        self._authentication_context_class_references: Optional[List[authentication_context_class_reference.AuthenticationContextClassReference]] = None
-        # Read-only. Nullable. Returns a collection of the specified named locations.
-        self._named_locations: Optional[List[named_location.NamedLocation]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
-        self._policies: Optional[List[conditional_access_policy.ConditionalAccessPolicy]] = None
-        # Read-only. Nullable. Returns a collection of the specified Conditional Access templates.
-        self._templates: Optional[List[conditional_access_template.ConditionalAccessTemplate]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessRoot:
@@ -60,7 +58,9 @@ class ConditionalAccessRoot(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import authentication_context_class_reference, conditional_access_policy, conditional_access_template, entity, named_location
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "authenticationContextClassReferences": lambda n : setattr(self, 'authentication_context_class_references', n.get_collection_of_object_values(authentication_context_class_reference.AuthenticationContextClassReference)),
             "namedLocations": lambda n : setattr(self, 'named_locations', n.get_collection_of_object_values(named_location.NamedLocation)),
             "policies": lambda n : setattr(self, 'policies', n.get_collection_of_object_values(conditional_access_policy.ConditionalAccessPolicy)),

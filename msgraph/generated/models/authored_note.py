@@ -1,14 +1,28 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-identity = lazy_import('msgraph.generated.models.identity')
-item_body = lazy_import('msgraph.generated.models.item_body')
+if TYPE_CHECKING:
+    from . import entity, identity, item_body
+
+from . import entity
 
 class AuthoredNote(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new AuthoredNote and sets the default values.
+        """
+        super().__init__()
+        # Identity information about the note's author.
+        self._author: Optional[identity.Identity] = None
+        # The content of the note.
+        self._content: Optional[item_body.ItemBody] = None
+        # The date and time when the entity was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+        self._created_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+    
     @property
     def author(self,) -> Optional[identity.Identity]:
         """
@@ -25,20 +39,6 @@ class AuthoredNote(entity.Entity):
             value: Value to set for the author property.
         """
         self._author = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AuthoredNote and sets the default values.
-        """
-        super().__init__()
-        # Identity information about the note's author.
-        self._author: Optional[identity.Identity] = None
-        # The content of the note.
-        self._content: Optional[item_body.ItemBody] = None
-        # The date and time when the entity was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        self._created_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
     
     @property
     def content(self,) -> Optional[item_body.ItemBody]:
@@ -91,7 +91,9 @@ class AuthoredNote(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, identity, item_body
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "author": lambda n : setattr(self, 'author', n.get_object_value(identity.Identity)),
             "content": lambda n : setattr(self, 'content', n.get_object_value(item_body.ItemBody)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),

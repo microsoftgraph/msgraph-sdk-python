@@ -1,9 +1,28 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class VerifiedDomain(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new verifiedDomain and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # For example, Email, OfficeCommunicationsOnline.
+        self._capabilities: Optional[str] = None
+        # true if this is the default domain associated with the tenant; otherwise, false.
+        self._is_default: Optional[bool] = None
+        # true if this is the initial domain associated with the tenant; otherwise, false.
+        self._is_initial: Optional[bool] = None
+        # The domain name; for example, contoso.onmicrosoft.com.
+        self._name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # For example, Managed.
+        self._type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -38,26 +57,6 @@ class VerifiedDomain(AdditionalDataHolder, Parsable):
         """
         self._capabilities = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new verifiedDomain and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # For example, Email, OfficeCommunicationsOnline.
-        self._capabilities: Optional[str] = None
-        # true if this is the default domain associated with the tenant; otherwise, false.
-        self._is_default: Optional[bool] = None
-        # true if this is the initial domain associated with the tenant; otherwise, false.
-        self._is_initial: Optional[bool] = None
-        # The domain name; for example, contoso.onmicrosoft.com.
-        self._name: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # For example, Managed.
-        self._type: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> VerifiedDomain:
         """
@@ -75,7 +74,7 @@ class VerifiedDomain(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "capabilities": lambda n : setattr(self, 'capabilities', n.get_str_value()),
             "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
             "isInitial": lambda n : setattr(self, 'is_initial', n.get_bool_value()),

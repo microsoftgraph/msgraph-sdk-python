@@ -1,12 +1,37 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
-location = lazy_import('msgraph.generated.models.location')
+if TYPE_CHECKING:
+    from . import date_time_time_zone, location
 
 class Reminder(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new reminder and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Identifies the version of the reminder. Every time the reminder is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object.
+        self._change_key: Optional[str] = None
+        # The date, time and time zone that the event ends.
+        self._event_end_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+        # The unique ID of the event. Read only.
+        self._event_id: Optional[str] = None
+        # The location of the event.
+        self._event_location: Optional[location.Location] = None
+        # The date, time, and time zone that the event starts.
+        self._event_start_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+        # The text of the event's subject line.
+        self._event_subject: Optional[str] = None
+        # The URL to open the event in Outlook on the web.The event will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.
+        self._event_web_link: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The date, time, and time zone that the reminder is set to occur.
+        self._reminder_fire_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -40,32 +65,6 @@ class Reminder(AdditionalDataHolder, Parsable):
             value: Value to set for the change_key property.
         """
         self._change_key = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new reminder and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Identifies the version of the reminder. Every time the reminder is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object.
-        self._change_key: Optional[str] = None
-        # The date, time and time zone that the event ends.
-        self._event_end_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The unique ID of the event. Read only.
-        self._event_id: Optional[str] = None
-        # The location of the event.
-        self._event_location: Optional[location.Location] = None
-        # The date, time, and time zone that the event starts.
-        self._event_start_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The text of the event's subject line.
-        self._event_subject: Optional[str] = None
-        # The URL to open the event in Outlook on the web.The event will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.
-        self._event_web_link: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The date, time, and time zone that the reminder is set to occur.
-        self._reminder_fire_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Reminder:
@@ -186,7 +185,9 @@ class Reminder(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import date_time_time_zone, location
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "changeKey": lambda n : setattr(self, 'change_key', n.get_str_value()),
             "eventEndTime": lambda n : setattr(self, 'event_end_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "eventId": lambda n : setattr(self, 'event_id', n.get_str_value()),

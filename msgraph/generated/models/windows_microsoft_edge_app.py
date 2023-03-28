@@ -1,12 +1,24 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-microsoft_edge_channel = lazy_import('msgraph.generated.models.microsoft_edge_channel')
-mobile_app = lazy_import('msgraph.generated.models.mobile_app')
+if TYPE_CHECKING:
+    from . import microsoft_edge_channel, mobile_app
+
+from . import mobile_app
 
 class WindowsMicrosoftEdgeApp(mobile_app.MobileApp):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new WindowsMicrosoftEdgeApp and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.windowsMicrosoftEdgeApp"
+        # The enum to specify the channels for Microsoft Edge apps.
+        self._channel: Optional[microsoft_edge_channel.MicrosoftEdgeChannel] = None
+        # The language locale to use when the Edge app displays text to the user.
+        self._display_language_locale: Optional[str] = None
+    
     @property
     def channel(self,) -> Optional[microsoft_edge_channel.MicrosoftEdgeChannel]:
         """
@@ -23,17 +35,6 @@ class WindowsMicrosoftEdgeApp(mobile_app.MobileApp):
             value: Value to set for the channel property.
         """
         self._channel = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new WindowsMicrosoftEdgeApp and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windowsMicrosoftEdgeApp"
-        # The enum to specify the channels for Microsoft Edge apps.
-        self._channel: Optional[microsoft_edge_channel.MicrosoftEdgeChannel] = None
-        # The language locale to use when the Edge app displays text to the user.
-        self._display_language_locale: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsMicrosoftEdgeApp:
@@ -69,7 +70,9 @@ class WindowsMicrosoftEdgeApp(mobile_app.MobileApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import microsoft_edge_channel, mobile_app
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "channel": lambda n : setattr(self, 'channel', n.get_enum_value(microsoft_edge_channel.MicrosoftEdgeChannel)),
             "displayLanguageLocale": lambda n : setattr(self, 'display_language_locale', n.get_str_value()),
         }

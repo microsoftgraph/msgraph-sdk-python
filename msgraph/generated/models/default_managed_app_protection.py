@@ -1,15 +1,44 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-key_value_pair = lazy_import('msgraph.generated.models.key_value_pair')
-managed_app_data_encryption_type = lazy_import('msgraph.generated.models.managed_app_data_encryption_type')
-managed_app_policy_deployment_summary = lazy_import('msgraph.generated.models.managed_app_policy_deployment_summary')
-managed_app_protection = lazy_import('msgraph.generated.models.managed_app_protection')
-managed_mobile_app = lazy_import('msgraph.generated.models.managed_mobile_app')
+if TYPE_CHECKING:
+    from . import key_value_pair, managed_app_data_encryption_type, managed_app_policy_deployment_summary, managed_app_protection, managed_mobile_app
+
+from . import managed_app_protection
 
 class DefaultManagedAppProtection(managed_app_protection.ManagedAppProtection):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new DefaultManagedAppProtection and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.defaultManagedAppProtection"
+        # Represents the level to which app data is encrypted for managed apps
+        self._app_data_encryption_type: Optional[managed_app_data_encryption_type.ManagedAppDataEncryptionType] = None
+        # List of apps to which the policy is deployed.
+        self._apps: Optional[List[managed_mobile_app.ManagedMobileApp]] = None
+        # A set of string key and string value pairs to be sent to the affected users, unalterned by this service
+        self._custom_settings: Optional[List[key_value_pair.KeyValuePair]] = None
+        # Count of apps to which the current policy is deployed.
+        self._deployed_app_count: Optional[int] = None
+        # Navigation property to deployment summary of the configuration.
+        self._deployment_summary: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary] = None
+        # When this setting is enabled, app level encryption is disabled if device level encryption is enabled. (Android only)
+        self._disable_app_encryption_if_device_encryption_is_enabled: Optional[bool] = None
+        # Indicates whether managed-app data should be encrypted. (Android only)
+        self._encrypt_app_data: Optional[bool] = None
+        # Indicates whether use of the FaceID is allowed in place of a pin if PinRequired is set to True. (iOS Only)
+        self._face_id_blocked: Optional[bool] = None
+        # Define the oldest required Android security patch level a user can have to gain secure access to the app. (Android only)
+        self._minimum_required_patch_version: Optional[str] = None
+        # Versions less than the specified version will block the managed app from accessing company data. (iOS Only)
+        self._minimum_required_sdk_version: Optional[str] = None
+        # Define the oldest recommended Android security patch level a user can have for secure access to the app. (Android only)
+        self._minimum_warning_patch_version: Optional[str] = None
+        # Indicates whether screen capture is blocked. (Android only)
+        self._screen_capture_blocked: Optional[bool] = None
+    
     @property
     def app_data_encryption_type(self,) -> Optional[managed_app_data_encryption_type.ManagedAppDataEncryptionType]:
         """
@@ -43,37 +72,6 @@ class DefaultManagedAppProtection(managed_app_protection.ManagedAppProtection):
             value: Value to set for the apps property.
         """
         self._apps = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new DefaultManagedAppProtection and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.defaultManagedAppProtection"
-        # Represents the level to which app data is encrypted for managed apps
-        self._app_data_encryption_type: Optional[managed_app_data_encryption_type.ManagedAppDataEncryptionType] = None
-        # List of apps to which the policy is deployed.
-        self._apps: Optional[List[managed_mobile_app.ManagedMobileApp]] = None
-        # A set of string key and string value pairs to be sent to the affected users, unalterned by this service
-        self._custom_settings: Optional[List[key_value_pair.KeyValuePair]] = None
-        # Count of apps to which the current policy is deployed.
-        self._deployed_app_count: Optional[int] = None
-        # Navigation property to deployment summary of the configuration.
-        self._deployment_summary: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary] = None
-        # When this setting is enabled, app level encryption is disabled if device level encryption is enabled. (Android only)
-        self._disable_app_encryption_if_device_encryption_is_enabled: Optional[bool] = None
-        # Indicates whether managed-app data should be encrypted. (Android only)
-        self._encrypt_app_data: Optional[bool] = None
-        # Indicates whether use of the FaceID is allowed in place of a pin if PinRequired is set to True. (iOS Only)
-        self._face_id_blocked: Optional[bool] = None
-        # Define the oldest required Android security patch level a user can have to gain secure access to the app. (Android only)
-        self._minimum_required_patch_version: Optional[str] = None
-        # Versions less than the specified version will block the managed app from accessing company data. (iOS Only)
-        self._minimum_required_sdk_version: Optional[str] = None
-        # Define the oldest recommended Android security patch level a user can have for secure access to the app. (Android only)
-        self._minimum_warning_patch_version: Optional[str] = None
-        # Indicates whether screen capture is blocked. (Android only)
-        self._screen_capture_blocked: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DefaultManagedAppProtection:
@@ -194,7 +192,9 @@ class DefaultManagedAppProtection(managed_app_protection.ManagedAppProtection):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import key_value_pair, managed_app_data_encryption_type, managed_app_policy_deployment_summary, managed_app_protection, managed_mobile_app
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(managed_mobile_app.ManagedMobileApp)),
             "appDataEncryptionType": lambda n : setattr(self, 'app_data_encryption_type', n.get_enum_value(managed_app_data_encryption_type.ManagedAppDataEncryptionType)),
             "customSettings": lambda n : setattr(self, 'custom_settings', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),

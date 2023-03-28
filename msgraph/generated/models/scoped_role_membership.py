@@ -1,12 +1,27 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-identity = lazy_import('msgraph.generated.models.identity')
+if TYPE_CHECKING:
+    from . import entity, identity
+
+from . import entity
 
 class ScopedRoleMembership(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new scopedRoleMembership and sets the default values.
+        """
+        super().__init__()
+        # Unique identifier for the administrative unit that the directory role is scoped to
+        self._administrative_unit_id: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Unique identifier for the directory role that the member is in.
+        self._role_id: Optional[str] = None
+        # The roleMemberInfo property
+        self._role_member_info: Optional[identity.Identity] = None
+    
     @property
     def administrative_unit_id(self,) -> Optional[str]:
         """
@@ -23,20 +38,6 @@ class ScopedRoleMembership(entity.Entity):
             value: Value to set for the administrative_unit_id property.
         """
         self._administrative_unit_id = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new scopedRoleMembership and sets the default values.
-        """
-        super().__init__()
-        # Unique identifier for the administrative unit that the directory role is scoped to
-        self._administrative_unit_id: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Unique identifier for the directory role that the member is in.
-        self._role_id: Optional[str] = None
-        # The roleMemberInfo property
-        self._role_member_info: Optional[identity.Identity] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ScopedRoleMembership:
@@ -55,7 +56,9 @@ class ScopedRoleMembership(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, identity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "administrativeUnitId": lambda n : setattr(self, 'administrative_unit_id', n.get_str_value()),
             "roleId": lambda n : setattr(self, 'role_id', n.get_str_value()),
             "roleMemberInfo": lambda n : setattr(self, 'role_member_info', n.get_object_value(identity.Identity)),

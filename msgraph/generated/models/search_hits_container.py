@@ -1,12 +1,29 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-search_aggregation = lazy_import('msgraph.generated.models.search_aggregation')
-search_hit = lazy_import('msgraph.generated.models.search_hit')
+if TYPE_CHECKING:
+    from . import search_aggregation, search_hit
 
 class SearchHitsContainer(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new searchHitsContainer and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The aggregations property
+        self._aggregations: Optional[List[search_aggregation.SearchAggregation]] = None
+        # A collection of the search results.
+        self._hits: Optional[List[search_hit.SearchHit]] = None
+        # Provides information if more results are available. Based on this information, you can adjust the from and size properties of the searchRequest accordingly.
+        self._more_results_available: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The total number of results. Note this is not the number of results on the page, but the total number of results satisfying the query.
+        self._total: Optional[int] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -41,24 +58,6 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         """
         self._aggregations = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new searchHitsContainer and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The aggregations property
-        self._aggregations: Optional[List[search_aggregation.SearchAggregation]] = None
-        # A collection of the search results.
-        self._hits: Optional[List[search_hit.SearchHit]] = None
-        # Provides information if more results are available. Based on this information, you can adjust the from and size properties of the searchRequest accordingly.
-        self._more_results_available: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The total number of results. Note this is not the number of results on the page, but the total number of results satisfying the query.
-        self._total: Optional[int] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SearchHitsContainer:
         """
@@ -76,7 +75,9 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import search_aggregation, search_hit
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "aggregations": lambda n : setattr(self, 'aggregations', n.get_collection_of_object_values(search_aggregation.SearchAggregation)),
             "hits": lambda n : setattr(self, 'hits', n.get_collection_of_object_values(search_hit.SearchHit)),
             "moreResultsAvailable": lambda n : setattr(self, 'more_results_available', n.get_bool_value()),

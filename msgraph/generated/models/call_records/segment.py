@@ -1,15 +1,35 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-endpoint = lazy_import('msgraph.generated.models.call_records.endpoint')
-failure_info = lazy_import('msgraph.generated.models.call_records.failure_info')
-media = lazy_import('msgraph.generated.models.call_records.media')
+if TYPE_CHECKING:
+    from . import endpoint, failure_info, media
+    from .. import entity
+
+from .. import entity
 
 class Segment(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new segment and sets the default values.
+        """
+        super().__init__()
+        # Endpoint that answered this segment.
+        self._callee: Optional[endpoint.Endpoint] = None
+        # Endpoint that initiated this segment.
+        self._caller: Optional[endpoint.Endpoint] = None
+        # UTC time when the segment ended. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._end_date_time: Optional[datetime] = None
+        # Failure information associated with the segment if it failed.
+        self._failure_info: Optional[failure_info.FailureInfo] = None
+        # Media associated with this segment.
+        self._media: Optional[List[media.Media]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # UTC time when the segment started. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._start_date_time: Optional[datetime] = None
+    
     @property
     def callee(self,) -> Optional[endpoint.Endpoint]:
         """
@@ -43,26 +63,6 @@ class Segment(entity.Entity):
             value: Value to set for the caller property.
         """
         self._caller = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new segment and sets the default values.
-        """
-        super().__init__()
-        # Endpoint that answered this segment.
-        self._callee: Optional[endpoint.Endpoint] = None
-        # Endpoint that initiated this segment.
-        self._caller: Optional[endpoint.Endpoint] = None
-        # UTC time when the segment ended. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._end_date_time: Optional[datetime] = None
-        # Failure information associated with the segment if it failed.
-        self._failure_info: Optional[failure_info.FailureInfo] = None
-        # Media associated with this segment.
-        self._media: Optional[List[media.Media]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # UTC time when the segment started. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._start_date_time: Optional[datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Segment:
@@ -115,7 +115,10 @@ class Segment(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import endpoint, failure_info, media
+        from .. import entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "callee": lambda n : setattr(self, 'callee', n.get_object_value(endpoint.Endpoint)),
             "caller": lambda n : setattr(self, 'caller', n.get_object_value(endpoint.Endpoint)),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),

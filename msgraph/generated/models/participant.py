@@ -1,12 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-media_stream = lazy_import('msgraph.generated.models.media_stream')
-participant_info = lazy_import('msgraph.generated.models.participant_info')
-recording_info = lazy_import('msgraph.generated.models.recording_info')
+if TYPE_CHECKING:
+    from . import entity, media_stream, participant_info, recording_info
+
+from . import entity
 
 class Participant(entity.Entity):
     def __init__(self,) -> None:
@@ -46,7 +45,9 @@ class Participant(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, media_stream, participant_info, recording_info
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "info": lambda n : setattr(self, 'info', n.get_object_value(participant_info.ParticipantInfo)),
             "isInLobby": lambda n : setattr(self, 'is_in_lobby', n.get_bool_value()),
             "isMuted": lambda n : setattr(self, 'is_muted', n.get_bool_value()),

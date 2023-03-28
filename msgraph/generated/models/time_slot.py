@@ -1,11 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
+if TYPE_CHECKING:
+    from . import date_time_time_zone
 
 class TimeSlot(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new timeSlot and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The end property
+        self._end: Optional[date_time_time_zone.DateTimeTimeZone] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The start property
+        self._start: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -22,20 +36,6 @@ class TimeSlot(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new timeSlot and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The end property
-        self._end: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The start property
-        self._start: Optional[date_time_time_zone.DateTimeTimeZone] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TimeSlot:
@@ -71,7 +71,9 @@ class TimeSlot(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import date_time_time_zone
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "end": lambda n : setattr(self, 'end', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "start": lambda n : setattr(self, 'start', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),

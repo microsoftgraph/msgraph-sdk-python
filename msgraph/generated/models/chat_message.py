@@ -1,23 +1,68 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-channel_identity = lazy_import('msgraph.generated.models.channel_identity')
-chat_message_attachment = lazy_import('msgraph.generated.models.chat_message_attachment')
-chat_message_from_identity_set = lazy_import('msgraph.generated.models.chat_message_from_identity_set')
-chat_message_hosted_content = lazy_import('msgraph.generated.models.chat_message_hosted_content')
-chat_message_importance = lazy_import('msgraph.generated.models.chat_message_importance')
-chat_message_mention = lazy_import('msgraph.generated.models.chat_message_mention')
-chat_message_policy_violation = lazy_import('msgraph.generated.models.chat_message_policy_violation')
-chat_message_reaction = lazy_import('msgraph.generated.models.chat_message_reaction')
-chat_message_type = lazy_import('msgraph.generated.models.chat_message_type')
-entity = lazy_import('msgraph.generated.models.entity')
-event_message_detail = lazy_import('msgraph.generated.models.event_message_detail')
-item_body = lazy_import('msgraph.generated.models.item_body')
+if TYPE_CHECKING:
+    from . import channel_identity, chat_message_attachment, chat_message_from_identity_set, chat_message_hosted_content, chat_message_importance, chat_message_mention, chat_message_policy_violation, chat_message_reaction, chat_message_type, entity, event_message_detail, item_body
+
+from . import entity
 
 class ChatMessage(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new chatMessage and sets the default values.
+        """
+        super().__init__()
+        # References to attached objects like files, tabs, meetings etc.
+        self._attachments: Optional[List[chat_message_attachment.ChatMessageAttachment]] = None
+        # The body property
+        self._body: Optional[item_body.ItemBody] = None
+        # If the message was sent in a channel, represents identity of the channel.
+        self._channel_identity: Optional[channel_identity.ChannelIdentity] = None
+        # If the message was sent in a chat, represents the identity of the chat.
+        self._chat_id: Optional[str] = None
+        # Timestamp of when the chat message was created.
+        self._created_date_time: Optional[datetime] = None
+        # Read only. Timestamp at which the chat message was deleted, or null if not deleted.
+        self._deleted_date_time: Optional[datetime] = None
+        # Read-only. Version number of the chat message.
+        self._etag: Optional[str] = None
+        # Read-only. If present, represents details of an event that happened in a chat, a channel, or a team, for example, adding new members. For event messages, the messageType property will be set to systemEventMessage.
+        self._event_detail: Optional[event_message_detail.EventMessageDetail] = None
+        # Details of the sender of the chat message. Can only be set during migration.
+        self._from_: Optional[chat_message_from_identity_set.ChatMessageFromIdentitySet] = None
+        # Content in a message hosted by Microsoft Teams - for example, images or code snippets.
+        self._hosted_contents: Optional[List[chat_message_hosted_content.ChatMessageHostedContent]] = None
+        # The importance property
+        self._importance: Optional[chat_message_importance.ChatMessageImportance] = None
+        # Read only. Timestamp when edits to the chat message were made. Triggers an 'Edited' flag in the Teams UI. If no edits are made the value is null.
+        self._last_edited_date_time: Optional[datetime] = None
+        # Read only. Timestamp when the chat message is created (initial setting) or modified, including when a reaction is added or removed.
+        self._last_modified_date_time: Optional[datetime] = None
+        # Locale of the chat message set by the client. Always set to en-us.
+        self._locale: Optional[str] = None
+        # List of entities mentioned in the chat message. Supported entities are: user, bot, team, and channel.
+        self._mentions: Optional[List[chat_message_mention.ChatMessageMention]] = None
+        # The messageType property
+        self._message_type: Optional[chat_message_type.ChatMessageType] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Defines the properties of a policy violation set by a data loss prevention (DLP) application.
+        self._policy_violation: Optional[chat_message_policy_violation.ChatMessagePolicyViolation] = None
+        # Reactions for this chat message (for example, Like).
+        self._reactions: Optional[List[chat_message_reaction.ChatMessageReaction]] = None
+        # Replies for a specified message. Supports $expand for channel messages.
+        self._replies: Optional[List[ChatMessage]] = None
+        # Read-only. ID of the parent chat message or root chat message of the thread. (Only applies to chat messages in channels, not chats.)
+        self._reply_to_id: Optional[str] = None
+        # The subject of the chat message, in plaintext.
+        self._subject: Optional[str] = None
+        # Summary text of the chat message that could be used for push notifications and summary views or fall back views. Only applies to channel chat messages, not chat messages in a chat.
+        self._summary: Optional[str] = None
+        # Read-only. Link to the message in Microsoft Teams.
+        self._web_url: Optional[str] = None
+    
     @property
     def attachments(self,) -> Optional[List[chat_message_attachment.ChatMessageAttachment]]:
         """
@@ -85,60 +130,6 @@ class ChatMessage(entity.Entity):
             value: Value to set for the chat_id property.
         """
         self._chat_id = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new chatMessage and sets the default values.
-        """
-        super().__init__()
-        # References to attached objects like files, tabs, meetings etc.
-        self._attachments: Optional[List[chat_message_attachment.ChatMessageAttachment]] = None
-        # The body property
-        self._body: Optional[item_body.ItemBody] = None
-        # If the message was sent in a channel, represents identity of the channel.
-        self._channel_identity: Optional[channel_identity.ChannelIdentity] = None
-        # If the message was sent in a chat, represents the identity of the chat.
-        self._chat_id: Optional[str] = None
-        # Timestamp of when the chat message was created.
-        self._created_date_time: Optional[datetime] = None
-        # Read only. Timestamp at which the chat message was deleted, or null if not deleted.
-        self._deleted_date_time: Optional[datetime] = None
-        # Read-only. Version number of the chat message.
-        self._etag: Optional[str] = None
-        # Read-only. If present, represents details of an event that happened in a chat, a channel, or a team, for example, adding new members. For event messages, the messageType property will be set to systemEventMessage.
-        self._event_detail: Optional[event_message_detail.EventMessageDetail] = None
-        # Details of the sender of the chat message. Can only be set during migration.
-        self._from_: Optional[chat_message_from_identity_set.ChatMessageFromIdentitySet] = None
-        # Content in a message hosted by Microsoft Teams - for example, images or code snippets.
-        self._hosted_contents: Optional[List[chat_message_hosted_content.ChatMessageHostedContent]] = None
-        # The importance property
-        self._importance: Optional[chat_message_importance.ChatMessageImportance] = None
-        # Read only. Timestamp when edits to the chat message were made. Triggers an 'Edited' flag in the Teams UI. If no edits are made the value is null.
-        self._last_edited_date_time: Optional[datetime] = None
-        # Read only. Timestamp when the chat message is created (initial setting) or modified, including when a reaction is added or removed.
-        self._last_modified_date_time: Optional[datetime] = None
-        # Locale of the chat message set by the client. Always set to en-us.
-        self._locale: Optional[str] = None
-        # List of entities mentioned in the chat message. Supported entities are: user, bot, team, and channel.
-        self._mentions: Optional[List[chat_message_mention.ChatMessageMention]] = None
-        # The messageType property
-        self._message_type: Optional[chat_message_type.ChatMessageType] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Defines the properties of a policy violation set by a data loss prevention (DLP) application.
-        self._policy_violation: Optional[chat_message_policy_violation.ChatMessagePolicyViolation] = None
-        # Reactions for this chat message (for example, Like).
-        self._reactions: Optional[List[chat_message_reaction.ChatMessageReaction]] = None
-        # Replies for a specified message. Supports $expand for channel messages.
-        self._replies: Optional[List[ChatMessage]] = None
-        # Read-only. ID of the parent chat message or root chat message of the thread. (Only applies to chat messages in channels, not chats.)
-        self._reply_to_id: Optional[str] = None
-        # The subject of the chat message, in plaintext.
-        self._subject: Optional[str] = None
-        # Summary text of the chat message that could be used for push notifications and summary views or fall back views. Only applies to channel chat messages, not chat messages in a chat.
-        self._summary: Optional[str] = None
-        # Read-only. Link to the message in Microsoft Teams.
-        self._web_url: Optional[str] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -242,7 +233,9 @@ class ChatMessage(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import channel_identity, chat_message_attachment, chat_message_from_identity_set, chat_message_hosted_content, chat_message_importance, chat_message_mention, chat_message_policy_violation, chat_message_reaction, chat_message_type, entity, event_message_detail, item_body
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(chat_message_attachment.ChatMessageAttachment)),
             "body": lambda n : setattr(self, 'body', n.get_object_value(item_body.ItemBody)),
             "channelIdentity": lambda n : setattr(self, 'channel_identity', n.get_object_value(channel_identity.ChannelIdentity)),

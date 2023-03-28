@@ -1,11 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-event_message_detail = lazy_import('msgraph.generated.models.event_message_detail')
-identity_set = lazy_import('msgraph.generated.models.identity_set')
+if TYPE_CHECKING:
+    from . import event_message_detail, identity_set
+
+from . import event_message_detail
 
 class MessagePinnedEventMessageDetail(event_message_detail.EventMessageDetail):
     def __init__(self,) -> None:
@@ -53,7 +54,9 @@ class MessagePinnedEventMessageDetail(event_message_detail.EventMessageDetail):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import event_message_detail, identity_set
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "eventDateTime": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
         }

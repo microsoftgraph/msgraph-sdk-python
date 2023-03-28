@@ -1,10 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-long_running_operation = lazy_import('msgraph.generated.models.long_running_operation')
-public_error = lazy_import('msgraph.generated.models.public_error')
+if TYPE_CHECKING:
+    from . import long_running_operation, public_error
+
+from . import long_running_operation
 
 class RichLongRunningOperation(long_running_operation.LongRunningOperation):
     def __init__(self,) -> None:
@@ -57,7 +58,9 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import long_running_operation, public_error
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "error": lambda n : setattr(self, 'error', n.get_object_value(public_error.PublicError)),
             "percentageComplete": lambda n : setattr(self, 'percentage_complete', n.get_int_value()),
             "resourceId": lambda n : setattr(self, 'resource_id', n.get_str_value()),

@@ -1,16 +1,31 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-b2x_identity_user_flow = lazy_import('msgraph.generated.models.b2x_identity_user_flow')
-conditional_access_root = lazy_import('msgraph.generated.models.conditional_access_root')
-entity = lazy_import('msgraph.generated.models.entity')
-identity_api_connector = lazy_import('msgraph.generated.models.identity_api_connector')
-identity_provider_base = lazy_import('msgraph.generated.models.identity_provider_base')
-identity_user_flow_attribute = lazy_import('msgraph.generated.models.identity_user_flow_attribute')
+if TYPE_CHECKING:
+    from . import b2x_identity_user_flow, conditional_access_root, entity, identity_api_connector, identity_provider_base, identity_user_flow_attribute
+
+from . import entity
 
 class IdentityContainer(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new IdentityContainer and sets the default values.
+        """
+        super().__init__()
+        # Represents entry point for API connectors.
+        self._api_connectors: Optional[List[identity_api_connector.IdentityApiConnector]] = None
+        # Represents entry point for B2X/self-service sign-up identity userflows.
+        self._b2x_user_flows: Optional[List[b2x_identity_user_flow.B2xIdentityUserFlow]] = None
+        # the entry point for the Conditional Access (CA) object model.
+        self._conditional_access: Optional[conditional_access_root.ConditionalAccessRoot] = None
+        # The identityProviders property
+        self._identity_providers: Optional[List[identity_provider_base.IdentityProviderBase]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Represents entry point for identity userflow attributes.
+        self._user_flow_attributes: Optional[List[identity_user_flow_attribute.IdentityUserFlowAttribute]] = None
+    
     @property
     def api_connectors(self,) -> Optional[List[identity_api_connector.IdentityApiConnector]]:
         """
@@ -62,24 +77,6 @@ class IdentityContainer(entity.Entity):
         """
         self._conditional_access = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new IdentityContainer and sets the default values.
-        """
-        super().__init__()
-        # Represents entry point for API connectors.
-        self._api_connectors: Optional[List[identity_api_connector.IdentityApiConnector]] = None
-        # Represents entry point for B2X/self-service sign-up identity userflows.
-        self._b2x_user_flows: Optional[List[b2x_identity_user_flow.B2xIdentityUserFlow]] = None
-        # the entry point for the Conditional Access (CA) object model.
-        self._conditional_access: Optional[conditional_access_root.ConditionalAccessRoot] = None
-        # The identityProviders property
-        self._identity_providers: Optional[List[identity_provider_base.IdentityProviderBase]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Represents entry point for identity userflow attributes.
-        self._user_flow_attributes: Optional[List[identity_user_flow_attribute.IdentityUserFlowAttribute]] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdentityContainer:
         """
@@ -97,7 +94,9 @@ class IdentityContainer(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import b2x_identity_user_flow, conditional_access_root, entity, identity_api_connector, identity_provider_base, identity_user_flow_attribute
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "apiConnectors": lambda n : setattr(self, 'api_connectors', n.get_collection_of_object_values(identity_api_connector.IdentityApiConnector)),
             "b2xUserFlows": lambda n : setattr(self, 'b2x_user_flows', n.get_collection_of_object_values(b2x_identity_user_flow.B2xIdentityUserFlow)),
             "conditionalAccess": lambda n : setattr(self, 'conditional_access', n.get_object_value(conditional_access_root.ConditionalAccessRoot)),

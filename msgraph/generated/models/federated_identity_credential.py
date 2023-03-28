@@ -1,28 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import entity
+
+from . import entity
 
 class FederatedIdentityCredential(entity.Entity):
-    @property
-    def audiences(self,) -> Optional[List[str]]:
-        """
-        Gets the audiences property value. The audience that can appear in the external token. This field is mandatory and should be set to api://AzureADTokenExchange for Azure AD. It says what Microsoft identity platform should accept in the aud claim in the incoming token. This value represents Azure AD in your external identity provider and has no fixed value across identity providers - you may need to create a new application registration in your identity provider to serve as the audience of this token. This field can only accept a single value and has a limit of 600 characters. Required.
-        Returns: Optional[List[str]]
-        """
-        return self._audiences
-    
-    @audiences.setter
-    def audiences(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the audiences property value. The audience that can appear in the external token. This field is mandatory and should be set to api://AzureADTokenExchange for Azure AD. It says what Microsoft identity platform should accept in the aud claim in the incoming token. This value represents Azure AD in your external identity provider and has no fixed value across identity providers - you may need to create a new application registration in your identity provider to serve as the audience of this token. This field can only accept a single value and has a limit of 600 characters. Required.
-        Args:
-            value: Value to set for the audiences property.
-        """
-        self._audiences = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new federatedIdentityCredential and sets the default values.
@@ -40,6 +25,23 @@ class FederatedIdentityCredential(entity.Entity):
         self.odata_type: Optional[str] = None
         # Required. The identifier of the external software workload within the external identity provider. Like the audience value, it has no fixed format, as each identity provider uses their own - sometimes a GUID, sometimes a colon delimited identifier, sometimes arbitrary strings. The value here must match the sub claim within the token presented to Azure AD. The combination of issuer and subject must be unique on the app. It has a limit of 600 characters. Supports $filter (eq).
         self._subject: Optional[str] = None
+    
+    @property
+    def audiences(self,) -> Optional[List[str]]:
+        """
+        Gets the audiences property value. The audience that can appear in the external token. This field is mandatory and should be set to api://AzureADTokenExchange for Azure AD. It says what Microsoft identity platform should accept in the aud claim in the incoming token. This value represents Azure AD in your external identity provider and has no fixed value across identity providers - you may need to create a new application registration in your identity provider to serve as the audience of this token. This field can only accept a single value and has a limit of 600 characters. Required.
+        Returns: Optional[List[str]]
+        """
+        return self._audiences
+    
+    @audiences.setter
+    def audiences(self,value: Optional[List[str]] = None) -> None:
+        """
+        Sets the audiences property value. The audience that can appear in the external token. This field is mandatory and should be set to api://AzureADTokenExchange for Azure AD. It says what Microsoft identity platform should accept in the aud claim in the incoming token. This value represents Azure AD in your external identity provider and has no fixed value across identity providers - you may need to create a new application registration in your identity provider to serve as the audience of this token. This field can only accept a single value and has a limit of 600 characters. Required.
+        Args:
+            value: Value to set for the audiences property.
+        """
+        self._audiences = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FederatedIdentityCredential:
@@ -75,7 +77,9 @@ class FederatedIdentityCredential(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "audiences": lambda n : setattr(self, 'audiences', n.get_collection_of_primitive_values(str)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "issuer": lambda n : setattr(self, 'issuer', n.get_str_value()),

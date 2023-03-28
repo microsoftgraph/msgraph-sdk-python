@@ -1,12 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-x509_certificate_authentication_mode = lazy_import('msgraph.generated.models.x509_certificate_authentication_mode')
-x509_certificate_rule = lazy_import('msgraph.generated.models.x509_certificate_rule')
+if TYPE_CHECKING:
+    from . import x509_certificate_authentication_mode, x509_certificate_rule
 
 class X509CertificateAuthenticationModeConfiguration(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new x509CertificateAuthenticationModeConfiguration and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Rules are configured in addition to the authentication mode to bind a specific x509CertificateRuleType to an x509CertificateAuthenticationMode. For example, bind the policyOID with identifier 1.32.132.343 to x509CertificateMultiFactor authentication mode.
+        self._rules: Optional[List[x509_certificate_rule.X509CertificateRule]] = None
+        # The type of strong authentication mode. The possible values are: x509CertificateSingleFactor, x509CertificateMultiFactor, unknownFutureValue.
+        self._x509_certificate_authentication_default_mode: Optional[x509_certificate_authentication_mode.X509CertificateAuthenticationMode] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -23,20 +36,6 @@ class X509CertificateAuthenticationModeConfiguration(AdditionalDataHolder, Parsa
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new x509CertificateAuthenticationModeConfiguration and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Rules are configured in addition to the authentication mode to bind a specific x509CertificateRuleType to an x509CertificateAuthenticationMode. For example, bind the policyOID with identifier 1.32.132.343 to x509CertificateMultiFactor authentication mode.
-        self._rules: Optional[List[x509_certificate_rule.X509CertificateRule]] = None
-        # The type of strong authentication mode. The possible values are: x509CertificateSingleFactor, x509CertificateMultiFactor, unknownFutureValue.
-        self._x509_certificate_authentication_default_mode: Optional[x509_certificate_authentication_mode.X509CertificateAuthenticationMode] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> X509CertificateAuthenticationModeConfiguration:
@@ -55,7 +54,9 @@ class X509CertificateAuthenticationModeConfiguration(AdditionalDataHolder, Parsa
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import x509_certificate_authentication_mode, x509_certificate_rule
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "rules": lambda n : setattr(self, 'rules', n.get_collection_of_object_values(x509_certificate_rule.X509CertificateRule)),
             "x509CertificateAuthenticationDefaultMode": lambda n : setattr(self, 'x509_certificate_authentication_default_mode', n.get_enum_value(x509_certificate_authentication_mode.X509CertificateAuthenticationMode)),

@@ -1,12 +1,68 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-pstn_call_duration_source = lazy_import('msgraph.generated.models.call_records.pstn_call_duration_source')
+if TYPE_CHECKING:
+    from . import pstn_call_duration_source
 
 class PstnCallLogRow(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new pstnCallLogRow and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The source of the call duration data. If the call uses a third-party telecommunications operator via the Operator Connect Program, the operator may provide their own call duration data. In this case, the property value is operator. Otherwise, the value is microsoft.
+        self._call_duration_source: Optional[pstn_call_duration_source.PstnCallDurationSource] = None
+        # Call identifier. Not guaranteed to be unique.
+        self._call_id: Optional[str] = None
+        # Whether the call was a PSTN outbound or inbound call and the type of call such as a call placed by a user or an audio conference.
+        self._call_type: Optional[str] = None
+        # Number dialed in E.164 format.
+        self._callee_number: Optional[str] = None
+        # Number that received the call for inbound calls or the number dialed for outbound calls. E.164 format.
+        self._caller_number: Optional[str] = None
+        # Amount of money or cost of the call that is charged to your account.
+        self._charge: Optional[float] = None
+        # ID of the audio conference.
+        self._conference_id: Optional[str] = None
+        # Connection fee price.
+        self._connection_charge: Optional[float] = None
+        # Type of currency used to calculate the cost of the call. For details, see (ISO 4217.
+        self._currency: Optional[str] = None
+        # Whether the call was domestic (within a country or region) or international (outside a country or region) based on the user's location.
+        self._destination_context: Optional[str] = None
+        # Country or region dialed.
+        self._destination_name: Optional[str] = None
+        # How long the call was connected, in seconds.
+        self._duration: Optional[int] = None
+        # Call end time.
+        self._end_date_time: Optional[datetime] = None
+        # Unique call identifier. GUID.
+        self._id: Optional[str] = None
+        # User's phone number type, such as a service of toll-free number.
+        self._inventory_type: Optional[str] = None
+        # The license used for the call.
+        self._license_capability: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The telecommunications operator which provided PSTN services for this call. This may be Microsoft, or it may be a third-party operator via the Operator Connect Program.
+        self._operator: Optional[str] = None
+        # Call start time.
+        self._start_date_time: Optional[datetime] = None
+        # Country code of the tenant. For details, see ISO 3166-1 alpha-2.
+        self._tenant_country_code: Optional[str] = None
+        # Country code of the user. For details, see ISO 3166-1 alpha-2.
+        self._usage_country_code: Optional[str] = None
+        # Display name of the user.
+        self._user_display_name: Optional[str] = None
+        # Calling user's ID in Graph. GUID. This and other user info will be null/empty for bot call types (ucap_in, ucap_out).
+        self._user_id: Optional[str] = None
+        # The user principal name (sign-in name) in Azure Active Directory. This is usually the same as the user's SIP address, and can be same as the user's e-mail address.
+        self._user_principal_name: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -160,62 +216,6 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         """
         self._connection_charge = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new pstnCallLogRow and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The source of the call duration data. If the call uses a third-party telecommunications operator via the Operator Connect Program, the operator may provide their own call duration data. In this case, the property value is operator. Otherwise, the value is microsoft.
-        self._call_duration_source: Optional[pstn_call_duration_source.PstnCallDurationSource] = None
-        # Call identifier. Not guaranteed to be unique.
-        self._call_id: Optional[str] = None
-        # Whether the call was a PSTN outbound or inbound call and the type of call such as a call placed by a user or an audio conference.
-        self._call_type: Optional[str] = None
-        # Number dialed in E.164 format.
-        self._callee_number: Optional[str] = None
-        # Number that received the call for inbound calls or the number dialed for outbound calls. E.164 format.
-        self._caller_number: Optional[str] = None
-        # Amount of money or cost of the call that is charged to your account.
-        self._charge: Optional[float] = None
-        # ID of the audio conference.
-        self._conference_id: Optional[str] = None
-        # Connection fee price.
-        self._connection_charge: Optional[float] = None
-        # Type of currency used to calculate the cost of the call. For details, see (ISO 4217.
-        self._currency: Optional[str] = None
-        # Whether the call was domestic (within a country or region) or international (outside a country or region) based on the user's location.
-        self._destination_context: Optional[str] = None
-        # Country or region dialed.
-        self._destination_name: Optional[str] = None
-        # How long the call was connected, in seconds.
-        self._duration: Optional[int] = None
-        # Call end time.
-        self._end_date_time: Optional[datetime] = None
-        # Unique call identifier. GUID.
-        self._id: Optional[str] = None
-        # User's phone number type, such as a service of toll-free number.
-        self._inventory_type: Optional[str] = None
-        # The license used for the call.
-        self._license_capability: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The telecommunications operator which provided PSTN services for this call. This may be Microsoft, or it may be a third-party operator via the Operator Connect Program.
-        self._operator: Optional[str] = None
-        # Call start time.
-        self._start_date_time: Optional[datetime] = None
-        # Country code of the tenant. For details, see ISO 3166-1 alpha-2.
-        self._tenant_country_code: Optional[str] = None
-        # Country code of the user. For details, see ISO 3166-1 alpha-2.
-        self._usage_country_code: Optional[str] = None
-        # Display name of the user.
-        self._user_display_name: Optional[str] = None
-        # Calling user's ID in Graph. GUID. This and other user info will be null/empty for bot call types (ucap_in, ucap_out).
-        self._user_id: Optional[str] = None
-        # The user principal name (sign-in name) in Azure Active Directory. This is usually the same as the user's SIP address, and can be same as the user's e-mail address.
-        self._user_principal_name: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PstnCallLogRow:
         """
@@ -318,7 +318,9 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import pstn_call_duration_source
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "calleeNumber": lambda n : setattr(self, 'callee_number', n.get_str_value()),
             "callerNumber": lambda n : setattr(self, 'caller_number', n.get_str_value()),
             "callDurationSource": lambda n : setattr(self, 'call_duration_source', n.get_enum_value(pstn_call_duration_source.PstnCallDurationSource)),

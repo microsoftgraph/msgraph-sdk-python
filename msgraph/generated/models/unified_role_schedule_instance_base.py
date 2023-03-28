@@ -1,14 +1,37 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-app_scope = lazy_import('msgraph.generated.models.app_scope')
-directory_object = lazy_import('msgraph.generated.models.directory_object')
-entity = lazy_import('msgraph.generated.models.entity')
-unified_role_definition = lazy_import('msgraph.generated.models.unified_role_definition')
+if TYPE_CHECKING:
+    from . import app_scope, directory_object, entity, unified_role_assignment_schedule_instance, unified_role_definition, unified_role_eligibility_schedule_instance
+
+from . import entity
 
 class UnifiedRoleScheduleInstanceBase(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new unifiedRoleScheduleInstanceBase and sets the default values.
+        """
+        super().__init__()
+        # Read-only property with details of the app-specific scope when the assignment or role eligibility is scoped to an app. Nullable.
+        self._app_scope: Optional[app_scope.AppScope] = None
+        # Identifier of the app-specific scope when the assignment or role eligibility is scoped to an app. The scope of an assignment or role eligibility determines the set of resources for which the principal has been granted access. App scopes are scopes that are defined and understood by this application only. Use / for tenant-wide app scopes. Use directoryScopeId to limit the scope to particular directory objects, for example, administrative units.
+        self._app_scope_id: Optional[str] = None
+        # The directory object that is the scope of the assignment or role eligibility. Read-only.
+        self._directory_scope: Optional[directory_object.DirectoryObject] = None
+        # Identifier of the directory object representing the scope of the assignment or role eligibility. The scope of an assignment or role eligibility determines the set of resources for which the principal has been granted access. Directory scopes are shared scopes stored in the directory that are understood by multiple applications. Use / for tenant-wide scope. Use appScopeId to limit the scope to an application only.
+        self._directory_scope_id: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The principal that's getting a role assignment or role eligibility through the request.
+        self._principal: Optional[directory_object.DirectoryObject] = None
+        # Identifier of the principal that has been granted the role assignment or that's eligible for a role.
+        self._principal_id: Optional[str] = None
+        # Detailed information for the roleDefinition object that is referenced through the roleDefinitionId property.
+        self._role_definition: Optional[unified_role_definition.UnifiedRoleDefinition] = None
+        # Identifier of the unifiedRoleDefinition object that is being assigned to the principal or that the principal is eligible for.
+        self._role_definition_id: Optional[str] = None
+    
     @property
     def app_scope(self,) -> Optional[app_scope.AppScope]:
         """
@@ -43,30 +66,6 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
         """
         self._app_scope_id = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new unifiedRoleScheduleInstanceBase and sets the default values.
-        """
-        super().__init__()
-        # Read-only property with details of the app-specific scope when the assignment or role eligibility is scoped to an app. Nullable.
-        self._app_scope: Optional[app_scope.AppScope] = None
-        # Identifier of the app-specific scope when the assignment or role eligibility is scoped to an app. The scope of an assignment or role eligibility determines the set of resources for which the principal has been granted access. App scopes are scopes that are defined and understood by this application only. Use / for tenant-wide app scopes. Use directoryScopeId to limit the scope to particular directory objects, for example, administrative units.
-        self._app_scope_id: Optional[str] = None
-        # The directory object that is the scope of the assignment or role eligibility. Read-only.
-        self._directory_scope: Optional[directory_object.DirectoryObject] = None
-        # Identifier of the directory object representing the scope of the assignment or role eligibility. The scope of an assignment or role eligibility determines the set of resources for which the principal has been granted access. Directory scopes are shared scopes stored in the directory that are understood by multiple applications. Use / for tenant-wide scope. Use appScopeId to limit the scope to an application only.
-        self._directory_scope_id: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The principal that's getting a role assignment or role eligibility through the request.
-        self._principal: Optional[directory_object.DirectoryObject] = None
-        # Identifier of the principal that has been granted the role assignment or that's eligible for a role.
-        self._principal_id: Optional[str] = None
-        # Detailed information for the roleDefinition object that is referenced through the roleDefinitionId property.
-        self._role_definition: Optional[unified_role_definition.UnifiedRoleDefinition] = None
-        # Identifier of the unifiedRoleDefinition object that is being assigned to the principal or that the principal is eligible for.
-        self._role_definition_id: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleScheduleInstanceBase:
         """
@@ -77,6 +76,17 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.unifiedRoleAssignmentScheduleInstance":
+                from . import unified_role_assignment_schedule_instance
+
+                return unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance()
+            if mapping_value == "#microsoft.graph.unifiedRoleEligibilityScheduleInstance":
+                from . import unified_role_eligibility_schedule_instance
+
+                return unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance()
         return UnifiedRoleScheduleInstanceBase()
     
     @property
@@ -118,7 +128,9 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import app_scope, directory_object, entity, unified_role_assignment_schedule_instance, unified_role_definition, unified_role_eligibility_schedule_instance
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "appScope": lambda n : setattr(self, 'app_scope', n.get_object_value(app_scope.AppScope)),
             "appScopeId": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
             "directoryScope": lambda n : setattr(self, 'directory_scope', n.get_object_value(directory_object.DirectoryObject)),

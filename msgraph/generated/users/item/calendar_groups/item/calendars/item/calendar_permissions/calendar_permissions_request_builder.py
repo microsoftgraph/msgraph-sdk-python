@@ -7,25 +7,17 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-calendar_permission = lazy_import('msgraph.generated.models.calendar_permission')
-calendar_permission_collection_response = lazy_import('msgraph.generated.models.calendar_permission_collection_response')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-count_request_builder = lazy_import('msgraph.generated.users.item.calendar_groups.item.calendars.item.calendar_permissions.count.count_request_builder')
+if TYPE_CHECKING:
+    from ........models import calendar_permission, calendar_permission_collection_response
+    from ........models.o_data_errors import o_data_error
+    from .count import count_request_builder
 
 class CalendarPermissionsRequestBuilder():
     """
     Provides operations to manage the calendarPermissions property of the microsoft.graph.calendar entity.
     """
-    @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CalendarPermissionsRequestBuilder and sets the default values.
@@ -54,12 +46,16 @@ class CalendarPermissionsRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ........models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ........models import calendar_permission_collection_response
+
         return await self.request_adapter.send_async(request_info, calendar_permission_collection_response.CalendarPermissionCollectionResponse, error_mapping)
     
     async def post(self,body: Optional[calendar_permission.CalendarPermission] = None, request_configuration: Optional[CalendarPermissionsRequestBuilderPostRequestConfiguration] = None) -> Optional[calendar_permission.CalendarPermission]:
@@ -75,12 +71,16 @@ class CalendarPermissionsRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
+        from ........models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ........models import calendar_permission
+
         return await self.request_adapter.send_async(request_info, calendar_permission.CalendarPermission, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CalendarPermissionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -122,29 +122,20 @@ class CalendarPermissionsRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def count(self) -> count_request_builder.CountRequestBuilder:
+        """
+        Provides operations to count the resources in the collection.
+        """
+        from .count import count_request_builder
+
+        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class CalendarPermissionsRequestBuilderGetQueryParameters():
         """
         The permissions of the users with whom the calendar is shared.
         """
-        # Include count of items
-        count: Optional[bool] = None
-
-        # Filter items by property values
-        filter: Optional[str] = None
-
-        # Order items by property values
-        orderby: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
-        # Skip the first n items
-        skip: Optional[int] = None
-
-        # Show only the first n items
-        top: Optional[int] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -168,6 +159,24 @@ class CalendarPermissionsRequestBuilder():
                 return "%24top"
             return original_name
         
+        # Include count of items
+        count: Optional[bool] = None
+
+        # Filter items by property values
+        filter: Optional[str] = None
+
+        # Order items by property values
+        orderby: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
+        # Skip the first n items
+        skip: Optional[int] = None
+
+        # Show only the first n items
+        top: Optional[int] = None
+
     
     @dataclass
     class CalendarPermissionsRequestBuilderGetRequestConfiguration():

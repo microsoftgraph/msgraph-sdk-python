@@ -1,12 +1,33 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class ConfigurationManagerClientEnabledFeatures(AdditionalDataHolder, Parsable):
     """
     configuration Manager client enabled features
     """
+    def __init__(self,) -> None:
+        """
+        Instantiates a new configurationManagerClientEnabledFeatures and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Whether compliance policy is managed by Intune
+        self._compliance_policy: Optional[bool] = None
+        # Whether device configuration is managed by Intune
+        self._device_configuration: Optional[bool] = None
+        # Whether inventory is managed by Intune
+        self._inventory: Optional[bool] = None
+        # Whether modern application is managed by Intune
+        self._modern_apps: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Whether resource access is managed by Intune
+        self._resource_access: Optional[bool] = None
+        # Whether Windows Update for Business is managed by Intune
+        self._windows_update_for_business: Optional[bool] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -40,28 +61,6 @@ class ConfigurationManagerClientEnabledFeatures(AdditionalDataHolder, Parsable):
             value: Value to set for the compliance_policy property.
         """
         self._compliance_policy = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new configurationManagerClientEnabledFeatures and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Whether compliance policy is managed by Intune
-        self._compliance_policy: Optional[bool] = None
-        # Whether device configuration is managed by Intune
-        self._device_configuration: Optional[bool] = None
-        # Whether inventory is managed by Intune
-        self._inventory: Optional[bool] = None
-        # Whether modern application is managed by Intune
-        self._modern_apps: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Whether resource access is managed by Intune
-        self._resource_access: Optional[bool] = None
-        # Whether Windows Update for Business is managed by Intune
-        self._windows_update_for_business: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConfigurationManagerClientEnabledFeatures:
@@ -97,7 +96,7 @@ class ConfigurationManagerClientEnabledFeatures(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "compliancePolicy": lambda n : setattr(self, 'compliance_policy', n.get_bool_value()),
             "deviceConfiguration": lambda n : setattr(self, 'device_configuration', n.get_bool_value()),
             "inventory": lambda n : setattr(self, 'inventory', n.get_bool_value()),

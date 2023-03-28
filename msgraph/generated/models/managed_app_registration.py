@@ -1,19 +1,55 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-managed_app_flagged_reason = lazy_import('msgraph.generated.models.managed_app_flagged_reason')
-managed_app_operation = lazy_import('msgraph.generated.models.managed_app_operation')
-managed_app_policy = lazy_import('msgraph.generated.models.managed_app_policy')
-mobile_app_identifier = lazy_import('msgraph.generated.models.mobile_app_identifier')
+if TYPE_CHECKING:
+    from . import android_managed_app_registration, entity, ios_managed_app_registration, managed_app_flagged_reason, managed_app_operation, managed_app_policy, mobile_app_identifier
+
+from . import entity
 
 class ManagedAppRegistration(entity.Entity):
     """
     The ManagedAppEntity is the base entity type for all other entity types under app management workflow.
     """
+    def __init__(self,) -> None:
+        """
+        Instantiates a new managedAppRegistration and sets the default values.
+        """
+        super().__init__()
+        # The app package Identifier
+        self._app_identifier: Optional[mobile_app_identifier.MobileAppIdentifier] = None
+        # App version
+        self._application_version: Optional[str] = None
+        # Zero or more policys already applied on the registered app when it last synchronized with managment service.
+        self._applied_policies: Optional[List[managed_app_policy.ManagedAppPolicy]] = None
+        # Date and time of creation
+        self._created_date_time: Optional[datetime] = None
+        # Host device name
+        self._device_name: Optional[str] = None
+        # App management SDK generated tag, which helps relate apps hosted on the same device. Not guaranteed to relate apps in all conditions.
+        self._device_tag: Optional[str] = None
+        # Host device type
+        self._device_type: Optional[str] = None
+        # Zero or more reasons an app registration is flagged. E.g. app running on rooted device
+        self._flagged_reasons: Optional[List[managed_app_flagged_reason.ManagedAppFlaggedReason]] = None
+        # Zero or more policies admin intended for the app as of now.
+        self._intended_policies: Optional[List[managed_app_policy.ManagedAppPolicy]] = None
+        # Date and time of last the app synced with management service.
+        self._last_sync_date_time: Optional[datetime] = None
+        # App management SDK version
+        self._management_sdk_version: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Zero or more long running operations triggered on the app registration.
+        self._operations: Optional[List[managed_app_operation.ManagedAppOperation]] = None
+        # Operating System version
+        self._platform_version: Optional[str] = None
+        # The user Id to who this app registration belongs.
+        self._user_id: Optional[str] = None
+        # Version of the entity.
+        self._version: Optional[str] = None
+    
     @property
     def app_identifier(self,) -> Optional[mobile_app_identifier.MobileAppIdentifier]:
         """
@@ -65,44 +101,6 @@ class ManagedAppRegistration(entity.Entity):
         """
         self._applied_policies = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new managedAppRegistration and sets the default values.
-        """
-        super().__init__()
-        # The app package Identifier
-        self._app_identifier: Optional[mobile_app_identifier.MobileAppIdentifier] = None
-        # App version
-        self._application_version: Optional[str] = None
-        # Zero or more policys already applied on the registered app when it last synchronized with managment service.
-        self._applied_policies: Optional[List[managed_app_policy.ManagedAppPolicy]] = None
-        # Date and time of creation
-        self._created_date_time: Optional[datetime] = None
-        # Host device name
-        self._device_name: Optional[str] = None
-        # App management SDK generated tag, which helps relate apps hosted on the same device. Not guaranteed to relate apps in all conditions.
-        self._device_tag: Optional[str] = None
-        # Host device type
-        self._device_type: Optional[str] = None
-        # Zero or more reasons an app registration is flagged. E.g. app running on rooted device
-        self._flagged_reasons: Optional[List[managed_app_flagged_reason.ManagedAppFlaggedReason]] = None
-        # Zero or more policies admin intended for the app as of now.
-        self._intended_policies: Optional[List[managed_app_policy.ManagedAppPolicy]] = None
-        # Date and time of last the app synced with management service.
-        self._last_sync_date_time: Optional[datetime] = None
-        # App management SDK version
-        self._management_sdk_version: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Zero or more long running operations triggered on the app registration.
-        self._operations: Optional[List[managed_app_operation.ManagedAppOperation]] = None
-        # Operating System version
-        self._platform_version: Optional[str] = None
-        # The user Id to who this app registration belongs.
-        self._user_id: Optional[str] = None
-        # Version of the entity.
-        self._version: Optional[str] = None
-    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -130,6 +128,17 @@ class ManagedAppRegistration(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.androidManagedAppRegistration":
+                from . import android_managed_app_registration
+
+                return android_managed_app_registration.AndroidManagedAppRegistration()
+            if mapping_value == "#microsoft.graph.iosManagedAppRegistration":
+                from . import ios_managed_app_registration
+
+                return ios_managed_app_registration.IosManagedAppRegistration()
         return ManagedAppRegistration()
     
     @property
@@ -205,7 +214,9 @@ class ManagedAppRegistration(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import android_managed_app_registration, entity, ios_managed_app_registration, managed_app_flagged_reason, managed_app_operation, managed_app_policy, mobile_app_identifier
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "applicationVersion": lambda n : setattr(self, 'application_version', n.get_str_value()),
             "appliedPolicies": lambda n : setattr(self, 'applied_policies', n.get_collection_of_object_values(managed_app_policy.ManagedAppPolicy)),
             "appIdentifier": lambda n : setattr(self, 'app_identifier', n.get_object_value(mobile_app_identifier.MobileAppIdentifier)),

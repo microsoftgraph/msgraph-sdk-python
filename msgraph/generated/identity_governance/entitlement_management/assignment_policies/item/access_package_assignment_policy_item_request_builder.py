@@ -7,41 +7,20 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-access_package_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_policies.item.access_package.access_package_request_builder')
-catalog_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_policies.item.catalog.catalog_request_builder')
-questions_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_policies.item.questions.questions_request_builder')
-access_package_question_item_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_policies.item.questions.item.access_package_question_item_request_builder')
-access_package_assignment_policy = lazy_import('msgraph.generated.models.access_package_assignment_policy')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from .....models import access_package_assignment_policy
+    from .....models.o_data_errors import o_data_error
+    from .access_package import access_package_request_builder
+    from .catalog import catalog_request_builder
+    from .questions import questions_request_builder
+    from .questions.item import access_package_question_item_request_builder
 
 class AccessPackageAssignmentPolicyItemRequestBuilder():
     """
     Provides operations to manage the assignmentPolicies property of the microsoft.graph.entitlementManagement entity.
     """
-    @property
-    def access_package(self) -> access_package_request_builder.AccessPackageRequestBuilder:
-        """
-        Provides operations to manage the accessPackage property of the microsoft.graph.accessPackageAssignmentPolicy entity.
-        """
-        return access_package_request_builder.AccessPackageRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def catalog(self) -> catalog_request_builder.CatalogRequestBuilder:
-        """
-        Provides operations to manage the catalog property of the microsoft.graph.accessPackageAssignmentPolicy entity.
-        """
-        return catalog_request_builder.CatalogRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def questions(self) -> questions_request_builder.QuestionsRequestBuilder:
-        """
-        Provides operations to manage the questions property of the microsoft.graph.accessPackageAssignmentPolicy entity.
-        """
-        return questions_request_builder.QuestionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AccessPackageAssignmentPolicyItemRequestBuilder and sets the default values.
@@ -69,6 +48,8 @@ class AccessPackageAssignmentPolicyItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from .....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -87,12 +68,16 @@ class AccessPackageAssignmentPolicyItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from .....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .....models import access_package_assignment_policy
+
         return await self.request_adapter.send_async(request_info, access_package_assignment_policy.AccessPackageAssignmentPolicy, error_mapping)
     
     async def put(self,body: Optional[access_package_assignment_policy.AccessPackageAssignmentPolicy] = None, request_configuration: Optional[AccessPackageAssignmentPolicyItemRequestBuilderPutRequestConfiguration] = None) -> Optional[access_package_assignment_policy.AccessPackageAssignmentPolicy]:
@@ -108,12 +93,16 @@ class AccessPackageAssignmentPolicyItemRequestBuilder():
         request_info = self.to_put_request_information(
             body, request_configuration
         )
+        from .....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .....models import access_package_assignment_policy
+
         return await self.request_adapter.send_async(request_info, access_package_assignment_policy.AccessPackageAssignmentPolicy, error_mapping)
     
     def questions_by_id(self,id: str) -> access_package_question_item_request_builder.AccessPackageQuestionItemRequestBuilder:
@@ -125,6 +114,8 @@ class AccessPackageAssignmentPolicyItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .questions.item import access_package_question_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["accessPackageQuestion%2Did"] = id
         return access_package_question_item_request_builder.AccessPackageQuestionItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -184,6 +175,33 @@ class AccessPackageAssignmentPolicyItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def access_package(self) -> access_package_request_builder.AccessPackageRequestBuilder:
+        """
+        Provides operations to manage the accessPackage property of the microsoft.graph.accessPackageAssignmentPolicy entity.
+        """
+        from .access_package import access_package_request_builder
+
+        return access_package_request_builder.AccessPackageRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def catalog(self) -> catalog_request_builder.CatalogRequestBuilder:
+        """
+        Provides operations to manage the catalog property of the microsoft.graph.accessPackageAssignmentPolicy entity.
+        """
+        from .catalog import catalog_request_builder
+
+        return catalog_request_builder.CatalogRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def questions(self) -> questions_request_builder.QuestionsRequestBuilder:
+        """
+        Provides operations to manage the questions property of the microsoft.graph.accessPackageAssignmentPolicy entity.
+        """
+        from .questions import questions_request_builder
+
+        return questions_request_builder.QuestionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class AccessPackageAssignmentPolicyItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -201,12 +219,6 @@ class AccessPackageAssignmentPolicyItemRequestBuilder():
         """
         Access package assignment policies govern which subjects can request or be assigned an access package via an access package assignment.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -222,6 +234,12 @@ class AccessPackageAssignmentPolicyItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class AccessPackageAssignmentPolicyItemRequestBuilderGetRequestConfiguration():

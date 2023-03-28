@@ -1,13 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-notebook_links = lazy_import('msgraph.generated.models.notebook_links')
-onenote_entity_hierarchy_model = lazy_import('msgraph.generated.models.onenote_entity_hierarchy_model')
-onenote_section = lazy_import('msgraph.generated.models.onenote_section')
-onenote_user_role = lazy_import('msgraph.generated.models.onenote_user_role')
-section_group = lazy_import('msgraph.generated.models.section_group')
+if TYPE_CHECKING:
+    from . import notebook_links, onenote_entity_hierarchy_model, onenote_section, onenote_user_role, section_group
+
+from . import onenote_entity_hierarchy_model
 
 class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
     def __init__(self,) -> None:
@@ -50,7 +48,9 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import notebook_links, onenote_entity_hierarchy_model, onenote_section, onenote_user_role, section_group
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
             "isShared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(notebook_links.NotebookLinks)),

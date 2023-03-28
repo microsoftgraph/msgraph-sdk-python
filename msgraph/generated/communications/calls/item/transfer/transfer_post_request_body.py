@@ -1,12 +1,23 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-invitation_participant_info = lazy_import('msgraph.generated.models.invitation_participant_info')
-participant_info = lazy_import('msgraph.generated.models.participant_info')
+if TYPE_CHECKING:
+    from .....models import invitation_participant_info, participant_info
 
 class TransferPostRequestBody(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new transferPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The transferTarget property
+        self._transfer_target: Optional[invitation_participant_info.InvitationParticipantInfo] = None
+        # The transferee property
+        self._transferee: Optional[participant_info.ParticipantInfo] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -23,18 +34,6 @@ class TransferPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new transferPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The transferTarget property
-        self._transfer_target: Optional[invitation_participant_info.InvitationParticipantInfo] = None
-        # The transferee property
-        self._transferee: Optional[participant_info.ParticipantInfo] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TransferPostRequestBody:
@@ -53,7 +52,9 @@ class TransferPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from .....models import invitation_participant_info, participant_info
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "transferee": lambda n : setattr(self, 'transferee', n.get_object_value(participant_info.ParticipantInfo)),
             "transferTarget": lambda n : setattr(self, 'transfer_target', n.get_object_value(invitation_participant_info.InvitationParticipantInfo)),
         }

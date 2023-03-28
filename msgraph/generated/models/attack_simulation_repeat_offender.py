@@ -1,11 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-attack_simulation_user = lazy_import('msgraph.generated.models.attack_simulation_user')
+if TYPE_CHECKING:
+    from . import attack_simulation_user
 
 class AttackSimulationRepeatOffender(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new attackSimulationRepeatOffender and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The user in an attack simulation and training campaign.
+        self._attack_simulation_user: Optional[attack_simulation_user.AttackSimulationUser] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Number of repeat offences of the user in attack simulation and training campaigns.
+        self._repeat_offence_count: Optional[int] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -40,20 +54,6 @@ class AttackSimulationRepeatOffender(AdditionalDataHolder, Parsable):
         """
         self._attack_simulation_user = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new attackSimulationRepeatOffender and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The user in an attack simulation and training campaign.
-        self._attack_simulation_user: Optional[attack_simulation_user.AttackSimulationUser] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Number of repeat offences of the user in attack simulation and training campaigns.
-        self._repeat_offence_count: Optional[int] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttackSimulationRepeatOffender:
         """
@@ -71,7 +71,9 @@ class AttackSimulationRepeatOffender(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import attack_simulation_user
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "attackSimulationUser": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "repeatOffenceCount": lambda n : setattr(self, 'repeat_offence_count', n.get_int_value()),

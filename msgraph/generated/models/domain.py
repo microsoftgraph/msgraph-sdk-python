@@ -1,49 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-directory_object = lazy_import('msgraph.generated.models.directory_object')
-domain_dns_record = lazy_import('msgraph.generated.models.domain_dns_record')
-domain_state = lazy_import('msgraph.generated.models.domain_state')
-entity = lazy_import('msgraph.generated.models.entity')
-internal_domain_federation = lazy_import('msgraph.generated.models.internal_domain_federation')
+if TYPE_CHECKING:
+    from . import directory_object, domain_dns_record, domain_state, entity, internal_domain_federation
+
+from . import entity
 
 class Domain(entity.Entity):
-    @property
-    def authentication_type(self,) -> Optional[str]:
-        """
-        Gets the authenticationType property value. Indicates the configured authentication type for the domain. The value is either Managed or Federated. Managed indicates a cloud managed domain where Azure AD performs user authentication. Federated indicates authentication is federated with an identity provider such as the tenant's on-premises Active Directory via Active Directory Federation Services. This property is read-only and is not nullable.
-        Returns: Optional[str]
-        """
-        return self._authentication_type
-    
-    @authentication_type.setter
-    def authentication_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the authenticationType property value. Indicates the configured authentication type for the domain. The value is either Managed or Federated. Managed indicates a cloud managed domain where Azure AD performs user authentication. Federated indicates authentication is federated with an identity provider such as the tenant's on-premises Active Directory via Active Directory Federation Services. This property is read-only and is not nullable.
-        Args:
-            value: Value to set for the authentication_type property.
-        """
-        self._authentication_type = value
-    
-    @property
-    def availability_status(self,) -> Optional[str]:
-        """
-        Gets the availabilityStatus property value. This property is always null except when the verify action is used. When the verify action is used, a domain entity is returned in the response. The availabilityStatus property of the domain entity in the response is either AvailableImmediately or EmailVerifiedDomainTakeoverScheduled.
-        Returns: Optional[str]
-        """
-        return self._availability_status
-    
-    @availability_status.setter
-    def availability_status(self,value: Optional[str] = None) -> None:
-        """
-        Sets the availabilityStatus property value. This property is always null except when the verify action is used. When the verify action is used, a domain entity is returned in the response. The availabilityStatus property of the domain entity in the response is either AvailableImmediately or EmailVerifiedDomainTakeoverScheduled.
-        Args:
-            value: Value to set for the availability_status property.
-        """
-        self._availability_status = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new Domain and sets the default values.
@@ -85,6 +49,40 @@ class Domain(entity.Entity):
         self._supported_services: Optional[List[str]] = None
         # DNS records that the customer adds to the DNS zone file of the domain before the customer can complete domain ownership verification with Azure AD. Read-only, Nullable. Supports $expand.
         self._verification_dns_records: Optional[List[domain_dns_record.DomainDnsRecord]] = None
+    
+    @property
+    def authentication_type(self,) -> Optional[str]:
+        """
+        Gets the authenticationType property value. Indicates the configured authentication type for the domain. The value is either Managed or Federated. Managed indicates a cloud managed domain where Azure AD performs user authentication. Federated indicates authentication is federated with an identity provider such as the tenant's on-premises Active Directory via Active Directory Federation Services. This property is read-only and is not nullable.
+        Returns: Optional[str]
+        """
+        return self._authentication_type
+    
+    @authentication_type.setter
+    def authentication_type(self,value: Optional[str] = None) -> None:
+        """
+        Sets the authenticationType property value. Indicates the configured authentication type for the domain. The value is either Managed or Federated. Managed indicates a cloud managed domain where Azure AD performs user authentication. Federated indicates authentication is federated with an identity provider such as the tenant's on-premises Active Directory via Active Directory Federation Services. This property is read-only and is not nullable.
+        Args:
+            value: Value to set for the authentication_type property.
+        """
+        self._authentication_type = value
+    
+    @property
+    def availability_status(self,) -> Optional[str]:
+        """
+        Gets the availabilityStatus property value. This property is always null except when the verify action is used. When the verify action is used, a domain entity is returned in the response. The availabilityStatus property of the domain entity in the response is either AvailableImmediately or EmailVerifiedDomainTakeoverScheduled.
+        Returns: Optional[str]
+        """
+        return self._availability_status
+    
+    @availability_status.setter
+    def availability_status(self,value: Optional[str] = None) -> None:
+        """
+        Sets the availabilityStatus property value. This property is always null except when the verify action is used. When the verify action is used, a domain entity is returned in the response. The availabilityStatus property of the domain entity in the response is either AvailableImmediately or EmailVerifiedDomainTakeoverScheduled.
+        Args:
+            value: Value to set for the availability_status property.
+        """
+        self._availability_status = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Domain:
@@ -137,7 +135,9 @@ class Domain(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import directory_object, domain_dns_record, domain_state, entity, internal_domain_federation
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "authenticationType": lambda n : setattr(self, 'authentication_type', n.get_str_value()),
             "availabilityStatus": lambda n : setattr(self, 'availability_status', n.get_str_value()),
             "domainNameReferences": lambda n : setattr(self, 'domain_name_references', n.get_collection_of_object_values(directory_object.DirectoryObject)),

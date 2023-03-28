@@ -1,14 +1,48 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-state_management_setting = lazy_import('msgraph.generated.models.state_management_setting')
+if TYPE_CHECKING:
+    from . import state_management_setting
 
 class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
     """
     Windows Firewall Profile Policies.
     """
+    def __init__(self,) -> None:
+        """
+        Instantiates a new windowsFirewallNetworkProfile and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Configures the firewall to merge authorized application rules from group policy with those from local store instead of ignoring the local store rules. When AuthorizedApplicationRulesFromGroupPolicyNotMerged and AuthorizedApplicationRulesFromGroupPolicyMerged are both true, AuthorizedApplicationRulesFromGroupPolicyMerged takes priority.
+        self._authorized_application_rules_from_group_policy_merged: Optional[bool] = None
+        # Configures the firewall to merge connection security rules from group policy with those from local store instead of ignoring the local store rules. When ConnectionSecurityRulesFromGroupPolicyNotMerged and ConnectionSecurityRulesFromGroupPolicyMerged are both true, ConnectionSecurityRulesFromGroupPolicyMerged takes priority.
+        self._connection_security_rules_from_group_policy_merged: Optional[bool] = None
+        # State Management Setting.
+        self._firewall_enabled: Optional[state_management_setting.StateManagementSetting] = None
+        # Configures the firewall to merge global port rules from group policy with those from local store instead of ignoring the local store rules. When GlobalPortRulesFromGroupPolicyNotMerged and GlobalPortRulesFromGroupPolicyMerged are both true, GlobalPortRulesFromGroupPolicyMerged takes priority.
+        self._global_port_rules_from_group_policy_merged: Optional[bool] = None
+        # Configures the firewall to block all incoming connections by default. When InboundConnectionsRequired and InboundConnectionsBlocked are both true, InboundConnectionsBlocked takes priority.
+        self._inbound_connections_blocked: Optional[bool] = None
+        # Prevents the firewall from displaying notifications when an application is blocked from listening on a port. When InboundNotificationsRequired and InboundNotificationsBlocked are both true, InboundNotificationsBlocked takes priority.
+        self._inbound_notifications_blocked: Optional[bool] = None
+        # Configures the firewall to block all incoming traffic regardless of other policy settings. When IncomingTrafficRequired and IncomingTrafficBlocked are both true, IncomingTrafficBlocked takes priority.
+        self._incoming_traffic_blocked: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Configures the firewall to block all outgoing connections by default. When OutboundConnectionsRequired and OutboundConnectionsBlocked are both true, OutboundConnectionsBlocked takes priority. This setting will get applied to Windows releases version 1809 and above.
+        self._outbound_connections_blocked: Optional[bool] = None
+        # Configures the firewall to merge Firewall Rule policies from group policy with those from local store instead of ignoring the local store rules. When PolicyRulesFromGroupPolicyNotMerged and PolicyRulesFromGroupPolicyMerged are both true, PolicyRulesFromGroupPolicyMerged takes priority.
+        self._policy_rules_from_group_policy_merged: Optional[bool] = None
+        # Configures the firewall to allow the host computer to respond to unsolicited network traffic of that traffic is secured by IPSec even when stealthModeBlocked is set to true. When SecuredPacketExemptionBlocked and SecuredPacketExemptionAllowed are both true, SecuredPacketExemptionAllowed takes priority.
+        self._secured_packet_exemption_allowed: Optional[bool] = None
+        # Prevent the server from operating in stealth mode. When StealthModeRequired and StealthModeBlocked are both true, StealthModeBlocked takes priority.
+        self._stealth_mode_blocked: Optional[bool] = None
+        # Configures the firewall to block unicast responses to multicast broadcast traffic. When UnicastResponsesToMulticastBroadcastsRequired and UnicastResponsesToMulticastBroadcastsBlocked are both true, UnicastResponsesToMulticastBroadcastsBlocked takes priority.
+        self._unicast_responses_to_multicast_broadcasts_blocked: Optional[bool] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -60,40 +94,6 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         """
         self._connection_security_rules_from_group_policy_merged = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new windowsFirewallNetworkProfile and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Configures the firewall to merge authorized application rules from group policy with those from local store instead of ignoring the local store rules. When AuthorizedApplicationRulesFromGroupPolicyNotMerged and AuthorizedApplicationRulesFromGroupPolicyMerged are both true, AuthorizedApplicationRulesFromGroupPolicyMerged takes priority.
-        self._authorized_application_rules_from_group_policy_merged: Optional[bool] = None
-        # Configures the firewall to merge connection security rules from group policy with those from local store instead of ignoring the local store rules. When ConnectionSecurityRulesFromGroupPolicyNotMerged and ConnectionSecurityRulesFromGroupPolicyMerged are both true, ConnectionSecurityRulesFromGroupPolicyMerged takes priority.
-        self._connection_security_rules_from_group_policy_merged: Optional[bool] = None
-        # State Management Setting.
-        self._firewall_enabled: Optional[state_management_setting.StateManagementSetting] = None
-        # Configures the firewall to merge global port rules from group policy with those from local store instead of ignoring the local store rules. When GlobalPortRulesFromGroupPolicyNotMerged and GlobalPortRulesFromGroupPolicyMerged are both true, GlobalPortRulesFromGroupPolicyMerged takes priority.
-        self._global_port_rules_from_group_policy_merged: Optional[bool] = None
-        # Configures the firewall to block all incoming connections by default. When InboundConnectionsRequired and InboundConnectionsBlocked are both true, InboundConnectionsBlocked takes priority.
-        self._inbound_connections_blocked: Optional[bool] = None
-        # Prevents the firewall from displaying notifications when an application is blocked from listening on a port. When InboundNotificationsRequired and InboundNotificationsBlocked are both true, InboundNotificationsBlocked takes priority.
-        self._inbound_notifications_blocked: Optional[bool] = None
-        # Configures the firewall to block all incoming traffic regardless of other policy settings. When IncomingTrafficRequired and IncomingTrafficBlocked are both true, IncomingTrafficBlocked takes priority.
-        self._incoming_traffic_blocked: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Configures the firewall to block all outgoing connections by default. When OutboundConnectionsRequired and OutboundConnectionsBlocked are both true, OutboundConnectionsBlocked takes priority. This setting will get applied to Windows releases version 1809 and above.
-        self._outbound_connections_blocked: Optional[bool] = None
-        # Configures the firewall to merge Firewall Rule policies from group policy with those from local store instead of ignoring the local store rules. When PolicyRulesFromGroupPolicyNotMerged and PolicyRulesFromGroupPolicyMerged are both true, PolicyRulesFromGroupPolicyMerged takes priority.
-        self._policy_rules_from_group_policy_merged: Optional[bool] = None
-        # Configures the firewall to allow the host computer to respond to unsolicited network traffic of that traffic is secured by IPSec even when stealthModeBlocked is set to true. When SecuredPacketExemptionBlocked and SecuredPacketExemptionAllowed are both true, SecuredPacketExemptionAllowed takes priority.
-        self._secured_packet_exemption_allowed: Optional[bool] = None
-        # Prevent the server from operating in stealth mode. When StealthModeRequired and StealthModeBlocked are both true, StealthModeBlocked takes priority.
-        self._stealth_mode_blocked: Optional[bool] = None
-        # Configures the firewall to block unicast responses to multicast broadcast traffic. When UnicastResponsesToMulticastBroadcastsRequired and UnicastResponsesToMulticastBroadcastsBlocked are both true, UnicastResponsesToMulticastBroadcastsBlocked takes priority.
-        self._unicast_responses_to_multicast_broadcasts_blocked: Optional[bool] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsFirewallNetworkProfile:
         """
@@ -128,7 +128,9 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import state_management_setting
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "authorizedApplicationRulesFromGroupPolicyMerged": lambda n : setattr(self, 'authorized_application_rules_from_group_policy_merged', n.get_bool_value()),
             "connectionSecurityRulesFromGroupPolicyMerged": lambda n : setattr(self, 'connection_security_rules_from_group_policy_merged', n.get_bool_value()),
             "firewallEnabled": lambda n : setattr(self, 'firewall_enabled', n.get_enum_value(state_management_setting.StateManagementSetting)),

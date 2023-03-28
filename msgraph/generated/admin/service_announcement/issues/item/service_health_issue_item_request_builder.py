@@ -7,24 +7,17 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-incident_report_request_builder = lazy_import('msgraph.generated.admin.service_announcement.issues.item.incident_report.incident_report_request_builder')
-service_health_issue = lazy_import('msgraph.generated.models.service_health_issue')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from .....models import service_health_issue
+    from .....models.o_data_errors import o_data_error
+    from .incident_report import incident_report_request_builder
 
 class ServiceHealthIssueItemRequestBuilder():
     """
     Provides operations to manage the issues property of the microsoft.graph.serviceAnnouncement entity.
     """
-    @property
-    def incident_report(self) -> incident_report_request_builder.IncidentReportRequestBuilder:
-        """
-        Provides operations to call the incidentReport method.
-        """
-        return incident_report_request_builder.IncidentReportRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ServiceHealthIssueItemRequestBuilder and sets the default values.
@@ -52,6 +45,8 @@ class ServiceHealthIssueItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from .....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -70,12 +65,16 @@ class ServiceHealthIssueItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from .....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .....models import service_health_issue
+
         return await self.request_adapter.send_async(request_info, service_health_issue.ServiceHealthIssue, error_mapping)
     
     async def patch(self,body: Optional[service_health_issue.ServiceHealthIssue] = None, request_configuration: Optional[ServiceHealthIssueItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[service_health_issue.ServiceHealthIssue]:
@@ -91,12 +90,16 @@ class ServiceHealthIssueItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from .....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .....models import service_health_issue
+
         return await self.request_adapter.send_async(request_info, service_health_issue.ServiceHealthIssue, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ServiceHealthIssueItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -154,6 +157,15 @@ class ServiceHealthIssueItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def incident_report(self) -> incident_report_request_builder.IncidentReportRequestBuilder:
+        """
+        Provides operations to call the incidentReport method.
+        """
+        from .incident_report import incident_report_request_builder
+
+        return incident_report_request_builder.IncidentReportRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class ServiceHealthIssueItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -171,12 +183,6 @@ class ServiceHealthIssueItemRequestBuilder():
         """
         A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -192,6 +198,12 @@ class ServiceHealthIssueItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class ServiceHealthIssueItemRequestBuilderGetRequestConfiguration():

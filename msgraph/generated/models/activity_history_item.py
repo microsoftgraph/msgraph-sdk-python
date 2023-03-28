@@ -1,14 +1,40 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-status = lazy_import('msgraph.generated.models.status')
-user_activity = lazy_import('msgraph.generated.models.user_activity')
+if TYPE_CHECKING:
+    from . import entity, status, user_activity
+
+from . import entity
 
 class ActivityHistoryItem(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new activityHistoryItem and sets the default values.
+        """
+        super().__init__()
+        # Optional. The duration of active user engagement. if not supplied, this is calculated from the startedDateTime and lastActiveDateTime.
+        self._active_duration_seconds: Optional[int] = None
+        # The activity property
+        self._activity: Optional[user_activity.UserActivity] = None
+        # Set by the server. DateTime in UTC when the object was created on the server.
+        self._created_date_time: Optional[datetime] = None
+        # Optional. UTC DateTime when the historyItem will undergo hard-delete. Can be set by the client.
+        self._expiration_date_time: Optional[datetime] = None
+        # Optional. UTC DateTime when the historyItem (activity session) was last understood as active or finished - if null, historyItem status should be Ongoing.
+        self._last_active_date_time: Optional[datetime] = None
+        # Set by the server. DateTime in UTC when the object was modified on the server.
+        self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Required. UTC DateTime when the historyItem (activity session) was started. Required for timeline history.
+        self._started_date_time: Optional[datetime] = None
+        # Set by the server. A status code used to identify valid objects. Values: active, updated, deleted, ignored.
+        self._status: Optional[status.Status] = None
+        # Optional. The timezone in which the user's device used to generate the activity was located at activity creation time. Values supplied as Olson IDs in order to support cross-platform representation.
+        self._user_timezone: Optional[str] = None
+    
     @property
     def active_duration_seconds(self,) -> Optional[int]:
         """
@@ -42,32 +68,6 @@ class ActivityHistoryItem(entity.Entity):
             value: Value to set for the activity property.
         """
         self._activity = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new activityHistoryItem and sets the default values.
-        """
-        super().__init__()
-        # Optional. The duration of active user engagement. if not supplied, this is calculated from the startedDateTime and lastActiveDateTime.
-        self._active_duration_seconds: Optional[int] = None
-        # The activity property
-        self._activity: Optional[user_activity.UserActivity] = None
-        # Set by the server. DateTime in UTC when the object was created on the server.
-        self._created_date_time: Optional[datetime] = None
-        # Optional. UTC DateTime when the historyItem will undergo hard-delete. Can be set by the client.
-        self._expiration_date_time: Optional[datetime] = None
-        # Optional. UTC DateTime when the historyItem (activity session) was last understood as active or finished - if null, historyItem status should be Ongoing.
-        self._last_active_date_time: Optional[datetime] = None
-        # Set by the server. DateTime in UTC when the object was modified on the server.
-        self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Required. UTC DateTime when the historyItem (activity session) was started. Required for timeline history.
-        self._started_date_time: Optional[datetime] = None
-        # Set by the server. A status code used to identify valid objects. Values: active, updated, deleted, ignored.
-        self._status: Optional[status.Status] = None
-        # Optional. The timezone in which the user's device used to generate the activity was located at activity creation time. Values supplied as Olson IDs in order to support cross-platform representation.
-        self._user_timezone: Optional[str] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -120,7 +120,9 @@ class ActivityHistoryItem(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, status, user_activity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "activeDurationSeconds": lambda n : setattr(self, 'active_duration_seconds', n.get_int_value()),
             "activity": lambda n : setattr(self, 'activity', n.get_object_value(user_activity.UserActivity)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),

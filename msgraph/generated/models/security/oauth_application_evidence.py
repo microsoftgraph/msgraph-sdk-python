@@ -1,11 +1,29 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-alert_evidence = lazy_import('msgraph.generated.models.security.alert_evidence')
+if TYPE_CHECKING:
+    from . import alert_evidence
+
+from . import alert_evidence
 
 class OauthApplicationEvidence(alert_evidence.AlertEvidence):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new OauthApplicationEvidence and sets the default values.
+        """
+        super().__init__()
+        # Unique identifier of the application.
+        self._app_id: Optional[str] = None
+        # Name of the application.
+        self._display_name: Optional[str] = None
+        # The unique identifier of the application object in Azure AD.
+        self._object_id: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The name of the application publisher.
+        self._publisher: Optional[str] = None
+    
     @property
     def app_id(self,) -> Optional[str]:
         """
@@ -22,22 +40,6 @@ class OauthApplicationEvidence(alert_evidence.AlertEvidence):
             value: Value to set for the app_id property.
         """
         self._app_id = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new OauthApplicationEvidence and sets the default values.
-        """
-        super().__init__()
-        # Unique identifier of the application.
-        self._app_id: Optional[str] = None
-        # Name of the application.
-        self._display_name: Optional[str] = None
-        # The unique identifier of the application object in Azure AD.
-        self._object_id: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The name of the application publisher.
-        self._publisher: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OauthApplicationEvidence:
@@ -73,7 +75,9 @@ class OauthApplicationEvidence(alert_evidence.AlertEvidence):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import alert_evidence
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "objectId": lambda n : setattr(self, 'object_id', n.get_str_value()),

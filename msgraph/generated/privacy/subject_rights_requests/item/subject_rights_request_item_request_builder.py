@@ -7,49 +7,21 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-subject_rights_request = lazy_import('msgraph.generated.models.subject_rights_request')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-get_final_attachment_request_builder = lazy_import('msgraph.generated.privacy.subject_rights_requests.item.get_final_attachment.get_final_attachment_request_builder')
-get_final_report_request_builder = lazy_import('msgraph.generated.privacy.subject_rights_requests.item.get_final_report.get_final_report_request_builder')
-notes_request_builder = lazy_import('msgraph.generated.privacy.subject_rights_requests.item.notes.notes_request_builder')
-authored_note_item_request_builder = lazy_import('msgraph.generated.privacy.subject_rights_requests.item.notes.item.authored_note_item_request_builder')
-team_request_builder = lazy_import('msgraph.generated.privacy.subject_rights_requests.item.team.team_request_builder')
+if TYPE_CHECKING:
+    from ....models import subject_rights_request
+    from ....models.o_data_errors import o_data_error
+    from .get_final_attachment import get_final_attachment_request_builder
+    from .get_final_report import get_final_report_request_builder
+    from .notes import notes_request_builder
+    from .notes.item import authored_note_item_request_builder
+    from .team import team_request_builder
 
 class SubjectRightsRequestItemRequestBuilder():
     """
     Provides operations to manage the subjectRightsRequests property of the microsoft.graph.privacy entity.
     """
-    @property
-    def get_final_attachment(self) -> get_final_attachment_request_builder.GetFinalAttachmentRequestBuilder:
-        """
-        Provides operations to call the getFinalAttachment method.
-        """
-        return get_final_attachment_request_builder.GetFinalAttachmentRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def get_final_report(self) -> get_final_report_request_builder.GetFinalReportRequestBuilder:
-        """
-        Provides operations to call the getFinalReport method.
-        """
-        return get_final_report_request_builder.GetFinalReportRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def notes(self) -> notes_request_builder.NotesRequestBuilder:
-        """
-        Provides operations to manage the notes property of the microsoft.graph.subjectRightsRequest entity.
-        """
-        return notes_request_builder.NotesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def team(self) -> team_request_builder.TeamRequestBuilder:
-        """
-        Provides operations to manage the team property of the microsoft.graph.subjectRightsRequest entity.
-        """
-        return team_request_builder.TeamRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SubjectRightsRequestItemRequestBuilder and sets the default values.
@@ -77,6 +49,8 @@ class SubjectRightsRequestItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -95,12 +69,16 @@ class SubjectRightsRequestItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ....models import subject_rights_request
+
         return await self.request_adapter.send_async(request_info, subject_rights_request.SubjectRightsRequest, error_mapping)
     
     def notes_by_id(self,id: str) -> authored_note_item_request_builder.AuthoredNoteItemRequestBuilder:
@@ -112,6 +90,8 @@ class SubjectRightsRequestItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .notes.item import authored_note_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["authoredNote%2Did"] = id
         return authored_note_item_request_builder.AuthoredNoteItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -129,12 +109,16 @@ class SubjectRightsRequestItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ....models import subject_rights_request
+
         return await self.request_adapter.send_async(request_info, subject_rights_request.SubjectRightsRequest, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SubjectRightsRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -192,6 +176,42 @@ class SubjectRightsRequestItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def get_final_attachment(self) -> get_final_attachment_request_builder.GetFinalAttachmentRequestBuilder:
+        """
+        Provides operations to call the getFinalAttachment method.
+        """
+        from .get_final_attachment import get_final_attachment_request_builder
+
+        return get_final_attachment_request_builder.GetFinalAttachmentRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_final_report(self) -> get_final_report_request_builder.GetFinalReportRequestBuilder:
+        """
+        Provides operations to call the getFinalReport method.
+        """
+        from .get_final_report import get_final_report_request_builder
+
+        return get_final_report_request_builder.GetFinalReportRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def notes(self) -> notes_request_builder.NotesRequestBuilder:
+        """
+        Provides operations to manage the notes property of the microsoft.graph.subjectRightsRequest entity.
+        """
+        from .notes import notes_request_builder
+
+        return notes_request_builder.NotesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def team(self) -> team_request_builder.TeamRequestBuilder:
+        """
+        Provides operations to manage the team property of the microsoft.graph.subjectRightsRequest entity.
+        """
+        from .team import team_request_builder
+
+        return team_request_builder.TeamRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class SubjectRightsRequestItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -209,12 +229,6 @@ class SubjectRightsRequestItemRequestBuilder():
         """
         Get subjectRightsRequests from privacy
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -230,6 +244,12 @@ class SubjectRightsRequestItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class SubjectRightsRequestItemRequestBuilderGetRequestConfiguration():

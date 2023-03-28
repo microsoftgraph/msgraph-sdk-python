@@ -7,38 +7,18 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-meeting_attendance_report = lazy_import('msgraph.generated.models.meeting_attendance_report')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-attendance_records_request_builder = lazy_import('msgraph.generated.users.item.online_meetings.item.attendance_reports.item.attendance_records.attendance_records_request_builder')
-attendance_record_item_request_builder = lazy_import('msgraph.generated.users.item.online_meetings.item.attendance_reports.item.attendance_records.item.attendance_record_item_request_builder')
+if TYPE_CHECKING:
+    from .......models import meeting_attendance_report
+    from .......models.o_data_errors import o_data_error
+    from .attendance_records import attendance_records_request_builder
+    from .attendance_records.item import attendance_record_item_request_builder
 
 class MeetingAttendanceReportItemRequestBuilder():
     """
     Provides operations to manage the attendanceReports property of the microsoft.graph.onlineMeeting entity.
     """
-    @property
-    def attendance_records(self) -> attendance_records_request_builder.AttendanceRecordsRequestBuilder:
-        """
-        Provides operations to manage the attendanceRecords property of the microsoft.graph.meetingAttendanceReport entity.
-        """
-        return attendance_records_request_builder.AttendanceRecordsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    def attendance_records_by_id(self,id: str) -> attendance_record_item_request_builder.AttendanceRecordItemRequestBuilder:
-        """
-        Provides operations to manage the attendanceRecords property of the microsoft.graph.meetingAttendanceReport entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: attendance_record_item_request_builder.AttendanceRecordItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["attendanceRecord%2Did"] = id
-        return attendance_record_item_request_builder.AttendanceRecordItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new MeetingAttendanceReportItemRequestBuilder and sets the default values.
@@ -57,6 +37,21 @@ class MeetingAttendanceReportItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def attendance_records_by_id(self,id: str) -> attendance_record_item_request_builder.AttendanceRecordItemRequestBuilder:
+        """
+        Provides operations to manage the attendanceRecords property of the microsoft.graph.meetingAttendanceReport entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: attendance_record_item_request_builder.AttendanceRecordItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        from .attendance_records.item import attendance_record_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["attendanceRecord%2Did"] = id
+        return attendance_record_item_request_builder.AttendanceRecordItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def delete(self,request_configuration: Optional[MeetingAttendanceReportItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property attendanceReports for users
@@ -66,6 +61,8 @@ class MeetingAttendanceReportItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from .......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -84,12 +81,16 @@ class MeetingAttendanceReportItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from .......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .......models import meeting_attendance_report
+
         return await self.request_adapter.send_async(request_info, meeting_attendance_report.MeetingAttendanceReport, error_mapping)
     
     async def patch(self,body: Optional[meeting_attendance_report.MeetingAttendanceReport] = None, request_configuration: Optional[MeetingAttendanceReportItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[meeting_attendance_report.MeetingAttendanceReport]:
@@ -105,12 +106,16 @@ class MeetingAttendanceReportItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from .......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .......models import meeting_attendance_report
+
         return await self.request_adapter.send_async(request_info, meeting_attendance_report.MeetingAttendanceReport, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[MeetingAttendanceReportItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -168,6 +173,15 @@ class MeetingAttendanceReportItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def attendance_records(self) -> attendance_records_request_builder.AttendanceRecordsRequestBuilder:
+        """
+        Provides operations to manage the attendanceRecords property of the microsoft.graph.meetingAttendanceReport entity.
+        """
+        from .attendance_records import attendance_records_request_builder
+
+        return attendance_records_request_builder.AttendanceRecordsRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class MeetingAttendanceReportItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -185,12 +199,6 @@ class MeetingAttendanceReportItemRequestBuilder():
         """
         The attendance reports of an online meeting. Read-only.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -206,6 +214,12 @@ class MeetingAttendanceReportItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class MeetingAttendanceReportItemRequestBuilderGetRequestConfiguration():

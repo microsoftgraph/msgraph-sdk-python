@@ -1,11 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-external_link = lazy_import('msgraph.generated.models.external_link')
+if TYPE_CHECKING:
+    from . import external_link
 
 class NotebookLinks(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new notebookLinks and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Opens the notebook in the OneNote native client if it's installed.
+        self._one_note_client_url: Optional[external_link.ExternalLink] = None
+        # Opens the notebook in OneNote on the web.
+        self._one_note_web_url: Optional[external_link.ExternalLink] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -22,20 +36,6 @@ class NotebookLinks(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new notebookLinks and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Opens the notebook in the OneNote native client if it's installed.
-        self._one_note_client_url: Optional[external_link.ExternalLink] = None
-        # Opens the notebook in OneNote on the web.
-        self._one_note_web_url: Optional[external_link.ExternalLink] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> NotebookLinks:
@@ -54,7 +54,9 @@ class NotebookLinks(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import external_link
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "oneNoteClientUrl": lambda n : setattr(self, 'one_note_client_url', n.get_object_value(external_link.ExternalLink)),
             "oneNoteWebUrl": lambda n : setattr(self, 'one_note_web_url', n.get_object_value(external_link.ExternalLink)),

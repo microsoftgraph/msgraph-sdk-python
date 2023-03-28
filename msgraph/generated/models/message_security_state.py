@@ -1,10 +1,37 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class MessageSecurityState(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new messageSecurityState and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The connectingIP property
+        self._connecting_i_p: Optional[str] = None
+        # The deliveryAction property
+        self._delivery_action: Optional[str] = None
+        # The deliveryLocation property
+        self._delivery_location: Optional[str] = None
+        # The directionality property
+        self._directionality: Optional[str] = None
+        # The internetMessageId property
+        self._internet_message_id: Optional[str] = None
+        # The messageFingerprint property
+        self._message_fingerprint: Optional[str] = None
+        # The messageReceivedDateTime property
+        self._message_received_date_time: Optional[datetime] = None
+        # The messageSubject property
+        self._message_subject: Optional[str] = None
+        # The networkMessageId property
+        self._network_message_id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -38,34 +65,6 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the connecting_i_p property.
         """
         self._connecting_i_p = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new messageSecurityState and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The connectingIP property
-        self._connecting_i_p: Optional[str] = None
-        # The deliveryAction property
-        self._delivery_action: Optional[str] = None
-        # The deliveryLocation property
-        self._delivery_location: Optional[str] = None
-        # The directionality property
-        self._directionality: Optional[str] = None
-        # The internetMessageId property
-        self._internet_message_id: Optional[str] = None
-        # The messageFingerprint property
-        self._message_fingerprint: Optional[str] = None
-        # The messageReceivedDateTime property
-        self._message_received_date_time: Optional[datetime] = None
-        # The messageSubject property
-        self._message_subject: Optional[str] = None
-        # The networkMessageId property
-        self._network_message_id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MessageSecurityState:
@@ -135,7 +134,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "connectingIP": lambda n : setattr(self, 'connecting_i_p', n.get_str_value()),
             "deliveryAction": lambda n : setattr(self, 'delivery_action', n.get_str_value()),
             "deliveryLocation": lambda n : setattr(self, 'delivery_location', n.get_str_value()),

@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-conditional_access_policy_detail = lazy_import('msgraph.generated.models.conditional_access_policy_detail')
-entity = lazy_import('msgraph.generated.models.entity')
-template_scenarios = lazy_import('msgraph.generated.models.template_scenarios')
+if TYPE_CHECKING:
+    from . import conditional_access_policy_detail, entity, template_scenarios
+
+from . import entity
 
 class ConditionalAccessTemplate(entity.Entity):
     def __init__(self,) -> None:
@@ -75,7 +75,9 @@ class ConditionalAccessTemplate(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import conditional_access_policy_detail, entity, template_scenarios
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "details": lambda n : setattr(self, 'details', n.get_object_value(conditional_access_policy_detail.ConditionalAccessPolicyDetail)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),

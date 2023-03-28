@@ -1,11 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-authentication_method_feature_configuration = lazy_import('msgraph.generated.models.authentication_method_feature_configuration')
+if TYPE_CHECKING:
+    from . import authentication_method_feature_configuration
 
 class MicrosoftAuthenticatorFeatureSettings(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new microsoftAuthenticatorFeatureSettings and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Determines whether the user's Authenticator app will show them the client app they are signing into.
+        self._display_app_information_required_state: Optional[authentication_method_feature_configuration.AuthenticationMethodFeatureConfiguration] = None
+        # Determines whether the user's Authenticator app will show them the geographic location of where the authentication request originated from.
+        self._display_location_information_required_state: Optional[authentication_method_feature_configuration.AuthenticationMethodFeatureConfiguration] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -22,20 +36,6 @@ class MicrosoftAuthenticatorFeatureSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new microsoftAuthenticatorFeatureSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Determines whether the user's Authenticator app will show them the client app they are signing into.
-        self._display_app_information_required_state: Optional[authentication_method_feature_configuration.AuthenticationMethodFeatureConfiguration] = None
-        # Determines whether the user's Authenticator app will show them the geographic location of where the authentication request originated from.
-        self._display_location_information_required_state: Optional[authentication_method_feature_configuration.AuthenticationMethodFeatureConfiguration] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MicrosoftAuthenticatorFeatureSettings:
@@ -88,7 +88,9 @@ class MicrosoftAuthenticatorFeatureSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import authentication_method_feature_configuration
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "displayAppInformationRequiredState": lambda n : setattr(self, 'display_app_information_required_state', n.get_object_value(authentication_method_feature_configuration.AuthenticationMethodFeatureConfiguration)),
             "displayLocationInformationRequiredState": lambda n : setattr(self, 'display_location_information_required_state', n.get_object_value(authentication_method_feature_configuration.AuthenticationMethodFeatureConfiguration)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

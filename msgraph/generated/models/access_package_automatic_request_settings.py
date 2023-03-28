@@ -12,7 +12,7 @@ class AccessPackageAutomaticRequestSettings(AdditionalDataHolder, Parsable):
         self._additional_data: Dict[str, Any] = {}
 
         # The gracePeriodBeforeAccessRemoval property
-        self._grace_period_before_access_removal: Optional[Timedelta] = None
+        self._grace_period_before_access_removal: Optional[timedelta] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
         # The removeAccessWhenTargetLeavesAllowedTargets property
@@ -55,7 +55,7 @@ class AccessPackageAutomaticRequestSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "gracePeriodBeforeAccessRemoval": lambda n : setattr(self, 'grace_period_before_access_removal', n.get_object_value(Timedelta)),
+            "gracePeriodBeforeAccessRemoval": lambda n : setattr(self, 'grace_period_before_access_removal', n.get_timedelta_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "removeAccessWhenTargetLeavesAllowedTargets": lambda n : setattr(self, 'remove_access_when_target_leaves_allowed_targets', n.get_bool_value()),
             "requestAccessForAllowedTargets": lambda n : setattr(self, 'request_access_for_allowed_targets', n.get_bool_value()),
@@ -63,15 +63,15 @@ class AccessPackageAutomaticRequestSettings(AdditionalDataHolder, Parsable):
         return fields
     
     @property
-    def grace_period_before_access_removal(self,) -> Optional[Timedelta]:
+    def grace_period_before_access_removal(self,) -> Optional[timedelta]:
         """
         Gets the gracePeriodBeforeAccessRemoval property value. The gracePeriodBeforeAccessRemoval property
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._grace_period_before_access_removal
     
     @grace_period_before_access_removal.setter
-    def grace_period_before_access_removal(self,value: Optional[Timedelta] = None) -> None:
+    def grace_period_before_access_removal(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the gracePeriodBeforeAccessRemoval property value. The gracePeriodBeforeAccessRemoval property
         Args:
@@ -138,7 +138,7 @@ class AccessPackageAutomaticRequestSettings(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        writer.write_object_value("gracePeriodBeforeAccessRemoval", self.grace_period_before_access_removal)
+        writer.write_timedelta_value("gracePeriodBeforeAccessRemoval", self.grace_period_before_access_removal)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_bool_value("removeAccessWhenTargetLeavesAllowedTargets", self.remove_access_when_target_leaves_allowed_targets)
         writer.write_bool_value("requestAccessForAllowedTargets", self.request_access_for_allowed_targets)

@@ -23,7 +23,7 @@ class PrintUsage(entity.Entity):
         # The OdataType property
         self.odata_type: Optional[str] = None
         # The usageDate property
-        self._usage_date: Optional[Date] = None
+        self._usage_date: Optional[date] = None
     
     @property
     def completed_black_and_white_job_count(self,) -> Optional[int]:
@@ -93,7 +93,7 @@ class PrintUsage(entity.Entity):
             "completedBlackAndWhiteJobCount": lambda n : setattr(self, 'completed_black_and_white_job_count', n.get_int_value()),
             "completedColorJobCount": lambda n : setattr(self, 'completed_color_job_count', n.get_int_value()),
             "incompleteJobCount": lambda n : setattr(self, 'incomplete_job_count', n.get_int_value()),
-            "usageDate": lambda n : setattr(self, 'usage_date', n.get_object_value(Date)),
+            "usageDate": lambda n : setattr(self, 'usage_date', n.get_date_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -128,18 +128,18 @@ class PrintUsage(entity.Entity):
         writer.write_int_value("completedBlackAndWhiteJobCount", self.completed_black_and_white_job_count)
         writer.write_int_value("completedColorJobCount", self.completed_color_job_count)
         writer.write_int_value("incompleteJobCount", self.incomplete_job_count)
-        writer.write_object_value("usageDate", self.usage_date)
+        writer.write_date_value("usageDate", self.usage_date)
     
     @property
-    def usage_date(self,) -> Optional[Date]:
+    def usage_date(self,) -> Optional[date]:
         """
         Gets the usageDate property value. The usageDate property
-        Returns: Optional[Date]
+        Returns: Optional[date]
         """
         return self._usage_date
     
     @usage_date.setter
-    def usage_date(self,value: Optional[Date] = None) -> None:
+    def usage_date(self,value: Optional[date] = None) -> None:
         """
         Sets the usageDate property value. The usageDate property
         Args:

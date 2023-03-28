@@ -1,6 +1,7 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 if TYPE_CHECKING:
     from . import entity, license_units_detail, service_plan_info
@@ -26,7 +27,7 @@ class SubscribedSku(entity.Entity):
         # Information about the service plans that are available with the SKU. Not nullable
         self._service_plans: Optional[List[service_plan_info.ServicePlanInfo]] = None
         # The unique identifier (GUID) for the service SKU.
-        self._sku_id: Optional[Guid] = None
+        self._sku_id: Optional[UUID] = None
         # The SKU part number; for example: 'AAD_PREMIUM' or 'RMSBASIC'. To get a list of commercial subscriptions that an organization has acquired, see List subscribedSkus.
         self._sku_part_number: Optional[str] = None
     
@@ -106,7 +107,7 @@ class SubscribedSku(entity.Entity):
             "consumedUnits": lambda n : setattr(self, 'consumed_units', n.get_int_value()),
             "prepaidUnits": lambda n : setattr(self, 'prepaid_units', n.get_object_value(license_units_detail.LicenseUnitsDetail)),
             "servicePlans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(service_plan_info.ServicePlanInfo)),
-            "skuId": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
+            "skuId": lambda n : setattr(self, 'sku_id', n.get_uuid_value()),
             "skuPartNumber": lambda n : setattr(self, 'sku_part_number', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -144,7 +145,7 @@ class SubscribedSku(entity.Entity):
         writer.write_int_value("consumedUnits", self.consumed_units)
         writer.write_object_value("prepaidUnits", self.prepaid_units)
         writer.write_collection_of_object_values("servicePlans", self.service_plans)
-        writer.write_object_value("skuId", self.sku_id)
+        writer.write_uuid_value("skuId", self.sku_id)
         writer.write_str_value("skuPartNumber", self.sku_part_number)
     
     @property
@@ -165,15 +166,15 @@ class SubscribedSku(entity.Entity):
         self._service_plans = value
     
     @property
-    def sku_id(self,) -> Optional[Guid]:
+    def sku_id(self,) -> Optional[UUID]:
         """
         Gets the skuId property value. The unique identifier (GUID) for the service SKU.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._sku_id
     
     @sku_id.setter
-    def sku_id(self,value: Optional[Guid] = None) -> None:
+    def sku_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the skuId property value. The unique identifier (GUID) for the service SKU.
         Args:

@@ -38,7 +38,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         # Specifies the application user model ID of the app to use with assigned access.
         self._kiosk_app_user_model_id: Optional[str] = None
         # Specifies the daily start time of maintenance hour.
-        self._maintenance_start_time: Optional[Time] = None
+        self._maintenance_start_time: Optional[time] = None
     
     @property
     def account_manager_policy(self,) -> Optional[shared_p_c_account_manager_policy.SharedPCAccountManagerPolicy]:
@@ -207,7 +207,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
             "idleTimeBeforeSleepInSeconds": lambda n : setattr(self, 'idle_time_before_sleep_in_seconds', n.get_int_value()),
             "kioskAppDisplayName": lambda n : setattr(self, 'kiosk_app_display_name', n.get_str_value()),
             "kioskAppUserModelId": lambda n : setattr(self, 'kiosk_app_user_model_id', n.get_str_value()),
-            "maintenanceStartTime": lambda n : setattr(self, 'maintenance_start_time', n.get_object_value(Time)),
+            "maintenanceStartTime": lambda n : setattr(self, 'maintenance_start_time', n.get_time_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -265,15 +265,15 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         self._kiosk_app_user_model_id = value
     
     @property
-    def maintenance_start_time(self,) -> Optional[Time]:
+    def maintenance_start_time(self,) -> Optional[time]:
         """
         Gets the maintenanceStartTime property value. Specifies the daily start time of maintenance hour.
-        Returns: Optional[Time]
+        Returns: Optional[time]
         """
         return self._maintenance_start_time
     
     @maintenance_start_time.setter
-    def maintenance_start_time(self,value: Optional[Time] = None) -> None:
+    def maintenance_start_time(self,value: Optional[time] = None) -> None:
         """
         Sets the maintenanceStartTime property value. Specifies the daily start time of maintenance hour.
         Args:
@@ -301,6 +301,6 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         writer.write_int_value("idleTimeBeforeSleepInSeconds", self.idle_time_before_sleep_in_seconds)
         writer.write_str_value("kioskAppDisplayName", self.kiosk_app_display_name)
         writer.write_str_value("kioskAppUserModelId", self.kiosk_app_user_model_id)
-        writer.write_object_value("maintenanceStartTime", self.maintenance_start_time)
+        writer.write_time_value("maintenanceStartTime", self.maintenance_start_time)
     
 

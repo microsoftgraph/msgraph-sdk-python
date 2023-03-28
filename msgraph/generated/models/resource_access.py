@@ -1,6 +1,7 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 class ResourceAccess(AdditionalDataHolder, Parsable):
     def __init__(self,) -> None:
@@ -11,7 +12,7 @@ class ResourceAccess(AdditionalDataHolder, Parsable):
         self._additional_data: Dict[str, Any] = {}
 
         # The unique identifier of an app role or delegated permission exposed by the resource application. For delegated permissions, this should match the id property of one of the delegated permissions in the oauth2PermissionScopes collection of the resource application's service principal. For app roles (application permissions), this should match the id property of an app role in the appRoles collection of the resource application's service principal.
-        self._id: Optional[Guid] = None
+        self._id: Optional[UUID] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
         # Specifies whether the id property references a delegated permission or an app role (application permission). The possible values are: Scope (for delegated permissions) or Role (for app roles).
@@ -52,22 +53,22 @@ class ResourceAccess(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "id": lambda n : setattr(self, 'id', n.get_object_value(Guid)),
+            "id": lambda n : setattr(self, 'id', n.get_uuid_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
         }
         return fields
     
     @property
-    def id(self,) -> Optional[Guid]:
+    def id(self,) -> Optional[UUID]:
         """
         Gets the id property value. The unique identifier of an app role or delegated permission exposed by the resource application. For delegated permissions, this should match the id property of one of the delegated permissions in the oauth2PermissionScopes collection of the resource application's service principal. For app roles (application permissions), this should match the id property of an app role in the appRoles collection of the resource application's service principal.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._id
     
     @id.setter
-    def id(self,value: Optional[Guid] = None) -> None:
+    def id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the id property value. The unique identifier of an app role or delegated permission exposed by the resource application. For delegated permissions, this should match the id property of one of the delegated permissions in the oauth2PermissionScopes collection of the resource application's service principal. For app roles (application permissions), this should match the id property of an app role in the appRoles collection of the resource application's service principal.
         Args:
@@ -100,7 +101,7 @@ class ResourceAccess(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        writer.write_object_value("id", self.id)
+        writer.write_uuid_value("id", self.id)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)

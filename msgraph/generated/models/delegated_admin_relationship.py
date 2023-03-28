@@ -27,7 +27,7 @@ class DelegatedAdminRelationship(entity.Entity):
         # The display name of the relationship used for ease of identification. Must be unique across all delegated admin relationships of the partner. This is set by the partner only when the relationship is in the created status and cannot be changed by the customer.
         self._display_name: Optional[str] = None
         # The duration of the relationship in ISO 8601 format. Must be a value between P1D and P2Y inclusive. This is set by the partner only when the relationship is in the created status and cannot be changed by the customer.
-        self._duration: Optional[Timedelta] = None
+        self._duration: Optional[timedelta] = None
         # The date and time in ISO 8601 format and in UTC time when the status of relationship changes to either terminated or expired. Calculated as endDateTime = activatedDateTime + duration. Read-only.
         self._end_date_time: Optional[datetime] = None
         # The date and time in ISO 8601 format and in UTC time when the relationship was last modified. Read-only.
@@ -156,15 +156,15 @@ class DelegatedAdminRelationship(entity.Entity):
         self._display_name = value
     
     @property
-    def duration(self,) -> Optional[Timedelta]:
+    def duration(self,) -> Optional[timedelta]:
         """
         Gets the duration property value. The duration of the relationship in ISO 8601 format. Must be a value between P1D and P2Y inclusive. This is set by the partner only when the relationship is in the created status and cannot be changed by the customer.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._duration
     
     @duration.setter
-    def duration(self,value: Optional[Timedelta] = None) -> None:
+    def duration(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the duration property value. The duration of the relationship in ISO 8601 format. Must be a value between P1D and P2Y inclusive. This is set by the partner only when the relationship is in the created status and cannot be changed by the customer.
         Args:
@@ -203,7 +203,7 @@ class DelegatedAdminRelationship(entity.Entity):
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "customer": lambda n : setattr(self, 'customer', n.get_object_value(delegated_admin_relationship_customer_participant.DelegatedAdminRelationshipCustomerParticipant)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "duration": lambda n : setattr(self, 'duration', n.get_object_value(Timedelta)),
+            "duration": lambda n : setattr(self, 'duration', n.get_timedelta_value()),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(delegated_admin_relationship_operation.DelegatedAdminRelationshipOperation)),
@@ -280,7 +280,7 @@ class DelegatedAdminRelationship(entity.Entity):
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("customer", self.customer)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_object_value("duration", self.duration)
+        writer.write_timedelta_value("duration", self.duration)
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_collection_of_object_values("operations", self.operations)

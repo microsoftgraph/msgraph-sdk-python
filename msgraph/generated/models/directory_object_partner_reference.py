@@ -1,6 +1,7 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 if TYPE_CHECKING:
     from . import directory_object
@@ -19,7 +20,7 @@ class DirectoryObjectPartnerReference(directory_object.DirectoryObject):
         # Name of directory object being returned, like group or application. Read-only.
         self._display_name: Optional[str] = None
         # The tenant identifier for the partner tenant. Read-only.
-        self._external_partner_tenant_id: Optional[Guid] = None
+        self._external_partner_tenant_id: Optional[UUID] = None
         # The type of the referenced object in the partner tenant. Read-only.
         self._object_type: Optional[str] = None
     
@@ -70,15 +71,15 @@ class DirectoryObjectPartnerReference(directory_object.DirectoryObject):
         self._display_name = value
     
     @property
-    def external_partner_tenant_id(self,) -> Optional[Guid]:
+    def external_partner_tenant_id(self,) -> Optional[UUID]:
         """
         Gets the externalPartnerTenantId property value. The tenant identifier for the partner tenant. Read-only.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._external_partner_tenant_id
     
     @external_partner_tenant_id.setter
-    def external_partner_tenant_id(self,value: Optional[Guid] = None) -> None:
+    def external_partner_tenant_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the externalPartnerTenantId property value. The tenant identifier for the partner tenant. Read-only.
         Args:
@@ -96,7 +97,7 @@ class DirectoryObjectPartnerReference(directory_object.DirectoryObject):
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "externalPartnerTenantId": lambda n : setattr(self, 'external_partner_tenant_id', n.get_object_value(Guid)),
+            "externalPartnerTenantId": lambda n : setattr(self, 'external_partner_tenant_id', n.get_uuid_value()),
             "objectType": lambda n : setattr(self, 'object_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -131,7 +132,7 @@ class DirectoryObjectPartnerReference(directory_object.DirectoryObject):
         super().serialize(writer)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_object_value("externalPartnerTenantId", self.external_partner_tenant_id)
+        writer.write_uuid_value("externalPartnerTenantId", self.external_partner_tenant_id)
         writer.write_str_value("objectType", self.object_type)
     
 

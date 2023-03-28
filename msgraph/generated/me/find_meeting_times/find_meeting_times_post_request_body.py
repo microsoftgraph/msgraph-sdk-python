@@ -23,7 +23,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         # The maxCandidates property
         self._max_candidates: Optional[int] = None
         # The meetingDuration property
-        self._meeting_duration: Optional[Timedelta] = None
+        self._meeting_duration: Optional[timedelta] = None
         # The minimumAttendeePercentage property
         self._minimum_attendee_percentage: Optional[float] = None
         # The returnSuggestionReasons property
@@ -89,7 +89,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
             "isOrganizerOptional": lambda n : setattr(self, 'is_organizer_optional', n.get_bool_value()),
             "locationConstraint": lambda n : setattr(self, 'location_constraint', n.get_object_value(location_constraint.LocationConstraint)),
             "maxCandidates": lambda n : setattr(self, 'max_candidates', n.get_int_value()),
-            "meetingDuration": lambda n : setattr(self, 'meeting_duration', n.get_object_value(Timedelta)),
+            "meetingDuration": lambda n : setattr(self, 'meeting_duration', n.get_timedelta_value()),
             "minimumAttendeePercentage": lambda n : setattr(self, 'minimum_attendee_percentage', n.get_float_value()),
             "returnSuggestionReasons": lambda n : setattr(self, 'return_suggestion_reasons', n.get_bool_value()),
             "timeConstraint": lambda n : setattr(self, 'time_constraint', n.get_object_value(time_constraint.TimeConstraint)),
@@ -148,15 +148,15 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         self._max_candidates = value
     
     @property
-    def meeting_duration(self,) -> Optional[Timedelta]:
+    def meeting_duration(self,) -> Optional[timedelta]:
         """
         Gets the meetingDuration property value. The meetingDuration property
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._meeting_duration
     
     @meeting_duration.setter
-    def meeting_duration(self,value: Optional[Timedelta] = None) -> None:
+    def meeting_duration(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the meetingDuration property value. The meetingDuration property
         Args:
@@ -210,7 +210,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_bool_value("isOrganizerOptional", self.is_organizer_optional)
         writer.write_object_value("locationConstraint", self.location_constraint)
         writer.write_int_value("maxCandidates", self.max_candidates)
-        writer.write_object_value("meetingDuration", self.meeting_duration)
+        writer.write_timedelta_value("meetingDuration", self.meeting_duration)
         writer.write_float_value("minimumAttendeePercentage", self.minimum_attendee_percentage)
         writer.write_bool_value("returnSuggestionReasons", self.return_suggestion_reasons)
         writer.write_object_value("timeConstraint", self.time_constraint)

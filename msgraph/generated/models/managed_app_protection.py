@@ -52,13 +52,13 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         # Indicates whether organizational credentials are required for app use.
         self._organizational_credentials_required: Optional[bool] = None
         # TimePeriod before the all-level pin must be reset if PinRequired is set to True.
-        self._period_before_pin_reset: Optional[Timedelta] = None
+        self._period_before_pin_reset: Optional[timedelta] = None
         # The period after which access is checked when the device is not connected to the internet.
-        self._period_offline_before_access_check: Optional[Timedelta] = None
+        self._period_offline_before_access_check: Optional[timedelta] = None
         # The amount of time an app is allowed to remain disconnected from the internet before all managed data it is wiped.
-        self._period_offline_before_wipe_is_enforced: Optional[Timedelta] = None
+        self._period_offline_before_wipe_is_enforced: Optional[timedelta] = None
         # The period after which access is checked when the device is connected to the internet.
-        self._period_online_before_access_check: Optional[Timedelta] = None
+        self._period_online_before_access_check: Optional[timedelta] = None
         # Character set which is to be used for a user's app PIN
         self._pin_character_set: Optional[managed_app_pin_character_set.ManagedAppPinCharacterSet] = None
         # Indicates whether an app-level pin is required.
@@ -280,10 +280,10 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             "minimumWarningAppVersion": lambda n : setattr(self, 'minimum_warning_app_version', n.get_str_value()),
             "minimumWarningOsVersion": lambda n : setattr(self, 'minimum_warning_os_version', n.get_str_value()),
             "organizationalCredentialsRequired": lambda n : setattr(self, 'organizational_credentials_required', n.get_bool_value()),
-            "periodBeforePinReset": lambda n : setattr(self, 'period_before_pin_reset', n.get_object_value(Timedelta)),
-            "periodOfflineBeforeAccessCheck": lambda n : setattr(self, 'period_offline_before_access_check', n.get_object_value(Timedelta)),
-            "periodOfflineBeforeWipeIsEnforced": lambda n : setattr(self, 'period_offline_before_wipe_is_enforced', n.get_object_value(Timedelta)),
-            "periodOnlineBeforeAccessCheck": lambda n : setattr(self, 'period_online_before_access_check', n.get_object_value(Timedelta)),
+            "periodBeforePinReset": lambda n : setattr(self, 'period_before_pin_reset', n.get_timedelta_value()),
+            "periodOfflineBeforeAccessCheck": lambda n : setattr(self, 'period_offline_before_access_check', n.get_timedelta_value()),
+            "periodOfflineBeforeWipeIsEnforced": lambda n : setattr(self, 'period_offline_before_wipe_is_enforced', n.get_timedelta_value()),
+            "periodOnlineBeforeAccessCheck": lambda n : setattr(self, 'period_online_before_access_check', n.get_timedelta_value()),
             "pinCharacterSet": lambda n : setattr(self, 'pin_character_set', n.get_enum_value(managed_app_pin_character_set.ManagedAppPinCharacterSet)),
             "pinRequired": lambda n : setattr(self, 'pin_required', n.get_bool_value()),
             "printBlocked": lambda n : setattr(self, 'print_blocked', n.get_bool_value()),
@@ -448,15 +448,15 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         self._organizational_credentials_required = value
     
     @property
-    def period_before_pin_reset(self,) -> Optional[Timedelta]:
+    def period_before_pin_reset(self,) -> Optional[timedelta]:
         """
         Gets the periodBeforePinReset property value. TimePeriod before the all-level pin must be reset if PinRequired is set to True.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._period_before_pin_reset
     
     @period_before_pin_reset.setter
-    def period_before_pin_reset(self,value: Optional[Timedelta] = None) -> None:
+    def period_before_pin_reset(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the periodBeforePinReset property value. TimePeriod before the all-level pin must be reset if PinRequired is set to True.
         Args:
@@ -465,15 +465,15 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         self._period_before_pin_reset = value
     
     @property
-    def period_offline_before_access_check(self,) -> Optional[Timedelta]:
+    def period_offline_before_access_check(self,) -> Optional[timedelta]:
         """
         Gets the periodOfflineBeforeAccessCheck property value. The period after which access is checked when the device is not connected to the internet.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._period_offline_before_access_check
     
     @period_offline_before_access_check.setter
-    def period_offline_before_access_check(self,value: Optional[Timedelta] = None) -> None:
+    def period_offline_before_access_check(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the periodOfflineBeforeAccessCheck property value. The period after which access is checked when the device is not connected to the internet.
         Args:
@@ -482,15 +482,15 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         self._period_offline_before_access_check = value
     
     @property
-    def period_offline_before_wipe_is_enforced(self,) -> Optional[Timedelta]:
+    def period_offline_before_wipe_is_enforced(self,) -> Optional[timedelta]:
         """
         Gets the periodOfflineBeforeWipeIsEnforced property value. The amount of time an app is allowed to remain disconnected from the internet before all managed data it is wiped.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._period_offline_before_wipe_is_enforced
     
     @period_offline_before_wipe_is_enforced.setter
-    def period_offline_before_wipe_is_enforced(self,value: Optional[Timedelta] = None) -> None:
+    def period_offline_before_wipe_is_enforced(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the periodOfflineBeforeWipeIsEnforced property value. The amount of time an app is allowed to remain disconnected from the internet before all managed data it is wiped.
         Args:
@@ -499,15 +499,15 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         self._period_offline_before_wipe_is_enforced = value
     
     @property
-    def period_online_before_access_check(self,) -> Optional[Timedelta]:
+    def period_online_before_access_check(self,) -> Optional[timedelta]:
         """
         Gets the periodOnlineBeforeAccessCheck property value. The period after which access is checked when the device is connected to the internet.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._period_online_before_access_check
     
     @period_online_before_access_check.setter
-    def period_online_before_access_check(self,value: Optional[Timedelta] = None) -> None:
+    def period_online_before_access_check(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the periodOnlineBeforeAccessCheck property value. The period after which access is checked when the device is connected to the internet.
         Args:
@@ -610,10 +610,10 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         writer.write_str_value("minimumWarningAppVersion", self.minimum_warning_app_version)
         writer.write_str_value("minimumWarningOsVersion", self.minimum_warning_os_version)
         writer.write_bool_value("organizationalCredentialsRequired", self.organizational_credentials_required)
-        writer.write_object_value("periodBeforePinReset", self.period_before_pin_reset)
-        writer.write_object_value("periodOfflineBeforeAccessCheck", self.period_offline_before_access_check)
-        writer.write_object_value("periodOfflineBeforeWipeIsEnforced", self.period_offline_before_wipe_is_enforced)
-        writer.write_object_value("periodOnlineBeforeAccessCheck", self.period_online_before_access_check)
+        writer.write_timedelta_value("periodBeforePinReset", self.period_before_pin_reset)
+        writer.write_timedelta_value("periodOfflineBeforeAccessCheck", self.period_offline_before_access_check)
+        writer.write_timedelta_value("periodOfflineBeforeWipeIsEnforced", self.period_offline_before_wipe_is_enforced)
+        writer.write_timedelta_value("periodOnlineBeforeAccessCheck", self.period_online_before_access_check)
         writer.write_enum_value("pinCharacterSet", self.pin_character_set)
         writer.write_bool_value("pinRequired", self.pin_required)
         writer.write_bool_value("printBlocked", self.print_blocked)

@@ -25,7 +25,7 @@ class LearningContent(entity.Entity):
         # The description or summary for the learning content. Optional.
         self._description: Optional[str] = None
         # The duration of the learning content in seconds. The value is represented in ISO 8601 format for durations. Optional.
-        self._duration: Optional[Timedelta] = None
+        self._duration: Optional[timedelta] = None
         # Unique external content ID for the learning content. Required.
         self._external_id: Optional[str] = None
         # The format of the learning content. For example, Course, Video, Book, Book Summary, Audiobook Summary. Optional.
@@ -151,15 +151,15 @@ class LearningContent(entity.Entity):
         self._description = value
     
     @property
-    def duration(self,) -> Optional[Timedelta]:
+    def duration(self,) -> Optional[timedelta]:
         """
         Gets the duration property value. The duration of the learning content in seconds. The value is represented in ISO 8601 format for durations. Optional.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._duration
     
     @duration.setter
-    def duration(self,value: Optional[Timedelta] = None) -> None:
+    def duration(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the duration property value. The duration of the learning content in seconds. The value is represented in ISO 8601 format for durations. Optional.
         Args:
@@ -214,7 +214,7 @@ class LearningContent(entity.Entity):
             "contributors": lambda n : setattr(self, 'contributors', n.get_collection_of_primitive_values(str)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
-            "duration": lambda n : setattr(self, 'duration', n.get_object_value(Timedelta)),
+            "duration": lambda n : setattr(self, 'duration', n.get_timedelta_value()),
             "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
             "format": lambda n : setattr(self, 'format', n.get_str_value()),
             "isActive": lambda n : setattr(self, 'is_active', n.get_bool_value()),
@@ -348,7 +348,7 @@ class LearningContent(entity.Entity):
         writer.write_collection_of_primitive_values("contributors", self.contributors)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("description", self.description)
-        writer.write_object_value("duration", self.duration)
+        writer.write_timedelta_value("duration", self.duration)
         writer.write_str_value("externalId", self.external_id)
         writer.write_str_value("format", self.format)
         writer.write_bool_value("isActive", self.is_active)

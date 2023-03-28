@@ -1,6 +1,7 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 class AssignedLicense(AdditionalDataHolder, Parsable):
     def __init__(self,) -> None:
@@ -11,11 +12,11 @@ class AssignedLicense(AdditionalDataHolder, Parsable):
         self._additional_data: Dict[str, Any] = {}
 
         # A collection of the unique identifiers for plans that have been disabled.
-        self._disabled_plans: Optional[List[Guid]] = None
+        self._disabled_plans: Optional[List[UUID]] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
         # The unique identifier for the SKU.
-        self._sku_id: Optional[Guid] = None
+        self._sku_id: Optional[UUID] = None
     
     @property
     def additional_data(self,) -> Dict[str, Any]:
@@ -47,15 +48,15 @@ class AssignedLicense(AdditionalDataHolder, Parsable):
         return AssignedLicense()
     
     @property
-    def disabled_plans(self,) -> Optional[List[Guid]]:
+    def disabled_plans(self,) -> Optional[List[UUID]]:
         """
         Gets the disabledPlans property value. A collection of the unique identifiers for plans that have been disabled.
-        Returns: Optional[List[Guid]]
+        Returns: Optional[List[UUID]]
         """
         return self._disabled_plans
     
     @disabled_plans.setter
-    def disabled_plans(self,value: Optional[List[Guid]] = None) -> None:
+    def disabled_plans(self,value: Optional[List[UUID]] = None) -> None:
         """
         Sets the disabledPlans property value. A collection of the unique identifiers for plans that have been disabled.
         Args:
@@ -69,9 +70,9 @@ class AssignedLicense(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "disabledPlans": lambda n : setattr(self, 'disabled_plans', n.get_collection_of_primitive_values(guid)),
+            "disabledPlans": lambda n : setattr(self, 'disabled_plans', n.get_collection_of_primitive_values(u_u_i_d)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "skuId": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
+            "skuId": lambda n : setattr(self, 'sku_id', n.get_uuid_value()),
         }
         return fields
     
@@ -102,19 +103,19 @@ class AssignedLicense(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_primitive_values("disabledPlans", self.disabled_plans)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_object_value("skuId", self.sku_id)
+        writer.write_uuid_value("skuId", self.sku_id)
         writer.write_additional_data_value(self.additional_data)
     
     @property
-    def sku_id(self,) -> Optional[Guid]:
+    def sku_id(self,) -> Optional[UUID]:
         """
         Gets the skuId property value. The unique identifier for the SKU.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._sku_id
     
     @sku_id.setter
-    def sku_id(self,value: Optional[Guid] = None) -> None:
+    def sku_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the skuId property value. The unique identifier for the SKU.
         Args:

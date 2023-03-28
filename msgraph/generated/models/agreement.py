@@ -31,7 +31,7 @@ class Agreement(entity.Entity):
         # Expiration schedule and frequency of agreement for all users. Supports $filter (eq).
         self._terms_expiration: Optional[terms_expiration.TermsExpiration] = None
         # The duration after which the user must re-accept the terms of use. The value is represented in ISO 8601 format for durations. Supports $filter (eq).
-        self._user_reaccept_required_frequency: Optional[Timedelta] = None
+        self._user_reaccept_required_frequency: Optional[timedelta] = None
     
     @property
     def acceptances(self,) -> Optional[List[agreement_acceptance.AgreementAcceptance]]:
@@ -128,7 +128,7 @@ class Agreement(entity.Entity):
             "isPerDeviceAcceptanceRequired": lambda n : setattr(self, 'is_per_device_acceptance_required', n.get_bool_value()),
             "isViewingBeforeAcceptanceRequired": lambda n : setattr(self, 'is_viewing_before_acceptance_required', n.get_bool_value()),
             "termsExpiration": lambda n : setattr(self, 'terms_expiration', n.get_object_value(terms_expiration.TermsExpiration)),
-            "userReacceptRequiredFrequency": lambda n : setattr(self, 'user_reaccept_required_frequency', n.get_object_value(Timedelta)),
+            "userReacceptRequiredFrequency": lambda n : setattr(self, 'user_reaccept_required_frequency', n.get_timedelta_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -184,7 +184,7 @@ class Agreement(entity.Entity):
         writer.write_bool_value("isPerDeviceAcceptanceRequired", self.is_per_device_acceptance_required)
         writer.write_bool_value("isViewingBeforeAcceptanceRequired", self.is_viewing_before_acceptance_required)
         writer.write_object_value("termsExpiration", self.terms_expiration)
-        writer.write_object_value("userReacceptRequiredFrequency", self.user_reaccept_required_frequency)
+        writer.write_timedelta_value("userReacceptRequiredFrequency", self.user_reaccept_required_frequency)
     
     @property
     def terms_expiration(self,) -> Optional[terms_expiration.TermsExpiration]:
@@ -204,15 +204,15 @@ class Agreement(entity.Entity):
         self._terms_expiration = value
     
     @property
-    def user_reaccept_required_frequency(self,) -> Optional[Timedelta]:
+    def user_reaccept_required_frequency(self,) -> Optional[timedelta]:
         """
         Gets the userReacceptRequiredFrequency property value. The duration after which the user must re-accept the terms of use. The value is represented in ISO 8601 format for durations. Supports $filter (eq).
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._user_reaccept_required_frequency
     
     @user_reaccept_required_frequency.setter
-    def user_reaccept_required_frequency(self,value: Optional[Timedelta] = None) -> None:
+    def user_reaccept_required_frequency(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the userReacceptRequiredFrequency property value. The duration after which the user must re-accept the terms of use. The value is represented in ISO 8601 format for durations. Supports $filter (eq).
         Args:

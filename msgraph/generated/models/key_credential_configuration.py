@@ -15,7 +15,7 @@ class KeyCredentialConfiguration(AdditionalDataHolder, Parsable):
         self._additional_data: Dict[str, Any] = {}
 
         # The maxLifetime property
-        self._max_lifetime: Optional[Timedelta] = None
+        self._max_lifetime: Optional[timedelta] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
         # Timestamp when the policy is enforced for all apps created on or after the specified date. For existing applications, the enforcement date would be back dated. To apply to all applications regardless of their creation date, this property would be null. Nullable.
@@ -60,7 +60,7 @@ class KeyCredentialConfiguration(AdditionalDataHolder, Parsable):
         from . import app_key_credential_restriction_type
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "maxLifetime": lambda n : setattr(self, 'max_lifetime', n.get_object_value(Timedelta)),
+            "maxLifetime": lambda n : setattr(self, 'max_lifetime', n.get_timedelta_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "restrictionType": lambda n : setattr(self, 'restriction_type', n.get_enum_value(app_key_credential_restriction_type.AppKeyCredentialRestrictionType)),
             "restrictForAppsCreatedAfterDateTime": lambda n : setattr(self, 'restrict_for_apps_created_after_date_time', n.get_datetime_value()),
@@ -68,15 +68,15 @@ class KeyCredentialConfiguration(AdditionalDataHolder, Parsable):
         return fields
     
     @property
-    def max_lifetime(self,) -> Optional[Timedelta]:
+    def max_lifetime(self,) -> Optional[timedelta]:
         """
         Gets the maxLifetime property value. The maxLifetime property
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._max_lifetime
     
     @max_lifetime.setter
-    def max_lifetime(self,value: Optional[Timedelta] = None) -> None:
+    def max_lifetime(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the maxLifetime property value. The maxLifetime property
         Args:
@@ -143,7 +143,7 @@ class KeyCredentialConfiguration(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        writer.write_object_value("maxLifetime", self.max_lifetime)
+        writer.write_timedelta_value("maxLifetime", self.max_lifetime)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("restrictionType", self.restriction_type)
         writer.write_datetime_value("restrictForAppsCreatedAfterDateTime", self.restrict_for_apps_created_after_date_time)

@@ -42,7 +42,7 @@ class UsersRequestBuilder():
     
     async def get(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None) -> Optional[user_collection_response.UserCollectionResponse]:
         """
-        Retrieve a list of user objects.
+        Retrieve the properties and relationships of user object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[user_collection_response.UserCollectionResponse]
@@ -89,7 +89,7 @@ class UsersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of user objects.
+        Retrieve the properties and relationships of user object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -174,7 +174,7 @@ class UsersRequestBuilder():
     @dataclass
     class UsersRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of user objects.
+        Retrieve the properties and relationships of user object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

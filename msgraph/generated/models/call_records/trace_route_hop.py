@@ -18,7 +18,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         # The OdataType property
         self._odata_type: Optional[str] = None
         # The time from when the trace route packet was sent from the client to this hop and back to the client, denoted in [ISO 8601][] format. For example, 1 second is denoted as PT1S, where P is the duration designator, T is the time designator, and S is the second designator.
-        self._round_trip_time: Optional[Timedelta] = None
+        self._round_trip_time: Optional[timedelta] = None
     
     @property
     def additional_data(self,) -> Dict[str, Any]:
@@ -58,7 +58,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
             "hopCount": lambda n : setattr(self, 'hop_count', n.get_int_value()),
             "ipAddress": lambda n : setattr(self, 'ip_address', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "roundTripTime": lambda n : setattr(self, 'round_trip_time', n.get_object_value(Timedelta)),
+            "roundTripTime": lambda n : setattr(self, 'round_trip_time', n.get_timedelta_value()),
         }
         return fields
     
@@ -114,15 +114,15 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         self._odata_type = value
     
     @property
-    def round_trip_time(self,) -> Optional[Timedelta]:
+    def round_trip_time(self,) -> Optional[timedelta]:
         """
         Gets the roundTripTime property value. The time from when the trace route packet was sent from the client to this hop and back to the client, denoted in [ISO 8601][] format. For example, 1 second is denoted as PT1S, where P is the duration designator, T is the time designator, and S is the second designator.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._round_trip_time
     
     @round_trip_time.setter
-    def round_trip_time(self,value: Optional[Timedelta] = None) -> None:
+    def round_trip_time(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the roundTripTime property value. The time from when the trace route packet was sent from the client to this hop and back to the client, denoted in [ISO 8601][] format. For example, 1 second is denoted as PT1S, where P is the duration designator, T is the time designator, and S is the second designator.
         Args:
@@ -141,7 +141,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         writer.write_int_value("hopCount", self.hop_count)
         writer.write_str_value("ipAddress", self.ip_address)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_object_value("roundTripTime", self.round_trip_time)
+        writer.write_timedelta_value("roundTripTime", self.round_trip_time)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -2,6 +2,7 @@ from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 if TYPE_CHECKING:
     from . import change_notification_encrypted_content, change_type, lifecycle_event_type, resource_data
@@ -33,9 +34,9 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         # The expiration time for the subscription. Required.
         self._subscription_expiration_date_time: Optional[datetime] = None
         # The unique identifier of the subscription that generated the notification.Required.
-        self._subscription_id: Optional[Guid] = None
+        self._subscription_id: Optional[UUID] = None
         # The unique identifier of the tenant from which the change notification originated. Required.
-        self._tenant_id: Optional[Guid] = None
+        self._tenant_id: Optional[UUID] = None
     
     @property
     def additional_data(self,) -> Dict[str, Any]:
@@ -134,8 +135,8 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
             "resource": lambda n : setattr(self, 'resource', n.get_str_value()),
             "resourceData": lambda n : setattr(self, 'resource_data', n.get_object_value(resource_data.ResourceData)),
             "subscriptionExpirationDateTime": lambda n : setattr(self, 'subscription_expiration_date_time', n.get_datetime_value()),
-            "subscriptionId": lambda n : setattr(self, 'subscription_id', n.get_object_value(Guid)),
-            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_object_value(Guid)),
+            "subscriptionId": lambda n : setattr(self, 'subscription_id', n.get_uuid_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_uuid_value()),
         }
         return fields
     
@@ -241,8 +242,8 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         writer.write_str_value("resource", self.resource)
         writer.write_object_value("resourceData", self.resource_data)
         writer.write_datetime_value("subscriptionExpirationDateTime", self.subscription_expiration_date_time)
-        writer.write_object_value("subscriptionId", self.subscription_id)
-        writer.write_object_value("tenantId", self.tenant_id)
+        writer.write_uuid_value("subscriptionId", self.subscription_id)
+        writer.write_uuid_value("tenantId", self.tenant_id)
         writer.write_additional_data_value(self.additional_data)
     
     @property
@@ -263,15 +264,15 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         self._subscription_expiration_date_time = value
     
     @property
-    def subscription_id(self,) -> Optional[Guid]:
+    def subscription_id(self,) -> Optional[UUID]:
         """
         Gets the subscriptionId property value. The unique identifier of the subscription that generated the notification.Required.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._subscription_id
     
     @subscription_id.setter
-    def subscription_id(self,value: Optional[Guid] = None) -> None:
+    def subscription_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the subscriptionId property value. The unique identifier of the subscription that generated the notification.Required.
         Args:
@@ -280,15 +281,15 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         self._subscription_id = value
     
     @property
-    def tenant_id(self,) -> Optional[Guid]:
+    def tenant_id(self,) -> Optional[UUID]:
         """
         Gets the tenantId property value. The unique identifier of the tenant from which the change notification originated. Required.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._tenant_id
     
     @tenant_id.setter
-    def tenant_id(self,value: Optional[Guid] = None) -> None:
+    def tenant_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the tenantId property value. The unique identifier of the tenant from which the change notification originated. Required.
         Args:

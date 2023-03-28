@@ -16,20 +16,20 @@ class WindowsUpdateActiveHoursInstall(windows_update_install_schedule_type.Windo
         super().__init__()
         self.odata_type = "#microsoft.graph.windowsUpdateActiveHoursInstall"
         # Active Hours End
-        self._active_hours_end: Optional[Time] = None
+        self._active_hours_end: Optional[time] = None
         # Active Hours Start
-        self._active_hours_start: Optional[Time] = None
+        self._active_hours_start: Optional[time] = None
     
     @property
-    def active_hours_end(self,) -> Optional[Time]:
+    def active_hours_end(self,) -> Optional[time]:
         """
         Gets the activeHoursEnd property value. Active Hours End
-        Returns: Optional[Time]
+        Returns: Optional[time]
         """
         return self._active_hours_end
     
     @active_hours_end.setter
-    def active_hours_end(self,value: Optional[Time] = None) -> None:
+    def active_hours_end(self,value: Optional[time] = None) -> None:
         """
         Sets the activeHoursEnd property value. Active Hours End
         Args:
@@ -38,15 +38,15 @@ class WindowsUpdateActiveHoursInstall(windows_update_install_schedule_type.Windo
         self._active_hours_end = value
     
     @property
-    def active_hours_start(self,) -> Optional[Time]:
+    def active_hours_start(self,) -> Optional[time]:
         """
         Gets the activeHoursStart property value. Active Hours Start
-        Returns: Optional[Time]
+        Returns: Optional[time]
         """
         return self._active_hours_start
     
     @active_hours_start.setter
-    def active_hours_start(self,value: Optional[Time] = None) -> None:
+    def active_hours_start(self,value: Optional[time] = None) -> None:
         """
         Sets the activeHoursStart property value. Active Hours Start
         Args:
@@ -74,8 +74,8 @@ class WindowsUpdateActiveHoursInstall(windows_update_install_schedule_type.Windo
         from . import windows_update_install_schedule_type
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "activeHoursEnd": lambda n : setattr(self, 'active_hours_end', n.get_object_value(Time)),
-            "activeHoursStart": lambda n : setattr(self, 'active_hours_start', n.get_object_value(Time)),
+            "activeHoursEnd": lambda n : setattr(self, 'active_hours_end', n.get_time_value()),
+            "activeHoursStart": lambda n : setattr(self, 'active_hours_start', n.get_time_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -90,7 +90,7 @@ class WindowsUpdateActiveHoursInstall(windows_update_install_schedule_type.Windo
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-        writer.write_object_value("activeHoursEnd", self.active_hours_end)
-        writer.write_object_value("activeHoursStart", self.active_hours_start)
+        writer.write_time_value("activeHoursEnd", self.active_hours_end)
+        writer.write_time_value("activeHoursStart", self.active_hours_start)
     
 

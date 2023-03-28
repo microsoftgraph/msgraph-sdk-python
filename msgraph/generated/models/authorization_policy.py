@@ -1,6 +1,7 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 if TYPE_CHECKING:
     from . import allow_invites_from, default_user_role_permissions, policy_base
@@ -29,7 +30,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         # The defaultUserRolePermissions property
         self._default_user_role_permissions: Optional[default_user_role_permissions.DefaultUserRolePermissions] = None
         # Represents role templateId for the role that should be granted to guest user. Currently following roles are supported:  User (a0b1b346-4d3e-4e8b-98f8-753987be4970), Guest User (10dae51f-b6af-4016-8d66-8c2a99b929b3), and Restricted Guest User (2af84b1e-32c8-42b7-82bc-daa82404023b).
-        self._guest_user_role_id: Optional[Guid] = None
+        self._guest_user_role_id: Optional[UUID] = None
     
     @property
     def allow_email_verified_users_to_join_organization(self,) -> Optional[bool]:
@@ -177,22 +178,22 @@ class AuthorizationPolicy(policy_base.PolicyBase):
             "allowUserConsentForRiskyApps": lambda n : setattr(self, 'allow_user_consent_for_risky_apps', n.get_bool_value()),
             "blockMsolPowerShell": lambda n : setattr(self, 'block_msol_power_shell', n.get_bool_value()),
             "defaultUserRolePermissions": lambda n : setattr(self, 'default_user_role_permissions', n.get_object_value(default_user_role_permissions.DefaultUserRolePermissions)),
-            "guestUserRoleId": lambda n : setattr(self, 'guest_user_role_id', n.get_object_value(Guid)),
+            "guestUserRoleId": lambda n : setattr(self, 'guest_user_role_id', n.get_uuid_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
     
     @property
-    def guest_user_role_id(self,) -> Optional[Guid]:
+    def guest_user_role_id(self,) -> Optional[UUID]:
         """
         Gets the guestUserRoleId property value. Represents role templateId for the role that should be granted to guest user. Currently following roles are supported:  User (a0b1b346-4d3e-4e8b-98f8-753987be4970), Guest User (10dae51f-b6af-4016-8d66-8c2a99b929b3), and Restricted Guest User (2af84b1e-32c8-42b7-82bc-daa82404023b).
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._guest_user_role_id
     
     @guest_user_role_id.setter
-    def guest_user_role_id(self,value: Optional[Guid] = None) -> None:
+    def guest_user_role_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the guestUserRoleId property value. Represents role templateId for the role that should be granted to guest user. Currently following roles are supported:  User (a0b1b346-4d3e-4e8b-98f8-753987be4970), Guest User (10dae51f-b6af-4016-8d66-8c2a99b929b3), and Restricted Guest User (2af84b1e-32c8-42b7-82bc-daa82404023b).
         Args:
@@ -216,6 +217,6 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         writer.write_bool_value("allowUserConsentForRiskyApps", self.allow_user_consent_for_risky_apps)
         writer.write_bool_value("blockMsolPowerShell", self.block_msol_power_shell)
         writer.write_object_value("defaultUserRolePermissions", self.default_user_role_permissions)
-        writer.write_object_value("guestUserRoleId", self.guest_user_role_id)
+        writer.write_uuid_value("guestUserRoleId", self.guest_user_role_id)
     
 

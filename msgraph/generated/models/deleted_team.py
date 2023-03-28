@@ -10,7 +10,7 @@ from . import entity
 class DeletedTeam(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new DeletedTeam and sets the default values.
+        Instantiates a new deletedTeam and sets the default values.
         """
         super().__init__()
         # The channels that are either shared with this deleted team or created in this deleted team.

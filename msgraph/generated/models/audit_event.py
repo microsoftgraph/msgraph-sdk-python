@@ -2,6 +2,7 @@ from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 if TYPE_CHECKING:
     from . import audit_actor, audit_resource, entity
@@ -31,7 +32,7 @@ class AuditEvent(entity.Entity):
         # Component name.
         self._component_name: Optional[str] = None
         # The client request Id that is used to correlate activity within the system.
-        self._correlation_id: Optional[Guid] = None
+        self._correlation_id: Optional[UUID] = None
         # Event display name.
         self._display_name: Optional[str] = None
         # The OdataType property
@@ -176,15 +177,15 @@ class AuditEvent(entity.Entity):
         self._component_name = value
     
     @property
-    def correlation_id(self,) -> Optional[Guid]:
+    def correlation_id(self,) -> Optional[UUID]:
         """
         Gets the correlationId property value. The client request Id that is used to correlate activity within the system.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._correlation_id
     
     @correlation_id.setter
-    def correlation_id(self,value: Optional[Guid] = None) -> None:
+    def correlation_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the correlationId property value. The client request Id that is used to correlate activity within the system.
         Args:
@@ -237,7 +238,7 @@ class AuditEvent(entity.Entity):
             "actor": lambda n : setattr(self, 'actor', n.get_object_value(audit_actor.AuditActor)),
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
             "componentName": lambda n : setattr(self, 'component_name', n.get_str_value()),
-            "correlationId": lambda n : setattr(self, 'correlation_id', n.get_object_value(Guid)),
+            "correlationId": lambda n : setattr(self, 'correlation_id', n.get_uuid_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(audit_resource.AuditResource)),
         }
@@ -279,7 +280,7 @@ class AuditEvent(entity.Entity):
         writer.write_object_value("actor", self.actor)
         writer.write_str_value("category", self.category)
         writer.write_str_value("componentName", self.component_name)
-        writer.write_object_value("correlationId", self.correlation_id)
+        writer.write_uuid_value("correlationId", self.correlation_id)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("resources", self.resources)
     

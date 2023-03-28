@@ -23,7 +23,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         # The OdataType property
         self._odata_type: Optional[str] = None
         # Represents the time of day when the transition from daylight saving time to standard time occurs.
-        self._time: Optional[Time] = None
+        self._time: Optional[time] = None
         # Represents how frequently in terms of years the change from daylight saving time to standard time occurs. For example, a value of 0 means every year.
         self._year: Optional[int] = None
     
@@ -109,7 +109,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
             "dayOfWeek": lambda n : setattr(self, 'day_of_week', n.get_enum_value(day_of_week.DayOfWeek)),
             "month": lambda n : setattr(self, 'month', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "time": lambda n : setattr(self, 'time', n.get_object_value(Time)),
+            "time": lambda n : setattr(self, 'time', n.get_time_value()),
             "year": lambda n : setattr(self, 'year', n.get_int_value()),
         }
         return fields
@@ -160,20 +160,20 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         writer.write_enum_value("dayOfWeek", self.day_of_week)
         writer.write_int_value("month", self.month)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_object_value("time", self.time)
+        writer.write_time_value("time", self.time)
         writer.write_int_value("year", self.year)
         writer.write_additional_data_value(self.additional_data)
     
     @property
-    def time(self,) -> Optional[Time]:
+    def time(self,) -> Optional[time]:
         """
         Gets the time property value. Represents the time of day when the transition from daylight saving time to standard time occurs.
-        Returns: Optional[Time]
+        Returns: Optional[time]
         """
         return self._time
     
     @time.setter
-    def time(self,value: Optional[Time] = None) -> None:
+    def time(self,value: Optional[time] = None) -> None:
         """
         Sets the time property value. Represents the time of day when the transition from daylight saving time to standard time occurs.
         Args:

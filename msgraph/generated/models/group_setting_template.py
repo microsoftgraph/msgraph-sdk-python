@@ -10,7 +10,7 @@ from . import directory_object
 class GroupSettingTemplate(directory_object.DirectoryObject):
     def __init__(self,) -> None:
         """
-        Instantiates a new GroupSettingTemplate and sets the default values.
+        Instantiates a new groupSettingTemplate and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.groupSettingTemplate"

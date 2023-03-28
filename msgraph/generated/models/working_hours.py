@@ -17,11 +17,11 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         # The days of the week on which the user works.
         self._days_of_week: Optional[List[day_of_week.DayOfWeek]] = None
         # The time of the day that the user stops working.
-        self._end_time: Optional[Time] = None
+        self._end_time: Optional[time] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
         # The time of the day that the user starts working.
-        self._start_time: Optional[Time] = None
+        self._start_time: Optional[time] = None
         # The time zone to which the working hours apply.
         self._time_zone: Optional[time_zone_base.TimeZoneBase] = None
     
@@ -72,15 +72,15 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         self._days_of_week = value
     
     @property
-    def end_time(self,) -> Optional[Time]:
+    def end_time(self,) -> Optional[time]:
         """
         Gets the endTime property value. The time of the day that the user stops working.
-        Returns: Optional[Time]
+        Returns: Optional[time]
         """
         return self._end_time
     
     @end_time.setter
-    def end_time(self,value: Optional[Time] = None) -> None:
+    def end_time(self,value: Optional[time] = None) -> None:
         """
         Sets the endTime property value. The time of the day that the user stops working.
         Args:
@@ -97,9 +97,9 @@ class WorkingHours(AdditionalDataHolder, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "daysOfWeek": lambda n : setattr(self, 'days_of_week', n.get_collection_of_enum_values(day_of_week.DayOfWeek)),
-            "endTime": lambda n : setattr(self, 'end_time', n.get_object_value(Time)),
+            "endTime": lambda n : setattr(self, 'end_time', n.get_time_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "startTime": lambda n : setattr(self, 'start_time', n.get_object_value(Time)),
+            "startTime": lambda n : setattr(self, 'start_time', n.get_time_value()),
             "timeZone": lambda n : setattr(self, 'time_zone', n.get_object_value(time_zone_base.TimeZoneBase)),
         }
         return fields
@@ -130,22 +130,22 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("daysOfWeek", self.days_of_week)
-        writer.write_object_value("endTime", self.end_time)
+        writer.write_time_value("endTime", self.end_time)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_object_value("startTime", self.start_time)
+        writer.write_time_value("startTime", self.start_time)
         writer.write_object_value("timeZone", self.time_zone)
         writer.write_additional_data_value(self.additional_data)
     
     @property
-    def start_time(self,) -> Optional[Time]:
+    def start_time(self,) -> Optional[time]:
         """
         Gets the startTime property value. The time of the day that the user starts working.
-        Returns: Optional[Time]
+        Returns: Optional[time]
         """
         return self._start_time
     
     @start_time.setter
-    def start_time(self,value: Optional[Time] = None) -> None:
+    def start_time(self,value: Optional[time] = None) -> None:
         """
         Sets the startTime property value. The time of the day that the user starts working.
         Args:

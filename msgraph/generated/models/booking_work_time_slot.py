@@ -12,11 +12,11 @@ class BookingWorkTimeSlot(AdditionalDataHolder, Parsable):
         self._additional_data: Dict[str, Any] = {}
 
         # The time of the day when work stops. For example, 17:00:00.0000000.
-        self._end_time: Optional[Time] = None
+        self._end_time: Optional[time] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
         # The time of the day when work starts. For example, 08:00:00.0000000.
-        self._start_time: Optional[Time] = None
+        self._start_time: Optional[time] = None
     
     @property
     def additional_data(self,) -> Dict[str, Any]:
@@ -48,15 +48,15 @@ class BookingWorkTimeSlot(AdditionalDataHolder, Parsable):
         return BookingWorkTimeSlot()
     
     @property
-    def end_time(self,) -> Optional[Time]:
+    def end_time(self,) -> Optional[time]:
         """
         Gets the endTime property value. The time of the day when work stops. For example, 17:00:00.0000000.
-        Returns: Optional[Time]
+        Returns: Optional[time]
         """
         return self._end_time
     
     @end_time.setter
-    def end_time(self,value: Optional[Time] = None) -> None:
+    def end_time(self,value: Optional[time] = None) -> None:
         """
         Sets the endTime property value. The time of the day when work stops. For example, 17:00:00.0000000.
         Args:
@@ -70,9 +70,9 @@ class BookingWorkTimeSlot(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "endTime": lambda n : setattr(self, 'end_time', n.get_object_value(Time)),
+            "endTime": lambda n : setattr(self, 'end_time', n.get_time_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "startTime": lambda n : setattr(self, 'start_time', n.get_object_value(Time)),
+            "startTime": lambda n : setattr(self, 'start_time', n.get_time_value()),
         }
         return fields
     
@@ -101,21 +101,21 @@ class BookingWorkTimeSlot(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        writer.write_object_value("endTime", self.end_time)
+        writer.write_time_value("endTime", self.end_time)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_object_value("startTime", self.start_time)
+        writer.write_time_value("startTime", self.start_time)
         writer.write_additional_data_value(self.additional_data)
     
     @property
-    def start_time(self,) -> Optional[Time]:
+    def start_time(self,) -> Optional[time]:
         """
         Gets the startTime property value. The time of the day when work starts. For example, 08:00:00.0000000.
-        Returns: Optional[Time]
+        Returns: Optional[time]
         """
         return self._start_time
     
     @start_time.setter
-    def start_time(self,value: Optional[Time] = None) -> None:
+    def start_time(self,value: Optional[time] = None) -> None:
         """
         Sets the startTime property value. The time of the day when work starts. For example, 08:00:00.0000000.
         Args:
